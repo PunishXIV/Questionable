@@ -1,5 +1,5 @@
-﻿{
-  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
   "Author": "liza",
   "Comment": "Only Turn 9 is required for the next quest to unlock",
   "QuestSequence": [

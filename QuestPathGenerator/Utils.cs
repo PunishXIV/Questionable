@@ -31,36 +31,36 @@ public static class Utils
 
         SchemaRegistry.Global.Register(
             new Uri(
-                "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-aethernetshard.json"),
+                "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-aethernetshard.json"),
             JsonSchema.FromText(commonAethernetShardFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
             new Uri(
-                "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-aetheryte.json"),
+                "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-aetheryte.json"),
             JsonSchema.FromText(commonAetheryteFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
             new Uri(
-                "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-classjob.json"),
+                "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-classjob.json"),
             JsonSchema.FromText(commonClassJobFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
             new Uri(
-                "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-completionflags.json"),
+                "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-completionflags.json"),
             JsonSchema.FromText(commonCompletionFlagsFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
-            new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-vector3.json"),
+            new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-vector3.json"),
             JsonSchema.FromText(commonVector3File.GetText()!.ToString()));
 
         if (gatheringSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
                 new Uri(
-                    "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json"),
+                    "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/GatheringPaths/gatheringlocation-v1.json"),
                 JsonSchema.FromText(gatheringSchemaFile.GetText()!.ToString()));
         }
 
         if (questSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
-                new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json"),
+                new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json"),
                 JsonSchema.FromText(questSchemaFile.GetText()!.ToString()));
         }
 

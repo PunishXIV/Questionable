@@ -1,5 +1,5 @@
 {
-  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
   "Author": "liza",
   "$": "This is the follow-up quest for both Lominsan Envoy & Gridanian Envoy (Ul'dahn Envoy has a quest with the same name, but different id)",
   "QuestSequence": [

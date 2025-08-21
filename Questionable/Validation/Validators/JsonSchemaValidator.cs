@@ -17,19 +17,19 @@ internal sealed class JsonSchemaValidator : IQuestValidator
     public JsonSchemaValidator()
     {
         SchemaRegistry.Global.Register(
-            new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-aethernetshard.json"),
+            new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-aethernetshard.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAethernetShard).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-aetheryte.json"),
+            new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-aetheryte.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAetheryte).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-classjob.json"),
+            new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-classjob.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonClassJob).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-completionflags.json"),
+            new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-completionflags.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonCompletionFlags).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-vector3.json"),
+            new Uri("https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-vector3.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonVector3).AsTask().Result);
     }
 

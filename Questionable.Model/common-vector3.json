@@ -1,22 +1,22 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://git.carvel.li//liza/Questionable/raw/branch/master/Questionable.Model/common-vector3.json",
-  "type": "object",
-  "description": "Position in the world",
-  "properties": {
-    "X": {
-      "type": "number"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-vector3.json",
+    "type": "object",
+    "description": "Position in the world",
+    "properties": {
+        "X": {
+            "type": "number"
+        },
+        "Y": {
+            "type": "number"
+        },
+        "Z": {
+            "type": "number"
+        }
     },
-    "Y": {
-      "type": "number"
-    },
-    "Z": {
-      "type": "number"
-    }
-  },
-  "required": [
-    "X",
-    "Y",
-    "Z"
-  ]
+    "required": [
+        "X",
+        "Y",
+        "Z"
+    ]
 }

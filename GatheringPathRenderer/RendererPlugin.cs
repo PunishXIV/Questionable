@@ -182,7 +182,7 @@ public sealed class RendererPlugin : IDalamudPlugin
             var jsonNode = (JsonObject)JsonSerializer.SerializeToNode(root, options)!;
             var newNode = new JsonObject();
             newNode.Add("$schema",
-                "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json");
+                "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/GatheringPaths/gatheringlocation-v1.json");
             foreach (var (key, value) in jsonNode)
                 newNode.Add(key, value?.DeepClone());
 

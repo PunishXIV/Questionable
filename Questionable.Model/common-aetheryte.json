@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-aetheryte.json",
+  "$id": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-aetheryte.json",
   "type": "string",
   "enum": [
     "Gridania",

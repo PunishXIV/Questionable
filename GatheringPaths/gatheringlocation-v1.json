@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "$id": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/GatheringPaths/gatheringlocation-v1.json",
   "title": "Gathering Location V1",
   "description": "A series of gathering locationsk",
   "type": "object",
   "properties": {
     "$schema": {
       "type": "string",
-      "const": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json"
+      "const": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/GatheringPaths/gatheringlocation-v1.json"
     },
     "Author": {
       "description": "Author of the gathering location data",
@@ -22,7 +22,7 @@
     "Steps": {
       "type": "array",
       "items": {
-        "$ref": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json#/$defs/Step"
+        "$ref": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json#/$defs/Step"
       },
       "minItems": 1
     },
@@ -63,7 +63,7 @@
                     "type": "object",
                     "properties": {
                       "Position": {
-                        "$ref": "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-vector3.json"
+                        "$ref": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/Questionable.Model/common-vector3.json"
                       },
                       "MinimumAngle": {
                         "type": "number",
