@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048982,
+          "Position": {
+            "X": 595.45276,
+            "Y": -137.17401,
+            "Z": 564.8126
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014250,
+          "Position": {
+            "X": 598.3214,
+            "Y": -137.19391,
+            "Z": 557.7018
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Snipe",
+          "Comment": "Inspect Flag, Red Head, Blue Head"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048982,
+          "Position": {
+            "X": 595.45276,
+            "Y": -137.17401,
+            "Z": 564.8126
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

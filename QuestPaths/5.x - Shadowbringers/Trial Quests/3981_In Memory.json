@@ -1,0 +1,130 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032586,
+          "Position": {
+            "X": -505.42462,
+            "Y": 7.68313,
+            "Z": 51.621216
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035243,
+          "Position": {
+            "X": -533.4402,
+            "Y": 8.187748,
+            "Z": -46.341675
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKYW311_03981_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1035120,
+          "Position": {
+            "X": 52.140015,
+            "Y": 41,
+            "Z": 28.335938
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1035323,
+          "Position": {
+            "X": 1.1443481,
+            "Y": 41.01995,
+            "Z": 24.917969
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033636,
+          "Position": {
+            "X": -5.5390625,
+            "Y": 41.019974,
+            "Z": 25.680908
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 621,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                919
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -507.93283,
+            "Y": 7.6638765,
+            "Z": 52.09985
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1032586,
+          "Position": {
+            "X": -505.42462,
+            "Y": 7.68313,
+            "Z": 51.621216
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4031
+        }
+      ]
+    }
+  ]
+}

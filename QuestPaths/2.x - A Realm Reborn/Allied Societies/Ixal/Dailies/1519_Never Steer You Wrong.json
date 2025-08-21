@@ -1,0 +1,240 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009215,
+                    "Position": {
+                        "X": 167.01001,
+                        "Y": -13.604617,
+                        "Z": 110.85681
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "Land": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 167.01001,
+                                    "Y": -13.604617,
+                                    "Z": 110.85681
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 37.581226,
+                        "Y": 29,
+                        "Z": -798.03467
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "WalkTo",
+                    "AetheryteShortcut": "Mor Dhona",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 37.581226,
+                                    "Y": 29,
+                                    "Z": -798.03467
+                                },
+                                "TerritoryId": 156,
+                                "MaximumDistance": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009220,
+                    "Position": {
+                        "X": 40.93994,
+                        "Y": 29,
+                        "Z": -798.3673
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "TerritoryId": 156,
+                    "InteractionType": "SwitchClass",
+                    "TargetClass": "ConfiguredCombatJob"
+                },
+                {
+                    "DataId": 1009669,
+                    "Position": {
+                        "X": -134.47784,
+                        "Y": -1.2726249,
+                        "Z": -637.7814
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "Combat",
+                    "AetheryteShortcut": "Mor Dhona",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        725
+                    ],
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NotNearPosition": {
+                                "Position": {
+                                    "X": 37.581226,
+                                    "Y": 29,
+                                    "Z": -798.03467
+                                },
+                                "TerritoryId": 156,
+                                "MaximumDistance": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009640,
+                    "Position": {
+                        "X": -143.45007,
+                        "Y": 3.3107295,
+                        "Z": -663.99634
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        725
+                    ],
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 1009670,
+                    "Position": {
+                        "X": -189.28821,
+                        "Y": 4.6535096,
+                        "Z": -654.9325
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        725
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 37.581226,
+                        "Y": 29,
+                        "Z": -798.03467
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "WalkTo",
+                    "AetheryteShortcut": "Mor Dhona",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 37.581226,
+                                    "Y": 29,
+                                    "Z": -798.03467
+                                },
+                                "TerritoryId": 156,
+                                "MaximumDistance": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009220,
+                    "Position": {
+                        "X": 40.93994,
+                        "Y": 29,
+                        "Z": -798.3673
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8118,
+                    "ItemCount": 2,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009215,
+                    "Position": {
+                        "X": 167.01001,
+                        "Y": -13.604617,
+                        "Z": 110.85681
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "Land": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 167.01001,
+                                    "Y": -13.604617,
+                                    "Z": 110.85681
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

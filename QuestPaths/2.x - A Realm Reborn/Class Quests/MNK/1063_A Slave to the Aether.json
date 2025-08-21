@@ -1,0 +1,122 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                131
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007874,
+          "Position": {
+            "X": -221.48468,
+            "Y": 26.16912,
+            "Z": -343.9536
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002443,
+          "Position": {
+            "X": 24.215942,
+            "Y": 25.65039,
+            "Z": 115.983765
+          },
+          "TerritoryId": 153,
+          "InteractionType": "UseItem",
+          "ItemId": 2000818,
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 24.215942,
+            "Y": 25.65039,
+            "Z": 115.983765
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "DelaySecondsAtStart": 0,
+          "KillEnemyDataIds": [
+            1926
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002444,
+          "Position": {
+            "X": 24.215942,
+            "Y": 25.65039,
+            "Z": 115.983765
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "NextQuestId": 1604
+        }
+      ]
+    }
+  ]
+}

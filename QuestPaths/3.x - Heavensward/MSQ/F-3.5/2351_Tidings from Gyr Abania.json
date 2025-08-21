@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017788,
+          "Position": {
+            "X": 27.847656,
+            "Y": -1,
+            "Z": -0.5036011
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002879,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 2.9754639,
+            "Z": 27.481445
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "Position": {
+            "X": 29.352629,
+            "Y": 21.285944,
+            "Z": -652.1081
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 26.110107,
+            "Y": 29.57478,
+            "Z": -770.24866
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2007563,
+          "Position": {
+            "X": 35.38562,
+            "Y": 28.976807,
+            "Z": -791.56177
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013167,
+          "Position": {
+            "X": 125.68848,
+            "Y": 24.458836,
+            "Z": 2.456604
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    }
+  ]
+}

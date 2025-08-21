@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027322,
+          "Position": {
+            "X": -20.126648,
+            "Y": 3.9998171,
+            "Z": 204.24194
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030831,
+          "Position": {
+            "X": 26.260742,
+            "Y": 35.999687,
+            "Z": -129.2287
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] Musica Universalis Markets",
+            "[Crystarium] The Amaro Launch"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030832,
+          "Position": {
+            "X": 171.8623,
+            "Y": 33.4924,
+            "Z": 185.77856
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030833,
+          "Position": {
+            "X": 340.90173,
+            "Y": -35.861984,
+            "Z": 74.23511
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030834,
+          "Position": {
+            "X": -185.13776,
+            "Y": 11.4709015,
+            "Z": 608.57544
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030835,
+          "Position": {
+            "X": -67.826416,
+            "Y": 105.29415,
+            "Z": -252.94885
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Wolekdorf",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1030836,
+          "Position": {
+            "X": -456.59576,
+            "Y": 417.12573,
+            "Z": -597.16187
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Tomra",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2010361,
+          "Position": {
+            "X": 55.61914,
+            "Y": 165.42297,
+            "Z": -302.66272
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030837,
+          "Position": {
+            "X": -25.92511,
+            "Y": 3.9998174,
+            "Z": 205.12695
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "NextQuestId": 3985
+        }
+      ]
+    }
+  ]
+}

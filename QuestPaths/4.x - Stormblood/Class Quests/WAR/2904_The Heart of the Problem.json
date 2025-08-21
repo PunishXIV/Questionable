@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022836,
+          "Position": {
+            "X": 525.10876,
+            "Y": -19.50681,
+            "Z": 403.3722
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 525.10876,
+                  "Y": -19.50681,
+                  "Z": 403.3722
+                },
+                "MaximumDistance": 100,
+                "TerritoryId": 622
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022837,
+          "Position": {
+            "X": 548.97375,
+            "Y": -19.503174,
+            "Z": 277.57678
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 534.11285,
+            "Y": 38.830116,
+            "Z": -473.95575
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022839,
+          "Position": {
+            "X": 467.46008,
+            "Y": 39.964607,
+            "Z": -440.8484
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022836,
+          "Position": {
+            "X": 525.10876,
+            "Y": -19.50681,
+            "Z": 403.3722
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022836,
+          "Position": {
+            "X": 525.10876,
+            "Y": -19.50681,
+            "Z": 403.3722
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Emote",
+          "Emote": "slap"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022840,
+          "Position": {
+            "X": 233.38672,
+            "Y": 23.094816,
+            "Z": -234.57697
+          },
+          "TerritoryId": 622,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "Keeps attacking the invulnerable boss instead of the mammoths, thus letting your allied NPC die"
+            ]
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1022841,
+          "Position": {
+            "X": 233.17297,
+            "Y": 23.085413,
+            "Z": -234.42438
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023885,
+          "Position": {
+            "X": 217.30359,
+            "Y": 7.999984,
+            "Z": 686.427
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        }
+      ]
+    }
+  ]
+}

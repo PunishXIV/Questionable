@@ -1,0 +1,123 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005939,
+                    "Position": {
+                        "X": -247.73022,
+                        "Y": -42.09973,
+                        "Z": 52.017944
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -247.73022,
+                                    "Y": -42.09973,
+                                    "Z": 52.017944
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005946,
+                    "Position": {
+                        "X": -239.27673,
+                        "Y": -42.130188,
+                        "Z": 15.213196
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "DialogueChoices": [
+                        {
+                            "Type": "YesNo",
+                            "Prompt": "TEXT_BANSAH210_01399_Q1_000_000",
+                            "Yes": true
+                        }
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -886.05554,
+                                    "Y": -29.20463,
+                                    "Z": 929.7735
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "Position": {
+                        "X": -864.4419,
+                        "Y": -25.652748,
+                        "Z": 928.53
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "KillEnemyDataIds": [
+                        767
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 2004013,
+                    "Position": {
+                        "X": -883.36005,
+                        "Y": -29.251587,
+                        "Z": 929.2285
+                    },
+                    "TerritoryId": 138,
+                    "TargetTerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NotNearPosition": {
+                                "Position": {
+                                    "X": -883.36005,
+                                    "Y": -29.251587,
+                                    "Z": 929.2285
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1005939,
+                    "Position": {
+                        "X": -247.73022,
+                        "Y": -42.09973,
+                        "Z": 52.017944
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

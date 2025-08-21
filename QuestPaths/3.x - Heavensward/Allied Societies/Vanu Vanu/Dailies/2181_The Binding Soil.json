@@ -1,0 +1,182 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "AnimaMachinae",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016091,
+          "Position": {
+            "X": -804.25726,
+            "Y": -133.2695,
+            "Z": -390.89038
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006705,
+          "Position": {
+            "X": -356.1914,
+            "Y": -153.21588,
+            "Z": 246.23486
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "Fly": true,
+          "$": "QW: 1 0 16 0 0 2",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2
+          ]
+        },
+        {
+          "DataId": 2006706,
+          "Position": {
+            "X": -292.34766,
+            "Y": -142.2904,
+            "Z": 325.91736
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "QW: 2 0 32 0 0 3",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            1
+          ]
+        },
+        {
+          "DataId": 2006704,
+          "Position": {
+            "X": -281.11694,
+            "Y": -133.13501,
+            "Z": 345.2964
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "$": "QW: 19 0 48 0 0 7",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 2006670,
+          "Position": {
+            "X": 165.85034,
+            "Y": -86.13721,
+            "Z": 415.94556
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "QW: 19 17 48 0 0 39",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2006669,
+          "Position": {
+            "X": 282.88696,
+            "Y": -82.26141,
+            "Z": 366.07922
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "QW: 19 34 48 0 0 103",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2006671,
+          "Position": {
+            "X": 129.8695,
+            "Y": -92.17981,
+            "Z": 293.11047
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016091,
+          "Position": {
+            "X": -804.25726,
+            "Y": -133.2695,
+            "Z": -390.89038
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -799.46594,
+                  "Y": -133.2695,
+                  "Z": -404.1352
+                },
+                "TerritoryId": 401,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

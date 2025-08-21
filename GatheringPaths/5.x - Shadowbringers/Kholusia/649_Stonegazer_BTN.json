@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 814,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Kholusia - Wright"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32816,
+          "Locations": [
+            {
+              "Position": {
+                "X": -210.0211,
+                "Y": 27.87489,
+                "Z": 244.1517
+              }
+            },
+            {
+              "Position": {
+                "X": -184.2966,
+                "Y": 33.53575,
+                "Z": 220.416
+              },
+              "MinimumAngle": -70,
+              "MaximumAngle": 100
+            }
+          ]
+        },
+        {
+          "DataId": 32815,
+          "Locations": [
+            {
+              "Position": {
+                "X": -194.756,
+                "Y": 30.00866,
+                "Z": 235.5003
+              },
+              "MinimumAngle": 85,
+              "MaximumAngle": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32819,
+          "Locations": [
+            {
+              "Position": {
+                "X": -184.1455,
+                "Y": 44.3671,
+                "Z": 162.0892
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 100
+            }
+          ]
+        },
+        {
+          "DataId": 32820,
+          "Locations": [
+            {
+              "Position": {
+                "X": -164.9459,
+                "Y": 43.40527,
+                "Z": 153.1118
+              },
+              "MinimumAngle": -100,
+              "MaximumAngle": 75
+            },
+            {
+              "Position": {
+                "X": -167.3752,
+                "Y": 47.25292,
+                "Z": 136.0359
+              },
+              "MinimumAngle": -105,
+              "MaximumAngle": 105
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32818,
+          "Locations": [
+            {
+              "Position": {
+                "X": -246.385,
+                "Y": 72.55199,
+                "Z": 90.56253
+              },
+              "MinimumAngle": -85,
+              "MaximumAngle": 80
+            },
+            {
+              "Position": {
+                "X": -208.7709,
+                "Y": 77.46264,
+                "Z": 68.17573
+              },
+              "MinimumAngle": -105,
+              "MaximumAngle": 90
+            }
+          ]
+        },
+        {
+          "DataId": 32817,
+          "Locations": [
+            {
+              "Position": {
+                "X": -243.0861,
+                "Y": 79.1743,
+                "Z": 75.10091
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 95
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

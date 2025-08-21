@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009348,
+          "Position": {
+            "X": 798.2451,
+            "Y": 78.93494,
+            "Z": 345.26575
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "ItemId": 2002441,
+          "Fly": true,
+          "$": "Adding another step to try to move away from the explosion won't work. It's stuck in this step until the explosion."
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009349,
+          "Position": {
+            "X": 798.2451,
+            "Y": 78.93494,
+            "Z": 345.26575
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            8592
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.868523,
+            "Y": 56.02146,
+            "Z": 231.54045
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

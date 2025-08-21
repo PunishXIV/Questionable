@@ -1,0 +1,87 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033962,
+          "Position": {
+            "X": 49.729126,
+            "Y": -18.746954,
+            "Z": 7.2785034
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033964,
+          "Position": {
+            "X": 50.58362,
+            "Y": -8.046957,
+            "Z": 99.290405
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033966,
+          "Position": {
+            "X": 1.7547607,
+            "Y": -2.9701123,
+            "Z": 33.6156
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011139,
+          "Position": {
+            "X": 129.47266,
+            "Y": 12.893799,
+            "Z": -102.00659
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033969,
+          "Position": {
+            "X": 126.63464,
+            "Y": 12.680123,
+            "Z": -103.53253
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3956
+        }
+      ]
+    }
+  ]
+}

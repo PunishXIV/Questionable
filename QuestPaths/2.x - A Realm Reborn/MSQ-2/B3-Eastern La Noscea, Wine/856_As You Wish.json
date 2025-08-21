@@ -1,0 +1,119 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006266,
+          "Position": {
+            "X": 560.35706,
+            "Y": 20.721315,
+            "Z": 455.89368
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 76.605774,
+            "Y": 80.43136,
+            "Z": -119.52899
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 139,
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+        },
+        {
+          "DataId": 2002085,
+          "Position": {
+            "X": 404.86768,
+            "Y": 4.3182373,
+            "Z": 88.45642
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "TerritoryId": 139,
+          "InteractionType": "AttuneAetheryte",
+          "StopDistance": 5,
+          "Aetheryte": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "DataId": 2002084,
+          "Position": {
+            "X": 437.27783,
+            "Y": 8.194031,
+            "Z": 133.04333
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2002083,
+          "Position": {
+            "X": 402.30408,
+            "Y": 8.712891,
+            "Z": 47.196045
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006341,
+          "Position": {
+            "X": 479.39258,
+            "Y": 16.258692,
+            "Z": 128.37415
+          },
+          "StopDistance": 7,
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

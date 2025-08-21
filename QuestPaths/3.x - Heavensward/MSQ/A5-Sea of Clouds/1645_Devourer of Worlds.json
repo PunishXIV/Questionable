@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013089,
+          "Position": {
+            "X": -751.6747,
+            "Y": -35.95642,
+            "Z": 18.722778
+          },
+          "StopDistance": 7,
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013093,
+          "Position": {
+            "X": -749.1112,
+            "Y": -35.956425,
+            "Z": 22.049255
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -756.4804,
+            "Y": -13.877342,
+            "Z": -121.33485
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -759.4263,
+              "Y": -9.201294,
+              "Z": -110.85681
+            }
+          }
+        },
+        {
+          "DataId": 2006229,
+          "Position": {
+            "X": -759.4263,
+            "Y": -9.201294,
+            "Z": -110.85681
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818117,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -755.9033,
+            "Y": -14.112402,
+            "Z": -177.06593
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1013090,
+          "Position": {
+            "X": -650.93463,
+            "Y": -58.6966,
+            "Z": -337.2397
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "The Sea of Clouds - Ok' Zundu"
+        },
+        {
+          "DataId": 1013095,
+          "Position": {
+            "X": -560.69275,
+            "Y": -52.30738,
+            "Z": -427.57312
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022184,
+          "Position": {
+            "X": 129.71692,
+            "Y": 15,
+            "Z": -157.61047
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022204,
+          "Position": {
+            "X": 537.01074,
+            "Y": 70.39123,
+            "Z": 25.375732
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008443,
+          "Position": {
+            "X": 255.02393,
+            "Y": 7.7667847,
+            "Z": 458.5182
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7497
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008444,
+          "Position": {
+            "X": 152.57495,
+            "Y": 13.626221,
+            "Z": 425.55872
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7498
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008445,
+          "Position": {
+            "X": 64.43884,
+            "Y": 10.788086,
+            "Z": 444.23596
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7496
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022205,
+          "Position": {
+            "X": 175.2804,
+            "Y": 5.1901503,
+            "Z": 522.33154
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022205,
+          "Position": {
+            "X": 175.2804,
+            "Y": 5.1901503,
+            "Z": 522.33154
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBSAM680_02569_Q1_000_041",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022184,
+          "Position": {
+            "X": 129.71692,
+            "Y": 15,
+            "Z": -157.61047
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2570
+        }
+      ]
+    }
+  ]
+}

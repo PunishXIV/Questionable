@@ -1,0 +1,123 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027231,
+          "Position": {
+            "X": 65.35437,
+            "Y": 1.7160122,
+            "Z": 249.83594
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027948,
+          "Position": {
+            "X": 40.42102,
+            "Y": 2.232896,
+            "Z": 261.49377
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3380
+        },
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027226,
+          "Position": {
+            "X": -61.84485,
+            "Y": -17.72202,
+            "Z": -266.2547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009809,
+          "Position": {
+            "X": -62.638306,
+            "Y": -35.446716,
+            "Z": -275.83734
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027226,
+          "Position": {
+            "X": -61.84485,
+            "Y": -17.72202,
+            "Z": -266.2547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028941,
+          "Position": {
+            "X": -67.0329,
+            "Y": -37.700005,
+            "Z": -209.15546
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

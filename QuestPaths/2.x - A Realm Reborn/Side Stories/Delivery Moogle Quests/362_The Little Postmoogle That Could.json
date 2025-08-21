@@ -1,0 +1,217 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "Fly": true
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010813,
+          "Position": {
+            "X": 218.92114,
+            "Y": 10.293846,
+            "Z": -75.12018
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Emote",
+          "Emote": "rally",
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010814,
+          "Position": {
+            "X": -47.837036,
+            "Y": 3.0947418,
+            "Z": -44.663208
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Emote",
+          "Emote": "cheer",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -166.19086,
+            "Y": 8.399985,
+            "Z": -64.10584
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "$": "Buscarron SE steps"
+        },
+        {
+          "DataId": 1010815,
+          "Position": {
+            "X": -168.26129,
+            "Y": 9.869229,
+            "Z": -79.54535
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBPST030_00362_Q1_000_000",
+              "Answer": "TEXT_SUBPST030_00362_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010816,
+          "Position": {
+            "X": 22.079773,
+            "Y": -19.000006,
+            "Z": 106.1875
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1000106,
+          "Position": {
+            "X": 29.007324,
+            "Y": -19.000002,
+            "Z": 105.485596
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 128
+        },
+        {
+          "DataId": 1010818,
+          "Position": {
+            "X": -13.01593,
+            "Y": 91.5,
+            "Z": -18.234558
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1003583,
+          "Position": {
+            "X": -7.248047,
+            "Y": 91.49999,
+            "Z": -16.128845
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 128
+        },
+        {
+          "DataId": 1010819,
+          "Position": {
+            "X": 17.013733,
+            "Y": 40.216007,
+            "Z": -3.8605957
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBPST030_00362_Q2_000_000",
+              "Answer": "TEXT_SUBPST030_00362_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010822,
+          "Position": {
+            "X": -209.88788,
+            "Y": 54.829185,
+            "Z": -196.03265
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

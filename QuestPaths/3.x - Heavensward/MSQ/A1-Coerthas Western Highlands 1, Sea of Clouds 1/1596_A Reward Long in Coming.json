@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012368,
+          "Position": {
+            "X": -676.7529,
+            "Y": -111.71492,
+            "Z": 487.26624
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011952,
+          "Position": {
+            "X": -277.63788,
+            "Y": -184.59735,
+            "Z": 741.60376
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012375,
+          "Position": {
+            "X": 164.50745,
+            "Y": -12.634913,
+            "Z": -23.178528
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433,
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Last Vigil"
+          ]
+        },
+        {
+          "DataId": 1012329,
+          "Position": {
+            "X": -7.309082,
+            "Y": 0.0035869647,
+            "Z": -0.5036011
+          },
+          "TerritoryId": 433,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

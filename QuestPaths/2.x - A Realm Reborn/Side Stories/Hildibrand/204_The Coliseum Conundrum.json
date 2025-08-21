@@ -1,0 +1,149 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010317,
+          "Position": {
+            "X": 139.78784,
+            "Y": 4.0099993,
+            "Z": -57.114563
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "Position": {
+            "X": -72.12142,
+            "Y": 6.9845715,
+            "Z": 8.82207
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010330,
+          "Position": {
+            "X": -69.5354,
+            "Y": 6.9839687,
+            "Z": 0.07623291
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CHRHDB404_00204_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010772,
+          "Position": {
+            "X": -72.40405,
+            "Y": 6.9839687,
+            "Z": -0.045776367
+          },
+          "StopDistance": 5,
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "DataId": 1010161,
+          "Position": {
+            "X": -338.3994,
+            "Y": -22.360315,
+            "Z": 434.3175
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 145,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 81,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010329,
+          "Position": {
+            "X": -334.21838,
+            "Y": -22.463528,
+            "Z": 432.9746
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "Position": {
+            "X": -72.12142,
+            "Y": 6.9845715,
+            "Z": 8.82207
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010330,
+          "Position": {
+            "X": -69.5354,
+            "Y": 6.9839687,
+            "Z": 0.07623291
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true,
+          "NextQuestId": 490
+        }
+      ]
+    }
+  ]
+}

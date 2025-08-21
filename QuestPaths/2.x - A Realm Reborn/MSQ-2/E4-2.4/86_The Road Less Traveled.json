@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010042,
+          "Position": {
+            "X": -905.76025,
+            "Y": 229.29816,
+            "Z": -10.147278
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -430.21158,
+            "Y": 265.1,
+            "Z": -212.42732
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009984,
+          "Position": {
+            "X": -431.1742,
+            "Y": 233.47266,
+            "Z": -201.00714
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 240.2761,
+            "Y": 302.6276,
+            "Z": -199.78418
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "$": "Camp Dragonhead, door to Haurchefant",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1006384,
+          "Position": {
+            "X": 263.5996,
+            "Y": 303.1,
+            "Z": -199.96954
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007603,
+          "Position": {
+            "X": 264.91187,
+            "Y": 302.26236,
+            "Z": -223.71259
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Mount": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSE416_00086_FORTEMPSGUARD00054_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

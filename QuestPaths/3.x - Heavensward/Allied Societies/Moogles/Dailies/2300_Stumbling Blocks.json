@@ -1,0 +1,112 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017171,
+          "Position": {
+            "X": -335.56116,
+            "Y": 59.003433,
+            "Z": 313.98486
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1017383,
+          "Position": {
+            "X": -657.46545,
+            "Y": 73.76131,
+            "Z": 219.28735
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 400,
+          "InteractionType": "Craft",
+          "ItemId": 15733,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1017384,
+          "Position": {
+            "X": -651.51447,
+            "Y": 73,
+            "Z": 217.2732
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANMOG303_02300_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_BANMOG303_02300_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1017387,
+          "Position": {
+            "X": -59.55603,
+            "Y": -8.685017,
+            "Z": 186.84668
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017171,
+          "Position": {
+            "X": -335.56116,
+            "Y": 59.003433,
+            "Z": 313.98486
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Churning Mists - Zenith",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -335.56116,
+                  "Y": 59.003433,
+                  "Z": 313.98486
+                },
+                "TerritoryId": 400,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

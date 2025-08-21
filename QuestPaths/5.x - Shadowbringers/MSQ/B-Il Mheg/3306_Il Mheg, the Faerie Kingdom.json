@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028956,
+          "Position": {
+            "X": -635.76715,
+            "Y": 126.0163,
+            "Z": 697.444
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028970,
+          "Position": {
+            "X": -370.41278,
+            "Y": 47.988583,
+            "Z": 497.3982
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Il Mheg - Lydha Lran"
+        },
+        {
+          "DataId": 2009816,
+          "Position": {
+            "X": -382.8031,
+            "Y": 60.746094,
+            "Z": 530.5714
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMB105_03306_Q3_000_000",
+              "Answer": "TEXT_LUCKMB105_03306_A3_000_002"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMB105_03306_Q4_000_000",
+              "Answer": "TEXT_LUCKMB105_03306_A4_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028970,
+          "Position": {
+            "X": -370.41278,
+            "Y": 47.988583,
+            "Z": 497.3982
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

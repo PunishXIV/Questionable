@@ -1,0 +1,81 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019958,
+          "Position": {
+            "X": 420.34033,
+            "Y": -99.19678,
+            "Z": -221.36267
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023357,
+          "Position": {
+            "X": 565.0873,
+            "Y": -62.272896,
+            "Z": -147.84473
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2693
+        },
+        {
+          "DataId": 1019969,
+          "Position": {
+            "X": 322.56042,
+            "Y": -120.39043,
+            "Z": -300.5265
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 22.288645,
+            "Y": -196.2301,
+            "Z": -155.5739
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "$": "Sui-no-Sato, NE outside",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 1019970,
+          "Position": {
+            "X": 19.424683,
+            "Y": -197.53093,
+            "Z": -143.93835
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Mount": false
+        }
+      ]
+    }
+  ]
+}

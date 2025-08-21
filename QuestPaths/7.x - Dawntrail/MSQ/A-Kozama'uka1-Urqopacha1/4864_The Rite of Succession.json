@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046522,
+          "Position": {
+            "X": -177.17255,
+            "Y": 120.79523,
+            "Z": -318.37952
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046523,
+          "Position": {
+            "X": -54.276367,
+            "Y": 95.49999,
+            "Z": -100.75531
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046528,
+          "Position": {
+            "X": -182.29956,
+            "Y": -5.0000095,
+            "Z": 121.29382
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Vollok Shoonsa",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046533,
+          "Position": {
+            "X": -164.29395,
+            "Y": -14.999356,
+            "Z": 208.72815
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013594,
+          "Position": {
+            "X": -36.087585,
+            "Y": -10.055725,
+            "Z": 145.28113
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMA105_04864_SYSTEM_000_060",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046537,
+          "Position": {
+            "X": -32.822205,
+            "Y": -10.00001,
+            "Z": 142.93127
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

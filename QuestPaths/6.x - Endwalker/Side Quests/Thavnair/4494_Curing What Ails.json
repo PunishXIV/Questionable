@@ -1,0 +1,157 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041397,
+          "Position": {
+            "X": 402.30408,
+            "Y": 3.0506973,
+            "Z": -212.35986
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012454,
+          "Position": {
+            "X": 519.6764,
+            "Y": 13.01593,
+            "Z": -339.5285
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14041
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2012453,
+          "Position": {
+            "X": 556.02344,
+            "Y": 9.170593,
+            "Z": -382.00964
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2012452,
+          "Position": {
+            "X": 515.8617,
+            "Y": 7.4310913,
+            "Z": -413.59583
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041404,
+          "Position": {
+            "X": 503.9596,
+            "Y": 9.601132,
+            "Z": -368.15448
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041397,
+          "Position": {
+            "X": 402.30408,
+            "Y": 3.0506973,
+            "Z": -212.35986
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041405,
+          "Position": {
+            "X": 377.67603,
+            "Y": 3.1168795,
+            "Z": -238.57489
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZF102_04494_Q1_000_033",
+              "Answer": "TEXT_AKTKZF102_04494_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041397,
+          "Position": {
+            "X": 402.30408,
+            "Y": 3.0506973,
+            "Z": -212.35986
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4495
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1005552,
+            "Position": {
+                "X": 85.618286,
+                "Y": 15.28719,
+                "Z": -355.70312
+            },
+            "TerritoryId": 146,
+            "InteractionType": "AcceptQuest",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Comment": "Probably better to make here single steps for each enemy, since they are spread across a larger area",
+        "Steps": [
+          {
+            "Position": {
+                "X": 103.1051,
+                "Y": 15.034634,
+                "Z": 20.46234
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Combat",
+            "ComplexCombatData": [
+              {
+                "DataId": 742,
+                "NameId": 1840,
+                "MinimumKillCount": 3
+              }
+            ],
+            "EnemySpawnType": "OverworldEnemies",
+            "Fly": true
+          },
+          {
+            "DataId": 740,
+            "Position": {
+                "X": 103.1051,
+                "Y": 15.034634,
+                "Z": 20.46234
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Combat",
+            "ComplexCombatData": [
+              {
+                "DataId": 740,
+                "NameId": 1839,
+                "MinimumKillCount": 3
+              }
+            ],
+            "EnemySpawnType": "OverworldEnemies",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+          {
+            "DataId": 1005552,
+            "Position": {
+                "X": 85.618286,
+                "Y": 15.28719,
+                "Z": -355.70312
+            },
+            "TerritoryId": 146,
+            "InteractionType": "CompleteQuest",
+            "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+            "Fly": true
+          }
+        ]
+      }
+    ]
+  }
+  

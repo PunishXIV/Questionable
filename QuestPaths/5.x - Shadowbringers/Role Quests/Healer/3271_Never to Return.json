@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "AUTHOR",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030021,
+          "Position": {
+            "X": -456.6568,
+            "Y": 417.12558,
+            "Z": -597.1008
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Tomra"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030022,
+          "Position": {
+            "X": -355.55048,
+            "Y": 415.2497,
+            "Z": -677.9431
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030021,
+          "Position": {
+            "X": -456.6568,
+            "Y": 417.12558,
+            "Z": -597.1008
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Tomra",
+          "NextQuestId": 3272
+        }
+      ]
+    }
+  ]
+}

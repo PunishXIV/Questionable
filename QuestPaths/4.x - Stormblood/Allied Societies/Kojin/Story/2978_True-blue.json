@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024220,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024423,
+          "Position": {
+            "X": -272.57196,
+            "Y": 17.31996,
+            "Z": 490.01294
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKJN006_02978_Q1_000_000",
+              "Answer": "TEXT_BANKJN006_02978_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024425,
+          "Position": {
+            "X": 533.8063,
+            "Y": -19.505651,
+            "Z": 316.15173
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024428,
+          "Position": {
+            "X": -130.57153,
+            "Y": -4.999999,
+            "Z": 183.36768
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Pier #1"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    }
+  ]
+}

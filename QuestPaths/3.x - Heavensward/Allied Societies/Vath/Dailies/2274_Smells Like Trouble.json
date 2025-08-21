@@ -1,0 +1,147 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006937,
+          "Position": {
+            "X": -42.282776,
+            "Y": -32.73065,
+            "Z": 183.30652
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006935,
+          "Position": {
+            "X": -46.189087,
+            "Y": -47.257202,
+            "Z": 241.93176
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006936,
+          "Position": {
+            "X": -83.57367,
+            "Y": -48.17273,
+            "Z": 231.89136
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006934,
+          "Position": {
+            "X": -105.02789,
+            "Y": -69.68799,
+            "Z": 350.63696
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006933,
+          "Position": {
+            "X": -80.03363,
+            "Y": -71.67163,
+            "Z": 412.46655
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006932,
+          "Position": {
+            "X": -155.41315,
+            "Y": -71.122375,
+            "Z": 387.28918
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 58.39701,
+            "Y": -48.000008,
+            "Z": -172.36507
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 58.39701,
+                  "Y": -48.000008,
+                  "Z": -172.36507
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016863,
+          "Position": {
+            "X": 67.948364,
+            "Y": -48.43746,
+            "Z": -168.23071
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -289.83594,
+            "Y": 70.47664,
+            "Z": -272.06448
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        },
+        {
+          "DataId": 2005521,
+          "Position": {
+            "X": -292.83594,
+            "Y": 72.15991,
+            "Z": -275.4101
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 30,
+              "NameId": 4108
+            }
+          ],
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005522,
+          "Position": {
+            "X": -302.05237,
+            "Y": 70.81714,
+            "Z": -292.28656
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 30,
+              "NameId": 4108
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2005523,
+          "Position": {
+            "X": -370.04657,
+            "Y": 65.69006,
+            "Z": -307.75922
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2005530,
+          "Position": {
+            "X": -381.55188,
+            "Y": 52.475708,
+            "Z": -298.93958
+          },
+          "StopDistance": 2,
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4371
+          ],
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2005531,
+          "Position": {
+            "X": -381.55188,
+            "Y": 52.8114,
+            "Z": -298.909
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1674
+        }
+      ]
+    }
+  ]
+}

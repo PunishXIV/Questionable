@@ -1,0 +1,57 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019347,
+          "Position": {
+            "X": 575.2803,
+            "Y": -19.505632,
+            "Z": 343.74
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022127,
+          "Position": {
+            "X": 606.3783,
+            "Y": -14.991949,
+            "Z": 328.542
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022128,
+          "Position": {
+            "X": 588.00635,
+            "Y": -19.505651,
+            "Z": 316.57886
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

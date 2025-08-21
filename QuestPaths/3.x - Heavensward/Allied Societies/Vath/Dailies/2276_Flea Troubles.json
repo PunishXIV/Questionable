@@ -1,0 +1,151 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 74.20459,
+            "Y": -48.533592,
+            "Z": -171.12994
+          },
+          "StopDistance": 3,
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 74.20459,
+                  "Y": -48.533592,
+                  "Z": -171.12994
+                },
+                "MaximumDistance": 50,
+                "TerritoryId": 398
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1017031,
+          "Position": {
+            "X": 74.20459,
+            "Y": -48.533592,
+            "Z": -171.12994
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006938,
+          "Position": {
+            "X": -178.88159,
+            "Y": 179.88855,
+            "Z": 4.257263
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "Action": "Fumigate",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2006940,
+          "Position": {
+            "X": -311.8181,
+            "Y": -29.495728,
+            "Z": 143.63306
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "Action": "Fumigate",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2006939,
+          "Position": {
+            "X": -313.80182,
+            "Y": -29.495728,
+            "Z": 102.098145
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "Action": "Fumigate",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 58.39701,
+            "Y": -48.000008,
+            "Z": -172.36507
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "Fly": true
+        },
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

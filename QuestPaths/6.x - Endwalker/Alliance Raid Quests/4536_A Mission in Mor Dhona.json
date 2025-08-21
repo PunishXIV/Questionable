@@ -1,0 +1,158 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042267,
+          "Position": {
+            "X": -104.997375,
+            "Y": 3.8989396,
+            "Z": 13.290527
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012860,
+          "Position": {
+            "X": 42.160645,
+            "Y": 20.462341,
+            "Z": -683.1617
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042268,
+          "Position": {
+            "X": 178.5763,
+            "Y": -15.5223675,
+            "Z": -496.14713
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042269,
+          "Position": {
+            "X": 1.449585,
+            "Y": 0.05000399,
+            "Z": -18.661804
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012863,
+          "Position": {
+            "X": 0.1327076,
+            "Y": 2.960754,
+            "Z": 6.778096
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1061,
+          "InteractionType": "Interact",
+          "IgnoreDistanceToObject": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2012865,
+          "Position": {
+            "X": -21.21936,
+            "Y": 0.7837547,
+            "Z": -58.66461
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2012864,
+          "Position": {
+            "X": 59.830566,
+            "Y": 5.0201416,
+            "Z": 69.10803
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042273,
+          "Position": {
+            "X": 3.5248413,
+            "Y": 0.0999997,
+            "Z": 14.145081
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4537
+        }
+      ]
+    }
+  ]
+}

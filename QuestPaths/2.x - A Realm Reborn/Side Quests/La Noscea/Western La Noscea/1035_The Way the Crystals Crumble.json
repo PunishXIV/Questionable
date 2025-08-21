@@ -1,0 +1,262 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1006614,
+            "Position": {
+                "X": 65.87317,
+                "Y": -3.1181886,
+                "Z": 61.41748
+            },
+            "TerritoryId": 138,
+            "InteractionType": "AcceptQuest",            
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Steps": [
+            {
+                "Position": {
+                    "X": -440.48288,
+                    "Y": -40.517853,
+                    "Z": -225.25006
+                },
+                "TerritoryId": 138,
+                "InteractionType": "WalkTo",
+                "Fly": true
+            },
+            {
+                "Position": {
+                    "X": -440.48288,
+                    "Y": -40.517853,
+                    "Z": -225.25006
+                },
+                "TerritoryId": 138,
+                "InteractionType": "None",
+                "Land": true
+            },
+            {
+                "Position": {
+                    "X": -440.48288,
+                    "Y": -40.517853,
+                    "Z": -225.25006
+                },
+                "TerritoryId": 138,
+                "InteractionType": "UseItem",
+                "ItemId": 2000782,
+                "GroundTarget": true
+            },
+            {
+                "Position": {
+                    "X": -440.3941,
+                    "Y": -40.517452,
+                    "Z": -225.2038
+                },
+                "TerritoryId": 138,
+                "InteractionType": "Combat",
+                "EnemySpawnType": "OverworldEnemies",
+                "KillEnemyDataIds": [
+                    2101,
+                    2098
+                ]
+            },
+            {
+                "Position": {
+                    "X": -402.92905,
+                    "Y": -38.11386,
+                    "Z": -248.8578
+                },
+                "TerritoryId": 138,
+                "InteractionType": "WalkTo",
+                "Fly": true
+            },
+            {
+                "Position": {
+                    "X": -402.92905,
+                    "Y": -38.11386,
+                    "Z": -248.8578
+                },
+                "TerritoryId": 138,
+                "InteractionType": "None",
+                "Land": true
+            },
+            {
+                "Position": {
+                    "X": -402.92905,
+                    "Y": -38.11386,
+                    "Z": -248.8578
+                },
+                "TerritoryId": 138,
+                "InteractionType": "UseItem",
+                "ItemId": 2000782,
+                "GroundTarget": true
+            },
+            {
+                "Position": {
+                    "X": -402.92905,
+                    "Y": -38.11386,
+                    "Z": -248.8578
+                },
+                "TerritoryId": 138,
+                "InteractionType": "Combat",
+                "EnemySpawnType": "OverworldEnemies",
+                "KillEnemyDataIds": [
+                    2101,
+                    2098
+                ]
+            },
+            {
+                "Position": {
+                    "X": -417.09912,
+                    "Y": -28.395859,
+                    "Z": -251.60617
+                },
+                "TerritoryId": 138,
+                "InteractionType": "WalkTo",
+                "Fly": true
+            },
+            {
+                "Position": {
+                    "X": -417.09912,
+                    "Y": -28.395859,
+                    "Z": -251.60617
+                },
+                "TerritoryId": 138,
+                "InteractionType": "None",
+                "Land": true
+            },
+            {
+                "Position": {
+                    "X": -417.09912,
+                    "Y": -28.395859,
+                    "Z": -251.60617
+                },
+                "TerritoryId": 138,
+                "InteractionType": "UseItem",
+                "ItemId": 2000782,
+                "GroundTarget": true
+            }
+        ]
+      },
+      {
+        "Sequence": 2,
+        "Steps": [
+            
+            {
+                "Position": {
+                    "X": -417.09912,
+                    "Y": -28.395859,
+                    "Z": -251.60617
+                },
+                "TerritoryId": 138,
+                "InteractionType": "Combat",
+                "EnemySpawnType": "OverworldEnemies",
+                "KillEnemyDataIds": [
+                    2101,
+                    2098
+                ]
+            },
+            {
+                "Position": {
+                    "X": -402.49347,
+                    "Y": -32.838806,
+                    "Z": -234.15048
+                },
+                "TerritoryId": 138,
+                "InteractionType": "WalkTo",
+                "Fly": false
+            },
+            {
+                "DataId": 1006614,
+                "Position": {
+                    "X": 65.87317,
+                    "Y": -3.1181886,
+                    "Z": 61.41748
+                },
+                "TerritoryId": 138,
+                "InteractionType": "Interact",
+                "Fly": true
+            }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+            {
+                "$": "Prevcents to get stuck at some wall during pathing",
+                "Position": {
+                    "X": -73.34997,
+                    "Y": 17.649893,
+                    "Z": -256.22174
+                },
+                "TerritoryId": 140,
+                "InteractionType": "WalkTo",
+                "Fly": true,
+                "AetheryteShortcut": "Western Thanalan - Horizon",
+                "SkipConditions": {
+                    "AetheryteShortcutIf": {
+                        "NearPosition": {
+                            "Position": {
+                                "X": -491.869,
+                                "Y": 19.009003,
+                                "Z": -372.63593
+                            },
+                            "TerritoryId": 140,
+                            "MaximumDistance": 50
+                        }
+                    }
+                }
+            },
+            {
+                "Position": {
+                    "X": -491.869,
+                    "Y": 19.009003,
+                    "Z": -372.63593
+                },
+                "TerritoryId": 140,
+                "InteractionType": "WalkTo",
+                "Fly": true
+            },
+            {
+                "Position": {
+                  "X": -492.96475,
+                  "Y": 20.999884,
+                  "Z": -380.82272
+                },
+                "TerritoryId": 140,
+                "InteractionType": "WalkTo",
+                "$": "Avoid walking around Waking Sands table"
+            },
+            {
+                "DataId": 2001711,
+                "Position": {
+                  "X": -480.9181,
+                  "Y": 18.00103,
+                  "Z": -386.862
+                },
+                "TerritoryId": 140,
+                "InteractionType": "Interact",
+                "TargetTerritoryId": 212
+            },
+            {
+                "DataId": 1007488,
+                "Position": {
+                    "X": -1.2055054,
+                    "Y": -2.0000095,
+                    "Z": -28.000305
+                },
+                "TerritoryId": 212,
+                "InteractionType": "CompleteQuest"
+                
+            }
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                131
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 107.50675,
+            "Y": -4.574165,
+            "Z": -543.2282
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "Position": {
+            "X": 104.612144,
+            "Y": -4.931232,
+            "Z": -533.5191
+          },
+          "TerritoryId": 156,
+          "InteractionType": "SinglePlayerDuty",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007899,
+          "Position": {
+            "X": 104.72266,
+            "Y": -4.9380107,
+            "Z": -533.53174
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2026
+        }
+      ]
+    }
+  ]
+}

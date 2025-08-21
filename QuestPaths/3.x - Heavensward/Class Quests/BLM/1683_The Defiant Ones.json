@@ -1,0 +1,160 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+            "X": 87.5105,
+            "Y": 18,
+            "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013066,
+          "Position": {
+            "X": 385.27502,
+            "Y": -18.74231,
+            "Z": 273.0907
+          },
+          "TerritoryId": 145,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013187,
+          "Position": {
+            "X": 476.73767,
+            "Y": -64.30186,
+            "Z": 234.2107
+          },
+          "StopDistance": 5,
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 341.93842,
+            "Y": 28.63408,
+            "Z": 66.419495
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1013189,
+          "Position": {
+            "X": 322.89612,
+            "Y": 10.818874,
+            "Z": -8.46875
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1006753,
+          "Position": {
+            "X": 325.063,
+            "Y": 11.236564,
+            "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1013188,
+          "Position": {
+            "X": 327.96216,
+            "Y": 11.425721,
+            "Z": -6.7597656
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+            "X": 87.5105,
+            "Y": 18,
+            "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "NextQuestId": 2588
+        }
+      ]
+    }
+  ]
+}

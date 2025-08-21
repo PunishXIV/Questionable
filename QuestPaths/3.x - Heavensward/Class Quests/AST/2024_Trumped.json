@@ -1,0 +1,209 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1015181,
+          "Position": {
+            "X": 707.94226,
+            "Y": 204.32489,
+            "Z": -252.49103
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1015190,
+          "Position": {
+            "X": 679.1942,
+            "Y": 207.2133,
+            "Z": -273.82324
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1015191,
+          "Position": {
+            "X": 651.78906,
+            "Y": 207.92256,
+            "Z": -268.29938
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1015192,
+          "Position": {
+            "X": 652.82666,
+            "Y": 209.09976,
+            "Z": -282.70392
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 614.313,
+            "Y": 210.86438,
+            "Z": -301.28937
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "StopDistance": 3,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 4676,
+              "MinimumKillCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 2006415,
+          "Position": {
+            "X": 614.313,
+            "Y": 210.86438,
+            "Z": -301.28937
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1015197,
+          "Position": {
+            "X": 614.25183,
+            "Y": 210.67752,
+            "Z": -300.1908
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 3
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1015181,
+          "Position": {
+            "X": 707.94226,
+            "Y": 204.32489,
+            "Z": -252.49103
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 202.38037,
+                  "Y": -5.3999662,
+                  "Z": -58.9151
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          },
+          "NextQuestId": 2025
+        }
+      ]
+    }
+  ]
+}

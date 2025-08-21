@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021628,
+          "Position": {
+            "X": -705.50085,
+            "Y": 6.554513,
+            "Z": 613.1837
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008022,
+          "Position": {
+            "X": -693.8301,
+            "Y": 7.263198,
+            "Z": 658.8989
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818215
+        },
+        {
+          "DataId": 1019417,
+          "Position": {
+            "X": -39.414062,
+            "Y": 122.1,
+            "Z": 63.61487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021630,
+          "Position": {
+            "X": 59.586426,
+            "Y": 114.90497,
+            "Z": 72.3125
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019424,
+          "Position": {
+            "X": 66.056274,
+            "Y": 114.904976,
+            "Z": -8.377258
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 622
+        },
+        {
+          "Position": {
+            "X": 202.73067,
+            "Y": 6.1036434,
+            "Z": 11.536863
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1020539,
+          "Position": {
+            "X": 498.2832,
+            "Y": 40.836098,
+            "Z": -508.20172
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

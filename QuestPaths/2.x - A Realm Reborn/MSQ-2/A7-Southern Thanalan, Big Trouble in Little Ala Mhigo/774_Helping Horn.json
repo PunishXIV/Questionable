@@ -1,0 +1,102 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000332,
+          "Position": {
+            "X": 207.7821,
+            "Y": 6.103813,
+            "Z": -39.536194
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 262.89966,
+            "Y": 11.363011,
+            "Z": -143.02156
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4,
+              "MinimumKillCount": 4,
+              "CompletionQuestVariablesFlags": [
+                null,
+                64,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000332,
+          "Position": {
+            "X": 207.7821,
+            "Y": 6.103813,
+            "Z": -39.536194
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000590,
+          "Position": {
+            "X": -165.9419,
+            "Y": 9.869227,
+            "Z": -81.34589
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006680,
+          "Position": {
+            "X": 209.30798,
+            "Y": 6.1041656,
+            "Z": -39.932922
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        }
+      ]
+    }
+  ]
+}

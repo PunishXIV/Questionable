@@ -1,0 +1,106 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1006331,
+            "Position": {
+                "X": -144.15204,
+                "Y": 64.989944,
+                "Z": -209.88788
+            },
+            "TerritoryId": 180,
+            "InteractionType": "AcceptQuest",            
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Steps": [
+          {
+            "DataId": 2002339,
+            "Position": {
+                "X": -134.59985,
+                "Y": 82.81067,
+                "Z": -293.4768
+            },
+            "TerritoryId": 180,
+            "InteractionType": "Interact",
+            "Fly": true
+          },
+          {
+            "DataId": 2002341,
+            "Position": {
+                "X": -137.22437,
+                "Y": 81.19324,
+                "Z": -299.39728
+            },
+            "TerritoryId": 180,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2002338,
+            "Position": {
+                "X": -148.24146,
+                "Y": 81.589966,
+                "Z": -306.5691
+            },
+            "TerritoryId": 180,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2002342,
+            "Position": {
+                "X": -138.0484,
+                "Y": 81.19324,
+                "Z": -311.29932
+            },
+            "TerritoryId": 180,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2002343,
+            "Position": {
+                "X": -132.03638,
+                "Y": 82.07825,
+                "Z": -321.76703
+            },
+            "TerritoryId": 180,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2002340,
+            "Position": {
+                "X": -116.014404,
+                "Y": 78.87378,
+                "Z": -315.08362
+            },
+            "TerritoryId": 180,
+            "InteractionType": "Interact"
+          }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+          {
+            "DataId": 1006331,
+            "Position": {
+                "X": -144.15204,
+                "Y": 64.989944,
+                "Z": -209.88788
+            },
+            "TerritoryId": 180,
+            "InteractionType": "CompleteQuest",
+            "NextQuestId": 863,
+            "Fly": true
+          }
+        ]
+      }
+    ]
+  }
+  

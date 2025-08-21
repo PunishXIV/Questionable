@@ -1,0 +1,217 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008597,
+          "Position": {
+            "X": 57.66382,
+            "Y": 44.999996,
+            "Z": -220.93542
+          },
+          "StopDistance": 7,
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "DataId": 1008600,
+          "Position": {
+            "X": -516.35004,
+            "Y": 14.956879,
+            "Z": -370.47382
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -22.823868,
+            "Y": 37.760002,
+            "Z": 80.06303
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1008604,
+          "Position": {
+            "X": 34.77527,
+            "Y": 7.1999946,
+            "Z": -93.91931
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] The Chamber of Rule",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1008608,
+          "Position": {
+            "X": 33.188354,
+            "Y": 7.199998,
+            "Z": -95.384155
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "$": "0 0  0 0  0 0 -> 0 1  16 0  0 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001968,
+          "Position": {
+            "X": 136.0647,
+            "Y": 4.0099874,
+            "Z": -67.85687
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ],
+          "$": "0 1  16 0  0 0 -> 17 1  0 0  0 64",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1001966,
+          "Position": {
+            "X": 126.7262,
+            "Y": 4.01,
+            "Z": -83.84839
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1008608,
+          "Position": {
+            "X": 33.188354,
+            "Y": 7.199998,
+            "Z": -95.384155
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008616,
+          "Position": {
+            "X": -18.265076,
+            "Y": 36.013893,
+            "Z": 57.938477
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    }
+  ]
+}

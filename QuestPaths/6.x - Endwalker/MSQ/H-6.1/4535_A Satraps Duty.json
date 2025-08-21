@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039633,
+          "Position": {
+            "X": 111.46704,
+            "Y": -350,
+            "Z": -83.14642
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1056,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039636,
+          "Position": {
+            "X": 114.27478,
+            "Y": 0.65204185,
+            "Z": 7.4310913
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039638,
+          "Position": {
+            "X": -511.6503,
+            "Y": 11.97528,
+            "Z": 108.11011
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Great Work"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039639,
+          "Position": {
+            "X": -513.6644,
+            "Y": 11.97528,
+            "Z": 106.06543
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH110_04535_Q2_000_000",
+              "Answer": "TEXT_AKTKMH110_04535_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039645,
+          "Position": {
+            "X": -338.33832,
+            "Y": 55,
+            "Z": -68.40625
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Meghaduta"
+          ]
+        }
+      ]
+    }
+  ]
+}

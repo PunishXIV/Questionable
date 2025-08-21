@@ -1,0 +1,149 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047521,
+          "Position": {
+            "X": -352.22406,
+            "Y": 15.683111,
+            "Z": -433.12738
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047525,
+          "Position": {
+            "X": -524.01013,
+            "Y": 28.760696,
+            "Z": -422.3545
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013646,
+          "Position": {
+            "X": -505.85184,
+            "Y": 30.411133,
+            "Z": -341.3291
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1047533,
+          "Position": {
+            "X": -431.44885,
+            "Y": 28.068893,
+            "Z": -332.6925
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1051340,
+          "Position": {
+            "X": -400.6867,
+            "Y": 20.478943,
+            "Z": -396.65833
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Yak T'el - Iq Br'aax"
+        },
+        {
+          "DataId": 2013645,
+          "Position": {
+            "X": -425.5589,
+            "Y": 23.544617,
+            "Z": -484.97754
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013647,
+          "Position": {
+            "X": -523.43024,
+            "Y": 28.732666,
+            "Z": -423.0869
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047544,
+          "Position": {
+            "X": -520.25635,
+            "Y": 28.760696,
+            "Z": -422.11035
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

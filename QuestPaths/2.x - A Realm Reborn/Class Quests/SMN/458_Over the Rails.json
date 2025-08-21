@@ -1,0 +1,119 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005208,
+          "Position": {
+            "X": 316.02954,
+            "Y": -24.136772,
+            "Z": 211.20007
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005211,
+          "Position": {
+            "X": 204.27246,
+            "Y": -36.402367,
+            "Z": 306.17224
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            317,
+            318
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005211,
+          "Position": {
+            "X": 204.27246,
+            "Y": -36.402367,
+            "Z": 306.17224
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2002009,
+          "Position": {
+            "X": 173.81543,
+            "Y": -41.36731,
+            "Z": 280.7201
+          },
+          "TerritoryId": 138,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "NextQuestId": 459
+        }
+      ]
+    }
+  ]
+}

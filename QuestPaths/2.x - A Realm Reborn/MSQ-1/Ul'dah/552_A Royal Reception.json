@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 130,
+          "InteractionType": "EquipItem",
+          "ItemId": 4196
+        },
+        {
+          "DataId": 1001821,
+          "Position": {
+            "X": -24.124573,
+            "Y": 38.000004,
+            "Z": 85.31323
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2001011,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 1.9683228,
+            "Z": 8.132996
+          },
+          "TerritoryId": 178,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 130
+        },
+        {
+          "DataId": 1004004,
+          "Position": {
+            "X": -139.29962,
+            "Y": 4.1,
+            "Z": -113.481445
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

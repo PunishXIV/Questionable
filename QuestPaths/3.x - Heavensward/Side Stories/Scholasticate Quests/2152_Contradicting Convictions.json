@@ -1,0 +1,85 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1012181,
+                    "Position": {
+                        "X": -248.55426,
+                        "Y": -20.034918,
+                        "Z": -90.98956
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] The Jeweled Crozier"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [ 419 ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1015926,
+                    "Position": {
+                        "X": -114.00018,
+                        "Y": -4.7349386,
+                        "Z": -33.463074
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1015931,
+                    "Position": {
+                        "X": 97.032104,
+                        "Y": -22.000004,
+                        "Z": 52.414673
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] The Jeweled Crozier",
+                        "[Ishgard] The Brume"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1012181,
+                    "Position": {
+                        "X": -248.55426,
+                        "Y": -20.034918,
+                        "Z": -90.98956
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "CompleteQuest",
+                    "AethernetShortcut": [
+                        "[Ishgard] The Brume",
+                        "[Ishgard] The Jeweled Crozier"
+                    ],
+                    "NextQuestId": 2153
+                }
+            ]
+        }
+    ]
+}

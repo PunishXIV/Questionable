@@ -1,0 +1,110 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 205,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ]
+        },
+        {
+          "DataId": 1003027,
+          "Position": {
+            "X": 4.8981323,
+            "Y": -1.92944,
+            "Z": -0.19836426
+          },
+          "TerritoryId": 205,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 205,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 2001715,
+          "Position": {
+            "X": 23.23944,
+            "Y": 2.090454,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1006693,
+          "Position": {
+            "X": 39.29187,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

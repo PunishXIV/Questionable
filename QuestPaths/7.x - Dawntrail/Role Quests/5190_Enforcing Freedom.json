@@ -1,0 +1,175 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051668,
+          "Position": {
+            "X": 170.42798,
+            "Y": 15.943722,
+            "Z": 897.94763
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050871,
+          "Position": {
+            "X": -51.895935,
+            "Y": -17.97287,
+            "Z": 182.7268
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051670,
+          "Position": {
+            "X": -15.976257,
+            "Y": -19.928413,
+            "Z": 224.90259
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051675,
+          "Position": {
+            "X": 358.23608,
+            "Y": 5.957184,
+            "Z": 428.36658
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 363.81656,
+            "Y": 5.9295864,
+            "Z": 435.17932
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1051677,
+          "Position": {
+            "X": 371.4198,
+            "Y": 5.95728,
+            "Z": 425.4978
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1051677,
+          "Position": {
+            "X": 371.4198,
+            "Y": 5.95728,
+            "Z": 425.4978
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Emote",
+          "Emote": "unbound"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1051682,
+          "Position": {
+            "X": 387.5028,
+            "Y": -0.60167974,
+            "Z": 426.99304
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": 425.24307,
+            "Y": 0.7699772,
+            "Z": 473.79095
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1051684,
+          "Position": {
+            "X": 426.04712,
+            "Y": 0.7461932,
+            "Z": 472.3125
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050871,
+          "Position": {
+            "X": -51.895935,
+            "Y": -17.97287,
+            "Z": 182.7268
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The For'ard Cabins"
+          ],
+          "NextQuestId": 5191
+        }
+      ]
+    }
+  ]
+}

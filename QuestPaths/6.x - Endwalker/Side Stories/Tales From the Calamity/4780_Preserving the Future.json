@@ -1,0 +1,154 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1045619,
+                    "Position": {
+                        "X": 24.612793,
+                        "Y": 40,
+                        "Z": 80.338745
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] The Aftcastle"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                128
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1045620,
+                    "Position": {
+                        "X": 157.57996,
+                        "Y": 14.09586,
+                        "Z": 685.81665
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1045624,
+                    "Position": {
+                        "X": 199.51172,
+                        "Y": 14.119263,
+                        "Z": 670.6492
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 1045623,
+                    "Position": {
+                        "X": 162.67639,
+                        "Y": 8.973654,
+                        "Z": 613.9772
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                },
+                {
+                    "DataId": 1045625,
+                    "Position": {
+                        "X": 217.18164,
+                        "Y": 8.973654,
+                        "Z": 615.77783
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1045621,
+                    "Position": {
+                        "X": 162.89001,
+                        "Y": 12.126945,
+                        "Z": 637.0182
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 2013397,
+                    "Position": {
+                        "X": 247.8523,
+                        "Y": 6.6986694,
+                        "Z": 783.505
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1045626,
+                    "Position": {
+                        "X": 248.27954,
+                        "Y": 6.7779655,
+                        "Z": 784.6647
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1045615,
+                    "Position": {
+                        "X": -115.80072,
+                        "Y": 4,
+                        "Z": -100.99945
+                    },
+                    "TerritoryId": 130,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Ul'dah",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_SUBWIL902_04780_Q2_000_000",
+                            "Answer": "TEXT_SUBWIL902_04780_A2_000_001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

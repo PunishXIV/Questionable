@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038458,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": 7.2174683
+          },
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024792,
+          "Position": {
+            "X": 147.81409,
+            "Y": -4.1787133,
+            "Z": 49.454468
+          },
+          "TerritoryId": 759,
+          "TargetTerritoryId": 614,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Doman Enclave] Aetheryte Plaza",
+            "[Doman Enclave] Ferry Docks"
+          ]
+        },
+        {
+          "DataId": 1038494,
+          "Position": {
+            "X": -449.63763,
+            "Y": 53.78236,
+            "Z": 303.60876
+          },
+          "TerritoryId": 614,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038494,
+          "Position": {
+            "X": -449.63763,
+            "Y": 53.78236,
+            "Z": 303.60876
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038457,
+          "Position": {
+            "X": -0.83929443,
+            "Y": 0,
+            "Z": 8.8654175
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039102,
+          "Position": {
+            "X": -177.96606,
+            "Y": 4.05,
+            "Z": -90.44025
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ]
+        }
+      ]
+    }
+  ]
+}

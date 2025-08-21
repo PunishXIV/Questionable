@@ -1,0 +1,154 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029001,
+          "Position": {
+            "X": 373.09827,
+            "Y": -26.632425,
+            "Z": 290.6996
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027909,
+          "Position": {
+            "X": 357.47314,
+            "Y": -27.145874,
+            "Z": 317.28076
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027910,
+          "Position": {
+            "X": 356.71008,
+            "Y": -27.8172,
+            "Z": 310.04797
+          },
+          "StopDistance": 7,
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 362.283,
+            "Y": -27.966003,
+            "Z": 304.85144
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1030386,
+          "Position": {
+            "X": 363.4851,
+            "Y": -27.966003,
+            "Z": 301.2893
+          },
+          "StopDistance": 5,
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029001,
+          "Position": {
+            "X": 373.09827,
+            "Y": -26.632425,
+            "Z": 290.6996
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1027873,
+          "Position": {
+            "X": 312.24524,
+            "Y": 1.4685826,
+            "Z": -186.14484
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1029007,
+          "Position": {
+            "X": 215.13696,
+            "Y": 7.1558266,
+            "Z": -214.3435
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1029007,
+          "Position": {
+            "X": 215.13696,
+            "Y": 7.1558266,
+            "Z": -214.3435
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029001,
+          "Position": {
+            "X": 373.09827,
+            "Y": -26.632425,
+            "Z": 290.6996
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head"
+        }
+      ]
+    }
+  ]
+}

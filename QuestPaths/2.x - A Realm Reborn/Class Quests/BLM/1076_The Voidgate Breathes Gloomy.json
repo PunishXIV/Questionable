@@ -1,0 +1,111 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBBLM450_01076_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002433,
+          "Position": {
+              "X": 374.28845,
+              "Y": 3.40271,
+              "Z": 161.73035
+          },
+          "TerritoryId": 153,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007866,
+          "Position": {
+              "X": 376.29065,
+              "Y": 2.505473,
+              "Z": 159.52626
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1007867,
+          "Position": {
+              "X": 282.39868,
+              "Y": 11.151184,
+              "Z": -6.729248
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

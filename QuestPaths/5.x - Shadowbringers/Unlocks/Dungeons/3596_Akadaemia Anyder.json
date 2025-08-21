@@ -1,0 +1,132 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031144,
+          "Position": {
+            "X": 84.33655,
+            "Y": -10.490669,
+            "Z": 59.494873
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -0.41547322,
+            "Y": -276.906,
+            "Z": 269.2778
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Tempest - Macarenses Angle",
+          "Fly": true
+        },
+        {
+          "DataId": 1027772,
+          "Position": {
+            "X": 5.3864136,
+            "Y": -276.906,
+            "Z": 271.59534
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -71.42122,
+            "Y": -274.33163,
+            "Z": 584.8395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1028056,
+          "Position": {
+            "X": -68.37573,
+            "Y": -274.33163,
+            "Z": 579.33923
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 818,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 661,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -71.42122,
+            "Y": -274.33163,
+            "Z": 584.8395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1028056,
+          "Position": {
+            "X": -68.37573,
+            "Y": -274.33163,
+            "Z": 579.33923
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031144,
+          "Position": {
+            "X": 84.33655,
+            "Y": -10.490669,
+            "Z": 59.494873
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eulmore",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] Southeast Derelicts"
+          ]
+        }
+      ]
+    }
+  ]
+}

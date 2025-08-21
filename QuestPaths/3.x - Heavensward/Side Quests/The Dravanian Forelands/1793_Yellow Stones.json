@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011931,
+          "Position": {
+            "X": 56.839844,
+            "Y": -49.92323,
+            "Z": -135.91211
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005636,
+          "Position": {
+            "X": -247.21143,
+            "Y": -77.62268,
+            "Z": 819.4857
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2005635,
+          "Position": {
+            "X": -187.24353,
+            "Y": -84.85547,
+            "Z": 733.51636
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2005633,
+          "Position": {
+            "X": -273.518,
+            "Y": -82.47504,
+            "Z": 644.6478
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2005634,
+          "Position": {
+            "X": -307.3015,
+            "Y": -80.1557,
+            "Z": 665.6748
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "Fly": true
+        }
+      ]
+    },{
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011931,
+          "Position": {
+            "X": 56.839844,
+            "Y": -49.92323,
+            "Z": -135.91211
+          },
+          "TerritoryId": 398,
+          "Fly": true,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

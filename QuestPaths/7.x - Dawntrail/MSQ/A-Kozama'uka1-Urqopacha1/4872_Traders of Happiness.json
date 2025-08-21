@@ -1,0 +1,238 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046552,
+          "Position": {
+            "X": 374.5022,
+            "Y": -156.32852,
+            "Z": -389.2119
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Urqopacha - Wachunpelo"
+        },
+        {
+          "DataId": 1046557,
+          "Position": {
+            "X": 353.07837,
+            "Y": -160.20226,
+            "Z": -447.5014
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046559,
+          "Position": {
+            "X": 285.96924,
+            "Y": -165.65608,
+            "Z": -443.44244
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMA113_04872_Q1_000_000",
+              "Answer": "TEXT_KINGMA113_04872_A1_000_001"
+            }
+          ]
+        },
+        {
+          "DataId": 1046558,
+          "Position": {
+            "X": 229.20569,
+            "Y": -168.26689,
+            "Z": -461.63123
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046560,
+          "Position": {
+            "X": 373.8308,
+            "Y": -156.3404,
+            "Z": -388.87616
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046566,
+          "Position": {
+            "X": 225.63513,
+            "Y": -168.17073,
+            "Z": -460.37994
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046561,
+          "Position": {
+            "X": 221.85083,
+            "Y": -168.23709,
+            "Z": -461.11237
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046562,
+          "Position": {
+            "X": 205.82886,
+            "Y": -168.37514,
+            "Z": -466.42255
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1046564,
+          "Position": {
+            "X": 227.37463,
+            "Y": -168.41432,
+            "Z": -486.19824
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1046563,
+          "Position": {
+            "X": 230.6095,
+            "Y": -168.27045,
+            "Z": -474.87604
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2013644,
+          "Position": {
+            "X": 225.63513,
+            "Y": -168.16968,
+            "Z": -460.37994
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMA113_04872_Q2_000_000",
+              "Answer": "TEXT_KINGMA113_04872_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046992,
+          "Position": {
+            "X": 209.43005,
+            "Y": -168.34697,
+            "Z": -465.38495
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

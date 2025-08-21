@@ -1,0 +1,129 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030004,
+          "Position": {
+            "X": 689.1127,
+            "Y": 30.11682,
+            "Z": 278.85852
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Stilltide"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009999,
+          "Position": {
+            "X": 529.3812,
+            "Y": 11.9782715,
+            "Z": 370.83997
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10866
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010000,
+          "Position": {
+            "X": 342.48877,
+            "Y": 16.55597,
+            "Z": 454.24573
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10867
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030006,
+          "Position": {
+            "X": 181.59753,
+            "Y": 33.636906,
+            "Z": 177.47766
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 3269
+        }
+      ]
+    }
+  ]
+}

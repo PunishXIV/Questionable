@@ -1,0 +1,213 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013288,
+          "Position": {
+            "X": 102.67798,
+            "Y": 11.9782715,
+            "Z": 40.238037
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013289,
+          "Position": {
+            "X": 362.11182,
+            "Y": 0.7171631,
+            "Z": 763.17993
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044958,
+          "Position": {
+            "X": -172.38116,
+            "Y": -7.000106,
+            "Z": 46.799316
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1044963,
+          "Position": {
+            "X": 34.470093,
+            "Y": 4,
+            "Z": 77.805664
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKSA301_04662_Q4_000_000",
+              "Answer": "TEXT_AKTKSA301_04662_A4_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1044965,
+          "Position": {
+            "X": 35.934937,
+            "Y": 4,
+            "Z": 76.49341
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1044967,
+          "Position": {
+            "X": 24.795776,
+            "Y": 4.0000014,
+            "Z": 39.230957
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1044968,
+          "Position": {
+            "X": -52.71997,
+            "Y": 16.054996,
+            "Z": -17.135986
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1045117,
+          "Position": {
+            "X": 736.0189,
+            "Y": 0.10766173,
+            "Z": -298.5733
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1044972,
+          "Position": {
+            "X": 706.4773,
+            "Y": 1,
+            "Z": -261.40234
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1044973,
+          "Position": {
+            "X": 114.51892,
+            "Y": 12.000001,
+            "Z": 101.3656
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "NextQuestId": 4761
+        }
+      ]
+    }
+  ]
+}

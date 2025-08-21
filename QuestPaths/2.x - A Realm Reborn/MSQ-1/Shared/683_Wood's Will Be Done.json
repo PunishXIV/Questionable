@@ -1,0 +1,63 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002394,
+          "Position": {
+            "X": -69.5354,
+            "Y": -0.50095016,
+            "Z": -9.99469
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1005012,
+          "Position": {
+            "X": 22.507019,
+            "Y": 0.9999986,
+            "Z": -2.02948
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

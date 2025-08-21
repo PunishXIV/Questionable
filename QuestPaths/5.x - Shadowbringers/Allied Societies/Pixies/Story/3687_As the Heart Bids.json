@@ -1,0 +1,203 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031892,
+          "Position": {
+            "X": -461.5702,
+            "Y": 72.51754,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 891
+        },
+        {
+          "DataId": 1031883,
+          "Position": {
+            "X": -116.07544,
+            "Y": 9.440084,
+            "Z": -41.428284
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031881,
+          "Position": {
+            "X": -115.03784,
+            "Y": 9.440084,
+            "Z": -38.651123
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031204,
+          "Position": {
+            "X": 481.95605,
+            "Y": 90.43779,
+            "Z": -656.09216
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+        },
+        {
+          "Position": {
+            "X": -107.78667,
+            "Y": 108.39998,
+            "Z": -840.88965
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Il Mheg - Pla Enni"
+        },
+        {
+          "DataId": 1027673,
+          "Position": {
+            "X": -106.06549,
+            "Y": 108.39998,
+            "Z": -841.7639
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1027656,
+          "Position": {
+            "X": -291.61517,
+            "Y": 40.324036,
+            "Z": 456.65674
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031807,
+          "Position": {
+            "X": -465.93427,
+            "Y": 71.48343,
+            "Z": 571.8623
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1031808,
+          "Position": {
+            "X": -461.53967,
+            "Y": 72.51729,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1031808,
+          "Position": {
+            "X": -461.53967,
+            "Y": 72.51729,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 7
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1031886,
+          "Position": {
+            "X": 38.345825,
+            "Y": -4.6399317,
+            "Z": 24.76538
+          },
+          "TerritoryId": 892,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032365,
+          "Position": {
+            "X": 56.412598,
+            "Y": 5.5911026,
+            "Z": 116.16687
+          },
+          "TerritoryId": 892,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 816
+        },
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042796,
+          "Position": {
+            "X": -12.100403,
+            "Y": -16.147,
+            "Z": 153.76514
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039550,
+          "Position": {
+            "X": -620.7218,
+            "Y": -27.670597,
+            "Z": 302.17432
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "TargetTerritoryId": 956
+        },
+        {
+          "Position": {
+            "X": -431.53903,
+            "Y": -220.1193,
+            "Z": 301.76364
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1042797,
+          "Position": {
+            "X": -393.20978,
+            "Y": -220.20282,
+            "Z": 283.16162
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042799,
+          "Position": {
+            "X": -395.37653,
+            "Y": -220.20282,
+            "Z": 285.66406
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDR601_04586_Q2_000_107",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042803,
+          "Position": {
+            "X": 43.289795,
+            "Y": -1.4816303E-06,
+            "Z": -55.680176
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042887,
+          "Position": {
+            "X": 108.72046,
+            "Y": 26.999989,
+            "Z": 14.90802
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Kama"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1039539,
+          "Position": {
+            "X": 87.662964,
+            "Y": 27.06,
+            "Z": 28.030762
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1042804,
+          "Position": {
+            "X": 87.35791,
+            "Y": 26.99999,
+            "Z": 56.687256
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042803,
+          "Position": {
+            "X": 116.01684,
+            "Y": 26.99999,
+            "Z": 45.689087
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDR601_04586_Q5_000_225",
+              "Answer": "TEXT_STMBDR601_04586_A5_000_228"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1039541,
+          "Position": {
+            "X": -159.3805,
+            "Y": 23.999973,
+            "Z": 110.61267
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Kama",
+            "[Radz-at-Han] Ruveydah Fibers"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042805,
+          "Position": {
+            "X": -57.480774,
+            "Y": 14,
+            "Z": 106.82837
+          },
+          "StopDistance": 4,
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4587
+        }
+      ]
+    }
+  ]
+}

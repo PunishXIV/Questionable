@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046290,
+          "Position": {
+            "X": -114.091736,
+            "Y": 20,
+            "Z": 111.436646
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047092,
+          "Position": {
+            "X": 297.38306,
+            "Y": -33.02986,
+            "Z": 284.99268
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046297,
+          "Position": {
+            "X": 211.68835,
+            "Y": -25.006758,
+            "Z": 230.85376
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 465.86716,
+            "Y": 11.231914,
+            "Z": 326.10486
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17612,
+            17613
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046302,
+          "Position": {
+            "X": 465.50684,
+            "Y": 11.444184,
+            "Z": 330.89185
+          },
+          "StopDistance": 7,
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046303,
+          "Position": {
+            "X": 462.39404,
+            "Y": 11.569952,
+            "Z": 329.57947
+          },
+          "StopDistance": 10,
+          "TerritoryId": 138,
+          "InteractionType": "Action",
+          "Action": "Esuna"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046290,
+          "Position": {
+            "X": -114.091736,
+            "Y": 20,
+            "Z": 111.436646
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "NextQuestId": 4826
+        }
+      ]
+    }
+  ]
+}

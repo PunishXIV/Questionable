@@ -1,0 +1,402 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027672,
+          "Position": {
+            "X": -101.51831,
+            "Y": 101.86012,
+            "Z": -838.49854
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 33.10641,
+            "Y": 106.830055,
+            "Z": -842.54065
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 33.10641,
+            "Y": 106.830055,
+            "Z": -842.54065
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 27.701914,
+              "Y": 108.983986,
+              "Z": -844.172
+            },
+            "DelaySeconds": 0.25
+          },
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 27.701914,
+            "Y": 108.983986,
+            "Z": -844.172
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 25.056326,
+              "Y": 110.28013,
+              "Z": -846.34796
+            },
+            "DelaySeconds": 0.1
+          }
+        },
+        {
+          "Position": {
+            "X": 25.056326,
+            "Y": 110.28013,
+            "Z": -846.34796
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 21.853422,
+              "Y": 111.3742,
+              "Z": -847.6101
+            },
+            "DelaySeconds": 0.1
+          }
+        },
+        {
+          "Position": {
+            "X": 21.853422,
+            "Y": 111.3742,
+            "Z": -847.6101
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 18.00289,
+              "Y": 111.8963,
+              "Z": -847.90894
+            },
+            "DelaySeconds": 0.1
+          }
+        },
+        {
+          "DataId": 2010059,
+          "Position": {
+            "X": 12.832764,
+            "Y": 110.73462,
+            "Z": -851.25507
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818273,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 17.588793,
+            "Y": 102.26027,
+            "Z": -859.4154
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Il Mheg - Wolekdorf"
+        },
+        {
+          "DataId": 1029575,
+          "Position": {
+            "X": 477.46997,
+            "Y": 90.93466,
+            "Z": -328.5725
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 519.60034,
+            "Y": 110.94924,
+            "Z": -171.57602
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 524.02466,
+            "Y": 117.10437,
+            "Z": -161.2614
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2009836,
+          "Position": {
+            "X": 514.45776,
+            "Y": 122.45361,
+            "Z": -158.28192
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 533.1536,
+            "Y": 109.112404,
+            "Z": -154.17346
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "DisableNavmesh": true,
+          "Mount": false,
+          "JumpDestination": {
+            "Position": {
+              "X": 536.68494,
+              "Y": 111.31597,
+              "Z": -155.06671
+            },
+            "DelaySeconds": 0.2
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 536.68494,
+            "Y": 111.31597,
+            "Z": -155.06671
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "DisableNavmesh": true,
+          "JumpDestination": {
+            "Position": {
+              "X": 539.31104,
+              "Y": 113.00041,
+              "Z": -155.02728
+            },
+            "DelaySeconds": 0.1
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 539.31104,
+            "Y": 113.00041,
+            "Z": -155.02728
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "DisableNavmesh": true,
+          "JumpDestination": {
+            "Position": {
+              "X": 542.8287,
+              "Y": 114.6852,
+              "Z": -154.211
+            },
+            "DelaySeconds": 0.1
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 542.8287,
+            "Y": 114.6852,
+            "Z": -154.211
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "DisableNavmesh": true,
+          "JumpDestination": {
+            "Position": {
+              "X": 547.785,
+              "Y": 116.76792,
+              "Z": -152.87657
+            },
+            "DelaySeconds": 0.2
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2009835,
+          "Position": {
+            "X": 570.00073,
+            "Y": 119.15759,
+            "Z": -145.70844
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2009834,
+          "Position": {
+            "X": 496.75732,
+            "Y": 103.95972,
+            "Z": -116.41113
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 433.92883,
+            "Y": 88.121765,
+            "Z": -352.8274
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1029576,
+          "Position": {
+            "X": 292.92737,
+            "Y": 67.604,
+            "Z": -408.13312
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027672,
+          "Position": {
+            "X": -101.51831,
+            "Y": 101.86012,
+            "Z": -838.49854
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Pla Enni"
+        }
+      ]
+    }
+  ]
+}

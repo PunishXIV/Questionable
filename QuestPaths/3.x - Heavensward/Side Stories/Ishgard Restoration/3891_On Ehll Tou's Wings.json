@@ -1,0 +1,56 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "TerritoryId": 418,
+                    "InteractionType": "None",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Firmament"
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "InTerritory": [
+                                154
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 1032220,
+                    "Position": {
+                        "X": 113.29822,
+                        "Y": -20.000002,
+                        "Z": 1.449585
+                    },
+                    "TerritoryId": 886,
+                    "InteractionType": "AcceptQuest",
+                    "AethernetShortcut": [
+                        "[Firmament] The Mendicant's Court",
+                        "[Firmament] The Mattock"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1033784,
+                    "Position": {
+                        "X": 154.00928,
+                        "Y": -50,
+                        "Z": 67.73474
+                    },
+                    "TerritoryId": 886,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

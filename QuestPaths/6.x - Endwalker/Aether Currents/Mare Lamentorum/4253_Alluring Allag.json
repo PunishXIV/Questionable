@@ -1,0 +1,169 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041123,
+          "Position": {
+            "X": -81.864685,
+            "Y": -132.74333,
+            "Z": -521.6602
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZE014_04253_Q1_000_000",
+              "Answer": "TEXT_AKTKZE014_04253_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 425.62292,
+            "Y": 123.48844,
+            "Z": 89.52347
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1041127,
+          "Position": {
+            "X": 537.3159,
+            "Y": 132.40395,
+            "Z": 233.81396
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012338,
+          "Position": {
+            "X": 700.19055,
+            "Y": 135.21008,
+            "Z": 229.48035
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "$.1": "QuestVariables if done first: 17 0 0 0 0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1041125,
+          "Position": {
+            "X": 735.5,
+            "Y": 151.08012,
+            "Z": 189.01343
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14050
+          ],
+          "$.1": "QuestVariables if done after [1]: 33 1 0 0 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1041124,
+          "Position": {
+            "X": 663.6301,
+            "Y": 128.48961,
+            "Z": 188.18945
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041127,
+          "Position": {
+            "X": 537.3159,
+            "Y": 132.40395,
+            "Z": 233.81396
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14049
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041127,
+          "Position": {
+            "X": 537.3159,
+            "Y": 132.40395,
+            "Z": 233.81396
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041123,
+          "Position": {
+            "X": -81.864685,
+            "Y": -132.74333,
+            "Z": -521.6602
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+        }
+      ]
+    }
+  ]
+}

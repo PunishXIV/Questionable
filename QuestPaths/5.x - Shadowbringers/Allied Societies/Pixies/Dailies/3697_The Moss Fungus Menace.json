@@ -1,0 +1,59 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010890,
+          "Position": {
+            "X": 10.0251465,
+            "Y": 32.944214,
+            "Z": -608.6061
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11446
+          ],
+          "AetheryteShortcut": "Il Mheg - Wolekdorf",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "Disabled": true, 
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1005552,
+            "Position": {
+                "X": 85.618286,
+                "Y": 15.28719,
+                "Z": -355.70312
+            },
+            "TerritoryId": 146,
+            "InteractionType": "AcceptQuest",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Steps": [
+          {
+            "DataId": 2003088,
+            "Position": {
+                "X": 417.2273,
+                "Y": 12.527649,
+                "Z": -128.008
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "ComplexCombatData":[
+              {
+                "DataId": 739,
+                "NameId": 2304,
+                "MinimumKillCount": 1
+              }                
+            ]
+          },
+          {
+            "DataId": 2003090,
+            "Position": {
+                "X": 537.3159,
+                "Y": 7.583679,
+                "Z": -71.70221
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "ComplexCombatData":[
+              {
+                "DataId": 739,
+                "NameId": 2304,
+                "MinimumKillCount": 1
+              }                
+            ]
+          },
+          {
+            "DataId": 2003091,
+            "Position": {
+                "X": 586.6636,
+                "Y": 6.5460815,
+                "Z": -77.683716
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "ComplexCombatData":[
+              {
+                "DataId": 739,
+                "NameId": 2304,
+                "MinimumKillCount": 1
+              }                
+            ]
+          },
+          {
+            "DataId": 2003087,
+            "Position": {
+                "X": 545.2506,
+                "Y": 7.5531616,
+                "Z": -155.77942
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "ComplexCombatData":[
+              {
+                "DataId": 739,
+                "NameId": 2304,
+                "MinimumKillCount": 1
+              }                
+            ]
+          }
+        ]
+      },
+      {
+        "Sequence": 2,
+        "Steps": [
+          {
+            "DataId": 2003083,
+            "Position": {
+                "X": 125.53589,
+                "Y": 15.335266,
+                "Z": 132.52454
+            },
+            "TerritoryId": 146,
+            "InteractionType": "UseItem",
+            "ItemId": 2001170,
+            "Fly": true
+          },
+          {
+            "DataId": 2003084,
+            "Position": {
+                "X": 115.587036,
+                "Y": 15.396301,
+                "Z": 132.92126
+            },
+            "TerritoryId": 146,
+            "InteractionType": "UseItem",
+            "ItemId": 2001170,
+            "Fly": true
+          },
+          {
+            "DataId": 2003094,
+            "Position": {
+                "X": 176.80627,
+                "Y": 13.809326,
+                "Z": 228.22913
+            },
+            "TerritoryId": 146,
+            "InteractionType": "UseItem",
+            "ItemId": 2001170,
+            "Fly": true
+          },
+          {
+            "DataId": 2003096,
+            "Position": {
+                "X": -96.69641,
+                "Y": 45.76172,
+                "Z": 214.64856
+            },
+            "TerritoryId": 146,
+            "InteractionType": "UseItem",
+            "ItemId": 2001170,
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+          {
+            "DataId": 1005552,
+            "Position": {
+                "X": 85.618286,
+                "Y": 15.28719,
+                "Z": -355.70312
+            },
+            "TerritoryId": 146,
+            "InteractionType": "CompleteQuest",
+            "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+            "Fly": true
+          }
+        ]
+      }
+    ]
+  }
+  

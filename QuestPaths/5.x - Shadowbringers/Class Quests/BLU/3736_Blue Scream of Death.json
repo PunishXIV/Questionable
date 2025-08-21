@@ -1,0 +1,129 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026852,
+          "Position": {
+            "X": 63.126587,
+            "Y": 14.005002,
+            "Z": 89.86035
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031980,
+          "Position": {
+            "X": -85.00806,
+            "Y": 6.9845695,
+            "Z": -11.001831
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1031979,
+          "Position": {
+            "X": -92.5155,
+            "Y": 6.9845695,
+            "Z": -17.07489
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1001675,
+          "Position": {
+            "X": -89.49426,
+            "Y": 7.008118,
+            "Z": 10.849121
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031978,
+          "Position": {
+            "X": -75.05914,
+            "Y": 6.9845705,
+            "Z": 10.971252
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026852,
+          "Position": {
+            "X": 63.126587,
+            "Y": 14.005002,
+            "Z": 89.86035
+          },
+          "StopDistance": 5,
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3737
+        }
+      ]
+    }
+  ]
+}

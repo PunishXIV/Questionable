@@ -1,0 +1,115 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009294,
+          "Position": {
+            "X": -63.767517,
+            "Y": -1.7171676,
+            "Z": 11.673096
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000612,
+          "Position": {
+            "X": 357.96143,
+            "Y": 8.934158,
+            "Z": 214.46558
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 264.54797,
+            "Y": -14.2467,
+            "Z": 56.094566
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2004442,
+          "Position": {
+            "X": 265.00342,
+            "Y": -13.931519,
+            "Z": 58.457275
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000612,
+          "Position": {
+            "X": 357.96143,
+            "Y": 8.934158,
+            "Z": 214.46558
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2004443,
+          "Position": {
+            "X": 211.9325,
+            "Y": -4.928711,
+            "Z": 27.572998
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009199,
+          "Position": {
+            "X": 149.43152,
+            "Y": -18.140299,
+            "Z": 99.22937
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1487
+        }
+      ]
+    }
+  ]
+}

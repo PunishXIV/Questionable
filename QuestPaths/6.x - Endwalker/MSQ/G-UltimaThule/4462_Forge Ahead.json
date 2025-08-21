@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041161,
+          "Position": {
+            "X": 622.4308,
+            "Y": 441.9763,
+            "Z": 436.17908
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041163,
+          "Position": {
+            "X": 493.15625,
+            "Y": 436.8645,
+            "Z": 360.46387
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012795,
+          "Position": {
+            "X": 492.48486,
+            "Y": 438.04077,
+            "Z": 365.43823
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMG113_04462_Q1_000_040",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1041165,
+          "Position": {
+            "X": 460.563,
+            "Y": 417.0675,
+            "Z": 415.21326
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041166,
+          "Position": {
+            "X": 459.25073,
+            "Y": 417.0675,
+            "Z": 414.66382
+          },
+          "StopDistance": 5,
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041165,
+          "Position": {
+            "X": 231.45715,
+            "Y": 566,
+            "Z": 317.96698
+          },
+          "StopDistance": 1,
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041167,
+          "Position": {
+            "X": 221.20996,
+            "Y": 566,
+            "Z": 314.4121
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

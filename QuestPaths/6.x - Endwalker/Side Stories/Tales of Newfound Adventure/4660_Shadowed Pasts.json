@@ -1,0 +1,159 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044132,
+          "Position": {
+            "X": -319.26453,
+            "Y": 44.8282,
+            "Z": 36.301147
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Meghaduta"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044133,
+          "Position": {
+            "X": -196.2768,
+            "Y": 4.065,
+            "Z": -107.286194
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Meghaduta",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044136,
+          "Position": {
+            "X": -157.8852,
+            "Y": 3.999719,
+            "Z": -64.49994
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1044139,
+          "Position": {
+            "X": 3.5248413,
+            "Y": 2.9999907,
+            "Z": -196.1242
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Hall of the Radiant Host",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1044142,
+          "Position": {
+            "X": 48.874634,
+            "Y": 26.999975,
+            "Z": 45.090332
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Mehryde's Meyhane",
+            "[Radz-at-Han] Kama"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1044145,
+          "Position": {
+            "X": -112.7489,
+            "Y": 29.037842,
+            "Z": 239.55127
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Kama",
+            "[Radz-at-Han] Airship Landing"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044135,
+          "Position": {
+            "X": -195.36127,
+            "Y": 4.065,
+            "Z": -106.55377
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Airship Landing",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ],
+          "NextQuestId": 4661
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005937,
+                    "Position": {
+                        "X": -238.02551,
+                        "Y": -40.828262,
+                        "Z": 68.28406
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -238.02551,
+                                    "Y": -40.828262,
+                                    "Z": 68.28406
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1005946,
+                    "Position": {
+                        "X": -239.27673,
+                        "Y": -42.130188,
+                        "Z": 15.213196
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "DialogueChoices": [
+                        {
+                            "Type": "YesNo",
+                            "Prompt": "TEXT_BANSAH004_01377_Q1_000_000",
+                            "Yes": true
+                        }
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -815.4858,
+                                    "Y": -42.074722,
+                                    "Z": 690.662
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 200
+                            },
+                            "CompletionQuestVariablesFlags": [
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                32
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 1008904,
+                    "Position": {
+                        "X": -792.2637,
+                        "Y": -39.012253,
+                        "Z": 716.21265
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        32
+                    ]
+                },
+                {
+                    "DataId": 1008802,
+                    "Position": {
+                        "X": -814.84705,
+                        "Y": -42.154568,
+                        "Z": 694.3312
+                    },
+                    "TerritoryId": 138,
+                    "TargetTerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NotNearPosition": {
+                                "Position": {
+                                    "X": -814.84705,
+                                    "Y": -42.154568,
+                                    "Z": 694.3312
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1008902,
+                    "Position": {
+                        "X": -150.2251,
+                        "Y": -41.378696,
+                        "Z": -295.58252
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 1008903,
+                    "Position": {
+                        "X": -357.5647,
+                        "Y": -35.210495,
+                        "Z": -425.2232
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 2003989,
+                    "Position": {
+                        "X": -364.9806,
+                        "Y": -38.254395,
+                        "Z": -242.81683
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005937,
+                    "Position": {
+                        "X": -238.02551,
+                        "Y": -40.828262,
+                        "Z": 68.28406
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011231,
+          "Position": {
+            "X": 503.1051,
+            "Y": 217.95148,
+            "Z": 790.2189
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011236,
+          "Position": {
+            "X": 446.00586,
+            "Y": 217.95142,
+            "Z": 764.06494
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005403,
+          "Position": {
+            "X": 430.5067,
+            "Y": 225.0027,
+            "Z": 800.9321
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4376
+          ],
+          "$": "0 0 0 0 0 0 -> 16 2 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2005404,
+          "Position": {
+            "X": 552.39185,
+            "Y": 228.3512,
+            "Z": 725.9784
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4376
+          ],
+          "$": "16 2 0 0 0 128 -> 35 2 0 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2005405,
+          "Position": {
+            "X": 421.59143,
+            "Y": 212.69543,
+            "Z": 708.1559
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4376
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011236,
+          "Position": {
+            "X": 446.00586,
+            "Y": 217.95142,
+            "Z": 764.06494
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

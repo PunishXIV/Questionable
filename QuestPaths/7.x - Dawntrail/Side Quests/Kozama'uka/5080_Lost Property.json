@@ -1,0 +1,99 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050714,
+          "Position": {
+            "X": 495.6587,
+            "Y": 113.678986,
+            "Z": 181.23132
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014189,
+          "Position": {
+            "X": 194.93396,
+            "Y": 109.4834,
+            "Z": 145.25061
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014191,
+          "Position": {
+            "X": 53.3302,
+            "Y": 109.17822,
+            "Z": 246.3263
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2014190,
+          "Position": {
+            "X": -19.119629,
+            "Y": 109.57495,
+            "Z": 182.02478
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050714,
+          "Position": {
+            "X": 495.6587,
+            "Y": 113.678986,
+            "Z": 181.23132
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    }
+  ]
+}

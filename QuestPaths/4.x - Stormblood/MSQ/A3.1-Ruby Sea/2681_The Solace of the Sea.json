@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021517,
+          "Position": {
+            "X": 85.09949,
+            "Y": 41.112656,
+            "Z": -717.89124
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021513,
+          "Position": {
+            "X": 41.000854,
+            "Y": 21.22528,
+            "Z": -634.0276
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 97.741745,
+            "Y": 0.95900655,
+            "Z": -790.4652
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1022959,
+          "Position": {
+            "X": 88.36499,
+            "Y": 5.006782,
+            "Z": -862.3331
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021517,
+          "Position": {
+            "X": 85.09949,
+            "Y": 41.112656,
+            "Z": -717.89124
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro"
+        }
+      ]
+    }
+  ]
+}

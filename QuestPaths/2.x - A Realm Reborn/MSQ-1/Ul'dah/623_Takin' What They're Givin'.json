@@ -1,0 +1,45 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 140,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western Thanalan - Horizon",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ]
+        },
+        {
+          "DataId": 1002065,
+          "Position": {
+            "X": 60.9292,
+            "Y": 45.14234,
+            "Z": -205.005
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

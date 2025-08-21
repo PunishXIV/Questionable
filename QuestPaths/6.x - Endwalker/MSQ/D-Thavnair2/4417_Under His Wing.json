@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039068,
+          "Position": {
+            "X": 425.10107,
+            "Y": 3.1168795,
+            "Z": -262.62305
+          },
+          "StopDistance": 8,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040351,
+          "Position": {
+            "X": 518.2726,
+            "Y": 54.344826,
+            "Z": -597.83325
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 579.50446,
+            "Y": 55.259193,
+            "Z": -683.829
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Comment": "Travel to Radz-at-Han",
+          "TargetTerritoryId": 963,
+          "Fly": true
+        },
+        {
+          "DataId": 1040354,
+          "Position": {
+            "X": 1.8157349,
+            "Y": -1.9999962,
+            "Z": 95.750244
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040358,
+          "Position": {
+            "X": -69.62695,
+            "Y": 25.000006,
+            "Z": -35.324707
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Alzadaal's Peace",
+            "[Radz-at-Han] Ruveydah Fibers"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040359,
+          "Position": {
+            "X": -121.26343,
+            "Y": 31,
+            "Z": 9.109558
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012209,
+          "Position": {
+            "X": -206.65302,
+            "Y": 35.99597,
+            "Z": 67.46008
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040360,
+          "Position": {
+            "X": -207.17181,
+            "Y": 36,
+            "Z": 71.70203
+          },
+          "StopDistance": 7,
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

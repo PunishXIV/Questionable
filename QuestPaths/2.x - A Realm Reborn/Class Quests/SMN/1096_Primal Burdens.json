@@ -1,0 +1,135 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 494.60034,
+            "Y": -2.1295002,
+            "Z": -484.951
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true
+        },
+        {
+          "DataId": 1006793,
+          "Position": {
+            "X": 493.09534,
+            "Y": -2.349111,
+            "Z": -484.61133
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006794,
+          "Position": {
+            "X": 493.09534,
+            "Y": -2.4306269,
+            "Z": -483.6042
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 500.36328,
+            "Y": -3.814063,
+            "Z": -770.9911
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 504.98605,
+            "Y": -2.5969198,
+            "Z": -780.6112
+          },
+          "TerritoryId": 156,
+          "InteractionType": "SinglePlayerDuty",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006795,
+          "Position": {
+            "X": 475.0896,
+            "Y": 5.8291526,
+            "Z": -842.40485
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    }
+  ]
+}

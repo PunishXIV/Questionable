@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "$": "This is the follow-up quest for both Lominsan Envoy & Gridanian Envoy (Ul'dahn Envoy has a quest with the same name, but different id)",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001821,
+          "Position": {
+            "X": -24.124573,
+            "Y": 38.000004,
+            "Z": 85.31323
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Alchemists' Guild"
+        },
+        {
+          "Position": {
+            "X": 5.7796226,
+            "Y": 30,
+            "Z": -21.571625
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 3.6504946,
+              "Y": 14.688499,
+              "Z": -13.443354
+            },
+            "StopDistance": 5
+          },
+          "AethernetShortcut": [
+            "[Ul'dah] Alchemists' Guild",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Gladiators' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Goldsmiths' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Miners' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Weavers' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Sapphire Avenue Exchange"
+        },
+        {
+          "Position": {
+            "X": 88.335236,
+            "Y": 4,
+            "Z": -110.905876
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 130
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Adventurers' Guild"
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ul'dah"
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Ul'dah"
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Thaumaturges' Guild"
+        },
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
+}

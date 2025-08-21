@@ -1,0 +1,91 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1014065,
+					"Position": {
+						"X": 509.17822,
+						"Y": 212.5399,
+						"Z": 695.796
+					},
+					"TerritoryId": 397,
+					"InteractionType": "AcceptQuest",
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"DataId": 1011922,
+					"Position": {
+						"X": 448.56934,
+						"Y": -51.141407,
+						"Z": 108.93408
+					},
+					"TerritoryId": 398,
+					"InteractionType": "Interact",
+					"Fly": true,
+					"AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+				}
+			]
+		},
+		{
+			"Sequence": 2,
+			"Steps": [
+				{
+					"DataId": 1014067,
+					"Position": {
+						"X": 451.34656,
+						"Y": -24.978418,
+						"Z": -496.39127
+					},
+					"TerritoryId": 398,
+					"InteractionType": "Interact",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 3,
+			"Steps": [
+				{
+					"DataId": 2005986,
+					"Position": {
+						"X": 507.86584,
+						"Y": -21.927307,
+						"Z": -524.4374
+					},
+					"TerritoryId": 398,
+					"InteractionType": "Interact"
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1014068,
+					"Position": {
+						"X": 51.132935,
+						"Y": 124.95631,
+						"Z": 178.69836
+					},
+					"TerritoryId": 397,
+					"InteractionType": "CompleteQuest",
+					"Fly": true,
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+					"SkipConditions": {
+						"AetheryteShortcutIf": { "InSameTerritory": true }
+					},
+					"NextQuestId": 2036
+				}
+			]
+		}
+	]
+}

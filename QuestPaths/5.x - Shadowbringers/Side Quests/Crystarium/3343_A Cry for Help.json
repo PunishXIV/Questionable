@@ -1,0 +1,115 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027827,
+          "Position": {
+            "X": 105.02783,
+            "Y": 0.49999997,
+            "Z": -145.70844
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027254,
+          "Position": {
+            "X": -37.857666,
+            "Y": -0.5500218,
+            "Z": -61.20398
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027817,
+          "Position": {
+            "X": -118.425354,
+            "Y": -47.50666,
+            "Z": -181.17041
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010022,
+          "Position": {
+            "X": -152.08673,
+            "Y": -45.88391,
+            "Z": -185.0462
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1030257,
+          "Position": {
+            "X": -169.3294,
+            "Y": -45.8779,
+            "Z": -209.85736
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027254,
+          "Position": {
+            "X": -37.857666,
+            "Y": -0.5500218,
+            "Z": -61.20398
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    }
+  ]
+}

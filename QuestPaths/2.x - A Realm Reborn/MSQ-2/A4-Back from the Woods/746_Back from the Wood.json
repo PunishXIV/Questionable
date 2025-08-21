@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "DataId": 1003785,
+          "Position": {
+            "X": -489.8299,
+            "Y": 21.48999,
+            "Z": -381.97913
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.91858,
+            "Y": 17.990356,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2001715,
+          "Position": {
+            "X": 23.23944,
+            "Y": 2.090454,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1006688,
+          "Position": {
+            "X": 39.29187,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

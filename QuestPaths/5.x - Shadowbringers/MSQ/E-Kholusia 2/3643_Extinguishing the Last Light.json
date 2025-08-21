@@ -1,0 +1,104 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030295,
+          "Position": {
+            "X": -140.00159,
+            "Y": 352.35822,
+            "Z": -187.91486
+          },
+          "StopDistance": 5,
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030294,
+          "Position": {
+            "X": -142.13782,
+            "Y": 352.3582,
+            "Z": -189.47137
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKME114_03643_Q1_000_000",
+              "Answer": "TEXT_LUCKME114_03643_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030302,
+          "Position": {
+            "X": -173.44934,
+            "Y": 460.47067,
+            "Z": -797.3602
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Tomra"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 814,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 659,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 880,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 666,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030303,
+          "Position": {
+            "X": 109.23926,
+            "Y": 0.0140714925,
+            "Z": 108.72046
+          },
+          "TerritoryId": 880,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

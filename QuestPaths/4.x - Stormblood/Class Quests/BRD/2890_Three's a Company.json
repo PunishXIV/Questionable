@@ -1,0 +1,101 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022505,
+          "Position": {
+            "X": 192.46204,
+            "Y": -2.5453281,
+            "Z": 73.746826
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Archers' Guild",
+            "[Gridania] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022508,
+          "Position": {
+            "X": -71.33594,
+            "Y": -7.877128,
+            "Z": 240.34485
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022511,
+          "Position": {
+            "X": -653.13196,
+            "Y": 130,
+            "Z": -523.827
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "NextQuestId": 2891
+        }
+      ]
+    }
+  ]
+}

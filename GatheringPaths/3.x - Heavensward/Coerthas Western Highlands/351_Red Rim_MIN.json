@@ -1,0 +1,172 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 397,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31344,
+          "Locations": [
+            {
+              "Position": {
+                "X": 40.36132,
+                "Y": 217.3049,
+                "Z": 405.1829
+              },
+              "MinimumAngle": 100,
+              "MaximumAngle": 250,
+              "MinimumDistance": 1.5,
+              "MaximumDistance": 3
+            }
+          ]
+        },
+        {
+          "DataId": 31345,
+          "Fly": false,
+          "Locations": [
+            {
+              "Position": {
+                "X": 20.19547,
+                "Y": 216.5585,
+                "Z": 412.4353
+              },
+              "MinimumAngle": 75,
+              "MaximumAngle": 145,
+              "MinimumDistance": 1.5,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": 17.58205,
+                "Y": 216.0664,
+                "Z": 421.5481
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 145,
+              "MinimumDistance": 1.5,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": 51.50931,
+                "Y": 217.6516,
+                "Z": 408.2164
+              },
+              "MinimumAngle": 155,
+              "MaximumAngle": 225,
+              "MinimumDistance": 1.5,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31340,
+          "Locations": [
+            {
+              "Position": {
+                "X": 56.06712,
+                "Y": 216.6702,
+                "Z": 225.849
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 105
+            }
+          ]
+        },
+        {
+          "DataId": 31341,
+          "Locations": [
+            {
+              "Position": {
+                "X": 85.05425,
+                "Y": 218.7078,
+                "Z": 220.0463
+              },
+              "MinimumAngle": -110,
+              "MaximumAngle": 25
+            },
+            {
+              "Position": {
+                "X": 78.99079,
+                "Y": 215.9441,
+                "Z": 228.9527
+              },
+              "MinimumAngle": -110,
+              "MaximumAngle": 40
+            },
+            {
+              "Position": {
+                "X": 67.29195,
+                "Y": 216.4685,
+                "Z": 228.7955
+              },
+              "MinimumAngle": -35,
+              "MaximumAngle": 80
+            }
+          ]
+        },
+        {
+          "DataId": 31342,
+          "Locations": [
+            {
+              "Position": {
+                "X": -124.1629,
+                "Y": 221.9654,
+                "Z": 197.8645
+              },
+              "MinimumAngle": -15,
+              "MaximumAngle": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31343,
+          "Locations": [
+            {
+              "Position": {
+                "X": -138.4112,
+                "Y": 220.679,
+                "Z": 204.6822
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 20
+            },
+            {
+              "Position": {
+                "X": -90.40117,
+                "Y": 223.687,
+                "Z": 202.5069
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 45
+            },
+            {
+              "Position": {
+                "X": -50.76083,
+                "Y": 222.9418,
+                "Z": 217.8322
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 140
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

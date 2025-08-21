@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140,
+                212
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                212
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                212
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1011618,
+          "Position": {
+            "X": 10.330261,
+            "Y": -3.0000017,
+            "Z": -54.8562
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004917,
+          "Position": {
+            "X": -358.6328,
+            "Y": 8.469424,
+            "Z": 422.4154
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "NextQuestId": 1021
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030643,
+          "Position": {
+            "X": -0.16790771,
+            "Y": 3.9998174,
+            "Z": 201.9226
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027264,
+          "Position": {
+            "X": 60.593506,
+            "Y": 36.247692,
+            "Z": -171.80133
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 815,
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Amaro Launch"
+          ]
+        },
+        {
+          "DataId": 1030623,
+          "Position": {
+            "X": 665.6748,
+            "Y": -50.355476,
+            "Z": -641.5351
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010165,
+          "Position": {
+            "X": 483.48206,
+            "Y": -50.46167,
+            "Z": -631.52515
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10836
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030624,
+          "Position": {
+            "X": 500.54163,
+            "Y": -50.72601,
+            "Z": -647.5471
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "NextQuestId": 3624
+        }
+      ]
+    }
+  ]
+}

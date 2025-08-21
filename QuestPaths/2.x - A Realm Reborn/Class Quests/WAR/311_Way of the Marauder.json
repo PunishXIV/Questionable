@@ -1,0 +1,194 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000926,
+          "Position": {
+            "X": -10.055725,
+            "Y": 44.999794,
+            "Z": -245.80762
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000927,
+          "Position": {
+            "X": -1.2055054,
+            "Y": 44.999886,
+            "Z": -255.8786
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSEXC020_00311_Q2_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 31.662792,
+            "Y": 44.020653,
+            "Z": 146.94322
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 347,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 74.15681,
+            "Y": 45.953808,
+            "Z": 169.73499
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 49,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 74.15681,
+            "Y": 45.953808,
+            "Z": 169.73499
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 338,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "High": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000927,
+          "Position": {
+            "X": -1.2055054,
+            "Y": 44.999886,
+            "Z": -255.8786
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "NextQuestId": 313
+        }
+      ]
+    }
+  ]
+}

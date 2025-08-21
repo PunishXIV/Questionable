@@ -1,0 +1,231 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009949,
+          "Position": {
+            "X": -325.70386,
+            "Y": 7.228748,
+            "Z": -215.16754
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009952,
+          "Position": {
+            "X": 41.61133,
+            "Y": 1.8386029,
+            "Z": -117.265625
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Botanists' Guild",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000768,
+          "Position": {
+            "X": 172.35059,
+            "Y": 15.5,
+            "Z": -89.951965
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000227,
+          "Position": {
+            "X": 168.62744,
+            "Y": 15.699999,
+            "Z": -65.690125
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1000228,
+          "Position": {
+            "X": 168.20007,
+            "Y": 15.69998,
+            "Z": -64.83563
+          },
+          "StopDistance": 5,
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009952,
+          "Position": {
+            "X": 41.61133,
+            "Y": 1.8386029,
+            "Z": -117.265625
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1000243,
+          "Position": {
+            "X": 170.03125,
+            "Y": 15.699999,
+            "Z": -127.03143
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1009952,
+          "Position": {
+            "X": 41.61133,
+            "Y": 1.8386029,
+            "Z": -117.265625
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -374.96555,
+            "Y": 63.686344,
+            "Z": -206.74146
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            2863
+          ],
+          "AethernetShortcut": [
+            "[Gridania] Leatherworkers' Guild & Shaded Bower",
+            "[Gridania] White Wolf Gate (Central Shroud)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1001276,
+          "Position": {
+            "X": 13.961914,
+            "Y": 0.1373291,
+            "Z": 2.090454
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009953,
+          "Position": {
+            "X": 31.5708,
+            "Y": -19.000002,
+            "Z": 100.48059
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Airship Landing"
+          ],
+          "NextQuestId": 36
+        }
+      ]
+    }
+  ]
+}

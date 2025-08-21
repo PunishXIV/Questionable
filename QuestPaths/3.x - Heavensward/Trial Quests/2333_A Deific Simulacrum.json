@@ -1,0 +1,105 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "RisingStonesSolar"
+            }
+          }
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 212.05304,
+            "Y": 256.37265,
+            "Z": 0.08028713
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 152.26978,
+                  "Y": 245.1,
+                  "Z": -6.2714844
+                },
+                "TerritoryId": 402,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1016633,
+          "Position": {
+            "X": 152.26978,
+            "Y": 245.1,
+            "Z": -6.2714844
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

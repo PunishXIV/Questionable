@@ -1,0 +1,62 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001000,
+          "Position": {
+            "X": -32.028687,
+            "Y": 41.499985,
+            "Z": 208.39233
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 24.438343,
+            "Y": 44.499928,
+            "Z": 183.94363
+          },
+          "TerritoryId": 128,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 135
+        },
+        {
+          "DataId": 1002720,
+          "Position": {
+            "X": 49.271362,
+            "Y": 29.315498,
+            "Z": 605.27954
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 27
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lower La Noscea - Moraby Drydocks"
+        },
+        {
+          "DataId": 1002238,
+          "Position": {
+            "X": 247.36401,
+            "Y": 14.02301,
+            "Z": 611.9325
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

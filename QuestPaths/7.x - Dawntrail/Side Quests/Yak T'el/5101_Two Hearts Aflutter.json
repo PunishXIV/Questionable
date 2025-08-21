@@ -1,0 +1,168 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048984,
+          "Position": {
+            "X": 673.06006,
+            "Y": -135.17874,
+            "Z": 577.47766
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -92.00457,
+            "Y": -212.91975,
+            "Z": 624.4216
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051049,
+          "Position": {
+            "X": -89.49426,
+            "Y": -213.64497,
+            "Z": 625.574
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -122.188805,
+            "Y": -214.08376,
+            "Z": 674.54083
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051051,
+          "Position": {
+            "X": -122.88098,
+            "Y": -213.78055,
+            "Z": 673.39575
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -142.65875,
+            "Y": -213.42487,
+            "Z": 608.63165
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051050,
+          "Position": {
+            "X": -143.63324,
+            "Y": -213.18237,
+            "Z": 609.0028
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048984,
+          "Position": {
+            "X": 673.06006,
+            "Y": -135.17874,
+            "Z": 577.47766
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

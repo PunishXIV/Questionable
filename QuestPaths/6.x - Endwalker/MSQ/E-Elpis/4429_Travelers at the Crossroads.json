@@ -1,0 +1,106 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040101,
+          "Position": {
+            "X": -635.5841,
+            "Y": -22.39482,
+            "Z": 505.08887
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040102,
+          "Position": {
+            "X": -106.61487,
+            "Y": -10.281434,
+            "Z": 236.07227
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Elpis - Anagnorisis"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040104,
+          "Position": {
+            "X": -182.17749,
+            "Y": 12.500029,
+            "Z": -10.971252
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040106,
+          "Position": {
+            "X": -350.20984,
+            "Y": 161.78714,
+            "Z": 26.108154
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012146,
+          "Position": {
+            "X": -554.345,
+            "Y": 147.44788,
+            "Z": 98.25281
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040109,
+          "Position": {
+            "X": -491.11166,
+            "Y": 140.39177,
+            "Z": -113.81708
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME111_04429_Q2_000_094",
+              "Answer": "TEXT_AKTKME111_04429_A2_000_096"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -316.29608,
+            "Y": 23.44405,
+            "Z": -345.24487
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        },
+        {
+          "Position": {
+            "X": -396.50018,
+            "Y": 23,
+            "Z": -351.0944
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -408.92343,
+            "Y": 23.167036,
+            "Z": -351.16223
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Vesper Bay Gate",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1004603,
+          "Position": {
+            "X": -489.8299,
+            "Y": 21.48999,
+            "Z": -381.97913
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -493.3852,
+            "Y": 21,
+            "Z": -382.50455
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1005012,
+          "Position": {
+            "X": 22.507019,
+            "Y": 0.9999986,
+            "Z": -2.02948
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

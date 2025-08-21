@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005411,
+          "Position": {
+            "X": 13.412659,
+            "Y": 40.2,
+            "Z": -13.260071
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1431,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1003621,
+          "Position": {
+            "X": -192.0653,
+            "Y": 0.9999907,
+            "Z": 208.66711
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000868,
+          "Position": {
+            "X": -192.00433,
+            "Y": 0.9999907,
+            "Z": 211.68835
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 138
+        },
+        {
+          "TerritoryId": 138,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western La Noscea - Aleport"
+        },
+        {
+          "DataId": 1002723,
+          "Position": {
+            "X": 298.63428,
+            "Y": -25.004364,
+            "Z": 233.14258
+          },
+          "TerritoryId": 138,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 24
+        },
+        {
+          "DataId": 1017075,
+          "Position": {
+            "X": 356.5575,
+            "Y": -15.97664,
+            "Z": 136.73608
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1004472,
+          "Position": {
+            "X": 335.40857,
+            "Y": 9.635179,
+            "Z": 17.135864
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 138,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 4,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049796,
+          "Position": {
+            "X": 27.695068,
+            "Y": 16.16987,
+            "Z": -339.13184
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1049797,
+          "Position": {
+            "X": 214.64856,
+            "Y": 301.99997,
+            "Z": -254.26111
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1049798,
+          "Position": {
+            "X": 229.84656,
+            "Y": 302.04782,
+            "Z": -289.2348
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013740,
+          "Position": {
+            "X": 301.13672,
+            "Y": 358.99735,
+            "Z": -575.8297
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 403.64606,
+            "Y": 346.8219,
+            "Z": -669.97644
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17628
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049800,
+          "Position": {
+            "X": 215.77783,
+            "Y": 302,
+            "Z": -253.86438
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Mount": true,
+          "NextQuestId": 4857
+        }
+      ]
+    }
+  ]
+}

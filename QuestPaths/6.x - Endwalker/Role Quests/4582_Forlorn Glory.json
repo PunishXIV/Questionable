@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042765,
+          "Position": {
+            "X": -29.404175,
+            "Y": 23.164677,
+            "Z": -414.87756
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042766,
+          "Position": {
+            "X": -416.25085,
+            "Y": 21.684832,
+            "Z": 408.1941
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042769,
+          "Position": {
+            "X": -336.99554,
+            "Y": 10.799999,
+            "Z": -602.1057
+          },
+          "TerritoryId": 958,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.1.8",
+            "Notes": [
+              "(phase 1) AI doesn't move automatically",
+              "(phase 2) AI doesn't target enemy"
+            ]
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042770,
+          "Position": {
+            "X": -415.21326,
+            "Y": 21.765957,
+            "Z": 409.99463
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039543,
+          "Position": {
+            "X": -173.66296,
+            "Y": 4.0499997,
+            "Z": -91.38635
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ]
+        }
+      ]
+    }
+  ]
+}

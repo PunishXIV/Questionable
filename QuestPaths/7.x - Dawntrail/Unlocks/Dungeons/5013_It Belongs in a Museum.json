@@ -1,0 +1,121 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051434,
+          "Position": {
+            "X": 28.580078,
+            "Y": -14,
+            "Z": 75.66943
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051435,
+          "Position": {
+            "X": 383.1692,
+            "Y": -17.700003,
+            "Z": -771.3283
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1190,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 834,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051435,
+          "Position": {
+            "X": 383.1692,
+            "Y": -17.700003,
+            "Z": -771.3283
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051436,
+          "Position": {
+            "X": 476.73767,
+            "Y": 114.935,
+            "Z": 661.6769
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051438,
+          "Position": {
+            "X": -498.7717,
+            "Y": 59.21188,
+            "Z": 145.00647
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

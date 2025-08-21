@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038501,
+          "Position": {
+            "X": -367.3305,
+            "Y": 21.846018,
+            "Z": -102.983154
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 35848,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1038503,
+          "Position": {
+            "X": -367.0863,
+            "Y": 21.84602,
+            "Z": -101.701416
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038512,
+          "Position": {
+            "X": -73.47223,
+            "Y": -16.147001,
+            "Z": 191.27173
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038503,
+          "Position": {
+            "X": -367.0863,
+            "Y": 21.84602,
+            "Z": -101.701416
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Scholar's Harbor",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038501,
+          "Position": {
+            "X": -367.3305,
+            "Y": 21.846018,
+            "Z": -102.983154
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

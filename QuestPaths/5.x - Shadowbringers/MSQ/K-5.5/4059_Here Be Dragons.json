@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036330,
+          "Position": {
+            "X": 742.1836,
+            "Y": 70,
+            "Z": 529.0454
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036334,
+          "Position": {
+            "X": -73.56378,
+            "Y": 8.05915,
+            "Z": 29.3125
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013167,
+          "Position": {
+            "X": 125.68848,
+            "Y": 24.458836,
+            "Z": 2.456604
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1036342,
+          "Position": {
+            "X": 161.91345,
+            "Y": -15.134371,
+            "Z": 33.279907
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036344,
+          "Position": {
+            "X": -521.5991,
+            "Y": -103.946754,
+            "Z": 143.63306
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

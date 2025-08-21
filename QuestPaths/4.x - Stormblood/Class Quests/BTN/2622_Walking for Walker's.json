@@ -1,0 +1,220 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021349,
+          "Position": {
+            "X": -43.930786,
+            "Y": 209.23637,
+            "Z": -90.77594
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] West Idyllshire"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000815,
+          "Position": {
+            "X": -233.9361,
+            "Y": 6.668152,
+            "Z": -171.03839
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002659,
+          "Position": {
+            "X": 532.8297,
+            "Y": 88.99998,
+            "Z": -72.09894
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                135
+              ]
+            }
+          },
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1002657,
+          "Position": {
+            "X": 540.52026,
+            "Y": 89,
+            "Z": -74.02161
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021353,
+          "Position": {
+            "X": 564.17163,
+            "Y": 84.45213,
+            "Z": -100.328125
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1019064,
+          "Position": {
+            "X": 59.220215,
+            "Y": 4,
+            "Z": 67.70422
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019065,
+          "Position": {
+            "X": 80.49133,
+            "Y": 4,
+            "Z": 56.443115
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019233,
+          "Position": {
+            "X": -734.15735,
+            "Y": 1.9602847,
+            "Z": -611.38324
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 478,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 17946,
+              "ItemCount": 20
+            }
+          ]
+        },
+        {
+          "DataId": 1021349,
+          "Position": {
+            "X": -43.930786,
+            "Y": 209.23637,
+            "Z": -90.77594
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] West Idyllshire"
+          ],
+          "NextQuestId": 2623
+        }
+      ]
+    }
+  ]
+}

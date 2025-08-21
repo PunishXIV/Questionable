@@ -1,0 +1,182 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016579,
+          "Position": {
+            "X": 507.16406,
+            "Y": 217.95152,
+            "Z": 769.9243
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011223,
+          "Position": {
+            "X": 114.579956,
+            "Y": 24.412834,
+            "Z": -11.062805
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNC108_02238_Q1_000_031",
+              "Yes": true
+            }
+          ],
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        },
+        {
+          "DataId": 1013183,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.019999694,
+            "Z": -6.302063
+          },
+          "TerritoryId": 428,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016583,
+          "Position": {
+            "X": 112.53516,
+            "Y": 24.391685,
+            "Z": -2.9145508
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNC108_02238_Q2_000_093",
+              "Answer": "TEXT_HEAVNC108_02238_A2_000_095"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013167,
+          "Position": {
+            "X": 125.68848,
+            "Y": 24.458836,
+            "Z": 2.456604
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012251,
+          "Position": {
+            "X": 12.313965,
+            "Y": -12.020877,
+            "Z": 40.268433
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1016585,
+          "Position": {
+            "X": -177.11151,
+            "Y": -12.534915,
+            "Z": -43.137268
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1011223,
+          "Position": {
+            "X": 114.579956,
+            "Y": 24.412834,
+            "Z": -11.062805
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNC108_02238_Q3_000_223",
+              "Yes": true
+            }
+          ],
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016583,
+          "Position": {
+            "X": 112.53516,
+            "Y": 24.391685,
+            "Z": -2.9145508
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

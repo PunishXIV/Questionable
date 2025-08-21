@@ -1,0 +1,48 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1025721,
+                    "Position": {
+                        "X": -75.94415,
+                        "Y": 11.800039,
+                        "Z": -115.617676
+                    },
+                    "TerritoryId": 628,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Kugane",
+                    "AethernetShortcut": [
+                        "[Kugane] Aetheryte Plaza",
+                        "[Kugane] Bokairo Inn"
+                    ],
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_STMBDY992_01555_Q1_000_000",
+                            "Answer": "TEXT_STMBDY992_01555_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1025721,
+                    "Position": {
+                        "X": -75.94415,
+                        "Y": 11.800039,
+                        "Z": -115.617676
+                    },
+                    "TerritoryId": 628,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

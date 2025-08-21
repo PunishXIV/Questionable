@@ -1,0 +1,174 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 399,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Idyllshire",
+      "AethernetShortcut": [
+        "[Idyllshire] Aetheryte Plaza",
+        "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+      ],
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InTerritory": [
+            399
+          ]
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31356,
+          "Locations": [
+            {
+              "Position": {
+                "X": 120.1556,
+                "Y": 70.42133,
+                "Z": 30.73328
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 70
+            }
+          ]
+        },
+        {
+          "DataId": 31357,
+          "Locations": [
+            {
+              "Position": {
+                "X": 137.7684,
+                "Y": 70.04282,
+                "Z": 64.77115
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 130
+            },
+            {
+              "Position": {
+                "X": 132.1863,
+                "Y": 70.08203,
+                "Z": 57.67828
+              },
+              "MinimumAngle": -10,
+              "MaximumAngle": 105
+            },
+            {
+              "Position": {
+                "X": 145.684,
+                "Y": 70.47159,
+                "Z": 45.05047
+              },
+              "MinimumAngle": 80,
+              "MaximumAngle": 215
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31355,
+          "Locations": [
+            {
+              "Position": {
+                "X": 59.4164,
+                "Y": 54.40149,
+                "Z": 160.6752
+              },
+              "MinimumAngle": 155,
+              "MaximumAngle": 285
+            },
+            {
+              "Position": {
+                "X": 66.6783,
+                "Y": 53.80389,
+                "Z": 177.1926
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 0
+            },
+            {
+              "Position": {
+                "X": 47.04347,
+                "Y": 53.91698,
+                "Z": 164.1816
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 185
+            }
+          ]
+        },
+        {
+          "DataId": 31354,
+          "Locations": [
+            {
+              "Position": {
+                "X": 31.89844,
+                "Y": 54.71996,
+                "Z": 173.864
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 235
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31352,
+          "Locations": [
+            {
+              "Position": {
+                "X": 231.3517,
+                "Y": 74.23511,
+                "Z": 112.9807
+              },
+              "MinimumAngle": 130,
+              "MaximumAngle": 285
+            }
+          ]
+        },
+        {
+          "DataId": 31353,
+          "Locations": [
+            {
+              "Position": {
+                "X": 239.051,
+                "Y": 80.42557,
+                "Z": 192.2325
+              },
+              "MinimumAngle": 140,
+              "MaximumAngle": 235
+            },
+            {
+              "Position": {
+                "X": 237.4622,
+                "Y": 74.67197,
+                "Z": 150.8143
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 225
+            },
+            {
+              "Position": {
+                "X": 211.4673,
+                "Y": 75.37302,
+                "Z": 169.3396
+              },
+              "MinimumAngle": 145,
+              "MaximumAngle": 285
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

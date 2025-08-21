@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000200,
+          "Position": {
+            "X": 209.55212,
+            "Y": 0.9999819,
+            "Z": 35.01941
+          },
+          "StopDistance": 7,
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007834,
+          "Position": {
+            "X": 447.2876,
+            "Y": 2.147105,
+            "Z": 21.86615
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002364,
+          "Position": {
+            "X": 457.9995,
+            "Y": 0.44250488,
+            "Z": -106.73688
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 445.68686,
+            "Y": 2.7520387,
+            "Z": 24.184406
+          },
+          "InteractionType": "WalkTo",
+          "TerritoryId": 153,
+          "Fly": true
+        },
+        {
+          "DataId": 1007834,
+          "Position": {
+            "X": 447.2876,
+            "Y": 2.147105,
+            "Z": 21.86615
+          },
+          "StopDistance": 7,
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1086
+        }
+      ]
+    }
+  ]
+}

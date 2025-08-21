@@ -1,0 +1,103 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010849,
+          "Position": {
+            "X": 192.401,
+            "Y": -27.487204,
+            "Z": 199.32861
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005113,
+          "Position": {
+            "X": 192.88928,
+            "Y": -26.657532,
+            "Z": 203.60107
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "$": "0 0  0 0  0 0 -> 0 16  0 0  0 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010850,
+          "Position": {
+            "X": 53.3302,
+            "Y": 10.000122,
+            "Z": -10.208313
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010853,
+          "Position": {
+            "X": 137.25476,
+            "Y": 4,
+            "Z": -20.584473
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 1010891,
+          "Position": {
+            "X": -3.6774292,
+            "Y": 0.01804012,
+            "Z": -7.034485
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

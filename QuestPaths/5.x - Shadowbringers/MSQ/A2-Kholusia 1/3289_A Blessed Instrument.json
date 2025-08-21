@@ -1,0 +1,123 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029837,
+          "Position": {
+            "X": 26.810059,
+            "Y": 82.78224,
+            "Z": 23.819275
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -16.370012,
+            "Y": 51.01856,
+            "Z": 18.119207
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -18.53454,
+            "Y": 23.1,
+            "Z": 4.258671
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1029838,
+          "Position": {
+            "X": -18.387146,
+            "Y": 23.1,
+            "Z": -8.712891
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 820,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Eulmore] The Mainstay"
+        },
+        {
+          "TerritoryId": 820,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Eulmore] Southeast Derelicts",
+          "AethernetShortcut": [
+            "[Eulmore] The Mainstay",
+            "[Eulmore] The Glory Gate"
+          ]
+        },
+        {
+          "DataId": 1027588,
+          "Position": {
+            "X": -50.247986,
+            "Y": -0.10068311,
+            "Z": 61.32605
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 820,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Eulmore] Nightsoil Pots"
+        },
+        {
+          "DataId": 1029838,
+          "Position": {
+            "X": -18.387146,
+            "Y": 23.1,
+            "Z": -8.712891
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Nightsoil Pots",
+            "[Eulmore] The Mainstay"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028990,
+          "Position": {
+            "X": 26.810059,
+            "Y": 82.78224,
+            "Z": 23.819275
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

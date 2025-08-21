@@ -1,0 +1,193 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "RisingStonesSolar"
+            }
+          }
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 73.307335,
+            "Y": -49.128403,
+            "Z": -142.59073
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
+        },
+        {
+          "DataId": 1011928,
+          "Position": {
+            "X": 73.19751,
+            "Y": -49.19563,
+            "Z": -139.05548
+          },
+          "StopDistance": 4,
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 258.42062,
+            "Y": -112.936935,
+            "Z": 924.15704
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2006289,
+          "Position": {
+            "X": 257.77063,
+            "Y": -111.92493,
+            "Z": 925.3832
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 401,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 87,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 73.307335,
+            "Y": -49.128403,
+            "Z": -142.59073
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
+        },
+        {
+          "DataId": 1011928,
+          "Position": {
+            "X": 73.19751,
+            "Y": -49.19563,
+            "Z": -139.05548
+          },
+          "StopDistance": 4,
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046881,
+          "Position": {
+            "X": 368.9784,
+            "Y": 130.34726,
+            "Z": 610.5592
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046884,
+          "Position": {
+            "X": 536.82764,
+            "Y": 105.12397,
+            "Z": 660.05945
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMB114_04893_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046885,
+          "Position": {
+            "X": 551.6129,
+            "Y": 103.3147,
+            "Z": 660.07434
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WaitForNpcAtPosition",
+          "Mount": true
+        },
+        {
+          "DataId": 1046885,
+          "Position": {
+            "X": 564.4495,
+            "Y": 98.513535,
+            "Z": 613.08606
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "DataId": 1046885,
+          "Position": {
+            "X": 566.1762,
+            "Y": 98.513535,
+            "Z": 564.2549
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 585.3602,
+            "Y": 98.73023,
+            "Z": 548.79535
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1187,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17695
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046887,
+          "Position": {
+            "X": 565.88074,
+            "Y": 98.513535,
+            "Z": 566.4606
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046886,
+          "Position": {
+            "X": 559.54816,
+            "Y": 98.436874,
+            "Z": 539.67975
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WaitForNpcAtPosition",
+          "Mount": true
+        },
+        {
+          "DataId": 1046886,
+          "Position": {
+            "X": 508.8067,
+            "Y": 104.9486,
+            "Z": 449.75946
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "DataId": 1046886,
+          "Position": {
+            "X": 474.6922,
+            "Y": 109.06019,
+            "Z": 417.7015
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 470.6856,
+            "Y": 109.359344,
+            "Z": 395.2364
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1187,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17696
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1046890,
+          "Position": {
+            "X": 473.0448,
+            "Y": 108.868965,
+            "Z": 419.33313
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1046889,
+          "Position": {
+            "X": 489.753,
+            "Y": 107.692184,
+            "Z": 424.54318
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WaitForNpcAtPosition",
+          "Mount": true
+        },
+        {
+          "DataId": 1046889,
+          "Position": {
+            "X": 570.6724,
+            "Y": 119.33488,
+            "Z": 359.8228
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046893,
+          "Position": {
+            "X": 572.0454,
+            "Y": 119.71409,
+            "Z": 357.7478
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

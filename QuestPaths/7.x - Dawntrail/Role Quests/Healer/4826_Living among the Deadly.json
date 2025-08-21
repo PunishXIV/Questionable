@@ -1,0 +1,114 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046290,
+          "Position": {
+            "X": -114.091736,
+            "Y": 20,
+            "Z": 111.436646
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046307,
+          "Position": {
+            "X": 216.84595,
+            "Y": 14.096056,
+            "Z": 660.3646
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046309,
+          "Position": {
+            "X": 106.7063,
+            "Y": 22.880846,
+            "Z": 618.4634
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046308,
+          "Position": {
+            "X": 217.39526,
+            "Y": 14.096056,
+            "Z": 658.7776
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046307,
+          "Position": {
+            "X": 216.84595,
+            "Y": 14.096056,
+            "Z": 660.3646
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBA221_04826_Q1_000_048",
+              "Answer": "TEXT_KINGBA221_04826_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046290,
+          "Position": {
+            "X": -114.091736,
+            "Y": 20,
+            "Z": 111.436646
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "NextQuestId": 4827
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001821,
+          "Position": {
+            "X": -24.124573,
+            "Y": 38.000004,
+            "Z": 85.31323
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    }
+  ]
+}

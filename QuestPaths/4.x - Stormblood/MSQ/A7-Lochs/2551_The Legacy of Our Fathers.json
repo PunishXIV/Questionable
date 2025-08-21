@@ -1,0 +1,169 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021717,
+          "Position": {
+            "X": 756.9542,
+            "Y": 70,
+            "Z": 445.45654
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2007994,
+          "Position": {
+            "X": 683.40576,
+            "Y": 69.99304,
+            "Z": 521.1719
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818172
+        },
+        {
+          "TerritoryId": 621,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lochs - Ala Mhigan Quarter"
+        },
+        {
+          "DataId": 1022733,
+          "Position": {
+            "X": 643.67126,
+            "Y": 80,
+            "Z": 654.16943
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -672.0402,
+            "Y": 49.99975,
+            "Z": 15.600315
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
+        },
+        {
+          "DataId": 1021698,
+          "Position": {
+            "X": -672.694,
+            "Y": 49.999725,
+            "Z": 14.999573
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021719,
+          "Position": {
+            "X": -669.21497,
+            "Y": 50.01024,
+            "Z": 17.92926
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021703,
+          "Position": {
+            "X": -631.4946,
+            "Y": 53.75,
+            "Z": 13.717773
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 16 16    0 0    0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1021701,
+          "Position": {
+            "X": -599.38965,
+            "Y": 33.999783,
+            "Z": 0.5340576
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "$": "QW: 16 16    0 0    0 32 -> QW: 32 17    0 0    0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021702,
+          "Position": {
+            "X": -589.9901,
+            "Y": 33.999954,
+            "Z": -4.043701
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021698,
+          "Position": {
+            "X": -672.694,
+            "Y": 49.999725,
+            "Z": 14.999573
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

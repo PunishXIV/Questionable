@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "plogon_enjoyer",
+  "Steps": [
+    {
+      "TerritoryId": 960,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Ultima Thule - Reah Tahra"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34376,
+          "Locations": [
+            {
+              "Position": {
+                "X": -586.0029,
+                "Y": 84.39367,
+                "Z": 568.1448
+              },
+              "MinimumAngle": -60,
+              "MaximumAngle": 75,
+              "MinimumDistance": 1,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34377,
+          "Locations": [
+            {
+              "Position": {
+                "X": -578.2748,
+                "Y": 86.34826,
+                "Z": 567.2876
+              },
+              "MinimumAngle": -80,
+              "MaximumAngle": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34378,
+          "Locations": [
+            {
+              "Position": {
+                "X": -600.2446,
+                "Y": 86.01588,
+                "Z": 557.4477
+              },
+              "MinimumAngle": -35,
+              "MaximumAngle": 145
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

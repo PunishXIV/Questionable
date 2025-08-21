@@ -1,0 +1,74 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Censored",
+  "Steps": [
+    {
+      "TerritoryId": 1189,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "NearPosition": {
+            "Position": {
+              "X": -578.86475,
+              "Y": 2.674765,
+              "Z": -403.03888
+            },
+            "TerritoryId": 1189,
+            "MaximumDistance": 250
+          }
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 35278,
+          "Locations": [
+            {
+              "Position": {
+                "X": -576.3171,
+                "Y": 4.257174,
+                "Z": -398.7203
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 35277,
+          "Locations": [
+            {
+              "Position": {
+                "X": -578.7101,
+                "Y": 3.045597,
+                "Z": -403.618
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 35276,
+          "Locations": [
+            {
+              "Position": {
+                "X": -576.8013,
+                "Y": 3.518943,
+                "Z": -406.4176
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

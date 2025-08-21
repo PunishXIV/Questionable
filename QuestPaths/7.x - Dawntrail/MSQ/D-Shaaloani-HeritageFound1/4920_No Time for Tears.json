@@ -1,0 +1,312 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047002,
+          "Position": {
+            "X": -16.494995,
+            "Y": 3.0954878,
+            "Z": -49.851257
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1170,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047012,
+          "Position": {
+            "X": -1.3580933,
+            "Y": 3.095488,
+            "Z": -48.630554
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1170,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047020,
+          "Position": {
+            "X": -142.01575,
+            "Y": 44.999992,
+            "Z": 18.631226
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The Resplendent Quarter"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1047019,
+          "Position": {
+            "X": -84.031494,
+            "Y": 52,
+            "Z": 10.635498
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1047022,
+          "Position": {
+            "X": -96.48285,
+            "Y": 68.41271,
+            "Z": -34.53119
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1047023,
+          "Position": {
+            "X": -226.0014,
+            "Y": 39.99999,
+            "Z": 15.976135
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 1047021,
+          "Position": {
+            "X": -254.01697,
+            "Y": 40.075134,
+            "Z": -28.091919
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -163.63573,
+            "Y": 45.171337,
+            "Z": 12.003954
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1047026,
+          "Position": {
+            "X": -176.4096,
+            "Y": 44.999992,
+            "Z": 34.470093
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013810,
+          "Position": {
+            "X": -194.75098,
+            "Y": -4.928711,
+            "Z": 129.90002
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] The Resplendent Quarter",
+            "[Tuliyollal] The For'ard Cabins"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2013813,
+          "Position": {
+            "X": -23.483704,
+            "Y": -10.025269,
+            "Z": 145.25061
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2013811,
+          "Position": {
+            "X": 11.886719,
+            "Y": -14.023071,
+            "Z": 105.882324
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2013812,
+          "Position": {
+            "X": 84.611206,
+            "Y": -16.586609,
+            "Z": 117.02136
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046843,
+          "Position": {
+            "X": -18.783936,
+            "Y": -10.00001,
+            "Z": 95.109375
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1047031,
+          "Position": {
+            "X": -42.77112,
+            "Y": -19.74437,
+            "Z": 231.46399
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1047033,
+          "Position": {
+            "X": -152.51392,
+            "Y": -14.999287,
+            "Z": 270.64917
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047034,
+          "Position": {
+            "X": 66.666626,
+            "Y": -14,
+            "Z": 26.504883
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    }
+  ]
+}

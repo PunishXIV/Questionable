@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026852,
+          "Position": {
+            "X": 63.126587,
+            "Y": 14.005002,
+            "Z": 89.86035
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026945,
+          "Position": {
+            "X": -108.415405,
+            "Y": 41,
+            "Z": 76.06616
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Alchemists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026946,
+          "Position": {
+            "X": 392.69092,
+            "Y": 87.19347,
+            "Z": 98.10022
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Alchemists' Guild",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 363.6008,
+            "Y": 83.40785,
+            "Z": 92.904495
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            9838,
+            9839
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026948,
+          "Position": {
+            "X": 359.63977,
+            "Y": 83.013695,
+            "Z": 92.24072
+          },
+          "StopDistance": 5,
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026852,
+          "Position": {
+            "X": 63.126587,
+            "Y": 14.005002,
+            "Z": 89.86035
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "NextQuestId": 3197
+        }
+      ]
+    }
+  ]
+}

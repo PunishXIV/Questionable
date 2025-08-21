@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021704,
+          "Position": {
+            "X": -651.51447,
+            "Y": 50.000015,
+            "Z": -3.1281738
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -791.2012,
+            "Y": 46.3994,
+            "Z": -15.904689
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 620,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                620
+              ],
+              "QuestsCompleted": [
+                2860
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1023167,
+          "Position": {
+            "X": 313.28296,
+            "Y": 324.51355,
+            "Z": 362.4475
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2851
+        },
+        {
+          "DataId": 1020893,
+          "Position": {
+            "X": 283.77197,
+            "Y": 322.87146,
+            "Z": 752.34607
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2860
+        },
+        {
+          "DataId": 1021705,
+          "Position": {
+            "X": -649.897,
+            "Y": 50.00002,
+            "Z": -1.9990234
+          },
+          "StopDistance": 7,
+          "TerritoryId": 621,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "Navigation gets stuck in various places"
+            ]
+          },
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021710,
+          "Position": {
+            "X": 66.544556,
+            "Y": 45.410225,
+            "Z": 766.47595
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

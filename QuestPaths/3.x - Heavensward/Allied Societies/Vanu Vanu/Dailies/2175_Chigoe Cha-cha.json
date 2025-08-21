@@ -1,0 +1,128 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "AnimaMachinae",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -776.0281,
+            "Y": -133.35559,
+            "Z": -414.32825
+          },
+          "StopDistance": 3,
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -776.0281,
+                  "Y": -133.35559,
+                  "Z": -414.32825
+                },
+                "MaximumDistance": 50,
+                "TerritoryId": 401
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1016093,
+          "Position": {
+            "X": -776.0281,
+            "Y": -133.35559,
+            "Z": -414.32825
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006655,
+          "Position": {
+            "X": -48.325317,
+            "Y": 17.990356,
+            "Z": -852.47577
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Action",
+          "Fly": true,
+          "Action": "Buffet (Sanuwa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006656,
+          "Position": {
+            "X": 95.23157,
+            "Y": -11.886841,
+            "Z": -817.6242
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Action",
+          "Fly": true,
+          "Action": "Buffet (Sanuwa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2006657,
+          "Position": {
+            "X": 205.8899,
+            "Y": -6.9123535,
+            "Z": -785.70233
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Action",
+          "Fly": true,
+          "Action": "Buffet (Sanuwa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}

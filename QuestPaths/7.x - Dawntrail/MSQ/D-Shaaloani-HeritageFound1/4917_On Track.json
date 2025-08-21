@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046975,
+          "Position": {
+            "X": 348.6228,
+            "Y": -1.601824,
+            "Z": 449.9121
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048057,
+          "Position": {
+            "X": -313.74078,
+            "Y": 18.853605,
+            "Z": -178.8205
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046981,
+          "Position": {
+            "X": -354.08563,
+            "Y": 19.34956,
+            "Z": -99.13794
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046982,
+          "Position": {
+            "X": -349.53845,
+            "Y": 18.823906,
+            "Z": -106.401184
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

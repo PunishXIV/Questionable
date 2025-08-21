@@ -1,0 +1,125 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024104,
+          "Position": {
+            "X": 530.81555,
+            "Y": 70,
+            "Z": 576.0128
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023048,
+          "Position": {
+            "X": 497.76453,
+            "Y": 69.99941,
+            "Z": 583.7339
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 621,
+          "Fly": true
+        },
+        {
+          "DataId": 1024134,
+          "Position": {
+            "X": 207.84314,
+            "Y": -0.3,
+            "Z": 338.55188
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 196.67705,
+            "Y": -0.6,
+            "Z": 318.12054
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Dive",
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 2009052,
+          "Position": {
+            "X": 144.97595,
+            "Y": -270.98505,
+            "Z": -12.283508
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009054,
+          "Position": {
+            "X": 258.19788,
+            "Y": -274.06738,
+            "Z": -12.588745
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 621,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 279,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024104,
+          "Position": {
+            "X": 530.81555,
+            "Y": 70,
+            "Z": 576.0128
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

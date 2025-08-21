@@ -1,0 +1,100 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012068,
+          "Position": {
+            "X": -597.0398,
+            "Y": -51.05185,
+            "Z": -387.0451
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012072,
+          "Position": {
+            "X": -568.5969,
+            "Y": -50.649483,
+            "Z": -452.10956
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 16 16 0 0 0 64",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1012071,
+          "Position": {
+            "X": -568.3833,
+            "Y": -50.605247,
+            "Z": -449.11877
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "$": "16 16 0 0 0 64 -> 32 17 0 0 0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1012069,
+          "Position": {
+            "X": -647.0283,
+            "Y": -51.05719,
+            "Z": -417.74628
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014171,
+          "Position": {
+            "X": -373.43408,
+            "Y": -55.21164,
+            "Z": -630.0908
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "ChatMessage": {
+            "Key": "TEXT_HEAVNZ706_01910_SAY_000_000"
+          }
+        }
+      ]
+    }
+  ]
+}

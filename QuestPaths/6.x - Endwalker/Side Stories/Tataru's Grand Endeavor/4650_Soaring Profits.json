@@ -1,0 +1,266 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013108,
+          "Position": {
+            "X": -75.70001,
+            "Y": -4.7455444,
+            "Z": -27.664612
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011952,
+          "Position": {
+            "X": -277.63788,
+            "Y": -184.59735,
+            "Z": 741.60376
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007074,
+          "Position": {
+            "X": -815.8236,
+            "Y": -87.26642,
+            "Z": -834.3175
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 567
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042605,
+          "Position": {
+            "X": 72.46509,
+            "Y": 203.98001,
+            "Z": 125.993774
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042608,
+          "Position": {
+            "X": -9.323303,
+            "Y": 206.49942,
+            "Z": 38.77307
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1042609,
+          "Position": {
+            "X": -49.149292,
+            "Y": 209.18335,
+            "Z": -103.01367
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1042610,
+          "Position": {
+            "X": 56.961792,
+            "Y": 214.19846,
+            "Z": -81.43744
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1042605,
+          "Position": {
+            "X": -30.20218,
+            "Y": 214.49994,
+            "Z": 91.81962
+          },
+          "StopDistance": 1,
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1042613,
+          "Position": {
+            "X": -22.38501,
+            "Y": 203.69724,
+            "Z": 93.18677
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2007074,
+          "Position": {
+            "X": -815.8236,
+            "Y": -87.26642,
+            "Z": -834.3175
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true,
+          "TargetTerritoryId": 567
+        },
+        {
+          "DataId": 2007080,
+          "Position": {
+            "X": 18.1734,
+            "Y": -14.755493,
+            "Z": 26.840576
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 568
+        },
+        {
+          "DataId": 2007075,
+          "Position": {
+            "X": 22.323914,
+            "Y": 3.5552979,
+            "Z": -18.814392
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2013110,
+          "Position": {
+            "X": -1.8158569,
+            "Y": 0.015197754,
+            "Z": 5.1727905
+          },
+          "TerritoryId": 568,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1042611,
+          "Position": {
+            "X": -75.48645,
+            "Y": -4.734931,
+            "Z": -26.901672
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "NextQuestId": 4662
+        }
+      ]
+    }
+  ]
+}

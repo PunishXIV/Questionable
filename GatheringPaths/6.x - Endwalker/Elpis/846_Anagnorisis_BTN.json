@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 961,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Elpis - Anagnorisis"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34020,
+          "Locations": [
+            {
+              "Position": {
+                "X": 44.78436,
+                "Y": 7.229512,
+                "Z": 98.57001
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34021,
+          "Locations": [
+            {
+              "Position": {
+                "X": 46.74728,
+                "Y": 7.877012,
+                "Z": 88.79111
+              }
+            },
+            {
+              "Position": {
+                "X": 34.40783,
+                "Y": 3.908499,
+                "Z": 67.13975
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34023,
+          "Locations": [
+            {
+              "Position": {
+                "X": -91.27831,
+                "Y": -8.489767,
+                "Z": 69.08894
+              }
+            },
+            {
+              "Position": {
+                "X": -117.3572,
+                "Y": -11.70367,
+                "Z": 38.49854
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34022,
+          "Locations": [
+            {
+              "Position": {
+                "X": -124.86,
+                "Y": -11.29384,
+                "Z": 89.80068
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34019,
+          "Locations": [
+            {
+              "Position": {
+                "X": -13.48685,
+                "Y": 4.629431,
+                "Z": 208.5452
+              }
+            },
+            {
+              "Position": {
+                "X": -65.74567,
+                "Y": -2.738637,
+                "Z": 195.961
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34018,
+          "Locations": [
+            {
+              "Position": {
+                "X": -41.94958,
+                "Y": -0.697382,
+                "Z": 173.7239
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

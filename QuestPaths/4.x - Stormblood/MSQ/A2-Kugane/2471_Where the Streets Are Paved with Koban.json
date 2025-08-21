@@ -1,0 +1,77 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020460,
+          "Position": {
+            "X": 17.92926,
+            "Y": -1.5668043E-05,
+            "Z": -41.21466
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020461,
+          "Position": {
+            "X": 24.582275,
+            "Y": 4,
+            "Z": 68.28406
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 628,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Kugane] Kogane Dori Markets"
+        },
+        {
+          "DataId": 1022359,
+          "Position": {
+            "X": 88.12085,
+            "Y": 4,
+            "Z": 69.7489
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020462,
+          "Position": {
+            "X": 95.140015,
+            "Y": 8.02,
+            "Z": 151.9646
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

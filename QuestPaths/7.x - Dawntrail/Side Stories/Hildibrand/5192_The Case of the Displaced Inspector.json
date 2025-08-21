@@ -1,0 +1,268 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051694,
+          "Position": {
+            "X": 56.595703,
+            "Y": -14,
+            "Z": 79.9115
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048501,
+          "Position": {
+            "X": 121.44653,
+            "Y": 42,
+            "Z": -347.34113
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Brightploom Post"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1048485,
+          "Position": {
+            "X": 142.62598,
+            "Y": 41.999996,
+            "Z": -319.4477
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051694,
+          "Position": {
+            "X": 56.595703,
+            "Y": -14,
+            "Z": 79.9115
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Brightploom Post",
+            "[Tuliyollal] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051698,
+          "Position": {
+            "X": -122.72839,
+            "Y": 27.990566,
+            "Z": -436.42328
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051700,
+          "Position": {
+            "X": -183.33722,
+            "Y": 30,
+            "Z": -627.2526
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1048037,
+          "Position": {
+            "X": -289.66205,
+            "Y": 45.88422,
+            "Z": -832.3644
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1051703,
+          "Position": {
+            "X": -9.506409,
+            "Y": -6.0500045,
+            "Z": 269.00122
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1051704,
+          "Position": {
+            "X": 353.96338,
+            "Y": 50.75,
+            "Z": 243.06091
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Information Center",
+            "[Solution Nine] The Arcadion"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1048090,
+          "Position": {
+            "X": 362.87476,
+            "Y": 50.75,
+            "Z": 223.46838
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1051705,
+          "Position": {
+            "X": 344.59448,
+            "Y": 50.75,
+            "Z": 195.45276
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1051706,
+          "Position": {
+            "X": 368.36792,
+            "Y": 50.75,
+            "Z": 219.34839
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1051708,
+          "Position": {
+            "X": 307.42346,
+            "Y": 70.0001,
+            "Z": -25.0401
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] True Vue"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051709,
+          "Position": {
+            "X": 307.6676,
+            "Y": 70.00009,
+            "Z": -26.962769
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5295
+        }
+      ]
+    }
+  ]
+}

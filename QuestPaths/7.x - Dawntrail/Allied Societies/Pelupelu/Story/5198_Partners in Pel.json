@@ -1,0 +1,67 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 809.655,
+            "Y": 17.004526,
+            "Z": -257.89868
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1051710,
+          "Position": {
+            "X": 822.629,
+            "Y": 17.102613,
+            "Z": -263.20288
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051746,
+          "Position": {
+            "X": 824.6128,
+            "Y": 13.979889,
+            "Z": -227.16113
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051710,
+          "Position": {
+            "X": 822.629,
+            "Y": 17.102613,
+            "Z": -263.20288
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

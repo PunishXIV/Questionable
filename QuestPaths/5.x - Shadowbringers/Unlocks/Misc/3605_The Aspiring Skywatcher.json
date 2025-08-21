@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031106,
+          "Position": {
+            "X": -8.255188,
+            "Y": -3.1851232E-07,
+            "Z": 10.543945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    }
+  ]
+}

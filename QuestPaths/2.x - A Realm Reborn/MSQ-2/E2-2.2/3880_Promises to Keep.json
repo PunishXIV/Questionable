@@ -1,0 +1,59 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008616,
+          "Position": {
+            "X": -18.265076,
+            "Y": 36.013893,
+            "Z": 57.938477
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008700,
+          "Position": {
+            "X": -132.52466,
+            "Y": 4.1,
+            "Z": -111.92493
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] The Chamber of Rule",
+            "[Ul'dah] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008623,
+          "Position": {
+            "X": 24.887451,
+            "Y": 6.999997,
+            "Z": -80.03363
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

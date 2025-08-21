@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 1189,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "NearPosition": {
+            "Position": {
+              "X": 23.8063,
+              "Y": 17.44395,
+              "Z": -861.3718
+            },
+            "TerritoryId": 1189,
+            "MaximumDistance": 250
+          }
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 35256,
+          "Locations": [
+            {
+              "Position": {
+                "X": 23.8063,
+                "Y": 17.44395,
+                "Z": -861.3718
+              },
+              "MinimumAngle": -80,
+              "MaximumAngle": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 35257,
+          "Locations": [
+            {
+              "Position": {
+                "X": 31.8484,
+                "Y": 17.91638,
+                "Z": -864.6296
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 35255,
+          "Locations": [
+            {
+              "Position": {
+                "X": 37.64392,
+                "Y": 17.34943,
+                "Z": -865.3544
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 70
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

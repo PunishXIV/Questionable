@@ -1,0 +1,113 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009347,
+          "Position": {
+            "X": 35.965454,
+            "Y": 51.255005,
+            "Z": 292.37805
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1025072,
+          "Position": {
+            "X": 94.04126,
+            "Y": 41.171764,
+            "Z": 376.57727
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009347,
+          "Position": {
+            "X": 35.965454,
+            "Y": 51.255005,
+            "Z": 292.37805
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025072,
+          "Position": {
+            "X": 94.04126,
+            "Y": 41.171764,
+            "Z": 376.57727
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.868523,
+            "Y": 56.02146,
+            "Z": 231.54045
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

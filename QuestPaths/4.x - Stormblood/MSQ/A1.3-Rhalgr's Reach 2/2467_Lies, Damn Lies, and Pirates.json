@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020526,
+          "Position": {
+            "X": -609.6132,
+            "Y": 130,
+            "Z": -501.12158
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.1228,
+            "Y": 130,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2661
+        },
+        {
+          "DataId": 1020434,
+          "Position": {
+            "X": 13.534729,
+            "Y": 43.999996,
+            "Z": -36.850586
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020434,
+          "Position": {
+            "X": 13.534729,
+            "Y": 43.999996,
+            "Z": -36.850586
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

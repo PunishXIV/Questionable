@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035096,
+          "Position": {
+            "X": 130.84607,
+            "Y": 11.999016,
+            "Z": -82.108826
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035116,
+          "Position": {
+            "X": 153.39893,
+            "Y": 18.1,
+            "Z": 50.70569
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026937,
+          "Position": {
+            "X": 65.7511,
+            "Y": 14.005002,
+            "Z": 90.440186
+          },
+          "StopDistance": 5,
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026937,
+          "Position": {
+            "X": 65.7511,
+            "Y": 14.005002,
+            "Z": 90.440186
+          },
+          "StopDistance": 5,
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

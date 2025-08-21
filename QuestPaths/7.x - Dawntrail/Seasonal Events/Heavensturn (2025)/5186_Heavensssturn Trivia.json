@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050356,
+          "Position": {
+            "X": 17.288391,
+            "Y": 45.656,
+            "Z": 133.95886
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050357,
+          "Position": {
+            "X": -4.6845703,
+            "Y": 40.000004,
+            "Z": 73.3501
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESNYX101_05186_Q1_000_000",
+              "Answer": "TEXT_FESNYX101_05186_A1_000_000",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050358,
+          "Position": {
+            "X": -18.143005,
+            "Y": 44,
+            "Z": -33.49359
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESNYX101_05186_Q2_000_000",
+              "Answer": "TEXT_FESNYX101_05186_A2_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050359,
+          "Position": {
+            "X": -44.235962,
+            "Y": 39.473606,
+            "Z": -163.77509
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESNYX101_05186_Q3_000_000",
+              "Answer": "TEXT_FESNYX101_05186_A3_000_000",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050356,
+          "Position": {
+            "X": 17.288391,
+            "Y": 45.656,
+            "Z": 133.95886
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
+}

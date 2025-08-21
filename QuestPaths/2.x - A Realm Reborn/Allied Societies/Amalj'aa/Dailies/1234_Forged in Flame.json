@@ -1,0 +1,148 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "Disabled": true,
+  "Comment": "WIP too many cases",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005551,
+          "Position": {
+            "X": 98.924194,
+            "Y": 15.29447,
+            "Z": -349.4469
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -175.15483,
+            "Y": 40,
+            "Z": 159.05237
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2003019,
+          "Position": {
+            "X": -88.059875,
+            "Y": 43.503418,
+            "Z": 149.00427
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [4], null, null, null, null],
+          "Mount": true
+        },
+        {
+          "DataId": 2003022,
+          "Position": {
+            "X": -170.85535,
+            "Y": 39.993896,
+            "Z": 135.45422
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [5], null, null, null, null],
+          "Mount": true
+        },
+        {
+          "DataId": 2003017,
+          "Position": {
+            "X": -97.48993,
+            "Y": 45.792236,
+            "Z": 197.28381
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [20], null, null, null, null],
+          "Mount": true
+        },
+        {
+          "DataId": 2003020,
+          "Position": {
+            "X": -77.836365,
+            "Y": 43.4729,
+            "Z": 155.50464
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [21], null, null, null, null],
+          "Mount": true
+        },
+        {
+          "DataId": 2003015,
+          "Position": {
+            "X": 133.62317,
+            "Y": 13.961914,
+            "Z": 152.26978
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [36], null, null, null, null],
+          "Mount": true
+        },
+        {
+          "DataId": 2003018,
+          "Position": {
+            "X": -100.572266,
+            "Y": 45.76172,
+            "Z": 211.04749
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [37], null, null, null, null],
+          "Mount": true
+        },
+        {
+          "DataId": 2003016,
+          "Position": {
+            "X": 185.19873,
+            "Y": 13.992493,
+            "Z": 231.89136
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null, [52, 53], null, null, null, null],
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 30.256956,
+            "Y": 38.639523,
+            "Z": 145.03891
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1005551,
+          "Position": {
+            "X": 98.924194,
+            "Y": 15.29447,
+            "Z": -349.4469
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

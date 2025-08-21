@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 22746,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 24587,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1026932,
+          "Position": {
+            "X": -105.9129,
+            "Y": 1.5723714,
+            "Z": 750.0571
+          },
+          "StopDistance": 7,
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026934,
+          "Position": {
+            "X": -108.04913,
+            "Y": 1.5026048,
+            "Z": 749.1415
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Action",
+          "Action": "Water Cannon"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026937,
+          "Position": {
+            "X": 65.7511,
+            "Y": 14.005002,
+            "Z": 90.440186
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBAOZ010_03193_Q1_100_002",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 3194
+        }
+      ]
+    }
+  ]
+}

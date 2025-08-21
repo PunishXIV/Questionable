@@ -1,0 +1,170 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -265.16965,
+            "Y": 8.184065,
+            "Z": 183.24426
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        },
+        {
+          "Position": {
+            "X": -280.7175,
+            "Y": 10.35225,
+            "Z": 197.09795
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -279.7466,
+            "Y": 11.3272505,
+            "Z": 188.46881
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -271.0631,
+            "Y": 11.852187,
+            "Z": 188.60892
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -266.19342,
+            "Y": 11.852209,
+            "Z": 190.92015
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -278.93945,
+            "Y": 14.847251,
+            "Z": 194.7018
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1000837,
+          "Position": {
+            "X": -289.7536,
+            "Y": 16.347252,
+            "Z": 194.53723
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000100,
+          "Position": {
+            "X": 23.819275,
+            "Y": -8,
+            "Z": 115.92273
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012878,
+          "Position": {
+            "X": 129.65588,
+            "Y": -13.565308,
+            "Z": 156.35913
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042600,
+          "Position": {
+            "X": -20.431885,
+            "Y": 14.000006,
+            "Z": 5.2948
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "NextQuestId": 4650
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038458,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": 7.2174683
+          },
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038471,
+          "Position": {
+            "X": 201.77002,
+            "Y": 1.1510025,
+            "Z": -574.88367
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 201.77002,
+                  "Y": 1.1510025,
+                  "Z": -574.88367
+                },
+                "TerritoryId": 613,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038475,
+          "Position": {
+            "X": 12.710693,
+            "Y": -198.1417,
+            "Z": -155.8404
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038476,
+          "Position": {
+            "X": 16.983276,
+            "Y": -195.74509,
+            "Z": -105.97394
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038477,
+          "Position": {
+            "X": -34.62274,
+            "Y": -198.56413,
+            "Z": -69.16919
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1038478,
+          "Position": {
+            "X": -90.25714,
+            "Y": -198.95348,
+            "Z": -129.65594
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1038474,
+          "Position": {
+            "X": 203.1128,
+            "Y": 1.1510025,
+            "Z": -574.1207
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038457,
+          "Position": {
+            "X": -0.83929443,
+            "Y": 0,
+            "Z": 8.8654175
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 4123
+        }
+      ]
+    }
+  ]
+}

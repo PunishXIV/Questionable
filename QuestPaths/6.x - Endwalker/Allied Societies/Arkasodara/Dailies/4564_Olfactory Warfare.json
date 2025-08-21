@@ -1,0 +1,197 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042302,
+          "Position": {
+            "X": -102.43384,
+            "Y": 40.00001,
+            "Z": 331.89893
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 86.44138,
+            "Y": 38.836067,
+            "Z": 375.43958
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012887,
+          "Position": {
+            "X": 90.71484,
+            "Y": 38.70359,
+            "Z": 377.7981
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Action",
+          "Action": "Yellow Gulal",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -73.42284,
+            "Y": 50.283375,
+            "Z": 165.20433
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012888,
+          "Position": {
+            "X": -74.2962,
+            "Y": 50.095337,
+            "Z": 160.41797
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Action",
+          "Action": "Yellow Gulal",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -195.75089,
+            "Y": 35.536575,
+            "Z": 98.20429
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012889,
+          "Position": {
+            "X": -197.9859,
+            "Y": 36.209595,
+            "Z": 94.102295
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Action",
+          "Action": "Yellow Gulal",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -68.59158,
+            "Y": 39.9961,
+            "Z": 320.7581
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Mount": false,
+          "Comment": "TODO Verify this properly unmounts"
+        }
+      ]
+    }
+  ]
+}

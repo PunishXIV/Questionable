@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -59.93238,
+            "Y": 77.08961,
+            "Z": -204.68428
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1008540,
+          "Position": {
+            "X": -60.31891,
+            "Y": 76.76807,
+            "Z": -203.23492
+          },
+          "TerritoryId": 147,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSD302_01314_Q1_000_000",
+              "Yes": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1007478,
+          "Position": {
+            "X": -2.822998,
+            "Y": -3.0000014,
+            "Z": -56.229553
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

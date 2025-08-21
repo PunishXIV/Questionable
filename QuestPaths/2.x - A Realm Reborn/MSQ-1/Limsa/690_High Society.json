@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003282,
+          "Position": {
+            "X": -3.03656,
+            "Y": 48.168007,
+            "Z": -261.70752
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131094
+            }
+          ]
+        },
+        {
+          "DataId": 1003355,
+          "Position": {
+            "X": -60.868286,
+            "Y": 18.000334,
+            "Z": 7.4921875
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003611,
+          "Position": {
+            "X": 9.781006,
+            "Y": 20.999247,
+            "Z": 15.0911255
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 128,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131093
+            }
+          ]
+        },
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

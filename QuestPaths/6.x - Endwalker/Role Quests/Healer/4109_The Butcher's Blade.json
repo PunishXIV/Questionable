@@ -1,0 +1,204 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039402,
+          "Position": {
+            "X": 741.0239,
+            "Y": 70,
+            "Z": 510.61267
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039413,
+          "Position": {
+            "X": 144.73181,
+            "Y": 118.19209,
+            "Z": -729.0303
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011775,
+          "Position": {
+            "X": 577.66077,
+            "Y": 221.4541,
+            "Z": -629.3279
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14009
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011776,
+          "Position": {
+            "X": 591.6074,
+            "Y": 222.24768,
+            "Z": -630.9453
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKBA211_04109_SYSTEM_000_051",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2011777,
+          "Position": {
+            "X": 161.4862,
+            "Y": 118.364136,
+            "Z": -471.70215
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14009
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2011778,
+          "Position": {
+            "X": 146.74597,
+            "Y": 118.119995,
+            "Z": -470.9087
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 143.49226,
+            "Y": 118.1921,
+            "Z": -731.30457
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1020841,
+          "Position": {
+            "X": 146.01355,
+            "Y": 118.1921,
+            "Z": -730.4951
+          },
+          "StopDistance": 5,
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1039414,
+          "Position": {
+            "X": 5.4779663,
+            "Y": 113.40467,
+            "Z": -755.581
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA211_04109_Q2_000_000",
+              "Answer": "TEXT_AKTKBA211_04109_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1039414,
+          "Position": {
+            "X": 5.4779663,
+            "Y": 113.40467,
+            "Z": -755.581
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039410,
+          "Position": {
+            "X": 738.70447,
+            "Y": 70,
+            "Z": 511.0398
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "NextQuestId": 4110
+        }
+      ]
+    }
+  ]
+}

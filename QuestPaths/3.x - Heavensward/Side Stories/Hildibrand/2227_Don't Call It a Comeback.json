@@ -1,0 +1,119 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016604,
+          "Position": {
+            "X": -222.24768,
+            "Y": 88.525505,
+            "Z": -582.8794
+          },
+          "StopDistance": 7,
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016629,
+          "Position": {
+            "X": 409.9336,
+            "Y": 166.24477,
+            "Z": -448.661
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016612,
+          "Position": {
+            "X": 757.83923,
+            "Y": 186.03809,
+            "Z": -538.26196
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 789.0687,
+            "Y": 186.03352,
+            "Z": -529.4571
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            5536
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2006763,
+          "Position": {
+            "X": 789.2728,
+            "Y": 186.44995,
+            "Z": -529.3507
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1016617,
+          "Position": {
+            "X": 790.3716,
+            "Y": 186.03076,
+            "Z": -527.0314
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016619,
+          "Position": {
+            "X": -66.84979,
+            "Y": 8.05915,
+            "Z": 9.506287
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "NextQuestId": 2228
+        }
+      ]
+    }
+  ]
+}

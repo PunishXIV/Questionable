@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051396,
+          "Position": {
+            "X": -346.7918,
+            "Y": 9.519508,
+            "Z": 18.20398
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -306.07123,
+            "Y": 10.014936,
+            "Z": 1.7894125
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1049242,
+          "Position": {
+            "X": -303.7309,
+            "Y": 10.014902,
+            "Z": 1.7241821
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 292.01248,
+            "Y": 51.401478,
+            "Z": 200.04631
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Solution Nine] Residential Sector",
+            "[Solution Nine] Neon Stein"
+          ]
+        },
+        {
+          "DataId": 1048081,
+          "Position": {
+            "X": 292.16443,
+            "Y": 51.401485,
+            "Z": 202.65503
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051396,
+          "Position": {
+            "X": -346.7918,
+            "Y": 9.519508,
+            "Z": 18.20398
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Residential Sector"
+          ]
+        }
+      ]
+    }
+  ]
+}

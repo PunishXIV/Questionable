@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1007724,
+          "Position": {
+            "X": 1.0223389,
+            "Y": -1.9957249,
+            "Z": -45.79236
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008595,
+          "Position": {
+            "X": 79.60632,
+            "Y": 46.311092,
+            "Z": -251.69757
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002058,
+          "Position": {
+            "X": 59.616943,
+            "Y": 45.157562,
+            "Z": -215.89996
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008597,
+          "Position": {
+            "X": 57.66382,
+            "Y": 44.999996,
+            "Z": -220.93542
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

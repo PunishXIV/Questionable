@@ -1,0 +1,197 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020020,
+          "Position": {
+            "X": 397.75684,
+            "Y": 72.835175,
+            "Z": -97.06268
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 417.0395,
+            "Y": 68.028534,
+            "Z": -109.489944
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 2007838,
+          "Position": {
+            "X": 418.4176,
+            "Y": 68.0094,
+            "Z": -135.4544
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020022,
+          "Position": {
+            "X": 418.0514,
+            "Y": 68.0285,
+            "Z": -133.89801
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1019316,
+          "Position": {
+            "X": 434.89734,
+            "Y": 68.02076,
+            "Z": -125.01721
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2733
+        },
+        {
+          "DataId": 1019313,
+          "Position": {
+            "X": 465.26282,
+            "Y": 58.52148,
+            "Z": -171.09949
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2730
+        },
+        {
+          "DataId": 1020024,
+          "Position": {
+            "X": 534.2335,
+            "Y": 84.80294,
+            "Z": 111.13135
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020282,
+          "Position": {
+            "X": 498.83264,
+            "Y": 78.04988,
+            "Z": 147.23425
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Snipe",
+          "Comment": "Snipe soldiers"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2007835,
+          "Position": {
+            "X": 535.2406,
+            "Y": 54.48987,
+            "Z": 237.04883
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Snipe",
+          "Comment": "Snipe soldiers"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1020025,
+          "Position": {
+            "X": 303.60876,
+            "Y": 16.701138,
+            "Z": 584.71045
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2007915,
+          "Position": {
+            "X": 329.67102,
+            "Y": 32.97461,
+            "Z": 603.2959
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Snipe",
+          "Comment": "Snipe soldiers"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1020025,
+          "Position": {
+            "X": 303.60876,
+            "Y": 16.701138,
+            "Z": 584.71045
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020283,
+          "Position": {
+            "X": 406.27136,
+            "Y": 14.6418705,
+            "Z": 626.1234
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

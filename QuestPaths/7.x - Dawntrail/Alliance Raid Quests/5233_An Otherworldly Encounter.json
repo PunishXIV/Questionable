@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051950,
+          "Position": {
+            "X": -15.335327,
+            "Y": -5.9003114E-09,
+            "Z": 31.3573
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1052166,
+          "Position": {
+            "X": 567.6814,
+            "Y": -131.41925,
+            "Z": 610.1013
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014454,
+          "Position": {
+            "X": -525.8412,
+            "Y": -158.37347,
+            "Z": 541.46643
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051954,
+          "Position": {
+            "X": -531.57855,
+            "Y": -152.53433,
+            "Z": 645.777
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 1015,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051956,
+          "Position": {
+            "X": 1.8463135,
+            "Y": 41.99997,
+            "Z": -2.456726
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1264,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5234
+        }
+      ]
+    }
+  ]
+}

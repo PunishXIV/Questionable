@@ -1,0 +1,158 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042264,
+          "Position": {
+            "X": 124.22363,
+            "Y": 19.32629,
+            "Z": -617.42584
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012870,
+          "Position": {
+            "X": 154.46704,
+            "Y": -26.29132,
+            "Z": -437.46094
+          },
+          "StopDistance": 1,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "TargetTerritoryId": 1061
+        },
+        {
+          "DataId": 1045968,
+          "Position": {
+            "X": 5.661072,
+            "Y": 0.099999696,
+            "Z": 5.8441772
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045971,
+          "Position": {
+            "X": 1.3580322,
+            "Y": 0.099999696,
+            "Z": 27.237305
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKEA301_04791_Q1_100_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013455,
+          "Position": {
+            "X": -510.1244,
+            "Y": 128.64868,
+            "Z": 607.9956
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012870,
+          "Position": {
+            "X": 154.46704,
+            "Y": -26.29132,
+            "Z": -437.46094
+          },
+          "StopDistance": 1,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "TargetTerritoryId": 1061
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1045974,
+          "Position": {
+            "X": 2.3651123,
+            "Y": 0.099999696,
+            "Z": -11.215393
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1061,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 1061,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 962,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045982,
+          "Position": {
+            "X": 945.2506,
+            "Y": -950,
+            "Z": -940.55084
+          },
+          "TerritoryId": 1182,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4792
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051043,
+          "Position": {
+            "X": -276.99707,
+            "Y": 1.9748375E-05,
+            "Z": 71.97681
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051044,
+          "Position": {
+            "X": -307.6372,
+            "Y": 3,
+            "Z": -50.8584
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1051045,
+          "Position": {
+            "X": -49.42401,
+            "Y": -2.7939677E-09,
+            "Z": 16.647583
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "AethernetShortcut": [
+            "[Tuliyollal] Dirigible Landing",
+            "[Tuliyollal] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051043,
+          "Position": {
+            "X": -276.99707,
+            "Y": 1.9748375E-05,
+            "Z": 71.97681
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The Resplendent Quarter"
+          ]
+        }
+      ]
+    }
+  ]
+}

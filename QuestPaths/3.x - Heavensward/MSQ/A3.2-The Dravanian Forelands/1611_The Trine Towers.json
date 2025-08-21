@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012619,
+          "Position": {
+            "X": 167.25415,
+            "Y": -63.618378,
+            "Z": -9.2317505
+          },
+          "StopDistance": 7,
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012622,
+          "Position": {
+            "X": -178.97314,
+            "Y": -105.59011,
+            "Z": 508.812
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -245.28185,
+            "Y": -84.46064,
+            "Z": 450.64175
+          },
+          "StopDistance": 1,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4364,
+            4366,
+            4369
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -282.51865,
+            "Y": -63.319576,
+            "Z": 333.95447
+          },
+          "StopDistance": 1,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4364,
+            4366,
+            4369
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012625,
+          "Position": {
+            "X": -212.72601,
+            "Y": -37.574783,
+            "Z": 185.16821
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

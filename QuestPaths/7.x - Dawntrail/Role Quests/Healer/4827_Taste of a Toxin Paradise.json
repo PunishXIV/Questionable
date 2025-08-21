@@ -1,0 +1,153 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046290,
+          "Position": {
+            "X": -114.091736,
+            "Y": 20,
+            "Z": 111.436646
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046310,
+          "Position": {
+            "X": 268.39087,
+            "Y": -25,
+            "Z": 264.05737
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046311,
+          "Position": {
+            "X": 384.60352,
+            "Y": 0.14576934,
+            "Z": 74.32666
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046314,
+          "Position": {
+            "X": 457.60278,
+            "Y": 4.1072555,
+            "Z": 103.89868
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1046313,
+          "Position": {
+            "X": 432.6084,
+            "Y": 8.108173,
+            "Z": 133.80627
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1046312,
+          "Position": {
+            "X": 413.0464,
+            "Y": 3.616333,
+            "Z": 113.969604
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046316,
+          "Position": {
+            "X": 415.8236,
+            "Y": 8.12099,
+            "Z": 40.72632
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046290,
+          "Position": {
+            "X": -114.091736,
+            "Y": 20,
+            "Z": 111.436646
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "NextQuestId": 4828
+        }
+      ]
+    }
+  ]
+}

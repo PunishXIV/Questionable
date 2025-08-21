@@ -1,0 +1,241 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.5000024,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.5000024,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021271,
+          "Position": {
+            "X": -87.174866,
+            "Y": 1.9499679,
+            "Z": 57.358643
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 64.84746,
+            "Y": 7.9209166,
+            "Z": -37.27604
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false,
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021379,
+          "Position": {
+            "X": 81.01013,
+            "Y": 8,
+            "Z": -73.624756
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1021378,
+          "Position": {
+            "X": 97.45935,
+            "Y": 7.9999995,
+            "Z": -11.947815
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021380,
+          "Position": {
+            "X": 105.6687,
+            "Y": 8,
+            "Z": 4.714966
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021381,
+          "Position": {
+            "X": 138.53662,
+            "Y": 4,
+            "Z": 51.377075
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_JOBPLD680_02574_SYSTEM_000_084"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 165.3437,
+            "Y": 4.014847,
+            "Z": 46.210514
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                141
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1021382,
+          "Position": {
+            "X": 282.39868,
+            "Y": 15.414177,
+            "Z": 513.1456
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7237,
+            7238
+          ],
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBPLD680_02574_Q1_000_000",
+              "Answer": "TEXT_JOBPLD680_02574_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1021383,
+          "Position": {
+            "X": 284.71802,
+            "Y": 15.770843,
+            "Z": 512.5658
+          },
+          "StopDistance": 7,
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.5000024,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "NextQuestId": 2575
+        }
+      ]
+    }
+  ]
+}

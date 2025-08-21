@@ -1,0 +1,105 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1005552,
+            "Position": {
+                "X": 85.618286,
+                "Y": 15.28719,
+                "Z": -355.70312
+            },
+            "TerritoryId": 146,
+            "InteractionType": "AcceptQuest",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Steps": [
+          {
+            "DataId": 2003024,
+            "Position": {
+                "X": 345.23523,
+                "Y": 8.590759,
+                "Z": -24.399231
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Interact",
+            "Fly": true
+          },
+          {
+            "DataId": 2003027,
+            "Position": {
+                "X": 501.0299,
+                "Y": 7.614197,
+                "Z": -144.39618
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Interact"
+          },
+          {
+            "Position": {
+                "X": 534.8477,
+                "Y": 7.5996237,
+                "Z": -156.95335
+            },
+            "TerritoryId": 146,
+            "InteractionType": "WalkTo"
+          },
+          {
+            "DataId": 2003030,
+            "Position": {
+                "X": 552.20874,
+                "Y": 7.614197,
+                "Z": -175.18884
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2003031,
+            "Position": {
+                "X": 558.5259,
+                "Y": 7.583679,
+                "Z": -166.79645
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2003029,
+            "Position": {
+                "X": 546.68494,
+                "Y": 10.543945,
+                "Z": -141.86316
+            },
+            "TerritoryId": 146,
+            "InteractionType": "Interact"
+          }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+          {
+            "DataId": 1005552,
+            "Position": {
+                "X": 85.618286,
+                "Y": 15.28719,
+                "Z": -355.70312
+            },
+            "TerritoryId": 146,
+            "InteractionType": "CompleteQuest",
+            "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+            "Fly": true
+          }
+        ]
+      }
+    ]
+  }
+  

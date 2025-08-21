@@ -1,0 +1,145 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 401,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31366,
+          "Locations": [
+            {
+              "Position": {
+                "X": 529.0662,
+                "Y": -110.3256,
+                "Z": 434.3149
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 135
+            }
+          ]
+        },
+        {
+          "DataId": 31367,
+          "Locations": [
+            {
+              "Position": {
+                "X": 541.8505,
+                "Y": -111.128,
+                "Z": 452.5471
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 40
+            },
+            {
+              "Position": {
+                "X": 517.9747,
+                "Y": -109.2984,
+                "Z": 417.9554
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 55
+            },
+            {
+              "Position": {
+                "X": 499.3676,
+                "Y": -108.7323,
+                "Z": 410.8949
+              },
+              "MinimumAngle": -5,
+              "MaximumAngle": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31365,
+          "Locations": [
+            {
+              "Position": {
+                "X": 625.9688,
+                "Y": -115.6856,
+                "Z": 344.535
+              },
+              "MinimumAngle": 125,
+              "MaximumAngle": 185
+            },
+            {
+              "Position": {
+                "X": 678.5617,
+                "Y": -122.8687,
+                "Z": 356.7407
+              },
+              "MinimumAngle": 190,
+              "MaximumAngle": 290
+            },
+            {
+              "Position": {
+                "X": 644.1035,
+                "Y": -122.3688,
+                "Z": 334.0371
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 235
+            }
+          ]
+        },
+        {
+          "DataId": 31364,
+          "Locations": [
+            {
+              "Position": {
+                "X": 661.9959,
+                "Y": -122.6855,
+                "Z": 333.0707
+              },
+              "MinimumAngle": 140,
+              "MaximumAngle": 260
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31369,
+          "Locations": [
+            {
+              "Position": {
+                "X": 730.9626,
+                "Y": -96.64706,
+                "Z": 449.485
+              },
+              "MinimumAngle": 45,
+              "MaximumAngle": 115
+            }
+          ]
+        },
+        {
+          "DataId": 31368,
+          "Locations": [
+            {
+              "Position": {
+                "X": 727.2908,
+                "Y": -95.47571,
+                "Z": 460.3798
+              },
+              "MinimumAngle": 25,
+              "MaximumAngle": 180
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

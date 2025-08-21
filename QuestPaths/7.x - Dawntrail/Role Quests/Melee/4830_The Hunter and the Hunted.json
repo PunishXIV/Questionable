@@ -1,0 +1,184 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048295,
+          "Position": {
+            "X": -74.143616,
+            "Y": -19.32829,
+            "Z": 198.68762
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019038,
+          "Position": {
+            "X": -55.222473,
+            "Y": -2.9000003,
+            "Z": -65.65961
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1019003,
+          "Position": {
+            "X": -41.24518,
+            "Y": -3.0000017,
+            "Z": -63.09613
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019069,
+          "Position": {
+            "X": -62.119568,
+            "Y": 8,
+            "Z": -56.62628
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051620,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997255,
+            "Z": -52.048523
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048296,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013689,
+          "Position": {
+            "X": 29.251465,
+            "Y": 5.935669,
+            "Z": -129.62543
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] Rakuza District"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2013690,
+          "Position": {
+            "X": 14.114502,
+            "Y": 3.982544,
+            "Z": 43.411865
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Rakuza District",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048296,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "NextQuestId": 4831
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050806,
+          "Position": {
+            "X": -151.99518,
+            "Y": 34.94368,
+            "Z": -581.23145
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -151.99518,
+                  "Y": 34.94368,
+                  "Z": -581.23145
+                },
+                "TerritoryId": 1191,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050802,
+          "Position": {
+            "X": -153.09375,
+            "Y": 34.946026,
+            "Z": -581.0178
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050807,
+          "Position": {
+            "X": -165.97241,
+            "Y": 25.979595,
+            "Z": -502.80005
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZF202_05161_Q1_000_001",
+              "Answer": "TEXT_KINGZF202_05161_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014035,
+          "Position": {
+            "X": -61.478638,
+            "Y": 35.355103,
+            "Z": -294.75854
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014036,
+          "Position": {
+            "X": -99.53461,
+            "Y": 36.9115,
+            "Z": -233.47827
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014037,
+          "Position": {
+            "X": -38.31543,
+            "Y": 37.979614,
+            "Z": -221.5763
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050802,
+          "Position": {
+            "X": -153.09375,
+            "Y": 34.946026,
+            "Z": -581.0178
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "Fly": true,
+          "NextQuestId": 5162
+        }
+      ]
+    }
+  ]
+}

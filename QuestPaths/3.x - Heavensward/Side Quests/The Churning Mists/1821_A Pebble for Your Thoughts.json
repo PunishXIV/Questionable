@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014424,
+          "Position": {
+            "X": 357.47314,
+            "Y": 2.7662196,
+            "Z": 638.3002
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014425,
+          "Position": {
+            "X": 475.7915,
+            "Y": -4.4960318,
+            "Z": 722.13306
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014427,
+          "Position": {
+            "X": 474.6012,
+            "Y": -4.4750566,
+            "Z": 721.5532
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 769.16034,
+            "Y": -9.491294,
+            "Z": 286.96594
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 769.16034,
+            "Y": -9.491294,
+            "Z": 286.96594
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4039
+          ]
+        },
+        {
+          "DataId": 1014426,
+          "Position": {
+            "X": 770.2295,
+            "Y": -9.491293,
+            "Z": 287.95288
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014427,
+          "Position": {
+            "X": 474.6012,
+            "Y": -4.4750566,
+            "Z": 721.5532
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1824
+        }
+      ]
+    }
+  ]
+}

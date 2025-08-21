@@ -1,0 +1,106 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017724,
+          "Position": {
+            "X": 601.9531,
+            "Y": 331.81714,
+            "Z": -308.8579
+          },
+          "StopDistance": 7,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012380,
+          "Position": {
+            "X": 124.46777,
+            "Y": 24.458836,
+            "Z": 0.47296143
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016818,
+          "Position": {
+            "X": 109.72754,
+            "Y": 24.384384,
+            "Z": -4.715088
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 418,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 215.65454,
+            "Y": 222.1,
+            "Z": 345.1806
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Alberic"
+        },
+        {
+          "DataId": 1006748,
+          "Position": {
+            "X": 217.88354,
+            "Y": 222,
+            "Z": 345.3269
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029861,
+          "Position": {
+            "X": -753.78046,
+            "Y": 123.728714,
+            "Z": 206.43921
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Churning Mists - Zenith"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009923,
+          "Position": {
+            "X": -114.0307,
+            "Y": 145.09802,
+            "Z": -553.2159
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029862,
+          "Position": {
+            "X": -93.27844,
+            "Y": 137.46214,
+            "Z": -534.44727
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029863,
+          "Position": {
+            "X": 746.6697,
+            "Y": 69.99995,
+            "Z": 533.135
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 213.22748,
+            "Y": 222.08781,
+            "Z": 342.82468
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1006748,
+          "Position": {
+            "X": 217.88354,
+            "Y": 222,
+            "Z": 345.3269
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

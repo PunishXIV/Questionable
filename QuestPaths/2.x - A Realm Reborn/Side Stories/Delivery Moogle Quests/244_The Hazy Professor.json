@@ -1,0 +1,230 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006493,
+          "Position": {
+            "X": -437.67456,
+            "Y": -55.694504,
+            "Z": 100.87732
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004864,
+          "Position": {
+            "X": -381.70447,
+            "Y": -58.42682,
+            "Z": 167.74243
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 2001487
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -393.1081,
+            "Y": -57.326912,
+            "Z": 155.15263
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 2004877,
+          "Position": {
+            "X": -299.48883,
+            "Y": -40.665344,
+            "Z": 7.095398
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -422.0606,
+            "Y": -55.802967,
+            "Z": 107.502235
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+
+          "DataId": 1006493,
+          "Position": {
+            "X": -437.67456,
+            "Y": -55.694504,
+            "Z": 100.87732
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2004866,
+          "Position": {
+            "X": -382.22327,
+            "Y": -58.42682,
+            "Z": 168.65796
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -393.1081,
+            "Y": -57.326912,
+            "Z": 155.15263
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -1.83288,
+            "Y": -17.544205,
+            "Z": 23.35826
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006495,
+          "Position": {
+            "X": -2.2736206,
+            "Y": -17.544205,
+            "Z": 24.734863
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -1.4535733,
+            "Y": -8.0592985,
+            "Z": 1.7329537
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 435.9292,
+            "Y": 9.87471,
+            "Z": 143.03693
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2004868,
+          "Position": {
+            "X": 438.6206,
+            "Y": 12.436096,
+            "Z": 137.6211
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 2001489
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2004869,
+          "Position": {
+            "X": 438.6206,
+            "Y": 12.436096,
+            "Z": 137.6211
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 2001488
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010377,
+          "Position": {
+            "X": -382.83362,
+            "Y": -59.300003,
+            "Z": 169.75659
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "NextQuestId": 240
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032227,
+          "Position": {
+            "X": 665.8884,
+            "Y": 297.47797,
+            "Z": -160.57074
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036045,
+          "Position": {
+            "X": 10.0251465,
+            "Y": 82.83513,
+            "Z": -53.60504
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eulmore"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032227,
+          "Position": {
+            "X": 665.8884,
+            "Y": 297.47797,
+            "Z": -160.57074
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

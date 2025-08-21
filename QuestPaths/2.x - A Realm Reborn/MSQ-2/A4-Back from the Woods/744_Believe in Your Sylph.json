@@ -1,0 +1,59 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 190.6642,
+            "Y": 8.673417,
+            "Z": 187.67012
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "lookout"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    }
+  ]
+}

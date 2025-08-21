@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020376,
+          "Position": {
+            "X": 95.44519,
+            "Y": 118.15579,
+            "Z": -758.053
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020375,
+          "Position": {
+            "X": 78.87378,
+            "Y": 118.26358,
+            "Z": -779.69025
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020374,
+          "Position": {
+            "X": 89.21948,
+            "Y": 119.4052,
+            "Z": -684.7792
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020379,
+          "Position": {
+            "X": 85.40466,
+            "Y": 118.15579,
+            "Z": -719.96643
+          },
+          "StopDistance": 5,
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

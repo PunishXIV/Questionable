@@ -1,0 +1,145 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016088,
+          "Position": {
+            "X": -818.143,
+            "Y": -129.93259,
+            "Z": -414.02307
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -776.0281,
+            "Y": -133.35559,
+            "Z": -414.32825
+          },
+          "StopDistance": 3,
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -776.0281,
+                  "Y": -133.35559,
+                  "Z": -414.32825
+                },
+                "MaximumDistance": 50,
+                "TerritoryId": 401
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1016093,
+          "Position": {
+            "X": -776.0281,
+            "Y": -133.35559,
+            "Z": -414.32825
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016242,
+          "Position": {
+            "X": 284.19922,
+            "Y": 28.574171,
+            "Z": -636.3775
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Action",
+          "Action": "Buffet (Sanuwa)",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016378,
+          "Position": {
+            "X": 338.4298,
+            "Y": 31.483738,
+            "Z": -562.1882
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Action",
+          "Action": "Buffet (Sanuwa)",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1016379,
+          "Position": {
+            "X": 501.27405,
+            "Y": 112.648964,
+            "Z": -182.97095
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Action",
+          "Action": "Buffet (Sanuwa)",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016088,
+          "Position": {
+            "X": -818.143,
+            "Y": -129.93259,
+            "Z": -414.02307
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

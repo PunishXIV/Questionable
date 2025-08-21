@@ -1,0 +1,162 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DataId": 1008757,
+          "Position": {
+            "X": -422.5376,
+            "Y": 23.113976,
+            "Z": -367.7882
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true,
+          "DataId": 1009305,
+          "Position": {
+            "X": 562.4321,
+            "Y": 17.654663,
+            "Z": 421.7135
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009307,
+          "Position": {
+            "X": 498.89368,
+            "Y": 10.079935,
+            "Z": 418.265
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB301_01438_Q1_000_000",
+              "Answer": "TEXT_CHRHDB301_01438_A1_000_030"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB301_01438_Q2_000_000",
+              "Answer": "TEXT_CHRHDB301_01438_A2_000_030"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 1009310,
+          "Position": {
+            "X": 471.18323,
+            "Y": 9.96334,
+            "Z": 794.6135
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "DataId": 1009308,
+          "Position": {
+            "X": 560.32654,
+            "Y": 17.707417,
+            "Z": 421.01147
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009311,
+          "Position": {
+            "X": 531.2123,
+            "Y": 17.448051,
+            "Z": 454.1847
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 582.44116,
+            "Y": 14.587065,
+            "Z": 394.23407
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009317,
+          "Position": {
+            "X": 583.88635,
+            "Y": 14.587067,
+            "Z": 394.70508
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2004317,
+          "Position": {
+            "X": 515.98376,
+            "Y": 9.384277,
+            "Z": 525.81055
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1439
+        }
+      ]
+    }
+  ]
+}

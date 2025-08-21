@@ -1,0 +1,120 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012615,
+          "Position": {
+            "X": 468.77234,
+            "Y": -49.89133,
+            "Z": 25.589355
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1771
+        },
+        {
+          "Position": {
+            "X": 634.0371,
+            "Y": -40.05916,
+            "Z": -296.1493
+          },
+          "StopDistance": 1,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4367,
+            4368
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006197,
+          "Position": {
+            "X": 433.52405,
+            "Y": -47.776062,
+            "Z": -286.24402
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818070
+        },
+        {
+          "Position": {
+            "X": 234.626,
+            "Y": -56.601433,
+            "Z": -258.33804
+          },
+          "StopDistance": 1,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4364,
+            4365
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2005489,
+          "Position": {
+            "X": 169.604,
+            "Y": -63.24872,
+            "Z": -11.825806
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNA309_01610_A1_000_000",
+              "Answer": "TEXT_HEAVNA309_01610_Q1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

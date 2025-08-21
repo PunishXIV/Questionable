@@ -1,0 +1,117 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050659,
+          "Position": {
+            "X": -215.198,
+            "Y": 36.994804,
+            "Z": -497.85614
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -215.198,
+                  "Y": 36.994804,
+                  "Z": -497.85614
+                },
+                "TerritoryId": 1191,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050659,
+          "Position": {
+            "X": -215.198,
+            "Y": 36.994804,
+            "Z": -497.85614
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050659,
+          "Position": {
+            "X": -185.05022,
+            "Y": 30.989729,
+            "Z": -513.96875
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050659,
+          "Position": {
+            "X": -196.74313,
+            "Y": 34.982788,
+            "Z": -643.43665
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1050659,
+          "Position": {
+            "X": -165.5087,
+            "Y": 38.967262,
+            "Z": -706.4246
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050659,
+          "Position": {
+            "X": -215.198,
+            "Y": 36.994804,
+            "Z": -497.85614
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017171,
+                    "Position": {
+                        "X": -335.56116,
+                        "Y": 59.003433,
+                        "Z": 313.98486
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017379,
+                    "Position": {
+                        "X": -183.0625,
+                        "Y": 182.06508,
+                        "Z": -759.21265
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "TerritoryId": 400,
+                    "InteractionType": "Craft",
+                    "ItemId": 15732,
+                    "ItemCount": 2,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1017380,
+                    "Position": {
+                        "X": -171.74036,
+                        "Y": 178.63443,
+                        "Z": -772.9458
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1017171,
+                    "Position": {
+                        "X": -335.56116,
+                        "Y": 59.003433,
+                        "Z": 313.98486
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046661,
+          "Position": {
+            "X": 609.5215,
+            "Y": 119.490036,
+            "Z": 187.48755
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046662,
+          "Position": {
+            "X": 380.14795,
+            "Y": 110.47756,
+            "Z": 187.18237
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013942,
+          "Position": {
+            "X": 130.44934,
+            "Y": 115.15979,
+            "Z": 522.9114
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818427
+        },
+        {
+          "Position": {
+            "X": 35.692627,
+            "Y": 109.2,
+            "Z": 490.56314
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": -46.322823,
+            "Y": 109.2,
+            "Z": 475.24792
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 2013619,
+          "Position": {
+            "X": -96.33026,
+            "Y": 109.57495,
+            "Z": 488.30383
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "UseItem",
+          "ItemId": 2003484
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013620,
+          "Position": {
+            "X": -61.661743,
+            "Y": 109.57495,
+            "Z": 390.6156
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "UseItem",
+          "ItemId": 2003484
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046663,
+          "Position": {
+            "X": -3.1586914,
+            "Y": 109.20001,
+            "Z": 287.95288
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046664,
+          "Position": {
+            "X": 519.06604,
+            "Y": 115.3514,
+            "Z": 201.86157
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    }
+  ]
+}

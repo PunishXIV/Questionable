@@ -1,0 +1,58 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031104,
+          "Position": {
+            "X": 41.397705,
+            "Y": 1.7633697,
+            "Z": 268.635
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010499,
+          "Position": {
+            "X": 655.1765,
+            "Y": 57.724854,
+            "Z": -436.51483
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031104,
+          "Position": {
+            "X": 41.397705,
+            "Y": 1.7633697,
+            "Z": 268.635
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043515,
+          "Position": {
+            "X": 303.39502,
+            "Y": 481.99442,
+            "Z": 152.81909
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANALL310_04787_Q1_000_007",
+              "Answer": "TEXT_BANALL310_04787_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045899,
+          "Position": {
+            "X": -164.99585,
+            "Y": -49.302116,
+            "Z": -284.22986
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044402,
+          "Position": {
+            "X": -193.89642,
+            "Y": -49.19972,
+            "Z": -262.13477
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042300,
+          "Position": {
+            "X": -76.82922,
+            "Y": 39.977543,
+            "Z": 309.98706
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1045901,
+          "Position": {
+            "X": -79.6369,
+            "Y": 39.981316,
+            "Z": 311.78748
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042300,
+          "Position": {
+            "X": -76.82922,
+            "Y": 39.977543,
+            "Z": 309.98706
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANALL310_04787_Q3_000_112",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANALL310_04787_Q4_000_116",
+              "Answer": "TEXT_BANALL310_04787_A4_000_003"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANALL310_04787_Q5_000_120",
+              "Answer": "TEXT_BANALL310_04787_A5_000_002"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANALL310_04787_Q6_000_124",
+              "Answer": "TEXT_BANALL310_04787_A6_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045901,
+          "Position": {
+            "X": -79.6369,
+            "Y": 39.981316,
+            "Z": 311.78748
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

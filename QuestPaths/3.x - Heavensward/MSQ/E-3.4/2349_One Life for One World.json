@@ -1,0 +1,72 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017762,
+          "Position": {
+            "X": -106.9505,
+            "Y": 21.88654,
+            "Z": -478.8739
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1017751,
+          "Position": {
+            "X": -169.35992,
+            "Y": 27.48653,
+            "Z": -397.1161
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017764,
+          "Position": {
+            "X": 4.2266846,
+            "Y": 0.91341394,
+            "Z": -9.720032
+          },
+          "TerritoryId": 146,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017767,
+          "Position": {
+            "X": 1.3274536,
+            "Y": 0.90783566,
+            "Z": -3.4638672
+          },
+          "StopDistance": 5,
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

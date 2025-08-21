@@ -1,0 +1,139 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 398,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31413,
+          "Locations": [
+            {
+              "Position": {
+                "X": -513.1596,
+                "Y": -85.63485,
+                "Z": 434.7382
+              }
+            },
+            {
+              "Position": {
+                "X": -562.0517,
+                "Y": -89.33559,
+                "Z": 445.0961
+              }
+            },
+            {
+              "Position": {
+                "X": -523.4441,
+                "Y": -81.67991,
+                "Z": 408.9826
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31412,
+          "Locations": [
+            {
+              "Position": {
+                "X": -553.9171,
+                "Y": -84.75874,
+                "Z": 419.2539
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31416,
+          "Locations": [
+            {
+              "Position": {
+                "X": -569.6527,
+                "Y": -96.50298,
+                "Z": 547.1465
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31417,
+          "Locations": [
+            {
+              "Position": {
+                "X": -623.1743,
+                "Y": -101.8206,
+                "Z": 574.6146
+              }
+            },
+            {
+              "Position": {
+                "X": -562.2545,
+                "Y": -95.6534,
+                "Z": 545.6004
+              }
+            },
+            {
+              "Position": {
+                "X": -601.669,
+                "Y": -100.0121,
+                "Z": 559.5313
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31415,
+          "Locations": [
+            {
+              "Position": {
+                "X": -680.4672,
+                "Y": -103.4997,
+                "Z": 624.0101
+              }
+            },
+            {
+              "Position": {
+                "X": -700.5361,
+                "Y": -107.5581,
+                "Z": 597.0253
+              }
+            },
+            {
+              "Position": {
+                "X": -715.8123,
+                "Y": -105.2011,
+                "Z": 622.3116
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31414,
+          "Locations": [
+            {
+              "Position": {
+                "X": -714.2946,
+                "Y": -113.8825,
+                "Z": 557.3662
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

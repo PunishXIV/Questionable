@@ -1,0 +1,151 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012060,
+          "Position": {
+            "X": -358.66333,
+            "Y": -157.99367,
+            "Z": 761.01306
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -343.27975,
+            "Y": -169.12419,
+            "Z": 800.5701
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -325.61444,
+            "Y": -184.8876,
+            "Z": 806.3595
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1013498,
+          "Position": {
+            "X": -293.04956,
+            "Y": -183.73486,
+            "Z": 812.6802
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "psych",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -368.08698,
+            "Y": -185.05266,
+            "Z": 792.836
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1012360,
+          "Position": {
+            "X": -337.75842,
+            "Y": -186.07346,
+            "Z": 618.55493
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "psych",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1012359,
+          "Position": {
+            "X": -260.91406,
+            "Y": -184.91077,
+            "Z": 705.4092
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "psych",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012060,
+          "Position": {
+            "X": -358.66333,
+            "Y": -157.99367,
+            "Z": 761.01306
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

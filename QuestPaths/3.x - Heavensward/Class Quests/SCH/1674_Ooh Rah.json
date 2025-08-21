@@ -1,0 +1,128 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013138,
+          "Position": {
+            "X": 404.19617,
+            "Y": -2.6082127,
+            "Z": 212.1156
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013138,
+          "Position": {
+            "X": 404.19617,
+            "Y": -2.6082127,
+            "Z": 212.1156
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_JOBSCH560_01674_SYSTEM_100_023"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013138,
+          "Position": {
+            "X": 404.19617,
+            "Y": -2.6082127,
+            "Z": 212.1156
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_JOBSCH560_01674_SYSTEM_100_023"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013139,
+          "Position": {
+            "X": 700.9536,
+            "Y": -0.50953937,
+            "Z": 133.28748
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterEmote",
+          "KillEnemyDataIds": [
+            4400,
+            4401
+          ],
+          "Emote": "laugh",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013138,
+          "Position": {
+            "X": 404.19617,
+            "Y": -2.6082127,
+            "Z": 212.1156
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1675
+        }
+      ]
+    }
+  ]
+}

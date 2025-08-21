@@ -1,0 +1,176 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020234,
+          "Position": {
+            "X": 336.93433,
+            "Y": 31.12357,
+            "Z": 203.479
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019286,
+          "Position": {
+            "X": 233.60034,
+            "Y": 5.2518563,
+            "Z": -425.3758
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - House of the Fierce",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 17 0    0 0    0 64",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1019287,
+          "Position": {
+            "X": 196.55139,
+            "Y": 5.1694055,
+            "Z": -410.66608
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "$": "QW: 17 0    0 0    0 64 -> QW: 33 16    0 0    0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1019285,
+          "Position": {
+            "X": 195.63586,
+            "Y": 5.16971,
+            "Z": -437.2473
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023083,
+          "Position": {
+            "X": 174.73096,
+            "Y": 5.196835,
+            "Z": -432.578
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 318.10266,
+            "Y": 24.931192,
+            "Z": -494.28577
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1020237,
+          "Position": {
+            "X": -74.784485,
+            "Y": 53.217514,
+            "Z": -522.301
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020238,
+          "Position": {
+            "X": -156.23712,
+            "Y": 53.217514,
+            "Z": -621.912
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2007931,
+          "Position": {
+            "X": -246.26538,
+            "Y": 53.20813,
+            "Z": -515.95337
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020239,
+          "Position": {
+            "X": -291.43213,
+            "Y": 53.21751,
+            "Z": -614.313
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

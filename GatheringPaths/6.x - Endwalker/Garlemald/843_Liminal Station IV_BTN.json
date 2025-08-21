@@ -1,0 +1,139 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 958,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34004,
+          "Locations": [
+            {
+              "Position": {
+                "X": 121.8413,
+                "Y": -6.651628,
+                "Z": 246.5624
+              }
+            },
+            {
+              "Position": {
+                "X": 118.1294,
+                "Y": -6.603673,
+                "Z": 242.6448
+              }
+            },
+            {
+              "Position": {
+                "X": 104.2039,
+                "Y": -10.52542,
+                "Z": 266.5598
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34003,
+          "Locations": [
+            {
+              "Position": {
+                "X": 98.86316,
+                "Y": -9.970013,
+                "Z": 257.6278
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34005,
+          "Locations": [
+            {
+              "Position": {
+                "X": 215.6167,
+                "Y": 1.599456,
+                "Z": 144.3346
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34006,
+          "Locations": [
+            {
+              "Position": {
+                "X": 215.9073,
+                "Y": 1.613284,
+                "Z": 136.584
+              }
+            },
+            {
+              "Position": {
+                "X": 191.0582,
+                "Y": 2.43164,
+                "Z": 147.7836
+              }
+            },
+            {
+              "Position": {
+                "X": 185.1617,
+                "Y": 2.402756,
+                "Z": 138.276
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34007,
+          "Locations": [
+            {
+              "Position": {
+                "X": 264.295,
+                "Y": -11.52659,
+                "Z": 306.4464
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34008,
+          "Locations": [
+            {
+              "Position": {
+                "X": 280.1551,
+                "Y": -11.53278,
+                "Z": 301.5915
+              }
+            },
+            {
+              "Position": {
+                "X": 257.884,
+                "Y": -12.02824,
+                "Z": 296.5428
+              }
+            },
+            {
+              "Position": {
+                "X": 271.8952,
+                "Y": -12.7945,
+                "Z": 320.4683
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035095,
+          "Position": {
+            "X": 63.004395,
+            "Y": 14.005002,
+            "Z": 89.829834
+          },
+          "StopDistance": 7,
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035096,
+          "Position": {
+            "X": 130.84607,
+            "Y": 11.999016,
+            "Z": -82.108826
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBAOZ630_03990_Q1_000_000",
+              "Answer": "TEXT_JOBAOZ630_03990_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019038,
+          "Position": {
+            "X": -55.222473,
+            "Y": -2.9000003,
+            "Z": -65.65961
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] Shiokaze Hostelry"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019069,
+          "Position": {
+            "X": -62.119568,
+            "Y": 8,
+            "Z": -56.62628
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1035099,
+          "Position": {
+            "X": -36.728516,
+            "Y": 14.000002,
+            "Z": -52.170654
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1035096,
+          "Position": {
+            "X": 130.84607,
+            "Y": 11.999016,
+            "Z": -82.108826
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1035103,
+          "Position": {
+            "X": 56.77881,
+            "Y": 4.05,
+            "Z": 92.36279
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1035104,
+          "Position": {
+            "X": 153.42944,
+            "Y": 18.1,
+            "Z": 50.70569
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1035097,
+          "Position": {
+            "X": 151.87305,
+            "Y": 18.1,
+            "Z": 49.484985
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035096,
+          "Position": {
+            "X": 130.84607,
+            "Y": 11.999016,
+            "Z": -82.108826
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "NextQuestId": 3991
+        }
+      ]
+    }
+  ]
+}

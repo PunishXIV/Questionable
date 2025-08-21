@@ -1,0 +1,61 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048541,
+          "Position": {
+            "X": 23.5141,
+            "Y": -14,
+            "Z": 137.40747
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051415,
+          "Position": {
+            "X": -400.351,
+            "Y": 14.029996,
+            "Z": 112.26062
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Residential Sector"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048541,
+          "Position": {
+            "X": 23.5141,
+            "Y": -14,
+            "Z": 137.40747
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    }
+  ]
+}

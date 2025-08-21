@@ -1,0 +1,71 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "TerritoryId": 418,
+                    "InteractionType": "None",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Firmament"
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "InTerritory": [
+                                154
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 1036127,
+                    "Position": {
+                        "X": -116.92993,
+                        "Y": 0,
+                        "Z": -137.31598
+                    },
+                    "TerritoryId": 886,
+                    "InteractionType": "AcceptQuest",
+                    "AethernetShortcut": [
+                        "[Firmament] The Mendicant's Court",
+                        "[Firmament] Western Risensong Quarter"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1036493,
+                    "Position": {
+                        "X": -60.227356,
+                        "Y": -4.146993E-05,
+                        "Z": -16.06781
+                    },
+                    "TerritoryId": 886,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1036494,
+                    "Position": {
+                        "X": -98.77167,
+                        "Y": 0,
+                        "Z": -131.51752
+                    },
+                    "TerritoryId": 886,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

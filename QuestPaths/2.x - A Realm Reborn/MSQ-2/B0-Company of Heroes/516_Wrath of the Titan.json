@@ -1,0 +1,60 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006688,
+          "Position": {
+            "X": 39.29187,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003281,
+          "Position": {
+            "X": 97.520386,
+            "Y": 40.248554,
+            "Z": 81.1322
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006264,
+          "Position": {
+            "X": 710.90247,
+            "Y": 66.027,
+            "Z": -277.66846
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ]
+        }
+      ]
+    }
+  ]
+}

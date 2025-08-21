@@ -1,0 +1,179 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038458,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": 7.2174683
+          },
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038484,
+          "Position": {
+            "X": 442.2522,
+            "Y": 68.02853,
+            "Z": -81.31531
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 442.2522,
+                  "Y": 68.02853,
+                  "Z": -81.31531
+                },
+                "TerritoryId": 614,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038488,
+          "Position": {
+            "X": 476.58496,
+            "Y": 68.02853,
+            "Z": -114.7937
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1038489,
+          "Position": {
+            "X": 427.87805,
+            "Y": 68.02852,
+            "Z": -126.17688
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1038490,
+          "Position": {
+            "X": 443.68652,
+            "Y": 58.724403,
+            "Z": -181.62811
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 625.23627,
+            "Y": 81.04776,
+            "Z": -212.65506
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1038491,
+          "Position": {
+            "X": 626.9779,
+            "Y": 81.0615,
+            "Z": -211.53589
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038491,
+          "Position": {
+            "X": 626.9779,
+            "Y": 81.0615,
+            "Z": -211.53589
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKBA441_04124_SYSTEM_101_121",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038457,
+          "Position": {
+            "X": -0.83929443,
+            "Y": 0,
+            "Z": 8.8654175
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4125
+        }
+      ]
+    }
+  ]
+}

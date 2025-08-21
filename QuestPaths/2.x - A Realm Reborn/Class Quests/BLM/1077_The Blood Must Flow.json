@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002434,
+          "Position": {
+              "X": -101.27417,
+              "Y": 28.213867,
+              "Z": 117.234985
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "ItemId": 2000812,
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2002435,
+          "Position": {
+              "X": -1.8158569,
+              "Y": -11.703674,
+              "Z": -37.79669
+          },
+          "TerritoryId": 154,
+          "InteractionType": "UseItem",
+          "ItemId": 2000955,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2002436,
+          "Position": {
+              "X": 68.680786,
+              "Y": 55.832764,
+              "Z": -503.95975
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2000956,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002537,
+          "Position": {
+              "X": 220.87427,
+              "Y": 5.5999756,
+              "Z": -269.9779
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1935,
+            1936
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2002437,
+          "Position": {
+              "X": 220.87427,
+              "Y": 5.5999756,
+              "Z": -269.9779
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 2000957
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006305,
+          "Position": {
+            "X": 10.60498,
+            "Y": 71.47817,
+            "Z": -16.617126
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006311,
+          "Position": {
+            "X": 26.504883,
+            "Y": 42.202568,
+            "Z": 251.75854
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006312,
+          "Position": {
+            "X": -369.0395,
+            "Y": 54.28071,
+            "Z": 441.24512
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

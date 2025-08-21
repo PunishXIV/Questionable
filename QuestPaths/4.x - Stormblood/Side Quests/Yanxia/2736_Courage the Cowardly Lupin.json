@@ -1,0 +1,140 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019312,
+          "Position": {
+            "X": 473.80774,
+            "Y": 58.448307,
+            "Z": -182.78784
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 472.4036,
+                  "Y": 58.568016,
+                  "Z": -181.87
+                },
+                "TerritoryId": 614,
+                "MaximumDistance": 50
+              }
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008459,
+          "Position": {
+            "X": 394.5525,
+            "Y": 80.88806,
+            "Z": -194.17108
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022399,
+          "Position": {
+            "X": 392.69092,
+            "Y": 80.90235,
+            "Z": -194.9035
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Emote",
+          "Emote": "rally"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 497.38757,
+            "Y": 55.17306,
+            "Z": 191.36812
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7539
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022400,
+          "Position": {
+            "X": 499.9618,
+            "Y": 55.28981,
+            "Z": 191.18018
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019312,
+          "Position": {
+            "X": 473.80774,
+            "Y": 58.448307,
+            "Z": -182.78784
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDZ413_02736_Q1_000_000",
+              "Answer": "TEXT_STMBDZ413_02736_A1_000_002"
+            }
+          ],
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 435.81787,
+                  "Y": 68.84845,
+                  "Z": -94.02999
+                },
+                "TerritoryId": 614,
+                "MaximumDistance": 150
+              }
+            }
+          },
+          "Fly": true,
+          "NextQuestId": 2737
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018248,
+          "Position": {
+            "X": -287.34265,
+            "Y": 126.77467,
+            "Z": 3.3721924
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018249,
+          "Position": {
+            "X": -814.9691,
+            "Y": -130.31683,
+            "Z": -415.85413
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1018251,
+          "Position": {
+            "X": 285.7556,
+            "Y": -112.76572,
+            "Z": 562.1881
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1018251,
+          "Position": {
+            "X": 285.7556,
+            "Y": -112.76572,
+            "Z": 562.1881
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "mogdance"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1018254,
+          "Position": {
+            "X": 383.93213,
+            "Y": -125.28945,
+            "Z": 734.4929
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1018255,
+          "Position": {
+            "X": -793.7896,
+            "Y": -133.26949,
+            "Z": -412.6803
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true,
+          "NextQuestId": 2385
+        }
+      ]
+    }
+  ]
+}

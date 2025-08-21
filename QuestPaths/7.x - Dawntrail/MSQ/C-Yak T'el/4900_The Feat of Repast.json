@@ -1,0 +1,84 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047764,
+          "Position": {
+            "X": 474.9065,
+            "Y": 19.501463,
+            "Z": -358.05298
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047618,
+          "Position": {
+            "X": 539.6658,
+            "Y": 9.54172,
+            "Z": -219.22644
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047555,
+          "Position": {
+            "X": -524.58997,
+            "Y": 28.760696,
+            "Z": -424.2771
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013649,
+          "Position": {
+            "X": -521.9959,
+            "Y": 28.732666,
+            "Z": -422.65967
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047558,
+          "Position": {
+            "X": -518.51685,
+            "Y": 28.775951,
+            "Z": -420.95068
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

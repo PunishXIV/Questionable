@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032586,
+          "Position": {
+            "X": -505.42462,
+            "Y": 7.68313,
+            "Z": 51.621216
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035243,
+          "Position": {
+            "X": -533.4402,
+            "Y": 8.187748,
+            "Z": -46.341675
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKYW301_03980_Q2_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033629,
+          "Position": {
+            "X": -0.3204956,
+            "Y": 41,
+            "Z": 17.56311
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1035319,
+          "Position": {
+            "X": -467.0329,
+            "Y": 22.94018,
+            "Z": -416.89178
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 140,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 762,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1035321,
+          "Position": {
+            "X": 98.802124,
+            "Y": 3.9999998,
+            "Z": 25.558838
+          },
+          "StopDistance": 5,
+          "TerritoryId": 967,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1033629,
+          "Position": {
+            "X": -0.3204956,
+            "Y": 41,
+            "Z": 17.56311
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1035322,
+          "Position": {
+            "X": -37.1557,
+            "Y": 41,
+            "Z": -2.02948
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033636,
+          "Position": {
+            "X": -5.5390625,
+            "Y": 41.019974,
+            "Z": 25.680908
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 621,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                919
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -507.93283,
+            "Y": 7.6638765,
+            "Z": 52.09985
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1032586,
+          "Position": {
+            "X": -505.42462,
+            "Y": 7.68313,
+            "Z": 51.621216
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3981
+        }
+      ]
+    }
+  ]
+}

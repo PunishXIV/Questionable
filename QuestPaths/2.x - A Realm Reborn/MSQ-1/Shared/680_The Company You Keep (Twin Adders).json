@@ -1,0 +1,122 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004884,
+          "Position": {
+            "X": 38.895264,
+            "Y": 1.2000012,
+            "Z": 3.463745
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANFST302_00680_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002394,
+          "Position": {
+            "X": -69.5354,
+            "Y": -0.50095016,
+            "Z": -9.99469
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_MANFST302_00680_Q2_000_1",
+              "Answer": "TEXT_MANFST302_00680_A2_000_2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 152,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        },
+        {
+          "DataId": 1004886,
+          "Position": {
+            "X": 30.319702,
+            "Y": 8.422709,
+            "Z": 475.30322
+          },
+          "TerritoryId": 152,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          },
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002394,
+          "Position": {
+            "X": -69.5354,
+            "Y": -0.50095016,
+            "Z": -9.99469
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    }
+  ]
+}

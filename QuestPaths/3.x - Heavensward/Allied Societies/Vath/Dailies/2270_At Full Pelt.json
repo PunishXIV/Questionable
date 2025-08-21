@@ -1,0 +1,186 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "AnimaMachinae",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 449.65012,
+            "Y": -51.141403,
+            "Z": 106.932205
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "DataId": 1011922,
+          "Position": {
+            "X": 448.56934,
+            "Y": -51.141407,
+            "Z": 108.93408
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006918,
+          "Position": {
+            "X": 475.69995,
+            "Y": -44.174927,
+            "Z": -231.46417
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001961,
+          "KillEnemyDataIds": [
+            71224
+          ],
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2006920,
+          "Position": {
+            "X": 329.4879,
+            "Y": -45.487183,
+            "Z": -262.13477
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001961,
+          "KillEnemyDataIds": [
+            5548
+          ],
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2006919,
+          "Position": {
+            "X": 535.45435,
+            "Y": -32.39496,
+            "Z": -410.60504
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001961,
+          "KillEnemyDataIds": [
+            71224
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 449.65012,
+            "Y": -51.141403,
+            "Z": 106.932205
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "DataId": 1011922,
+          "Position": {
+            "X": 448.56934,
+            "Y": -51.141407,
+            "Z": 108.93408
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 58.39701,
+            "Y": -48.000008,
+            "Z": -172.36507
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 66.20886,
+                  "Y": -49.2817,
+                  "Z": -159.44159
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 30
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

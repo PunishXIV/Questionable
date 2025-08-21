@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006786,
+          "Position": {
+            "X": -347.15802,
+            "Y": 0.9522269,
+            "Z": 741.3595
+          },
+          "TerritoryId": 146,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006786,
+          "Position": {
+            "X": -347.15802,
+            "Y": 0.9522269,
+            "Z": 741.3595
+          },
+          "StopDistance": 5,
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "NextQuestId": 1092
+        }
+      ]
+    }
+  ]
+}

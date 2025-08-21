@@ -1,0 +1,57 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012344,
+          "Position": {
+            "X": 84.18396,
+            "Y": 117.19698,
+            "Z": 150.31653
+          },
+          "StopDistance": 7,
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005408,
+          "Position": {
+            "X": 103.77649,
+            "Y": 102.311646,
+            "Z": -42.404846
+          },
+          "TerritoryId": 397,
+          "InteractionType": "SinglePlayerDuty",
+          "Comment": "Walk straight to Gorgagne Mills basement, ignore footprints",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012348,
+          "Position": {
+            "X": 465.01855,
+            "Y": 162.58325,
+            "Z": -522.9115
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

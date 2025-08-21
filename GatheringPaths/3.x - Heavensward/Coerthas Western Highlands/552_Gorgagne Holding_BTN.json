@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 397,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32355,
+          "Locations": [
+            {
+              "Position": {
+                "X": 484.6112,
+                "Y": 160.7014,
+                "Z": -339.9558
+              }
+            },
+            {
+              "Position": {
+                "X": 479.6101,
+                "Y": 160.8177,
+                "Z": -328.4199
+              },
+              "MinimumAngle": 160,
+              "MaximumAngle": 335
+            }
+          ]
+        },
+        {
+          "DataId": 32354,
+          "Locations": [
+            {
+              "Position": {
+                "X": 481.3153,
+                "Y": 160.57,
+                "Z": -339.8337
+              },
+              "MinimumAngle": -150,
+              "MaximumAngle": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32351,
+          "Locations": [
+            {
+              "Position": {
+                "X": 602.9045,
+                "Y": 172.9519,
+                "Z": -376.0714
+              }
+            },
+            {
+              "Position": {
+                "X": 610.5079,
+                "Y": 174.6463,
+                "Z": -380.3387
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32350,
+          "Locations": [
+            {
+              "Position": {
+                "X": 609.4385,
+                "Y": 174.6537,
+                "Z": -376.958
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32353,
+          "Locations": [
+            {
+              "Position": {
+                "X": 457.2875,
+                "Y": 160.5861,
+                "Z": -451.3749
+              }
+            },
+            {
+              "Position": {
+                "X": 471.3904,
+                "Y": 159.7412,
+                "Z": -441.1613
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32352,
+          "Locations": [
+            {
+              "Position": {
+                "X": 478.0674,
+                "Y": 161.2902,
+                "Z": -449.485
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 210
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049797,
+          "Position": {
+            "X": 214.64856,
+            "Y": 301.99997,
+            "Z": -254.26111
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013741,
+          "Position": {
+            "X": 107.28613,
+            "Y": 11.9782715,
+            "Z": -76.676636
+          },
+          "TerritoryId": 628,
+          "InteractionType": "UseItem",
+          "ItemId": 2003500,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1049801,
+          "Position": {
+            "X": 445.9143,
+            "Y": 29.750532,
+            "Z": 770.8705
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBB221_04857_Q2_000_000",
+              "Answer": "TEXT_KINGBB221_04857_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013742,
+          "Position": {
+            "X": 411.79517,
+            "Y": 16.250854,
+            "Z": 832.4863
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003559,
+          "ComplexCombatData": [
+            {
+              "DataId": 17629
+            }
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2013743,
+          "Position": {
+            "X": 338.4298,
+            "Y": 0.6866455,
+            "Z": 793.4232
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003559,
+          "ComplexCombatData": [
+            {
+              "DataId": 17629
+            }
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2013744,
+          "Position": {
+            "X": 415.61,
+            "Y": 0.7171631,
+            "Z": 730.4341
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003559,
+          "ComplexCombatData": [
+            {
+              "DataId": 17629
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1049802,
+          "Position": {
+            "X": 444.6936,
+            "Y": 29.73244,
+            "Z": 770.9315
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049803,
+          "Position": {
+            "X": 105.85181,
+            "Y": 12.000005,
+            "Z": -75.70001
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "NextQuestId": 4858
+        }
+      ]
+    }
+  ]
+}

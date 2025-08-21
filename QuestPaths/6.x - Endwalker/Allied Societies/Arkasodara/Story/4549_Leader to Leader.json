@@ -1,0 +1,176 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1042300,
+            "Position": {
+                "X": -76.82922,
+                "Y": 39.977543,
+                "Z": 309.98706
+            },
+            "TerritoryId": 957,
+            "InteractionType": "AcceptQuest",
+            "Fly": true            
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+          "Steps": [
+            { 
+                "DataId": 2012925,
+                "Position": {
+                    "X": -108.01868,
+                    "Y": 40.17688,
+                    "Z": 182.5741
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "KillEnemyDataIds":[
+                14684
+            ],
+            "Fly": true            
+          },
+          {
+            "DataId": 2012926,
+            "Position": {
+                "X": -53.574463,
+                "Y": 56.22937,
+                "Z": 66.056274
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "KillEnemyDataIds":[
+                14685
+            ],
+            "Fly": true   
+          },
+          {
+              "DataId": 2012927,
+              "Position": {
+                  "X": -246.05176,
+                  "Y": 18.509094,
+                  "Z": 128.58777
+                },
+            "TerritoryId": 957,
+            "InteractionType": "Combat",
+            "EnemySpawnType": "AfterInteraction",
+            "KillEnemyDataIds":[
+                14684
+            ],
+            "Fly": true            
+            }
+        ]
+      },
+      {
+        "Sequence": 2,
+        "Steps": [
+          {
+            "DataId": 1042353,
+            "Position": {
+                "X": -56.199036,
+                "Y": 35.964603,
+                "Z": 379.07983
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Interact",
+            "Fly": true        
+          }
+        ]
+      },
+      {
+        "Sequence": 3,
+        "Steps": [
+          {
+            "DataId": 1042353,
+            "Position": {
+                "X": -56.199036,
+                "Y": 35.964603,
+                "Z": 379.07983
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Interact",
+            "Fly": true,
+            "DialogueChoices": [
+                {
+                "Type": "List",
+                "Prompt": "TEXT_BANARK005_04549_Q2_000_046",
+                "Answer": "TEXT_BANARK005_04549_A2_000_001"              
+                }
+            ]        
+          }
+        ]
+      },
+      {
+        "Sequence": 4,
+        "Steps": [
+          {
+            "DataId": 1042347,
+            "Position": {
+                "X": 178.7594,
+                "Y": 5.6198997,
+                "Z": 617.02905
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Interact",
+            "AetheryteShortcut": "Thavnair - Yedlihmad"
+          }
+        ]
+      },
+      {
+        "Sequence": 5,
+        "Steps": [
+          {
+            "DataId": 1042346,
+            "Position": {
+                "X": 175.21924,
+                "Y": 5.629661,
+                "Z": 614.12976
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Interact",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 6,
+        "Steps": [
+          {
+            "DataId": 2012928,
+            "Position": {
+                "X": 185.62585,
+                "Y": 60.318848,
+                "Z": -605.98157
+            },
+            "TerritoryId": 957,
+            "InteractionType": "Interact",
+            "Fly": true,
+            "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+          {
+            "DataId": 1042300,
+            "Position": {
+                "X": -76.82922,
+                "Y": 39.977543,
+                "Z": 309.98706
+            },
+            "TerritoryId": 957,
+            "InteractionType": "CompleteQuest"
+          }
+        ]
+      }
+    ]
+  }
+  

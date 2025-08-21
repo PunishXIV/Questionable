@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006503,
+          "Position": {
+            "X": -266.5904,
+            "Y": -40.040386,
+            "Z": 461.72266
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007639,
+          "Position": {
+            "X": -196.82617,
+            "Y": -40.651188,
+            "Z": 499.9618
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1006506,
+          "Position": {
+            "X": -198.47418,
+            "Y": -40.461403,
+            "Z": 499.9923
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1006505,
+          "Position": {
+            "X": -200.36627,
+            "Y": -40.340702,
+            "Z": 503.19666
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006503,
+          "Position": {
+            "X": -266.5904,
+            "Y": -40.040386,
+            "Z": 461.72266
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

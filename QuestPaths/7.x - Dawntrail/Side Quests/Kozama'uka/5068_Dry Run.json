@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050707,
+          "Position": {
+            "X": -183.73395,
+            "Y": 10.893587,
+            "Z": -584.2832
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014172,
+          "Position": {
+            "X": -70.96979,
+            "Y": 6.515503,
+            "Z": -496.2692
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 623.9169,
+            "Y": 46.050114,
+            "Z": -526.32715
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 2014173,
+          "Position": {
+            "X": 670.5576,
+            "Y": 42.923584,
+            "Z": -515.55664
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050707,
+          "Position": {
+            "X": -183.73395,
+            "Y": 10.893587,
+            "Z": -584.2832
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048297,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 42.052795,
+            "Y": 4.000001,
+            "Z": 71.14965
+          },
+          "TerritoryId": 628,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        },
+        {
+          "DataId": 1018984,
+          "Position": {
+            "X": 42.34375,
+            "Y": 4.8365364,
+            "Z": 73.83838
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019065,
+          "Position": {
+            "X": 80.49133,
+            "Y": 4,
+            "Z": 56.443115
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013694,
+          "Position": {
+            "X": 517.2654,
+            "Y": 0.99176025,
+            "Z": -692.10345
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "ItemId": 2003492,
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013695,
+          "Position": {
+            "X": 519.76794,
+            "Y": 0.99176025,
+            "Z": -679.8352
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17620
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019065,
+          "Position": {
+            "X": 80.49133,
+            "Y": 4,
+            "Z": 56.443115
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048298,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4835
+        }
+      ]
+    }
+  ]
+}

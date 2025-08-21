@@ -1,0 +1,181 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028735,
+          "Position": {
+            "X": 480.18604,
+            "Y": 16.432398,
+            "Z": 447.8064
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.0126,
+            "Y": 23.936245,
+            "Z": 455.10022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028741,
+          "Position": {
+            "X": 47.62329,
+            "Y": 8,
+            "Z": -118.669495
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028746,
+          "Position": {
+            "X": -148.39398,
+            "Y": 15.2938,
+            "Z": 286.82385
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028747,
+          "Position": {
+            "X": -73.47223,
+            "Y": 15.825686,
+            "Z": 323.35388
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1028748,
+          "Position": {
+            "X": -52.414795,
+            "Y": 15.300566,
+            "Z": 332.96704
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2009765,
+          "Position": {
+            "X": -151.68994,
+            "Y": 15.6710205,
+            "Z": 289.66187
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -73.36467,
+            "Y": -1.5503908,
+            "Z": 105.86304
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10849
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1028752,
+          "Position": {
+            "X": -73.258606,
+            "Y": -1.5171797,
+            "Z": 105.241455
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028741,
+          "Position": {
+            "X": 47.62329,
+            "Y": 8,
+            "Z": -118.669495
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "NextQuestId": 3252
+        }
+      ]
+    }
+  ]
+}

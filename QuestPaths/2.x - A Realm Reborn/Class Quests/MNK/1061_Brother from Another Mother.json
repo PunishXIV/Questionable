@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001286,
+          "Position": {
+            "X": -88.9754,
+            "Y": 2.55,
+            "Z": -51.163513
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -231.99818,
+            "Y": -28.997791,
+            "Z": 123.01078
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Ul'dah] Goldsmiths' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2002439,
+          "Position": {
+            "X": -232.80695,
+            "Y": -28.793823,
+            "Z": 125.29175
+          },
+          "TerritoryId": 141,
+          "InteractionType": "SinglePlayerDuty",
+          "ItemId": 2000951
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002440,
+          "Position": {
+            "X": -232.80695,
+            "Y": -28.946411,
+            "Z": 125.29175
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "NextQuestId": 1062
+        }
+      ]
+    }
+  ]
+}

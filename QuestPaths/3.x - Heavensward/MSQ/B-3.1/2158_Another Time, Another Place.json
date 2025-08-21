@@ -1,0 +1,74 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1015983,
+          "Position": {
+            "X": -297.74933,
+            "Y": 39.04307,
+            "Z": 37.064087
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1015987,
+          "Position": {
+            "X": 42.252197,
+            "Y": 205.32579,
+            "Z": 19.546753
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006605,
+          "Position": {
+            "X": 101.182495,
+            "Y": 206.71387,
+            "Z": 111.34509
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1015992,
+          "Position": {
+            "X": -478.14148,
+            "Y": 137.42972,
+            "Z": 700.8926
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

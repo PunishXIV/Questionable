@@ -1,0 +1,183 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 296.43002,
+            "Y": 1.4685829,
+            "Z": -289.11447
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 296.43002,
+                  "Y": 1.4685829,
+                  "Z": -289.11447
+                },
+                "TerritoryId": 815,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1029959,
+          "Position": {
+            "X": 295.27722,
+            "Y": 1.4685827,
+            "Z": -290.18085
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029960,
+          "Position": {
+            "X": -393.66754,
+            "Y": 52.333755,
+            "Z": 497.15417
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBA131_03246_Q2_000_000",
+              "Answer": "TEXT_LUCKBA131_03246_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027671,
+          "Position": {
+            "X": -33.12738,
+            "Y": 105.68533,
+            "Z": -879.9115
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Pla Enni",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1027670,
+          "Position": {
+            "X": 32.028687,
+            "Y": 101.900696,
+            "Z": -857.87744
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029961,
+          "Position": {
+            "X": -93.736206,
+            "Y": 101.44155,
+            "Z": -834.9279
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029963,
+          "Position": {
+            "X": 61.020752,
+            "Y": 100.95007,
+            "Z": -872.4651
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2009946,
+          "Position": {
+            "X": 395.16284,
+            "Y": 62.05847,
+            "Z": -516.22797
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10856
+          ],
+          "AetheryteShortcut": "Il Mheg - Wolekdorf",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029963,
+          "Position": {
+            "X": 61.020752,
+            "Y": 100.95007,
+            "Z": -872.4651
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Pla Enni",
+          "Fly": true,
+          "NextQuestId": 3247
+        }
+      ]
+    }
+  ]
+}

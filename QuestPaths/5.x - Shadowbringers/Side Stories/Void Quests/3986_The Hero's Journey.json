@@ -1,0 +1,143 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030837,
+          "Position": {
+            "X": -25.92511,
+            "Y": 3.9998174,
+            "Z": 205.12695
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKUN001_03986_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKUN001_03986_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011294,
+          "Position": {
+            "X": 1.9683228,
+            "Y": -1.9990234,
+            "Z": -42.343872
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1033908,
+          "Position": {
+            "X": -63.61493,
+            "Y": -17.722,
+            "Z": -264.75934
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Cabinet of Curiosity"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKUN001_03986_Q3_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKUN001_03986_A3_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030837,
+          "Position": {
+            "X": -25.92511,
+            "Y": 3.9998174,
+            "Z": 205.12695
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030644,
+          "Position": {
+            "X": -0.5036011,
+            "Y": 3.9998171,
+            "Z": 200.57983
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3987
+        }
+      ]
+    }
+  ]
+}

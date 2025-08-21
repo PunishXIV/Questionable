@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013710,
+          "Position": {
+            "X": -294.6975,
+            "Y": 126.84874,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014138,
+          "Position": {
+            "X": -219.19586,
+            "Y": 112.21238,
+            "Z": -244.1596
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 4470,
+          "Position": {
+            "X": -468.44992,
+            "Y": 93.85853,
+            "Z": -506.40417
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4470
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -219.1624,
+            "Y": 112.29031,
+            "Z": -239.88861
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1014138,
+          "Position": {
+            "X": -219.19586,
+            "Y": 112.21238,
+            "Z": -244.1596
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013710,
+          "Position": {
+            "X": -294.6975,
+            "Y": 126.84874,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1766,
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050884,
+          "Position": {
+            "X": 531.0597,
+            "Y": -142.49185,
+            "Z": 492.0271
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 531.0597,
+                  "Y": -142.49185,
+                  "Z": 492.0271
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 250
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 343.74197,
+            "Y": -154.60175,
+            "Z": 328.8051
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1189,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17673
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050885,
+          "Position": {
+            "X": 338.49072,
+            "Y": -155.05281,
+            "Z": 322.80444
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050888,
+          "Position": {
+            "X": 515.58704,
+            "Y": -146.73436,
+            "Z": 477.0122
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

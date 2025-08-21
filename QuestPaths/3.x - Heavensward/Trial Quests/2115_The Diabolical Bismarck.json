@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "RisingStonesSolar"
+            }
+          }
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012064,
+          "Position": {
+            "X": -542.7787,
+            "Y": -37.11544,
+            "Z": -386.7094
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014623,
+          "Position": {
+            "X": -808.8655,
+            "Y": -57.761612,
+            "Z": 159.5636
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 367.30618,
+            "Y": 141.31621,
+            "Z": 258.9364
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2006288,
+          "Position": {
+            "X": 369.55823,
+            "Y": 143.17542,
+            "Z": 260.70032
+          },
+          "StopDistance": 4,
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 401,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 89,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1012064,
+          "Position": {
+            "X": -542.7787,
+            "Y": -37.11544,
+            "Z": -386.7094
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

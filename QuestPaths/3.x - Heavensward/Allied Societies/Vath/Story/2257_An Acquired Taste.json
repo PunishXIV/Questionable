@@ -1,0 +1,248 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016802,
+          "Position": {
+            "X": 53.360718,
+            "Y": -48.000004,
+            "Z": -169.97028
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016844,
+          "Position": {
+            "X": -743.0991,
+            "Y": -117.75057,
+            "Z": 574.85315
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 5542,
+          "Position": {
+            "X": -731.547,
+            "Y": -116.99814,
+            "Z": 577.7823
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "CombatDelaySecondsAtStart": 3,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            5542
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016844,
+          "Position": {
+            "X": -743.0991,
+            "Y": -117.75057,
+            "Z": 574.85315
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -802.4346,
+            "Y": -122.50925,
+            "Z": 578.51434
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                399
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1016845,
+          "Position": {
+            "X": 508.72046,
+            "Y": 77.65831,
+            "Z": 119.21863
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.015137,
+            "Y": 206.04718,
+            "Z": 56.50415
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 147.913,
+            "Y": 207,
+            "Z": 118.226494
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                399
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1016996,
+          "Position": {
+            "X": -85.80151,
+            "Y": 100.87653,
+            "Z": -325.185
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1011928,
+          "Position": {
+            "X": 73.19751,
+            "Y": -49.19563,
+            "Z": -139.05548
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1016848,
+          "Position": {
+            "X": 286.7627,
+            "Y": -112.2676,
+            "Z": 424.55164
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1016848,
+          "Position": {
+            "X": 286.7627,
+            "Y": -112.2676,
+            "Z": 424.55164
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANGNA003_02257_SYSTEM_100_096"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016802,
+          "Position": {
+            "X": 53.360718,
+            "Y": -48.000004,
+            "Z": -169.97028
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

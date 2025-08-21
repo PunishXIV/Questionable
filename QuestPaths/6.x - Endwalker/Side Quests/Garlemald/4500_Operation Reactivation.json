@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041755,
+          "Position": {
+            "X": -340.35254,
+            "Y": 22,
+            "Z": 502.037
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040963,
+          "Position": {
+            "X": -325.27655,
+            "Y": 22.462305,
+            "Z": 450.49194
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041760,
+          "Position": {
+            "X": 413.87048,
+            "Y": -18.81719,
+            "Z": 612.05444
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2012622,
+          "Position": {
+            "X": 413.35156,
+            "Y": -18.814392,
+            "Z": 614.43494
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC103_04500_Q1_000_000",
+              "Answer": "TEXT_AKTKZC103_04500_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC103_04500_Q2_000_000",
+              "Answer": "TEXT_AKTKZC103_04500_A2_000_001"
+            }
+          ],
+          "NextQuestId": 4501
+        }
+      ]
+    }
+  ]
+}

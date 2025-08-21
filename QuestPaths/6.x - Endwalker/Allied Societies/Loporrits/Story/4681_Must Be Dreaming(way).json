@@ -1,0 +1,176 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044910,
+          "Position": {
+            "X": 23.75824,
+            "Y": 2.453333,
+            "Z": -12.680237
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044911,
+          "Position": {
+            "X": 0.38146973,
+            "Y": -127.50014,
+            "Z": -457.14508
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044914,
+          "Position": {
+            "X": -120.409,
+            "Y": -137.41672,
+            "Z": -526.63464
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1044913,
+          "Position": {
+            "X": 55.161255,
+            "Y": -129.40565,
+            "Z": -636.8048
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1044912,
+          "Position": {
+            "X": 61.41748,
+            "Y": -137.4167,
+            "Z": -606.28674
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044911,
+          "Position": {
+            "X": 0.38146973,
+            "Y": -127.50014,
+            "Z": -457.14508
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1044919,
+          "Position": {
+            "X": 148.30237,
+            "Y": -49.589592,
+            "Z": -361.77618
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1044920,
+          "Position": {
+            "X": -170.42804,
+            "Y": -49.399723,
+            "Z": -289.5705
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 959,
+          "InteractionType": "Craft",
+          "ItemId": 38843,
+          "ItemCount": 3
+        },
+        {
+          "DataId": 1044921,
+          "Position": {
+            "X": -170.0008,
+            "Y": -49.34972,
+            "Z": -287.22064
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

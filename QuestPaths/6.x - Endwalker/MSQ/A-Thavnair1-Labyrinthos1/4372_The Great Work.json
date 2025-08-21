@@ -1,0 +1,296 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038616,
+          "Position": {
+            "X": -278.88916,
+            "Y": 2.740889,
+            "Z": 532.03625
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038620,
+          "Position": {
+            "X": -477.68372,
+            "Y": 5.0817194,
+            "Z": 19.21106
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Thavnair - Great Work"
+        },
+        {
+          "DataId": 1038631,
+          "Position": {
+            "X": -510.7958,
+            "Y": 11.975282,
+            "Z": 117.69275
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038635,
+          "Position": {
+            "X": -487.1443,
+            "Y": 49.161343,
+            "Z": 153.42944
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038636,
+          "Position": {
+            "X": -485.70996,
+            "Y": 49.103825,
+            "Z": 152.91064
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1038636,
+          "Position": {
+            "X": -425.414,
+            "Y": 38.415024,
+            "Z": 160.1206
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "Position": {
+            "X": -436.3368,
+            "Y": 38.647118,
+            "Z": 166.13683
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1038636,
+          "Position": {
+            "X": -425.414,
+            "Y": 38.415024,
+            "Z": 160.1206
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 2
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1041219,
+          "Position": {
+            "X": -425.43683,
+            "Y": 38.413155,
+            "Z": 160.11292
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1041219,
+          "Position": {
+            "X": -419.6078,
+            "Y": 43.950115,
+            "Z": 87.3025
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "Position": {
+            "X": -430.35034,
+            "Y": 46.160213,
+            "Z": 93.2392
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1041220,
+          "Position": {
+            "X": -419.60785,
+            "Y": 43.9499,
+            "Z": 87.296875
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 2
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1041220,
+          "Position": {
+            "X": -419.60785,
+            "Y": 43.9499,
+            "Z": 87.296875
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1041220,
+          "Position": {
+            "X": -444.7032,
+            "Y": 49.551,
+            "Z": 97.1969
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "Position": {
+            "X": -433.19608,
+            "Y": 46.94587,
+            "Z": 93.295135
+          },
+          "StopDistance": 0.35,
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1041221,
+          "Position": {
+            "X": -444.72424,
+            "Y": 49.55681,
+            "Z": 97.18469
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 2
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1041221,
+          "Position": {
+            "X": -444.72424,
+            "Y": 49.55681,
+            "Z": 97.18469
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1041221,
+          "Position": {
+            "X": -484.5909,
+            "Y": 54.18516,
+            "Z": 128.3601
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WaitForNpcAtPosition"
+        },
+        {
+          "Position": {
+            "X": -472.65085,
+            "Y": 53.779083,
+            "Z": 124.34451
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1038637,
+          "Position": {
+            "X": -484.61133,
+            "Y": 54.187614,
+            "Z": 128.34363
+          },
+          "StopDistance": 4,
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 2
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1038637,
+          "Position": {
+            "X": -484.61133,
+            "Y": 54.187614,
+            "Z": 128.34363
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038635,
+          "Position": {
+            "X": -487.1443,
+            "Y": 49.161343,
+            "Z": 153.42944
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

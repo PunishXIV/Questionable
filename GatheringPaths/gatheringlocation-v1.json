@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "title": "Gathering Location V1",
+  "description": "A series of gathering locationsk",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json"
+    },
+    "Author": {
+      "description": "Author of the gathering location data",
+      "type": [
+        "string",
+        "array"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "Steps": {
+      "type": "array",
+      "items": {
+        "$ref": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json#/$defs/Step"
+      },
+      "minItems": 1
+    },
+    "FlyBetweenNodes": {
+      "description": "If nodes are close enough together, flying makes no sense due to the pathfinding overhead",
+      "type": "boolean",
+      "default": true
+    },
+    "ExtraQuestItems": {
+      "description": "Some quests (such as Ixal) add quest items to gathering nodes, but there's no clear connection between the item and the node in the sheets",
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 2000000
+      }
+    },
+    "Groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Nodes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "DataId": {
+                  "type": "number",
+                  "minimum": 30000,
+                  "maximum": 50000
+                },
+                "Fly": {
+                  "type": "boolean"
+                },
+                "Locations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Position": {
+                        "$ref": "https://git.carvel.li/liza/Questionable/raw/branch/master/Questionable.Model/common-vector3.json"
+                      },
+                      "MinimumAngle": {
+                        "type": "number",
+                        "minimum": -360,
+                        "maximum": 360
+                      },
+                      "MaximumAngle": {
+                        "type": "number",
+                        "minimum": -360,
+                        "maximum": 360
+                      },
+                      "MinimumDistance": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "MaximumDistance": {
+                        "type": "number",
+                        "exclusiveMinimum": 0
+                      }
+                    },
+                    "required": [
+                      "Position"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "DataId"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "Nodes"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "Author",
+    "Steps",
+    "Groups"
+  ],
+  "additionalProperties": false
+}

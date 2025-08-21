@@ -1,0 +1,110 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018753,
+          "Position": {
+            "X": -623.621,
+            "Y": 130.24214,
+            "Z": -474.72345
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018757,
+          "Position": {
+            "X": -437.2168,
+            "Y": 73.07981,
+            "Z": -100.23657
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -586.0533,
+            "Y": 54.95936,
+            "Z": 204.82178
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7214
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 1018758,
+          "Position": {
+            "X": -586.0533,
+            "Y": 54.95936,
+            "Z": 204.82178
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000692,
+          "Position": {
+            "X": -258.8083,
+            "Y": -5.7735243,
+            "Z": -27.267883
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1018753,
+          "Position": {
+            "X": -623.621,
+            "Y": 130.24214,
+            "Z": -474.72345
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "NextQuestId": 2416
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050873,
+          "Position": {
+            "X": -455.10034,
+            "Y": 17.027555,
+            "Z": -478.8739
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -455.10034,
+                  "Y": 17.027555,
+                  "Z": -478.8739
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 250
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050874,
+          "Position": {
+            "X": -508.87314,
+            "Y": 29.61908,
+            "Z": -350.1183
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050876,
+          "Position": {
+            "X": -455.92438,
+            "Y": 30.374397,
+            "Z": -423.148
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1050875,
+          "Position": {
+            "X": -391.01245,
+            "Y": 28.068893,
+            "Z": -365.0111
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050874,
+          "Position": {
+            "X": -508.87314,
+            "Y": 29.61908,
+            "Z": -350.1183
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 5112
+        }
+      ]
+    }
+  ]
+}

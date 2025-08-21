@@ -1,0 +1,124 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006757,
+          "Position": {
+            "X": -4.4709473,
+            "Y": 44.999886,
+            "Z": -250.56848
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005518,
+          "Position": {
+            "X": -275.16595,
+            "Y": 64.25574,
+            "Z": -197.34491
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4399
+          ],
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2005519,
+          "Position": {
+            "X": -275.16595,
+            "Y": 64.25574,
+            "Z": -197.34491
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1672
+        }
+      ]
+    }
+  ]
+}

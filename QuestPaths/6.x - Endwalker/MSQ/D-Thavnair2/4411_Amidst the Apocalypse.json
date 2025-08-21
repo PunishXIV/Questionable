@@ -1,0 +1,225 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037318,
+          "Position": {
+            "X": -4.1047363,
+            "Y": 2.9999943,
+            "Z": -203.8758
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039002,
+          "Position": {
+            "X": 57.04193,
+            "Y": 26.99999,
+            "Z": 46.383568
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Mehryde's Meyhane",
+            "[Radz-at-Han] Ruveydah Fibers"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039539,
+          "Position": {
+            "X": 87.662964,
+            "Y": 27.06,
+            "Z": 28.030762
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        },
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] Kama"
+        },
+        {
+          "DataId": 1039540,
+          "Position": {
+            "X": 149.79773,
+            "Y": 27.049997,
+            "Z": 39.627686
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039003,
+          "Position": {
+            "X": -159.3805,
+            "Y": 23.999973,
+            "Z": 110.61267
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Kama",
+            "[Radz-at-Han] Ruveydah Fibers"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039542,
+          "Position": {
+            "X": -101.12158,
+            "Y": 24,
+            "Z": 79.48425
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012194,
+          "Position": {
+            "X": -103.83765,
+            "Y": 24.948364,
+            "Z": 87.57141
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1037321,
+          "Position": {
+            "X": -143.14496,
+            "Y": 24,
+            "Z": 93.003784
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2012195,
+          "Position": {
+            "X": -104.57007,
+            "Y": 25.192627,
+            "Z": 87.63245
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1037319,
+          "Position": {
+            "X": -123.49127,
+            "Y": 24,
+            "Z": 88.57861
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 2012196,
+          "Position": {
+            "X": -104.234375,
+            "Y": 24.734863,
+            "Z": 87.57141
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1037320,
+          "Position": {
+            "X": -115.739685,
+            "Y": 24,
+            "Z": 97.0625
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1039542,
+          "Position": {
+            "X": -101.12158,
+            "Y": 24,
+            "Z": 79.48425
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039003,
+          "Position": {
+            "X": -159.3805,
+            "Y": 23.999973,
+            "Z": 110.61267
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

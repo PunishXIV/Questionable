@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008969,
+          "Position": {
+            "X": 0.99176025,
+            "Y": -1.9957249,
+            "Z": -45.700806
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009996,
+          "Position": {
+            "X": -902.61694,
+            "Y": 229.25244,
+            "Z": -9.689575
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009996,
+          "Position": {
+            "X": -902.61694,
+            "Y": 229.25244,
+            "Z": -9.689575
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010054,
+          "Position": {
+            "X": -916.6552,
+            "Y": 229.3692,
+            "Z": -6.4240723
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 79,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010042,
+          "Position": {
+            "X": -905.76025,
+            "Y": 229.29816,
+            "Z": -10.147278
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

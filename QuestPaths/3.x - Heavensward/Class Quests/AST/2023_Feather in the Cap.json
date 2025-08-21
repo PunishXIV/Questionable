@@ -1,0 +1,203 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1015084,
+          "Position": {
+            "X": 487.08313,
+            "Y": -51.1414,
+            "Z": 33.340942
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "Fly": false,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1015094,
+          "Position": {
+            "X": 472.03772,
+            "Y": -51.14139,
+            "Z": 8.590759
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1015092,
+          "Position": {
+            "X": 560.9979,
+            "Y": -51.27571,
+            "Z": 62.974
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1015093,
+          "Position": {
+            "X": 465.568,
+            "Y": -51.19559,
+            "Z": 98.10022
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1015087,
+          "Position": {
+            "X": 509.75806,
+            "Y": -51.32657,
+            "Z": 75.913574
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1015095,
+          "Position": {
+            "X": 731.56323,
+            "Y": -40.98759,
+            "Z": -27.420471
+          },
+          "TerritoryId": 398,
+          "InteractionType": "SinglePlayerDuty",
+          "StopDistance": 4,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 202.38037,
+                  "Y": -5.3999662,
+                  "Z": -58.9151
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          },
+          "NextQuestId": 2024
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+            "X": 87.5105,
+            "Y": 18,
+            "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002279,
+          "Position": {
+            "X": -196.8872,
+            "Y": 18.459997,
+            "Z": 59.952637
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKBC007_03216_Q1_000_300",
+              "Type": "List",
+              "Answer": "TEXT_LUCKBC007_03216_A1_000_301"
+            },
+            {
+              "Prompt": "TEXT_LUCKBC007_03216_Q1_000_100",
+              "Type": "List",
+              "Answer": "TEXT_LUCKBC007_03216_A1_000_101"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029866,
+          "Position": {
+            "X": -173.08313,
+            "Y": 17.999998,
+            "Z": 74.906494
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029868,
+          "Position": {
+            "X": -89.21954,
+            "Y": 39.99999,
+            "Z": 106.98096
+          },
+          "StopDistance": 4,
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Alchemists' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+            "X": 87.5105,
+            "Y": 18,
+            "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

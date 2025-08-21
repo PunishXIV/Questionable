@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052560,
+          "Position": {
+            "X": 589.3186,
+            "Y": -142.89168,
+            "Z": 729.4575
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48030,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48031,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "Position": {
+            "X": 472.2853,
+            "Y": -150,
+            "Z": 758.076
+          },
+          "StopDistance": 2,
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1052570,
+          "Position": {
+            "X": 470.6339,
+            "Y": -150,
+            "Z": 757.47314
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1052560,
+          "Position": {
+            "X": 589.3186,
+            "Y": -142.89168,
+            "Z": 729.4575
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 589.3186,
+                  "Y": -142.89168,
+                  "Z": 729.4575
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

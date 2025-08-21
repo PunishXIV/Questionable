@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029765,
+          "Position": {
+            "X": -455.40552,
+            "Y": 45.692944,
+            "Z": -240.52802
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030419,
+          "Position": {
+            "X": -506.6148,
+            "Y": 45.614502,
+            "Z": -194.50684
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3525
+        },
+        {
+          "DataId": 1029768,
+          "Position": {
+            "X": 7.9804688,
+            "Y": 45.619083,
+            "Z": -583.7339
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Twine"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029771,
+          "Position": {
+            "X": 5.8136597,
+            "Y": 45.61908,
+            "Z": -591.577
+          },
+          "TerritoryId": 815,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "(before Ran'jit wears the veil) AI doesn't pull, doesn't attack and VBM doesn't recognize any AOEs."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029775,
+          "Position": {
+            "X": 20.675903,
+            "Y": -91.19236,
+            "Z": 509.78857
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

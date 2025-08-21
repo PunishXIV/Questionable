@@ -1,0 +1,272 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029073,
+          "Position": {
+            "X": -17.380127,
+            "Y": 40.000565,
+            "Z": -0.3204956
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129
+        },
+        {
+          "DataId": 1029078,
+          "Position": {
+            "X": -0.07635498,
+            "Y": 20.333344,
+            "Z": -6.3935547
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003355,
+          "Position": {
+            "X": -60.868286,
+            "Y": 18.000334,
+            "Z": 7.4921875
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1003604,
+          "Position": {
+            "X": -60.44104,
+            "Y": 18.00033,
+            "Z": -4.348877
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1001023,
+          "Position": {
+            "X": -78.62976,
+            "Y": 18.000334,
+            "Z": -22.62915
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029081,
+          "Position": {
+            "X": -153.8263,
+            "Y": 18.2,
+            "Z": 22.842712
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029085,
+          "Position": {
+            "X": 111.10095,
+            "Y": 22.880848,
+            "Z": 635.7976
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2010241,
+          "Position": {
+            "X": -34.53119,
+            "Y": 46.92151,
+            "Z": 541.22217
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11128
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010242,
+          "Position": {
+            "X": -59.006653,
+            "Y": 57.297607,
+            "Z": 492.14917
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11129,
+            11130
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2010243,
+          "Position": {
+            "X": -15.6710205,
+            "Y": 66.36145,
+            "Z": 431.63184
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1029092,
+          "Position": {
+            "X": 322.37732,
+            "Y": 75.949196,
+            "Z": -322.43848
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1029094,
+          "Position": {
+            "X": -35.81299,
+            "Y": 71.33129,
+            "Z": 124.6814
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029098,
+          "Position": {
+            "X": 53.97119,
+            "Y": 23.979126,
+            "Z": 8.102478
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "NextQuestId": 3265
+        }
+      ]
+    }
+  ]
+}

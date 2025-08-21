@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048324,
+          "Position": {
+            "X": 568.3833,
+            "Y": 80,
+            "Z": 618.09717
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048327,
+          "Position": {
+            "X": 723.781,
+            "Y": 69.99991,
+            "Z": 545.5862
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048327,
+          "Position": {
+            "X": 723.781,
+            "Y": 69.99991,
+            "Z": 545.5862
+          },
+          "TerritoryId": 621,
+          "InteractionType": "SinglePlayerDuty",
+          "Comment": "The Mightiest Shield"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048327,
+          "Position": {
+            "X": 723.781,
+            "Y": 69.99991,
+            "Z": 545.5862
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048308,
+          "Position": {
+            "X": -38.95636,
+            "Y": -17.972864,
+            "Z": 203.38745
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    }
+  ]
+}

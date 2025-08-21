@@ -1,0 +1,129 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042468,
+          "Position": {
+            "X": -660.88354,
+            "Y": 0.14433183,
+            "Z": -63.401245
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012910,
+          "Position": {
+            "X": -790.15796,
+            "Y": -0.25946045,
+            "Z": -110.09387
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2012911,
+          "Position": {
+            "X": -843.0457,
+            "Y": -0.22894287,
+            "Z": -71.03082
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2012909,
+          "Position": {
+            "X": -856.4126,
+            "Y": -0.25946045,
+            "Z": -159.83832
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042468,
+          "Position": {
+            "X": -660.88354,
+            "Y": 0.14433183,
+            "Z": -63.401245
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

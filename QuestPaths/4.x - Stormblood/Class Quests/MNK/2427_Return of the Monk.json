@@ -1,0 +1,156 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013971,
+          "Position": {
+            "X": 15.854065,
+            "Y": 28.620823,
+            "Z": -682.76495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022384,
+          "Position": {
+            "X": 76.920654,
+            "Y": 62.19928,
+            "Z": -669.4591
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Fringes Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022387,
+          "Position": {
+            "X": 49.94275,
+            "Y": 118.155785,
+            "Z": -746.0899
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 46.555176,
+            "Y": 117.997925,
+            "Z": -784.2374
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Action",
+          "Action": "Form Shift"
+        },
+        {
+          "DataId": 2008451,
+          "Position": {
+            "X": 46.555176,
+            "Y": 117.997925,
+            "Z": -784.2374
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Action",
+          "Action": "Twin Snakes"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2008451,
+          "Position": {
+            "X": 46.555176,
+            "Y": 117.997925,
+            "Z": -784.2374
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Action",
+          "Action": "Dragon Kick"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2008451,
+          "Position": {
+            "X": 46.555176,
+            "Y": 117.997925,
+            "Z": -784.2374
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Action",
+          "Action": "Demolish"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "StopDistance": 5,
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2428
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009211,
+                    "Position": {
+                        "X": 153.8872,
+                        "Y": -9.001622,
+                        "Z": 77.50049
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 153.8872,
+                                    "Y": -9.001622,
+                                    "Z": 77.50049
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1000656,
+                    "Position": {
+                        "X": 400.656,
+                        "Y": -5.884923,
+                        "Z": -104.90582
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "SwitchClass",
+                    "TargetClass": "ConfiguredCombatJob"
+                },
+                {
+                    "DataId": 2004452,
+                    "Position": {
+                        "X": 324.6051,
+                        "Y": -14.206177,
+                        "Z": 181.13977
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterItemUse",
+                    "KillEnemyDataIds": [
+                        3239
+                    ],
+                    "ItemId": 2001374,
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1000656,
+                    "Position": {
+                        "X": 400.656,
+                        "Y": -5.884923,
+                        "Z": -104.90582
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8091,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009211,
+                    "Position": {
+                        "X": 153.8872,
+                        "Y": -9.001622,
+                        "Z": 77.50049
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

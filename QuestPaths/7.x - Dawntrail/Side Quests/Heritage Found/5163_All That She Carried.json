@@ -1,0 +1,122 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050806,
+          "Position": {
+            "X": -151.99518,
+            "Y": 34.94368,
+            "Z": -581.23145
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -153.09375,
+                  "Y": 34.946026,
+                  "Z": -581.0178
+                },
+                "TerritoryId": 1191,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050957,
+          "Position": {
+            "X": -59.372925,
+            "Y": 42.99715,
+            "Z": -637.2626
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014063,
+          "Position": {
+            "X": 46.00586,
+            "Y": 34.01233,
+            "Z": -411.33746
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17685
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014077,
+          "Position": {
+            "X": -22.110352,
+            "Y": 34.6532,
+            "Z": -268.9403
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17685
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050811,
+          "Position": {
+            "X": -97.0932,
+            "Y": 28.796848,
+            "Z": -446.7079
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

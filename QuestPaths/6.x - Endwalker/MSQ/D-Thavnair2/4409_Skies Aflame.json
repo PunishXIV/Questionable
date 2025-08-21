@@ -1,0 +1,101 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038969,
+          "Position": {
+            "X": -104.478516,
+            "Y": 3.8989394,
+            "Z": 7.003784
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.5617,
+            "Y": 5.0504,
+            "Z": 4.55803
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "TerritoryId": 957,
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "InteractionType": "WalkTo",
+          "Comment": "Quest automatically progresses once teleported to Yedlihmad"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038978,
+          "Position": {
+            "X": 202.34985,
+            "Y": 1.7699993,
+            "Z": 757.71716
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 957,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 789,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038992,
+          "Position": {
+            "X": 4.6539917,
+            "Y": -1.9999963,
+            "Z": 93.492065
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

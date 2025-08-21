@@ -1,0 +1,236 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049501,
+          "Position": {
+            "X": -592.7062,
+            "Y": -2.4803436,
+            "Z": -489.28055
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013971,
+          "Position": {
+            "X": -286.15247,
+            "Y": 59.464355,
+            "Z": -263.6302
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818471
+        },
+        {
+          "DataId": 1050666,
+          "Position": {
+            "X": -446.79944,
+            "Y": 37.14403,
+            "Z": -266.62097
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -442.6795,
+            "Y": 40.021717,
+            "Z": -293.11053
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -447.5891,
+            "Y": 42.70318,
+            "Z": -318.90863
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -498.92047,
+            "Y": 40.894764,
+            "Z": -325.42456
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "Position": {
+            "X": -529.6522,
+            "Y": 41.341557,
+            "Z": -311.63504
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 17679,
+              "MinimumKillCount": 1,
+              "IgnoreQuestMarker": true
+            }
+          ],
+          "CombatDelaySecondsAtStart": 2,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -539.79065,
+            "Y": 42.696747,
+            "Z": -313.67438
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -549.0783,
+            "Y": 38.5679,
+            "Z": -342.1571
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -558.5067,
+            "Y": 35.95048,
+            "Z": -376.88058
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -596.211,
+            "Y": 30.139477,
+            "Z": -387.31094
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -608.17377,
+            "Y": 17.933014,
+            "Z": -420.98196
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -611.266,
+            "Y": 10.040784,
+            "Z": -443.45764
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -609.279,
+            "Y": 1.6734335,
+            "Z": -468.76624
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 17678,
+          "Position": {
+            "X": -592.7062,
+            "Y": -2.4803436,
+            "Z": -489.28055
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1191,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true,
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 1049501,
+          "Position": {
+            "X": -592.7062,
+            "Y": -2.4803436,
+            "Z": -489.28055
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049501,
+          "Position": {
+            "X": -592.7062,
+            "Y": -2.4803436,
+            "Z": -489.28055
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

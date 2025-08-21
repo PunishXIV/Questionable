@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012394,
+          "Position": {
+            "X": -158.1903,
+            "Y": 4,
+            "Z": -21.194885
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 205,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA603_01652_SCENE00007_EVENTAREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1003027,
+          "Position": {
+            "X": 4.8981323,
+            "Y": -1.92944,
+            "Z": -0.19836426
+          },
+          "TerritoryId": 205,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012396,
+          "Position": {
+            "X": -153.1853,
+            "Y": 4,
+            "Z": -14.938599
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Lancers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012398,
+          "Position": {
+            "X": 35.538208,
+            "Y": -8,
+            "Z": 98.13074
+          },
+          "StopDistance": 5,
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

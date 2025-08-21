@@ -1,0 +1,86 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050891,
+          "Position": {
+            "X": 662.8672,
+            "Y": -137.17401,
+            "Z": 556.115
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014153,
+          "Position": {
+            "X": 500.5111,
+            "Y": -150.04199,
+            "Z": 704.12744
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "UseItem",
+          "ItemId": 2003624,
+          "GroundTarget": true,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014152,
+          "Position": {
+            "X": 486.90015,
+            "Y": -150.04199,
+            "Z": 355.8556
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "UseItem",
+          "ItemId": 2003624,
+          "GroundTarget": true,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050891,
+          "Position": {
+            "X": 662.8672,
+            "Y": -137.17401,
+            "Z": 556.115
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true,
+          "NextQuestId": 5118
+        }
+      ]
+    }
+  ]
+}

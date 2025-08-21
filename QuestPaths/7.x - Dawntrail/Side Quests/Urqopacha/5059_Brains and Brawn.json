@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051207,
+          "Position": {
+            "X": 425.07043,
+            "Y": 118.935005,
+            "Z": 606.13403
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051195,
+          "Position": {
+            "X": 383.29138,
+            "Y": -154.50243,
+            "Z": -420.49292
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051228,
+          "Position": {
+            "X": 476.2798,
+            "Y": -133.9321,
+            "Z": -353.01752
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051230,
+          "Position": {
+            "X": -23.422668,
+            "Y": 54.695663,
+            "Z": 533.1044
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051235,
+          "Position": {
+            "X": -22.354492,
+            "Y": 54.58289,
+            "Z": 536.1256
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051236,
+          "Position": {
+            "X": 426.3828,
+            "Y": 118.935,
+            "Z": 603.6621
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.6062,
+            "Y": 16.402647,
+            "Z": -362.11188
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005581,
+          "Position": {
+            "X": -55.985413,
+            "Y": -1.6554508,
+            "Z": -47.56244
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002949,
+          "Position": {
+            "X": -70.17627,
+            "Y": 11.36792,
+            "Z": 97.0625
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath"
+        },
+        {
+          "DataId": 2002956,
+          "Position": {
+            "X": -199.96954,
+            "Y": 5.661072,
+            "Z": 101.823364
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath"
+        },
+        {
+          "DataId": 2002950,
+          "Position": {
+            "X": -118.0896,
+            "Y": 27.695068,
+            "Z": 126.97034
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005585,
+          "Position": {
+            "X": -114.64105,
+            "Y": 7.539109,
+            "Z": 308.82727
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005583,
+          "Position": {
+            "X": -114.27484,
+            "Y": 7.6587763,
+            "Z": 310.01746
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1005584,
+          "Position": {
+            "X": -261.55493,
+            "Y": 7.084492,
+            "Z": 412.28345
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1008284,
+          "Position": {
+            "X": -306.44696,
+            "Y": 6.321288,
+            "Z": 392.5078
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -365.44217,
+            "Y": 6.691126,
+            "Z": 395.09555
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1008287,
+          "Position": {
+            "X": -366.10974,
+            "Y": 6.9095497,
+            "Z": 394.64404
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1008285,
+          "Position": {
+            "X": -319.50867,
+            "Y": 8.2855835,
+            "Z": 428.18335
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1008286,
+          "Position": {
+            "X": -330.5562,
+            "Y": 8.096848,
+            "Z": 480.0641
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -159.56685,
+            "Y": 23.290625,
+            "Z": -334.22568
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        },
+        {
+          "DataId": 1005578,
+          "Position": {
+            "X": 89.00586,
+            "Y": 14.439478,
+            "Z": -387.77753
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.6062,
+            "Y": 16.402647,
+            "Z": -362.11188
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

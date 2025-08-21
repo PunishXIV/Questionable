@@ -1,0 +1,133 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028484,
+          "Position": {
+            "X": -129.35083,
+            "Y": 0,
+            "Z": -62.912964
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] Temenos Rookery"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028484,
+          "Position": {
+            "X": -129.35083,
+            "Y": 0,
+            "Z": -62.912964
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_LUCKLA302_03234_SAYTODO_000_013"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "Craft",
+          "ItemId": 27253,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1030659,
+          "Position": {
+            "X": -131.15137,
+            "Y": 0,
+            "Z": -65.53754
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028485,
+          "Position": {
+            "X": -492.3934,
+            "Y": 69.70277,
+            "Z": 570.18384
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1028487,
+          "Position": {
+            "X": 337.84998,
+            "Y": 87.30014,
+            "Z": -710.65845
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Wolekdorf",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}

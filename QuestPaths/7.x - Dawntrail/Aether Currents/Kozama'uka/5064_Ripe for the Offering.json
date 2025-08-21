@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048782,
+          "Position": {
+            "X": -68.52832,
+            "Y": 6.536739,
+            "Z": -486.53394
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014167,
+          "Position": {
+            "X": -241.56561,
+            "Y": 6.0578003,
+            "Z": -356.40503
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014168,
+          "Position": {
+            "X": -262.50098,
+            "Y": 4.989685,
+            "Z": -318.25745
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014169,
+          "Position": {
+            "X": -280.81183,
+            "Y": 4.989685,
+            "Z": -320.8515
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 399.21567,
+            "Y": -0.40000004,
+            "Z": -384.69452
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Comment": "Waypoint after swimming through the river",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Kozama'uka - Dock Poga"
+            }
+          }
+        },
+        {
+          "DataId": 1048826,
+          "Position": {
+            "X": 672.4802,
+            "Y": 41.63828,
+            "Z": -527.36707
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Kozama'uka - Dock Poga"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048782,
+          "Position": {
+            "X": -68.52832,
+            "Y": 6.536739,
+            "Z": -486.53394
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    }
+  ]
+}

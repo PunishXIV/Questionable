@@ -1,0 +1,161 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048298,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019350,
+          "Position": {
+            "X": 563.2562,
+            "Y": -19.505632,
+            "Z": 319.11182
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019351,
+          "Position": {
+            "X": 548.8822,
+            "Y": -19.505648,
+            "Z": 295.1858
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1019353,
+          "Position": {
+            "X": 544.0298,
+            "Y": -19.505642,
+            "Z": 391.68372
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048305,
+          "Position": {
+            "X": 591.08875,
+            "Y": -19.505634,
+            "Z": 296.9253
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048305,
+          "Position": {
+            "X": 591.08875,
+            "Y": -19.505634,
+            "Z": 296.9253
+          },
+          "TerritoryId": 622,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1048307,
+          "Position": {
+            "X": -494.56018,
+            "Y": 71.630486,
+            "Z": -518.9441
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048295,
+          "Position": {
+            "X": -74.143616,
+            "Y": -19.32829,
+            "Z": 198.68762
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    }
+  ]
+}

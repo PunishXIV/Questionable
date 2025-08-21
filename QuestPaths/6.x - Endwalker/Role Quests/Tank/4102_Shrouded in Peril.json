@@ -1,0 +1,176 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1038397,
+                    "Position": {
+                        "X": -178.97314,
+                        "Y": 4.05,
+                        "Z": -74.69299
+                    },
+                    "TerritoryId": 963,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Radz-at-Han",
+                    "AethernetShortcut": [
+                        "[Radz-at-Han] Aetheryte Plaza",
+                        "[Radz-at-Han] Hall of the Radiant Host"
+                    ],
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_AKTKBA101_04102_Q1_000_000",
+                            "Answer": "TEXT_AKTKBA101_04102_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1038398,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1002780,
+                    "Position": {
+                        "X": -89.79938,
+                        "Y": -45.331417,
+                        "Z": 195.88
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -85.105965,
+                        "Y": -46.544624,
+                        "Z": 210.43315
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "WalkTo"
+                },
+                {
+                    "DataId": 1038405,
+                    "Position": {
+                        "X": -42.46588,
+                        "Y": -40.94998,
+                        "Z": 171.06885
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1038408,
+                    "Position": {
+                        "X": 55.039307,
+                        "Y": -39.472065,
+                        "Z": 234.72949
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 201.86879,
+                        "Y": -27.880434,
+                        "Z": 171.45041
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [
+                        14016
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 1038410,
+                    "Position": {
+                        "X": 201.49536,
+                        "Y": -27.91251,
+                        "Z": 171.61816
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 7,
+            "Steps": [
+                {
+                    "DataId": 1038403,
+                    "Position": {
+                        "X": -43.442444,
+                        "Y": -40.94998,
+                        "Z": 172.22852
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "NextQuestId": 4103
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,450 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -146.86935,
+            "Y": 8.006159,
+            "Z": 268.78055
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 153,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -137.77051,
+              "Y": 7.7094107,
+              "Z": 275.28036
+            },
+            "DelaySeconds": 0.75
+          },
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Flying": "Unlocked",
+              "NearPosition": {
+                "Position": {
+                  "X": -139.45221,
+                  "Y": 8.712891,
+                  "Z": 281.69678
+                },
+                "MaximumDistance": 3,
+                "TerritoryId": 153
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -346.83008,
+            "Y": -37.93451,
+            "Z": -236.64346
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ],
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 2002396,
+          "Position": {
+            "X": -347.34113,
+            "Y": -36.240234,
+            "Z": -249.6529
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Emote",
+          "Emote": "pray",
+          "$": "0 0 17 16 0 0 -> 17 0 1 16 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2002397,
+          "Position": {
+            "X": -339.46753,
+            "Y": -15.06073,
+            "Z": -403.21973
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Emote",
+          "Emote": "pray",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "$": "17 0 1 16 0 128 -> 33 16 1 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -255.17686,
+            "Y": 59.31324,
+            "Z": -44.453175
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true
+        },
+        {
+          "DataId": 2002398,
+          "Position": {
+            "X": -253.46765,
+            "Y": 60.68506,
+            "Z": -43.90027
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Emote",
+          "Emote": "pray",
+          "$": "33 16 1 0 0 192 -> 0 0 0 0 0 0",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -146.86935,
+            "Y": 8.006159,
+            "Z": 268.78055
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 153,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -137.77051,
+              "Y": 7.7094107,
+              "Z": 275.28036
+            },
+            "DelaySeconds": 0.75
+          },
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Flying": "Unlocked",
+              "NearPosition": {
+                "Position": {
+                  "X": -139.45221,
+                  "Y": 8.712891,
+                  "Z": 281.69678
+                },
+                "MaximumDistance": 3,
+                "TerritoryId": 153
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 109.89845,
+            "Y": 7.0051613,
+            "Z": -45.239243
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        },
+        {
+          "DataId": 2002399,
+          "Position": {
+            "X": 107.83545,
+            "Y": 7.7057495,
+            "Z": -45.15149
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -146.86935,
+            "Y": 8.006159,
+            "Z": 268.78055
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 153,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -137.77051,
+              "Y": 7.7094107,
+              "Z": 275.28036
+            },
+            "DelaySeconds": 0.75
+          },
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Flying": "Unlocked",
+              "NearPosition": {
+                "Position": {
+                  "X": -139.45221,
+                  "Y": 8.712891,
+                  "Z": 281.69678
+                },
+                "MaximumDistance": 3,
+                "TerritoryId": 153
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 286.73157,
+            "Y": 42.137627,
+            "Z": -202.96959
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
+            },
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 118.0728,
+            "Y": 74.37976,
+            "Z": -248.26317
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Outer La Noscea - Camp Overlook"
+            }
+          }
+        },
+        {
+          "DataId": 2002400,
+          "Position": {
+            "X": 117.32654,
+            "Y": 75.394775,
+            "Z": -246.54004
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Emote",
+          "Emote": "pray"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -146.86935,
+            "Y": 8.006159,
+            "Z": 268.78055
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 153,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -137.77051,
+              "Y": 7.7094107,
+              "Z": 275.28036
+            },
+            "DelaySeconds": 0.75
+          },
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Flying": "Unlocked",
+              "NearPosition": {
+                "Position": {
+                  "X": -139.45221,
+                  "Y": 8.712891,
+                  "Z": 281.69678
+                },
+                "MaximumDistance": 3,
+                "TerritoryId": 153
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1083
+        }
+      ]
+    }
+  ]
+}

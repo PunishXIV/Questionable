@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 960,
+          "InteractionType": "Gather",
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38299,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 960,
+          "InteractionType": "Gather",
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38323,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1044081,
+          "Position": {
+            "X": -503.99023,
+            "Y": 74.16917,
+            "Z": 261.82947
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960,
+          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+        },
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

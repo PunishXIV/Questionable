@@ -1,0 +1,53 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038501,
+          "Position": {
+            "X": -367.3305,
+            "Y": 21.846018,
+            "Z": -102.983154
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 35600,
+              "ItemCount": 6,
+              "Collectability": 600
+            }
+          ]
+        },
+        {
+          "DataId": 1038501,
+          "Position": {
+            "X": -367.3305,
+            "Y": 21.846018,
+            "Z": -102.983154
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "NextQuestId": 4155
+        }
+      ]
+    }
+  ]
+}

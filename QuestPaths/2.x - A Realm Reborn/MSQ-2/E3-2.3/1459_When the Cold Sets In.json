@@ -1,0 +1,236 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006384,
+          "Position": {
+            "X": 263.5996,
+            "Y": 303.1,
+            "Z": -199.96954
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 240.43533,
+            "Y": 303.94617,
+            "Z": -200.04732
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -423.6362,
+            "Y": 266.62988,
+            "Z": -205.92511
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006444,
+          "Position": {
+            "X": -432.9748,
+            "Y": 233.47266,
+            "Z": -199.6643
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -431.37878,
+            "Y": 259.79306,
+            "Z": -194.97882
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -423.87833,
+            "Y": 266.9849,
+            "Z": -205.68484
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": false
+        },
+        {
+          "Position": {
+            "X": -429.45197,
+            "Y": 217.99948,
+            "Z": -296.54102
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009081,
+          "Position": {
+            "X": -413.93152,
+            "Y": 224.99988,
+            "Z": -298.2987
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -429.70523,
+            "Y": 217.9995,
+            "Z": -297.22086
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -701.3538,
+            "Y": 224.22969,
+            "Z": -31.912737
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            3119,
+            3120
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009087,
+          "Position": {
+            "X": -868.13153,
+            "Y": 226.16986,
+            "Z": 8.132996
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009087,
+          "Position": {
+            "X": -868.13153,
+            "Y": 226.16986,
+            "Z": 8.132996
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -427.42563,
+            "Y": 265.09998,
+            "Z": -211.80003
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006444,
+          "Position": {
+            "X": -432.9748,
+            "Y": 233.47266,
+            "Z": -199.6643
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": 241.14075,
+            "Y": 303,
+            "Z": -200.08086
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1006384,
+          "Position": {
+            "X": 263.5996,
+            "Y": 303.1,
+            "Z": -199.96954
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    }
+  ]
+}

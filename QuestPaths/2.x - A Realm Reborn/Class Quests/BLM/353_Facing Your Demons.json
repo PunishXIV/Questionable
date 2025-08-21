@@ -1,0 +1,183 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1004070,
+          "Position": {
+            "X": -455.86328,
+            "Y": 23.11398,
+            "Z": -326.92456
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1004096,
+          "Position": {
+            "X": -444.75476,
+            "Y": 25,
+            "Z": -324.26947
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1004094,
+          "Position": {
+            "X": -413.47375,
+            "Y": 23.113977,
+            "Z": -383.71863
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002316,
+          "Position": {
+            "X": -436.72852,
+            "Y": 23.774809,
+            "Z": -350.8202
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002315,
+          "Position": {
+            "X": -392.32477,
+            "Y": 23.557693,
+            "Z": -546.9902
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1239
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002315,
+          "Position": {
+            "X": -392.32477,
+            "Y": 23.557693,
+            "Z": -546.9902
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1002317,
+          "Position": {
+            "X": -269.85577,
+            "Y": 15.346575,
+            "Z": -718.1354
+          },
+          "TerritoryId": 140,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSTHM300_00353_Q_000_1",
+              "Answer": "TEXT_CLSTHM300_00353_A_000_2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

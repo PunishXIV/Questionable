@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045674,
+          "Position": {
+            "X": 45.853394,
+            "Y": 56.66061,
+            "Z": 467.39905
+          },
+          "StopDistance": 15,
+          "TerritoryId": 1162,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045676,
+          "Position": {
+            "X": -130.99878,
+            "Y": 54.110245,
+            "Z": 424.73486
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042201,
+          "Position": {
+            "X": 536.2782,
+            "Y": -36.65,
+            "Z": -191.51605
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Tertium"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037106,
+          "Position": {
+            "X": 4.0131226,
+            "Y": 41.530136,
+            "Z": -164.41602
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Rostra"
+          ]
+        }
+      ]
+    }
+  ]
+}

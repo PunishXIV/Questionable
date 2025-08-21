@@ -1,0 +1,49 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 613,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Ruby Sea - Onokoro"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32308,
+          "Locations": [
+            {
+              "Position": {
+                "X": -531.8166,
+                "Y": 16.39526,
+                "Z": 34.16671
+              },
+              "MinimumAngle": 245,
+              "MaximumAngle": 325
+            },
+            {
+              "Position": {
+                "X": -532.9277,
+                "Y": 15.60621,
+                "Z": 50.29741
+              },
+              "MinimumAngle": 190,
+              "MaximumAngle": 330
+            },
+            {
+              "Position": {
+                "X": -520.6714,
+                "Y": 14.15115,
+                "Z": 73.84262
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 230
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

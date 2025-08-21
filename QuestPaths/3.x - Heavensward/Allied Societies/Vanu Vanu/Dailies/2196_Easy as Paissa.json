@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006694,
+          "Position": {
+            "X": -28.030884,
+            "Y": -136.98022,
+            "Z": 454.94763
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006699,
+          "Position": {
+            "X": -15.182739,
+            "Y": -136.98022,
+            "Z": 458.33508
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016237,
+          "Position": {
+            "X": -28.000305,
+            "Y": -137.77374,
+            "Z": 454.94763
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "ItemId": 2001935
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -799.46594,
+                  "Y": -133.2695,
+                  "Z": -404.1352
+                },
+                "TerritoryId": 401,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

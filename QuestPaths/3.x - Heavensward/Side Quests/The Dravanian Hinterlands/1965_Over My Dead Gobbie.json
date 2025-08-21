@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013655,
+          "Position": {
+            "X": -669.9169,
+            "Y": 154.30952,
+            "Z": 191.08862
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013656,
+          "Position": {
+            "X": -617.8836,
+            "Y": 150.38008,
+            "Z": 327.19922
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013659,
+          "Position": {
+            "X": -617.76154,
+            "Y": 153.8528,
+            "Z": 349.35522
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 5049,
+          "Position": {
+            "X": -617.76154,
+            "Y": 153.8528,
+            "Z": 349.35522
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            5046,
+            5049
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013659,
+          "Position": {
+            "X": -617.76154,
+            "Y": 153.8528,
+            "Z": 349.35522
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013656,
+          "Position": {
+            "X": -617.8836,
+            "Y": 150.38008,
+            "Z": 327.19922
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.840637,
+            "Y": 206.49944,
+            "Z": 28.67163
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire"
+        }
+      ]
+    }
+  ]
+}

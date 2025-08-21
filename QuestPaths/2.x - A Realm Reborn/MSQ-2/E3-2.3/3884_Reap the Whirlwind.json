@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009049,
+          "Position": {
+            "X": 187.54858,
+            "Y": -1,
+            "Z": -302.93738
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -141.48044,
+            "Y": 4.2354183,
+            "Z": 232.0292
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009055,
+          "Position": {
+            "X": -142.74823,
+            "Y": 4.2354183,
+            "Z": 232.77625
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 57.739433,
+            "Y": -1.247997,
+            "Z": 343.4356
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009056,
+          "Position": {
+            "X": 58.27417,
+            "Y": -1.2500068,
+            "Z": 342.2445
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009175,
+          "Position": {
+            "X": 59.433838,
+            "Y": -1.2516545,
+            "Z": 341.26794
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -119.1183,
+            "Y": 3.7999938,
+            "Z": -104.33473
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah",
+          "$": "Ul'dah Aetheryte to Immortal Flames"
+        },
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

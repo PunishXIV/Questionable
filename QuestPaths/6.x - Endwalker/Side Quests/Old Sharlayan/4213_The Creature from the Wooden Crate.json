@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041286,
+          "Position": {
+            "X": -230.51807,
+            "Y": 21.437386,
+            "Z": -119.46289
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC004_04213_Q1_000_000",
+              "Answer": "TEXT_AKTKZC004_04213_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041285,
+          "Position": {
+            "X": 115.80066,
+            "Y": 14.741594,
+            "Z": -132.03638
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041286,
+          "Position": {
+            "X": -230.51807,
+            "Y": 21.437386,
+            "Z": -119.46289
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    }
+  ]
+}

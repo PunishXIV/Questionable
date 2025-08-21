@@ -1,0 +1,119 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042300,
+          "Position": {
+            "X": -76.82922,
+            "Y": 39.977543,
+            "Z": 309.98706
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042327,
+          "Position": {
+            "X": 413.35156,
+            "Y": 19.3188,
+            "Z": -457.57233
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012921,
+          "Position": {
+            "X": 128.89294,
+            "Y": 16,
+            "Z": -437.9187
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042328,
+          "Position": {
+            "X": 128.31311,
+            "Y": 16.178802,
+            "Z": -439.78027
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042327,
+          "Position": {
+            "X": 413.35156,
+            "Y": 19.3188,
+            "Z": -457.57233
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042330,
+          "Position": {
+            "X": 383.1692,
+            "Y": 3.1168795,
+            "Z": -263.8133
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042300,
+          "Position": {
+            "X": -76.82922,
+            "Y": 39.986862,
+            "Z": 309.98706
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

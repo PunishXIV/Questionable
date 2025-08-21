@@ -1,0 +1,150 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042278,
+          "Position": {
+            "X": 12.130859,
+            "Y": 0.0999997,
+            "Z": -0.83929443
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1061,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042279,
+          "Position": {
+            "X": 13.290527,
+            "Y": 0.099999696,
+            "Z": -2.243164
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012867,
+          "Position": {
+            "X": -3.2197266,
+            "Y": 2.7313232,
+            "Z": -40.665344
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012866,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 6.6376343,
+            "Z": -78.81293
+          },
+          "StopDistance": 5,
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "IgnoreDistanceToObject": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1042283,
+          "Position": {
+            "X": -59.250793,
+            "Y": -4.6778445E-15,
+            "Z": -29.984009
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1042284,
+          "Position": {
+            "X": 208.69751,
+            "Y": 13.5620365,
+            "Z": -140.30676
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Western Rhalgr's Reach",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012867,
+          "Position": {
+            "X": -3.2197266,
+            "Y": 2.7313232,
+            "Z": -40.665344
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042285,
+          "Position": {
+            "X": -4.623535,
+            "Y": 2.745737,
+            "Z": -39.505676
+          },
+          "StopDistance": 5,
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4539
+        }
+      ]
+    }
+  ]
+}

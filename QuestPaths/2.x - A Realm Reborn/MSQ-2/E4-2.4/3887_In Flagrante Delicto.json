@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010018,
+          "Position": {
+            "X": 49.729126,
+            "Y": -8.046955,
+            "Z": 100.20593
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 152,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ]
+        },
+        {
+          "DataId": 1010020,
+          "Position": {
+            "X": -569.39044,
+            "Y": 9.822195,
+            "Z": 65.171265
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -300.50375,
+            "Y": 0.39631903,
+            "Z": 268.70343
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1010037,
+          "Position": {
+            "X": -300.98425,
+            "Y": 0.4458849,
+            "Z": 267.84155
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -172.96619,
+            "Y": 1.4138634,
+            "Z": 147.4101
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1010038,
+          "Position": {
+            "X": -173.66296,
+            "Y": 1.4696703,
+            "Z": 146.83752
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009987,
+          "Position": {
+            "X": -207.69055,
+            "Y": 4.192081,
+            "Z": 100.26697
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010147,
+          "Position": {
+            "X": 0.8086548,
+            "Y": -1.9957249,
+            "Z": -45.67035
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

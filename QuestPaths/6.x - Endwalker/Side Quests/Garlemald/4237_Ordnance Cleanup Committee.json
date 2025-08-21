@@ -1,0 +1,191 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037747,
+          "Position": {
+            "X": -314.25964,
+            "Y": 22.00559,
+            "Z": 430.47217
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -189.97284,
+            "Y": 15.907461,
+            "Z": -169.83481
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012054,
+          "Position": {
+            "X": -156.05408,
+            "Y": 10.788086,
+            "Z": -235.40094
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.0": "0 0 0 0 0 0 -> 1 16 0 0 0 128",
+          "Fly": true
+        },
+        {
+          "DataId": 2012055,
+          "Position": {
+            "X": -129.83911,
+            "Y": 10.788086,
+            "Z": -270.95447
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "Fly": true,
+          "$": "1 16 0 0 0 128 -> 2 32 0 0 0 192"
+        },
+        {
+          "Position": {
+            "X": -223.12543,
+            "Y": 10.826223,
+            "Z": -368.8611
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -140.08179,
+            "Y": 16.226164,
+            "Z": -310.9478
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012056,
+          "Position": {
+            "X": -234.6991,
+            "Y": 10.788086,
+            "Z": -367.2389
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$.0": "2 32 0 0 0 192 -> 3 48 0 0 0 224",
+          "Fly": true
+        },
+        {
+          "DataId": 2012057,
+          "Position": {
+            "X": -246.93683,
+            "Y": 16.494995,
+            "Z": -413.016
+          },
+          "StopDistance": 1,
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "$.0": "3 48 0 0 0 224 -> 0 64 0 0 0 0",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037747,
+          "Position": {
+            "X": -314.25964,
+            "Y": 22.00559,
+            "Z": 430.47217
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

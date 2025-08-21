@@ -1,0 +1,104 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017171,
+          "Position": {
+            "X": -335.56116,
+            "Y": 59.003433,
+            "Z": 313.98486
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1017406,
+          "Position": {
+            "X": -95.04846,
+            "Y": 79.8345,
+            "Z": -301.80823
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017407,
+          "Position": {
+            "X": -128.34369,
+            "Y": 125.92322,
+            "Z": -314.6258
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 400,
+          "InteractionType": "Craft",
+          "ItemId": 15736,
+          "ItemCount": 3
+        },
+        {
+          "DataId": 1017408,
+          "Position": {
+            "X": -108.59851,
+            "Y": 122.442116,
+            "Z": -318.31848
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017171,
+          "Position": {
+            "X": -335.56116,
+            "Y": 59.003433,
+            "Z": 313.98486
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Churning Mists - Zenith",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -335.56116,
+                  "Y": 59.003433,
+                  "Z": 313.98486
+                },
+                "TerritoryId": 400,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048331,
+          "Position": {
+            "X": 214.03821,
+            "Y": 5.2600574,
+            "Z": 628.3817
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048330,
+          "Position": {
+            "X": -28.732727,
+            "Y": -17.972864,
+            "Z": 194.72034
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 327.87598,
+            "Y": -15.862221,
+            "Z": -236.6933
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 442.79218,
+            "Y": -16.660347,
+            "Z": -111.04725
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17627
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048369,
+          "Position": {
+            "X": 441.5503,
+            "Y": -16.619904,
+            "Z": -109.14783
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048333,
+          "Position": {
+            "X": 52.506226,
+            "Y": -5.20688E-07,
+            "Z": -54.154297
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1048372,
+          "Position": {
+            "X": -53.177734,
+            "Y": -1.9999962,
+            "Z": 147.60046
+          },
+          "StopDistance": 7,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048331,
+          "Position": {
+            "X": 214.03821,
+            "Y": 5.2600574,
+            "Z": 628.3817
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "NextQuestId": 4847
+        }
+      ]
+    }
+  ]
+}

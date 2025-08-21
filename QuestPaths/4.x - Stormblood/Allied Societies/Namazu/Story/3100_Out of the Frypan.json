@@ -1,0 +1,275 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025601,
+          "Position": {
+            "X": -766.7506,
+            "Y": 127.43907,
+            "Z": 91.11157
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -780.148,
+                  "Y": 128.25195,
+                  "Z": 97.154175
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 493.82428,
+            "Y": 40.425697,
+            "Z": -479.13782
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1020539,
+          "Position": {
+            "X": 498.2832,
+            "Y": 40.836098,
+            "Z": -508.20172
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019417,
+          "Position": {
+            "X": -39.414062,
+            "Y": 122.1,
+            "Z": 63.61487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -39.414062,
+                  "Y": 122.1,
+                  "Z": 63.61487
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020280,
+          "Position": {
+            "X": -448.1422,
+            "Y": 2.2771428,
+            "Z": 632.1354
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025843,
+          "Position": {
+            "X": -743.9536,
+            "Y": 127.27266,
+            "Z": 138.23145
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -780.148,
+                  "Y": 128.25195,
+                  "Z": 97.154175
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1025609,
+          "Position": {
+            "X": -770.4738,
+            "Y": 127.42798,
+            "Z": 85.28259
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "RequiredCurrentJob": [
+            "DoH"
+          ]
+        },
+        {
+          "TerritoryId": 622,
+          "InteractionType": "Craft",
+          "ItemId": 22723,
+          "ItemCount": 1,
+          "RequiredCurrentJob": [
+            "DoH"
+          ]
+        },
+        {
+          "TerritoryId": 622,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 22619,
+              "ItemCount": 1
+            }
+          ],
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 587.4958,
+                  "Y": -11.549787,
+                  "Z": 563.02606
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 250
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 622,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 22645,
+              "ItemCount": 1
+            }
+          ],
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 587.4958,
+                  "Y": -11.549787,
+                  "Z": 563.02606
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 250
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1025842,
+          "Position": {
+            "X": -742.855,
+            "Y": 127.275314,
+            "Z": 137.59058
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -742.855,
+                  "Y": 127.275314,
+                  "Z": 137.59058
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1025715,
+          "Position": {
+            "X": -799.13025,
+            "Y": 127.50203,
+            "Z": 57.236572
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025716,
+          "Position": {
+            "X": -800.9613,
+            "Y": 127.411125,
+            "Z": 39.902344
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

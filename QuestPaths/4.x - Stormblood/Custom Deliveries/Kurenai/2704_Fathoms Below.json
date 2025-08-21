@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 322.1539,
+            "Y": -121.22571,
+            "Z": -314.2446
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "Position": {
+            "X": 22.288645,
+            "Y": -196.2301,
+            "Z": -155.5739
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "$": "Sui-no-Sato, NE outside",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 1023280,
+          "Position": {
+            "X": -62.790894,
+            "Y": -198.96509,
+            "Z": -64.34735
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023281,
+          "Position": {
+            "X": -9.597961,
+            "Y": -196.98103,
+            "Z": -82.383545
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023280,
+          "Position": {
+            "X": -62.790894,
+            "Y": -198.96509,
+            "Z": -64.34735
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2705
+        }
+      ]
+    }
+  ]
+}

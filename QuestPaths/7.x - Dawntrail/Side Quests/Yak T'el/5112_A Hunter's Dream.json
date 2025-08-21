@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050874,
+          "Position": {
+            "X": -508.87314,
+            "Y": 29.61908,
+            "Z": -350.1183
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZD203_05112_Q1_000_000",
+              "Answer": "TEXT_KINGZD203_05112_A1_000_001"
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -508.87314,
+                  "Y": 29.61908,
+                  "Z": -350.1183
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 250
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050877,
+          "Position": {
+            "X": -39.871887,
+            "Y": 0.35915944,
+            "Z": -312.1233
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014144,
+          "Position": {
+            "X": -43.10681,
+            "Y": 0.503479,
+            "Z": -312.36743
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050878,
+          "Position": {
+            "X": 475.30322,
+            "Y": 18.197147,
+            "Z": -326.95508
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 5113
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020476,
+          "Position": {
+            "X": 147.75305,
+            "Y": 14.775722,
+            "Z": 91.721924
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020464,
+          "Position": {
+            "X": 0.045776367,
+            "Y": 0,
+            "Z": -2.3041382
+          },
+          "StopDistance": 7,
+          "TerritoryId": 639,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008134,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.1443481,
+            "Z": 13.504211
+          },
+          "TerritoryId": 639,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 628
+        },
+        {
+          "TerritoryId": 628,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Kugane] Sekiseigumi Barracks",
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Aetheryte Plaza"
+          ]
+        },
+        {
+          "DataId": 1020481,
+          "Position": {
+            "X": 125.596924,
+            "Y": 14.804411,
+            "Z": -102.861084
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2007910,
+          "Position": {
+            "X": 125.322266,
+            "Y": 14.358704,
+            "Z": -100.48071
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2008333,
+          "Position": {
+            "X": 125.41394,
+            "Y": 14.358704,
+            "Z": -100.51117
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020483,
+          "Position": {
+            "X": 127.79431,
+            "Y": 14.650923,
+            "Z": -101.701416
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

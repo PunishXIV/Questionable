@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050693,
+          "Position": {
+            "X": 398.70288,
+            "Y": 122.54732,
+            "Z": 523.4912
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050694,
+          "Position": {
+            "X": -22.720703,
+            "Y": 54.759686,
+            "Z": 522.88086
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050694,
+          "Position": {
+            "X": -22.720703,
+            "Y": 54.759686,
+            "Z": 522.88086
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_KINGZB108_05048_SAYTODO_000_100"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050693,
+          "Position": {
+            "X": 398.70288,
+            "Y": 122.54732,
+            "Z": 523.4912
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

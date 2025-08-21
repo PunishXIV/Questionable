@@ -1,0 +1,136 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024710,
+          "Position": {
+            "X": 835.5382,
+            "Y": 5.9230075,
+            "Z": 834.6837
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019166,
+          "Position": {
+            "X": 495.6587,
+            "Y": 29.394592,
+            "Z": 722.0111
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024717,
+          "Position": {
+            "X": 503.44092,
+            "Y": 28.738373,
+            "Z": 737.4226
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008628,
+          "Position": {
+            "X": 633.81384,
+            "Y": 1.4800415,
+            "Z": 216.26611
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024722,
+          "Position": {
+            "X": 615.4115,
+            "Y": 69.10424,
+            "Z": -79.88104
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024723,
+          "Position": {
+            "X": 534.2031,
+            "Y": 0.004061999,
+            "Z": -252.58258
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1024725,
+          "Position": {
+            "X": 100.02283,
+            "Y": 4.0000014,
+            "Z": 99.25989
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024708,
+          "Position": {
+            "X": 98.83264,
+            "Y": 4.0000014,
+            "Z": 103.471436
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3094
+        }
+      ]
+    }
+  ]
+}

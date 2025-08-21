@@ -1,0 +1,223 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039028,
+          "Position": {
+            "X": 381.33813,
+            "Y": 3.1168795,
+            "Z": -257.0688
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037630,
+          "Position": {
+            "X": 401.8158,
+            "Y": 3.1168792,
+            "Z": -273.76215
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039030,
+          "Position": {
+            "X": 408.65186,
+            "Y": 13.167275,
+            "Z": -184.37476
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 543.0377,
+            "Y": 15.147404,
+            "Z": -147.8739
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2011996,
+          "Position": {
+            "X": 550.01135,
+            "Y": 25.467285,
+            "Z": -159.1059
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818332,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 536.3203,
+            "Y": 12.722106,
+            "Z": -95.65565
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 498.18472,
+            "Y": 4.909424,
+            "Z": 1.4510483
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            13988
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039034,
+          "Position": {
+            "X": 494.83484,
+            "Y": 5.376761,
+            "Z": 2.7313232
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039035,
+          "Position": {
+            "X": 573.5714,
+            "Y": 16.272768,
+            "Z": 130.11365
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 521.0876,
+            "Y": 11.819632,
+            "Z": 266.03055
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            13987
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.0": "[1]",
+          "$.1": "QuestVariables if done first: 16 1 0 0 0 128"
+        },
+        {
+          "Position": {
+            "X": 571.6434,
+            "Y": 32.12932,
+            "Z": 370.01733
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            13986
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$.0": "[2]",
+          "$.1": "QuestVariables if done after [1]: 33 1 0 0 0 192",
+          "$.2": "QuestVariables if done after [3]: 33 32 0 0 0 96"
+        },
+        {
+          "Position": {
+            "X": 660.18604,
+            "Y": 44.997604,
+            "Z": 196.7378
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            13985,
+            13984
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$.0": "[3]",
+          "$.2": "QuestVariables if done first: 16 32 0 0 0 32"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039036,
+          "Position": {
+            "X": 628.62585,
+            "Y": 37.497498,
+            "Z": 246.02112
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

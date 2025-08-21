@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002626,
+          "Position": {
+            "X": 207.2633,
+            "Y": 112.860374,
+            "Z": -222.43079
+          },
+          "TerritoryId": 134,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -21.400705,
+            "Y": 46.621056,
+            "Z": -70.3491
+          },
+          "TerritoryId": 134,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2001582,
+          "Position": {
+            "X": -58.640503,
+            "Y": 27.145752,
+            "Z": -141.7716
+          },
+          "TerritoryId": 134,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.3.2.5"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002626,
+          "Position": {
+            "X": 207.2633,
+            "Y": 112.860374,
+            "Z": -222.43079
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

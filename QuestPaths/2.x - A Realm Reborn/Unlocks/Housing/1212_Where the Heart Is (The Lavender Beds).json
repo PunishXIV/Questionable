@@ -1,0 +1,117 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "AttuneAetheryte",
+          "TerritoryId": 148,
+          "Aetheryte": "Central Shroud - Bentbranch Meadows",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Central Shroud - Bentbranch Meadows"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Central Shroud - Bentbranch Meadows"
+            }
+          }
+        },
+        {
+          "DataId": 1000478,
+          "Position": {
+            "X": 11.642578,
+            "Y": -1.0223389,
+            "Z": 21.072632
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "AetheryteLocked": "Central Shroud - Bentbranch Meadows"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005530,
+          "Position": {
+            "X": 186.57202,
+            "Y": -32.23455,
+            "Z": 327.8706
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005656,
+          "Position": {
+            "X": 200.3357,
+            "Y": -32.043697,
+            "Z": 323.7506
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 340,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Addon",
+              "Prompt": 6347,
+              "Answer": 6403
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005879,
+          "Position": {
+            "X": 0.8086548,
+            "Y": 2.8884888,
+            "Z": 181.99426
+          },
+          "TerritoryId": 340,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000478,
+          "Position": {
+            "X": 11.642578,
+            "Y": -1.0223389,
+            "Z": 21.072632
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    }
+  ]
+}

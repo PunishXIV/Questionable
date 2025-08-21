@@ -1,0 +1,100 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 4543,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                131
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002441,
+          "Position": {
+            "X": 689.5093,
+            "Y": 9.750427,
+            "Z": 483.32947
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2000817,
+          "KillEnemyDataIds": [
+            1925
+          ],
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002442,
+          "Position": {
+            "X": 689.5093,
+            "Y": 9.750427,
+            "Z": 483.32947
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "NextQuestId": 1063
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009341,
+          "Position": {
+            "X": -48.44745,
+            "Y": 75.95115,
+            "Z": 9.079041
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "DataId": 1009351,
+          "Position": {
+            "X": 524.28467,
+            "Y": 17.448048,
+            "Z": 449.08826
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009347,
+          "Position": {
+            "X": 442.77087,
+            "Y": 15.823447,
+            "Z": 375.17358
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009348,
+          "Position": {
+            "X": 386.19055,
+            "Y": 29.58076,
+            "Z": 350.3623
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009345,
+          "Position": {
+            "X": 523.76587,
+            "Y": 17.448044,
+            "Z": 447.13513
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2004328,
+          "Position": {
+            "X": 523.4607,
+            "Y": 17.837708,
+            "Z": 455.2528
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 166
+        }
+      ]
+    }
+  ]
+}

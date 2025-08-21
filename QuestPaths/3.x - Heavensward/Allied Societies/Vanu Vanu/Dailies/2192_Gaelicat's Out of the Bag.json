@@ -1,0 +1,173 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016089,
+          "Position": {
+            "X": -799.46594,
+            "Y": -133.2695,
+            "Z": -404.1352
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016092,
+          "Position": {
+            "X": -792.6299,
+            "Y": -133.32184,
+            "Z": -425.5589
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016375,
+          "Position": {
+            "X": -627.89355,
+            "Y": -149.95285,
+            "Z": 480.15564
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "ItemId": 2001934,
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 1016232,
+          "Position": {
+            "X": -452.10956,
+            "Y": -187.396,
+            "Z": 734.18774
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "ItemId": 2001934,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1016233,
+          "Position": {
+            "X": -359.823,
+            "Y": -184.95448,
+            "Z": 796.71924
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "ItemId": 2001934,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1016374,
+          "Position": {
+            "X": -343.00757,
+            "Y": -161.8661,
+            "Z": 770.01587
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "ItemId": 2001934,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1016231,
+          "Position": {
+            "X": -333.79114,
+            "Y": -184.97446,
+            "Z": 625.1162
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "ItemId": 2001934,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016092,
+          "Position": {
+            "X": -792.6299,
+            "Y": -133.32184,
+            "Z": -425.5589
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -799.46594,
+                  "Y": -133.2695,
+                  "Z": -404.1352
+                },
+                "TerritoryId": 401,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

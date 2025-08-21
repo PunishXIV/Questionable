@@ -1,0 +1,133 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038600,
+          "Position": {
+            "X": 189.92896,
+            "Y": 9.9744425,
+            "Z": 589.89844
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Thavnair - Yedlihmad"
+        },
+        {
+          "DataId": 2011948,
+          "Position": {
+            "X": 204.66919,
+            "Y": 2.243042,
+            "Z": 715.4192
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "Position": {
+            "X": 193.6185,
+            "Y": 1.9123514,
+            "Z": 713.436
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1037622,
+          "Position": {
+            "X": 189.94562,
+            "Y": 0.8560083,
+            "Z": 702.7896
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2011949,
+          "Position": {
+            "X": 200,
+            "Y": 1.7547607,
+            "Z": 768.9784
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1037623,
+          "Position": {
+            "X": 220.78271,
+            "Y": 1.8349868,
+            "Z": 759.4263
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 223.328,
+            "Y": -0.6,
+            "Z": 752.7248
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Sprint": true
+        },
+        {
+          "Position": {
+            "X": 253.03053,
+            "Y": 0.7659681,
+            "Z": 732.0563
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1038606,
+          "Position": {
+            "X": 277.72937,
+            "Y": 2.9636285,
+            "Z": 703.7003
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038608,
+          "Position": {
+            "X": 197.55847,
+            "Y": 1.769943,
+            "Z": 737.97205
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

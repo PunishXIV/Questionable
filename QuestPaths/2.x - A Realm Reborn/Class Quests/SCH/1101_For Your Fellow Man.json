@@ -1,0 +1,234 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006757,
+          "Position": {
+            "X": -4.4709473,
+            "Y": 44.999886,
+            "Z": -250.56848
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006332,
+          "Position": {
+            "X": 426.96265,
+            "Y": 8.373348,
+            "Z": 20.004517
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007843,
+          "Position": {
+            "X": 388.08264,
+            "Y": 7.8583374,
+            "Z": 40.512573
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": 423.76727,
+            "Y": 4.109605,
+            "Z": 74.008965
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1007844,
+          "Position": {
+            "X": 417.16638,
+            "Y": 3.6468506,
+            "Z": 59.64746
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1007840,
+          "Position": {
+            "X": 427.2068,
+            "Y": 7.6130996,
+            "Z": 141.34424
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "Position": {
+            "X": 477.80576,
+            "Y": 10.397504,
+            "Z": 104.84231
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ],
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1007842,
+          "Position": {
+            "X": 477.25635,
+            "Y": 8.499207,
+            "Z": 108.07959
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1007841,
+          "Position": {
+            "X": 503.04407,
+            "Y": 16.468494,
+            "Z": 72.46509
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Action",
+          "Action": "Esuna",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006332,
+          "Position": {
+            "X": 426.96265,
+            "Y": 8.373348,
+            "Z": 20.004517
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006757,
+          "Position": {
+            "X": -4.4709473,
+            "Y": 44.999886,
+            "Z": -250.56848
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "NextQuestId": 1102
+        }
+      ]
+    }
+  ]
+}

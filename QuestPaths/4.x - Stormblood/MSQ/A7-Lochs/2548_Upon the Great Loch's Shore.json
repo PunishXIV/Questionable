@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020665,
+          "Position": {
+            "X": -53.421875,
+            "Y": -0.11677644,
+            "Z": -28.610718
+          },
+          "StopDistance": 7,
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020412,
+          "Position": {
+            "X": -137.74323,
+            "Y": 0.5980506,
+            "Z": -81.498474
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -271.59692,
+            "Y": 257.52652,
+            "Z": 737.01855
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
+        },
+        {
+          "DataId": 1021557,
+          "Position": {
+            "X": -130.02216,
+            "Y": 305.38147,
+            "Z": 189.71533
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 620,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 1.7183262,
+            "Y": 317.60666,
+            "Z": 141.11252
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1020649,
+          "Position": {
+            "X": 570.94666,
+            "Y": 344.1177,
+            "Z": 422.17126
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 590.9373,
+            "Y": 344.0868,
+            "Z": 421.07693
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 621,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lochs - Porta Praetoria"
+        },
+        {
+          "DataId": 1021704,
+          "Position": {
+            "X": -651.51447,
+            "Y": 50.000015,
+            "Z": -3.1281738
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

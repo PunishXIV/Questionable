@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1034522,
+          "Position": {
+            "X": -7.0039062,
+            "Y": -2.4980054,
+            "Z": 21.591492
+          },
+          "StopDistance": 7,
+          "TerritoryId": 878,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1034508,
+          "Position": {
+            "X": 380.66675,
+            "Y": -64.28985,
+            "Z": 510.58203
+          },
+          "StopDistance": 5,
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 268.15204,
+            "Y": 7.1558266,
+            "Z": -237.94643
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true
+        },
+        {
+          "DataId": 1032715,
+          "Position": {
+            "X": 265.3086,
+            "Y": 7.1558266,
+            "Z": -237.81189
+          },
+          "StopDistance": 4,
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

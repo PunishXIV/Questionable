@@ -1,0 +1,174 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020608,
+          "Position": {
+            "X": -346.15094,
+            "Y": 305.93304,
+            "Z": 149.03479
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020609,
+          "Position": {
+            "X": -134.26416,
+            "Y": 305.2497,
+            "Z": 187.79272
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008944,
+          "Position": {
+            "X": -128.98456,
+            "Y": 306.47742,
+            "Z": 188.58618
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDA611_02537_AREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1020610,
+          "Position": {
+            "X": -77.25653,
+            "Y": 305.92664,
+            "Z": 154.00928
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020617,
+          "Position": {
+            "X": -15.274292,
+            "Y": 317.61813,
+            "Z": 134.93542
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 1 0    0 0    0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1020618,
+          "Position": {
+            "X": -17.502136,
+            "Y": 317.66766,
+            "Z": 114.39685
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 1 0    0 0    0 128 -> QW: 2 0    0 0    0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1020619,
+          "Position": {
+            "X": 0.289917,
+            "Y": 317.56836,
+            "Z": 105.57703
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022335,
+          "Position": {
+            "X": -30.289246,
+            "Y": 317.56836,
+            "Z": 123.85742
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1020613,
+          "Position": {
+            "X": 7.7667847,
+            "Y": 317.61786,
+            "Z": 110.0022
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020611,
+          "Position": {
+            "X": 7.827881,
+            "Y": 317.5509,
+            "Z": 112.41321
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

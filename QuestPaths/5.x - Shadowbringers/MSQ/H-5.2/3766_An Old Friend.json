@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029234,
+          "Position": {
+            "X": 449.0271,
+            "Y": 33.66181,
+            "Z": -157.94617
+          },
+          "StopDistance": 5,
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032263,
+          "Position": {
+            "X": -87.87671,
+            "Y": -19.022131,
+            "Z": 298.20703
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027750,
+          "Position": {
+            "X": -24.734924,
+            "Y": -25.324257,
+            "Z": 305.5924
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032513,
+          "Position": {
+            "X": -37.06427,
+            "Y": -18.91939,
+            "Z": 334.21826
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032515,
+          "Position": {
+            "X": -642.2064,
+            "Y": 3.1136527,
+            "Z": 16.861145
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

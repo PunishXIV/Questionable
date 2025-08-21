@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016087,
+          "Position": {
+            "X": -796.7498,
+            "Y": -133.2695,
+            "Z": -410.6966
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006623,
+          "Position": {
+            "X": -761.74567,
+            "Y": -132.61621,
+            "Z": -422.1714
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "sundropdance",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016087,
+          "Position": {
+            "X": -796.7498,
+            "Y": -133.2695,
+            "Z": -410.6966
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012064,
+          "Position": {
+            "X": -542.7787,
+            "Y": -37.11544,
+            "Z": -386.7094
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2006637,
+          "Position": {
+            "X": -220.47766,
+            "Y": -4.9592285,
+            "Z": -582.3301
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

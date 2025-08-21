@@ -1,0 +1,116 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1045615,
+                    "Position": {
+                        "X": -115.80072,
+                        "Y": 4,
+                        "Z": -100.99945
+                    },
+                    "TerritoryId": 130,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Ul'dah",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_SUBWIL901_04779_Q1_000_000",
+                            "Answer": "TEXT_SUBWIL901_04779_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1045616,
+                    "Position": {
+                        "X": -379.7818,
+                        "Y": -59,
+                        "Z": 131.48694
+                    },
+                    "TerritoryId": 145,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 2013396,
+                    "Position": {
+                        "X": -69.96271,
+                        "Y": -21.011719,
+                        "Z": -10.177856
+                    },
+                    "TerritoryId": 145,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1045618,
+                    "Position": {
+                        "X": -37.43042,
+                        "Y": 11.0769615,
+                        "Z": -257.5876
+                    },
+                    "TerritoryId": 133,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania",
+                    "AethernetShortcut": [
+                        "[Gridania] Aetheryte Plaza",
+                        "[Gridania] Mih Khetto's Amphitheatre"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1045619,
+                    "Position": {
+                        "X": 24.612793,
+                        "Y": 40,
+                        "Z": 80.338745
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] The Aftcastle"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1045619,
+                    "Position": {
+                        "X": 24.612793,
+                        "Y": 40,
+                        "Z": 80.338745
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

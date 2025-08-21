@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035529,
+          "Position": {
+            "X": -7.156494,
+            "Y": -16,
+            "Z": 163.43933
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036487,
+          "Position": {
+            "X": -93.15637,
+            "Y": 0,
+            "Z": -129.56439
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] Western Risensong Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -113.73003,
+            "Y": 0,
+            "Z": -136.48384
+          },
+          "TerritoryId": 886,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1036127,
+          "Position": {
+            "X": -116.92993,
+            "Y": 0,
+            "Z": -137.31598
+          },
+          "StopDistance": 5,
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1036488,
+          "Position": {
+            "X": 140.91699,
+            "Y": -40,
+            "Z": 158.55652
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] Western Risensong Quarter",
+            "[Firmament] The New Nest"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036490,
+          "Position": {
+            "X": -114.39691,
+            "Y": 0,
+            "Z": -137.31598
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Firmament] The New Nest",
+            "[Firmament] Western Risensong Quarter"
+          ]
+        }
+      ]
+    }
+  ]
+}

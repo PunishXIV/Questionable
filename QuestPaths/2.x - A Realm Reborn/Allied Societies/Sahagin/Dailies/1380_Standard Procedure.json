@@ -1,0 +1,99 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005938,
+                    "Position": {
+                        "X": -220.7218,
+                        "Y": -40.720844,
+                        "Z": 37.247192
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -220.7218,
+                                    "Y": -40.720844,
+                                    "Z": 37.247192
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2003871,
+                    "Position": {
+                        "X": -126.93988,
+                        "Y": -27.084778,
+                        "Z": 29.800781
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001273,
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 2003872,
+                    "Position": {
+                        "X": -22.354492,
+                        "Y": -14.999634,
+                        "Z": -101.51831
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001273,
+                    "Fly": true,
+                    "RequiredQuestVariables": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        [
+                            128
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005938,
+                    "Position": {
+                        "X": -220.7218,
+                        "Y": -40.720844,
+                        "Z": 37.247192
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

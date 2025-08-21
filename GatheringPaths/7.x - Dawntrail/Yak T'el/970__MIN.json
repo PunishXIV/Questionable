@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 1189,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Yak T'el - Mamook"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34721,
+          "Locations": [
+            {
+              "Position": {
+                "X": 663.934,
+                "Y": 25.09505,
+                "Z": -87.81284
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34722,
+          "Locations": [
+            {
+              "Position": {
+                "X": 652.5192,
+                "Y": 21.87234,
+                "Z": -111.9597
+              },
+              "MinimumAngle": 195,
+              "MaximumAngle": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34723,
+          "Locations": [
+            {
+              "Position": {
+                "X": 605.4673,
+                "Y": 22.40212,
+                "Z": -91.82993
+              },
+              "MinimumAngle": 220,
+              "MaximumAngle": 330
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34724,
+          "Locations": [
+            {
+              "Position": {
+                "X": 547.7242,
+                "Y": 17.74087,
+                "Z": -106.2755
+              },
+              "MinimumAngle": 45,
+              "MaximumAngle": 180
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34725,
+          "Locations": [
+            {
+              "Position": {
+                "X": 534.3469,
+                "Y": 18.59627,
+                "Z": -78.46846
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34726,
+          "Locations": [
+            {
+              "Position": {
+                "X": 485.1973,
+                "Y": 17.44523,
+                "Z": -79.501
+              },
+              "MinimumAngle": -55,
+              "MaximumAngle": 35
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

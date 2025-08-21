@@ -1,0 +1,205 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021869,
+          "Position": {
+            "X": 43.259277,
+            "Y": -8,
+            "Z": 99.19885
+          },
+          "StopDistance": 1.5,
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000146,
+          "Position": {
+            "X": 49.79016,
+            "Y": -1.4669685,
+            "Z": 51.743286
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000184,
+          "Position": {
+            "X": 12.130859,
+            "Y": -1.4203229,
+            "Z": 30.44165
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1001276,
+          "Position": {
+            "X": 13.961914,
+            "Y": 0.1373291,
+            "Z": 2.090454
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021871,
+          "Position": {
+            "X": -17.929382,
+            "Y": -3.5175722,
+            "Z": 8.895996
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 16.415976,
+            "Y": -13.3742895,
+            "Z": 13.173157
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7492,
+            7493
+          ],
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021873,
+          "Position": {
+            "X": 15.6710205,
+            "Y": -13.159564,
+            "Z": 14.572327
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1021877,
+          "Position": {
+            "X": 72.03784,
+            "Y": -13.573448,
+            "Z": -6.790344
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1021923,
+          "Position": {
+            "X": -16.739136,
+            "Y": -3.3721945,
+            "Z": 8.590759
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021878,
+          "Position": {
+            "X": 112.41321,
+            "Y": 3.6299734,
+            "Z": 62.302612
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "NextQuestId": 2564
+        }
+      ]
+    }
+  ]
+}

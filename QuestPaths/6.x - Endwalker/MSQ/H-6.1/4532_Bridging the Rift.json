@@ -1,0 +1,129 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039609,
+          "Position": {
+            "X": -343.09918,
+            "Y": 55,
+            "Z": -74.84558
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039611,
+          "Position": {
+            "X": 124.1626,
+            "Y": 4.856044,
+            "Z": -139.63531
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Meghaduta",
+            "[Radz-at-Han] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039614,
+          "Position": {
+            "X": -9.536926,
+            "Y": 2.8,
+            "Z": -15.243774
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039615,
+          "Position": {
+            "X": -297.13898,
+            "Y": 20.8,
+            "Z": -189.59338
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039616,
+          "Position": {
+            "X": 227.06946,
+            "Y": 25.041138,
+            "Z": -159.2279
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039614,
+          "Position": {
+            "X": -94.118614,
+            "Y": 3.8989394,
+            "Z": 1.0696089
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039617,
+          "Position": {
+            "X": -93.91931,
+            "Y": 3.8989394,
+            "Z": -1.1750488
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

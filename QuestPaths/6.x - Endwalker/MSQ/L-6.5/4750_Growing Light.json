@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045681,
+          "Position": {
+            "X": 5.8136597,
+            "Y": 41.530136,
+            "Z": -165.27051
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030533,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKML107_04750_SYSTEM_000_101",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045684,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": -3.3417358
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045684,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": -3.3417358
+          },
+          "StopDistance": 5,
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039649,
+          "Position": {
+            "X": -336.53772,
+            "Y": 55,
+            "Z": -69.47443
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Meghaduta"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1045688,
+          "Position": {
+            "X": -2.456726,
+            "Y": 3.0299988,
+            "Z": -212.84814
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039645,
+          "Position": {
+            "X": -338.33832,
+            "Y": 55,
+            "Z": -68.40625
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Mehryde's Meyhane",
+            "[Radz-at-Han] Meghaduta"
+          ]
+        }
+      ]
+    }
+  ]
+}

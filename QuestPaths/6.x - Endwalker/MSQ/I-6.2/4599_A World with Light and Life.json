@@ -1,0 +1,195 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043848,
+          "Position": {
+            "X": -1.5717163,
+            "Y": 0.008460393,
+            "Z": -1.8463745
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1078,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMI108_04599_Q1_000_000",
+              "Answer": "TEXT_AKTKMI108_04599_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013077,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.2359009,
+            "Z": 5.3864136
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1078,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 963
+        },
+        {
+          "DataId": 1037381,
+          "Position": {
+            "X": -23.697266,
+            "Y": 1.7999947,
+            "Z": -180.07172
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Meghaduta",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMI108_04599_Q3_000_000",
+              "Answer": "TEXT_AKTKMI108_04599_A3_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1043847,
+          "Position": {
+            "X": -350.24036,
+            "Y": 55,
+            "Z": -81.28485
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Mehryde's Meyhane",
+            "[Radz-at-Han] Meghaduta"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMI108_04599_SYSTEM_000_211",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1043852,
+          "Position": {
+            "X": -353.3227,
+            "Y": 54.999992,
+            "Z": -79.60632
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1037318,
+          "Position": {
+            "X": -4.1047363,
+            "Y": 2.9999943,
+            "Z": -203.8758
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Meghaduta",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1043852,
+          "Position": {
+            "X": -33.52105,
+            "Y": 0.59983087,
+            "Z": -74.57541
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1037354,
+          "Position": {
+            "X": 109.33081,
+            "Y": 1.8631814,
+            "Z": -100.1145
+          },
+          "StopDistance": 7,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1043852,
+          "Position": {
+            "X": -159.23143,
+            "Y": 36.051323,
+            "Z": 70.24
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Ruveydah Fibers"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043857,
+          "Position": {
+            "X": -158.15979,
+            "Y": 36.051323,
+            "Z": 67.36853
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027246,
+          "Position": {
+            "X": -136.98022,
+            "Y": 0,
+            "Z": -73.777466
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028945,
+          "Position": {
+            "X": 588.55554,
+            "Y": 9.151089,
+            "Z": 342.7328
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -163.7502,
+            "Y": 5.7616043,
+            "Z": -84.08555
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -621.27985,
+            "Y": 56.75789,
+            "Z": -151.14738
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027395,
+          "Position": {
+            "X": -618.06665,
+            "Y": 56.75789,
+            "Z": -148.24146
+          },
+          "StopDistance": 5,
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -655.08356,
+            "Y": 52.60457,
+            "Z": -186.09218
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -628.89685,
+            "Y": 52.60457,
+            "Z": -190.31772
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2010032,
+          "Position": {
+            "X": -619.6537,
+            "Y": 51.499146,
+            "Z": -199.11499
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818231,
+          "DisableNavmesh": true
+        },
+        {
+          "TerritoryId": 813,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lakeland - Ostall Imperative"
+        },
+        {
+          "Position": {
+            "X": -694.6047,
+            "Y": 50.939487,
+            "Z": -270.97464
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1028947,
+          "Position": {
+            "X": -648.9509,
+            "Y": 64.32663,
+            "Z": -271.65643
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

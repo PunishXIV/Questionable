@@ -1,0 +1,100 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006913,
+          "Position": {
+            "X": 566.7964,
+            "Y": -20.553955,
+            "Z": -530.2052
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006914,
+          "Position": {
+            "X": 595.3917,
+            "Y": -20.187744,
+            "Z": -547.4785
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006912,
+          "Position": {
+            "X": 639.8259,
+            "Y": -19.60791,
+            "Z": -588.098
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 58.39701,
+            "Y": -48.000008,
+            "Z": -172.36507
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+        },
+        {
+          "DataId": 1016803,
+          "Position": {
+            "X": 57.297607,
+            "Y": -47.842846,
+            "Z": -174.63953
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016855,
+          "Position": {
+            "X": 74.906494,
+            "Y": -48,
+            "Z": -175.67712
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

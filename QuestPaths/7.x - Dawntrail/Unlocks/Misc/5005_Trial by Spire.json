@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051454,
+          "Position": {
+            "X": 376.2417,
+            "Y": 50.749996,
+            "Z": 148.51599
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] True Vue"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049466,
+          "Position": {
+            "X": -247.88281,
+            "Y": 30,
+            "Z": -631.15894
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Heritage Found - The Outskirts"
+        }
+      ]
+    }
+  ]
+}

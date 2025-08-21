@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2010850,
+          "Position": {
+            "X": -74.540344,
+            "Y": 10.696533,
+            "Z": 16.739136
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031682,
+          "Position": {
+            "X": 152.97156,
+            "Y": -20.000004,
+            "Z": 63.767456
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010920,
+          "Position": {
+            "X": -141.13074,
+            "Y": -12.64978,
+            "Z": -33.585205
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKHA001_03672_Q3_000_000",
+              "Yes": true
+            }
+          ],
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031989,
+          "Position": {
+            "X": -139.17761,
+            "Y": -12.634913,
+            "Z": -33.951355
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031682,
+          "Position": {
+            "X": 152.97156,
+            "Y": -20.000004,
+            "Z": 63.767456
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKHA001_03672_EVENTAREA_WARP_000_117",
+              "Yes": true
+            }
+          ],
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031684,
+          "Position": {
+            "X": -7.156494,
+            "Y": -16,
+            "Z": 163.46985
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3725
+        }
+      ]
+    }
+  ]
+}

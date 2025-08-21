@@ -1,0 +1,46 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011145,
+          "Position": {
+            "X": -65.38495,
+            "Y": 0.06979119,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 144,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gold Saucer",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016307,
+          "Position": {
+            "X": 57.14502,
+            "Y": 20.99973,
+            "Z": 83.57361
+          },
+          "TerritoryId": 144,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Wonder Square East"
+          ]
+        }
+      ]
+    }
+  ]
+}

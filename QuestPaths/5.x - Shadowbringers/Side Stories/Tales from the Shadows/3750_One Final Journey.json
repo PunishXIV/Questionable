@@ -1,0 +1,108 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1018433,
+                    "Position": {
+                        "X": 50.766724,
+                        "Y": 50,
+                        "Z": -772.3964
+                    },
+                    "TerritoryId": 156,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Mor Dhona",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    },
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_LUCKZK991_03750_Q1_000_000",
+                            "Answer": "TEXT_LUCKZK991_03750_A1_000_000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2009865,
+                    "Position": {
+                        "X": -52.781067,
+                        "Y": 17.990356,
+                        "Z": 48.90515
+                    },
+                    "TerritoryId": 131,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Ul'dah",
+                    "AethernetShortcut": [
+                        "[Ul'dah] Aetheryte Plaza",
+                        "[Ul'dah] Goldsmiths' Guild"
+                    ],
+                    "Sprint": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -509.02783,
+                        "Y": -16.420786,
+                        "Z": 11.723575
+                    },
+                    "TerritoryId": 145,
+                    "InteractionType": "WalkTo",
+                    "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+                    "Fly": true
+                },
+                {
+                    "DataId": 1006355,
+                    "Position": {
+                        "X": -512.47424,
+                        "Y": -16.42,
+                        "Z": -7.522766
+                    },
+                    "TerritoryId": 145,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -509.17432,
+                        "Y": -16.420816,
+                        "Z": 10.977634
+                    },
+                    "TerritoryId": 145,
+                    "InteractionType": "WalkTo",
+                    "Mount": true
+                },
+                {
+                    "DataId": 1030875,
+                    "Position": {
+                        "X": -458.64044,
+                        "Y": -28.193886,
+                        "Z": 110.64307
+                    },
+                    "TerritoryId": 145,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

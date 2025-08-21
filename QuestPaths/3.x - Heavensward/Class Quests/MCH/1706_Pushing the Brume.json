@@ -1,0 +1,328 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -461.6901,
+            "Y": -4.0053887,
+            "Z": -292.6277
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            201
+          ],
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2006271,
+          "Position": {
+            "X": -462.7909,
+            "Y": -2.7619019,
+            "Z": -289.4179
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -567.30835,
+            "Y": -3.9906769,
+            "Z": -334.9877
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            5039,
+            5040,
+            5041
+          ],
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2006270,
+          "Position": {
+            "X": -570.4891,
+            "Y": -2.8840332,
+            "Z": -334.76776
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -660.1279,
+            "Y": -2.9330442,
+            "Z": -366.86145
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4472,
+            4473
+          ],
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2006269,
+          "Position": {
+            "X": -661.3413,
+            "Y": -1.6937866,
+            "Z": -367.8188
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014801,
+          "Position": {
+            "X": 16.220276,
+            "Y": -12.02089,
+            "Z": 49.454468
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Brume"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1014800,
+          "Position": {
+            "X": 58.182617,
+            "Y": -12.020877,
+            "Z": 79.81995
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1014799,
+          "Position": {
+            "X": 114.88513,
+            "Y": -19.787056,
+            "Z": 62.57715
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2006272,
+          "Position": {
+            "X": 483.97034,
+            "Y": 212.51233,
+            "Z": 726.8329
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "NextQuestId": 1707,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBMCH520_01706_Q1_000_000",
+              "Answer": "TEXT_JOBMCH520_01706_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

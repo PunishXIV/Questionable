@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012664,
+          "Position": {
+            "X": 364.30908,
+            "Y": -74.10719,
+            "Z": 654.322
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012846,
+          "Position": {
+            "X": -157.70203,
+            "Y": 4.0272756,
+            "Z": -23.971985
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA318_01619_Q1_000_001",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012846,
+          "Position": {
+            "X": -157.70203,
+            "Y": 4.0272756,
+            "Z": -23.971985
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012667,
+          "Position": {
+            "X": 369.16138,
+            "Y": -73.9486,
+            "Z": 660.151
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 379.64865,
+            "Y": -69.42944,
+            "Z": 695.1956
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "$": "Moglin"
+        },
+        {
+          "DataId": 1012077,
+          "Position": {
+            "X": 381.70435,
+            "Y": -66.84979,
+            "Z": 700.86194
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 8,
+          "IgnoreDistanceToObject": true
+        }
+      ]
+    }
+  ]
+}

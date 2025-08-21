@@ -1,0 +1,143 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 622,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32264,
+          "Locations": [
+            {
+              "Position": {
+                "X": -166.6597,
+                "Y": 3.616752,
+                "Z": 361.2099
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 130
+            }
+          ]
+        },
+        {
+          "DataId": 32265,
+          "Locations": [
+            {
+              "Position": {
+                "X": -191.0201,
+                "Y": 4.361521,
+                "Z": 354.6401
+              }
+            },
+            {
+              "Position": {
+                "X": -162.6655,
+                "Y": 3.441799,
+                "Z": 363.0803
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 150
+            },
+            {
+              "Position": {
+                "X": -167.5898,
+                "Y": 2.5177,
+                "Z": 377.1267
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32267,
+          "Locations": [
+            {
+              "Position": {
+                "X": -271.2292,
+                "Y": 3.341675,
+                "Z": 401.9989
+              }
+            },
+            {
+              "Position": {
+                "X": -349.3433,
+                "Y": 11.88452,
+                "Z": 378.1435
+              }
+            },
+            {
+              "Position": {
+                "X": -298.7296,
+                "Y": 5.809261,
+                "Z": 414.3437
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32266,
+          "Locations": [
+            {
+              "Position": {
+                "X": -317.19,
+                "Y": 7.863516,
+                "Z": 397.5005
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32262,
+          "Locations": [
+            {
+              "Position": {
+                "X": -350.0407,
+                "Y": 22.68479,
+                "Z": 230.4606
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32263,
+          "Locations": [
+            {
+              "Position": {
+                "X": -352.7808,
+                "Y": 23.99817,
+                "Z": 203.1617
+              }
+            },
+            {
+              "Position": {
+                "X": -345.5888,
+                "Y": 22.30608,
+                "Z": 229.8253
+              }
+            },
+            {
+              "Position": {
+                "X": -377.2188,
+                "Y": 22.65303,
+                "Z": 221.3997
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

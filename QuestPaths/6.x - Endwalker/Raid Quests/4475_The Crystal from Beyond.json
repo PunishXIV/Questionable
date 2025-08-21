@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041268,
+          "Position": {
+            "X": -81.1933,
+            "Y": 1.0795165,
+            "Z": 36.51477
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039508,
+          "Position": {
+            "X": -639.704,
+            "Y": -27.175835,
+            "Z": 301.07568
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Aporia"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033863,
+          "Position": {
+            "X": 118.02844,
+            "Y": 14.649026,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        },
+        {
+          "DataId": 2012425,
+          "Position": {
+            "X": 0.10675049,
+            "Y": -0.015319824,
+            "Z": -8.163635
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041271,
+          "Position": {
+            "X": 542.5039,
+            "Y": 7.6627564,
+            "Z": 50.91931
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4476
+        }
+      ]
+    }
+  ]
+}

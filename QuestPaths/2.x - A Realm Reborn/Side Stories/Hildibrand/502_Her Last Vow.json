@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011707,
+          "Position": {
+            "X": 42.893066,
+            "Y": 33.99998,
+            "Z": 29.343018
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true,
+          "DataId": 1011714,
+          "Position": {
+            "X": -223.19379,
+            "Y": -3.7199955,
+            "Z": 52.32312
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005188,
+          "Position": {
+            "X": -314.07648,
+            "Y": -1.083435,
+            "Z": 43.9917
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_CHRHDB505_00502_SAYTODO_000_000"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 159.84998,
+            "Y": 37.381317,
+            "Z": 174.60776
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        },
+        {
+          "DataId": 1011722,
+          "Position": {
+            "X": 159.68555,
+            "Y": 37.432796,
+            "Z": 177.69128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 153,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 85,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011723,
+          "Position": {
+            "X": 141.06958,
+            "Y": 29.64365,
+            "Z": 173.72388
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2226
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046735,
+          "Position": {
+            "X": -96.60492,
+            "Y": 9.773315,
+            "Z": -533.40967
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046738,
+          "Position": {
+            "X": -155.6878,
+            "Y": 2.7463636,
+            "Z": -383.1388
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013630,
+          "Position": {
+            "X": -63.21814,
+            "Y": 2.1820068,
+            "Z": -237.90344
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17688
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013631,
+          "Position": {
+            "X": 217.05945,
+            "Y": 1.083313,
+            "Z": -218.61603
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17689
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 303.21774,
+            "Y": 7.475274,
+            "Z": -215.19496
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 2013938,
+          "Position": {
+            "X": 516.80774,
+            "Y": 17.959839,
+            "Z": -348.0431
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818425
+        },
+        {
+          "DataId": 2013632,
+          "Position": {
+            "X": 656.7025,
+            "Y": 7.309021,
+            "Z": -289.44843
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17690
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Kozama'uka - Dock Poga"
+        },
+        {
+          "DataId": 2013937,
+          "Position": {
+            "X": 918.15063,
+            "Y": 10.116699,
+            "Z": -404.10468
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818424
+        },
+        {
+          "DataId": 2013633,
+          "Position": {
+            "X": 659.4186,
+            "Y": 26.321777,
+            "Z": -515.343
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046744,
+          "Position": {
+            "X": -101.64038,
+            "Y": 9.773315,
+            "Z": -535.3323
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

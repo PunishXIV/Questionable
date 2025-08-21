@@ -1,0 +1,58 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 613,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1025878,
+          "Position": {
+            "X": 343.984,
+            "Y": -120.32947,
+            "Z": -306.0197
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/004/CtsSfsCharacter3_00481",
+              "Prompt": "TEXT_CTSSFSCHARACTER3_00481_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER3_00481_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/004/CtsSfsCharacter3_00481",
+              "Prompt": "TEXT_CTSSFSCHARACTER3_00481_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER3_00481_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

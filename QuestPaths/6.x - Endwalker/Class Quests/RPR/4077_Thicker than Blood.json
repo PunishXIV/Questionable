@@ -1,0 +1,212 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131,
+                971
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                971
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1036629,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036645,
+          "Position": {
+            "X": -65.23236,
+            "Y": -2.0043268,
+            "Z": -170.06183
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 90.102264,
+            "Y": 0.33612514,
+            "Z": -274.36813
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1036646,
+          "Position": {
+            "X": 84.33655,
+            "Y": 0.27463394,
+            "Z": -279.86572
+          },
+          "StopDistance": 5,
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 156.258,
+            "Y": 1.9472685,
+            "Z": -165.4284
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1036647,
+          "Position": {
+            "X": 154.89429,
+            "Y": 1.9564945,
+            "Z": -166.67432
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 159.8781,
+            "Y": -0.6240455,
+            "Z": -154.44577
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14027
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1036647,
+          "Position": {
+            "X": 154.89429,
+            "Y": 1.9564945,
+            "Z": -166.67432
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1036654,
+          "Position": {
+            "X": -136.61407,
+            "Y": 3.9261572,
+            "Z": 212.57336
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036631,
+          "Position": {
+            "X": 2.7922974,
+            "Y": -2.7403547E-07,
+            "Z": -0.44250488
+          },
+          "TerritoryId": 971,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBB231_04077_Q2_000_000",
+              "Answer": "TEXT_AKTKBB231_04077_A2_000_003"
+            }
+          ],
+          "NextQuestId": 4078
+        }
+      ]
+    }
+  ]
+}

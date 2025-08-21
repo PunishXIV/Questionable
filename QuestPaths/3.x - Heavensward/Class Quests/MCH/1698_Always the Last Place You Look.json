@@ -1,0 +1,165 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014745,
+          "Position": {
+            "X": -205.82898,
+            "Y": 45.803963,
+            "Z": 517.20447
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014748,
+          "Position": {
+            "X": -233.66144,
+            "Y": 44.330624,
+            "Z": 519.09656
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4476
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -235.98387,
+            "Y": 44.330624,
+            "Z": 540.6855
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1014749,
+          "Position": {
+            "X": -234.02765,
+            "Y": 44.330624,
+            "Z": 539.81836
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4477
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014745,
+          "Position": {
+            "X": -205.82898,
+            "Y": 45.803963,
+            "Z": 517.20447
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            321
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014745,
+          "Position": {
+            "X": -205.82898,
+            "Y": 45.803963,
+            "Z": 517.20447
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1014748,
+          "Position": {
+            "X": -233.66144,
+            "Y": 44.330624,
+            "Z": 519.09656
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "NextQuestId": 1699
+        }
+      ]
+    }
+  ]
+}

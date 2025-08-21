@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050625,
+          "Position": {
+            "X": 628.6869,
+            "Y": 24.99949,
+            "Z": -283.3753
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050626,
+          "Position": {
+            "X": 351.27795,
+            "Y": 48.949432,
+            "Z": -726.4973
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 300.00925,
+            "Y": 44.086937,
+            "Z": -577.9258
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17686
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050627,
+          "Position": {
+            "X": 302.90674,
+            "Y": 43.98048,
+            "Z": -574.67004
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013981,
+          "Position": {
+            "X": 315.20557,
+            "Y": 43.71704,
+            "Z": -539.3302
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818486
+        },
+        {
+          "DataId": 1050631,
+          "Position": {
+            "X": 354.4823,
+            "Y": 48.940357,
+            "Z": -726.1311
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

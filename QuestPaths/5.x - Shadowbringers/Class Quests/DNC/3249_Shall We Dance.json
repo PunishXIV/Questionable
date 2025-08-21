@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028721,
+          "Position": {
+            "X": -70.54254,
+            "Y": 20.000334,
+            "Z": 42.160645
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028723,
+          "Position": {
+            "X": -112.13861,
+            "Y": 5.9999995,
+            "Z": 189.68481
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009763,
+          "Position": {
+            "X": -112.01648,
+            "Y": 6.0272217,
+            "Z": 184.86304
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028724,
+          "Position": {
+            "X": -104.32593,
+            "Y": 5.999999,
+            "Z": 195.94104
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKBB201_03249_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 3250
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 0.3266226,
+            "Y": -2.281856,
+            "Z": -3.879818
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1021167,
+          "Position": {
+            "X": -43.961243,
+            "Y": 0,
+            "Z": -15.030151
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021168,
+          "Position": {
+            "X": -160.38757,
+            "Y": -4.5343585,
+            "Z": -149.95044
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021169,
+          "Position": {
+            "X": 19.485779,
+            "Y": -0.9195468,
+            "Z": 98.5885
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "$": "1 0 0 0 0 128 -> 2 0 0 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1021171,
+          "Position": {
+            "X": 79.78931,
+            "Y": -0.19127949,
+            "Z": 56.809326
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "$": "2 0 0 0 0 192 -> 3 0 0 0 0 208",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1021170,
+          "Position": {
+            "X": 76.21875,
+            "Y": 0,
+            "Z": -12.466675
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "$": "3 0 0 0 0 208 -> 4 0 0 0 0 240",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1021172,
+          "Position": {
+            "X": 179.85803,
+            "Y": 13.567484,
+            "Z": -144.15204
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021167,
+          "Position": {
+            "X": -43.961243,
+            "Y": 0,
+            "Z": -15.030151
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Western Rhalgr's Reach"
+          ]
+        }
+      ]
+    }
+  ]
+}

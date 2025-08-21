@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028924,
+          "Position": {
+            "X": -176.5622,
+            "Y": 0,
+            "Z": 1.6326294
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Crystarium",
+          "SkipConditions": {
+            "StepIf": {
+              "Never": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] The Crystalline Mean"
+        },
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] The Amaro Launch"
+        },
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] The Cabinet of Curiosity",
+          "AethernetShortcut": [
+            "[Crystarium] The Amaro Launch",
+            "[Crystarium] Aetheryte Plaza"
+          ]
+        },
+        {
+          "DataId": 1027226,
+          "Position": {
+            "X": -61.84485,
+            "Y": -17.72202,
+            "Z": -266.2547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1027224,
+          "Position": {
+            "X": -57.358704,
+            "Y": -7.4820004,
+            "Z": 118.08948
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] Musica Universalis Markets"
+        },
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] The Dossal Gate",
+          "AethernetShortcut": [
+            "[Crystarium] Musica Universalis Markets",
+            "[Crystarium] Aetheryte Plaza"
+          ]
+        },
+        {
+          "DataId": 1028925,
+          "Position": {
+            "X": 60.105225,
+            "Y": -3.047831E-07,
+            "Z": 1.6021729
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

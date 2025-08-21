@@ -1,0 +1,144 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014890,
+          "Position": {
+            "X": 6.9122925,
+            "Y": -1.9210143,
+            "Z": 47.287598
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014897,
+          "Position": {
+            "X": 168.74951,
+            "Y": 8.973653,
+            "Z": 583.85596
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK450_02057_Q1_000_025",
+              "Answer": "TEXT_JOBDRK450_02057_A1_000_027"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014899,
+          "Position": {
+            "X": -97.76465,
+            "Y": 2.9821281,
+            "Z": 713.06934
+          },
+          "TerritoryId": 135,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014900,
+          "Position": {
+            "X": -110.88739,
+            "Y": 9.73618,
+            "Z": 672.7245
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014898,
+          "Position": {
+            "X": 162.005,
+            "Y": 8.973654,
+            "Z": 583.82544
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014901,
+          "Position": {
+            "X": 235.67554,
+            "Y": 8,
+            "Z": 698.20703
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK450_02057_Q2_000_111",
+              "Answer": "TEXT_JOBDRK450_02057_A2_000_114"
+            }
+          ],
+          "$": "Position is raised slightly, because Y(7.9999986) < 8 is under the floor"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014901,
+          "Position": {
+            "X": 235.67554,
+            "Y": 8,
+            "Z": 698.20703
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2058
+        }
+      ]
+    }
+  ]
+}

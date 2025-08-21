@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.1228,
+            "Y": 130,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023142,
+          "Position": {
+            "X": -642.9083,
+            "Y": 130.25946,
+            "Z": -538.29254
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023143,
+          "Position": {
+            "X": -631.0674,
+            "Y": 130.30254,
+            "Z": -465.96478
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023147,
+          "Position": {
+            "X": -429.4652,
+            "Y": 75.3867,
+            "Z": -124.712036
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7217,
+            7553
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1023148,
+          "Position": {
+            "X": -429.89246,
+            "Y": 74.88393,
+            "Z": -118.30322
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023147,
+          "Position": {
+            "X": -429.4652,
+            "Y": 75.3867,
+            "Z": -124.712036
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

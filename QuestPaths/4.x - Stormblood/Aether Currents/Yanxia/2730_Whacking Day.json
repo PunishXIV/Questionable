@@ -1,0 +1,66 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019313,
+          "Position": {
+            "X": 465.26282,
+            "Y": 58.52148,
+            "Z": -171.09949
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 151.29321,
+            "Y": -0.2997286,
+            "Z": 229.44983
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 6682,
+              "MinimumKillCount": 3,
+              "RewardItemId": 2002239,
+              "RewardItemCount": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019295,
+          "Position": {
+            "X": 756.3439,
+            "Y": 98.04659,
+            "Z": -229.93823
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    }
+  ]
+}

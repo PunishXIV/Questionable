@@ -1,0 +1,60 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035521,
+          "Position": {
+            "X": 207.599,
+            "Y": -40,
+            "Z": -13.290649
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035521,
+          "Position": {
+            "X": 207.599,
+            "Y": -40,
+            "Z": -13.290649
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKHA303_04001_Q2_000_000",
+              "Answer": "TEXT_LUCKHA303_04001_A2_000_001"
+            }
+          ],
+          "Comment": "Concert can be skipped via ESC → Quit Game"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035521,
+          "Position": {
+            "X": 207.599,
+            "Y": -40,
+            "Z": -13.290649
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4002
+        }
+      ]
+    }
+  ]
+}

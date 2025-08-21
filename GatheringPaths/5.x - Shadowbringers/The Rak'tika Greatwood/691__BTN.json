@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "Position": {
+        "X": -790.09827,
+        "Y": 5.6,
+        "Z": 239.26955
+      },
+      "TerritoryId": 817,
+      "InteractionType": "WalkTo",
+      "AetheryteShortcut": "Rak'tika - Slitherbough",
+      "Fly": true
+    },
+    {
+      "Position": {
+        "X": -789.0584,
+        "Y": -26.2001,
+        "Z": 239.5829
+      },
+      "TerritoryId": 817,
+      "InteractionType": "WalkTo",
+      "DisableNavmesh": true,
+      "Fly": true
+    },
+    {
+      "TerritoryId": 817,
+      "InteractionType": "None"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33011,
+          "Locations": [
+            {
+              "Position": {
+                "X": -833.2918,
+                "Y": -44.18139,
+                "Z": 229.6708
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33010,
+          "Locations": [
+            {
+              "Position": {
+                "X": -869.9858,
+                "Y": -41.20595,
+                "Z": 221.9869
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33009,
+          "Locations": [
+            {
+              "Position": {
+                "X": -847.5519,
+                "Y": -41.43839,
+                "Z": 195.9766
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

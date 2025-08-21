@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006531,
+          "Position": {
+            "X": 53.81848,
+            "Y": 25.009521,
+            "Z": -697.0779
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -420.5539,
+            "Y": -16.922302,
+            "Z": -325.30713
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [],
+          "CombatDelaySecondsAtStart": 2
+        },
+        {
+          "DataId": 2002201,
+          "Position": {
+            "X": -420.5539,
+            "Y": -16.922302,
+            "Z": -325.30713
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002202,
+          "Position": {
+            "X": -420.52344,
+            "Y": -16.922302,
+            "Z": -325.30713
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006534,
+          "Position": {
+            "X": 28.213867,
+            "Y": 20.662334,
+            "Z": -688.4413
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006535,
+          "Position": {
+            "X": 26.901611,
+            "Y": 20.543928,
+            "Z": -687.4037
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

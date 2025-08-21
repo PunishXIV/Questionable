@@ -1,0 +1,184 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022528,
+          "Position": {
+            "X": -52.35376,
+            "Y": -3.326972,
+            "Z": 20.58435
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1000200,
+          "Position": {
+            "X": 209.55212,
+            "Y": 0.9999819,
+            "Z": 35.01941
+          },
+          "StopDistance": 5,
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Lancers' Guild",
+            "[Gridania] Archers' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Archers' Guild",
+            "[Gridania] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -183.93188,
+            "Y": -53.111656,
+            "Z": 330.18417
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -248.3785,
+            "Y": -74.95606,
+            "Z": 424.39832
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1022529,
+          "Position": {
+            "X": -248.52368,
+            "Y": -75.63651,
+            "Z": 426.9015
+          },
+          "TerritoryId": 154,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022530,
+          "Position": {
+            "X": -246.93683,
+            "Y": -75.542496,
+            "Z": 426.5354
+          },
+          "StopDistance": 5,
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

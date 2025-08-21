@@ -1,0 +1,151 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031811,
+          "Position": {
+            "X": -442.46588,
+            "Y": 70.686165,
+            "Z": 573.69336
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010891,
+          "Position": {
+            "X": -852.0485,
+            "Y": 37.67456,
+            "Z": 298.11548
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Action",
+          "Action": "Siphon Snout",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 1
+              },
+              {
+                "High": 2
+              }
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2010892,
+          "Position": {
+            "X": -774.44116,
+            "Y": 54.520386,
+            "Z": 102.61682
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Action",
+          "Action": "Siphon Snout",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 1
+              },
+              {
+                "High": 3
+              }
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2010893,
+          "Position": {
+            "X": -802.30414,
+            "Y": 27.115234,
+            "Z": -108.44586
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Action",
+          "Action": "Siphon Snout",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 2
+              },
+              {
+                "High": 3
+              }
+            ],
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "StopDistance": 3,
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        },
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "Mount": false
+        }
+      ]
+    }
+  ]
+}

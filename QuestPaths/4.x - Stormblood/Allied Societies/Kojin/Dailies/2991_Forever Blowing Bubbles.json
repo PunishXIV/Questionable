@@ -1,0 +1,74 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 314.92435,
+            "Y": -78.61959,
+            "Z": -226.5322
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false,
+          "Fly": true
+        },
+        {
+          "DataId": 1024307,
+          "Position": {
+            "X": 29.617676,
+            "Y": -86.167725,
+            "Z": -26.962769
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 392.59683,
+            "Y": -119.589325,
+            "Z": -234.30063
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

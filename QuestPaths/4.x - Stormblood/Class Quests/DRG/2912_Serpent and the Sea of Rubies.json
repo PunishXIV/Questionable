@@ -1,0 +1,180 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 215.65454,
+            "Y": 222.1,
+            "Z": 345.1806
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Alberic"
+        },
+        {
+          "DataId": 1006748,
+          "Position": {
+            "X": 217.88354,
+            "Y": 222,
+            "Z": 345.3269
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018982,
+          "Position": {
+            "X": -83.08539,
+            "Y": 18.05,
+            "Z": -191.14978
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Bokairo Inn"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022550,
+          "Position": {
+            "X": -728.9082,
+            "Y": 0.34026724,
+            "Z": -427.9698
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022551,
+          "Position": {
+            "X": -772.549,
+            "Y": 4.7634416,
+            "Z": -504.29544
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008550,
+          "Position": {
+            "X": -711.20776,
+            "Y": 0.44250488,
+            "Z": -545.4337
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 657.20935,
+            "Y": 1.1933115,
+            "Z": -799.82635
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        },
+        {
+          "DataId": 1022552,
+          "Position": {
+            "X": 657.7401,
+            "Y": 1.0385457,
+            "Z": -797.8485
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7488
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022552,
+          "Position": {
+            "X": 657.7401,
+            "Y": 1.0385457,
+            "Z": -797.8485
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022553,
+          "Position": {
+            "X": -92.607056,
+            "Y": 18.9999,
+            "Z": -194.41522
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Bokairo Inn"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRG650_02912_Q1_000_000",
+              "Answer": "TEXT_JOBDRG650_02912_A1_000_001"
+            }
+          ],
+          "NextQuestId": 2913
+        }
+      ]
+    }
+  ]
+}

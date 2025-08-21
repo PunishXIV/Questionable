@@ -1,0 +1,246 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006555,
+          "Position": {
+            "X": -2.7619019,
+            "Y": -158.5813,
+            "Z": -1.6327515
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006557,
+          "Position": {
+            "X": 1.4190674,
+            "Y": -158.5813,
+            "Z": 1.3274536
+          },
+          "StopDistance": 5,
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004093,
+          "Position": {
+            "X": -25.162231,
+            "Y": 12.200003,
+            "Z": 110.795654
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "TargetTerritoryId": 156,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSC605_01005_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1006557,
+          "Position": {
+            "X": 1.4190674,
+            "Y": -158.5813,
+            "Z": 1.3274536
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006559,
+          "Position": {
+            "X": -57.724915,
+            "Y": 3.7940114,
+            "Z": -636.68274
+          },
+          "StopDistance": 7,
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -159.67096,
+            "Y": 2.7818115,
+            "Z": -634.4776
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "$": "Camp Revenant's Toll (bottom)"
+        },
+        {
+          "Position": {
+            "X": -169.94295,
+            "Y": 13.794385,
+            "Z": -610.4647
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "$": "Camp Revenant's Toll (top)"
+        },
+        {
+          "Position": {
+            "X": -169.3748,
+            "Y": 13.709051,
+            "Z": -610.729
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -183.43071,
+            "Y": -2.638534,
+            "Z": -595.8602
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -227.08566,
+            "Y": 13.4605465,
+            "Z": -670.02313
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -65.40249,
+            "Y": 2.9154358,
+            "Z": -634.5249
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1006559,
+          "Position": {
+            "X": -57.724915,
+            "Y": 3.7940114,
+            "Z": -636.68274
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1006561,
+          "Position": {
+            "X": -59.31189,
+            "Y": 3.32667,
+            "Z": -637.7814
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Emote",
+          "Emote": "welcome"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1006560,
+          "Position": {
+            "X": -60.135864,
+            "Y": 3.1014364,
+            "Z": -641.3519
+          },
+          "StopDistance": 7,
+          "TerritoryId": 156,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006555,
+          "Position": {
+            "X": -2.7619019,
+            "Y": -158.5813,
+            "Z": -1.6327515
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

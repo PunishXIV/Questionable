@@ -1,0 +1,154 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033887,
+          "Position": {
+            "X": 24.2771,
+            "Y": -5.234193E-13,
+            "Z": -0.7477417
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045636,
+          "Position": {
+            "X": 27.939209,
+            "Y": 82.05,
+            "Z": -8.255188
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eulmore"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045639,
+          "Position": {
+            "X": 21.957703,
+            "Y": 82.05,
+            "Z": 18.478638
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045635,
+          "Position": {
+            "X": 39.261353,
+            "Y": 83.001076,
+            "Z": -61.387024
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1045633,
+          "Position": {
+            "X": 14.755432,
+            "Y": 23.099987,
+            "Z": 11.520508
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] The Mainstay"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1045634,
+          "Position": {
+            "X": -93.40051,
+            "Y": -0.82003593,
+            "Z": 28.54956
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] The Mainstay",
+            "[Eulmore] Nightsoil Pots"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1045636,
+          "Position": {
+            "X": 27.939209,
+            "Y": 82.05,
+            "Z": -8.255188
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Nightsoil Pots",
+            "[Eulmore] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045631,
+          "Position": {
+            "X": 29.709229,
+            "Y": 82.05,
+            "Z": -5.661133
+          },
+          "StopDistance": 7,
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

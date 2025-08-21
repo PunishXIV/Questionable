@@ -1,0 +1,208 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001578,
+          "Position": {
+            "X": -35.446716,
+            "Y": -2.057618,
+            "Z": -154.95538
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002947,
+          "Position": {
+            "X": -95.71985,
+            "Y": -11.35,
+            "Z": -44.449524
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002949,
+          "Position": {
+            "X": -82.71924,
+            "Y": -11.350104,
+            "Z": -36.66742
+          },
+          "StopDistance": 2,
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1002948,
+          "Position": {
+            "X": -80.46088,
+            "Y": -12.785964,
+            "Z": -39.44464
+          },
+          "StopDistance": 7,
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1002950,
+          "Position": {
+            "X": -80.76605,
+            "Y": -12.819771,
+            "Z": -34.439636
+          },
+          "StopDistance": 7,
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1002951,
+          "Position": {
+            "X": -80.094604,
+            "Y": -12.790767,
+            "Z": -33.463074
+          },
+          "StopDistance": 7,
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002947,
+          "Position": {
+            "X": -95.71985,
+            "Y": -11.35,
+            "Z": -44.449524
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -199.35687,
+            "Y": -2.8170738,
+            "Z": 57.860172
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -215.15814,
+            "Y": -30.64667,
+            "Z": 96.92529
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1002955,
+          "Position": {
+            "X": -228.47339,
+            "Y": -30.853842,
+            "Z": 117.29602
+          },
+          "TerritoryId": 141,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1002947,
+          "Position": {
+            "X": -95.71985,
+            "Y": -11.35,
+            "Z": -44.449524
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

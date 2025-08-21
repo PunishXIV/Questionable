@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 215.65454,
+            "Y": 222.1,
+            "Z": 345.1806
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Alberic"
+        },
+        {
+          "DataId": 1006748,
+          "Position": {
+            "X": 217.88354,
+            "Y": 222,
+            "Z": 345.3269
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 267.25278,
+            "Y": 361.89908,
+            "Z": -575.7137
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 266.7326,
+            "Y": 362.4986,
+            "Z": -586.0155
+          },
+          "TerritoryId": 155,
+          "InteractionType": "SinglePlayerDuty",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 215.65454,
+            "Y": 222.1,
+            "Z": 345.1806
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "$": "Alberic"
+        },
+        {
+          "DataId": 1006748,
+          "Position": {
+            "X": 217.88354,
+            "Y": 222,
+            "Z": 345.3269
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1689
+        }
+      ]
+    }
+  ]
+}

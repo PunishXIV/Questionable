@@ -1,0 +1,52 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006578,
+          "Position": {
+            "X": -467.27704,
+            "Y": 22.996977,
+            "Z": -475.21173
+          },
+          "StopDistance": 7,
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -26.738379,
+            "Y": 33,
+            "Z": -495.80618
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Northern Thanalan - Camp Bluefog"
+        },
+        {
+          "DataId": 1006638,
+          "Position": {
+            "X": 37.979614,
+            "Y": 4.051331,
+            "Z": 420.27917
+          },
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

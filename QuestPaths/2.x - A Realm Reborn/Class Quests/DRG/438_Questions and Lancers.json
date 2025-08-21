@@ -1,0 +1,294 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000756,
+          "Position": {
+            "X": 20.675903,
+            "Y": 24.30847,
+            "Z": 392.56873
+          },
+          "StopDistance": 2,
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 37.875587,
+            "Y": -1.4320529,
+            "Z": 335.96927
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 2000963,
+          "Position": {
+            "X": 39.230957,
+            "Y": -0.5036011,
+            "Z": 337.3922
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2000243,
+          "KillEnemyDataIds": [
+            38
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000756,
+          "Position": {
+            "X": 20.675903,
+            "Y": 24.30847,
+            "Z": 392.56873
+          },
+          "StopDistance": 2,
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -166.19086,
+            "Y": 8.399985,
+            "Z": -64.10584
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          },
+          "$": "Buscarron SE steps"
+        },
+        {
+          "DataId": 1000590,
+          "Position": {
+            "X": -165.9419,
+            "Y": 9.869227,
+            "Z": -81.34589
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -166.19086,
+            "Y": 8.399985,
+            "Z": -64.10584
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          },
+          "$": "Buscarron SE steps"
+        },
+        {
+          "DataId": 2000921,
+          "Position": {
+            "X": -103.71564,
+            "Y": 6.42395,
+            "Z": 101.60974
+          },
+          "TerritoryId": 153,
+          "InteractionType": "UseItem",
+          "ItemId": 2000232,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -166.19086,
+            "Y": 8.399985,
+            "Z": -64.10584
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          },
+          "$": "Buscarron SE steps"
+        },
+        {
+          "DataId": 1000590,
+          "Position": {
+            "X": -165.9419,
+            "Y": 9.869227,
+            "Z": -81.34589
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1002815,
+          "Position": {
+            "X": -27.328918,
+            "Y": -34.62274,
+            "Z": 173.05249
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "Position": {
+            "X": -39.98818,
+            "Y": -46.837822,
+            "Z": 403.3237
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 17,
+              "MinimumKillCount": 6
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 2000922,
+          "Position": {
+            "X": 28.244385,
+            "Y": -54.337463,
+            "Z": 512.932
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            18
+          ],
+          "CombatDelaySecondsAtStart": 3
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1002815,
+          "Position": {
+            "X": -27.328918,
+            "Y": -34.62274,
+            "Z": 173.05249
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 439
+        }
+      ]
+    }
+  ]
+}

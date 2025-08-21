@@ -1,0 +1,76 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039996,
+          "Position": {
+            "X": 262.53137,
+            "Y": 44.32154,
+            "Z": 771.4198
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039998,
+          "Position": {
+            "X": 206.0426,
+            "Y": 20.561113,
+            "Z": 629.14465
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 206.0426,
+            "Y": 20.561113,
+            "Z": 629.14465
+          },
+          "DataId": 1039998,
+          "TerritoryId": 961,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            13447, 13448, 13449
+          ],
+          "CombatItemUse": {
+            "ItemId": 2003232,
+            "Condition": "Health%",
+            "Value": 50
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039998,
+          "Position": {
+            "X": 206.0426,
+            "Y": 20.561113,
+            "Z": 629.14465
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

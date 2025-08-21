@@ -1,0 +1,53 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005550,
+          "Position": {
+            "X": 105.27197,
+            "Y": 15.359643,
+            "Z": -357.3816
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008327,
+          "Position": {
+            "X": 45.303955,
+            "Y": 4,
+            "Z": -345.11334
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005550,
+          "Position": {
+            "X": 105.27197,
+            "Y": 15.359643,
+            "Z": -357.3816
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

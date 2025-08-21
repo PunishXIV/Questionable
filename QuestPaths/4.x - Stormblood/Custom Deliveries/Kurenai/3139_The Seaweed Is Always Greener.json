@@ -1,0 +1,42 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025965,
+          "Position": {
+            "X": -52.0791,
+            "Y": -2.9,
+            "Z": -64.4389
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025878,
+          "Position": {
+            "X": 343.984,
+            "Y": -120.32947,
+            "Z": -306.0197
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    }
+  ]
+}

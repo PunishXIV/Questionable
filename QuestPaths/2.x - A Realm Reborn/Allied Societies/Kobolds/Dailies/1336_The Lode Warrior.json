@@ -1,0 +1,64 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "Comment": "FATE",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005929,
+                    "Position": {
+                        "X": 21.560913,
+                        "Y": 16.342407,
+                        "Z": -183.76447
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 21.560913,
+                                    "Y": 16.342407,
+                                    "Z": -183.76447
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 92.81918,
+                        "Y": 55.511665,
+                        "Z": -464.93253
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "WaitForManualProgress",
+                    "Fly": true,
+                    "Comment": "Do the FATE"
+                },
+                {
+                    "DataId": 1005929,
+                    "Position": {
+                        "X": 21.560913,
+                        "Y": 16.342407,
+                        "Z": -183.76447
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

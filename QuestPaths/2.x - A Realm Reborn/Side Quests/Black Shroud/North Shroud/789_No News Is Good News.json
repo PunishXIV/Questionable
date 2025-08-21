@@ -1,0 +1,36 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002779,
+          "Position": {
+            "X": -34.470154,
+            "Y": -40.466434,
+            "Z": 221.02686
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006371,
+          "Position": {
+            "X": -301.04523,
+            "Y": -13.60442,
+            "Z": 198.44348
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

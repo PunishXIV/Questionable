@@ -1,0 +1,128 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006757,
+          "Position": {
+            "X": -4.4709473,
+            "Y": 44.999886,
+            "Z": -250.56848
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007838,
+          "Position": {
+            "X": 256.36682,
+            "Y": -3.2069032,
+            "Z": 58.091064
+          },
+          "TerritoryId": 139,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007838,
+          "Position": {
+            "X": 256.36682,
+            "Y": -3.2069032,
+            "Z": 58.091064
+          },
+          "StopDistance": 5,
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1007846,
+          "Position": {
+            "X": 262.80603,
+            "Y": -2.852741,
+            "Z": 63.1875
+          },
+          "StopDistance": 5,
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1007847,
+          "Position": {
+            "X": 257.98413,
+            "Y": -3.4,
+            "Z": 49.05774
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007849,
+          "Position": {
+            "X": 231.79968,
+            "Y": 5.18473,
+            "Z": 61.142822
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1671
+        }
+      ]
+    }
+  ]
+}

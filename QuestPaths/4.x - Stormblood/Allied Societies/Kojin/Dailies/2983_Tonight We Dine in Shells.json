@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 840.90247,
+            "Y": 5.923009,
+            "Z": 842.75916
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2009092,
+          "Position": {
+            "X": 38.864624,
+            "Y": 18.20398,
+            "Z": 712.7947
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002401,
+          "KillEnemyDataIds": [8236],
+          "RequiredQuestVariables": [null, null, null, [16, 32], null, null],
+          "Fly": true
+        },
+        {
+          "DataId": 2009091,
+          "Position": {
+            "X": -72.58722,
+            "Y": 10.513428,
+            "Z": 632.41016
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002401,
+          "KillEnemyDataIds": [8236],
+          "RequiredQuestVariables": [null, null, null, [16], null, null],
+          "Fly": true
+        },
+        {
+          "DataId": 2009093,
+          "Position": {
+            "X": 29.495605,
+            "Y": 3.0059814,
+            "Z": 527.7637
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002401,
+          "KillEnemyDataIds": [8236],
+          "RequiredQuestVariables": [null, null, null, [32], null, null],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 391.50903,
+            "Y": -119.58932,
+            "Z": -236.18898
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048257,
+          "Position": {
+            "X": 39.81079,
+            "Y": 23.979128,
+            "Z": -48.17273
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048257,
+          "Position": {
+            "X": 39.81079,
+            "Y": 23.979128,
+            "Z": -48.17273
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048286,
+          "Position": {
+            "X": 106.248535,
+            "Y": 34.723896,
+            "Z": 4.257263
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1048285,
+          "Position": {
+            "X": -21.316895,
+            "Y": 5.504703,
+            "Z": 37.64392
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1048287,
+          "Position": {
+            "X": -65.049255,
+            "Y": 18.457891,
+            "Z": -77.04285
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBA141_04822_Q1_000_000",
+              "Answer": "TEXT_KINGBA141_04822_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012163,
+          "Position": {
+            "X": 128.25195,
+            "Y": 24.458832,
+            "Z": -0.6867676
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048257,
+          "Position": {
+            "X": 39.81079,
+            "Y": 23.979128,
+            "Z": -48.17273
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBA141_04822_Q3_000_000",
+              "Answer": "TEXT_KINGBA141_04822_A3_000_002"
+            }
+          ],
+          "NextQuestId": 4823
+        }
+      ]
+    }
+  ]
+}

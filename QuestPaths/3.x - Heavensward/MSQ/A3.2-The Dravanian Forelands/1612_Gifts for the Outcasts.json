@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012628,
+          "Position": {
+            "X": -247.63867,
+            "Y": -30.290216,
+            "Z": 109.391846
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "The Dravanian Forelands - Anyx Trine"
+        },
+        {
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 290.04944,
+            "Y": -65.506195,
+            "Z": 2.676069
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4467,
+              "MinimumKillCount": 3,
+              "RewardItemId": 2001580,
+              "RewardItemCount": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012629,
+          "Position": {
+            "X": 200,
+            "Y": -55.462486,
+            "Z": -233.44781
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

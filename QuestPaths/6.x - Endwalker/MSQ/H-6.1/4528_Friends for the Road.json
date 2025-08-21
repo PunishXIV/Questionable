@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039579,
+          "Position": {
+            "X": -251.3009,
+            "Y": 4.388065,
+            "Z": 571.5265
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -350.9551,
+            "Y": 18.999998,
+            "Z": 56.043774
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Baldesion Annex",
+            "[Old Sharlayan] The Studium"
+          ]
+        },
+        {
+          "DataId": 1039581,
+          "Position": {
+            "X": -398.45886,
+            "Y": 19,
+            "Z": 92.48486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039550,
+          "Position": {
+            "X": -620.7218,
+            "Y": -27.670597,
+            "Z": 302.17432
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "TargetTerritoryId": 956,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -431.53903,
+            "Y": -220.1193,
+            "Z": 301.76364
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1039582,
+          "Position": {
+            "X": -325.2461,
+            "Y": -224.27272,
+            "Z": 298.39014
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039585,
+          "Position": {
+            "X": -267.5365,
+            "Y": 0.15800172,
+            "Z": 603.41797
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

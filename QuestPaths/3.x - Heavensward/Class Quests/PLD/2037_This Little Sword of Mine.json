@@ -1,0 +1,135 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1014092,
+					"Position": {
+						"X": 509.17822,
+						"Y": 212.5399,
+						"Z": 695.796
+					},
+					"TerritoryId": 397,
+					"InteractionType": "AcceptQuest",
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"DataId": 1014094,
+					"Position": {
+						"X": 457.51123,
+						"Y": 200.23764,
+						"Z": 660.8834
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 2,
+			"Steps": [
+				{
+					"DataId": 2005990,
+					"Position": {
+						"X": 51.865356,
+						"Y": 125.26123,
+						"Z": 179.85803
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 3,
+			"Steps": [
+				{
+					"DataId": 1014096,
+					"Position": {
+						"X": 458.64026,
+						"Y": 200.23764,
+						"Z": 659.7848
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 4,
+			"Steps": [
+				{
+					"DataId": 1014097,
+					"Position": {
+						"X": 452.90295,
+						"Y": 130.79962,
+						"Z": -850.1869
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"Fly": true,
+					"$": "it might be faster to shortcut to ok' zundu and fly to the adjoiner? this is simpler; smacks into the North Star but doesn't get stuck."
+				}
+			]
+		},
+		{
+			"Sequence": 5,
+			"Steps": [
+				{
+					"DataId": 1014099,
+					"Position": {
+						"X": 457.20605,
+						"Y": 130.79962,
+						"Z": -848.6
+					},
+					"TerritoryId": 397,
+					"InteractionType": "SinglePlayerDuty"
+				}
+			]
+		},
+		{
+			"Sequence": 6,
+			"Steps": [
+				{
+					"DataId": 1014102,
+					"Position": {
+						"X": 454.5204,
+						"Y": 130.79962,
+						"Z": -850.2479
+					},
+          "StopDistance": 5,
+          "TerritoryId": 397,
+					"InteractionType": "Interact"
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1014103,
+					"Position": {
+						"X": 509.17822,
+						"Y": 212.5399,
+						"Z": 695.796
+					},
+					"TerritoryId": 397,
+					"InteractionType": "CompleteQuest",
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+				}
+			]
+		}
+	]
+}

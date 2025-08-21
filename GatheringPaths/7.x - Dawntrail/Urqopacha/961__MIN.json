@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 1187,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Urqopacha - Wachunpelo"
+    }
+  ],
+  "FlyBetweenNodes": false,
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34646,
+          "Locations": [
+            {
+              "Position": {
+                "X": 227.4615,
+                "Y": -89.93336,
+                "Z": -225.4792
+              },
+              "MinimumAngle": 150,
+              "MaximumAngle": 250
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34641,
+          "Locations": [
+            {
+              "Position": {
+                "X": 249.5856,
+                "Y": -97.79176,
+                "Z": -217.3474
+              },
+              "MinimumAngle": 135,
+              "MaximumAngle": 215
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34642,
+          "Locations": [
+            {
+              "Position": {
+                "X": 257.8141,
+                "Y": -99.51778,
+                "Z": -217.7757
+              },
+              "MinimumAngle": 130,
+              "MaximumAngle": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34643,
+          "Fly": true,
+          "Locations": [
+            {
+              "Position": {
+                "X": 274.7205,
+                "Y": -99.65348,
+                "Z": -201.6824
+              },
+              "MinimumAngle": 220,
+              "MaximumAngle": 270
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34644,
+          "Locations": [
+            {
+              "Position": {
+                "X": 278.0735,
+                "Y": -101.2599,
+                "Z": -194.8121
+              },
+              "MinimumAngle": 200,
+              "MaximumAngle": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34645,
+          "Locations": [
+            {
+              "Position": {
+                "X": 308.4911,
+                "Y": -100.6525,
+                "Z": -174.6859
+              },
+              "MinimumAngle": 145,
+              "MaximumAngle": 210
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

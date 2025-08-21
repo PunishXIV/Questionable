@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 886,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 886,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "TerritoryId": 886,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                886
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -113.51667,
+            "Y": 0,
+            "Z": -134.36552
+          },
+          "TerritoryId": 886,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] Western Risensong Quarter"
+          ]
+        },
+        {
+          "DataId": 1035211,
+          "Position": {
+            "X": -116.96039,
+            "Y": 0,
+            "Z": -133.95898
+          },
+          "StopDistance": 7,
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/007/CtsSfsCharacter7_00710",
+              "Prompt": "TEXT_CTSSFSCHARACTER7_00710_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER7_00710_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/007/CtsSfsCharacter7_00710",
+              "Prompt": "TEXT_CTSSFSCHARACTER7_00710_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER7_00710_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

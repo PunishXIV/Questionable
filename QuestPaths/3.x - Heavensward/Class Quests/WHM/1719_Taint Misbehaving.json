@@ -1,0 +1,250 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -146.86935,
+            "Y": 8.006159,
+            "Z": 268.78055
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 153,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -137.77051,
+              "Y": 7.7094107,
+              "Z": 275.28036
+            },
+            "DelaySeconds": 0.75
+          },
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Flying": "Unlocked",
+              "NearPosition": {
+                "Position": {
+                  "X": -139.45221,
+                  "Y": 8.712891,
+                  "Z": 281.69678
+                },
+                "MaximumDistance": 3,
+                "TerritoryId": 153
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013606,
+          "Position": {
+            "X": -317.1283,
+            "Y": 21.686531,
+            "Z": 183.03198
+          },
+          "TerritoryId": 148,
+          "Fly": true,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006245,
+          "Position": {
+            "X": 4.9591064,
+            "Y": -46.518013,
+            "Z": 248.49304
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1007092,
+          "Position": {
+            "X": -59.31189,
+            "Y": -40.90982,
+            "Z": 232.62378
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1002804,
+          "Position": {
+            "X": -26.260803,
+            "Y": -40.705082,
+            "Z": 172.74731
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 108.506836,
+            "Y": 7.167203,
+            "Z": -47.01306
+          },
+          "Fly": true,
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4683
+          ],
+          "CompletionQuestVariablesFlags": [
+            2,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1013605,
+          "Position": {
+            "X": 108.506836,
+            "Y": 7.167203,
+            "Z": -47.01306
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013605,
+          "Position": {
+            "X": 108.506836,
+            "Y": 7.167203,
+            "Z": -47.01306
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1013606,
+          "Position": {
+            "X": -317.1283,
+            "Y": 21.686531,
+            "Z": 183.03198
+          },
+          "TerritoryId": 148,
+          "Fly": true,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1013608,
+          "Position": {
+            "X": -314.9615,
+            "Y": 21.609262,
+            "Z": 182.8794
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013609,
+          "Position": {
+            "X": -44.480103,
+            "Y": -40.949986,
+            "Z": 187.7622
+          },
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1720
+        }
+      ]
+    }
+  ]
+}

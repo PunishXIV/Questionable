@@ -1,0 +1,208 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKBC003_03212_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKBC003_03212_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023885,
+          "Position": {
+            "X": 217.30359,
+            "Y": 7.999984,
+            "Z": 686.427
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 226.71358,
+            "Y": 8.000019,
+            "Z": 671.0062
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1030042,
+          "Position": {
+            "X": 425.10107,
+            "Y": 61.22168,
+            "Z": -42.404846
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010149,
+          "Position": {
+            "X": 345.3573,
+            "Y": 58.457275,
+            "Z": -63.523376
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Action",
+          "Action": "Heavy Swing",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010150,
+          "Position": {
+            "X": 369.43604,
+            "Y": 64.59143,
+            "Z": -88.85327
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Action",
+          "Action": "Heavy Swing",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2010151,
+          "Position": {
+            "X": 360.95215,
+            "Y": 69.90149,
+            "Z": -119.06616
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Action",
+          "Action": "Heavy Swing",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030042,
+          "Position": {
+            "X": 425.10107,
+            "Y": 61.22168,
+            "Z": -42.404846
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030044,
+          "Position": {
+            "X": 435.8739,
+            "Y": 66.317635,
+            "Z": -276.56976
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1030046,
+          "Position": {
+            "X": 433.9818,
+            "Y": 66.317635,
+            "Z": -277.48535
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Action",
+          "Action": "Heavy Swing",
+          "DelaySecondsAtStart": 2
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

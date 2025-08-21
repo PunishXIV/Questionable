@@ -1,0 +1,62 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032170,
+          "Position": {
+            "X": 25.070557,
+            "Y": 13.914338,
+            "Z": 755.58093
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Snipe",
+          "Fly": true,
+          "Comment": "Throw Porxies at Beavers"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPIX119_03707_Q1_000_000",
+              "Answer": "TEXT_BANPIX119_03707_A1_000_003"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

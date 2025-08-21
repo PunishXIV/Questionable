@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 137,
+          "InteractionType": "EquipItem",
+          "ItemId": 4544,
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1004962,
+          "Position": {
+            "X": -300.1908,
+            "Y": 7.2785034,
+            "Z": 410.94055
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1006735,
+          "Position": {
+            "X": -316.1822,
+            "Y": 8.844355,
+            "Z": 433.82922
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1006288,
+          "Position": {
+            "X": -361.40997,
+            "Y": 8.46532,
+            "Z": 426.13855
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 156.89783,
+            "Y": 4.3410587,
+            "Z": 831.42926
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            1917
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "NextQuestId": 1051
+        }
+      ]
+    }
+  ]
+}

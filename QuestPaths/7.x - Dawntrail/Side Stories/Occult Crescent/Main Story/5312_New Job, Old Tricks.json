@@ -1,0 +1,38 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053798,
+          "Position": {
+            "X": 841.9165,
+            "Y": 72.713615,
+            "Z": -700.3434
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1252,
+          "InteractionType": "AcceptQuest",
+          "Comment": "This requires queueing into Occult Crescent: South Horn, so isn't started automatically"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053799,
+          "Position": {
+            "X": 867.9177,
+            "Y": 72.7133,
+            "Z": -677.48535
+          },
+          "TerritoryId": 1252,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

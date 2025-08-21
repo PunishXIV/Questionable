@@ -1,0 +1,163 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027382,
+          "Position": {
+            "X": -765.92664,
+            "Y": 61.720478,
+            "Z": -304.1886
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -724.9727,
+            "Y": 54.379677,
+            "Z": -289.8897
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Comment": "Tower Bottom",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -757.78326,
+            "Y": 97.68395,
+            "Z": -372.66458
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Comment": "Tower Bottom Platform 1",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2010618,
+          "Position": {
+            "X": -792.1111,
+            "Y": 115.15979,
+            "Z": -346.4256
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UseItem",
+          "ItemId": 2002831,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2010619,
+          "Position": {
+            "X": -798.27576,
+            "Y": 115.15979,
+            "Z": -320.05798
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UseItem",
+          "ItemId": 2002831,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2010613,
+          "Position": {
+            "X": -794.73566,
+            "Y": 115.15979,
+            "Z": -310.32275
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UseItem",
+          "ItemId": 2002831,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010620,
+          "Position": {
+            "X": -789.05927,
+            "Y": 146.77649,
+            "Z": -344.1673
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UseItem",
+          "ItemId": 2002831,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027382,
+          "Position": {
+            "X": -765.92664,
+            "Y": 61.720478,
+            "Z": -304.1886
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative"
+        }
+      ]
+    }
+  ]
+}

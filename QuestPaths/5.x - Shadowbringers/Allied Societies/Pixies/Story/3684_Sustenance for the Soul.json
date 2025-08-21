@@ -1,0 +1,231 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031891,
+          "Position": {
+            "X": -461.53967,
+            "Y": 72.51729,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 890
+        },
+        {
+          "DataId": 1031853,
+          "Position": {
+            "X": 60.471436,
+            "Y": -1.6051313,
+            "Z": 53.543823
+          },
+          "TerritoryId": 890,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031852,
+          "Position": {
+            "X": 59.03711,
+            "Y": -1.7997739,
+            "Z": 56.565186
+          },
+          "TerritoryId": 890,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031855,
+          "Position": {
+            "X": 74.784424,
+            "Y": 98.85967,
+            "Z": -820.88965
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Pla Enni",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031858,
+          "Position": {
+            "X": -211.35272,
+            "Y": 16.63259,
+            "Z": 427.32886
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPIX002_03684_Q1_000_000",
+              "Answer": "TEXT_BANPIX002_03684_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1031860,
+          "Position": {
+            "X": -217.45636,
+            "Y": 21.481304,
+            "Z": 356.9237
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -137.7369,
+            "Y": 11.939666,
+            "Z": 336.4078
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11438
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1031861,
+          "Position": {
+            "X": -149.85895,
+            "Y": 13.084818,
+            "Z": 341.1764
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1031860,
+          "Position": {
+            "X": -217.45636,
+            "Y": 21.481304,
+            "Z": 356.9237
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1031891,
+          "Position": {
+            "X": -461.53967,
+            "Y": 72.51729,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true,
+          "TargetTerritoryId": 890
+        },
+        {
+          "DataId": 1031863,
+          "Position": {
+            "X": 60.379883,
+            "Y": 31.0353,
+            "Z": -110.76526
+          },
+          "TerritoryId": 890,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1032350,
+          "Position": {
+            "X": 63.797974,
+            "Y": 30.266184,
+            "Z": -103.4715
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

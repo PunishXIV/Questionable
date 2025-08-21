@@ -1,0 +1,196 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024149,
+          "Position": {
+            "X": -42.25226,
+            "Y": 15.000004,
+            "Z": 42.557373
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019043,
+          "Position": {
+            "X": -43.656128,
+            "Y": 15.000004,
+            "Z": 46.52478
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 628
+        },
+        {
+          "DataId": 1024157,
+          "Position": {
+            "X": -59.098206,
+            "Y": 79.05602,
+            "Z": 45.303955
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 735,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDI201_03089_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1025590,
+          "Position": {
+            "X": -8.98761,
+            "Y": 0.05124536,
+            "Z": -3.768982
+          },
+          "StopDistance": 7,
+          "TerritoryId": 735,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025651,
+          "Position": {
+            "X": -10.391418,
+            "Y": 0.046870887,
+            "Z": -3.7080078
+          },
+          "StopDistance": 7,
+          "TerritoryId": 735,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1025499,
+          "Position": {
+            "X": -117.17407,
+            "Y": -7.000125,
+            "Z": -67.826416
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -399.64905,
+            "Y": 9.982385,
+            "Z": 551.7814
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            8801
+          ],
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1025587,
+          "Position": {
+            "X": -399.64905,
+            "Y": 9.982385,
+            "Z": 551.7814
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1024156,
+          "Position": {
+            "X": -59.098206,
+            "Y": 79.05602,
+            "Z": 45.303955
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 735,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025729,
+          "Position": {
+            "X": -12.222534,
+            "Y": 0.046870727,
+            "Z": -3.2197266
+          },
+          "TerritoryId": 735,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3091
+        }
+      ]
+    }
+  ]
+}

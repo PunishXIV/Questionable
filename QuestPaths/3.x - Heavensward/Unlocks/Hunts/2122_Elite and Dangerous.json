@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012225,
+          "Position": {
+            "X": 90.10449,
+            "Y": 15.094684,
+            "Z": 30.044922
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2005909,
+          "Position": {
+            "X": 73.899414,
+            "Y": 24.307495,
+            "Z": 22.049255
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2936
+        }
+      ]
+    }
+  ]
+}

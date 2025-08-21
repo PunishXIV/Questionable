@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 960,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Ultima Thule - Abode of the Ea"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34375,
+          "Locations": [
+            {
+              "Position": {
+                "X": -408.5904,
+                "Y": 259.0197,
+                "Z": -361.8408
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34374,
+          "Locations": [
+            {
+              "Position": {
+                "X": -410.1218,
+                "Y": 261.0269,
+                "Z": -364.9317
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34373,
+          "Locations": [
+            {
+              "Position": {
+                "X": -421.3381,
+                "Y": 263.4496,
+                "Z": -366.897
+              },
+              "MinimumAngle": -105,
+              "MaximumAngle": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

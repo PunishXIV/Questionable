@@ -1,0 +1,107 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012069,
+          "Position": {
+            "X": -647.0283,
+            "Y": -51.05719,
+            "Z": -417.74628
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -44.83911,
+            "Y": -1.6023016,
+            "Z": -655.73804
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2005824,
+          "Position": {
+            "X": 204.8523,
+            "Y": 12.741211,
+            "Z": -596.2158
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 16 1 16 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2005826,
+          "Position": {
+            "X": 224.93323,
+            "Y": 12.863342,
+            "Z": -653.3456
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "$": "16 1 16 0 0 128 -> 32 17 32 0 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2005825,
+          "Position": {
+            "X": 244.34265,
+            "Y": 38.345825,
+            "Z": -564.3549
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012069,
+          "Position": {
+            "X": -647.0283,
+            "Y": -51.05719,
+            "Z": -417.74628
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}

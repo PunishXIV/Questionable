@@ -1,0 +1,128 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -745.7825,
+            "Y": 73,
+            "Z": 317.39563
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1014308,
+          "Position": {
+            "X": -746.12036,
+            "Y": 73,
+            "Z": 318.7456
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -723.45496,
+            "Y": 81,
+            "Z": 378.70322
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4045
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -722.5188,
+            "Y": 80.999985,
+            "Z": 427.1239
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4045
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -765.2328,
+            "Y": 81,
+            "Z": 406.13608
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4045
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -745.7825,
+            "Y": 73,
+            "Z": 317.39563
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1014308,
+          "Position": {
+            "X": -746.12036,
+            "Y": 73,
+            "Z": 318.7456
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1868
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 399,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Idyllshire",
+      "AethernetShortcut": [
+        "[Idyllshire] Aetheryte Plaza",
+        "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+      ]
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33866,
+          "Locations": [
+            {
+              "Position": {
+                "X": 679.6339,
+                "Y": 116.0614,
+                "Z": 134.6795
+              },
+              "MinimumAngle": 200,
+              "MaximumAngle": 320
+            }
+          ]
+        },
+        {
+          "DataId": 33865,
+          "Locations": [
+            {
+              "Position": {
+                "X": 697.5129,
+                "Y": 122.1484,
+                "Z": 146.8725
+              },
+              "MinimumAngle": -205,
+              "MaximumAngle": -10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33862,
+          "Locations": [
+            {
+              "Position": {
+                "X": 809.8756,
+                "Y": 152.7643,
+                "Z": 205.2242
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 90
+            }
+          ]
+        },
+        {
+          "DataId": 33861,
+          "Locations": [
+            {
+              "Position": {
+                "X": 834.4771,
+                "Y": 154.8756,
+                "Z": 206.0541
+              },
+              "MinimumAngle": 35,
+              "MaximumAngle": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33863,
+          "Locations": [
+            {
+              "Position": {
+                "X": 781.7728,
+                "Y": 134.6856,
+                "Z": -22.00103
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 135
+            }
+          ]
+        },
+        {
+          "DataId": 33864,
+          "Locations": [
+            {
+              "Position": {
+                "X": 774.9854,
+                "Y": 134.3857,
+                "Z": -27.45042
+              },
+              "MinimumAngle": -25,
+              "MaximumAngle": 120
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

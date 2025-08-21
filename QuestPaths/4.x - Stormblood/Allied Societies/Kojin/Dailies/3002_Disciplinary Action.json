@@ -1,0 +1,175 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 8250,
+          "Position": {
+              "X": 429.41656,
+              "Y": -0.5,
+              "Z": 506.90598
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [ 8250 ],
+          "Fly": true,
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2002424
+          },
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [ 17, 18, 21, 23, 24, 26, 33, 34, 37, 39, 40, 42, 49, 50, 53, 55, 56, 58 ],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 8250,
+          "Position": {
+              "X": 253.2539,
+              "Y": -0.5,
+              "Z": 479.6062
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [ 8250 ],
+          "Fly": true,
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2002424
+          },
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [ 17, 19, 22, 24, 25, 26, 33, 35, 38, 40, 41, 42, 49, 51, 54, 56, 57, 58 ],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 8250,
+          "Position": {
+              "X": 94.01074,
+              "Y": -0.5,
+              "Z": 491.844
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [ 8250 ],
+          "Fly": true,
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2002424
+          },
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [ 18, 19, 20, 21, 22, 24, 34, 35, 36, 37, 38, 40, 50, 51, 52, 53, 54, 56 ],
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+              "X": -192.0653,
+              "Y": -0.5,
+              "Z": 628.25964
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [ 8250 ],
+          "Fly": true,
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2002424
+          },
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [ 17, 20, 21, 22, 23, 25, 33, 36, 37, 38, 39, 41, 49, 52, 53, 54, 55, 57 ],
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+              "X": -370.41278,
+              "Y": -0.5,
+              "Z": 863.64526
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [ 8250 ],
+          "Fly": true,
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2002424
+          },
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [ 18, 19, 20, 23, 25, 26, 34, 35, 36, 39, 41, 42, 50, 51, 52, 55, 57, 58 ],
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 392.55026,
+            "Y": -119.58932,
+            "Z": -234.19606
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

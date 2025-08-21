@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053845,
+          "Position": {
+            "X": 239.88696,
+            "Y": 50.749996,
+            "Z": 273.9757
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053847,
+          "Position": {
+            "X": 314.62573,
+            "Y": 70.00009,
+            "Z": 0.7476196
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053851,
+          "Position": {
+            "X": 351.70508,
+            "Y": 60,
+            "Z": 78.446655
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014675,
+          "Position": {
+            "X": 270.83228,
+            "Y": 50.736206,
+            "Z": 123.00293
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] True Vue",
+            "[Solution Nine] Neon Stein"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053857,
+          "Position": {
+            "X": 271.10706,
+            "Y": 50.749996,
+            "Z": 186.05322
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

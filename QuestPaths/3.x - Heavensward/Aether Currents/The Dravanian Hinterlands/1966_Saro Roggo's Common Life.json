@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012141,
+          "Position": {
+            "X": 35.690796,
+            "Y": 38.43,
+            "Z": 12.985352
+          },
+          "TerritoryId": 463,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005337,
+          "Position": {
+            "X": 7.765594,
+            "Y": 38.9395,
+            "Z": -50.9989
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 399,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                463
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2006061,
+          "Position": {
+            "X": -486.93066,
+            "Y": 137.40747,
+            "Z": 701.3198
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            44
+          ],
+          "$": "0 0 0 0 0 0 -> 16 1 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2006062,
+          "Position": {
+            "X": -471.8548,
+            "Y": 137.40747,
+            "Z": 705.5619
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            44
+          ],
+          "$": "16 1 0 0 0 128 -> 33 1 0 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2006063,
+          "Position": {
+            "X": -473.50275,
+            "Y": 137.40747,
+            "Z": 685.3893
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            44
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.79227,
+            "Y": 138.93335,
+            "Z": 741.0543
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463
+        },
+        {
+          "DataId": 1012141,
+          "Position": {
+            "X": 35.690796,
+            "Y": 38.43,
+            "Z": 12.985352
+          },
+          "TerritoryId": 463,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

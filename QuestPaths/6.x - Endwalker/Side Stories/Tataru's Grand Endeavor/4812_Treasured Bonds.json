@@ -1,0 +1,115 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046136,
+          "Position": {
+            "X": -341.39008,
+            "Y": 22.3,
+            "Z": -103.74609
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046138,
+          "Position": {
+            "X": 30.960571,
+            "Y": 5.1499996,
+            "Z": -66.88031
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046139,
+          "Position": {
+            "X": 87.63245,
+            "Y": -16.247002,
+            "Z": 123.76587
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046141,
+          "Position": {
+            "X": -133.4707,
+            "Y": 28.049995,
+            "Z": 219.65356
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013721,
+          "Position": {
+            "X": 406.30188,
+            "Y": 13.01593,
+            "Z": -299.8551
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true,
+          "NextQuestId": 4813
+        }
+      ]
+    }
+  ]
+}

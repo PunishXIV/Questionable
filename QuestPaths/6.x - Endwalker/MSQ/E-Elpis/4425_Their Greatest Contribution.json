@@ -1,0 +1,188 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040050,
+          "Position": {
+            "X": 560.32654,
+            "Y": 9.796983,
+            "Z": 63.70642
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME107_04425_Q1_000_024",
+              "Answer": "TEXT_AKTKME107_04425_A1_000_025"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040043,
+          "Position": {
+            "X": 558.64795,
+            "Y": 9.127456,
+            "Z": 48.264282
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012020,
+          "Position": {
+            "X": 628.2388,
+            "Y": 8.316829,
+            "Z": 107.9021
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818374
+        },
+        {
+          "Position": {
+            "X": 475.2184,
+            "Y": -17.473314,
+            "Z": 47.986946
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 477.34882,
+              "Y": -16.407324,
+              "Z": 43.802086
+            },
+            "DelaySeconds": 0.25
+          }
+        },
+        {
+          "DataId": 1040052,
+          "Position": {
+            "X": 349.14172,
+            "Y": -14.766006,
+            "Z": -111.61981
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040055,
+          "Position": {
+            "X": 349.5078,
+            "Y": -14.757837,
+            "Z": -115.15985
+          },
+          "StopDistance": 7,
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040061,
+          "Position": {
+            "X": -2.1210327,
+            "Y": -15.847441,
+            "Z": -104.631165
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_AKTKME107_04425_SAYTODO_000_190"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040061,
+          "Position": {
+            "X": -2.1210327,
+            "Y": -15.847441,
+            "Z": -104.631165
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_AKTKME107_04425_SAYTODO_000_210"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -55.662647,
+            "Y": -16.696985,
+            "Z": -81.29199
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 961,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -58.75509,
+              "Y": -15.402463,
+              "Z": -83.133934
+            }
+          },
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -64.19198,
+            "Y": -15.332472,
+            "Z": -84.65695
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 961,
+          "InteractionType": "Emote",
+          "Emote": "wave"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040069,
+          "Position": {
+            "X": 134.90503,
+            "Y": 10.385856,
+            "Z": 88.91431
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis"
+        }
+      ]
+    }
+  ]
+}

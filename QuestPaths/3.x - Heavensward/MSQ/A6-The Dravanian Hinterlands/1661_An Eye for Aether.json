@@ -1,0 +1,77 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012138,
+          "Position": {
+            "X": 19.272095,
+            "Y": 38.43,
+            "Z": 15.854065
+          },
+          "TerritoryId": 463,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012422,
+          "Position": {
+            "X": -475.79156,
+            "Y": 137.42972,
+            "Z": 701.4724
+          },
+          "StopDistance": 7,
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012380,
+          "Position": {
+            "X": 124.46777,
+            "Y": 24.458836,
+            "Z": 0.47296143
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013163,
+          "Position": {
+            "X": 167.0404,
+            "Y": -14.313367,
+            "Z": 51.285522
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    }
+  ]
+}

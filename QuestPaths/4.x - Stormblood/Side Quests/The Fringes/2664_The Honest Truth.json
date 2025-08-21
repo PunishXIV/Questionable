@@ -1,0 +1,161 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.1228,
+            "Y": 130,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023144,
+          "Position": {
+            "X": -631.7998,
+            "Y": 130.39117,
+            "Z": -467.67383
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008786,
+          "Position": {
+            "X": -630.45703,
+            "Y": 130.3883,
+            "Z": -466.75824
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023144,
+          "Position": {
+            "X": -631.7998,
+            "Y": 130.39117,
+            "Z": -467.67383
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1023157,
+          "Position": {
+            "X": -427.26788,
+            "Y": 74.15582,
+            "Z": -103.56299
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -397.5847,
+            "Y": 73.92399,
+            "Z": -104.41468
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2008761,
+          "Position": {
+            "X": -398.30627,
+            "Y": 74.23511,
+            "Z": -106.70636
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -391.48306,
+            "Y": 73.52123,
+            "Z": -100.069016
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -424.38403,
+            "Y": 62.880836,
+            "Z": -28.616083
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1023158,
+          "Position": {
+            "X": -426.71857,
+            "Y": 63.23476,
+            "Z": -28.82434
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.1228,
+            "Y": 130,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true,
+          "NextQuestId": 2824
+        }
+      ]
+    }
+  ]
+}

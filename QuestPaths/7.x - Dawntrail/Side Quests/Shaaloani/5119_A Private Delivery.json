@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049284,
+          "Position": {
+            "X": 378.43884,
+            "Y": -0.2627956,
+            "Z": 425.55872
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050706,
+          "Position": {
+            "X": 248.27954,
+            "Y": 15.999974,
+            "Z": 746.4866
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014065,
+          "Position": {
+            "X": 250.04956,
+            "Y": 16.281311,
+            "Z": 744.3502
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014073,
+          "Position": {
+            "X": 379.65967,
+            "Y": 0.19836426,
+            "Z": 419.6383
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049284,
+          "Position": {
+            "X": 378.43884,
+            "Y": -0.2627956,
+            "Z": 425.55872
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.10797,
+            "Y": 4.070978,
+            "Z": 202.71606
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009733,
+          "Position": {
+            "X": -356.31348,
+            "Y": 8.000001,
+            "Z": 49.54602
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2004568,
+          "Position": {
+            "X": -356.31348,
+            "Y": 7.9804688,
+            "Z": 48.90515
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2004570,
+          "Position": {
+            "X": -83.634705,
+            "Y": 1.9378662,
+            "Z": 826.10803
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2001446,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001016,
+          "Position": {
+            "X": -42.679565,
+            "Y": 39.999947,
+            "Z": 119.920654
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262186
+          },
+          "ItemId": 4870,
+          "ItemCount": 1
+        },
+        {
+          "Position": {
+            "X": -82.249344,
+            "Y": 2.1958525,
+            "Z": 826.0164
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true
+        },
+        {
+          "DataId": 1009735,
+          "Position": {
+            "X": -84.21454,
+            "Y": 1.802455,
+            "Z": 826.5963
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1575
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 959,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34337,
+          "Locations": [
+            {
+              "Position": {
+                "X": 531.9888,
+                "Y": 133.5777,
+                "Z": 288.7549
+              },
+              "MinimumAngle": 190,
+              "MaximumAngle": 345
+            }
+          ]
+        },
+        {
+          "DataId": 34338,
+          "Locations": [
+            {
+              "Position": {
+                "X": 562.9013,
+                "Y": 134.3907,
+                "Z": 254.6339
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34339,
+          "Locations": [
+            {
+              "Position": {
+                "X": 685.4268,
+                "Y": 130.6815,
+                "Z": 267.9914
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 110
+            }
+          ]
+        },
+        {
+          "DataId": 34340,
+          "Locations": [
+            {
+              "Position": {
+                "X": 720.4895,
+                "Y": 139.9972,
+                "Z": 239.97
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 90
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34335,
+          "Locations": [
+            {
+              "Position": {
+                "X": 629.7982,
+                "Y": 144.0473,
+                "Z": 418.6548
+              },
+              "MinimumAngle": 120,
+              "MaximumAngle": 260
+            }
+          ]
+        },
+        {
+          "DataId": 34336,
+          "Locations": [
+            {
+              "Position": {
+                "X": 712.2249,
+                "Y": 149.0579,
+                "Z": 390.7473
+              },
+              "MinimumAngle": 35,
+              "MaximumAngle": 195
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

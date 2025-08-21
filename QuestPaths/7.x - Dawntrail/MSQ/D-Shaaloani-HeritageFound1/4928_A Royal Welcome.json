@@ -1,0 +1,93 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047395,
+          "Position": {
+            "X": 283.07007,
+            "Y": 63.313274,
+            "Z": -169.23785
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047396,
+          "Position": {
+            "X": 33.035767,
+            "Y": 33.442226,
+            "Z": -262.47046
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -56.819763,
+            "Y": 28.072628,
+            "Z": -399.17023
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo",
+          "$": "Outskirts Navmesh workaround"
+        },
+        {
+          "Position": {
+            "X": -120.99963,
+            "Y": 28.090134,
+            "Z": -456.97507
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1047397,
+          "Position": {
+            "X": -149.03491,
+            "Y": 25.971825,
+            "Z": -500.63324
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Heritage Found - The Outskirts"
+        },
+        {
+          "DataId": 1047403,
+          "Position": {
+            "X": -177.72192,
+            "Y": 28,
+            "Z": -542.9313
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

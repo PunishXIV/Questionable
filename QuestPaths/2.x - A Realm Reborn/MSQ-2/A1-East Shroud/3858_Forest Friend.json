@@ -1,0 +1,186 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006675,
+          "Position": {
+            "X": 23.11737,
+            "Y": -3.7126513,
+            "Z": 209.76575
+          },
+          "StopDistance": 5,
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000584,
+          "Position": {
+            "X": 44.785156,
+            "Y": -2.1720045,
+            "Z": 231.86072
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -34.76502,
+            "Y": -8.079653,
+            "Z": 264.55304
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 179,
+              "CompletionQuestVariablesFlags": [
+                16,
+                1,
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 1
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            1,
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "0 0  0 0  0 0 -> 16 1  0 0  0 0"
+        },
+        {
+          "DataId": 2001915,
+          "Position": {
+            "X": -42.435425,
+            "Y": -8.560364,
+            "Z": 281.26953
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$": "16 1  0 0  0 0 -> 17 1  16 0  0 32"
+        },
+        {
+          "DataId": 2001914,
+          "Position": {
+            "X": -32.6391,
+            "Y": -3.7995605,
+            "Z": 321.3092
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$": "17 1  16 0  0 32 -> 18 1  32 0  0 96"
+        },
+        {
+          "DataId": 2001913,
+          "Position": {
+            "X": 29.3125,
+            "Y": 0.869751,
+            "Z": 359.24304
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$": "18 1  32 0  0 96 -> 35 1  48 0  0 224"
+        },
+        {
+          "Position": {
+            "X": 47.758923,
+            "Y": 7.4985247,
+            "Z": 428.1574
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 7,
+              "CompletionQuestVariablesFlags": [
+                null,
+                16,
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 1
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            16,
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "If skipping the previous step: 34 17 32 0 0 96"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

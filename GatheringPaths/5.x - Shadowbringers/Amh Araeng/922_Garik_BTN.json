@@ -1,0 +1,122 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 815,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Amh Araeng - Twine"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34430,
+          "Locations": [
+            {
+              "Position": {
+                "X": -449.9385,
+                "Y": -1.370689,
+                "Z": -409.258
+              }
+            },
+            {
+              "Position": {
+                "X": -445.7757,
+                "Y": -0.7637522,
+                "Z": -415.8121
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34429,
+          "Locations": [
+            {
+              "Position": {
+                "X": -451.2528,
+                "Y": -1.577711,
+                "Z": -414.294
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34427,
+          "Locations": [
+            {
+              "Position": {
+                "X": -346.0392,
+                "Y": 0.6433533,
+                "Z": -541.9421
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34428,
+          "Locations": [
+            {
+              "Position": {
+                "X": -326.9622,
+                "Y": 1.097262,
+                "Z": -537.5435
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 220
+            },
+            {
+              "Position": {
+                "X": -357.2281,
+                "Y": 0.4458784,
+                "Z": -513.3207
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34431,
+          "Locations": [
+            {
+              "Position": {
+                "X": -441.0019,
+                "Y": -5.337227,
+                "Z": -636.1525
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34432,
+          "Locations": [
+            {
+              "Position": {
+                "X": -464.1121,
+                "Y": -5.420424,
+                "Z": -649.8243
+              }
+            },
+            {
+              "Position": {
+                "X": -436.4872,
+                "Y": -5.205373,
+                "Z": -638.8244
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 85
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 11.687102,
+                        "Y": 1.2724965,
+                        "Z": -15.995083
+                    },
+                    "TerritoryId": 132,
+                    "TargetTerritoryId": 133,
+                    "InteractionType": "WalkTo",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "InTerritory": [
+                                133
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 1038452,
+                    "Position": {
+                        "X": 16.250854,
+                        "Y": 6.9444046,
+                        "Z": -109.544556
+                    },
+                    "TerritoryId": 133,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1038454,
+                    "Position": {
+                        "X": -311.39087,
+                        "Y": 20.991789,
+                        "Z": 175.12769
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "SinglePlayerDuty",
+                    "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+                    "Fly": true,
+                    "SinglePlayerDutyOptions": {
+                        "Enabled": false,
+                        "TestedBossModVersion": "0.1.0.1",
+                        "Notes": [
+                            "There is currently no BossMod Supported Bosses Logic.",
+                            "BossMod doesn't use Interject.",
+                            "BossMod can't handle QuickButton Actions yet.",
+                            "BossMod doesn't use Healing Actions for Tanks.",
+                            "It will need alot of manual work",
+                            "And there is a part, where the user needs to interact."
+                        ]
+                    },
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 3
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1038454,
+                    "Position": {
+                        "X": -311.39087,
+                        "Y": 20.991789,
+                        "Z": 175.12769
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1000460,
+                    "Position": {
+                        "X": -159.41101,
+                        "Y": 4.054107,
+                        "Z": -4.1047363
+                    },
+                    "TerritoryId": 133,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania",
+                    "AethernetShortcut": [
+                        "[Gridania] Aetheryte Plaza",
+                        "[Gridania] Conjurers' Guild"
+                    ],
+                    "DialogueChoices": [
+                        {
+                            "Type": "YesNo",
+                            "Prompt": "TEXT_AKTKBA151_04107_SYSTEM_000_091",
+                            "Yes": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 1038456,
+                    "Position": {
+                        "X": -161.48627,
+                        "Y": 3.9593172,
+                        "Z": -8.011047
+                    },
+                    "TerritoryId": 133,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1038397,
+                    "Position": {
+                        "X": -178.97314,
+                        "Y": 4.05,
+                        "Z": -74.69299
+                    },
+                    "TerritoryId": 963,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Radz-at-Han",
+                    "AethernetShortcut": [
+                        "[Radz-at-Han] Aetheryte Plaza",
+                        "[Radz-at-Han] Hall of the Radiant Host"
+                    ]
+                }
+            ]
+        }
+    ]
+}

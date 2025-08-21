@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020568,
+          "Position": {
+            "X": -92.42395,
+            "Y": 50.004436,
+            "Z": 185.6565
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020573,
+          "Position": {
+            "X": -90.68439,
+            "Y": 50.00444,
+            "Z": 210.46765
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDA604_02530_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 612
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022327,
+          "Position": {
+            "X": 374.89893,
+            "Y": 44.793087,
+            "Z": 273.7621
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Fringes - Peering Stones"
+        },
+        {
+          "DataId": 1020578,
+          "Position": {
+            "X": 426.56592,
+            "Y": 114.54993,
+            "Z": 221.7898
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

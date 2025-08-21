@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 620,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Peaks - Ala Gannha"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32292,
+          "Locations": [
+            {
+              "Position": {
+                "X": -276.0765,
+                "Y": 74.99889,
+                "Z": -751.7645
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32293,
+          "Locations": [
+            {
+              "Position": {
+                "X": -291.6779,
+                "Y": 75.03039,
+                "Z": -740.0215
+              }
+            },
+            {
+              "Position": {
+                "X": -309.4909,
+                "Y": 74.66329,
+                "Z": -746.8633
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32290,
+          "Locations": [
+            {
+              "Position": {
+                "X": -377.3709,
+                "Y": 59.22021,
+                "Z": -721.5839
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32291,
+          "Locations": [
+            {
+              "Position": {
+                "X": -385.6718,
+                "Y": 59.15918,
+                "Z": -741.5427
+              }
+            },
+            {
+              "Position": {
+                "X": -409.1402,
+                "Y": 56.75652,
+                "Z": -746.273
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32295,
+          "Locations": [
+            {
+              "Position": {
+                "X": -456.0745,
+                "Y": 57.47042,
+                "Z": -804.0213
+              }
+            },
+            {
+              "Position": {
+                "X": -455.9548,
+                "Y": 57.93848,
+                "Z": -785.8549
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32294,
+          "Locations": [
+            {
+              "Position": {
+                "X": -472.6482,
+                "Y": 57.45007,
+                "Z": -798.8556
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

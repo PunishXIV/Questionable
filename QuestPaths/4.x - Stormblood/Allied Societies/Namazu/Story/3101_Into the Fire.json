@@ -1,0 +1,224 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025601,
+          "Position": {
+            "X": -766.7506,
+            "Y": 127.43907,
+            "Z": 91.11157
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -766.7506,
+                  "Y": 127.43907,
+                  "Z": 91.11157
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 73.05273,
+            "Y": 205,
+            "Z": 143.30833
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                478,
+                399,
+                463
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                399,
+                463
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -488.692,
+            "Y": 139.95807,
+            "Z": 734.253
+          },
+          "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                463
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.79227,
+            "Y": 138.93335,
+            "Z": 741.0543
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Mount": false,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                463
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2009488,
+          "Position": {
+            "X": 17.837708,
+            "Y": 38.406982,
+            "Z": 15.030029
+          },
+          "TerritoryId": 463,
+          "InteractionType": "UseItem",
+          "ItemId": 2002474
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009510,
+          "Position": {
+            "X": -736.5072,
+            "Y": 127.39758,
+            "Z": 101.548706
+          },
+          "TerritoryId": 622,
+          "InteractionType": "UseItem",
+          "ItemId": 2002474,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1025844,
+          "Position": {
+            "X": -790.82935,
+            "Y": 127.2799,
+            "Z": 123.948975
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025609,
+          "Position": {
+            "X": -770.4738,
+            "Y": 127.42798,
+            "Z": 85.28259
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "RequiredQuestAcceptedJob": [
+            "DoH"
+          ]
+        },
+        {
+          "TerritoryId": 622,
+          "InteractionType": "Craft",
+          "ItemId": 22724,
+          "ItemCount": 1,
+          "RequiredQuestAcceptedJob": [
+            "DoH"
+          ]
+        },
+        {
+          "TerritoryId": 622,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 22620,
+              "ItemCount": 1
+            }
+          ],
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ]
+        },
+        {
+          "TerritoryId": 622,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 22646,
+              "ItemCount": 1
+            }
+          ],
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ]
+        },
+        {
+          "DataId": 1025845,
+          "Position": {
+            "X": -790.98193,
+            "Y": 127.28478,
+            "Z": 122.697754
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -790.98193,
+                  "Y": 127.28478,
+                  "Z": 122.697754
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

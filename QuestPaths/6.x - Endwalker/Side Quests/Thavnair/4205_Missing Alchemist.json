@@ -1,0 +1,185 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039371,
+          "Position": {
+            "X": -409.93365,
+            "Y": 10.751212,
+            "Z": 33.035767
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039372,
+          "Position": {
+            "X": 195.91052,
+            "Y": 4.763736,
+            "Z": 658.2893
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039373,
+          "Position": {
+            "X": -314.6258,
+            "Y": 0.70631444,
+            "Z": 561.12
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA026_04205_Q1_000_000",
+              "Answer": "TEXT_AKTKZA026_04205_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011905,
+          "Position": {
+            "X": -443.04572,
+            "Y": -0.22894287,
+            "Z": 800.7781
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2011906,
+          "Position": {
+            "X": -458.42682,
+            "Y": -0.19836426,
+            "Z": 830.8689
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -458.42682,
+            "Y": -0.19836426,
+            "Z": 830.8689
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Dive"
+        },
+        {
+          "DataId": 2011908,
+          "Position": {
+            "X": -484.85547,
+            "Y": -72.22095,
+            "Z": 814.35876
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2011907,
+          "Position": {
+            "X": -452.90308,
+            "Y": -67.00244,
+            "Z": 776.2417
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2011909,
+          "Position": {
+            "X": -513.51184,
+            "Y": -52.689453,
+            "Z": 773.73914
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039371,
+          "Position": {
+            "X": -409.93365,
+            "Y": 10.751212,
+            "Z": 33.035767
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

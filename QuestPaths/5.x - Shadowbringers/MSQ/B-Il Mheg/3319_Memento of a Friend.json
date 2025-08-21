@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027690,
+          "Position": {
+            "X": 452.9945,
+            "Y": 87.48282,
+            "Z": -691.9814
+          },
+          "StopDistance": 9,
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027695,
+          "Position": {
+            "X": 441.64185,
+            "Y": 89.80711,
+            "Z": -653.43713
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3427
+        },
+        {
+          "Position": {
+            "X": 57.868374,
+            "Y": -0.6,
+            "Z": -431.17603
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Dive"
+        },
+        {
+          "DataId": 2009837,
+          "Position": {
+            "X": -361.9593,
+            "Y": -52.506348,
+            "Z": -302.41858
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027690,
+          "Position": {
+            "X": 452.9945,
+            "Y": 87.48282,
+            "Z": -691.9814
+          },
+          "StopDistance": 9,
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+        }
+      ]
+    }
+  ]
+}

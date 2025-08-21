@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.397034,
+            "Y": 100.969696,
+            "Z": -186.4195
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1936,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        },
+        {
+          "DataId": 1012416,
+          "Position": {
+            "X": 365.83496,
+            "Y": 80.11144,
+            "Z": 6.3324585
+          },
+          "TerritoryId": 399,
+          "InteractionType": "SinglePlayerDuty",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012418,
+          "Position": {
+            "X": 352.65125,
+            "Y": 77.859474,
+            "Z": -5.9052734
+          },
+          "StopDistance": 7,
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051819,
+          "Position": {
+            "X": -1.6937866,
+            "Y": 0.0028544795,
+            "Z": -21.042236
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051822,
+          "Position": {
+            "X": 61.478516,
+            "Y": -7.7123985,
+            "Z": 98.98523
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051807,
+          "Position": {
+            "X": -53.635498,
+            "Y": 5.793307,
+            "Z": -99.931335
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1247,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                132
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051823,
+          "Position": {
+            "X": 34.164917,
+            "Y": -0.37309912,
+            "Z": 23.605652
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051833,
+          "Position": {
+            "X": 35.568726,
+            "Y": -0.24490167,
+            "Z": 21.560913
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051816,
+          "Position": {
+            "X": 18.142944,
+            "Y": 0.0028544795,
+            "Z": -0.289917
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1051809,
+          "Position": {
+            "X": -15.823608,
+            "Y": 0.0028544795,
+            "Z": 9.84198
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1051813,
+          "Position": {
+            "X": -5.1118164,
+            "Y": 1.21852545E-05,
+            "Z": -31.99823
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1051825,
+          "Position": {
+            "X": -1.7853394,
+            "Y": 2.0028546,
+            "Z": -86.38135
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2014535,
+          "Position": {
+            "X": 67.88733,
+            "Y": -0.77819824,
+            "Z": 51.224487
+          },
+          "TerritoryId": 1247,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 133
+        },
+        {
+          "DataId": 1051802,
+          "Position": {
+            "X": -50.06488,
+            "Y": 6.499999,
+            "Z": -89.58569
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051805,
+          "Position": {
+            "X": 33.401978,
+            "Y": -0.31104973,
+            "Z": 22.079773
+          },
+          "TerritoryId": 1253,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

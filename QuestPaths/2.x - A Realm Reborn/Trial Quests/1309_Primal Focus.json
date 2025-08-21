@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006951,
+          "Position": {
+            "X": 73.77734,
+            "Y": 33.066578,
+            "Z": -709.77344
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 65,
+            "Enabled": false
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "TerritoryId": 180,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 64,
+            "Enabled": false
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "TerritoryId": 146,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 63,
+            "Enabled": false
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006951,
+          "Position": {
+            "X": 73.77734,
+            "Y": 33.066578,
+            "Z": -709.77344
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

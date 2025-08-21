@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003550,
+          "Position": {
+            "X": 76.85962,
+            "Y": 39.99632,
+            "Z": 78.99597
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005964,
+          "Position": {
+            "X": 651.1177,
+            "Y": 9.597839,
+            "Z": 484.73328
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Swiftperch"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003711,
+          "Position": {
+            "X": 629.0836,
+            "Y": 9.719971,
+            "Z": 496.33008
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005964,
+          "Position": {
+            "X": 651.1177,
+            "Y": 9.597839,
+            "Z": 484.73328
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKOB001_01320_Q1_000_000",
+              "Answer": "TEXT_BANKOB001_01320_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 19.274828,
+            "Y": 16.260347,
+            "Z": -199.21056
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1007950,
+          "Position": {
+            "X": 19.485779,
+            "Y": 16.159302,
+            "Z": -196.42938
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1321
+        }
+      ]
+    }
+  ]
+}

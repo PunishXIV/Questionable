@@ -1,0 +1,137 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021505,
+          "Position": {
+            "X": 79.42322,
+            "Y": 33.00897,
+            "Z": -669.9474
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022102,
+          "Position": {
+            "X": 97.8866,
+            "Y": 2.096308,
+            "Z": -617.79205
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2687
+        },
+        {
+          "DataId": 1019951,
+          "Position": {
+            "X": 152.6665,
+            "Y": 1.1855946,
+            "Z": -500.3586
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 159.34975,
+            "Y": -0.60327315,
+            "Z": -494.75882
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 529.52386,
+            "Y": -0.2066946,
+            "Z": -264.25665
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1019952,
+          "Position": {
+            "X": 732.63135,
+            "Y": 3.4147437,
+            "Z": -237.72034
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008002,
+          "Position": {
+            "X": 694.7584,
+            "Y": 1.9073486,
+            "Z": -53.48291
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818185
+        },
+        {
+          "Position": {
+            "X": 637.34863,
+            "Y": 3.9160664,
+            "Z": -62.50255
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 540.77136,
+            "Y": -64.228035,
+            "Z": -173.20897
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019956,
+          "Position": {
+            "X": 422.11023,
+            "Y": -98.96018,
+            "Z": -223.10223
+          },
+          "StopDistance": 5,
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

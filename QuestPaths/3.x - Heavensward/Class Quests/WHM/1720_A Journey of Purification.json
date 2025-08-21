@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013609,
+          "Position": {
+            "X": -44.480103,
+            "Y": -40.949986,
+            "Z": 187.7622
+          },
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013610,
+          "Position": {
+            "X": 209.21643,
+            "Y": 302,
+            "Z": -204.85242
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013663,
+          "Position": {
+            "X": 161.91345,
+            "Y": 275.37952,
+            "Z": 16.403442
+          },
+          "TerritoryId": 155,
+          "Fly": true,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2005889,
+          "Position": {
+            "X": 143.78564,
+            "Y": 280.0183,
+            "Z": 19.882507
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013610,
+          "Position": {
+            "X": 209.21643,
+            "Y": 302,
+            "Z": -204.85242
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "NextQuestId": 1721
+        }
+      ]
+    }
+  ]
+}

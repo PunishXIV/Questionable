@@ -1,0 +1,179 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024218,
+          "Position": {
+            "X": 387.56384,
+            "Y": -119.795334,
+            "Z": -257.64862
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 322.45865,
+            "Y": -121.24298,
+            "Z": -314.65158
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 2009109,
+          "Position": {
+            "X": 239.18518,
+            "Y": -74.99817,
+            "Z": -464.95764
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Action",
+          "Action": "Inhale",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [16, 48, 128, 144],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009108,
+          "Position": {
+            "X": 286.33557,
+            "Y": -74.60144,
+            "Z": -499.01584
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Action",
+          "Action": "Inhale",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [16, 48, 128, 160],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009106,
+          "Position": {
+            "X": 539.2385,
+            "Y": -56.26001,
+            "Z": -364.88904
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Action",
+          "Action": "Inhale",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [16, 64, 160],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009107,
+          "Position": {
+            "X": 560.14343,
+            "Y": -75.547424,
+            "Z": -410.81866
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Action",
+          "Action": "Inhale",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [48, 64, 144, 160],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009105,
+          "Position": {
+            "X": 613.94666,
+            "Y": -74.57086,
+            "Z": -400.04578
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Action",
+          "Action": "Inhale",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [64, 128, 144],
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 392.59683,
+            "Y": -119.589325,
+            "Z": -234.30063
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012251,
+          "Position": {
+            "X": 12.313965,
+            "Y": -12.020877,
+            "Z": 40.268433
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022151,
+          "Position": {
+            "X": 115.098755,
+            "Y": 24.398598,
+            "Z": 2.822876
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022152,
+          "Position": {
+            "X": 3.9215698,
+            "Y": 27.790508,
+            "Z": -150.83551
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Saint Reymanaud's Cathedral",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 660.36426,
+            "Y": 202.54167,
+            "Z": -180.60214
+          },
+          "StopDistance": 1,
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7486
+          ],
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022153,
+          "Position": {
+            "X": 662.95874,
+            "Y": 202.59106,
+            "Z": -177.14203
+          },
+          "StopDistance": 7,
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012251,
+          "Position": {
+            "X": 12.313965,
+            "Y": -12.020877,
+            "Z": 40.268433
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    }
+  ]
+}

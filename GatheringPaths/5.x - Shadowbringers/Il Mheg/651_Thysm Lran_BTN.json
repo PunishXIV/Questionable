@@ -1,0 +1,140 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "Position": {
+        "X": 329.38184,
+        "Y": 9.586891,
+        "Z": 749.2314
+      },
+      "TerritoryId": 816,
+      "InteractionType": "WalkTo",
+      "AetheryteShortcut": "Il Mheg - Lydha Lran",
+      "Fly": true,
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    },
+    {
+      "Position": {
+        "X": 351.29465,
+        "Y": -38.275272,
+        "Z": 763.0457
+      },
+      "TerritoryId": 816,
+      "InteractionType": "WalkTo",
+      "Fly": true,
+      "DisableNavmesh": true
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32832,
+          "Locations": [
+            {
+              "Position": {
+                "X": 382.7488,
+                "Y": -72.47251,
+                "Z": 794.3513
+              }
+            },
+            {
+              "Position": {
+                "X": 388.7861,
+                "Y": -74.19925,
+                "Z": 801.0947
+              }
+            },
+            {
+              "Position": {
+                "X": 386.1797,
+                "Y": -73.5009,
+                "Z": 787.0967
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32831,
+          "Locations": [
+            {
+              "Position": {
+                "X": 396.5799,
+                "Y": -76.29187,
+                "Z": 790.9022
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32830,
+          "Locations": [
+            {
+              "Position": {
+                "X": 492.6384,
+                "Y": -82.73045,
+                "Z": 804.714
+              }
+            },
+            {
+              "Position": {
+                "X": 482.808,
+                "Y": -82.61642,
+                "Z": 802.591
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32829,
+          "Locations": [
+            {
+              "Position": {
+                "X": 493.5814,
+                "Y": -82.43644,
+                "Z": 790.831
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32827,
+          "Locations": [
+            {
+              "Position": {
+                "X": 490.9451,
+                "Y": -97.88062,
+                "Z": 636.6115
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32828,
+          "Locations": [
+            {
+              "Position": {
+                "X": 491.5274,
+                "Y": -100.762,
+                "Z": 626.6958
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

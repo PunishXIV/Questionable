@@ -1,0 +1,108 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012078,
+          "Position": {
+            "X": 375.3567,
+            "Y": -69.42934,
+            "Z": 693.5072
+          },
+          "StopDistance": 6.5,
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 286.46622,
+            "Y": -46.748116,
+            "Z": 661.95807
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "$": "Moghome entrance"
+        },
+        {
+          "DataId": 2005453,
+          "Position": {
+            "X": 223.55994,
+            "Y": -38.68164,
+            "Z": 440.63464
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "$": "1 16 0 0 0 128 -> 2 32 0 0 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2005455,
+          "Position": {
+            "X": 289.93665,
+            "Y": -37.979797,
+            "Z": 483.5431
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 16 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2005454,
+          "Position": {
+            "X": 339.71155,
+            "Y": -12.466675,
+            "Z": 411.3069
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012078,
+          "Position": {
+            "X": 375.3567,
+            "Y": -69.42934,
+            "Z": 693.5072
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044315,
+          "Position": {
+            "X": 80.24719,
+            "Y": 373.73154,
+            "Z": -674.49457
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044319,
+          "Position": {
+            "X": -45.91449,
+            "Y": -4.1435657,
+            "Z": 8.8349
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -105.23065,
+            "Y": 1.2987103,
+            "Z": 6.734147
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 133
+        },
+        {
+          "DataId": 1044323,
+          "Position": {
+            "X": -140.45929,
+            "Y": 5.046544,
+            "Z": -40.48224
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1043024,
+          "Position": {
+            "X": -239.94812,
+            "Y": 0.8012663,
+            "Z": 384.60352
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1044328,
+          "Position": {
+            "X": -246.08228,
+            "Y": 0.7061289,
+            "Z": 384.08484
+          },
+          "StopDistance": 7,
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKEA203_04668_SYSTEM_000_122",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044331,
+          "Position": {
+            "X": 204.05884,
+            "Y": 6.2006326,
+            "Z": -32.059265
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4669
+        }
+      ]
+    }
+  ]
+}

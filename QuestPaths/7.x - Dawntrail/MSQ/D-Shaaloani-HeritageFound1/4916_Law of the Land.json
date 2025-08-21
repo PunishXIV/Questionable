@@ -1,0 +1,178 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046973,
+          "Position": {
+            "X": -442.58795,
+            "Y": 21.820835,
+            "Z": -118.638916
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046974,
+          "Position": {
+            "X": -386.83148,
+            "Y": 18.239126,
+            "Z": -136.73608
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046974,
+          "Position": {
+            "X": -386.83148,
+            "Y": 18.239126,
+            "Z": -136.73608
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Emote",
+          "Emote": "poke"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013805,
+          "Position": {
+            "X": -225.78778,
+            "Y": 1.0223389,
+            "Z": 71.7937
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMD105_04916_Q3_000_000",
+              "Answer": "TEXT_KINGMD105_04916_A3_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -35.49104,
+            "Y": 1.3946064,
+            "Z": 178.915
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013806,
+          "Position": {
+            "X": 5.081238,
+            "Y": -5.1118164,
+            "Z": 167.28455
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMD105_04916_Q4_000_000",
+              "Answer": "TEXT_KINGMD105_04916_A4_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 18.420094,
+            "Y": 3.3226922,
+            "Z": 262.78665
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 36.42842,
+            "Y": 3.2765028,
+            "Z": 281.39154
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013807,
+          "Position": {
+            "X": 37.15564,
+            "Y": 4.2266846,
+            "Z": 290.66907
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMD105_04916_Q5_000_000",
+              "Answer": "TEXT_KINGMD105_04916_A5_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1046974,
+          "Position": {
+            "X": 160.01617,
+            "Y": 8.759198,
+            "Z": 514.9438
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046975,
+          "Position": {
+            "X": 348.6228,
+            "Y": -1.601824,
+            "Z": 449.9121
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030535,
+          "Position": {
+            "X": -355.30634,
+            "Y": 46.684208,
+            "Z": 482.0172
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030838,
+          "Position": {
+            "X": -285.90833,
+            "Y": 40.324036,
+            "Z": 444.41882
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3404
+        },
+        {
+          "DataId": 2009828,
+          "Position": {
+            "X": 133.40955,
+            "Y": -0.015319824,
+            "Z": 455.9242
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 816,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 649,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2010056,
+          "Position": {
+            "X": -231.4141,
+            "Y": 4.701926,
+            "Z": 160.8437
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818270
+        },
+        {
+          "DataId": 1031669,
+          "Position": {
+            "X": -300.0077,
+            "Y": 1.4994799,
+            "Z": 182.8794
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "Mount": false
+        }
+      ]
+    }
+  ]
+}

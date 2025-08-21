@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026268,
+          "Position": {
+            "X": 117.7843,
+            "Y": -4.178714,
+            "Z": 87.296875
+          },
+          "StopDistance": 7,
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDE103_03145_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744,
+          "AethernetShortcut": [
+            "[Doman Enclave] Ferry Docks",
+            "[Doman Enclave] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1025597,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091362,
+            "Z": -3.0060425
+          },
+          "StopDistance": 7,
+          "TerritoryId": 744,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009289,
+          "Position": {
+            "X": 0.02468622,
+            "Y": 0.9079783,
+            "Z": 18.30971
+          },
+          "TerritoryId": 744,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 759
+        },
+        {
+          "DataId": 1026276,
+          "Position": {
+            "X": 119.035645,
+            "Y": -4.1787133,
+            "Z": 65.384766
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Doman Enclave] Aetheryte Plaza",
+            "[Doman Enclave] Ferry Docks"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDE103_03145_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744,
+          "AethernetShortcut": [
+            "[Doman Enclave] Ferry Docks",
+            "[Doman Enclave] Aetheryte Plaza"
+          ]
+        },
+        {
+          "DataId": 1025597,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091362,
+            "Z": -3.0060425
+          },
+          "TerritoryId": 744,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

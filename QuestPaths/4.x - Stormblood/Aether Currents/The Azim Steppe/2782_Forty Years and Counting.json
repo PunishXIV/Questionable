@@ -1,0 +1,127 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023348,
+          "Position": {
+            "X": 79.24011,
+            "Y": 114.90497,
+            "Z": 95.994385
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 79.24011,
+                  "Y": 114.90497,
+                  "Z": 95.994385
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019430,
+          "Position": {
+            "X": 33.98181,
+            "Y": 114.90497,
+            "Z": -40.69586
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008925,
+          "Position": {
+            "X": 26.962646,
+            "Y": 115.464966,
+            "Z": -44.419067
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 1 16    0 0    0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2008927,
+          "Position": {
+            "X": 28.915894,
+            "Y": 115.464966,
+            "Z": -49.5766
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2008926,
+          "Position": {
+            "X": 27.634033,
+            "Y": 115.464966,
+            "Z": -48.05072
+          },
+          "StopDistance": 4,
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 1 16    0 0    0 128 -> QW: 2 32    0 0    0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023348,
+          "Position": {
+            "X": 79.24011,
+            "Y": 114.90497,
+            "Z": 95.994385
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

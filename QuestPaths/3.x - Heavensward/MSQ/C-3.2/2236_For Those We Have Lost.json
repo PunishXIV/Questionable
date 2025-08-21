@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016566,
+          "Position": {
+            "X": 515.5565,
+            "Y": 217.95154,
+            "Z": 763.7291
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016579,
+          "Position": {
+            "X": 507.16406,
+            "Y": 217.95152,
+            "Z": 769.9243
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016569,
+          "Position": {
+            "X": 495.32312,
+            "Y": 217.95135,
+            "Z": 742.6107
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 16 1 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": 522.6554,
+            "Y": 228.37697,
+            "Z": 752.68335
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1016570,
+          "Position": {
+            "X": 520.0122,
+            "Y": 228.37695,
+            "Z": 752.7732
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "$": "16 1 0 0 0 128 -> 33 1 0 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1011235,
+          "Position": {
+            "X": 522.54517,
+            "Y": 228.3512,
+            "Z": 723.5675
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016580,
+          "Position": {
+            "X": 416.5254,
+            "Y": 217.95142,
+            "Z": 754.20764
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

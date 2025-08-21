@@ -1,0 +1,50 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006384,
+          "Position": {
+            "X": 263.5996,
+            "Y": 303.1,
+            "Z": -199.96954
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007603,
+          "Position": {
+            "X": 264.91187,
+            "Y": 302.26236,
+            "Z": -223.71259
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Mount": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSE616_00428_FORTEMPSGUARD00428_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021835,
+          "Position": {
+            "X": 35.66028,
+            "Y": 6.9999986,
+            "Z": -82.993835
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -157.90921,
+            "Y": 4.650242,
+            "Z": 238.56398
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ]
+        },
+        {
+          "DataId": 1021843,
+          "Position": {
+            "X": -164.3855,
+            "Y": 4.2354193,
+            "Z": 234.36328
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021844,
+          "Position": {
+            "X": -157.27478,
+            "Y": 4.2354183,
+            "Z": 205.46265
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1021845,
+          "Position": {
+            "X": -138.59778,
+            "Y": 4.211028,
+            "Z": 223.95667
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021847,
+          "Position": {
+            "X": -153.0633,
+            "Y": 4.2354183,
+            "Z": 226.55066
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022092,
+          "Position": {
+            "X": -132.31104,
+            "Y": 3.9113228,
+            "Z": 221.20996
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021849,
+          "Position": {
+            "X": 91.17261,
+            "Y": 0.95918494,
+            "Z": 345.6931
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 101.36345,
+            "Y": 1.4716027,
+            "Z": 356.92258
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7237
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1021854,
+          "Position": {
+            "X": 106.06543,
+            "Y": 1.957012,
+            "Z": 360.15857
+          },
+          "StopDistance": 7,
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021858,
+          "Position": {
+            "X": 9.536865,
+            "Y": 40.00023,
+            "Z": -15.213318
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "NextQuestId": 2562
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026284,
+          "Position": {
+            "X": 498.2832,
+            "Y": 40.86853,
+            "Z": -503.37988
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025874,
+          "Position": {
+            "X": 351.12524,
+            "Y": 118.66239,
+            "Z": -692.53076
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026239,
+          "Position": {
+            "X": 348.53125,
+            "Y": 118.662384,
+            "Z": -691.92035
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDE106_03148_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
+        {
+          "DataId": 1026469,
+          "Position": {
+            "X": -1.8463745,
+            "Y": 0.02109136,
+            "Z": -1.4191895
+          },
+          "TerritoryId": 744,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026241,
+          "Position": {
+            "X": 747.00525,
+            "Y": 69.99995,
+            "Z": 526.36
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024065,
+          "Position": {
+            "X": 749.9961,
+            "Y": 70.139626,
+            "Z": 522.88086
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDE106_03148_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026242,
+          "Position": {
+            "X": 773.3424,
+            "Y": 80,
+            "Z": 437.70496
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

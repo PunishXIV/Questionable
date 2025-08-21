@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 397,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33290,
+          "Locations": [
+            {
+              "Position": {
+                "X": -409.5019,
+                "Y": 171.5775,
+                "Z": 49.79576
+              },
+              "MinimumAngle": -40,
+              "MaximumAngle": 115
+            },
+            {
+              "Position": {
+                "X": -418.5088,
+                "Y": 168.7132,
+                "Z": 33.29783
+              },
+              "MinimumAngle": 10,
+              "MaximumAngle": 110
+            }
+          ]
+        },
+        {
+          "DataId": 33289,
+          "Locations": [
+            {
+              "Position": {
+                "X": -413.911,
+                "Y": 170.7656,
+                "Z": 43.01591
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 130
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33292,
+          "Locations": [
+            {
+              "Position": {
+                "X": -510.636,
+                "Y": 169.9518,
+                "Z": 119.9934
+              },
+              "MinimumAngle": 150,
+              "MaximumAngle": 310
+            }
+          ]
+        },
+        {
+          "DataId": 33291,
+          "Locations": [
+            {
+              "Position": {
+                "X": -519.3103,
+                "Y": 169.0242,
+                "Z": 111.3145
+              },
+              "MinimumAngle": 125,
+              "MaximumAngle": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33293,
+          "Locations": [
+            {
+              "Position": {
+                "X": -563.8201,
+                "Y": 159.5121,
+                "Z": -11.58269
+              },
+              "MinimumAngle": -100,
+              "MaximumAngle": 50
+            }
+          ]
+        },
+        {
+          "DataId": 33294,
+          "Locations": [
+            {
+              "Position": {
+                "X": -555.6268,
+                "Y": 159.594,
+                "Z": -17.77679
+              },
+              "MinimumAngle": -145,
+              "MaximumAngle": 25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

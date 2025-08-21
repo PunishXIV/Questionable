@@ -1,0 +1,65 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013018,
+          "Position": {
+            "X": 30.07544,
+            "Y": 50.99997,
+            "Z": -819.7299
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013020,
+          "Position": {
+            "X": -58.79309,
+            "Y": -21.311453,
+            "Z": -3.982666
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -368.91202,
+            "Y": -22.538002,
+            "Z": 386.9863
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1013028,
+          "Position": {
+            "X": -380.8805,
+            "Y": -23.064514,
+            "Z": 388.63196
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

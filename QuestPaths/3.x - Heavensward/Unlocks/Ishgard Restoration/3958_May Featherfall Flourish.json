@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033987,
+          "Position": {
+            "X": -2.8840332,
+            "Y": 43.99998,
+            "Z": -159.3805
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033988,
+          "Position": {
+            "X": 20.675903,
+            "Y": -19.999985,
+            "Z": 105.39404
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033990,
+          "Position": {
+            "X": -38.71222,
+            "Y": -20,
+            "Z": 58.060547
+          },
+          "StopDistance": 7,
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3960
+        }
+      ]
+    }
+  ]
+}

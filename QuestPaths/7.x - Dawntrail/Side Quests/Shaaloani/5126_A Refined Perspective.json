@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049374,
+          "Position": {
+            "X": -345.2049,
+            "Y": 18.198153,
+            "Z": -163.50049
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014046,
+          "Position": {
+            "X": -344.65558,
+            "Y": 18.051392,
+            "Z": -141.92426
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Snipe",
+          "Comment": "Click (from left to right) pump, middle of the connecting pipes, barrels"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049374,
+          "Position": {
+            "X": -345.2049,
+            "Y": 18.198153,
+            "Z": -163.50049
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZE008_05126_Q1_000_000",
+              "Answer": "TEXT_KINGZE008_05126_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZE008_05126_Q1_000_000",
+              "Answer": "TEXT_KINGZE008_05126_A1_000_002"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZE008_05126_Q1_000_000",
+              "Answer": "TEXT_KINGZE008_05126_A1_000_003"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

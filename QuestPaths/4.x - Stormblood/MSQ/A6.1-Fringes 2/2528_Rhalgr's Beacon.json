@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020304,
+          "Position": {
+            "X": -606.7445,
+            "Y": 130,
+            "Z": -506.95053
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019466,
+          "Position": {
+            "X": 170.91626,
+            "Y": 13.02367,
+            "Z": -91.38635
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023762,
+          "Position": {
+            "X": 133.86731,
+            "Y": 0.65204144,
+            "Z": 8.926453
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1023298,
+          "Position": {
+            "X": 22.354431,
+            "Y": -0.33829167,
+            "Z": 3.7384033
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1023763,
+          "Position": {
+            "X": 13.504211,
+            "Y": -0.45803526,
+            "Z": 121.87378
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1019466,
+          "Position": {
+            "X": 170.91626,
+            "Y": 13.02367,
+            "Z": -91.38635
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020559,
+          "Position": {
+            "X": -188.86096,
+            "Y": 43.219845,
+            "Z": -149.58423
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          },
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach",
+            "[Rhalgr's Reach] Fringes Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020567,
+          "Position": {
+            "X": -91.233765,
+            "Y": 50.004436,
+            "Z": 187.85376
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

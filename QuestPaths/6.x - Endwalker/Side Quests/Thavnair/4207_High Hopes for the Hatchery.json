@@ -1,0 +1,246 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039385,
+          "Position": {
+            "X": -480.12518,
+            "Y": 5.362214,
+            "Z": 37.582886
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039386,
+          "Position": {
+            "X": -431.7846,
+            "Y": 72.61802,
+            "Z": -555.3826
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -477.78827,
+            "Y": 73.67918,
+            "Z": -542.7145
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2011962,
+          "Position": {
+            "X": -477.16492,
+            "Y": 74.75391,
+            "Z": -544.5792
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003199,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2011963,
+          "Position": {
+            "X": -479.2401,
+            "Y": 74.784424,
+            "Z": -541.619
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003199,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "Position": {
+            "X": -482.98328,
+            "Y": 73.32367,
+            "Z": -521.75024
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2011964,
+          "Position": {
+            "X": -484.67236,
+            "Y": 74.021484,
+            "Z": -523.15564
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003199,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2011965,
+          "Position": {
+            "X": -483.6042,
+            "Y": 74.35718,
+            "Z": -519.7986
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003199,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "Position": {
+            "X": -475.0877,
+            "Y": 73.24273,
+            "Z": -512.62787
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2011967,
+          "Position": {
+            "X": -476.92078,
+            "Y": 74.08252,
+            "Z": -511.43665
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003199,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 2011966,
+          "Position": {
+            "X": -473.0144,
+            "Y": 74.32666,
+            "Z": -512.3827
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003199,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ],
+          "DelaySecondsAtStart": 3
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039386,
+          "Position": {
+            "X": -431.7846,
+            "Y": 72.61802,
+            "Z": -555.3826
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039385,
+          "Position": {
+            "X": -480.12518,
+            "Y": 5.362214,
+            "Z": 37.582886
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003505,
+          "Position": {
+            "X": -186.20587,
+            "Y": 16,
+            "Z": 56.931396
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000938,
+          "Position": {
+            "X": -4.654114,
+            "Y": 44.999847,
+            "Z": -241.84027
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Marauders' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 177.58797,
+            "Y": -41.12709,
+            "Z": 260.26315
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        },
+        {
+          "DataId": 1005215,
+          "Position": {
+            "X": 178.66785,
+            "Y": -41.140213,
+            "Z": 261.61597
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1005217,
+          "Position": {
+            "X": 103.74609,
+            "Y": 68.15523,
+            "Z": 329.45752
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2002010,
+          "Position": {
+            "X": 108.384766,
+            "Y": 68.13147,
+            "Z": 351.61353
+          },
+          "TerritoryId": 135,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "NextQuestId": 460
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -99.05126,
+            "Y": 19.82,
+            "Z": 88.622086
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010419,
+          "Position": {
+            "X": -117.84546,
+            "Y": 21.38377,
+            "Z": 83.604126
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -90.47176,
+            "Y": 22.179348,
+            "Z": 116.58494
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010420,
+          "Position": {
+            "X": -10.208313,
+            "Y": 39.51757,
+            "Z": -1.8463745
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129
+        },
+        {
+          "DataId": 1010423,
+          "Position": {
+            "X": -20.73706,
+            "Y": 19.999937,
+            "Z": 4.257263
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002433,
+          "Position": {
+            "X": -6.729248,
+            "Y": 20.333345,
+            "Z": -0.7477417
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010423,
+          "Position": {
+            "X": -20.73706,
+            "Y": 19.999937,
+            "Z": 4.257263
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1010424,
+          "Position": {
+            "X": -172.59485,
+            "Y": 4.284276,
+            "Z": 168.07812
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27051,
+            "Y": 5.2500057,
+            "Z": 164.29382
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1010424,
+          "Position": {
+            "X": -172.59485,
+            "Y": 4.284276,
+            "Z": 168.07812
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010521,
+          "Position": {
+            "X": -184.64948,
+            "Y": 1.9999955,
+            "Z": 201.28174
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 241
+        }
+      ]
+    }
+  ]
+}

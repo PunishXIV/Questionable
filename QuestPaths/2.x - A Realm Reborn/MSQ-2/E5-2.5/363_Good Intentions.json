@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "RisingStonesSolar"
+            }
+          }
+        },
+        {
+          "DataId": 1008969,
+          "Position": {
+            "X": 0.99176025,
+            "Y": -1.9957249,
+            "Z": -45.700806
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002880,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -29.251587
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010844,
+          "Position": {
+            "X": 3.0670166,
+            "Y": 0.009977885,
+            "Z": -4.287842
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010845,
+          "Position": {
+            "X": -17.227417,
+            "Y": -10.015114,
+            "Z": -18.509216
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    }
+  ]
+}

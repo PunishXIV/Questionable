@@ -1,0 +1,79 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014028,
+          "Position": {
+            "X": -126.57361,
+            "Y": 4.0999947,
+            "Z": -96.23871
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014042,
+          "Position": {
+            "X": 277.11902,
+            "Y": 232.54102,
+            "Z": 760.1892
+          },
+          "TerritoryId": 399,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "$": "Unsure if this works without flying unlocked"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014045,
+          "Position": {
+            "X": 260.5172,
+            "Y": 232.54103,
+            "Z": 728.9081
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014044,
+          "Position": {
+            "X": 264.515,
+            "Y": 232.54102,
+            "Z": 728.84717
+          },
+          "StopDistance": 7,
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

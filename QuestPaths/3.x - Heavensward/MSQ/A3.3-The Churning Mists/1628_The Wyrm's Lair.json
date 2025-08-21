@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012694,
+          "Position": {
+            "X": -758.32764,
+            "Y": 123.72873,
+            "Z": 210.74231
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -455.00378,
+            "Y": 43.619022,
+            "Z": 403.64548
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4479,
+            4481
+          ],
+          "AetheryteShortcut": "The Churning Mists - Zenith"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 149.1435,
+            "Y": -23.289272,
+            "Z": 177.45946
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4491
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006224,
+          "Position": {
+            "X": 340.01672,
+            "Y": -25.375793,
+            "Z": -130.54095
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818107
+        },
+        {
+          "Position": {
+            "X": 396.12845,
+            "Y": -29.186422,
+            "Z": -142.568
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4479
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012698,
+          "Position": {
+            "X": 569.17664,
+            "Y": -1.1916885,
+            "Z": -370.22968
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

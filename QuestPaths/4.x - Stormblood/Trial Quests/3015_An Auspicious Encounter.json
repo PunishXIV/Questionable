@@ -1,0 +1,262 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024836,
+          "Position": {
+            "X": -788.2658,
+            "Y": 11.709066,
+            "Z": -283.0091
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024622,
+          "Position": {
+            "X": 102.433716,
+            "Y": 0.2814351,
+            "Z": -550.9575
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 613,
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        },
+        {
+          "DataId": 2009398,
+          "Position": {
+            "X": 279.4994,
+            "Y": 16.55597,
+            "Z": 844.541
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 284,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025142,
+          "Position": {
+            "X": 51.5907,
+            "Y": -90.000015,
+            "Z": -492.51547
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1025141,
+          "Position": {
+            "X": 55.161255,
+            "Y": -89.90002,
+            "Z": -459.0982
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1025143,
+          "Position": {
+            "X": 97.67297,
+            "Y": -89.90002,
+            "Z": -480.36932
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1025138,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1025144,
+          "Position": {
+            "X": 8.804443,
+            "Y": -90,
+            "Z": -470.63403
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1025148,
+          "Position": {
+            "X": 509.17822,
+            "Y": 23.72771,
+            "Z": -764.0345
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - House of the Fierce",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "TerritoryId": 614,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 290,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1025469,
+          "Position": {
+            "X": 505.5161,
+            "Y": 23.265062,
+            "Z": -768.6732
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1025137,
+          "Position": {
+            "X": 281.66626,
+            "Y": 16.350018,
+            "Z": 846.89087
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDY301_03015_Q7_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1025168,
+          "Position": {
+            "X": 75.638916,
+            "Y": -89.90002,
+            "Z": -503.95975
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "NextQuestId": 3016
+        }
+      ]
+    }
+  ]
+}

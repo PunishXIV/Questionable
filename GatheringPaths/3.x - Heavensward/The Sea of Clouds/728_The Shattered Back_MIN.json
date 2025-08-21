@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 401,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33313,
+          "Locations": [
+            {
+              "Position": {
+                "X": 284.0225,
+                "Y": -40.41348,
+                "Z": -766.5984
+              },
+              "MinimumAngle": 160,
+              "MaximumAngle": 245,
+              "MinimumDistance": 1.6,
+              "MaximumDistance": 3
+            }
+          ]
+        },
+        {
+          "DataId": 33314,
+          "Locations": [
+            {
+              "Position": {
+                "X": 291.4046,
+                "Y": -40.37925,
+                "Z": -758.5402
+              },
+              "MinimumAngle": 210,
+              "MaximumAngle": 345
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33315,
+          "Locations": [
+            {
+              "Position": {
+                "X": 358.8156,
+                "Y": -41.42974,
+                "Z": -734.5118
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 250
+            }
+          ]
+        },
+        {
+          "DataId": 33316,
+          "Locations": [
+            {
+              "Position": {
+                "X": 367.6869,
+                "Y": -41.54303,
+                "Z": -735.3597
+              },
+              "MinimumAngle": 70,
+              "MaximumAngle": 220
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33317,
+          "Locations": [
+            {
+              "Position": {
+                "X": 452.3558,
+                "Y": -47.13874,
+                "Z": -752.6805
+              },
+              "MinimumAngle": 150,
+              "MaximumAngle": 275
+            }
+          ]
+        },
+        {
+          "DataId": 33318,
+          "Locations": [
+            {
+              "Position": {
+                "X": 465.9165,
+                "Y": -47.82627,
+                "Z": -756.4039
+              },
+              "MinimumAngle": 35,
+              "MaximumAngle": 160,
+              "MinimumDistance": 1.2,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

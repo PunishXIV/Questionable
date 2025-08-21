@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002367,
+          "Position": {
+            "X": 104.32593,
+            "Y": -21.774658,
+            "Z": 171.00781
+          },
+          "TerritoryId": 154,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.1.8"
+          },
+          "ItemId": 2000952,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 1089
+        }
+      ]
+    }
+  ]
+}

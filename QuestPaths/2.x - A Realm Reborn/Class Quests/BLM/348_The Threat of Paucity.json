@@ -1,0 +1,231 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": ["liza", "pot0to"],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001710,
+          "Position": {
+            "X": -240.2533,
+            "Y": 18.8,
+            "Z": 86.900024
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 130,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                141
+              ],
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -62.183617,
+            "Y": -3.6582246,
+            "Z": 145.88391
+          },
+          "InteractionType": "WalkTo",
+          "TerritoryId": 141,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 149.07747,
+            "Y": -2,
+            "Z": -225.21188
+          },
+          "TerritoryId": 141,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 160,
+              "MinimumKillCount": 8,
+              "$": "Slay efts",
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 8
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001710,
+          "Position": {
+            "X": -240.2533,
+            "Y": 18.8,
+            "Z": 86.900024
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSTHM100_00348_Q_000_1",
+              "Answer": "TEXT_CLSTHM100_00348_A_000_3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2001511,
+          "Position": {
+            "X": -366.29285,
+            "Y": -34.989014,
+            "Z": 293.56824
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            166,
+            1238
+          ],
+          "Fly": true,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2001498,
+          "Position": {
+            "X": -366.29285,
+            "Y": -34.989014,
+            "Z": 293.56824
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001710,
+          "Position": {
+            "X": -240.2533,
+            "Y": 18.8,
+            "Z": 86.900024
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 350
+        }
+      ]
+    }
+  ]
+}

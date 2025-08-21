@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028454,
+          "Position": {
+            "X": -17.441101,
+            "Y": 3.9998174,
+            "Z": 191.94324
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "Craft",
+          "ItemId": 27239,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1028454,
+          "Position": {
+            "X": -17.441101,
+            "Y": 3.9998174,
+            "Z": 191.94324
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028458,
+          "Position": {
+            "X": -96.665955,
+            "Y": -4.200001,
+            "Z": 133.1654
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028454,
+          "Position": {
+            "X": -17.441101,
+            "Y": 3.9998174,
+            "Z": 191.94324
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] Musica Universalis Markets",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}

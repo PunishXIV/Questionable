@@ -1,0 +1,58 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 820,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 820,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1031801,
+          "Position": {
+            "X": 52.8114,
+            "Y": 83.001076,
+            "Z": -65.38495
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eulmore",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/006/CtsSfsCharacter5_00640",
+              "Prompt": "TEXT_CTSSFSCHARACTER5_00640_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER5_00640_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/006/CtsSfsCharacter5_00640",
+              "Prompt": "TEXT_CTSSFSCHARACTER5_00640_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER5_00640_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

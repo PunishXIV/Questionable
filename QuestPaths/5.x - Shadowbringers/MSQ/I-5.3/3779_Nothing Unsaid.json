@@ -1,0 +1,115 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033860,
+          "Position": {
+            "X": 53.269165,
+            "Y": -2.8964132E-07,
+            "Z": 1.4190674
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1034902,
+          "Position": {
+            "X": 51.285522,
+            "Y": -2.59839E-07,
+            "Z": -1.4801636
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033864,
+          "Position": {
+            "X": 384.60352,
+            "Y": -28.36043,
+            "Z": 322.56042
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1033865,
+          "Position": {
+            "X": 251.8501,
+            "Y": -46.667526,
+            "Z": 336.90393
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1033867,
+          "Position": {
+            "X": 253.28442,
+            "Y": -46.571102,
+            "Z": 337.02588
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eulmore"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033868,
+          "Position": {
+            "X": 19.57727,
+            "Y": 82.78207,
+            "Z": 48.53894
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036633,
+          "Position": {
+            "X": 82.871704,
+            "Y": 4.099994,
+            "Z": -131.30396
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036634,
+          "Position": {
+            "X": 134.05042,
+            "Y": 4,
+            "Z": 11.428955
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKBB201_04073_Q5_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037014,
+          "Position": {
+            "X": 0.9002075,
+            "Y": 0.014807776,
+            "Z": -4.3793945
+          },
+          "StopDistance": 5,
+          "TerritoryId": 971,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBB201_04073_Q4_000_000",
+              "Answer": "TEXT_AKTKBB201_04073_A4_000_002"
+            }
+          ],
+          "NextQuestId": 4074
+        }
+      ]
+    }
+  ]
+}

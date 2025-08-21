@@ -1,0 +1,201 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029833,
+          "Position": {
+            "X": -24.887512,
+            "Y": 82.2726,
+            "Z": -19.058533
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027575,
+          "Position": {
+            "X": 59.128662,
+            "Y": 83.00107,
+            "Z": -70.08472
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027575,
+          "Position": {
+            "X": 59.128662,
+            "Y": 83.00107,
+            "Z": -70.08472
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMA207_03288_Q1_000_041",
+              "Answer": "TEXT_LUCKMA207_03288_A1_000_042"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMA207_03288_Q2_000_052",
+              "Answer": "TEXT_LUCKMA207_03288_A2_000_054"
+            },
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMA207_03288_TISTABIE_000_060",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027575,
+          "Position": {
+            "X": 59.128662,
+            "Y": 83.00107,
+            "Z": -70.08472
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMA207_03288_Q1_000_041",
+              "Answer": "TEXT_LUCKMA207_03288_A1_000_042"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMA207_03288_Q2_000_052",
+              "Answer": "TEXT_LUCKMA207_03288_A2_000_054"
+            },
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMA207_03288_TISTABIE_000_060",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027574,
+          "Position": {
+            "X": 54.154175,
+            "Y": 82.00165,
+            "Z": -50.888855
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 60.480736,
+            "Y": 82.909546,
+            "Z": -37.52441
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 63.647987,
+            "Y": 84.80449,
+            "Z": -36.65881
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 65.76068,
+            "Y": 86.70241,
+            "Z": -39.688606
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 64.27692,
+            "Y": 86.7024,
+            "Z": -40.825073
+          },
+          "TerritoryId": 820,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 61.212788,
+            "Y": 86.7,
+            "Z": -40.65704
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 820,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1027574,
+          "Position": {
+            "X": 54.154175,
+            "Y": 82.00165,
+            "Z": -50.888855
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029830,
+          "Position": {
+            "X": 28.396973,
+            "Y": 82.78207,
+            "Z": 26.5354
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029010,
+          "Position": {
+            "X": 401.3275,
+            "Y": -28.80457,
+            "Z": 260.21204
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 58.63951,
+            "Y": 36.19769,
+            "Z": -170.36603
+          },
+          "TerritoryId": 819,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Amaro Launch"
+          ]
+        },
+        {
+          "DataId": 1027264,
+          "Position": {
+            "X": 60.593506,
+            "Y": 36.247692,
+            "Z": -171.80133
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 815
+        },
+        {
+          "DataId": 1029013,
+          "Position": {
+            "X": 664.4236,
+            "Y": -48.865906,
+            "Z": -651.3619
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029014,
+          "Position": {
+            "X": 46.707764,
+            "Y": 36.197685,
+            "Z": -167.43726
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Amaro Launch",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        },
+        {
+          "DataId": 1029015,
+          "Position": {
+            "X": 2.243042,
+            "Y": 0,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 844,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

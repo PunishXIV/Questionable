@@ -1,0 +1,158 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041556,
+          "Position": {
+            "X": 113.14563,
+            "Y": -133.07352,
+            "Z": -465.17133
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041557,
+          "Position": {
+            "X": 292.2865,
+            "Y": -143.99998,
+            "Z": -477.8363
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 10.0736885,
+            "Y": 27.10196,
+            "Z": 448.53668
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        },
+        {
+          "DataId": 1041559,
+          "Position": {
+            "X": 8.743347,
+            "Y": 27.418339,
+            "Z": 447.74548
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012508,
+          "Position": {
+            "X": -7.4312134,
+            "Y": 42.61841,
+            "Z": 428.27502
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -54.65185,
+            "Y": 40.539097,
+            "Z": 458.56393
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2012509,
+          "Position": {
+            "X": -56.50421,
+            "Y": 40.299072,
+            "Z": 459.64746
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 10.0736885,
+            "Y": 27.10196,
+            "Z": 448.53668
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1041559,
+          "Position": {
+            "X": 8.743347,
+            "Y": 27.418339,
+            "Z": 447.74548
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041557,
+          "Position": {
+            "X": 292.2865,
+            "Y": -143.99998,
+            "Z": -477.8363
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "NextQuestId": 4518
+        }
+      ]
+    }
+  ]
+}

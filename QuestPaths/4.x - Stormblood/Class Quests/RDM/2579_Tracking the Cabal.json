@@ -1,0 +1,213 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021457,
+          "Position": {
+            "X": -476.40198,
+            "Y": 23.228897,
+            "Z": -430.71643
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021458,
+          "Position": {
+            "X": 282.5818,
+            "Y": -24.99566,
+            "Z": 243.7323
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021464,
+          "Position": {
+            "X": 327.77905,
+            "Y": -31.89878,
+            "Z": 275.59314
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1021463,
+          "Position": {
+            "X": 311.4823,
+            "Y": -36.325005,
+            "Z": 351.33887
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021465,
+          "Position": {
+            "X": 319.2339,
+            "Y": -40.425003,
+            "Z": 382.37573
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021458,
+          "Position": {
+            "X": 282.5818,
+            "Y": -24.99566,
+            "Z": 243.7323
+          },
+          "StopDistance": 1,
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008221,
+          "Position": {
+            "X": 200.09155,
+            "Y": -36.728516,
+            "Z": 276.17297
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7219
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021459,
+          "Position": {
+            "X": 207.35486,
+            "Y": -36.405907,
+            "Z": 328.11462
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2008924,
+          "Position": {
+            "X": 206.073,
+            "Y": -35.568848,
+            "Z": 329.21338
+          },
+          "TerritoryId": 138,
+          "InteractionType": "UseItem",
+          "ItemId": 2002182
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": 303.05298,
+            "Y": -36.405563,
+            "Z": 307.39264
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1021460,
+          "Position": {
+            "X": 319.44763,
+            "Y": -35.9496,
+            "Z": 305.6228
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021462,
+          "Position": {
+            "X": 307.36243,
+            "Y": -36.402996,
+            "Z": 309.98706
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2580
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020304,
+          "Position": {
+            "X": -606.7445,
+            "Y": 130,
+            "Z": -506.95053
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019517,
+          "Position": {
+            "X": -653.0099,
+            "Y": 129.91537,
+            "Z": -510.67374
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2639
+        },
+        {
+          "DataId": 2007955,
+          "Position": {
+            "X": -228.22925,
+            "Y": 59.861084,
+            "Z": -409.5064
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            8048,
+            8049
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020503,
+          "Position": {
+            "X": -494.16345,
+            "Y": 82.14899,
+            "Z": -266.8651
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          },
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020361,
+          "Position": {
+            "X": -507.4388,
+            "Y": 86.34846,
+            "Z": -289.84515
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 886,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 886,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "TerritoryId": 886,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                886
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1033543,
+          "Position": {
+            "X": 113.38977,
+            "Y": -20,
+            "Z": -0.96136475
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The Mattock"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/006/CtsSfsCharacter6_00674",
+              "Prompt": "TEXT_CTSSFSCHARACTER6_00674_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER6_00674_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/006/CtsSfsCharacter6_00674",
+              "Prompt": "TEXT_CTSSFSCHARACTER6_00674_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER6_00674_TOPMENU_000_003"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

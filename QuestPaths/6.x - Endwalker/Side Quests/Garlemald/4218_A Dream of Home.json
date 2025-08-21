@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041119,
+          "Position": {
+            "X": 135.85095,
+            "Y": -17.135998,
+            "Z": 567.8645
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "again, if you happen to be at an aetheryte, very far without flyspeed"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041121,
+          "Position": {
+            "X": 208.51453,
+            "Y": 4.706692,
+            "Z": 77.77527
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC009_04218_Q1_000_000",
+              "Answer": "TEXT_AKTKZC009_04218_A1_000_001"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012474,
+          "Position": {
+            "X": 210.28455,
+            "Y": 5.355835,
+            "Z": 76.76807
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Emote",
+          "Emote": "pray"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042180,
+          "Position": {
+            "X": 127.06189,
+            "Y": -13.29479,
+            "Z": 650.8429
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040898,
+          "Position": {
+            "X": -433.12738,
+            "Y": 22.221891,
+            "Z": 460.80713
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

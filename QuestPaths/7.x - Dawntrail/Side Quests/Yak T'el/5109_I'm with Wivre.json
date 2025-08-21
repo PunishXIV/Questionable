@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048997,
+          "Position": {
+            "X": -363.9124,
+            "Y": -162.23582,
+            "Z": 550.01135
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051387,
+          "Position": {
+            "X": -383.4745,
+            "Y": -166.23917,
+            "Z": 662.95874
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -433.617,
+            "Y": -156.24463,
+            "Z": 776.9229
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Instruction",
+          "Comment": "TODO Needs item use; manual for now (also unsure on health percent)",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 17267,
+              "MinimumKillCount": 2,
+              "ItemId": 2003669,
+              "ItemUseHealthMaxPercent": 25,
+              "RewardItemId": 2003670,
+              "RewardItemCount": 2
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051387,
+          "Position": {
+            "X": -383.4745,
+            "Y": -166.23917,
+            "Z": 662.95874
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048997,
+          "Position": {
+            "X": -363.9124,
+            "Y": -162.23582,
+            "Z": 550.01135
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

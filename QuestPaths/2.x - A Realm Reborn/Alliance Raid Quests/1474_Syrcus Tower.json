@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006725,
+          "Position": {
+            "X": 446.82983,
+            "Y": -5.306207,
+            "Z": -465.72064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 572.9147,
+            "Y": -1.2399623,
+            "Z": -260.11197
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002927,
+          "Position": {
+            "X": 572.3506,
+            "Y": -0.045776367,
+            "Z": -260.51727
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "DataId": 1009372,
+          "Position": {
+            "X": 640.1312,
+            "Y": -1.08248,
+            "Z": -137.59064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009374,
+          "Position": {
+            "X": 734.15735,
+            "Y": 15.330521,
+            "Z": -55.832825
+          },
+          "StopDistance": 7,
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009376,
+          "Position": {
+            "X": 730.73914,
+            "Y": 15.428448,
+            "Z": -56.168518
+          },
+          "StopDistance": 7,
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 102,
+            "Enabled": false,
+            "LowPriority": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 445.96164,
+            "Y": -5.3604937,
+            "Z": -466.67636
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 1006725,
+          "Position": {
+            "X": 446.82983,
+            "Y": -5.306207,
+            "Z": -465.72064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 494
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021911,
+          "Position": {
+            "X": -220.84387,
+            "Y": 21.261763,
+            "Z": 363.39355
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021913,
+          "Position": {
+            "X": 161.39453,
+            "Y": 37.625904,
+            "Z": 169.17664
+          },
+          "TerritoryId": 153,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021911,
+          "Position": {
+            "X": -220.84387,
+            "Y": 21.261763,
+            "Z": 363.39355
+          },
+          "StopDistance": 5,
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2926
+        }
+      ]
+    }
+  ]
+}

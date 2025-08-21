@@ -1,0 +1,55 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] The Aftcastle"
+        },
+        {
+          "TerritoryId": 134,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Middle La Noscea - Summerford Farms",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
+          ]
+        },
+        {
+          "TerritoryId": 134,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Middle La Noscea - Summerford Farms"
+        },
+        {
+          "DataId": 1002626,
+          "Position": {
+            "X": 207.2633,
+            "Y": 112.860374,
+            "Z": -222.43079
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

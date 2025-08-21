@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020338,
+          "Position": {
+            "X": 170.30591,
+            "Y": 13.02367,
+            "Z": -93.06476
+          },
+          "StopDistance": 7,
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020366,
+          "Position": {
+            "X": 114.18323,
+            "Y": 0.6520416,
+            "Z": -11.673218
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 132.8247,
+            "Y": -0.57445294,
+            "Z": -3.299387
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 620
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020368,
+          "Position": {
+            "X": -641.2604,
+            "Y": 50.867527,
+            "Z": -784.1764
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020370,
+          "Position": {
+            "X": -384.7563,
+            "Y": 52.201828,
+            "Z": -636.4691
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020372,
+          "Position": {
+            "X": 36.423218,
+            "Y": 117.95596,
+            "Z": -742.2446
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025137,
+          "Position": {
+            "X": 281.66626,
+            "Y": 16.350018,
+            "Z": 846.89087
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true,
+          "TargetTerritoryId": 764
+        },
+        {
+          "DataId": 1025559,
+          "Position": {
+            "X": 61.753174,
+            "Y": -90.00002,
+            "Z": -478.11096
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1025563,
+          "Position": {
+            "X": -485.19116,
+            "Y": 68.82959,
+            "Z": 273.2738
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "AethernetShortcut": [
+            "[Doman Enclave] Aetheryte Plaza",
+            "[Doman Enclave] The One River"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 614,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 536,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025137,
+          "Position": {
+            "X": 281.66626,
+            "Y": 16.350018,
+            "Z": 846.89087
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true,
+          "TargetTerritoryId": 764
+        },
+        {
+          "DataId": 1025138,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1025138,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1025138,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "NextQuestId": 3152
+        }
+      ]
+    }
+  ]
+}

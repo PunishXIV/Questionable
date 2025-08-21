@@ -1,0 +1,74 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039624,
+          "Position": {
+            "X": -478.38562,
+            "Y": 4.7772117,
+            "Z": 26.779541
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039627,
+          "Position": {
+            "X": -270.25262,
+            "Y": 0.07863108,
+            "Z": 605.9204
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMH109_04534_Q2_000_120",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039632,
+          "Position": {
+            "X": 106.614746,
+            "Y": -350,
+            "Z": -78.56879
+          },
+          "TerritoryId": 1056,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2012837,
+          "Position": {
+            "X": 110.03284,
+            "Y": -350.02673,
+            "Z": -82.90228
+          },
+          "TerritoryId": 1056,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

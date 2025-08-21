@@ -1,0 +1,158 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033710,
+          "Position": {
+            "X": -607.72107,
+            "Y": 65.60101,
+            "Z": -412.71082
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -357.15628,
+            "Y": 108.72211,
+            "Z": -680.6214
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1033732,
+          "Position": {
+            "X": -356.22186,
+            "Y": 108.722115,
+            "Z": -682.3072
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033733,
+          "Position": {
+            "X": -357.16797,
+            "Y": 108.722115,
+            "Z": -683.1922
+          },
+          "StopDistance": 5,
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANDWA003_03898_SYSTEM_000_046",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1033769,
+          "Position": {
+            "X": -358.114,
+            "Y": 108.722115,
+            "Z": -683.43634
+          },
+          "StopDistance": 5,
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027826,
+          "Position": {
+            "X": 89.15845,
+            "Y": 0.49999997,
+            "Z": -145.4643
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1033710,
+          "Position": {
+            "X": -607.72107,
+            "Y": 65.60101,
+            "Z": -412.71082
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1033749,
+          "Position": {
+            "X": -628.04614,
+            "Y": 65.60091,
+            "Z": -414.66394
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 813,
+          "InteractionType": "Craft",
+          "ItemId": 31141,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1033710,
+          "Position": {
+            "X": -607.72107,
+            "Y": 65.60101,
+            "Z": -412.71082
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

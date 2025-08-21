@@ -1,0 +1,169 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1007478,
+          "Position": {
+            "X": -2.822998,
+            "Y": -3.0000014,
+            "Z": -56.229553
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -424.22275,
+            "Y": 265.1,
+            "Z": -206.5006
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1006444,
+          "Position": {
+            "X": -432.9748,
+            "Y": 233.47266,
+            "Z": -199.6643
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -431.37878,
+            "Y": 259.79306,
+            "Z": -194.97882
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -423.87833,
+            "Y": 266.9849,
+            "Z": -205.68484
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": false
+        },
+        {
+          "DataId": 1010054,
+          "Position": {
+            "X": -916.6552,
+            "Y": 229.3692,
+            "Z": -6.4240723
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 80,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -424.22275,
+            "Y": 265.1,
+            "Z": -206.5006
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1006444,
+          "Position": {
+            "X": -432.9748,
+            "Y": 233.47266,
+            "Z": -199.6643
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1007478,
+          "Position": {
+            "X": -2.822998,
+            "Y": -3.0000014,
+            "Z": -56.229553
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

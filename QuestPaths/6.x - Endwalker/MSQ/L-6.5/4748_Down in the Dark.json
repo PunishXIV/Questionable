@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045662,
+          "Position": {
+            "X": 32.913696,
+            "Y": 56.682667,
+            "Z": 468.162
+          },
+          "StopDistance": 6,
+          "TerritoryId": 1162,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1162,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 823,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045667,
+          "Position": {
+            "X": -374.19702,
+            "Y": -567.3385,
+            "Z": -440.63483
+          },
+          "TerritoryId": 1184,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKML105_04748_SYSTEM_000_406",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 1181,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 964,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045671,
+          "Position": {
+            "X": 27.237305,
+            "Y": 56.635868,
+            "Z": 480.3081
+          },
+          "TerritoryId": 1162,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

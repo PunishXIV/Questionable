@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030090,
+          "Position": {
+            "X": -73.35016,
+            "Y": 1.5753315E-08,
+            "Z": 55.954834
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030091,
+          "Position": {
+            "X": 380.97205,
+            "Y": -64.31066,
+            "Z": 511.2229
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030091,
+          "Position": {
+            "X": 380.97205,
+            "Y": -64.31066,
+            "Z": 511.2229
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKRA101_03255_YESNO_001",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030095,
+          "Position": {
+            "X": -0.56463623,
+            "Y": -2.028786,
+            "Z": -17.807312
+          },
+          "TerritoryId": 878,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3256
+        }
+      ]
+    }
+  ]
+}

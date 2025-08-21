@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048310,
+          "Position": {
+            "X": -310.96362,
+            "Y": 257.52652,
+            "Z": 739.4979
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Ghiri",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048324,
+          "Position": {
+            "X": 568.3833,
+            "Y": 80,
+            "Z": 618.09717
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048325,
+          "Position": {
+            "X": 713.5576,
+            "Y": 69.99999,
+            "Z": 617.02905
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048326,
+          "Position": {
+            "X": 754.5432,
+            "Y": 70,
+            "Z": 583.6727
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048324,
+          "Position": {
+            "X": 568.3833,
+            "Y": 80,
+            "Z": 618.09717
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "NextQuestId": 4841
+        }
+      ]
+    }
+  ]
+}

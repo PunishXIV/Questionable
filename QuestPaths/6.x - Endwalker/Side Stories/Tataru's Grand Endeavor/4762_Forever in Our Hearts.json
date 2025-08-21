@@ -1,0 +1,142 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033629,
+          "Position": {
+            "X": -0.3204956,
+            "Y": 41,
+            "Z": 17.56311
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKSA402_04762_Q1_000_000",
+              "Answer": "TEXT_AKTKSA402_04762_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045301,
+          "Position": {
+            "X": -36.636963,
+            "Y": 41,
+            "Z": 57.66382
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045308,
+          "Position": {
+            "X": -18.35669,
+            "Y": 40.999996,
+            "Z": -17.898865
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -15.634434,
+            "Y": 41,
+            "Z": 13.581184
+          },
+          "TerritoryId": 919,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1033629,
+          "Position": {
+            "X": -0.3204956,
+            "Y": 41,
+            "Z": 17.56311
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045311,
+          "Position": {
+            "X": 57.78589,
+            "Y": 35,
+            "Z": 81.55945
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1045614,
+          "Position": {
+            "X": 53.116577,
+            "Y": 34.999966,
+            "Z": 78.01941
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "NextQuestId": 4812
+        }
+      ]
+    }
+  ]
+}

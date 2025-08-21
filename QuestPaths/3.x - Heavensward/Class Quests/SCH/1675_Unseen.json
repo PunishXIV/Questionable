@@ -1,0 +1,163 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002279,
+          "Position": {
+            "X": -196.8872,
+            "Y": 18.459997,
+            "Z": 59.952637
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011231,
+          "Position": {
+            "X": 503.1051,
+            "Y": 217.95148,
+            "Z": 790.2189
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011234,
+          "Position": {
+            "X": 546.1356,
+            "Y": 217.90826,
+            "Z": 768.06274
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 528.09424,
+            "Y": 217.9514,
+            "Z": 773.35565
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2005525,
+          "Position": {
+            "X": 446.00586,
+            "Y": 140.82544,
+            "Z": -749.87415
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4374
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            1,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2005525,
+          "Position": {
+            "X": 446.00586,
+            "Y": 140.82544,
+            "Z": -749.87415
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1676
+        }
+      ]
+    }
+  ]
+}

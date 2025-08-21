@@ -1,0 +1,58 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033991,
+          "Position": {
+            "X": -37.9187,
+            "Y": -20,
+            "Z": 59.433838
+          },
+          "StopDistance": 7,
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1034082,
+          "Position": {
+            "X": 118.57776,
+            "Y": -20.000143,
+            "Z": 46.860474
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1034083,
+          "Position": {
+            "X": 38.28479,
+            "Y": -14.000004,
+            "Z": 40.05493
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3999
+        }
+      ]
+    }
+  ]
+}

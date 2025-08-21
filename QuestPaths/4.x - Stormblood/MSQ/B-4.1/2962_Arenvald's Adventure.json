@@ -1,0 +1,70 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019468,
+          "Position": {
+            "X": 170.58057,
+            "Y": 13.02367,
+            "Z": -91.96619
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024136,
+          "Position": {
+            "X": -29.34314,
+            "Y": -0.1424195,
+            "Z": -124.52893
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -63.63005,
+            "Y": -0.0012056828,
+            "Z": -101.09714
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2009050,
+          "Position": {
+            "X": 49.66809,
+            "Y": -0.015319824,
+            "Z": 58.182617
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Western Rhalgr's Reach",
+            "[Rhalgr's Reach] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

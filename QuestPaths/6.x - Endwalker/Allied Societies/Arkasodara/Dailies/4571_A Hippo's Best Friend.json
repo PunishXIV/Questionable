@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 459.61847,
+            "Y": 7.3659906,
+            "Z": 22.413525
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true
+        },
+        {
+          "DataId": 2012895,
+          "Position": {
+            "X": 461.8142,
+            "Y": 9.262146,
+            "Z": 24.2771
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003407,
+          "GroundTarget": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012897,
+          "Position": {
+            "X": 458.39624,
+            "Y": 7.4005737,
+            "Z": 23.788818
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

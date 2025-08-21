@@ -1,0 +1,77 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020400,
+          "Position": {
+            "X": 71.30542,
+            "Y": 0.024691548,
+            "Z": -75.76111
+          },
+          "StopDistance": 5,
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020411,
+          "Position": {
+            "X": 50.644653,
+            "Y": 0,
+            "Z": 3.0975342
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 2.6558871,
+            "Y": -2.1714334,
+            "Z": -3.1224606
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -29.991734,
+            "Y": -0.5866744,
+            "Z": -14.3459
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1020416,
+          "Position": {
+            "X": -135.82056,
+            "Y": 0.59805036,
+            "Z": -83.634705
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

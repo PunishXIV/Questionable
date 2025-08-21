@@ -1,0 +1,145 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023606,
+          "Position": {
+            "X": 257.1908,
+            "Y": 314.22742,
+            "Z": 418.2954
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009011,
+          "Position": {
+            "X": 306.38586,
+            "Y": 318.5625,
+            "Z": 432.45593
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7553,
+            7554
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009012,
+          "Position": {
+            "X": 333.36377,
+            "Y": 322.0111,
+            "Z": 439.3529
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            8033,
+            8045
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020646,
+          "Position": {
+            "X": 385.7633,
+            "Y": 332.03845,
+            "Z": 487.0526
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009013,
+          "Position": {
+            "X": 422.2323,
+            "Y": 335.46948,
+            "Z": 481.74243
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7568,
+            8040
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2008212,
+          "Position": {
+            "X": 431.11304,
+            "Y": 335.6526,
+            "Z": 487.17468
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 620,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 242,
+            "Enabled": true,
+            "Notes": [
+              "(before boss 2) AD doesn't attack magitek pods, but waits for enemies to spawn from them (even though it has explicit waypoints)",
+              "(boss 2) VBM moves out of the towers before their mechanic is resolved, sometimes killing the NPC healer"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020647,
+          "Position": {
+            "X": 561.45557,
+            "Y": 344.11768,
+            "Z": 435.3551
+          },
+          "StopDistance": 5,
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

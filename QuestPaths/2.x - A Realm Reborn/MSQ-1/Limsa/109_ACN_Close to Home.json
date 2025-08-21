@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002697,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 181,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002698,
+          "Position": {
+            "X": 8.499207,
+            "Y": 39.505493,
+            "Z": 3.5552979
+          },
+          "TerritoryId": 181,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 111
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Limsa Lominsa",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Limsa Lominsa"
+        },
+        {
+          "DataId": 1001217,
+          "Position": {
+            "X": -140.85602,
+            "Y": 18.199999,
+            "Z": 17.013733
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Hawkers' Alley"
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Arcanists' Guild"
+        },
+        {
+          "DataId": 1000895,
+          "Position": {
+            "X": -335.74432,
+            "Y": 12.899764,
+            "Z": 1.3884888
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "Comment": "ACN Receptionist",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000895,
+          "Position": {
+            "X": -335.74432,
+            "Y": 12.899764,
+            "Z": 1.3884888
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "Comment": "Pick up Class Quest",
+          "Disabled": true
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Fishermens' Guild",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ]
+        },
+        {
+          "Position": {
+            "X": -83.8817,
+            "Y": 18.475962,
+            "Z": -29.903847
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 128,
+          "Comment": "Walk to Culinarians' Guild",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Aetheryte Plaza"
+          ]
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Culinarians' Guild"
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Marauders' Guild"
+        },
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

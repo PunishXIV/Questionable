@@ -1,0 +1,52 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011241,
+          "Position": {
+            "X": 501.7318,
+            "Y": 164.19402,
+            "Z": 301.13672
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011903,
+          "Position": {
+            "X": 197.13123,
+            "Y": 189.4263,
+            "Z": 270.61877
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011231,
+          "Position": {
+            "X": 503.1051,
+            "Y": 217.95148,
+            "Z": 790.2189
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    }
+  ]
+}

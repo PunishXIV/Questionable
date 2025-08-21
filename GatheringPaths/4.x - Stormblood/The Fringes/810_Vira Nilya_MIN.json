@@ -1,0 +1,115 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 612,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Fringes - Peering Stones"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33871,
+          "Locations": [
+            {
+              "Position": {
+                "X": 556.8531,
+                "Y": 73.44064,
+                "Z": 99.57761
+              },
+              "MinimumAngle": 35,
+              "MaximumAngle": 160
+            }
+          ]
+        },
+        {
+          "DataId": 33872,
+          "Locations": [
+            {
+              "Position": {
+                "X": 561.7782,
+                "Y": 73.45153,
+                "Z": 72.6368
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 165,
+              "MinimumDistance": 1.3,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33867,
+          "Locations": [
+            {
+              "Position": {
+                "X": 498.26,
+                "Y": 76.74628,
+                "Z": -46.34168
+              },
+              "MinimumAngle": -65,
+              "MaximumAngle": 45
+            }
+          ]
+        },
+        {
+          "DataId": 33868,
+          "Locations": [
+            {
+              "Position": {
+                "X": 473.011,
+                "Y": 76.55681,
+                "Z": -47.70556
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 60,
+              "MinimumDistance": 1.9,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33870,
+          "Locations": [
+            {
+              "Position": {
+                "X": 361.4784,
+                "Y": 70.79905,
+                "Z": 146.1887
+              },
+              "MinimumAngle": -55,
+              "MaximumAngle": 40,
+              "MinimumDistance": 1.3,
+              "MaximumDistance": 3
+            }
+          ]
+        },
+        {
+          "DataId": 33869,
+          "Locations": [
+            {
+              "Position": {
+                "X": 364.7684,
+                "Y": 70.90228,
+                "Z": 167.3831
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 230
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

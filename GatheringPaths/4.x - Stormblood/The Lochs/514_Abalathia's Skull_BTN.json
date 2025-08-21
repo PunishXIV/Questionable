@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 621,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32245,
+          "Locations": [
+            {
+              "Position": {
+                "X": 333.1211,
+                "Y": 20.88004,
+                "Z": -522.5363
+              },
+              "MinimumAngle": 160,
+              "MaximumAngle": 335
+            },
+            {
+              "Position": {
+                "X": 338.3687,
+                "Y": 21.54188,
+                "Z": -512.1134
+              },
+              "MinimumAngle": 120,
+              "MaximumAngle": 275
+            },
+            {
+              "Position": {
+                "X": 374.9138,
+                "Y": 25.00688,
+                "Z": -515.2723
+              },
+              "MinimumAngle": -85,
+              "MaximumAngle": 90
+            }
+          ]
+        },
+        {
+          "DataId": 32244,
+          "Locations": [
+            {
+              "Position": {
+                "X": 368.5785,
+                "Y": 24.38493,
+                "Z": -507.3824
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32243,
+          "Locations": [
+            {
+              "Position": {
+                "X": 426.1108,
+                "Y": 25.12664,
+                "Z": -607.2003
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 145
+            },
+            {
+              "Position": {
+                "X": 400.1029,
+                "Y": 25.21572,
+                "Z": -648.0899
+              },
+              "MinimumAngle": 190,
+              "MaximumAngle": 325
+            },
+            {
+              "Position": {
+                "X": 463.1597,
+                "Y": 24.9486,
+                "Z": -602.0026
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 150
+            }
+          ]
+        },
+        {
+          "DataId": 32242,
+          "Locations": [
+            {
+              "Position": {
+                "X": 396.3124,
+                "Y": 25.41136,
+                "Z": -663.1417
+              },
+              "MinimumAngle": 20,
+              "MaximumAngle": 205
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32247,
+          "Locations": [
+            {
+              "Position": {
+                "X": 274.2476,
+                "Y": 18.49642,
+                "Z": -627.4052
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 100
+            },
+            {
+              "Position": {
+                "X": 248.6237,
+                "Y": 10.63078,
+                "Z": -592.5243
+              },
+              "MinimumAngle": -145,
+              "MaximumAngle": 35
+            },
+            {
+              "Position": {
+                "X": 259.3484,
+                "Y": 11.24844,
+                "Z": -586.5854
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 45
+            }
+          ]
+        },
+        {
+          "DataId": 32246,
+          "Locations": [
+            {
+              "Position": {
+                "X": 266.4147,
+                "Y": 18.26739,
+                "Z": -620.2316
+              },
+              "MinimumAngle": 135,
+              "MaximumAngle": 305
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042368,
+          "Position": {
+            "X": -485.771,
+            "Y": 39.62969,
+            "Z": 114.213745
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK106_04556_Q1_000_000",
+              "Answer": "TEXT_BANARK106_04556_A1_000_001"
+            }
+          ],
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              48
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1042369,
+          "Position": {
+            "X": -561.2726,
+            "Y": 11.802609,
+            "Z": 128.95398
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK106_04556_Q2_000_000",
+              "Answer": "TEXT_BANARK106_04556_A2_000_001"
+            }
+          ],
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              16
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1042370,
+          "Position": {
+            "X": -506.37067,
+            "Y": 5.1961365,
+            "Z": 63.401123
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK106_04556_Q3_000_000",
+              "Answer": "TEXT_BANARK106_04556_A3_000_001"
+            }
+          ],
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              32
+            ],
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

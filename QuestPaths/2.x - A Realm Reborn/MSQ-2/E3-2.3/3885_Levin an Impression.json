@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009097,
+          "Position": {
+            "X": 22.87323,
+            "Y": -3.7749445,
+            "Z": 211.16956
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009098,
+          "Position": {
+            "X": 262.71448,
+            "Y": -8.995881,
+            "Z": -77.92786
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033555,
+          "Position": {
+            "X": 193.59119,
+            "Y": -22.344374,
+            "Z": -399.8932
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009119,
+          "Position": {
+            "X": 106.85889,
+            "Y": -27.487057,
+            "Z": -366.3844
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 190.23474,
+            "Y": -31.415636,
+            "Z": -218.26653
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 152,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 77,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009097,
+          "Position": {
+            "X": 22.87323,
+            "Y": -3.7749445,
+            "Z": 211.16956
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006240,
+          "Position": {
+            "X": 14.389221,
+            "Y": -44.86571,
+            "Z": 262.65344
+          },
+          "StopDistance": 7,
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007541,
+          "Position": {
+            "X": -302.8459,
+            "Y": -51.768955,
+            "Z": 331.19702
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            182
+          ]
+        },
+        {
+          "DataId": 1007541,
+          "Position": {
+            "X": -302.8459,
+            "Y": -51.768955,
+            "Z": 331.19702
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002780,
+          "Position": {
+            "X": -89.79938,
+            "Y": -45.331406,
+            "Z": 195.88
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+        }
+      ]
+    }
+  ]
+}

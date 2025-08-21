@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030369,
+          "Position": {
+            "X": 614.4961,
+            "Y": 13.3097515,
+            "Z": 305.80603
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030533,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMF103_03646_Q0_000_006",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030370,
+          "Position": {
+            "X": 66.84973,
+            "Y": -2.9802322E-07,
+            "Z": 13.321045
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMF103_03646_Q1_000_000",
+              "Answer": "TEXT_LUCKMF103_03646_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 59.71554,
+            "Y": 36.19769,
+            "Z": -167.87686
+          },
+          "TerritoryId": 819,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Amaro Launch"
+          ]
+        },
+        {
+          "DataId": 1027225,
+          "Position": {
+            "X": 61.905884,
+            "Y": 36.247692,
+            "Z": -169.17682
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030327,
+          "Position": {
+            "X": 58.426758,
+            "Y": 36.19769,
+            "Z": -162.4018
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

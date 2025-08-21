@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028024,
+          "Position": {
+            "X": 78.96533,
+            "Y": 35.999687,
+            "Z": -153.27692
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031119,
+          "Position": {
+            "X": 80.125,
+            "Y": 1.4901161E-08,
+            "Z": 190.44775
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Amaro Launch",
+            "[Crystarium] The Pendants"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1027799,
+          "Position": {
+            "X": -74.6319,
+            "Y": -4.200001,
+            "Z": 170.00073
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1028333,
+          "Position": {
+            "X": -168.07812,
+            "Y": 1.490116E-08,
+            "Z": 96.14697
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028024,
+          "Position": {
+            "X": 78.96533,
+            "Y": 35.999687,
+            "Z": -153.27692
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Amaro Launch"
+          ]
+        }
+      ]
+    }
+  ]
+}

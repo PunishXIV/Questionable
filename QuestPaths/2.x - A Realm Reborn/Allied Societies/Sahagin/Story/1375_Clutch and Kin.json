@@ -1,0 +1,126 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005937,
+          "Position": {
+            "X": -238.02551,
+            "Y": -40.828262,
+            "Z": 68.28406
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005940,
+          "Position": {
+            "X": -226.12347,
+            "Y": -40.48583,
+            "Z": 57.083984
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -41.15807,
+            "Y": -23.382679,
+            "Z": -89.52834
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -41.15807,
+            "Y": -23.382679,
+            "Z": -89.52834
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -41.15807,
+            "Y": -23.382679,
+            "Z": -89.52834
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 2867,
+              "IgnoreQuestMarker": true
+            },
+            {
+              "DataId": 2868,
+              "IgnoreQuestMarker": true
+            },
+            {
+              "DataId": 2869,
+              "IgnoreQuestMarker": true
+            }
+          ]
+        },
+        {
+          "DataId": 1008897,
+          "Position": {
+            "X": -38.31543,
+            "Y": -23.036211,
+            "Z": -88.85327
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005937,
+          "Position": {
+            "X": -238.02551,
+            "Y": -40.828262,
+            "Z": 68.28406
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANSAH002_01375_Q1_000_000",
+              "Answer": "TEXT_BANSAH002_01375_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

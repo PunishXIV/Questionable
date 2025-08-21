@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -38.106888,
+            "Y": -14.1693125,
+            "Z": 107.58956
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1037077,
+          "Position": {
+            "X": -38.07129,
+            "Y": -14.169313,
+            "Z": 105.30249
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041308,
+          "Position": {
+            "X": 190.6615,
+            "Y": 18.89543,
+            "Z": -91.44739
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Scholar's Harbor",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -38.106888,
+            "Y": -14.1693125,
+            "Z": 107.58956
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        },
+        {
+          "DataId": 1037077,
+          "Position": {
+            "X": -38.07129,
+            "Y": -14.169313,
+            "Z": 105.30249
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

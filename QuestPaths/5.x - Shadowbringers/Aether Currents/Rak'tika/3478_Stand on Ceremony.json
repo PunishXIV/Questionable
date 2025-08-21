@@ -1,0 +1,88 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027716,
+          "Position": {
+            "X": 494.9873,
+            "Y": -6.555339,
+            "Z": -224.93329
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031001,
+          "Position": {
+            "X": 167.71179,
+            "Y": -20,
+            "Z": -471.00024
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 168.35954,
+            "Y": -20,
+            "Z": -483.02176
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11163,
+            11164
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031001,
+          "Position": {
+            "X": 167.71179,
+            "Y": -20,
+            "Z": -471.00024
+          },
+          "StopDistance": 7,
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027716,
+          "Position": {
+            "X": 494.9873,
+            "Y": -6.555339,
+            "Z": -224.93329
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow"
+        }
+      ]
+    }
+  ]
+}

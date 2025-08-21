@@ -1,0 +1,168 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131,
+                971
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                971
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1036629,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036641,
+          "Position": {
+            "X": -149.95044,
+            "Y": 14.004999,
+            "Z": 54.8562
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1036642,
+          "Position": {
+            "X": -151.1712,
+            "Y": 15.982788,
+            "Z": 302.2965
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -66.87344,
+            "Y": -3.6581912,
+            "Z": 179.7406
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1036644,
+          "Position": {
+            "X": -68.10101,
+            "Y": -3.6581912,
+            "Z": 179.61389
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040918,
+          "Position": {
+            "X": -59.891724,
+            "Y": -3.6582541,
+            "Z": 147.72253
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        },
+        {
+          "DataId": 1036629,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBB221_04076_Q2_000_000",
+              "Answer": "TEXT_AKTKBB221_04076_A2_000_002"
+            }
+          ],
+          "NextQuestId": 4077
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 133,
+          "InteractionType": "EquipItem",
+          "ItemId": 1819,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 97.18397,
+            "Y": 17.128555,
+            "Z": -269.5008
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 37,
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 3
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
+          "AethernetShortcut": [
+            "[Gridania] Lancers' Guild",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ]
+        },
+        {
+          "Position": {
+            "X": 119.449745,
+            "Y": 17.399649,
+            "Z": -259.6467
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 49,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 3
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "High": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "19 0  0 0  0 0 -> 35 48  0 0  0 0"
+        },
+        {
+          "Position": {
+            "X": 126.943115,
+            "Y": 2.910592,
+            "Z": -180.54787
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 47,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 3
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 47
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Aetheryte Plaza"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "TargetTerritoryId": 152
+        },
+        {
+          "DataId": 1009754,
+          "Position": {
+            "X": -571.4351,
+            "Y": 10.28263,
+            "Z": 61.020752
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004581,
+          "Position": {
+            "X": 354.72632,
+            "Y": 5.5999756,
+            "Z": -30.167114
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2843
+          ],
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2004582,
+          "Position": {
+            "X": 343.2821,
+            "Y": 2.4261475,
+            "Z": 8.895996
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2843
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2004845,
+          "Position": {
+            "X": 362.50854,
+            "Y": 1.663208,
+            "Z": -18.478699
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBPST014_01574_Q1_000_000",
+              "Answer": "TEXT_SUBPST014_01574_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009755,
+          "Position": {
+            "X": 361.19617,
+            "Y": 1.6090399,
+            "Z": -18.448242
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009756,
+          "Position": {
+            "X": 377.40137,
+            "Y": 0.37321654,
+            "Z": 119.920654
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "TargetTerritoryId": 152
+        },
+        {
+          "DataId": 1009754,
+          "Position": {
+            "X": -571.4351,
+            "Y": 10.28263,
+            "Z": 61.020752
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1009758,
+          "Position": {
+            "X": -161.24213,
+            "Y": 7.554849,
+            "Z": 107.10303
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2004846,
+          "Position": {
+            "X": -181.44507,
+            "Y": 8.0720215,
+            "Z": 101.27405
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2863,
+            3558
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1009760,
+          "Position": {
+            "X": -235.21783,
+            "Y": 6.619436,
+            "Z": 609.39954
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009760,
+          "Position": {
+            "X": -235.21783,
+            "Y": 6.619436,
+            "Z": 609.39954
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1572
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,249 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1015142,
+          "Position": {
+            "X": 446.98242,
+            "Y": 217.95142,
+            "Z": 753.994
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1015145,
+          "Position": {
+            "X": 487.17468,
+            "Y": 200.23772,
+            "Z": 656.27515
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1015146,
+          "Position": {
+            "X": 485.0995,
+            "Y": 200.2377,
+            "Z": 654.68823
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Action",
+          "StopDistance": 4,
+          "Action": "Aspected Benefic"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 501.1413,
+            "Y": 161.74702,
+            "Z": -318.04788
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "StopDistance": 3,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 4619,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 4360,
+              "MinimumKillCount": 2
+            }
+          ],
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1015147,
+          "Position": {
+            "X": 500.11438,
+            "Y": 161.61157,
+            "Z": -320.02753
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Action",
+          "Action": "Aspected Benefic",
+          "StopDistance": 3
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1015142,
+          "Position": {
+            "X": 446.98242,
+            "Y": 217.95142,
+            "Z": 753.994
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": 529.5874,
+            "Y": 227.05162,
+            "Z": 717.32074
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "InteractionType": "None",
+          "Mount": false,
+          "TerritoryId": 397
+        },
+        {
+          "DataId": 1015149,
+          "Position": {
+            "X": 533.59265,
+            "Y": 228.33778,
+            "Z": 720.2715
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 4
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1015151,
+          "Position": {
+            "X": 541.25256,
+            "Y": 228.85133,
+            "Z": 742.5497
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 202.38037,
+                  "Y": -5.3999662,
+                  "Z": -58.9151
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          },
+          "NextQuestId": 2022
+        }
+      ]
+    }
+  ]
+}

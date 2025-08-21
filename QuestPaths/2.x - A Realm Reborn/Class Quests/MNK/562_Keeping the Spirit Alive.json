@@ -1,0 +1,186 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003827,
+          "Position": {
+            "X": -65.65961,
+            "Y": 0.9481947,
+            "Z": -51.98755
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001391,
+          "Position": {
+            "X": -215.99152,
+            "Y": -29.495728,
+            "Z": 203.78418
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "Fly": true,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        },
+        {
+          "Position": {
+            "X": -215.99152,
+            "Y": -29.495728,
+            "Z": 203.78418
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatDelaySecondsAtStart": 1,
+          "ComplexCombatData": [
+            {
+              "DataId": 139,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 136,
+              "MinimumKillCount": 2
+            }
+          ]
+        },
+        {
+          "DataId": 2001389,
+          "Position": {
+            "X": -242.4201,
+            "Y": -26.138794,
+            "Z": 229.17517
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -242.4201,
+            "Y": -26.138794,
+            "Z": 229.17517
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatDelaySecondsAtStart": 1,
+          "ComplexCombatData": [
+            {
+              "DataId": 57,
+              "MinimumKillCount": 2
+            }
+          ]
+        },
+        {
+          "DataId": 2001390,
+          "Position": {
+            "X": -228.8396,
+            "Y": -27.8172,
+            "Z": 250.14111
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -228.8396,
+            "Y": -27.8172,
+            "Z": 250.14111
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatDelaySecondsAtStart": 1,
+          "ComplexCombatData": [
+            {
+              "DataId": 57,
+              "MinimumKillCount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 566
+        }
+      ]
+    }
+  ]
+}

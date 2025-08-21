@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014570,
+          "Position": {
+            "X": -583.032,
+            "Y": -52.126114,
+            "Z": -447.4403
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012069,
+          "Position": {
+            "X": -647.0283,
+            "Y": -51.05719,
+            "Z": -417.74628
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1909
+        },
+        {
+          "DataId": 1012064,
+          "Position": {
+            "X": -542.7787,
+            "Y": -37.11544,
+            "Z": -386.7094
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012068,
+          "Position": {
+            "X": -597.0398,
+            "Y": -51.05185,
+            "Z": -387.0451
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1910
+        },
+        {
+          "DataId": 2006231,
+          "Position": {
+            "X": -180.34644,
+            "Y": -14.938599,
+            "Z": -543.1144
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818119
+        },
+        {
+          "DataId": 1013386,
+          "Position": {
+            "X": -155.62683,
+            "Y": -14.153783,
+            "Z": -541.558
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013387,
+          "Position": {
+            "X": -154.34503,
+            "Y": -14.730623,
+            "Z": -537.56006
+          },
+          "StopDistance": 7,
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA506_01647_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 401,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 88,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014575,
+          "Position": {
+            "X": -156.66437,
+            "Y": -14.153766,
+            "Z": -543.0228
+          },
+          "StopDistance": 7,
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030145,
+          "Position": {
+            "X": 93.461426,
+            "Y": 37.43559,
+            "Z": 611.50525
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010405,
+          "Position": {
+            "X": -33.707214,
+            "Y": 3.982544,
+            "Z": 205.70679
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027323,
+          "Position": {
+            "X": -42.893127,
+            "Y": 3.9998171,
+            "Z": 242.08435
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1027238,
+          "Position": {
+            "X": -15.487976,
+            "Y": 3.9998171,
+            "Z": 215.3811
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1030147,
+          "Position": {
+            "X": 0.59503174,
+            "Y": 3.9998174,
+            "Z": 209.27734
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030148,
+          "Position": {
+            "X": -246.57056,
+            "Y": 10.152376,
+            "Z": 678.21765
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030145,
+          "Position": {
+            "X": 93.461426,
+            "Y": 37.43559,
+            "Z": 611.50525
+          },
+          "StopDistance": 1,
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true,
+          "NextQuestId": 3278
+        }
+      ]
+    }
+  ]
+}

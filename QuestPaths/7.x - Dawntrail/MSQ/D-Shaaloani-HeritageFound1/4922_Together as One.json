@@ -1,0 +1,179 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047037,
+          "Position": {
+            "X": 1.296936,
+            "Y": 3.095488,
+            "Z": -64.9577
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1170,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047050,
+          "Position": {
+            "X": -218.9823,
+            "Y": 39.999985,
+            "Z": 9.414734
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The Resplendent Quarter"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1047048,
+          "Position": {
+            "X": -244.77002,
+            "Y": 14.99999,
+            "Z": 75.12012
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1047049,
+          "Position": {
+            "X": -262.89777,
+            "Y": 2.096911E-05,
+            "Z": 71.06128
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047047,
+          "Position": {
+            "X": -62.424683,
+            "Y": -10.00001,
+            "Z": 105.97388
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1047046,
+          "Position": {
+            "X": -10.727112,
+            "Y": -10.00001,
+            "Z": 88.27344
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1047051,
+          "Position": {
+            "X": 53.45227,
+            "Y": -14,
+            "Z": 90.562256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047056,
+          "Position": {
+            "X": -172.7779,
+            "Y": 120.75,
+            "Z": -321.09564
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Vollok Shoonsa"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047062,
+          "Position": {
+            "X": -65.84277,
+            "Y": 100,
+            "Z": -158.98376
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

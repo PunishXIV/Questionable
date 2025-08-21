@@ -1,0 +1,216 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012076,
+          "Position": {
+            "X": 254.13892,
+            "Y": -43.160442,
+            "Z": 626.3981
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006346,
+          "Position": {
+            "X": 429.9839,
+            "Y": -10.11676,
+            "Z": 708.1864
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2006347,
+          "Position": {
+            "X": 346.48657,
+            "Y": 0.25933838,
+            "Z": 565.6061
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2006348,
+          "Position": {
+            "X": 312.1842,
+            "Y": 17.868286,
+            "Z": 718.8982
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2006349,
+          "Position": {
+            "X": 204.76074,
+            "Y": 4.7455444,
+            "Z": 736.3545
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012076,
+          "Position": {
+            "X": 254.13892,
+            "Y": -43.160442,
+            "Z": 626.3981
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2006350,
+          "Position": {
+            "X": 173.84595,
+            "Y": -22.14087,
+            "Z": 160.7843
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4675
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1015049,
+          "Position": {
+            "X": -158.80066,
+            "Y": -23.017008,
+            "Z": 282.12402
+          },
+          "TerritoryId": 400,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1015050,
+          "Position": {
+            "X": -158.1903,
+            "Y": -22.967546,
+            "Z": 275.83728
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "NextQuestId": 2064
+        }
+      ]
+    }
+  ]
+}

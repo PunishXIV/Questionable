@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020580,
+          "Position": {
+            "X": 451.52966,
+            "Y": 114.37317,
+            "Z": 236.40796
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020807,
+          "Position": {
+            "X": 433.9818,
+            "Y": 114.48304,
+            "Z": 233.29517
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2821
+        },
+        {
+          "DataId": 2007971,
+          "Position": {
+            "X": 322.59094,
+            "Y": 88.97534,
+            "Z": 10.513428
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818139
+        },
+        {
+          "Position": {
+            "X": 328.29312,
+            "Y": 79.1903,
+            "Z": 2.052349
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1020817,
+          "Position": {
+            "X": 327.5348,
+            "Y": 83.45977,
+            "Z": -103.07471
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020827,
+          "Position": {
+            "X": 334.1267,
+            "Y": 82.94969,
+            "Z": -101.27417
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

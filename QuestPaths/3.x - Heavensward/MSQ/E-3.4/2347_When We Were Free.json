@@ -1,0 +1,162 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017750,
+          "Position": {
+            "X": -170.58063,
+            "Y": 27.660244,
+            "Z": -397.72644
+          },
+          "StopDistance": 5,
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006223,
+          "Position": {
+            "X": -85.06909,
+            "Y": 26.222988,
+            "Z": -348.50085
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1006224,
+          "Position": {
+            "X": -77.74481,
+            "Y": 27.626602,
+            "Z": -325.42914
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "$": "1 0 0 0 0 32 -> 2 0 0 0 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1006213,
+          "Position": {
+            "X": -102.49487,
+            "Y": 37.8654,
+            "Z": -355.97772
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017750,
+          "Position": {
+            "X": -170.58063,
+            "Y": 27.660244,
+            "Z": -397.72644
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006215,
+          "Position": {
+            "X": -227.34424,
+            "Y": 26.16842,
+            "Z": -352.98694
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -58.848705,
+            "Y": 26.173487,
+            "Z": -385.86462
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "$": "Little Ala Mhigo eastern gate"
+        },
+        {
+          "DataId": 1017756,
+          "Position": {
+            "X": 181.96375,
+            "Y": 13.495921,
+            "Z": -446.82996
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017757,
+          "Position": {
+            "X": 179.797,
+            "Y": 13.124423,
+            "Z": -443.1678
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

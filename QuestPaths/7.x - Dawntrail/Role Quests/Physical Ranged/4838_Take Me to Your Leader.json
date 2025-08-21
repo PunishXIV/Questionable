@@ -1,0 +1,218 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048314,
+          "Position": {
+            "X": -622.03406,
+            "Y": 41.999973,
+            "Z": -3.6469727
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048316,
+          "Position": {
+            "X": -537.3159,
+            "Y": 8.282911,
+            "Z": 11.612061
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048317,
+          "Position": {
+            "X": -281.48322,
+            "Y": 263.00684,
+            "Z": 633.8445
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Ghiri",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048318,
+          "Position": {
+            "X": -232.29796,
+            "Y": 264.9192,
+            "Z": 613.139
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WaitForNpcAtPosition",
+          "StopDistance": 50,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -241.38339,
+            "Y": 264.6151,
+            "Z": 617.0616
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1048318,
+          "Position": {
+            "X": -256.2343,
+            "Y": 264.3857,
+            "Z": 607.0586
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WaitForNpcAtPosition",
+          "StopDistance": 50,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -245.83409,
+            "Y": 265.36874,
+            "Z": 597.0437
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1048318,
+          "Position": {
+            "X": -241.25351,
+            "Y": 264.14194,
+            "Z": 622.3978
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WaitForNpcAtPosition",
+          "StopDistance": 50,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -249.86191,
+            "Y": 264.12744,
+            "Z": 618.1598
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1048318,
+          "Position": {
+            "X": -246.00586,
+            "Y": 265.5263,
+            "Z": 587.24493
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WaitForNpcAtPosition",
+          "StopDistance": 50,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -239.25114,
+            "Y": 265.31882,
+            "Z": 605.55786
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1048318,
+          "Position": {
+            "X": -264.12643,
+            "Y": 263.13184,
+            "Z": 563.91364
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WaitForNpcAtPosition",
+          "StopDistance": 50,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1048317,
+          "Position": {
+            "X": -256.79233,
+            "Y": 264.02664,
+            "Z": 550.90546
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048319,
+          "Position": {
+            "X": -311.32983,
+            "Y": 257.52652,
+            "Z": 741.1459
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048310,
+          "Position": {
+            "X": -310.96362,
+            "Y": 257.52652,
+            "Z": 739.4979
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4839
+        }
+      ]
+    }
+  ]
+}

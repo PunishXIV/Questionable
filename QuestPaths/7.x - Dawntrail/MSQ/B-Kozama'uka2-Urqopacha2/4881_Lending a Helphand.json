@@ -1,0 +1,125 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046613,
+          "Position": {
+            "X": -471.5191,
+            "Y": 121.63345,
+            "Z": 344.89966
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046614,
+          "Position": {
+            "X": -473.5943,
+            "Y": 121.63345,
+            "Z": 343.7704
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Snipe",
+          "Comment": "Click (from left to right) worn tools, Kaahe, crafting materials, untouched meal"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046613,
+          "Position": {
+            "X": -471.5191,
+            "Y": 121.63345,
+            "Z": 344.89966
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013598,
+          "Position": {
+            "X": -560.5707,
+            "Y": 121.5686,
+            "Z": 368.52063
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013939,
+          "Position": {
+            "X": -294.20923,
+            "Y": 110.73462,
+            "Z": 640.00903
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818421
+        },
+        {
+          "DataId": 2013599,
+          "Position": {
+            "X": -293.20215,
+            "Y": 109.57495,
+            "Z": 691.432
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046615,
+          "Position": {
+            "X": -463.6759,
+            "Y": 121.632996,
+            "Z": 332.23462
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051455,
+          "Position": {
+            "X": -447.8676,
+            "Y": 122.89019,
+            "Z": 348.47034
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

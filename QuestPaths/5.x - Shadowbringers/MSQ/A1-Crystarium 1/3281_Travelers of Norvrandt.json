@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028925,
+          "Position": {
+            "X": 60.105225,
+            "Y": -3.047831E-07,
+            "Z": 1.6021729
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMA103_03281_Q1_000_002",
+              "Answer": "TEXT_LUCKMA103_03281_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030533,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMA103_03281_Q2_000_011",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028925,
+          "Position": {
+            "X": 60.105225,
+            "Y": -3.047831E-07,
+            "Z": 1.6021729
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028926,
+          "Position": {
+            "X": -4.1047363,
+            "Y": -7.700001,
+            "Z": 138.47559
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 16.119648,
+            "Y": -4.2178187,
+            "Z": 176.1683
+          },
+          "TerritoryId": 819,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] The Pendants"
+        },
+        {
+          "DataId": 1028927,
+          "Position": {
+            "X": 62.546753,
+            "Y": 1.716012,
+            "Z": 249.13391
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030610,
+          "Position": {
+            "X": 65.11023,
+            "Y": 1.7160122,
+            "Z": 249.7749
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMA103_03281_Q3_000_062",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030533,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMA103_03281_Q4_000_071",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1028923,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0530548E-13,
+            "Z": -6.0273438
+          },
+          "TerritoryId": 844,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

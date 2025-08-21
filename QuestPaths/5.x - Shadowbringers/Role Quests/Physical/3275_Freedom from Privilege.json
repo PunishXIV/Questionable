@@ -1,0 +1,140 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030135,
+          "Position": {
+            "X": -251.42291,
+            "Y": 22.19962,
+            "Z": 325.7953
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010402,
+          "Position": {
+            "X": -550.7744,
+            "Y": 29.160034,
+            "Z": 363.4851
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010403,
+          "Position": {
+            "X": -550.98804,
+            "Y": 41.33667,
+            "Z": 252.24683
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030136,
+          "Position": {
+            "X": -192.58417,
+            "Y": 26.771265,
+            "Z": 248.46265
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030140,
+          "Position": {
+            "X": 67.64319,
+            "Y": 82.001656,
+            "Z": -53.330322
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eulmore"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ],
+          "NextQuestId": 3276,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBA321_03275_Q1_000_000",
+              "Answer": "TEXT_LUCKBA321_03275_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

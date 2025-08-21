@@ -1,0 +1,182 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040129,
+          "Position": {
+            "X": -629.0532,
+            "Y": 138.676,
+            "Z": 62.302612
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012026,
+          "Position": {
+            "X": -555.6268,
+            "Y": 158.09863,
+            "Z": 172.41162
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818380
+        },
+        {
+          "DataId": 1040132,
+          "Position": {
+            "X": -513.6339,
+            "Y": 156.7207,
+            "Z": 198.68762
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKME115_04433_Q1_000_021",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040134,
+          "Position": {
+            "X": -515.2819,
+            "Y": 156.84904,
+            "Z": 199.32861
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041369,
+          "Position": {
+            "X": -639.85657,
+            "Y": 162.30406,
+            "Z": -189.47137
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "PickUpQuestId": 4511,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                4511
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1041847,
+          "Position": {
+            "X": -484.2146,
+            "Y": 141.86789,
+            "Z": -97.21527
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4313,
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                4313
+              ]
+            }
+          },
+          "$": "Teleporting at the start of the quest, as navmesh gets stuck on a rock otherwise"
+        },
+        {
+          "Position": {
+            "X": -531.21313,
+            "Y": 159.97144,
+            "Z": -244.95073
+          },
+          "TerritoryId": 961,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2012151,
+          "Position": {
+            "X": -481.8647,
+            "Y": 157.36621,
+            "Z": -367.48303
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKME115_04433_Q2_000_062",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042043,
+          "Position": {
+            "X": -342.5498,
+            "Y": 294.93375,
+            "Z": -559.62463
+          },
+          "StopDistance": 6,
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2012025,
+          "Position": {
+            "X": -402.945,
+            "Y": 327.7484,
+            "Z": -691.3405
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818379
+        },
+        {
+          "DataId": 1040135,
+          "Position": {
+            "X": -407.46167,
+            "Y": 329.89032,
+            "Z": -759.24316
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038631,
+          "Position": {
+            "X": -510.7958,
+            "Y": 11.975282,
+            "Z": 117.69275
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037670,
+          "Position": {
+            "X": -508.84262,
+            "Y": -3.7109916E-05,
+            "Z": -20.767578
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4203
+        },
+        {
+          "DataId": 1038642,
+          "Position": {
+            "X": -384.1764,
+            "Y": 12.2027235,
+            "Z": 28.244385
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038642,
+          "Position": {
+            "X": -384.1764,
+            "Y": 12.2027235,
+            "Z": 28.244385
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMA118_04374_Q1_000_041",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1037646,
+          "Position": {
+            "X": -568.99365,
+            "Y": 9.817484,
+            "Z": -569.8787
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1037648,
+          "Position": {
+            "X": -562.005,
+            "Y": 9.817466,
+            "Z": -585.1987
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1037647,
+          "Position": {
+            "X": -588.83044,
+            "Y": 9.81748,
+            "Z": -590.08167
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038645,
+          "Position": {
+            "X": -549.24854,
+            "Y": 9.817465,
+            "Z": -563.04266
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1038648,
+          "Position": {
+            "X": -557.641,
+            "Y": 9.672808,
+            "Z": -555.04694
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMA118_04374_Q2_000_141",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -103.68971,
+            "Y": 88.84356,
+            "Z": -608.6588
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037649,
+          "Position": {
+            "X": -92.97333,
+            "Y": 89.5583,
+            "Z": -642.3591
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

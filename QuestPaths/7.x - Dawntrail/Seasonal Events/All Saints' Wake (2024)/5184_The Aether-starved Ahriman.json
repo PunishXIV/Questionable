@@ -1,0 +1,100 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050484,
+          "Position": {
+            "X": -50.003845,
+            "Y": 6.5,
+            "Z": -88.39557
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050479,
+          "Position": {
+            "X": -157.33582,
+            "Y": 7.982081,
+            "Z": -143.69421
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050483,
+          "Position": {
+            "X": -151.07965,
+            "Y": 5.417452,
+            "Z": -53.330322
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050483,
+          "Position": {
+            "X": -151.07965,
+            "Y": 5.417452,
+            "Z": -53.330322
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Emote",
+          "Emote": "soothe"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050484,
+          "Position": {
+            "X": -50.003845,
+            "Y": 6.5,
+            "Z": -88.39557
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "NextQuestId": 5185
+        }
+      ]
+    }
+  ]
+}

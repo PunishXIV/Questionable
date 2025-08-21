@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030684,
+          "Position": {
+            "X": -351.91882,
+            "Y": 100.1054,
+            "Z": -629.0227
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030685,
+          "Position": {
+            "X": -443.68658,
+            "Y": 9.218739,
+            "Z": -150.53027
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010212,
+          "Position": {
+            "X": -395.8648,
+            "Y": 6.210388,
+            "Z": -51.895935
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11148
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010213,
+          "Position": {
+            "X": -298.11554,
+            "Y": 4.348816,
+            "Z": 16.189758
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010510,
+          "Position": {
+            "X": -239.9787,
+            "Y": 15.030029,
+            "Z": -196.73462
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030688,
+          "Position": {
+            "X": -659.26605,
+            "Y": 51.002872,
+            "Z": -217.30377
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

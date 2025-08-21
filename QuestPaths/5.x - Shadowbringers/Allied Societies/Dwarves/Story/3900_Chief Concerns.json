@@ -1,0 +1,203 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "liza",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1033710,
+            "Position": {
+                "X": -607.72107,
+                "Y": 65.602394,
+                "Z": -412.71082
+            },
+            "TerritoryId": 813,
+            "InteractionType": "AcceptQuest"
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Steps": [
+          {
+            "DataId": 1033738,
+            "Position": {
+                "X": -616.29663,
+                "Y": -0.3631083,
+                "Z": 303.94446
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 2,
+        "Steps": [
+          {
+            "DataId": 1033710,
+            "Position": {
+                "X": -607.72107,
+                "Y": 65.602394,
+                "Z": -412.71082
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact",
+            "Fly": true,
+            "AetheryteShortcut": "Lakeland - Ostall Imperative",
+            "SkipConditions": {
+                "AetheryteShortcutIf": {
+                    "NearPosition": {
+                        "Position": {
+                            "X": -607.72107,
+                            "Y": 65.602394,
+                            "Z": -412.71082
+                        },
+                        "TerritoryId": 400,
+                        "MaximumDistance": 50
+                    }
+                }
+            }
+          }
+        ]
+      },
+      {
+        "Sequence": 3,
+        "Steps": [
+          {
+            "DataId": 1033710,
+            "Position": {
+                "X": -607.72107,
+                "Y": 65.602394,
+                "Z": -412.71082
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact"
+          }
+        ]   
+      },
+      {
+        "Sequence": 4,
+        "Steps": [
+          {
+            "DataId": 1033749,
+            "Position": {
+                "X": -628.04614,
+                "Y": 65.60228,
+                "Z": -414.66394
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact"
+          }
+        ]   
+      },
+      {
+        "Sequence": 5,
+        "Steps": [
+          {
+            "TerritoryId": 813,
+            "InteractionType": "Craft",
+            "ItemId": 31145,
+            "ItemCount": 1
+          },
+          {
+            "DataId": 1033710,
+            "Position": {
+                "X": -607.72107,
+                "Y": 65.602394,
+                "Z": -412.71082
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact"
+          }
+        ]   
+      },
+      {
+        "Sequence": 6,
+        "Steps": [
+          {
+            "DataId": 1033743,
+            "Position": {
+                "X": -369.83295,
+                "Y": 5.6262345,
+                "Z": -94.80432
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact",
+            "Fly": true
+          }
+        ]   
+      },
+      {
+        "Sequence": 7,
+        "Steps": [
+          {
+            "DataId": 2011069,
+            "Position": {
+                "X": -254.10852,
+                "Y": 3.2807007,
+                "Z": -114.54956
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact",
+            "Fly": true
+          },
+          {
+            "DataId": 2011068,
+            "Position": {
+                "X": -245.28882,
+                "Y": 3.463745,
+                "Z": -116.68579
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact"
+          },
+          {
+            "DataId": 2011067,
+            "Position": {
+                "X": -236.77429,
+                "Y": 3.829956,
+                "Z": -115.58716
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact"
+          }
+        ]   
+      },
+      {
+        "Sequence": 8,
+        "Steps": [
+          {
+            "DataId": 1033743,
+            "Position": {
+                "X": -369.83295,
+                "Y": 5.6262345,
+                "Z": -94.80432
+            },
+            "TerritoryId": 813,
+            "InteractionType": "Interact",
+            "Fly": true
+          }
+        ]   
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+          {
+            "DataId": 1033710,
+            "Position": {
+                "X": -607.72107,
+                "Y": 65.602394,
+                "Z": -412.71082
+            },
+            "TerritoryId": 813,
+            "InteractionType": "CompleteQuest",
+            "Fly": true
+          }
+        ]   
+      }
+    ]
+  }
+  

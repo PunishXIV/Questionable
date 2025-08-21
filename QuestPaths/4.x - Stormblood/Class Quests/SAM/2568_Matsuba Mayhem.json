@@ -1,0 +1,149 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022184,
+          "Position": {
+            "X": 129.71692,
+            "Y": 15,
+            "Z": -157.61047
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008439,
+          "Position": {
+            "X": -100.87744,
+            "Y": -6.0273438,
+            "Z": 67.03284
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008440,
+          "Position": {
+            "X": -140.36774,
+            "Y": -7.0649414,
+            "Z": 78.3551
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008441,
+          "Position": {
+            "X": -140.33728,
+            "Y": -7.0039062,
+            "Z": 72.739746
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022196,
+          "Position": {
+            "X": -22.293457,
+            "Y": -3,
+            "Z": 31.814941
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022197,
+          "Position": {
+            "X": 46.219482,
+            "Y": 8.02,
+            "Z": 144.79285
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Thavnairian Consulate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022201,
+          "Position": {
+            "X": 37.338745,
+            "Y": 5.951233,
+            "Z": -133.95898
+          },
+          "TerritoryId": 628,
+          "InteractionType": "SinglePlayerDuty",
+          "AethernetShortcut": [
+            "[Kugane] Thavnairian Consulate",
+            "[Kugane] Rakuza District"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022203,
+          "Position": {
+            "X": 128.55725,
+            "Y": 15,
+            "Z": -158.09875
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2569
+        }
+      ]
+    }
+  ]
+}

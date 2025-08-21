@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029846,
+          "Position": {
+            "X": 682.33765,
+            "Y": 101.7017,
+            "Z": -710.3533
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028929,
+          "Position": {
+            "X": -4.501404,
+            "Y": -2.4866313E-07,
+            "Z": -7.370178
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027224,
+          "Position": {
+            "X": -57.358704,
+            "Y": -7.4820004,
+            "Z": 118.08948
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027322,
+          "Position": {
+            "X": -20.126648,
+            "Y": 3.9998171,
+            "Z": 204.24194
+          },
+          "StopDistance": 4,
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030610,
+          "Position": {
+            "X": 65.11023,
+            "Y": 1.7160122,
+            "Z": 249.7749
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMA402_03301_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

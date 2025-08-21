@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013971,
+          "Position": {
+            "X": 15.854065,
+            "Y": 28.620823,
+            "Z": -682.76495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013997,
+          "Position": {
+            "X": -78.29407,
+            "Y": 68.34659,
+            "Z": -157.33582
+          },
+          "TerritoryId": 147,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true,
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013997,
+          "Position": {
+            "X": -78.29407,
+            "Y": 68.34659,
+            "Z": -157.33582
+          },
+          "StopDistance": 4,
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013971,
+          "Position": {
+            "X": 15.854065,
+            "Y": 28.620823,
+            "Z": -682.76495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "NextQuestId": 2029
+        }
+      ]
+    }
+  ]
+}

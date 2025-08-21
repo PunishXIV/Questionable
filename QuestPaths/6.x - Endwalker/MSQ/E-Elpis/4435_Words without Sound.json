@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040140,
+          "Position": {
+            "X": -44.63269,
+            "Y": 151.69983,
+            "Z": -623.43787
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012155,
+          "Position": {
+            "X": 16.54684,
+            "Y": 128.4602,
+            "Z": -549.886
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012158,
+          "Position": {
+            "X": 197.31433,
+            "Y": 91.569336,
+            "Z": -656.91614
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012161,
+          "Position": {
+            "X": 306.84363,
+            "Y": 138.47559,
+            "Z": -749.4774
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012164,
+          "Position": {
+            "X": 413.5653,
+            "Y": 148.63806,
+            "Z": -418.69232
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040147,
+          "Position": {
+            "X": 412.28345,
+            "Y": 148.76953,
+            "Z": -417.34955
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

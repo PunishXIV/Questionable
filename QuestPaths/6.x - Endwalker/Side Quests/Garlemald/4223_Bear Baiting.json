@@ -1,0 +1,107 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037751,
+          "Position": {
+            "X": -424.15503,
+            "Y": 22.196602,
+            "Z": 423.48352
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011969,
+          "Position": {
+            "X": -371.26727,
+            "Y": 24.979004,
+            "Z": 151.20166
+          },
+          "TerritoryId": 958,
+          "InteractionType": "UseItem",
+          "ItemId": 2003195,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          64
+          ],
+          "$": "0 0 48 0 0 0 -> 17 0 32 0 0 64"
+        },
+        {
+          "DataId": 2011968,
+          "Position": {
+            "X": -313.92395,
+            "Y": 21.805054,
+            "Z": 147.87512
+          },
+          "TerritoryId": 958,
+          "InteractionType": "UseItem",
+          "ItemId": 2003195,
+          "CompletionQuestVariablesFlags": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          128
+          ],
+          "$": "17 0 32 0 0 64 -> 33 16 16 0 0 192"
+        },
+        {
+          "DataId": 2011970,
+          "Position": {
+            "X": -375.29565,
+            "Y": 21.164185,
+            "Z": 99.47351
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "ItemId": 2003195,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            14104
+          ],
+          "$": "33 16 16 0 0 192 -> 0 0 0 0 0 0",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037751,
+          "Position": {
+            "X": -424.15503,
+            "Y": 22.196602,
+            "Z": 423.48352
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

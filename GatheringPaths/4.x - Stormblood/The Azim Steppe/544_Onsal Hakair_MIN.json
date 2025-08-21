@@ -1,0 +1,61 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "plogon_enjoyer",
+  "Steps": [
+    {
+      "TerritoryId": 622,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32323,
+          "Locations": [
+            {
+              "Position": {
+                "X": -54.36381,
+                "Y": 55.83623,
+                "Z": -357.2043
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32325,
+          "Locations": [
+            {
+              "Position": {
+                "X": -56.99122,
+                "Y": 59.4855,
+                "Z": -368.9053
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32324,
+          "Locations": [
+            {
+              "Position": {
+                "X": -83.84797,
+                "Y": 60.70433,
+                "Z": -366.7615
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

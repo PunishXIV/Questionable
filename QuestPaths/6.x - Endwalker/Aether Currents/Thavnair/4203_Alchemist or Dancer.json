@@ -1,0 +1,152 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037670,
+          "Position": {
+            "X": -508.84262,
+            "Y": -3.7109916E-05,
+            "Z": -20.767578
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 19.631685,
+            "Y": 90.24879,
+            "Z": -136.69801
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1039382,
+          "Position": {
+            "X": 17.07483,
+            "Y": 90.248795,
+            "Z": -133.34863
+          },
+          "StopDistance": 7,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011912,
+          "Position": {
+            "X": 65.293335,
+            "Y": 96.29968,
+            "Z": -130.23578
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": 61.000668,
+            "Y": 94.60124,
+            "Z": -159.90234
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2011914,
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2011913,
+          "Position": {
+            "X": 79.51477,
+            "Y": 93.0647,
+            "Z": -157.09167
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039382,
+          "Position": {
+            "X": 17.07483,
+            "Y": 90.248795,
+            "Z": -133.34863
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037670,
+          "Position": {
+            "X": -508.84262,
+            "Y": -3.7109916E-05,
+            "Z": -20.767578
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Great Work"
+        }
+      ]
+    }
+  ]
+}

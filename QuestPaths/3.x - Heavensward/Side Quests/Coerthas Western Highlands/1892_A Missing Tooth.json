@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014146,
+          "Position": {
+            "X": -258.74725,
+            "Y": 126.98546,
+            "Z": 12.649658
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 2006019,
+          "Position": {
+            "X": -152.42242,
+            "Y": 219.62305,
+            "Z": 669.94727
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 4782,
+          "Position": {
+            "X": -158.97404,
+            "Y": 219.45131,
+            "Z": 672.79553
+          },
+          "TerritoryId": 397,
+          "KillEnemyDataIds": [
+            4782
+          ],
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006181,
+          "Position": {
+            "X": -152.42242,
+            "Y": 219.62305,
+            "Z": 669.94727
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 1014146,
+          "Position": {
+            "X": -258.74725,
+            "Y": 126.98546,
+            "Z": 12.649658
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1893
+        }
+      ]
+    }
+  ]
+}

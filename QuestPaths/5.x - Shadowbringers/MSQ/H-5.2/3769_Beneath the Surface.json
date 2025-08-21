@@ -1,0 +1,69 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032555,
+          "Position": {
+            "X": 235.40088,
+            "Y": 5.733457,
+            "Z": 552.3612
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032539,
+          "Position": {
+            "X": -534.1726,
+            "Y": 63.559536,
+            "Z": 735.1339
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 814,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 714,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032549,
+          "Position": {
+            "X": -1.9074707,
+            "Y": -200.00002,
+            "Z": -425.10114
+          },
+          "TerritoryId": 918,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

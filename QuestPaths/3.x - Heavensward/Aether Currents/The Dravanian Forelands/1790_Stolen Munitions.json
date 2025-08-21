@@ -1,0 +1,79 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011929,
+          "Position": {
+            "X": 70.81714,
+            "Y": -49.2083,
+            "Z": -141.55798
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 67.682434,
+            "Y": -49.685223,
+            "Z": -148.21802
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 4001,
+          "Position": {
+            "X": 179.33923,
+            "Y": -108.80406,
+            "Z": 597.07007
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4001,
+              "MinimumKillCount": 2,
+              "RewardItemId": 2001614,
+              "RewardItemCount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 70.535545,
+            "Y": -49.45454,
+            "Z": -149.54617
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "$": "Loth ast Vath navmesh workaround"
+        },
+        {
+          "DataId": 1011929,
+          "Position": {
+            "X": 70.81714,
+            "Y": -49.2083,
+            "Z": -141.55798
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

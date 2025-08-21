@@ -1,0 +1,79 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030455,
+          "Position": {
+            "X": 54.09314,
+            "Y": 83.001076,
+            "Z": -74.540344
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030456,
+          "Position": {
+            "X": 63.279175,
+            "Y": -4.0096626,
+            "Z": 145.28113
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] Southeast Derelicts"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030455,
+          "Position": {
+            "X": 54.09314,
+            "Y": 83.001076,
+            "Z": -74.540344
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Southeast Derelicts",
+            "[Eulmore] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030457,
+          "Position": {
+            "X": 63.370728,
+            "Y": -4.158061,
+            "Z": 143.93835
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] Southeast Derelicts"
+          ],
+          "NextQuestId": 3517
+        }
+      ]
+    }
+  ]
+}

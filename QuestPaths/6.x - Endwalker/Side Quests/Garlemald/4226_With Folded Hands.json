@@ -1,0 +1,62 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039399,
+          "Position": {
+            "X": 556.4812,
+            "Y": -40.250004,
+            "Z": -133.04346
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -159.59418,
+            "Y": 10.8,
+            "Z": -468.8335
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            13468
+          ],
+          "CombatItemUse": {
+            "ItemId": 2003202,
+            "Condition": "Health%",
+            "Value": 40
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039399,
+          "Position": {
+            "X": 556.4812,
+            "Y": -40.250004,
+            "Z": -133.04346
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Tertium"
+        }
+      ]
+    }
+  ]
+}

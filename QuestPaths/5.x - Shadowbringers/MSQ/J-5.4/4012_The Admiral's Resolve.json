@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035381,
+          "Position": {
+            "X": 382.25366,
+            "Y": 75.22071,
+            "Z": -223.40735
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1035386,
+          "Position": {
+            "X": -0.4730835,
+            "Y": 19.999977,
+            "Z": -13.839966
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000915,
+          "Position": {
+            "X": 18.387085,
+            "Y": 47.600006,
+            "Z": -162.12714
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "$.1": "QuestVariables if done first: 1 0 0 0 0 128"
+        },
+        {
+          "DataId": 1000918,
+          "Position": {
+            "X": 84.09241,
+            "Y": 44.399914,
+            "Z": 132.34143
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035386,
+          "Position": {
+            "X": -0.4730835,
+            "Y": 19.999977,
+            "Z": -13.839966
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa"
+        }
+      ]
+    }
+  ]
+}

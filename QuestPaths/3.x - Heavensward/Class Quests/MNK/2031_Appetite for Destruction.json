@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013971,
+          "Position": {
+            "X": 15.854065,
+            "Y": 28.620823,
+            "Z": -682.76495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014012,
+          "Position": {
+            "X": -142.1684,
+            "Y": 26.764246,
+            "Z": -357.50366
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_JOBMNK600_02031_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_JOBMNK600_02031_A1_000_010"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014011,
+          "Position": {
+            "X": -143.08392,
+            "Y": 26.654997,
+            "Z": -358.114
+          },
+          "TerritoryId": 146,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014112,
+          "Position": {
+            "X": -149.34009,
+            "Y": 12.685881,
+            "Z": -260.91406
+          },
+          "StopDistance": 4,
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2426
+        }
+      ]
+    }
+  ]
+}

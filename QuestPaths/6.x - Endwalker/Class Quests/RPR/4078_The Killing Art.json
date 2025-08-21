@@ -1,0 +1,83 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131,
+                971
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                971
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1036631,
+          "Position": {
+            "X": 2.7922974,
+            "Y": -2.7403547E-07,
+            "Z": -0.44250488
+          },
+          "TerritoryId": 971,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011548,
+          "Position": {
+            "X": -92.57648,
+            "Y": 87.17468,
+            "Z": -737.8805
+          },
+          "TerritoryId": 397,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036630,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

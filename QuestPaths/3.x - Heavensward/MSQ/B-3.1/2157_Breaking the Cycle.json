@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1015979,
+          "Position": {
+            "X": 112.53516,
+            "Y": 24.391697,
+            "Z": -2.8840332
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1015980,
+          "Position": {
+            "X": 632.1659,
+            "Y": -54.909866,
+            "Z": 71.854614
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011935,
+          "Position": {
+            "X": -285.63367,
+            "Y": 39.04305,
+            "Z": 53.72693
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "StopDistance": 9,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1015983,
+          "Position": {
+            "X": -297.74933,
+            "Y": 39.04307,
+            "Z": 37.064087
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

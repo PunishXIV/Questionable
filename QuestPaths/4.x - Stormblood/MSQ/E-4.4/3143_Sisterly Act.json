@@ -1,0 +1,103 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025549,
+          "Position": {
+            "X": 1.4800415,
+            "Y": -1.1041565E-05,
+            "Z": -11.734253
+          },
+          "StopDistance": 5,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026253,
+          "Position": {
+            "X": 650.87354,
+            "Y": 70,
+            "Z": 546.89856
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026256,
+          "Position": {
+            "X": 648.1575,
+            "Y": 70,
+            "Z": 548.24133
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026257,
+          "Position": {
+            "X": -7.950012,
+            "Y": -3.2583127E-12,
+            "Z": -16.31195
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDE101_03143_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
+        {
+          "DataId": 1025597,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091362,
+            "Z": -3.0060425
+          },
+          "TerritoryId": 744,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030465,
+          "Position": {
+            "X": 19.272095,
+            "Y": 36,
+            "Z": -4.409851
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027537,
+          "Position": {
+            "X": -3.982666,
+            "Y": 23.1,
+            "Z": 27.145752
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1027554,
+          "Position": {
+            "X": 27.54248,
+            "Y": 82.78693,
+            "Z": 32.303345
+          },
+          "StopDistance": 7,
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eulmore",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1027593,
+          "Position": {
+            "X": 78.11096,
+            "Y": -10.682121,
+            "Z": 73.28906
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] Southeast Derelicts"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030465,
+          "Position": {
+            "X": 19.272095,
+            "Y": 36,
+            "Z": -4.409851
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZH010_03520_Q1_000_000",
+              "Answer": "TEXT_LUCKZH010_03520_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

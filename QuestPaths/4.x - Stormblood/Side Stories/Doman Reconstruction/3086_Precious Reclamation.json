@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024791,
+          "Position": {
+            "X": 31.60144,
+            "Y": 0.26575702,
+            "Z": 28.915894
+          },
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1025287,
+          "Position": {
+            "X": 64.34729,
+            "Y": 31.199963,
+            "Z": -754.0246
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2009436,
+          "Position": {
+            "X": 70.05408,
+            "Y": 30.746826,
+            "Z": -722.86566
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDY501_03086_Q1_000_091",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDY501_03086_Q2_000_097",
+              "Answer": "TEXT_STMBDY501_03086_A2_000_100"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDY501_03086_Q3_000_118",
+              "Answer": "TEXT_STMBDY501_03086_A3_000_119"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDY501_03086_Q4_000_134",
+              "Answer": "TEXT_STMBDY501_03086_A4_000_136"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDY501_03086_Q5_000_156",
+              "Answer": "TEXT_STMBDY501_03086_A5_000_158"
+            }
+          ],
+          "NextQuestId": 3087
+        }
+      ]
+    }
+  ]
+}

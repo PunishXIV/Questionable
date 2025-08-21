@@ -1,0 +1,126 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1004621,
+          "Position": {
+            "X": 23.11737,
+            "Y": 6.9999914,
+            "Z": -86.533936
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003732,
+          "Position": {
+            "X": 63.645386,
+            "Y": 45.14341,
+            "Z": -193.59125
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 11,
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ]
+        },
+        {
+          "TerritoryId": 140,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western Thanalan - Horizon"
+        },
+        {
+          "DataId": 1002285,
+          "Position": {
+            "X": 326.46667,
+            "Y": 63,
+            "Z": -231.64728
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 140,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 3,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1004621,
+          "Position": {
+            "X": 23.11737,
+            "Y": 6.9999914,
+            "Z": -86.533936
+          },
+          "TerritoryId": 130,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          },
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

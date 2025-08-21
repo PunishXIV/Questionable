@@ -1,0 +1,79 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020631,
+          "Position": {
+            "X": -300.49597,
+            "Y": 257.5265,
+            "Z": 765.0415
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Ghiri",
+          "StopDistance": 7,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009007,
+          "Position": {
+            "X": -75.24231,
+            "Y": 262.4093,
+            "Z": 661.86
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7534
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008211,
+          "Position": {
+            "X": -75.48645,
+            "Y": 262.4093,
+            "Z": 661.86
+          },
+          "StopDistance": 4.25,
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020633,
+          "Position": {
+            "X": -113.42035,
+            "Y": 263.73114,
+            "Z": 655.75635
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

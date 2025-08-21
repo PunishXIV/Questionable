@@ -1,0 +1,169 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014775,
+          "Position": {
+            "X": -155.6878,
+            "Y": 16.979584,
+            "Z": -38.4375
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014776,
+          "Position": {
+            "X": -138.7503,
+            "Y": 23.240587,
+            "Z": -83.878845
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014778,
+          "Position": {
+            "X": -160.35712,
+            "Y": 26.378231,
+            "Z": -88.9754
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Action",
+          "Action": "Slug Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1014779,
+          "Position": {
+            "X": -94.31604,
+            "Y": 19.008303,
+            "Z": -16.494995
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Action",
+          "Action": "Slug Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1014777,
+          "Position": {
+            "X": -133.83691,
+            "Y": 18.94346,
+            "Z": -12.100403
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Action",
+          "Action": "Slug Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014782,
+          "Position": {
+            "X": -151.59845,
+            "Y": 16.979586,
+            "Z": -22.720703
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1704
+        }
+      ]
+    }
+  ]
+}

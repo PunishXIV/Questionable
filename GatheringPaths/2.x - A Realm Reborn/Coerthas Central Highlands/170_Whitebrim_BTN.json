@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Censored",
+  "ExtraQuestItems": [
+    2001424,
+    2001425
+  ],
+  "Steps": [
+    {
+      "TerritoryId": 155,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31046,
+          "Locations": [
+            {
+              "Position": {
+                "X": 268.635,
+                "Y": 299.8158,
+                "Z": -114.4274
+              }
+            },
+            {
+              "Position": {
+                "X": 284.4186,
+                "Y": 309.0771,
+                "Z": -128.535
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31045,
+          "Locations": [
+            {
+              "Position": {
+                "X": 198.4182,
+                "Y": 288.6254,
+                "Z": -93.58918
+              }
+            },
+            {
+              "Position": {
+                "X": 206.082,
+                "Y": 279.446,
+                "Z": -57.03315
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31047,
+          "Locations": [
+            {
+              "Position": {
+                "X": 270.5842,
+                "Y": 291.5777,
+                "Z": -57.16897
+              }
+            },
+            {
+              "Position": {
+                "X": 242.9548,
+                "Y": 283.3405,
+                "Z": -56.95627
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31048,
+          "Locations": [
+            {
+              "Position": {
+                "X": 297.2305,
+                "Y": 305.3402,
+                "Z": -78.08051
+              }
+            },
+            {
+              "Position": {
+                "X": 310.8341,
+                "Y": 307.6252,
+                "Z": -72.68935
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

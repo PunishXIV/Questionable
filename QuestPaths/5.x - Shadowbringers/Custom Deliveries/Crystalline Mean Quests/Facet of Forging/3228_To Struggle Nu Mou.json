@@ -1,0 +1,137 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKLA102_03228_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKLA102_03228_A1_000_001"
+            },
+            {
+              "Prompt": "TEXT_LUCKLA102_03228_Q2_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKLA102_03228_A2_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028450,
+          "Position": {
+            "X": -311.94025,
+            "Y": 113.85077,
+            "Z": -824.4602
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028451,
+          "Position": {
+            "X": -138.96393,
+            "Y": 58.34806,
+            "Z": -670.6798
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Pla Enni",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028452,
+          "Position": {
+            "X": -14.511353,
+            "Y": 104.487236,
+            "Z": -861.6312
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "Craft",
+          "ItemId": 27237,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

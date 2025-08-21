@@ -1,0 +1,75 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028724,
+          "Position": {
+            "X": -104.32593,
+            "Y": 5.999999,
+            "Z": 195.94104
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028730,
+          "Position": {
+            "X": 594.3236,
+            "Y": 23.968584,
+            "Z": 457.69434
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028736,
+          "Position": {
+            "X": 481.65088,
+            "Y": 16.414907,
+            "Z": 447.95898
+          },
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028735,
+          "Position": {
+            "X": 480.18604,
+            "Y": 16.432398,
+            "Z": 447.8064
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3251
+        }
+      ]
+    }
+  ]
+}

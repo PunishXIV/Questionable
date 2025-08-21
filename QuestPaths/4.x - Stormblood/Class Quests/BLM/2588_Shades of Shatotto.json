@@ -1,0 +1,83 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+            "X": 87.5105,
+            "Y": 18,
+            "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1004597,
+          "Position": {
+            "X": -292.10345,
+            "Y": -2.910112,
+            "Z": 245.59387
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true,
+          "TargetTerritoryId": 146
+        },
+        {
+          "DataId": 1020959,
+          "Position": {
+            "X": -463.1571,
+            "Y": -3.164927,
+            "Z": 61.264893
+          },
+          "TerritoryId": 146,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+            "X": 87.5105,
+            "Y": 18,
+            "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "NextQuestId": 2589
+        }
+      ]
+    }
+  ]
+}

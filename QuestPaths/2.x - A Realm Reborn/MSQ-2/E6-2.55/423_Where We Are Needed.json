@@ -1,0 +1,230 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010897,
+          "Position": {
+            "X": 0.9613037,
+            "Y": -1.9957249,
+            "Z": -45.609253
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002880,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -29.251587
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1011615,
+          "Position": {
+            "X": -1.3275757,
+            "Y": 0,
+            "Z": -2.7008667
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010984,
+          "Position": {
+            "X": -207.44641,
+            "Y": 20.86788,
+            "Z": 360.06702
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010985,
+          "Position": {
+            "X": -223.71259,
+            "Y": 12.277637,
+            "Z": 47.989624
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2005065,
+          "Position": {
+            "X": -225.26898,
+            "Y": 13.137939,
+            "Z": 56.90088
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010985,
+          "Position": {
+            "X": -223.71259,
+            "Y": 12.277637,
+            "Z": 47.989624
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1010986,
+          "Position": {
+            "X": 122.941895,
+            "Y": 24.534142,
+            "Z": 169.72607
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2005066,
+          "Position": {
+            "X": 109.666504,
+            "Y": 24.15503,
+            "Z": 174.7616
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            24,
+            130
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1010986,
+          "Position": {
+            "X": 122.941895,
+            "Y": 24.534142,
+            "Z": 169.72607
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1010987,
+          "Position": {
+            "X": -355.2453,
+            "Y": 0.6691612,
+            "Z": 459.3728
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 2005067,
+          "Position": {
+            "X": -338.42987,
+            "Y": -0.07635498,
+            "Z": 453.4828
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            305
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1010987,
+          "Position": {
+            "X": -355.2453,
+            "Y": 0.6691612,
+            "Z": 459.3728
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010984,
+          "Position": {
+            "X": -207.44641,
+            "Y": 20.86788,
+            "Z": 360.06702
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

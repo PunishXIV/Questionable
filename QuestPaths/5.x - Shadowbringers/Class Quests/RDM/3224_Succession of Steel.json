@@ -1,0 +1,176 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023610,
+          "Position": {
+            "X": 55.313843,
+            "Y": 20.397943,
+            "Z": -676.3562
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028372,
+          "Position": {
+            "X": 599.23694,
+            "Y": 80.00001,
+            "Z": 623.07153
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028374,
+          "Position": {
+            "X": 274.76917,
+            "Y": 10.572342,
+            "Z": -543.05334
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028379,
+          "Position": {
+            "X": 81.49841,
+            "Y": 10,
+            "Z": -574.2123
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKBC015_03224_Q1_000_100",
+              "Type": "List",
+              "Answer": "TEXT_LUCKBC015_03224_A1_000_101"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030849,
+          "Position": {
+            "X": 124.40674,
+            "Y": 10,
+            "Z": -515.58716
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [10834, 10835],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1028374,
+          "Position": {
+            "X": 274.76917,
+            "Y": 10.572342,
+            "Z": -543.05334
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1028376,
+          "Position": {
+            "X": -790.7988,
+            "Y": 78.22368,
+            "Z": -699.5804
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1028377,
+          "Position": {
+            "X": 51.346558,
+            "Y": 24.662476,
+            "Z": -787.9301
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1028377,
+          "Position": {
+            "X": 51.346558,
+            "Y": 24.662476,
+            "Z": -787.9301
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030677,
+          "Position": {
+            "X": 55.313843,
+            "Y": 20.397943,
+            "Z": -676.3562
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    }
+  ]
+}

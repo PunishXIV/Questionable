@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030144,
+          "Position": {
+            "X": 94.68213,
+            "Y": 37.377014,
+            "Z": 611.1085
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Kholusia - Wright"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030146,
+          "Position": {
+            "X": -190.1427,
+            "Y": 12.748831,
+            "Z": 591.6686
+          },
+          "TerritoryId": 817,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030144,
+          "Position": {
+            "X": 94.68213,
+            "Y": 37.377014,
+            "Z": 611.1085
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true,
+          "NextQuestId": 3277
+        }
+      ]
+    }
+  ]
+}

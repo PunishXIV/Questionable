@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000692,
+          "Position": {
+            "X": -258.8083,
+            "Y": -5.7735243,
+            "Z": -27.267883
+          },
+          "TerritoryId": 133,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "InteractionType": "AcceptQuest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008149,
+          "Position": {
+            "X": -172.83899,
+            "Y": 8.492639,
+            "Z": -55.222473
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1008146,
+          "Position": {
+            "X": -183.43082,
+            "Y": 9.869224,
+            "Z": -76.830215
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1008150,
+          "Position": {
+            "X": 28.30542,
+            "Y": 3.6544461,
+            "Z": 35.38562
+          },
+          "TerritoryId": 153,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1008157,
+          "Position": {
+            "X": 42.404785,
+            "Y": 3.2469568,
+            "Z": 32.88318
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000692,
+          "Position": {
+            "X": -258.8083,
+            "Y": -5.7735243,
+            "Z": -27.267883
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "NextQuestId": 441
+        }
+      ]
+    }
+  ]
+}

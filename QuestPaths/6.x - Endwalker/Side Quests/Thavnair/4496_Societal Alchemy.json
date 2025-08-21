@@ -1,0 +1,112 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041403,
+          "Position": {
+            "X": 411.7036,
+            "Y": 3.1168795,
+            "Z": -266.89557
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012460,
+          "Position": {
+            "X": 240.52795,
+            "Y": 7.095398,
+            "Z": -556.5729
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 274.3244,
+            "Y": 6.2260103,
+            "Z": -553.4195
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Mount": false
+        },
+        {
+          "DataId": 1041410,
+          "Position": {
+            "X": 271.5343,
+            "Y": 6.226011,
+            "Z": -556.54236
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041397,
+          "Position": {
+            "X": 402.30408,
+            "Y": 3.0506973,
+            "Z": -212.35986
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041401,
+          "Position": {
+            "X": 411.06274,
+            "Y": 3.1168792,
+            "Z": -268.6046
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041397,
+          "Position": {
+            "X": 402.30408,
+            "Y": 3.0506973,
+            "Z": -212.35986
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 4497
+        }
+      ]
+    }
+  ]
+}

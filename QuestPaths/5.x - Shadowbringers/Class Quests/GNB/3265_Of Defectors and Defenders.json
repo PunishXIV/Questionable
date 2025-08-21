@@ -1,0 +1,208 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029098,
+          "Position": {
+            "X": 53.97119,
+            "Y": 23.979126,
+            "Z": 8.102478
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029103,
+          "Position": {
+            "X": -151.59845,
+            "Y": 23.14059,
+            "Z": -75.60846
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029106,
+          "Position": {
+            "X": 207.35486,
+            "Y": 307.86218,
+            "Z": 424.6432
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029109,
+          "Position": {
+            "X": 213.09216,
+            "Y": 222.50911,
+            "Z": 291.73718
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010298,
+          "Position": {
+            "X": 252.64355,
+            "Y": 246.96729,
+            "Z": 189.53223
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11131
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010299,
+          "Position": {
+            "X": 163.25623,
+            "Y": 274.3114,
+            "Z": 5.2643433
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11132,
+            11133
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2010300,
+          "Position": {
+            "X": 285.3894,
+            "Y": 299.97705,
+            "Z": -78.66034
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11134,
+            11135,
+            11136
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2010301,
+          "Position": {
+            "X": 240.28369,
+            "Y": 302.02173,
+            "Z": -174.88367
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2010302,
+          "Position": {
+            "X": -653.3761,
+            "Y": 224.26172,
+            "Z": -40.421204
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029099,
+          "Position": {
+            "X": 54.917114,
+            "Y": 23.979126,
+            "Z": 8.926453
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3266
+        }
+      ]
+    }
+  ]
+}

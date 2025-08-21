@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -69.61145,
+            "Y": 0.00999999,
+            "Z": 62.405437
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1019459,
+          "Position": {
+            "X": -70.54254,
+            "Y": 0.4599931,
+            "Z": 64.37781
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019002,
+          "Position": {
+            "X": -48.05072,
+            "Y": -2.9,
+            "Z": -50.247986
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025233,
+          "Position": {
+            "X": -129.19812,
+            "Y": -4.999999,
+            "Z": 145.37268
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Pier #1"
+          ]
+        }
+      ]
+    }
+  ]
+}

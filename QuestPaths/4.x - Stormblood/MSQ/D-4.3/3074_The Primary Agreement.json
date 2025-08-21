@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024999,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091364,
+            "Z": -3.0975952
+          },
+          "TerritoryId": 744,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025523,
+          "Position": {
+            "X": 239.12415,
+            "Y": 0.9334852,
+            "Z": 754.1161
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 786,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 537,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1025528,
+          "Position": {
+            "X": 4.3182373,
+            "Y": -8.000055,
+            "Z": 44.327393
+          },
+          "StopDistance": 5,
+          "TerritoryId": 786,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1025538,
+          "Position": {
+            "X": 4.7455444,
+            "Y": 0,
+            "Z": 16.067688
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDD105_03074_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
+        {
+          "DataId": 1025597,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091362,
+            "Z": -3.0060425
+          },
+          "TerritoryId": 744,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048252,
+          "Position": {
+            "X": -21.683167,
+            "Y": -19.328289,
+            "Z": 203.14331
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 88.44312,
+            "Y": 15.094683,
+            "Z": 33.75105
+          },
+          "TerritoryId": 418,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        },
+        {
+          "DataId": 1011192,
+          "Position": {
+            "X": 88.36499,
+            "Y": 15.094684,
+            "Z": 31.296265
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048253,
+          "Position": {
+            "X": -223.95673,
+            "Y": -16.134916,
+            "Z": -64.2558
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050461,
+          "Position": {
+            "X": 87.20532,
+            "Y": 23.979128,
+            "Z": -1.7243042
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048255,
+          "Position": {
+            "X": 39.475098,
+            "Y": 23.979128,
+            "Z": -48.05072
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4819
+        }
+      ]
+    }
+  ]
+}

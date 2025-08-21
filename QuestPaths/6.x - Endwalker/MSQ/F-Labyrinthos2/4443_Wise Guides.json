@@ -1,0 +1,129 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039762,
+          "Position": {
+            "X": -15.610046,
+            "Y": -31.53043,
+            "Z": -78.324646
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039766,
+          "Position": {
+            "X": 127.45862,
+            "Y": -17.530378,
+            "Z": -73.50275
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012212,
+          "Position": {
+            "X": 126.35986,
+            "Y": -17.532654,
+            "Z": -77.073364
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "Snipe",
+          "Comment": "Find Points of Interest"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012213,
+          "Position": {
+            "X": 218.12769,
+            "Y": -25.742065,
+            "Z": 104.600464
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            13983
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040391,
+          "Position": {
+            "X": 211.65784,
+            "Y": -25.759167,
+            "Z": 98.22229
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040392,
+          "Position": {
+            "X": 187.396,
+            "Y": -23.530434,
+            "Z": 281.42212
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039549,
+          "Position": {
+            "X": 229.87708,
+            "Y": -18.742016,
+            "Z": 298.72583
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 956
+        },
+        {
+          "DataId": 1040397,
+          "Position": {
+            "X": 372.39636,
+            "Y": 79.691376,
+            "Z": 299.1836
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

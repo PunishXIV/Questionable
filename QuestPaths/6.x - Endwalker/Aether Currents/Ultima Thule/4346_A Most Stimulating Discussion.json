@@ -1,0 +1,128 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038016,
+          "Position": {
+            "X": 105.42456,
+            "Y": 269.29584,
+            "Z": -454.3069
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 33.55028,
+            "Y": 269.00006,
+            "Z": -683.68896
+          },
+          "TerritoryId": 960,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1040880,
+          "Position": {
+            "X": -110.185425,
+            "Y": 269.2062,
+            "Z": -713.5271
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1040881,
+          "Position": {
+            "X": -201.86163,
+            "Y": 288.6714,
+            "Z": -466.331
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "$.0": "[2]",
+          "$.1": "QuestVariables if done after [3]: 32 17 0 0 0 160",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZJ010_04346_Q1_000_000",
+              "Answer": "TEXT_AKTKZJ010_04346_A1_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1040879,
+          "Position": {
+            "X": -184.52734,
+            "Y": 267.47086,
+            "Z": -292.65283
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "$.0": "[3]",
+          "$.1": "QuestVariables if done first: 16 1 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038016,
+          "Position": {
+            "X": 105.42456,
+            "Y": 269.29584,
+            "Z": -454.3069
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

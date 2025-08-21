@@ -1,0 +1,128 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030012,
+          "Position": {
+            "X": 279.469,
+            "Y": 1.4685827,
+            "Z": -281.94098
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010002,
+          "Position": {
+            "X": 279.65198,
+            "Y": 1.4800415,
+            "Z": -282.7345
+          },
+          "StopDistance": 4,
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBA221_03269_Q1_000_000",
+              "Answer": "TEXT_LUCKBA221_03269_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030013,
+          "Position": {
+            "X": 612.3292,
+            "Y": -25.655535,
+            "Z": -36.66742
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030014,
+          "Position": {
+            "X": 614.46545,
+            "Y": -25.7535,
+            "Z": -35.6604
+          },
+          "StopDistance": 4,
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 3270
+        }
+      ]
+    }
+  ]
+}

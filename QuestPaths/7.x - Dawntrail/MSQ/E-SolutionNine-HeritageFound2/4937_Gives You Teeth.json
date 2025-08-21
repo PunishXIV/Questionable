@@ -1,0 +1,155 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048236,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048084,
+          "Position": {
+            "X": 12.802246,
+            "Y": -1.6391277E-07,
+            "Z": 6.42395
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014102,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.99176025,
+            "Z": 16.03717
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186
+        },
+        {
+          "TerritoryId": 1186,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Solution Nine] Neon Stein"
+        },
+        {
+          "TerritoryId": 1186,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Solution Nine] True Vue"
+        },
+        {
+          "DataId": 1048090,
+          "Position": {
+            "X": 362.87476,
+            "Y": 50.75,
+            "Z": 223.46838
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048090,
+          "Position": {
+            "X": 362.87476,
+            "Y": 50.75,
+            "Z": 223.46838
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 364.32428,
+            "Y": 50.75,
+            "Z": 220.96391
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "UseItem",
+          "ItemId": 2003561
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 1186,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Solution Nine] The Arcadion"
+        },
+        {
+          "DataId": 1048083,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] The Arcadion",
+            "[Solution Nine] Neon Stein"
+          ],
+          "TargetTerritoryId": 1207
+        },
+        {
+          "DataId": 1048189,
+          "Position": {
+            "X": 13.290527,
+            "Y": -1.7329884E-07,
+            "Z": 6.088318
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048094,
+          "Position": {
+            "X": 4.5318604,
+            "Y": 0.046479464,
+            "Z": 5.5999756
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1207,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

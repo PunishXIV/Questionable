@@ -1,0 +1,154 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051252,
+          "Position": {
+            "X": 654.6272,
+            "Y": 26.32866,
+            "Z": -491.02008
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZC204_05084_Q1_000_100",
+              "Answer": "TEXT_KINGZC204_05084_A2_000_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051253,
+          "Position": {
+            "X": -122.972534,
+            "Y": 9.842161,
+            "Z": -421.1643
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048786,
+          "Position": {
+            "X": -193.3471,
+            "Y": 6.277148,
+            "Z": -443.50348
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1048783,
+          "Position": {
+            "X": -269.91687,
+            "Y": 5.9870257,
+            "Z": -431.47937
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1048785,
+          "Position": {
+            "X": -121.26343,
+            "Y": 9.773314,
+            "Z": -551.1406
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051255,
+          "Position": {
+            "X": -128.98456,
+            "Y": 9.84216,
+            "Z": -420.58447
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051258,
+          "Position": {
+            "X": 658.7167,
+            "Y": 5.2940493,
+            "Z": -335.07288
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051261,
+          "Position": {
+            "X": -130.9682,
+            "Y": 9.842161,
+            "Z": -416.58655
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    }
+  ]
+}

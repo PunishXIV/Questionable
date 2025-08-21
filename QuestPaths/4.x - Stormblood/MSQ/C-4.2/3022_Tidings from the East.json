@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019468,
+          "Position": {
+            "X": 170.58057,
+            "Y": 13.02367,
+            "Z": -91.96619
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020463,
+          "Position": {
+            "X": 151.20166,
+            "Y": 14.7757225,
+            "Z": 95.750244
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 639,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024726,
+          "Position": {
+            "X": -11.367981,
+            "Y": 10.503965,
+            "Z": -212.75659
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Rakuza District"
+          ]
+        }
+      ]
+    }
+  ]
+}

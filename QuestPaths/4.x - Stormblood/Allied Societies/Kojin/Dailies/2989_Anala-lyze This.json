@@ -1,0 +1,175 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ]
+        },
+        {
+          "DataId": 2009161,
+          "Position": {
+            "X": 52.262085,
+            "Y": 18.844849,
+            "Z": 576.43994
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [8238],
+          "RequiredQuestVariables": [null, null, [16], null, null, null],
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 52.262085,
+            "Y": 18.844849,
+            "Z": 576.43994
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [8239],
+          "RequiredQuestVariables": [null, null, [16], null, null, null]
+        },
+        {
+          "Position": {
+            "X": 52.262085,
+            "Y": 18.844849,
+            "Z": 576.43994
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [8240],
+          "RequiredQuestVariables": [null, null, [16], null, null, null]
+        },
+        {
+          "DataId": 2009162,
+          "Position": {
+            "X": 29.587158,
+            "Y": 51.407593,
+            "Z": 771.35876
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [8238],
+          "RequiredQuestVariables": [null, null, [32], null, null, null],
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 29.587158,
+            "Y": 51.407593,
+            "Z": 771.35876
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [8239],
+          "RequiredQuestVariables": [null, null, [32], null, null, null]
+        },
+        {
+          "Position": {
+            "X": 29.587158,
+            "Y": 51.407593,
+            "Z": 771.35876
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [8240],
+          "RequiredQuestVariables": [null, null, [32], null, null, null]
+        },
+        {
+          "DataId": 2009163,
+          "Position": {
+            "X": 337.84998,
+            "Y": 5.8136597,
+            "Z": 685.26733
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [8238],
+          "RequiredQuestVariables": [null, null, [48], null, null, null],
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 337.84998,
+            "Y": 5.8136597,
+            "Z": 685.26733
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [8239],
+          "RequiredQuestVariables": [null, null, [48], null, null, null]
+        },
+        {
+          "Position": {
+            "X": 337.84998,
+            "Y": 5.8136597,
+            "Z": 685.26733
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [8240],
+          "RequiredQuestVariables": [null, null, [48], null, null, null]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 392.59683,
+            "Y": -119.589325,
+            "Z": -234.30063
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

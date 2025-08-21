@@ -1,0 +1,149 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 397,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31406,
+          "Locations": [
+            {
+              "Position": {
+                "X": -501.2244,
+                "Y": 118.0477,
+                "Z": -443.4114
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31407,
+          "Locations": [
+            {
+              "Position": {
+                "X": -468.6656,
+                "Y": 120.7944,
+                "Z": -420.1442
+              }
+            },
+            {
+              "Position": {
+                "X": -523.499,
+                "Y": 117.4618,
+                "Z": -449.0883
+              },
+              "MinimumAngle": -160,
+              "MaximumAngle": 65
+            },
+            {
+              "Position": {
+                "X": -482.4585,
+                "Y": 120.3927,
+                "Z": -442.2994
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31408,
+          "Locations": [
+            {
+              "Position": {
+                "X": -685.595,
+                "Y": 122.3003,
+                "Z": -379.202
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31409,
+          "Locations": [
+            {
+              "Position": {
+                "X": -691.5064,
+                "Y": 123.4536,
+                "Z": -354.5497
+              },
+              "MinimumAngle": 95,
+              "MaximumAngle": 325
+            },
+            {
+              "Position": {
+                "X": -673.4897,
+                "Y": 122.1564,
+                "Z": -378.4789
+              }
+            },
+            {
+              "Position": {
+                "X": -664.5702,
+                "Y": 121.697,
+                "Z": -394.0817
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 255
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31410,
+          "Locations": [
+            {
+              "Position": {
+                "X": -496.1503,
+                "Y": 121.0539,
+                "Z": -272.0342
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31411,
+          "Locations": [
+            {
+              "Position": {
+                "X": -459.1924,
+                "Y": 121.1919,
+                "Z": -280.8376
+              },
+              "MinimumAngle": -105,
+              "MaximumAngle": 55
+            },
+            {
+              "Position": {
+                "X": -472.298,
+                "Y": 121.4754,
+                "Z": -306.8053
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 235
+            },
+            {
+              "Position": {
+                "X": -486.2957,
+                "Y": 120.9394,
+                "Z": -257.3133
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

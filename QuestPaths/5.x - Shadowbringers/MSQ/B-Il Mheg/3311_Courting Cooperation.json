@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029017,
+          "Position": {
+            "X": -645.01416,
+            "Y": 35.86156,
+            "Z": -223.10223
+          },
+          "StopDistance": 5,
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMB110_03311_Q1_000_000",
+              "Answer": "TEXT_LUCKMB110_03311_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030618,
+          "Position": {
+            "X": -613.39746,
+            "Y": 36.54754,
+            "Z": -215.41168
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3398
+        },
+        {
+          "Position": {
+            "X": -629.64935,
+            "Y": 35.484062,
+            "Z": -173.54001
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            10258
+          ],
+          "CombatItemUse": {
+            "ItemId": 2002572,
+            "Condition": "Health%",
+            "Value": 50
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029017,
+          "Position": {
+            "X": -645.01416,
+            "Y": 35.86156,
+            "Z": -223.10223
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030535,
+          "Position": {
+            "X": -355.30634,
+            "Y": 46.684208,
+            "Z": 482.0172
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+        }
+      ]
+    }
+  ]
+}

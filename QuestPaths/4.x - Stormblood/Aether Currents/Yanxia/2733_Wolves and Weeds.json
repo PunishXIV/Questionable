@@ -1,0 +1,203 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019316,
+          "Position": {
+            "X": 434.89734,
+            "Y": 68.02076,
+            "Z": -125.01721
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022457,
+          "Position": {
+            "X": 529.56433,
+            "Y": 19.872318,
+            "Z": 350.24023
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008007,
+          "Position": {
+            "X": 497.27625,
+            "Y": 16.342407,
+            "Z": 402.48718
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818195
+        },
+        {
+          "Position": {
+            "X": 439.41403,
+            "Y": -0.3,
+            "Z": 464.3263
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1022458,
+          "Position": {
+            "X": 210.95593,
+            "Y": 7.398857,
+            "Z": 500.26697
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7524,
+            7525
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008518,
+          "Position": {
+            "X": 211.4137,
+            "Y": 8.255066,
+            "Z": 501.97595
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 439.41403,
+            "Y": -0.3,
+            "Z": 464.3263
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1022457,
+          "Position": {
+            "X": 529.56433,
+            "Y": 19.872318,
+            "Z": 350.24023
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 605.15845,
+            "Y": -0.5999999,
+            "Z": 499.43237
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Dive",
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 2008519,
+          "Position": {
+            "X": 619.8672,
+            "Y": -48.66101,
+            "Z": 559.83826
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 605.15845,
+            "Y": -0.5999999,
+            "Z": 499.43237
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 617.7405,
+            "Y": -0.3,
+            "Z": 493.613
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 1022457,
+          "Position": {
+            "X": 529.56433,
+            "Y": 19.872318,
+            "Z": 350.24023
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019316,
+          "Position": {
+            "X": 434.89734,
+            "Y": 68.02076,
+            "Z": -125.01721
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    }
+  ]
+}

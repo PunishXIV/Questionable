@@ -1,0 +1,156 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030197,
+          "Position": {
+            "X": -456.68726,
+            "Y": 65.77815,
+            "Z": 79.9115
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010124,
+          "Position": {
+            "X": -482.0783,
+            "Y": 65.7511,
+            "Z": 93.12573
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030207,
+          "Position": {
+            "X": -448.661,
+            "Y": 334.0526,
+            "Z": -36.91156
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030208,
+          "Position": {
+            "X": -418.38715,
+            "Y": 354.3414,
+            "Z": 25.284058
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010090,
+          "Position": {
+            "X": -416.28143,
+            "Y": 354.3297,
+            "Z": 22.47644
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Snipe",
+          "Comment": "Click on the guy left of the the rock"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2010091,
+          "Position": {
+            "X": -120.0733,
+            "Y": 353.4751,
+            "Z": -206.71399
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010093,
+          "Position": {
+            "X": -132.52466,
+            "Y": 355.24524,
+            "Z": -176.25696
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2010092,
+          "Position": {
+            "X": -151.41534,
+            "Y": 353.53625,
+            "Z": -188.89148
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030211,
+          "Position": {
+            "X": -137.3465,
+            "Y": 352.35822,
+            "Z": -188.03699
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

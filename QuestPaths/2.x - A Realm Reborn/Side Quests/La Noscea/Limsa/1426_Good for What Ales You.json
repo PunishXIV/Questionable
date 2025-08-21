@@ -1,0 +1,146 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003505,
+          "Position": {
+            "X": -186.20587,
+            "Y": 16,
+            "Z": 56.931396
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007961,
+          "Position": {
+            "X": -189.83752,
+            "Y": 0.9999907,
+            "Z": 205.61523
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1007962,
+          "Position": {
+            "X": -170.39752,
+            "Y": 4,
+            "Z": 180.80408
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1007960,
+          "Position": {
+            "X": -154.16199,
+            "Y": 3.9999826,
+            "Z": 186.26685
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -273.7194,
+            "Y": 11.32725,
+            "Z": 188.82817
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -268.3206,
+            "Y": 11.852169,
+            "Z": 189.21284
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1007797,
+          "Position": {
+            "X": -260.73096,
+            "Y": 16.35222,
+            "Z": 194.17102
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -273.7194,
+            "Y": 11.32725,
+            "Z": 188.82817
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1003505,
+          "Position": {
+            "X": -186.20587,
+            "Y": 16,
+            "Z": 56.931396
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ]
+        }
+      ]
+    }
+  ]
+}

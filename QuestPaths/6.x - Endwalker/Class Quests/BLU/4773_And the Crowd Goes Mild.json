@@ -1,0 +1,86 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026852,
+          "Position": {
+            "X": 63.126587,
+            "Y": 14.005002,
+            "Z": 89.86035
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          },
+          "StopDistance":  5
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045580,
+          "Position": {
+            "X": -11.215393,
+            "Y": 14.000013,
+            "Z": 18.417542
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1045578,
+          "Position": {
+            "X": 0.9613037,
+            "Y": 15.000003,
+            "Z": -6.4851074
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1045579,
+          "Position": {
+            "X": 16.372864,
+            "Y": 14.000015,
+            "Z": -16.342468
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026937,
+          "Position": {
+            "X": 65.7511,
+            "Y": 14.005002,
+            "Z": 90.440186
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4774
+        }
+      ]
+    }
+  ]
+}

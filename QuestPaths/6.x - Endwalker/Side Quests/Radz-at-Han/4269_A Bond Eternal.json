@@ -1,0 +1,79 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -21.53136,
+            "Y": 1.7999926,
+            "Z": -182.28082
+          },
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1037381,
+          "Position": {
+            "X": -23.697266,
+            "Y": 1.7999947,
+            "Z": -180.07172
+          },
+          "StopDistance": 4,
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041282,
+          "Position": {
+            "X": 67.826294,
+            "Y": -24.693443,
+            "Z": -238.08661
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Mehryde's Meyhane",
+            "[Radz-at-Han] The High Crucible of Al-Kimiya"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -21.53136,
+            "Y": 1.7999926,
+            "Z": -182.28082
+          },
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Radz-at-Han] The High Crucible of Al-Kimiya",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ]
+        },
+        {
+          "DataId": 1037381,
+          "Position": {
+            "X": -23.697266,
+            "Y": 1.7999947,
+            "Z": -180.07172
+          },
+          "StopDistance": 4,
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051712,
+          "Position": {
+            "X": 12.344482,
+            "Y": -14,
+            "Z": 96.17761
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014421,
+          "Position": {
+            "X": -65.72064,
+            "Y": 2.39563,
+            "Z": -400.22894
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051713,
+          "Position": {
+            "X": -67.88745,
+            "Y": 2.4000018,
+            "Z": -399.64905
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051713,
+          "Position": {
+            "X": -67.88745,
+            "Y": 2.4000018,
+            "Z": -399.64905
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051718,
+          "Position": {
+            "X": 62.210938,
+            "Y": 0.7218611,
+            "Z": -333.94366
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPEL001_05193_Q5_000_001",
+              "Answer": "TEXT_BANPEL001_05193_A5_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1051719,
+          "Position": {
+            "X": -42.923706,
+            "Y": 21.48239,
+            "Z": -88.76172
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPEL001_05193_Q6_000_001",
+              "Answer": "TEXT_BANPEL001_05193_A6_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1051720,
+          "Position": {
+            "X": -183.45923,
+            "Y": 0.39999998,
+            "Z": -73.74689
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPEL001_05193_Q7_000_001",
+              "Answer": "TEXT_BANPEL001_05193_A7_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1051859,
+          "Position": {
+            "X": -73.411194,
+            "Y": 2.4000018,
+            "Z": -398.61145
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 780.3438,
+            "Y": 13.823656,
+            "Z": -238.32625
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Kozama'uka - Dock Poga"
+            }
+          }
+        },
+        {
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Kozama'uka - Dock Poga",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Kozama'uka - Dock Poga"
+            }
+          }
+        },
+        {
+          "DataId": 1051721,
+          "Position": {
+            "X": 737.5753,
+            "Y": 8.14118,
+            "Z": -278.0957
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

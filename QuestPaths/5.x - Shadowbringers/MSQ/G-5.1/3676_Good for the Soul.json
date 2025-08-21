@@ -1,0 +1,184 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031732,
+          "Position": {
+            "X": 366.68945,
+            "Y": -27.966003,
+            "Z": 305.19568
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031732,
+          "Position": {
+            "X": 366.68945,
+            "Y": -27.966003,
+            "Z": 305.19568
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMG104_03676_Q2_000_100",
+              "Answer": "TEXT_LUCKMG104_03676_A1_000_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031792,
+          "Position": {
+            "X": -483.7873,
+            "Y": 45.58319,
+            "Z": -235.46198
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Twine"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -27.96634,
+            "Y": 41.707367,
+            "Z": -482.99057
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 2010811,
+          "Position": {
+            "X": -16.922302,
+            "Y": 42.282715,
+            "Z": -470.48145
+          },
+          "StopDistance": 1,
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2010810,
+          "Position": {
+            "X": 8.682312,
+            "Y": 42.130127,
+            "Z": -471.9463
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2010809,
+          "Position": {
+            "X": 19.760376,
+            "Y": 42.130127,
+            "Z": -463.3402
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Comment": "Combat not necessary to progress quest",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 47.593674,
+            "Y": 42.681213,
+            "Z": -511.2799
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "Comment": "Should be far enough to reset combat"
+        },
+        {
+          "DataId": 1031732,
+          "Position": {
+            "X": 366.68945,
+            "Y": -27.966003,
+            "Z": 305.19568
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMG104_03676_Q3_000_200",
+              "Answer": "TEXT_LUCKMG104_03676_A1_000_200"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031734,
+          "Position": {
+            "X": 364.58374,
+            "Y": -27.966003,
+            "Z": 304.12744
+          },
+          "StopDistance": 6,
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

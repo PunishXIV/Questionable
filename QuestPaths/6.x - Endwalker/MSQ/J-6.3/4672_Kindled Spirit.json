@@ -1,0 +1,146 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044239,
+          "Position": {
+            "X": -369.2226,
+            "Y": 22,
+            "Z": 484.0619
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044249,
+          "Position": {
+            "X": -89.89093,
+            "Y": -9.408967,
+            "Z": 416.3423
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013226,
+          "Position": {
+            "X": 18.631226,
+            "Y": -12.314087,
+            "Z": 383.77966
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            16028,
+            16029
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$.0": "[1]",
+          "$.1": "QuestVariables if done first: 16 5(enemy kill count) 0 0 0 64"
+        },
+        {
+          "DataId": 2013307,
+          "Position": {
+            "X": 23.025818,
+            "Y": -9.2317505,
+            "Z": 337.5448
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$.0": "[2]",
+          "$.1": "QuestVariables if done after [1]: 33 5 0 0 0 96"
+        },
+        {
+          "DataId": 2013308,
+          "Position": {
+            "X": 75.33374,
+            "Y": -12.527649,
+            "Z": 339.40637
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "$.0": "[3]",
+          "$.1": "QuestVariables if done after [1, 2]: 49 21 0 0 0 112"
+        },
+        {
+          "DataId": 2013051,
+          "Position": {
+            "X": 62.333008,
+            "Y": -10.635559,
+            "Z": 308.73572
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            16030
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.2": "QuestVariables if done first: 16 0 16 0 0 128"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044250,
+          "Position": {
+            "X": 23.23944,
+            "Y": 1.1781613,
+            "Z": 144.70117
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

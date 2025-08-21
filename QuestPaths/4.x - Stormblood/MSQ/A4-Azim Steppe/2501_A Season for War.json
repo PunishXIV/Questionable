@@ -1,0 +1,86 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020281,
+          "Position": {
+            "X": 571.58765,
+            "Y": -19.505655,
+            "Z": 313.71008
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 553.1567,
+            "Y": -19.505648,
+            "Z": 306.37933
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 395.68478,
+            "Y": -8.147073,
+            "Z": 299.55774
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 6626,
+              "MinimumKillCount": 2,
+              "RewardItemId": 2002204,
+              "RewardItemCount": 2,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 2
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020281,
+          "Position": {
+            "X": 571.58765,
+            "Y": -19.505655,
+            "Z": 313.71008
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Azim Steppe - Reunion"
+        }
+      ]
+    }
+  ]
+}

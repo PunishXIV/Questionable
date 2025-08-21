@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030126,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030127,
+          "Position": {
+            "X": 200.12195,
+            "Y": -0.39141315,
+            "Z": 389.45593
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] Tessellation (Lakeland)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010396,
+          "Position": {
+            "X": 195.48328,
+            "Y": -0.7477417,
+            "Z": 370.93152
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UseItem",
+          "ItemId": 2002718
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010397,
+          "Position": {
+            "X": 203.90625,
+            "Y": -0.5340576,
+            "Z": 389.82214
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10872
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031013,
+          "Position": {
+            "X": 200.09155,
+            "Y": -0.39049676,
+            "Z": 389.4254
+          },
+          "StopDistance": 5,
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3274,
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    }
+  ]
+}

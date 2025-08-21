@@ -1,0 +1,143 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021911,
+          "Position": {
+            "X": -220.84387,
+            "Y": 21.261763,
+            "Z": 363.39355
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021917,
+          "Position": {
+            "X": -343.80103,
+            "Y": -0.3600377,
+            "Z": 448.1117
+          },
+          "TerritoryId": 153,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021911,
+          "Position": {
+            "X": -220.84387,
+            "Y": 21.261763,
+            "Z": 363.39355
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021919,
+          "Position": {
+            "X": 207.53784,
+            "Y": -3.049824,
+            "Z": 43.22876
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021918,
+          "Position": {
+            "X": 206.80542,
+            "Y": -3.065022,
+            "Z": 43.83911
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046785,
+          "Position": {
+            "X": 577.7523,
+            "Y": 119.49004,
+            "Z": 148.66858
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Kozama'uka - Many Fires"
+        },
+        {
+          "Position": {
+            "X": 533.37555,
+            "Y": 122.98077,
+            "Z": 790.01416
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Ihuykatumu (Kozama'uka)"
+          ]
+        },
+        {
+          "Position": {
+            "X": 522.3003,
+            "Y": 120.81023,
+            "Z": 803.62744
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2013943,
+          "Position": {
+            "X": 485.89294,
+            "Y": 121.3855,
+            "Z": 831.29626
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818428
+        },
+        {
+          "DataId": 1046603,
+          "Position": {
+            "X": 127.15344,
+            "Y": 110.20095,
+            "Z": 259.66272
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013940,
+          "Position": {
+            "X": 48.966187,
+            "Y": 111.31445,
+            "Z": 287.15955
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818422
+        },
+        {
+          "DataId": 1046608,
+          "Position": {
+            "X": -427.84772,
+            "Y": 121.633446,
+            "Z": 280.93384
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Kozama'uka - Earthenshire"
+        },
+        {
+          "DataId": 1046613,
+          "Position": {
+            "X": -471.5191,
+            "Y": 121.63345,
+            "Z": 344.89966
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

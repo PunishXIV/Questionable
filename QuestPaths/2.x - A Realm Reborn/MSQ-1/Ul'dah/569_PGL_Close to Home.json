@@ -1,0 +1,165 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003988,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.84338
+          },
+          "TerritoryId": 182,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 130,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Adventurers' Guild"
+        },
+        {
+          "Position": {
+            "X": 95.43315,
+            "Y": 4,
+            "Z": -105.26365
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1003908,
+          "Position": {
+            "X": 137.95679,
+            "Y": 4.041112,
+            "Z": -41.09259
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Sapphire Avenue Exchange"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Weavers' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Miners' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Goldsmiths' Guild"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Gladiators' Guild"
+        },
+        {
+          "Position": {
+            "X": -112.64317,
+            "Y": 7.734872,
+            "Z": 9.960203
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Thaumaturges' Guild"
+        },
+        {
+          "DataId": 1001286,
+          "Position": {
+            "X": -88.9754,
+            "Y": 2.55,
+            "Z": -51.163513
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1001286,
+          "Position": {
+            "X": -88.9754,
+            "Y": 2.55,
+            "Z": -51.163513
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 345,
+          "Disabled": true,
+          "Comment": "Level 1 class quest isn't finished"
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ul'dah",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 130,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Ul'dah"
+        },
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

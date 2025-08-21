@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031742,
+          "Position": {
+            "X": -18.60083,
+            "Y": 82.84981,
+            "Z": -48.29486
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027544,
+          "Position": {
+            "X": 12.985352,
+            "Y": 82.05,
+            "Z": -25.223206
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "$.1": "QuestValues if done first: 16 1 16 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1027602,
+          "Position": {
+            "X": 74.35718,
+            "Y": -10.320814,
+            "Z": 4.8981323
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] Southeast Derelicts"
+          ],
+          "$.1": "QuestValues if done after [1]: 32 17 16 16 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1029990,
+          "Position": {
+            "X": 11.36792,
+            "Y": 5.999995,
+            "Z": -38.651123
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Southeast Derelicts",
+            "[Eulmore] The Glory Gate"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031746,
+          "Position": {
+            "X": -4.043701,
+            "Y": -5.091193,
+            "Z": -98.19183
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

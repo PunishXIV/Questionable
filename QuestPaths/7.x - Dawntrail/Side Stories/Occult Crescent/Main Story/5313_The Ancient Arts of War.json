@@ -1,0 +1,37 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053796,
+          "Position": {
+            "X": 868.10095,
+            "Y": 72.75855,
+            "Z": -677.3938
+          },
+          "TerritoryId": 1252,
+          "InteractionType": "AcceptQuest",
+          "Comment": "This requires queueing into Occult Crescent: South Horn AND equipping a phantom job, so isn't started automatically"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053800,
+          "Position": {
+            "X": 822.8733,
+            "Y": 72.673935,
+            "Z": -678.7671
+          },
+          "TerritoryId": 1252,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

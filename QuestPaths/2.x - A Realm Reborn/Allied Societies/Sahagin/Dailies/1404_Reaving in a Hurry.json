@@ -1,0 +1,119 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -226.12347,
+                                    "Y": -40.48583,
+                                    "Z": 57.083984
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -423.56384,
+                        "Y": -40.76118,
+                        "Z": -220.52809
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "ComplexCombatData": [
+                        {
+                            "DataId": 773,
+                            "MinimumKillCount": 1
+                        },
+                        {
+                            "DataId": 2878,
+                            "MinimumKillCount": 1
+                        }
+                    ],
+                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 128 ]
+                },
+                {
+                    "Position": {
+                        "X": -423.56384,
+                        "Y": -40.76118,
+                        "Z": -220.52809
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "ComplexCombatData": [
+                        {
+                            "DataId": 776,
+                            "MinimumKillCount": 1
+                        },
+                        {
+                            "DataId": 2879,
+                            "MinimumKillCount": 1
+                        }
+                    ],
+                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 64 ]
+                },
+                {
+                    "Position": {
+                        "X": -423.56384,
+                        "Y": -40.76118,
+                        "Z": -220.52809
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "ComplexCombatData": [
+                        {
+                            "DataId": 774,
+                            "MinimumKillCount": 1
+                        },
+                        {
+                            "DataId": 2880,
+                            "MinimumKillCount": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

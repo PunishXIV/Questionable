@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1054555,
+          "Position": {
+            "X": -4.1047363,
+            "Y": -7.7714425E-08,
+            "Z": 9.536865
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014102,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.99176025,
+            "Z": 16.03717
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186
+        },
+        {
+          "DataId": 1054561,
+          "Position": {
+            "X": 20.58435,
+            "Y": 38.056595,
+            "Z": -388.20483
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Resolution"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1054565,
+          "Position": {
+            "X": 18.539673,
+            "Y": 38.0566,
+            "Z": -387.16718
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054569,
+          "Position": {
+            "X": -0.5340576,
+            "Y": 53.200012,
+            "Z": 768.27637
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+        }
+      ]
+    }
+  ]
+}

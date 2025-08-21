@@ -1,0 +1,100 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051404,
+          "Position": {
+            "X": -157.33582,
+            "Y": 2.1999714,
+            "Z": 229.69409
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 322.70325,
+            "Y": 52.41666,
+            "Z": 211.24818
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Solution Nine] Information Center",
+            "[Solution Nine] True Vue"
+          ]
+        },
+        {
+          "DataId": 1049154,
+          "Position": {
+            "X": 320.27148,
+            "Y": 52.41666,
+            "Z": 211.32214
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051405,
+          "Position": {
+            "X": -156.2677,
+            "Y": 2.199971,
+            "Z": 231.79968
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] True Vue",
+            "[Solution Nine] Information Center"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051409,
+          "Position": {
+            "X": -157.24426,
+            "Y": 2.1999712,
+            "Z": 231.21985
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1186,
+          "InteractionType": "Emote",
+          "Emote": "psych"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051405,
+          "Position": {
+            "X": -156.2677,
+            "Y": 2.199971,
+            "Z": 231.79968
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

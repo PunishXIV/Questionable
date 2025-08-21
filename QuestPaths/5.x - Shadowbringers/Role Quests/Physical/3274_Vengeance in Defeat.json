@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030130,
+          "Position": {
+            "X": 469.0775,
+            "Y": -32.782784,
+            "Z": -288.44135
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010399,
+          "Position": {
+            "X": 613.39734,
+            "Y": -33.585205,
+            "Z": -180.95679
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010400,
+          "Position": {
+            "X": 536.9192,
+            "Y": -33.737732,
+            "Z": 38.83423
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10873
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010401,
+          "Position": {
+            "X": 469.0775,
+            "Y": -32.791687,
+            "Z": -288.44135
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3275,
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    }
+  ]
+}

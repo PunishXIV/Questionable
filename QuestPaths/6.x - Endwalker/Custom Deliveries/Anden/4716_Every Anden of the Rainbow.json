@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044547,
+          "Position": {
+            "X": -241.68768,
+            "Y": 51.058994,
+            "Z": 620.8744
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBCTS681_04716_Q1_000_003",
+              "Answer": "TEXT_SUBCTS681_04716_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044560,
+          "Position": {
+            "X": -241.68768,
+            "Y": 51.058994,
+            "Z": 620.8744
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013247,
+          "Position": {
+            "X": 428.15283,
+            "Y": 3.2196045,
+            "Z": 23.483582
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044560,
+          "Position": {
+            "X": -241.68768,
+            "Y": 51.058994,
+            "Z": 620.8744
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true,
+          "NextQuestId": 4717
+        }
+      ]
+    }
+  ]
+}

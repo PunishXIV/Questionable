@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Censored",
+  "Steps": [
+    {
+      "TerritoryId": 156,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Mor Dhona",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    }
+  ],
+  "ExtraQuestItems": [
+    2001412,
+    2001413
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31043,
+          "Locations": [
+            {
+              "Position": {
+                "X": -371.8556,
+                "Y": -15.86567,
+                "Z": -363.9182
+              },
+              "MinimumAngle": -145,
+              "MaximumAngle": -35
+            },
+            {
+              "Position": {
+                "X": -372.1209,
+                "Y": -16.00947,
+                "Z": -351.6216
+              },
+              "MinimumAngle": -125,
+              "MaximumAngle": 30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31044,
+          "Locations": [
+            {
+              "Position": {
+                "X": -344.8759,
+                "Y": -16.46771,
+                "Z": -338.7833
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 75
+            },
+            {
+              "Position": {
+                "X": -332.5748,
+                "Y": -16.07329,
+                "Z": -337.0371
+              },
+              "MinimumAngle": -65,
+              "MaximumAngle": 105
+            }
+          ]
+        },
+        {
+          "DataId": 31042,
+          "Locations": [
+            {
+              "Position": {
+                "X": -317.5309,
+                "Y": -16.18071,
+                "Z": -338.7262
+              },
+              "MinimumAngle": -35,
+              "MaximumAngle": 140
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31041,
+          "Locations": [
+            {
+              "Position": {
+                "X": -347.2882,
+                "Y": -15.12936,
+                "Z": -346.8752
+              },
+              "MinimumAngle": -195,
+              "MaximumAngle": -110
+            },
+            {
+              "Position": {
+                "X": -348.3911,
+                "Y": -16.14678,
+                "Z": -363.7992
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 145
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

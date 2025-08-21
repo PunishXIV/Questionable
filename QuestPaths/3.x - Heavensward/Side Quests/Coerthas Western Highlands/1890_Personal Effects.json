@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014146,
+          "Position": {
+            "X": -258.74725,
+            "Y": 126.98546,
+            "Z": 12.649658
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -297.49585,
+            "Y": 219.87524,
+            "Z": 281.65045
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 3992,
+              "MinimumKillCount": 5
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 1014150,
+          "Position": {
+            "X": 507.13354,
+            "Y": 217.95148,
+            "Z": 791.37854
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -110.26132,
+            "Y": 153.61101,
+            "Z": 10.394781
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "Fly": true,
+          "DataId": 1014146,
+          "Position": {
+            "X": -258.74725,
+            "Y": 126.98546,
+            "Z": 12.649658
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1891
+        }
+      ]
+    }
+  ]
+}

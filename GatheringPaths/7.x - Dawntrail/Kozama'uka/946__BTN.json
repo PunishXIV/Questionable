@@ -1,0 +1,110 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 1188,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+    }
+  ],
+  "FlyBetweenNodes": true,
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34520,
+          "Locations": [
+            {
+              "Position": {
+                "X": 759.8123,
+                "Y": 26.14559,
+                "Z": -561.7435
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34521,
+          "Locations": [
+            {
+              "Position": {
+                "X": 791.0515,
+                "Y": 25.74059,
+                "Z": -545.9295
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34522,
+          "Locations": [
+            {
+              "Position": {
+                "X": 821.4519,
+                "Y": 28.47348,
+                "Z": -533.9607
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34517,
+          "Locations": [
+            {
+              "Position": {
+                "X": 840.8483,
+                "Y": 34.05744,
+                "Z": -586.0533
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34518,
+          "Locations": [
+            {
+              "Position": {
+                "X": 837.7969,
+                "Y": 33.55795,
+                "Z": -619.7623
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34519,
+          "Locations": [
+            {
+              "Position": {
+                "X": 784.021,
+                "Y": 24.16835,
+                "Z": -598.9781
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

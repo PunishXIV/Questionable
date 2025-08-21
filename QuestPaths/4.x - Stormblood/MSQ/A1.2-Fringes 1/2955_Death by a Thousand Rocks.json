@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020848,
+          "Position": {
+            "X": 113.725464,
+            "Y": 118.15579,
+            "Z": -715.6634
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020857,
+          "Position": {
+            "X": -768.91736,
+            "Y": 81.467896,
+            "Z": -300.8011
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Peaks Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008680,
+          "Position": {
+            "X": -763.97345,
+            "Y": 81.89514,
+            "Z": -298.3902
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020848,
+          "Position": {
+            "X": 113.725464,
+            "Y": 118.15579,
+            "Z": -715.6634
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    }
+  ]
+}

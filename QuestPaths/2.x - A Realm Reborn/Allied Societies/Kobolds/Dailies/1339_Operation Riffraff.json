@@ -1,0 +1,248 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005929,
+          "Position": {
+            "X": 21.560913,
+            "Y": 16.342407,
+            "Z": -183.76447
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 96.21657,
+            "Y": 55.28576,
+            "Z": -500.41245
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005960,
+          "Position": {
+            "X": 97.3678,
+            "Y": 56.809326,
+            "Z": -502.06763
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005960,
+          "Position": {
+            "X": 97.3678,
+            "Y": 56.809326,
+            "Z": -502.06763
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANKOB205_01339_SCENE00008_EVENTAREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 2003743,
+          "Position": {
+            "X": 227.00842,
+            "Y": 22.75116,
+            "Z": -582.81836
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2003744,
+          "Position": {
+            "X": 224.78064,
+            "Y": 23.941406,
+            "Z": -580.9568
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001244,
+          "IgnoreDistanceToObject": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2003746,
+          "Position": {
+            "X": 239.30713,
+            "Y": 22.323914,
+            "Z": -577.29456
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2880
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 1
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003745,
+          "Position": {
+            "X": 242.8778,
+            "Y": 22.507019,
+            "Z": -584.37476
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2880
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 2
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003746,
+          "Position": {
+            "X": 239.30713,
+            "Y": 22.323914,
+            "Z": -577.29456
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2880
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003745,
+          "Position": {
+            "X": 242.8778,
+            "Y": 22.507019,
+            "Z": -584.37476
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2880
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 4
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2003746,
+          "Position": {
+            "X": 239.30713,
+            "Y": 22.323914,
+            "Z": -577.29456
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2883
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1005932,
+          "Position": {
+            "X": -1.236023,
+            "Y": 33.38838,
+            "Z": -244.19019
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005929,
+          "Position": {
+            "X": 21.560913,
+            "Y": 16.342407,
+            "Z": -183.76447
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

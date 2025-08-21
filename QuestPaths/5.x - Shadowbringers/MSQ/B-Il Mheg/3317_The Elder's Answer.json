@@ -1,0 +1,123 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027672,
+          "Position": {
+            "X": -101.51831,
+            "Y": 101.86012,
+            "Z": -838.49854
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027666,
+          "Position": {
+            "X": 13.839905,
+            "Y": 100.161,
+            "Z": -886.3508
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029580,
+          "Position": {
+            "X": 453.05554,
+            "Y": 87.4745,
+            "Z": -691.9509
+          },
+          "StopDistance": 9,
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Wolekdorf",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMB116_03317_Q1_000_000",
+              "Answer": "TEXT_LUCKMB116_03317_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027691,
+          "Position": {
+            "X": 416.80017,
+            "Y": 87.947784,
+            "Z": -751.09485
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Emote",
+          "Emote": "pet"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027692,
+          "Position": {
+            "X": 382.1317,
+            "Y": 86.5506,
+            "Z": -617.0901
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Emote",
+          "Emote": "pet"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1027693,
+          "Position": {
+            "X": 364.27856,
+            "Y": 87.00109,
+            "Z": -715.41925
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Emote",
+          "Emote": "pet"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029577,
+          "Position": {
+            "X": 456.83984,
+            "Y": 86.13955,
+            "Z": -710.0176
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

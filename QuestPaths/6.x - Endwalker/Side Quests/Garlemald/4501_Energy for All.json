@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041761,
+          "Position": {
+            "X": 414.51123,
+            "Y": -18.808798,
+            "Z": 613.1837
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "you should be in range right away, but if you aren't then you might be 700 yalms away back at camp"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012329,
+          "Position": {
+            "X": 376.82153,
+            "Y": -18.875488,
+            "Z": 512.65735
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14094,
+            14095
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041760,
+          "Position": {
+            "X": 413.87048,
+            "Y": -18.81719,
+            "Z": 612.05444
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041761,
+          "Position": {
+            "X": 414.51123,
+            "Y": -18.808798,
+            "Z": 613.1837
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040963,
+          "Position": {
+            "X": -325.27655,
+            "Y": 22.462305,
+            "Z": 450.49194
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

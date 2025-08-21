@@ -1,0 +1,214 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012588,
+          "Position": {
+            "X": 107.68286,
+            "Y": 24.378597,
+            "Z": -6.6987915
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433,
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005334,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.1443481,
+            "Z": 13.199036
+          },
+          "TerritoryId": 433,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 419
+        },
+        {
+          "DataId": 1013422,
+          "Position": {
+            "X": -97.73407,
+            "Y": 15.233179,
+            "Z": -40.787415
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011231,
+          "Position": {
+            "X": 503.1051,
+            "Y": 217.95148,
+            "Z": 790.2189
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1011240,
+          "Position": {
+            "X": 493.15625,
+            "Y": 200.2377,
+            "Z": 663.01965
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1744
+        },
+        {
+          "DataId": 2005536,
+          "Position": {
+            "X": 402.0293,
+            "Y": 191.51587,
+            "Z": 561.4252
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818053
+        },
+        {
+          "DataId": 2006187,
+          "Position": {
+            "X": 424.94836,
+            "Y": 164.29382,
+            "Z": -536.9192
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818055
+        },
+        {
+          "DataId": 1012592,
+          "Position": {
+            "X": 459.15918,
+            "Y": 162.51204,
+            "Z": -524.651
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 454.75964,
+            "Y": 164.27075,
+            "Z": -535.00354
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (outside)",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 454.9128,
+            "Y": 164.30827,
+            "Z": -542.1735
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (inside)",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 455.6516,
+            "Y": 157.40831,
+            "Z": -546.16815
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4383,
+            4384
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 454.9128,
+            "Y": 164.30827,
+            "Z": -542.1735
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (inside)",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 454.75964,
+            "Y": 164.27075,
+            "Z": -535.00354
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (outside)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1012592,
+          "Position": {
+            "X": 459.15918,
+            "Y": 162.51204,
+            "Z": -524.651
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

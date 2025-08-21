@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041158,
+          "Position": {
+            "X": 799.9846,
+            "Y": 479.0242,
+            "Z": 199.42017
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040342,
+          "Position": {
+            "X": 546.07446,
+            "Y": 437.9998,
+            "Z": 303.8529
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039565,
+          "Position": {
+            "X": 609.4606,
+            "Y": 440.4633,
+            "Z": 398.42822
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Snipe",
+          "Comment": "Identify Anomaly (Head, Elbow or Knee)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041159,
+          "Position": {
+            "X": 624.0176,
+            "Y": 441.9763,
+            "Z": 439.78027
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041162,
+          "Position": {
+            "X": 623.5598,
+            "Y": 441.9763,
+            "Z": 436.78955
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006747,
+          "Position": {
+            "X": -20.828613,
+            "Y": 29.999964,
+            "Z": -2.4262085
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBPLD601_02571_Q1_000_000",
+              "Answer": "TEXT_JOBPLD601_02571_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021342,
+          "Position": {
+            "X": -25.558899,
+            "Y": 38.010006,
+            "Z": 82.6886
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021343,
+          "Position": {
+            "X": -75.60846,
+            "Y": 6.9845715,
+            "Z": 6.210388
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] The Chamber of Rule",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021345,
+          "Position": {
+            "X": -69.96271,
+            "Y": 7.0740614,
+            "Z": -10.696594
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1021346,
+          "Position": {
+            "X": -96.69641,
+            "Y": 6.9845695,
+            "Z": -9.506409
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1021347,
+          "Position": {
+            "X": -105.638245,
+            "Y": 6.9839897,
+            "Z": 3.0059814
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 1021344,
+          "Position": {
+            "X": -96.910095,
+            "Y": 6.984566,
+            "Z": 15.0911255
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.5000024,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2572
+        }
+      ]
+    }
+  ]
+}

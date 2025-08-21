@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006279,
+          "Position": {
+            "X": -231.4336,
+            "Y": 21.512743,
+            "Z": 339.49792
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011650,
+          "Position": {
+            "X": 557.6714,
+            "Y": 20.721313,
+            "Z": 454.24573
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011650,
+          "Position": {
+            "X": 557.6714,
+            "Y": 20.721313,
+            "Z": 454.24573
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Emote",
+          "Emote": "soothe"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1011651,
+          "Position": {
+            "X": 8.804443,
+            "Y": 71.18964,
+            "Z": -15.182739
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBPST026_00496_Q1_000_000",
+              "Answer": "TEXT_SUBPST026_00496_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011652,
+          "Position": {
+            "X": 532.9823,
+            "Y": 44.02837,
+            "Z": 540.3982
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true,
+          "NextQuestId": 362
+        }
+      ]
+    }
+  ]
+}

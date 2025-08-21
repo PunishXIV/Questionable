@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016819,
+          "Position": {
+            "X": -291.43213,
+            "Y": 39.04307,
+            "Z": 33.6156
+          },
+          "StopDistance": 5,
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016811,
+          "Position": {
+            "X": 234.5769,
+            "Y": -42.669212,
+            "Z": 615.28955
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006956,
+          "Position": {
+            "X": -758.35815,
+            "Y": 123.704834,
+            "Z": 214.52649
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "The Churning Mists - Zenith"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016813,
+          "Position": {
+            "X": -755.30634,
+            "Y": 123.72871,
+            "Z": 210.95593
+          },
+          "StopDistance": 5,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016812,
+          "Position": {
+            "X": -743.31274,
+            "Y": 83.799995,
+            "Z": 267.68896
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 400,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 171,
+            "Enabled": false,
+            "Notes": [
+              "(boss 1) Doesn't knock all moogles out of the rez area",
+              "(boss 3) Stack goal zone isn't properly removed from NPC, so the character will stack even for spread markers + slide into AOEs during ice"
+            ],
+            "TestedAutoDutyVersion": "0.0.0.227",
+            "TestedBossModVersion": "0.3.0.5"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017011,
+          "Position": {
+            "X": -758.3887,
+            "Y": 123.72872,
+            "Z": 210.77283
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

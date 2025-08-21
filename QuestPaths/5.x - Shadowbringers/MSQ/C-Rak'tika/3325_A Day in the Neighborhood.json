@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029194,
+          "Position": {
+            "X": -37.216797,
+            "Y": -18.920458,
+            "Z": 336.62915
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMC104_03325_Q1_000_000",
+              "Answer": "TEXT_LUCKMC104_03325_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029197,
+          "Position": {
+            "X": -87.87671,
+            "Y": -19.022131,
+            "Z": 298.20703
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 817,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Rak'tika - Slitherbough"
+        },
+        {
+          "DataId": 1029198,
+          "Position": {
+            "X": -118.18121,
+            "Y": -19.713022,
+            "Z": 385.51917
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029198,
+          "Position": {
+            "X": -118.18121,
+            "Y": -19.713022,
+            "Z": 385.51917
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Emote",
+          "Emote": "kneel"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030382,
+          "Position": {
+            "X": -113.11517,
+            "Y": -18.484627,
+            "Z": 324.20837
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_LUCKMC104_03325_SYSTEM_000_110"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1027463,
+          "Position": {
+            "X": -130.26636,
+            "Y": -18.486685,
+            "Z": 246.57043
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_LUCKMC104_03325_SYSTEM_000_110"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1027750,
+          "Position": {
+            "X": -24.734924,
+            "Y": -25.324257,
+            "Z": 305.5924
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_LUCKMC104_03325_SYSTEM_000_110"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029199,
+          "Position": {
+            "X": -116.71625,
+            "Y": -19.706732,
+            "Z": 386.49573
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

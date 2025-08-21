@@ -1,0 +1,167 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021939,
+          "Position": {
+            "X": 464.98804,
+            "Y": 69.34,
+            "Z": 522.4231
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024746,
+          "Position": {
+            "X": 462.8518,
+            "Y": 69.31414,
+            "Z": 525.9021
+          },
+          "StopDistance": 6,
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026712,
+          "Position": {
+            "X": 113.23718,
+            "Y": 0.6520417,
+            "Z": 56.839844
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDR304_03157_Q1_000_102",
+              "Answer": "TEXT_STMBDR304_03157_A1_000_103"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026465,
+          "Position": {
+            "X": -38.92578,
+            "Y": -0.0364509,
+            "Z": -3.7385254
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1026466,
+          "Position": {
+            "X": -114.58002,
+            "Y": 0.5980477,
+            "Z": -33.829346
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1026467,
+          "Position": {
+            "X": -150.4082,
+            "Y": -2.7350852,
+            "Z": -139.20807
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1026467,
+          "Position": {
+            "X": -150.4082,
+            "Y": -2.7350852,
+            "Z": -139.20807
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Emote",
+          "Emote": "pet"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1026468,
+          "Position": {
+            "X": -13.778931,
+            "Y": 0.98160696,
+            "Z": 70.54236
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

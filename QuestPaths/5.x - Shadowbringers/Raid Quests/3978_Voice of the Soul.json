@@ -1,0 +1,102 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1034519,
+          "Position": {
+            "X": 101.15198,
+            "Y": -3.8577113E-14,
+            "Z": 103.6239
+          },
+          "StopDistance": 7,
+          "TerritoryId": 857,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 857,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 751,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 857,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 758,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1034521,
+          "Position": {
+            "X": -8.163635,
+            "Y": -2.4984214,
+            "Z": 11.734131
+          },
+          "StopDistance": 5,
+          "TerritoryId": 878,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1034520,
+          "Position": {
+            "X": -7.7974243,
+            "Y": -2.4984214,
+            "Z": 11.337402
+          },
+          "StopDistance": 5,
+          "TerritoryId": 878,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_LUCKRA304_03978_SAYTODO_000_160"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1034521,
+          "Position": {
+            "X": -8.163635,
+            "Y": -2.4984214,
+            "Z": 11.734131
+          },
+          "StopDistance": 5,
+          "TerritoryId": 878,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

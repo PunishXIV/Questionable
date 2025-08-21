@@ -1,0 +1,157 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021425,
+          "Position": {
+            "X": 146.1051,
+            "Y": 4,
+            "Z": 25.223145
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBRDM500_02576_Q1_000_010",
+              "Answer": "TEXT_JOBRDM500_02576_A1_000_011"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 166.65004,
+            "Y": 3.9997904,
+            "Z": 43.372593
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1021426,
+          "Position": {
+            "X": 124.04053,
+            "Y": 5.292755,
+            "Z": 559.65515
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021434,
+          "Position": {
+            "X": 125.718994,
+            "Y": 5.2929487,
+            "Z": 558.9531
+          },
+          "StopDistance": 7,
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 8.849496,
+            "Y": 18.34012,
+            "Z": 562.2148
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1021435,
+          "Position": {
+            "X": 145.73889,
+            "Y": 4,
+            "Z": 25.223145
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -77.95643,
+            "Y": -12.787907,
+            "Z": -45.044247
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true,
+          "$": "Coffer & Coffin (outside)"
+        },
+        {
+          "DataId": 1021438,
+          "Position": {
+            "X": -96.84906,
+            "Y": -11.350002,
+            "Z": -47.3183
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021438,
+          "Position": {
+            "X": -96.84906,
+            "Y": -11.350002,
+            "Z": -47.3183
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBRDM500_02576_Q1_000_310",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 2577
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006555,
+          "Position": {
+            "X": -2.7619019,
+            "Y": -158.5813,
+            "Z": -1.6327515
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "InteractionType": "EquipItem",
+          "ItemId": 6223,
+          "Comment": "Can be re-bought from Glaumunt in Mor Dhona"
+        },
+        {
+          "TerritoryId": 156,
+          "InteractionType": "EquipItem",
+          "ItemId": 6224,
+          "Comment": "Can be re-bought from Glaumunt in Mor Dhona"
+        },
+        {
+          "DataId": 2002502,
+          "Position": {
+            "X": 0.7476196,
+            "Y": -156.93909,
+            "Z": 16.281311
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "DataId": 1007537,
+          "Position": {
+            "X": -358.23608,
+            "Y": -16.248493,
+            "Z": -481.13226
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006568,
+          "Position": {
+            "X": -559.3805,
+            "Y": -1.9197596,
+            "Z": -318.349
+          },
+          "TerritoryId": 335,
+          "InteractionType": "Emote",
+          "Emote": "imperialsalute"
+        },
+        {
+          "DataId": 1006567,
+          "Position": {
+            "X": -532.2195,
+            "Y": -1.9197612,
+            "Z": -284.50446
+          },
+          "TerritoryId": 335,
+          "InteractionType": "Emote",
+          "Emote": "imperialsalute"
+        },
+        {
+          "DataId": 1006569,
+          "Position": {
+            "X": -491.44736,
+            "Y": -3.9312067,
+            "Z": -300.8011
+          },
+          "TerritoryId": 335,
+          "InteractionType": "Emote",
+          "Emote": "imperialsalute"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -530.1089,
+            "Y": -3.3262053,
+            "Z": -308.2147
+          },
+          "TerritoryId": 335,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1007611,
+          "Position": {
+            "X": -536.4004,
+            "Y": -1.9197441,
+            "Z": -308.00336
+          },
+          "StopDistance": 7,
+          "TerritoryId": 335,
+          "InteractionType": "Emote",
+          "Emote": "imperialsalute"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006562,
+          "Position": {
+            "X": -495.964,
+            "Y": -3.7679372,
+            "Z": -288.1667
+          },
+          "TerritoryId": 335,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -427.75616,
+            "Y": -0.77819824,
+            "Z": -273.82324
+          },
+          "TerritoryId": 335,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 2002376,
+          "Position": {
+            "X": -427.75616,
+            "Y": -0.77819824,
+            "Z": -273.82324
+          },
+          "TerritoryId": 335,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "(outside) Doesn't use obstacle maps or vnav to move to the shield generators, gets stuck on the big crates"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006573,
+          "Position": {
+            "X": -43.717102,
+            "Y": 84,
+            "Z": 2.1514893
+          },
+          "StopDistance": 5,
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

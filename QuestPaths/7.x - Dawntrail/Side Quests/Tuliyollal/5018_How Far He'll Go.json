@@ -1,0 +1,81 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048459,
+          "Position": {
+            "X": -394.43048,
+            "Y": 11,
+            "Z": 3.5552979
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050733,
+          "Position": {
+            "X": -16.83075,
+            "Y": -10.000011,
+            "Z": 93.12573
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Dirigible Landing",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050734,
+          "Position": {
+            "X": 79.301025,
+            "Y": -17.964588,
+            "Z": 199.57275
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZA002_05018_Q1_000_000",
+              "Answer": "TEXT_KINGZA002_05018_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048459,
+          "Position": {
+            "X": -394.43048,
+            "Y": 11,
+            "Z": 3.5552979
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Dirigible Landing"
+          ]
+        }
+      ]
+    }
+  ]
+}

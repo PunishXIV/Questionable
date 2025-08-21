@@ -1,0 +1,153 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021698,
+          "Position": {
+            "X": -672.694,
+            "Y": 49.999725,
+            "Z": 14.999573
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022987,
+          "Position": {
+            "X": -662.13477,
+            "Y": 49.999794,
+            "Z": -48.874695
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2881
+        },
+        {
+          "DataId": 1022992,
+          "Position": {
+            "X": -506.6148,
+            "Y": 8.7,
+            "Z": -40.299072
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2877
+        },
+        {
+          "DataId": 1022990,
+          "Position": {
+            "X": -524.58997,
+            "Y": 8.688546,
+            "Z": -19.424805
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2880
+        },
+        {
+          "DataId": 1022991,
+          "Position": {
+            "X": -539.6353,
+            "Y": 7.6119823,
+            "Z": 52.140015
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2883
+        },
+        {
+          "DataId": 2007993,
+          "Position": {
+            "X": 261.5243,
+            "Y": 78.3855,
+            "Z": 69.93213
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818171
+        },
+        {
+          "DataId": 1021722,
+          "Position": {
+            "X": 336.04932,
+            "Y": 78.00011,
+            "Z": 44.022217
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022738,
+          "Position": {
+            "X": 509.60547,
+            "Y": 111.16203,
+            "Z": -107.133606
+          },
+          "TerritoryId": 621,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022739,
+          "Position": {
+            "X": 509.72766,
+            "Y": 111.38903,
+            "Z": -110.826355
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA705_02552_Q1_000_075",
+              "Answer": "TEXT_STMBDA705_02552_A1_000_076"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021724,
+          "Position": {
+            "X": 560.0519,
+            "Y": 162,
+            "Z": 72.28198
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

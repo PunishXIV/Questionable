@@ -1,0 +1,137 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027231,
+          "Position": {
+            "X": 65.35437,
+            "Y": 1.7160122,
+            "Z": 249.83594
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030165,
+          "Position": {
+            "X": -249.28668,
+            "Y": 18.603912,
+            "Z": 399.31323
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030170,
+          "Position": {
+            "X": -87.32745,
+            "Y": 11.115211,
+            "Z": 312.09277
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1030167,
+          "Position": {
+            "X": -37.644104,
+            "Y": 7.0351543,
+            "Z": 372.42688
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10860,
+            10861
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1030169,
+          "Position": {
+            "X": 144.57922,
+            "Y": 13.26848,
+            "Z": 356.83215
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030171,
+          "Position": {
+            "X": 164.4159,
+            "Y": 39.902184,
+            "Z": 564.9957
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

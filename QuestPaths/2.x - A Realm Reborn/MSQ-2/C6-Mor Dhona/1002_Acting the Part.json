@@ -1,0 +1,66 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006531,
+          "Position": {
+            "X": 53.81848,
+            "Y": 25.009521,
+            "Z": -697.0779
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -505.211,
+            "Y": -1.9684448,
+            "Z": -467.46014
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            55
+          ],
+          "CombatDelaySecondsAtStart": 5
+        },
+        {
+          "DataId": 2002238,
+          "Position": {
+            "X": -505.211,
+            "Y": -1.9684448,
+            "Z": -467.46014
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006531,
+          "Position": {
+            "X": 53.81848,
+            "Y": 25.009521,
+            "Z": -697.0779
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    }
+  ]
+}

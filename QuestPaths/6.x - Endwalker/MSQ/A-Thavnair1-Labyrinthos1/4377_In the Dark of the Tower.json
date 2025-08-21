@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040291,
+          "Position": {
+            "X": -1.9379272,
+            "Y": 1.9073486E-06,
+            "Z": 1.5715942
+          },
+          "StopDistance": 5,
+          "TerritoryId": 987,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037646,
+          "Position": {
+            "X": -568.99365,
+            "Y": 9.817484,
+            "Z": -569.8787
+          },
+          "TerritoryId": 957,
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011956,
+          "Position": {
+            "X": -632.04395,
+            "Y": -0.015319824,
+            "Z": -659.6018
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 957,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 783,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040252,
+          "Position": {
+            "X": -568.719,
+            "Y": 9.817484,
+            "Z": -581.323
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

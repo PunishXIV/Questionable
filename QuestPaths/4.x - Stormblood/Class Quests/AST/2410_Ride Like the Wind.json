@@ -1,0 +1,164 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021191,
+          "Position": {
+            "X": 195.1781,
+            "Y": -5.3999624,
+            "Z": -67.06348
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 195.1781,
+                  "Y": -5.3999624,
+                  "Z": -67.06348
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021221,
+          "Position": {
+            "X": 180.22424,
+            "Y": -5.4349146,
+            "Z": -55.588684
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "StopDistance": 5
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 244.403,
+            "Y": 361.78677,
+            "Z": -616.2311
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "StopDistance": 5,
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 7235,
+              "MinimumKillCount": 2
+            }
+          ]
+        },
+        {
+          "DataId": 1021222,
+          "Position": {
+            "X": 240.68054,
+            "Y": 362.1392,
+            "Z": -614.74023
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021191,
+          "Position": {
+            "X": 195.1781,
+            "Y": -5.3999624,
+            "Z": -67.06348
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 195.1781,
+                  "Y": -5.3999624,
+                  "Z": -67.06348
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 202.38037,
+                  "Y": -5.3999662,
+                  "Z": -58.9151
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          },
+          "NextQuestId": 2411
+        }
+      ]
+    }
+  ]
+}

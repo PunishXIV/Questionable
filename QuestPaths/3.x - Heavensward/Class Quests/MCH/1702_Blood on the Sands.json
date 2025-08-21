@@ -1,0 +1,137 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014769,
+          "Position": {
+            "X": -245.4414,
+            "Y": -20.03492,
+            "Z": -63.645386
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBMCH451_01702_Q1_000_000",
+              "Answer": "TEXT_JOBMCH451_01702_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006262,
+          "Position": {
+            "X": -246.357,
+            "Y": -20.035156,
+            "Z": -64.683044
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014770,
+          "Position": {
+            "X": -16.281433,
+            "Y": 16.009666,
+            "Z": -6.668213
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Last Vigil"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBMCH451_01702_Q2_000_000",
+              "Answer": "TEXT_JOBMCH451_01702_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014772,
+          "Position": {
+            "X": 427.0542,
+            "Y": 15.170297,
+            "Z": 706.72156
+          },
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014577,
+          "Position": {
+            "X": -154.31458,
+            "Y": 16.999992,
+            "Z": -53.3609
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "NextQuestId": 1703
+        }
+      ]
+    }
+  ]
+}

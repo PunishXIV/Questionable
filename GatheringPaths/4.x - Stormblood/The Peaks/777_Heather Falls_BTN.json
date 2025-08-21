@@ -1,0 +1,31 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 620,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Peaks - Ala Gannha"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33028,
+          "Locations": [
+            {
+              "Position": {
+                "X": 454.6367,
+                "Y": 227.1414,
+                "Z": -731.7471
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 65
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

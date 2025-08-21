@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Platforms>x64</Platforms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JsonSchema.Net" Version="7.4.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
+        <PackageReference Include="System.Text.Json" Version="9.0.5" />
+        <PackageReference Include="xunit" Version="2.5.3"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj"/>
+        <ProjectReference Include="..\QuestPaths\QuestPaths.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="..\QuestPaths\2.x - A Realm Reborn\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\3.x - Heavensward\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\4.x - Stormblood\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\5.x - Shadowbringers\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\6.x - Endwalker\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="..\QuestPaths\7.x - Dawntrail\**\*.json">
+            <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
+
+</Project>

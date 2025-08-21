@@ -1,0 +1,194 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024771,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024903,
+          "Position": {
+            "X": 111.31445,
+            "Y": 39.096542,
+            "Z": 296.34546
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021591,
+          "Position": {
+            "X": -277.82104,
+            "Y": 258.90652,
+            "Z": 782.77246
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
+        },
+        {
+          "DataId": 1020871,
+          "Position": {
+            "X": -237.90344,
+            "Y": 257.71973,
+            "Z": 741.5731
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1021587,
+          "Position": {
+            "X": -210.68134,
+            "Y": 257.8064,
+            "Z": 767.4829
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024906,
+          "Position": {
+            "X": -239.12415,
+            "Y": 258.90652,
+            "Z": 782.62
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024908,
+          "Position": {
+            "X": -238.91058,
+            "Y": 266.39832,
+            "Z": 508.14062
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024911,
+          "Position": {
+            "X": 10.971252,
+            "Y": 55.943913,
+            "Z": 239.88696
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Peering Stones"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1024912,
+          "Position": {
+            "X": -92.27136,
+            "Y": 50.00444,
+            "Z": 186.29736
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -212.2359,
+            "Y": 43.672523,
+            "Z": -133.15985
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009281,
+          "Position": {
+            "X": -209.79633,
+            "Y": 42.70996,
+            "Z": -153.85675
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Action",
+          "Action": "Trample",
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 5.853586,
+            "Y": 55.943962,
+            "Z": 237.26181
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024911,
+          "Position": {
+            "X": 10.971252,
+            "Y": 55.943913,
+            "Z": 239.88696
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Mount": false
+        }
+      ]
+    }
+  ]
+}

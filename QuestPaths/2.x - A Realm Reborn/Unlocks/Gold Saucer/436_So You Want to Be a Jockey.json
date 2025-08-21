@@ -1,0 +1,57 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010464,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.8903663E-06,
+            "Z": -65.61273
+          },
+          "TerritoryId": 388,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gold Saucer",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Chocobo Square"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                144
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010472,
+          "Position": {
+            "X": -53.26935,
+            "Y": 0.3093315,
+            "Z": 69.41321
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true,
+          "NextQuestId": 565
+        }
+      ]
+    }
+  ]
+}

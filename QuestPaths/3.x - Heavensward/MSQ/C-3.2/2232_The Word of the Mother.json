@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016534,
+          "Position": {
+            "X": -1.7243042,
+            "Y": 0,
+            "Z": -3.6469727
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016558,
+          "Position": {
+            "X": 43.74756,
+            "Y": 205.2239,
+            "Z": 19.638367
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 71.86769,
+            "Y": 204.99998,
+            "Z": 145.98666
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 399
+        },
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.79227,
+            "Y": 138.93335,
+            "Z": 741.0543
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Fly": true,
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 1012138,
+          "Position": {
+            "X": 19.272095,
+            "Y": 38.43,
+            "Z": 15.854065
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 463,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 141,
+            "Enabled": true,
+            "TestedAutoDutyVersion": "0.0.0.191"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016560,
+          "Position": {
+            "X": 21.133728,
+            "Y": 38.4364,
+            "Z": 8.041443
+          },
+          "StopDistance": 7,
+          "TerritoryId": 463,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNC102_02232_Q1_000_121",
+              "Answer": "TEXT_HEAVNC102_02232_A1_000_124"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

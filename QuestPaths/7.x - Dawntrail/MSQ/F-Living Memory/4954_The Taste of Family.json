@@ -1,0 +1,184 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047929,
+          "Position": {
+            "X": 345.2964,
+            "Y": 26.972605,
+            "Z": -296.37604
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047932,
+          "Position": {
+            "X": 605.0659,
+            "Y": 27.724148,
+            "Z": -184.77148
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047937,
+          "Position": {
+            "X": 586.8772,
+            "Y": 27.574875,
+            "Z": -195.20868
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047944,
+          "Position": {
+            "X": 665.5221,
+            "Y": 24.999493,
+            "Z": -266.55988
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Living Memory - Leynode Pyro"
+        },
+        {
+          "DataId": 1047943,
+          "Position": {
+            "X": 653.7117,
+            "Y": 24.999493,
+            "Z": -303.18152
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1047942,
+          "Position": {
+            "X": 634.14966,
+            "Y": 24.999489,
+            "Z": -292.77484
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047945,
+          "Position": {
+            "X": 514.7324,
+            "Y": 24.978758,
+            "Z": -126.57361
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMF109_04954_Q1_000_000",
+              "Answer": "TEXT_KINGMF109_04954_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047946,
+          "Position": {
+            "X": 501.45715,
+            "Y": 25.314697,
+            "Z": -140.39832
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1047939,
+          "Position": {
+            "X": 605.4933,
+            "Y": 27.724146,
+            "Z": -184.13062
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047947,
+          "Position": {
+            "X": 700.6179,
+            "Y": 27.99997,
+            "Z": -305.98926
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Living Memory - Leynode Pyro"
+        }
+      ]
+    }
+  ]
+}

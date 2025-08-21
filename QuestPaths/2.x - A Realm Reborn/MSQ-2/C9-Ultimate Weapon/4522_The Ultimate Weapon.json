@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006657,
+          "Position": {
+            "X": -294.81964,
+            "Y": 88,
+            "Z": -225.17743
+          },
+          "StopDistance": 7,
+          "TerritoryId": 147,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006668,
+          "Position": {
+            "X": -115.19043,
+            "Y": 47.372406,
+            "Z": 28.67163
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 147,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 16,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1053,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 830,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1039201,
+          "Position": {
+            "X": -704.0055,
+            "Y": -185.66042,
+            "Z": 479.9724
+          },
+          "TerritoryId": 1053,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2001715,
+          "Position": {
+            "X": 23.25277,
+            "Y": 2.1,
+            "Z": 0
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1006692,
+          "Position": {
+            "X": 39.261353,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

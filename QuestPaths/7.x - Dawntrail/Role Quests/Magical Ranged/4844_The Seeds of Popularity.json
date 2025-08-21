@@ -1,0 +1,190 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048331,
+          "Position": {
+            "X": 214.03821,
+            "Y": 5.2600574,
+            "Z": 628.3817
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048348,
+          "Position": {
+            "X": -118.76105,
+            "Y": 88.94139,
+            "Z": -556.90857
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true
+        }
+      ]
+    },
+{
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 76.82042,
+            "Y": 82.46339,
+            "Z": -549.32526
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 17626,
+              "CompletionQuestVariablesFlags": [
+                null,
+                16,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        },
+        {
+          "DataId": 17626,
+          "Position": {
+            "X": 77.01221,
+            "Y": 82.459785,
+            "Z": -549.218
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003495
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048348,
+          "Position": {
+            "X": -118.76105,
+            "Y": 88.94139,
+            "Z": -556.90857
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048350,
+          "Position": {
+            "X": -508.53745,
+            "Y": 12.375278,
+            "Z": 97.3678
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Great Work"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1048354,
+          "Position": {
+            "X": 154.28394,
+            "Y": 5.2641535,
+            "Z": 618.40234
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1048355,
+          "Position": {
+            "X": 227.98499,
+            "Y": 10.19656,
+            "Z": 563.31726
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1048352,
+          "Position": {
+            "X": 195.5138,
+            "Y": 15.136732,
+            "Z": 529.015
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048331,
+          "Position": {
+            "X": 214.03821,
+            "Y": 5.2600574,
+            "Z": 628.3817
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4845
+        }
+      ]
+    }
+  ]
+}

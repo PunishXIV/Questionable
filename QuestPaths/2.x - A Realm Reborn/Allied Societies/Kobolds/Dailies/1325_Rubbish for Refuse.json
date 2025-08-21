@@ -1,0 +1,121 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 7.095398,
+                                    "Y": 16.167778,
+                                    "Z": -188.67786
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2003769,
+                    "Position": {
+                        "X": -18.539795,
+                        "Y": 48.447266,
+                        "Z": -294.2398
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 2003770,
+                    "Position": {
+                        "X": -5.996826,
+                        "Y": 48.41687,
+                        "Z": -322.2553
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                },
+                {
+                    "DataId": 2003773,
+                    "Position": {
+                        "X": 79.17908,
+                        "Y": 57.51123,
+                        "Z": -305.745
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1007957,
+                    "Position": {
+                        "X": -101.76245,
+                        "Y": 64.49596,
+                        "Z": -225.08588
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

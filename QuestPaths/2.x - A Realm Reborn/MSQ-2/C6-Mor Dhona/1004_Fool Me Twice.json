@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006531,
+          "Position": {
+            "X": 53.81848,
+            "Y": 25.009521,
+            "Z": -697.0779
+          },
+          "StopDistance": 5,
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006709,
+          "Position": {
+            "X": -428.79382,
+            "Y": -6.623729,
+            "Z": -528.6183
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Emote",
+          "Emote": "imperialsalute"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -159.67096,
+            "Y": 2.7818115,
+            "Z": -634.4776
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "$": "Camp Revenant's Toll (bottom)"
+        },
+        {
+          "Position": {
+            "X": -169.94295,
+            "Y": 13.794385,
+            "Z": -610.4647
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "$": "Camp Revenant's Toll (top)"
+        },
+        {
+          "DataId": 2002329,
+          "Position": {
+            "X": -169.8482,
+            "Y": 14.114502,
+            "Z": -609.4606
+          },
+          "TerritoryId": 156,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          },
+          "ItemId": 2000771
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSC604_01004_EVENTAREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1006555,
+          "Position": {
+            "X": -2.7619019,
+            "Y": -158.5813,
+            "Z": -1.6327515
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

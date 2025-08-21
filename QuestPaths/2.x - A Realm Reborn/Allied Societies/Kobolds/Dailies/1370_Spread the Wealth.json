@@ -1,0 +1,182 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005930,
+          "Position": {
+            "X": 12.558105,
+            "Y": 16.159302,
+            "Z": -176.5622
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005932,
+          "Position": {
+            "X": -1.236023,
+            "Y": 33.38838,
+            "Z": -244.19019
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003911,
+          "Position": {
+            "X": 296.5896,
+            "Y": 21.499878,
+            "Z": -722.13324
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001278,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 296.5896,
+            "Y": 21.499878,
+            "Z": -722.13324
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "ComplexCombatData": [
+            {
+              "DataId": 755,
+              "NameId": 2711
+            }
+          ]
+        },
+        {
+          "DataId": 2003910,
+          "Position": {
+            "X": 293.41565,
+            "Y": 21.499878,
+            "Z": -721.91956
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001278,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": 293.41565,
+            "Y": 21.499878,
+            "Z": -721.91956
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "ComplexCombatData": [
+            {
+              "DataId": 755,
+              "NameId": 2711
+            }
+          ]
+        },
+        {
+          "DataId": 2003909,
+          "Position": {
+            "X": 290.0282,
+            "Y": 21.530457,
+            "Z": -721.3397
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001278,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 290.0282,
+            "Y": 21.530457,
+            "Z": -721.3397
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "ComplexCombatData": [
+            {
+              "DataId": 755,
+              "NameId": 2711
+            }
+          ]
+        },
+        {
+          "DataId": 2003912,
+          "Position": {
+            "X": 295.76562,
+            "Y": 21.469421,
+            "Z": -711.9402
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001279
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005930,
+          "Position": {
+            "X": 12.558105,
+            "Y": 16.159302,
+            "Z": -176.5622
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true,
+          "DelaySecondsAtStart": 3
+        }
+      ]
+    }
+  ]
+}

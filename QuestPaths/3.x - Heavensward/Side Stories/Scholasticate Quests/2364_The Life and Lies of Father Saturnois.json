@@ -1,0 +1,96 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017926,
+                    "Position": {
+                        "X": -33.157898,
+                        "Y": 15.965062,
+                        "Z": -67.826416
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "AcceptQuest",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_CHREND304_02364_Q1_100_000",
+                            "Answer": "TEXT_CHREND304_02364_A1_100_001"
+                        },
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_CHREND304_02364_Q1_000_000",
+                            "Answer": "TEXT_CHREND304_02364_A1_000_003"
+                        }
+                    ],
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [ 419 ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017927,
+                    "Position": {
+                        "X": 171.92334,
+                        "Y": -1.4414048,
+                        "Z": -92.729065
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] Saint Reymanaud's Cathedral",
+                        "[Ishgard] Athenaeum Astrologicum"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1015977,
+                    "Position": {
+                        "X": -177.35565,
+                        "Y": 15.06314,
+                        "Z": -174.36487
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] Athenaeum Astrologicum",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1017929,
+                    "Position": {
+                        "X": -172.22864,
+                        "Y": 15.063141,
+                        "Z": -170.55011
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

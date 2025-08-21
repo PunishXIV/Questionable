@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 622,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32176,
+          "Locations": [
+            {
+              "Position": {
+                "X": 411.0592,
+                "Y": 2.207043,
+                "Z": -174.1382
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 130
+            },
+            {
+              "Position": {
+                "X": 382.993,
+                "Y": 13.25345,
+                "Z": -207.7346
+              },
+              "MinimumAngle": 130,
+              "MaximumAngle": 295
+            },
+            {
+              "Position": {
+                "X": 361.387,
+                "Y": 14.51455,
+                "Z": -203.9765
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 195
+            }
+          ]
+        },
+        {
+          "DataId": 32175,
+          "Locations": [
+            {
+              "Position": {
+                "X": 364.0281,
+                "Y": 14.81319,
+                "Z": -208.0434
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 200
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32177,
+          "Locations": [
+            {
+              "Position": {
+                "X": 326.783,
+                "Y": 27.22089,
+                "Z": -328.1715
+              },
+              "MinimumAngle": -130,
+              "MaximumAngle": -5
+            }
+          ]
+        },
+        {
+          "DataId": 32178,
+          "Locations": [
+            {
+              "Position": {
+                "X": 352.0781,
+                "Y": 33.91527,
+                "Z": -369.394
+              },
+              "MinimumAngle": -55,
+              "MaximumAngle": 110
+            },
+            {
+              "Position": {
+                "X": 319.4689,
+                "Y": 30.05529,
+                "Z": -341.346
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 215
+            },
+            {
+              "Position": {
+                "X": 340.3498,
+                "Y": 34.56527,
+                "Z": -374.391
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32173,
+          "Locations": [
+            {
+              "Position": {
+                "X": 460.0648,
+                "Y": 32.44811,
+                "Z": -382.8145
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 135
+            }
+          ]
+        },
+        {
+          "DataId": 32174,
+          "Locations": [
+            {
+              "Position": {
+                "X": 488.255,
+                "Y": 26.08804,
+                "Z": -365.4641
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 195
+            },
+            {
+              "Position": {
+                "X": 460.4979,
+                "Y": 30.90669,
+                "Z": -376.0688
+              },
+              "MinimumAngle": 55,
+              "MaximumAngle": 180
+            },
+            {
+              "Position": {
+                "X": 438.8477,
+                "Y": 38.51477,
+                "Z": -413.352
+              },
+              "MinimumAngle": -70,
+              "MaximumAngle": 115
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

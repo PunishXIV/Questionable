@@ -1,0 +1,137 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042746,
+          "Position": {
+            "X": 576.62305,
+            "Y": 38.372063,
+            "Z": 215.01477
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042751,
+          "Position": {
+            "X": -344.22827,
+            "Y": 23.742596,
+            "Z": 421.68298
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042753,
+          "Position": {
+            "X": 76.645996,
+            "Y": 10.49723,
+            "Z": -75.51697
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042752,
+          "Position": {
+            "X": 75.21167,
+            "Y": 10.494146,
+            "Z": -75.05914
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012954,
+          "Position": {
+            "X": 79.9115,
+            "Y": 10.482849,
+            "Z": -220.35559
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012955,
+          "Position": {
+            "X": 62.394165,
+            "Y": 10.452393,
+            "Z": -316.64
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -31.511757,
+            "Y": 23.164677,
+            "Z": -415.98322
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14687,
+            14688
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042759,
+          "Position": {
+            "X": -28.427612,
+            "Y": 23.164675,
+            "Z": -414.0536
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4582
+        }
+      ]
+    }
+  ]
+}

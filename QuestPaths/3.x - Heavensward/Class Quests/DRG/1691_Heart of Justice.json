@@ -1,0 +1,81 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "AnimaMachinae",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1013445,
+                    "Position": {
+                        "X": 202.19727,
+                        "Y": 183.6595,
+                        "Z": -96.11658
+                    },
+                    "TerritoryId": 397,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1013448,
+                    "Position": {
+                        "X": 83.26843,
+                        "Y": 23.979126,
+                        "Z": 2.3345947
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] The Forgotten Knight"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 215.65454,
+                        "Y": 222.1,
+                        "Z": 345.1806
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "WalkTo",
+                    "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+                    "Land": true,
+                    "Fly": true,
+                    "$": "Alberic"
+                },
+                {
+                    "DataId": 1006748,
+                    "Position": {
+                        "X": 217.88354,
+                        "Y": 222,
+                        "Z": 345.3269
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "CompleteQuest",
+                    "NextQuestId": 1690
+                }
+            ]
+        }
+    ]
+}

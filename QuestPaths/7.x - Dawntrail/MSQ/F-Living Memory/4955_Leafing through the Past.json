@@ -1,0 +1,219 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047947,
+          "Position": {
+            "X": 700.6179,
+            "Y": 27.99997,
+            "Z": -305.98926
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013779,
+          "Position": {
+            "X": 755.1842,
+            "Y": 35.99597,
+            "Z": -388.50995
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047955,
+          "Position": {
+            "X": 712.76404,
+            "Y": 49.000027,
+            "Z": -570.24493
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013780,
+          "Position": {
+            "X": 707.24023,
+            "Y": 50.06482,
+            "Z": -548.14984
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF110_04955_SYSTEM_000_108",
+              "Yes": true
+            },
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF110_04955_SYSTEM_000_109",
+              "Yes": false
+            }
+          ]
+        },
+        {
+          "DataId": 2013782,
+          "Position": {
+            "X": 722.25525,
+            "Y": 50.18689,
+            "Z": -573.6019
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF110_04955_SYSTEM_000_108",
+              "Yes": true
+            },
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF110_04955_SYSTEM_000_109",
+              "Yes": false
+            }
+          ]
+        },
+        {
+          "DataId": 1047955,
+          "Position": {
+            "X": 712.76404,
+            "Y": 49.000027,
+            "Z": -570.24493
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF110_04955_SYSTEM_100_120",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013979,
+          "Position": {
+            "X": 509.69702,
+            "Y": 36.972534,
+            "Z": -648.82886
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818481
+        },
+        {
+          "DataId": 1047959,
+          "Position": {
+            "X": 485.55725,
+            "Y": 43.36743,
+            "Z": -692.83594
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047959,
+          "Position": {
+            "X": 485.55725,
+            "Y": 43.36743,
+            "Z": -692.83594
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMF110_04955_Q1_000_000",
+              "Answer": "TEXT_KINGMF110_04955_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1047633,
+          "Position": {
+            "X": 448.32532,
+            "Y": 84.9995,
+            "Z": -655.8175
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1047965,
+          "Position": {
+            "X": 485.2826,
+            "Y": 106.244576,
+            "Z": -331.92957
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF110_04955_SYSTEM_000_244",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047966,
+          "Position": {
+            "X": 488.609,
+            "Y": 106.244576,
+            "Z": -333.8827
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

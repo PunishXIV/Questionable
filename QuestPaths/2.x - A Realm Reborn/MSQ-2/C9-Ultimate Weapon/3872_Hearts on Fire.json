@@ -1,0 +1,126 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006638,
+          "Position": {
+            "X": 37.979614,
+            "Y": 4.051331,
+            "Z": 420.27917
+          },
+          "TerritoryId": 147,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 147,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Northern Thanalan - Ceruleum Processing Plant"
+        },
+        {
+          "DataId": 1006647,
+          "Position": {
+            "X": -28.244446,
+            "Y": 46.96473,
+            "Z": -17.654724
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006648,
+          "Position": {
+            "X": -76.12726,
+            "Y": 49.98848,
+            "Z": -59.494934
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Emote",
+          "Emote": "psych",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1006650,
+          "Position": {
+            "X": -85.19116,
+            "Y": 48,
+            "Z": -34.40918
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Emote",
+          "Emote": "psych",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1006649,
+          "Position": {
+            "X": -34.53119,
+            "Y": 46.999996,
+            "Z": 32.73047
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Emote",
+          "Emote": "psych",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006646,
+          "Position": {
+            "X": -29.953552,
+            "Y": 46.99734,
+            "Z": 32.547485
+          },
+          "StopDistance": 7,
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest",
+          "Emote": "psych"
+        }
+      ]
+    }
+  ]
+}

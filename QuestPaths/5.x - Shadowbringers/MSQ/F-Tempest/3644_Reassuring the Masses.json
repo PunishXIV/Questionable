@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027231,
+          "Position": {
+            "X": 65.35437,
+            "Y": 1.7160122,
+            "Z": 249.83594
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027224,
+          "Position": {
+            "X": -57.358704,
+            "Y": -7.4820004,
+            "Z": 118.08948
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027248,
+          "Position": {
+            "X": -30.807983,
+            "Y": -0.64999914,
+            "Z": -51.438232
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027226,
+          "Position": {
+            "X": -61.84485,
+            "Y": -17.72202,
+            "Z": -266.2547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}

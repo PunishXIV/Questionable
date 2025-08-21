@@ -1,0 +1,164 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036286,
+          "Position": {
+            "X": -15.610046,
+            "Y": 41,
+            "Z": 5.3864136
+          },
+          "TerritoryId": 919,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -11.236769,
+            "Y": 40.999996,
+            "Z": 15.472222
+          },
+          "TerritoryId": 919,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1036412,
+          "Position": {
+            "X": 53.391357,
+            "Y": 34.999996,
+            "Z": 80.094604
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -11.236769,
+            "Y": 40.999996,
+            "Z": 15.472222
+          },
+          "TerritoryId": 919,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1036286,
+          "Position": {
+            "X": -15.610046,
+            "Y": 41,
+            "Z": 5.3864136
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011480,
+          "Position": {
+            "X": -17.227417,
+            "Y": 40.97046,
+            "Z": 5.2948
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1036286,
+          "Position": {
+            "X": -15.610046,
+            "Y": 41,
+            "Z": 5.3864136
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1036285,
+          "Position": {
+            "X": -16.372986,
+            "Y": 40.999996,
+            "Z": 3.8909912
+          },
+          "StopDistance": 5,
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1036287,
+          "Position": {
+            "X": -19.089111,
+            "Y": 41,
+            "Z": 3.768982
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+
+          "Position": {
+            "X": -507.93283,
+            "Y": 7.6638765,
+            "Z": 52.09985
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1032586,
+          "Position": {
+            "X": -505.42462,
+            "Y": 7.68313,
+            "Z": 51.621216
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

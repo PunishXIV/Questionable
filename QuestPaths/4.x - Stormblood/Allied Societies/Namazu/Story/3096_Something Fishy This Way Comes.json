@@ -1,0 +1,163 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1025693,
+                    "Position": {
+                        "X": -200.18317,
+                        "Y": 1.7223222,
+                        "Z": 801.75464
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "AcceptQuest",
+                    "Fly": true,
+                    "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1025694,
+                    "Position": {
+                        "X": -290.11975,
+                        "Y": 17.31996,
+                        "Z": 511.98596
+                    },
+                    "TerritoryId": 614,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "AetheryteShortcut": "Yanxia - Namai",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1025695,
+                    "Position": {
+                        "X": -284.16876,
+                        "Y": 17.31996,
+                        "Z": 513.6643
+                    },
+                    "TerritoryId": 614,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 494.13614,
+                        "Y": 40.921455,
+                        "Z": -482.27777
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "WalkTo",
+                    "Fly": true,
+                    "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                },
+                {
+                    "DataId": 1019382,
+                    "Position": {
+                        "X": 496.5437,
+                        "Y": 40.859642,
+                        "Z": -510.58215
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1025697,
+                    "Position": {
+                        "X": -627.83246,
+                        "Y": 40.01948,
+                        "Z": 100.20593
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -627.83246,
+                                    "Y": 40.01948,
+                                    "Z": 100.20593
+                                },
+                                "TerritoryId": 622,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    },
+                    "DialogueChoices": [
+                        {
+                            "Type": "YesNo",
+                            "Prompt": "TEXT_BANNAM000_03096_Q4_000_000",
+                            "Yes": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1025698,
+                    "Position": {
+                        "X": -766.7201,
+                        "Y": 127.43861,
+                        "Z": 91.23364
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true,
+                    "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -766.7201,
+                                    "Y": 127.43861,
+                                    "Z": 91.23364
+                                },
+                                "TerritoryId": 622,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

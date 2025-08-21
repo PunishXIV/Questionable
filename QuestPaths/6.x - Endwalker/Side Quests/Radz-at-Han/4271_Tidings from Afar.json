@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041155,
+          "Position": {
+            "X": -57.51129,
+            "Y": -2.000002,
+            "Z": 129.77795
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041154,
+          "Position": {
+            "X": 112.01648,
+            "Y": 26.99999,
+            "Z": 53.81848
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Alzadaal's Peace",
+            "[Radz-at-Han] Kama"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1037354,
+          "Position": {
+            "X": 109.33081,
+            "Y": 1.8631814,
+            "Z": -100.1145
+          },
+          "StopDistance": 7,
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Kama",
+            "[Radz-at-Han] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041155,
+          "Position": {
+            "X": -57.51129,
+            "Y": -2.000002,
+            "Z": 129.77795
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Alzadaal's Peace"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033823,
+          "Position": {
+            "X": 40.329468,
+            "Y": -2.0168546E-08,
+            "Z": 1.9378662
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -496.10434,
+            "Y": 8.986935,
+            "Z": 603.11676
+          },
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true
+        },
+        {
+          "DataId": 1033827,
+          "Position": {
+            "X": -495.079,
+            "Y": 8.986954,
+            "Z": 604.27246
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMI105_03775_Q2_000_052",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011085,
+          "Position": {
+            "X": 1.822433,
+            "Y": -200.0001,
+            "Z": -448.3325
+          },
+          "TerritoryId": 918,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "(phase 2) AI doesn't target Ardbert to start combat",
+              "(phase 2) VBM module: Elidibus' line cleave only covers half the length of the actual line (survivable)"
+            ]
+          },
+          "Comment": "Fight NPCs, then Elidibus",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "ContentTalk",
+              "Prompt": 209,
+              "Answer": 211
+            },
+            {
+              "Type": "List",
+              "ExcelSheet": "ContentTalk",
+              "Prompt": 209,
+              "Answer": 216
+            },
+            {
+              "Type": "List",
+              "ExcelSheet": "ContentTalk",
+              "Prompt": 241,
+              "Answer": 222
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033828,
+          "Position": {
+            "X": -396.2005,
+            "Y": -229.06482,
+            "Z": 782.9861
+          },
+          "StopDistance": 5,
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

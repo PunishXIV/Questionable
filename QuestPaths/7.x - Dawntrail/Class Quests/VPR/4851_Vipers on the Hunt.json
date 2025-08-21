@@ -1,0 +1,269 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046371,
+          "Position": {
+            "X": 205.06592,
+            "Y": 8.660461,
+            "Z": -71.70221
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046372,
+          "Position": {
+            "X": -90.04352,
+            "Y": -46.544575,
+            "Z": 212.02405
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046374,
+          "Position": {
+            "X": -43.90027,
+            "Y": -40.94998,
+            "Z": 190.875
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046375,
+          "Position": {
+            "X": -13.748474,
+            "Y": -38.971447,
+            "Z": 190.11206
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1046376,
+          "Position": {
+            "X": -25.345276,
+            "Y": -34.650696,
+            "Z": 172.96094
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046377,
+          "Position": {
+            "X": -54.76471,
+            "Y": -40.876083,
+            "Z": 239.36829
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBB121_04851_Q1_000_100",
+              "Answer": "TEXT_KINGBB121_04851_A2_000_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046379,
+          "Position": {
+            "X": -62.60785,
+            "Y": -45.560196,
+            "Z": 269.4895
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBB121_04851_Q2_000_200",
+              "Answer": "TEXT_KINGBB121_04851_A2_000_200"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046372,
+          "Position": {
+            "X": -90.04352,
+            "Y": -46.544575,
+            "Z": 212.02405
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2013574,
+          "Position": {
+            "X": -297.47473,
+            "Y": 58.91504,
+            "Z": -274.61664
+          },
+          "StopDistance": 1,
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 2013575,
+          "Position": {
+            "X": -325.42914,
+            "Y": 61.661743,
+            "Z": -266.1021
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2013573,
+          "Position": {
+            "X": -292.80542,
+            "Y": 61.875244,
+            "Z": -326.833
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "Mount": false,
+          "Sprint": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1046381,
+          "Position": {
+            "X": -278.21777,
+            "Y": 59.704876,
+            "Z": -333.547
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046347,
+          "Position": {
+            "X": 205.79846,
+            "Y": 8.794112,
+            "Z": -72.15991
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "NextQuestId": 4852
+        }
+      ]
+    }
+  ]
+}

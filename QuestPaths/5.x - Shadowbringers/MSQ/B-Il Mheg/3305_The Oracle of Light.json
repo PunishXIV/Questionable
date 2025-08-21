@@ -1,0 +1,419 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028947,
+          "Position": {
+            "X": -648.9509,
+            "Y": 64.32663,
+            "Z": -271.65643
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -635.37024,
+            "Y": 56.201702,
+            "Z": -142.69623
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2009814,
+          "Position": {
+            "X": -636.16394,
+            "Y": 57.358643,
+            "Z": -137.62122
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028951,
+          "Position": {
+            "X": -639.0631,
+            "Y": 56.95372,
+            "Z": -167.71198
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -679.40436,
+            "Y": 52.60457,
+            "Z": -153.66644
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1028952,
+          "Position": {
+            "X": -750.20984,
+            "Y": 66.442,
+            "Z": -194.32367
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1028953,
+          "Position": {
+            "X": -776.51636,
+            "Y": 51.56758,
+            "Z": -243.57977
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1028954,
+          "Position": {
+            "X": -715.78546,
+            "Y": 51.50113,
+            "Z": -265.49176
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028947,
+          "Position": {
+            "X": -648.9509,
+            "Y": 64.32663,
+            "Z": -271.65643
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031212,
+          "Position": {
+            "X": -673.0907,
+            "Y": 51.157936,
+            "Z": -219.50104
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3385
+        },
+        {
+          "DataId": 1027382,
+          "Position": {
+            "X": -765.92664,
+            "Y": 61.720478,
+            "Z": -304.1886
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3384
+        },
+        {
+          "DataId": 1027419,
+          "Position": {
+            "X": -700.7401,
+            "Y": 61.993748,
+            "Z": -353.62787
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3386
+        },
+        {
+          "Position": {
+            "X": -724.9727,
+            "Y": 54.379677,
+            "Z": -289.8897
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Comment": "Tower Bottom",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative"
+        },
+        {
+          "Position": {
+            "X": -757.78326,
+            "Y": 97.68395,
+            "Z": -372.66458
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true,
+          "Comment": "Tower Bottom Platform 1"
+        },
+        {
+          "Position": {
+            "X": -780.0622,
+            "Y": 149.62582,
+            "Z": -337.95224
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Comment": "Wooden Skywalk Bottom"
+        },
+        {
+          "Position": {
+            "X": -765.9982,
+            "Y": 155.44612,
+            "Z": -338.81696
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true,
+          "Comment": "Wooden Skywalk Platform 1"
+        },
+        {
+          "Position": {
+            "X": -754.08276,
+            "Y": 168.09683,
+            "Z": -308.96964
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true,
+          "Comment": "Wooden Skywalk Platform 2"
+        },
+        {
+          "Position": {
+            "X": -785.5669,
+            "Y": 180.77463,
+            "Z": -297.20663
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true,
+          "Comment": "Wooden Skywalk Platform 3"
+        },
+        {
+          "Position": {
+            "X": -797.36646,
+            "Y": 193.39963,
+            "Z": -328.5602
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true,
+          "Comment": "Wooden Skywalk Platform 4"
+        },
+        {
+          "Position": {
+            "X": -778.27325,
+            "Y": 200.46912,
+            "Z": -335.60287
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true,
+          "Comment": "Wooden Skywalk Top"
+        },
+        {
+          "Position": {
+            "X": -773.5372,
+            "Y": 200.21283,
+            "Z": -331.92017
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -764.10376,
+            "Y": 200.22963,
+            "Z": -332.95276
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -757.3483,
+            "Y": 200.13994,
+            "Z": -312.77927
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -756.9433,
+            "Y": 200.1388,
+            "Z": -295.38437
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          },
+          "Fly": true
+        },
+        {
+          "DataId": 1028955,
+          "Position": {
+            "X": -755.67255,
+            "Y": 200.19878,
+            "Z": -293.87354
+          },
+          "TerritoryId": 813,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028956,
+          "Position": {
+            "X": -635.76715,
+            "Y": 126.0163,
+            "Z": 697.444
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

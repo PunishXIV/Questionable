@@ -1,0 +1,100 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018048,
+          "Position": {
+            "X": 41.82495,
+            "Y": -19.000027,
+            "Z": 93.30884
+          },
+          "StopDistance": 5,
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 205,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ]
+        },
+        {
+          "DataId": 1003027,
+          "Position": {
+            "X": 4.8981323,
+            "Y": -1.92944,
+            "Z": -0.19836426
+          },
+          "TerritoryId": 205,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1018430,
+          "Position": {
+            "X": 2.8533936,
+            "Y": -1.9294398,
+            "Z": 4.6845093
+          },
+          "StopDistance": 5,
+          "TerritoryId": 205,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1018329,
+          "Position": {
+            "X": 16.861145,
+            "Y": 5.895894,
+            "Z": 393.75903
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1018331,
+          "Position": {
+            "X": -2.6398926,
+            "Y": 0,
+            "Z": -7.400635
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

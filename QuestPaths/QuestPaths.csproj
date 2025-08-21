@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <LangVersion>12</LangVersion>
+        <Nullable>enable</Nullable>
+        <RootNamespace>Questionable.QuestPaths</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <DebugType>none</DebugType>
+        <PathMap Condition="$(SolutionDir) != ''">$(SolutionDir)=X:\</PathMap>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <Platforms>x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
+        <ProjectReference Include="..\QuestPathGenerator\QuestPathGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="quest-v1.json" />
+        <EmbeddedResource Include="quest-v1.json">
+            <LogicalName>Questionable.QuestPaths.QuestSchema</LogicalName>
+        </EmbeddedResource>
+        <AdditionalFiles Include="4.x - Stormblood\Class Quests\BTN\2623_The White Death.json" />
+        <AdditionalFiles Include="quest-v1.json" />
+        <AdditionalFiles Include="..\Questionable.Model\common-aethernetshard.json" />
+        <AdditionalFiles Include="..\Questionable.Model\common-aetheryte.json" />
+        <AdditionalFiles Include="..\Questionable.Model\common-classjob.json" />
+        <AdditionalFiles Include="..\Questionable.Model\common-completionflags.json" />
+        <AdditionalFiles Include="..\Questionable.Model\common-vector3.json" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Release'">
+        <None Remove="2.x - A Realm Reborn" />
+        <None Remove="3.x - Heavensward" />
+        <None Remove="4.x - Stormblood" />
+        <None Remove="5.x - Shadowbringers" />
+        <None Remove="6.x - Endwalker" />
+        <None Remove="7.x - Dawntrail" />
+        <AdditionalFiles Include="2.x - A Realm Reborn\**\*.json" />
+        <AdditionalFiles Include="3.x - Heavensward\**\*.json" />
+        <AdditionalFiles Include="4.x - Stormblood\**\*.json" />
+        <AdditionalFiles Include="5.x - Shadowbringers\**\*.json" />
+        <AdditionalFiles Include="6.x - Endwalker\**\*.json" />
+        <AdditionalFiles Include="7.x - Dawntrail\**\*.json" />
+    </ItemGroup>
+</Project>

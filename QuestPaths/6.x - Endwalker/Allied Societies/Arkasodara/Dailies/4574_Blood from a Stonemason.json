@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -78.12948,
+            "Y": 89.78411,
+            "Z": -666.6682
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] The Gate of First Sight (Thavnair)"
+          ],
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1042462,
+          "Position": {
+            "X": -73.86902,
+            "Y": 89.90596,
+            "Z": -666.0411
+          },
+          "StopDistance": 7,
+          "TerritoryId": 957,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1042461,
+          "Position": {
+            "X": -85.160645,
+            "Y": 100.062004,
+            "Z": -715.3277
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1042460,
+          "Position": {
+            "X": -143.66376,
+            "Y": 95.4186,
+            "Z": -702.4491
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

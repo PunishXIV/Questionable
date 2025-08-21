@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014300,
+          "Position": {
+            "X": -696.34546,
+            "Y": 79,
+            "Z": 269.00122
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014310,
+          "Position": {
+            "X": -713.80176,
+            "Y": 343,
+            "Z": 238.94104
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4493
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014311,
+          "Position": {
+            "X": -711.17725,
+            "Y": 342.0005,
+            "Z": 236.3164
+          },
+          "StopDistance": 5,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012082,
+          "Position": {
+            "X": 381.70435,
+            "Y": -69.41491,
+            "Z": 691.5541
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "Fly": true,
+          "NextQuestId": 1872
+        }
+      ]
+    }
+  ]
+}

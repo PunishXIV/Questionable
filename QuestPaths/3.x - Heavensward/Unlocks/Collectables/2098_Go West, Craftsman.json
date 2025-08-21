@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013395,
+          "Position": {
+            "X": 45.609253,
+            "Y": 31.195326,
+            "Z": -732.9061
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -14.635355,
+            "Y": 206.49942,
+            "Z": 44.826305
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1012299,
+          "Position": {
+            "X": -16.586609,
+            "Y": 206.49942,
+            "Z": 42.98462
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

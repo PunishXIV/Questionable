@@ -1,0 +1,103 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "UcanPatates",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.840637,
+            "Y": 206.49944,
+            "Z": 28.67163
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                478
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 148.23425,
+            "Y": 207,
+            "Z": 119.497574
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                399
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                399
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1018367,
+          "Position": {
+            "X": 302.11328,
+            "Y": 232.54102,
+            "Z": 767.14734
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 399,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 196,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.840637,
+            "Y": 206.49944,
+            "Z": 28.67163
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

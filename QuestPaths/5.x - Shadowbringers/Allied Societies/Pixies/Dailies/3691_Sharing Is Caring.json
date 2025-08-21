@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032140,
+          "Position": {
+            "X": -459.89166,
+            "Y": 42.65948,
+            "Z": -305.71454
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANPIX103_03691_SAYTODO_000_030"
+          },
+          "$": "QW: 0 0 0 1 0 0",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              1
+            ],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1032141,
+          "Position": {
+            "X": -473.47223,
+            "Y": 45.390854,
+            "Z": -311.6656
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANPIX103_03691_SAYTODO_000_030"
+          },
+          "$": "QW: 0 0 0 3 0 0",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              3
+            ],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1032142,
+          "Position": {
+            "X": -472.7398,
+            "Y": 50.10258,
+            "Z": -328.26733
+          },
+          "$": "QW: 0 0 0 2 0 0",
+          "TerritoryId": 816,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANPIX103_03691_SAYTODO_000_030"
+          },
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              2
+            ],
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

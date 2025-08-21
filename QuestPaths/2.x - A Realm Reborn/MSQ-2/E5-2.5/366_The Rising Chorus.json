@@ -1,0 +1,191 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010891,
+          "Position": {
+            "X": -3.6774292,
+            "Y": 0.01804012,
+            "Z": -7.034485
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1008969,
+          "Position": {
+            "X": 0.99176025,
+            "Y": -1.9957249,
+            "Z": -45.700806
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002880,
+          "Position": {
+            "X": 0,
+            "Y": -1,
+            "Z": -29.25
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 2002879,
+          "Position": {
+            "X": 0,
+            "Y": 3,
+            "Z": 27.5
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "Position": {
+            "X": 30.917934,
+            "Y": 20.495003,
+            "Z": -656.1909
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "$": "Rising Stones Door"
+        },
+        {
+          "Position": {
+            "X": 337.01373,
+            "Y": -27.808102,
+            "Z": -369.0958
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1010881,
+          "Position": {
+            "X": 336.3545,
+            "Y": -27.808832,
+            "Z": -369.7414
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 32,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010881,
+          "Position": {
+            "X": 336.3545,
+            "Y": -27.808832,
+            "Z": -369.7414
+          },
+          "StopDistance": 7,
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010857,
+          "Position": {
+            "X": 2.5481567,
+            "Y": -1.9957249,
+            "Z": -42.008118
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010858,
+          "Position": {
+            "X": -1.9074707,
+            "Y": 0,
+            "Z": -3.1281738
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

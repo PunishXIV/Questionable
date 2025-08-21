@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001605,
+          "Position": {
+            "X": 94.46863,
+            "Y": 0.34075314,
+            "Z": -272.60242
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 353,
+          "Position": {
+            "X": 112.41321,
+            "Y": 28.93967,
+            "Z": -37.277832
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            352,
+            353
+          ]
+        },
+        {
+          "Position": {
+            "X": 125.61467,
+            "Y": 29.092033,
+            "Z": -14.67918
+          },
+          "StopDistance": 1,
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            355
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 131.78122,
+            "Y": 20.119337,
+            "Z": -115.27284
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 127.7017,
+            "Y": -0.15994573,
+            "Z": -161.89238
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1001605,
+          "Position": {
+            "X": 94.46863,
+            "Y": 0.34075314,
+            "Z": -272.60242
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

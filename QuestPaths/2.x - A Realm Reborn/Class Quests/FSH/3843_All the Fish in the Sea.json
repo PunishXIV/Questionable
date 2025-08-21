@@ -1,0 +1,40 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000858,
+          "Position": {
+            "X": -168.47485,
+            "Y": 4.5500045,
+            "Z": 163.65295
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005424,
+          "Position": {
+            "X": -412.80237,
+            "Y": 4,
+            "Z": 75.05908
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

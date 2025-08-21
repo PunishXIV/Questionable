@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049805,
+          "Position": {
+            "X": -152.14777,
+            "Y": 14.005,
+            "Z": 45.303955
+          },
+          "StopDistance": 5,
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 15.193803,
+            "Y": 2.4684885,
+            "Z": -133.5494
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        },
+        {
+          "DataId": 1049807,
+          "Position": {
+            "X": 14.419739,
+            "Y": 2.2207584,
+            "Z": -132.25
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1049807,
+          "Position": {
+            "X": 14.419739,
+            "Y": 2.2207584,
+            "Z": -132.25
+          },
+          "TerritoryId": 148,
+          "InteractionType": "SinglePlayerDuty",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBB241_04859_Q2_000_000",
+              "Answer": "TEXT_KINGBB241_04859_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049808,
+          "Position": {
+            "X": 17.013733,
+            "Y": 2.0418286,
+            "Z": -129.83911
+          },
+          "StopDistance": 7,
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032786,
+          "Position": {
+            "X": 113.7865,
+            "Y": -20.000002,
+            "Z": -0.3204956
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033786,
+          "Position": {
+            "X": 65.415405,
+            "Y": -18.499813,
+            "Z": 11.795227
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1033787,
+          "Position": {
+            "X": 40.05493,
+            "Y": -19.999998,
+            "Z": 89.066895
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1033788,
+          "Position": {
+            "X": -27.908752,
+            "Y": -16,
+            "Z": 138.56714
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032786,
+          "Position": {
+            "X": 113.7865,
+            "Y": -20.000002,
+            "Z": -0.3204956
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The Mattock"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1033784,
+          "Position": {
+            "X": 154.00928,
+            "Y": -50,
+            "Z": 67.73474
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mattock",
+            "[Firmament] The New Nest"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033543,
+          "Position": {
+            "X": 113.38977,
+            "Y": -20,
+            "Z": -0.96136475
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Firmament] The New Nest",
+            "[Firmament] The Mattock"
+          ],
+          "NextQuestId": 3955
+        }
+      ]
+    }
+  ]
+}

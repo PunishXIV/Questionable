@@ -1,0 +1,145 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021473,
+          "Position": {
+            "X": 311.39075,
+            "Y": -25.002254,
+            "Z": 230.82312
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021475,
+          "Position": {
+            "X": -196.94824,
+            "Y": 15.542886,
+            "Z": 37.582886
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBRDM580_02581_Q1_000_100",
+              "Answer": "TEXT_JOBRDM580_02581_A1_000_101"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021478,
+          "Position": {
+            "X": -17.257996,
+            "Y": 40.000496,
+            "Z": -6.4240723
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021480,
+          "Position": {
+            "X": -304.28015,
+            "Y": 78.854965,
+            "Z": -140.82556
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008233,
+          "Position": {
+            "X": -292.6833,
+            "Y": 84.4281,
+            "Z": -359.39575
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7221,
+            7222
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021480,
+          "Position": {
+            "X": -304.28015,
+            "Y": 78.854965,
+            "Z": -140.82556
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021482,
+          "Position": {
+            "X": -94.92645,
+            "Y": 48.01958,
+            "Z": -31.570984
+          },
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true,
+          "NextQuestId": 2582
+        }
+      ]
+    }
+  ]
+}

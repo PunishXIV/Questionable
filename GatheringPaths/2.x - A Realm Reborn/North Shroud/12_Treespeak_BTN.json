@@ -1,0 +1,162 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 154,
+      "InteractionType": "None",
+      "AetheryteShortcut": "North Shroud - Fallgourd Float",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 30016,
+          "Locations": [
+            {
+              "Position": {
+                "X": 395.0683,
+                "Y": -4.213107,
+                "Z": 235.0844
+              },
+              "MinimumAngle": -200,
+              "MaximumAngle": 15
+            },
+            {
+              "Position": {
+                "X": 404.3488,
+                "Y": -2.116929,
+                "Z": 216.968
+              },
+              "MinimumAngle": -125,
+              "MaximumAngle": 10
+            },
+            {
+              "Position": {
+                "X": 388.5088,
+                "Y": -1.260179,
+                "Z": 222.3745
+              },
+              "MinimumAngle": -145,
+              "MaximumAngle": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30018,
+          "Locations": [
+            {
+              "Position": {
+                "X": 361.0402,
+                "Y": -6.135924,
+                "Z": 266.7503
+              },
+              "MinimumAngle": -155,
+              "MaximumAngle": 10
+            },
+            {
+              "Position": {
+                "X": 368.0511,
+                "Y": -6.085522,
+                "Z": 262.3561
+              },
+              "MinimumAngle": -135,
+              "MaximumAngle": 10
+            },
+            {
+              "Position": {
+                "X": 352.1197,
+                "Y": -2.546567,
+                "Z": 262.7847
+              },
+              "MinimumAngle": 250,
+              "MaximumAngle": 355
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30081,
+          "Locations": [
+            {
+              "Position": {
+                "X": 404.6927,
+                "Y": -3.737513,
+                "Z": 283.6237
+              },
+              "MinimumAngle": 55,
+              "MaximumAngle": 255
+            },
+            {
+              "Position": {
+                "X": 406.1155,
+                "Y": -4.338434,
+                "Z": 271.2292
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 190
+            },
+            {
+              "Position": {
+                "X": 394.464,
+                "Y": -3.775356,
+                "Z": 286.3456
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30017,
+          "Locations": [
+            {
+              "Position": {
+                "X": 443.0036,
+                "Y": -1.818904,
+                "Z": 251.6805
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 145
+            },
+            {
+              "Position": {
+                "X": 459.7153,
+                "Y": -1.026285,
+                "Z": 263.6502
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 235
+            },
+            {
+              "Position": {
+                "X": 468.4217,
+                "Y": -1.290563,
+                "Z": 262.4874
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 220
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

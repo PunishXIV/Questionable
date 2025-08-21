@@ -1,0 +1,80 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006788,
+          "Position": {
+            "X": -105.79089,
+            "Y": 27.83778,
+            "Z": -374.3191
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -152.77162,
+            "Y": 27.317062,
+            "Z": -400.4738
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "NextQuestId": 1094
+        }
+      ]
+    }
+  ]
+}

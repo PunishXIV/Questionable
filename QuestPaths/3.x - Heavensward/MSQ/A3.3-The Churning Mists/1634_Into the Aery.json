@@ -1,0 +1,72 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012589,
+          "Position": {
+            "X": 107.46924,
+            "Y": 24.37563,
+            "Z": -8.407776
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013168,
+          "Position": {
+            "X": -187.18243,
+            "Y": 15.9939995,
+            "Z": -47.68445
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 418,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 39,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012746,
+          "Position": {
+            "X": 550.4386,
+            "Y": -1.1916885,
+            "Z": -354.94012
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020501,
+          "Position": {
+            "X": 484.48914,
+            "Y": 40.21725,
+            "Z": -469.5354
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020548,
+          "Position": {
+            "X": 416.495,
+            "Y": 42.579082,
+            "Z": -450.12592
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008457,
+          "Position": {
+            "X": 313.52698,
+            "Y": 50.766724,
+            "Z": -456.77887
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002199,
+          "KillEnemyDataIds": [
+            7546
+          ],
+          "$": "0 0 0 3 0 0 -> 18 0 0 2 0 8",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 2008456,
+          "Position": {
+            "X": 224.47546,
+            "Y": 101.27405,
+            "Z": -542.4735
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002199,
+          "KillEnemyDataIds": [
+            7546,
+            7562
+          ],
+          "$": "18 0 0 2 0 8 -> 34 0 32 17 0 24",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2008131,
+          "Position": {
+            "X": 100.694214,
+            "Y": 116.472046,
+            "Z": -597.7417
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002199,
+          "KillEnemyDataIds": [
+            7562
+          ],
+          "$": "If skipping the step before: 34 2 0 33 0 40",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008017,
+          "Position": {
+            "X": 231.98291,
+            "Y": 93.36987,
+            "Z": -515.8008
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818210
+        },
+        {
+          "Position": {
+            "X": 235.19914,
+            "Y": 62.795677,
+            "Z": -495.62
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1020547,
+          "Position": {
+            "X": 418.265,
+            "Y": 42.699287,
+            "Z": -448.53894
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020501,
+          "Position": {
+            "X": 484.48914,
+            "Y": 40.21725,
+            "Z": -469.5354
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

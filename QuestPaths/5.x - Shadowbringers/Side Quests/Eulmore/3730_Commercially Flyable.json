@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031802,
+          "Position": {
+            "X": 48.264282,
+            "Y": 82.001656,
+            "Z": -56.6568
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eulmore",
+          "Sprint": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 48.264282,
+                  "Y": 82.001656,
+                  "Z": -56.6568
+                },
+                "TerritoryId": 820,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031801,
+          "Position": {
+            "X": 52.8114,
+            "Y": 83.001076,
+            "Z": -65.38495
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBCTS641_03730_Q1_000_000",
+              "Answer": "TEXT_SUBCTS641_03730_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029978,
+          "Position": {
+            "X": -7.522766,
+            "Y": 23,
+            "Z": 14.755432
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "Sprint": true,
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] The Mainstay"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031801,
+          "Position": {
+            "X": 52.8114,
+            "Y": 83.001076,
+            "Z": -65.38495
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest",
+          "Sprint": true,
+          "AethernetShortcut": [
+            "[Eulmore] The Mainstay",
+            "[Eulmore] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

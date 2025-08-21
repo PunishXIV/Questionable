@@ -1,0 +1,356 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "TargetTerritoryId": 129,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "ExtraCondition": "RoguesGuild"
+            }
+          }
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1010198,
+          "Position": {
+            "X": -152.11719,
+            "Y": -129.4397,
+            "Z": 267.10913
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004936,
+          "Position": {
+            "X": -151.8734,
+            "Y": -128.1446,
+            "Z": 256.8712
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1010212,
+          "Position": {
+            "X": -50.8584,
+            "Y": 40,
+            "Z": 111.40613
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010211,
+          "Position": {
+            "X": -42.22174,
+            "Y": 42.249126,
+            "Z": 115.89221
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -62.300663,
+            "Y": 42.300003,
+            "Z": -151.94725
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 128,
+          "InteractionType": "Action",
+          "Action": "Hide",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -54.962505,
+            "Y": 42.300007,
+            "Z": -158.14607
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 128,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "StatusOff",
+          "Status": "Hidden"
+        },
+        {
+          "Position": {
+            "X": -155.25468,
+            "Y": 18,
+            "Z": 28.882175
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 129,
+          "InteractionType": "Action",
+          "Action": "Hide",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -150.91245,
+            "Y": 18.2,
+            "Z": 34.06711
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "StatusOff",
+          "Status": "Hidden"
+        },
+        {
+          "Position": {
+            "X": -187.95581,
+            "Y": 1.2697256,
+            "Z": 208.46738
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 129,
+          "InteractionType": "Action",
+          "Action": "Hide",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -190.81572,
+            "Y": 0.9999907,
+            "Z": 210.59836
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 129,
+          "InteractionType": "StatusOff",
+          "Status": "Hidden"
+        },
+        {
+          "DataId": 1010213,
+          "Position": {
+            "X": -161.12,
+            "Y": 1.9499999,
+            "Z": 239.30713
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1010213,
+          "Position": {
+            "X": -161.12,
+            "Y": 1.9499999,
+            "Z": 239.30713
+          },
+          "TerritoryId": 129,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "(phase 1) AI doesn't move or pick up the stolen firearms",
+              "(phase 1 + 2) AI automatically removes Hidden status",
+              "(phase 2) AI only moves while targeted enemies are in range + gets stuck on corners while trying to get to irrelevant enemies",
+              "(phase 2) AI doesn't even attempt to navigate to the end of the quest"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1010213,
+          "Position": {
+            "X": -161.12,
+            "Y": 1.9499999,
+            "Z": 239.30713
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 144
+        }
+      ]
+    }
+  ]
+}

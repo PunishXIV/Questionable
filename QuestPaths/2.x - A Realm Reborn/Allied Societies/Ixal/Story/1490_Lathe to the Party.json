@@ -1,0 +1,123 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "Fly": true,
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 149.43152,
+                                    "Y": -18.140299,
+                                    "Z": 99.22937
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1009204,
+                    "Position": {
+                        "X": 151.93408,
+                        "Y": -18.41936,
+                        "Z": 100.72473
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1009610,
+                    "Position": {
+                        "X": 25.986084,
+                        "Y": -8.047037,
+                        "Z": 135.42383
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1002804,
+                    "Position": {
+                        "X": -26.260803,
+                        "Y": -40.705082,
+                        "Z": 172.74731
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 2004543,
+                    "Position": {
+                        "X": -35.996094,
+                        "Y": -40.57379,
+                        "Z": 160.63171
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -31.151138,
+                        "Y": -40.708473,
+                        "Z": 195.69182
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "WalkTo"
+                },
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

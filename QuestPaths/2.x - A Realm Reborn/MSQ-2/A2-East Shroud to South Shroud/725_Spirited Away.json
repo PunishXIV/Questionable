@@ -1,0 +1,84 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000734,
+          "Position": {
+            "X": -2.5482788,
+            "Y": -1.2191527,
+            "Z": 39.96338
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 164.6276,
+            "Y": -23.814985,
+            "Z": 551.0861
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 153
+        },
+        {
+          "DataId": 1000590,
+          "Position": {
+            "X": -165.9419,
+            "Y": 9.869227,
+            "Z": -81.34589
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

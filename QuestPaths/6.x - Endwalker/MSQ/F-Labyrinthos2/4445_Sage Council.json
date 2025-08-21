@@ -1,0 +1,297 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040401,
+          "Position": {
+            "X": 374.83777,
+            "Y": 79.691376,
+            "Z": 298.08484
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041667,
+          "Position": {
+            "X": 443.96118,
+            "Y": 65.162,
+            "Z": -105.4552
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4480
+        },
+        {
+          "Position": {
+            "X": 5.4520116,
+            "Y": -28.723352,
+            "Z": -42.992764
+          },
+          "StopDistance": 0.75,
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Mount": true
+        },
+        {
+          "DataId": 1039687,
+          "Position": {
+            "X": -18.875488,
+            "Y": -31.53043,
+            "Z": -76.98181
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040409,
+          "Position": {
+            "X": -99.076904,
+            "Y": -28.516306,
+            "Z": -60.013794
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040422,
+          "Position": {
+            "X": -37.125244,
+            "Y": -29.530075,
+            "Z": -169.14624
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Distracted Researcher",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            2,
+            null
+          ],
+          "$.0": "[1]",
+          "$.1": "QuestVariables if done first: 1 0 0 0 2 0"
+        },
+        {
+          "DataId": 1040416,
+          "Position": {
+            "X": 3.0670166,
+            "Y": -29.530357,
+            "Z": -126.17688
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Hyperventilating Engineer",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            128,
+            null
+          ],
+          "$.0": "[2]",
+          "$.1": "QuestVariables if done after [1]: 2 0 0 0 130 0"
+        },
+        {
+          "DataId": 1040420,
+          "Position": {
+            "X": 40.634766,
+            "Y": -17.53038,
+            "Z": -69.62695
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Harried Aetherologist",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            8,
+            null
+          ],
+          "$.0": "[3]",
+          "$.1": "QuestVariables if done after [2]: 3 0 0 0 138 0"
+        },
+        {
+          "DataId": 1040421,
+          "Position": {
+            "X": 48.142212,
+            "Y": -31.53043,
+            "Z": -48.111755
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Grimacing Naturalist",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            4,
+            null
+          ],
+          "Mount": true,
+          "$.0": "[4]",
+          "$.1": "QuestVariables if done after [3]: 4 0 0 0 142 0"
+        },
+        {
+          "DataId": 1040417,
+          "Position": {
+            "X": 59.311768,
+            "Y": -29.530416,
+            "Z": -24.429688
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Ponderous Mathematician",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            64,
+            null
+          ],
+          "$.0": "[5]",
+          "$.1": "QuestVariables if done after [4]: 5 0 0 0 206 0"
+        },
+        {
+          "DataId": 1040418,
+          "Position": {
+            "X": -19.394226,
+            "Y": -29.530432,
+            "Z": 10.299805
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Despondent Engineer",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            32,
+            null
+          ],
+          "Mount": true,
+          "$.0": "[6]",
+          "$.1": "QuestVariables if done after [5]: 6 0 0 0 238 0"
+        },
+        {
+          "DataId": 1040423,
+          "Position": {
+            "X": -22.232422,
+            "Y": -31.530355,
+            "Z": 38.071167
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Skeptical Researcher",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            1,
+            null
+          ],
+          "Mount": true,
+          "$.0": "[7]",
+          "$.1": "QuestVariables if done after [6]: 7 0 0 0 239 0"
+        },
+        {
+          "DataId": 1040419,
+          "Position": {
+            "X": -15.762573,
+            "Y": -31.530432,
+            "Z": -51.59082
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Comment": "Anxious Engineer",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            16,
+            null
+          ],
+          "$.0": "[8]",
+          "$.2": "QuestVariables if done first: 1 0 0 0 16 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040436,
+          "Position": {
+            "X": -78.26355,
+            "Y": -29.53,
+            "Z": -58.854065
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012220,
+          "Position": {
+            "X": -74.418274,
+            "Y": -29.58728,
+            "Z": -53.23877
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040436,
+          "Position": {
+            "X": -78.26355,
+            "Y": -29.53,
+            "Z": -58.854065
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

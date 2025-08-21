@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016590,
+          "Position": {
+            "X": 501.97595,
+            "Y": 217.95152,
+            "Z": 762.72217
+          },
+          "StopDistance": 7,
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009973,
+          "Position": {
+            "X": 264.91187,
+            "Y": 302.26236,
+            "Z": -223.71259
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "TargetTerritoryId": 395
+        },
+        {
+          "DataId": 2006864,
+          "Position": {
+            "X": -2.7924194,
+            "Y": -0.015319824,
+            "Z": 0.10675049
+          },
+          "TerritoryId": 395,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016591,
+          "Position": {
+            "X": -2.02948,
+            "Y": 0.014982708,
+            "Z": 4.562378
+          },
+          "TerritoryId": 395,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013227,
+          "Position": {
+            "X": 14.877502,
+            "Y": 16.009666,
+            "Z": -4.196289
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    }
+  ]
+}

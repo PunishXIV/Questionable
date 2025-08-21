@@ -1,0 +1,170 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004914,
+          "Position": {
+            "X": 167.89502,
+            "Y": 3.1102452,
+            "Z": 972.5642
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006603,
+          "Position": {
+            "X": -196.79565,
+            "Y": 78.11096,
+            "Z": 49.851196
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004914,
+          "Position": {
+            "X": 167.89502,
+            "Y": 3.1102452,
+            "Z": 972.5642
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -207.9934,
+            "Y": 66.78476,
+            "Z": -258.7822
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        },{
+          "Position": {
+            "X": -234.89017,
+            "Y": 63.51318,
+            "Z": -255.7134
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -356.22986,
+            "Y": 57.972702,
+            "Z": -381.27402
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+
+        {
+          "DataId": 1006604,
+          "Position": {
+            "X": -278.73657,
+            "Y": 4.1657104,
+            "Z": -580.04126
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1004914,
+          "Position": {
+            "X": 167.89502,
+            "Y": 3.1102452,
+            "Z": 972.5642
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "InteractionType": "UseItem",
+          "ItemId": 2000779,
+          "GroundTarget": true,
+          "Position": {
+            "X": -192.67111,
+            "Y": 35.175262,
+            "Z": 129.13567
+          },
+          "TerritoryId": 146,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1006605,
+          "Position": {
+            "X": -192.49261,
+            "Y": 35.210636,
+            "Z": 129.13708
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004914,
+          "Position": {
+            "X": 167.89502,
+            "Y": 3.1102452,
+            "Z": 972.5642
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045420,
+          "Position": {
+            "X": 142.07666,
+            "Y": -16.147,
+            "Z": 235.70605
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040824,
+          "Position": {
+            "X": -334.4015,
+            "Y": 23.803606,
+            "Z": 404.9286
+          },
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045425,
+          "Position": {
+            "X": 532.4635,
+            "Y": -36.65,
+            "Z": -191.48547
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Tertium"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045490,
+          "Position": {
+            "X": 523.24695,
+            "Y": -36.65,
+            "Z": -156.02356
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1045491,
+          "Position": {
+            "X": 502.4032,
+            "Y": -36.65,
+            "Z": -178.27118
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1037774,
+          "Position": {
+            "X": 518.181,
+            "Y": -36.65,
+            "Z": -212.14618
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1045489,
+          "Position": {
+            "X": 549.2484,
+            "Y": -36.615707,
+            "Z": -213.18384
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1037766,
+          "Position": {
+            "X": 545.3115,
+            "Y": -36.616177,
+            "Z": -265.00348
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 534.8861,
+            "Y": -36.65,
+            "Z": -245.12135
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1045430,
+          "Position": {
+            "X": 415.1521,
+            "Y": 15.558167,
+            "Z": -637.56775
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

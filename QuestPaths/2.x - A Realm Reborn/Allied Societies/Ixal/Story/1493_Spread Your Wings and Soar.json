@@ -1,0 +1,338 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "Fly": true,
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 149.43152,
+                                    "Y": -18.140299,
+                                    "Z": 99.22937
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1009218,
+                    "Position": {
+                        "X": -4.1047363,
+                        "Y": -40.949986,
+                        "Z": 176.83679
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8133,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1009629,
+                    "Position": {
+                        "X": 586.694,
+                        "Y": 302.0293,
+                        "Z": -169.45148
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 2004448,
+                    "Position": {
+                        "X": 588.9829,
+                        "Y": 302.08276,
+                        "Z": -165.75879
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001439
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1009629,
+                    "Position": {
+                        "X": 586.694,
+                        "Y": 302.0293,
+                        "Z": -169.45148
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 2004449,
+                    "Position": {
+                        "X": 708.7357,
+                        "Y": 287.52563,
+                        "Z": 109.97168
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001439,
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 2004450,
+                    "Position": {
+                        "X": 589.9595,
+                        "Y": 286.51855,
+                        "Z": 183.00134
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001439,
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 7,
+            "Steps": [
+                {
+                    "DataId": 2004451,
+                    "Position": {
+                        "X": 574.15125,
+                        "Y": 302.7848,
+                        "Z": 33.6156
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001439,
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 8,
+            "Steps": [
+                {
+                    "DataId": 1009629,
+                    "Position": {
+                        "X": 586.694,
+                        "Y": 302.0293,
+                        "Z": -169.45148
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 9,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 195.04178,
+                        "Y": 307.86307,
+                        "Z": 411.6528
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "WalkTo",
+                    "Fly": true,
+                    "Land": true
+                },
+                {
+                    "DataId": 1009693,
+                    "Position": {
+                        "X": 203.50952,
+                        "Y": 297.2045,
+                        "Z": 425.37573
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 10,
+            "Steps": [
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 11,
+            "Steps": [
+                {
+                    "DataId": 1009707,
+                    "Position": {
+                        "X": 160.35706,
+                        "Y": -22.797548,
+                        "Z": 116.44153
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 12,
+            "Steps": [
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 13,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8134,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009707,
+                    "Position": {
+                        "X": 160.35706,
+                        "Y": -22.797548,
+                        "Z": 116.44153
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 14,
+            "Steps": [
+                {
+                    "DataId": 1009204,
+                    "Position": {
+                        "X": 151.93408,
+                        "Y": -18.41936,
+                        "Z": 100.72473
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_BANIXA008_01493_Q1_000_000",
+                            "Answer": "TEXT_BANIXA008_01493_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1009294,
+                    "Position": {
+                        "X": -63.767517,
+                        "Y": -1.7171676,
+                        "Z": 11.673096
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Gridania"
+                }
+            ]
+        }
+    ]
+}

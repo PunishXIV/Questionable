@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022512,
+          "Position": {
+            "X": -653.04034,
+            "Y": 130,
+            "Z": -522.1485
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022514,
+          "Position": {
+            "X": -586.0533,
+            "Y": 130.0406,
+            "Z": -534.59985
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -247.82184,
+            "Y": 61.395123,
+            "Z": -484.64178
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7494,
+            7499
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022515,
+          "Position": {
+            "X": -247.82184,
+            "Y": 61.395123,
+            "Z": -484.64178
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022513,
+          "Position": {
+            "X": -650.9041,
+            "Y": 130,
+            "Z": -520.8667
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "NextQuestId": 2892
+        }
+      ]
+    }
+  ]
+}

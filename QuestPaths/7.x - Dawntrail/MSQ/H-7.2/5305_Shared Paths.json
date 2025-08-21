@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053873,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 0,
+            "Z": 20.645447
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1274,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053864,
+          "Position": {
+            "X": -2.456726,
+            "Y": -7.35766E-08,
+            "Z": 9.109558
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014733,
+          "Position": {
+            "X": 0.015197754,
+            "Y": -0.4730835,
+            "Z": -0.38153076
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053864,
+          "Position": {
+            "X": -2.456726,
+            "Y": -7.35766E-08,
+            "Z": 9.109558
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2014102,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.99176025,
+            "Z": 16.03717
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1207
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -404.58365,
+            "Y": 14.029998,
+            "Z": 272.07394
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Residential Sector"
+          ]
+        },
+        {
+          "Position": {
+            "X": -409.75183,
+            "Y": 13.499982,
+            "Z": 269.15036
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1053874,
+          "Position": {
+            "X": -402.48724,
+            "Y": 13.699979,
+            "Z": 240.98572
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012750,
+          "Position": {
+            "X": -163.89722,
+            "Y": 27.979128,
+            "Z": -116.41113
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433,
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012753,
+          "Position": {
+            "X": 2.5787354,
+            "Y": -9.313226E-10,
+            "Z": 7.6447144
+          },
+          "StopDistance": 5,
+          "TerritoryId": 433,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

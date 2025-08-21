@@ -1,0 +1,264 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "UseItem",
+          "ItemId": 35873,
+          "Position": {
+            "X": -25.441345,
+            "Y": 42.597717,
+            "Z": 162.65016
+          },
+          "StopDistance": 5,
+          "TerritoryId": 134,
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "Fly": true,
+          "Comment": "Try to use the coffer Bookwyrm's Attire Coffer (IL 385)",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 134,
+          "InteractionType": "EquipItem",
+          "ItemId": 35778,
+          "Comment": "Try to Equip Stonegold Milpreves",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1039265,
+          "Position": {
+            "X": -27.542603,
+            "Y": 42.597717,
+            "Z": 163.7445
+          },
+          "StopDistance": 5,
+          "TerritoryId": 134,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039244,
+          "Position": {
+            "X": 62.05847,
+            "Y": 207,
+            "Z": 49.332397
+          },
+          "StopDistance": 5,
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011759,
+          "Position": {
+            "X": 20.065613,
+            "Y": 215.44214,
+            "Z": -108.171265
+          },
+          "StopDistance": 2,
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039246,
+          "Position": {
+            "X": 71.64111,
+            "Y": 213.03185,
+            "Z": -110.7348
+          },
+          "StopDistance": 7,
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039247,
+          "Position": {
+            "X": 68.7113,
+            "Y": 212.84532,
+            "Z": -109.9718
+          },
+          "StopDistance": 5,
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039248,
+          "Position": {
+            "X": -612.2988,
+            "Y": 146.86842,
+            "Z": 42.435303
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1039248,
+          "Position": {
+            "X": -612.2988,
+            "Y": 146.86842,
+            "Z": 42.435303
+          },
+          "StopDistance": 5,
+          "TerritoryId": 399,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [399],
+              "InSameTerritory": true
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 7
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1039248,
+          "Position": {
+            "X": -612.2988,
+            "Y": 146.86842,
+            "Z": 42.435303
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [399],
+              "InSameTerritory": true
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039249,
+          "Position": {
+            "X": 0.3508911,
+            "Y": 210.99998,
+            "Z": -17.746277
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

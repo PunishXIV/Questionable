@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048867,
+          "Position": {
+            "X": -489.0364,
+            "Y": 121.63345,
+            "Z": 368.00183
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -298.1575,
+            "Y": 112.88461,
+            "Z": 684.6612
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1050708,
+          "Position": {
+            "X": -296.52863,
+            "Y": 112.804924,
+            "Z": 686.2439
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014176,
+          "Position": {
+            "X": -127.15344,
+            "Y": 109.57495,
+            "Z": 523.7964
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -298.1575,
+            "Y": 112.88461,
+            "Z": 684.6612
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1050708,
+          "Position": {
+            "X": -296.52863,
+            "Y": 112.804924,
+            "Z": 686.2439
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048867,
+          "Position": {
+            "X": -489.0364,
+            "Y": 121.63345,
+            "Z": 368.00183
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+        }
+      ]
+    }
+  ]
+}

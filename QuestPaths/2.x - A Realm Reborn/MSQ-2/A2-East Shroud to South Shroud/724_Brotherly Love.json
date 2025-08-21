@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002937,
+          "Position": {
+            "X": -72.22095,
+            "Y": -2.5420866,
+            "Z": 187.85376
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002998,
+          "Position": {
+            "X": -283.92462,
+            "Y": 12.245282,
+            "Z": -39.383606
+          },
+          "TerritoryId": 152,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041911,
+          "Position": {
+            "X": 508.8424,
+            "Y": -3.8202174,
+            "Z": -352.71234
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040659,
+          "Position": {
+            "X": 514.5189,
+            "Y": -36.65,
+            "Z": -156.9696
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZD004_04228_Q1_000_000",
+              "Answer": "TEXT_AKTKZD004_04228_A1_000_002"
+            }
+          ],
+          "$": "this is the correct option, we can skip the other two"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037771,
+          "Position": {
+            "X": 524.28467,
+            "Y": -19.820217,
+            "Z": -298.81744
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.79227,
+            "Y": 138.93335,
+            "Z": 741.0543
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "Fly": true,
+          "TargetTerritoryId": 463
+        },
+        {
+          "DataId": 1012138,
+          "Position": {
+            "X": 19.272095,
+            "Y": 38.43,
+            "Z": 15.854065
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007063,
+          "Position": {
+            "X": -867.3381,
+            "Y": -184.31378,
+            "Z": -661.0056
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007068,
+          "Position": {
+            "X": -916.7773,
+            "Y": -184.31378,
+            "Z": -678.645
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2007064,
+          "Position": {
+            "X": -696.0708,
+            "Y": -37.094727,
+            "Z": 432.33386
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2007065,
+          "Position": {
+            "X": -64.2558,
+            "Y": 271.229,
+            "Z": -4.2268066
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 174.36705,
+            "Y": 393.17496,
+            "Z": -569.3414
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        },
+        {
+          "DataId": 2007066,
+          "Position": {
+            "X": 50.339478,
+            "Y": 374.47156,
+            "Z": -676.5088
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+              "X": -250.3548,
+              "Y": 18,
+              "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -71.92632,
+            "Y": 9.839797,
+            "Z": 283.98495
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 351,
+              "MinimumKillCount": 3,
+              "$": "Slay star marmots as a thaumaturge",
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            },
+            {
+              "DataId": 385,
+              "MinimumKillCount": 3,
+              "$": "Slay huge hornets as a thaumaturge",
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                141
+              ]
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            {
+              "High": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+              "X": 39.449,
+              "Y": 3.082914,
+              "Z": 272.46896
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 205,
+              "MinimumKillCount": 3,
+              "$": "Slay snapping shrews as a thaumaturge"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+              "X": -250.3548,
+              "Y": 18,
+              "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "NextQuestId": 351
+        }
+      ]
+    }
+  ]
+}

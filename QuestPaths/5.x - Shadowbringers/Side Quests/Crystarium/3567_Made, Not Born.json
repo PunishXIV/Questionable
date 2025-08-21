@@ -1,0 +1,67 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031059,
+          "Position": {
+            "X": 108.781494,
+            "Y": -3.1728092E-11,
+            "Z": -105.760315
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031060,
+          "Position": {
+            "X": -148.36353,
+            "Y": 1.4901161E-08,
+            "Z": 200.42712
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Pendants"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZJ004_03567_Q1_000_000",
+              "Answer": "TEXT_LUCKZJ004_03567_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031059,
+          "Position": {
+            "X": 108.781494,
+            "Y": -3.1728092E-11,
+            "Z": -105.760315
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    }
+  ]
+}

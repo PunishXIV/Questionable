@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041767,
+          "Position": {
+            "X": 541.03906,
+            "Y": -36.65,
+            "Z": -132.46362
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZD102_04503_Q1_000_000",
+              "Answer": "TEXT_AKTKZD102_04503_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041769,
+          "Position": {
+            "X": 215.198,
+            "Y": 10.8,
+            "Z": -104.509094
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012623,
+          "Position": {
+            "X": 168.26111,
+            "Y": 11.36792,
+            "Z": -102.92212
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "$": "can skip other interactables"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041769,
+          "Position": {
+            "X": 215.198,
+            "Y": 10.8,
+            "Z": -104.509094
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041767,
+          "Position": {
+            "X": 541.03906,
+            "Y": -36.65,
+            "Z": -132.46362
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Tertium",
+          "NextQuestId": 4504
+        }
+      ]
+    }
+  ]
+}

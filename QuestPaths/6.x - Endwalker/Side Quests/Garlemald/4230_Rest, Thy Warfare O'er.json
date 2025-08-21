@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040645,
+          "Position": {
+            "X": 485.2522,
+            "Y": 10.800001,
+            "Z": -456.32104
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -340.87164,
+            "Y": 10.803238,
+            "Z": -694.511
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "$": "need to land on the road to avoid awkward flypathing through the burned buildings."
+        },
+        {
+          "Position": {
+            "X": -310.5188,
+            "Y": 10.813947,
+            "Z": -720.8323
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14102
+          ],
+          "Fly": false
+        },
+        {
+          "DataId": 14102,
+          "Position": {
+            "X": -313.222,
+            "Y": 10.821807,
+            "Z": -720.4852
+          },
+          "TerritoryId": 958,
+          "InteractionType": "UseItem",
+          "ItemId": 2003208
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040629,
+          "Position": {
+            "X": -310.47534,
+            "Y": 10.815676,
+            "Z": -720.2411
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040645,
+          "Position": {
+            "X": 485.2522,
+            "Y": 10.800001,
+            "Z": -456.32104
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Tertium",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026380,
+          "Position": {
+            "X": 94.22449,
+            "Y": 12.000005,
+            "Z": -72.55664
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009604,
+          "Position": {
+            "X": -85.19116,
+            "Y": -7.0039062,
+            "Z": -52.84204
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026381,
+          "Position": {
+            "X": 139.33008,
+            "Y": 25,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026383,
+          "Position": {
+            "X": -79.14862,
+            "Y": 17.999998,
+            "Z": -176.47064
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] Bokairo Inn"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026384,
+          "Position": {
+            "X": -107.71344,
+            "Y": 11.902365,
+            "Z": -140.73401
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANALL210_03161_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1026385,
+          "Position": {
+            "X": -108.14075,
+            "Y": 11.902366,
+            "Z": -140.58142
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1026386,
+          "Position": {
+            "X": -4.989685,
+            "Y": 0.25,
+            "Z": -103.50195
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Bokairo Inn",
+            "[Kugane] Rakuza District"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1026388,
+          "Position": {
+            "X": -82.414,
+            "Y": -2.9999976,
+            "Z": 62.42456
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Rakuza District",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1026389,
+          "Position": {
+            "X": -84.763916,
+            "Y": -2.9999986,
+            "Z": 62.91284
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026389,
+          "Position": {
+            "X": -84.763916,
+            "Y": -2.9999986,
+            "Z": 62.91284
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "ItemId": 2002488,
+          "GroundTarget": true,
+          "NextQuestId": 3162
+        }
+      ]
+    }
+  ]
+}

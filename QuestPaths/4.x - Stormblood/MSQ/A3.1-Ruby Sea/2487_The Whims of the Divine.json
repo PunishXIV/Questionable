@@ -1,0 +1,53 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019978,
+          "Position": {
+            "X": -227.86298,
+            "Y": -178.2102,
+            "Z": 185.74805
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019961,
+          "Position": {
+            "X": 323.0487,
+            "Y": -120.03495,
+            "Z": -249.01202
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

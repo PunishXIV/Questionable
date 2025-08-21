@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044229,
+          "Position": {
+            "X": -345.99835,
+            "Y": 55,
+            "Z": -63.645386
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044231,
+          "Position": {
+            "X": 535.7289,
+            "Y": -36.65,
+            "Z": -185.87018
+          },
+          "StopDistance": 6,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044234,
+          "Position": {
+            "X": -368.15448,
+            "Y": 21.999998,
+            "Z": 485.37415
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044241,
+          "Position": {
+            "X": 55.161255,
+            "Y": -16.177,
+            "Z": 427.87805
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1045227,
+          "Position": {
+            "X": 150.04187,
+            "Y": -20.207552,
+            "Z": 509.88013
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1044243,
+          "Position": {
+            "X": 132.31091,
+            "Y": -12.950364,
+            "Z": 642.8473
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044239,
+          "Position": {
+            "X": -369.2226,
+            "Y": 22,
+            "Z": 484.0619
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

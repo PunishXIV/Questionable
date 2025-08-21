@@ -1,0 +1,191 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Aetheryte Plaza"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -371.6037,
+            "Y": 54.310753,
+            "Z": 428.55798
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "Fly": true
+        },
+        {
+          "DataId": 1006312,
+          "Position": {
+            "X": -369.0395,
+            "Y": 54.28071,
+            "Z": 441.24512
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -371.6037,
+            "Y": 54.310753,
+            "Z": 428.55798
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -250.51706,
+            "Y": 48.854584,
+            "Z": 462.12476
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2004858,
+          "Position": {
+            "X": -252.76575,
+            "Y": 49.66809,
+            "Z": 460.71558
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -371.6037,
+            "Y": 54.310753,
+            "Z": 428.55798
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006312,
+          "Position": {
+            "X": -369.0395,
+            "Y": 54.28071,
+            "Z": 441.24512
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -371.6037,
+            "Y": 54.310753,
+            "Z": 428.55798
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -133.36604,
+            "Y": 70.192245,
+            "Z": 746.02716
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 570.5895,
+            "Y": 95.61268,
+            "Z": -497.8778
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RestartNavigationIfCancelled": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 569.87854,
+            "Y": 95.62417,
+            "Z": -498.10028
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            2861,
+            3563,
+            3562
+          ]
+        },
+        {
+          "DataId": 1010370,
+          "Position": {
+            "X": 569.87854,
+            "Y": 95.62417,
+            "Z": -498.10028
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBPST021_00241_Q1_000_000",
+              "Answer": "TEXT_SUBPST021_00241_A1_000_001"
+            }
+          ],
+          "NextQuestId": 242
+        }
+      ]
+    }
+  ]
+}

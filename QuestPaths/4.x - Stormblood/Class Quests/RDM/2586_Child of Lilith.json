@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021779,
+          "Position": {
+            "X": -5.44751,
+            "Y": 210.99998,
+            "Z": -39.658203
+          },
+          "StopDistance": 7,
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021785,
+          "Position": {
+            "X": 115.19031,
+            "Y": 14.631312,
+            "Z": -165.11792
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Tribunal"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021788,
+          "Position": {
+            "X": 34.042847,
+            "Y": 11.965077,
+            "Z": 48.355713
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Tribunal",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021789,
+          "Position": {
+            "X": 455.5885,
+            "Y": 300.37985,
+            "Z": -349.32483
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008997,
+          "Position": {
+            "X": 299.2141,
+            "Y": 239.12415,
+            "Z": -312.76422
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7226
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021791,
+          "Position": {
+            "X": 445.94482,
+            "Y": 250.97905,
+            "Z": -309.25464
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1021794,
+          "Position": {
+            "X": 295.9486,
+            "Y": 238.09589,
+            "Z": -317.34192
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1021793,
+          "Position": {
+            "X": 295.24683,
+            "Y": 238.25597,
+            "Z": -315.78546
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021795,
+          "Position": {
+            "X": -19.638367,
+            "Y": 15.965051,
+            "Z": -37.247314
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ],
+          "NextQuestId": 2587
+        }
+      ]
+    }
+  ]
+}

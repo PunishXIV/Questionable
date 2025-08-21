@@ -1,0 +1,200 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "Position": {
+        "X": 417.1447,
+        "Y": -0.6,
+        "Z": -647.60004
+      },
+      "TerritoryId": 1189,
+      "InteractionType": "Dive",
+      "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+      "SkipConditions": {
+        "StepIf": {
+          "Flying": "Unlocked"
+        },
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    },
+    {
+      "Position": {
+        "X": 417.1447,
+        "Y": 3,
+        "Z": -647.60004
+      },
+      "TerritoryId": 1189,
+      "InteractionType": "WalkTo",
+      "Fly": true,
+      "SkipConditions": {
+        "StepIf": {
+          "Flying": "Locked"
+        }
+      }
+    },
+    {
+      "Position": {
+        "X": 419.8578,
+        "Y": -32.6974,
+        "Z": -653.75275
+      },
+      "TerritoryId": 1189,
+      "InteractionType": "WalkTo",
+      "DisableNavmesh": true,
+      "Fly": true
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34787,
+          "Locations": [
+            {
+              "Position": {
+                "X": 482.7197,
+                "Y": -38.14573,
+                "Z": -612.8046
+              },
+              "MinimumAngle": 100,
+              "MaximumAngle": 275
+            }
+          ]
+        },
+        {
+          "DataId": 34788,
+          "Locations": [
+            {
+              "Position": {
+                "X": 503.5652,
+                "Y": -41.40348,
+                "Z": -600.9512
+              },
+              "MinimumAngle": 185,
+              "MaximumAngle": 275
+            },
+            {
+              "Position": {
+                "X": 441.1733,
+                "Y": -36.58192,
+                "Z": -610.3331
+              },
+              "MinimumAngle": 120,
+              "MaximumAngle": 265
+            },
+            {
+              "Position": {
+                "X": 457.5484,
+                "Y": -40.0437,
+                "Z": -608.3312
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 240
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34790,
+          "Locations": [
+            {
+              "Position": {
+                "X": 584.035,
+                "Y": -49.84215,
+                "Z": -759.925
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 240
+            },
+            {
+              "Position": {
+                "X": 624.3585,
+                "Y": -61.07853,
+                "Z": -748.2542
+              }
+            },
+            {
+              "Position": {
+                "X": 605.4849,
+                "Y": -59.0002,
+                "Z": -772.6049
+              },
+              "MinimumAngle": 175,
+              "MaximumAngle": 275
+            }
+          ]
+        },
+        {
+          "DataId": 34789,
+          "Locations": [
+            {
+              "Position": {
+                "X": 601.6854,
+                "Y": -53.68699,
+                "Z": -741.3439
+              },
+              "MinimumAngle": 185,
+              "MaximumAngle": 355
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34785,
+          "Locations": [
+            {
+              "Position": {
+                "X": 754.1298,
+                "Y": -57.09224,
+                "Z": -571.5818
+              },
+              "MinimumAngle": 100,
+              "MaximumAngle": 250
+            }
+          ]
+        },
+        {
+          "DataId": 34786,
+          "Locations": [
+            {
+              "Position": {
+                "X": 734.2795,
+                "Y": -55.15427,
+                "Z": -573.6763
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 260
+            },
+            {
+              "Position": {
+                "X": 714.931,
+                "Y": -53.3118,
+                "Z": -569.4072
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 250
+            },
+            {
+              "Position": {
+                "X": 773.049,
+                "Y": -55.97124,
+                "Z": -569.7167
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 240
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

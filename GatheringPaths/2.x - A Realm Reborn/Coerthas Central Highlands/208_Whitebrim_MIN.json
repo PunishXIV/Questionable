@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Censored",
+  "Steps": [
+    {
+      "TerritoryId": 155,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    }
+  ],
+  "ExtraQuestItems": [
+    2001426,
+    2001427
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 30510,
+          "Locations": [
+            {
+              "Position": {
+                "X": 334.4322,
+                "Y": 307.1861,
+                "Z": -252.2396
+              }
+            },
+            {
+              "Position": {
+                "X": 318.1049,
+                "Y": 305.9586,
+                "Z": -236.1029
+              },
+              "MinimumAngle": -270,
+              "MaximumAngle": -155,
+              "MinimumDistance": 1,
+              "MaximumDistance": 1.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30511,
+          "Locations": [
+            {
+              "Position": {
+                "X": 347.1616,
+                "Y": 316.7778,
+                "Z": -231.3722
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 190
+            },
+            {
+              "Position": {
+                "X": 355.554,
+                "Y": 321.804,
+                "Z": -231.1056
+              },
+              "MinimumAngle": -285,
+              "MaximumAngle": -60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30508,
+          "Locations": [
+            {
+              "Position": {
+                "X": 298.5091,
+                "Y": 309.1797,
+                "Z": -201.3309
+              },
+              "MinimumAngle": 105,
+              "MaximumAngle": 220
+            },
+            {
+              "Position": {
+                "X": 291.6585,
+                "Y": 305.774,
+                "Z": -206.6072
+              },
+              "MinimumAngle": -220,
+              "MaximumAngle": -30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30509,
+          "Locations": [
+            {
+              "Position": {
+                "X": 325.9026,
+                "Y": 306.1053,
+                "Z": -278.1509
+              },
+              "MinimumAngle": -350,
+              "MaximumAngle": -55
+            },
+            {
+              "Position": {
+                "X": 289.1882,
+                "Y": 302.4524,
+                "Z": -261.3322
+              },
+              "MinimumAngle": -240,
+              "MaximumAngle": 20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

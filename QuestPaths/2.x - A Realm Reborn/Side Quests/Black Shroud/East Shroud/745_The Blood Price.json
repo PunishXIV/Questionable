@@ -1,0 +1,87 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "skiaz",
+    "QuestSequence": [
+      {
+        "Sequence": 0,
+        "Steps": [
+          {
+            "DataId": 1000576,
+            "Position": {
+                "X": 21.469421,
+                "Y": -4.5750833,
+                "Z": 221.75928
+            },
+            "TerritoryId": 152,
+            "InteractionType": "AcceptQuest",
+            "Fly": true
+          }
+        ]
+      },
+      {
+        "Sequence": 1,
+        "Steps": [
+            {
+                "Position": {
+                    "X": -286.51263,
+                    "Y": 12.089579,
+                    "Z": -33.4333
+                },
+                "TerritoryId": 152,
+                "InteractionType": "WalkTo",
+                "Fly": true
+            },
+            {
+                "Position": {
+                    "X": -286.51263,
+                    "Y": 12.089579,
+                    "Z": -33.4333
+                },
+                "TerritoryId": 152,
+                "InteractionType": "None",
+                "Land": true
+            },
+            {
+                "DataId": 2264,
+                "Position": {
+                    "X": -303.8529,
+                    "Y": 12.348698,
+                    "Z": -40.177063
+                },
+                "TerritoryId": 152,
+                "InteractionType": "Combat",
+                "EnemySpawnType": "OverworldEnemies",
+                "ComplexCombatData": [
+                    {
+                    "DataId": 2264,
+                    "MinimumKillCount": 3,
+                    "RewardItemId": 2000598,
+                    "RewardItemCount": 3
+                    }
+                ],
+                "CombatItemUse": {
+                    "ItemId": 2000597,
+                    "Condition": "Health%",
+                    "Value": 30
+                }
+            }
+        ]
+      },
+      {
+        "Sequence": 255,
+        "Steps": [
+            {
+                "DataId": 1000576,
+                "Position": {
+                    "X": 21.469421,
+                    "Y": -4.5750833,
+                    "Z": 221.75928
+                },
+                "TerritoryId": 152,
+                "InteractionType": "CompleteQuest",
+                "Fly": true
+            }
+        ]
+      }
+    ]
+  }

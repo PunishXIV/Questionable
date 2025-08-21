@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030266,
+          "Position": {
+            "X": -367.66614,
+            "Y": 66.863594,
+            "Z": 557.1526
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030267,
+          "Position": {
+            "X": -161.30316,
+            "Y": 34.21811,
+            "Z": 607.38525
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009997,
+          "Position": {
+            "X": -40.116028,
+            "Y": 24.063354,
+            "Z": 739.25366
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_LUCKZC012_03395_SYSTEM_000_013"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030266,
+          "Position": {
+            "X": -367.66614,
+            "Y": 66.863594,
+            "Z": 557.1526
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+        }
+      ]
+    }
+  ]
+}

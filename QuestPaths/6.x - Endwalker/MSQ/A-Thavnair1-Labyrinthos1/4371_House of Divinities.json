@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038611,
+          "Position": {
+            "X": 201.86157,
+            "Y": 5.880045,
+            "Z": 612.02405
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041331,
+          "Position": {
+            "X": 202.4414,
+            "Y": 1.769943,
+            "Z": 727.7484
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "ExcelSheet": "quest/044/AktKza201_04489",
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA201_04489_Q1_000_004",
+              "Answer": "TEXT_AKTKZA201_04489_A1_000_002"
+            }
+          ],
+          "PickUpQuestId": 4489
+        },
+        {
+          "DataId": 2011951,
+          "Position": {
+            "X": 105.1499,
+            "Y": 7.7667847,
+            "Z": 581.5061
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011952,
+          "Position": {
+            "X": -13.290649,
+            "Y": 32.333862,
+            "Z": 499.07666
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038612,
+          "Position": {
+            "X": 31.937134,
+            "Y": 37.463673,
+            "Z": 379.5985
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14006
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038612,
+          "Position": {
+            "X": 31.937134,
+            "Y": 37.463673,
+            "Z": 379.5985
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2011990,
+          "Position": {
+            "X": -176.10437,
+            "Y": 21.530457,
+            "Z": 537.8346
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818329
+        },
+        {
+          "DataId": 1038616,
+          "Position": {
+            "X": -278.88916,
+            "Y": 2.740889,
+            "Z": 532.03625
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1037644,
+          "Position": {
+            "X": -293.72095,
+            "Y": 1.4600283,
+            "Z": 551.0491
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1037645,
+          "Position": {
+            "X": -271.0155,
+            "Y": 0.7022661,
+            "Z": 588.8303
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038616,
+          "Position": {
+            "X": -278.88916,
+            "Y": 2.740889,
+            "Z": 532.03625
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000977,
+          "Position": {
+            "X": 157.5188,
+            "Y": 16.189758,
+            "Z": -273.64008
+          },
+          "StopDistance": 4,
+          "TerritoryId": 133,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Index": 0,
+            "Enabled": true,
+            "TestedBossModVersion": "0.3.2.4"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "StopDistance": 7,
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSLNC004_00056_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 152,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -131.39551,
+            "Y": -1.8032382,
+            "Z": 173.32715
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "ComplexCombatData": [
+            {
+              "DataId": 15,
+              "MinimumKillCount": 10
+            }
+          ],
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2000089,
+          "Position": {
+            "X": -238.66644,
+            "Y": 11.856201,
+            "Z": 29.007324
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2000978,
+          "Position": {
+            "X": -238.94104,
+            "Y": 11.550964,
+            "Z": 29.06836
+          },
+          "TerritoryId": 152,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Index": 1,
+            "Enabled": true,
+            "TestedBossModVersion": "0.3.2.4"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "NextQuestId": 438
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040166,
+          "Position": {
+            "X": 68.74182,
+            "Y": 40,
+            "Z": 66.300415
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040187,
+          "Position": {
+            "X": -95.44525,
+            "Y": -24.941013,
+            "Z": 77.927734
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011923,
+          "Position": {
+            "X": -55.985413,
+            "Y": 39.993896,
+            "Z": 23.147888
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040190,
+          "Position": {
+            "X": -58.884644,
+            "Y": 39.999916,
+            "Z": 21.22528
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040166,
+          "Position": {
+            "X": 68.74182,
+            "Y": 40,
+            "Z": 66.300415
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4117
+        }
+      ]
+    }
+  ]
+}

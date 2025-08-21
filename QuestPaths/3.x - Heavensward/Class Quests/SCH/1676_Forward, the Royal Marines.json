@@ -1,0 +1,189 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.68561,
+            "Y": -3.1246834,
+            "Z": 42.986313
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1013135,
+          "Position": {
+            "X": 206.0426,
+            "Y": -3.111818,
+            "Z": 41.94702
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005528,
+          "Position": {
+            "X": -381.5824,
+            "Y": 52.475708,
+            "Z": -298.81744
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005529,
+          "Position": {
+            "X": 290.15015,
+            "Y": 41.275635,
+            "Z": -193.83539
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013143,
+          "Position": {
+            "X": 405.1117,
+            "Y": 4.109556,
+            "Z": 81.04065
+          },
+          "TerritoryId": 139,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 489.20578,
+            "Y": 16.495434,
+            "Z": 69.11804
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1013146,
+          "Position": {
+            "X": 489.73828,
+            "Y": 16.495436,
+            "Z": 67.33801
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1013147,
+          "Position": {
+            "X": 487.84607,
+            "Y": 16.495436,
+            "Z": 68.0094
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1013148,
+          "Position": {
+            "X": 489.64673,
+            "Y": 16.495436,
+            "Z": 70.573
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1013198,
+          "Position": {
+            "X": 487.47998,
+            "Y": 16.495436,
+            "Z": 70.35925
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013199,
+          "Position": {
+            "X": 491.47778,
+            "Y": 16.495434,
+            "Z": 69.16907
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2923
+        }
+      ]
+    }
+  ]
+}

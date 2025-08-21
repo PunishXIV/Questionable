@@ -1,0 +1,179 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017171,
+                    "Position": {
+                        "X": -335.56116,
+                        "Y": 59.003433,
+                        "Z": 313.98486
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017364,
+                    "Position": {
+                        "X": 517.87585,
+                        "Y": -11.374985,
+                        "Z": 82.96326
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "AetheryteShortcut": "The Churning Mists - Moghome",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 517.87585,
+                                    "Y": -11.374985,
+                                    "Z": 82.96326
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 100
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 2007227,
+                    "Position": {
+                        "X": 439.9939,
+                        "Y": -31.601501,
+                        "Z": 204.88281
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        32
+                    ]
+                },
+                {
+                    "DataId": 2007226,
+                    "Position": {
+                        "X": 430.80798,
+                        "Y": -27.878296,
+                        "Z": 141.92407
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                },
+                {
+                    "DataId": 2007225,
+                    "Position": {
+                        "X": 413.68726,
+                        "Y": -22.354492,
+                        "Z": 16.525452
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1017364,
+                    "Position": {
+                        "X": 517.87585,
+                        "Y": -11.374985,
+                        "Z": 82.96326
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 400,
+                    "InteractionType": "Craft",
+                    "ItemId": 15729,
+                    "ItemCount": 3,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1017171,
+                    "Position": {
+                        "X": -335.56116,
+                        "Y": 59.003433,
+                        "Z": 313.98486
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

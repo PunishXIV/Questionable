@@ -1,0 +1,183 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005929,
+                    "Position": {
+                        "X": 21.560913,
+                        "Y": 16.342407,
+                        "Z": -183.76447
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 21.560913,
+                                    "Y": 16.342407,
+                                    "Z": -183.76447
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005960,
+                    "Position": {
+                        "X": 97.3678,
+                        "Y": 56.809326,
+                        "Z": -502.06763
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1005960,
+                    "Position": {
+                        "X": 97.3678,
+                        "Y": 56.809326,
+                        "Z": -502.06763
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true,
+                    "DialogueChoices": [
+                        {
+                            "Type": "YesNo",
+                            "Prompt": "TEXT_BANKOB206_01340_SCENE00023_EVENTAREA_WARP_YESNO_TITLE",
+                            "Yes": true
+                        }
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 222.60724,
+                                    "Y": 21.499361,
+                                    "Z": -603.04285
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "Position": {
+                        "X": 206.34064,
+                        "Y": 26.164192,
+                        "Z": -610.01776
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [ 2849 ],
+                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 8 ]
+                },
+                {
+                    "Position": {
+                        "X": 214.34813,
+                        "Y": 22.582228,
+                        "Z": -620.98737
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [ 2849 ],
+                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 4 ]
+                },
+                {
+                    "Position": {
+                        "X": 217.2839,
+                        "Y": 21.428452,
+                        "Z": -603.1931
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [ 2849 ],
+                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 16 ]
+                },
+                {
+                    "Position": {
+                        "X": 230.32195,
+                        "Y": 21.387749,
+                        "Z": -600.7312
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [ 2849 ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 2003647,
+                    "Position": {
+                        "X": 223.43774,
+                        "Y": 21.469421,
+                        "Z": -612.32935
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001222
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005929,
+                    "Position": {
+                        "X": 21.560913,
+                        "Y": 16.342407,
+                        "Z": -183.76447
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 21.560913,
+                                    "Y": 16.342407,
+                                    "Z": -183.76447
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

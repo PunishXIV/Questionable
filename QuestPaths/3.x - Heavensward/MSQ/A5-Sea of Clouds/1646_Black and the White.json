@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013096,
+          "Position": {
+            "X": -541.34436,
+            "Y": -37.144257,
+            "Z": -384.48163
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013123,
+          "Position": {
+            "X": -538.0178,
+            "Y": -37.04666,
+            "Z": -392.0501
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006234,
+          "Position": {
+            "X": -564.8127,
+            "Y": -36.68513,
+            "Z": -349.0807
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818122
+        },
+        {
+          "DataId": 1012070,
+          "Position": {
+            "X": -554.0704,
+            "Y": -57.62821,
+            "Z": -547.4174
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "bow"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014570,
+          "Position": {
+            "X": -583.032,
+            "Y": -52.126114,
+            "Z": -447.4403
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

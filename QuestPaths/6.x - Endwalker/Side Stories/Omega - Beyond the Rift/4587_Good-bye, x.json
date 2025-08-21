@@ -1,0 +1,262 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042807,
+          "Position": {
+            "X": -59.06775,
+            "Y": 13.999993,
+            "Z": 114.67151
+          },
+          "StopDistance": 6,
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042809,
+          "Position": {
+            "X": -378.43903,
+            "Y": 22,
+            "Z": 494.9873
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042811,
+          "Position": {
+            "X": -323.23187,
+            "Y": 22,
+            "Z": 500.35852
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -277.7818,
+            "Y": 25.227219,
+            "Z": 423.6428
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1042810,
+          "Position": {
+            "X": -276.41718,
+            "Y": 25.227219,
+            "Z": 425.4673
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042809,
+          "Position": {
+            "X": -331.9679,
+            "Y": 22.585815,
+            "Z": 430.56573
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042829,
+          "Position": {
+            "X": -330.86145,
+            "Y": 22.310896,
+            "Z": 431.4182
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042813,
+          "Position": {
+            "X": 591.30237,
+            "Y": 34.877754,
+            "Z": 191.30237
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1043126,
+          "Position": {
+            "X": 605.9509,
+            "Y": 34.7239,
+            "Z": 203.32642
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1042816,
+          "Position": {
+            "X": 31.967651,
+            "Y": -132.9464,
+            "Z": -563.5615
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1042818,
+          "Position": {
+            "X": -1.6327515,
+            "Y": -28.024765,
+            "Z": -216.23566
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDR602_04587_Q4_000_294",
+              "Answer": "TEXT_STMBDR602_04587_A4_000_295"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1038930,
+          "Position": {
+            "X": -415.39636,
+            "Y": 136.98077,
+            "Z": 575.7992
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1039550,
+          "Position": {
+            "X": -620.7218,
+            "Y": -27.670597,
+            "Z": 302.17432
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "TargetTerritoryId": 956
+        },
+        {
+          "Position": {
+            "X": -431.53903,
+            "Y": -220.1193,
+            "Z": 301.76364
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1042800,
+          "Position": {
+            "X": -393.0572,
+            "Y": -220.20284,
+            "Z": 284.71802
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042822,
+          "Position": {
+            "X": 111.039795,
+            "Y": -10.587426,
+            "Z": 280.38452
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

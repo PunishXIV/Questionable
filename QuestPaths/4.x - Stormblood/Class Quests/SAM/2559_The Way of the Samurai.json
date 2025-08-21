@@ -1,0 +1,62 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021829,
+          "Position": {
+            "X": -98.435974,
+            "Y": 4,
+            "Z": -104.997375
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021830,
+          "Position": {
+            "X": -102.06769,
+            "Y": 6.9845653,
+            "Z": 12.008789
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021834,
+          "Position": {
+            "X": -89.28058,
+            "Y": 2.150006,
+            "Z": 59.739014
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2560
+        }
+      ]
+    }
+  ]
+}

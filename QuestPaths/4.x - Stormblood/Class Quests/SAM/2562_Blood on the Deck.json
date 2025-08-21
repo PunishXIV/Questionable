@@ -1,0 +1,183 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021858,
+          "Position": {
+            "X": 9.536865,
+            "Y": 40.00023,
+            "Z": -15.213318
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001217,
+          "Position": {
+            "X": -140.85602,
+            "Y": 18.199999,
+            "Z": 17.013733
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1001208,
+          "Position": {
+            "X": -228.16821,
+            "Y": 16,
+            "Z": 50.644653
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1003272,
+          "Position": {
+            "X": -262.92822,
+            "Y": 16.2,
+            "Z": 51.407593
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021860,
+          "Position": {
+            "X": -205.70691,
+            "Y": 16,
+            "Z": 52.8114
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021862,
+          "Position": {
+            "X": -176.62323,
+            "Y": 4,
+            "Z": 181.65857
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.0126,
+            "Y": 23.936245,
+            "Z": 455.10022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021866,
+          "Position": {
+            "X": 673.54834,
+            "Y": 11.594437,
+            "Z": 390.7378
+          },
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021869,
+          "Position": {
+            "X": 43.259277,
+            "Y": -8,
+            "Z": 99.19885
+          },
+          "StopDistance": 1.5,
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "NextQuestId": 2563
+        }
+      ]
+    }
+  ]
+}

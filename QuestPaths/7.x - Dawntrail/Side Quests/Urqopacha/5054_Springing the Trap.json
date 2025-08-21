@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051195,
+          "Position": {
+            "X": 383.29138,
+            "Y": -154.50243,
+            "Z": -420.49292
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051200,
+          "Position": {
+            "X": 563.83606,
+            "Y": -49.515564,
+            "Z": 49.54602
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014271,
+          "Position": {
+            "X": 560.9064,
+            "Y": -54.459473,
+            "Z": 22.781677
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGZB204_05054_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051204,
+          "Position": {
+            "X": 562.7374,
+            "Y": -54.457336,
+            "Z": 21.530457
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051195,
+          "Position": {
+            "X": 383.29138,
+            "Y": -154.50243,
+            "Z": -420.49292
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+        }
+      ]
+    }
+  ]
+}

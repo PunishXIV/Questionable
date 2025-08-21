@@ -1,0 +1,50 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001286,
+          "Position": {
+            "X": -88.9754,
+            "Y": 2.55,
+            "Z": -51.163513
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSPGL011_00532_Q1_000_1",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 553
+        }
+      ]
+    }
+  ]
+}

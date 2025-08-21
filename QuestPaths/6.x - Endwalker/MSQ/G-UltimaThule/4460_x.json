@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040340,
+          "Position": {
+            "X": 544.51807,
+            "Y": 437.9998,
+            "Z": 301.4419
+          },
+          "StopDistance": 5,
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041656,
+          "Position": {
+            "X": 510.3075,
+            "Y": 436.9997,
+            "Z": 307.17932
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4355
+        },
+        {
+          "DataId": 1038043,
+          "Position": {
+            "X": 470.4203,
+            "Y": 437.00183,
+            "Z": 315.81592
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4354,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "quest/043/AktKzk001_04354",
+              "Prompt": "TEXT_AKTKZK001_04354_Q1_000_100",
+              "Answer": "TEXT_AKTKZK001_04354_A2_000_100"
+            }
+          ]
+        },
+        {
+          "DataId": 1040343,
+          "Position": {
+            "X": 624.3839,
+            "Y": 441.9763,
+            "Z": 437.33875
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012359,
+          "Position": {
+            "X": 623.3462,
+            "Y": 442.95398,
+            "Z": 441.00085
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040344,
+          "Position": {
+            "X": 624.99414,
+            "Y": 441.9763,
+            "Z": 439.9939
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012360,
+          "Position": {
+            "X": 525.13916,
+            "Y": 441.03137,
+            "Z": 375.50916
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Snipe",
+          "Comment": "Find Errant Omicron"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040349,
+          "Position": {
+            "X": 636.92664,
+            "Y": 438.64966,
+            "Z": 248.0658
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2012796,
+          "Position": {
+            "X": 639.27673,
+            "Y": 439.78027,
+            "Z": 241.77905
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMG111_04460_Q1_000_135",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1041157,
+          "Position": {
+            "X": 801.63257,
+            "Y": 478.9742,
+            "Z": 196.79553
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048836,
+          "Position": {
+            "X": -578.91205,
+            "Y": 6.1739964,
+            "Z": -472.80084
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048837,
+          "Position": {
+            "X": -613.2754,
+            "Y": 93.595924,
+            "Z": -476.95123
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -607.3569,
+            "Y": 93.57029,
+            "Z": -472.15475
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1188,
+          "InteractionType": "Emote",
+          "Emote": "pray"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -585.36694,
+            "Y": 6.317712,
+            "Z": -463.53406
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048836,
+          "Position": {
+            "X": -578.91205,
+            "Y": 6.1739964,
+            "Z": -472.80084
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040451,
+          "Position": {
+            "X": -709.28516,
+            "Y": -31.53043,
+            "Z": 321.46167
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040454,
+          "Position": {
+            "X": -613.18384,
+            "Y": -19.786552,
+            "Z": 626.8557
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012225,
+          "Position": {
+            "X": -594.5678,
+            "Y": -26.596497,
+            "Z": 609.09436
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            13982,
+            13981,
+            13980
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012442,
+          "Position": {
+            "X": -594.5678,
+            "Y": -26.596497,
+            "Z": 609.09436
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -601.1813,
+            "Y": -24.48022,
+            "Z": 633.1958
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Comment": "Avoids aggro + possible navmesh issue",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -596.4733,
+            "Y": -22.860794,
+            "Z": 666.64417
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Comment": "Avoids aggro + possible navmesh issue"
+        },
+        {
+          "DataId": 2011985,
+          "Position": {
+            "X": -547.7532,
+            "Y": -18.051514,
+            "Z": 661.86
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818316
+        },
+        {
+          "Position": {
+            "X": -102.94707,
+            "Y": -29.933468,
+            "Z": 674.6727
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -120.48093,
+            "Y": -21.96263,
+            "Z": 685.2332
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Jump",
+          "DisableNavmesh": true,
+          "JumpDestination": {
+            "Position": {
+              "X": -124.55376,
+              "Y": -19.659834,
+              "Z": 686.864
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          }
+        },
+        {
+          "DataId": 2011986,
+          "Position": {
+            "X": -128.06903,
+            "Y": -20.523438,
+            "Z": 676.7223
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818317,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -114.01625,
+            "Y": -30.313616,
+            "Z": 670.05585
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1040455,
+          "Position": {
+            "X": 10.147156,
+            "Y": -30.155546,
+            "Z": 619.62305
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

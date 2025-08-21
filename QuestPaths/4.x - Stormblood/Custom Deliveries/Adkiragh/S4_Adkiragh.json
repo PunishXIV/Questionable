@@ -1,0 +1,58 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 478,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 478,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1018393,
+          "Position": {
+            "X": -60.380005,
+            "Y": 206.50021,
+            "Z": 26.16919
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/005/CtsSfsCharacter4_00541",
+              "Prompt": "TEXT_CTSSFSCHARACTER4_00541_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER4_00541_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/005/CtsSfsCharacter4_00541",
+              "Prompt": "TEXT_CTSSFSCHARACTER4_00541_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER4_00541_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

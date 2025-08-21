@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024999,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091364,
+            "Z": -3.0975952
+          },
+          "TerritoryId": 744,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021505,
+          "Position": {
+            "X": 79.42322,
+            "Y": 33.00897,
+            "Z": -669.9474
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 116.05634,
+            "Y": 3.799895,
+            "Z": -868.98865
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009420,
+          "Position": {
+            "X": 106.30957,
+            "Y": 0.47296143,
+            "Z": -874.38776
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 63.579952,
+            "Y": -1.1090306,
+            "Z": -869.52625
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009469,
+          "Position": {
+            "X": 78.20239,
+            "Y": 0.47296143,
+            "Z": -870.66455
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1025106,
+          "Position": {
+            "X": 97.00159,
+            "Y": 5.1987257,
+            "Z": -877.0428
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDD104_03073_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
+        {
+          "DataId": 1024999,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091364,
+            "Z": -3.0975952
+          },
+          "TerritoryId": 744,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

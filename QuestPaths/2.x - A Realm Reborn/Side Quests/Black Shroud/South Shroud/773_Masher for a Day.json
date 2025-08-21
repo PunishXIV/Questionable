@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000340,
+          "Position": {
+            "X": 277.51575,
+            "Y": 11.186312,
+            "Z": -255.60394
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002282,
+          "Position": {
+            "X": 270.28296,
+            "Y": 12.130859,
+            "Z": -258.44214
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2002281,
+          "Position": {
+            "X": 261.15808,
+            "Y": 11.24585,
+            "Z": -252.49103
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2001975,
+          "Position": {
+            "X": 248.76782,
+            "Y": 11.459534,
+            "Z": -233.23413
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001976,
+          "Position": {
+            "X": 299.8855,
+            "Y": 14.175598,
+            "Z": -249.3172
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000341,
+          "Position": {
+            "X": 300.09912,
+            "Y": 11.935754,
+            "Z": -247.02838
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006238,
+          "Position": {
+            "X": 197.77222,
+            "Y": 7.8551226,
+            "Z": -22.14087
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

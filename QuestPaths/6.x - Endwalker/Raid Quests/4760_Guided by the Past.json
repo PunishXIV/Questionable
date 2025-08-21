@@ -1,0 +1,138 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045356,
+          "Position": {
+            "X": 28.42749,
+            "Y": 197.55338,
+            "Z": 508.23218
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1079,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 807.9048,
+            "Y": 152.2857,
+            "Z": -243.60707
+          },
+          "TerritoryId": 961,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true
+        },
+        {
+          "DataId": 2012293,
+          "Position": {
+            "X": 809.9336,
+            "Y": 151.81189,
+            "Z": -243.42719
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1025
+        },
+        {
+          "DataId": 2013031,
+          "Position": {
+            "X": 99.96179,
+            "Y": 8.8349,
+            "Z": -71.03082
+          },
+          "TerritoryId": 1025,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1093
+        },
+        {
+          "DataId": 1045364,
+          "Position": {
+            "X": 96.36072,
+            "Y": -4.5494874E-13,
+            "Z": 85.43518
+          },
+          "TerritoryId": 1093,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -431.53903,
+            "Y": -220.1193,
+            "Z": 301.76364
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true
+        },
+        {
+          "DataId": 2013029,
+          "Position": {
+            "X": -238.97156,
+            "Y": -220.41656,
+            "Z": 340.6272
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1079
+        },
+        {
+          "DataId": 1045371,
+          "Position": {
+            "X": 29.404175,
+            "Y": 197.55386,
+            "Z": 508.8424
+          },
+          "TerritoryId": 1079,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045372,
+          "Position": {
+            "X": 28.030762,
+            "Y": 197.55408,
+            "Z": 508.87305
+          },
+          "TerritoryId": 1079,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045332,
+          "Position": {
+            "X": -639.704,
+            "Y": -27.177149,
+            "Z": 301.9912
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5252
+        }
+      ]
+    }
+  ]
+}

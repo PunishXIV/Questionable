@@ -1,0 +1,60 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1012290,
+					"Position": {
+						"X": 760.5248,
+						"Y": -30.307041,
+						"Z": -579.67505
+					},
+					"TerritoryId": 402,
+					"InteractionType": "AcceptQuest",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"Position": {
+						"X": 668.9029,
+						"Y": -86.006,
+						"Z": -775.5664
+					},
+					"TerritoryId": 402,
+					"InteractionType": "Combat",
+					"EnemySpawnType": "OverworldEnemies",
+					"ComplexCombatData": [
+						{
+							"DataId": 4046,
+							"MinimumKillCount": 4
+						}
+					],
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1012290,
+					"Position": {
+						"X": 760.5248,
+						"Y": -30.307041,
+						"Z": -579.67505
+					},
+					"TerritoryId": 402,
+					"InteractionType": "CompleteQuest",
+					"Fly": true
+				}
+			]
+		}
+	]
+}

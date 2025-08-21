@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014429,
+          "Position": {
+            "X": -77.34796,
+            "Y": -8.655561,
+            "Z": 165.23987
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014431,
+          "Position": {
+            "X": -77.37854,
+            "Y": -8.6555605,
+            "Z": 166.36902
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014430,
+          "Position": {
+            "X": 357.90027,
+            "Y": -29.897694,
+            "Z": -105.21106
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 318.27338,
+            "Y": -29.677633,
+            "Z": -148.89816
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4470,
+              "MinimumKillCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014430,
+          "Position": {
+            "X": 357.90027,
+            "Y": -29.897694,
+            "Z": -105.21106
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 293.52023,
+            "Y": -30.697027,
+            "Z": -167.88272
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4470,
+              "MinimumKillCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1014430,
+          "Position": {
+            "X": 357.90027,
+            "Y": -29.897694,
+            "Z": -105.21106
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": 226.58783,
+            "Y": -36.917496,
+            "Z": -100.45467
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4470,
+              "MinimumKillCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1014430,
+          "Position": {
+            "X": 357.90027,
+            "Y": -29.897694,
+            "Z": -105.21106
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014431,
+          "Position": {
+            "X": -77.37854,
+            "Y": -8.6555605,
+            "Z": 166.36902
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1831
+        }
+      ]
+    }
+  ]
+}

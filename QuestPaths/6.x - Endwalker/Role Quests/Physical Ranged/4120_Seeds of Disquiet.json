@@ -1,0 +1,123 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039102,
+          "Position": {
+            "X": -177.96606,
+            "Y": 4.05,
+            "Z": -90.44025
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA401_04120_Q1_000_000",
+              "Answer": "TEXT_AKTKBA401_04120_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038458,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": 7.2174683
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038459,
+          "Position": {
+            "X": 472.09888,
+            "Y": 16.276169,
+            "Z": 318.25732
+          },
+          "StopDistance": 5,
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 323.44977,
+            "Y": 30.394468,
+            "Z": 222.47493
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14026
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038462,
+          "Position": {
+            "X": 319.9359,
+            "Y": 29.41258,
+            "Z": 224.4143
+          },
+          "StopDistance": 5,
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038457,
+          "Position": {
+            "X": -0.83929443,
+            "Y": 0,
+            "Z": 8.8654175
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "NextQuestId": 4121
+        }
+      ]
+    }
+  ]
+}

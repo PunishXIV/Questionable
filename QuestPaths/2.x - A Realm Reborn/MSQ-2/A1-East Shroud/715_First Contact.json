@@ -1,0 +1,89 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000540,
+          "Position": {
+            "X": -238.17816,
+            "Y": 3.543561,
+            "Z": 283.71094
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006188,
+          "Position": {
+            "X": -236.92688,
+            "Y": 3.5435789,
+            "Z": 283.4973
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "DelaySecondsAtStart": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000580,
+          "Position": {
+            "X": 25.65039,
+            "Y": -3.7080078,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

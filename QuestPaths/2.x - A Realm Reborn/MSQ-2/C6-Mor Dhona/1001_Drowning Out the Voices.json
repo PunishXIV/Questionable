@@ -1,0 +1,265 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006535,
+          "Position": {
+            "X": 26.901611,
+            "Y": 20.543928,
+            "Z": -687.4037
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Comment": "'Invalid target' messages can just be bad positioning?",
+      "Steps": [
+        {
+          "Position": {
+            "X": -148.50606,
+            "Y": -0.6686005,
+            "Z": -615.3246
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002232,
+          "Position": {
+            "X": -146.92914,
+            "Y": 0.47296143,
+            "Z": -616.0525
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "DelaySecondsAtStart": 2,
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2000766,
+          "KillEnemyDataIds": [
+            46
+          ],
+          "$": "QW: 16 0 1 16 0 16",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2002233,
+          "Position": {
+            "X": -202.07526,
+            "Y": 3.8909912,
+            "Z": -625.90985
+          },
+          "TerritoryId": 156,
+          "InteractionType": "UseItem",
+          "ItemId": 2000766,
+          "$": "QW: 32 16 1 16 0 80",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -219.34567,
+            "Y": 4.551038,
+            "Z": -637.8296
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                8
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002234,
+          "Position": {
+            "X": -216.81549,
+            "Y": 5.6915283,
+            "Z": -637.4762
+          },
+          "TerritoryId": 156,
+          "InteractionType": "UseItem",
+          "ItemId": 2000766,
+          "$": "48 17 1 16 0 88",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "Position": {
+            "X": -196.89899,
+            "Y": 5.426553,
+            "Z": -658.71454
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Comment": "Avoids pit",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -170.45108,
+            "Y": 3.23747,
+            "Z": -656.8099
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Comment": "Move into LOS",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002230,
+          "Position": {
+            "X": -171.52673,
+            "Y": 4.0131226,
+            "Z": -655.787
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "DelaySecondsAtStart": 2,
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2000766,
+          "KillEnemyDataIds": [
+            46
+          ],
+          "$": "64 17 49 16 0 120",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -159.67096,
+            "Y": 2.7818115,
+            "Z": -634.4776
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "$": "Camp Revenant's Toll (bottom)"
+        },
+        {
+          "Position": {
+            "X": -169.94295,
+            "Y": 13.794385,
+            "Z": -610.4647
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "$": "Camp Revenant's Toll (top)",
+          "Comment": "TODO Unsure if this can be reached without flying, or needs more nav"
+        },
+        {
+          "Position": {
+            "X": -175.24794,
+            "Y": 10.096513,
+            "Z": -605.4419
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "$": "Camp Revenant's Toll (after jump)",
+          "DisableNavmesh": true,
+          "Mount": false
+        },
+        {
+          "DataId": 2002231,
+          "Position": {
+            "X": -174.91425,
+            "Y": 10.757568,
+            "Z": -603.8148
+          },
+          "TerritoryId": 156,
+          "InteractionType": "UseItem",
+          "ItemId": 2000766,
+          "DelaySecondsAtStart": 2
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006535,
+          "Position": {
+            "X": 26.901611,
+            "Y": 20.543928,
+            "Z": -687.4037
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    }
+  ]
+}

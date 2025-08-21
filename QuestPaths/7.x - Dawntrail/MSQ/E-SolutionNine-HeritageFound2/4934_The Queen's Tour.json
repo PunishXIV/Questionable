@@ -1,0 +1,168 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048062,
+          "Position": {
+            "X": -136.43097,
+            "Y": 0.22516371,
+            "Z": -44.235962
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048233,
+          "Position": {
+            "X": -163.86664,
+            "Y": 0.9219522,
+            "Z": -51.529785
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGME103_04934_SYSTEM_000_057",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGME103_04934_Q1_000_000",
+              "Answer": "TEXT_KINGME103_04934_A1_000_003"
+            }
+          ],
+          "PointMenuChoices": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048066,
+          "Position": {
+            "X": -162.55438,
+            "Y": 0.92195225,
+            "Z": -52.384216
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048065,
+          "Position": {
+            "X": -163.83618,
+            "Y": 0.9219523,
+            "Z": -51.499268
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1186,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Solution Nine] Nexus Arcade"
+        },
+        {
+          "Position": {
+            "X": -320.34818,
+            "Y": 9.519508,
+            "Z": -6.9244547
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1048065,
+          "Position": {
+            "X": -320.34818,
+            "Y": 9.519508,
+            "Z": -6.9244547
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 3
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1048065,
+          "Position": {
+            "X": -369.83575,
+            "Y": 14.000001,
+            "Z": 133.25919
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 1186,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Solution Nine] Residential Sector"
+        },
+        {
+          "DataId": 1048065,
+          "Position": {
+            "X": -401.3925,
+            "Y": 13.999998,
+            "Z": 273.74304
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048067,
+          "Position": {
+            "X": -403.9826,
+            "Y": 13.999998,
+            "Z": 275.8678
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

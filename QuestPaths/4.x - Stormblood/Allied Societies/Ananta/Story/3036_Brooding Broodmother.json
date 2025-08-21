@@ -1,0 +1,88 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021565,
+          "Position": {
+            "X": 440.11584,
+            "Y": 114.254425,
+            "Z": 212.84802
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020817,
+          "Position": {
+            "X": 327.5348,
+            "Y": 83.45977,
+            "Z": -103.07471
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024894,
+          "Position": {
+            "X": 21.744019,
+            "Y": -0.05840592,
+            "Z": 13.01593
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024771,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANANA001_03036_Q2_000_000",
+              "Answer": "TEXT_BANANA001_03036_A2_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANANA001_03036_Q3_000_000",
+              "Answer": "TEXT_BANANA001_03036_A3_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

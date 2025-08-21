@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004917,
+          "Position": {
+            "X": -358.6328,
+            "Y": 8.469424,
+            "Z": 422.4154
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006602,
+          "Position": {
+            "X": -321.06506,
+            "Y": 8.830055,
+            "Z": 436.94202
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1006600,
+          "Position": {
+            "X": -283.5279,
+            "Y": 7.652629,
+            "Z": 423.14795
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1006599,
+          "Position": {
+            "X": -279.98785,
+            "Y": 15.013981,
+            "Z": 373.37292
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1006601,
+          "Position": {
+            "X": -293.53784,
+            "Y": 13.137939,
+            "Z": 354.63477
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004917,
+          "Position": {
+            "X": -358.6328,
+            "Y": 8.469424,
+            "Z": 422.4154
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012080,
+          "Position": {
+            "X": 392.20264,
+            "Y": -72.34356,
+            "Z": 649.56116
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 378.22073,
+            "Y": -74.08917,
+            "Z": 651.4364
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1012284,
+          "Position": {
+            "X": 363.24097,
+            "Y": -73.25598,
+            "Z": 678.4314
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1819
+        },
+        {
+          "Position": {
+            "X": 286.46622,
+            "Y": -46.748116,
+            "Z": 661.95807
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "$": "Moghome entrance"
+        },
+        {
+          "Position": {
+            "X": 243.81534,
+            "Y": -40.014244,
+            "Z": 443.64566
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4483,
+            5053
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012080,
+          "Position": {
+            "X": 392.20264,
+            "Y": -72.34356,
+            "Z": 649.56116
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

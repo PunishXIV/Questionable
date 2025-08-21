@@ -1,0 +1,131 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012698,
+          "Position": {
+            "X": 569.17664,
+            "Y": -1.1916885,
+            "Z": -370.22968
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013434,
+          "Position": {
+            "X": 517.9064,
+            "Y": -1.1917055,
+            "Z": -354.63495
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1835
+        },
+        {
+          "DataId": 1012720,
+          "Position": {
+            "X": -106.9505,
+            "Y": 15.168516,
+            "Z": -40.60431
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433,
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Last Vigil"
+          ]
+        },
+        {
+          "DataId": 1012583,
+          "Position": {
+            "X": -2.1210327,
+            "Y": 0.009368893,
+            "Z": -9.567444
+          },
+          "TerritoryId": 433,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2005334,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.1443481,
+            "Z": 13.199036
+          },
+          "TerritoryId": 433,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 419
+        },
+        {
+          "DataId": 1012709,
+          "Position": {
+            "X": 151.01843,
+            "Y": -12.634913,
+            "Z": -28.671753
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012714,
+          "Position": {
+            "X": -160.54016,
+            "Y": 16.979584,
+            "Z": -39.96344
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    }
+  ]
+}

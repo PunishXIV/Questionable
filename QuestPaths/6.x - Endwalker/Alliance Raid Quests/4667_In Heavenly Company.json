@@ -1,0 +1,139 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044304,
+          "Position": {
+            "X": -6.6377563,
+            "Y": 0.0999997,
+            "Z": 7.2785034
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012871,
+          "Position": {
+            "X": 15.945618,
+            "Y": 1.7547607,
+            "Z": -61.600708
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1061
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1044306,
+          "Position": {
+            "X": -149.58423,
+            "Y": 42.86022,
+            "Z": -182.8794
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 126.23871,
+            "Y": 31.274973,
+            "Z": -772.4912
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "Position": {
+            "X": -693.9247,
+            "Y": 261.1125,
+            "Z": 436.2933
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1044310,
+          "Position": {
+            "X": -674.21985,
+            "Y": 254.80737,
+            "Z": 490.77588
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 180.50424,
+            "Y": 360.59534,
+            "Z": -609.197
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        },
+        {
+          "DataId": 1044314,
+          "Position": {
+            "X": 182.5741,
+            "Y": 360.90265,
+            "Z": -610.2846
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044315,
+          "Position": {
+            "X": 80.24719,
+            "Y": 373.73154,
+            "Z": -674.49457
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4668
+        }
+      ]
+    }
+  ]
+}

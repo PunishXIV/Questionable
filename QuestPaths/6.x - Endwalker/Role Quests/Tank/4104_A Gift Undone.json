@@ -1,0 +1,164 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_AKTKBA121_04104_Q0_000_000",
+                            "Answer": "TEXT_AKTKBA121_04104_A0_000_001"
+                        }
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2011735,
+                    "Position": {
+                        "X": -314.4427,
+                        "Y": 61.05127,
+                        "Z": -141.10028
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Combat",
+                    "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        14013
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 2011730,
+                    "Position": {
+                        "X": -314.4427,
+                        "Y": 61.05127,
+                        "Z": -141.10028
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 2011733,
+                    "Position": {
+                        "X": -408.9876,
+                        "Y": 61.631104,
+                        "Z": -125.90222
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        14014
+                    ],
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 2011732,
+                    "Position": {
+                        "X": -343.2517,
+                        "Y": 60.105225,
+                        "Z": -72.46515
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        14014
+                    ],
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                },
+                {
+                    "DataId": 2011731,
+                    "Position": {
+                        "X": -231.46417,
+                        "Y": 56.71765,
+                        "Z": -93.614136
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 2011747,
+                    "Position": {
+                        "X": -310.71948,
+                        "Y": 21.194763,
+                        "Z": 173.66284
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "CompleteQuest",
+                    "NextQuestId": 4105
+                }
+            ]
+        }
+    ]
+}

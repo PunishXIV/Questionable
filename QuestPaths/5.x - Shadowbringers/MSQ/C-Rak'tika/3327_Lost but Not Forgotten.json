@@ -1,0 +1,127 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029197,
+          "Position": {
+            "X": -87.87671,
+            "Y": -19.022131,
+            "Z": 298.20703
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029023,
+          "Position": {
+            "X": -131.36493,
+            "Y": -16.477911,
+            "Z": 316.3042
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3444
+        },
+        {
+          "DataId": 2009866,
+          "Position": {
+            "X": -260.73096,
+            "Y": 13.656799,
+            "Z": 554.68054
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -284.9141,
+            "Y": 8.7010765,
+            "Z": 603.8272
+          },
+          "StopDistance": 1,
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10878
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029206,
+          "Position": {
+            "X": -243.18304,
+            "Y": 13.323829,
+            "Z": 778.9883
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009869,
+          "Position": {
+            "X": -309.3156,
+            "Y": 7.095398,
+            "Z": 702.2355
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1029207,
+          "Position": {
+            "X": -213.61108,
+            "Y": 10.207863,
+            "Z": 712.6116
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029197,
+          "Position": {
+            "X": -87.87671,
+            "Y": -19.022131,
+            "Z": 298.20703
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
+        }
+      ]
+    }
+  ]
+}

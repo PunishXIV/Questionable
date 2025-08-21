@@ -1,0 +1,215 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009331,
+          "Position": {
+            "X": 311.54346,
+            "Y": -36.405907,
+            "Z": 344.71655
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CHRHDB303_01440_Q1_000_010",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003584,
+          "Position": {
+            "X": 317.43335,
+            "Y": -36.325005,
+            "Z": 352.86487
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 138,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2004324,
+          "Position": {
+            "X": -283.0091,
+            "Y": -40.634766,
+            "Z": 425.58936
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2004325,
+          "Position": {
+            "X": -242.60321,
+            "Y": -38.68164,
+            "Z": 514.7324
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2004326,
+          "Position": {
+            "X": -291.06586,
+            "Y": -38.07129,
+            "Z": 596.765
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Commence \"The Mandragoras\"",
+          "DataId": 1009335,
+          "Position": {
+            "X": -256.70258,
+            "Y": -40.18569,
+            "Z": 684.1992
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "ExcelSheet": "Addon",
+              "Prompt": 102445,
+              "PromptIsRegularExpression": true,
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "Comment": "Fight some Mandragoras",
+          "Position": {
+            "X": -256.70258,
+            "Y": -40.18569,
+            "Z": 684.1992
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FateEnemies",
+          "KillEnemyDataIds": [
+            2950,
+            2951,
+            2952,
+            2953,
+            2954
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true,
+          "Position": {
+            "X": 581.46533,
+            "Y": 14.587067,
+            "Z": 393.86594
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1009319,
+          "Position": {
+            "X": 581.3534,
+            "Y": 14.587067,
+            "Z": 395.8037
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 1009336,
+          "Position": {
+            "X": 494.49902,
+            "Y": 11.323204,
+            "Z": 210.3761
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "DataId": 1009337,
+          "Position": {
+            "X": -46.860474,
+            "Y": 75.95114,
+            "Z": 10.879639
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1441
+        }
+      ]
+    }
+  ]
+}

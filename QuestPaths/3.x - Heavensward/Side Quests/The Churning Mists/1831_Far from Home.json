@@ -1,0 +1,155 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014432,
+          "Position": {
+            "X": -625.8793,
+            "Y": 50,
+            "Z": 332.63135
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Churning Mists - Zenith"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014436,
+          "Position": {
+            "X": -626.42865,
+            "Y": 49.999996,
+            "Z": 334.0658
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014432,
+          "Position": {
+            "X": -625.8793,
+            "Y": 50,
+            "Z": 332.63135
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -473.00934,
+            "Y": 42.910698,
+            "Z": 361.0051
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -473.00934,
+            "Y": 42.910698,
+            "Z": 361.0051
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4076
+          ]
+        },
+        {
+          "DataId": 1014433,
+          "Position": {
+            "X": -473.4112,
+            "Y": 42.91877,
+            "Z": 360.0061
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -177.2358,
+            "Y": -20.962738,
+            "Z": 266.31805
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -177.2358,
+            "Y": -20.962738,
+            "Z": 266.31805
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4076
+          ]
+        },
+        {
+          "DataId": 1014434,
+          "Position": {
+            "X": -177.11151,
+            "Y": -20.990452,
+            "Z": 266.5293
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014435,
+          "Position": {
+            "X": -109.056274,
+            "Y": -8.844471,
+            "Z": 209.3385
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1832
+        }
+      ]
+    }
+  ]
+}

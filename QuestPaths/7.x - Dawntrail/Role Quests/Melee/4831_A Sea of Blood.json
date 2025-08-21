@@ -1,0 +1,155 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048296,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBA311_04831_Q2_000_000",
+              "Answer": "TEXT_KINGBA311_04831_A2_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019154,
+          "Position": {
+            "X": 829.1294,
+            "Y": 5.9230084,
+            "Z": 859.739
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] The Ruby Price"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019169,
+          "Position": {
+            "X": 476.82898,
+            "Y": 30.113333,
+            "Z": 763.546
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019167,
+          "Position": {
+            "X": 447.56226,
+            "Y": 34.29651,
+            "Z": 732.66187
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048299,
+          "Position": {
+            "X": 463.46216,
+            "Y": 29.787891,
+            "Z": 736.8428
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 426.16245,
+            "Y": 0.7213422,
+            "Z": 195.08597
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1048301,
+          "Position": {
+            "X": 427.78674,
+            "Y": 0.5689501,
+            "Z": 195.39172
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048296,
+          "Position": {
+            "X": 111.40613,
+            "Y": 11.997235,
+            "Z": -52.018066
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "NextQuestId": 4832
+        }
+      ]
+    }
+  ]
+}

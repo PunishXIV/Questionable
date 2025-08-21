@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005021,
+          "Position": {
+            "X": -472.49567,
+            "Y": 23.008797,
+            "Z": -355.00116
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 26.405773,
+            "Y": 29.49983,
+            "Z": -767.3998
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 25.629164,
+            "Y": 28.999998,
+            "Z": -823.2204
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.589355,
+            "Y": 29,
+            "Z": -825.37573
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ],
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

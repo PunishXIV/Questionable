@@ -1,0 +1,196 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020046,
+          "Position": {
+            "X": 455.95483,
+            "Y": 29.324865,
+            "Z": 759.6703
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008011,
+          "Position": {
+            "X": 457.51123,
+            "Y": 32.36438,
+            "Z": 822.4154
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818199
+        },
+        {
+          "Position": {
+            "X": 453.69717,
+            "Y": 14.463846,
+            "Z": 663.386
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1020047,
+          "Position": {
+            "X": 433.9818,
+            "Y": 14.6418705,
+            "Z": 622.76636
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007840,
+          "Position": {
+            "X": 390.6156,
+            "Y": 14.633362,
+            "Z": 685.96924
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020049,
+          "Position": {
+            "X": 390.5547,
+            "Y": 14.64187,
+            "Z": 685.9387
+          },
+          "TerritoryId": 614,
+          "InteractionType": "UseItem",
+          "ItemId": 2002070
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020048,
+          "Position": {
+            "X": 434.5006,
+            "Y": 14.6418705,
+            "Z": 624.567
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2007841,
+          "Position": {
+            "X": 485.37415,
+            "Y": 14.633362,
+            "Z": 742.97705
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1020050,
+          "Position": {
+            "X": 485.2522,
+            "Y": 14.641862,
+            "Z": 742.97705
+          },
+          "TerritoryId": 614,
+          "InteractionType": "UseItem",
+          "ItemId": 2002070
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1020051,
+          "Position": {
+            "X": 232.56274,
+            "Y": 1.4025975,
+            "Z": 756.0996
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 406.34747,
+            "Y": -0.6000004,
+            "Z": -281.95883
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Dive",
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "Yanxia - Namai"
+        },
+        {
+          "Position": {
+            "X": 365.84177,
+            "Y": -50.164906,
+            "Z": -309.3022
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 301.059,
+            "Y": -21.410977,
+            "Z": -358.57938
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "StopDistance": 0.25,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 1023787,
+          "Position": {
+            "X": 278.30933,
+            "Y": 2.9544957,
+            "Z": -378.43903
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

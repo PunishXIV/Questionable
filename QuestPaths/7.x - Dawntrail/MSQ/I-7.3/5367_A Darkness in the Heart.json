@@ -1,0 +1,141 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1054545,
+          "Position": {
+            "X": 6.6071167,
+            "Y": 0.37129992,
+            "Z": -18.570251
+          },
+          "TerritoryId": 1171,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1054546,
+          "Position": {
+            "X": -240.77216,
+            "Y": 30,
+            "Z": -597.345
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Heritage Found - The Outskirts"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1054549,
+          "Position": {
+            "X": -303.8529,
+            "Y": 33.89061,
+            "Z": -546.7765
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1054548,
+          "Position": {
+            "X": -182.97095,
+            "Y": 28,
+            "Z": -570.0313
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1054547,
+          "Position": {
+            "X": -111.49768,
+            "Y": 42.99968,
+            "Z": -658.7778
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1054546,
+          "Position": {
+            "X": -240.77216,
+            "Y": 30,
+            "Z": -597.345
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMI104_05367_Q1_000_000",
+              "Answer": "TEXT_KINGMI104_05367_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054550,
+          "Position": {
+            "X": -24.307678,
+            "Y": 38.806587,
+            "Z": -411.2459
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

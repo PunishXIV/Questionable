@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028756,
+          "Position": {
+            "X": -57.358704,
+            "Y": -2.8249152,
+            "Z": 28.42749
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028773,
+          "Position": {
+            "X": -6.7597656,
+            "Y": 5.4756656,
+            "Z": 47.53174
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBB231_03253_Q1_000_000",
+              "Answer": "TEXT_LUCKBB231_03253_A1_000_000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012163,
+          "Position": {
+            "X": 128.25195,
+            "Y": 24.458832,
+            "Z": -0.6867676
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028774,
+          "Position": {
+            "X": -53.055664,
+            "Y": 298.9,
+            "Z": -229.51093
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 10852,
+          "Position": {
+            "X": -48.600037,
+            "Y": 298.9,
+            "Z": -235.24835
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10852
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1028774,
+          "Position": {
+            "X": -53.055664,
+            "Y": 298.9,
+            "Z": -229.51093
+          },
+          "StopDistance": 7,
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028757,
+          "Position": {
+            "X": -58.213196,
+            "Y": -2.8447464,
+            "Z": 28.915894
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "NextQuestId": 3254
+        }
+      ]
+    }
+  ]
+}

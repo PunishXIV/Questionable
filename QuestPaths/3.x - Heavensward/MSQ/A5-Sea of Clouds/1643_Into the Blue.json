@@ -1,0 +1,77 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013385,
+          "Position": {
+            "X": -158.37347,
+            "Y": 17,
+            "Z": -54.276367
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013077,
+          "Position": {
+            "X": 147.53943,
+            "Y": -12.634913,
+            "Z": -26.199768
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013125,
+          "Position": {
+            "X": 148.60754,
+            "Y": -12.634913,
+            "Z": -13.443237
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA502_01643_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013085,
+          "Position": {
+            "X": -805.53906,
+            "Y": -57.828876,
+            "Z": 157.64087
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

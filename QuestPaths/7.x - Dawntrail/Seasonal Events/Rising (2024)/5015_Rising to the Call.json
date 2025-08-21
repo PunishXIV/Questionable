@@ -1,0 +1,188 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050998,
+          "Position": {
+            "X": 4.0131226,
+            "Y": 44.499996,
+            "Z": 126.17676
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050999,
+          "Position": {
+            "X": 4.837097,
+            "Y": 31.47563,
+            "Z": -256.97723
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Marauders' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051000,
+          "Position": {
+            "X": -100.175476,
+            "Y": 18.00033,
+            "Z": -15.030151
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001217,
+          "Position": {
+            "X": -140.85602,
+            "Y": 18.199999,
+            "Z": 17.013733
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1051003,
+          "Position": {
+            "X": -188.12854,
+            "Y": 16,
+            "Z": 33.37146
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1051002,
+          "Position": {
+            "X": -205.005,
+            "Y": 15.999994,
+            "Z": 71.97681
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1051004,
+          "Position": {
+            "X": -243.03046,
+            "Y": 16.199997,
+            "Z": 40.97046
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2014209,
+          "Position": {
+            "X": -385.1225,
+            "Y": 5.996765,
+            "Z": 33.707153
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051001,
+          "Position": {
+            "X": 3.7994385,
+            "Y": 44.499992,
+            "Z": 126.05469
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "NextQuestId": 5016
+        }
+      ]
+    }
+  ]
+}

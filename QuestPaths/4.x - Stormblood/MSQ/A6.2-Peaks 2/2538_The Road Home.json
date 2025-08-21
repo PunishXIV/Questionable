@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020611,
+          "Position": {
+            "X": 7.827881,
+            "Y": 317.5509,
+            "Z": 112.41321
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019945,
+          "Position": {
+            "X": 7.9804688,
+            "Y": 306.56976,
+            "Z": 73.68579
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023835,
+          "Position": {
+            "X": -150.04199,
+            "Y": 305.79913,
+            "Z": 82.871704
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 1 0    0 0    0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2008450,
+          "Position": {
+            "X": -126.54315,
+            "Y": 306.50793,
+            "Z": 186.26685
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 620
+        },
+        {
+          "DataId": 1023834,
+          "Position": {
+            "X": -148.4856,
+            "Y": 300.39352,
+            "Z": 265.73584
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 1 0    0 0    0 32 -> QW: 2 0    0 0    0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1020623,
+          "Position": {
+            "X": -212.63446,
+            "Y": 296.37332,
+            "Z": 297.04736
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020601,
+          "Position": {
+            "X": -286.54926,
+            "Y": 256.8515,
+            "Z": 693.1411
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
+        }
+      ]
+    }
+  ]
+}

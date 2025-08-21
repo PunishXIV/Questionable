@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021949,
+          "Position": {
+            "X": 462.6687,
+            "Y": 69.02547,
+            "Z": 515.06824
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021952,
+          "Position": {
+            "X": 40.146484,
+            "Y": -19.000002,
+            "Z": 94.92627
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021956,
+          "Position": {
+            "X": 4.257263,
+            "Y": 0.002998305,
+            "Z": -0.4730835
+          },
+          "TerritoryId": 636,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021953,
+          "Position": {
+            "X": 41.550293,
+            "Y": -19.000004,
+            "Z": 95.26196
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "NextQuestId": 3031
+        }
+      ]
+    }
+  ]
+}

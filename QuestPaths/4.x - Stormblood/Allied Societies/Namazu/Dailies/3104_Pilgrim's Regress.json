@@ -1,0 +1,109 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Theo",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -780.148,
+                        "Y": 128.25195,
+                        "Z": 97.154175
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "WalkTo"
+                },
+                {
+                    "DataId": 1025602,
+                    "Position": {
+                        "X": -780.148,
+                        "Y": 128.25195,
+                        "Z": 97.154175
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "AcceptQuest"
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2009491,
+                    "Position": {
+                        "X": -70.81714,
+                        "Y": 66.9718,
+                        "Z": -421.89673
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "Say",
+                    "Fly": true,
+                    "ChatMessage": {
+                        "Key": "TEXT_BANNAM302_03104_SAYTODO_000_050"
+                    },
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 2009492,
+                    "Position": {
+                        "X": 725.307,
+                        "Y": -1.5717163,
+                        "Z": -423.81934
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "Say",
+                    "Fly": true,
+                    "ChatMessage": {
+                        "Key": "TEXT_BANNAM302_03104_SAYTODO_000_050"
+                    },
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1025602,
+                    "Position": {
+                        "X": -780.148,
+                        "Y": 128.25195,
+                        "Z": 97.154175
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "CompleteQuest",
+                    "Mount": true,
+                    "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -780.148,
+                                    "Y": 128.25195,
+                                    "Z": 97.154175
+                                },
+                                "TerritoryId": 622,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

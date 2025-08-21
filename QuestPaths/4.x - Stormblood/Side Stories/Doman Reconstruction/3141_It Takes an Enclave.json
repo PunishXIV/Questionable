@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024791,
+          "Position": {
+            "X": 31.60144,
+            "Y": 0.26575702,
+            "Z": 28.915894
+          },
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024793,
+          "Position": {
+            "X": 66.666626,
+            "Y": -7.579447E-09,
+            "Z": -59.67804
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024791,
+          "Position": {
+            "X": 31.60144,
+            "Y": 0.26575702,
+            "Z": 28.915894
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

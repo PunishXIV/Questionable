@@ -1,0 +1,145 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 218.73804,
+                  "Y": 7.1558266,
+                  "Z": -249.1341
+                },
+                "MaximumDistance": 100,
+                "TerritoryId": 815
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030638,
+          "Position": {
+            "X": 543.8773,
+            "Y": -6.503428,
+            "Z": 811.7036
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Tessellation (Lakeland)"
+          ],
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                813
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010215,
+          "Position": {
+            "X": 523.9795,
+            "Y": -2.0599976,
+            "Z": 795.1018
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10839
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030639,
+          "Position": {
+            "X": 542.8092,
+            "Y": -6.489782,
+            "Z": 811.79517
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031033,
+          "Position": {
+            "X": 540.6727,
+            "Y": -6.4392195,
+            "Z": 801.87683
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1031033,
+          "Position": {
+            "X": 540.6727,
+            "Y": -6.4392195,
+            "Z": 801.87683
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true,
+          "NextQuestId": 3628
+        }
+      ]
+    }
+  ]
+}

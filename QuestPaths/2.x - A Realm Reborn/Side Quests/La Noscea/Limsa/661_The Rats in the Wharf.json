@@ -1,0 +1,158 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "UcanPatates",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1001000,
+                    "Position": {
+                        "X": -32.028687,
+                        "Y": 41.499985,
+                        "Z": 208.39233
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] The Aftcastle"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                129,
+                                128
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 25.29642,
+                        "Y": 44.499924,
+                        "Z": 184.26752
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "WalkTo",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] The Aftcastle"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                129,
+                                128
+                            ]
+                        },
+                        "StepIf": {
+                            "InTerritory": [
+                                135
+                            ]
+                        }
+                    }
+                },
+                {
+                    "Position": {
+                        "X": 21.738638,
+                        "Y": 61.836372,
+                        "Z": 139.60422
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+                    ],
+                    "ComplexCombatData": [
+                        {
+                            "DataId": 347,
+                            "CompletionQuestVariablesFlags": [
+                                {
+                                    "Low": 5
+                                },
+                                null,
+                                null,
+                                null,
+                                null,
+                                null
+                            ],
+                            "MinimumKillCount": 5
+                        }
+                    ],
+                    "CompletionQuestVariablesFlags": [
+                        {
+                            "Low": 5
+                        },
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                135
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -67.00804,
+                        "Y": 75.84114,
+                        "Z": 116.815384
+                    },
+                    "TerritoryId": 135,
+                    "InteractionType": "WalkTo",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NotInTerritory": [
+                                135
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 1000972,
+                    "Position": {
+                        "X": 20.279175,
+                        "Y": 40.19993,
+                        "Z": -6.1189575
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] The Aftcastle"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                129,
+                                128
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

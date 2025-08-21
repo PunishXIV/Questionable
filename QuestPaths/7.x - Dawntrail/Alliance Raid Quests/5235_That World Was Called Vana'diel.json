@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051964,
+          "Position": {
+            "X": 0.56451416,
+            "Y": 41.999973,
+            "Z": -5.2339478
+          },
+          "TerritoryId": 1264,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051967,
+          "Position": {
+            "X": 564.72107,
+            "Y": -131.41925,
+            "Z": 609.21643
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014464,
+          "Position": {
+            "X": -412.2835,
+            "Y": 2.9754639,
+            "Z": -57.846985
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Dirigible Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051971,
+          "Position": {
+            "X": -414.69446,
+            "Y": 3,
+            "Z": -55.10034
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051971,
+          "Position": {
+            "X": 93.53023,
+            "Y": -14,
+            "Z": 50.456287
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Dirigible Landing",
+            "[Tuliyollal] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051972,
+          "Position": {
+            "X": 123.79639,
+            "Y": -14,
+            "Z": 27.115234
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5236
+        }
+      ]
+    }
+  ]
+}

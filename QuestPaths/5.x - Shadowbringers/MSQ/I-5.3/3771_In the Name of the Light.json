@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027231,
+          "Position": {
+            "X": 65.35437,
+            "Y": 1.7160122,
+            "Z": 249.83594
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027226,
+          "Position": {
+            "X": -61.84485,
+            "Y": -17.72202,
+            "Z": -266.2547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033794,
+          "Position": {
+            "X": -81.28485,
+            "Y": -36.750004,
+            "Z": -277.7906
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMI101_03771_Q3_000_148",
+              "Answer": "TEXT_LUCKMI101_03771_A3_000_149"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027248,
+          "Position": {
+            "X": -30.807983,
+            "Y": -0.64999914,
+            "Z": -51.438232
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028335,
+          "Position": {
+            "X": -146.65448,
+            "Y": 1.490116E-08,
+            "Z": 132.61609
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2011072,
+          "Position": {
+            "X": -137.4685,
+            "Y": 1.2664795,
+            "Z": 166.67432
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$.1": "QuestVariables if done first: 1 16 0 0 0 64"
+        },
+        {
+          "DataId": 2011071,
+          "Position": {
+            "X": -139.3302,
+            "Y": 0.99176025,
+            "Z": 167.65088
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.1": "QuestVariables if done after [1]: 2 32 0 0 0 192"
+        },
+        {
+          "DataId": 2011073,
+          "Position": {
+            "X": -142.2904,
+            "Y": 1.0527954,
+            "Z": 173.38818
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1033805,
+          "Position": {
+            "X": -141.71057,
+            "Y": 1.4901161E-08,
+            "Z": 160.6012
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027248,
+          "Position": {
+            "X": -30.807983,
+            "Y": -0.64999914,
+            "Z": -51.438232
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium"
+        }
+      ]
+    }
+  ]
+}

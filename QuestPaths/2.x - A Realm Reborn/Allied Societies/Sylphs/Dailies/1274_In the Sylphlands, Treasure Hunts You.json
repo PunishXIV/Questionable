@@ -1,0 +1,132 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005562,
+          "Position": {
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 321.08926,
+            "Y": -17.347095,
+            "Z": -201.61072
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2003494,
+          "Position": {
+            "X": 319.44763,
+            "Y": -17.227417,
+            "Z": -200.88507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2003041,
+          "Position": {
+            "X": 386.099,
+            "Y": -20.187744,
+            "Z": -200.763
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 2003040,
+          "Position": {
+            "X": 326.77185,
+            "Y": -18.112549,
+            "Z": -235.95032
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005562,
+          "Position": {
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

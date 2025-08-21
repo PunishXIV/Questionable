@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 573.56177,
+            "Y": 347.98422,
+            "Z": -760.73724
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 1922,
+              "CompletionQuestVariablesFlags": [
+                1,
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 2002312,
+          "Position": {
+            "X": 579.4918,
+            "Y": 347.79883,
+            "Z": -764.3702
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "NextQuestId": 1054,
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

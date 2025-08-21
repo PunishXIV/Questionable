@@ -1,0 +1,126 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006497,
+          "Position": {
+            "X": 321.1565,
+            "Y": -18.197807,
+            "Z": 276.5697
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 293.98203,
+            "Y": -24.988865,
+            "Z": 240.63774
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "$": "Aleport Crates"
+        },
+        {
+          "DataId": 1006502,
+          "Position": {
+            "X": 182.39111,
+            "Y": -41.0828,
+            "Z": 260.151
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 293.98203,
+            "Y": -24.988865,
+            "Z": 240.63774
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "$": "Aleport Crates"
+        },
+        {
+          "DataId": 1006497,
+          "Position": {
+            "X": 321.1565,
+            "Y": -18.197807,
+            "Z": 276.5697
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 303.96317,
+            "Y": -36.40591,
+            "Z": 316.74185
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1006501,
+          "Position": {
+            "X": 311.4214,
+            "Y": -36.405907,
+            "Z": 333.54688
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 305.6621,
+            "Y": -36.405907,
+            "Z": 320.81702
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1006497,
+          "Position": {
+            "X": 321.1565,
+            "Y": -18.197807,
+            "Z": 276.5697
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

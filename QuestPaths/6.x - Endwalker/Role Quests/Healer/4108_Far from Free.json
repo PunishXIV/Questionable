@@ -1,0 +1,149 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039411,
+          "Position": {
+            "X": -182.20801,
+            "Y": 4.06,
+            "Z": -80.73547
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA201_04108_Q1_000_000",
+              "Answer": "TEXT_AKTKBA201_04108_A1_000_001"
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039402,
+          "Position": {
+            "X": 741.0239,
+            "Y": 70,
+            "Z": 510.61267
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039403,
+          "Position": {
+            "X": -2.0599976,
+            "Y": 115.8696,
+            "Z": -576.9589
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039404,
+          "Position": {
+            "X": 2.2735596,
+            "Y": 116.12106,
+            "Z": -577.9355
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1039405,
+          "Position": {
+            "X": 2.1209717,
+            "Y": 116.152916,
+            "Z": -574.4259
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039408,
+          "Position": {
+            "X": 144.12134,
+            "Y": 118.19209,
+            "Z": -728.6946
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039410,
+          "Position": {
+            "X": 738.70447,
+            "Y": 70,
+            "Z": 511.0398
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "NextQuestId": 4109
+        }
+      ]
+    }
+  ]
+}

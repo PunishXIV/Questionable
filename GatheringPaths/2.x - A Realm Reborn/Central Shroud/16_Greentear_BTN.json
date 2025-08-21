@@ -1,0 +1,168 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 148,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 30028,
+          "Locations": [
+            {
+              "Position": {
+                "X": 225.8048,
+                "Y": -5.26357,
+                "Z": -71.51706
+              },
+              "MinimumAngle": -60,
+              "MaximumAngle": 105
+            },
+            {
+              "Position": {
+                "X": 229.0866,
+                "Y": -7.037199,
+                "Z": -62.40871
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 175
+            },
+            {
+              "Position": {
+                "X": 210.4522,
+                "Y": -5.798344,
+                "Z": -69.99769
+              },
+              "MinimumAngle": 180,
+              "MaximumAngle": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30030,
+          "Locations": [
+            {
+              "Position": {
+                "X": 205.3417,
+                "Y": -7.402449,
+                "Z": -46.44062
+              },
+              "MinimumAngle": 70,
+              "MaximumAngle": 320
+            },
+            {
+              "Position": {
+                "X": 204.9178,
+                "Y": -8.416177,
+                "Z": -24.97287
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 260
+            },
+            {
+              "Position": {
+                "X": 196.8121,
+                "Y": -7.515049,
+                "Z": -31.74415
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 305
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30027,
+          "Locations": [
+            {
+              "Position": {
+                "X": 263.5084,
+                "Y": -7.83625,
+                "Z": -28.76189
+              },
+              "MinimumAngle": 220,
+              "MaximumAngle": 360
+            },
+            {
+              "Position": {
+                "X": 275.0262,
+                "Y": -6.339698,
+                "Z": -42.46669
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 150,
+              "MinimumDistance": 1.9,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": 248.5661,
+                "Y": -8.912354,
+                "Z": -5.168106
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 235
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30029,
+          "Locations": [
+            {
+              "Position": {
+                "X": 278.9887,
+                "Y": -6.181031,
+                "Z": -100.3401
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 135,
+              "MinimumDistance": 1.8,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": 281.2963,
+                "Y": -6.572734,
+                "Z": -72.80408
+              },
+              "MinimumAngle": -5,
+              "MaximumAngle": 165
+            },
+            {
+              "Position": {
+                "X": 282.8807,
+                "Y": -5.350755,
+                "Z": -91.96065
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 115,
+              "MinimumDistance": 1.8,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

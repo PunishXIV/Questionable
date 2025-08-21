@@ -1,0 +1,96 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005929,
+                    "Position": {
+                        "X": 21.560913,
+                        "Y": 16.342407,
+                        "Z": -183.76447
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 21.560913,
+                                    "Y": 16.342407,
+                                    "Z": -183.76447
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2003782,
+                    "Position": {
+                        "X": 65.35437,
+                        "Y": 55.61914,
+                        "Z": -450.7973
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterItemUse",
+                    "ItemId": 2001256,
+                    "KillEnemyDataIds": [
+                        756
+                    ],
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        1,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ]
+                },
+                {
+                    "DataId": 2003781,
+                    "Position": {
+                        "X": 78.446655,
+                        "Y": 55.61914,
+                        "Z": -470.0542
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterItemUse",
+                    "ItemId": 2001256,
+                    "KillEnemyDataIds": [
+                        756
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005929,
+                    "Position": {
+                        "X": 21.560913,
+                        "Y": 16.342407,
+                        "Z": -183.76447
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038868,
+          "Position": {
+            "X": 605.9204,
+            "Y": 34.7239,
+            "Z": 201.09851
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039864,
+          "Position": {
+            "X": -334.12683,
+            "Y": 23.803606,
+            "Z": 405.2644
+          },
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039870,
+          "Position": {
+            "X": -358.14453,
+            "Y": 22.554066,
+            "Z": 430.01453
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039878,
+          "Position": {
+            "X": -362.1729,
+            "Y": 22.071072,
+            "Z": 434.01233
+          },
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039880,
+          "Position": {
+            "X": -308.36963,
+            "Y": 22.468344,
+            "Z": 365.7129
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Follow Alphinaud and Alisaie",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMB108_04387_Q1_000_161",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039882,
+          "Position": {
+            "X": -286.71664,
+            "Y": 5.6315875,
+            "Z": 264.1926
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039882,
+          "Position": {
+            "X": -126.2175,
+            "Y": 0.18809877,
+            "Z": 233.39058
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039882,
+          "Position": {
+            "X": 67.2465,
+            "Y": 0.33215836,
+            "Z": 149.8282
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039880,
+          "Position": {
+            "X": 66.50907,
+            "Y": 0.26087344,
+            "Z": 149.46323
+          },
+          "StopDistance": 1,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039883,
+          "Position": {
+            "X": 64.65234,
+            "Y": 0.21427588,
+            "Z": 147.8446
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

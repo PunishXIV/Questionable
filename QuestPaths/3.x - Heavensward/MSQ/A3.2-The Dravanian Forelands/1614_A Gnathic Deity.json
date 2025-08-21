@@ -1,0 +1,181 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012636,
+          "Position": {
+            "X": 77.46997,
+            "Y": -49.24018,
+            "Z": -148.97388
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNA313_01614_Q1_000_000",
+              "Answer": "TEXT_HEAVNA313_01614_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011930,
+          "Position": {
+            "X": 81.49841,
+            "Y": -49.21252,
+            "Z": -150.04199
+          },
+          "StopDistance": 7,
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1011929,
+          "Position": {
+            "X": 70.81714,
+            "Y": -49.2083,
+            "Z": -141.55798
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "$": "1 0 0 0 0 32 -> 2 0 0 0 0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1011928,
+          "Position": {
+            "X": 73.19751,
+            "Y": -49.19563,
+            "Z": -139.05548
+          },
+          "StopDistance": 5,
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011931,
+          "Position": {
+            "X": 56.839844,
+            "Y": -49.92323,
+            "Z": -135.91211
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011929,
+          "Position": {
+            "X": 70.81714,
+            "Y": -49.2083,
+            "Z": -141.55798
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1790
+        },
+        {
+          "Position": {
+            "X": 70.535545,
+            "Y": -49.45454,
+            "Z": -149.54617
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "$": "Loth ast Vath navmesh workaround"
+        },
+        {
+          "Position": {
+            "X": 291.1391,
+            "Y": -64.697876,
+            "Z": -5.7822924
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4467,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2001579,
+              "RewardItemCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1011931,
+          "Position": {
+            "X": 56.839844,
+            "Y": -49.92323,
+            "Z": -135.91211
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013582,
+          "Position": {
+            "X": 59.220215,
+            "Y": -50.888588,
+            "Z": -130.23578
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

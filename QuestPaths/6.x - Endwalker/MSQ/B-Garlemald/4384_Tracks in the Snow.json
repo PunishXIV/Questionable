@@ -1,0 +1,353 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038839,
+          "Position": {
+            "X": -350.1488,
+            "Y": 22.738518,
+            "Z": 435.56873
+          },
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -210.6673,
+            "Y": 15.799101,
+            "Z": 451.78333
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2012000,
+          "Position": {
+            "X": -184.22223,
+            "Y": 31.937134,
+            "Z": 423.6056
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818344,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -188.84349,
+            "Y": 20.31553,
+            "Z": 406.13293
+          },
+          "StopDistance": 1,
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1038840,
+          "Position": {
+            "X": -157.06122,
+            "Y": 18.316332,
+            "Z": 364.06494
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -135.94785,
+            "Y": 3.426586,
+            "Z": 360.1115
+          },
+          "StopDistance": 1,
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -48.166317,
+            "Y": -0.8113563,
+            "Z": 374.09103
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2012076,
+          "Position": {
+            "X": -31.265808,
+            "Y": -0.25946045,
+            "Z": 362.81372
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012077,
+          "Position": {
+            "X": 36.942017,
+            "Y": -12.039368,
+            "Z": 362.2339
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038843,
+          "Position": {
+            "X": 66.84973,
+            "Y": -14.344919,
+            "Z": 385.7328
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012078,
+          "Position": {
+            "X": 117.81482,
+            "Y": -16.922302,
+            "Z": 390.46313
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Follow Girl in Green"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2012078,
+          "Position": {
+            "X": 117.81482,
+            "Y": -16.922302,
+            "Z": 390.46313
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "NotTargetable": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMB105_04384_Q1_000_116",
+              "Yes": true
+            }
+          ],
+          "Comment": "retry point"
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 156.66682,
+            "Y": -18.078814,
+            "Z": 361.58972
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 204.82344,
+            "Y": -19.113703,
+            "Z": 373.52936
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 1
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 232.28406,
+            "Y": -16.777779,
+            "Z": 339.1168
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 272.79572,
+            "Y": -13.174152,
+            "Z": 317.53406
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 8
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 287.9112,
+            "Y": -11.811615,
+            "Z": 292.6589
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 323.9364,
+            "Y": -10.539692,
+            "Z": 254.19264
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 354.5913,
+            "Y": -5.5008125,
+            "Z": 245.22939
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 354.71964,
+            "Y": -2.2201555,
+            "Z": 233.99152
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 1
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 382.75116,
+            "Y": 2.7549856,
+            "Z": 226.49387
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "StopDistance": 40,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 408.44272,
+            "Y": 4.965298,
+            "Z": 208.22794
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "StopDistance": 45,
+          "IgnoreDistanceToObject": true,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1038845,
+          "Position": {
+            "X": 426.39246,
+            "Y": 5.348692,
+            "Z": 194.86263
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1038846,
+          "Position": {
+            "X": 555.8098,
+            "Y": 32.30835,
+            "Z": 159.10571
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "RestartNavigationIfCancelled": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038846,
+          "Position": {
+            "X": 555.8098,
+            "Y": 32.30835,
+            "Z": 159.10571
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

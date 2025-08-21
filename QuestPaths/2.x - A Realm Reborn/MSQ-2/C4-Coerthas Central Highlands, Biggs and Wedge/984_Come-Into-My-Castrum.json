@@ -1,0 +1,88 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006528,
+          "Position": {
+            "X": -698.51227,
+            "Y": 242.18399,
+            "Z": 375.17358
+          },
+          "StopDistance": 5,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -692.2779,
+            "Y": 242.18399,
+            "Z": 366.4715
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "$": "Monument Tower (inside)"
+        },
+        {
+          "Position": {
+            "X": -688.1699,
+            "Y": 241.99994,
+            "Z": 355.80283
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "$": "Monument Tower (outside)",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -217.57614,
+            "Y": 217.23946,
+            "Z": 706.57166
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 156,
+          "StopDistance": 5,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Mor Dhona"
+        },
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006531,
+          "Position": {
+            "X": 53.81848,
+            "Y": 25.009521,
+            "Z": -697.0779
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045700,
+          "Position": {
+            "X": -58.54895,
+            "Y": -15.127001,
+            "Z": 139.45215
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMM103_04753_Q1_000_000",
+              "Answer": "TEXT_AKTKMM103_04753_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013419,
+          "Position": {
+            "X": -308.49164,
+            "Y": 20.248657,
+            "Z": 48.142212
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Scholar's Harbor",
+            "[Old Sharlayan] The Studium"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2013418,
+          "Position": {
+            "X": -396.23108,
+            "Y": 20.2182,
+            "Z": 103.28821
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2013417,
+          "Position": {
+            "X": -404.25726,
+            "Y": 20.248657,
+            "Z": 59.00659
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2013416,
+          "Position": {
+            "X": -358.38867,
+            "Y": 20.309753,
+            "Z": 20.523315
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045701,
+          "Position": {
+            "X": -343.8316,
+            "Y": 18.999998,
+            "Z": 15.152161
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045702,
+          "Position": {
+            "X": -131.15137,
+            "Y": 5.64997,
+            "Z": 44.663086
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMM103_04753_SYSTEM_000_302",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.5617,
+            "Y": 5.0504,
+            "Z": 4.55803
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987
+        },
+        {
+          "DataId": 2013420,
+          "Position": {
+            "X": -0.10687256,
+            "Y": -0.015319824,
+            "Z": -7.614319
+          },
+          "TerritoryId": 987,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

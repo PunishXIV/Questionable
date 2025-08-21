@@ -1,0 +1,201 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047063,
+          "Position": {
+            "X": -64.07269,
+            "Y": 100,
+            "Z": -159.80774
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047068,
+          "Position": {
+            "X": 41.85547,
+            "Y": 47.072277,
+            "Z": -409.01813
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Vollok Shoonsa",
+            "[Tuliyollal] Brightploom Post"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047075,
+          "Position": {
+            "X": 470.69495,
+            "Y": 2.2817478,
+            "Z": 460.9292
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047079,
+          "Position": {
+            "X": -284.38245,
+            "Y": 16.00464,
+            "Z": -61.661743
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047498,
+          "Position": {
+            "X": -367.45258,
+            "Y": 20.14268,
+            "Z": -92.63757
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -359.66742,
+            "Y": 18.137554,
+            "Z": -137.36826
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1047080,
+          "Position": {
+            "X": -364.70593,
+            "Y": 18.08191,
+            "Z": -139.45221
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046991,
+          "Position": {
+            "X": -315.5719,
+            "Y": 18.834728,
+            "Z": -178.88159
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1047081,
+          "Position": {
+            "X": -327.90118,
+            "Y": 18.106325,
+            "Z": -146.74603
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1051316,
+          "Position": {
+            "X": -380.30066,
+            "Y": 18.718708,
+            "Z": -114.24432
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5144
+        },
+        {
+          "DataId": 1047082,
+          "Position": {
+            "X": -171.37408,
+            "Y": 15.684817,
+            "Z": -358.9685
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047083,
+          "Position": {
+            "X": -168.41382,
+            "Y": 15.771556,
+            "Z": -355.64203
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

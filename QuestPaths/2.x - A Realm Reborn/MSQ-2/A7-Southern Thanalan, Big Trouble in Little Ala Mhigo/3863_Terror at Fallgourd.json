@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006688,
+          "Position": {
+            "X": 39.29187,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001717,
+          "Position": {
+            "X": 25.497803,
+            "Y": 2.090454,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1007417,
+          "Position": {
+            "X": 1.2359009,
+            "Y": -3.0000014,
+            "Z": -57.66388
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006240,
+          "Position": {
+            "X": 14.389221,
+            "Y": -44.86571,
+            "Z": 262.65344
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006240,
+          "Position": {
+            "X": 14.389221,
+            "Y": -44.86571,
+            "Z": 262.65344
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Emote": "soothe"
+        }
+      ]
+    }
+  ]
+}

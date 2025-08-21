@@ -1,0 +1,6 @@
+[submodule "LLib"]
+	path = LLib
+	url = https://git.carvel.li/liza/LLib.git
+[submodule "vendor/NotificationMasterAPI"]
+	path = vendor/NotificationMasterAPI
+	url = https://github.com/NightmareXIV/NotificationMasterAPI.git

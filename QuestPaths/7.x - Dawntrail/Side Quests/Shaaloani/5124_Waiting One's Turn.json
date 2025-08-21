@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049407,
+          "Position": {
+            "X": 267.01758,
+            "Y": 15.999971,
+            "Z": 770.8705
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1049284,
+          "Position": {
+            "X": 378.43884,
+            "Y": -0.2627956,
+            "Z": 425.55872
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 359.11545,
+            "Y": 1.9823306,
+            "Z": 419.5714
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)"
+        },
+        {
+          "Position": {
+            "X": 369.3906,
+            "Y": 5.9371996,
+            "Z": 417.16574
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1050718,
+          "Position": {
+            "X": 365.5603,
+            "Y": 5.957231,
+            "Z": 424.58215
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1050719,
+          "Position": {
+            "X": 384.51196,
+            "Y": -1.5122339,
+            "Z": 383.6881
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049407,
+          "Position": {
+            "X": 267.01758,
+            "Y": 15.999971,
+            "Z": 770.8705
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
+          ]
+        }
+      ]
+    }
+  ]
+}

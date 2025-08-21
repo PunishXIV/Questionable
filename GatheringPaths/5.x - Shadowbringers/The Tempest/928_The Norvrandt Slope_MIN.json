@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 818,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Tempest - Ondo Cups"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34466,
+          "Locations": [
+            {
+              "Position": {
+                "X": 403.2184,
+                "Y": 408.0598,
+                "Z": -755.5223
+              },
+              "MinimumAngle": 80,
+              "MaximumAngle": 190
+            },
+            {
+              "Position": {
+                "X": 438.6136,
+                "Y": 416.6389,
+                "Z": -758.985
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 240
+            }
+          ]
+        },
+        {
+          "DataId": 34465,
+          "Locations": [
+            {
+              "Position": {
+                "X": 415.5816,
+                "Y": 412.4482,
+                "Z": -758.7325
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 195
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34463,
+          "Locations": [
+            {
+              "Position": {
+                "X": 415.8845,
+                "Y": 431.2351,
+                "Z": -896.2997
+              },
+              "MinimumAngle": -65,
+              "MaximumAngle": 45
+            }
+          ]
+        },
+        {
+          "DataId": 34464,
+          "Locations": [
+            {
+              "Position": {
+                "X": 400.7106,
+                "Y": 428.3826,
+                "Z": -893.9595
+              },
+              "MinimumAngle": -40,
+              "MaximumAngle": 50
+            },
+            {
+              "Position": {
+                "X": 431.8092,
+                "Y": 434.546,
+                "Z": -902.1445
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34467,
+          "Locations": [
+            {
+              "Position": {
+                "X": 284.0778,
+                "Y": 433.4644,
+                "Z": -916.6171
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 30
+            }
+          ]
+        },
+        {
+          "DataId": 34468,
+          "Locations": [
+            {
+              "Position": {
+                "X": 278.6176,
+                "Y": 428.9509,
+                "Z": -904.3234
+              },
+              "MinimumAngle": 220,
+              "MaximumAngle": 345
+            },
+            {
+              "Position": {
+                "X": 305.7502,
+                "Y": 432.027,
+                "Z": -912.7272
+              },
+              "MinimumAngle": -80,
+              "MaximumAngle": 40
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

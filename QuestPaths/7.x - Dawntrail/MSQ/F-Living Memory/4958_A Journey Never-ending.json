@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047999,
+          "Position": {
+            "X": -521.0803,
+            "Y": -10.000387,
+            "Z": -445.76184
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048004,
+          "Position": {
+            "X": -523.03357,
+            "Y": -10.000407,
+            "Z": -445.57874
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF113_04958_SYSTEM_000_031",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048008,
+          "Position": {
+            "X": -528.58777,
+            "Y": -10.000336,
+            "Z": -466.97186
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013980,
+          "Position": {
+            "X": -559.5941,
+            "Y": -6.0273438,
+            "Z": -508.53745
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818482
+        },
+        {
+          "DataId": 1048009,
+          "Position": {
+            "X": -485.86255,
+            "Y": 7.300079,
+            "Z": -705.4398
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048011,
+          "Position": {
+            "X": -500.51117,
+            "Y": 18.990517,
+            "Z": -839.353
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMF113_04958_SYSTEM_000_124",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048011,
+          "Position": {
+            "X": -500.51117,
+            "Y": 18.990517,
+            "Z": -839.353
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

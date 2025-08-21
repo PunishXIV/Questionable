@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039004,
+          "Position": {
+            "X": -158.80066,
+            "Y": 23.999973,
+            "Z": 112.291016
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039005,
+          "Position": {
+            "X": -207.7821,
+            "Y": 36,
+            "Z": 76.798584
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039007,
+          "Position": {
+            "X": 499.87024,
+            "Y": 51.57471,
+            "Z": -597.1924
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012197,
+          "Position": {
+            "X": 454.06262,
+            "Y": 29.251465,
+            "Z": -491.3253
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            13994
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012198,
+          "Position": {
+            "X": 391.07336,
+            "Y": 14.389221,
+            "Z": -444.29694
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            13992,
+            13993
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039010,
+          "Position": {
+            "X": 382.71155,
+            "Y": 3.1168795,
+            "Z": -270.4662
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Comment": "TODO Missing completion flags",
+      "Steps": [
+        {
+          "DataId": 1039014,
+          "Position": {
+            "X": 367.33044,
+            "Y": 3.1168795,
+            "Z": -247.6997
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1039015,
+          "Position": {
+            "X": 369.10046,
+            "Y": 3.1168795,
+            "Z": -247.39453
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1039017,
+          "Position": {
+            "X": 391.77527,
+            "Y": 3.3857868,
+            "Z": -207.75165
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        },
+        {
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Thavnair - Palaka's Stand"
+        },
+        {
+          "DataId": 1039016,
+          "Position": {
+            "X": 438.22375,
+            "Y": 3.1179183,
+            "Z": -224.10931
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039020,
+          "Position": {
+            "X": 430.8689,
+            "Y": 3.1168795,
+            "Z": -251.33142
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045649,
+          "Position": {
+            "X": -205.95105,
+            "Y": -3.1999998,
+            "Z": -11.490112
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033863,
+          "Position": {
+            "X": 118.02844,
+            "Y": 14.649026,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        },
+        {
+          "DataId": 1033888,
+          "Position": {
+            "X": 1.3580322,
+            "Y": 0,
+            "Z": -5.081299
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039645,
+          "Position": {
+            "X": -338.33832,
+            "Y": 55,
+            "Z": -68.40625
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Meghaduta"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045652,
+          "Position": {
+            "X": -109.91083,
+            "Y": 52.705315,
+            "Z": 401.26636
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045658,
+          "Position": {
+            "X": 40.634766,
+            "Y": 56.721893,
+            "Z": 465.7815
+          },
+          "TerritoryId": 1162,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

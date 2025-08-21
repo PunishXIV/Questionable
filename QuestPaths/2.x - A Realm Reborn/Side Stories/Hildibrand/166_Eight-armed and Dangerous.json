@@ -1,0 +1,205 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DataId": 1009357,
+          "Position": {
+            "X": 528.95386,
+            "Y": 17.44805,
+            "Z": 448.69153
+          },
+          "StopDistance": 7,
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "Position": {
+            "X": -153.18225,
+            "Y": 14.005,
+            "Z": 43.458076
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010160,
+          "Position": {
+            "X": -144.64032,
+            "Y": 12,
+            "Z": -5.6916504
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -153.18225,
+            "Y": 14.005,
+            "Z": 43.458076
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "DataId": 1001857,
+          "Position": {
+            "X": -46.76892,
+            "Y": 10,
+            "Z": -12.741333
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "Position": {
+            "X": -153.18225,
+            "Y": 14.005,
+            "Z": 43.458076
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010160,
+          "Position": {
+            "X": -144.64032,
+            "Y": 12,
+            "Z": -5.6916504
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -127.24249,
+            "Y": 7.999999,
+            "Z": -55.6639
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010188,
+          "Position": {
+            "X": -106.523315,
+            "Y": 4.2265673,
+            "Z": -82.16986
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -123.05803,
+            "Y": 1.363661,
+            "Z": -142.65125
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "Position": {
+            "X": -72.12142,
+            "Y": 6.9845715,
+            "Z": 8.82207
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010281,
+          "Position": {
+            "X": -70.96979,
+            "Y": 6.9839683,
+            "Z": 3.982544
+          },
+          "StopDistance": 7,
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "Position": {
+            "X": -153.18225,
+            "Y": 14.005,
+            "Z": 43.458076
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010287,
+          "Position": {
+            "X": -142.71765,
+            "Y": 12,
+            "Z": -3.9215698
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 202
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "RisingStonesSolar"
+            }
+          }
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2007560,
+          "Position": {
+            "X": 216.11353,
+            "Y": 256.36682,
+            "Z": 10.757568
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017675,
+          "Position": {
+            "X": 148.11926,
+            "Y": 245.1,
+            "Z": -4.1657104
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1018511,
+          "Position": {
+            "X": -1.449646,
+            "Y": 3.144145E-06,
+            "Z": 5.2643433
+          },
+          "TerritoryId": 507,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 507,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 223,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1014565,
+          "Position": {
+            "X": 0.44250488,
+            "Y": -1.9957249,
+            "Z": -43.22882
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

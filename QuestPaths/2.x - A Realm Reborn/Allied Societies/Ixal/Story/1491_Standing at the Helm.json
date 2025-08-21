@@ -1,0 +1,126 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009204,
+                    "Position": {
+                        "X": 151.93408,
+                        "Y": -18.41936,
+                        "Z": 100.72473
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 151.93408,
+                                    "Y": -18.41936,
+                                    "Z": 100.72473
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1003075,
+                    "Position": {
+                        "X": 440.7262,
+                        "Y": -0.9374562,
+                        "Z": -62.21112
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1008945,
+                    "Position": {
+                        "X": 445.45654,
+                        "Y": -0.9374095,
+                        "Z": -67.36859
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8132,
+                    "ItemCount": 4,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1003075,
+                    "Position": {
+                        "X": 440.7262,
+                        "Y": -0.9374562,
+                        "Z": -62.21112
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1009204,
+                    "Position": {
+                        "X": 151.93408,
+                        "Y": -18.41936,
+                        "Z": 100.72473
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1009199,
+                    "Position": {
+                        "X": 149.43152,
+                        "Y": -18.140299,
+                        "Z": 99.22937
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

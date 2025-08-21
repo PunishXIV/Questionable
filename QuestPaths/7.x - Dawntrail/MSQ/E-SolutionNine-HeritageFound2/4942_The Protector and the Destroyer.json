@@ -1,0 +1,89 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048120,
+          "Position": {
+            "X": -298.7259,
+            "Y": 31.838512,
+            "Z": -672.5719
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048122,
+          "Position": {
+            "X": 647.60803,
+            "Y": 145.90308,
+            "Z": 679.1333
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048122,
+          "Position": {
+            "X": 647.60803,
+            "Y": 145.90308,
+            "Z": 679.1333
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.294",
+            "Notes": [
+              "(phase 1) Gets stuck in the wall while walking to the evacuee NPCs"
+            ]
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "ContentTalk",
+              "Prompt": 357,
+              "Answer": 358
+            },
+            {
+              "Type": "List",
+              "ExcelSheet": "ContentTalk",
+              "Prompt": 364,
+              "Answer": 366
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048124,
+          "Position": {
+            "X": 352.31543,
+            "Y": 70.0001,
+            "Z": 8.316162
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

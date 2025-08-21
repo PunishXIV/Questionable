@@ -1,0 +1,135 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024215,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024231,
+          "Position": {
+            "X": 463.40125,
+            "Y": 56.86197,
+            "Z": -157.94617
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yanxia - Namai",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANKJN002_02974_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_BANKJN002_02974_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009169,
+          "Position": {
+            "X": 145.922,
+            "Y": 26.352295,
+            "Z": 456.9314
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Snipe",
+          "Fly": true,
+          "Comment": "Snipe Namazu"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009170,
+          "Position": {
+            "X": 205.31006,
+            "Y": 14.297607,
+            "Z": 712.76404
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Snipe",
+          "Fly": true,
+          "Comment": "Snipe Namazu"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024238,
+          "Position": {
+            "X": 302.72363,
+            "Y": 2.8619597,
+            "Z": 731.44116
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024244,
+          "Position": {
+            "X": 181.10925,
+            "Y": 6.1105657,
+            "Z": 553.2462
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024215,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANKJN002_02974_Q3_000_000",
+              "Type": "List",
+              "Answer": "TEXT_BANKJN002_02974_A3_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1054140,
+          "Position": {
+            "X": 5.203247,
+            "Y": 0.025,
+            "Z": 2.304016
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1268,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014672,
+          "Position": {
+            "X": 17.19253,
+            "Y": 0.9405764,
+            "Z": 8.082603
+          },
+          "TerritoryId": 1268,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1207,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1268
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2014674,
+          "Position": {
+            "X": -4.4404297,
+            "Y": -0.015319824,
+            "Z": 8.895996
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014102,
+          "Position": {
+            "X": -0.01455665,
+            "Y": 1,
+            "Z": 16.05096
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [1207]
+            }
+          }
+        },
+        {
+          "DataId": 1053820,
+          "Position": {
+            "X": 0.59503174,
+            "Y": -6.0500035,
+            "Z": 226.6117
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Information Center"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMH102_05300_Q1_000_034",
+              "Yes": true
+            }
+          ],
+          "PointMenuChoices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053824,
+          "Position": {
+            "X": -0.25946045,
+            "Y": -6.050004,
+            "Z": 223.55994
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053827,
+          "Position": {
+            "X": -306.0807,
+            "Y": 10.0149355,
+            "Z": 1.8157349
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Solution Nine] Information Center",
+            "[Solution Nine] Residential Sector"
+          ]
+        }
+      ]
+    }
+  ]
+}

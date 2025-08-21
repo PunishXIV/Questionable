@@ -1,0 +1,157 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001711,
+          "Position": {
+              "X": -241.62665,
+              "Y": 18.8,
+              "Z": 83.32947
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+        "Sequence": 2,
+        "Steps": [
+          {
+            "DataId": 1002301,
+            "Position": {
+                "X": -178.2102,
+                "Y": 18,
+                "Z": 61.41748
+            },
+            "TerritoryId": 130,
+            "InteractionType": "Emote",
+            "Emote": "cry"
+          },
+          {
+            "DataId": 1002300,
+            "Position": {
+                "X": -176.9284,
+                "Y": 18,
+                "Z": 62.363525
+            },
+            "TerritoryId": 130,
+            "InteractionType": "Emote",
+            "Emote": "cry"
+          },
+          {
+            "DataId": 1002302,
+            "Position": {
+                "X": -176.71478,
+                "Y": 18,
+                "Z": 64.34729
+            },
+            "TerritoryId": 130,
+            "InteractionType": "Emote",
+            "Emote": "cry"
+          }
+        ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001711,
+          "Position": {
+              "X": -241.62665,
+              "Y": 18.8,
+              "Z": 83.32947
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2001470,
+          "Position": {
+              "X": -24.887512,
+              "Y": -25.345276,
+              "Z": 321.94995
+          },
+          "TerritoryId": 145,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.3.2.4",
+            "Notes": [
+              "vbm doesn't move to the enemies automatically",
+              "vbm doesn't interact with the urn"
+            ]
+          },
+          "Fly": true,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001711,
+          "Position": {
+            "X": -241.62665,
+            "Y": 18.8,
+            "Z": 83.32947
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSTHM150_00350_Q1_000_1",
+              "Answer": "TEXT_CLSTHM150_00350_A1_000_1"
+            }
+          ],
+          "NextQuestId": 352
+        }
+      ]
+    }
+  ]
+}

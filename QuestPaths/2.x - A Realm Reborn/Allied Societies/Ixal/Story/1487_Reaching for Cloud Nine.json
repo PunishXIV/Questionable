@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009199,
+          "Position": {
+            "X": 149.43152,
+            "Y": -18.140299,
+            "Z": 99.22937
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANIXA002_01487_Q1_000_000",
+              "Answer": "TEXT_BANIXA002_01487_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009594,
+          "Position": {
+            "X": -22.568176,
+            "Y": -48.098206,
+            "Z": 289.66187
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -4.085219,
+            "Y": -40.94998,
+            "Z": 179.05669
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009218,
+          "Position": {
+            "X": -4.1047363,
+            "Y": -40.949986,
+            "Z": 176.83679
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009595,
+          "Position": {
+            "X": -2.8534546,
+            "Y": -40.94998,
+            "Z": 178.72888
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "$": "Missing craft step",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANIXA002_01487_Q2_000_000",
+              "Answer": "TEXT_BANIXA002_01487_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009199,
+          "Position": {
+            "X": 149.43152,
+            "Y": -18.140299,
+            "Z": 99.22937
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009199,
+          "Position": {
+            "X": 149.43152,
+            "Y": -18.140299,
+            "Z": 99.22937
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANIXA002_01487_Q3_000_000",
+              "Answer": "TEXT_BANIXA002_01487_A3_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

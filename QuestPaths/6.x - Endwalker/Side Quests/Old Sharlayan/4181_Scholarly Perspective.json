@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037211,
+          "Position": {
+            "X": 36.209595,
+            "Y": 2.455876,
+            "Z": -22.90387
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039337,
+          "Position": {
+            "X": 99.6261,
+            "Y": -10.587427,
+            "Z": 276.81384
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Snipe",
+          "Comment": "Click ewer, head and feet",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039349,
+          "Position": {
+            "X": -49.485046,
+            "Y": -14.999998,
+            "Z": 253.34546
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037211,
+          "Position": {
+            "X": 36.209595,
+            "Y": 2.455876,
+            "Z": -22.90387
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan"
+        }
+      ]
+    }
+  ]
+}

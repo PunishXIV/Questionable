@@ -1,0 +1,233 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012222,
+          "Position": {
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 202.38037,
+                  "Y": -5.3999662,
+                  "Z": -58.9151
+                },
+                "TerritoryId": 419,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021255,
+          "Position": {
+            "X": -0.35101318,
+            "Y": 11.965101,
+            "Z": 45.029297
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021259,
+          "Position": {
+            "X": -16.250854,
+            "Y": 0.09999631,
+            "Z": -31.784546
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                1,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1021256,
+          "Position": {
+            "X": 28.610596,
+            "Y": 4,
+            "Z": 53.57434
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                2,
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1021260,
+          "Position": {
+            "X": -12.069946,
+            "Y": -4.9889293,
+            "Z": 15.579407
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007937,
+          "Position": {
+            "X": -51.621338,
+            "Y": 16.891724,
+            "Z": 0.045776367
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "StopDistance": 2,
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -53.109528,
+            "Y": 15.469519,
+            "Z": 22.387312
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Type": "RepeatedJumps",
+            "Position": {
+              "X": -57.846985,
+              "Y": -3,
+              "Z": 25.16211
+            },
+            "StopDistance": 4
+          }
+        },
+        {
+          "DataId": 1021261,
+          "Position": {
+            "X": -57.846985,
+            "Y": -3,
+            "Z": 25.16211
+          },
+          "StopDistance": 4,
+          "TerritoryId": 628,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021262,
+          "Position": {
+            "X": 98.10022,
+            "Y": 4.0000014,
+            "Z": 87.44946
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 98.10022,
+                  "Y": 4.0000014,
+                  "Z": 87.44946
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          },
+          "NextQuestId": 2412
+        }
+      ]
+    }
+  ]
+}

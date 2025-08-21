@@ -1,0 +1,68 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047569,
+          "Position": {
+            "X": -589.56287,
+            "Y": 1.1820383,
+            "Z": -403.7995
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013946,
+          "Position": {
+            "X": -550.6218,
+            "Y": -4.3793945,
+            "Z": -137.68219
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818438
+        },
+        {
+          "DataId": 1047570,
+          "Position": {
+            "X": -526.9398,
+            "Y": 28.760693,
+            "Z": -425.98615
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.294"
+          },
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047572,
+          "Position": {
+            "X": -529.74744,
+            "Y": 28.760696,
+            "Z": -426.50494
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

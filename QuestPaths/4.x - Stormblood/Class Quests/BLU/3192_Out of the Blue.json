@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026928,
+          "Position": {
+            "X": -64.34735,
+            "Y": 18.000334,
+            "Z": -11.032288
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026929,
+          "Position": {
+            "X": -69.87109,
+            "Y": 43.83883,
+            "Z": -5.661133
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026936,
+          "Position": {
+            "X": 170.85522,
+            "Y": 62.765503,
+            "Z": 275.25745
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028430,
+          "Position": {
+            "X": 156.63379,
+            "Y": 12.126303,
+            "Z": 649.37805
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026930,
+          "Position": {
+            "X": -85.404785,
+            "Y": 2.5427969,
+            "Z": 728.542
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026932,
+          "Position": {
+            "X": -105.9129,
+            "Y": 1.5723714,
+            "Z": 750.0571
+          },
+          "StopDistance": 7,
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3193
+        }
+      ]
+    }
+  ]
+}

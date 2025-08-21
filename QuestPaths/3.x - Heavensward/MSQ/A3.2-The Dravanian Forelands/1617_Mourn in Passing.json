@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013584,
+          "Position": {
+            "X": 58.91504,
+            "Y": -50.325172,
+            "Z": -146.95972
+          },
+          "StopDistance": 7,
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012657,
+          "Position": {
+            "X": -248.64581,
+            "Y": -30.095806,
+            "Z": 102.22009
+          },
+          "StopDistance": 7,
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006201,
+          "Position": {
+            "X": -480.30823,
+            "Y": -5.996826,
+            "Z": -425.28424
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818074
+        },
+        {
+          "Position": {
+            "X": -467.55936,
+            "Y": -11.599176,
+            "Z": -445.6323
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 2005448,
+          "Position": {
+            "X": -688.38025,
+            "Y": 4.8981323,
+            "Z": -794.88824
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 398,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 37,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012661,
+          "Position": {
+            "X": 240.31421,
+            "Y": -42.317062,
+            "Z": 615.1063
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

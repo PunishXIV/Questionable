@@ -1,0 +1,112 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ruby Sea - Onokoro"
+        },
+        {
+          "DataId": 2009104,
+          "Position": {
+            "X": 399.89307,
+            "Y": -0.10687256,
+            "Z": -347.21906
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "RequiredQuestVariables": [null, null, [16], null, null, null],
+          "ItemId": 2002405,
+          "Fly": true
+        },
+        {
+          "DataId": 2009103,
+          "Position": {
+            "X": 187.24341,
+            "Y": -0.10687256,
+            "Z": -477.71423
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "RequiredQuestVariables": [null, null, [32], null, null, null],
+          "ItemId": 2002405,
+          "Fly": true
+        },
+        {
+          "DataId": 2009102,
+          "Position": {
+            "X": 379.07983,
+            "Y": -0.07635498,
+            "Z": -494.31604
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "RequiredQuestVariables": [null, null, [48], null, null, null],
+          "ItemId": 2002405,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024218,
+          "Position": {
+            "X": 387.56384,
+            "Y": -119.795334,
+            "Z": -257.64862
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 392.59683,
+            "Y": -119.589325,
+            "Z": -234.30063
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

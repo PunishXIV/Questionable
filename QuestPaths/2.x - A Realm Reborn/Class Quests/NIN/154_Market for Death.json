@@ -1,0 +1,160 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "TargetTerritoryId": 129,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "ExtraCondition": "RoguesGuild"
+            }
+          }
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 410.07083,
+            "Y": 31.504957,
+            "Z": -12.586371
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "TargetTerritoryId": 139,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -436.69995,
+            "Y": -2.0159357,
+            "Z": 48.819775
+          },
+          "StopDistance": 1,
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            3569,
+            3570,
+            3571
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004916,
+          "Position": {
+            "X": -436.02655,
+            "Y": -1.9379272,
+            "Z": 48.569458
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010261,
+          "Position": {
+            "X": -437.3694,
+            "Y": -2.369183,
+            "Z": 55.954834
+          },
+          "StopDistance": 7,
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1010267,
+          "Position": {
+            "X": -449.08832,
+            "Y": 21.634577,
+            "Z": -327.93164
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 155
+        }
+      ]
+    }
+  ]
+}

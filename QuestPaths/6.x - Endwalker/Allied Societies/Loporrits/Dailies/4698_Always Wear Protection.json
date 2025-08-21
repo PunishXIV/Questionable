@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -201.42024,
+            "Y": -49.149708,
+            "Z": -273.68756
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1044403,
+          "Position": {
+            "X": -203.5401,
+            "Y": -48.949707,
+            "Z": -273.60956
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044583,
+          "Position": {
+            "X": -52.018066,
+            "Y": -137.4167,
+            "Z": -622.4613
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 959,
+          "InteractionType": "Craft",
+          "ItemId": 38869,
+          "ItemCount": 4
+        },
+        {
+          "Position": {
+            "X": -201.42024,
+            "Y": -49.149708,
+            "Z": -273.68756
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1044403,
+          "Position": {
+            "X": -203.5401,
+            "Y": -48.949707,
+            "Z": -273.60956
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

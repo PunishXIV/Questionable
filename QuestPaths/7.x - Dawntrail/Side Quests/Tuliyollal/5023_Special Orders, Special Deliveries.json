@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051034,
+          "Position": {
+            "X": 15.457336,
+            "Y": -10.00001,
+            "Z": 64.43884
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051036,
+          "Position": {
+            "X": -134.72198,
+            "Y": 45.35523,
+            "Z": 52.20105
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The Resplendent Quarter"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1051035,
+          "Position": {
+            "X": -104.38696,
+            "Y": 54.09999,
+            "Z": 19.33313
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051034,
+          "Position": {
+            "X": 15.457336,
+            "Y": -10.00001,
+            "Z": 64.43884
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] The Resplendent Quarter",
+            "[Tuliyollal] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

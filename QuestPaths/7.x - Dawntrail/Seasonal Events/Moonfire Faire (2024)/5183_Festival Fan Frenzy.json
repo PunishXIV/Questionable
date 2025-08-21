@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050828,
+          "Position": {
+            "X": 694.5753,
+            "Y": 9.578133,
+            "Z": 297.59656
+          },
+          "StopDistance": 5,
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050824,
+          "Position": {
+            "X": 507.68274,
+            "Y": 9.541115,
+            "Z": 428.54944
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Emote",
+          "Emote": "uchiwasshoi",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1050825,
+          "Position": {
+            "X": 641.44336,
+            "Y": 11.697773,
+            "Z": 526.604
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Emote",
+          "Emote": "uchiwasshoi",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050829,
+          "Position": {
+            "X": 694.2092,
+            "Y": 9.619679,
+            "Z": 294.81946
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 732.0986,
+            "Y": 11.349089,
+            "Z": 262.19138
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1050817,
+          "Position": {
+            "X": 735.25586,
+            "Y": 11.306824,
+            "Z": 261.8601
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESSUX002_05183_Q1_000_000",
+              "Answer": "TEXT_FESSUX002_05183_A1_000_002"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035613,
+          "Position": {
+            "X": -2.456726,
+            "Y": 0,
+            "Z": -9.720032
+          },
+          "StopDistance": 5,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036324,
+          "Position": {
+            "X": 739.681,
+            "Y": 70,
+            "Z": 535.4237
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036329,
+          "Position": {
+            "X": 741.1155,
+            "Y": 70,
+            "Z": 527.7333
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

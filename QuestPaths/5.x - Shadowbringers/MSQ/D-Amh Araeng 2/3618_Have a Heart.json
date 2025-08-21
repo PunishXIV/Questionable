@@ -1,0 +1,67 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029759,
+          "Position": {
+            "X": -342.33618,
+            "Y": 19.004045,
+            "Z": 77.04285
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029754,
+          "Position": {
+            "X": -543.6942,
+            "Y": 49.964603,
+            "Z": -172.47278
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Twine"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029761,
+          "Position": {
+            "X": -503.19678,
+            "Y": 45.72556,
+            "Z": -254.01697
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029638,
+          "Position": {
+            "X": -484.48926,
+            "Y": 45.553265,
+            "Z": -212.29883
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

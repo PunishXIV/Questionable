@@ -1,0 +1,84 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013085,
+          "Position": {
+            "X": -805.53906,
+            "Y": -57.828876,
+            "Z": 157.64087
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006228,
+          "Position": {
+            "X": -747.097,
+            "Y": -57.09793,
+            "Z": 163.8361
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818116
+        },
+        {
+          "Position": {
+            "X": -703.7623,
+            "Y": -61.975857,
+            "Z": 113.54166
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "lookout",
+          "StopDistance": 0.25
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -761.80145,
+            "Y": -39.054474,
+            "Z": 77.39858
+          },
+          "TerritoryId": 401,
+          "InteractionType": "SinglePlayerDuty",
+          "Emote": "lookout",
+          "StopDistance": 0.25,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013089,
+          "Position": {
+            "X": -751.6747,
+            "Y": -35.95642,
+            "Z": 18.722778
+          },
+          "StopDistance": 7,
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

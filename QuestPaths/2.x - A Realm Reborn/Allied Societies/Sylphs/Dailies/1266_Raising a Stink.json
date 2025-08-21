@@ -1,0 +1,90 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005561,
+                    "Position": {
+                        "X": 47.01306,
+                        "Y": 6.0734644,
+                        "Z": 254.01685
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 220.62901,
+                        "Y": 4.888098,
+                        "Z": 163.73048
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "ComplexCombatData": [
+                        {
+                            "DataId": 2660,
+                            "NameId": 2314,
+                            "MinimumKillCount": 2
+                        }
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 37.71168,
+                        "Y": 4.7303743,
+                        "Z": 250.62769
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "WalkTo",
+                    "Fly": true,
+                    "Land": true,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 37.71168,
+                                    "Y": 4.7303743,
+                                    "Z": 250.62769
+                                },
+                                "TerritoryId": 152,
+                                "MaximumDistance": 10
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1005561,
+                    "Position": {
+                        "X": 47.01306,
+                        "Y": 6.0734644,
+                        "Z": 254.01685
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

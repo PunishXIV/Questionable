@@ -1,0 +1,156 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 148,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 30034,
+          "Locations": [
+            {
+              "Position": {
+                "X": -105.3941,
+                "Y": 2.85339,
+                "Z": -121.8738
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 165
+            },
+            {
+              "Position": {
+                "X": -97.9409,
+                "Y": 3.064394,
+                "Z": -126.5676
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 340
+            },
+            {
+              "Position": {
+                "X": -125.5794,
+                "Y": 5.63143,
+                "Z": -133.3981
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30035,
+          "Locations": [
+            {
+              "Position": {
+                "X": -154.1009,
+                "Y": 4.5624,
+                "Z": -131.7312
+              },
+              "MinimumAngle": -270,
+              "MaximumAngle": 40
+            },
+            {
+              "Position": {
+                "X": -128.832,
+                "Y": 9.71995,
+                "Z": -145.739
+              }
+            },
+            {
+              "Position": {
+                "X": -117.9702,
+                "Y": 9.59642,
+                "Z": -173.7937
+              },
+              "MinimumAngle": -155,
+              "MaximumAngle": 155
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30036,
+          "Locations": [
+            {
+              "Position": {
+                "X": -182.3201,
+                "Y": 3.129771,
+                "Z": -91.56992
+              },
+              "MinimumAngle": -190,
+              "MaximumAngle": 65
+            },
+            {
+              "Position": {
+                "X": -177.8435,
+                "Y": 2.23569,
+                "Z": -67.93159
+              },
+              "MinimumAngle": -160,
+              "MaximumAngle": 30
+            },
+            {
+              "Position": {
+                "X": -163.9663,
+                "Y": 1.91069,
+                "Z": -52.19678
+              },
+              "MinimumAngle": 135,
+              "MaximumAngle": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30320,
+          "Locations": [
+            {
+              "Position": {
+                "X": -131.0494,
+                "Y": 0.2034574,
+                "Z": -82.93172
+              },
+              "MinimumAngle": -155,
+              "MaximumAngle": 45
+            },
+            {
+              "Position": {
+                "X": -121.5437,
+                "Y": -1.821766,
+                "Z": -74.98891
+              }
+            },
+            {
+              "Position": {
+                "X": -114.8504,
+                "Y": -1.186134,
+                "Z": -88.04849
+              },
+              "MinimumAngle": -210,
+              "MaximumAngle": 90
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

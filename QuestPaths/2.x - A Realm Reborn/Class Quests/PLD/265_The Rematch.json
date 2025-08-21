@@ -1,0 +1,210 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Aetheryte Plaza"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSGLA300_00265_Q1_000_40",
+              "Answer": "TEXT_CLSGLA300_00265_A1_000_50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 235.23369,
+            "Y": 2.747214,
+            "Z": 673.64215
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of Thal (Central Thanalan)"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"
+            }
+          }
+        },
+        {
+          "TerritoryId": 146,
+          "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
+          "InteractionType": "AttuneAetheryte",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 140.30618,
+            "Y": 4.2185926,
+            "Z": -585.2695
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Southern Thanalan - Little Ala Mhigo"
+            }
+          }
+        },
+        {
+          "DataId": 2001455,
+          "Position": {
+            "X": 28.091797,
+            "Y": 6.9733276,
+            "Z": -611.2917
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2001435,
+          "Position": {
+            "X": 101.823364,
+            "Y": 7.248047,
+            "Z": -534.56934
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 164.75665,
+            "Y": 3.3963587,
+            "Z": -585.49005
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1004142,
+          "Position": {
+            "X": -19.97406,
+            "Y": -30.999985,
+            "Z": -33.951355
+          },
+          "TerritoryId": 145,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "NextQuestId": 1055
+        }
+      ]
+    }
+  ]
+}

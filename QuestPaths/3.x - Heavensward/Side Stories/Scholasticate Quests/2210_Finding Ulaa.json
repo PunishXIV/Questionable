@@ -1,0 +1,177 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1015976,
+                    "Position": {
+                        "X": -122.51471,
+                        "Y": 14.553129,
+                        "Z": -166.97955
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                418,
+                                419
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2007422,
+                    "Position": {
+                        "X": -225.84882,
+                        "Y": -20.035156,
+                        "Z": -81.22388
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] Saint Reymanaud's Cathedral",
+                        "[Ishgard] The Jeweled Crozier"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1017886,
+                    "Position": {
+                        "X": -6.1799316,
+                        "Y": 1.3070598,
+                        "Z": 93.095215
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] The Jeweled Crozier",
+                        "[Ishgard] Aetheryte Plaza"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1011224,
+                    "Position": {
+                        "X": 4.5929565,
+                        "Y": -2.52555,
+                        "Z": 149.49255
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 155,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Never": true
+                        }
+                    }
+                },
+                {
+                    "DataId": 1017887,
+                    "Position": {
+                        "X": -147.87524,
+                        "Y": 290.3255,
+                        "Z": -155.99298
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 2007423,
+                    "Position": {
+                        "X": -191.21088,
+                        "Y": 285.17578,
+                        "Z": -154.22296
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Say",
+                    "ChatMessage": {
+                        "Key": "TEXT_CHREND204_02210_SYSTEM_000_030"
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -191.21088,
+                        "Y": 285.17578,
+                        "Z": -154.22296
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [
+                        724,
+                        725
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 1017892,
+                    "Position": {
+                        "X": -165.75879,
+                        "Y": 289.35385,
+                        "Z": -142.1684
+                    },
+                    "TerritoryId": 155,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1015976,
+                    "Position": {
+                        "X": -122.51471,
+                        "Y": 14.553129,
+                        "Z": -166.97955
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ],
+                    "NextQuestId": 2361
+                }
+            ]
+        }
+    ]
+}

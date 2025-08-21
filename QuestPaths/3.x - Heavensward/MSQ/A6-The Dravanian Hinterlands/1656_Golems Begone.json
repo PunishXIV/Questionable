@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012410,
+          "Position": {
+            "X": 71.732666,
+            "Y": 205.62819,
+            "Z": 26.901611
+          },
+          "StopDistance": 7,
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014413,
+          "Position": {
+            "X": -42.008118,
+            "Y": 205.79572,
+            "Z": 3.4332886
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Say",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 64",
+          "ChatMessage": {
+            "Key": "TEXT_HEAVNA607_01656_SAYTODO_000"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1012413,
+          "Position": {
+            "X": -69.230286,
+            "Y": 205.88773,
+            "Z": -68.61987
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_HEAVNA607_01656_SAYTODO_000"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 478,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Idyllshire] West Idyllshire"
+        },
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Idyllshire] West Idyllshire",
+            "[Idyllshire] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

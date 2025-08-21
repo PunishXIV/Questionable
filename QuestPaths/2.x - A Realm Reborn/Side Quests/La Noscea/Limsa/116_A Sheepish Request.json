@@ -1,0 +1,176 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "UcanPatates",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1000959,
+                    "Position": {
+                        "X": -65.62909,
+                        "Y": 41.999985,
+                        "Z": -139.45221
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] Culinarians' Guild"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                129,
+                                128
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1003603,
+                    "Position": {
+                        "X": 20.34021,
+                        "Y": 20,
+                        "Z": 4.3182373
+                    },
+                    "TerritoryId": 129,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Culinarians' Guild",
+                        "[Limsa Lominsa] Aetheryte Plaza"
+                    ],
+                    "SkipConditions": {
+                        "AethernetShortcutIf": {
+                            "InSameTerritory": true
+                        },
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                129,
+                                128
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 64.20255,
+                        "Y": 19.94936,
+                        "Z": 1.0639327
+                    },
+                    "TerritoryId": 129,
+                    "InteractionType": "WalkTo",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                134,
+                                129
+                            ]
+                        },
+                        "StepIf": {
+                            "InTerritory": [
+                                134
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 338,
+                    "Position": {
+                        "X": 130.05261,
+                        "Y": 51.719154,
+                        "Z": 185.6565
+                    },
+                    "TerritoryId": 134,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "ComplexCombatData": [
+                        {
+                            "DataId": 338,
+                            "CompletionQuestVariablesFlags": [
+                                {
+                                    "Low": 4
+                                },
+                                null,
+                                null,
+                                null,
+                                null,
+                                null
+                            ],
+                            "MinimumKillCount": 4
+                        }
+                    ],
+                    "CompletionQuestVariablesFlags": [
+                        {
+                            "Low": 4
+                        },
+                        null,
+                        null,
+                        null,
+                        null,
+                        null
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -57.281883,
+                        "Y": 33.088005,
+                        "Z": 160.24603
+                    },
+                    "TerritoryId": 134,
+                    "InteractionType": "WalkTo",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NotInTerritory": [
+                                134
+                            ]
+                        }
+                    },
+                    "Fly": true
+                },
+                {
+                    "DataId": 1000959,
+                    "Position": {
+                        "X": -65.62909,
+                        "Y": 41.999985,
+                        "Z": -139.45221
+                    },
+                    "TerritoryId": 128,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Limsa Lominsa",
+                    "AethernetShortcut": [
+                        "[Limsa Lominsa] Aetheryte Plaza",
+                        "[Limsa Lominsa] Culinarians' Guild"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [
+                                129,
+                                128
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -335.8204,
+            "Y": 12.899764,
+            "Z": 4.017052
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1000895,
+          "Position": {
+            "X": -335.74432,
+            "Y": 12.899764,
+            "Z": 1.3884888
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006757,
+          "Position": {
+            "X": -4.4709473,
+            "Y": 44.999886,
+            "Z": -250.56848
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] Marauders' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007835,
+          "Position": {
+            "X": -8.011047,
+            "Y": 40.667355,
+            "Z": 192.76721
+          },
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1007836,
+          "Position": {
+            "X": 31.3573,
+            "Y": 34.078865,
+            "Z": 222.76636
+          },
+          "StopDistance": 5,
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006757,
+          "Position": {
+            "X": -4.4709473,
+            "Y": 44.999886,
+            "Z": -250.56848
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "NextQuestId": 1098
+        }
+      ]
+    }
+  ]
+}

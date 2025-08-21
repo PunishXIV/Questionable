@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020052,
+          "Position": {
+            "X": -52.47583,
+            "Y": -0.2509899,
+            "Z": -25.742065
+          },
+          "StopDistance": 7,
+          "TerritoryId": 681,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020053,
+          "Position": {
+            "X": 456.01575,
+            "Y": 41.2719,
+            "Z": -43.320435
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 161.05653,
+            "Y": -0.299994,
+            "Z": 191.03581
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2008013,
+          "Position": {
+            "X": -97.428955,
+            "Y": 13.260071,
+            "Z": 563.714
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818201
+        },
+        {
+          "DataId": 1020055,
+          "Position": {
+            "X": -463.21814,
+            "Y": 1.2300053,
+            "Z": 535.6068
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

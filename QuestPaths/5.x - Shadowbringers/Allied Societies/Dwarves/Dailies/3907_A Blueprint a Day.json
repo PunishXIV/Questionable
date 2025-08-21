@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -615.73865,
+            "Y": 65.602264,
+            "Z": -423.84705
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1033712,
+          "Position": {
+            "X": -617.1206,
+            "Y": 65.602264,
+            "Z": -425.25372
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1034115,
+          "Position": {
+            "X": 732.3567,
+            "Y": 21.798542,
+            "Z": -77.62268
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Lakeland - Fort Jobb"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 813,
+          "InteractionType": "Craft",
+          "ItemId": 31155,
+          "ItemCount": 2
+        },
+        {
+          "Position": {
+            "X": -615.73865,
+            "Y": 65.602264,
+            "Z": -423.84705
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -615.73865,
+                  "Y": 65.602264,
+                  "Z": -423.84705
+                },
+                "TerritoryId": 813,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1033712,
+          "Position": {
+            "X": -617.1206,
+            "Y": 65.602264,
+            "Z": -425.25372
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

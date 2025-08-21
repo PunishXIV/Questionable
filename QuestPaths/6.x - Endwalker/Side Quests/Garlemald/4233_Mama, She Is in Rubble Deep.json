@@ -1,0 +1,133 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037722,
+          "Position": {
+            "X": -308.0949,
+            "Y": 22,
+            "Z": 415.3047
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039353,
+          "Position": {
+            "X": -308.00336,
+            "Y": 22,
+            "Z": 413.80933
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Emote",
+          "Emote": "soothe"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039353,
+          "Position": {
+            "X": -308.00336,
+            "Y": 22,
+            "Z": 413.80933
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "$": "nosprint + nomount isn't really necessary here, but it looks a little unnatural to zip forward so far and wait, methinks."
+        },
+        {
+          "DataId": 1039353,
+          "Position": {
+            "X": -310.48834,
+            "Y": 24.947939,
+            "Z": 377.09357
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039353,
+          "Position": {
+            "X": -351.1446,
+            "Y": 7.736393,
+            "Z": 303.24872
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039353,
+          "Position": {
+            "X": -334.03958,
+            "Y": 19.434929,
+            "Z": 175.00089
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039353,
+          "Position": {
+            "X": -321.72916,
+            "Y": 18.139357,
+            "Z": 98.16852
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039355,
+          "Position": {
+            "X": -319.4171,
+            "Y": 8.981749,
+            "Z": -9.475891
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037722,
+          "Position": {
+            "X": -308.0949,
+            "Y": 22,
+            "Z": 415.3047
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1018330,
+          "Position": {
+            "X": -4.196289,
+            "Y": 0.018040119,
+            "Z": -6.6377563
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020284,
+          "Position": {
+            "X": -3.3112793,
+            "Y": 0.018040119,
+            "Z": -6.881897
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020300,
+          "Position": {
+            "X": 24.795776,
+            "Y": 6.1891203,
+            "Z": 401.9989
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020303,
+          "Position": {
+            "X": 26.962646,
+            "Y": 6.1844764,
+            "Z": 400.99182
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDA101_02446_WARP_YESNO_TITLE_001",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Fringes - Castrum Oriens"
+        },
+        {
+          "Position": {
+            "X": -612.8515,
+            "Y": 130,
+            "Z": -506.81757
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1020304,
+          "Position": {
+            "X": -606.7445,
+            "Y": 130,
+            "Z": -506.95053
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

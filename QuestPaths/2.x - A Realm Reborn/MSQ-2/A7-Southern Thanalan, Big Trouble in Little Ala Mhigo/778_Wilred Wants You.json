@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006226,
+          "Position": {
+            "X": -225.97089,
+            "Y": 26.138475,
+            "Z": -355.0622
+          },
+          "StopDistance": 7,
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006228,
+          "Position": {
+            "X": -194.75098,
+            "Y": 19.02249,
+            "Z": -557.8546
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2257,
+            2258
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006228,
+          "Position": {
+            "X": -194.75098,
+            "Y": 19.02249,
+            "Z": -557.8546
+          },
+          "StopDistance": 7,
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006215,
+          "Position": {
+            "X": -227.34424,
+            "Y": 26.16842,
+            "Z": -352.98694
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    }
+  ]
+}

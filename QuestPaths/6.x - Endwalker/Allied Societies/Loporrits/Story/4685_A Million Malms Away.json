@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044402,
+          "Position": {
+            "X": -193.89642,
+            "Y": -49.19972,
+            "Z": -262.13477
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                959
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044953,
+          "Position": {
+            "X": -340.53564,
+            "Y": 104.34723,
+            "Z": 531.3954
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "Fly": true,
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044955,
+          "Position": {
+            "X": -161.36414,
+            "Y": -49.19972,
+            "Z": -288.4718
+          },
+          "TerritoryId": 959,
+          "StopDistance": 5,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 959,
+          "InteractionType": "Craft",
+          "ItemId": 38851,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1044955,
+          "Position": {
+            "X": -161.36414,
+            "Y": -49.19972,
+            "Z": -288.4718
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

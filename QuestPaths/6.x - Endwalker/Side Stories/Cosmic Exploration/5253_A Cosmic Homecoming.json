@@ -1,0 +1,79 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052591,
+          "Position": {
+            "X": 71.854614,
+            "Y": -16.247,
+            "Z": 118.242065
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014652,
+          "Position": {
+            "X": -648.73737,
+            "Y": 130.0221,
+            "Z": 717.3723
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1052592,
+          "Position": {
+            "X": 25.680908,
+            "Y": -137.41669,
+            "Z": -411.30695
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1052595,
+          "Position": {
+            "X": -53.177734,
+            "Y": -3.33786E-06,
+            "Z": -72.129456
+          },
+          "TerritoryId": 1237,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5254
+        }
+      ]
+    }
+  ]
+}

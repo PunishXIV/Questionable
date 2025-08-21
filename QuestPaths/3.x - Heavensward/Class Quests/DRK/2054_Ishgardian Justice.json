@@ -1,0 +1,154 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 418,
+          "InteractionType": "EquipItem",
+          "ItemId": 10400,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 418,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1014875,
+          "Position": {
+            "X": 6.9122925,
+            "Y": -1.9210143,
+            "Z": 47.287598
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014879,
+          "Position": {
+            "X": 134.05042,
+            "Y": -20.020874,
+            "Z": 73.746826
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014880,
+          "Position": {
+            "X": 136.98022,
+            "Y": -20.020876,
+            "Z": 69.840576
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 157.94511,
+            "Y": -19.477406,
+            "Z": 53.021667
+          },
+          "TerritoryId": 418,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 419
+        },
+        {
+          "DataId": 1014882,
+          "Position": {
+            "X": 244.09851,
+            "Y": -13.7349415,
+            "Z": -95.50629
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014883,
+          "Position": {
+            "X": 151.6289,
+            "Y": -9.190302,
+            "Z": -64.9577
+          },
+          "TerritoryId": 419,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014888,
+          "Position": {
+            "X": 40.390625,
+            "Y": 16.080097,
+            "Z": -85.9541
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014889,
+          "Position": {
+            "X": 43.381348,
+            "Y": 16.080097,
+            "Z": -86.045654
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK301_02054_Q1_000_115",
+              "Answer": "TEXT_JOBDRK301_02054_A1_000_116"
+            }
+          ],
+          "NextQuestId": 2055
+        }
+      ]
+    }
+  ]
+}

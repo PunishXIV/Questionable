@@ -1,0 +1,128 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020827,
+          "Position": {
+            "X": 334.1267,
+            "Y": 82.94969,
+            "Z": -101.27417
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020821,
+          "Position": {
+            "X": 276.7223,
+            "Y": 76.853935,
+            "Z": -23.51416
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2816
+        },
+        {
+          "DataId": 1020589,
+          "Position": {
+            "X": 510.79578,
+            "Y": 122.30697,
+            "Z": -239.643
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007972,
+          "Position": {
+            "X": 743.00745,
+            "Y": 180.98718,
+            "Z": -214.06885
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818140
+        },
+        {
+          "DataId": 2008200,
+          "Position": {
+            "X": 804.5929,
+            "Y": 179.70544,
+            "Z": -304.70746
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020593,
+          "Position": {
+            "X": 2.3651123,
+            "Y": -5.169945,
+            "Z": -13.260071
+          },
+          "TerritoryId": 683,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA606_02532_Q1_000_150",
+              "Answer": "TEXT_STMBDA606_02532_A1_000_151"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 683,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 263,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020592,
+          "Position": {
+            "X": 509.39185,
+            "Y": 122.137985,
+            "Z": -242.14551
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

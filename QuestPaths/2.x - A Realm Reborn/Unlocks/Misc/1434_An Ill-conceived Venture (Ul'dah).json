@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008798,
+          "Position": {
+            "X": -93.06476,
+            "Y": 4,
+            "Z": -124.712036
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -240.09776,
+            "Y": -37.803402,
+            "Z": 105.18645
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            138
+          ]
+        },
+        {
+          "DataId": 1008799,
+          "Position": {
+            "X": -237.72034,
+            "Y": -37.77224,
+            "Z": 103.4104
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001963,
+          "Position": {
+            "X": 106.06543,
+            "Y": 4.642026,
+            "Z": -72.007385
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019929,
+          "Position": {
+            "X": -57.724915,
+            "Y": 2.0040545,
+            "Z": -598.2605
+          },
+          "StopDistance": 5,
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019931,
+          "Position": {
+            "X": 54.703613,
+            "Y": 2.4445753,
+            "Z": -595.4528
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ruby Sea - Onokoro"
+        },
+        {
+          "Position": {
+            "X": 20.867485,
+            "Y": 25.111027,
+            "Z": -634.323
+          },
+          "TerritoryId": 613,
+          "StopDistance": 0.25,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 20.556915,
+              "Y": 26.25455,
+              "Z": -633.04
+            }
+          }
+        },
+        {
+          "DataId": 2007999,
+          "Position": {
+            "X": 21.286316,
+            "Y": 24.002441,
+            "Z": -623.621
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818182
+        },
+        {
+          "Position": {
+            "X": 20.3128,
+            "Y": 26.236794,
+            "Z": -629.7924
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Jump",
+          "StopDistance": 0.25,
+          "Mount": true,
+          "JumpDestination": {
+            "Position": {
+              "X": 20.867485,
+              "Y": 25.111027,
+              "Z": -634.323
+            }
+          }
+        },
+        {
+          "DataId": 1021505,
+          "Position": {
+            "X": 79.42322,
+            "Y": 33.00897,
+            "Z": -669.9474
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1019938,
+          "Position": {
+            "X": 68.46716,
+            "Y": 25.007832,
+            "Z": -643.8239
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2007852,
+          "Position": {
+            "X": 109.17822,
+            "Y": 2.670288,
+            "Z": -619.95886
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 16 1 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": 28.796398,
+            "Y": 1.1177638,
+            "Z": -561.9825
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1021508,
+          "Position": {
+            "X": 13.565186,
+            "Y": 5.3493934,
+            "Z": -482.87177
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "$": "16 1 0 0 0 128 -> 33 1 0 0 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2007854,
+          "Position": {
+            "X": -107.74402,
+            "Y": 2.1209717,
+            "Z": -521.32446
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -61.59895,
+            "Y": 0.75750256,
+            "Z": -577.81134
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 47.88596,
+            "Y": 2.0565174,
+            "Z": -591.9783
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 47.516483,
+            "Y": 8.753822,
+            "Z": -612.76074
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1019939,
+          "Position": {
+            "X": 69.53528,
+            "Y": 25.007832,
+            "Z": -643.6713
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

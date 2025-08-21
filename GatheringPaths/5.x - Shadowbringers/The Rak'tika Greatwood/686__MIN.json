@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "Position": {
+        "X": -790.09827,
+        "Y": 5.6,
+        "Z": 239.26955
+      },
+      "TerritoryId": 817,
+      "InteractionType": "WalkTo",
+      "AetheryteShortcut": "Rak'tika - Slitherbough",
+      "Fly": true
+    },
+    {
+      "Position": {
+        "X": -789.0584,
+        "Y": -26.2001,
+        "Z": 239.5829
+      },
+      "TerritoryId": 817,
+      "InteractionType": "WalkTo",
+      "DisableNavmesh": true,
+      "Fly": true
+    },
+    {
+      "TerritoryId": 817,
+      "InteractionType": "None"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32996,
+          "Locations": [
+            {
+              "Position": {
+                "X": -831.8083,
+                "Y": -41.57311,
+                "Z": 115.2932
+              },
+              "MinimumAngle": 40,
+              "MaximumAngle": 145,
+              "MinimumDistance": 1.4,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32994,
+          "Locations": [
+            {
+              "Position": {
+                "X": -874.5662,
+                "Y": -38.51086,
+                "Z": 112.2362
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32995,
+          "Locations": [
+            {
+              "Position": {
+                "X": -885.0585,
+                "Y": -37.47266,
+                "Z": 140.9555
+              },
+              "MinimumAngle": 225,
+              "MaximumAngle": 335
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

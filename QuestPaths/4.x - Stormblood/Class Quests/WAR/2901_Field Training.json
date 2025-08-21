@@ -1,0 +1,121 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023885,
+          "Position": {
+            "X": 217.30359,
+            "Y": 7.999984,
+            "Z": 686.427
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022806,
+          "Position": {
+            "X": -164.5686,
+            "Y": 81.072655,
+            "Z": -294.33136
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008649,
+          "Position": {
+            "X": -295.85718,
+            "Y": 53.20813,
+            "Z": -283.98572
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7500,
+            7501
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008650,
+          "Position": {
+            "X": -408.9876,
+            "Y": 46.860474,
+            "Z": -305.43988
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7500,
+            7501
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022811,
+          "Position": {
+            "X": -359.9756,
+            "Y": 58.723488,
+            "Z": -365.37732
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023885,
+          "Position": {
+            "X": 217.30359,
+            "Y": 7.999984,
+            "Z": 686.427
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "NextQuestId": 2902
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039896,
+          "Position": {
+            "X": 530.1747,
+            "Y": -36.65,
+            "Z": -175.86023
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 531.7644,
+            "Y": -36.650005,
+            "Z": -228.76685
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1039901,
+          "Position": {
+            "X": 408.65186,
+            "Y": 15.5581665,
+            "Z": -496.14713
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012093,
+          "Position": {
+            "X": 381.73486,
+            "Y": 15.548889,
+            "Z": -503.2578
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2012094,
+          "Position": {
+            "X": 381.64343,
+            "Y": 25.986084,
+            "Z": -503.19678
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Map",
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2012005,
+          "Position": {
+            "X": 382.1621,
+            "Y": 25.894531,
+            "Z": -482.20038
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818349
+        },
+        {
+          "DataId": 2012095,
+          "Position": {
+            "X": 423.1173,
+            "Y": 16.311829,
+            "Z": -570.3365
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Warmachine Wreckage",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2012096,
+          "Position": {
+            "X": 381.9486,
+            "Y": 16.617004,
+            "Z": -635.33997
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Children's Slide",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039906,
+          "Position": {
+            "X": 432.2423,
+            "Y": 15.558166,
+            "Z": -611.90204
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 434.73416,
+            "Y": 15.085039,
+            "Z": -614.55194
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 2012100,
+          "Position": {
+            "X": 445.76172,
+            "Y": 15.487854,
+            "Z": -648.61523
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039906,
+          "Position": {
+            "X": 432.2423,
+            "Y": 15.558166,
+            "Z": -611.90204
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039906,
+          "Position": {
+            "X": 432.2423,
+            "Y": 15.558166,
+            "Z": -611.90204
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

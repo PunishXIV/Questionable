@@ -1,0 +1,72 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028963,
+          "Position": {
+            "X": 327.0465,
+            "Y": 1.4685787,
+            "Z": -296.4676
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Amh Araeng - Mord Souq"
+        },
+        {
+          "DataId": 1027872,
+          "Position": {
+            "X": 268.4519,
+            "Y": 4.0296993,
+            "Z": -144.1825
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027873,
+          "Position": {
+            "X": 312.24524,
+            "Y": 1.4685826,
+            "Z": -186.14484
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Snipe",
+          "Comment": "Click all four foods"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027872,
+          "Position": {
+            "X": 268.4519,
+            "Y": 4.0296993,
+            "Z": -144.1825
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

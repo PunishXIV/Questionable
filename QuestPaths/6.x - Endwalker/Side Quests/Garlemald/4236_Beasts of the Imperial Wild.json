@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037741,
+          "Position": {
+            "X": -434.50067,
+            "Y": 22.00912,
+            "Z": 470.32874
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040666,
+          "Position": {
+            "X": -294.20923,
+            "Y": 21.732546,
+            "Z": 485.67932
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040667,
+          "Position": {
+            "X": 323.26233,
+            "Y": -9.523699,
+            "Z": 251.88062
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012053,
+          "Position": {
+            "X": 313.6797,
+            "Y": -11.978394,
+            "Z": 279.74353
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 14100,
+          "Position": {
+            "X": 302.5399,
+            "Y": -12.244642,
+            "Z": 304.46622
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003211,
+          "KillEnemyDataIds": [
+            14100
+          ],
+          "$": "feel like there's a fancier way to do this but it's entirely functional"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040667,
+          "Position": {
+            "X": 323.26233,
+            "Y": -9.523699,
+            "Z": 251.88062
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "$": "got a bit wonky on a slope here"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037741,
+          "Position": {
+            "X": -434.50067,
+            "Y": 22.00912,
+            "Z": 470.32874
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

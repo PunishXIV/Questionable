@@ -1,0 +1,244 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009369,
+          "Position": {
+            "X": 186.38892,
+            "Y": 103.25781,
+            "Z": 15.854065
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "ItemId": 2002450,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 1
+              },
+              {
+                "High": 3
+              },
+              {
+                "High": 4
+              }
+            ],
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 2009368,
+          "Position": {
+            "X": 170.06177,
+            "Y": 103.53235,
+            "Z": 17.776672
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "ItemId": 2002450,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 3
+              },
+              {
+                "High": 5
+              }
+            ],
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2009367,
+          "Position": {
+            "X": 171.61816,
+            "Y": 113.725464,
+            "Z": -0.13739014
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "ItemId": 2002450,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 1
+              },
+              {
+                "High": 2
+              },
+              {
+                "High": 4
+              },
+              {
+                "High": 5
+              }
+            ],
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2009366,
+          "Position": {
+            "X": 170.27539,
+            "Y": 111.46704,
+            "Z": -31.693054
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "ItemId": 2002450,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 2
+              },
+              {
+                "High": 4
+              },
+              {
+                "High": 5
+              }
+            ],
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2009365,
+          "Position": {
+            "X": 150.2251,
+            "Y": 108.140625,
+            "Z": -42.191284
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "ItemId": 2002450,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 1
+              },
+              {
+                "High": 2
+              },
+              {
+                "High": 3
+              }
+            ],
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.868523,
+            "Y": 56.02146,
+            "Z": 231.54045
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

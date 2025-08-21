@@ -1,0 +1,142 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040252,
+          "Position": {
+            "X": -568.719,
+            "Y": 9.817484,
+            "Z": -581.323
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040283,
+          "Position": {
+            "X": 210.31506,
+            "Y": 60.712387,
+            "Z": -600.76294
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040255,
+          "Position": {
+            "X": 57.26709,
+            "Y": -27.000013,
+            "Z": 177.5387
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] Alzadaal's Peace"
+        },
+        {
+          "DataId": 1040256,
+          "Position": {
+            "X": -4.135254,
+            "Y": -1.9999973,
+            "Z": 85.40466
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040257,
+          "Position": {
+            "X": -99.3515,
+            "Y": 20,
+            "Z": 110.52112
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040258,
+          "Position": {
+            "X": -149.43164,
+            "Y": 27.999998,
+            "Z": 171.12988
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] Airship Landing"
+        },
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] Meghaduta"
+        },
+        {
+          "DataId": 1040259,
+          "Position": {
+            "X": -341.93945,
+            "Y": 55,
+            "Z": -70.603516
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040260,
+          "Position": {
+            "X": -377.27936,
+            "Y": 45.00252,
+            "Z": -28.610718
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

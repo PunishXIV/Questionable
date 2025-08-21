@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039543,
+          "Position": {
+            "X": -173.66296,
+            "Y": 4.0499997,
+            "Z": -91.38635
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBZ001_04579_Q1_000_000",
+              "Answer": "TEXT_AKTKBZ001_04579_A1_000_001"
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042736,
+          "Position": {
+            "X": -396.17004,
+            "Y": 22.142666,
+            "Z": 463.00452
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042731,
+          "Position": {
+            "X": -416.64764,
+            "Y": 21.708784,
+            "Z": 409.90308
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042733,
+          "Position": {
+            "X": -337.51428,
+            "Y": 21.963173,
+            "Z": 484.91638
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4580
+        }
+      ]
+    }
+  ]
+}

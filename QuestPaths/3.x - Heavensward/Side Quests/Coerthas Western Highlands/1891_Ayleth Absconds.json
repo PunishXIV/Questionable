@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014146,
+          "Position": {
+            "X": -258.74725,
+            "Y": 126.98546,
+            "Z": 12.649658
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 1014151,
+          "Position": {
+            "X": -156.08453,
+            "Y": 219.14235,
+            "Z": 669.7031
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 732,
+          "Position": {
+            "X": -151.29321,
+            "Y": 218.95082,
+            "Z": 669.4895
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            732
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014151,
+          "Position": {
+            "X": -156.08453,
+            "Y": 219.14235,
+            "Z": 669.7031
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014151,
+          "Position": {
+            "X": -156.08453,
+            "Y": 219.14235,
+            "Z": 669.7031
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Fly": true,
+          "DataId": 1014146,
+          "Position": {
+            "X": -258.74725,
+            "Y": 126.98546,
+            "Z": 12.649658
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1892
+        }
+      ]
+    }
+  ]
+}

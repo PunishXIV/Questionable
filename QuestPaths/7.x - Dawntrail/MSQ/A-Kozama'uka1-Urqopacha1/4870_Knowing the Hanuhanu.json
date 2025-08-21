@@ -1,0 +1,178 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046750,
+          "Position": {
+            "X": -98.95477,
+            "Y": 9.773315,
+            "Z": -533.135
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046753,
+          "Position": {
+            "X": -205.768,
+            "Y": 6.277146,
+            "Z": -439.3531
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_KINGMA111_04870_SAYTODO_000_046"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1046699,
+          "Position": {
+            "X": -218.555,
+            "Y": 6.4016876,
+            "Z": -477.77527
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_KINGMA111_04870_SAYTODO_000_046"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046752,
+          "Position": {
+            "X": -218.18878,
+            "Y": 9.558153,
+            "Z": -545.0065
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_KINGMA111_04870_SAYTODO_000_046"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046750,
+          "Position": {
+            "X": -98.95477,
+            "Y": 9.773315,
+            "Z": -533.135
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046754,
+          "Position": {
+            "X": 64.774536,
+            "Y": 0.7218611,
+            "Z": -385.85492
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051615,
+          "Position": {
+            "X": -46.76892,
+            "Y": 1.60855,
+            "Z": -390.2495
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048782,
+          "Position": {
+            "X": -68.52832,
+            "Y": 6.536739,
+            "Z": -486.53394
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5064
+        },
+        {
+          "DataId": 1051237,
+          "Position": {
+            "X": -251.20929,
+            "Y": 5.5572896,
+            "Z": -554.89435
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5081
+        },
+        {
+          "DataId": 1046537,
+          "Position": {
+            "X": -32.822205,
+            "Y": -10.00001,
+            "Z": 142.93127
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043504,
+          "Position": {
+            "X": -639.704,
+            "Y": -27.177149,
+            "Z": 301.9912
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039550,
+          "Position": {
+            "X": -620.7218,
+            "Y": -27.670597,
+            "Z": 302.17432
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 956
+        },
+        {
+          "Position": {
+            "X": -431.53903,
+            "Y": -220.1193,
+            "Z": 301.76364
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2013029,
+          "Position": {
+            "X": -238.97156,
+            "Y": -220.41656,
+            "Z": 340.6272
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1079
+        },
+        {
+          "DataId": 2013338,
+          "Position": {
+            "X": 18.753235,
+            "Y": 197.52808,
+            "Z": 519.06604
+          },
+          "TerritoryId": 1079,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1079,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 936,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045330,
+          "Position": {
+            "X": 19.272095,
+            "Y": 197.41248,
+            "Z": 503.59338
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1079,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4757
+        }
+      ]
+    }
+  ]
+}

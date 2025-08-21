@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041287,
+          "Position": {
+            "X": -307.3625,
+            "Y": 22.3,
+            "Z": -143.29755
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZC005_04214_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041288,
+          "Position": {
+            "X": -169.51251,
+            "Y": 21.975235,
+            "Z": -152.26978
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012434,
+          "Position": {
+            "X": -168.32227,
+            "Y": 21.927185,
+            "Z": -151.29321
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Emote",
+          "Emote": "battlestance"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012437,
+          "Position": {
+            "X": -169.69562,
+            "Y": 22.87323,
+            "Z": -150.07251
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1037098,
+          "Position": {
+            "X": -94.83484,
+            "Y": 6.617,
+            "Z": -41.58087
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1041288,
+          "Position": {
+            "X": -169.51251,
+            "Y": 21.975235,
+            "Z": -152.26978
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC005_04214_Q2_000_000",
+              "Answer": "TEXT_AKTKZC005_04214_A2_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041287,
+          "Position": {
+            "X": -307.3625,
+            "Y": 22.3,
+            "Z": -143.29755
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    }
+  ]
+}

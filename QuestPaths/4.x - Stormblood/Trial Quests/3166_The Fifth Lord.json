@@ -1,0 +1,167 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026581,
+          "Position": {
+            "X": 798.4894,
+            "Y": -0.079232015,
+            "Z": -300.67908
+          },
+          "StopDistance": 6,
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025137,
+          "Position": {
+            "X": 281.66626,
+            "Y": 16.350018,
+            "Z": 846.89087
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true,
+          "TargetTerritoryId": 764
+        },
+        {
+          "DataId": 1026480,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026480,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028803,
+          "Position": {
+            "X": 8.804443,
+            "Y": -90,
+            "Z": -470.63403
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1028804,
+          "Position": {
+            "X": 74.23511,
+            "Y": -90.00003,
+            "Z": -457.3587
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDY332_03166_Q2_000_000",
+              "Answer": "TEXT_STMBDY332_03166_A2_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1028805,
+          "Position": {
+            "X": 115.83118,
+            "Y": -90,
+            "Z": -470.81714
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028806,
+          "Position": {
+            "X": 61.997314,
+            "Y": -90.00002,
+            "Z": -478.14148
+          },
+          "TerritoryId": 764,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "NextQuestId": 3165
+        }
+      ]
+    }
+  ]
+}

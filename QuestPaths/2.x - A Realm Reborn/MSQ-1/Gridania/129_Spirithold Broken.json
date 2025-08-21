@@ -1,0 +1,197 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000421,
+          "Position": {
+            "X": 98.25281,
+            "Y": -8,
+            "Z": -78.446655
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000465,
+          "Position": {
+            "X": 298.63428,
+            "Y": 9.999997,
+            "Z": 119.035645
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000512,
+          "Position": {
+            "X": 311.69592,
+            "Y": 14.8470745,
+            "Z": 164.47693
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000513,
+          "Position": {
+            "X": 303.8833,
+            "Y": 15.899703,
+            "Z": 160.87585
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1000514,
+          "Position": {
+            "X": 296.1012,
+            "Y": 15.999987,
+            "Z": 171.4961
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1000515,
+          "Position": {
+            "X": 291.21838,
+            "Y": 19.86808,
+            "Z": 175.21924
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1000516,
+          "Position": {
+            "X": 284.65698,
+            "Y": 21.97319,
+            "Z": 188.18945
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000740,
+          "Position": {
+            "X": 260.18152,
+            "Y": 24.000002,
+            "Z": 192.2179
+          },
+          "TerritoryId": 148,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 319.9492,
+            "Y": 13.866494,
+            "Z": 156.2647
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1000465,
+          "Position": {
+            "X": 298.63428,
+            "Y": 9.999997,
+            "Z": 119.035645
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000100,
+          "Position": {
+            "X": 23.819275,
+            "Y": -8,
+            "Z": 115.92273
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Airship Landing"
+          ]
+        }
+      ]
+    }
+  ]
+}

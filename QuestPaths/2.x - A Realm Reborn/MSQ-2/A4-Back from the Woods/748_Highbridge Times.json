@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006196,
+          "Position": {
+            "X": -63.98114,
+            "Y": -20.296238,
+            "Z": -5.142395
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006206,
+          "Position": {
+            "X": -90.95911,
+            "Y": -29.465149,
+            "Z": -58.854065
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1006204,
+          "Position": {
+            "X": -29.34314,
+            "Y": -10.500086,
+            "Z": -7.5532227
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1006205,
+          "Position": {
+            "X": 14.480774,
+            "Y": -5.9663696,
+            "Z": 7.4310913
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006196,
+          "Position": {
+            "X": -63.98114,
+            "Y": -20.296238,
+            "Z": -5.142395
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1012181,
+                    "Position": {
+                        "X": -248.55426,
+                        "Y": -20.034918,
+                        "Z": -90.98956
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] The Jeweled Crozier"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [ 419 ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1012263,
+                    "Position": {
+                        "X": -129.4118,
+                        "Y": 14.803129,
+                        "Z": -127.91644
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] The Jeweled Crozier",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ]
+                },
+                {
+                    "DataId": 1011215,
+                    "Position": {
+                        "X": -145.37274,
+                        "Y": 14.80313,
+                        "Z": -129.25922
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 427
+                },
+                {
+                    "DataId": 1012262,
+                    "Position": {
+                        "X": -10.330383,
+                        "Y": 0,
+                        "Z": 8.194031
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 1012264,
+                    "Position": {
+                        "X": -6.790344,
+                        "Y": 0.024999565,
+                        "Z": 3.829956
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2006245,
+                    "Position": {
+                        "X": -7.675354,
+                        "Y": 0.83917236,
+                        "Z": -2.9145508
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 1012265,
+                    "Position": {
+                        "X": -2.1820679,
+                        "Y": 0.289917,
+                        "Z": -5.508545
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2006244,
+                    "Position": {
+                        "X": 11.093262,
+                        "Y": 1.3884888,
+                        "Z": -7.8584595
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2006243,
+                    "Position": {
+                        "X": 7.2174683,
+                        "Y": 1.4190674,
+                        "Z": 1.083313
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 2005332,
+                    "Position": {
+                        "X": -5.0202637,
+                        "Y": 1.1443481,
+                        "Z": 11.856201
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 419
+                },
+                {
+                    "DataId": 1012181,
+                    "Position": {
+                        "X": -248.55426,
+                        "Y": -20.034918,
+                        "Z": -90.98956
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "CompleteQuest",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_HEAVNZ601_01869_Q1_000_000",
+                            "Answer": "TEXT_HEAVNZ601_01869_A1_000_005"
+                        }
+                    ],
+                    "AethernetShortcut": [
+                        "[Ishgard] Saint Reymanaud's Cathedral",
+                        "[Ishgard] The Jeweled Crozier"
+                    ],
+                    "NextQuestId": 2152
+                }
+            ]
+        }
+    ]
+}

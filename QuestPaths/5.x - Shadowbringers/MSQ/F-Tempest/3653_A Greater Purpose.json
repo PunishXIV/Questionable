@@ -1,0 +1,214 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030554,
+          "Position": {
+            "X": -633.99713,
+            "Y": -288.06885,
+            "Z": 251.60596
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027778,
+          "Position": {
+            "X": -713.28296,
+            "Y": -245.368,
+            "Z": 498.49683
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3593
+        },
+        {
+          "DataId": 1030477,
+          "Position": {
+            "X": -594.6593,
+            "Y": -266.7698,
+            "Z": 338.70447
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3594
+        },
+        {
+          "DataId": 1027775,
+          "Position": {
+            "X": -390.85986,
+            "Y": -260.17664,
+            "Z": 308.46106
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3592
+        },
+        {
+          "TerritoryId": 818,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Tempest - Macarenses Angle"
+        },
+        {
+          "Position": {
+            "X": -0.41547322,
+            "Y": -276.906,
+            "Z": 269.2778
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1027772,
+          "Position": {
+            "X": 5.3864136,
+            "Y": -276.906,
+            "Z": 271.59534
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010147,
+          "Position": {
+            "X": 1.5106201,
+            "Y": -276.93604,
+            "Z": 261.64636
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -0.41547322,
+            "Y": -276.906,
+            "Z": 269.2778
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1027772,
+          "Position": {
+            "X": 5.3864136,
+            "Y": -276.906,
+            "Z": 271.59534
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 314.43127,
+            "Y": -274.1735,
+            "Z": 659.203
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1027773,
+          "Position": {
+            "X": 316.4568,
+            "Y": -274.1735,
+            "Z": 653.65063
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2010148,
+          "Position": {
+            "X": 285.69458,
+            "Y": -272.78558,
+            "Z": 672.02246
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 314.43127,
+            "Y": -274.1735,
+            "Z": 659.203
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1027773,
+          "Position": {
+            "X": 316.4568,
+            "Y": -274.1735,
+            "Z": 653.65063
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -244.05957,
+            "Y": -266.0001,
+            "Z": 444.7069
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Tempest - Macarenses Angle"
+        },
+        {
+          "DataId": 1030558,
+          "Position": {
+            "X": -241.32147,
+            "Y": -266.0001,
+            "Z": 444.08325
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

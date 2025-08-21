@@ -1,0 +1,216 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419,
+                433
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [433]
+            }
+          }
+        },
+        {
+          "DataId": 1012337,
+          "Position": {
+            "X": -5.874817,
+            "Y": -9.313226E-10,
+            "Z": -5.783203
+          },
+          "TerritoryId": 433,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005334,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.1443481,
+            "Z": 13.199036
+          },
+          "TerritoryId": 433,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 419,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [419]
+            }
+          }
+        },
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011192,
+          "Position": {
+            "X": 88.36499,
+            "Y": 15.094684,
+            "Z": 31.296265
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011952,
+          "Position": {
+            "X": -277.63788,
+            "Y": -184.59735,
+            "Z": 741.60376
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1011231,
+          "Position": {
+            "X": 503.1051,
+            "Y": 217.95148,
+            "Z": 790.2189
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2007017,
+          "Position": {
+            "X": 120.62256,
+            "Y": 14.938599,
+            "Z": -156.6034
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Tribunal"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2007018,
+          "Position": {
+            "X": 23.025818,
+            "Y": 27.939209,
+            "Z": -145.73895
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "TargetTerritoryId": 198
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 25.714342,
+            "Y": 50.98988,
+            "Z": -779.1884
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true
+        },
+        {
+          "DataId": 1016809,
+          "Position": {
+            "X": 29.861816,
+            "Y": 50.99997,
+            "Z": -818.2651
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1476
+        }
+      ]
+    }
+  ]
+}

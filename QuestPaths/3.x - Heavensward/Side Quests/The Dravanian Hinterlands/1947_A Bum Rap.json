@@ -1,0 +1,63 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.397034,
+            "Y": 100.969696,
+            "Z": -186.4195
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 301.43185,
+            "Y": 76.142914,
+            "Z": 171.03389
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4020,
+              "MinimumKillCount": 3
+            }
+          ],
+          "Fly": true
+        }
+
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.397034,
+            "Y": 100.969696,
+            "Z": -186.4195
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+
+  ]
+}

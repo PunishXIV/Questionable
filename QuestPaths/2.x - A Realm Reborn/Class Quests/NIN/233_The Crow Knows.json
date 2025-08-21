@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "xan",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010628,
+          "Position": {
+            "X": -189.01355,
+            "Y": 30.937378,
+            "Z": -687.2816
+          },
+          "TerritoryId": 134,
+          "Fly": true,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1010629,
+          "Position": {
+            "X": -8.712891,
+            "Y": 39.580772,
+            "Z": 258.2589
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010630,
+          "Position": {
+            "X": -70.93927,
+            "Y": 36.04747,
+            "Z": 475.66956
+          },
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010631,
+          "Position": {
+            "X": -68.95557,
+            "Y": 36.05801,
+            "Z": 471.4275
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true },
+            "StepIf": {
+              "ExtraCondition": "DockStorehouse"
+            }
+          },
+          "TargetTerritoryId": 137
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 234
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000421,
+          "Position": {
+            "X": 98.25281,
+            "Y": -8,
+            "Z": -78.446655
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000953,
+          "Position": {
+            "X": 323.5979,
+            "Y": 0.3508911,
+            "Z": -309.55975
+          },
+          "TerritoryId": 148,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "AI doesn't automatically target newly spawning adds until after the boss died, and dies (tested on CNJ)"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2001194,
+          "Position": {
+            "X": 323.627,
+            "Y": 0.3168333,
+            "Z": -309.5412
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000421,
+          "Position": {
+            "X": 98.25281,
+            "Y": -8,
+            "Z": -78.446655
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016619,
+          "Position": {
+            "X": -66.84979,
+            "Y": 8.05915,
+            "Z": 9.506287
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016600,
+          "Position": {
+            "X": 46.097534,
+            "Y": 15.8650675,
+            "Z": -27.298462
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017131,
+          "Position": {
+            "X": 35.446655,
+            "Y": 15.965061,
+            "Z": -96.75751
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] The Tribunal"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1017278,
+          "Position": {
+            "X": -158.31238,
+            "Y": 2.0333426,
+            "Z": -10.635559
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Tribunal",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016607,
+          "Position": {
+            "X": -260.12054,
+            "Y": -20.035,
+            "Z": -66.14789
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016608,
+          "Position": {
+            "X": -261.0971,
+            "Y": -20.03499,
+            "Z": -66.11737
+          },
+          "StopDistance": 5,
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2229
+        }
+      ]
+    }
+  ]
+}

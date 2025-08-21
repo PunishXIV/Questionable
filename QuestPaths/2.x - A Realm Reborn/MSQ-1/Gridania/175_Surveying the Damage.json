@@ -1,0 +1,137 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000449,
+          "Position": {
+            "X": 201.83093,
+            "Y": -5.5419664,
+            "Z": -107.25574
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Comment": "Very likely this needs manual combat and/or manual continues",
+      "Steps": [
+        {
+          "Position": {
+            "X": 192.07129,
+            "Y": -12.000001,
+            "Z": 38.204
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 190.28528,
+            "Y": -12,
+            "Z": 77.53861
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": []
+        },
+        {
+          "DataId": 2000141,
+          "Position": {
+            "X": 179.4613,
+            "Y": -10.666138,
+            "Z": 99.56506
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$": "QuestVariables if done first: 17 0 16 0 0 128"
+        },
+        {
+          "DataId": 2000147,
+          "Position": {
+            "X": 168.07812,
+            "Y": -12.008911,
+            "Z": 120.80554
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$": "QuestVariables if done first: 17 16 17 0 0 192"
+        },
+        {
+          "DataId": 2000149,
+          "Position": {
+            "X": 154.0398,
+            "Y": -10.75769,
+            "Z": 120.3479
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "$": "QuestVariables if done first: 33 17 17 16 0 208"
+        },
+        {
+          "DataId": 2000148,
+          "Position": {
+            "X": 126.14636,
+            "Y": -12.008911,
+            "Z": 142.35144
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000685,
+          "Position": {
+            "X": 287.92236,
+            "Y": -3.297,
+            "Z": -32.6391
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

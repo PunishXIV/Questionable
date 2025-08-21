@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012751,
+          "Position": {
+            "X": -2.02948,
+            "Y": -9.313226E-10,
+            "Z": 6.362976
+          },
+          "StopDistance": 7,
+          "TerritoryId": 433,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013381,
+          "Position": {
+            "X": 92.36279,
+            "Y": 15.094684,
+            "Z": 33.188354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013342,
+          "Position": {
+            "X": 36.331665,
+            "Y": -12.020876,
+            "Z": 76.58496
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1013341,
+          "Position": {
+            "X": 65.72058,
+            "Y": -12.008911,
+            "Z": 78.3551
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "$": "1 0 0 0 0 32 -> 2 0 0 0 0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1013340,
+          "Position": {
+            "X": 144.57922,
+            "Y": -20.020874,
+            "Z": 54.276245
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013332,
+          "Position": {
+            "X": 94.95691,
+            "Y": -22.000006,
+            "Z": 50.94983
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018255,
+          "Position": {
+            "X": -793.7896,
+            "Y": -133.26949,
+            "Z": -412.6803
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018257,
+          "Position": {
+            "X": -664.36255,
+            "Y": -176.4502,
+            "Z": -570.3975
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1018260,
+          "Position": {
+            "X": -189.5628,
+            "Y": -102.63812,
+            "Z": 449.60706
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007518,
+          "Position": {
+            "X": -697.01685,
+            "Y": -37.82715,
+            "Z": 431.2047
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1018261,
+          "Position": {
+            "X": 785.3054,
+            "Y": -24.802603,
+            "Z": -766.3539
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016087,
+          "Position": {
+            "X": -796.7498,
+            "Y": -133.2695,
+            "Z": -410.6966
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

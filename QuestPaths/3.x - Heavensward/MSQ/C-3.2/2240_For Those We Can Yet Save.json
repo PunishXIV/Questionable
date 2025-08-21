@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016074,
+          "Position": {
+            "X": -139.849,
+            "Y": 304.15384,
+            "Z": -309.8955
+          },
+          "StopDistance": 7,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016589,
+          "Position": {
+            "X": 7.4005737,
+            "Y": 1.2791227,
+            "Z": 104.35632
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016565,
+          "Position": {
+            "X": 503.34937,
+            "Y": 217.95154,
+            "Z": 760.46387
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016590,
+          "Position": {
+            "X": 501.97595,
+            "Y": 217.95152,
+            "Z": 762.72217
+          },
+          "StopDistance": 7,
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNC110_02240_Q1_000_071",
+              "Answer": "TEXT_HEAVNC110_02240_A1_000_072"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

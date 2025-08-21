@@ -1,0 +1,161 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020893,
+          "Position": {
+            "X": 283.77197,
+            "Y": 322.87146,
+            "Z": 752.34607
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020888,
+          "Position": {
+            "X": 321.21765,
+            "Y": 324.3033,
+            "Z": 390.70715
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 1 0    0 0    0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1020886,
+          "Position": {
+            "X": 342.70227,
+            "Y": 325.54596,
+            "Z": 359.54822
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 1 0    0 0    0 32 -> QW: 2 0    0 0    0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1020887,
+          "Position": {
+            "X": 337.20898,
+            "Y": 324.30093,
+            "Z": 328.51135
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020870,
+          "Position": {
+            "X": -218.61603,
+            "Y": 257.52652,
+            "Z": 737.1786
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021557,
+          "Position": {
+            "X": -130.02216,
+            "Y": 305.38147,
+            "Z": 189.71533
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 620,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Lochs - Porta Praetoria"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 1.7183262,
+            "Y": 317.60666,
+            "Z": 141.11252
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Lochs - Porta Praetoria"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -791.2012,
+            "Y": 46.3994,
+            "Z": -15.904689
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Lochs - Porta Praetoria"
+            },
+            "StepIf": {
+              "AetheryteLocked": "Lochs - Porta Praetoria"
+            }
+          }
+        },
+        {
+          "DataId": 1020893,
+          "Position": {
+            "X": 283.77197,
+            "Y": 322.87146,
+            "Z": 752.34607
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

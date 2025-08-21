@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Fifi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030144,
+          "Position": {
+            "X": 94.68213,
+            "Y": 37.377014,
+            "Z": 611.1085
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027253,
+          "Position": {
+            "X": 17.502075,
+            "Y": 19.999794,
+            "Z": -190.41736
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010406,
+          "Position": {
+            "X": -17.013855,
+            "Y": 4.470825,
+            "Z": 234.97363
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030990,
+          "Position": {
+            "X": -246.57056,
+            "Y": 10.152376,
+            "Z": 678.21765
+          },
+          "TerritoryId": 817,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030145,
+          "Position": {
+            "X": 93.461426,
+            "Y": 37.43559,
+            "Z": 611.50525
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Kholusia - Wright"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    }
+  ]
+}

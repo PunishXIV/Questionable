@@ -1,0 +1,114 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019958,
+          "Position": {
+            "X": 420.34033,
+            "Y": -99.19678,
+            "Z": -221.36267
+          },
+          "StopDistance": 7,
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019178,
+          "Position": {
+            "X": 319.69165,
+            "Y": -120.03494,
+            "Z": -250.90417
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019960,
+          "Position": {
+            "X": 321.3092,
+            "Y": -120.01774,
+            "Z": -248.2185
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ruby Sea - Tamamizu"
+        },
+        {
+          "Position": {
+            "X": 543.42303,
+            "Y": -61.394184,
+            "Z": -153.51427
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 647.60547,
+            "Y": 3.3050807,
+            "Z": -55.93293
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 664.2144,
+            "Y": 1.8086157,
+            "Z": -5.028036
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 6638,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2002094,
+              "RewardItemCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019958,
+          "Position": {
+            "X": 420.34033,
+            "Y": -99.19678,
+            "Z": -221.36267
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    }
+  ]
+}

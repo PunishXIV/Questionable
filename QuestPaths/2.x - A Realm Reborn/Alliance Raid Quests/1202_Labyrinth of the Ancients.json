@@ -1,0 +1,93 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1007763,
+          "Position": {
+            "X": 447.4403,
+            "Y": -5.3500423,
+            "Z": -467.7959
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 573.29987,
+            "Y": -1.5839931,
+            "Z": -261.4353
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002897,
+          "Position": {
+            "X": 573.17444,
+            "Y": -1.7243042,
+            "Z": -262.77563
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 92,
+            "Enabled": false,
+            "LowPriority": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 445.96164,
+            "Y": -5.3604937,
+            "Z": -466.67636
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 1007763,
+          "Position": {
+            "X": 447.4403,
+            "Y": -5.3500423,
+            "Z": -467.7959
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1203
+        }
+      ]
+    }
+  ]
+}

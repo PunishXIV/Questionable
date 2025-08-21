@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "skiaz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006288,
+          "Position": {
+            "X": -361.40997,
+            "Y": 8.46532,
+            "Z": 426.13855
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006287,
+          "Position": {
+            "X": -354.66547,
+            "Y": 8.469922,
+            "Z": 416.80017
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006737,
+          "Position": {
+            "X": -332.72296,
+            "Y": 4.1964035,
+            "Z": 278.21765
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2268,
+          "Position": {
+            "X": -192.82831,
+            "Y": 9.630248,
+            "Z": 454.79517
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 2268,
+              "MinimumKillCount": 3
+            }
+          ],
+          "CombatItemUse": {
+            "Condition": "Health%",
+            "Value": 50,
+            "ItemId": 2000647
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006737,
+          "Position": {
+            "X": -332.72296,
+            "Y": 4.1964035,
+            "Z": 278.21765
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006287,
+          "Position": {
+            "X": -354.66547,
+            "Y": 8.469922,
+            "Z": 416.80017
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

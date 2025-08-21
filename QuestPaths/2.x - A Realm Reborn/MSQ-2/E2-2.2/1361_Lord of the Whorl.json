@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008693,
+          "Position": {
+            "X": 155.47412,
+            "Y": 8.973654,
+            "Z": 584.1306
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 135,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 72,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSE217_01361_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

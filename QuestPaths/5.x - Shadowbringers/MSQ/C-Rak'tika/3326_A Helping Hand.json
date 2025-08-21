@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029198,
+          "Position": {
+            "X": -118.18121,
+            "Y": -19.713022,
+            "Z": 385.51917
+          },
+          "StopDistance": 5,
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029200,
+          "Position": {
+            "X": -112.90161,
+            "Y": -19.59217,
+            "Z": 388.84558
+          },
+          "StopDistance": 7,
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009863,
+          "Position": {
+            "X": -71.78751,
+            "Y": -19.33637,
+            "Z": 302.1084
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029200,
+          "Position": {
+            "X": -112.90161,
+            "Y": -19.59217,
+            "Z": 388.84558
+          },
+          "StopDistance": 7,
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009864,
+          "Position": {
+            "X": -71.03082,
+            "Y": -19.394226,
+            "Z": 293.47668
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027741,
+          "Position": {
+            "X": -80.338745,
+            "Y": -19.101032,
+            "Z": 299.82446
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

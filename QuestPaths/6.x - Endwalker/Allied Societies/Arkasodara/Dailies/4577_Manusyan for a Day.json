@@ -1,0 +1,169 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042459,
+          "Position": {
+            "X": 353.99402,
+            "Y": 12.724952,
+            "Z": -220.5387
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042472,
+          "Position": {
+            "X": 352.5597,
+            "Y": 20.552443,
+            "Z": 6.362976
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
+          },
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              64
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK127_04577_Q1_000_000",
+              "Answer": "TEXT_BANARK127_04577_A1_000_002"
+            }
+          ]
+        },
+        {
+          "DataId": 1042387,
+          "Position": {
+            "X": 398.94702,
+            "Y": 6.591665,
+            "Z": 50.492065
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
+          },
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              16
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK127_04577_Q2_000_000",
+              "Answer": "TEXT_BANARK127_04577_A2_000_002"
+            }
+          ]
+        },
+        {
+          "DataId": 1042388,
+          "Position": {
+            "X": 408.95703,
+            "Y": 7.8583245,
+            "Z": 5.0201416
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
+          },
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              32
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK127_04577_Q3_000_000",
+              "Answer": "TEXT_BANARK127_04577_A3_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042459,
+          "Position": {
+            "X": 353.99402,
+            "Y": 12.724952,
+            "Z": -220.5387
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

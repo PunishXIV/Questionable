@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [130, 131]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028409,
+          "Position": {
+            "X": 103.4104,
+            "Y": 118.31935,
+            "Z": -706.1417
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "Fly": true
+        },
+        {
+          "DataId": 1028410,
+          "Position": {
+            "X": 38.010254,
+            "Y": 118.13663,
+            "Z": -750.57605
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Mount": true
+        },
+        {
+          "DataId": 1028408,
+          "Position": {
+            "X": 55.649536,
+            "Y": 118.16888,
+            "Z": -784.2069
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028411,
+          "Position": {
+            "X": -140.67297,
+            "Y": 27.29529,
+            "Z": -408.16364
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009755,
+          "Position": {
+            "X": 64.86609,
+            "Y": -0.38153076,
+            "Z": -83.32953
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [130, 131]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

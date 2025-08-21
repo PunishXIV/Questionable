@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 1190,
+      "InteractionType": "None"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34920,
+          "Locations": [
+            {
+              "Position": {
+                "X": 192.6021,
+                "Y": 12.31054,
+                "Z": 631.2545
+              }
+            },
+            {
+              "Position": {
+                "X": 194.8373,
+                "Y": 12.50387,
+                "Z": 646.5401
+              }
+            },
+            {
+              "Position": {
+                "X": 180.8447,
+                "Y": 12.43262,
+                "Z": 610.7131
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34919,
+          "Locations": [
+            {
+              "Position": {
+                "X": 186.171,
+                "Y": 12.54104,
+                "Z": 634.9042
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34917,
+          "Locations": [
+            {
+              "Position": {
+                "X": 39.45634,
+                "Y": -0.06042051,
+                "Z": 502.3853
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34918,
+          "Locations": [
+            {
+              "Position": {
+                "X": 46.03248,
+                "Y": -0.7049216,
+                "Z": 491.6059
+              }
+            },
+            {
+              "Position": {
+                "X": 36.15481,
+                "Y": -0.0501074,
+                "Z": 505.9388
+              }
+            },
+            {
+              "Position": {
+                "X": 24.72226,
+                "Y": 0.5922582,
+                "Z": 528.0809
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34922,
+          "Locations": [
+            {
+              "Position": {
+                "X": 2.302937,
+                "Y": -4.586716,
+                "Z": 687.4797
+              }
+            },
+            {
+              "Position": {
+                "X": 30.02284,
+                "Y": -2.447479,
+                "Z": 704.4326
+              }
+            },
+            {
+              "Position": {
+                "X": 41.59287,
+                "Y": -0.8454803,
+                "Z": 692.0099
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34921,
+          "Locations": [
+            {
+              "Position": {
+                "X": 18.47237,
+                "Y": -2.987581,
+                "Z": 690.8011
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

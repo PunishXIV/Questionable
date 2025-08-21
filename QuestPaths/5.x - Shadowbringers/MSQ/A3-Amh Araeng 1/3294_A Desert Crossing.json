@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028977,
+          "Position": {
+            "X": 313.8933,
+            "Y": 1.4685827,
+            "Z": -156.81696
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027872,
+          "Position": {
+            "X": 268.4519,
+            "Y": 4.0296993,
+            "Z": -144.1825
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3375
+        },
+        {
+          "DataId": 1030606,
+          "Position": {
+            "X": 347.15796,
+            "Y": -8.423396,
+            "Z": -117.93707
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 443.3203,
+            "Y": -23.82671,
+            "Z": -44.724243
+          },
+          "StopDistance": 1,
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10874
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028978,
+          "Position": {
+            "X": 443.3203,
+            "Y": -23.82671,
+            "Z": -44.724243
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009848,
+          "Position": {
+            "X": 487.51038,
+            "Y": -37.979797,
+            "Z": 56.10742
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10875
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1028978,
+          "Position": {
+            "X": 443.3203,
+            "Y": -23.82671,
+            "Z": -44.724243
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028980,
+          "Position": {
+            "X": 388.93713,
+            "Y": -33.327938,
+            "Z": 233.20361
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

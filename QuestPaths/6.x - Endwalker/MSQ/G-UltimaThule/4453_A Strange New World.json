@@ -1,0 +1,147 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039853,
+          "Position": {
+            "X": -377.7066,
+            "Y": 80.86001,
+            "Z": 606.53076
+          },
+          "StopDistance": 7,
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039860,
+          "Position": {
+            "X": -31.11322,
+            "Y": 60.569,
+            "Z": 551.0491
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012351,
+          "Position": {
+            "X": -11.490112,
+            "Y": 61.905884,
+            "Z": 533.6842
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.0": "[1]",
+          "$.1": "QuestVariables if done first: 16 1 0 0 0 128"
+        },
+        {
+          "DataId": 1040292,
+          "Position": {
+            "X": 6.5460815,
+            "Y": 60.71497,
+            "Z": 554.4059
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$.0": "[2]",
+          "$.1": "QuestVariables if done after [1]: 33 1 0 0 0 192"
+        },
+        {
+          "DataId": 1040293,
+          "Position": {
+            "X": 56.77881,
+            "Y": 99.37216,
+            "Z": 665.5221
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$.0": "[3]",
+          "$.2": "QuestVariables if done first: 16 16 0 0 0 32"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039860,
+          "Position": {
+            "X": -31.11322,
+            "Y": 60.569,
+            "Z": 551.0491
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040294,
+          "Position": {
+            "X": -373.00684,
+            "Y": 90.107704,
+            "Z": 460.99023
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039769,
+          "Position": {
+            "X": -482.9328,
+            "Y": 73.09421,
+            "Z": 310.9331
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

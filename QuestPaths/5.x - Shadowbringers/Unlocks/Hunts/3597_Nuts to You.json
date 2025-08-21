@@ -1,0 +1,63 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031348,
+          "Position": {
+            "X": 47.13501,
+            "Y": 1.4901161E-08,
+            "Z": 191.5769
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027990,
+          "Position": {
+            "X": -85.31323,
+            "Y": -2.7974376E-11,
+            "Z": -93.247925
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] Temenos Rookery"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027988,
+          "Position": {
+            "X": -88.578674,
+            "Y": 0.07107824,
+            "Z": -83.66528
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3598
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Theo",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -780.148,
+                        "Y": 128.25195,
+                        "Z": 97.154175
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "WalkTo"
+                },
+                {
+                    "DataId": 1025602,
+                    "Position": {
+                        "X": -780.148,
+                        "Y": 128.25195,
+                        "Z": 97.154175
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "AcceptQuest"
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1025641,
+                    "Position": {
+                        "X": -54.398438,
+                        "Y": 76.83682,
+                        "Z": -560.8148
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "Interact",
+                    "StopDistance": 5,
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1025642,
+                    "Position": {
+                        "X": -50.370117,
+                        "Y": 76.798584,
+                        "Z": -558.77014
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "Interact",
+                    "RequiredQuestAcceptedJob": [
+                        "DoH"
+                    ]
+                },
+                {
+                    "TerritoryId": 622,
+                    "InteractionType": "Craft",
+                    "ItemId": 22726,
+                    "ItemCount": 1,
+                    "RequiredQuestAcceptedJob": [
+                        "DoH"
+                    ]
+                },
+                {
+                    "DataId": 1025602,
+                    "Position": {
+                        "X": -780.148,
+                        "Y": 128.25195,
+                        "Z": 97.154175
+                    },
+                    "TerritoryId": 622,
+                    "InteractionType": "CompleteQuest",
+                    "Mount": true,
+                    "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -780.148,
+                                    "Y": 128.25195,
+                                    "Z": 97.154175
+                                },
+                                "TerritoryId": 622,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

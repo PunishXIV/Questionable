@@ -1,0 +1,174 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                131
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013971,
+          "Position": {
+            "X": 15.854065,
+            "Y": 28.620823,
+            "Z": -682.76495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013976,
+          "Position": {
+            "X": 95.87244,
+            "Y": -4.4635005,
+            "Z": -533.56226
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013977,
+          "Position": {
+            "X": 207.53784,
+            "Y": 18.12324,
+            "Z": -608.75867
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            777
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013977,
+          "Position": {
+            "X": 207.53784,
+            "Y": 18.12324,
+            "Z": -608.75867
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1013978,
+          "Position": {
+            "X": 205.95093,
+            "Y": -22.991264,
+            "Z": -449.24084
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4615
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1013978,
+          "Position": {
+            "X": 205.95093,
+            "Y": -22.991264,
+            "Z": -449.24084
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1014111,
+          "Position": {
+            "X": 95.87244,
+            "Y": -4.4635005,
+            "Z": -533.56226
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013971,
+          "Position": {
+            "X": 15.854065,
+            "Y": 28.620823,
+            "Z": -682.76495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "NextQuestId": 2027
+        }
+      ]
+    }
+  ]
+}

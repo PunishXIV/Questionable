@@ -1,0 +1,144 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022765,
+          "Position": {
+            "X": 49.66809,
+            "Y": 3.9999626,
+            "Z": 429.22095
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022770,
+          "Position": {
+            "X": 82.38342,
+            "Y": 14.362329,
+            "Z": 221.20996
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7228
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022772,
+          "Position": {
+            "X": 87.907104,
+            "Y": 14.713098,
+            "Z": 222.03394
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7229
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022772,
+          "Position": {
+            "X": 87.907104,
+            "Y": 14.713098,
+            "Z": 222.03394
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7230
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022773,
+          "Position": {
+            "X": 74.66235,
+            "Y": 14.033362,
+            "Z": 228.5343
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006756,
+          "Position": {
+            "X": -16.891846,
+            "Y": 10.17425,
+            "Z": -246.87573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "NextQuestId": 2627
+        }
+      ]
+    }
+  ]
+}

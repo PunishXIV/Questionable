@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029028,
+          "Position": {
+            "X": 15.6710205,
+            "Y": -1.5911946,
+            "Z": 37.704956
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010237,
+          "Position": {
+            "X": -244.1596,
+            "Y": 5.935669,
+            "Z": 80.03345
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -218.21523,
+            "Y": 11.806735,
+            "Z": 18.429258
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11125
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029029,
+          "Position": {
+            "X": -214.64868,
+            "Y": 11.980015,
+            "Z": 25.40625
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029033,
+          "Position": {
+            "X": -214.67926,
+            "Y": 11.971041,
+            "Z": 25.192627
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKBB101_03261_Q1_000_081",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 3262
+        }
+      ]
+    }
+  ]
+}

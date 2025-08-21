@@ -1,0 +1,166 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022885,
+          "Position": {
+            "X": 461.41748,
+            "Y": -51.141403,
+            "Z": 43.4729
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022888,
+          "Position": {
+            "X": 252.58252,
+            "Y": -43.12347,
+            "Z": 627.06946
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022891,
+          "Position": {
+            "X": 154.25342,
+            "Y": -64.449585,
+            "Z": 678.06506
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK650_02917_Q1_000_052",
+              "Answer": "TEXT_JOBDRK650_02917_A1_000_053"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022888,
+          "Position": {
+            "X": 252.58252,
+            "Y": -43.12347,
+            "Z": 627.06946
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022893,
+          "Position": {
+            "X": 418.53967,
+            "Y": -28.947046,
+            "Z": 89.25
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022897,
+          "Position": {
+            "X": -166.24707,
+            "Y": -22.88001,
+            "Z": 289.38733
+          },
+          "TerritoryId": 400,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2008665,
+          "Position": {
+            "X": -160.02142,
+            "Y": -22.995422,
+            "Z": 283.6194
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Action",
+          "Action": "Souleater"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1022900,
+          "Position": {
+            "X": -164.5686,
+            "Y": -22.88756,
+            "Z": 285.7556
+          },
+          "StopDistance": 5,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022953,
+          "Position": {
+            "X": 253.0708,
+            "Y": -43.136364,
+            "Z": 626.88635
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    }
+  ]
+}

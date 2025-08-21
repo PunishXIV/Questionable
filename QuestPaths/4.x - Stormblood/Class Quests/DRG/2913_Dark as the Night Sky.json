@@ -1,0 +1,193 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022553,
+          "Position": {
+            "X": -92.607056,
+            "Y": 18.9999,
+            "Z": -194.41522
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Bokairo Inn"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022748,
+          "Position": {
+            "X": 13.046387,
+            "Y": -7.961876,
+            "Z": -99.77875
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Bokairo Inn",
+            "[Kugane] Rakuza District"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022560,
+          "Position": {
+            "X": 528.4656,
+            "Y": -19.450546,
+            "Z": 273.33484
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022554,
+          "Position": {
+            "X": 554.9553,
+            "Y": -19.411264,
+            "Z": 274.92175
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1022555,
+          "Position": {
+            "X": 545.4337,
+            "Y": -19.505648,
+            "Z": 309.68176
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1022556,
+          "Position": {
+            "X": 570.3364,
+            "Y": -19.50564,
+            "Z": 319.11182
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022560,
+          "Position": {
+            "X": 528.4656,
+            "Y": -19.450546,
+            "Z": 273.33484
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022561,
+          "Position": {
+            "X": -288.4718,
+            "Y": 60.053967,
+            "Z": -328.1148
+          },
+          "TerritoryId": 622,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1022569,
+          "Position": {
+            "X": -309.5293,
+            "Y": 61.288292,
+            "Z": -319.50867
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022560,
+          "Position": {
+            "X": 528.4656,
+            "Y": -19.450546,
+            "Z": 273.33484
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "Fly": true,
+          "NextQuestId": 2914
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 622,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Azim Steppe - Reunion"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33883,
+          "Locations": [
+            {
+              "Position": {
+                "X": 128.0255,
+                "Y": -1.00095,
+                "Z": 322.0047
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 65
+            }
+          ]
+        },
+        {
+          "DataId": 33884,
+          "Locations": [
+            {
+              "Position": {
+                "X": 116.5815,
+                "Y": -1.584854,
+                "Z": 321.8561
+              },
+              "MinimumAngle": -65,
+              "MaximumAngle": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33882,
+          "Locations": [
+            {
+              "Position": {
+                "X": -31.5303,
+                "Y": -2.218102,
+                "Z": 328.7178
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 255
+            }
+          ]
+        },
+        {
+          "DataId": 33881,
+          "Locations": [
+            {
+              "Position": {
+                "X": -44.53269,
+                "Y": -1.966054,
+                "Z": 332.6949
+              },
+              "MinimumAngle": 120,
+              "MaximumAngle": 225
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33880,
+          "Locations": [
+            {
+              "Position": {
+                "X": 37.46276,
+                "Y": -4.431953,
+                "Z": 425.0844
+              },
+              "MinimumAngle": 140,
+              "MaximumAngle": 240
+            }
+          ]
+        },
+        {
+          "DataId": 33879,
+          "Locations": [
+            {
+              "Position": {
+                "X": 46.12198,
+                "Y": -5.283945,
+                "Z": 426.5148
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 255,
+              "MinimumDistance": 1.5,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

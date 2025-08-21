@@ -1,0 +1,39 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000197,
+          "Position": {
+            "X": 201.31226,
+            "Y": -3.1634123E-15,
+            "Z": 43.900146
+          },
+          "TerritoryId": 132,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSARC999_00181_Q1_000_1",
+              "Yes": true,
+              "$": "No Godbert prompt"
+            }
+          ],
+          "InteractionType": "AcceptQuest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

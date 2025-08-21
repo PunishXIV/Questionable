@@ -1,0 +1,146 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017320,
+                    "Position": {
+                        "X": -342.15308,
+                        "Y": 59.03801,
+                        "Z": 315.14453
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -342.15308,
+                                    "Y": 59.03801,
+                                    "Z": 315.14453
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017170,
+                    "Position": {
+                        "X": -344.22827,
+                        "Y": 59.038006,
+                        "Z": 317.1587
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1012163,
+                    "Position": {
+                        "X": 128.25195,
+                        "Y": 24.458832,
+                        "Z": -0.6867676
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] The Forgotten Knight"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1012162,
+                    "Position": {
+                        "X": 135.97314,
+                        "Y": 24.376427,
+                        "Z": 12.619202
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1017170,
+                    "Position": {
+                        "X": -344.22827,
+                        "Y": 59.038006,
+                        "Z": 317.1587
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1017172,
+                    "Position": {
+                        "X": -329.3355,
+                        "Y": 59.056396,
+                        "Z": 298.23755
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 400,
+                    "InteractionType": "Craft",
+                    "ItemId": 15723,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1017320,
+                    "Position": {
+                        "X": -342.15308,
+                        "Y": 59.03801,
+                        "Z": 315.14453
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

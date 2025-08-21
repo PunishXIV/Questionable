@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031811,
+          "Position": {
+            "X": -442.46588,
+            "Y": 70.686165,
+            "Z": 573.69336
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010922,
+          "Position": {
+            "X": -27.878296,
+            "Y": 30.44165,
+            "Z": -505.39407
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Action",
+          "Action": "Siphon Snout",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010923,
+          "Position": {
+            "X": -53.025208,
+            "Y": 55.954834,
+            "Z": -671.29016
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Action",
+          "Action": "Siphon Snout",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -53.025208,
+            "Y": 55.954834,
+            "Z": -671.29016
+          },
+          "StopDistance": 100,
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 2,
+          "Fly": true,
+          "$": "Teleport won't work without a delay"
+        },
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

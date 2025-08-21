@@ -1,0 +1,133 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028923,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0530548E-13,
+            "Z": -6.0273438
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027854,
+          "Position": {
+            "X": 40.57373,
+            "Y": 36.197685,
+            "Z": -160.23505
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Amaro Launch"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027854,
+          "Position": {
+            "X": 40.57373,
+            "Y": 36.197685,
+            "Z": -160.23505
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028961,
+          "Position": {
+            "X": 662.50085,
+            "Y": -48.533764,
+            "Z": -652.8573
+          },
+          "StopDistance": 7,
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2010044,
+          "Position": {
+            "X": 446.0669,
+            "Y": -60.56305,
+            "Z": -523.7049
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818253
+        },
+        {
+          "DataId": 1028962,
+          "Position": {
+            "X": 477.71423,
+            "Y": -50.54957,
+            "Z": -509.88025
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2009842,
+          "Position": {
+            "X": 484.2754,
+            "Y": -51.95703,
+            "Z": -512.50476
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028963,
+          "Position": {
+            "X": 327.0465,
+            "Y": 1.4685787,
+            "Z": -296.4676
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

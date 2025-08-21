@@ -1,0 +1,67 @@
+using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
+
+namespace LLib.GameData;
+
+// from https://github.com/NightmareXIV/ECommons/blob/f69e460e95134c72592654059843b138b4c01a9e/ECommons/ExcelServices/TerritoryIntendedUseEnum.cs#L5
+[UsedImplicitly(ImplicitUseTargetFlags.WithMembers, Reason = "game data")]
+[SuppressMessage("Design", "CA1027", Justification = "not a flags enum")]
+[SuppressMessage("Design", "CA1028", Justification = "byte in the game")]
+public enum ETerritoryIntendedUse : byte
+{
+    CityArea = 0,
+    OpenWorld = 1,
+    Inn = 2,
+    Dungeon = 3,
+    VariantDungeon = 4,
+    Gaol = 5,
+    StartingArea = 6,
+    QuestArea = 7,
+    AllianceRaid = 8,
+    QuestBattle = 9,
+    Trial = 10,
+    QuestArea2 = 12,
+    ResidentialArea = 13,
+    HousingInstances = 14,
+    QuestArea3 = 15,
+    Raid = 16,
+    Raid2 = 17,
+    Frontline = 18,
+    ChocoboSquare = 20,
+    RestorationEvent = 21,
+    Sanctum = 22,
+    GoldSaucer = 23,
+    LordOfVerminion = 25,
+    Diadem = 26,
+    HallOfTheNovice = 27,
+    CrystallineConflict = 28,
+    QuestBattle2 = 29,
+    Barracks = 30,
+    DeepDungeon = 31,
+    SeasonalEvent = 32,
+    TreasureMapDuty = 33,
+    SeasonalEventDuty = 34,
+    Battlehall = 35,
+    CrystallineConflict2 = 37,
+    Diadem2 = 38,
+    RivalWings = 39,
+    Unknown1 = 40,
+    Eureka = 41,
+    SeasonalEvent2 = 43,
+    LeapOfFaith = 44,
+    MaskedCarnivale = 45,
+    OceanFishing = 46,
+    Diadem3 = 47,
+    Bozja = 48,
+    IslandSanctuary = 49,
+    Battlehall2 = 50,
+    Battlehall3 = 51,
+    LargeScaleRaid = 52,
+    LargeScaleSavageRaid = 53,
+    QuestArea4 = 54,
+    TribalInstance = 56,
+    CriterionDuty = 57,
+    CriterionSavageDuty = 58,
+    Blunderville = 59,
+    CosmicExploration = 60,
+}

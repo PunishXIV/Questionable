@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 621,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Lochs - Porta Praetoria"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32167,
+          "Locations": [
+            {
+              "Position": {
+                "X": -569.6677,
+                "Y": 17.29578,
+                "Z": -148.952
+              },
+              "MinimumAngle": 175,
+              "MaximumAngle": 300
+            },
+            {
+              "Position": {
+                "X": -575.41,
+                "Y": 18.57019,
+                "Z": -160.1905
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 15
+            },
+            {
+              "Position": {
+                "X": -569.3643,
+                "Y": 15.97435,
+                "Z": -170.2152
+              },
+              "MinimumAngle": 225,
+              "MaximumAngle": 350
+            }
+          ]
+        },
+        {
+          "DataId": 32166,
+          "Locations": [
+            {
+              "Position": {
+                "X": -578.1491,
+                "Y": 20.07928,
+                "Z": -153.1853
+              },
+              "MinimumAngle": 205,
+              "MaximumAngle": 355
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32170,
+          "Locations": [
+            {
+              "Position": {
+                "X": -542.444,
+                "Y": 15.60992,
+                "Z": -299.645
+              },
+              "MinimumAngle": 245,
+              "MaximumAngle": 360
+            }
+          ]
+        },
+        {
+          "DataId": 32171,
+          "Locations": [
+            {
+              "Position": {
+                "X": -540.2715,
+                "Y": 16.96567,
+                "Z": -304.0383
+              },
+              "MinimumAngle": 220,
+              "MaximumAngle": 350
+            },
+            {
+              "Position": {
+                "X": -516.496,
+                "Y": 21.84032,
+                "Z": -346.177
+              },
+              "MinimumAngle": -55,
+              "MaximumAngle": 75
+            },
+            {
+              "Position": {
+                "X": -507.6519,
+                "Y": 9.185992,
+                "Z": -287.0281
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 160
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32168,
+          "Locations": [
+            {
+              "Position": {
+                "X": -404.0753,
+                "Y": 14.02301,
+                "Z": -270.8308
+              },
+              "MinimumAngle": 195,
+              "MaximumAngle": 315
+            }
+          ]
+        },
+        {
+          "DataId": 32169,
+          "Locations": [
+            {
+              "Position": {
+                "X": -393.6106,
+                "Y": 13.93396,
+                "Z": -262.3799
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 130
+            },
+            {
+              "Position": {
+                "X": -406.0579,
+                "Y": 12.16138,
+                "Z": -255.3292
+              },
+              "MinimumAngle": -145,
+              "MaximumAngle": 20
+            },
+            {
+              "Position": {
+                "X": -394.2554,
+                "Y": 13.38954,
+                "Z": -275.8168
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 135
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

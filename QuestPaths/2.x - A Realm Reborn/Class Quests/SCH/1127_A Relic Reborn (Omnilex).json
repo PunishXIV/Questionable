@@ -1,0 +1,471 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002499,
+          "Position": {
+            "X": -319.17297,
+            "Y": -36.636963,
+            "Z": -278.73657
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "Fly": true,
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Craft/purchase off marketboard an erudite's picatrix of healing and meld 2 grade 3 quicktongue materia to it."
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "InteractionType": "Interact",
+          "TerritoryId": 154,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "Fly": true,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 74,
+            "Enabled": false
+          },
+          "Comment": "Queue for A Relic Reborn: The Chimera"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 437.6279,
+            "Y": -3.1627378,
+            "Z": -67.35514
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.589355,
+            "Y": 29,
+            "Z": -825.37573
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "Fly": true,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 14,
+            "Enabled": false
+          },
+          "Comment": "Queue for Amdapor Keep"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.589355,
+            "Y": 29,
+            "Z": -825.37573
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "Position": {
+            "X": 437.6279,
+            "Y": -3.1627378,
+            "Z": -67.35514
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 2192,
+          "TerritoryId": 138,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 768,
+          "Position": {
+            "X": -317.9305,
+            "Y": -39.35494,
+            "Z": -298.3956
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            766,
+            767,
+            768
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 8
+            },
+            {
+              "High": 8,
+              "Low": 8
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "Position": {
+            "X": 437.6279,
+            "Y": -3.1627378,
+            "Z": -67.35514
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 12,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 75,
+            "Enabled": false
+          },
+          "Comment": "Queue for A Relic Reborn: The Hydra"
+        }
+      ]
+    },
+    {
+      "Sequence": 13,
+      "Steps": [
+        {
+          "Position": {
+            "X": 437.6279,
+            "Y": -3.1627378,
+            "Z": -67.35514
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 14,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 15,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 59,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 16,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 61,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 17,
+      "Steps": [
+        {
+          "TerritoryId": 154,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 60,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 18,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008119,
+          "Position": {
+            "X": 62.333008,
+            "Y": 31.28805,
+            "Z": -739.98627
+          },
+          "TerritoryId": 156,
+          "InteractionType": "PurchaseItem",
+          "ItemId": 6267,
+          "ItemCount": 1,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 437.6279,
+            "Y": -3.1627378,
+            "Z": -67.35514
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

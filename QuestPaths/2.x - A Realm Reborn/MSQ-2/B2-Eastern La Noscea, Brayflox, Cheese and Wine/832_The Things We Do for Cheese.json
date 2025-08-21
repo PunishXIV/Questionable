@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "Interruptible": false,
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006266,
+          "Position": {
+            "X": 560.35706,
+            "Y": 20.721315,
+            "Z": 455.89368
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006267,
+          "Position": {
+            "X": 340.81018,
+            "Y": 34.269722,
+            "Z": 110.27698
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003588,
+          "Position": {
+            "X": 344.6859,
+            "Y": 31.889465,
+            "Z": 89.37195
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 137
+        },
+        {
+          "TerritoryId": 137,
+          "InteractionType": "AttuneAetheryte",
+          "StopDistance": 5,
+          "Aetheryte": "Eastern La Noscea - Wineport"
+        },
+        {
+          "Position": {
+            "X": -272.5533,
+            "Y": 59.7689,
+            "Z": 176.81541
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1006268,
+          "Position": {
+            "X": -334.6151,
+            "Y": 69.69995,
+            "Z": 153.79565
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 137,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 8,
+            "Enabled": false,
+            "Notes": [
+              "(boss 2) Will walk out of the boss arena to try and attack optional enemies on the upper level, thus resetting the boss and breaking the path"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006268,
+          "Position": {
+            "X": -334.6151,
+            "Y": 69.69995,
+            "Z": 153.79565
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "You don't get teleported to Brayflox after the dungeon"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006266,
+          "Position": {
+            "X": 560.35706,
+            "Y": 20.721315,
+            "Z": 455.89368
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+        }
+      ]
+    }
+  ]
+}

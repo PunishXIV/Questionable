@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "xan",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true },
+            "StepIf": {
+              "ExtraCondition": "DockStorehouse"
+            }
+          },
+          "TargetTerritoryId": 137,
+          "Comment": "Gatekeep"
+        },
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 7886,
+          "TerritoryId": 137
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2004966,
+          "Position": {
+            "X": -16.128845,
+            "Y": -23.300598,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "TargetTerritoryId": 137,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -6.8438888,
+                  "Y": 39.451496,
+                  "Z": 259.44324
+                },
+                "TerritoryId": 137,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2004927,
+          "Position": {
+            "X": -10.605103,
+            "Y": 41.397705,
+            "Z": 267.87207
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Action",
+          "Action": "Fuma Shuriken"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010616,
+          "Position": {
+            "X": -4.348877,
+            "Y": 39.531937,
+            "Z": 247.63867
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010616,
+          "Position": {
+            "X": -4.348877,
+            "Y": 39.531937,
+            "Z": 247.63867
+          },
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    { "Sequence": 4 },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010616,
+          "Position": {
+            "X": -4.348877,
+            "Y": 39.531937,
+            "Z": 247.63867
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 214
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047095,
+          "Position": {
+            "X": 139.5437,
+            "Y": -13.99,
+            "Z": 10.60498
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014440,
+          "Position": {
+            "X": -100.23657,
+            "Y": -19.882507,
+            "Z": 211.13904
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1052476,
+          "Position": {
+            "X": -100.175476,
+            "Y": -19.798239,
+            "Z": 209.73523
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047183,
+          "Position": {
+            "X": -194.93408,
+            "Y": 28,
+            "Z": -553.1548
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGLZ001_04967_Q2_000_000",
+              "Type": "List",
+              "Answer": "TEXT_KINGLZ001_04967_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047173,
+          "Position": {
+            "X": -283.0396,
+            "Y": 37.000023,
+            "Z": -573.7545
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1047174,
+          "Position": {
+            "X": -138.35364,
+            "Y": 42.999657,
+            "Z": -663.2639
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047095,
+          "Position": {
+            "X": 139.5437,
+            "Y": -13.99,
+            "Z": 10.60498
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1047177,
+          "Position": {
+            "X": -272.54144,
+            "Y": -9.063631e-6,
+            "Z": 143.57214
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1047179,
+          "Position": {
+            "X": 109.147705,
+            "Y": 42,
+            "Z": -353.29218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Brightploom Post"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1047133,
+          "Position": {
+            "X": 180.37683,
+            "Y": -13.99,
+            "Z": 1.9073486
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Brightploom Post",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 2014437,
+          "Position": {
+            "X": 166.8269,
+            "Y": -14.023071,
+            "Z": 3.2807007
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2014438,
+          "Position": {
+            "X": 203.05176,
+            "Y": -14.023071,
+            "Z": 11.642578
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2014439,
+          "Position": {
+            "X": 232.95947,
+            "Y": -14.023071,
+            "Z": -9.99469
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1047095,
+          "Position": {
+            "X": 139.5437,
+            "Y": -13.99,
+            "Z": 10.60498
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGLZ001_04967_Q3_000_302",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047095,
+          "Position": {
+            "X": 139.5437,
+            "Y": -13.99,
+            "Z": 10.60498
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

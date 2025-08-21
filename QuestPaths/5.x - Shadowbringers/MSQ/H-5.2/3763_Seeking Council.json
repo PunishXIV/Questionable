@@ -1,0 +1,101 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031722,
+          "Position": {
+            "X": -1.7853394,
+            "Y": 0,
+            "Z": -1.8158569
+          },
+          "TerritoryId": 844,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009758,
+          "Position": {
+            "X": -0.009940993,
+            "Y": 1.036532,
+            "Z": 14.22064
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 819
+        },
+        {
+          "DataId": 1030370,
+          "Position": {
+            "X": 66.84973,
+            "Y": -2.9802322E-07,
+            "Z": 13.321045
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMH103_03763_Q1_000_500",
+              "Answer": "TEXT_LUCKMH103_03763_A1_000_500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032648,
+          "Position": {
+            "X": 768.6426,
+            "Y": 21.38111,
+            "Z": -8.46875
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032498,
+          "Position": {
+            "X": 628.6869,
+            "Y": 94.385544,
+            "Z": -645.9297
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032502,
+          "Position": {
+            "X": 629.0836,
+            "Y": 94.39156,
+            "Z": -644.98364
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

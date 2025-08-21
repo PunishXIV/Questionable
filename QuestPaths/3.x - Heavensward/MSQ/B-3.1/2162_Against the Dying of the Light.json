@@ -1,0 +1,165 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016008,
+          "Position": {
+            "X": 125.93262,
+            "Y": 24.458836,
+            "Z": -5.5390625
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012384,
+          "Position": {
+            "X": -182.66577,
+            "Y": -12.534915,
+            "Z": -39.871887
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016018,
+          "Position": {
+            "X": 26.16919,
+            "Y": 27.964573,
+            "Z": -146.71558
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 17 0 0 0 0 64",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Tribunal"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1016020,
+          "Position": {
+            "X": -3.3112793,
+            "Y": 27.753849,
+            "Z": -148.4856
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "$": "17 0 0 0 0 64 -> 33 16 0 0 0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1016015,
+          "Position": {
+            "X": -7.827942,
+            "Y": 26.965073,
+            "Z": -106.6759
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016028,
+          "Position": {
+            "X": 59.861084,
+            "Y": -4.734944,
+            "Z": -41.61145
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016031,
+          "Position": {
+            "X": 14.5112915,
+            "Y": -12.020877,
+            "Z": 37.03357
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016008,
+          "Position": {
+            "X": 125.93262,
+            "Y": 24.458836,
+            "Z": -5.5390625
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    }
+  ]
+}

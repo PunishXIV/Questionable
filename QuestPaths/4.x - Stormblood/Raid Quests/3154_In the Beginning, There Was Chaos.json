@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021937,
+          "Position": {
+            "X": 465.5984,
+            "Y": 69.25287,
+            "Z": 518.88293
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDR301_03154_Q2_000_051",
+              "Answer": "TEXT_STMBDR301_03154_A2_000_052"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026450,
+          "Position": {
+            "X": -35.01947,
+            "Y": -16.150002,
+            "Z": 156.20654
+          },
+          "TerritoryId": 807,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 807,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 587,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026453,
+          "Position": {
+            "X": -34.836426,
+            "Y": -16.15,
+            "Z": 153.8872
+          },
+          "StopDistance": 5,
+          "TerritoryId": 807,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3155
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016580,
+          "Position": {
+            "X": 416.5254,
+            "Y": 217.95142,
+            "Z": 754.20764
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 528.9199,
+            "Y": 217.95137,
+            "Z": 773.3327
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1016069,
+          "Position": {
+            "X": 540.3677,
+            "Y": 217.90826,
+            "Z": 769.0393
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 528.9199,
+            "Y": 217.95137,
+            "Z": 773.3327
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1016581,
+          "Position": {
+            "X": 477.37842,
+            "Y": 223.92603,
+            "Z": 872.6787
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016579,
+          "Position": {
+            "X": 507.16406,
+            "Y": 217.95152,
+            "Z": 769.9243
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032735,
+          "Position": {
+            "X": 803.7993,
+            "Y": -45.924515,
+            "Z": -217.94464
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032659,
+          "Position": {
+            "X": 802.79236,
+            "Y": -45.91779,
+            "Z": -218.58557
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027716,
+          "Position": {
+            "X": 494.9873,
+            "Y": -6.555339,
+            "Z": -224.93329
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032967,
+          "Position": {
+            "X": 774.8989,
+            "Y": -45.74954,
+            "Z": -205.52374
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1032967,
+          "Position": {
+            "X": 774.8989,
+            "Y": -45.74954,
+            "Z": -205.52374
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 817,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 29516,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 817,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 29542,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1032967,
+          "Position": {
+            "X": 774.8989,
+            "Y": -45.74954,
+            "Z": -205.52374
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Rak'tika - Fanow"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032660,
+          "Position": {
+            "X": 804.4098,
+            "Y": -45.9255,
+            "Z": -216.41876
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

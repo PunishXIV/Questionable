@@ -1,0 +1,177 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013970,
+          "Position": {
+            "X": 103.4104,
+            "Y": 15.00001,
+            "Z": 41.306152
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK520_02060_Q1_000_041",
+              "Answer": "TEXT_JOBDRK520_02060_A1_000_045"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1015034,
+          "Position": {
+            "X": -634.69904,
+            "Y": -119.471756,
+            "Z": 476.24915
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -528.29944,
+            "Y": -165.42699,
+            "Z": 578.5855
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 4812,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1015033,
+          "Position": {
+            "X": 571.8928,
+            "Y": -113.998665,
+            "Z": 326.74133
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2006342,
+          "Position": {
+            "X": 533.53174,
+            "Y": -100.14502,
+            "Z": 367.54407
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4619,
+            5044,
+            5045
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1015036,
+          "Position": {
+            "X": 571.43494,
+            "Y": -113.94505,
+            "Z": 331.41064
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "NextQuestId": 2061
+        }
+      ]
+    }
+  ]
+}

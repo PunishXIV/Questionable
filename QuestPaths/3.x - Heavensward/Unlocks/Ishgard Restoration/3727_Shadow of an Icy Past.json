@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031998,
+          "Position": {
+            "X": -6.9733887,
+            "Y": -16,
+            "Z": 164.20227
+          },
+          "StopDistance": 5,
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031999,
+          "Position": {
+            "X": -4.2268066,
+            "Y": 1.4791284,
+            "Z": 115.37341
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 886,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ]
+        },
+        {
+          "DataId": 1031996,
+          "Position": {
+            "X": 209.55212,
+            "Y": -40.000004,
+            "Z": 8.132996
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] Saint Roelle's Dais"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032001,
+          "Position": {
+            "X": 161.79138,
+            "Y": -50,
+            "Z": 73.47217
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031996,
+          "Position": {
+            "X": 209.55212,
+            "Y": -40.000004,
+            "Z": 8.132996
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3728
+        }
+      ]
+    }
+  ]
+}

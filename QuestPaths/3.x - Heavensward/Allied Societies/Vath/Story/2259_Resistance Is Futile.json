@@ -1,0 +1,120 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1016802,
+                    "Position": {
+                        "X": 53.360718,
+                        "Y": -48.000004,
+                        "Z": -169.97028
+                    },
+                    "TerritoryId": 398,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 53.360718,
+                                    "Y": -48.000004,
+                                    "Z": -169.97028
+                                },
+                                "TerritoryId": 398,
+                                "MaximumDistance": 100
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1011928,
+                    "Position": {
+                        "X": 73.19751,
+                        "Y": -49.19563,
+                        "Z": -139.05548
+                    },
+                    "TerritoryId": 398,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 230.88948,
+                        "Y": -103.47084,
+                        "Z": 588.0345
+                    },
+                    "TerritoryId": 398,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [
+                        5544,
+                        5545
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1016851,
+                    "Position": {
+                        "X": 230.88416,
+                        "Y": -103.38962,
+                        "Z": 588.67773
+                    },
+                    "TerritoryId": 398,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1016891,
+                    "Position": {
+                        "X": 297.2915,
+                        "Y": -119.91257,
+                        "Z": 681.1168
+                    },
+                    "TerritoryId": 398,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1016802,
+                    "Position": {
+                        "X": 53.360718,
+                        "Y": -48.000004,
+                        "Z": -169.97028
+                    },
+                    "TerritoryId": 398,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+
+          "DataId": 1000815,
+          "Position": {
+            "X": -233.9361,
+            "Y": 6.668152,
+            "Z": -171.03839
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 138,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "TerritoryId": 138,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 5599,
+              "ItemCount": 15
+            }
+          ]
+        },
+        {
+          "DataId": 1000292,
+          "Position": {
+            "X": -233.99713,
+            "Y": 8,
+            "Z": -146.86816
+          },
+          "TerritoryId": 133,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ],
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

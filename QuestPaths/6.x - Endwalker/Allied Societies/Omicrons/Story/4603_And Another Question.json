@@ -1,0 +1,238 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043951,
+          "Position": {
+            "X": 303.8529,
+            "Y": 481.99442,
+            "Z": 154.83325
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1043865,
+          "Position": {
+            "X": 301.8081,
+            "Y": 482.13644,
+            "Z": 165.02625
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANOMI003_04603_Q9_000_000",
+              "Yes": true
+            }
+          ],
+          "Mount": true
+        },
+        {
+          "DataId": 1043539,
+          "Position": {
+            "X": 205.92041,
+            "Y": 566,
+            "Z": 257.2517
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1043547,
+          "Position": {
+            "X": 110.30737,
+            "Y": 269.03677,
+            "Z": -626.7338
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1043552,
+          "Position": {
+            "X": 103.837524,
+            "Y": 269.41934,
+            "Z": -514.6105
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1043549,
+          "Position": {
+            "X": 46.219482,
+            "Y": 269.597,
+            "Z": -474.60138
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1043547,
+          "Position": {
+            "X": 110.30737,
+            "Y": 269.03677,
+            "Z": -626.7338
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1043549,
+          "Position": {
+            "X": 46.219482,
+            "Y": 269.597,
+            "Z": -474.60138
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANOMI003_04603_Q2_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 960,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38278,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 960,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38302,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "TargetTerritoryId": 960,
+          "Mount": true
+        },
+        {
+          "DataId": 1043865,
+          "Position": {
+            "X": 301.8081,
+            "Y": 482.13644,
+            "Z": 165.02625
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960,
+          "Fly": true
+        },
+        {
+          "DataId": 1043585,
+          "Position": {
+            "X": 203.84521,
+            "Y": 567.4998,
+            "Z": 246.87573
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043864,
+          "Position": {
+            "X": 244.83093,
+            "Y": 564.8203,
+            "Z": 261.76843
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANOMI003_04603_Q8_000_000",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1043951,
+          "Position": {
+            "X": 303.8529,
+            "Y": 481.99442,
+            "Z": 154.83325
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

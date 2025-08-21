@@ -1,0 +1,98 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030225,
+          "Position": {
+            "X": 28.824219,
+            "Y": 381.81906,
+            "Z": -524.4374
+          },
+          "StopDistance": 5,
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027758,
+          "Position": {
+            "X": 568.1085,
+            "Y": 350.2004,
+            "Z": -230.36548
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tempest - Ondo Cups",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMF107_03650_Q1_000_000",
+              "Answer": "TEXT_LUCKMF107_03650_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030519,
+          "Position": {
+            "X": 638.97156,
+            "Y": 402.23993,
+            "Z": 212.78699
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030519,
+          "Position": {
+            "X": 638.97156,
+            "Y": 402.23993,
+            "Z": 212.78699
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Emote",
+          "Emote": "psych"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030586,
+          "Position": {
+            "X": 638.97156,
+            "Y": 402.23993,
+            "Z": 212.78699
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMF107_03650_A3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

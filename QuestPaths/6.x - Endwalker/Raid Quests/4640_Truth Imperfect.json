@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043497,
+          "Position": {
+            "X": 95.93347,
+            "Y": -4.4899712E-13,
+            "Z": 95.59766
+          },
+          "StopDistance": 6,
+          "TerritoryId": 1093,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1043499,
+          "Position": {
+            "X": 100.35852,
+            "Y": 0,
+            "Z": 94.71277
+          },
+          "TerritoryId": 1093,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013032,
+          "Position": {
+            "X": 99.9981,
+            "Y": 1.1515,
+            "Z": 120.2372
+          },
+          "TerritoryId": 1093,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1025
+        },
+        {
+          "DataId": 1043500,
+          "Position": {
+            "X": 99.809204,
+            "Y": -1E-11,
+            "Z": -25.68097
+          },
+          "TerritoryId": 1025,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1043503,
+          "Position": {
+            "X": -639.704,
+            "Y": -27.177149,
+            "Z": 301.9912
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Aporia"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043504,
+          "Position": {
+            "X": -639.704,
+            "Y": -27.177149,
+            "Z": 301.9912
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4756
+        }
+      ]
+    }
+  ]
+}

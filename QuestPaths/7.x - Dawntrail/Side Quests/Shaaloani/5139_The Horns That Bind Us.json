@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050702,
+          "Position": {
+            "X": 267.3838,
+            "Y": -16.116768,
+            "Z": -495.71985
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050703,
+          "Position": {
+            "X": 387.9911,
+            "Y": -1.4394518,
+            "Z": 373.95276
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014058,
+          "Position": {
+            "X": 389.7306,
+            "Y": -1.1139526,
+            "Z": 368.8258
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050702,
+          "Position": {
+            "X": 267.3838,
+            "Y": -16.116768,
+            "Z": -495.71985
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
+        }
+      ]
+    }
+  ]
+}

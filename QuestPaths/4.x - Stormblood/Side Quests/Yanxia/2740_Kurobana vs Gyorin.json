@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022399,
+          "Position": {
+            "X": 392.69092,
+            "Y": 80.90235,
+            "Z": -194.9035
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023237,
+          "Position": {
+            "X": -233.72241,
+            "Y": 17.628202,
+            "Z": 485.3131
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023237,
+          "Position": {
+            "X": -233.72241,
+            "Y": 17.628202,
+            "Z": 485.3131
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023463,
+          "Position": {
+            "X": 563.8666,
+            "Y": 68.09528,
+            "Z": -11.306946
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023465,
+          "Position": {
+            "X": 462.76025,
+            "Y": 68.01855,
+            "Z": -106.55377
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 462.13455,
+                  "Y": 68.01515,
+                  "Z": -104.52245
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

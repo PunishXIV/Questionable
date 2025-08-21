@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000484,
+          "Position": {
+            "X": 2.0598755,
+            "Y": -7.9139543,
+            "Z": -22.171448
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1000476,
+          "Position": {
+            "X": 27.0542,
+            "Y": -6.881897,
+            "Z": 14.145081
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000483,
+          "Position": {
+            "X": 85.496216,
+            "Y": -6.0870457,
+            "Z": 67.00232
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 9.630515,
+            "Y": -22.580793,
+            "Z": 242.32327
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1003002,
+          "Position": {
+            "X": -189.13562,
+            "Y": -26.70127,
+            "Z": 295.52136
+          },
+          "TerritoryId": 148,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "Healer NPC is only killed after the boss dies; all NPCs need to be killed for the duty to complete"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003002,
+          "Position": {
+            "X": -189.13562,
+            "Y": -26.70127,
+            "Z": 295.52136
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

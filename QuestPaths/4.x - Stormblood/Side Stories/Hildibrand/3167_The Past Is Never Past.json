@@ -1,0 +1,182 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024351,
+          "Position": {
+            "X": -36.270752,
+            "Y": 5.9819617,
+            "Z": -152.36133
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026363,
+          "Position": {
+            "X": 54.61206,
+            "Y": 7.999999,
+            "Z": 192.401
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Rakuza District",
+            "[Kugane] Thavnairian Consulate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 628,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 595,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026364,
+          "Position": {
+            "X": 52.536743,
+            "Y": 8.02,
+            "Z": 192.49243
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024351,
+          "Position": {
+            "X": -36.270752,
+            "Y": 5.9819617,
+            "Z": -152.36133
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Thavnairian Consulate",
+            "[Kugane] Rakuza District"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019063,
+          "Position": {
+            "X": 3.3416748,
+            "Y": -6.6541724E-11,
+            "Z": -67.73486
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1018994,
+          "Position": {
+            "X": 49.240845,
+            "Y": 4.0000005,
+            "Z": 55.77173
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1026369,
+          "Position": {
+            "X": -35.080566,
+            "Y": 5.983372,
+            "Z": -152.23932
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Rakuza District"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB751_03167_Q1_000_000",
+              "Answer": "TEXT_CHRHDB751_03167_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025885,
+          "Position": {
+            "X": 26.443848,
+            "Y": 6.024561,
+            "Z": -118.57788
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3168
+        }
+      ]
+    }
+  ]
+}

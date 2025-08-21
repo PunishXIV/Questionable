@@ -1,0 +1,153 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039402,
+          "Position": {
+            "X": 741.0239,
+            "Y": 70,
+            "Z": 510.61267
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 611.34705,
+            "Y": 80.000015,
+            "Z": 626.28424
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1039421,
+          "Position": {
+            "X": 611.0779,
+            "Y": 80.000015,
+            "Z": 624.6891
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021565,
+          "Position": {
+            "X": 440.11584,
+            "Y": 114.254425,
+            "Z": 212.84802
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1020817,
+          "Position": {
+            "X": 327.5348,
+            "Y": 83.45977,
+            "Z": -103.07471
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039421,
+          "Position": {
+            "X": 611.0779,
+            "Y": 80.000015,
+            "Z": 624.6891
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039422,
+          "Position": {
+            "X": 748.989,
+            "Y": 69.99995,
+            "Z": 516.0448
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKBA231_04111_SYSTEM_000_060",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039410,
+          "Position": {
+            "X": 738.70447,
+            "Y": 70,
+            "Z": 511.0398
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4112
+        }
+      ]
+    }
+  ]
+}

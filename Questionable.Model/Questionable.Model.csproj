@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>12</LangVersion>
+        <Nullable>enable</Nullable>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <PathMap Condition="$(SolutionDir) != ''">$(SolutionDir)=X:\</PathMap>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <DebugType>portable</DebugType>
+        <Platforms>x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Text.Json" Version="9.0.3" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <None Remove="common-aethernetshard.json" />
+        <None Remove="common-aetheryte.json" />
+        <None Remove="common-classjob.json" />
+        <None Remove="common-completionflags.json" />
+        <None Remove="common-vector3.json" />
+        <EmbeddedResource Include="common-aethernetshard.json">
+            <LogicalName>Questionable.Model.CommonAethernetShard</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="common-aetheryte.json">
+            <LogicalName>Questionable.Model.CommonAetheryte</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="common-classjob.json">
+            <LogicalName>Questionable.Model.CommonClassJob</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="common-completionflags.json">
+            <LogicalName>Questionable.Model.CommonCompletionFlags</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="common-vector3.json">
+            <LogicalName>Questionable.Model.CommonVector3</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
+</Project>

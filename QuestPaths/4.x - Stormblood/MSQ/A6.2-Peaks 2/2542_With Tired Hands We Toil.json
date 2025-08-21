@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020629,
+          "Position": {
+            "X": -298.51227,
+            "Y": 257.52652,
+            "Z": 764.98047
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Ghiri",
+          "StopDistance": 7,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020873,
+          "Position": {
+            "X": -327.96222,
+            "Y": 258.90652,
+            "Z": 757.3815
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2842
+        },
+        {
+          "DataId": 2009008,
+          "Position": {
+            "X": -171.2215,
+            "Y": 294.5144,
+            "Z": 302.44897
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021557,
+          "Position": {
+            "X": -130.02216,
+            "Y": 305.38147,
+            "Z": 189.71533
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 620
+        },
+        {
+          "DataId": 2009009,
+          "Position": {
+            "X": -115.40399,
+            "Y": 305.47034,
+            "Z": 161.3031
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            8032,
+            8045
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021616,
+          "Position": {
+            "X": 64.31665,
+            "Y": 305.92664,
+            "Z": 152.6665
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009010,
+          "Position": {
+            "X": 148.82117,
+            "Y": 308.73572,
+            "Z": 166.58276
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7569
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022344,
+          "Position": {
+            "X": 353.78027,
+            "Y": 323.77386,
+            "Z": 273.30432
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

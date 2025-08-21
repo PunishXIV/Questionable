@@ -1,0 +1,151 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025893,
+          "Position": {
+            "X": -60.41046,
+            "Y": 6.0110765,
+            "Z": -168.41382
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025896,
+          "Position": {
+            "X": 248.09644,
+            "Y": 17.471375,
+            "Z": -664.9729
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - House of the Fierce",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1025901,
+          "Position": {
+            "X": -93.70575,
+            "Y": 53.144028,
+            "Z": -530.2663
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1025906,
+          "Position": {
+            "X": -208.8808,
+            "Y": 53.217514,
+            "Z": -581.3535
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009533,
+          "Position": {
+            "X": -220.11145,
+            "Y": 53.20813,
+            "Z": -597.80273
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1025910,
+          "Position": {
+            "X": -125.41394,
+            "Y": 53.217514,
+            "Z": -648.4321
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1025911,
+          "Position": {
+            "X": -126.237915,
+            "Y": 53.217514,
+            "Z": -650.6905
+          },
+          "StopDistance": 5,
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1019030,
+          "Position": {
+            "X": 65.72058,
+            "Y": 10.503965,
+            "Z": -167.1626
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025912,
+          "Position": {
+            "X": 66.57507,
+            "Y": 10.503965,
+            "Z": -155.59625
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3150
+        }
+      ]
+    }
+  ]
+}

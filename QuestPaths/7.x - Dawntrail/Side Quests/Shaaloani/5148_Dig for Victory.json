@@ -1,0 +1,226 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051302,
+          "Position": {
+            "X": -380.33118,
+            "Y": 18.1636,
+            "Z": -118.54736
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051339,
+          "Position": {
+            "X": -529.0761,
+            "Y": -17.160866,
+            "Z": 444.23596
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014323,
+          "Position": {
+            "X": -600.3052,
+            "Y": -13.382202,
+            "Z": 379.99524
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014322,
+          "Position": {
+            "X": -619.01276,
+            "Y": -14.114624,
+            "Z": 379.65967
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014324,
+          "Position": {
+            "X": -639.30725,
+            "Y": -12.863403,
+            "Z": 369.46667
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051310,
+          "Position": {
+            "X": -638.1476,
+            "Y": -11.576093,
+            "Z": 350.8506
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZE401_05148_Q2_000_000",
+              "Answer": "TEXT_KINGZE401_05148_A2_000_000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 364.1419,
+            "Y": 5.9295864,
+            "Z": 435.2963
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ],
+              "Flying": "Locked"
+            }
+          },
+          "$": "Shaaloani Saloon Balcony"
+        },
+        {
+          "DataId": 1051315,
+          "Position": {
+            "X": 362.87476,
+            "Y": 5.9371996,
+            "Z": 427.2068
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 369.3906,
+            "Y": 5.9371996,
+            "Z": 417.16574
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 359.11545,
+            "Y": 1.9823306,
+            "Z": 419.5714
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1051321,
+          "Position": {
+            "X": 357.7782,
+            "Y": -1.0164845,
+            "Z": 438.37634
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1051302,
+          "Position": {
+            "X": -380.33118,
+            "Y": 18.1636,
+            "Z": -118.54736
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051302,
+          "Position": {
+            "X": -380.33118,
+            "Y": 18.1636,
+            "Z": -118.54736
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

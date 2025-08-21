@@ -1,0 +1,72 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047034,
+          "Position": {
+            "X": 66.666626,
+            "Y": -14,
+            "Z": 26.504883
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014033,
+          "Position": {
+            "X": 65.659546,
+            "Y": -14.023071,
+            "Z": 25.680908
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Snipe",
+          "Comment": "Inspect Helm, Corpse, Weapon"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047036,
+          "Position": {
+            "X": -180.07172,
+            "Y": 120.795235,
+            "Z": -346.2425
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Vollok Shoonsa"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047037,
+          "Position": {
+            "X": 1.296936,
+            "Y": 3.095488,
+            "Z": -64.9577
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1170,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

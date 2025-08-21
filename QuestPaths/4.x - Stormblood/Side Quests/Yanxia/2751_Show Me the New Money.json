@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023237,
+          "Position": {
+            "X": -233.72241,
+            "Y": 17.628202,
+            "Z": 485.3131
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023244,
+          "Position": {
+            "X": -290.15033,
+            "Y": 17.31996,
+            "Z": 490.86743
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023245,
+          "Position": {
+            "X": 133.1654,
+            "Y": 13.172864,
+            "Z": 483.7871
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023246,
+          "Position": {
+            "X": 401.3275,
+            "Y": 14.6418705,
+            "Z": 630.15173
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 447.20697,
+            "Y": 14.621715,
+            "Z": 673.4272
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7525
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1023246,
+          "Position": {
+            "X": 401.3275,
+            "Y": 14.6418705,
+            "Z": 630.15173
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023244,
+          "Position": {
+            "X": -290.15033,
+            "Y": 17.31996,
+            "Z": 490.86743
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2747
+        }
+      ]
+    }
+  ]
+}

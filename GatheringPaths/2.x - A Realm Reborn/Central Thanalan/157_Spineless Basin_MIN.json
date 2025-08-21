@@ -1,0 +1,157 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 141,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 30425,
+          "Locations": [
+            {
+              "Position": {
+                "X": 118.6389,
+                "Y": 7.583679,
+                "Z": 262.4399
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 170
+            },
+            {
+              "Position": {
+                "X": 113.4342,
+                "Y": 4.562373,
+                "Z": 271.4816
+              },
+              "MinimumAngle": 80,
+              "MaximumAngle": 190
+            },
+            {
+              "Position": {
+                "X": 116.9106,
+                "Y": 2.964557,
+                "Z": 285.8209
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 115
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30427,
+          "Locations": [
+            {
+              "Position": {
+                "X": 127.2449,
+                "Y": 15.54889,
+                "Z": 240.1923
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 115
+            },
+            {
+              "Position": {
+                "X": 122.0915,
+                "Y": 14.071,
+                "Z": 225.1131
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 110
+            },
+            {
+              "Position": {
+                "X": 120.8954,
+                "Y": 15.9651,
+                "Z": 213.8515
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 115
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30426,
+          "Locations": [
+            {
+              "Position": {
+                "X": 148.7842,
+                "Y": 16.44447,
+                "Z": 292.8037
+              },
+              "MinimumAngle": 30,
+              "MaximumAngle": 135
+            },
+            {
+              "Position": {
+                "X": 144.9166,
+                "Y": 18.86193,
+                "Z": 264.833
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 95
+            },
+            {
+              "Position": {
+                "X": 152.6806,
+                "Y": 16.58945,
+                "Z": 300.3315
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30428,
+          "Locations": [
+            {
+              "Position": {
+                "X": 137.6659,
+                "Y": 6.65416,
+                "Z": 311.1226
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 135
+            },
+            {
+              "Position": {
+                "X": 141.0331,
+                "Y": 5.844177,
+                "Z": 325.063
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 150
+            },
+            {
+              "Position": {
+                "X": 130.6749,
+                "Y": 5.736229,
+                "Z": 300.4703
+              },
+              "MinimumAngle": -5,
+              "MaximumAngle": 100
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": ["Cacahuetes", "Friendly"],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 129,
+          "InteractionType": "EquipItem",
+          "ItemId": 2571,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+               }
+             }
+           }
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27051,
+            "Y": 5.2500057,
+            "Z": 164.29382
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001016,
+          "Position": {
+            "X": -42.679565,
+            "Y": 39.999947,
+            "Z": 119.920654
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262186
+          },
+          "ItemId": 4870,
+          "ItemCount": 5,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27051,
+            "Y": 5.2500057,
+            "Z": 164.29382
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "NextQuestId": 3843,
+          "Comment": "Complete quest"
+        }
+      ]
+    }
+  ]
+}

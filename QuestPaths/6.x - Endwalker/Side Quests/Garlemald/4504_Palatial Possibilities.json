@@ -1,0 +1,86 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041768,
+          "Position": {
+            "X": 539.9404,
+            "Y": -36.65,
+            "Z": -132.37207
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZD103_04504_Q1_000_000",
+              "Answer": "TEXT_AKTKZD103_04504_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041770,
+          "Position": {
+            "X": 157.30518,
+            "Y": 23.164677,
+            "Z": -415.36584
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012331,
+          "Position": {
+            "X": 150.89636,
+            "Y": 23.147888,
+            "Z": -414.9386
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14092
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2012629,
+          "Position": {
+            "X": 155.74878,
+            "Y": 23.147888,
+            "Z": -414.29773
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZD103_04504_Q2_000_000",
+              "Answer": "TEXT_AKTKZD103_04504_A2_000_001"
+            }
+          ],
+          "NextQuestId": 4505
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032694,
+          "Position": {
+            "X": -3.03656,
+            "Y": 0.01804012,
+            "Z": -8.133057
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035339,
+          "Position": {
+            "X": -54.8562,
+            "Y": 2.0050092,
+            "Z": 11.276367
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1035342,
+          "Position": {
+            "X": 125.50537,
+            "Y": -15.184305,
+            "Z": -424.21613
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035344,
+          "Position": {
+            "X": -894.5907,
+            "Y": -184.29301,
+            "Z": -639.33777
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

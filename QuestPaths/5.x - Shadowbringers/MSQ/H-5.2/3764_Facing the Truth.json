@@ -1,0 +1,188 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032502,
+          "Position": {
+            "X": 629.0836,
+            "Y": 94.39156,
+            "Z": -644.98364
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        },
+        {
+          "DataId": 1031722,
+          "Position": {
+            "X": -1.7853394,
+            "Y": 0,
+            "Z": -1.8158569
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009758,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.0223389,
+            "Z": 14.206055
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 819
+        },
+        {
+          "DataId": 1027248,
+          "Position": {
+            "X": -30.807983,
+            "Y": -0.64999914,
+            "Z": -51.438232
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "Comment": "Chessamile",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1027224,
+          "Position": {
+            "X": -57.358704,
+            "Y": -7.4820004,
+            "Z": 118.08948
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "Comment": "Bragi",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1027322,
+          "Position": {
+            "X": -20.126648,
+            "Y": 3.9998171,
+            "Z": 204.24194
+          },
+          "StopDistance": 4,
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "Comment": "Glynard",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "Comment": "Katliss",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1027226,
+          "Position": {
+            "X": -61.84485,
+            "Y": -17.72202,
+            "Z": -266.2547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "Comment": "Moren",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Cabinet of Curiosity"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032503,
+          "Position": {
+            "X": 29.709229,
+            "Y": -6.088685E-13,
+            "Z": -0.869812
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium"
+        }
+      ]
+    }
+  ]
+}

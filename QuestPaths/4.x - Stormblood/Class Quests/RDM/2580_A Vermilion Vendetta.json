@@ -1,0 +1,188 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021462,
+          "Position": {
+            "X": 307.36243,
+            "Y": -36.402996,
+            "Z": 309.98706
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021466,
+          "Position": {
+            "X": 320.54626,
+            "Y": -35.949726,
+            "Z": 306.11108
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 310.38196,
+            "Y": -35.96502,
+            "Z": 314.66306
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 192.09558,
+            "Y": -17.541195,
+            "Z": 268.45526
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1021467,
+          "Position": {
+            "X": 190.96667,
+            "Y": -17.339743,
+            "Z": 269.27588
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBRDM560_02580_Q1_000_100",
+              "Answer": "TEXT_JOBRDM560_02580_A1_000_101"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBRDM560_02580_Q2_000_131",
+              "Answer": "TEXT_JOBRDM560_02580_A2_000_131"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 303.05298,
+            "Y": -36.405563,
+            "Z": 307.39264
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1021468,
+          "Position": {
+            "X": 319.44763,
+            "Y": -35.949703,
+            "Z": 306.90466
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003584,
+          "Position": {
+            "X": 317.43335,
+            "Y": -36.325005,
+            "Z": 352.86487
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 138
+        },
+        {
+          "DataId": 1021469,
+          "Position": {
+            "X": -289.14325,
+            "Y": -40.63008,
+            "Z": 420.46228
+          },
+          "StopDistance": 7,
+          "TerritoryId": 138,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021442,
+          "Position": {
+            "X": -304.89056,
+            "Y": -40.172314,
+            "Z": 660.1815
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1021471,
+          "Position": {
+            "X": 320.88184,
+            "Y": -40.425003,
+            "Z": 369.77185
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021473,
+          "Position": {
+            "X": 311.39075,
+            "Y": -25.002254,
+            "Z": 230.82312
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2581
+        }
+      ]
+    }
+  ]
+}

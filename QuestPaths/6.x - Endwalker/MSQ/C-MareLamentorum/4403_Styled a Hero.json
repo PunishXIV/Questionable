@@ -1,0 +1,422 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038908,
+          "Position": {
+            "X": -456.10742,
+            "Y": -168,
+            "Z": -618.7686
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038919,
+          "Position": {
+            "X": -518.36426,
+            "Y": -161.84549,
+            "Z": -281.94098
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -357.1918,
+            "Y": -161.84383,
+            "Z": -254.25537
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -357.1918,
+            "Y": -161.84383,
+            "Z": -254.25537
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -357.36722,
+              "Y": -160.81464,
+              "Z": -258.94827
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Mount": false,
+          "Comment": "Platform 1"
+        },
+        {
+          "Position": {
+            "X": -357.36722,
+            "Y": -160.81464,
+            "Z": -258.94827
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -357.09705,
+              "Y": -159.31464,
+              "Z": -262.08554
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 2"
+        },
+        {
+          "Position": {
+            "X": -357.09705,
+            "Y": -159.31464,
+            "Z": -262.08554
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -357.5647,
+              "Y": -157.81464,
+              "Z": -265.16046
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 3"
+        },
+        {
+          "Position": {
+            "X": -357.5647,
+            "Y": -157.81464,
+            "Z": -265.16046
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -358.55756,
+              "Y": -156.31464,
+              "Z": -268.07187
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 4"
+        },
+        {
+          "Position": {
+            "X": -358.55756,
+            "Y": -156.31464,
+            "Z": -268.07187
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -360.63412,
+              "Y": -154.81462,
+              "Z": -270.27368
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 5"
+        },
+        {
+          "Position": {
+            "X": -360.63412,
+            "Y": -154.81462,
+            "Z": -270.27368
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -363.1165,
+              "Y": -153.31464,
+              "Z": -272.78378
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 6"
+        },
+        {
+          "DataId": 1038923,
+          "Position": {
+            "X": -376.27222,
+            "Y": -151.67168,
+            "Z": -267.90265
+          },
+          "StopDistance": 7,
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMC105_04403_Q1_000_073",
+              "Answer": "TEXT_AKTKMC105_04403_A1_000_075"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -336.92316,
+            "Y": -161.84383,
+            "Z": -362.42844
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -336.92316,
+            "Y": -161.84383,
+            "Z": -362.42844
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -333.76025,
+              "Y": -160.81464,
+              "Z": -359.79532
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Mount": false,
+          "Comment": "Platform 1"
+        },
+        {
+          "Position": {
+            "X": -333.76025,
+            "Y": -160.81464,
+            "Z": -359.79532
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -336.20718,
+              "Y": -159.31462,
+              "Z": -358.21957
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 2"
+        },
+        {
+          "Position": {
+            "X": -336.20718,
+            "Y": -159.31462,
+            "Z": -358.21957
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -338.62347,
+              "Y": -157.81464,
+              "Z": -356.00974
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 3"
+        },
+        {
+          "Position": {
+            "X": -338.62347,
+            "Y": -157.81464,
+            "Z": -356.00974
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -340.34265,
+              "Y": -156.31462,
+              "Z": -353.9171
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 4"
+        },
+        {
+          "Position": {
+            "X": -340.34265,
+            "Y": -156.31462,
+            "Z": -353.9171
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -341.2541,
+              "Y": -154.81462,
+              "Z": -350.6315
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 5"
+        },
+        {
+          "Position": {
+            "X": -341.2541,
+            "Y": -154.81462,
+            "Z": -350.6315
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -341.89566,
+              "Y": -153.31464,
+              "Z": -347.0478
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "Comment": "Platform 6"
+        },
+        {
+          "Position": {
+            "X": -337.69525,
+            "Y": -152.67764,
+            "Z": -344.93723
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1038924,
+          "Position": {
+            "X": -329.97632,
+            "Y": -151.67169,
+            "Z": -333.76062
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMC105_04403_Q1_000_118",
+              "Answer": "TEXT_AKTKMC105_04403_A1_000_120"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038919,
+          "Position": {
+            "X": -518.36426,
+            "Y": -161.84549,
+            "Z": -281.94098
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1038925,
+          "Position": {
+            "X": -506.52325,
+            "Y": -161.84383,
+            "Z": -258.68628
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1038926,
+          "Position": {
+            "X": -28.244446,
+            "Y": -131.29884,
+            "Z": -585.7481
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMC105_04403_SYSTEM_000_215",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038927,
+          "Position": {
+            "X": 2.090454,
+            "Y": -49.589596,
+            "Z": -699.733
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

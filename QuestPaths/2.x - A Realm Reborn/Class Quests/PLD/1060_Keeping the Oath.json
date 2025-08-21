@@ -1,0 +1,100 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006747,
+          "Position": {
+            "X": -20.828613,
+            "Y": 29.999964,
+            "Z": -2.4262085
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007829,
+          "Position": {
+            "X": 26.932129,
+            "Y": 13,
+            "Z": 44.418945
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -775.4471,
+            "Y": 224.95006,
+            "Z": 29.04266
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -775.4471,
+            "Y": 224.95006,
+            "Z": 29.04266
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 155,
+          "InteractionType": "SinglePlayerDuty",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006747,
+          "Position": {
+            "X": -20.828613,
+            "Y": 29.999964,
+            "Z": -2.4262085
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ],
+          "NextQuestId": 2032
+        }
+      ]
+    }
+  ]
+}

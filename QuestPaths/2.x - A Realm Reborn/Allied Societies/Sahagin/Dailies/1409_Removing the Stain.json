@@ -1,0 +1,64 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "Comment": "FATE",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -226.12347,
+                                    "Y": -40.48583,
+                                    "Z": 57.083984
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -396.18066,
+                        "Y": -40.36498,
+                        "Z": -220.00629
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "WaitForManualProgress",
+                    "Fly": true,
+                    "Comment": "Do the FATE"
+                },
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

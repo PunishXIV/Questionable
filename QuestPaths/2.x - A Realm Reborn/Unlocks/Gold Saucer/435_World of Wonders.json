@@ -1,0 +1,272 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": [
+    "liza",
+    "JerryWester"
+  ],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011022,
+          "Position": {
+            "X": -38.895264,
+            "Y": -2.7930364E-06,
+            "Z": 97.33728
+          },
+          "StopDistance": 7,
+          "TerritoryId": 144,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Entrance & Card Squares",
+          "StopDistance": 7
+        },
+        {
+          "DataId": 1010448,
+          "Position": {
+            "X": -54.00177,
+            "Y": 1.6000003,
+            "Z": 30.685791
+          },
+          "StopDistance": 5,
+          "TerritoryId": 144,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011038,
+          "Position": {
+            "X": -58.884644,
+            "Y": 1.6000003,
+            "Z": 27.634033
+          },
+          "StopDistance": 5,
+          "TerritoryId": 144,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1010478,
+          "Position": {
+            "X": -99.19891,
+            "Y": -0.86297023,
+            "Z": 66.11731
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1011044,
+          "Position": {
+            "X": -84.45868,
+            "Y": 3.7690625E-06,
+            "Z": 29.06836
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 388
+        },
+        {
+          "TerritoryId": 388,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Minion Square",
+          "StopDistance": 5
+        },
+        {
+          "TerritoryId": 388,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Chocobo Square",
+          "StopDistance": 7
+        },
+        {
+          "TerritoryId": 388,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Chocobo Square",
+            "[Gold Saucer] Entrance & Card Squares"
+          ]
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Gold Saucer",
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "DataId": 1011080,
+          "Position": {
+            "X": 21.530457,
+            "Y": 3.9997296,
+            "Z": 39.902344
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 46.78062,
+            "Y": 11.798187,
+            "Z": 20.328043
+          },
+          "TerritoryId": 144,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Wonder Square West",
+          "StopDistance": 7,
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Wonder Square East",
+          "StopDistance": 7
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Wonder Square East",
+            "[Gold Saucer] Aetheryte Plaza"
+          ]
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Event Square",
+          "StopDistance": 7,
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "Position": {
+            "X": 122.973015,
+            "Y": -0.5100681,
+            "Z": -50.024624
+          },
+          "TerritoryId": 144,
+          "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Cactpot Board",
+          "StopDistance": 7
+        },
+        {
+          "Position": {
+            "X": 111.36922,
+            "Y": 13.000123,
+            "Z": -24.209782
+          },
+          "TerritoryId": 144,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1011079,
+          "Position": {
+            "X": 125.078125,
+            "Y": 13.000635,
+            "Z": -13.778931
+          },
+          "StopDistance": 4,
+          "TerritoryId": 144,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 111.36922,
+            "Y": 13.000123,
+            "Z": -24.209782
+          },
+          "TerritoryId": 144,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Cactpot Board",
+            "[Gold Saucer] Aetheryte Plaza"
+          ]
+        },
+        {
+          "DataId": 1011084,
+          "Position": {
+            "X": -12.527649,
+            "Y": 3.2546434,
+            "Z": -73.16705
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 3
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 144,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gold Saucer] Round Square",
+          "StopDistance": 7
+        },
+        {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Round Square",
+            "[Gold Saucer] Entrance & Card Squares"
+          ]
+        },
+        {
+          "DataId": 1010448,
+          "Position": {
+            "X": -54.00177,
+            "Y": 1.6000003,
+            "Z": 30.685791
+          },
+          "StopDistance": 5,
+          "TerritoryId": 144,
+          "InteractionType": "CompleteQuest",
+          "DelaySecondsAtStart": 3
+        }
+      ]
+    }
+  ]
+}

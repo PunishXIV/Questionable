@@ -1,0 +1,174 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012884,
+          "Position": {
+            "X": 111.46704,
+            "Y": 5.935669,
+            "Z": -294.36182
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003420,
+          "Fly": true,
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "RequiredQuestVariables": [
+            null,
+            [
+              19
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2012885,
+          "Position": {
+            "X": 108.17114,
+            "Y": 8.224609,
+            "Z": -373.22046
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003420,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              18
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2012886,
+          "Position": {
+            "X": 135.91211,
+            "Y": 6.4850464,
+            "Z": -327.5349
+          },
+          "TerritoryId": 957,
+          "InteractionType": "UseItem",
+          "ItemId": 2003420,
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              17
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012884,
+          "Position": {
+            "X": 111.46704,
+            "Y": 5.935669,
+            "Z": -294.36182
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              0
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2012885,
+          "Position": {
+            "X": 108.17114,
+            "Y": 8.224609,
+            "Z": -373.22046
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              64
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2012886,
+          "Position": {
+            "X": 135.91211,
+            "Y": 6.4850464,
+            "Z": -327.5349
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              128
+            ],
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042301,
+          "Position": {
+            "X": -66.02582,
+            "Y": 39.994705,
+            "Z": 321.06494
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

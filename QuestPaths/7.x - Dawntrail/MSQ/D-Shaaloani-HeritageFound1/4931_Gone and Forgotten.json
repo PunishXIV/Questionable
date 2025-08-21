@@ -1,0 +1,148 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047438,
+          "Position": {
+            "X": -1.7243042,
+            "Y": -2.5286822E-06,
+            "Z": -0.5340576
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1171,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013853,
+          "Position": {
+            "X": 0.6560669,
+            "Y": 0.99176025,
+            "Z": 17.532532
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 1171,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1191
+        },
+        {
+          "DataId": 1047444,
+          "Position": {
+            "X": 264.57617,
+            "Y": 68.46363,
+            "Z": -503.31888
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047450,
+          "Position": {
+            "X": 484.6112,
+            "Y": 91.99999,
+            "Z": -500.3281
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013968,
+          "Position": {
+            "X": 685.96924,
+            "Y": 139.17749,
+            "Z": -516.5637
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818470
+        },
+        {
+          "DataId": 2013967,
+          "Position": {
+            "X": 606.83594,
+            "Y": 127.55017,
+            "Z": -190.3869
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818469
+        },
+        {
+          "Position": {
+            "X": 554.8906,
+            "Y": 83.21251,
+            "Z": -226.04199
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 2013823,
+          "Position": {
+            "X": 535.7595,
+            "Y": 85.31323,
+            "Z": -316.0296
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17702
+          ],
+          "Comment": "two waves of enemies"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013824,
+          "Position": {
+            "X": 438.37634,
+            "Y": 77.62268,
+            "Z": -282.70392
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047460,
+          "Position": {
+            "X": 450.33948,
+            "Y": 89.99999,
+            "Z": -474.815
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

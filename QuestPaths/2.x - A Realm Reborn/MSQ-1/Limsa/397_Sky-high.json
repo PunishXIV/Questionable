@@ -1,0 +1,48 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002721,
+          "Position": {
+            "X": 187.9148,
+            "Y": 98.5214,
+            "Z": -193.19452
+          },
+          "TerritoryId": 134,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 22,
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
+        },
+        {
+          "DataId": 1003239,
+          "Position": {
+            "X": -283.68048,
+            "Y": 10.593393,
+            "Z": -249.34778
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

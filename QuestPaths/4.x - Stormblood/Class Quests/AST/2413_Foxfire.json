@@ -1,0 +1,144 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021262,
+          "Position": {
+            "X": 98.10022,
+            "Y": 4.0000014,
+            "Z": 87.44946
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 98.10022,
+                  "Y": 4.0000014,
+                  "Z": 87.44946
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008103,
+          "Position": {
+            "X": 44.84619,
+            "Y": 8.255066,
+            "Z": 178.11853
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021305,
+          "Position": {
+            "X": -61.356567,
+            "Y": -3,
+            "Z": 28.854736
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Thavnairian Consulate",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008104,
+          "Position": {
+            "X": 128.13,
+            "Y": 24.979004,
+            "Z": -0.22894287
+          },
+          "TerritoryId": 628,
+          "InteractionType": "SinglePlayerDuty",
+          "StopDistance": 3,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021309,
+          "Position": {
+            "X": -47.501343,
+            "Y": 16.624714,
+            "Z": 9.719971
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -47.501343,
+                  "Y": 16.624714,
+                  "Z": 9.719971
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          },
+          "NextQuestId": 3222
+        }
+      ]
+    }
+  ]
+}

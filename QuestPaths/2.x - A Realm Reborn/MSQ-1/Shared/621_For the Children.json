@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003929,
+          "Position": {
+            "X": -378.65265,
+            "Y": -55.75492,
+            "Z": 106.79785
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003976,
+          "Position": {
+            "X": -549.0349,
+            "Y": 4.824463,
+            "Z": -266.77356
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -421.59717,
+            "Y": -0.48849356,
+            "Z": -278.41507
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            18,
+            19
+          ]
+        },
+        {
+          "DataId": 1003975,
+          "Position": {
+            "X": -418.57025,
+            "Y": -0.17093202,
+            "Z": -280.38452
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003929,
+          "Position": {
+            "X": -378.65265,
+            "Y": -55.75492,
+            "Z": 106.79785
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    }
+  ]
+}

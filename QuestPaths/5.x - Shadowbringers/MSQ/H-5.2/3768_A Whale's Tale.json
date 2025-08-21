@@ -1,0 +1,400 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032526,
+          "Position": {
+            "X": 606.1035,
+            "Y": 350.3518,
+            "Z": -200
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Tessellation (Lakeland)"
+          ],
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": 55.589294,
+            "Y": 2.0276523,
+            "Z": 669.1557
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Comment": "these bridges have navmesh problems"
+        },
+        {
+          "Position": {
+            "X": 15.410904,
+            "Y": 2.2598603,
+            "Z": 677.3755
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -82.79376,
+            "Y": 11.970126,
+            "Z": 765.8721
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -234.70464,
+            "Y": 1.0942776,
+            "Z": 738.40204
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -269.44116,
+            "Y": -0.82486916,
+            "Z": 724.67255
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1032528,
+          "Position": {
+            "X": -270.98505,
+            "Y": -0.82573783,
+            "Z": 723.96423
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030333,
+          "Position": {
+            "X": -612.23773,
+            "Y": 27.728632,
+            "Z": 817.65466
+          },
+          "StopDistance": 5,
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -591.3982,
+            "Y": 26.347507,
+            "Z": 773.5695
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "Fly": true,
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -610.2863,
+            "Y": -2.1544409,
+            "Z": 734.7734
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -565.32196,
+            "Y": -1.9743931,
+            "Z": 799.9003
+          },
+          "StopDistance": 1,
+          "TerritoryId": 813,
+          "InteractionType": "Dive",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+
+          "Position": {
+            "X": -630.4265,
+            "Y": -29.862,
+            "Z": 752.5597
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 2010280,
+          "Position": {
+            "X": -630.4265,
+            "Y": -29.862,
+            "Z": 752.5597
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "$.1": "QuestVariables if done first: 1 0 0 0 0 64",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -654.167,
+            "Y": -41.328938,
+            "Z": 741.29126
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 2010278,
+          "Position": {
+            "X": -655.5123,
+            "Y": -40.299072,
+            "Z": 743.22107
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010282,
+          "Position": {
+            "X": -663.14185,
+            "Y": -25.711487,
+            "Z": 738.82654
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -643.2488,
+            "Y": -1.974393,
+            "Z": 714.8211
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "Fly": true,
+          "DisableNavmesh": true,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "Position": {
+            "X": -573.45654,
+            "Y": 0.39776123,
+            "Z": 810.7269
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -619.98676,
+            "Y": 24.866888,
+            "Z": 794.4714
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1030333,
+          "Position": {
+            "X": -612.23773,
+            "Y": 27.728632,
+            "Z": 817.65466
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1032531,
+          "Position": {
+            "X": -130.90723,
+            "Y": 9.572956,
+            "Z": 697.68823
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -82.79376,
+            "Y": 11.970126,
+            "Z": 765.8721
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 15.410904,
+            "Y": 2.2598603,
+            "Z": 677.3755
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 55.589294,
+            "Y": 2.0276523,
+            "Z": 669.1557
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Comment": "these bridges have navmesh problems"
+        },
+        {
+          "DataId": 1032554,
+          "Position": {
+            "X": 237.72021,
+            "Y": 5.6935816,
+            "Z": 552.1781
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

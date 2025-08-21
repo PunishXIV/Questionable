@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045692,
+          "Position": {
+            "X": -256.67206,
+            "Y": 19.26994,
+            "Z": -46.28064
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045695,
+          "Position": {
+            "X": 135.57642,
+            "Y": -16.147,
+            "Z": 243.42712
+          },
+          "TerritoryId": 962,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.294",
+            "Notes": [
+              "(phase 1) AI walks (a bit) towards enemies, but doesn't target them and doesn't attack",
+              "(phase 1) AI doesn't move close enough to the tattered plumage; needs to be re-tested"
+            ]
+          },
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045696,
+          "Position": {
+            "X": 135.729,
+            "Y": -16.146997,
+            "Z": 241.50452
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1037077,
+          "Position": {
+            "X": -38.07129,
+            "Y": -14.169313,
+            "Z": 105.30249
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045699,
+          "Position": {
+            "X": -60.41046,
+            "Y": -15.127002,
+            "Z": 139.42163
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

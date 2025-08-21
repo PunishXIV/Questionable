@@ -1,0 +1,76 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "UcanPatates",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1000194,
+                    "Position": {
+                        "X": -16.281433,
+                        "Y": -3.2499998,
+                        "Z": 41.000854
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1000686,
+                    "Position": {
+                        "X": -66.36151,
+                        "Y": -3.896366,
+                        "Z": 67.00232
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1000789,
+                    "Position": {
+                        "X": -33.76825,
+                        "Y": 7.3172073,
+                        "Z": -117.052
+                    },
+                    "TerritoryId": 133,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "AethernetShortcut": [
+                        "[Gridania] Aetheryte Plaza",
+                        "[Gridania] Mih Khetto's Amphitheatre"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true,
+                            "InTerritory": [
+                                132
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

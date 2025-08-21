@@ -1,0 +1,258 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "TargetTerritoryId": 129,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "ExtraCondition": "RoguesGuild"
+            }
+          }
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2004936,
+          "Position": {
+            "X": -151.90363,
+            "Y": -128.16058,
+            "Z": 256.8551
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129
+        },
+        {
+          "DataId": 1010238,
+          "Position": {
+            "X": 146.71545,
+            "Y": 62.3279,
+            "Z": 291.82874
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 168.34132,
+            "Y": 69.5,
+            "Z": 327.67975
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 134,
+          "InteractionType": "Action",
+          "Action": "Hide"
+        },
+        {
+          "Position": {
+            "X": 178.24341,
+            "Y": 69.5,
+            "Z": 328.4606
+          },
+          "TerritoryId": 134,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 134,
+          "InteractionType": "StatusOff",
+          "Status": "Hidden"
+        },
+        {
+          "DataId": 1010238,
+          "Position": {
+            "X": 146.71545,
+            "Y": 62.3279,
+            "Z": 291.82874
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1010242,
+          "Position": {
+            "X": 7.2174683,
+            "Y": 57.91383,
+            "Z": -307.11835
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            3567,
+            3568
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010242,
+          "Position": {
+            "X": 7.2174683,
+            "Y": 57.91383,
+            "Z": -307.11835
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1010237,
+          "Position": {
+            "X": 242.29797,
+            "Y": 8.000164,
+            "Z": 668.2383
+          },
+          "TerritoryId": 135,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1010237,
+          "Position": {
+            "X": 242.29797,
+            "Y": 8.000164,
+            "Z": 668.2383
+          },
+          "StopDistance": 7,
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009944,
+          "Position": {
+            "X": -152.66656,
+            "Y": 2.8562405,
+            "Z": 243.18298
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        },
+        {
+          "DataId": 1009943,
+          "Position": {
+            "X": -153.36847,
+            "Y": -129.4397,
+            "Z": 265.88843
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 148
+        }
+      ]
+    }
+  ]
+}

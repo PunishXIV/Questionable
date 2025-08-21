@@ -1,0 +1,107 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051364,
+          "Position": {
+            "X": -9.353821,
+            "Y": 8.205902,
+            "Z": -652.9183
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048961,
+          "Position": {
+            "X": -444.38855,
+            "Y": 28.068893,
+            "Z": -363.66827
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -632.6718,
+            "Y": 25.245409,
+            "Z": -159.94264
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1048995,
+          "Position": {
+            "X": -639.27673,
+            "Y": 26.716875,
+            "Z": -161.05902
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051410,
+          "Position": {
+            "X": -9.140198,
+            "Y": 8.205902,
+            "Z": -652.9183
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Dirigible Landing (Yak T'el)"
+          ]
+        }
+      ]
+    }
+  ]
+}

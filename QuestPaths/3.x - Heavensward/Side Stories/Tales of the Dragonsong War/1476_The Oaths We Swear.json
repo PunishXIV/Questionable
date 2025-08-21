@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016809,
+          "Position": {
+            "X": 29.861816,
+            "Y": 50.99997,
+            "Z": -818.2651
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -119.1183,
+            "Y": 3.7999938,
+            "Z": -104.33473
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah",
+          "$": "Ul'dah Aetheryte to Immortal Flames"
+        },
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012345,
+          "Position": {
+            "X": 460.16626,
+            "Y": 162.5073,
+            "Z": -527.0314
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 454.75964,
+            "Y": 164.27075,
+            "Z": -535.00354
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (outside)",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 454.9128,
+            "Y": 164.30827,
+            "Z": -542.1735
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (inside)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1017119,
+          "Position": {
+            "X": 450.7362,
+            "Y": 157.40831,
+            "Z": -545.0675
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 454.9128,
+            "Y": 164.30827,
+            "Z": -542.1735
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (inside)",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 454.75964,
+            "Y": 164.27075,
+            "Z": -535.00354
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "$": "Gorgagne Mills (outside)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1011907,
+          "Position": {
+            "X": -288.8686,
+            "Y": 127.06639,
+            "Z": 13.199036
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "NextQuestId": 1477
+        }
+      ]
+    }
+  ]
+}

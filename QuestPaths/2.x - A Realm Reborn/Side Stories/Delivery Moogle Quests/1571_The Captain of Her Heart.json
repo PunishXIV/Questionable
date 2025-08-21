@@ -1,0 +1,180 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006331,
+          "Position": {
+            "X": -144.15204,
+            "Y": 64.989944,
+            "Z": -209.88788
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009726,
+          "Position": {
+            "X": -280.8728,
+            "Y": 62.620903,
+            "Z": -201.9837
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            2864,
+            2865,
+            2866
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1009726,
+          "Position": {
+            "X": -280.8728,
+            "Y": 62.620903,
+            "Z": -201.9837
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006331,
+          "Position": {
+            "X": -144.15204,
+            "Y": 64.989944,
+            "Z": -209.88788
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009729,
+          "Position": {
+            "X": -108.72058,
+            "Y": 64.30314,
+            "Z": -220.38611
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009730,
+          "Position": {
+            "X": -145.8305,
+            "Y": 64.83713,
+            "Z": -209.24695
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1009732,
+          "Position": {
+            "X": -439.59723,
+            "Y": 50.90922,
+            "Z": -319.69183
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1009753,
+          "Position": {
+            "X": -107.408325,
+            "Y": 64.38365,
+            "Z": -223.62103
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006331,
+          "Position": {
+            "X": -144.15204,
+            "Y": 64.989944,
+            "Z": -209.88788
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 33
+        }
+      ]
+    }
+  ]
+}

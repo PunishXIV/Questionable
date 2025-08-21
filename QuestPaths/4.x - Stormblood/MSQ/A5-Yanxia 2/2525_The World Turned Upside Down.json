@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020248,
+          "Position": {
+            "X": -390.28003,
+            "Y": 30.646172,
+            "Z": -455.86328
+          },
+          "StopDistance": 7,
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020255,
+          "Position": {
+            "X": -349.05017,
+            "Y": 1.2300365,
+            "Z": -343.86212
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA507_02525_Q1_000_092",
+              "Answer": "TEXT_STMBDA507_02525_A1_000_093"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020644,
+          "Position": {
+            "X": 147.4784,
+            "Y": -4.1787133,
+            "Z": 50.5531
+          },
+          "TerritoryId": 682,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 614
+        },
+        {
+          "DataId": 1020258,
+          "Position": {
+            "X": -462.39417,
+            "Y": 1.2300053,
+            "Z": 546.1356
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020263,
+          "Position": {
+            "X": -472.12946,
+            "Y": 1.2306242,
+            "Z": 557.09155
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA507_02525_Q2_000_191",
+              "Answer": "TEXT_STMBDA507_02525_A2_000_192"
+            }
+          ],
+          "TargetTerritoryId": 628
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020265,
+          "Position": {
+            "X": -175.92126,
+            "Y": -7.0001082,
+            "Z": 53.81848
+          },
+          "StopDistance": 4,
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

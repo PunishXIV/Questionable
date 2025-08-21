@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Questionable", "Questionable\Questionable.csproj", "{C91EEF13-A1AC-4A40-B695-DD4E378E5989}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LLib", "LLib\LLib.csproj", "{EEDE3BBE-E260-445E-8FB3-1264E0CBBE91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestPaths", "QuestPaths\QuestPaths.csproj", "{7A136F28-8D5C-478D-B993-0F39F1451A47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestPathGenerator", "QuestPathGenerator\QuestPathGenerator.csproj", "{DFFD56A8-FA89-4585-A47B-C6AB27B65F0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Questionable.Model", "Questionable.Model\Questionable.Model.csproj", "{E15144A5-AFF5-4D86-9561-AFF7DF7F505D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestPathGenerator.Tests", "QuestPathGenerator.Tests\QuestPathGenerator.Tests.csproj", "{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatheringPaths", "GatheringPaths\GatheringPaths.csproj", "{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatheringPathRenderer", "GatheringPathRenderer\GatheringPathRenderer.csproj", "{F514DA95-9867-4F3F-8062-ACE0C62E8740}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBFFC6EA-15B1-48FC-B4D3-D9491278C27F}"
+	ProjectSection(SolutionItems) = preProject
+		.woodpecker\build.yaml = .woodpecker\build.yaml
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionable.IpcTest", "Questionable.IpcTest\Questionable.IpcTest.csproj", "{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestPaths.JsonValidator", "QuestPaths.JsonValidator\QuestPaths.JsonValidator.csproj", "{2521F2BA-9647-4851-92E1-F56280D1663C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C91EEF13-A1AC-4A40-B695-DD4E378E5989}.Debug|x64.ActiveCfg = Debug|x64
+		{C91EEF13-A1AC-4A40-B695-DD4E378E5989}.Debug|x64.Build.0 = Debug|x64
+		{C91EEF13-A1AC-4A40-B695-DD4E378E5989}.Release|x64.ActiveCfg = Release|x64
+		{C91EEF13-A1AC-4A40-B695-DD4E378E5989}.Release|x64.Build.0 = Release|x64
+		{EEDE3BBE-E260-445E-8FB3-1264E0CBBE91}.Debug|x64.ActiveCfg = Debug|x64
+		{EEDE3BBE-E260-445E-8FB3-1264E0CBBE91}.Debug|x64.Build.0 = Debug|x64
+		{EEDE3BBE-E260-445E-8FB3-1264E0CBBE91}.Release|x64.ActiveCfg = Release|x64
+		{EEDE3BBE-E260-445E-8FB3-1264E0CBBE91}.Release|x64.Build.0 = Release|x64
+		{7A136F28-8D5C-478D-B993-0F39F1451A47}.Debug|x64.ActiveCfg = Debug|x64
+		{7A136F28-8D5C-478D-B993-0F39F1451A47}.Debug|x64.Build.0 = Debug|x64
+		{7A136F28-8D5C-478D-B993-0F39F1451A47}.Release|x64.ActiveCfg = Release|x64
+		{7A136F28-8D5C-478D-B993-0F39F1451A47}.Release|x64.Build.0 = Release|x64
+		{DFFD56A8-FA89-4585-A47B-C6AB27B65F0F}.Debug|x64.ActiveCfg = Debug|x64
+		{DFFD56A8-FA89-4585-A47B-C6AB27B65F0F}.Debug|x64.Build.0 = Debug|x64
+		{DFFD56A8-FA89-4585-A47B-C6AB27B65F0F}.Release|x64.ActiveCfg = Release|x64
+		{DFFD56A8-FA89-4585-A47B-C6AB27B65F0F}.Release|x64.Build.0 = Release|x64
+		{E15144A5-AFF5-4D86-9561-AFF7DF7F505D}.Debug|x64.ActiveCfg = Debug|x64
+		{E15144A5-AFF5-4D86-9561-AFF7DF7F505D}.Debug|x64.Build.0 = Debug|x64
+		{E15144A5-AFF5-4D86-9561-AFF7DF7F505D}.Release|x64.ActiveCfg = Release|x64
+		{E15144A5-AFF5-4D86-9561-AFF7DF7F505D}.Release|x64.Build.0 = Release|x64
+		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Debug|x64.ActiveCfg = Debug|x64
+		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Debug|x64.Build.0 = Debug|x64
+		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Release|x64.ActiveCfg = Release|x64
+		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Release|x64.Build.0 = Release|x64
+		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Debug|x64.ActiveCfg = Debug|x64
+		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Debug|x64.Build.0 = Debug|x64
+		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Release|x64.ActiveCfg = Release|x64
+		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Release|x64.Build.0 = Release|x64
+		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Debug|x64.ActiveCfg = Debug|x64
+		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Debug|x64.Build.0 = Debug|x64
+		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Release|x64.ActiveCfg = Release|x64
+		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Release|x64.Build.0 = Release|x64
+		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Debug|x64.ActiveCfg = Debug|x64
+		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Debug|x64.Build.0 = Debug|x64
+		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Release|x64.ActiveCfg = Release|x64
+		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Release|x64.Build.0 = Release|x64
+		{2521F2BA-9647-4851-92E1-F56280D1663C}.Debug|x64.ActiveCfg = Debug|x64
+		{2521F2BA-9647-4851-92E1-F56280D1663C}.Debug|x64.Build.0 = Debug|x64
+		{2521F2BA-9647-4851-92E1-F56280D1663C}.Release|x64.ActiveCfg = Release|x64
+		{2521F2BA-9647-4851-92E1-F56280D1663C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6C60C7E-BEEA-422F-85B3-639BAD5A4B75}
+	EndGlobalSection
+EndGlobal

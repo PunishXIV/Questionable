@@ -1,0 +1,129 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039600,
+          "Position": {
+            "X": 142.443,
+            "Y": 4.7837553,
+            "Z": -148.57715
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039589,
+          "Position": {
+            "X": -270.25262,
+            "Y": 0.07863108,
+            "Z": 605.9204
+          },
+          "TerritoryId": 957,
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 169.31848,
+            "Y": 5.3451567,
+            "Z": 633.7924
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1037631,
+          "Position": {
+            "X": 166.64368,
+            "Y": 5.34517,
+            "Z": 635.9807
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH106_04531_Q1_000_000",
+              "Answer": "TEXT_AKTKMH106_04531_A1_000_002"
+            }
+          ]
+        },
+        {
+          "DataId": 1039606,
+          "Position": {
+            "X": 215.80823,
+            "Y": 9.935694,
+            "Z": 561.27246
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039607,
+          "Position": {
+            "X": -342.58032,
+            "Y": 55,
+            "Z": -68.61987
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Meghaduta"
+          ]
+        }
+      ]
+    }
+  ]
+}

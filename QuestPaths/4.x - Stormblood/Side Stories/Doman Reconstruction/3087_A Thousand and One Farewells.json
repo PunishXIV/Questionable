@@ -1,0 +1,118 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025330,
+          "Position": {
+            "X": 64.83557,
+            "Y": 30.6188,
+            "Z": -722.3774
+          },
+          "StopDistance": 7,
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009813,
+          "Position": {
+            "X": 55.436035,
+            "Y": 31.187548,
+            "Z": -763.42413
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 51.799374,
+            "Y": 50,
+            "Z": -774.0067
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1018433,
+          "Position": {
+            "X": 50.766724,
+            "Y": 50,
+            "Z": -772.3964
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025287,
+          "Position": {
+            "X": 64.34729,
+            "Y": 31.199963,
+            "Z": -754.0246
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024791,
+          "Position": {
+            "X": 31.60144,
+            "Y": 0.26575702,
+            "Z": 28.915894
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "NextQuestId": 3141
+        }
+      ]
+    }
+  ]
+}

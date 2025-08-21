@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1007534,
+          "Position": {
+            "X": 1.4800415,
+            "Y": -3.0000014,
+            "Z": -48.722107
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -22.992174,
+            "Y": 31.881628,
+            "Z": -3.1655574
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        },
+        {
+          "Position": {
+            "X": 373.0123,
+            "Y": 46.21888,
+            "Z": -47.523537
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 500.2741,
+            "Y": 36.9815,
+            "Z": -153.72185
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 694.0748,
+            "Y": 4.267518,
+            "Z": -84.443855
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002581,
+          "Position": {
+            "X": 694.3617,
+            "Y": 7.9193726,
+            "Z": -80.1557
+          },
+          "TerritoryId": 146,
+          "Mount": false,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "IgnoreDistanceToObject": true
+        }
+      ]
+    }
+  ]
+}

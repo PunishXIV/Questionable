@@ -1,0 +1,74 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021565,
+          "Position": {
+            "X": 440.11584,
+            "Y": 114.254425,
+            "Z": 212.84802
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Peering Stones"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023160,
+          "Position": {
+            "X": 303.12048,
+            "Y": 46.087757,
+            "Z": 493.0647
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008763,
+          "Position": {
+            "X": 465.7511,
+            "Y": 77.56152,
+            "Z": 118.08948
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7545
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023161,
+          "Position": {
+            "X": 465.62903,
+            "Y": 77.67306,
+            "Z": 114.854614
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2825
+        }
+      ]
+    }
+  ]
+}

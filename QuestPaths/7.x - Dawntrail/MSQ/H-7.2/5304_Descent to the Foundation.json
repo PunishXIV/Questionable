@@ -1,0 +1,106 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048161,
+          "Position": {
+            "X": -5.874817,
+            "Y": -3.618828E-08,
+            "Z": 6.8512573
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1207,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014102,
+          "Position": {
+            "X": -0.01455665,
+            "Y": 1,
+            "Z": 16.05096
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1207
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1053865,
+          "Position": {
+            "X": -70.72565,
+            "Y": 42.8066,
+            "Z": -546.95966
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Resolution"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1186,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": true,
+            "ContentFinderConditionId": 1027,
+            "TestedBossModVersion": "0.3.2.4",
+            "TestedAutoDutyVersion": "0.0.0.230"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1275,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": false,
+            "ContentFinderConditionId": 1030
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053873,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 0,
+            "Z": 20.645447
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1274,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

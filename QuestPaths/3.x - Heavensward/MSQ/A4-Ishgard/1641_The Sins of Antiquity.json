@@ -1,0 +1,78 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013227,
+          "Position": {
+            "X": 14.877502,
+            "Y": 16.009666,
+            "Z": -4.196289
+          },
+          "StopDistance": 5,
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014720,
+          "Position": {
+            "X": 13.809326,
+            "Y": 15.96505,
+            "Z": -13.870483
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1874
+        },
+        {
+          "DataId": 1011223,
+          "Position": {
+            "X": 114.579956,
+            "Y": 24.412834,
+            "Z": -11.062805
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA405_01641_SCENE00020_EVENTAREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ],
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        },
+        {
+          "DataId": 1013183,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.019999694,
+            "Z": -6.302063
+          },
+          "TerritoryId": 428,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNA405_01641_Q1_000_000",
+              "Answer": "TEXT_HEAVNA405_01641_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

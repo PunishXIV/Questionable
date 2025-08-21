@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038781,
+          "Position": {
+            "X": -393.2403,
+            "Y": 20.8,
+            "Z": -105.760315
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "TargetTerritoryId": 987
+        },
+        {
+          "DataId": 1038784,
+          "Position": {
+            "X": -0.22894287,
+            "Y": 1.9073486E-06,
+            "Z": -11.12384
+          },
+          "TerritoryId": 987,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMB102_04381_Q1_000_067",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038796,
+          "Position": {
+            "X": 745.9678,
+            "Y": 69.999954,
+            "Z": 525.2003
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

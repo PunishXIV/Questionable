@@ -1,0 +1,55 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021933,
+          "Position": {
+            "X": 466.20886,
+            "Y": 69.27097,
+            "Z": 525.7495
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024788,
+          "Position": {
+            "X": -86.07617,
+            "Y": -72.25,
+            "Z": 181.47546
+          },
+          "StopDistance": 7,
+          "TerritoryId": 756,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3032
+        }
+      ]
+    }
+  ]
+}

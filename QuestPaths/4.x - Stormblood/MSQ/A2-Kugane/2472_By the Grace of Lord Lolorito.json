@@ -1,0 +1,63 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020462,
+          "Position": {
+            "X": 95.140015,
+            "Y": 8.02,
+            "Z": 151.9646
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 628,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Kugane] The Ruby Bazaar"
+        },
+        {
+          "DataId": 1020480,
+          "Position": {
+            "X": 150.80493,
+            "Y": 14.7757225,
+            "Z": 92.454346
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020465,
+          "Position": {
+            "X": 1.5411377,
+            "Y": 0,
+            "Z": -0.96136475
+          },
+          "StopDistance": 7,
+          "TerritoryId": 639,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

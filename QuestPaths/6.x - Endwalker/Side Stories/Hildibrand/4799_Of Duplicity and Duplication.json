@@ -1,0 +1,152 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044768,
+          "Position": {
+            "X": 11.154297,
+            "Y": -0.00010118321,
+            "Z": 14.816467
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044815,
+          "Position": {
+            "X": 182.17737,
+            "Y": 5.3180933,
+            "Z": 646.3873
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044821,
+          "Position": {
+            "X": 216.38806,
+            "Y": 10.035135,
+            "Z": 613.79407
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1044822,
+          "Position": {
+            "X": 244.09851,
+            "Y": 9.916463,
+            "Z": 575.8601
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 203.62158,
+            "Y": 1.7700036,
+            "Z": 711.6622
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1044820,
+          "Position": {
+            "X": 205.09644,
+            "Y": 1.7700036,
+            "Z": 710.84155
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044824,
+          "Position": {
+            "X": 212.4513,
+            "Y": 4.763736,
+            "Z": 653.65063
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044830,
+          "Position": {
+            "X": 25.680908,
+            "Y": 1.5596709,
+            "Z": 634.5464
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4800
+        }
+      ]
+    }
+  ]
+}

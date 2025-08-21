@@ -1,0 +1,130 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029001,
+          "Position": {
+            "X": 373.09827,
+            "Y": -26.632425,
+            "Z": 290.6996
+          },
+          "StopDistance": 7,
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Amh Araeng - Inn at Journey's Head"
+        },
+        {
+          "DataId": 2010047,
+          "Position": {
+            "X": 344.6554,
+            "Y": -66.54462,
+            "Z": 538.9332
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818256
+        },
+        {
+          "DataId": 2009849,
+          "Position": {
+            "X": 362.50854,
+            "Y": -63.95056,
+            "Z": 503.65454
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009850,
+          "Position": {
+            "X": 357.04578,
+            "Y": -63.34027,
+            "Z": 497.79492
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009851,
+          "Position": {
+            "X": 329.57947,
+            "Y": -72.15991,
+            "Z": 463.3401
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009852,
+          "Position": {
+            "X": 285.60303,
+            "Y": -66.88031,
+            "Z": 404.2572
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2009853,
+          "Position": {
+            "X": 200.79346,
+            "Y": -82.29199,
+            "Z": 384.32886
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029002,
+          "Position": {
+            "X": 271.3512,
+            "Y": -45.269566,
+            "Z": 334.46252
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

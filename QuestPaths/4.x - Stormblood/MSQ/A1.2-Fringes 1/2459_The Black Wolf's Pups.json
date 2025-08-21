@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020382,
+          "Position": {
+            "X": -284.596,
+            "Y": 200.71988,
+            "Z": -287.2511
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -281.5496,
+            "Y": 200.71988,
+            "Z": -258.17767
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -281.22574,
+              "Y": 192.18245,
+              "Z": -239.78777
+            }
+          }
+        },
+        {
+          "DataId": 2008684,
+          "Position": {
+            "X": -200.4273,
+            "Y": 95.26196,
+            "Z": -448.23383
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020385,
+          "Position": {
+            "X": -111.711365,
+            "Y": 105.71431,
+            "Z": -364.065
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020387,
+          "Position": {
+            "X": -140.94757,
+            "Y": 104.16588,
+            "Z": -401.81586
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

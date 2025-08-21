@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000536,
+          "Position": {
+            "X": -242.0539,
+            "Y": 3.5598407,
+            "Z": 287.4646
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000619,
+          "Position": {
+            "X": -209.0639,
+            "Y": 22.813372,
+            "Z": 245.34973
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -171.7635,
+            "Y": 0.59028566,
+            "Z": 153.80334
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 38,
+              "MinimumKillCount": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000619,
+          "Position": {
+            "X": -209.0639,
+            "Y": 22.813372,
+            "Z": 245.34973
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000536,
+          "Position": {
+            "X": -242.0539,
+            "Y": 3.5598407,
+            "Z": 287.4646
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

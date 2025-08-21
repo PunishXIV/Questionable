@@ -1,0 +1,134 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 141,
+          "InteractionType": "EquipItem",
+          "ItemId": 20389,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1021438,
+          "Position": {
+            "X": -96.84906,
+            "Y": -11.350002,
+            "Z": -47.3183
+          },
+          "TerritoryId": 141,
+          "InteractionType": "UseItem",
+          "ItemId": 20621,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 141,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1021438,
+          "Position": {
+            "X": -96.84906,
+            "Y": -11.350002,
+            "Z": -47.3183
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -508.00916,
+            "Y": -17.453016,
+            "Z": 16.0174
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        },
+        {
+          "DataId": 1021439,
+          "Position": {
+            "X": -513.7255,
+            "Y": -16.420002,
+            "Z": -6.668213
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021440,
+          "Position": {
+            "X": -505.6382,
+            "Y": -17.810839,
+            "Z": 28.702148
+          },
+          "TerritoryId": 145,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021441,
+          "Position": {
+            "X": -428.58014,
+            "Y": -29.27635,
+            "Z": 24.826416
+          },
+          "StopDistance": 5,
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021447,
+          "Position": {
+            "X": -496.75748,
+            "Y": -17.41137,
+            "Z": 28.091797
+          },
+          "StopDistance": 1,
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2578
+        }
+      ]
+    }
+  ]
+}

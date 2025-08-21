@@ -1,0 +1,62 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1042241,
+          "Position": {
+            "X": 222.85791,
+            "Y": 24.942732,
+            "Z": -197.77222
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/007/CtsSfsCharacter8_00773",
+              "Prompt": "TEXT_CTSSFSCHARACTER8_00773_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER8_00773_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/007/CtsSfsCharacter8_00773",
+              "Prompt": "TEXT_CTSSFSCHARACTER8_00773_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER8_00773_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

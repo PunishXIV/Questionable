@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019971,
+          "Position": {
+            "X": 20.248657,
+            "Y": -197.56319,
+            "Z": -145.4032
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023280,
+          "Position": {
+            "X": -62.790894,
+            "Y": -198.96509,
+            "Z": -64.34735
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2632,
+          "DialogueChoices": [
+            {
+              "ExcelSheet": "quest/026/StmBdy001_02632",
+              "Type": "List",
+              "Prompt": "TEXT_STMBDY001_02632_Q1_000_050",
+              "Answer": "TEXT_STMBDY001_02632_A1_000_051"
+            }
+          ]
+        },
+        {
+          "Position": {
+            "X": 21.067955,
+            "Y": -197.78902,
+            "Z": -155.23956
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "$": "Sui-no-Sato, NE inside",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 1019978,
+          "Position": {
+            "X": -227.86298,
+            "Y": -178.2102,
+            "Z": 185.74805
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -220.46619,
+            "Y": -193.02971,
+            "Z": 222.901
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "StopDistance": 1,
+          "Fly": true,
+          "ItemId": 2002243
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007920,
+          "Position": {
+            "X": -220.6607,
+            "Y": -192.49261,
+            "Z": 221.51514
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019978,
+          "Position": {
+            "X": -227.86298,
+            "Y": -178.2102,
+            "Z": 185.74805
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012406,
+          "Position": {
+            "X": 587.45703,
+            "Y": -50.811344,
+            "Z": 69.16907
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -793.8348,
+            "Y": -122.09079,
+            "Z": 577.7538
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+        },
+        {
+          "Position": {
+            "X": -802.08453,
+            "Y": -122.82994,
+            "Z": 577.8909
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 399
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006205,
+          "Position": {
+            "X": 729.21326,
+            "Y": 134.93542,
+            "Z": 150.89636
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818083
+        },
+        {
+          "DataId": 2006208,
+          "Position": {
+            "X": 98.89368,
+            "Y": 73.07532,
+            "Z": -174.36487
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818086
+        },
+        {
+          "Position": {
+            "X": -229.85187,
+            "Y": 107.00484,
+            "Z": -632.70197
+          },
+          "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 478
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 478,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Idyllshire"
+        },
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.3501,
+            "Y": 205.88956,
+            "Z": 23.483582
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008623,
+          "Position": {
+            "X": 24.887451,
+            "Y": 6.999997,
+            "Z": -80.03363
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008700,
+          "Position": {
+            "X": -132.52466,
+            "Y": 4.1,
+            "Z": -111.92493
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001484,
+          "Position": {
+            "X": 93.247925,
+            "Y": 0.34075317,
+            "Z": -272.60242
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1001605,
+          "Position": {
+            "X": 94.46863,
+            "Y": 0.34075314,
+            "Z": -272.60242
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 177.75328,
+            "Y": -1,
+            "Z": -316.30814
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006359,
+          "Position": {
+            "X": 177.203,
+            "Y": -1,
+            "Z": -317.86072
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009049,
+          "Position": {
+            "X": 187.54858,
+            "Y": -1,
+            "Z": -302.93738
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009049,
+          "Position": {
+            "X": 187.54858,
+            "Y": -1,
+            "Z": -302.93738
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest",
+          "Emote": "soothe"
+        }
+      ]
+    }
+  ]
+}

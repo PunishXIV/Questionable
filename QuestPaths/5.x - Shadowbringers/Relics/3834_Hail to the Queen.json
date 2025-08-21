@@ -1,0 +1,104 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1018994,
+                    "Position": {
+                        "X": 49.240845,
+                        "Y": 4.0000005,
+                        "Z": 55.77173
+                    },
+                    "TerritoryId": 628,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Kugane",
+                    "AethernetShortcut": [
+                        "[Kugane] Aetheryte Plaza",
+                        "[Kugane] Kogane Dori Markets"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1019070,
+                    "Position": {
+                        "X": 151.20166,
+                        "Y": 14.7757225,
+                        "Z": 95.78088
+                    },
+                    "TerritoryId": 628,
+                    "TargetTerritoryId": 639,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Kugane] Kogane Dori Markets",
+                        "[Kugane] The Ruby Bazaar"
+                    ]
+                },
+                {
+                    "DataId": 1020622,
+                    "Position": {
+                        "X": 0.045776367,
+                        "Y": 0,
+                        "Z": -2.3041382
+                    },
+                    "TerritoryId": 639,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1032866,
+                    "Position": {
+                        "X": 274.1283,
+                        "Y": 8.18297,
+                        "Z": -409.8421
+                    },
+                    "TerritoryId": 614,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Yanxia - House of the Fierce"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1032867,
+                    "Position": {
+                        "X": -258.53363,
+                        "Y": 53.217503,
+                        "Z": -644.8921
+                    },
+                    "TerritoryId": 614,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1032868,
+                    "Position": {
+                        "X": -258.59473,
+                        "Y": 53.217506,
+                        "Z": -644.8616
+                    },
+                    "TerritoryId": 614,
+                    "InteractionType": "CompleteQuest",
+                    "NextQuestId": 3835
+                }
+            ]
+        }
+    ]
+}

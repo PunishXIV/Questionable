@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014850,
+          "Position": {
+            "X": 634.51587,
+            "Y": 10.474376,
+            "Z": 77.50049
+          },
+          "StopDistance": 7,
+          "TerritoryId": 402,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012829,
+          "Position": {
+            "X": 641.90125,
+            "Y": 13.840106,
+            "Z": 506.95044
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012827,
+          "Position": {
+            "X": 228.22913,
+            "Y": 14.933587,
+            "Z": 553.97876
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4391,
+            4392,
+            4393,
+            4394,
+            4395,
+            4396
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012827,
+          "Position": {
+            "X": 228.22913,
+            "Y": 14.933587,
+            "Z": 553.97876
+          },
+          "TerritoryId": 402,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012834,
+          "Position": {
+            "X": -197.86377,
+            "Y": -102.78301,
+            "Z": 456.53467
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012421,
+          "Position": {
+            "X": 77.98877,
+            "Y": 203.98,
+            "Z": 127.91626
+          },
+          "StopDistance": 5,
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.840637,
+            "Y": 206.49944,
+            "Z": 28.67163
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1963
+        },
+        {
+          "Position": {
+            "X": 71.86769,
+            "Y": 204.99998,
+            "Z": 145.98666
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 399,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                399
+              ]
+            }
+          },
+          "$": "Skipped if already in the Hinterlands, since 'Taking Stock' already leaves you closer to the entrance to Matoya's cave"
+        },
+        {
+          "DataId": 2006214,
+          "Position": {
+            "X": -452.38422,
+            "Y": 138.10938,
+            "Z": 678.18713
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818092
+        },
+        {
+          "DataId": 1012423,
+          "Position": {
+            "X": -476.58502,
+            "Y": 137.42972,
+            "Z": 702.6931
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005532,
+          "Position": {
+            "X": -488.76178,
+            "Y": 138.99438,
+            "Z": 742.12244
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4375
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012423,
+          "Position": {
+            "X": -476.58502,
+            "Y": 137.42972,
+            "Z": 702.6931
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

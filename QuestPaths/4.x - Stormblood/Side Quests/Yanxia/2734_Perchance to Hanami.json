@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019262,
+          "Position": {
+            "X": 445.76172,
+            "Y": 58.67623,
+            "Z": -155.62683
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 445.76172,
+                  "Y": 58.67623,
+                  "Z": -155.62683
+                },
+                "TerritoryId": 614,
+                "MaximumDistance": 50
+              }
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008520,
+          "Position": {
+            "X": 476.85962,
+            "Y": 58.304688,
+            "Z": -178.08807
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2008521,
+          "Position": {
+            "X": 477.8667,
+            "Y": 59.098145,
+            "Z": -177.66083
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019302,
+          "Position": {
+            "X": -279.347,
+            "Y": 17.31996,
+            "Z": 498.49683
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2748
+        }
+      ]
+    }
+  ]
+}

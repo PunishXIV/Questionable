@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004883,
+          "Position": {
+            "X": 37.88806,
+            "Y": 1.2000012,
+            "Z": 4.135132
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_MANWIL302_00682_Q1_000_1",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002391,
+          "Position": {
+            "X": -144.39618,
+            "Y": 4.1,
+            "Z": -107.22516
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_MANWIL302_00682_Q2_000_1",
+              "Answer": "TEXT_MANWIL302_00682_A2_000_2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004887,
+          "Position": {
+            "X": 160.7843,
+            "Y": 54.85158,
+            "Z": -45.609253
+          },
+          "TerritoryId": 140,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          },
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002391,
+          "Position": {
+            "X": -144.39618,
+            "Y": 4.1,
+            "Z": -107.22516
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    }
+  ]
+}

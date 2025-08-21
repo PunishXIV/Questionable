@@ -1,0 +1,105 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024215,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024260,
+          "Position": {
+            "X": -131.9143,
+            "Y": -4.999999,
+            "Z": 181.75012
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Pier #1"]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 246.58658,
+            "Y": 6.193447,
+            "Z": 651.3461
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [8244, 8246],
+          "Fly": true,
+          "AethernetShortcut": ["[Kugane] Pier #1", "[Kugane] The Ruby Price"]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024264,
+          "Position": {
+            "X": 246.90613,
+            "Y": 6.054259,
+            "Z": 649.2561
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024267,
+          "Position": {
+            "X": -130.57153,
+            "Y": -4.999999,
+            "Z": 183.36768
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Pier #1"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024215,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    }
+  ]
+}

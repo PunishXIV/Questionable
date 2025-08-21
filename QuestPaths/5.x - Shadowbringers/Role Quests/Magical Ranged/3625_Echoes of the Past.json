@@ -1,0 +1,170 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 218.73804,
+                  "Y": 7.1558266,
+                  "Z": -249.1341
+                },
+                "MaximumDistance": 100,
+                "TerritoryId": 815
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030626,
+          "Position": {
+            "X": 331.62415,
+            "Y": 1.4685826,
+            "Z": -244.95312
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030627,
+          "Position": {
+            "X": 330.06775,
+            "Y": 1.4685818,
+            "Z": -164.0498
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030628,
+          "Position": {
+            "X": 407.6753,
+            "Y": -28.443933,
+            "Z": 260.8224
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030630,
+          "Position": {
+            "X": 368.39856,
+            "Y": -28.620693,
+            "Z": 353.78027
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030632,
+          "Position": {
+            "X": 550.225,
+            "Y": -45.678886,
+            "Z": 282.82593
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10838
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1030632,
+          "Position": {
+            "X": 550.225,
+            "Y": -45.678886,
+            "Z": 282.82593
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1030631,
+          "Position": {
+            "X": 367.72717,
+            "Y": -28.562725,
+            "Z": 356.19116
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true,
+          "NextQuestId": 3626
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006493,
+          "Position": {
+            "X": -437.67456,
+            "Y": -55.694504,
+            "Z": 100.87732
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006497,
+          "Position": {
+            "X": 321.1565,
+            "Y": -18.197807,
+            "Z": 276.5697
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    }
+  ]
+}

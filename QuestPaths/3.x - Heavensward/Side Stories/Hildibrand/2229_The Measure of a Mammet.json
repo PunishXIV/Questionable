@@ -1,0 +1,138 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016608,
+          "Position": {
+            "X": -261.0971,
+            "Y": -20.03499,
+            "Z": -66.11737
+          },
+          "StopDistance": 5,
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011225,
+          "Position": {
+            "X": -170.6112,
+            "Y": 16.979578,
+            "Z": -37.125244
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017133,
+          "Position": {
+            "X": 408.07202,
+            "Y": 195.66847,
+            "Z": 585.3512
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007180,
+          "Position": {
+            "X": 262.10425,
+            "Y": 163.31726,
+            "Z": 295.67407
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1017274,
+          "Position": {
+            "X": 164.53796,
+            "Y": 166.2741,
+            "Z": 181.32288
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1017274,
+          "Position": {
+            "X": 164.53796,
+            "Y": 166.2741,
+            "Z": 181.32288
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1017277,
+          "Position": {
+            "X": 163.13416,
+            "Y": 166.2741,
+            "Z": 179.4613
+          },
+          "StopDistance": 5,
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016619,
+          "Position": {
+            "X": -66.84979,
+            "Y": 8.05915,
+            "Z": 9.506287
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "NextQuestId": 2369
+        }
+      ]
+    }
+  ]
+}

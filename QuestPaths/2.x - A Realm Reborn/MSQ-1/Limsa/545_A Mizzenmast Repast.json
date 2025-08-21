@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "EquipItem",
+          "ItemId": 3760
+        },
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131094
+            }
+          ]
+        },
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2001010,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.449585,
+            "Z": 7.522644
+          },
+          "TerritoryId": 177,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 128
+        },
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131094
+            }
+          ]
+        },
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 198,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA009_00545_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

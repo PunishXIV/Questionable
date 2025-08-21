@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021879,
+          "Position": {
+            "X": 112.50476,
+            "Y": 3.6299736,
+            "Z": 60.837646
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008327,
+          "Position": {
+            "X": 59.40332,
+            "Y": 23.971863,
+            "Z": -5.6000977
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008328,
+          "Position": {
+            "X": -17.288513,
+            "Y": 5.4779663,
+            "Z": 29.709229
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 465.55804,
+            "Y": 203.43318,
+            "Z": 680.2831
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1021894,
+          "Position": {
+            "X": -217.82257,
+            "Y": 112.33306,
+            "Z": -243.94604
+          },
+          "TerritoryId": 397,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021836,
+          "Position": {
+            "X": 36.850464,
+            "Y": 6.999999,
+            "Z": -83.78735
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2566
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046667,
+          "Position": {
+            "X": 608.6365,
+            "Y": 119.49004,
+            "Z": 190.72253
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046810,
+          "Position": {
+            "X": -769.22253,
+            "Y": 124.35208,
+            "Z": 465.87305
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Earthenshire",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -899.7249,
+            "Y": 143.00594,
+            "Z": 472.3082
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 1187,
+          "Fly": true
+        },
+        {
+          "DataId": 1046814,
+          "Position": {
+            "X": 655.6953,
+            "Y": 83.46234,
+            "Z": 642.11475
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Urqopacha - Worlar's Echo"
+        },
+        {
+          "DataId": 1046819,
+          "Position": {
+            "X": 482.96326,
+            "Y": 114.935,
+            "Z": 622.76636
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046824,
+          "Position": {
+            "X": 358.87683,
+            "Y": 130.34726,
+            "Z": 597.2838
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047504,
+          "Position": {
+            "X": 371.14514,
+            "Y": 130.34726,
+            "Z": 610.3456
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

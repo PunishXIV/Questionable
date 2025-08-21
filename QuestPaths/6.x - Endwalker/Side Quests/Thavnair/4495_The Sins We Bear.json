@@ -1,0 +1,226 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041406,
+          "Position": {
+            "X": 405.02014,
+            "Y": 3.0593626,
+            "Z": -212.90918
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041407,
+          "Position": {
+            "X": 672.5414,
+            "Y": 41.21271,
+            "Z": 145.46423
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZF103_04495_Q1_000_016",
+              "Answer": "TEXT_AKTKZF103_04495_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041408,
+          "Position": {
+            "X": 523.7964,
+            "Y": 20.494349,
+            "Z": 346.8833
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 573.3712,
+            "Y": 22.500977,
+            "Z": 284.17334
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012455,
+          "Position": {
+            "X": 574.91406,
+            "Y": 24.979004,
+            "Z": 284.3518
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "IgnoreDistanceToObject": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": 603.8397,
+            "Y": 21.10483,
+            "Z": 233.13884
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012457,
+          "Position": {
+            "X": 604.60803,
+            "Y": 22.903748,
+            "Z": 233.63086
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 585.39026,
+            "Y": 36.73129,
+            "Z": 279.6089
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012456,
+          "Position": {
+            "X": 584.0084,
+            "Y": 38.254395,
+            "Z": 278.7976
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041408,
+          "Position": {
+            "X": 523.7964,
+            "Y": 20.494349,
+            "Z": 346.8833
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041402,
+          "Position": {
+            "X": 411.06274,
+            "Y": 3.1168792,
+            "Z": -268.6046
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZF103_04495_Q2_000_045",
+              "Answer": "TEXT_AKTKZF103_04495_A2_000_001"
+            }
+          ],
+          "NextQuestId": 4496
+        }
+      ]
+    }
+  ]
+}

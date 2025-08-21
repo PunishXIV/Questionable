@@ -1,0 +1,173 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016087,
+          "Position": {
+            "X": -796.7498,
+            "Y": -133.2695,
+            "Z": -410.6966
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012064,
+          "Position": {
+            "X": -542.7787,
+            "Y": -37.11544,
+            "Z": -386.7094
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016174,
+          "Position": {
+            "X": -606.4088,
+            "Y": -51.071037,
+            "Z": -370.87054
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -589.2831,
+            "Y": -1.0348412,
+            "Z": -340.14413
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "Position": {
+            "X": -589.2831,
+            "Y": -1.0348412,
+            "Z": -340.14413
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016174,
+          "Position": {
+            "X": -606.4088,
+            "Y": -51.071037,
+            "Z": -370.87054
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1016175,
+          "Position": {
+            "X": 657.557,
+            "Y": -125.6886,
+            "Z": 307.60657
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 702.4233,
+            "Y": -60.78939,
+            "Z": 145.91805
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "Position": {
+            "X": 702.4233,
+            "Y": -60.78939,
+            "Z": 145.91805
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1016175,
+          "Position": {
+            "X": 657.557,
+            "Y": -125.6886,
+            "Z": 307.60657
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016174,
+          "Position": {
+            "X": -606.4088,
+            "Y": -51.071037,
+            "Z": -370.87054
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030477,
+          "Position": {
+            "X": -594.6593,
+            "Y": -266.7698,
+            "Z": 338.70447
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030478,
+          "Position": {
+            "X": -654.35266,
+            "Y": -250.89601,
+            "Z": 475.76086
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -450.6779,
+            "Y": -250.89601,
+            "Z": 400.94394
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -361.26102,
+            "Y": -260.1766,
+            "Z": 280.9178
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "$": "Bureau of the Architect, Concept Clerk"
+        },
+        {
+          "DataId": 1027777,
+          "Position": {
+            "X": -355.2453,
+            "Y": -260.17664,
+            "Z": 278.6754
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -85.3181,
+            "Y": -281.24854,
+            "Z": 423.48425
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
+            10304
+          ],
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatItemUse": {
+            "ItemId": 2002613,
+            "Condition": "Health%",
+            "Value": 30
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -361.26102,
+            "Y": -260.1766,
+            "Z": 280.9178
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "$": "Bureau of the Architect, Concept Clerk"
+        },
+        {
+          "DataId": 1027777,
+          "Position": {
+            "X": -355.2453,
+            "Y": -260.17664,
+            "Z": 278.6754
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038501,
+          "Position": {
+            "X": -367.3305,
+            "Y": 21.846018,
+            "Z": -102.983154
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011719,
+          "Position": {
+            "X": -102.1897,
+            "Y": -7.0039062,
+            "Z": -59.92218
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038506,
+          "Position": {
+            "X": -142.2904,
+            "Y": -4.7500057,
+            "Z": 199.6643
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Pier #1"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038507,
+          "Position": {
+            "X": 52.750366,
+            "Y": 8.02,
+            "Z": 152.81909
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Pier #1",
+            "[Kugane] Thavnairian Consulate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2011720,
+          "Position": {
+            "X": 129.5033,
+            "Y": 24.979004,
+            "Z": 15.701477
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Thavnairian Consulate",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 628,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 35847,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1038508,
+          "Position": {
+            "X": 114.70203,
+            "Y": 12,
+            "Z": 35.965454
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1038510,
+          "Position": {
+            "X": -92.24078,
+            "Y": 11.799999,
+            "Z": -156.05408
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Bokairo Inn"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038501,
+          "Position": {
+            "X": -367.3305,
+            "Y": 21.846018,
+            "Z": -102.983154
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "NextQuestId": 4158
+        }
+      ]
+    }
+  ]
+}

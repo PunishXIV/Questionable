@@ -1,0 +1,220 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050471,
+          "Position": {
+            "X": 494.7433,
+            "Y": 59.55,
+            "Z": 125.10864
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] True Vue"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013724,
+          "Position": {
+            "X": 498.34436,
+            "Y": 60.593506,
+            "Z": 129.13708
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1223,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1223
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1053740,
+          "Position": {
+            "X": 4.8675537,
+            "Y": 0,
+            "Z": -6.5462036
+          },
+          "TerritoryId": 1223,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014718,
+          "Position": {
+            "X": 3.0975342,
+            "Y": -0.015319824,
+            "Z": -6.3325195
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 1223,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -368.6605,
+            "Y": 14.000002,
+            "Z": 137.47444
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Solution Nine] True Vue",
+            "[Solution Nine] Residential Sector"
+          ]
+        },
+        {
+          "Position": {
+            "X": -259.1231,
+            "Y": 2.2290611,
+            "Z": 206.59184
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1053743,
+          "Position": {
+            "X": -231.61676,
+            "Y": 2.1997917,
+            "Z": 302.60156
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -245.43587,
+            "Y": 2.19987,
+            "Z": 265.6901
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013724,
+          "Position": {
+            "X": 498.34436,
+            "Y": 60.593506,
+            "Z": 129.13708
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Residential Sector",
+            "[Solution Nine] True Vue"
+          ],
+          "TargetTerritoryId": 1223,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1223
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1053740,
+          "Position": {
+            "X": 4.8675537,
+            "Y": 0,
+            "Z": -6.5462036
+          },
+          "TerritoryId": 1223,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2013725,
+          "Position": {
+            "X": 4.0740967,
+            "Y": 0.8086548,
+            "Z": 10.574402
+          },
+          "TerritoryId": 1223,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1223
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1049787,
+          "Position": {
+            "X": 364.3396,
+            "Y": 60.125,
+            "Z": 357.1068
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] True Vue",
+            "[Solution Nine] The Arcadion"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGRA201_05289_SYSTEM_100_171",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053745,
+          "Position": {
+            "X": 1.6326294,
+            "Y": -2.9191749E-12,
+            "Z": -12.466675
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1224,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5290
+        }
+      ]
+    }
+  ]
+}

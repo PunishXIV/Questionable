@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048158,
+          "Position": {
+            "X": -4.837158,
+            "Y": -3.4458935E-08,
+            "Z": 5.8441772
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013767,
+          "Position": {
+            "X": -99.321045,
+            "Y": 99.99231,
+            "Z": -193.89642
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Vollok Shoonsa"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047794,
+          "Position": {
+            "X": -32.974792,
+            "Y": 95.5,
+            "Z": -79.02649
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047797,
+          "Position": {
+            "X": 120.10376,
+            "Y": 47,
+            "Z": -129.38129
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047800,
+          "Position": {
+            "X": 42.038574,
+            "Y": 46.999996,
+            "Z": -290.15033
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047803,
+          "Position": {
+            "X": 123.552246,
+            "Y": 42,
+            "Z": -341.75635
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047803,
+          "Position": {
+            "X": 123.552246,
+            "Y": 42,
+            "Z": -341.75635
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

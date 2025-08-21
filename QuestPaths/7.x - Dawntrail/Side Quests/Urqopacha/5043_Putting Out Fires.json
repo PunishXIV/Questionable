@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048761,
+          "Position": {
+            "X": -499.71774,
+            "Y": 59.95439,
+            "Z": 130.93762
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014126,
+          "Position": {
+            "X": -182.69635,
+            "Y": 51.68225,
+            "Z": 164.56848
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Instruction",
+          "Fly": true,
+          "Comment": "TODO Needs item use",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014125,
+          "Position": {
+            "X": -161.57782,
+            "Y": 39.902344,
+            "Z": 252.39941
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2014127,
+          "Position": {
+            "X": -239.36829,
+            "Y": 49.79016,
+            "Z": 343.52625
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Instruction",
+          "Fly": true,
+          "Comment": "TODO Needs item use",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048761,
+          "Position": {
+            "X": -499.71774,
+            "Y": 59.95439,
+            "Z": 130.93762
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

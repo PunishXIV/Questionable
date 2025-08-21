@@ -1,0 +1,158 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "Position": {
+        "X": 491.82068,
+        "Y": 3.9304812,
+        "Z": 487.9401
+      },
+      "TerritoryId": 816,
+      "InteractionType": "WalkTo",
+      "AetheryteShortcut": "Il Mheg - Lydha Lran",
+      "Fly": true,
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    },
+    {
+      "Position": {
+        "X": 506.00256,
+        "Y": -37.76961,
+        "Z": 485.49347
+      },
+      "TerritoryId": 816,
+      "InteractionType": "WalkTo",
+      "Fly": true,
+      "DisableNavmesh": true
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32836,
+          "Locations": [
+            {
+              "Position": {
+                "X": 539.5437,
+                "Y": -81.62054,
+                "Z": 520.1647
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 165
+            },
+            {
+              "Position": {
+                "X": 555.8599,
+                "Y": -73.65717,
+                "Z": 494.6164
+              },
+              "MinimumAngle": 35,
+              "MaximumAngle": 240
+            },
+            {
+              "Position": {
+                "X": 576.4164,
+                "Y": -69.75835,
+                "Z": 512.9263
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 70
+            }
+          ]
+        },
+        {
+          "DataId": 32835,
+          "Locations": [
+            {
+              "Position": {
+                "X": 552.5504,
+                "Y": -78.23183,
+                "Z": 512.429
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 135
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32838,
+          "Locations": [
+            {
+              "Position": {
+                "X": 652.7063,
+                "Y": -46.64378,
+                "Z": 488.4543
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 120
+            },
+            {
+              "Position": {
+                "X": 669.2959,
+                "Y": -47.14824,
+                "Z": 513.9606
+              },
+              "MinimumAngle": -20,
+              "MaximumAngle": 105
+            }
+          ]
+        },
+        {
+          "DataId": 32837,
+          "Locations": [
+            {
+              "Position": {
+                "X": 659.1685,
+                "Y": -46.65159,
+                "Z": 499.8015
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32834,
+          "Locations": [
+            {
+              "Position": {
+                "X": 576.1583,
+                "Y": -46.68682,
+                "Z": 375.5306
+              },
+              "MinimumAngle": -40,
+              "MaximumAngle": 150
+            }
+          ]
+        },
+        {
+          "DataId": 32833,
+          "Locations": [
+            {
+              "Position": {
+                "X": 571.1834,
+                "Y": -46.41214,
+                "Z": 360.5112
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 115
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

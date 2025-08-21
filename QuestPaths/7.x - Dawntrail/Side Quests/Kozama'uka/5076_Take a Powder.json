@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048857,
+          "Position": {
+            "X": -515.7092,
+            "Y": 122.40314,
+            "Z": 342.9159
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048843,
+          "Position": {
+            "X": 588.7998,
+            "Y": 121.14124,
+            "Z": 176.98938
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048857,
+          "Position": {
+            "X": -515.7092,
+            "Y": 122.40314,
+            "Z": 342.9159
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+        }
+      ]
+    }
+  ]
+}

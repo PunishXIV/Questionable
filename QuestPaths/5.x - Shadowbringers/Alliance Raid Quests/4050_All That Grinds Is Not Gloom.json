@@ -1,0 +1,150 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036042,
+          "Position": {
+            "X": 655.1765,
+            "Y": 297.57593,
+            "Z": -171.31305
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKTA521_04050_Q1_000_000",
+              "Answer": "TEXT_LUCKTA521_04050_A1_000_002"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKTA521_04050_Q2_000_000",
+              "Answer": "TEXT_LUCKTA521_04050_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010832,
+          "Position": {
+            "X": 738.3076,
+            "Y": 285.60303,
+            "Z": -82.871826
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 895,
+          "Fly": true
+        },
+        {
+          "DataId": 2010830,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.2664795,
+            "Z": -94.86542
+          },
+          "TerritoryId": 895,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 896
+        },
+        {
+          "Position": {
+            "X": -499.9735,
+            "Y": 463.36023,
+            "Z": 177.62115
+          },
+          "TerritoryId": 896,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -499.9782,
+            "Y": 400.99997,
+            "Z": 4.3087606
+          },
+          "TerritoryId": 896,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -557.9587,
+            "Y": 383,
+            "Z": -141.83781
+          },
+          "TerritoryId": 896,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 2011457,
+          "Position": {
+            "X": -643.4882,
+            "Y": 338.39917,
+            "Z": -353.8415
+          },
+          "TerritoryId": 896,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 2,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2011456,
+          "Position": {
+            "X": -679.56055,
+            "Y": 335.31702,
+            "Z": -307.88135
+          },
+          "TerritoryId": 896,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036042,
+          "Position": {
+            "X": 655.1765,
+            "Y": 297.57593,
+            "Z": -171.31305
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

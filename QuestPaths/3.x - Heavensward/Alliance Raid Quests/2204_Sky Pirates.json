@@ -1,0 +1,104 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016125,
+          "Position": {
+            "X": 146.16614,
+            "Y": -12.634914,
+            "Z": -27.420471
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012055,
+          "Position": {
+            "X": -656.76355,
+            "Y": -117.32357,
+            "Z": 492.78992
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -884.77277,
+            "Y": -36.27771,
+            "Z": 11.526271
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1016124,
+          "Position": {
+            "X": -887.9072,
+            "Y": -36.68469,
+            "Z": 11.428955
+          },
+          "StopDistance": 5,
+          "TerritoryId": 401,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016130,
+          "Position": {
+            "X": -815.7931,
+            "Y": -88.52015,
+            "Z": -835.2941
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNM101_02204_Q1_000_000",
+              "Answer": "TEXT_HEAVNM101_02204_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016119,
+          "Position": {
+            "X": 147.11218,
+            "Y": -14.525106,
+            "Z": -864.4083
+          },
+          "StopDistance": 7,
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2205
+        }
+      ]
+    }
+  ]
+}

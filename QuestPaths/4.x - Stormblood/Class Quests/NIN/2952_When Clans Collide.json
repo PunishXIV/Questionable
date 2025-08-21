@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "xan",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023570,
+          "Position": {
+            "X": 413.0769,
+            "Y": 68.02851,
+            "Z": -99.321045
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBNIN700_02952_Q1_100_004",
+              "Answer": "TEXT_JOBNIN700_02952_A1_100_005"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008939,
+          "Position": {
+            "X": -174.60901,
+            "Y": 1.1138916,
+            "Z": 767.5134
+          },
+          "TerritoryId": 622,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -174.60901,
+                  "Y": 1.1138916,
+                  "Z": 767.5134
+                },
+                "MaximumDistance": 100,
+                "TerritoryId": 622
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "DockStorehouse"
+            }
+          },
+          "TargetTerritoryId": 137
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2949
+        }
+      ]
+    }
+  ]
+}

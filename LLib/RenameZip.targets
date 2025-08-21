@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <Target Name="RenameLatestZip" AfterTargets="PackagePlugin" Condition="'$(Configuration)' == 'Release'">
+        <Exec Condition="$([MSBuild]::IsOSPlatform('Windows'))"
+              Command="rename &quot;$(OutDir)$(AssemblyName)\latest.zip&quot; &quot;$(AssemblyName)-$(Version).zip&quot;"/>
+    </Target>
+</Project>

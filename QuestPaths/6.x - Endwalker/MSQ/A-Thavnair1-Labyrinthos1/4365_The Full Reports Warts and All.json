@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038731,
+          "Position": {
+            "X": 324.84924,
+            "Y": 97.07327,
+            "Z": -282.21564
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 304.306,
+            "Y": 84.01365,
+            "Z": -292.01114
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1038736,
+          "Position": {
+            "X": 177.26404,
+            "Y": 56.63088,
+            "Z": -411.5511
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038738,
+          "Position": {
+            "X": 177.05042,
+            "Y": 56.567654,
+            "Z": -409.41486
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -156.15488,
+            "Y": 81.17488,
+            "Z": -534.99316
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038740,
+          "Position": {
+            "X": -256.27533,
+            "Y": 79.75535,
+            "Z": -502.12863
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

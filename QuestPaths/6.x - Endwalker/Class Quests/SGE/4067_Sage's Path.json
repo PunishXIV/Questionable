@@ -1,0 +1,79 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039243,
+          "Position": {
+            "X": -90.28766,
+            "Y": 20,
+            "Z": 85.55737
+          },
+          "StopDistance": 5,
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039265,
+          "Position": {
+            "X": -27.542603,
+            "Y": 42.597717,
+            "Z": 163.7445
+          },
+          "StopDistance": 5,
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039265,
+          "Position": {
+            "X": -27.542603,
+            "Y": 42.597717,
+            "Z": 163.7445
+          },
+          "StopDistance": 5,
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKBB101_04067_Q3_000_000",
+              "ExcelSheet": "quest/040/AktKbb101_04067",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

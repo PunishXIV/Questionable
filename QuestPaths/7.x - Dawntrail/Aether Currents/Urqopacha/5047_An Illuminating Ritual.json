@@ -1,0 +1,176 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048730,
+          "Position": {
+            "X": 399.0692,
+            "Y": 122.53533,
+            "Z": 542.9922
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014132,
+          "Position": {
+            "X": 396.01733,
+            "Y": 123.88794,
+            "Z": 546.53235
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014132,
+          "Position": {
+            "X": 396.01733,
+            "Y": 123.88794,
+            "Z": 546.53235
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014133,
+          "Position": {
+            "X": 387.59436,
+            "Y": 131.0597,
+            "Z": 640.772
+          },
+          "StopDistance": 3,
+          "IgnoreDistanceToObject": true,
+          "TerritoryId": 1187,
+          "InteractionType": "UseItem",
+          "ItemId": 2003618,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014135,
+          "Position": {
+            "X": 489.95178,
+            "Y": 114.4884,
+            "Z": 698.3596
+          },
+          "StopDistance": 3,
+          "IgnoreDistanceToObject": true,
+          "TerritoryId": 1187,
+          "InteractionType": "UseItem",
+          "ItemId": 2003618,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 530.3024,
+            "Y": 111.13472,
+            "Z": 604.9302
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 533.03186,
+              "Y": 112.241264,
+              "Z": 603.3909
+            },
+            "DelaySeconds": 0.25
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2014134,
+          "Position": {
+            "X": 533.53174,
+            "Y": 114.24426,
+            "Z": 603.0823
+          },
+          "StopDistance": 3,
+          "IgnoreDistanceToObject": true,
+          "TerritoryId": 1187,
+          "InteractionType": "UseItem",
+          "ItemId": 2003618,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 415.27682,
+            "Y": 122.535,
+            "Z": 564.56915
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1048730,
+          "Position": {
+            "X": 399.0692,
+            "Y": 122.53533,
+            "Z": 542.9922
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

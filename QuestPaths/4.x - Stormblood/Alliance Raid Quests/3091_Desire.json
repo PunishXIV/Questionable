@@ -1,0 +1,80 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025729,
+          "Position": {
+            "X": -12.222534,
+            "Y": 0.046870727,
+            "Z": -3.2197266
+          },
+          "TerritoryId": 735,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025652,
+          "Position": {
+            "X": -10.8797,
+            "Y": 0.046870843,
+            "Z": -4.3793945
+          },
+          "StopDistance": 7,
+          "TerritoryId": 735,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDI203_03091_Q1_000_000",
+              "Answer": "TEXT_STMBDI203_03091_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009477,
+          "Position": {
+            "X": -198.6877,
+            "Y": 17.56311,
+            "Z": 208.484
+          },
+          "TerritoryId": 787,
+          "InteractionType": "Snipe",
+          "Comment": "Far on the left"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025741,
+          "Position": {
+            "X": 1.449585,
+            "Y": -2.256812E-06,
+            "Z": -9.658997
+          },
+          "StopDistance": 5,
+          "TerritoryId": 736,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3092
+        }
+      ]
+    }
+  ]
+}

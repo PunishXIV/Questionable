@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048783,
+          "Position": {
+            "X": -269.91687,
+            "Y": 5.9870257,
+            "Z": -431.47937
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050705,
+          "Position": {
+            "X": -218.24988,
+            "Y": 0.4,
+            "Z": -41.519836
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17659
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050705,
+          "Position": {
+            "X": -218.24988,
+            "Y": 0.4,
+            "Z": -41.519836
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048783,
+          "Position": {
+            "X": -269.91687,
+            "Y": 5.9870257,
+            "Z": -431.47937
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

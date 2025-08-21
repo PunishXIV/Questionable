@@ -1,0 +1,182 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023650,
+          "Position": {
+            "X": 404.53186,
+            "Y": 19.5081,
+            "Z": 755.6113
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023683,
+          "Position": {
+            "X": 466.88025,
+            "Y": 30.398874,
+            "Z": 792.813
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019168,
+          "Position": {
+            "X": 501.33508,
+            "Y": 34.0062,
+            "Z": 781.70435
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2673
+        },
+        {
+          "Position": {
+            "X": 553.3004,
+            "Y": 0.94003797,
+            "Z": 833.7598
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1019915,
+          "Position": {
+            "X": 576.5315,
+            "Y": 0.94003797,
+            "Z": 849.3323
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA303_02479_Q1_000_021",
+              "Answer": "TEXT_STMBDA303_02479_A1_000_022"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1019919,
+          "Position": {
+            "X": -711.32983,
+            "Y": -0.10000001,
+            "Z": -301.83875
+          },
+          "StopDistance": 5,
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1019923,
+          "Position": {
+            "X": -742.79395,
+            "Y": 2.129947,
+            "Z": -312.3064
+          },
+          "StopDistance": 5,
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -462.84192,
+            "Y": -0.3000002,
+            "Z": -533.4066
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1019925,
+          "Position": {
+            "X": -423.78882,
+            "Y": 3.201082,
+            "Z": -545.89154
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -436.89062,
+            "Y": 1.4498298,
+            "Z": -547.5498
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            8029
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1019928,
+          "Position": {
+            "X": -228.93109,
+            "Y": 0.39421302,
+            "Z": -530.44934
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019930,
+          "Position": {
+            "X": -58.335266,
+            "Y": 1.9963632,
+            "Z": -597.0703
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

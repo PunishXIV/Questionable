@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051263,
+          "Position": {
+            "X": -521.0193,
+            "Y": 121.63345,
+            "Z": 319.38647
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051266,
+          "Position": {
+            "X": 565.8197,
+            "Y": 115.49999,
+            "Z": 195.30017
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 627.93854,
+            "Y": 110.09355,
+            "Z": 334.26776
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            17244
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051266,
+          "Position": {
+            "X": 565.8197,
+            "Y": 115.49999,
+            "Z": 195.30017
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051267,
+          "Position": {
+            "X": -447.5014,
+            "Y": 122.95055,
+            "Z": 343.099
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Earthenshire",
+          "NextQuestId": 5088
+        }
+      ]
+    }
+  ]
+}

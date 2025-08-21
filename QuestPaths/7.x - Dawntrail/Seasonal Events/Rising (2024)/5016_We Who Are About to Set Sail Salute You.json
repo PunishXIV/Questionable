@@ -1,0 +1,128 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051007,
+          "Position": {
+            "X": 2.2735596,
+            "Y": 44.499992,
+            "Z": 125.200195
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051008,
+          "Position": {
+            "X": 2.5481567,
+            "Y": 43.999977,
+            "Z": -206.71399
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Marauders' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051009,
+          "Position": {
+            "X": 1.5106201,
+            "Y": 44,
+            "Z": -205.8595
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "StopDistance": 5
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014210,
+          "Position": {
+            "X": -176.62323,
+            "Y": 40.97046,
+            "Z": 185.35132
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051010,
+          "Position": {
+            "X": -178.11859,
+            "Y": 40.999958,
+            "Z": 184.67993
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051011,
+          "Position": {
+            "X": -178.63745,
+            "Y": 40.999916,
+            "Z": 186.3584
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_FESANX002_05016_Q52_000_082",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

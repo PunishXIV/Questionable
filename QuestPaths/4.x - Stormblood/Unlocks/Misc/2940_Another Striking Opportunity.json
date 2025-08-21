@@ -1,0 +1,47 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023642,
+          "Position": {
+            "X": 53.787964,
+            "Y": 0,
+            "Z": 93.0647
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022849,
+          "Position": {
+            "X": 429.37354,
+            "Y": 60.51156,
+            "Z": -506.82846
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Fringes Gate"
+          ],
+          "NextQuestId": 3601
+        }
+      ]
+    }
+  ]
+}

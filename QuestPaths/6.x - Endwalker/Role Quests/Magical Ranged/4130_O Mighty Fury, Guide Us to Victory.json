@@ -1,0 +1,153 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011223,
+          "Position": {
+            "X": 114.579956,
+            "Y": 24.412834,
+            "Z": -11.062805
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKBA541_04130_SYSTEM_000_501",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                1001
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                1001
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1037016,
+          "Position": {
+            "X": 1.1749268,
+            "Y": 0,
+            "Z": -6.3935547
+          },
+          "TerritoryId": 1001,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037043,
+          "Position": {
+            "X": 11.001709,
+            "Y": 11.965152,
+            "Z": 52.384155
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1037043,
+          "Position": {
+            "X": 11.001709,
+            "Y": 11.965152,
+            "Z": 52.384155
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1037043,
+          "Position": {
+            "X": 10.079511,
+            "Y": 15.96505,
+            "Z": -7.351647
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1037043,
+          "Position": {
+            "X": 0.16652964,
+            "Y": 26.965057,
+            "Z": -98.31793
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1037044,
+          "Position": {
+            "X": -1.6327515,
+            "Y": 35.344902,
+            "Z": -188.55579
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037015,
+          "Position": {
+            "X": 0.045776367,
+            "Y": 0,
+            "Z": -7.1260376
+          },
+          "TerritoryId": 1001,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4131
+        }
+      ]
+    }
+  ]
+}

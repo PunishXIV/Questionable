@@ -1,0 +1,136 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 7.095398,
+                                    "Y": 16.167778,
+                                    "Z": -188.67786
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005932,
+                    "Position": {
+                        "X": -1.236023,
+                        "Y": 33.38838,
+                        "Z": -244.19019
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_BANKOB110_01334_Q1_000_000",
+                            "Answer": "TEXT_BANKOB110_01334_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 2003950,
+                    "Position": {
+                        "X": 49.973267,
+                        "Y": 49.332397,
+                        "Z": -342.67188
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 2003954,
+                    "Position": {
+                        "X": 48.081177,
+                        "Y": 48.599854,
+                        "Z": -346.21198
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "FinishCombatIfAny",
+                    "KillEnemyDataIds": [ 2871 ]
+                },
+                {
+                    "DataId": 2003954,
+                    "Position": {
+                        "X": 48.081177,
+                        "Y": 48.599854,
+                        "Z": -346.21198
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        17
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1005932,
+                    "Position": {
+                        "X": -1.236023,
+                        "Y": 33.38838,
+                        "Z": -244.19019
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

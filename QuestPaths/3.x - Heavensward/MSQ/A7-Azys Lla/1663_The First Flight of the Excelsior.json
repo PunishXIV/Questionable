@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012430,
+          "Position": {
+            "X": 165.94177,
+            "Y": -14.34896,
+            "Z": 51.651733
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012431,
+          "Position": {
+            "X": 180.16321,
+            "Y": -16.028961,
+            "Z": 34.6532
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012430,
+          "Position": {
+            "X": 165.94177,
+            "Y": -14.34896,
+            "Z": 51.651733
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012854,
+          "Position": {
+            "X": -861.84485,
+            "Y": -184.293,
+            "Z": -659.2356
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 402,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Azys Lla - Helix"
+        },
+        {
+          "DataId": 1012792,
+          "Position": {
+            "X": -650.1717,
+            "Y": -176.45021,
+            "Z": -565.14844
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

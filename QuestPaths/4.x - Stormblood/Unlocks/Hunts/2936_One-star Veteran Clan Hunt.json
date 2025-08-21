@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019007,
+          "Position": {
+            "X": -42.526978,
+            "Y": -2.9,
+            "Z": -47.959167
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019009,
+          "Position": {
+            "X": -29.160034,
+            "Y": 0.09999966,
+            "Z": -46.189087
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2937
+        }
+      ]
+    }
+  ]
+}

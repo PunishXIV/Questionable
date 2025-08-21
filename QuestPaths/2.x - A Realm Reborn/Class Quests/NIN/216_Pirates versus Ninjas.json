@@ -1,0 +1,66 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "xan",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true },
+            "StepIf": {
+              "ExtraCondition": "DockStorehouse"
+            }
+          },
+          "TargetTerritoryId": 137
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBNIN400_00216_Q1_000_000",
+              "Answer": "TEXT_JOBNIN400_00216_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010619,
+          "Position": {
+            "X": 473.13635,
+            "Y": 16.492989,
+            "Z": 67.33801
+          },
+          "TerritoryId": 139,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          },
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 217
+        }
+      ]
+    }
+  ]
+}

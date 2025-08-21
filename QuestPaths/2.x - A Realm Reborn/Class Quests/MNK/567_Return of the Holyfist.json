@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003830,
+          "Position": {
+            "X": -301.5335,
+            "Y": 5.0000005,
+            "Z": 471.3053
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -262.6409,
+            "Y": 14.190942,
+            "Z": 594.23486
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatDelaySecondsAtStart": 0,
+          "ComplexCombatData": [
+            {
+              "DataId": 357,
+              "MinimumKillCount": 5
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003830,
+          "Position": {
+            "X": -301.5335,
+            "Y": 5.0000005,
+            "Z": 471.3053
+          },
+          "TerritoryId": 146,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003890,
+          "Position": {
+            "X": -21.805176,
+            "Y": 3.9999993,
+            "Z": -145.18964
+          },
+          "TerritoryId": 130,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Index": 1
+          },
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

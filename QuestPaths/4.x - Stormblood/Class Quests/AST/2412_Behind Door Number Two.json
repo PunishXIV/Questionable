@@ -1,0 +1,165 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021262,
+          "Position": {
+            "X": 98.10022,
+            "Y": 4.0000014,
+            "Z": 87.44946
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 98.10022,
+                  "Y": 4.0000014,
+                  "Z": 87.44946
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021273,
+          "Position": {
+            "X": 469.84045,
+            "Y": 69.6416,
+            "Z": -68.37573
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021274,
+          "Position": {
+            "X": -413.77893,
+            "Y": 55.093624,
+            "Z": 305.83655
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "StopDistance": 4,
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBAST680_02412_Q1_000_024",
+              "Yes": true
+            }
+          ],
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7236
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021274,
+          "Position": {
+            "X": -413.77893,
+            "Y": 55.093624,
+            "Z": 305.83655
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021054,
+          "Position": {
+            "X": -36.66742,
+            "Y": 14.000003,
+            "Z": -58.457336
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "StopDistance": 4,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021262,
+          "Position": {
+            "X": 98.10022,
+            "Y": 4.0000014,
+            "Z": 87.44946
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 98.10022,
+                  "Y": 4.0000014,
+                  "Z": 87.44946
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          },
+          "NextQuestId": 2413
+        }
+      ]
+    }
+  ]
+}

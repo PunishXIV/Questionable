@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031746,
+          "Position": {
+            "X": -4.043701,
+            "Y": -5.091193,
+            "Z": -98.19183
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027306,
+          "Position": {
+            "X": -294.94165,
+            "Y": 18.10139,
+            "Z": 403.5553
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028319,
+          "Position": {
+            "X": -454.7036,
+            "Y": 65.77815,
+            "Z": 58.27417
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 814,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1031751,
+          "Position": {
+            "X": -468.77246,
+            "Y": 334.0526,
+            "Z": -35.05005
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031753,
+          "Position": {
+            "X": -159.19745,
+            "Y": 352.35825,
+            "Z": -212.51245
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027462,
+          "Position": {
+            "X": -121.87384,
+            "Y": 352.35822,
+            "Z": -191.08875
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1031748,
+          "Position": {
+            "X": -61.417603,
+            "Y": 378.34897,
+            "Z": -454.03223
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031760,
+          "Position": {
+            "X": -60.04431,
+            "Y": 377.92743,
+            "Z": -451.6518
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

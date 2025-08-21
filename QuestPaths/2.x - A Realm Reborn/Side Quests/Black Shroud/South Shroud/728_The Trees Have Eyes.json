@@ -1,0 +1,139 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000594,
+          "Position": {
+            "X": -167.92554,
+            "Y": 9.869228,
+            "Z": -76.70715
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -167.31592,
+            "Y": 5.486305,
+            "Z": 15.132226
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 3,
+              "MinimumKillCount": 4,
+              "RewardItemId": 2000582,
+              "RewardItemCount": 4
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            4,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": -119.055,
+            "Y": 4.8576365,
+            "Z": -28.191822
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 23,
+              "MinimumKillCount": 2,
+              "RewardItemId": 2000583,
+              "RewardItemCount": 2
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            32,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002258,
+          "Position": {
+            "X": 42.923584,
+            "Y": 4.2266846,
+            "Z": 48.05066
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002258,
+          "Position": {
+            "X": 42.923584,
+            "Y": 4.2266846,
+            "Z": 48.05066
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2002258,
+          "Position": {
+            "X": 42.923584,
+            "Y": 4.2266846,
+            "Z": 48.05066
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Emote",
+          "Emote": "kneel"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000594,
+          "Position": {
+            "X": -167.92554,
+            "Y": 9.869228,
+            "Z": -76.70715
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000768,
+          "Position": {
+            "X": 172.35059,
+            "Y": 15.5,
+            "Z": -89.951965
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 157.92119,
+            "Y": 15.700001,
+            "Z": -122.177925
+          },
+          "TerritoryId": 133,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1000238,
+          "Position": {
+            "X": 155.41309,
+            "Y": 15.700001,
+            "Z": -121.812805
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 162.74281,
+            "Y": 15.699926,
+            "Z": -59.43834
+          },
+          "TerritoryId": 133,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1000218,
+          "Position": {
+            "X": 164.72107,
+            "Y": 15.699947,
+            "Z": -58.18268
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1000214,
+          "Position": {
+            "X": 151.4762,
+            "Y": 15.699964,
+            "Z": -63.920105
+          },
+          "StopDistance": 5,
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000248,
+          "Position": {
+            "X": 143.05322,
+            "Y": 14.250365,
+            "Z": -250.72101
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Leatherworkers' Guild & Shaded Bower",
+            "[Gridania] Lancers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

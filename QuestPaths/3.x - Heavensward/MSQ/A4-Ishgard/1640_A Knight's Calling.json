@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012780,
+          "Position": {
+            "X": 86.38135,
+            "Y": 23.979128,
+            "Z": 12.802246
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012778,
+          "Position": {
+            "X": 84.58069,
+            "Y": 23.979126,
+            "Z": 10.452393
+          },
+          "StopDistance": 5,
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012212,
+          "Position": {
+            "X": -6.790344,
+            "Y": 42.34489,
+            "Z": -207.04968
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Tribunal"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 419,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 34,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1012212,
+          "Position": {
+            "X": -6.790344,
+            "Y": 42.34489,
+            "Z": -207.04968
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1013101,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013227,
+          "Position": {
+            "X": 14.877502,
+            "Y": 16.009666,
+            "Z": -4.196289
+          },
+          "StopDistance": 5,
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

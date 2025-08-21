@@ -1,0 +1,68 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020439,
+          "Position": {
+            "X": -355.55048,
+            "Y": 7.9999094,
+            "Z": 38.712036
+          },
+          "StopDistance": 6,
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020553,
+          "Position": {
+            "X": -612.66504,
+            "Y": 130.14716,
+            "Z": -480.36932
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020401,
+          "Position": {
+            "X": -473.16705,
+            "Y": 98.582886,
+            "Z": -349.05017
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020354,
+          "Position": {
+            "X": -605.2186,
+            "Y": 130,
+            "Z": -506.2486
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

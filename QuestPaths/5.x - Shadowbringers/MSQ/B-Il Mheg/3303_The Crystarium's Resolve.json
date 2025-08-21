@@ -1,0 +1,110 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028943,
+          "Position": {
+            "X": -65.4765,
+            "Y": -37.7,
+            "Z": -209.0028
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028944,
+          "Position": {
+            "X": -63.767517,
+            "Y": -37.7,
+            "Z": -210.2846
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027248,
+          "Position": {
+            "X": -30.807983,
+            "Y": -0.64999914,
+            "Z": -51.438232
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -28.545706,
+            "Y": -0.65,
+            "Z": -49.711563
+          },
+          "TerritoryId": 819,
+          "InteractionType": "UseItem",
+          "ItemId": 2002531
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027246,
+          "Position": {
+            "X": -136.98022,
+            "Y": 0,
+            "Z": -73.777466
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] Temenos Rookery"
+          ]
+        }
+      ]
+    }
+  ]
+}

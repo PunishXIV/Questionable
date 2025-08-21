@@ -1,0 +1,153 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_JOBMNK700_02430_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_JOBMNK700_02430_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022532,
+          "Position": {
+            "X": 617.6089,
+            "Y": 271.0004,
+            "Z": -463.1266
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022548,
+          "Position": {
+            "X": 75.638916,
+            "Y": 62.111427,
+            "Z": -665.3696
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Fringes Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022539,
+          "Position": {
+            "X": 54.36792,
+            "Y": 118.22339,
+            "Z": -785.12244
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1022538,
+          "Position": {
+            "X": 51.31604,
+            "Y": 118.32745,
+            "Z": -786.9841
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1022392,
+          "Position": {
+            "X": 53.147095,
+            "Y": 118.4737,
+            "Z": -788.4489
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "StopDistance": 7,
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3211
+        }
+      ]
+    }
+  ]
+}

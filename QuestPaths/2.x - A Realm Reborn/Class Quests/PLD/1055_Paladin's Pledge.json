@@ -1,0 +1,127 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002277,
+          "Position": {
+            "X": -97.550964,
+            "Y": 7.05,
+            "Z": 23.605652
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006747,
+          "Position": {
+            "X": -20.828613,
+            "Y": 29.999964,
+            "Z": -2.4262085
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002344,
+          "Position": {
+            "X": -97.39838,
+            "Y": 14.846985,
+            "Z": -188.2201
+          },
+          "TerritoryId": 146,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            18,
+            19
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002345,
+          "Position": {
+            "X": -97.39838,
+            "Y": 16.433899,
+            "Z": -188.2201
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "ItemId": 2000821
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006747,
+          "Position": {
+            "X": -20.828613,
+            "Y": 29.999964,
+            "Z": -2.4262085
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006747,
+          "Position": {
+            "X": -20.828613,
+            "Y": 29.999964,
+            "Z": -2.4262085
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1056
+        }
+      ]
+    }
+  ]
+}

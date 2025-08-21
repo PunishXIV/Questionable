@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -201.42024,
+            "Y": -49.149708,
+            "Z": -273.68756
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1044403,
+          "Position": {
+            "X": -203.5401,
+            "Y": -48.949707,
+            "Z": -273.60956
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -170.51479,
+            "Y": -105.22506,
+            "Z": -511.04712
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1044572,
+          "Position": {
+            "X": -638.056,
+            "Y": -143.79326,
+            "Z": -513.0846
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 959,
+          "InteractionType": "Craft",
+          "ItemId": 38857,
+          "ItemCount": 4
+        },
+        {
+          "Position": {
+            "X": -201.42024,
+            "Y": -49.149708,
+            "Z": -273.68756
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1044403,
+          "Position": {
+            "X": -203.5401,
+            "Y": -48.949707,
+            "Z": -273.60956
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

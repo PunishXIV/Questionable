@@ -1,0 +1,155 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006263,
+          "Position": {
+            "X": 36.819946,
+            "Y": 16.351469,
+            "Z": -334.5846
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006259,
+          "Position": {
+            "X": 43.808594,
+            "Y": 2.5499606,
+            "Z": 21.683044
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 802,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1000171,
+          "Position": {
+            "X": -114.366455,
+            "Y": -7.351947,
+            "Z": 94.52954
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 148
+        },
+        {
+          "DataId": 2001999,
+          "Position": {
+            "X": -576.1349,
+            "Y": 68.13147,
+            "Z": 69.41321
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 148,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 6,
+            "Enabled": false,
+            "Notes": [
+              "(after boss 2) Will not pick up the bloody parchment, and instead run off to open a random unrelated chest that it can't reach"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006263,
+          "Position": {
+            "X": 36.819946,
+            "Y": 16.351469,
+            "Z": -334.5846
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table"
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.91858,
+            "Y": 17.990356,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 2001715,
+          "Position": {
+            "X": 23.23944,
+            "Y": 2.090454,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212
+        },
+        {
+          "DataId": 1006688,
+          "Position": {
+            "X": 39.29187,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

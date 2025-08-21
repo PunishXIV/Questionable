@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -615.73865,
+            "Y": 65.602264,
+            "Z": -423.84705
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1033712,
+          "Position": {
+            "X": -617.1206,
+            "Y": 65.602264,
+            "Z": -425.25372
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033697,
+          "Position": {
+            "X": 705.2262,
+            "Y": 20.93061,
+            "Z": 29.007324
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033697,
+          "Position": {
+            "X": 705.2262,
+            "Y": 20.93061,
+            "Z": 29.007324
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Emote",
+          "Emote": "psych"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -615.73865,
+            "Y": 65.602264,
+            "Z": -423.84705
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "Fly": true
+        },
+        {
+          "DataId": 1033712,
+          "Position": {
+            "X": -617.1206,
+            "Y": 65.602264,
+            "Z": -425.25372
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

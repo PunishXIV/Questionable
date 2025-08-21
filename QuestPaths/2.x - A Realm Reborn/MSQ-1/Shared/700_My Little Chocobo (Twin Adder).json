@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002394,
+          "Position": {
+            "X": -69.5354,
+            "Y": -0.50095016,
+            "Z": -9.99469
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Instruction",
+          "Comment": "Buy Serpent Chocobo Issuance"
+        },
+        {
+          "DataId": 1000136,
+          "Position": {
+            "X": 32.303345,
+            "Y": -0.050583772,
+            "Z": 70.29822
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006001,
+          "Position": {
+            "X": 35.38562,
+            "Y": -0.89902794,
+            "Z": 67.551636
+          },
+          "StopDistance": 7,
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000136,
+          "Position": {
+            "X": 32.303345,
+            "Y": -0.050583772,
+            "Z": 70.29822
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

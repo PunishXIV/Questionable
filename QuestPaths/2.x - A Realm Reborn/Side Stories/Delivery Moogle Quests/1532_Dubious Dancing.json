@@ -1,0 +1,187 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.0126,
+            "Y": 23.936245,
+            "Z": 455.10022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009267,
+          "Position": {
+            "X": 194.20154,
+            "Y": 59.531815,
+            "Z": -144.54877
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -348.54996,
+            "Y": 67.72218,
+            "Z": -344.0944
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        },
+        {
+          "DataId": 1009268,
+          "Position": {
+            "X": -319.9054,
+            "Y": 4.416262,
+            "Z": -571.40466
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1009268,
+          "Position": {
+            "X": -319.9054,
+            "Y": 4.416262,
+            "Z": -571.40466
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001334
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009268,
+          "Position": {
+            "X": -319.9054,
+            "Y": 4.416262,
+            "Z": -571.40466
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001334
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1009268,
+          "Position": {
+            "X": -319.9054,
+            "Y": 4.416262,
+            "Z": -571.40466
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001334
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.0126,
+            "Y": 23.936245,
+            "Z": 455.10022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2004284,
+          "Position": {
+            "X": 517.32654,
+            "Y": 12.558105,
+            "Z": 78.93494
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.0126,
+            "Y": 23.936245,
+            "Z": 455.10022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true,
+          "NextQuestId": 1533
+        }
+      ]
+    }
+  ]
+}

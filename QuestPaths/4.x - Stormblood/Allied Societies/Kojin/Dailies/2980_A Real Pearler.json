@@ -1,0 +1,201 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 318.06195,
+            "Y": -83.027016,
+            "Z": -226.5931
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 2009094,
+          "Position": {
+            "X": 211.078,
+            "Y": -135.14917,
+            "Z": 56.168457
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [1, 3, 5, 6, 7, 8],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009095,
+          "Position": {
+            "X": 163.0426,
+            "Y": -148.05829,
+            "Z": 72.28198
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, [2, 9, 21], null, null, null, null]
+        },
+        {
+          "DataId": 2009096,
+          "Position": {
+            "X": 134.23352,
+            "Y": -161.21161,
+            "Z": 70.450806
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, [24, 37], null, null, null, null]
+        },
+        {
+          "DataId": 2009080,
+          "Position": {
+            "X": 196.27673,
+            "Y": -146.685,
+            "Z": 40.45166
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, [4, 19], null, null, null, null]
+        },
+        {
+          "DataId": 2009081,
+          "Position": {
+            "X": 151.56775,
+            "Y": -168.1087,
+            "Z": 49.454468
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, [22, 23, 40], null, null, null, null]
+        },
+        {
+          "DataId": 2009082,
+          "Position": {
+            "X": 141.86316,
+            "Y": -170.30597,
+            "Z": 96.75745
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [18, 17, 20, 35, 38],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009083,
+          "Position": {
+            "X": 165.08728,
+            "Y": -143.54169,
+            "Z": 116.227905
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [25, 33, 36, 39],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2009084,
+          "Position": {
+            "X": 173.81543,
+            "Y": -167.3457,
+            "Z": 114.61047
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, [34, 41], null, null, null, null]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024460,
+          "Position": {
+            "X": 873.9298,
+            "Y": 1.1792068,
+            "Z": 851.9568
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 392.59683,
+            "Y": -119.589325,
+            "Z": -234.30063
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "Fly": true
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

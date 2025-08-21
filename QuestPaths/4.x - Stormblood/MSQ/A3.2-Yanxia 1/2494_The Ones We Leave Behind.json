@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020012,
+          "Position": {
+            "X": 486.9917,
+            "Y": 50.48013,
+            "Z": -115.40399
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019314,
+          "Position": {
+            "X": 421.77454,
+            "Y": -0.3000138,
+            "Z": -293.9651
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2724
+        },
+        {
+          "DataId": 1019263,
+          "Position": {
+            "X": 451.56018,
+            "Y": 58.77665,
+            "Z": -188.3421
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2728
+        },
+        {
+          "Position": {
+            "X": 508.4545,
+            "Y": 83.838875,
+            "Z": 98.54378
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7560
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020018,
+          "Position": {
+            "X": 507.86584,
+            "Y": 83.5696,
+            "Z": 94.92627
+          },
+          "StopDistance": 7,
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007836,
+          "Position": {
+            "X": 370.01587,
+            "Y": 85.52673,
+            "Z": 32.48633
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            6685
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020018,
+          "Position": {
+            "X": 507.86584,
+            "Y": 83.5696,
+            "Z": 94.92627
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1020019,
+          "Position": {
+            "X": 208.8197,
+            "Y": 141.52237,
+            "Z": -28.82434
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2008008,
+          "Position": {
+            "X": 163.5614,
+            "Y": 144.60962,
+            "Z": -11.917358
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818196
+        },
+        {
+          "DataId": 1020020,
+          "Position": {
+            "X": 397.75684,
+            "Y": 72.835175,
+            "Z": -97.06268
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Mount": true
+        }
+      ]
+    }
+  ]
+}

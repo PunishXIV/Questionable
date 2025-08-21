@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 622,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33885,
+          "Locations": [
+            {
+              "Position": {
+                "X": 288.2408,
+                "Y": 23.61323,
+                "Z": -234.9867
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 33886,
+          "Locations": [
+            {
+              "Position": {
+                "X": 281.9221,
+                "Y": 23.03055,
+                "Z": -231.9227
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33887,
+          "Locations": [
+            {
+              "Position": {
+                "X": 407.1815,
+                "Y": 26.86968,
+                "Z": -325.3348
+              },
+              "MinimumAngle": -60,
+              "MaximumAngle": 170
+            }
+          ]
+        },
+        {
+          "DataId": 33888,
+          "Locations": [
+            {
+              "Position": {
+                "X": 413.6349,
+                "Y": 25.90826,
+                "Z": -320.5389
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33889,
+          "Locations": [
+            {
+              "Position": {
+                "X": 451.9882,
+                "Y": 8.707673,
+                "Z": -136.5769
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 33890,
+          "Locations": [
+            {
+              "Position": {
+                "X": 458.5264,
+                "Y": 8.823095,
+                "Z": -132.5937
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

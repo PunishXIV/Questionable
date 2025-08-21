@@ -1,0 +1,152 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039701,
+          "Position": {
+            "X": 4.257263,
+            "Y": 40.2,
+            "Z": -234.21082
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039702,
+          "Position": {
+            "X": 422.0492,
+            "Y": 166.41168,
+            "Z": -453.42188
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Archeion"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039545,
+          "Position": {
+            "X": 361.80652,
+            "Y": 170.1,
+            "Z": -393.36237
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMF103_04441_Q1_000_096",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1039711,
+          "Position": {
+            "X": 346.4254,
+            "Y": 90.90158,
+            "Z": -371.1147
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039712,
+          "Position": {
+            "X": 380.69727,
+            "Y": 79.691376,
+            "Z": 299.3667
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039721,
+          "Position": {
+            "X": 362.02026,
+            "Y": 79.691376,
+            "Z": 302.11328
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMF103_04441_Q1_000_181",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039722,
+          "Position": {
+            "X": 194.41516,
+            "Y": -23.530436,
+            "Z": 303.91382
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1040448,
+          "Position": {
+            "X": -21.286377,
+            "Y": -30.155542,
+            "Z": 637.41516
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039740,
+          "Position": {
+            "X": -19.058533,
+            "Y": -30.155542,
+            "Z": 637.07935
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

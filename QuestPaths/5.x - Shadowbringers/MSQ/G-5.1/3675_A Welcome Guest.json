@@ -1,0 +1,151 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032451,
+          "Position": {
+            "X": -113.359314,
+            "Y": -0.6671539,
+            "Z": 656.79407
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032122,
+          "Position": {
+            "X": 2.1820068,
+            "Y": 0,
+            "Z": -5.142395
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031732,
+          "Position": {
+            "X": 366.68945,
+            "Y": -27.966003,
+            "Z": 305.19568
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027910,
+          "Position": {
+            "X": 356.71008,
+            "Y": -27.8172,
+            "Z": 310.04797
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "ItemId": 2002904,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1027909,
+          "Position": {
+            "X": 357.47314,
+            "Y": -27.145874,
+            "Z": 317.28076
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "ItemId": 2002904,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1027939,
+          "Position": {
+            "X": 415.854,
+            "Y": -28.357805,
+            "Z": 335.4391
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "ItemId": 2002904,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031732,
+          "Position": {
+            "X": 366.68945,
+            "Y": -27.966003,
+            "Z": 305.19568
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001028,
+          "Position": {
+            "X": -39.84137,
+            "Y": 19.999994,
+            "Z": -4.9592285
+          },
+          "TerritoryId": 181,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "opening/OpeningLimsaLominsa",
+              "Prompt": "TEXT_OPENINGLIMSALOMINSA_FST_SYSTEM_Q_01",
+              "Answer": "TEXT_OPENINGLIMSALOMINSA_FST_SYSTEM_A_01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002732,
+          "Position": {
+            "X": 11.184814,
+            "Y": 20.999336,
+            "Z": 13.321045
+          },
+          "TerritoryId": 181,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA001_00107_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002697,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 181,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

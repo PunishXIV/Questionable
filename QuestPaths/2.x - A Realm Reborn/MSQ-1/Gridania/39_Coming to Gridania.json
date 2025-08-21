@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001148,
+          "Position": {
+            "X": 117.112915,
+            "Y": -12.506256,
+            "Z": 143.63306
+          },
+          "TerritoryId": 183,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "opening/OpeningGridania",
+              "Prompt": "TEXT_OPENINGGRIDANIA_FST_SYSTEM_Q_01",
+              "Answer": "TEXT_OPENINGGRIDANIA_FST_SYSTEM_A_01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001140,
+          "Position": {
+            "X": 23.788818,
+            "Y": -8,
+            "Z": 115.861694
+          },
+          "TerritoryId": 183,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

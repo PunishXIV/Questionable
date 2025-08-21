@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019405,
+          "Position": {
+            "X": 343.58728,
+            "Y": 26.261887,
+            "Z": -326.55835
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008318,
+          "Position": {
+            "X": -83.48212,
+            "Y": 33.21875,
+            "Z": -210.22363
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Snipe",
+          "Comment": "Snipe sheep"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021900,
+          "Position": {
+            "X": -83.36011,
+            "Y": 27.540436,
+            "Z": -146.44086
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019405,
+          "Position": {
+            "X": 343.58728,
+            "Y": 26.261887,
+            "Z": -326.55835
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

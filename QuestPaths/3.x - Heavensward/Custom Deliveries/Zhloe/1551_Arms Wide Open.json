@@ -1,0 +1,43 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012299,
+          "Position": {
+            "X": -16.586609,
+            "Y": 206.49942,
+            "Z": 42.98462
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019615,
+          "Position": {
+            "X": -71.763245,
+            "Y": 206.50021,
+            "Z": 32.638916
+          },
+          "StopDistance": 5,
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

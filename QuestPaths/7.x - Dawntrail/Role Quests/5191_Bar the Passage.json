@@ -1,0 +1,182 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050871,
+          "Position": {
+            "X": -51.895935,
+            "Y": -17.97287,
+            "Z": 182.7268
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051689,
+          "Position": {
+            "X": 273.33484,
+            "Y": 15.999998,
+            "Z": 740.6576
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "SinglePlayerDuty",
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051691,
+          "Position": {
+            "X": 273.85364,
+            "Y": 15.999996,
+            "Z": 738.2771
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1050871,
+          "Position": {
+            "X": -51.895935,
+            "Y": -17.97287,
+            "Z": 182.7268
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1051672,
+          "Position": {
+            "X": -14.816589,
+            "Y": -19.881973,
+            "Z": 223.3158
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1051673,
+          "Position": {
+            "X": -15.243774,
+            "Y": -19.762682,
+            "Z": 221.72876
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1051670,
+          "Position": {
+            "X": -15.976257,
+            "Y": -19.928413,
+            "Z": 224.90259
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1051671,
+          "Position": {
+            "X": -17.95996,
+            "Y": -19.784014,
+            "Z": 224.17017
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1051674,
+          "Position": {
+            "X": -16.617126,
+            "Y": -19.752277,
+            "Z": 222.64429
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -44.643284,
+            "Y": -17.972864,
+            "Z": 203.87883
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1046521,
+          "Position": {
+            "X": -46.616333,
+            "Y": -17.97287,
+            "Z": 180.3158
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

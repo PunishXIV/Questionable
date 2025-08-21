@@ -1,0 +1,102 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013074,
+          "Position": {
+            "X": 304.3412,
+            "Y": 483.48206,
+            "Z": 143.11438
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1073,
+          "$": "Without this step, there are times where it doesn't confirm automatically"
+        },
+        {
+          "TerritoryId": 1073,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38291,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1073,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38315,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1044065,
+          "Position": {
+            "X": 478.9348,
+            "Y": 437.0016,
+            "Z": 340.505
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960,
+          "Mount": true
+        },
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

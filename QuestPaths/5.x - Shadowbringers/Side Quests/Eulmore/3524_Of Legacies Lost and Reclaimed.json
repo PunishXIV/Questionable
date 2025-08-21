@@ -1,0 +1,99 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030472,
+          "Position": {
+            "X": -3.55542,
+            "Y": 6.800003,
+            "Z": 47.501343
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010123,
+          "Position": {
+            "X": -56.199036,
+            "Y": -5.2339478,
+            "Z": -28.122437
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2010121,
+          "Position": {
+            "X": -5.56958,
+            "Y": 82.90222,
+            "Z": -35.446716
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] The Glory Gate",
+            "[Eulmore] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010122,
+          "Position": {
+            "X": -14.114624,
+            "Y": 50.980347,
+            "Z": 33.920776
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030472,
+          "Position": {
+            "X": -3.55542,
+            "Y": 6.800003,
+            "Z": 47.501343
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

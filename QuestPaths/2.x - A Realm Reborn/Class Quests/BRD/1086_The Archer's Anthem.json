@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 153,
+          "InteractionType": "EquipItem",
+          "ItemId": 4546,
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "TerritoryId": 153,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 570.48596,
+            "Y": 96.46625,
+            "Z": -526.59546
+          },
+          "TerritoryId": 135,
+          "TargetTerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Wineport"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Wineport"
+            }
+          }
+        },
+        {
+          "DataId": 2002366,
+          "Position": {
+            "X": -143.0534,
+            "Y": 68.192505,
+            "Z": 586.1448
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1945
+          ],
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 1087
+        }
+      ]
+    }
+  ]
+}

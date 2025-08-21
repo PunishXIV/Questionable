@@ -1,0 +1,55 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006264,
+          "Position": {
+            "X": 710.90247,
+            "Y": 66.027,
+            "Z": -277.66846
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002034,
+          "Position": {
+            "X": 646.1432,
+            "Y": 67.46008,
+            "Z": -263.38605
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1900
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006264,
+          "Position": {
+            "X": 710.90247,
+            "Y": 66.027,
+            "Z": -277.66846
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

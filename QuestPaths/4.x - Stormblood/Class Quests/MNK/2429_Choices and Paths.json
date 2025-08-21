@@ -1,0 +1,156 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023728,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022437,
+          "Position": {
+            "X": 81.467896,
+            "Y": 118.391884,
+            "Z": -792.7825
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022438,
+          "Position": {
+            "X": -61.112427,
+            "Y": -0.002525447,
+            "Z": -67.67377
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Western Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023728,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022439,
+          "Position": {
+            "X": 162.40173,
+            "Y": 49.7417,
+            "Z": -251.9112
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Fringes Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022442,
+          "Position": {
+            "X": -575.1583,
+            "Y": 110.899315,
+            "Z": -324.69672
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1022446,
+          "Position": {
+            "X": -586.2974,
+            "Y": 113.00655,
+            "Z": -312.7337
+          },
+          "StopDistance": 4,
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "Fly": true,
+          "NextQuestId": 2430
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032081,
+          "Position": {
+            "X": -2.4262085,
+            "Y": 0,
+            "Z": -9.10968
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002879,
+          "Position": {
+            "X": 0,
+            "Y": 3,
+            "Z": 27.5
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "Position": {
+            "X": 29.958076,
+            "Y": 21.232033,
+            "Z": -653.85443
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 26.789001,
+            "Y": 54.865185,
+            "Z": -770.47614
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1033818,
+          "Position": {
+            "X": 24.551636,
+            "Y": 50.99997,
+            "Z": -815.18274
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        },
+        {
+          "DataId": 1033819,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0,
+            "Z": -4.043701
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033822,
+          "Position": {
+            "X": 39.6886,
+            "Y": -6.9874797E-13,
+            "Z": -0.83929443
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

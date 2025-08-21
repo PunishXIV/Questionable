@@ -1,0 +1,20 @@
+<Project Sdk="Dalamud.NET.Sdk/13.0.0">
+    <PropertyGroup>
+        <Version>0.3</Version>
+        <OutputPath>dist</OutputPath>
+        <PathMap Condition="$(SolutionDir) != ''">$(SolutionDir)=X:\</PathMap>
+        <Platforms>x64</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\LLib\LLib.csproj" />
+      <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Pictomancy" Version="0.0.1" />
+    </ItemGroup>
+
+    <Import Project="..\LLib\LLib.targets"/>
+    <Import Project="..\LLib\RenameZip.targets"/>
+</Project>

@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 399,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Idyllshire",
+      "AethernetShortcut": [
+        "[Idyllshire] Aetheryte Plaza",
+        "[Idyllshire] Prologue Gate (Western Hinterlands)"
+      ],
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InTerritory": [
+            399
+          ]
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31431,
+          "Locations": [
+            {
+              "Position": {
+                "X": -494.1652,
+                "Y": 142.7381,
+                "Z": -287.4084
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 270
+            },
+            {
+              "Position": {
+                "X": -485.4606,
+                "Y": 142.9737,
+                "Z": -290.856
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 310
+            },
+            {
+              "Position": {
+                "X": -533.1213,
+                "Y": 142.5874,
+                "Z": -262.2948
+              },
+              "MinimumAngle": -255,
+              "MaximumAngle": 10
+            }
+          ]
+        },
+        {
+          "DataId": 31430,
+          "Locations": [
+            {
+              "Position": {
+                "X": -510.6404,
+                "Y": 141.9014,
+                "Z": -280.1611
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31434,
+          "Locations": [
+            {
+              "Position": {
+                "X": -562.8221,
+                "Y": 148.9451,
+                "Z": -104.9014
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31435,
+          "Locations": [
+            {
+              "Position": {
+                "X": -520.0394,
+                "Y": 148.7521,
+                "Z": -97.8
+              }
+            },
+            {
+              "Position": {
+                "X": -570.4307,
+                "Y": 148.103,
+                "Z": -130.9921
+              }
+            },
+            {
+              "Position": {
+                "X": -573.738,
+                "Y": 148.4877,
+                "Z": -158.4798
+              },
+              "MinimumAngle": 130,
+              "MaximumAngle": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31432,
+          "Locations": [
+            {
+              "Position": {
+                "X": -388.4753,
+                "Y": 147.345,
+                "Z": -177.1972
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 31433,
+          "Locations": [
+            {
+              "Position": {
+                "X": -349.5501,
+                "Y": 144.6325,
+                "Z": -185.3442
+              }
+            },
+            {
+              "Position": {
+                "X": -398.145,
+                "Y": 145.7528,
+                "Z": -198.2334
+              },
+              "MinimumAngle": 155,
+              "MaximumAngle": 360
+            },
+            {
+              "Position": {
+                "X": -374.5566,
+                "Y": 145.3827,
+                "Z": -194.8224
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

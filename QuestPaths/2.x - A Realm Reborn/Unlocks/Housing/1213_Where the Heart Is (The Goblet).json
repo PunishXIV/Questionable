@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002001,
+          "Position": {
+            "X": 228.47327,
+            "Y": 52.038116,
+            "Z": 133.1654
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ],
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005531,
+          "Position": {
+            "X": 320.88184,
+            "Y": 67.27533,
+            "Z": 232.47119
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 316.94064,
+            "Y": 67.1549,
+            "Z": 237
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 341,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Addon",
+              "Prompt": 6347,
+              "Answer": 6349
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005880,
+          "Position": {
+            "X": 5.416931,
+            "Y": -11.076667,
+            "Z": -187.94543
+          },
+          "TerritoryId": 341,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -12.7114315,
+            "Y": -11.076661,
+            "Z": -199.92712
+          },
+          "TerritoryId": 341,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 140,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Addon",
+              "Prompt": 6347,
+              "Answer": 6403
+            }
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                341
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1002001,
+          "Position": {
+            "X": 228.47327,
+            "Y": 52.038116,
+            "Z": 133.1654
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DelaySecondsAtStart": 3,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

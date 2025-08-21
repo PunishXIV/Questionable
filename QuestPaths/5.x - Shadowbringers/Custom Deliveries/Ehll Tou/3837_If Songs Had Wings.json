@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032005,
+          "Position": {
+            "X": 206.22559,
+            "Y": -40,
+            "Z": 12.100342
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032782,
+          "Position": {
+            "X": 6.8512573,
+            "Y": 27.030483,
+            "Z": -93.7973
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032784,
+          "Position": {
+            "X": 477.0122,
+            "Y": 214.9805,
+            "Z": 751.3999
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 886,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ]
+        },
+        {
+          "DataId": 1032786,
+          "Position": {
+            "X": 113.7865,
+            "Y": -20.000002,
+            "Z": -0.3204956
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The Mattock"
+          ],
+          "NextQuestId": 3889
+        }
+      ]
+    }
+  ]
+}

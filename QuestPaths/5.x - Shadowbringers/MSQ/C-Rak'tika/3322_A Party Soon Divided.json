@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027231,
+          "Position": {
+            "X": 65.35437,
+            "Y": 1.7160122,
+            "Z": 249.83594
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Dossal Gate"
+          ],
+          "TargetTerritoryId": 844
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030883,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0,
+            "Z": 4.2877197
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029167,
+          "Position": {
+            "X": 751.46094,
+            "Y": 21.38111,
+            "Z": -2.7314453
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lakeland - Fort Jobb"
+        }
+      ]
+    }
+  ]
+}

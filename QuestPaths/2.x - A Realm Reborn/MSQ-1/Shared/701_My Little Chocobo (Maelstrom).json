@@ -1,0 +1,102 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003281,
+          "Position": {
+            "X": 97.520386,
+            "Y": 40.248554,
+            "Z": 81.1322
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002387,
+          "Position": {
+            "X": 95.750244,
+            "Y": 40.250286,
+            "Z": 76.67651
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Instruction",
+          "Comment": "Buy Storm Chocobo Issuance"
+        },
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131094
+            }
+          ]
+        },
+        {
+          "DataId": 1001027,
+          "Position": {
+            "X": 45.792236,
+            "Y": 20,
+            "Z": -8.1026
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006002,
+          "Position": {
+            "X": 49.576538,
+            "Y": 20,
+            "Z": -5.722229
+          },
+          "StopDistance": 7,
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001027,
+          "Position": {
+            "X": 45.792236,
+            "Y": 20,
+            "Z": -8.1026
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

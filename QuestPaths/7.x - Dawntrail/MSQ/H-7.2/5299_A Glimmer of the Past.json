@@ -1,0 +1,107 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048083,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "TargetTerritoryId": 1207,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                1207
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                1207
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1052483,
+          "Position": {
+            "X": -4.8982544,
+            "Y": -6.439014E-08,
+            "Z": 8.926453
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1207,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014751,
+          "Position": {
+            "X": -19.699463,
+            "Y": 2.7008667,
+            "Z": -30.258667
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMH101_05299_SYSTEM_000_031",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053810,
+          "Position": {
+            "X": 5.7526245,
+            "Y": 0.49999905,
+            "Z": 3.40271
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1268,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054140,
+          "Position": {
+            "X": 5.203247,
+            "Y": 0.025,
+            "Z": 2.304016
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1268,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

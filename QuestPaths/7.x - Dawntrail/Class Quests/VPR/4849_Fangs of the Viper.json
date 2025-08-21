@@ -1,0 +1,205 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 89.036255,
+            "Y": 12,
+            "Z": 47.287598
+          },
+          "TerritoryId": 131,
+          "InteractionType": "UseItem",
+          "ItemId": 43537,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 41808,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1046337,
+          "Position": {
+            "X": 89.036255,
+            "Y": 12,
+            "Z": 47.287598
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046338,
+          "Position": {
+            "X": 11.428955,
+            "Y": 3.9999998,
+            "Z": -135.69855
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046339,
+          "Position": {
+            "X": 28.335938,
+            "Y": 3.9999995,
+            "Z": -136.36993
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 44.120266,
+            "Y": 3.9179347,
+            "Z": -166.70798
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "Comment": "Zone transition"
+        },
+        {
+          "DataId": 1046344,
+          "Position": {
+            "X": 90.22656,
+            "Y": 4.0718365,
+            "Z": 434.531
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046344,
+          "Position": {
+            "X": 90.22656,
+            "Y": 4.0718365,
+            "Z": 434.531
+          },
+          "TerritoryId": 141,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1046345,
+          "Position": {
+            "X": -92.30188,
+            "Y": 4,
+            "Z": -99.77875
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1004332,
+          "Position": {
+            "X": -103.92926,
+            "Y": 4,
+            "Z": -97.88666
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1001288,
+          "Position": {
+            "X": -151.59845,
+            "Y": 12,
+            "Z": 16.220276
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046346,
+          "Position": {
+            "X": -152.17828,
+            "Y": 12,
+            "Z": 11.734131
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4850
+        }
+      ]
+    }
+  ]
+}

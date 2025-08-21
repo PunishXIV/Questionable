@@ -1,0 +1,146 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051440,
+          "Position": {
+            "X": 305.01257,
+            "Y": 51.199978,
+            "Z": 198.07727
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014334,
+          "Position": {
+            "X": -6.9123535,
+            "Y": 53.177612,
+            "Z": 761.68445
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048243,
+          "Position": {
+            "X": 57.87744,
+            "Y": 53.200012,
+            "Z": 772.03015
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1192,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1051443,
+          "Position": {
+            "X": 614.28235,
+            "Y": 9.022843,
+            "Z": 610.13184
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 1192,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 981,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051442,
+          "Position": {
+            "X": 613.76355,
+            "Y": 9.022844,
+            "Z": 612.1156
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051440,
+          "Position": {
+            "X": 305.01257,
+            "Y": 51.199978,
+            "Z": 198.07727
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ]
+        }
+      ]
+    }
+  ]
+}

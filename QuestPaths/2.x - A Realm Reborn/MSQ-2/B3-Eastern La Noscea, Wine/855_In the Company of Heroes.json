@@ -1,0 +1,168 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006676,
+          "Position": {
+            "X": 558.98376,
+            "Y": 20.706482,
+            "Z": 451.13293
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006314,
+          "Position": {
+            "X": 534.8439,
+            "Y": 17.448048,
+            "Z": 450.98022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002598,
+          "Position": {
+            "X": 524.6348,
+            "Y": 18.16839,
+            "Z": 457.1489
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006319,
+          "Position": {
+            "X": 523.03345,
+            "Y": 17.44805,
+            "Z": 454.5509
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            8,
+            null
+          ]
+        },
+        {
+          "DataId": 1006318,
+          "Position": {
+            "X": 525.5055,
+            "Y": 17.448048,
+            "Z": 451.0719
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            16,
+            null
+          ]
+        },
+        {
+          "DataId": 1006317,
+          "Position": {
+            "X": 533.77576,
+            "Y": 17.654663,
+            "Z": 450.43103
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            64,
+            null
+          ]
+        },
+        {
+          "DataId": 1006316,
+          "Position": {
+            "X": 560.38745,
+            "Y": 20.721313,
+            "Z": 457.02295
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            32,
+            null
+          ]
+        },
+        {
+          "DataId": 1006266,
+          "Position": {
+            "X": 560.35706,
+            "Y": 20.721315,
+            "Z": 455.89368
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            128,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006676,
+          "Position": {
+            "X": 558.98376,
+            "Y": 20.706482,
+            "Z": 451.13293
+          },
+          "StopDistance": 7,
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

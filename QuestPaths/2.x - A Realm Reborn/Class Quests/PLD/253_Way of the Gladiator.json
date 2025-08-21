@@ -1,0 +1,199 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002277,
+          "Position": {
+            "X": -97.550964,
+            "Y": 7.05,
+            "Z": 23.605652
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSGLA020_00253_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSGLA020_00253_Q2_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 45.13088,
+            "Y": 3.889354,
+            "Z": -166.51999
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                141
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -116.10664,
+            "Y": 10.801613,
+            "Z": 276.979
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 351,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            },
+            {
+              "DataId": 141,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            {
+              "High": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 39.635372,
+            "Y": 3.2401803,
+            "Z": 273.41232
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 205,
+              "MinimumKillCount": 3,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -118.17538,
+            "Y": 18.35357,
+            "Z": 341.3039
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                141
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "NextQuestId": 256
+        }
+      ]
+    }
+  ]
+}

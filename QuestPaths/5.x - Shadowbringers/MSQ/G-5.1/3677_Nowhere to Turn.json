@@ -1,0 +1,53 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031736,
+          "Position": {
+            "X": 368.1848,
+            "Y": -27.966003,
+            "Z": 302.3269
+          },
+          "StopDistance": 5,
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031737,
+          "Position": {
+            "X": 20.950623,
+            "Y": 82.05,
+            "Z": 17.837708
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eulmore"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031739,
+          "Position": {
+            "X": -19.36377,
+            "Y": 82.83509,
+            "Z": -50.55316
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

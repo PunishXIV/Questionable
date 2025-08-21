@@ -1,0 +1,158 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020079,
+          "Position": {
+            "X": 560.235,
+            "Y": -19.505638,
+            "Z": 408.68237
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019355,
+          "Position": {
+            "X": 556.8779,
+            "Y": -19.505642,
+            "Z": 397.14648
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019353,
+          "Position": {
+            "X": 544.0298,
+            "Y": -19.505642,
+            "Z": 391.68372
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "StopDistance": 7,
+          "$": "1 0 0 0 0 128 -> 2 0 0 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": 547.51385,
+            "Y": -19.505655,
+            "Z": 355.95413
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1019349,
+          "Position": {
+            "X": 543.93823,
+            "Y": -19.505642,
+            "Z": 354.08557
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "StopDistance": 7,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 622,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Azim Steppe - Reunion"
+        },
+        {
+          "DataId": 1020275,
+          "Position": {
+            "X": 540.917,
+            "Y": -19.504309,
+            "Z": 278.0652
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020281,
+          "Position": {
+            "X": 571.58765,
+            "Y": -19.505655,
+            "Z": 313.71008
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_STMBDA401_02500_SAYTODO_000_000"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020281,
+          "Position": {
+            "X": 571.58765,
+            "Y": -19.505655,
+            "Z": 313.71008
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

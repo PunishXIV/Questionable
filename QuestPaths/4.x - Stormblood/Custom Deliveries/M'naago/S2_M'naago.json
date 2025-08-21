@@ -1,0 +1,62 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 635,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1020337,
+          "Position": {
+            "X": 171.31299,
+            "Y": 13.02367,
+            "Z": -89.951965
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/004/CtsSfsCharacter2_00434",
+              "Prompt": "TEXT_CTSSFSCHARACTER2_00434_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER2_00434_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/004/CtsSfsCharacter2_00434",
+              "Prompt": "TEXT_CTSSFSCHARACTER2_00434_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER2_00434_TOPMENU_000_003"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

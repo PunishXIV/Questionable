@@ -1,0 +1,107 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048998,
+          "Position": {
+            "X": 220.29443,
+            "Y": -156.80957,
+            "Z": 457.02295
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051408,
+          "Position": {
+            "X": 631.2809,
+            "Y": -137.12654,
+            "Z": 509.6665
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1048974,
+          "Position": {
+            "X": 621.51514,
+            "Y": -135.12726,
+            "Z": 531.1207
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1048989,
+          "Position": {
+            "X": 523.4302,
+            "Y": -135.12724,
+            "Z": 578.14905
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048998,
+          "Position": {
+            "X": 220.29443,
+            "Y": -156.80957,
+            "Z": 457.02295
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZD108_05107_Q1_000_000",
+              "Answer": "TEXT_KINGZD108_05107_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

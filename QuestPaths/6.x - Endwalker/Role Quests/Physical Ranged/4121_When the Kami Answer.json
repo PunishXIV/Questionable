@@ -1,0 +1,191 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038458,
+          "Position": {
+            "X": -0.96136475,
+            "Y": 0,
+            "Z": 7.2174683
+          },
+          "TerritoryId": 759,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038464,
+          "Position": {
+            "X": -738.55194,
+            "Y": 1.1992621,
+            "Z": -365.56042
+          },
+          "StopDistance": 1,
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -755.03345,
+            "Y": 4.7634573,
+            "Z": -477.97415
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1038467,
+          "Position": {
+            "X": -753.78046,
+            "Y": 4.7634573,
+            "Z": -479.3927
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1038466,
+          "Position": {
+            "X": -778.2254,
+            "Y": 8.915142,
+            "Z": -497.06265
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1038468,
+          "Position": {
+            "X": -815.88464,
+            "Y": 19.565891,
+            "Z": -461.3871
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038464,
+          "Position": {
+            "X": -738.55194,
+            "Y": 1.1992621,
+            "Z": -365.56042
+          },
+          "StopDistance": 1,
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038464,
+          "Position": {
+            "X": -738.55194,
+            "Y": 1.1992621,
+            "Z": -365.56042
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1038469,
+          "Position": {
+            "X": -585.04614,
+            "Y": 19.143135,
+            "Z": -708.03394
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038457,
+          "Position": {
+            "X": -0.83929443,
+            "Y": 0,
+            "Z": 8.8654175
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Doman Enclave",
+          "NextQuestId": 4122
+        }
+      ]
+    }
+  ]
+}

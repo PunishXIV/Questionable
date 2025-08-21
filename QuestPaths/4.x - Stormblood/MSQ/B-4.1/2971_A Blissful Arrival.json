@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024051,
+          "Position": {
+            "X": -285.29797,
+            "Y": 11.183233,
+            "Z": 187.02979
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 528.8298,
+            "Y": 70,
+            "Z": 580.3701
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        },
+        {
+          "DataId": 2009047,
+          "Position": {
+            "X": 526.8176,
+            "Y": 69.962524,
+            "Z": 577.3861
+          },
+          "StopDistance": 4,
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024055,
+          "Position": {
+            "X": 525.0781,
+            "Y": 70,
+            "Z": 574.6699
+          },
+          "StopDistance": 7,
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023048,
+          "Position": {
+            "X": 497.76453,
+            "Y": 69.99941,
+            "Z": 583.7339
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 621,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1024057,
+          "Position": {
+            "X": 340.23022,
+            "Y": 74.00002,
+            "Z": 70.66455
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

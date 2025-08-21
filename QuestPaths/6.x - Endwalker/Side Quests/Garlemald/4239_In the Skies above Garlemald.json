@@ -1,0 +1,76 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040662,
+          "Position": {
+            "X": -373.18994,
+            "Y": 22.268795,
+            "Z": 385.00024
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040642,
+          "Position": {
+            "X": 49.149292,
+            "Y": 0.78169787,
+            "Z": 90.89795
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040642,
+          "Position": {
+            "X": 49.149292,
+            "Y": 0.78169787,
+            "Z": 90.89795
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZD015_04239_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "$": "weird quest but works fine"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040662,
+          "Position": {
+            "X": -373.18994,
+            "Y": 22.268795,
+            "Z": 385.00024
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

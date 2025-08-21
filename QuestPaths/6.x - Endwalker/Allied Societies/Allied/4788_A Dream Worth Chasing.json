@@ -1,0 +1,160 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045901,
+          "Position": {
+            "X": -79.6369,
+            "Y": 39.981316,
+            "Z": 311.78748
+          },
+          "StopDistance": 7,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "TargetTerritoryId": 960
+        },
+        {
+          "DataId": 1043865,
+          "Position": {
+            "X": 301.8081,
+            "Y": 482.13644,
+            "Z": 165.02625
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960
+        },
+        {
+          "DataId": 1045904,
+          "Position": {
+            "X": 201.46484,
+            "Y": 567.4998,
+            "Z": 241.32141
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045905,
+          "Position": {
+            "X": 491.6609,
+            "Y": 436.9997,
+            "Z": 301.22827
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANALL320_04788_Q1_000_049",
+              "Answer": "TEXT_BANALL320_04788_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960
+        },
+        {
+          "DataId": 1043951,
+          "Position": {
+            "X": 303.8529,
+            "Y": 481.99442,
+            "Z": 154.83325
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013445,
+          "Position": {
+            "X": -386.83148,
+            "Y": 80.85742,
+            "Z": 603.6621
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANALL320_04788_Q2_000_090",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANALL320_04788_Q3_000_130",
+              "Answer": "TEXT_BANALL320_04788_A3_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045914,
+          "Position": {
+            "X": 202.89917,
+            "Y": 567.4998,
+            "Z": 239.9176
+          },
+          "StopDistance": 7,
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

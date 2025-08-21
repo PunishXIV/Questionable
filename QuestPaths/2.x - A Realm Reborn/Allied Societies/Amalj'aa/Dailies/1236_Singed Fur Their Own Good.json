@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005551,
+          "Position": {
+            "X": 98.924194,
+            "Y": 15.29447,
+            "Z": -349.4469
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005848,
+          "Position": {
+            "X": -101.487854,
+            "Y": 8.097177,
+            "Z": 403.28064
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003353,
+          "Position": {
+            "X": -248.0965,
+            "Y": 2.8533936,
+            "Z": 675.95935
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath",
+          "RequiredQuestVariables": [null, null, null, [1], null, null]
+        },
+        {
+          "DataId": 2003354,
+          "Position": {
+            "X": -132.03638,
+            "Y": -1.449646,
+            "Z": 778.8052
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath",
+          "RequiredQuestVariables": [null, null, null, [1, 5], null, null]
+        },
+        {
+          "DataId": 2003356,
+          "Position": {
+            "X": 78.446655,
+            "Y": 14.328186,
+            "Z": 589.9595
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath",
+          "RequiredQuestVariables": [null, null, null, [1, 5], null, null]
+        },
+        {
+          "DataId": 2003357,
+          "Position": {
+            "X": 179.9801,
+            "Y": 6.6376343,
+            "Z": 601.15967
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "Action": "Fiery Breath",
+          "RequiredQuestVariables": [null, null, null, [5], null, null]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -56.11375,
+            "Y": 25.301596,
+            "Z": -391.2648
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Mount": true
+        },
+        {
+          "DataId": 1005551,
+          "Position": {
+            "X": 98.924194,
+            "Y": 15.29447,
+            "Z": -349.4469
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

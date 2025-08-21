@@ -1,0 +1,163 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017171,
+                    "Position": {
+                        "X": -335.56116,
+                        "Y": 59.003433,
+                        "Z": 313.98486
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017365,
+                    "Position": {
+                        "X": 255.75635,
+                        "Y": -43.649445,
+                        "Z": 637.2014
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Say",
+                    "ChatMessage": {
+                        "Key": "TEXT_BANMOG202_02295_SYSTEM_000_019"
+                    },
+                    "AetheryteShortcut": "The Churning Mists - Moghome",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 255.75635,
+                                    "Y": -43.649445,
+                                    "Z": 637.2014
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    },
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 1017366,
+                    "Position": {
+                        "X": 296.37585,
+                        "Y": -47.154934,
+                        "Z": 673.9756
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Say",
+                    "ChatMessage": {
+                        "Key": "TEXT_BANMOG202_02295_SYSTEM_000_019"
+                    },
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                },
+                {
+                    "DataId": 1017368,
+                    "Position": {
+                        "X": 451.7433,
+                        "Y": -5.8336167,
+                        "Z": 649.7444
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Say",
+                    "Fly": true,
+                    "ChatMessage": {
+                        "Key": "TEXT_BANMOG202_02295_SYSTEM_000_019"
+                    },
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        16
+                    ]
+                },
+                {
+                    "DataId": 1017367,
+                    "Position": {
+                        "X": 484.45862,
+                        "Y": -7.7667823,
+                        "Z": 716.9756
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Say",
+                    "Fly": true,
+                    "ChatMessage": {
+                        "Key": "TEXT_BANMOG202_02295_SYSTEM_000_019"
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1017171,
+                    "Position": {
+                        "X": -335.56116,
+                        "Y": 59.003433,
+                        "Z": 313.98486
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

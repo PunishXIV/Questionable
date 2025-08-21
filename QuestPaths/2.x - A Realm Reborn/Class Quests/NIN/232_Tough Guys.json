@@ -1,0 +1,286 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "xan",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true },
+            "StepIf": {
+              "ExtraCondition": "DockStorehouse"
+            }
+          },
+          "TargetTerritoryId": 137
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "Position": {
+            "X": -116.833,
+            "Y": 70.279,
+            "Z": 47.983
+          },
+          "TerritoryId": 137,
+          "TargetTerritoryId": 134,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [134] },
+            "StepIf": { "InTerritory": [134] }
+          }
+        },
+        {
+          "DataId": 1010573,
+          "Position": {
+            "X": -188.46423,
+            "Y": 30.723186,
+            "Z": -685.1759
+          },
+          "Fly": true,
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [3572]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010627,
+          "Position": {
+            "X": -189.65442,
+            "Y": 30.837437,
+            "Z": -685.298
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "InteractionType": "WalkTo",
+          "Position": {
+            "X": 246.007,
+            "Y": 56.384,
+            "Z": 839.334
+          },
+          "Fly": true,
+          "TerritoryId": 137,
+          "TargetTerritoryId": 135,
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [135]
+            },
+            "StepIf": { "InTerritory": [135] }
+          }
+        },
+        {
+          "DataId": 1010571,
+          "Position": {
+            "X": 491.05054,
+            "Y": 68.14364,
+            "Z": -198.50464
+          },
+          "TerritoryId": 135,
+          "Fly": true,
+          "KillEnemyDataIds": [3573],
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2005006,
+          "Position": {
+            "X": 492.88147,
+            "Y": 68.955444,
+            "Z": -197.58905
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010575,
+          "Position": {
+            "X": 516.68555,
+            "Y": 9.414734,
+            "Z": 351.12524
+          },
+          "Fly": true,
+          "KillEnemyDataIds": [3572],
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2005007,
+          "Position": {
+            "X": 515.5565,
+            "Y": 9.47583,
+            "Z": 349.93518
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1010572,
+          "Position": {
+            "X": 209.21643,
+            "Y": -2.0700505,
+            "Z": 260.3036
+          },
+          "KillEnemyDataIds": [3573],
+          "Fly": true,
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2005008,
+          "Position": {
+            "X": 208.27039,
+            "Y": -2.0905762,
+            "Z": 259.84583
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1010574,
+          "Position": {
+            "X": -76.98181,
+            "Y": 64.50076,
+            "Z": -241.56561
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [3572],
+          "EnemySpawnType": "AfterInteraction",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 2005009,
+          "Position": {
+            "X": -77.195435,
+            "Y": 64.49988,
+            "Z": -240.71112
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "Position": {
+            "X": -116.833,
+            "Y": 70.279,
+            "Z": 47.983
+          },
+          "TerritoryId": 137,
+          "TargetTerritoryId": 134,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [134]
+            },
+            "StepIf": { "InTerritory": [134] }
+          }
+        },
+        {
+          "DataId": 2004932,
+          "Position": {
+            "X": -182.81836,
+            "Y": 30.533203,
+            "Z": -684.93176
+          },
+          "Fly": true,
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 233
+        }
+      ]
+    }
+  ]
+}

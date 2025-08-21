@@ -1,0 +1,22 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "$": "Unlocks visiting other players' Island Sanctuary; not available once you unlock your own",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043621,
+          "Position": {
+            "X": 174.12073,
+            "Y": 14.095924,
+            "Z": 667.5669
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    }
+  ]
+}

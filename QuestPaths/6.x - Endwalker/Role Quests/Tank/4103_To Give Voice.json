@@ -1,0 +1,191 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1038412,
+                    "Position": {
+                        "X": -150.98804,
+                        "Y": 1.7044317,
+                        "Z": 220.99634
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "South Shroud - Camp Tranquil",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1038414,
+                    "Position": {
+                        "X": -191.05823,
+                        "Y": 15.544372,
+                        "Z": 313.71008
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1038418,
+                    "Position": {
+                        "X": -201.40387,
+                        "Y": 20.41187,
+                        "Z": 337.45325
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        32
+                    ]
+                },
+                {
+                    "DataId": 1038417,
+                    "Position": {
+                        "X": -200.70197,
+                        "Y": 20.729956,
+                        "Z": 361.07422
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                },
+                {
+                    "DataId": 1038416,
+                    "Position": {
+                        "X": -238.30017,
+                        "Y": 21.68142,
+                        "Z": 356.83215
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1038415,
+                    "Position": {
+                        "X": -230.88434,
+                        "Y": 21.464617,
+                        "Z": 343.70935
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1038419,
+                    "Position": {
+                        "X": -267.56696,
+                        "Y": 1.8750894,
+                        "Z": 675.6847
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -264.79346,
+                        "Y": 2.2244208,
+                        "Z": 673.19916
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AutoOnEnterArea",
+                    "KillEnemyDataIds": [
+                        14015
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 7,
+            "Steps": [
+                {
+                    "DataId": 1038432,
+                    "Position": {
+                        "X": -273.7011,
+                        "Y": 1.919117,
+                        "Z": 669.7031
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "CompleteQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "NextQuestId": 4104
+                }
+            ]
+        }
+    ]
+}

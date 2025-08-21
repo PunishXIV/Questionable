@@ -1,0 +1,60 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1012291,
+					"Position": {
+						"X": 804.074,
+						"Y": -26.326342,
+						"Z": -527.48914
+					},
+					"TerritoryId": 402,
+					"InteractionType": "AcceptQuest"
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"Position": {
+						"X": 355.31863,
+						"Y": -46.22946,
+						"Z": -507.70428
+					},
+					"TerritoryId": 402,
+					"InteractionType": "Combat",
+					"EnemySpawnType": "OverworldEnemies",
+					"ComplexCombatData": [
+						{
+							"DataId": 4072,
+							"MinimumKillCount": 4
+						}
+					],
+					"Fly": true,
+					"$": "we go to the west of the marked area to avoid idling in the FATE that spawns on the east of it; we'll still path through it when we expend all the westward mobs, but that's just how they spawn, shrugging emoji."
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1012291,
+					"Position": {
+						"X": 804.074,
+						"Y": -26.326342,
+						"Z": -527.48914
+					},
+					"TerritoryId": 402,
+					"InteractionType": "CompleteQuest",
+                    "Fly": true
+				}
+			]
+		}
+	]
+}

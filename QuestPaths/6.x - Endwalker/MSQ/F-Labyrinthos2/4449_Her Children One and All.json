@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040478,
+          "Position": {
+            "X": -406.9734,
+            "Y": -220.18355,
+            "Z": 304.1886
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040487,
+          "Position": {
+            "X": -234.6991,
+            "Y": -224.38274,
+            "Z": 349.01953
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 956,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 786,
+            "Enabled": false,
+            "Notes": [
+              "No VBM module"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1030,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 790,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1040503,
+          "Position": {
+            "X": -221.4237,
+            "Y": -224.3827,
+            "Z": 364.40063
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Rostra",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMF111_04449_Q4_000_344",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

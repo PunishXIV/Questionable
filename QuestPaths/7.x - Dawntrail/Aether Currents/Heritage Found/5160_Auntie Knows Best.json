@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050805,
+          "Position": {
+            "X": -153.09375,
+            "Y": 34.946026,
+            "Z": -581.0178
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 213.87216,
+            "Y": 92.47675,
+            "Z": -298.49872
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17684
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050803,
+          "Position": {
+            "X": 217.57837,
+            "Y": 92.40237,
+            "Z": -296.19293
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 184.68884,
+            "Y": 99.24859,
+            "Z": -171.97504
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 148.14713,
+            "Y": 100.07344,
+            "Z": -135.20776
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013966,
+          "Position": {
+            "X": 77.53113,
+            "Y": 93.095215,
+            "Z": -144.9455
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818468
+        },
+        {
+          "DataId": 1050946,
+          "Position": {
+            "X": -153.09375,
+            "Y": 34.946026,
+            "Z": -581.0178
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Heritage Found - The Outskirts"
+        }
+      ]
+    }
+  ]
+}

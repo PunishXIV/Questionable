@@ -1,0 +1,257 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000927,
+          "Position": {
+            "X": -1.2055054,
+            "Y": 44.999886,
+            "Z": -255.8786
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002115,
+          "Position": {
+            "X": 562.3406,
+            "Y": 89.86035,
+            "Z": -80.216736
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002713,
+          "Position": {
+            "X": 554.4059,
+            "Y": 89.783,
+            "Z": -67.979004
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1002686,
+          "Position": {
+            "X": 554.2838,
+            "Y": 89.78309,
+            "Z": -72.43463
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2000296,
+          "Position": {
+            "X": 565.1482,
+            "Y": 66.666626,
+            "Z": -215.2591
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2000297,
+          "Position": {
+            "X": 590.8141,
+            "Y": 72.40405,
+            "Z": -272.08368
+          },
+          "StopDistance": 1,
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 565.94104,
+            "Y": 85.81174,
+            "Z": -322.61465
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "Mount": false
+        },
+        {
+          "DataId": 2000298,
+          "Position": {
+            "X": 566.8268,
+            "Y": 85.52673,
+            "Z": -320.82092
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2000299,
+          "Position": {
+            "X": 574.0901,
+            "Y": 90.440186,
+            "Z": -429.06842
+          },
+          "TerritoryId": 135,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          },
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1002689,
+          "Position": {
+            "X": 569.6345,
+            "Y": 86.253204,
+            "Z": -363.94293
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1002714,
+          "Position": {
+            "X": 572.5946,
+            "Y": 86.366455,
+            "Z": -365.3468
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1002715,
+          "Position": {
+            "X": 566.4302,
+            "Y": 86.2767,
+            "Z": -364.95007
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000927,
+          "Position": {
+            "X": -1.2055054,
+            "Y": 44.999886,
+            "Z": -255.8786
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "NextQuestId": 1049
+        }
+      ]
+    }
+  ]
+}

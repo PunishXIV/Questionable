@@ -1,0 +1,61 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022992,
+          "Position": {
+            "X": -506.6148,
+            "Y": 8.7,
+            "Z": -40.299072
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -257.40616,
+            "Y": 98.88382,
+            "Z": -488.98062
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7849
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022992,
+          "Position": {
+            "X": -506.6148,
+            "Y": 8.7,
+            "Z": -40.299072
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
+        }
+      ]
+    }
+  ]
+}

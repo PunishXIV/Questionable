@@ -1,0 +1,132 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021779,
+          "Position": {
+            "X": -5.44751,
+            "Y": 210.99998,
+            "Z": -39.658203
+          },
+          "StopDistance": 7,
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.853794,
+            "Y": 210.99998,
+            "Z": 3.6528845
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -20.601719,
+            "Y": 205.82156,
+            "Z": 23.937931
+          },
+          "TerritoryId": 478,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.840637,
+            "Y": 206.49944,
+            "Z": 28.67163
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021779,
+          "Position": {
+            "X": -5.44751,
+            "Y": 210.99998,
+            "Z": -39.658203
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021783,
+          "Position": {
+            "X": 277.11902,
+            "Y": 232.541,
+            "Z": 785.5801
+          },
+          "TerritoryId": 399,
+          "InteractionType": "SinglePlayerDuty",
+          "Comment": "TODO Navigation doesn't work if flying is locked",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021783,
+          "Position": {
+            "X": 277.11902,
+            "Y": 232.54102,
+            "Z": 785.5801
+          },
+          "StopDistance": 7,
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021779,
+          "Position": {
+            "X": -5.44751,
+            "Y": 210.99998,
+            "Z": -39.658203
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "NextQuestId": 2586
+        }
+      ]
+    }
+  ]
+}

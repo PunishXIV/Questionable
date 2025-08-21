@@ -1,0 +1,238 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 326.4774,
+            "Y": 62.89536,
+            "Z": -207.31602
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "Fly": true
+        },
+        {
+          "DataId": 2004847,
+          "Position": {
+            "X": 323.62854,
+            "Y": 62.974,
+            "Z": -207.90424
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003908,
+          "Position": {
+            "X": 137.95679,
+            "Y": 4.041112,
+            "Z": -41.09259
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1001679,
+          "Position": {
+            "X": 140.48975,
+            "Y": 4.0099983,
+            "Z": -59.80017
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -77.95643,
+            "Y": -12.787907,
+            "Z": -45.044247
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true,
+          "$": "Coffer & Coffin (outside)"
+        },
+        {
+          "DataId": 1010341,
+          "Position": {
+            "X": -89.40265,
+            "Y": -11.35,
+            "Z": -40.146484
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1010342,
+          "Position": {
+            "X": -189.50183,
+            "Y": 16.85818,
+            "Z": -418.8449
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1010346,
+          "Position": {
+            "X": -207.44641,
+            "Y": 18.499998,
+            "Z": 73.899414
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001285,
+          "Position": {
+            "X": -68.77246,
+            "Y": 4.0411124,
+            "Z": -126.51257
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Aetheryte Plaza"
+          ],
+          "NextQuestId": 496
+        }
+      ]
+    }
+  ]
+}

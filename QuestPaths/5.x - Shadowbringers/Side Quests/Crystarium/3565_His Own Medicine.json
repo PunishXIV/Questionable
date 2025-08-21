@@ -1,0 +1,81 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027263,
+          "Position": {
+            "X": -69.5354,
+            "Y": -36.726383,
+            "Z": -282.79547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027254,
+          "Position": {
+            "X": -37.857666,
+            "Y": -0.5500218,
+            "Z": -61.20398
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -37.857666,
+            "Y": -0.5500218,
+            "Z": -61.20398
+          },
+          "TerritoryId": 819,
+          "InteractionType": "UseItem",
+          "ItemId": 2002756
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027263,
+          "Position": {
+            "X": -69.5354,
+            "Y": -36.726383,
+            "Z": -282.79547
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Cabinet of Curiosity"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZJ002_03565_Q1_000_000",
+              "Answer": "TEXT_LUCKZJ002_03565_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

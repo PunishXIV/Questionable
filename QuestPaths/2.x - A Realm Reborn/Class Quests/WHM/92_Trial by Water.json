@@ -1,0 +1,298 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000692,
+          "Position": {
+            "X": -258.8083,
+            "Y": -5.7735243,
+            "Z": -27.267883
+          },
+          "TerritoryId": 133,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "InteractionType": "AcceptQuest",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 152,
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "East Shroud - Hawthorne Hut",
+              "InTerritory": [
+                152
+              ]
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -276.804,
+            "Y": 11.2529,
+            "Z": 366.10303
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        },
+        {
+          "DataId": 2000889,
+          "Position": {
+            "X": -276.93604,
+            "Y": 11.734131,
+            "Z": 367.20825
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2000121,
+          "KillEnemyDataIds": [
+            297
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -235.35493,
+            "Y": 3.539142,
+            "Z": 293.25888
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -233.34848,
+            "Y": 3.5425713,
+            "Z": 285.89532
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -228.59554,
+            "Y": 3.554365,
+            "Z": 283.47638
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -228.65686,
+            "Y": 3.5446393,
+            "Z": 279.4041
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1000561,
+          "Position": {
+            "X": -230.18237,
+            "Y": 3.544826,
+            "Z": 279.07214
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -228.59554,
+            "Y": 3.554365,
+            "Z": 283.47638
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -233.34848,
+            "Y": 3.5425713,
+            "Z": 285.89532
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -256.5985,
+            "Y": 0.9818871,
+            "Z": 287.17072
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -220.44954,
+            "Y": 22.910912,
+            "Z": 243.81
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1000619,
+          "Position": {
+            "X": -209.0639,
+            "Y": 22.813372,
+            "Z": 245.34973
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003001,
+          "Position": {
+            "X": -234.33282,
+            "Y": 18.310072,
+            "Z": 245.68542
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Action",
+          "Action": "Cure"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1003057,
+          "Position": {
+            "X": -237.6593,
+            "Y": 17.850079,
+            "Z": 243.48816
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001213,
+          "Position": {
+            "X": -66.056335,
+            "Y": -7.982843,
+            "Z": 231.15894
+          },
+          "TerritoryId": 152,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1003006,
+          "Position": {
+            "X": -76.64612,
+            "Y": -9.205922,
+            "Z": 283.22266
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000692,
+          "Position": {
+            "X": -258.8083,
+            "Y": -5.7735243,
+            "Z": -27.267883
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "NextQuestId": 93
+        }
+      ]
+    }
+  ]
+}

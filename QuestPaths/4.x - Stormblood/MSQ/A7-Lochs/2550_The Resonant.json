@@ -1,0 +1,167 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021710,
+          "Position": {
+            "X": 66.544556,
+            "Y": 45.410225,
+            "Z": 766.47595
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2007992,
+          "Position": {
+            "X": 109.60547,
+            "Y": 41.97754,
+            "Z": 788.63196
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818170
+        },
+        {
+          "Position": {
+            "X": 93.08614,
+            "Y": 42.177456,
+            "Z": 772.668
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 75.00177,
+            "Y": 45.410225,
+            "Z": 755.10895
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1021712,
+          "Position": {
+            "X": 210.98645,
+            "Y": -0.3,
+            "Z": 340.3219
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 195.84085,
+            "Y": -0.6,
+            "Z": 315.3333
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Dive",
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 1021714,
+          "Position": {
+            "X": 317.03674,
+            "Y": -94.16345,
+            "Z": 350.91174
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 509.62668,
+            "Y": -21.210977,
+            "Z": 478.69604
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "Position": {
+            "X": 515.8843,
+            "Y": 0,
+            "Z": 468.1183
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 1021716,
+          "Position": {
+            "X": 675.95935,
+            "Y": 60,
+            "Z": 460.34937
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021716,
+          "Position": {
+            "X": 675.95935,
+            "Y": 60,
+            "Z": 460.34937
+          },
+          "TerritoryId": 621,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "(Fordola) Gets hit by AOEs due to moving into them before the mechanic resolves"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021717,
+          "Position": {
+            "X": 756.9542,
+            "Y": 70,
+            "Z": 445.45654
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

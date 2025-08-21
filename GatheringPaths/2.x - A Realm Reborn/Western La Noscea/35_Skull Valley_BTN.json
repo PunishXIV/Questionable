@@ -1,0 +1,162 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 138,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Western La Noscea - Aleport",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "InSameTerritory": true
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 30098,
+          "Locations": [
+            {
+              "Position": {
+                "X": 300.7484,
+                "Y": -15.4861,
+                "Z": 153.9048
+              },
+              "MinimumAngle": 175,
+              "MaximumAngle": 360
+            },
+            {
+              "Position": {
+                "X": 297.8418,
+                "Y": -20.09089,
+                "Z": 166.8599
+              },
+              "MinimumAngle": 95,
+              "MaximumAngle": 265
+            },
+            {
+              "Position": {
+                "X": 312.9494,
+                "Y": -14.81517,
+                "Z": 145.3793
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 270
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30099,
+          "Locations": [
+            {
+              "Position": {
+                "X": 317.6309,
+                "Y": 0.3300658,
+                "Z": 98.40825
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 190
+            },
+            {
+              "Position": {
+                "X": 300.7116,
+                "Y": -9.200176,
+                "Z": 128.1148
+              },
+              "MinimumAngle": 20,
+              "MaximumAngle": 205
+            },
+            {
+              "Position": {
+                "X": 313.6669,
+                "Y": -5.031699,
+                "Z": 119.2471
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 185
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30100,
+          "Locations": [
+            {
+              "Position": {
+                "X": 222.8638,
+                "Y": -1.971927,
+                "Z": 82.03091
+              },
+              "MinimumAngle": -115,
+              "MaximumAngle": 25
+            },
+            {
+              "Position": {
+                "X": 274.0746,
+                "Y": 6.008316,
+                "Z": 65.73824
+              },
+              "MinimumAngle": -115,
+              "MaximumAngle": 75
+            },
+            {
+              "Position": {
+                "X": 252.9545,
+                "Y": 5.45654,
+                "Z": 50.69089
+              },
+              "MinimumAngle": 225,
+              "MaximumAngle": 360
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 30101,
+          "Locations": [
+            {
+              "Position": {
+                "X": 254.374,
+                "Y": -17.77545,
+                "Z": 174.2901
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 265
+            },
+            {
+              "Position": {
+                "X": 240.5732,
+                "Y": -17.28173,
+                "Z": 176.6604
+              },
+              "MinimumAngle": 80,
+              "MaximumAngle": 255
+            },
+            {
+              "Position": {
+                "X": 256.3937,
+                "Y": -16.40165,
+                "Z": 164.8165
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 295
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

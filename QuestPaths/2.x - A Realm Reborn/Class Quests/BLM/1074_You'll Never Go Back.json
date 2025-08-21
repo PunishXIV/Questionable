@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+              "X": 87.5105,
+              "Y": 18,
+              "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 4548,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130,
+                131
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1006752,
+          "Position": {
+              "X": 87.5105,
+              "Y": 18,
+              "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002534,
+          "Position": {
+              "X": -7.9194946,
+              "Y": 13.687317,
+              "Z": 866.54443
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002430,
+          "Position": {
+              "X": -7.9194946,
+              "Y": 13.687317,
+              "Z": 866.54443
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "ItemId": 2000809
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002279,
+          "Position": {
+              "X": -196.8872,
+              "Y": 18.459997,
+              "Z": 59.952637
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+              "X": 87.5105,
+              "Y": 18,
+              "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

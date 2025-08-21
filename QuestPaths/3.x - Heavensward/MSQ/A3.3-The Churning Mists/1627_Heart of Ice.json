@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012759,
+          "Position": {
+            "X": -258.5031,
+            "Y": 30.373112,
+            "Z": 562.27966
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -289.72092,
+            "Y": 24.054262,
+            "Z": 489.63916
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -313.92142,
+            "Y": 21.75836,
+            "Z": 472.20667
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "The Churning Mists - Zenith"
+        },
+        {
+          "Position": {
+            "X": -718.6387,
+            "Y": 83.7983,
+            "Z": 241.97528
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2006218,
+          "Position": {
+            "X": -775.26514,
+            "Y": 123.73535,
+            "Z": 243.70178
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818101
+        },
+        {
+          "DataId": 2005459,
+          "Position": {
+            "X": -758.35815,
+            "Y": 123.704834,
+            "Z": 214.49597
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012694,
+          "Position": {
+            "X": -758.32764,
+            "Y": 123.72873,
+            "Z": 210.74231
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

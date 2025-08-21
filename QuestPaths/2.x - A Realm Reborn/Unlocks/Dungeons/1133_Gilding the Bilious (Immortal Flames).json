@@ -1,0 +1,122 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": ["liza", "Friendly"],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+          }
+         }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+          {
+          "Position": {
+            "X": 123.6,
+            "Y": 31.6,
+            "Z": -768.8
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Mor Dhona",
+              "InSameTerritory": true,
+              "InTerritory": [
+                155
+              ]
+            },
+            "StepIf": {
+              "AetheryteLocked": "Mor Dhona",
+              "InTerritory": [
+                155
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 129.3,
+            "Y": 31.71,
+            "Z": -774.87
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 155,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteLocked": "Mor Dhona",
+              "InTerritory": [
+                155
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1007625,
+          "Position": {
+            "X": -354.1772,
+            "Y": 214.60808,
+            "Z": 692.65283
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 5,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    }
+  ]
+}

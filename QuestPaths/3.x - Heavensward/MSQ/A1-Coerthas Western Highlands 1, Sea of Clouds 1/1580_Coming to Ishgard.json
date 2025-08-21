@@ -1,0 +1,173 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010925,
+          "Position": {
+            "X": -1.4191895,
+            "Y": 0.014982708,
+            "Z": -0.07635498
+          },
+          "StopDistance": 7,
+          "TerritoryId": 395,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012308,
+          "Position": {
+            "X": -3.1281738,
+            "Y": 0,
+            "Z": 2.822876
+          },
+          "TerritoryId": 395,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004781,
+          "Position": {
+            "X": -4,
+            "Y": 1.2,
+            "Z": 11
+          },
+          "TerritoryId": 395,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 155
+        },
+        {
+          "Position": {
+            "X": -133.9223,
+            "Y": 304.15378,
+            "Z": -292.65924
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1012309,
+          "Position": {
+            "X": -163.89722,
+            "Y": 304.1538,
+            "Z": -333.05872
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA101_01580_SCENE00005_EVENTAREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012310,
+          "Position": {
+            "X": -10.269409,
+            "Y": 1.2791281,
+            "Z": 83.42102
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 418,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ishgard"
+        },
+        {
+          "TerritoryId": 418,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] Skysteel Manufactory"
+        },
+        {
+          "TerritoryId": 418,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] The Brume",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] Aetheryte Plaza"
+          ]
+        },
+        {
+          "TerritoryId": 418,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] The Forgotten Knight"
+        },
+        {
+          "Position": {
+            "X": 53.15989,
+            "Y": 30.584269,
+            "Z": -82.98525
+          },
+          "TerritoryId": 418,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 419
+        },
+        {
+          "TerritoryId": 419,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] Athenaeum Astrologicum"
+        },
+        {
+          "TerritoryId": 419,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] The Tribunal"
+        },
+        {
+          "TerritoryId": 419,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] Saint Reymanaud's Cathedral"
+        },
+        {
+          "TerritoryId": 419,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] The Jeweled Crozier"
+        },
+        {
+          "TerritoryId": 419,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ishgard] The Last Vigil"
+        },
+        {
+          "DataId": 1012313,
+          "Position": {
+            "X": 15.609924,
+            "Y": 16.009666,
+            "Z": -6.515625
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

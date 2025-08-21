@@ -1,0 +1,73 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041146,
+          "Position": {
+            "X": -155.80994,
+            "Y": 28,
+            "Z": 178.97302
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041147,
+          "Position": {
+            "X": -90.25714,
+            "Y": 24.010002,
+            "Z": 70.54236
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012390,
+          "Position": {
+            "X": -88.39557,
+            "Y": 25.223145,
+            "Z": 66.453
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZF018_04273_Q1_000_000",
+              "Answer": "TEXT_AKTKZF018_04273_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041146,
+          "Position": {
+            "X": -155.80994,
+            "Y": 28,
+            "Z": 178.97302
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

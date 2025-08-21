@@ -1,0 +1,149 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006246,
+          "Position": {
+            "X": -218.40247,
+            "Y": -16.037292,
+            "Z": -34.683777
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2006247,
+          "Position": {
+            "X": -229.23633,
+            "Y": -20.035156,
+            "Z": -83.05487
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2006248,
+          "Position": {
+            "X": -252.1554,
+            "Y": -20.035156,
+            "Z": -57.66388
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014721,
+          "Position": {
+            "X": 119.31018,
+            "Y": -12.634913,
+            "Z": -13.626343
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2006330,
+          "Position": {
+            "X": 118.791504,
+            "Y": -11.6427,
+            "Z": -13.351685
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    }
+  ]
+}

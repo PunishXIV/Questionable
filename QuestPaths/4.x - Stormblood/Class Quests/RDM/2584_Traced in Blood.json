@@ -1,0 +1,340 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021779,
+          "Position": {
+            "X": -5.44751,
+            "Y": 210.99998,
+            "Z": -39.658203
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBRDM630_02584_Q1_000_050",
+              "Answer": "TEXT_JOBRDM630_02584_A1_000_051"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -341.33426,
+            "Y": 94.733665,
+            "Z": -414.5643
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "Fly": true
+        },
+        {
+          "DataId": 1021780,
+          "Position": {
+            "X": -339.04022,
+            "Y": 94.94087,
+            "Z": -414.17566
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008291,
+          "Position": {
+            "X": -299.48883,
+            "Y": 200.7019,
+            "Z": -240.55853
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -299.41455,
+            "Y": 200.71986,
+            "Z": -238.0671
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 620,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -299.78412,
+              "Y": 202.14117,
+              "Z": -229.18993
+            }
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -292.9197,
+            "Y": 203.25142,
+            "Z": -222.20459
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -262.3789,
+            "Y": 106.614746,
+            "Z": -206.86658
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Sprint": false,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2008292,
+          "Position": {
+            "X": -262.3789,
+            "Y": 106.614746,
+            "Z": -206.86658
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -207.53746,
+            "Y": 108.3858,
+            "Z": -304.68738
+          },
+          "StopDistance": 0.5,
+          "InteractionType": "WalkTo",
+          "TerritoryId": 620,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -207.53746,
+            "Y": 108.3858,
+            "Z": -304.68738
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 620,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -210.40668,
+              "Y": 109.666504,
+              "Z": -299.794
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.2
+          },
+          "Mount": false,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked",
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2008293,
+          "Position": {
+            "X": -210.40668,
+            "Y": 109.666504,
+            "Z": -299.794
+          },
+          "StopDistance": 1,
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -213.96315,
+            "Y": 107.1167,
+            "Z": -305.87753
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1021781,
+          "Position": {
+            "X": -308.43066,
+            "Y": 102.62436,
+            "Z": -372.2744
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008294,
+          "Position": {
+            "X": 782.6809,
+            "Y": 256.91602,
+            "Z": -388.29633
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7822
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021782,
+          "Position": {
+            "X": 120.74463,
+            "Y": 118.383255,
+            "Z": -732.57043
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021778,
+          "Position": {
+            "X": -4.135254,
+            "Y": 211,
+            "Z": -39.84137
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "NextQuestId": 2585
+        }
+      ]
+    }
+  ]
+}

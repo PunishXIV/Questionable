@@ -1,0 +1,197 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030196,
+          "Position": {
+            "X": 21.377869,
+            "Y": 82.782265,
+            "Z": 25.009521
+          },
+          "StopDistance": 7,
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030197,
+          "Position": {
+            "X": -456.68726,
+            "Y": 65.77815,
+            "Z": 79.9115
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027288,
+          "Position": {
+            "X": -457.3587,
+            "Y": 8.987028,
+            "Z": 537.04126
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -450.89993,
+            "Y": 8.987026,
+            "Z": 545.4605
+          },
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2010088,
+          "Position": {
+            "X": -448.2033,
+            "Y": 8.316162,
+            "Z": 546.25757
+          },
+          "StopDistance": 4,
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1027441,
+          "Position": {
+            "X": -465.32385,
+            "Y": 8.987028,
+            "Z": 555.4131
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -458.26974,
+            "Y": 18.818102,
+            "Z": 479.86996
+          },
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2010089,
+          "Position": {
+            "X": -458.2437,
+            "Y": 20.004517,
+            "Z": 481.58997
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027288,
+          "Position": {
+            "X": -457.3587,
+            "Y": 8.987028,
+            "Z": 537.04126
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKME104_03633_Q1_000_000",
+              "Answer": "TEXT_LUCKME104_03633_A1_000_006"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKME104_03633_Q2_000_000",
+              "Answer": "TEXT_LUCKME104_03633_A2_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030197,
+          "Position": {
+            "X": -456.68726,
+            "Y": 65.77815,
+            "Z": 79.9115
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047842,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 50.124947,
+            "Z": 361.95923
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013770,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 53.177612,
+            "Z": 772.8236
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047850,
+          "Position": {
+            "X": -36.30127,
+            "Y": 53.200012,
+            "Z": 753.56665
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047855,
+          "Position": {
+            "X": -131.12079,
+            "Y": 6.380001,
+            "Z": 551.75085
+          },
+          "StopDistance": 6,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047860,
+          "Position": {
+            "X": -194.75098,
+            "Y": 0.049999997,
+            "Z": 532.1278
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1047861,
+          "Position": {
+            "X": -205.52374,
+            "Y": 6.4019995,
+            "Z": 555.01636
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1047862,
+          "Position": {
+            "X": -183.73395,
+            "Y": 0.049998913,
+            "Z": 580.8651
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -179.35655,
+            "Y": 0,
+            "Z": 606.5711
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1047868,
+          "Position": {
+            "X": -183.18463,
+            "Y": -6.346533E-12,
+            "Z": 606.71387
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047869,
+          "Position": {
+            "X": -266.0716,
+            "Y": 0.049999483,
+            "Z": 533.77576
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

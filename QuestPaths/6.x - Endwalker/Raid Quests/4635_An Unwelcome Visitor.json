@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041258,
+          "Position": {
+            "X": -639.704,
+            "Y": -27.175835,
+            "Z": 301.07568
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041270,
+          "Position": {
+            "X": -830.5333,
+            "Y": 169.52928,
+            "Z": -56.809387
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1043488,
+          "Position": {
+            "X": 643.48804,
+            "Y": 158.6388,
+            "Z": -254.35266
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041273,
+          "Position": {
+            "X": 808.3772,
+            "Y": 152.22246,
+            "Z": -240.4975
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043489,
+          "Position": {
+            "X": 99.99231,
+            "Y": -9.999999E-12,
+            "Z": -22.171448
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1025,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4636
+        }
+      ]
+    }
+  ]
+}

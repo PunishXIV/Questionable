@@ -1,0 +1,101 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000100,
+          "Position": {
+            "X": 23.819275,
+            "Y": -8,
+            "Z": 115.92273
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 2651
+        },
+        {
+          "DataId": 1000286,
+          "Position": {
+            "X": -53.574463,
+            "Y": 7.2025366,
+            "Z": -118.36426
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2000087,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 1.449585,
+            "Z": 7.7057495
+          },
+          "TerritoryId": 179,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 132
+        },
+        {
+          "Position": {
+            "X": 40.596844,
+            "Y": -8,
+            "Z": 103.85207
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANFST009_00449_Q2_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1003027,
+          "Position": {
+            "X": 4.8981323,
+            "Y": -1.92944,
+            "Z": -0.19836426
+          },
+          "TerritoryId": 205,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

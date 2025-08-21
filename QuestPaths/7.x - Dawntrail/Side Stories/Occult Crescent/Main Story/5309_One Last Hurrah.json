@@ -1,0 +1,183 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038915,
+          "Position": {
+            "X": 188.06738,
+            "Y": -17.9643,
+            "Z": 43.289795
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038967,
+          "Position": {
+            "X": 206.68335,
+            "Y": -17.9645,
+            "Z": 62.607666
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038967,
+          "Position": {
+            "X": 206.68335,
+            "Y": -17.9645,
+            "Z": 62.607666
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGKD001_05309_SYSTEM_000_201",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042454,
+          "Position": {
+            "X": 33.554565,
+            "Y": 18.511625,
+            "Z": 6.362976
+          },
+          "TerritoryId": 1277,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1042894,
+          "Position": {
+            "X": 16.281311,
+            "Y": 16.35219,
+            "Z": -10.666138
+          },
+          "TerritoryId": 1277,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1046341,
+          "Position": {
+            "X": 0.38146973,
+            "Y": 16.34722,
+            "Z": -6.4240723
+          },
+          "TerritoryId": 1277,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1046350,
+          "Position": {
+            "X": -18.509216,
+            "Y": 16.352419,
+            "Z": 3.40271
+          },
+          "TerritoryId": 1277,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039720,
+          "Position": {
+            "X": 32.822144,
+            "Y": 18.355127,
+            "Z": -3.402832
+          },
+          "TerritoryId": 1277,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1052330,
+          "Position": {
+            "X": 46.066895,
+            "Y": 0,
+            "Z": -0.13739014
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1269,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5310
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010858,
+          "Position": {
+            "X": -1.9074707,
+            "Y": 0,
+            "Z": -3.1281738
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1010890,
+          "Position": {
+            "X": 31.967651,
+            "Y": -1,
+            "Z": 2.9144287
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010860,
+          "Position": {
+            "X": 2.822876,
+            "Y": -1.995725,
+            "Z": -41.24518
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002880,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -29.251587
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010858,
+          "Position": {
+            "X": -1.9074707,
+            "Y": 0,
+            "Z": -3.1281738
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1010861,
+          "Position": {
+            "X": -63.523376,
+            "Y": 46.999992,
+            "Z": 25.192627
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006646,
+          "Position": {
+            "X": -29.953552,
+            "Y": 46.99734,
+            "Z": 32.547485
+          },
+          "StopDistance": 5,
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

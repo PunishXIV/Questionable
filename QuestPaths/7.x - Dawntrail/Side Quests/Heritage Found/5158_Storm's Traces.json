@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049489,
+          "Position": {
+            "X": -250.04962,
+            "Y": 31.000015,
+            "Z": 134.7218
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Heritage Found - Electrope Strike",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -250.04962,
+                  "Y": 31.000015,
+                  "Z": 134.7218
+                },
+                "TerritoryId": 1191,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -174.01418,
+            "Y": 31.361284,
+            "Z": 268.5205
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17682,
+            17683
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -352.59204,
+            "Y": 39.809544,
+            "Z": -44.773865
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1191,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17680,
+            17681
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049489,
+          "Position": {
+            "X": -250.04962,
+            "Y": 31.000015,
+            "Z": 134.7218
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+        }
+      ]
+    }
+  ]
+}

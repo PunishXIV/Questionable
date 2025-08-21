@@ -1,0 +1,98 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041303,
+          "Position": {
+            "X": 209.55212,
+            "Y": 19.316555,
+            "Z": -110.70422
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZI003_04318_Q1_000_000",
+              "Answer": "TEXT_AKTKZI003_04318_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012440,
+          "Position": {
+            "X": 213.9773,
+            "Y": 8.224609,
+            "Z": -33.737732
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2012441,
+          "Position": {
+            "X": 168.0476,
+            "Y": 1.296936,
+            "Z": 53.94055
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041303,
+          "Position": {
+            "X": 209.55212,
+            "Y": 19.316555,
+            "Z": -110.70422
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Journey's End",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006193,
+          "Position": {
+            "X": -334.0658,
+            "Y": -0.81366825,
+            "Z": 148.91272
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -422.68066,
+            "Y": -2.5542965,
+            "Z": 150.50304
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true,
+          "Comment": "Avoids swimming"
+        },
+        {
+          "Position": {
+            "X": -585.1562,
+            "Y": -1.1847447,
+            "Z": -2.186262
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 28,
+              "MinimumKillCount": 3,
+              "RewardItemId": 2003009,
+              "RewardItemCount": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -422.68066,
+            "Y": -2.5542965,
+            "Z": 150.50304
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "Comment": "Avoids swimming"
+        },
+        {
+          "DataId": 1006193,
+          "Position": {
+            "X": -334.0658,
+            "Y": -0.81366825,
+            "Z": 148.91272
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

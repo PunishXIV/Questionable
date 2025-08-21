@@ -1,0 +1,145 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037469,
+          "Position": {
+            "X": -148.8518,
+            "Y": 36,
+            "Z": 38.895264
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041152,
+          "Position": {
+            "X": -100.02289,
+            "Y": 13.999934,
+            "Z": 157.97656
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Ruveydah Fibers",
+            "[Radz-at-Han] Alzadaal's Peace"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012395,
+          "Position": {
+            "X": -108.20172,
+            "Y": 14.877502,
+            "Z": 156.20654
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZF015_04270_Q1_000_000",
+              "Answer": "TEXT_AKTKZF015_04270_A1_000_002"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            64,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2012396,
+          "Position": {
+            "X": -106.126526,
+            "Y": 15.0911255,
+            "Z": 154.49756
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZF015_04270_Q1_000_000",
+              "Answer": "TEXT_AKTKZF015_04270_A1_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            32,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1041152,
+          "Position": {
+            "X": -100.02289,
+            "Y": 13.999934,
+            "Z": 157.97656
+          },
+          "StopDistance": 7,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -38.102844,
+            "Y": 7.704563,
+            "Z": 106.27705
+          },
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 6.6071167,
+            "Y": -2.02948,
+            "Z": 110.55151
+          },
+          "StopDistance": 2,
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1037469,
+          "Position": {
+            "X": -148.8518,
+            "Y": 36,
+            "Z": 38.895264
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Alzadaal's Peace",
+            "[Radz-at-Han] Ruveydah Fibers"
+          ]
+        }
+      ]
+    }
+  ]
+}

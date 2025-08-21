@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039516,
+          "Position": {
+            "X": -554.89435,
+            "Y": 11.402609,
+            "Z": 125.10864
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037680,
+          "Position": {
+            "X": -550.1946,
+            "Y": 1.6023201,
+            "Z": 50.766724
+          },
+          "StopDistance": 1,
+          "TerritoryId": 957,
+          "InteractionType": "Emote",
+          "Emote": "greeting",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1037670,
+          "Position": {
+            "X": -508.84262,
+            "Y": -3.7109916E-05,
+            "Z": -20.767578
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Emote",
+          "Emote": "greeting",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1037676,
+          "Position": {
+            "X": -502.95264,
+            "Y": 12.375282,
+            "Z": 116.31946
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Emote",
+          "Emote": "greeting",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039516,
+          "Position": {
+            "X": -554.89435,
+            "Y": 11.402609,
+            "Z": 125.10864
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

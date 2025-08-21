@@ -1,0 +1,294 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003958,
+          "Position": {
+            "X": -497.70352,
+            "Y": -19.630796,
+            "Z": 39.993896
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "DataId": 1006361,
+          "Position": {
+            "X": -495.964,
+            "Y": 19.009007,
+            "Z": -371.72504
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006348,
+          "Position": {
+            "X": -473.99103,
+            "Y": 19.027954,
+            "Z": -370.84003
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            16,
+            null
+          ]
+        },
+        {
+          "DataId": 1006347,
+          "Position": {
+            "X": -474.6319,
+            "Y": 19.027954,
+            "Z": -371.20624
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            32,
+            null
+          ]
+        },
+        {
+          "DataId": 1006346,
+          "Position": {
+            "X": -475.97467,
+            "Y": 19.027954,
+            "Z": -370.65692
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            64,
+            null
+          ]
+        },
+        {
+          "DataId": 1006345,
+          "Position": {
+            "X": -477.34802,
+            "Y": 19.027954,
+            "Z": -370.35175
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            128,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -408.92343,
+            "Y": 23.167036,
+            "Z": -351.16223
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Vesper Bay Gate"
+        },
+        {
+          "DataId": 1006362,
+          "Position": {
+            "X": -395.8954,
+            "Y": 23,
+            "Z": -353.6584
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -408.92343,
+            "Y": 23.167036,
+            "Z": -351.16223
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Vesper Bay Gate",
+          "DisableNavmesh": true,
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                64,
+                null
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1006344,
+          "Position": {
+            "X": -474.57086,
+            "Y": 18.112427,
+            "Z": -372.5796
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            64,
+            null
+          ]
+        },
+        {
+          "DataId": 1006351,
+          "Position": {
+            "X": -475.82214,
+            "Y": 18.966919,
+            "Z": -372.67108
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1006350,
+          "Position": {
+            "X": -476.55457,
+            "Y": 19.027954,
+            "Z": -372.91522
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1006349,
+          "Position": {
+            "X": -477.6532,
+            "Y": 19.027954,
+            "Z": -372.2744
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            128,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -408.92343,
+            "Y": 23.167036,
+            "Z": -351.16223
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Vesper Bay Gate"
+        },
+        {
+          "DataId": 1006362,
+          "Position": {
+            "X": -395.8954,
+            "Y": 23,
+            "Z": -353.6584
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003958,
+          "Position": {
+            "X": -497.70352,
+            "Y": -19.630796,
+            "Z": 39.993896
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    }
+  ]
+}

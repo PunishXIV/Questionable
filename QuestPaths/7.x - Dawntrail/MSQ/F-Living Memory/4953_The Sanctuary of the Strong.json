@@ -1,0 +1,130 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047915,
+          "Position": {
+            "X": 746.5476,
+            "Y": -12.716527,
+            "Z": 216.7544
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048243,
+          "Position": {
+            "X": 57.87744,
+            "Y": 53.200012,
+            "Z": 772.03015
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
+          "TargetTerritoryId": 1192,
+          "SkipConditions": {
+            "StepIf": {
+              "QuestsCompleted": [
+                5176
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                5176
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1050621,
+          "Position": {
+            "X": 477.1344,
+            "Y": -0.034497976,
+            "Z": 711.6654
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5176
+        },
+        {
+          "DataId": 1047917,
+          "Position": {
+            "X": 35.721313,
+            "Y": 53.20001,
+            "Z": 753.1699
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047922,
+          "Position": {
+            "X": 353.04797,
+            "Y": 25.75336,
+            "Z": -11.551086
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013982,
+          "Position": {
+            "X": 169.57349,
+            "Y": 29.220947,
+            "Z": -308.0644
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818487
+        },
+        {
+          "DataId": 1047925,
+          "Position": {
+            "X": 260.02893,
+            "Y": 27.01824,
+            "Z": -183.61182
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047929,
+          "Position": {
+            "X": 345.2964,
+            "Y": 26.972605,
+            "Z": -296.37604
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

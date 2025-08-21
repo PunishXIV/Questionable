@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021482,
+          "Position": {
+            "X": -94.92645,
+            "Y": 48.01958,
+            "Z": -31.570984
+          },
+          "TerritoryId": 147,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021484,
+          "Position": {
+            "X": 3.3721924,
+            "Y": 50.266228,
+            "Z": -770.1076
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021486,
+          "Position": {
+            "X": 54.642456,
+            "Y": 20.4949,
+            "Z": -671.3207
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021487,
+          "Position": {
+            "X": 94.56018,
+            "Y": 20.33949,
+            "Z": -609.4606
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 175.10304,
+            "Y": 10.336163,
+            "Z": -584.578
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7223
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 2
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1021489,
+          "Position": {
+            "X": 176.3789,
+            "Y": 9.963035,
+            "Z": -583.64233
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 210.32977,
+            "Y": -17.479898,
+            "Z": -470.8124
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7224
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1021490,
+          "Position": {
+            "X": 211.56628,
+            "Y": -17.612108,
+            "Z": -469.50488
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2008526,
+          "Position": {
+            "X": 376.82153,
+            "Y": -17.563171,
+            "Z": -343.67902
+          },
+          "TerritoryId": 156,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021493,
+          "Position": {
+            "X": 55.557983,
+            "Y": 20.485168,
+            "Z": -672.5719
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "NextQuestId": 2583
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047132,
+          "Position": {
+            "X": 217.36475,
+            "Y": -14.000001,
+            "Z": -5.6916504
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047153,
+          "Position": {
+            "X": -270.4662,
+            "Y": 40.0732,
+            "Z": -12.253052
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] The Resplendent Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1185,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 43913,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1047132,
+          "Position": {
+            "X": 217.36475,
+            "Y": -14.000001,
+            "Z": -5.6916504
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4994,
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    }
+  ]
+}

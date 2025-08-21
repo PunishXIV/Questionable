@@ -1,0 +1,38 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013386,
+          "Position": {
+            "X": -155.62683,
+            "Y": -14.153783,
+            "Z": -541.558
+          },
+          "StopDistance": 5,
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013111,
+          "Position": {
+            "X": 162.89001,
+            "Y": -15.134373,
+            "Z": 37.094604
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

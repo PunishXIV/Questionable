@@ -1,0 +1,149 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131,
+                971
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                971
+              ]
+            }
+          }
+        },
+        {
+          "TerritoryId": 971,
+          "InteractionType": "EquipItem",
+          "ItemId": 35760,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 0.13146536,
+            "Y": 0.01480782,
+            "Z": -0.7022889
+          },
+          "TerritoryId": 971,
+          "InteractionType": "UseItem",
+          "ItemId": 35872,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 971,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1037014,
+          "Position": {
+            "X": 0.9002075,
+            "Y": 0.014807776,
+            "Z": -4.3793945
+          },
+          "StopDistance": 5,
+          "TerritoryId": 971,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036636,
+          "Position": {
+            "X": -264.91187,
+            "Y": -5.052193,
+            "Z": -371.38934
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1036637,
+          "Position": {
+            "X": -263.84375,
+            "Y": -4.9409676,
+            "Z": -371.26727
+          },
+          "TerritoryId": 141,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        },
+        {
+          "DataId": 1036629,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4075
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 7.095398,
+                                    "Y": 16.167778,
+                                    "Z": -188.67786
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005932,
+                    "Position": {
+                        "X": -1.236023,
+                        "Y": 33.38838,
+                        "Z": -244.19019
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 2003805,
+                    "Position": {
+                        "X": 176.10437,
+                        "Y": 64.530396,
+                        "Z": -273.39594
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001260,
+                    "Fly": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 2003806,
+                    "Position": {
+                        "X": 178.45422,
+                        "Y": 64.62195,
+                        "Z": -271.2292
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001260,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        64
+                    ]
+                },
+                {
+                    "DataId": 2003807,
+                    "Position": {
+                        "X": 180.37683,
+                        "Y": 64.43884,
+                        "Z": -268.17737
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001260
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 2003808,
+                    "Position": {
+                        "X": 169.39038,
+                        "Y": 65.50696,
+                        "Z": -263.72174
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001261
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

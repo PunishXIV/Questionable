@@ -1,0 +1,123 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003061,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.500025,
+            "Z": -4.3793945
+          },
+          "TerritoryId": 204,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006584,
+          "Position": {
+            "X": 193.83533,
+            "Y": 7.8634253,
+            "Z": -57.724915
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 616.5126,
+            "Y": 22.329094,
+            "Z": 84.68576
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002241,
+          "Position": {
+            "X": 617.21216,
+            "Y": 23.605652,
+            "Z": 83.26843
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2198
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002614,
+          "Position": {
+            "X": 617.21216,
+            "Y": 23.605652,
+            "Z": 83.26843
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006584,
+          "Position": {
+            "X": 193.83533,
+            "Y": 7.8634253,
+            "Z": -57.724915
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 210.56421,
+            "Y": 18.119999,
+            "Z": -21.370262
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006585,
+          "Position": {
+            "X": 209.3385,
+            "Y": 18.119999,
+            "Z": -21.957764
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1012
+        }
+      ]
+    }
+  ]
+}

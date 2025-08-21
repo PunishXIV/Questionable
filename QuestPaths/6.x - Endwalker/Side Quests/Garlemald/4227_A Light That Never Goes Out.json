@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037782,
+          "Position": {
+            "X": 545.2506,
+            "Y": -36.61608,
+            "Z": -230.24347
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 539.7576,
+            "Y": -36.65,
+            "Z": -237.16893
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "$": "tries to fly through subway car roof otherwise"
+        },
+        {
+          "DataId": 2012049,
+          "Position": {
+            "X": 301.86914,
+            "Y": 10.788086,
+            "Z": -540.79504
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          128
+          ],
+          "$": "0 0 0 0 0 0 -> 16 17 0 0 0 128",
+          "Fly": true
+        },
+        {
+          "DataId": 2012050,
+          "Position": {
+            "X": 295.49097,
+            "Y": 11.306824,
+            "Z": -500.26703
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037782,
+          "Position": {
+            "X": 545.2506,
+            "Y": -36.61608,
+            "Z": -230.24347
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Tertium"
+        }
+      ]
+    }
+  ]
+}

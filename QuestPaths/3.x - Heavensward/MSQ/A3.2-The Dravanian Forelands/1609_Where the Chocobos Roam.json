@@ -1,0 +1,103 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012609,
+          "Position": {
+            "X": -688.777,
+            "Y": 121.51788,
+            "Z": -390.49365
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -826.9342,
+            "Y": 117.95439,
+            "Z": -642.92413
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -850.3646,
+            "Y": 117.68303,
+            "Z": -656.6694
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 398
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012612,
+          "Position": {
+            "X": 801.90735,
+            "Y": -19.788122,
+            "Z": 311.75696
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2006195,
+          "Position": {
+            "X": 765.0111,
+            "Y": -15.85179,
+            "Z": 289.082
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818068
+        },
+        {
+          "Position": {
+            "X": 744.5929,
+            "Y": -34.200893,
+            "Z": 272.8362
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

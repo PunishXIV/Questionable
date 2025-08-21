@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010010,
+          "Position": {
+            "X": -50.94995,
+            "Y": -3.440948,
+            "Z": 20.58435
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1010017,
+          "Position": {
+            "X": 22.171326,
+            "Y": 1.1999999,
+            "Z": 28.854736
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010018,
+          "Position": {
+            "X": 49.729126,
+            "Y": -8.046955,
+            "Z": 100.20593
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 49.68947,
+            "Y": -8.046954,
+            "Z": 100.59061
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 38.482037,
+            "Y": -9.182595,
+            "Z": 124.36735
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 40.59977,
+            "Y": -18.800003,
+            "Z": 103.46791
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1010012,
+          "Position": {
+            "X": 23.910828,
+            "Y": -18.800003,
+            "Z": 89.89087
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010018,
+          "Position": {
+            "X": 49.729126,
+            "Y": -8.046955,
+            "Z": 100.20593
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040261,
+          "Position": {
+            "X": -377.61505,
+            "Y": 45.002518,
+            "Z": -29.922974
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040262,
+          "Position": {
+            "X": -237.01843,
+            "Y": 36,
+            "Z": 58.976074
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] Ruveydah Fibers"
+        },
+        {
+          "DataId": 1040264,
+          "Position": {
+            "X": -106.49274,
+            "Y": 30.999998,
+            "Z": -14.54187
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040266,
+          "Position": {
+            "X": 3.982544,
+            "Y": -2.9207662E-05,
+            "Z": 0.99176025
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040268,
+          "Position": {
+            "X": 87.5105,
+            "Y": 1.8631812,
+            "Z": -121.41614
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] The High Crucible of Al-Kimiya"
+        },
+        {
+          "DataId": 1040276,
+          "Position": {
+            "X": -99.076904,
+            "Y": 3.9334679,
+            "Z": 1.3884888
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "StopDistance": 6,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMA123_04379_Q1_000_163",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

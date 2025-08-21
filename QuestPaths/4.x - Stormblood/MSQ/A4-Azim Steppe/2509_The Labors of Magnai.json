@@ -1,0 +1,282 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022078,
+          "Position": {
+            "X": -29.526245,
+            "Y": 121.09276,
+            "Z": 70.29822
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 622,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Azim Steppe - Dawn Throne"
+        },
+        {
+          "DataId": 1020687,
+          "Position": {
+            "X": 102.92212,
+            "Y": 114.904976,
+            "Z": 70.66455
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008019,
+          "Position": {
+            "X": 105.607666,
+            "Y": 116.01428,
+            "Z": -49.69867
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818212
+        },
+        {
+          "DataId": 1023089,
+          "Position": {
+            "X": 66.178345,
+            "Y": 114.904976,
+            "Z": -8.0720825
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDA410_02509_SYSTEM_000_051",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 65.04901,
+            "Y": 1.9869974,
+            "Z": 23.111439
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 65.04901,
+            "Y": 1.9869974,
+            "Z": 23.111439
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Dive",
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "DataId": 2008252,
+          "Position": {
+            "X": 61.020752,
+            "Y": -72.09894,
+            "Z": 11.123779
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 1 16    0 0    0 32",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2008250,
+          "Position": {
+            "X": 109.54443,
+            "Y": -51.285645,
+            "Z": -40.878906
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 1 16    0 0    0 32 -> QW: 2 32    0 0    0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2008255,
+          "Position": {
+            "X": 134.7218,
+            "Y": -61.69226,
+            "Z": -18.783936
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 2 32    0 0    0 160 -> QW: 3 48    0 0    0 164",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 2008253,
+          "Position": {
+            "X": 166.55212,
+            "Y": -62.912964,
+            "Z": 27.481445
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 3 48    0 0    0 164 -> QW: 4 64    0 0    0 180",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2008257,
+          "Position": {
+            "X": -194.2627,
+            "Y": -57.66388,
+            "Z": 105.97388
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            1
+          ]
+        },
+        {
+          "DataId": 2008256,
+          "Position": {
+            "X": -126.26843,
+            "Y": -54.64258,
+            "Z": 93.43091
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 4 64    0 0    0 180 -> QW: 5 80    0 0    0 182",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2
+          ]
+        },
+        {
+          "DataId": 2008251,
+          "Position": {
+            "X": -74.23517,
+            "Y": -57.78595,
+            "Z": 59.464355
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 5 80    0 0    0 182 -> QW: 6 96    0 0    0 246",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2008254,
+          "Position": {
+            "X": -78.202515,
+            "Y": -60.105347,
+            "Z": 6.5460815
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "$": "QW: 6 96    0 0    0 246 -> QW: 7 112    0 0    0 254",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020687,
+          "Position": {
+            "X": 102.92212,
+            "Y": 114.904976,
+            "Z": 70.66455
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019417,
+          "Position": {
+            "X": -39.414062,
+            "Y": 122.1,
+            "Z": 63.61487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

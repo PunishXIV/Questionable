@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013970,
+          "Position": {
+            "X": 103.4104,
+            "Y": 15.00001,
+            "Z": 41.306152
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1015052,
+          "Position": {
+            "X": -347.5243,
+            "Y": 91.63155,
+            "Z": -558.8312
+          },
+          "TerritoryId": 397,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK600_02064_Q1_000_153",
+              "Answer": "TEXT_JOBDRK600_02064_A1_000_154"
+            }
+          ],
+          "NextQuestId": 2915
+        }
+      ]
+    }
+  ]
+}

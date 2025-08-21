@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039760,
+          "Position": {
+            "X": 82.65808,
+            "Y": 269.0903,
+            "Z": -490.44025
+          },
+          "StopDistance": 7,
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040338,
+          "Position": {
+            "X": -344.44196,
+            "Y": 263.13083,
+            "Z": -463.70648
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040339,
+          "Position": {
+            "X": -341.78687,
+            "Y": 263.37482,
+            "Z": -461.44812
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 48.215565,
+            "Y": 269.00882,
+            "Z": -703.63995
+          },
+          "TerritoryId": 960,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "Mount": true
+        },
+        {
+          "DataId": 2012031,
+          "Position": {
+            "X": 13.107483,
+            "Y": 275.56262,
+            "Z": -756.40497
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818390,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1039778,
+          "Position": {
+            "X": 184.03906,
+            "Y": 269.03912,
+            "Z": -637.6288
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

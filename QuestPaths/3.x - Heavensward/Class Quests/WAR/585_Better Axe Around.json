@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006746,
+          "Position": {
+            "X": 460.65454,
+            "Y": 8.309061,
+            "Z": 74.47925
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 427.1206,
+            "Y": 7.9075317,
+            "Z": 24.77774
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "DataId": 1013279,
+          "Position": {
+            "X": 441.70276,
+            "Y": 8.670496,
+            "Z": 18.814331
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004349,
+          "Position": {
+            "X": 444.99866,
+            "Y": -4.487237,
+            "Z": -453.02515
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "0 0 0 0 0 0 -> 17 0 0 0 0 64"
+        },
+        {
+          "DataId": 1007067,
+          "Position": {
+            "X": 444.99866,
+            "Y": -4.3439503,
+            "Z": -446.00598
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "$": "17 0 0 0 0 64 -> 33 1 0 0 0 192"
+        },
+        {
+          "DataId": 1006550,
+          "Position": {
+            "X": 449.33228,
+            "Y": -12.436822,
+            "Z": -387.5639
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2005571,
+          "Position": {
+            "X": 442.8015,
+            "Y": -19.516357,
+            "Z": -291.43213
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 427.1206,
+            "Y": 7.9075317,
+            "Z": 24.77774
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "DataId": 1013279,
+          "Position": {
+            "X": 441.70276,
+            "Y": 8.670496,
+            "Z": 18.814331
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 586
+        }
+      ]
+    }
+  ]
+}

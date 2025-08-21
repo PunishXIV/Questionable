@@ -1,0 +1,200 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025597,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091362,
+            "Z": -3.0060425
+          },
+          "TerritoryId": 744,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026804,
+          "Position": {
+            "X": -524.55945,
+            "Y": 8.698304,
+            "Z": -15.487976
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDF104_03182_Q1_000_021",
+              "Yes": true
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026805,
+          "Position": {
+            "X": -477.77527,
+            "Y": 107.62999,
+            "Z": 102.433716
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact",
+          "StopDistance": 7,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDF104_03182_Q1_000_031",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026815,
+          "Position": {
+            "X": -0.7172241,
+            "Y": 0.014375329,
+            "Z": 3.2807007
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1026821,
+          "Position": {
+            "X": 4.2266846,
+            "Y": -3.7252903E-09,
+            "Z": 5.1116943
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDF104_03182_Q3_000_000",
+              "Answer": "TEXT_STMBDF104_03182_A3_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1026817,
+          "Position": {
+            "X": -3.7080078,
+            "Y": -1.1059713E-09,
+            "Z": 5.2643433
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDF104_03182_Q2_000_000",
+              "Answer": "TEXT_STMBDF104_03182_A2_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1026818,
+          "Position": {
+            "X": -1.9990234,
+            "Y": -1.8626451E-09,
+            "Z": 12.344482
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDF104_03182_Q1_000_000",
+              "Answer": "TEXT_STMBDF104_03182_A1_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1026815,
+          "Position": {
+            "X": -0.7172241,
+            "Y": 0.014375329,
+            "Z": 3.2807007
+          },
+          "StopDistance": 7,
+          "TerritoryId": 829,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026823,
+          "Position": {
+            "X": -468.925,
+            "Y": 107.62999,
+            "Z": 130.9071
+          },
+          "StopDistance": 6,
+          "TerritoryId": 829,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

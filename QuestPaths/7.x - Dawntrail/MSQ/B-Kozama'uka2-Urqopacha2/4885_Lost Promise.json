@@ -1,0 +1,251 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046642,
+          "Position": {
+            "X": -530.38837,
+            "Y": 122.122025,
+            "Z": 340.93237
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046677,
+          "Position": {
+            "X": -405.90527,
+            "Y": 121.63345,
+            "Z": 278.91956
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046644,
+          "Position": {
+            "X": 569.0242,
+            "Y": 115.13427,
+            "Z": 236.25537
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Many Fires"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046646,
+          "Position": {
+            "X": 566.8573,
+            "Y": 115.180565,
+            "Z": 236.59106
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1046646,
+          "Position": {
+            "X": 552.2429,
+            "Y": 115.77921,
+            "Z": 221.62932
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1
+        },
+        {
+          "DataId": 1046646,
+          "Position": {
+            "X": 562.5982,
+            "Y": 115.49999,
+            "Z": 191.69548
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1
+        },
+        {
+          "DataId": 1046647,
+          "Position": {
+            "X": 585.44275,
+            "Y": 119.49004,
+            "Z": 189.44067
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046678,
+          "Position": {
+            "X": 605.61523,
+            "Y": 119.490036,
+            "Z": 185.04602
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Emote",
+          "Emote": "happy"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046647,
+          "Position": {
+            "X": 585.44275,
+            "Y": 119.49004,
+            "Z": 189.44067
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1046647,
+          "Position": {
+            "X": 573.42645,
+            "Y": 119.49004,
+            "Z": 171.78094
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1
+        },
+        {
+          "DataId": 1046648,
+          "Position": {
+            "X": 575.9822,
+            "Y": 119.490036,
+            "Z": 156.90845
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1046679,
+          "Position": {
+            "X": 590.41736,
+            "Y": 119.49004,
+            "Z": 144.09094
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Emote",
+          "Emote": "happy"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1046648,
+          "Position": {
+            "X": 575.9822,
+            "Y": 119.490036,
+            "Z": 156.90845
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1046648,
+          "Position": {
+            "X": 575.20374,
+            "Y": 119.49004,
+            "Z": 180.12602
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 3
+        },
+        {
+          "DataId": 1046648,
+          "Position": {
+            "X": 556.4156,
+            "Y": 115.49999,
+            "Z": 184.765
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 1
+        },
+        {
+          "DataId": 1046649,
+          "Position": {
+            "X": 543.78577,
+            "Y": 115.55489,
+            "Z": 165.23987
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1046680,
+          "Position": {
+            "X": 545.3727,
+            "Y": 116.722374,
+            "Z": 152.88
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Emote",
+          "Emote": "happy"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046878,
+          "Position": {
+            "X": 542.53455,
+            "Y": 116.722374,
+            "Z": 153.58203
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

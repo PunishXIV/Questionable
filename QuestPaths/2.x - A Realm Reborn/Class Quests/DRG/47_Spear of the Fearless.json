@@ -1,0 +1,245 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 260.13162,
+            "Y": -11.982115,
+            "Z": -159.64388
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Gridania] Lancers' Guild",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2000911,
+          "Position": {
+            "X": 261.82947,
+            "Y": -11.795227,
+            "Z": -161.36414
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "ItemId": 2000230,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            42
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2000910,
+          "Position": {
+            "X": 266.31567,
+            "Y": -11.795227,
+            "Z": -174.88367
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "ItemId": 2000230,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            42
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 300.2214,
+            "Y": 1.4752781,
+            "Z": 87.94056
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Gridania] Lancers' Guild",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2000914,
+          "Position": {
+            "X": 302.2965,
+            "Y": 2.090454,
+            "Z": 88.0293
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            41
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2000916,
+          "Position": {
+            "X": 305.4093,
+            "Y": 4.501404,
+            "Z": 103.990234
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            26
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2000915,
+          "Position": {
+            "X": 327.10767,
+            "Y": 3.7078857,
+            "Z": 93.64453
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            41
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1000251,
+          "Position": {
+            "X": 147.08167,
+            "Y": 15.5,
+            "Z": -267.99426
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 35
+        }
+      ]
+    }
+  ]
+}

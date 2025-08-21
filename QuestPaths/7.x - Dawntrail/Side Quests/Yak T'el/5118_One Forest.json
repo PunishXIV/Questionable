@@ -1,0 +1,219 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050891,
+          "Position": {
+            "X": 662.8672,
+            "Y": -137.17401,
+            "Z": 556.115
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050897,
+          "Position": {
+            "X": 755.94714,
+            "Y": -132.59648,
+            "Z": 505.94324
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZD401_05118_Q1_000_000",
+              "Answer": "TEXT_KINGZD401_05118_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050891,
+          "Position": {
+            "X": 662.8672,
+            "Y": -137.17401,
+            "Z": 556.115
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050901,
+          "Position": {
+            "X": 627.25244,
+            "Y": -137.174,
+            "Z": 591.8517
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1050900,
+          "Position": {
+            "X": 575.55493,
+            "Y": -137.174,
+            "Z": 540.0929
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048989,
+          "Position": {
+            "X": 523.4302,
+            "Y": -135.12724,
+            "Z": 578.14905
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1050891,
+          "Position": {
+            "X": 662.8672,
+            "Y": -137.17401,
+            "Z": 556.115
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1050904,
+          "Position": {
+            "X": 263.84375,
+            "Y": -157.31726,
+            "Z": 738.6129
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2014154,
+          "Position": {
+            "X": 255.9701,
+            "Y": -150.68292,
+            "Z": 807.64465
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "UseItem",
+          "ItemId": 2003625,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2014248,
+          "Position": {
+            "X": 255.9701,
+            "Y": -150.68292,
+            "Z": 807.64465
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17675
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1050904,
+          "Position": {
+            "X": 263.84375,
+            "Y": -157.31726,
+            "Z": 738.6129
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050903,
+          "Position": {
+            "X": 663.9962,
+            "Y": -137.17401,
+            "Z": 554.589
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

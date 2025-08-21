@@ -1,0 +1,84 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020842,
+          "Position": {
+            "X": 81.55945,
+            "Y": 118.15579,
+            "Z": -717.89124
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -53.208252,
+            "Y": 104.518814,
+            "Z": -739.1928
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 7447,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2002391,
+              "RewardItemCount": 1
+            }
+          ]
+        },
+        {
+          "Position": {
+            "X": -476.92078,
+            "Y": 48.885674,
+            "Z": -732.2957
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 7450,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2002392,
+              "RewardItemCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020842,
+          "Position": {
+            "X": 81.55945,
+            "Y": 118.15579,
+            "Z": -717.89124
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050888,
+          "Position": {
+            "X": 515.58704,
+            "Y": -146.73436,
+            "Z": 477.0122
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 515.58704,
+                  "Y": -146.73436,
+                  "Z": 477.0122
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 250
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014147,
+          "Position": {
+            "X": 440.66528,
+            "Y": -150.77448,
+            "Z": 427.7256
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17674
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014148,
+          "Position": {
+            "X": 395.4679,
+            "Y": -152.42242,
+            "Z": 372.7931
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17674
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014149,
+          "Position": {
+            "X": 267.9026,
+            "Y": -160.05188,
+            "Z": 354.45166
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014150,
+          "Position": {
+            "X": 236.95728,
+            "Y": -167.52887,
+            "Z": 307.97278
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050890,
+          "Position": {
+            "X": 661.7991,
+            "Y": -137.174,
+            "Z": 557.76294
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true,
+          "NextQuestId": 5116
+        }
+      ]
+    }
+  ]
+}

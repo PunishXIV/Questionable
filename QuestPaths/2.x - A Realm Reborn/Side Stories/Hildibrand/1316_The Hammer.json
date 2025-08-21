@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008716,
+          "Position": {
+            "X": -68.00946,
+            "Y": 13.443176,
+            "Z": 157.5188
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
+          "Fly": true,
+          "DataId": 2003664,
+          "Position": {
+            "X": 11.337402,
+            "Y": 2.670288,
+            "Z": 320.943
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003665,
+          "Position": {
+            "X": 34.50061,
+            "Y": 12.191956,
+            "Z": 254.13892
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 110.67165,
+            "Y": 18.372795,
+            "Z": 122.4577
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2003666,
+          "Position": {
+            "X": 111.192505,
+            "Y": 19.424683,
+            "Z": 121.20239
+          },
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1317
+        }
+      ]
+    }
+  ]
+}

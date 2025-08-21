@@ -1,0 +1,140 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047607,
+          "Position": {
+            "X": 233.60034,
+            "Y": -158.66302,
+            "Z": 641.01624
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047614,
+          "Position": {
+            "X": -106.34015,
+            "Y": -192.35985,
+            "Z": 586.6636
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013949,
+          "Position": {
+            "X": -114.33588,
+            "Y": -212.20728,
+            "Z": 623.77356
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818436,
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -112.97611,
+            "Y": -197.49266,
+            "Z": 595.45026
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "DataId": 1047620,
+          "Position": {
+            "X": -365.22473,
+            "Y": -165.5307,
+            "Z": 517.66235
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047626,
+          "Position": {
+            "X": -637.53723,
+            "Y": -183.38272,
+            "Z": 562.06604
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047617,
+          "Position": {
+            "X": -702.6017,
+            "Y": -199.5873,
+            "Z": 620.1113
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMC109_04905_Q1_000_000",
+              "Answer": "TEXT_KINGMC109_04905_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013951,
+          "Position": {
+            "X": -676.5698,
+            "Y": -163.98877,
+            "Z": 236.16382
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818441
+        },
+        {
+          "DataId": 1047632,
+          "Position": {
+            "X": 723.537,
+            "Y": -133.17401,
+            "Z": 543.1144
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006725,
+          "Position": {
+            "X": 446.82983,
+            "Y": -5.306207,
+            "Z": -465.72064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000768,
+          "Position": {
+            "X": 172.35059,
+            "Y": 15.5,
+            "Z": -89.951965
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 467.32037,
+            "Y": 0.38625574,
+            "Z": 155.53741
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        },
+        {
+          "DataId": 2002893,
+          "Position": {
+            "X": 467.39905,
+            "Y": 2.2124634,
+            "Z": 154.0398
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -155.03073,
+            "Y": -10.417721,
+            "Z": -70.72666
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+        },
+        {
+          "Position": {
+            "X": -153.8042,
+            "Y": -9.645816,
+            "Z": -74.48335
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            2448,
+            2449,
+            2450
+          ],
+          "$": "0 0  0 0  0 0 -> 3 0  0 0  0 0"
+        },
+        {
+          "DataId": 2002894,
+          "Position": {
+            "X": -152.84961,
+            "Y": -8.46875,
+            "Z": -78.50769
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 29.507086,
+            "Y": 0.7410059,
+            "Z": -94.81342
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002896,
+          "Position": {
+            "X": 28.824219,
+            "Y": 1.5715942,
+            "Z": -96.787964
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 445.96164,
+            "Y": -5.3604937,
+            "Z": -466.67636
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 1006725,
+          "Position": {
+            "X": 446.82983,
+            "Y": -5.306207,
+            "Z": -465.72064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1202
+        }
+      ]
+    }
+  ]
+}

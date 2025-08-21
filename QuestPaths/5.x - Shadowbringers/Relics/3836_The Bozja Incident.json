@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032877,
+          "Position": {
+            "X": 29.43457,
+            "Y": 0,
+            "Z": 30.350098
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032869,
+          "Position": {
+            "X": 127.27539,
+            "Y": -4.1787133,
+            "Z": 98.68005
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "AethernetShortcut": [
+            "[Doman Enclave] Aetheryte Plaza",
+            "[Doman Enclave] Ferry Docks"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032901,
+          "Position": {
+            "X": 9.567322,
+            "Y": -6.0169958E-05,
+            "Z": -10.269409
+          },
+          "TerritoryId": 915,
+          "InteractionType": "SinglePlayerDuty",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKSA003_03836_Q1_100_098",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032872,
+          "Position": {
+            "X": 16.67804,
+            "Y": 0.03006095,
+            "Z": -17.868408
+          },
+          "TerritoryId": 915,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

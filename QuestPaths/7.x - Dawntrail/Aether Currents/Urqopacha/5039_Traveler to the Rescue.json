@@ -1,0 +1,72 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050684,
+          "Position": {
+            "X": 391.37854,
+            "Y": -156.07434,
+            "Z": -388.50995
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 258.56268,
+            "Y": -129.27074,
+            "Z": -351.33496
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1187,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17646
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050685,
+          "Position": {
+            "X": 256.94666,
+            "Y": -129.72865,
+            "Z": -355.73358
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050684,
+          "Position": {
+            "X": 391.37854,
+            "Y": -156.07434,
+            "Z": -388.50995
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+        }
+      ]
+    }
+  ]
+}

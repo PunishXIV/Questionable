@@ -1,0 +1,82 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025009,
+          "Position": {
+            "X": 1.3274536,
+            "Y": 0.021091362,
+            "Z": 0.59503174
+          },
+          "TerritoryId": 744,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019468,
+          "Position": {
+            "X": 170.58057,
+            "Y": 13.02367,
+            "Z": -91.96619
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 70.965355,
+            "Y": 26.085297,
+            "Z": -607.26685
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
+        },
+        {
+          "DataId": 1025546,
+          "Position": {
+            "X": 70.87805,
+            "Y": 26.199663,
+            "Z": -609.43005
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025549,
+          "Position": {
+            "X": 1.4800415,
+            "Y": -1.1041565E-05,
+            "Z": -11.734253
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

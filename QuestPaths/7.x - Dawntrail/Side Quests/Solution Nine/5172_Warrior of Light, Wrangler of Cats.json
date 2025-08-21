@@ -1,0 +1,73 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051069,
+          "Position": {
+            "X": -313.43555,
+            "Y": 4.6900077,
+            "Z": -36.57599
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZG009_05172_Q1_000_000",
+              "Answer": "TEXT_KINGZG009_05172_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014292,
+          "Position": {
+            "X": -375.93652,
+            "Y": 13.992493,
+            "Z": 144.06042
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -375.93652,
+            "Y": 13.992493,
+            "Z": 144.06042
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Instruction",
+          "Comment": "Catch the cat. Good luck!"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051069,
+          "Position": {
+            "X": -313.43555,
+            "Y": 4.6900077,
+            "Z": -36.57599
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042487,
+          "Position": {
+            "X": 32.272827,
+            "Y": -4.4237822E-07,
+            "Z": -0.7477417
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB811_04542_Q4_000_000",
+              "Answer": "TEXT_CHRHDB811_04542_A4_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042488,
+          "Position": {
+            "X": 150.68274,
+            "Y": 4.783756,
+            "Z": -145.00653
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042489,
+          "Position": {
+            "X": 147.75305,
+            "Y": 27.06,
+            "Z": 36.057007
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Kama"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1027322,
+          "Position": {
+            "X": -20.126648,
+            "Y": 3.9998171,
+            "Z": 204.24194
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] Tessellation (Lakeland)"
+          ],
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": 55.589294,
+            "Y": 2.0276523,
+            "Z": 669.1557
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Comment": "these bridges have navmesh problems"
+        },
+        {
+          "Position": {
+            "X": 15.410904,
+            "Y": 2.2598603,
+            "Z": 677.3755
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -82.79376,
+            "Y": 11.970126,
+            "Z": 765.8721
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1042493,
+          "Position": {
+            "X": -106.73688,
+            "Y": 14.173656,
+            "Z": 756.4354
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1042491,
+          "Position": {
+            "X": -137.22437,
+            "Y": 9.572956,
+            "Z": 708.3999
+          },
+          "StopDistance": 1,
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1042492,
+          "Position": {
+            "X": -218.76862,
+            "Y": 1.9084097,
+            "Z": 756.16077
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -82.79376,
+            "Y": 11.970126,
+            "Z": 765.8721
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1042494,
+          "Position": {
+            "X": -54.032227,
+            "Y": 2.015483,
+            "Z": 677.9125
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 15.410904,
+            "Y": 2.2598603,
+            "Z": 677.3755
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 55.589294,
+            "Y": 2.0276523,
+            "Z": 669.1557
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Comment": "these bridges have navmesh problems"
+        },
+        {
+          "Position": {
+            "X": 105.453514,
+            "Y": -1.5952542,
+            "Z": 604.3535
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1042497,
+          "Position": {
+            "X": 220.7522,
+            "Y": 12.699311,
+            "Z": 229.84656
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 4543
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017169,
+                    "Position": {
+                        "X": -342.15308,
+                        "Y": 59.03801,
+                        "Z": 315.14453
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -335.56116,
+                                    "Y": 59.003433,
+                                    "Z": 313.98486
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017170,
+                    "Position": {
+                        "X": -344.22827,
+                        "Y": 59.038006,
+                        "Z": 317.1587
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1017446,
+                    "Position": {
+                        "X": -103.92926,
+                        "Y": -8.845976,
+                        "Z": 216.35767
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1017170,
+                    "Position": {
+                        "X": -344.22827,
+                        "Y": 59.038006,
+                        "Z": 317.1587
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1017172,
+                    "Position": {
+                        "X": -329.3355,
+                        "Y": 59.056396,
+                        "Z": 298.23755
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 400,
+                    "InteractionType": "Craft",
+                    "ItemId": 15722,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1017170,
+                    "Position": {
+                        "X": -344.22827,
+                        "Y": 59.038006,
+                        "Z": 317.1587
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

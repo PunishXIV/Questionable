@@ -1,0 +1,164 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "UcanPatates",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000617,
+          "Position": {
+            "X": 5.722107,
+            "Y": -7.2786255,
+            "Z": 270.95447
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000587,
+          "Position": {
+            "X": -7.248047,
+            "Y": -8.407776,
+            "Z": 268.23828
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002191,
+          "Position": {
+            "X": 189.6543,
+            "Y": 7.94989,
+            "Z": 133.65369
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2002192,
+          "Position": {
+            "X": 181.04822,
+            "Y": 0.07623291,
+            "Z": 43.289795
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2002190,
+          "Position": {
+            "X": 233.66138,
+            "Y": 6.42395,
+            "Z": 199.11487
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 124.74073,
+            "Y": 6.729165,
+            "Z": 190.69174
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1006715,
+          "Position": {
+            "X": -170.67218,
+            "Y": 56.713512,
+            "Z": -255.9701
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 972
+        }
+      ]
+    }
+  ]
+}

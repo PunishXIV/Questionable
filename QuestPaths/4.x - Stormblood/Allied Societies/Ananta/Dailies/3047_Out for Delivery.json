@@ -1,0 +1,220 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -269.18445,
+            "Y": 63.10759,
+            "Z": -378.01178
+          },
+          "StopDistance": 1,
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 8582,
+              "CompletionQuestVariablesFlags": [
+                1,
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              16
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1025054,
+          "Position": {
+            "X": -269.18445,
+            "Y": 63.10759,
+            "Z": -378.01178
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              16
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": -489.06693,
+            "Y": 94.91285,
+            "Z": -332.41785
+          },
+          "StopDistance": 1,
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 8582,
+              "CompletionQuestVariablesFlags": [
+                1,
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              32
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1025053,
+          "Position": {
+            "X": -489.06693,
+            "Y": 94.91285,
+            "Z": -332.41785
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              32
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": -440.3601,
+            "Y": 50.476315,
+            "Z": 144.06042
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 8583,
+              "CompletionQuestVariablesFlags": [
+                1,
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              48
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1025052,
+          "Position": {
+            "X": -440.3601,
+            "Y": 50.476315,
+            "Z": 144.06042
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              48
+            ],
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.868523,
+            "Y": 56.02146,
+            "Z": 231.54045
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

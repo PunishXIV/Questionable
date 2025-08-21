@@ -1,0 +1,106 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024043,
+          "Position": {
+            "X": -12.77179,
+            "Y": 20.999727,
+            "Z": 47.837036
+          },
+          "TerritoryId": 144,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gold Saucer",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019070,
+          "Position": {
+            "X": 151.20166,
+            "Y": 14.7757225,
+            "Z": 95.78088
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 639,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        },
+        {
+          "DataId": 1020622,
+          "Position": {
+            "X": 0.045776367,
+            "Y": 0,
+            "Z": -2.3041382
+          },
+          "TerritoryId": 639,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024044,
+          "Position": {
+            "X": -110.36853,
+            "Y": 4,
+            "Z": -114.00018
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024045,
+          "Position": {
+            "X": -2.822998,
+            "Y": -2.0000012,
+            "Z": -17.166443
+          },
+          "StopDistance": 5,
+          "TerritoryId": 212,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024045,
+          "Position": {
+            "X": -2.822998,
+            "Y": -2.0000012,
+            "Z": -17.166443
+          },
+          "StopDistance": 5,
+          "TerritoryId": 212,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

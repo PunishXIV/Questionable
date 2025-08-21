@@ -1,0 +1,266 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047746,
+          "Position": {
+            "X": -402.97552,
+            "Y": -46.22406,
+            "Z": -467.55176
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013926,
+          "Position": {
+            "X": -202.80768,
+            "Y": -72.129456,
+            "Z": -199.02344
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818408
+        },
+        {
+          "DataId": 1046591,
+          "Position": {
+            "X": 340.59656,
+            "Y": -160.10922,
+            "Z": -430.19763
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046593,
+          "Position": {
+            "X": 345.60156,
+            "Y": -160.20251,
+            "Z": -438.4375
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046594,
+          "Position": {
+            "X": 333.30273,
+            "Y": -160.24759,
+            "Z": -436.08765
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1046595,
+          "Position": {
+            "X": 343.00745,
+            "Y": -160.2025,
+            "Z": -461.9364
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046596,
+          "Position": {
+            "X": 289.41772,
+            "Y": -169.2173,
+            "Z": -456.59576
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046592,
+          "Position": {
+            "X": 348.8059,
+            "Y": -145.95174,
+            "Z": -473.65533
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046600,
+          "Position": {
+            "X": 268.39087,
+            "Y": -173.48611,
+            "Z": -611.5053
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2013595,
+          "Position": {
+            "X": 309.49866,
+            "Y": -173.11359,
+            "Z": -667.3228
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17691
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2013596,
+          "Position": {
+            "X": 282.6123,
+            "Y": -173.11359,
+            "Z": -715.1751
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17691
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2013597,
+          "Position": {
+            "X": 346.60852,
+            "Y": -173.05261,
+            "Z": -725.85645
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            17691
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1046742,
+          "Position": {
+            "X": 391.56165,
+            "Y": -161.96266,
+            "Z": -690.3945
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013927,
+          "Position": {
+            "X": 414.7555,
+            "Y": -141.03918,
+            "Z": -681.0254
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818409
+        },
+        {
+          "DataId": 1046599,
+          "Position": {
+            "X": 342.09204,
+            "Y": -160.20251,
+            "Z": -449.2104
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": ["liza", "plogon_enjoyer"],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -86.589775,
+            "Y": 2.099846,
+            "Z": -51.574
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1001286,
+          "Position": {
+            "X": -88.9754,
+            "Y": 2.55,
+            "Z": -51.163513
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSPGL020_00533_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -126.59337,
+            "Y": 11.159969,
+            "Z": 276.25775
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 351,
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 3
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ]
+        },
+        {
+          "Position": {
+            "X": -126.59337,
+            "Y": 11.159969,
+            "Z": 276.25775
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 385,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 3
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "High": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "19 0  0 0  0 0 -> 35 48  0 0  0 0"
+        },
+        {
+          "Position": {
+            "X": 32.007893,
+            "Y": 5.8527403,
+            "Z": 299.76016
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 205,
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "Low": 3
+                },
+                null,
+                null,
+                null,
+                null
+              ],
+              "MinimumKillCount": 3
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "AetheryteShortcut": "Ul'dah",
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 554
+        }
+      ]
+    }
+  ]
+}

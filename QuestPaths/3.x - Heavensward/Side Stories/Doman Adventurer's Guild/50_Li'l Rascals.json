@@ -1,0 +1,212 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009813,
+          "Position": {
+            "X": 55.436035,
+            "Y": 31.187548,
+            "Z": -763.42413
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009812,
+          "Position": {
+            "X": 74.08252,
+            "Y": 30.549389,
+            "Z": -720.9735
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009825,
+          "Position": {
+            "X": 86.07605,
+            "Y": 28.34813,
+            "Z": -622.18665
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 30.917934,
+            "Y": 20.495003,
+            "Z": -656.1909
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "$": "Rising Stones Door",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1009826,
+          "Position": {
+            "X": 29.160034,
+            "Y": 21.252728,
+            "Z": -642.51166
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "Position": {
+            "X": 30.917934,
+            "Y": 20.495003,
+            "Z": -656.1909
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "$": "Rising Stones Door"
+        },
+        {
+          "Position": {
+            "X": 18.883974,
+            "Y": 53.583996,
+            "Z": -702.24194
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1009823,
+          "Position": {
+            "X": 16.983276,
+            "Y": 53.614998,
+            "Z": -703.3341
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1009824,
+          "Position": {
+            "X": 22.262878,
+            "Y": 28.999968,
+            "Z": -780.85
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009813,
+          "Position": {
+            "X": 55.436035,
+            "Y": 31.187548,
+            "Z": -763.42413
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 100
+        }
+      ]
+    }
+  ]
+}

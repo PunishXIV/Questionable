@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030456,
+          "Position": {
+            "X": 63.279175,
+            "Y": -4.0096626,
+            "Z": 145.28113
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 383.55106,
+            "Y": 4.5417395,
+            "Z": 602.9981
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 814,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11087
+          ],
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030458,
+          "Position": {
+            "X": 379.84277,
+            "Y": 5.363723,
+            "Z": 600.3967
+          },
+          "StopDistance": 7,
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030463,
+          "Position": {
+            "X": -14.847046,
+            "Y": -6.9869757,
+            "Z": -124.4068
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eulmore",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] The Glory Gate"
+          ]
+        }
+      ]
+    }
+  ]
+}

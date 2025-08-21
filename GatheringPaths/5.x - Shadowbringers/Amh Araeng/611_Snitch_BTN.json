@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 815,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Amh Araeng - Mord Souq"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32686,
+          "Locations": [
+            {
+              "Position": {
+                "X": 486.6385,
+                "Y": -28.30028,
+                "Z": -161.7677
+              },
+              "MinimumAngle": 155,
+              "MaximumAngle": 335
+            },
+            {
+              "Position": {
+                "X": 494.8945,
+                "Y": -21.52249,
+                "Z": -137.1469
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32685,
+          "Locations": [
+            {
+              "Position": {
+                "X": 503.6436,
+                "Y": -23.70927,
+                "Z": -142.2979
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32689,
+          "Locations": [
+            {
+              "Position": {
+                "X": 657.1875,
+                "Y": -26.81644,
+                "Z": -235.4547
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 270
+            }
+          ]
+        },
+        {
+          "DataId": 32690,
+          "Locations": [
+            {
+              "Position": {
+                "X": 655.8629,
+                "Y": -27.85928,
+                "Z": -256.156
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 235
+            },
+            {
+              "Position": {
+                "X": 656.6887,
+                "Y": -26.66475,
+                "Z": -230.172
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 135
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32688,
+          "Locations": [
+            {
+              "Position": {
+                "X": 487.4965,
+                "Y": -33.01668,
+                "Z": -304.6423
+              },
+              "MinimumAngle": 150,
+              "MaximumAngle": 330
+            },
+            {
+              "Position": {
+                "X": 477.8194,
+                "Y": -31.87613,
+                "Z": -320.6989
+              },
+              "MinimumAngle": 180,
+              "MaximumAngle": 310
+            }
+          ]
+        },
+        {
+          "DataId": 32687,
+          "Locations": [
+            {
+              "Position": {
+                "X": 481.1932,
+                "Y": -32.4591,
+                "Z": -313.7588
+              },
+              "MinimumAngle": 170,
+              "MaximumAngle": 305
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

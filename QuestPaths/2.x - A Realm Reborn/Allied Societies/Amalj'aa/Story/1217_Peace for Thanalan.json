@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006217,
+          "Position": {
+            "X": -181.04828,
+            "Y": 28.214073,
+            "Z": -402.02948
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -150.9585,
+            "Y": 43.717075,
+            "Z": -345.03116
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 91.463745,
+            "Y": 10.278164,
+            "Z": -461.99072
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002919,
+          "Position": {
+            "X": 90.958984,
+            "Y": 9.994568,
+            "Z": -460.41046
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 107.40087,
+            "Y": 15.010546,
+            "Z": -360.9872
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "$": "Southern Thanalan, Hamujj Gah Cave"
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.6062,
+            "Y": 16.402647,
+            "Z": -362.11188
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1218
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028738,
+          "Position": {
+            "X": -104.32593,
+            "Y": 5.999999,
+            "Z": 195.97156
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBC017_03226_Q1_000_500",
+              "Answer": "TEXT_LUCKBC017_03226_A1_000_500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028795,
+          "Position": {
+            "X": -187.73181,
+            "Y": 46.387943,
+            "Z": -75.33386
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028797,
+          "Position": {
+            "X": -187.73181,
+            "Y": 46.394768,
+            "Z": -75.39484
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028797,
+          "Position": {
+            "X": -187.73181,
+            "Y": 46.394768,
+            "Z": -75.39484
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBC017_03226_Q1_000_100",
+              "Answer": "TEXT_LUCKBC017_03226_A2_000_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028798,
+          "Position": {
+            "X": -70.38995,
+            "Y": 20.000332,
+            "Z": 45.334473
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBC017_03226_Q1_000_200",
+              "Answer": "TEXT_LUCKBC017_03226_A1_000_200"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031099,
+          "Position": {
+            "X": -104.631165,
+            "Y": 5.999999,
+            "Z": 197.4364
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

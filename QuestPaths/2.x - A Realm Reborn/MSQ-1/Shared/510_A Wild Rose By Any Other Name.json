@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003783,
+          "Position": {
+            "X": 39.29187,
+            "Y": 1.2148079,
+            "Z": 0.8086548
+          },
+          "StopDistance": 5,
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_MANFST207_00510_Q1_000_1",
+              "Answer": "TEXT_MANFST207_00510_A1_000_1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005119,
+          "Position": {
+            "X": 33.37146,
+            "Y": 1.1999971,
+            "Z": 6.454529
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -64.84354,
+            "Y": -3.6581912,
+            "Z": 186.08156
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ]
+        },
+        {
+          "Position": {
+            "X": -62.2836,
+            "Y": -3.6582258,
+            "Z": 144.35869
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 141,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Central Thanalan - Black Brush Station"
+        },
+        {
+          "DataId": 1001607,
+          "Position": {
+            "X": -2.7314453,
+            "Y": -2.055717,
+            "Z": -158.52606
+          },
+          "TerritoryId": 141,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 14
+        },
+        {
+          "Position": {
+            "X": 454.0109,
+            "Y": -17.999832,
+            "Z": -183.1808
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 145
+        },
+        {
+          "Position": {
+            "X": -423.0189,
+            "Y": -37.96352,
+            "Z": 176.73677
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "$": "Camp Drybone Lantern"
+        },
+        {
+          "DataId": 1003935,
+          "Position": {
+            "X": -423.2395,
+            "Y": -39.060455,
+            "Z": 112.2301
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 15
+        },
+        {
+          "TerritoryId": 145,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Eastern Thanalan - Camp Drybone"
+        },
+        {
+          "DataId": 1003929,
+          "Position": {
+            "X": -378.65265,
+            "Y": -55.75492,
+            "Z": 106.79785
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

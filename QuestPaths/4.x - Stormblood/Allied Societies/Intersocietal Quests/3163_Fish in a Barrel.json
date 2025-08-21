@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026401,
+          "Position": {
+            "X": -773.1289,
+            "Y": 2.941284,
+            "Z": -360.9217
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL230_03163_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_BANALL230_03163_A1_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026414,
+          "Position": {
+            "X": -778.28644,
+            "Y": 127.27075,
+            "Z": 129.74744
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009605,
+          "Position": {
+            "X": 27.17627,
+            "Y": 114.88513,
+            "Z": -15.030151
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026420,
+          "Position": {
+            "X": -102.73901,
+            "Y": 116.043,
+            "Z": -48.142273
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026422,
+          "Position": {
+            "X": -779.0799,
+            "Y": 127.277245,
+            "Z": 127.91626
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "NextQuestId": 3164
+        }
+      ]
+    }
+  ]
+}

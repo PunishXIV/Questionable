@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033887,
+          "Position": {
+            "X": 24.2771,
+            "Y": -5.234193E-13,
+            "Z": -0.7477417
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030533,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMI112_03782_Q1_000_007",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1033888,
+          "Position": {
+            "X": 1.3580322,
+            "Y": 0,
+            "Z": -5.081299
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMI112_03782_Q2_000_044",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 0.1512314,
+            "Y": 1.9999986,
+            "Z": 19.4396
+          },
+          "TerritoryId": 351,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1033896,
+          "Position": {
+            "X": 1.5106201,
+            "Y": 0,
+            "Z": -3.1586914
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

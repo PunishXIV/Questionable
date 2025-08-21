@@ -1,0 +1,58 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047804,
+          "Position": {
+            "X": 121.66016,
+            "Y": 42,
+            "Z": -343.0686
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047806,
+          "Position": {
+            "X": -179.55298,
+            "Y": 120.75,
+            "Z": -332.87555
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047809,
+          "Position": {
+            "X": -47.56244,
+            "Y": -10.00001,
+            "Z": 97.21521
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "Comment": "Stops at the place where you can buy Lv99 gear"
+        }
+      ]
+    }
+  ]
+}

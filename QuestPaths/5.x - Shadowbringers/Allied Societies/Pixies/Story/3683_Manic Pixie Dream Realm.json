@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031839,
+          "Position": {
+            "X": 95.628296,
+            "Y": 1.490116E-08,
+            "Z": 204.11987
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031843,
+          "Position": {
+            "X": 152.48328,
+            "Y": 0.21766767,
+            "Z": 655.4512
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031845,
+          "Position": {
+            "X": -200.09155,
+            "Y": 2.2048368,
+            "Z": 737.8804
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 234.24565,
+            "Y": 10.83118,
+            "Z": 738.46594
+          },
+          "StopDistance": 1,
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11437
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031847,
+          "Position": {
+            "X": 231.92188,
+            "Y": 9.887029,
+            "Z": 726.74133
+          },
+          "StopDistance": 7,
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1031846,
+          "Position": {
+            "X": -204.76086,
+            "Y": 2.4649847,
+            "Z": 739.9557
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1031808,
+          "Position": {
+            "X": -461.53967,
+            "Y": 72.51729,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANPIX001_03683_EVENTAREA_WARP_000_133",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1031850,
+          "Position": {
+            "X": 55.588623,
+            "Y": -1.6532946,
+            "Z": 48.599854
+          },
+          "TerritoryId": 889,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1032348,
+          "Position": {
+            "X": -18.295654,
+            "Y": 6.8822618,
+            "Z": -67.338135
+          },
+          "TerritoryId": 890,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPIX001_03683_Q3_000_000",
+              "Answer": "TEXT_BANPIX001_03683_A3_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

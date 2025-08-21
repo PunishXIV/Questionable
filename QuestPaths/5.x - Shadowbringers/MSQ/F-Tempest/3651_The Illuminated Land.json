@@ -1,0 +1,207 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030586,
+          "Position": {
+            "X": 638.97156,
+            "Y": 402.23993,
+            "Z": 212.78699
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027757,
+          "Position": {
+            "X": 609.7047,
+            "Y": 350.3518,
+            "Z": -197.95532
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tempest - Ondo Cups"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031279,
+          "Position": {
+            "X": 514.6715,
+            "Y": 356.58453,
+            "Z": -268.51306
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 486.2212,
+            "Y": 316.451,
+            "Z": -300.7331
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 474.52316,
+            "Y": 313.60648,
+            "Z": -294.83905
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1030570,
+          "Position": {
+            "X": 400.59497,
+            "Y": 303.51035,
+            "Z": -245.10571
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010079,
+          "Position": {
+            "X": 339.1012,
+            "Y": 298.6953,
+            "Z": -280.01837
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818303
+        },
+        {
+          "Position": {
+            "X": 318.75064,
+            "Y": 235.3896,
+            "Z": -277.77203
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": false
+        },
+        {
+          "DataId": 1030532,
+          "Position": {
+            "X": 302.02173,
+            "Y": 238.75215,
+            "Z": -346.15094
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030527,
+          "Position": {
+            "X": 87.937744,
+            "Y": 199.56166,
+            "Z": -143.0534
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1030528,
+          "Position": {
+            "X": -182.66577,
+            "Y": 139.76859,
+            "Z": -220.93542
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1030534,
+          "Position": {
+            "X": -501.915,
+            "Y": 127.18983,
+            "Z": -257.435
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "Position": {
+            "X": -634.109,
+            "Y": 98.06235,
+            "Z": -336.91452
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -789.7743,
+            "Y": 73.83459,
+            "Z": -217.70619
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030344,
+          "Position": {
+            "X": -792.9656,
+            "Y": 73.244484,
+            "Z": -211.62744
+          },
+          "StopDistance": 7,
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

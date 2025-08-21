@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Theo",
+  "Steps": [
+    {
+      "TerritoryId": 622,
+      "InteractionType": "None"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32320,
+          "Locations": [
+            {
+              "Position": {
+                "X": 609.3118,
+                "Y": -21.51083,
+                "Z": 558.524
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 270,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32321,
+          "Locations": [
+            {
+              "Position": {
+                "X": 609.9794,
+                "Y": -21.53052,
+                "Z": 579.6443
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 135,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32322,
+          "Locations": [
+            {
+              "Position": {
+                "X": 588.3865,
+                "Y": -20.42655,
+                "Z": 561.5663
+              },
+              "MinimumAngle": 45,
+              "MaximumAngle": 315,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

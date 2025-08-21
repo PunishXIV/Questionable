@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008542,
+          "Position": {
+            "X": 0.8086548,
+            "Y": -1.9957249,
+            "Z": -42.557434
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 198,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_GAIUSE212_01356_Q1_000_1",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 256.67426,
+            "Y": 1.7067826,
+            "Z": 216.63573
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        },
+        {
+          "Position": {
+            "X": 62.872204,
+            "Y": -3.1182384,
+            "Z": 61.10103
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006614,
+          "Position": {
+            "X": 65.87317,
+            "Y": -3.1181886,
+            "Z": 61.41748
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

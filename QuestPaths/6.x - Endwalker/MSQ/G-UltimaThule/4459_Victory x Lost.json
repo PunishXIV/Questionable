@@ -1,0 +1,267 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039782,
+          "Position": {
+            "X": 183.12354,
+            "Y": 269.0203,
+            "Z": -633.5393
+          },
+          "StopDistance": 6,
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040876,
+          "Position": {
+            "X": 49.42395,
+            "Y": 269.25684,
+            "Z": -523.2472
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4342
+        },
+        {
+          "DataId": 1038016,
+          "Position": {
+            "X": 105.42456,
+            "Y": 269.29584,
+            "Z": -454.3069
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4346
+        },
+        {
+          "DataId": 1039787,
+          "Position": {
+            "X": 434.37854,
+            "Y": 284.02585,
+            "Z": -328.51147
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012794,
+          "Position": {
+            "X": 440.7262,
+            "Y": 285.29785,
+            "Z": -319.50867
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMG110_04459_Q1_000_041",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 2012286,
+          "Position": {
+            "X": 506.98096,
+            "Y": 439.68872,
+            "Z": 157
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14000,
+            14001
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012287,
+          "Position": {
+            "X": 506.98096,
+            "Y": 439.68872,
+            "Z": 157
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039790,
+          "Position": {
+            "X": 508.53735,
+            "Y": 439.695,
+            "Z": 155.59619
+          },
+          "StopDistance": 5,
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012288,
+          "Position": {
+            "X": 493.33936,
+            "Y": 439.68872,
+            "Z": 174.9447
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2012289,
+          "Position": {
+            "X": 490.44006,
+            "Y": 439.68872,
+            "Z": 191.30237
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            13999
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2012033,
+          "Position": {
+            "X": 539.26904,
+            "Y": 437.9796,
+            "Z": 239.39868
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818392
+        },
+        {
+          "DataId": 1039791,
+          "Position": {
+            "X": 502.98303,
+            "Y": 436.99966,
+            "Z": 308.97986
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1038039,
+          "Position": {
+            "X": 521.9348,
+            "Y": 436.99805,
+            "Z": 329.76257
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1038041,
+          "Position": {
+            "X": 517.54016,
+            "Y": 436.99878,
+            "Z": 345.44885
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1038045,
+          "Position": {
+            "X": 504.6615,
+            "Y": 437.1449,
+            "Z": 347.64624
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "StopDistance": 5,
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ultima Thule - Base Omicron"
+        },
+        {
+          "DataId": 1039791,
+          "Position": {
+            "X": 502.98303,
+            "Y": 436.99966,
+            "Z": 308.97986
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

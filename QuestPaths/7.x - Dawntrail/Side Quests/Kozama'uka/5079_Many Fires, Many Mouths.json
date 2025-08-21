@@ -1,0 +1,113 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048848,
+          "Position": {
+            "X": 621.51514,
+            "Y": 119.49004,
+            "Z": 175.00574
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 444.93774,
+            "Y": 112.59213,
+            "Z": 206.74438
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 17241,
+              "RewardItemId": 2003643,
+              "RewardItemCount": 1,
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                16,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            16,
+            null,
+            null,
+            null
+          ],
+          "$": "16 0 16 0 0 0"
+        },
+        {
+          "Position": {
+            "X": -21.622044,
+            "Y": 109.937355,
+            "Z": 217.64447
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 17242,
+              "RewardItemId": 2003642,
+              "RewardItemCount": 1,
+              "CompletionQuestVariablesFlags": [
+                null,
+                1,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            1,
+            null,
+            null,
+            null,
+            null
+          ],
+          "$": "16 1 0 0 0 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048848,
+          "Position": {
+            "X": 621.51514,
+            "Y": 119.49004,
+            "Z": 175.00574
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Many Fires",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

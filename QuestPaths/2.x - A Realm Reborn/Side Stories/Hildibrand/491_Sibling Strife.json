@@ -1,0 +1,179 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011677,
+          "Position": {
+            "X": 363.54602,
+            "Y": 74.743355,
+            "Z": 171.12988
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "Position": {
+            "X": -171.53638,
+            "Y": 17.999998,
+            "Z": 66.511505
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1011681,
+          "Position": {
+            "X": -182.29956,
+            "Y": 18,
+            "Z": 56.90088
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1003897,
+          "Position": {
+            "X": -195.45282,
+            "Y": 18,
+            "Z": 60.53247
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1001294,
+          "Position": {
+            "X": -214.22144,
+            "Y": 18.5,
+            "Z": 72.129395
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011682,
+          "Position": {
+            "X": -200.763,
+            "Y": 17.999998,
+            "Z": 59.189697
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "DataId": 1011683,
+          "Position": {
+            "X": 76.8291,
+            "Y": 45,
+            "Z": -218.28033
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -345.65482,
+            "Y": 23,
+            "Z": -352.02484
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ],
+          "DataId": 1011675,
+          "Position": {
+            "X": -118.150635,
+            "Y": 40,
+            "Z": 96.29968
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 492
+        }
+      ]
+    }
+  ]
+}

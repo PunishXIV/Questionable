@@ -1,0 +1,201 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020524,
+          "Position": {
+            "X": 173.20508,
+            "Y": 5.1910434,
+            "Z": -433.24945
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - House of the Fierce",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024955,
+          "Position": {
+            "X": 350.14868,
+            "Y": 26.448109,
+            "Z": 609.1859
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024957,
+          "Position": {
+            "X": 365.9265,
+            "Y": 1.7862457,
+            "Z": 738.9486
+          },
+          "StopDistance": 5,
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024966,
+          "Position": {
+            "X": -472.3125,
+            "Y": 1.2300053,
+            "Z": 537.77356
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024794,
+          "Position": {
+            "X": -493.98032,
+            "Y": 1.3011811,
+            "Z": 542.90063
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 759
+        },
+        {
+          "TerritoryId": 759,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Doman Enclave] Ferry Docks"
+        },
+        {
+          "TerritoryId": 759,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Doman Enclave] The Southern Enclave"
+        },
+        {
+          "TerritoryId": 759,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Doman Enclave"
+        },
+        {
+          "TerritoryId": 759,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Doman Enclave] The Northern Enclave"
+        },
+        {
+          "DataId": 1024970,
+          "Position": {
+            "X": 40.238037,
+            "Y": 0,
+            "Z": 5.874695
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Doman Enclave] The Northern Enclave",
+            "[Doman Enclave] Aetheryte Plaza"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDC105_03026_Q1_000_000",
+              "Answer": "TEXT_STMBDC105_03026_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDC105_03026_EVENTAREA_WARP_000_000",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        }
+      ]
+    },
+    {
+      "Sequence": 6
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1025049,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.19999999,
+            "Z": -4.837158
+          },
+          "StopDistance": 7,
+          "TerritoryId": 744,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2009289,
+          "Position": {
+            "X": 0.02468622,
+            "Y": 0.9079783,
+            "Z": 18.30971
+          },
+          "TerritoryId": 744,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 759
+        },
+        {
+          "DataId": 1024971,
+          "Position": {
+            "X": 6.0272217,
+            "Y": 0,
+            "Z": 18.631226
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

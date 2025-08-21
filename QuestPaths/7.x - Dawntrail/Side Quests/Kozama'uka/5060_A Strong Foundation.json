@@ -1,0 +1,136 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048779,
+          "Position": {
+            "X": -231.15894,
+            "Y": 3.221878,
+            "Z": -453.17773
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -93.41179,
+            "Y": 15.238003,
+            "Z": -677.9412
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2014160,
+          "Position": {
+            "X": -95.23157,
+            "Y": 16.464417,
+            "Z": -677.8821
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 183.02583,
+            "Y": -0.40592146,
+            "Z": -568.2219
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2014163,
+          "Position": {
+            "X": 181.8722,
+            "Y": 0.99176025,
+            "Z": -568.5359
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "UseItem",
+          "ItemId": 2003626,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2014161,
+          "Position": {
+            "X": 221.57617,
+            "Y": 0.99176025,
+            "Z": -610.7423
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "UseItem",
+          "ItemId": 2003626,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014162,
+          "Position": {
+            "X": 244.953,
+            "Y": 1.1138916,
+            "Z": -569.2684
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "UseItem",
+          "ItemId": 2003626,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048779,
+          "Position": {
+            "X": -231.15894,
+            "Y": 3.221878,
+            "Z": -453.17773
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

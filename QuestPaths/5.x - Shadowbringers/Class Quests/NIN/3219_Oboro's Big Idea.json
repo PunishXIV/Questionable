@@ -1,0 +1,197 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 137,
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030049,
+          "Position": {
+            "X": -349.50793,
+            "Y": 57.270435,
+            "Z": -393.0572
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010173,
+          "Position": {
+            "X": -310.0786,
+            "Y": 5.5999756,
+            "Z": -564.0803
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -302.34204,
+            "Y": 4.9819174,
+            "Z": -570.3643
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -308.3169,
+            "Y": 5.7642717,
+            "Z": -571.4899
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2010175,
+          "Position": {
+            "X": -302.72375,
+            "Y": 9.750427,
+            "Z": -578.02704
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -306.7621,
+            "Y": 5.7733507,
+            "Z": -570.97736
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -302.3223,
+            "Y": 4.976821,
+            "Z": -570.7108
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2010180,
+          "Position": {
+            "X": -349.50793,
+            "Y": 57.236572,
+            "Z": -393.0572
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1010601,
+          "Position": {
+            "X": -14.755493,
+            "Y": 41.39178,
+            "Z": 258.13684
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 137,
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+        },
+        {
+          "DataId": 1010139,
+          "Position": {
+            "X": -33.218933,
+            "Y": -24.674446,
+            "Z": 257.98413
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2010181,
+          "Position": {
+            "X": -77.28699,
+            "Y": 40.97046,
+            "Z": -138.78088
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030053,
+          "Position": {
+            "X": -153.67358,
+            "Y": -129.4397,
+            "Z": 264.60657
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

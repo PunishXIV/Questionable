@@ -1,0 +1,68 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020372,
+          "Position": {
+            "X": 36.423218,
+            "Y": 117.95596,
+            "Z": -742.2446
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Peaks - Ala Gannha"
+        },
+        {
+          "DataId": 2007976,
+          "Position": {
+            "X": 202.86865,
+            "Y": 133.89783,
+            "Z": -753.1395
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818149
+        },
+        {
+          "DataId": 1020841,
+          "Position": {
+            "X": 146.01355,
+            "Y": 118.1921,
+            "Z": -730.4951
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020374,
+          "Position": {
+            "X": 89.21948,
+            "Y": 119.4052,
+            "Z": -684.7792
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

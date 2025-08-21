@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 398,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31350,
+          "Locations": [
+            {
+              "Position": {
+                "X": -115.4501,
+                "Y": -44.90735,
+                "Z": 211.8084
+              },
+              "MinimumAngle": -5,
+              "MaximumAngle": 65
+            }
+          ]
+        },
+        {
+          "DataId": 31351,
+          "Locations": [
+            {
+              "Position": {
+                "X": -94.4983,
+                "Y": -46.65615,
+                "Z": 219.4642
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": 65
+            },
+            {
+              "Position": {
+                "X": -133.4304,
+                "Y": -45.47835,
+                "Z": 211.6268
+              },
+              "MinimumAngle": -50,
+              "MaximumAngle": 80
+            },
+            {
+              "Position": {
+                "X": -81.5194,
+                "Y": -52.42267,
+                "Z": 241.2021
+              },
+              "MinimumAngle": -35,
+              "MaximumAngle": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31346,
+          "Locations": [
+            {
+              "Position": {
+                "X": -154.299,
+                "Y": -70.63795,
+                "Z": 399.4617
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 225
+            }
+          ]
+        },
+        {
+          "DataId": 31347,
+          "Locations": [
+            {
+              "Position": {
+                "X": -167.7846,
+                "Y": -70.11265,
+                "Z": 418.7766
+              },
+              "MinimumAngle": 90,
+              "MaximumAngle": 235
+            },
+            {
+              "Position": {
+                "X": -152.9678,
+                "Y": -68.49996,
+                "Z": 365.0086
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 70
+            },
+            {
+              "Position": {
+                "X": -189.6693,
+                "Y": -68.18973,
+                "Z": 377.6652
+              },
+              "MinimumAngle": 205,
+              "MaximumAngle": 335
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31349,
+          "Locations": [
+            {
+              "Position": {
+                "X": -312.3143,
+                "Y": -54.81182,
+                "Z": 331.0543
+              },
+              "MinimumAngle": -145,
+              "MaximumAngle": 5
+            },
+            {
+              "Position": {
+                "X": -296.8107,
+                "Y": -51.96982,
+                "Z": 310.6086
+              },
+              "MinimumAngle": 235,
+              "MaximumAngle": 330
+            },
+            {
+              "Position": {
+                "X": -299.3094,
+                "Y": -46.30565,
+                "Z": 293.9169
+              },
+              "MinimumAngle": 165,
+              "MaximumAngle": 310
+            }
+          ]
+        },
+        {
+          "DataId": 31348,
+          "Locations": [
+            {
+              "Position": {
+                "X": -311.9997,
+                "Y": -53.59439,
+                "Z": 326.8317
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": -20
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

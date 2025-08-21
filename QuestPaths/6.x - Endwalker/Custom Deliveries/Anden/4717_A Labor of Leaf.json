@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044550,
+          "Position": {
+            "X": -239.70398,
+            "Y": 51.05899,
+            "Z": 622.2477
+          },
+          "StopDistance": 5,
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044562,
+          "Position": {
+            "X": -294.97223,
+            "Y": 67.46317,
+            "Z": 603.6621
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

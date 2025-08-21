@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 401,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33308,
+          "Locations": [
+            {
+              "Position": {
+                "X": 612.0084,
+                "Y": -154.126,
+                "Z": 721.6054
+              },
+              "MinimumAngle": -220,
+              "MaximumAngle": 25
+            }
+          ]
+        },
+        {
+          "DataId": 33307,
+          "Locations": [
+            {
+              "Position": {
+                "X": 601.7455,
+                "Y": -154.7067,
+                "Z": 734.4706
+              },
+              "MinimumAngle": -120,
+              "MaximumAngle": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33311,
+          "Locations": [
+            {
+              "Position": {
+                "X": 654.2362,
+                "Y": -159.8305,
+                "Z": 820.9418
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 33312,
+          "Locations": [
+            {
+              "Position": {
+                "X": 656.2291,
+                "Y": -160.4766,
+                "Z": 826.9885
+              },
+              "MinimumAngle": 100,
+              "MaximumAngle": 270
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33309,
+          "Locations": [
+            {
+              "Position": {
+                "X": 739.0756,
+                "Y": -158.0396,
+                "Z": 642.5712
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 210,
+              "MinimumDistance": 1,
+              "MaximumDistance": 3
+            }
+          ]
+        },
+        {
+          "DataId": 33310,
+          "Locations": [
+            {
+              "Position": {
+                "X": 723.027,
+                "Y": -157.7834,
+                "Z": 626.666
+              },
+              "MinimumAngle": -170,
+              "MaximumAngle": 35
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

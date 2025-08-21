@@ -1,0 +1,125 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039913,
+          "Position": {
+            "X": 526.3904,
+            "Y": -36.65,
+            "Z": -233.87512
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038790,
+          "Position": {
+            "X": 495.41467,
+            "Y": -36.06746,
+            "Z": -205.12708
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Marcellinus",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.1": "QuestVariables if done first: 16 16 0 0 0 128"
+        },
+        {
+          "DataId": 1038791,
+          "Position": {
+            "X": 512.62683,
+            "Y": -36.65,
+            "Z": -160.3266
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Octavia",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039889,
+          "Position": {
+            "X": 509.4834,
+            "Y": 10.800001,
+            "Z": -422.62915
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMB113_04392_Q1_000_031",
+              "Answer": "TEXT_AKTKMB113_04392_A1_000_032"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012107,
+          "Position": {
+            "X": 279.37744,
+            "Y": 10.8185425,
+            "Z": -232.98999
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMB113_04392_Q2_000_051",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039915,
+          "Position": {
+            "X": -399.80164,
+            "Y": 22.143175,
+            "Z": 422.8733
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

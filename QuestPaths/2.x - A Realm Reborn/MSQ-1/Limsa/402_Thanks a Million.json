@@ -1,0 +1,89 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003239,
+          "Position": {
+            "X": -283.68048,
+            "Y": 10.593393,
+            "Z": -249.34778
+          },
+          "TerritoryId": 134,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001255,
+          "Position": {
+            "X": -320.57678,
+            "Y": 25.833496,
+            "Z": -527.5502
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "Comment": "Technically triggers combat, but can be ignored",
+          "PickUpItemId": 2000342
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -380.10605,
+            "Y": 32.598312,
+            "Z": -608.40186
+          },
+          "TerritoryId": 134,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 138
+        },
+        {
+          "DataId": 1002722,
+          "Position": {
+            "X": 667.68884,
+            "Y": 9.882242,
+            "Z": 487.32727
+          },
+          "TerritoryId": 138,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 23
+        },
+        {
+          "TerritoryId": 138,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western La Noscea - Swiftperch"
+        },
+        {
+          "Position": {
+            "X": 652.74164,
+            "Y": 8.129893,
+            "Z": 522.6646
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1003244,
+          "Position": {
+            "X": 650.72095,
+            "Y": 7.856781,
+            "Z": 527.21436
+          },
+          "StopDistance": 6,
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

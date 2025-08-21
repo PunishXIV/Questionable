@@ -1,0 +1,155 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032581,
+          "Position": {
+            "X": 750.1792,
+            "Y": 69.99991,
+            "Z": 518.9136
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026804,
+          "Position": {
+            "X": -524.55945,
+            "Y": 8.698304,
+            "Z": -15.487976
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKYW101_03783_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032582,
+          "Position": {
+            "X": -482.0478,
+            "Y": 107.63,
+            "Z": 121.934814
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032585,
+          "Position": {
+            "X": -465.53754,
+            "Y": 107.63,
+            "Z": 130.35779
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 829,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 717,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1032861,
+          "Position": {
+            "X": -473.89948,
+            "Y": 107.63,
+            "Z": 132.86023
+          },
+          "StopDistance": 4,
+          "TerritoryId": 829,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1032851,
+          "Position": {
+            "X": -481.3764,
+            "Y": 107.63,
+            "Z": 122.78931
+          },
+          "TerritoryId": 829,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -507.93283,
+            "Y": 7.6638765,
+            "Z": 52.09985
+          },
+          "TerritoryId": 621,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1032586,
+          "Position": {
+            "X": -505.42462,
+            "Y": 7.68313,
+            "Z": 51.621216
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3895
+        }
+      ]
+    }
+  ]
+}

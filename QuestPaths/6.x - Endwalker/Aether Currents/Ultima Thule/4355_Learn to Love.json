@@ -1,0 +1,113 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041656,
+          "Position": {
+            "X": 510.3075,
+            "Y": 436.9997,
+            "Z": 307.17932
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012560,
+          "Position": {
+            "X": 510.3379,
+            "Y": 436.9724,
+            "Z": 307.20984
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012752,
+          "Position": {
+            "X": 687.2511,
+            "Y": 440.48218,
+            "Z": 375.3567
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2012753,
+          "Position": {
+            "X": 688.74634,
+            "Y": 440.45154,
+            "Z": 381.21606
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 674.91565,
+            "Y": 440.4633,
+            "Z": 404.94272
+          },
+          "TerritoryId": 960,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2012032,
+          "Position": {
+            "X": 661.76843,
+            "Y": 439.96326,
+            "Z": 411.73413
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818391
+        },
+        {
+          "DataId": 1041656,
+          "Position": {
+            "X": 510.3075,
+            "Y": 436.9997,
+            "Z": 307.17932
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+        }
+      ]
+    }
+  ]
+}

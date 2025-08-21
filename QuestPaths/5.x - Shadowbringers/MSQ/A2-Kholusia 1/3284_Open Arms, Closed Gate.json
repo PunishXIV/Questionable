@@ -1,0 +1,192 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029809,
+          "Position": {
+            "X": 687.1289,
+            "Y": 30.118057,
+            "Z": 282.73438
+          },
+          "StopDistance": 7,
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029810,
+          "Position": {
+            "X": 377.24878,
+            "Y": 6.8162985,
+            "Z": 306.56897
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 338.49463,
+            "Y": 31.93622,
+            "Z": 203.53125
+          },
+          "StopDistance": 1,
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 338.49463,
+            "Y": 31.93622,
+            "Z": 203.53125
+          },
+          "StopDistance": 1,
+          "TerritoryId": 814,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            10859
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029811,
+          "Position": {
+            "X": 341.75623,
+            "Y": 31.93621,
+            "Z": 202.01416
+          },
+          "StopDistance": 7,
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2009961,
+          "Position": {
+            "X": 168.3833,
+            "Y": 40.115967,
+            "Z": 567.1931
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1029814,
+          "Position": {
+            "X": 165.78918,
+            "Y": 41.141296,
+            "Z": 676.9663
+          },
+          "StopDistance": 7,
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2009962,
+          "Position": {
+            "X": 175.73816,
+            "Y": 50.003784,
+            "Z": 771.4807
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1029816,
+          "Position": {
+            "X": 112.65735,
+            "Y": 54.873238,
+            "Z": 833.4934
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1029815,
+          "Position": {
+            "X": 184.40515,
+            "Y": 40.039566,
+            "Z": 592.0653
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029814,
+          "Position": {
+            "X": 165.78918,
+            "Y": 41.141296,
+            "Z": 676.9663
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

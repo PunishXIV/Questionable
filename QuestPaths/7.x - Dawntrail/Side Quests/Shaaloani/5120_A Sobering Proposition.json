@@ -1,0 +1,155 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049285,
+          "Position": {
+            "X": 372.70154,
+            "Y": -0.26279598,
+            "Z": 425.55872
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014074,
+          "Position": {
+            "X": 323.44543,
+            "Y": -0.6867676,
+            "Z": 488.2428
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050639,
+          "Position": {
+            "X": 377.92017,
+            "Y": -0.2627951,
+            "Z": 432.48633
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "UseItem",
+          "ItemId": 2003580,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1050638,
+          "Position": {
+            "X": 368.42908,
+            "Y": -0.26279587,
+            "Z": 419.69934
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "UseItem",
+          "ItemId": 2003580,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": 359.11545,
+            "Y": 1.9823306,
+            "Z": 419.5714
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)"
+        },
+        {
+          "Position": {
+            "X": 369.3906,
+            "Y": 5.9371996,
+            "Z": 417.16574
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1050640,
+          "Position": {
+            "X": 377.03516,
+            "Y": 6.07724,
+            "Z": 423.02576
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "UseItem",
+          "ItemId": 2003580,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 369.3906,
+            "Y": 5.9371996,
+            "Z": 417.16574
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)"
+        },
+        {
+          "Position": {
+            "X": 359.11545,
+            "Y": 1.9823306,
+            "Z": 419.5714
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1049285,
+          "Position": {
+            "X": 372.70154,
+            "Y": -0.26279598,
+            "Z": 425.55872
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

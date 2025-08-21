@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040276,
+          "Position": {
+            "X": -99.076904,
+            "Y": 3.9334679,
+            "Z": 1.3884888
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039793,
+          "Position": {
+            "X": 3.3111572,
+            "Y": 40.2,
+            "Z": -231.64728
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Baldesion Annex",
+            "[Old Sharlayan] The Rostra"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039804,
+          "Position": {
+            "X": -0.16790771,
+            "Y": 41.37599,
+            "Z": -146.65448
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039818,
+          "Position": {
+            "X": 29.861816,
+            "Y": 5.1499996,
+            "Z": -65.445984
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Rostra",
+            "[Old Sharlayan] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012347,
+          "Position": {
+            "X": 31.143677,
+            "Y": 5.081238,
+            "Z": -62.485718
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMG101_04450_Q2_000_221",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMG101_04450_Q3_000_240",
+              "Answer": "TEXT_AKTKMG101_04450_A3_000_241"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMG101_04450_Q4_000_256",
+              "Answer": "TEXT_AKTKMG101_04450_A4_000_258"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMG101_04450_Q5_000_276",
+              "Answer": "TEXT_AKTKMG101_04450_A5_000_278"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMG101_04450_Q6_000_298",
+              "Answer": "TEXT_AKTKMG101_04450_A6_000_300"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMG101_04450_Q7_000_305",
+              "Answer": "TEXT_AKTKMG101_04450_A7_000_307"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037047,
+          "Position": {
+            "X": 26.718506,
+            "Y": 5.1499996,
+            "Z": -65.87323
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

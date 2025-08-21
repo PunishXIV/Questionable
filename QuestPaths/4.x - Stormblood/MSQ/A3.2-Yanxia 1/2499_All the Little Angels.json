@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020059,
+          "Position": {
+            "X": 490.19604,
+            "Y": 8.442365,
+            "Z": 373.22034
+          },
+          "StopDistance": 7,
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020062,
+          "Position": {
+            "X": 453.4828,
+            "Y": 57.1882,
+            "Z": -146.41034
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020064,
+          "Position": {
+            "X": 443.2898,
+            "Y": 58.814686,
+            "Z": -172.90002
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 64",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1020063,
+          "Position": {
+            "X": 442.83203,
+            "Y": 58.859047,
+            "Z": -171.06891
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "$": "1 0 0 0 0 64 -> 2 0 0 0 0 192",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1020065,
+          "Position": {
+            "X": 459.25073,
+            "Y": 58.79123,
+            "Z": -187.42657
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "$": "2 0 0 0 0 192 -> 3 0 0 0 0 224",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1020066,
+          "Position": {
+            "X": 445.5481,
+            "Y": 68.028534,
+            "Z": -73.56378
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020067,
+          "Position": {
+            "X": 446.67737,
+            "Y": 68.028534,
+            "Z": -74.47931
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

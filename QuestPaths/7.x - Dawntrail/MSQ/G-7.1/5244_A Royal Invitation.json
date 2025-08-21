@@ -1,0 +1,126 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047679,
+          "Position": {
+            "X": -165.36206,
+            "Y": -14.999356,
+            "Z": 203.93677
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046521,
+          "Position": {
+            "X": -46.616333,
+            "Y": -17.97287,
+            "Z": 180.3158
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014470,
+          "Position": {
+            "X": -32.700073,
+            "Y": -17.47168,
+            "Z": 184.9851
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047501,
+          "Position": {
+            "X": -189.80707,
+            "Y": 120.74999,
+            "Z": -367.14734
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Vollok Shoonsa"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMG101_05244_SYSTEM_000_301",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048083,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "TargetTerritoryId": 1207,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                1207
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                1207
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1052185,
+          "Position": {
+            "X": -4.837158,
+            "Y": -3.632158E-08,
+            "Z": 5.996765
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

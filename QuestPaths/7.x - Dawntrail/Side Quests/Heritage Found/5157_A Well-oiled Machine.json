@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049488,
+          "Position": {
+            "X": -195.23926,
+            "Y": 31.00003,
+            "Z": 142.90063
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Heritage Found - Electrope Strike",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -195.23926,
+                  "Y": 31.00003,
+                  "Z": 142.90063
+                },
+                "TerritoryId": 1191,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -50.850063,
+            "Y": 67.24198,
+            "Z": 182.26367
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1050667,
+          "Position": {
+            "X": -51.46869,
+            "Y": 66.87813,
+            "Z": 180.07166
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Emote",
+          "Emote": "poke"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049488,
+          "Position": {
+            "X": -195.23926,
+            "Y": 31.00003,
+            "Z": 142.90063
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+        }
+      ]
+    }
+  ]
+}

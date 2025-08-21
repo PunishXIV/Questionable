@@ -1,0 +1,200 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016130,
+          "Position": {
+            "X": -815.7931,
+            "Y": -88.52015,
+            "Z": -835.2941
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2007074,
+          "Position": {
+            "X": -815.8236,
+            "Y": -87.26642,
+            "Z": -834.3175
+          },
+          "StopDistance": 4,
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 567
+        },
+        {
+          "DataId": 2007080,
+          "Position": {
+            "X": 18.1734,
+            "Y": -14.755493,
+            "Z": 26.840576
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 567
+        },
+        {
+          "DataId": 1017141,
+          "Position": {
+            "X": 23.208984,
+            "Y": 2.5864775,
+            "Z": -15.854187
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007075,
+          "Position": {
+            "X": 22.323914,
+            "Y": 3.5552979,
+            "Z": -18.814392
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 568
+        },
+        {
+          "DataId": 1017142,
+          "Position": {
+            "X": 1.5715942,
+            "Y": -9.5926225E-08,
+            "Z": -2.243164
+          },
+          "TerritoryId": 568,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1017145,
+          "Position": {
+            "X": 136.73608,
+            "Y": -13.763474,
+            "Z": -869.5049
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1017149,
+          "Position": {
+            "X": 35.599243,
+            "Y": -15.420995,
+            "Z": 25.833496
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2007080,
+          "Position": {
+            "X": 18.1734,
+            "Y": -14.755493,
+            "Z": 26.840576
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 567
+        },
+        {
+          "DataId": 2007075,
+          "Position": {
+            "X": 22.323914,
+            "Y": 3.5552979,
+            "Z": -18.814392
+          },
+          "TerritoryId": 567,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 568
+        },
+        {
+          "DataId": 1017155,
+          "Position": {
+            "X": 0.10675049,
+            "Y": 0.022368316,
+            "Z": 0.56451416
+          },
+          "TerritoryId": 568,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1017158,
+          "Position": {
+            "X": 46.73828,
+            "Y": -15.36437,
+            "Z": 43.198242
+          },
+          "StopDistance": 7,
+          "TerritoryId": 567,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "TerritoryId": 567,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 168,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017158,
+          "Position": {
+            "X": 46.73828,
+            "Y": -15.36437,
+            "Z": 43.198242
+          },
+          "StopDistance": 5,
+          "TerritoryId": 567,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2286
+        }
+      ]
+    }
+  ]
+}

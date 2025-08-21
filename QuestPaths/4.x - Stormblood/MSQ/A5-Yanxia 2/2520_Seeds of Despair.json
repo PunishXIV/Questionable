@@ -1,0 +1,192 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020519,
+          "Position": {
+            "X": 173.78503,
+            "Y": 5.16971,
+            "Z": -417.41058
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Yanxia - House of the Fierce",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020520,
+          "Position": {
+            "X": 235.85864,
+            "Y": 4.456162,
+            "Z": -382.8031
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 331.6093,
+            "Y": 22.34645,
+            "Z": -545.8195
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 2007923,
+          "Position": {
+            "X": 280.96436,
+            "Y": 16.006714,
+            "Z": -641.413
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2007924,
+          "Position": {
+            "X": 284.13818,
+            "Y": 6.729187,
+            "Z": -792.6604
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020228,
+          "Position": {
+            "X": 462.6687,
+            "Y": -3.4607835,
+            "Z": -799.31335
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA502_02520_Q1_000_081",
+              "Answer": "TEXT_STMBDA502_02520_A1_000_082"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 543.4046,
+            "Y": 22.617083,
+            "Z": -726.5077
+          },
+          "TerritoryId": 614,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1020230,
+          "Position": {
+            "X": 552.1476,
+            "Y": 23.140884,
+            "Z": -690.486
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 551.98566,
+            "Y": 23.177525,
+            "Z": -691.4329
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7561
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1020273,
+          "Position": {
+            "X": 498.83264,
+            "Y": 11.856819,
+            "Z": -838.34595
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020520,
+          "Position": {
+            "X": 235.85864,
+            "Y": 4.456162,
+            "Z": -382.8031
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yanxia - House of the Fierce"
+        }
+      ]
+    }
+  ]
+}

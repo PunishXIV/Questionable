@@ -1,0 +1,141 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040166,
+          "Position": {
+            "X": 68.74182,
+            "Y": 40,
+            "Z": 66.300415
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040195,
+          "Position": {
+            "X": 70.51184,
+            "Y": 40,
+            "Z": 66.14783
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA331_04117_Q1_000_000",
+              "Answer": "TEXT_AKTKBA331_04117_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA331_04117_Q2_000_000",
+              "Answer": "TEXT_AKTKBA331_04117_A2_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040196,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 11.924474,
+            "Z": 792.6909
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040204,
+          "Position": {
+            "X": -185.22931,
+            "Y": 1.9999955,
+            "Z": 224.90259
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA331_04117_Q4_000_000",
+              "Answer": "TEXT_AKTKBA331_04117_A4_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040204,
+          "Position": {
+            "X": -185.22931,
+            "Y": 1.9999955,
+            "Z": 224.90259
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040174,
+          "Position": {
+            "X": 67.27698,
+            "Y": 40,
+            "Z": 66.63611
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "NextQuestId": 4118
+        }
+      ]
+    }
+  ]
+}

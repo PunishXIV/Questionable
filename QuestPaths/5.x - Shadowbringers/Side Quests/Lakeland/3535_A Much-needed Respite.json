@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030681,
+          "Position": {
+            "X": -641.1383,
+            "Y": 55.757515,
+            "Z": -141.92426
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030683,
+          "Position": {
+            "X": -689.6925,
+            "Y": 52.037113,
+            "Z": -168.5664
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030706,
+          "Position": {
+            "X": -375.32617,
+            "Y": 105.92186,
+            "Z": -618.92126
+          },
+          "StopDistance": 2,
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010210,
+          "Position": {
+            "X": -370.38226,
+            "Y": 103.37976,
+            "Z": -661.1887
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKZH303_03535_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030684,
+          "Position": {
+            "X": -351.91882,
+            "Y": 100.1054,
+            "Z": -629.0227
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3536
+        }
+      ]
+    }
+  ]
+}

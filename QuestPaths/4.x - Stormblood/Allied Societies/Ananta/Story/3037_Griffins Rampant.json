@@ -1,0 +1,159 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024771,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024896,
+          "Position": {
+            "X": -630.2129,
+            "Y": 130.26343,
+            "Z": -452.20117
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024897,
+          "Position": {
+            "X": -76.40198,
+            "Y": -5.32758e-12,
+            "Z": -48.233826
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Western Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024952,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024900,
+          "Position": {
+            "X": -50.980408,
+            "Y": 56.02146,
+            "Z": 218.46338
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024901,
+          "Position": {
+            "X": -80.52191,
+            "Y": 56.021286,
+            "Z": 231.40308
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Action",
+          "Action": "Buffet (Griffin)",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1024901,
+          "Position": {
+            "X": -80.52191,
+            "Y": 56.021286,
+            "Z": 231.40308
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Action",
+          "Action": "Buffet (Griffin)",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1024901,
+          "Position": {
+            "X": -80.52191,
+            "Y": 56.021286,
+            "Z": 231.40308
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Action",
+          "Action": "Buffet (Griffin)",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024901,
+          "Position": {
+            "X": -80.52191,
+            "Y": 56.021286,
+            "Z": 231.40308
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Mount": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020873,
+          "Position": {
+            "X": -327.96222,
+            "Y": 258.90652,
+            "Z": 757.3815
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Ghiri",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023258,
+          "Position": {
+            "X": -232.3186,
+            "Y": 258.90652,
+            "Z": 799.46594
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -245.80753,
+            "Y": 258.90652,
+            "Z": 786.1918
+          },
+          "TerritoryId": 620,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1023259,
+          "Position": {
+            "X": -293.41577,
+            "Y": 258.9065,
+            "Z": 788.63196
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 0 0    0 0    0 0 -> QW: 1 0    0 0    0 32",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1020871,
+          "Position": {
+            "X": -237.90344,
+            "Y": 257.71973,
+            "Z": 741.5731
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "$": "QW: 1 0    0 0    0 32 -> QW: 2 0    0 0    0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1020870,
+          "Position": {
+            "X": -218.61603,
+            "Y": 257.52652,
+            "Z": 737.1786
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023258,
+          "Position": {
+            "X": -232.3186,
+            "Y": 258.90652,
+            "Z": 799.46594
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

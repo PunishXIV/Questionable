@@ -1,0 +1,152 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046952,
+          "Position": {
+            "X": 344.59448,
+            "Y": -1.5287868,
+            "Z": 446.52466
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "StopDistance": 8,
+          "TerritoryId": 1190,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Shaaloani - Hhusatahwi"
+        },
+        {
+          "DataId": 1046953,
+          "Position": {
+            "X": 263.7522,
+            "Y": -5.018697,
+            "Z": 496.14697
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046953,
+          "Position": {
+            "X": 263.7522,
+            "Y": -5.018697,
+            "Z": 496.14697
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMD102_04913_SYSTEM_000_021",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "StopDistance": 8,
+          "TerritoryId": 1190,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Shaaloani - Sheshenewezi Springs"
+        },
+        {
+          "DataId": 1046957,
+          "Position": {
+            "X": -315.5719,
+            "Y": 18.834728,
+            "Z": -178.88159
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046958,
+          "Position": {
+            "X": -348.0431,
+            "Y": 18.031187,
+            "Z": -194.01855
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -352.34854,
+            "Y": 18.081078,
+            "Z": -196.42653
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1190,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17697,
+            17698
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1046963,
+          "Position": {
+            "X": -550.5303,
+            "Y": 29.792864,
+            "Z": -190.05121
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046991,
+          "Position": {
+            "X": -315.5719,
+            "Y": 18.834728,
+            "Z": -178.88159
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+        }
+      ]
+    }
+  ]
+}

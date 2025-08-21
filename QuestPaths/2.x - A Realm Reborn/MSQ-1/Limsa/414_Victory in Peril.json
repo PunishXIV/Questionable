@@ -1,0 +1,114 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002237,
+          "Position": {
+            "X": 167.55933,
+            "Y": 14.095915,
+            "Z": 683.92444
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002240,
+          "Position": {
+            "X": 118.51672,
+            "Y": 23.000835,
+            "Z": 735.6831
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 106.18569,
+            "Y": 53.59632,
+            "Z": 674.99817
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1002651,
+          "Position": {
+            "X": 107.65234,
+            "Y": 54.64395,
+            "Z": 674.9523
+          },
+          "StopDistance": 5,
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002237,
+          "Position": {
+            "X": 167.55933,
+            "Y": 14.095915,
+            "Z": 683.92444
+          },
+          "TerritoryId": 135,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "(Phase 1, second enemy group) Stuck with enemy being out of sight -- but still able to attack you (tested on ACN)"
+            ]
+          },
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002238,
+          "Position": {
+            "X": 247.36401,
+            "Y": 14.02301,
+            "Z": 611.9325
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002237,
+          "Position": {
+            "X": 167.55933,
+            "Y": 14.095915,
+            "Z": 683.92444
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

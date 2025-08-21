@@ -1,0 +1,61 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006710,
+          "Position": {
+            "X": -123.73547,
+            "Y": 7.0426483,
+            "Z": -149.98096
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000106,
+          "Position": {
+            "X": 29.007324,
+            "Y": -19.000002,
+            "Z": 105.485596
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Mih Khetto's Amphitheatre",
+            "[Gridania] Airship Landing"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSC308_00975_Q1_000_040",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1006492,
+          "Position": {
+            "X": 7.3395386,
+            "Y": -21.970974,
+            "Z": 121.934814
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

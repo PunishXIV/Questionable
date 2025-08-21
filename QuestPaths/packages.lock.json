@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net9.0": {
+      "System.Text.Json": {
+        "type": "Transitive",
+        "resolved": "9.0.3",
+        "contentHash": "r2JRkLjsYrq5Dpo7+y3Wa73OfirZPdVhxiTJWwZ+oJM7FOAe0LkM3GlH+pgkNRdd1G1kwUbmRCdmh4uoaWwu1g=="
+      },
+      "questionable.model": {
+        "type": "Project",
+        "dependencies": {
+          "System.Text.Json": "[9.0.3, )"
+        }
+      }
+    }
+  }
+}

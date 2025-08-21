@@ -1,0 +1,272 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 540.5525,
+            "Y": 10.00537,
+            "Z": 215.53333
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 545.74445,
+            "Y": 11.959542,
+            "Z": 214.24825
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 548.48584,
+            "Y": 12.640512,
+            "Z": 220.15768
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1005251,
+          "Position": {
+            "X": 550.46924,
+            "Y": 12.147732,
+            "Z": 220.9353
+          },
+          "StopDistance": 5,
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 542.48083,
+            "Y": 8.70027,
+            "Z": 398.26666
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+        },
+        {
+          "Position": {
+            "X": 585.3419,
+            "Y": 14.562424,
+            "Z": 379.80997
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1005252,
+          "Position": {
+            "X": 586.0226,
+            "Y": 14.562427,
+            "Z": 376.21106
+          },
+          "StopDistance": 5,
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.0126,
+            "Y": 23.936245,
+            "Z": 455.10022
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005253,
+          "Position": {
+            "X": 564.35486,
+            "Y": 20.617891,
+            "Z": 504.32593
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 515.26044,
+            "Y": 27.708418,
+            "Z": 469.322
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 449.59036,
+            "Y": 15.174555,
+            "Z": 377.2856
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005254,
+          "Position": {
+            "X": 442.00806,
+            "Y": 15.793267,
+            "Z": 370.32104
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1005229,
+          "Position": {
+            "X": 522.9114,
+            "Y": 17.448051,
+            "Z": 456.35156
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSACN300_00461_Q1_000_001",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1005235,
+          "Position": {
+            "X": 684.3823,
+            "Y": 11.594438,
+            "Z": 411.94775
+          },
+          "StopDistance": 1,
+          "TerritoryId": 137,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.37524,
+            "Y": 12.899658,
+            "Z": 9.994568
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1091
+        }
+      ]
+    }
+  ]
+}

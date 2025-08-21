@@ -1,0 +1,174 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -226.12347,
+                                    "Y": -40.48583,
+                                    "Z": 57.083984
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005946,
+                    "Position": {
+                        "X": -239.27673,
+                        "Y": -42.130188,
+                        "Z": 15.213196
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "DialogueChoices": [
+                        {
+                            "Type": "YesNo",
+                            "Prompt": "TEXT_BANSAH308_01407_Q1_000_000",
+                            "Yes": true
+                        }
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -830.1075,
+                                    "Y": -28.771336,
+                                    "Z": 970.3592
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1008914,
+                    "Position": {
+                        "X": -846.8605,
+                        "Y": -25.652748,
+                        "Z": 962.0354
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        32
+                    ]
+                },
+                {
+                    "DataId": 1008915,
+                    "Position": {
+                        "X": -862.8214,
+                        "Y": -20.652752,
+                        "Z": 966.308
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        16
+                    ]
+                },
+                {
+                    "DataId": 1008912,
+                    "Position": {
+                        "X": -821.40845,
+                        "Y": -25.647757,
+                        "Z": 974.853
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 1008913,
+                    "Position": {
+                        "X": -795.4986,
+                        "Y": -23.649637,
+                        "Z": 972.3506
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 2004014,
+                    "Position": {
+                        "X": -826.84064,
+                        "Y": -29.34314,
+                        "Z": 971.4656
+                    },
+                    "TerritoryId": 138,
+                    "TargetTerritoryId": 138,
+                    "InteractionType": "Interact",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NotNearPosition": {
+                                "Position": {
+                                    "X": -826.84064,
+                                    "Y": -29.34314,
+                                    "Z": 971.4656
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1005940,
+                    "Position": {
+                        "X": -226.12347,
+                        "Y": -40.48583,
+                        "Z": 57.083984
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

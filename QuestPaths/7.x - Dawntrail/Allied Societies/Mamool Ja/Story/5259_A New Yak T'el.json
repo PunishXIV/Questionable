@@ -1,0 +1,250 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052561,
+          "Position": {
+            "X": 578.14905,
+            "Y": -144.88388,
+            "Z": 721.8279
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053776,
+          "Position": {
+            "X": -333.0282,
+            "Y": 18.46631,
+            "Z": -407.8584
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -333.0282,
+                  "Y": 18.46631,
+                  "Z": -407.8584
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053778,
+          "Position": {
+            "X": -424.30762,
+            "Y": 23.535458,
+            "Z": -496.2997
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053780,
+          "Position": {
+            "X": 576.1653,
+            "Y": -145.13588,
+            "Z": 751.09485
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 576.1653,
+                  "Y": -145.13588,
+                  "Z": 751.09485
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1053782,
+          "Position": {
+            "X": 705.3176,
+            "Y": -133.17163,
+            "Z": 515.3734
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1053783,
+          "Position": {
+            "X": 636.89624,
+            "Y": -137.174,
+            "Z": 570.5499
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            [
+              1
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1053784,
+          "Position": {
+            "X": 664.33203,
+            "Y": -137.17398,
+            "Z": 546.2882
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            [
+              2
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1053780,
+          "Position": {
+            "X": 576.1653,
+            "Y": -145.13588,
+            "Z": 751.09485
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48021,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48022,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1053780,
+          "Position": {
+            "X": 576.1653,
+            "Y": -145.13588,
+            "Z": 751.09485
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 576.1653,
+                  "Y": -145.13588,
+                  "Z": 751.09485
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053790,
+          "Position": {
+            "X": 578.33215,
+            "Y": -144.9379,
+            "Z": 723.81165
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

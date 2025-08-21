@@ -1,0 +1,77 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "skiaz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004894,
+          "Position": {
+              "X": -138.87238,
+              "Y": 27.266977,
+              "Z": -427.81726
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2259,
+          "Position": {
+              "X": -92.27408,
+              "Y": 14.646322,
+              "Z": -233.21777
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 2259,
+              "MinimumKillCount": 1
+            }
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2260,
+          "Position": {
+              "X": -92.27408,
+              "Y": 14.646322,
+              "Z": -233.21777
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 2260,
+              "MinimumKillCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004894,
+          "Position": {
+              "X": -138.87238,
+              "Y": 27.266977,
+              "Z": -427.81726
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051046,
+          "Position": {
+            "X": 69.38269,
+            "Y": -14,
+            "Z": 91.081055
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014238,
+          "Position": {
+            "X": 75.12012,
+            "Y": -17.990417,
+            "Z": 154.52808
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014239,
+          "Position": {
+            "X": 64.530396,
+            "Y": -17.990417,
+            "Z": 189.56274
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014240,
+          "Position": {
+            "X": 131.91418,
+            "Y": -17.990417,
+            "Z": 112.2301
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051046,
+          "Position": {
+            "X": 69.38269,
+            "Y": -14,
+            "Z": 91.081055
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051048,
+          "Position": {
+            "X": -227.95453,
+            "Y": 40.04104,
+            "Z": -42.648987
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The Resplendent Quarter"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZA012_05028_Q1_000_000",
+              "Answer": "TEXT_KINGZA012_05028_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051046,
+          "Position": {
+            "X": 69.38269,
+            "Y": -14,
+            "Z": 91.081055
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] The Resplendent Quarter",
+            "[Tuliyollal] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

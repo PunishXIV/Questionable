@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039341,
+          "Position": {
+            "X": 164.72107,
+            "Y": 1.2891341,
+            "Z": 22.140747
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA004_04183_Q1_000_000",
+              "Answer": "TEXT_AKTKZA004_04183_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039342,
+          "Position": {
+            "X": 111.65027,
+            "Y": 18.835812,
+            "Z": -175.0058
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Journey's End",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039341,
+          "Position": {
+            "X": 164.72107,
+            "Y": 1.2891341,
+            "Z": 22.140747
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] Journey's End"
+          ]
+        }
+      ]
+    }
+  ]
+}

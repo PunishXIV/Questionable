@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049794,
+          "Position": {
+            "X": -158.98376,
+            "Y": 4.51273,
+            "Z": -45.63977
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBB201_04854_Q1_000_000",
+              "Answer": "TEXT_KINGBB201_04854_A1_000_002"
+            }
+          ],
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013738,
+          "Position": {
+            "X": -6.9123535,
+            "Y": -1.4191895,
+            "Z": 5.508484
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1049795,
+          "Position": {
+            "X": 54.306763,
+            "Y": -8.321841,
+            "Z": 94.13281
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049795,
+          "Position": {
+            "X": 54.306763,
+            "Y": -8.321841,
+            "Z": 94.13281
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4855
+        }
+      ]
+    }
+  ]
+}

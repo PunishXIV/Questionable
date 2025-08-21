@@ -1,0 +1,81 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029584,
+          "Position": {
+            "X": -373.55615,
+            "Y": 48.181767,
+            "Z": 474.32666
+          },
+          "StopDistance": 7,
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029595,
+          "Position": {
+            "X": 20.675903,
+            "Y": 0.0058916546,
+            "Z": 0.7171631
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029595,
+          "Position": {
+            "X": 20.675903,
+            "Y": 0.0058916546,
+            "Z": 0.7171631
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030610,
+          "Position": {
+            "X": 65.11023,
+            "Y": 1.7160122,
+            "Z": 249.7749
+          },
+          "StopDistance": 5,
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Pendants"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMB120_03321_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

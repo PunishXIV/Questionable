@@ -1,0 +1,187 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038931,
+          "Position": {
+            "X": 615.8998,
+            "Y": -168,
+            "Z": -657.7402
+          },
+          "StopDistance": 7,
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012184,
+          "Position": {
+            "X": 73.83838,
+            "Y": -133.07397,
+            "Z": -512.2606
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012185,
+          "Position": {
+            "X": -5.416992,
+            "Y": -49.05786,
+            "Z": -269.24548
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Comment": "Follow Urianger"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012185,
+          "Position": {
+            "X": -5.416992,
+            "Y": -49.05786,
+            "Z": -269.24548
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "NotTargetable": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMC107_04405_Q1_000_043",
+              "Yes": true
+            }
+          ],
+          "Comment": "retry point"
+        },
+        {
+          "Position": {
+            "X": -6.025082,
+            "Y": -28.32315,
+            "Z": -215.77702
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false,
+          "DisableNavmesh": true,
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "DataId": 1038933,
+          "Position": {
+            "X": 15.536669,
+            "Y": -7.1210613,
+            "Z": -177.33519
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 3,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 10.73667,
+            "Y": -5.0926046,
+            "Z": -171.87782
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1038933,
+          "Position": {
+            "X": -22.370995,
+            "Y": 14.627041,
+            "Z": -132.87657
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 3,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -25.210857,
+            "Y": 26.867788,
+            "Z": -109.43445
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1038933,
+          "Position": {
+            "X": 1.7508065,
+            "Y": 46.95068,
+            "Z": -69.89246
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 3,
+          "StopDistance": 100,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 48.261765,
+            "Y": 74.98867,
+            "Z": -32.961533
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": true,
+          "DelaySecondsAtStart": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038935,
+          "Position": {
+            "X": 68.5282,
+            "Y": 75.72459,
+            "Z": -23.51416
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005940,
+          "Position": {
+            "X": -226.12347,
+            "Y": -40.48583,
+            "Z": 57.083984
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -353.3627,
+            "Y": -39.6834,
+            "Z": -352.8219
+          },
+          "StopDistance": 1,
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 765,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 2887,
+              "MinimumKillCount": 1
+            }
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -353.3627,
+            "Y": -39.6834,
+            "Z": -352.8219
+          },
+          "StopDistance": 20,
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 766,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 2886,
+              "MinimumKillCount": 1
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -353.3627,
+            "Y": -39.6834,
+            "Z": -352.8219
+          },
+          "StopDistance": 20,
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 768,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 2888,
+              "MinimumKillCount": 1
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005940,
+          "Position": {
+            "X": -226.12347,
+            "Y": -40.48583,
+            "Z": 57.083984
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

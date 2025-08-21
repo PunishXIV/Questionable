@@ -1,0 +1,61 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000100,
+          "Position": {
+            "X": 23.819275,
+            "Y": -8,
+            "Z": 115.92273
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 148,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Central Shroud - Bentbranch Meadows",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ]
+        },
+        {
+          "TerritoryId": 148,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Central Shroud - Bentbranch Meadows"
+        },
+        {
+          "DataId": 1002980,
+          "Position": {
+            "X": 22.934265,
+            "Y": -8,
+            "Z": 84.97742
+          },
+          "TerritoryId": 148,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 9
+        },
+        {
+          "DataId": 1000470,
+          "Position": {
+            "X": -59.006653,
+            "Y": -0.010835781,
+            "Z": 26.41333
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

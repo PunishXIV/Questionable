@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 770.70636,
+            "Y": 12.846572,
+            "Z": -260.59436
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1051711,
+          "Position": {
+            "X": 770.7179,
+            "Y": 12.84657,
+            "Z": -263.99634
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1052301,
+          "Position": {
+            "X": 219.98926,
+            "Y": 10.289447,
+            "Z": -522.9115
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true
+        },
+        {
+          "DataId": 1052300,
+          "Position": {
+            "X": 208.48401,
+            "Y": 10.257622,
+            "Z": -588.98303
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1052302,
+          "Position": {
+            "X": 171.03833,
+            "Y": 7.17552,
+            "Z": -602.6246
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 770.70636,
+            "Y": 12.846572,
+            "Z": -260.59436
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga"
+        },
+        {
+          "DataId": 1051711,
+          "Position": {
+            "X": 770.7179,
+            "Y": 12.84657,
+            "Z": -263.99634
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

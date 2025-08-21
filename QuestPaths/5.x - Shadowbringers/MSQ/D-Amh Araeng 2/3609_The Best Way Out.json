@@ -1,0 +1,142 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029853,
+          "Position": {
+            "X": -30.991089,
+            "Y": -0.6499998,
+            "Z": -49.69867
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027230,
+          "Position": {
+            "X": 117.997925,
+            "Y": 14.649025,
+            "Z": 7.156433
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 844
+        },
+        {
+          "DataId": 1028923,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0530548E-13,
+            "Z": -6.0273438
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMD104_03609_Q1_000_000",
+              "Answer": "TEXT_LUCKMD104_03609_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029597,
+          "Position": {
+            "X": 2.4871826,
+            "Y": 0,
+            "Z": 1.5106201
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009903,
+          "Position": {
+            "X": -177.56934,
+            "Y": -0.015319824,
+            "Z": -0.38153076
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -246.00786,
+            "Y": -3.0897782,
+            "Z": -0.36405885
+          },
+          "TerritoryId": 819,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1029611,
+          "Position": {
+            "X": 576.95886,
+            "Y": 6.6976085,
+            "Z": 636.71313
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1028305,
+          "Position": {
+            "X": 525.65796,
+            "Y": -5.2326922,
+            "Z": 854.2457
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029614,
+          "Position": {
+            "X": -554.1314,
+            "Y": 35.800797,
+            "Z": -669.70325
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

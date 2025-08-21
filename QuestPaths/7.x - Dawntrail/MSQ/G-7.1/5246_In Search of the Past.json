@@ -1,0 +1,153 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052202,
+          "Position": {
+            "X": -305.83655,
+            "Y": 9.519508,
+            "Z": 53.147095
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1052205,
+          "Position": {
+            "X": -257.0382,
+            "Y": 30,
+            "Z": -569.05475
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Heritage Found - The Outskirts"
+        },
+        {
+          "DataId": 1052204,
+          "Position": {
+            "X": -158.25134,
+            "Y": 25.984516,
+            "Z": -521.90436
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1052206,
+          "Position": {
+            "X": -137.86536,
+            "Y": 35,
+            "Z": -568.29175
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048083,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "TargetTerritoryId": 1207,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                1207
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                1207
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1048161,
+          "Position": {
+            "X": -5.874817,
+            "Y": -3.6188258E-08,
+            "Z": 6.8512573
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1052207,
+          "Position": {
+            "X": -609.3385,
+            "Y": -3.3580189,
+            "Z": -504.5701
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1191,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 1008,
+            "Enabled": true,
+            "Notes": [
+              "(boss 2) Requires vbm's auto-turn gaze option",
+              "(boss 3) Dashes (such as on SMN) will dash into the hole"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1052213,
+          "Position": {
+            "X": 117.02136,
+            "Y": 12.5,
+            "Z": -67.826416
+          },
+          "StopDistance": 6,
+          "TerritoryId": 1254,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

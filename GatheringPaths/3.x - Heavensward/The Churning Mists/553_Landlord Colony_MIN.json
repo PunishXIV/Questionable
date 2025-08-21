@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 400,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Churning Mists - Moghome"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32357,
+          "Locations": [
+            {
+              "Position": {
+                "X": 557.625,
+                "Y": 5.119438,
+                "Z": 180.6541
+              },
+              "MinimumAngle": -70,
+              "MaximumAngle": 55
+            },
+            {
+              "Position": {
+                "X": 570.8357,
+                "Y": 11.89507,
+                "Z": 164.9729
+              },
+              "MinimumAngle": 55,
+              "MaximumAngle": 130
+            }
+          ]
+        },
+        {
+          "DataId": 32356,
+          "Locations": [
+            {
+              "Position": {
+                "X": 572.8384,
+                "Y": 11.68007,
+                "Z": 155.6572
+              },
+              "MinimumAngle": 70,
+              "MaximumAngle": 165
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32358,
+          "Locations": [
+            {
+              "Position": {
+                "X": 665.114,
+                "Y": 43.93011,
+                "Z": 151.3629
+              },
+              "MinimumAngle": -80,
+              "MaximumAngle": 40
+            }
+          ]
+        },
+        {
+          "DataId": 32359,
+          "Locations": [
+            {
+              "Position": {
+                "X": 697.7376,
+                "Y": 41.87314,
+                "Z": 124.1553
+              },
+              "MinimumAngle": -125,
+              "MaximumAngle": 30
+            },
+            {
+              "Position": {
+                "X": 681.178,
+                "Y": 41.71732,
+                "Z": 147.9972
+              },
+              "MinimumAngle": -15,
+              "MaximumAngle": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32360,
+          "Locations": [
+            {
+              "Position": {
+                "X": 755.3978,
+                "Y": 20.37826,
+                "Z": 201.3921
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 70
+            }
+          ]
+        },
+        {
+          "DataId": 32361,
+          "Locations": [
+            {
+              "Position": {
+                "X": 771.5975,
+                "Y": 20.41353,
+                "Z": 204.8761
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 65
+            },
+            {
+              "Position": {
+                "X": 739.1428,
+                "Y": 23.87582,
+                "Z": 196.4766
+              },
+              "MinimumAngle": -40,
+              "MaximumAngle": 55
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

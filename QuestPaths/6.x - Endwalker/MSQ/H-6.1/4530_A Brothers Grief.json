@@ -1,0 +1,76 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039591,
+          "Position": {
+            "X": 107.71338,
+            "Y": -350,
+            "Z": -73.68585
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1056,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039595,
+          "Position": {
+            "X": 107.83545,
+            "Y": -350,
+            "Z": -84.82495
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1056,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039600,
+          "Position": {
+            "X": 142.443,
+            "Y": 4.7837553,
+            "Z": -148.57715
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039600,
+          "Position": {
+            "X": 142.443,
+            "Y": 4.7837553,
+            "Z": -148.57715
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH105_04530_Q2_000_000",
+              "Answer": "TEXT_AKTKMH105_04530_A2_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

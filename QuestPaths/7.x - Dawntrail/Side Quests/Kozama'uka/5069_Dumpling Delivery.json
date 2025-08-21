@@ -1,0 +1,99 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048784,
+          "Position": {
+            "X": -115.617676,
+            "Y": 25.086319,
+            "Z": -551.5984
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048898,
+          "Position": {
+            "X": 524.1931,
+            "Y": 15.639493,
+            "Z": 5.4473877
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Many Fires",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1048897,
+          "Position": {
+            "X": 551.6593,
+            "Y": 12.326415,
+            "Z": -32.852783
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1048896,
+          "Position": {
+            "X": 513.0541,
+            "Y": 15.9776535,
+            "Z": -54.36792
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048784,
+          "Position": {
+            "X": -115.617676,
+            "Y": 25.086319,
+            "Z": -551.5984
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    }
+  ]
+}

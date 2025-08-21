@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039358,
+          "Position": {
+            "X": -321.43134,
+            "Y": 22.377153,
+            "Z": 473.167
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039359,
+          "Position": {
+            "X": 486.71704,
+            "Y": 11.195138,
+            "Z": -299.36682
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Tertium",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011849,
+          "Position": {
+            "X": 486.04553,
+            "Y": 11.154297,
+            "Z": -296.37604
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Snipe",
+          "Comment": "Snipe Magitek Colossi"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039359,
+          "Position": {
+            "X": 486.71704,
+            "Y": 11.195138,
+            "Z": -299.36682
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037729,
+          "Position": {
+            "X": -342.67188,
+            "Y": 22.377153,
+            "Z": 466.8496
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

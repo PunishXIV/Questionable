@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013074,
+          "Position": {
+            "X": 304.3412,
+            "Y": 483.48206,
+            "Z": 143.11438
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1073
+        },
+        {
+          "DataId": 1044075,
+          "Position": {
+            "X": -64.4389,
+            "Y": 493.32922,
+            "Z": -4.409851
+          },
+          "TerritoryId": 1073,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1073,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38296,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1073,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38320,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1044075,
+          "Position": {
+            "X": -64.4389,
+            "Y": 493.32922,
+            "Z": -4.409851
+          },
+          "TerritoryId": 1073,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043421,
+          "Position": {
+            "X": 2.4261475,
+            "Y": 499.87805,
+            "Z": 46.036377
+          },
+          "TerritoryId": 1073,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960
+        },
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

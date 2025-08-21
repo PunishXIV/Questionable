@@ -1,0 +1,93 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ruby Sea - Onokoro"
+        },
+        {
+          "Position": {
+            "X": -848.8846,
+            "Y": 36.0507,
+            "Z": 300.73306
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "ItemId": 2002422,
+          "GroundTarget": true,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -842.2923,
+            "Y": 36.053864,
+            "Z": 319.94763
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "ItemId": 2002422,
+          "GroundTarget": true,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -873.57074,
+            "Y": 36.01944,
+            "Z": 318.8049
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UseItem",
+          "ItemId": 2002422,
+          "GroundTarget": true,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 391.50903,
+            "Y": -119.58932,
+            "Z": -236.18898
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

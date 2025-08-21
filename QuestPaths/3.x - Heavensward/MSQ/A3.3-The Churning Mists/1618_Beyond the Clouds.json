@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012661,
+          "Position": {
+            "X": 240.31421,
+            "Y": -42.317062,
+            "Z": 615.1063
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "The Churning Mists - Moghome"
+        },
+        {
+          "DataId": 1013195,
+          "Position": {
+            "X": 287.55627,
+            "Y": -46.700905,
+            "Z": 663.87415
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005451,
+          "Position": {
+            "X": 379.23242,
+            "Y": -69.44385,
+            "Z": 690.30273
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 17 0 0 0 0 64",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2005452,
+          "Position": {
+            "X": 402.0293,
+            "Y": -73.136475,
+            "Z": 668.4214
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "$": "17 0 0 0 0 64 -> 33 16 0 0 0 96",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2005450,
+          "Position": {
+            "X": 405.90515,
+            "Y": -72.58722,
+            "Z": 696.2843
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012664,
+          "Position": {
+            "X": 364.30908,
+            "Y": -74.10719,
+            "Z": 654.322
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

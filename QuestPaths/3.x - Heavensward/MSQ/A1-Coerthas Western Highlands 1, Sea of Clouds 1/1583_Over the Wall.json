@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012328,
+          "Position": {
+            "X": 1.7547607,
+            "Y": 0.0034502316,
+            "Z": -9.750549
+          },
+          "TerritoryId": 433,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005334,
+          "Position": {
+            "X": -0.001443714,
+            "Y": 1.1515,
+            "Z": 13.2236
+          },
+          "TerritoryId": 433,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 419
+        },
+        {
+          "DataId": 1012331,
+          "Position": {
+            "X": -163.43939,
+            "Y": 2.1510596,
+            "Z": -5.508545
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNA104_01583_SCENE00005_EVENTAREA_WARP_YESNO_TITLE",
+              "Yes": true
+            }
+          ],
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012333,
+          "Position": {
+            "X": 481.40686,
+            "Y": 225.00232,
+            "Z": 793.14856
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Coerthas Western Highlands - Falcon's Nest",
+          "StopDistance": 7
+        },
+        {
+          "DataId": 1011231,
+          "Position": {
+            "X": 503.1051,
+            "Y": 217.95148,
+            "Z": 790.2189
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

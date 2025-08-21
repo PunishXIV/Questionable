@@ -1,0 +1,192 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK601_02915_Q0_000_004",
+              "Answer": "TEXT_JOBDRK601_02915_A0_000_005"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008659,
+          "Position": {
+            "X": 2.5177002,
+            "Y": 11.947815,
+            "Z": 37.00305
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022855,
+          "Position": {
+            "X": 75.394775,
+            "Y": 24.071722,
+            "Z": -13.595825
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022859,
+          "Position": {
+            "X": 3.6774292,
+            "Y": 5.46805,
+            "Z": 26.596436
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022855,
+          "Position": {
+            "X": 75.394775,
+            "Y": 24.071722,
+            "Z": -13.595825
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2008660,
+          "Position": {
+            "X": 31.906494,
+            "Y": 15.945618,
+            "Z": -65.07977
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Tribunal"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022862,
+          "Position": {
+            "X": 482.29187,
+            "Y": 203.4332,
+            "Z": 683.25305
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1022863,
+          "Position": {
+            "X": 384.2068,
+            "Y": 170.07738,
+            "Z": 419.7909
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2008661,
+          "Position": {
+            "X": 380.02588,
+            "Y": 169.78711,
+            "Z": 416.5559
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Action",
+          "Action": "Souleater"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022866,
+          "Position": {
+            "X": 482.07825,
+            "Y": 203.4332,
+            "Z": 680.7506
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true,
+          "NextQuestId": 2916
+        }
+      ]
+    }
+  ]
+}

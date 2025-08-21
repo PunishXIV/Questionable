@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052561,
+          "Position": {
+            "X": 578.14905,
+            "Y": -144.88388,
+            "Z": 721.8279
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053761,
+          "Position": {
+            "X": 37.39978,
+            "Y": -173.47919,
+            "Z": 290.6996
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48012,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48013,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1053761,
+          "Position": {
+            "X": 37.39978,
+            "Y": -173.47919,
+            "Z": 290.6996
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053790,
+          "Position": {
+            "X": 578.33215,
+            "Y": -144.9379,
+            "Z": 723.81165
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

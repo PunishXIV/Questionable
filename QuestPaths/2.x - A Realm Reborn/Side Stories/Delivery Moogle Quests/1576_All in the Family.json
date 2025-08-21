@@ -1,0 +1,217 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009153,
+          "Position": {
+            "X": -39.108948,
+            "Y": 20,
+            "Z": 5.416931
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006211,
+          "Position": {
+            "X": -217.48688,
+            "Y": 26.258211,
+            "Z": -361.2574
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -255.1732,
+            "Y": 27.485052,
+            "Z": -324.7051
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 2004884,
+          "Position": {
+            "X": -64.86609,
+            "Y": -1.5411987,
+            "Z": -69.50488
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 2004883,
+          "Position": {
+            "X": -53.635498,
+            "Y": -1.3886108,
+            "Z": -53.391357
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 2004882,
+          "Position": {
+            "X": -69.077576,
+            "Y": -2.1820679,
+            "Z": -32.913757
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006211,
+          "Position": {
+            "X": -217.48688,
+            "Y": 26.258211,
+            "Z": -361.2574
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1006196,
+          "Position": {
+            "X": -63.98114,
+            "Y": -20.296238,
+            "Z": -5.142395
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -155.2711,
+            "Y": -32.952675,
+            "Z": 242.00226
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -155.2711,
+            "Y": -32.952675,
+            "Z": 242.00226
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            3554,
+            3555
+          ]
+        },
+        {
+          "DataId": 1010417,
+          "Position": {
+            "X": -154.37555,
+            "Y": -31.787657,
+            "Z": 244.7699
+          },
+          "StopDistance": 5,
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1006196,
+          "Position": {
+            "X": -63.98114,
+            "Y": -20.296238,
+            "Z": -5.142395
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006211,
+          "Position": {
+            "X": -217.48688,
+            "Y": 26.258211,
+            "Z": -361.2574
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "NextQuestId": 1577
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051267,
+          "Position": {
+            "X": -447.5014,
+            "Y": 122.95055,
+            "Z": 343.099
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZC304_05088_Q1_000_100",
+              "Answer": "TEXT_KINGZC304_05088_A2_000_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014289,
+          "Position": {
+            "X": -422.50708,
+            "Y": 122.88086,
+            "Z": 338.88757
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014290,
+          "Position": {
+            "X": -519.4629,
+            "Y": 123.88794,
+            "Z": 252.61304
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -759,
+            "Y": 129.30363,
+            "Z": 237.35704
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17662
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051268,
+          "Position": {
+            "X": -756.80176,
+            "Y": 129.29285,
+            "Z": 240.7721
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1051269,
+          "Position": {
+            "X": -566.73535,
+            "Y": 133.78297,
+            "Z": 721.3396
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051267,
+          "Position": {
+            "X": -447.5014,
+            "Y": 122.95055,
+            "Z": 343.099
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5089,
+          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+        }
+      ]
+    }
+  ]
+}

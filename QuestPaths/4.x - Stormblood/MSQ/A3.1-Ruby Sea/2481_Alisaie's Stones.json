@@ -1,0 +1,160 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021511,
+          "Position": {
+            "X": 31.3573,
+            "Y": 3.245383,
+            "Z": -602.74664
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2007911,
+          "Position": {
+            "X": 33.98181,
+            "Y": 4.1046753,
+            "Z": -603.87585
+          },
+          "StopDistance": 4,
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007912,
+          "Position": {
+            "X": 138.10938,
+            "Y": 0.9613037,
+            "Z": -688.1666
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            6676
+          ],
+          "ItemId": 2002093,
+          "$": "0 2 0 0 0 0 -> 16 17 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2007913,
+          "Position": {
+            "X": 256.21423,
+            "Y": -0.015319824,
+            "Z": -673.4874
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            6676
+          ],
+          "ItemId": 2002093,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 446.98648,
+            "Y": 9.27001,
+            "Z": -657.7555
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            6618
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1019946,
+          "Position": {
+            "X": 449.39343,
+            "Y": 9.2068815,
+            "Z": -661.21924
+          },
+          "StopDistance": 7,
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019939,
+          "Position": {
+            "X": 69.53528,
+            "Y": 25.007832,
+            "Z": -643.6713
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021505,
+          "Position": {
+            "X": 79.42322,
+            "Y": 33.00897,
+            "Z": -669.9474
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -73.40663,
+            "Y": 0.60187495,
+            "Z": -59.04644
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "$": "Sometimes the pathing gets blocked coming from Hamon"
+        },
+        {
+          "DataId": 2001285,
+          "Position": {
+            "X": -80.36932,
+            "Y": 0.6866455,
+            "Z": -59.55603
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 2001282,
+          "Position": {
+            "X": -21.74414,
+            "Y": 9.994568,
+            "Z": -78.50769
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2001283,
+          "Position": {
+            "X": 37.03357,
+            "Y": 7.248047,
+            "Z": -98.8938
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2001280,
+          "Position": {
+            "X": -162.46283,
+            "Y": 17.471558,
+            "Z": 60.196777
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2001281,
+          "Position": {
+            "X": -254.74939,
+            "Y": 17.990356,
+            "Z": 67.33801
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2001541,
+          "Position": {
+            "X": 224.7196,
+            "Y": 52.048462,
+            "Z": 79.45361
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ],
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 224.7196,
+            "Y": 52.048462,
+            "Z": 79.45361
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            131
+          ],
+          "CombatDelaySecondsAtStart": 1
+        },
+        {
+          "DataId": 2001542,
+          "Position": {
+            "X": 245.71594,
+            "Y": 52.475708,
+            "Z": 58.091064
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 245.71594,
+            "Y": 52.475708,
+            "Z": 58.091064
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            131
+          ],
+          "CombatDelaySecondsAtStart": 1
+        },
+        {
+          "DataId": 2001543,
+          "Position": {
+            "X": 224.01758,
+            "Y": 52.231567,
+            "Z": 41.367188
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 224.01758,
+            "Y": 52.231567,
+            "Z": 41.367188
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            131
+          ],
+          "CombatDelaySecondsAtStart": 1
+        },
+        {
+          "DataId": 2001544,
+          "Position": {
+            "X": 259.05237,
+            "Y": 53.421753,
+            "Z": 25.40625
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 258.4417,
+            "Y": 52.01455,
+            "Z": 23.240385
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            131
+          ],
+          "CombatDelaySecondsAtStart": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "AetheryteShortcut": "Ul'dah",
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

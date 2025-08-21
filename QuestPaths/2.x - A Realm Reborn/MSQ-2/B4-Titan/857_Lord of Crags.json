@@ -1,0 +1,71 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006341,
+          "Position": {
+            "X": 479.39258,
+            "Y": 16.258692,
+            "Z": 128.37415
+          },
+          "StopDistance": 7,
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002086,
+          "Position": {
+            "X": 382.55884,
+            "Y": 25.253662,
+            "Z": -139.02502
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 139,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 57,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006343,
+          "Position": {
+            "X": 427.63403,
+            "Y": 4.115109,
+            "Z": 85.92346
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

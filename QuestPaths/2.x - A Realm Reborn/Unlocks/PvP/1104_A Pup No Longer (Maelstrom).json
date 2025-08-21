@@ -1,0 +1,71 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003281,
+          "Position": {
+            "X": 97.520386,
+            "Y": 40.248554,
+            "Z": 81.1322
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 152.25397,
+            "Y": 14.095841,
+            "Z": 668.4288
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ]
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lower La Noscea - Moraby Drydocks"
+        },
+        {
+          "DataId": 1002484,
+          "Position": {
+            "X": 270.71033,
+            "Y": 4.4031205,
+            "Z": 719.9968
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 250
+        },
+        {
+          "TerritoryId": 250,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Wolves' Den Pier"
+        },
+        {
+          "DataId": 1005184,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 3.5836844,
+            "Z": -30.380737
+          },
+          "TerritoryId": 250,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

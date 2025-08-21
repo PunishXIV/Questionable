@@ -1,0 +1,65 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1012148,
+					"Position": {
+						"X": -173.2663,
+						"Y": -162.03395,
+						"Z": -510.39905
+					},
+					"TerritoryId": 402,
+					"InteractionType": "AcceptQuest",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"Position": {
+						"X": -189.43037,
+						"Y": -160.1837,
+						"Z": -499.3027
+					},
+					"TerritoryId": 402,
+					"InteractionType": "Combat",
+					"EnemySpawnType": "OverworldEnemies",
+					"ComplexCombatData": [
+						{
+							"DataId": 4091,
+							"MinimumKillCount": 3,
+							"$": "Slay clockwork paladins."
+						},
+						{
+							"DataId": 4090,
+							"MinimumKillCount": 3,
+							"$": "Slay clockwork engineers."
+						}
+					],
+					"$": "they're all around so we can just start here. possible issue with a FATE spawning here, YMMV."
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1012148,
+					"Position": {
+						"X": -173.2663,
+						"Y": -162.03395,
+						"Z": -510.39905
+					},
+					"TerritoryId": 402,
+					"InteractionType": "CompleteQuest"
+				}
+			]
+		}
+	]
+}

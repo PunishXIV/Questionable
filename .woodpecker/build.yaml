@@ -1,0 +1,50 @@
+when:
+  - event: tag
+    ref: refs/tags/v*
+  - event: push
+  - event: pull_request
+
+steps:
+  - name: prepare dalamud
+    image: git.carvel.li/actions/download-dalamud
+
+  - name: dotnet restore
+    image: mcr.microsoft.com/dotnet/sdk:9.0-noble
+    commands:
+      - dotnet restore /p:Configuration=Release --packages $CI_WORKSPACE/.nuget
+
+  - name: dotnet test
+    image: mcr.microsoft.com/dotnet/sdk:9.0-noble
+    commands:
+      - dotnet test QuestPaths.JsonValidator/QuestPaths.JsonValidator.csproj -c Release --no-restore
+
+  - name: dotnet build
+    image: mcr.microsoft.com/dotnet/sdk:9.0-noble
+    commands:
+      - export DALAMUD_HOME=$CI_WORKSPACE/.dalamud/
+      - dotnet build Questionable/Questionable.csproj -c Release -f net9.0-windows -p:DalamudLibPath=$DALAMUD_HOME -maxcpucount:1 --source $CI_WORKSPACE/.nuget --no-restore
+
+  - name: prepare release files
+    image: alpine
+    commands:
+      - mkdir release
+      - mv Questionable/dist/Questionable/latest.zip release/Questionable-${CI_COMMIT_TAG##v}.zip
+      - mv Questionable/dist/Questionable/Questionable.json release/Questionable-${CI_COMMIT_TAG##v}.json.d13
+    when:
+      - event: tag
+        ref: refs/tags/v*
+
+  - name: prepare release
+    image: woodpeckerci/plugin-release
+    settings:
+      title: ${CI_COMMIT_TAG}
+      draft: true
+      files:
+        - "release/*.zip"
+        - "release/*.json.*"
+      api_key:
+        from_secret: ACCESS_TOKEN
+      checksum: sha256
+    when:
+      - event: tag
+        ref: refs/tags/v*

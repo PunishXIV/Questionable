@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024771,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023142,
+          "Position": {
+            "X": -642.9083,
+            "Y": 130.25946,
+            "Z": -538.29254
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        },
+        {
+          "DataId": 1024937,
+          "Position": {
+            "X": 450.88867,
+            "Y": 114.36421,
+            "Z": 235.91968
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Peering Stones"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024952,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1025235,
+          "Position": {
+            "X": -155.2301,
+            "Y": 39.096687,
+            "Z": 159.0448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024952,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

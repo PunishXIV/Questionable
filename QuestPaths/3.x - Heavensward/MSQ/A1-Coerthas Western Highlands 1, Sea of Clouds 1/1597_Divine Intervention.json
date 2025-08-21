@@ -1,0 +1,105 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012377,
+          "Position": {
+            "X": 5.6915283,
+            "Y": -9.313226E-10,
+            "Z": 5.7526245
+          },
+          "TerritoryId": 433,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012378,
+          "Position": {
+            "X": 3.5248413,
+            "Y": -9.313226E-10,
+            "Z": 9.018005
+          },
+          "StopDistance": 5,
+          "TerritoryId": 433,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005334,
+          "Position": {
+            "X": -0.001443714,
+            "Y": 1.1515,
+            "Z": 13.2236
+          },
+          "TerritoryId": 433,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 419
+        },
+        {
+          "DataId": 1012380,
+          "Position": {
+            "X": 124.46777,
+            "Y": 24.458836,
+            "Z": 0.47296143
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012381,
+          "Position": {
+            "X": 120.653076,
+            "Y": 14.95313,
+            "Z": -156.63391
+          },
+          "TerritoryId": 419,
+          "InteractionType": "SinglePlayerDuty",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Tribunal"
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012381,
+          "Position": {
+            "X": 120.653076,
+            "Y": 14.95313,
+            "Z": -156.63391
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

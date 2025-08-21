@@ -1,0 +1,241 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041332,
+          "Position": {
+            "X": 194.68982,
+            "Y": 14.118598,
+            "Z": 485.9845
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANARK001_04545_Q1_000_004",
+              "Answer": "TEXT_BANARK001_04545_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042303,
+          "Position": {
+            "X": 183.79492,
+            "Y": 10.683311,
+            "Z": 557.42737
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1042305,
+          "Position": {
+            "X": 200,
+            "Y": 10.114502,
+            "Z": 579.1256
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1042304,
+          "Position": {
+            "X": 171.58765,
+            "Y": 4.763736,
+            "Z": 683.37524
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042306,
+          "Position": {
+            "X": -260.6394,
+            "Y": 14.412592,
+            "Z": 202.62451
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 191.63799,
+            "Y": 15.136713,
+            "Z": 508.80118
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1041332,
+          "Position": {
+            "X": 194.68982,
+            "Y": 14.118598,
+            "Z": 485.9845
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 191.63799,
+            "Y": 15.136713,
+            "Z": 508.80118
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1042307,
+          "Position": {
+            "X": 121.01929,
+            "Y": 6.780056,
+            "Z": 585.59546
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANARK001_04545_Q4_000_081",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042310,
+          "Position": {
+            "X": -488.7007,
+            "Y": 4.563182,
+            "Z": 18.20398
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANARK001_04545_Q5_000_115",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 159.25264,
+            "Y": 5.220791,
+            "Z": 606.4928
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1041332,
+          "Position": {
+            "X": 194.68982,
+            "Y": 14.118598,
+            "Z": 485.9845
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 191.63799,
+            "Y": 15.136713,
+            "Z": 508.80118
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1042313,
+          "Position": {
+            "X": -78.690796,
+            "Y": 40.010006,
+            "Z": 323.2318
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

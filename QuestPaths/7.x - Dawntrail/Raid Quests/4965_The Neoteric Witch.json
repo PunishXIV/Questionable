@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049792,
+          "Position": {
+            "X": 1.663208,
+            "Y": -1.9688797E-12,
+            "Z": -10.727112
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1224,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1224,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 991,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050477,
+          "Position": {
+            "X": 1.663208,
+            "Y": -1.9688797E-12,
+            "Z": -10.727112
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1224,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013722,
+          "Position": {
+            "X": -0.07635498,
+            "Y": 1.0527954,
+            "Z": 8.102478
+          },
+          "TerritoryId": 1224,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186
+        },
+        {
+          "DataId": 1049790,
+          "Position": {
+            "X": 494.7433,
+            "Y": 59.55,
+            "Z": 125.10864
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] The Arcadion",
+            "[Solution Nine] True Vue"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049790,
+          "Position": {
+            "X": 494.7433,
+            "Y": 59.55,
+            "Z": 125.10864
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5289
+        }
+      ]
+    }
+  ]
+}

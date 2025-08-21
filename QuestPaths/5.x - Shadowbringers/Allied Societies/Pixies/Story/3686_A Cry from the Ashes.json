@@ -1,0 +1,212 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031892,
+          "Position": {
+            "X": -461.5702,
+            "Y": 72.51754,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 891
+        },
+        {
+          "DataId": 1031875,
+          "Position": {
+            "X": 63.553833,
+            "Y": -6.2561507,
+            "Z": -4.6845703
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031873,
+          "Position": {
+            "X": 62.57715,
+            "Y": -6.26951,
+            "Z": -1.2970581
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031876,
+          "Position": {
+            "X": -143.99939,
+            "Y": -18.519604,
+            "Z": 300.52637
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031878,
+          "Position": {
+            "X": -42.648987,
+            "Y": -18.509216,
+            "Z": 270.31348
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -277.1741,
+            "Y": 16.288988,
+            "Z": 251.72075
+          },
+          "StopDistance": 1,
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11440
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1031879,
+          "Position": {
+            "X": -276.93604,
+            "Y": 15.250552,
+            "Z": 263.20276
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -68.90031,
+            "Y": -19.300228,
+            "Z": 286.6684
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1032280,
+          "Position": {
+            "X": -42.038635,
+            "Y": -18.997498,
+            "Z": 270.58813
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1031892,
+          "Position": {
+            "X": -461.5702,
+            "Y": 72.51754,
+            "Z": 586.48047
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 891,
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        },
+        {
+          "DataId": 1032032,
+          "Position": {
+            "X": -2.5177612,
+            "Y": 25.887014,
+            "Z": -107.07257
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1032032,
+          "Position": {
+            "X": -2.5177612,
+            "Y": 25.887014,
+            "Z": -107.07257
+          },
+          "TerritoryId": 891,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031806,
+          "Position": {
+            "X": -464.59143,
+            "Y": 71.76874,
+            "Z": 573.8766
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

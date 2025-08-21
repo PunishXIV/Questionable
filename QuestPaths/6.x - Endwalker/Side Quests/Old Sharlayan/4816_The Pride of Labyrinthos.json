@@ -1,0 +1,120 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046073,
+          "Position": {
+            "X": -53.635498,
+            "Y": -29.497286,
+            "Z": -65.14081
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -53.635498,
+                  "Y": -29.497286,
+                  "Z": -65.14081
+                },
+                "MaximumDistance": 30,
+                "TerritoryId": 956
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046404,
+          "Position": {
+            "X": -707.6982,
+            "Y": -31.53043,
+            "Z": 280.38452
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Labyrinthos - Aporia"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046073,
+          "Position": {
+            "X": -53.635498,
+            "Y": -29.497286,
+            "Z": -65.14081
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_SUBCTS606_04816_Q2_000_055",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -53.635498,
+                  "Y": -29.497286,
+                  "Z": -65.14081
+                },
+                "MaximumDistance": 30,
+                "TerritoryId": 956
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046073,
+          "Position": {
+            "X": -53.635498,
+            "Y": -29.497286,
+            "Z": -65.14081
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -53.635498,
+                  "Y": -29.497286,
+                  "Z": -65.14081
+                },
+                "MaximumDistance": 30,
+                "TerritoryId": 956
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

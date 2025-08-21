@@ -1,0 +1,63 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050673,
+          "Position": {
+            "X": 375.6007,
+            "Y": -116.81515,
+            "Z": -175.03625
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 522.757,
+            "Y": -54.457268,
+            "Z": 57.29732
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2014108,
+          "Position": {
+            "X": 521.84326,
+            "Y": -53.543945,
+            "Z": 57.938477
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050673,
+          "Position": {
+            "X": 375.6007,
+            "Y": -116.81515,
+            "Z": -175.03625
+          },
+          "Fly": true,
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037575,
+          "Position": {
+            "X": 6.454529,
+            "Y": -31.530432,
+            "Z": -78.14148
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 379.89767,
+            "Y": 68.15723,
+            "Z": -169.26231
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            13415
+          ],
+          "CombatItemUse": {
+            "ItemId": 2003316,
+            "Condition": "Health%",
+            "Value": 50
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037575,
+          "Position": {
+            "X": 6.454529,
+            "Y": -31.530432,
+            "Z": -78.14148
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

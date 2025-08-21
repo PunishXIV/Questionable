@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018463,
+          "Position": {
+            "X": -108.62903,
+            "Y": -35.63229,
+            "Z": -19.455322
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Zenith"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "UseItem",
+          "ItemId": 2002034
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "UseItem",
+          "ItemId": 2002047
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1018468,
+          "Position": {
+            "X": -559.7162,
+            "Y": 48,
+            "Z": 304.5243
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1018459,
+          "Position": {
+            "X": -673.8232,
+            "Y": 73,
+            "Z": 288.4718
+          },
+          "StopDistance": 5,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1018456,
+          "Position": {
+            "X": 13.595764,
+            "Y": 206.59943,
+            "Z": 77.28699
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "NextQuestId": 3008
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1025066,
+          "Position": {
+            "X": -155.90149,
+            "Y": 66.2623,
+            "Z": -366.93372
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Emote",
+          "Emote": "rally",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 1
+              }
+            ],
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1025064,
+          "Position": {
+            "X": 185.62585,
+            "Y": 68.93902,
+            "Z": -372.15234
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Emote",
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Emote": "soothe",
+          "Fly": true
+        },
+        {
+          "DataId": 1025063,
+          "Position": {
+            "X": 291.73718,
+            "Y": 73.622604,
+            "Z": -496.87955
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Emote",
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 2
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Emote": "soothe",
+          "Fly": true
+        },
+        {
+          "DataId": 1025065,
+          "Position": {
+            "X": -73.04492,
+            "Y": 62.044453,
+            "Z": -878.78235
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Emote",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [
+              {
+                "High": 2
+              }
+            ],
+            null,
+            null,
+            null
+          ],
+          "Emote": "rally",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.868523,
+            "Y": 56.02146,
+            "Z": 231.54045
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true
+        },
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050816,
+          "Position": {
+            "X": 14.328186,
+            "Y": 45.665993,
+            "Z": 131.33435
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000868,
+          "Position": {
+            "X": -192.00433,
+            "Y": 0.9999907,
+            "Z": 211.68835
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol",
+              "InTerritory": [
+                137
+              ]
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
+            }
+          },
+          "TargetTerritoryId": 137
+        },
+        {
+          "TerritoryId": 137,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 732.0986,
+            "Y": 11.349089,
+            "Z": 262.19138
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "Fly": true
+        },
+        {
+          "DataId": 1050817,
+          "Position": {
+            "X": 735.25586,
+            "Y": 11.306824,
+            "Z": 261.8601
+          },
+          "StopDistance": 5,
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050818,
+          "Position": {
+            "X": 681.3915,
+            "Y": 9.601691,
+            "Z": 202.86865
+          },
+          "StopDistance": 5,
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050819,
+          "Position": {
+            "X": 770.13806,
+            "Y": 9.687993,
+            "Z": 246.29578
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2014098,
+          "Position": {
+            "X": 769.0698,
+            "Y": 9.719971,
+            "Z": 246.99768
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESSUX001_05182_Q1_000_000",
+              "Answer": "TEXT_FESSUX001_05182_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050820,
+          "Position": {
+            "X": 695.46045,
+            "Y": 9.614362,
+            "Z": 295.70447
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESSUX001_05182_Q2_000_000",
+              "Answer": "TEXT_FESSUX001_05182_A2_000_001"
+            }
+          ],
+          "NextQuestId": 5183
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012600,
+          "Position": {
+            "X": 451.65173,
+            "Y": 157.40831,
+            "Z": -544.6708
+          },
+          "StopDistance": 5,
+          "TerritoryId": 397,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 474.62885,
+            "Y": 200.2377,
+            "Z": 657.9519
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        },
+        {
+          "Position": {
+            "X": 486.38373,
+            "Y": 163.58846,
+            "Z": 239.54294
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 517.53094,
+            "Y": 131.76724,
+            "Z": 200.50333
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 595.8404,
+            "Y": 116.82471,
+            "Z": 203.86801
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 616.8997,
+            "Y": 78.429,
+            "Z": 207.48883
+          },
+          "TerritoryId": 397,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1011905,
+          "Position": {
+            "X": 617.4868,
+            "Y": 78.429,
+            "Z": 217.30359
+          },
+          "TerritoryId": 397,
+          "InteractionType": "SinglePlayerDuty",
+          "DisableNavmesh": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012604,
+          "Position": {
+            "X": 620.9657,
+            "Y": 78.42899,
+            "Z": 213.88562
+          },
+          "StopDistance": 5,
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2006189,
+          "Position": {
+            "X": -332.90613,
+            "Y": 126.81775,
+            "Z": -29.953552
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818057
+        },
+        {
+          "DataId": 1011907,
+          "Position": {
+            "X": -288.8686,
+            "Y": 127.06639,
+            "Z": 13.199036
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

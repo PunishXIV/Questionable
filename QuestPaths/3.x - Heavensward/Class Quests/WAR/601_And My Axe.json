@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013279,
+          "Position": {
+            "X": 441.70276,
+            "Y": 8.670496,
+            "Z": 18.814331
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 427.1206,
+            "Y": 7.9075317,
+            "Z": 24.77774
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1013316,
+          "Position": {
+            "X": 398.97766,
+            "Y": 8.611752,
+            "Z": 46.28064
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013316,
+          "Position": {
+            "X": 398.97766,
+            "Y": 8.611752,
+            "Z": 46.28064
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Emote",
+          "Emote": "slap"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006614,
+          "Position": {
+            "X": 65.87317,
+            "Y": -3.1181886,
+            "Z": 61.41748
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013312,
+          "Position": {
+            "X": -118.88306,
+            "Y": -25.500666,
+            "Z": 42.374268
+          },
+          "TerritoryId": 138,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013329,
+          "Position": {
+            "X": -109.9718,
+            "Y": -24.72433,
+            "Z": 63.553833
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2900
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 7.095398,
+                                    "Y": 16.167778,
+                                    "Z": -188.67786
+                                },
+                                "TerritoryId": 180,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1005932,
+                    "Position": {
+                        "X": -1.236023,
+                        "Y": 33.38838,
+                        "Z": -244.19019
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1005950,
+                    "Position": {
+                        "X": -11.7647705,
+                        "Y": 49.2008,
+                        "Z": -289.2348
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Emote",
+                    "Emote": "soothe",
+                    "Fly": true,
+                    "Land": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        16
+                    ]
+                },
+                {
+                    "DataId": 1005951,
+                    "Position": {
+                        "X": -24.673828,
+                        "Y": 49.15637,
+                        "Z": -331.50226
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Emote",
+                    "Emote": "soothe",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        8
+                    ]
+                },
+                {
+                    "DataId": 1005947,
+                    "Position": {
+                        "X": -16.159302,
+                        "Y": 50.30896,
+                        "Z": -351.85785
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Emote",
+                    "Emote": "soothe",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        128
+                    ]
+                },
+                {
+                    "DataId": 1005949,
+                    "Position": {
+                        "X": 15.42688,
+                        "Y": 48.41687,
+                        "Z": -324.02533
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Emote",
+                    "Emote": "soothe",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        32
+                    ]
+                },
+                {
+                    "DataId": 1005948,
+                    "Position": {
+                        "X": 50.125854,
+                        "Y": 48.75892,
+                        "Z": -326.55835
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Emote",
+                    "Emote": "soothe"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1005932,
+                    "Position": {
+                        "X": -1.236023,
+                        "Y": 33.38838,
+                        "Z": -244.19019
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005928,
+                    "Position": {
+                        "X": 7.095398,
+                        "Y": 16.167778,
+                        "Z": -188.67786
+                    },
+                    "TerritoryId": 180,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

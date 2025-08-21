@@ -1,0 +1,132 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021493,
+          "Position": {
+            "X": 55.557983,
+            "Y": 20.485168,
+            "Z": -672.5719
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021772,
+          "Position": {
+            "X": 63.095947,
+            "Y": 207.82686,
+            "Z": -14.725037
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008220,
+          "Position": {
+            "X": 385.9464,
+            "Y": 78.446655,
+            "Z": -114.488464
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7225,
+            8039
+          ],
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021774,
+          "Position": {
+            "X": 141.31372,
+            "Y": 66.09973,
+            "Z": -238.14758
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021775,
+          "Position": {
+            "X": 266.98706,
+            "Y": 78.3604,
+            "Z": -10.788147
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1021778,
+          "Position": {
+            "X": -4.135254,
+            "Y": 211,
+            "Z": -39.84137
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021779,
+          "Position": {
+            "X": -5.44751,
+            "Y": 210.99998,
+            "Z": -39.658203
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2584
+        }
+      ]
+    }
+  ]
+}

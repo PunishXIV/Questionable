@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013074,
+          "Position": {
+            "X": 304.3412,
+            "Y": 483.48206,
+            "Z": 143.11438
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1073
+        },
+        {
+          "DataId": 1044043,
+          "Position": {
+            "X": -7.1260376,
+            "Y": 498.9474,
+            "Z": -5.416992
+          },
+          "TerritoryId": 1073,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANOMI102_04608_SAYTODO_000_050"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1044044,
+          "Position": {
+            "X": 11.215393,
+            "Y": 499.7763,
+            "Z": -23.239563
+          },
+          "TerritoryId": 1073,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_BANOMI102_04608_SAYTODO_000_050"
+          },
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043421,
+          "Position": {
+            "X": 2.4261475,
+            "Y": 499.87805,
+            "Z": 46.036377
+          },
+          "TerritoryId": 1073,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960
+        },
+        {
+          "DataId": 1043417,
+          "Position": {
+            "X": 314.9004,
+            "Y": 481.99442,
+            "Z": 148.11926
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "Comment": "Only Turn 5 is required for the next quest to unlock",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140,
+                212
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                212
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                212
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1007478,
+          "Position": {
+            "X": -2.822998,
+            "Y": -3.0000014,
+            "Z": -56.229553
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007685,
+          "Position": {
+            "X": -18.539795,
+            "Y": 70.50106,
+            "Z": 17.746216
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 358.13956,
+            "Y": 76.42267,
+            "Z": -98.75324
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002609,
+          "Position": {
+            "X": 356.98486,
+            "Y": 77.71411,
+            "Z": -99.83978
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007627,
+          "Position": {
+            "X": 13.260071,
+            "Y": 65.04303,
+            "Z": 43.808594
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1160
+        }
+      ]
+    }
+  ]
+}

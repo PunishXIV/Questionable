@@ -1,0 +1,125 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Censored",
+  "ExtraQuestItems": [
+    2001391,
+    2001392
+  ],
+  "Steps": [
+    {
+      "TerritoryId": 154,
+      "InteractionType": "None",
+      "AetheryteShortcut": "North Shroud - Fallgourd Float"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31049,
+          "Locations": [
+            {
+              "Position": {
+                "X": 232.6686,
+                "Y": -2.063462,
+                "Z": -13.87066
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 85
+            },
+            {
+              "Position": {
+                "X": 208.5002,
+                "Y": -1.21151,
+                "Z": -8.481951
+              },
+              "MinimumAngle": -105,
+              "MaximumAngle": 130
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31051,
+          "Locations": [
+            {
+              "Position": {
+                "X": 174.384,
+                "Y": -0.4081409,
+                "Z": 40.32799
+              },
+              "MinimumAngle": -155,
+              "MaximumAngle": 50
+            },
+            {
+              "Position": {
+                "X": 180.6999,
+                "Y": 0.5284532,
+                "Z": 43.46334
+              },
+              "MinimumAngle": -350,
+              "MaximumAngle": -120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31052,
+          "Locations": [
+            {
+              "Position": {
+                "X": 239.2585,
+                "Y": -10.81729,
+                "Z": 85.37144
+              },
+              "MinimumAngle": -260,
+              "MaximumAngle": -70
+            },
+            {
+              "Position": {
+                "X": 219.6392,
+                "Y": -8.915615,
+                "Z": 78.84674
+              },
+              "MinimumAngle": -255,
+              "MaximumAngle": -70
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31050,
+          "Locations": [
+            {
+              "Position": {
+                "X": 172.7773,
+                "Y": -0.5520306,
+                "Z": -24.73335
+              },
+              "MinimumAngle": -65,
+              "MaximumAngle": 145
+            },
+            {
+              "Position": {
+                "X": 158.3542,
+                "Y": 0.1226652,
+                "Z": -17.62734
+              },
+              "MinimumAngle": -180,
+              "MaximumAngle": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

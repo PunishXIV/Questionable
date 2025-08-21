@@ -1,0 +1,117 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013560,
+          "Position": {
+            "X": 15.609924,
+            "Y": 81.84059,
+            "Z": -317.37244
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005821,
+          "Position": {
+            "X": 16.159302,
+            "Y": 82.1698,
+            "Z": -322.89618
+          },
+          "StopDistance": 4,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013569,
+          "Position": {
+            "X": 330.73914,
+            "Y": 223.01535,
+            "Z": -480.36932
+          },
+          "StopDistance": 1,
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012163,
+          "Position": {
+            "X": 128.25195,
+            "Y": 24.458832,
+            "Z": -0.6867676
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 379.64865,
+            "Y": -69.42944,
+            "Z": 695.1956
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "$": "Moglin",
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        },
+        {
+          "DataId": 1012077,
+          "Position": {
+            "X": 381.70435,
+            "Y": -66.84979,
+            "Z": 700.86194
+          },
+          "StopDistance": 8,
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014314,
+          "Position": {
+            "X": 12.100342,
+            "Y": 81.8406,
+            "Z": -318.0133
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

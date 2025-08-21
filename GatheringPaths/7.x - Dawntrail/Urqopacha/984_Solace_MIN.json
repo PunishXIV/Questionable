@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 1187,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34809,
+          "Locations": [
+            {
+              "Position": {
+                "X": 503.1253,
+                "Y": 113.6339,
+                "Z": 332.9355
+              },
+              "MinimumAngle": 35,
+              "MaximumAngle": 160
+            }
+          ]
+        },
+        {
+          "DataId": 34810,
+          "Locations": [
+            {
+              "Position": {
+                "X": 516.6899,
+                "Y": 116.4842,
+                "Z": 326.5524
+              },
+              "MinimumAngle": 20,
+              "MaximumAngle": 160
+            },
+            {
+              "Position": {
+                "X": 505.7916,
+                "Y": 114.2773,
+                "Z": 342.2974
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 100
+            },
+            {
+              "Position": {
+                "X": 515.9227,
+                "Y": 114.58,
+                "Z": 317.4333
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 135
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34813,
+          "Locations": [
+            {
+              "Position": {
+                "X": 370.5957,
+                "Y": 64.7135,
+                "Z": 158.4955
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 70
+            }
+          ]
+        },
+        {
+          "DataId": 34814,
+          "Locations": [
+            {
+              "Position": {
+                "X": 363.6682,
+                "Y": 64.62195,
+                "Z": 152.1782
+              },
+              "MinimumAngle": 20,
+              "MaximumAngle": 140
+            },
+            {
+              "Position": {
+                "X": 394.519,
+                "Y": 63.70097,
+                "Z": 168.7538
+              },
+              "MinimumAngle": -125,
+              "MaximumAngle": 15
+            },
+            {
+              "Position": {
+                "X": 386.34,
+                "Y": 63.7528,
+                "Z": 166.915
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 140
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34812,
+          "Locations": [
+            {
+              "Position": {
+                "X": 328.846,
+                "Y": 79.13469,
+                "Z": 434.0204
+              },
+              "MinimumAngle": 175,
+              "MaximumAngle": 280
+            },
+            {
+              "Position": {
+                "X": 352.4181,
+                "Y": 81.39249,
+                "Z": 446.0517
+              },
+              "MinimumAngle": 180,
+              "MaximumAngle": 260
+            },
+            {
+              "Position": {
+                "X": 336.5682,
+                "Y": 80.73547,
+                "Z": 443.9305
+              },
+              "MinimumAngle": 120,
+              "MaximumAngle": 200
+            }
+          ]
+        },
+        {
+          "DataId": 34811,
+          "Locations": [
+            {
+              "Position": {
+                "X": 341.6647,
+                "Y": 80.125,
+                "Z": 436.6368
+              },
+              "MinimumAngle": 100,
+              "MaximumAngle": 240
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

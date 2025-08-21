@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 809.655,
+            "Y": 17.004526,
+            "Z": -257.89868
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1051710,
+          "Position": {
+            "X": 822.629,
+            "Y": 17.102613,
+            "Z": -263.20288
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051710,
+          "Position": {
+            "X": 822.629,
+            "Y": 17.102613,
+            "Z": -263.20288
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 746.76465,
+            "Y": 15.431515,
+            "Z": -201.92921
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1051741,
+          "Position": {
+            "X": 744.19763,
+            "Y": 15.431515,
+            "Z": -199.17603
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPEL005_05197_Q1_000_001",
+              "Answer": "TEXT_BANPEL005_05197_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014435,
+          "Position": {
+            "X": 753.1699,
+            "Y": 11.459534,
+            "Z": -253.55927
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1051742,
+          "Position": {
+            "X": 187.45703,
+            "Y": 0.7218611,
+            "Z": -458.18268
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051744,
+          "Position": {
+            "X": 820.6454,
+            "Y": 13.759646,
+            "Z": -230.12134
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga"
+        }
+      ]
+    }
+  ]
+}

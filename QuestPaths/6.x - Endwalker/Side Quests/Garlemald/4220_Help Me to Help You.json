@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037728,
+          "Position": {
+            "X": -369.52777,
+            "Y": 22.149097,
+            "Z": 391.95837
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012040,
+          "Position": {
+            "X": -229.14478,
+            "Y": 20.035034,
+            "Z": 319.417
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Snipe",
+          "Comment": "Zoom in between the buildings and wait a few seconds."
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039395,
+          "Position": {
+            "X": 83.84827,
+            "Y": 1.1234589,
+            "Z": 137.19385
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037728,
+          "Position": {
+            "X": -369.52777,
+            "Y": 22.149097,
+            "Z": 391.95837
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    }
+  ]
+}

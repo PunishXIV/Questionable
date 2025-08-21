@@ -1,0 +1,99 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038789,
+          "Position": {
+            "X": 413.13794,
+            "Y": 16.102577,
+            "Z": -578.4848
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039910,
+          "Position": {
+            "X": 340.59656,
+            "Y": 10.799996,
+            "Z": -529.9306
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012101,
+          "Position": {
+            "X": 270.25244,
+            "Y": 10.452393,
+            "Z": -579.7666
+          },
+          "TerritoryId": 958,
+          "InteractionType": "UseItem",
+          "ItemId": 2003229
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039910,
+          "Position": {
+            "X": 340.59656,
+            "Y": 10.799996,
+            "Z": -529.9306
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012106,
+          "Position": {
+            "X": 339.1621,
+            "Y": 10.788086,
+            "Z": -530.54095
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039913,
+          "Position": {
+            "X": 526.3904,
+            "Y": -36.65,
+            "Z": -233.87512
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002626,
+          "Position": {
+            "X": 207.2633,
+            "Y": 112.860374,
+            "Z": -222.43079
+          },
+          "TerritoryId": 134,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002640,
+          "Position": {
+            "X": 131.09021,
+            "Y": 45.70909,
+            "Z": 134.44714
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Emote",
+          "Emote": "doubt"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 189.7694,
+            "Y": 46.25815,
+            "Z": 121.13219
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 52,
+              "IgnoreQuestMarker": true
+            }
+          ]
+        },
+        {
+          "DataId": 1002643,
+          "Position": {
+            "X": 194.44568,
+            "Y": 46.41682,
+            "Z": 119.21863
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1002642,
+          "Position": {
+            "X": 192.52307,
+            "Y": 46.299305,
+            "Z": 122.11792
+          },
+          "StopDistance": 7,
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1002641,
+          "Position": {
+            "X": 190.875,
+            "Y": 46.324783,
+            "Z": 118.30322
+          },
+          "StopDistance": 7,
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002640,
+          "Position": {
+            "X": 131.09021,
+            "Y": 45.70909,
+            "Z": 134.44714
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2001279,
+          "Position": {
+            "X": 132.7992,
+            "Y": 45.76172,
+            "Z": 134.93542
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1002630,
+          "Position": {
+            "X": 179.85803,
+            "Y": 64.61002,
+            "Z": 294.75854
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 205.08835,
+            "Y": 111.9045,
+            "Z": -245.44336
+          },
+          "TerritoryId": 134,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
+        },
+        {
+          "DataId": 1002626,
+          "Position": {
+            "X": 207.2633,
+            "Y": 112.860374,
+            "Z": -222.43079
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

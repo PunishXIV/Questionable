@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051397,
+          "Position": {
+            "X": -40.024475,
+            "Y": 38.80659,
+            "Z": -459.49493
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051400,
+          "Position": {
+            "X": -56.351562,
+            "Y": 38.0566,
+            "Z": -347.1275
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1051399,
+          "Position": {
+            "X": -26.230347,
+            "Y": 38.056416,
+            "Z": -310.81104
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1051398,
+          "Position": {
+            "X": 38.254395,
+            "Y": 38.0566,
+            "Z": -357.99194
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051397,
+          "Position": {
+            "X": -40.024475,
+            "Y": 38.80659,
+            "Z": -459.49493
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

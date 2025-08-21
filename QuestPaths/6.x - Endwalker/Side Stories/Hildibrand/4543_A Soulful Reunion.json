@@ -1,0 +1,237 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042499,
+          "Position": {
+            "X": 217.51733,
+            "Y": 12.445339,
+            "Z": 228.44275
+          },
+          "StopDistance": 5,
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB812_04543_Q1_000_000",
+              "Answer": "TEXT_CHRHDB812_04543_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042502,
+          "Position": {
+            "X": -57.38922,
+            "Y": -36.72638,
+            "Z": -254.53583
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042505,
+          "Position": {
+            "X": 148.11926,
+            "Y": 27.06,
+            "Z": 36.240112
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Kama"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1037341,
+          "Position": {
+            "X": 133.77576,
+            "Y": 26.99999,
+            "Z": 12.405518
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1037352,
+          "Position": {
+            "X": 112.10791,
+            "Y": 26.99999,
+            "Z": 25.253662
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042506,
+          "Position": {
+            "X": 126.11572,
+            "Y": 26.999989,
+            "Z": 32.76111
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042508,
+          "Position": {
+            "X": 126.11572,
+            "Y": 26.999989,
+            "Z": 32.76111
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1037324,
+          "Position": {
+            "X": -4.257263,
+            "Y": 27,
+            "Z": 36.362183
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -3.0175605,
+            "Y": 27,
+            "Z": 36.584843
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 963,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -3.6922705,
+              "Y": -1.9999962,
+              "Z": 52.106045
+            }
+          }
+        },
+        {
+          "DataId": 1042509,
+          "Position": {
+            "X": -29.373718,
+            "Y": -1.9999962,
+            "Z": 130.93762
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1042510,
+          "Position": {
+            "X": -337.57538,
+            "Y": 3.2215352,
+            "Z": 365.7129
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1042511,
+          "Position": {
+            "X": -376.669,
+            "Y": 1.1651754,
+            "Z": 379.23242
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042512,
+          "Position": {
+            "X": 31.387817,
+            "Y": -5.021957E-07,
+            "Z": -0.65618896
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "NextQuestId": 4641
+        }
+      ]
+    }
+  ]
+}

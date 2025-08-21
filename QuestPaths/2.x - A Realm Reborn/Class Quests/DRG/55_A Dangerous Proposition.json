@@ -1,0 +1,150 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 152
+        },
+        {
+          "DataId": 1001194,
+          "Position": {
+            "X": -416.37292,
+            "Y": 0.10675049,
+            "Z": 60.990234
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSLNC003_00055_Q1_000_1",
+              "Answer": "TEXT_CLSLNC003_00055_A1_000_1"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2000919,
+          "Position": {
+            "X": -418.60077,
+            "Y": 0.289917,
+            "Z": 127.06189
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "ItemId": 2000235,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001194,
+          "Position": {
+            "X": -416.37292,
+            "Y": 0.10675049,
+            "Z": 60.990234
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -514.83344,
+            "Y": 19.223053,
+            "Z": 284.89175
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2000920,
+          "Position": {
+            "X": 267.5669,
+            "Y": -0.5951538,
+            "Z": -253.83386
+          },
+          "TerritoryId": 148,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000254,
+          "Position": {
+            "X": 157.7019,
+            "Y": 15.900381,
+            "Z": -270.34418
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 56,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Lancers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

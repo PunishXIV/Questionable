@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 770.70636,
+            "Y": 12.846572,
+            "Z": -260.59436
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1051711,
+          "Position": {
+            "X": 770.7179,
+            "Y": 12.84657,
+            "Z": -263.99634
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -165.49648,
+            "Y": 8.736965,
+            "Z": -401.72836
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 1052307,
+          "Position": {
+            "X": -111.0094,
+            "Y": 1.6987718,
+            "Z": -111.0094
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              1
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPEL107_05205_Q1_000_000",
+              "Answer": "TEXT_BANPEL107_05205_A1_000_002"
+            }
+          ]
+        },
+        {
+          "DataId": 1052308,
+          "Position": {
+            "X": -152.7276,
+            "Y": 3.6225784,
+            "Z": -349.87415
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              2
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANPEL107_05205_Q2_000_000",
+              "Answer": "TEXT_BANPEL107_05205_A2_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 770.70636,
+            "Y": 12.846572,
+            "Z": -260.59436
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga"
+        },
+        {
+          "DataId": 1051711,
+          "Position": {
+            "X": 770.7179,
+            "Y": 12.84657,
+            "Z": -263.99634
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

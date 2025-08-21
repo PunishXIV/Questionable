@@ -1,0 +1,163 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048987,
+          "Position": {
+            "X": 596.97876,
+            "Y": -142.60623,
+            "Z": 441.7334
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051053,
+          "Position": {
+            "X": 257.1908,
+            "Y": -165.78062,
+            "Z": 146.74597
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGZD105_05104_SYSTEM_100_004",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 272.75598,
+            "Y": -161.77667,
+            "Z": 117.129616
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 255.7041,
+            "Y": -161.34225,
+            "Z": 101.95002
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1051053,
+          "Position": {
+            "X": 218.3051,
+            "Y": -160.72849,
+            "Z": 78.95244
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1051053,
+          "Position": {
+            "X": 168.0448,
+            "Y": -158.83824,
+            "Z": 31.171473
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1051053,
+          "Position": {
+            "X": 144.163,
+            "Y": -156.25887,
+            "Z": -57.818764
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WaitForNpcAtPosition",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 83.32947,
+            "Y": -157.21858,
+            "Z": -67.64331
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051054,
+          "Position": {
+            "X": 83.32947,
+            "Y": -157.21858,
+            "Z": -67.64331
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2014259,
+          "Position": {
+            "X": 65.049194,
+            "Y": -184.1612,
+            "Z": -70.237305
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048987,
+          "Position": {
+            "X": 596.97876,
+            "Y": -142.60623,
+            "Z": 441.7334
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

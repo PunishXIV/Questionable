@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050878,
+          "Position": {
+            "X": 475.30322,
+            "Y": 18.197147,
+            "Z": -326.95508
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050879,
+          "Position": {
+            "X": 595.7274,
+            "Y": 18.8562,
+            "Z": -85.55737
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 705.4334,
+            "Y": 28.302685,
+            "Z": 2.3153868
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1189,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17671,
+            17672
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050881,
+          "Position": {
+            "X": 595.6052,
+            "Y": 18.84498,
+            "Z": -85.55737
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050882,
+          "Position": {
+            "X": -408.31616,
+            "Y": 20.383144,
+            "Z": -399.28284
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+        }
+      ]
+    }
+  ]
+}

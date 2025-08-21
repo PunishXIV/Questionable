@@ -1,0 +1,191 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131,
+                971
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                971
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1036629,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036638,
+          "Position": {
+            "X": -9.384338,
+            "Y": -3.0020049,
+            "Z": 58.54883
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011694,
+          "Position": {
+            "X": -151.20166,
+            "Y": 5.6915283,
+            "Z": -143.69421
+          },
+          "TerritoryId": 148,
+          "InteractionType": "UseItem",
+          "ItemId": 2003077,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2011693,
+          "Position": {
+            "X": -208.11786,
+            "Y": 4.0131226,
+            "Z": -22.110352
+          },
+          "TerritoryId": 148,
+          "InteractionType": "UseItem",
+          "ItemId": 2003077,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2011546,
+          "Position": {
+            "X": -274.34198,
+            "Y": 19.821411,
+            "Z": 66.453
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            14028
+          ],
+          "ItemId": 2003077,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1036638,
+          "Position": {
+            "X": -9.384338,
+            "Y": -3.0020049,
+            "Z": 58.54883
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036632,
+          "Position": {
+            "X": 115.098755,
+            "Y": 8,
+            "Z": 15.396301
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 971,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        },
+        {
+          "DataId": 1036629,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 0.014807776,
+            "Z": -1.9684448
+          },
+          "TerritoryId": 971,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBB211_04075_Q1_000_000",
+              "Answer": "TEXT_AKTKBB211_04075_A1_000_002"
+            }
+          ],
+          "NextQuestId": 4076
+        }
+      ]
+    }
+  ]
+}

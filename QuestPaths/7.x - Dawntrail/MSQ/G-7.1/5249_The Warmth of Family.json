@@ -1,0 +1,103 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052248,
+          "Position": {
+            "X": 293.93445,
+            "Y": -16.71379,
+            "Z": -528.70984
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1052248,
+          "Position": {
+            "X": 293.93445,
+            "Y": -16.71379,
+            "Z": -528.70984
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.0",
+            "Notes": [
+              "(pre-fight) AI doesn't move to the Rroneeks or interact with them",
+              "(phase 1/2) No VBM module, so doesn't target the leg, doesn't avoid AOEs and dies",
+              "(phase 1) AI doesn't pull boss",
+              "(phase 2) AI runs away with the stack marker; doesn't pick up orbs"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1052252,
+          "Position": {
+            "X": 299.15308,
+            "Y": -15.629961,
+            "Z": -518.4253
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1052255,
+          "Position": {
+            "X": -123.91852,
+            "Y": 16.187744,
+            "Z": -296.80328
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMG106_05249_SYSTEM_000_402",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1052259,
+          "Position": {
+            "X": -171.03839,
+            "Y": 15.75679,
+            "Z": -372.45752
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

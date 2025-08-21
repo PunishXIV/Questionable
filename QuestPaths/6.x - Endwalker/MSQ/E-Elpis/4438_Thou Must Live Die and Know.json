@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040159,
+          "Position": {
+            "X": 473.1975,
+            "Y": -17.131165,
+            "Z": 49.66809
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040160,
+          "Position": {
+            "X": 265.156,
+            "Y": 46.937138,
+            "Z": 790.70715
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKME120_04438_Q1_000_008",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009758,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.0223389,
+            "Z": 14.206055
+          },
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "TargetTerritoryId": 987
+        },
+        {
+          "DataId": 1040161,
+          "Position": {
+            "X": -0.35101318,
+            "Y": 1.9073486E-06,
+            "Z": -3.3417358
+          },
+          "TerritoryId": 987,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

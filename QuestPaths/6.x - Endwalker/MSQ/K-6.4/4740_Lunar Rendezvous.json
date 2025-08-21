@@ -1,0 +1,221 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045448,
+          "Position": {
+            "X": 510.1244,
+            "Y": -36.65,
+            "Z": -204.97449
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045456,
+          "Position": {
+            "X": -541.9242,
+            "Y": 128.67758,
+            "Z": 585.1072
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045458,
+          "Position": {
+            "X": -197.49762,
+            "Y": 58.194954,
+            "Z": 407.27856
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012664,
+          "Position": {
+            "X": -26.901672,
+            "Y": -130.47992,
+            "Z": -580.4685
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "TargetTerritoryId": 959,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -19.779482,
+            "Y": -56.63768,
+            "Z": -464.9354
+          },
+          "StopDistance": 1,
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          },
+          "Fly": true
+        },
+        {
+          "DataId": 1039686,
+          "Position": {
+            "X": -17.95996,
+            "Y": -47.192066,
+            "Z": -494.31604
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013353,
+          "Position": {
+            "X": 164.23279,
+            "Y": -49.607117,
+            "Z": -620.3861
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1045471,
+          "Position": {
+            "X": 158.61743,
+            "Y": -49.589592,
+            "Z": -626.42865
+          },
+          "StopDistance": 6,
+          "TerritoryId": 959,
+          "InteractionType": "Emote",
+          "Emote": "rally",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1045470,
+          "Position": {
+            "X": 154.7417,
+            "Y": -49.589596,
+            "Z": -622.3087
+          },
+          "StopDistance": 6,
+          "TerritoryId": 959,
+          "InteractionType": "Emote",
+          "Emote": "rally",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1045472,
+          "Position": {
+            "X": 148.91272,
+            "Y": -49.589596,
+            "Z": -621.48474
+          },
+          "StopDistance": 6,
+          "TerritoryId": 959,
+          "InteractionType": "Emote",
+          "Emote": "rally",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1045473,
+          "Position": {
+            "X": 152.42236,
+            "Y": -49.589592,
+            "Z": -614.8623
+          },
+          "StopDistance": 6,
+          "TerritoryId": 959,
+          "InteractionType": "Emote",
+          "Emote": "rally",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045474,
+          "Position": {
+            "X": 158.46484,
+            "Y": -49.589592,
+            "Z": -619.9894
+          },
+          "StopDistance": 6,
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

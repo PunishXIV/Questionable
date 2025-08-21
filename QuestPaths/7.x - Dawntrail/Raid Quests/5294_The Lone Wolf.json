@@ -1,0 +1,139 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053745,
+          "Position": {
+            "X": 1.6326294,
+            "Y": -2.9191749E-12,
+            "Z": -12.466675
+          },
+          "TerritoryId": 1224,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1224,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "Enabled": false,
+            "ContentFinderConditionId": 1025
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053792,
+          "Position": {
+            "X": 1.9683228,
+            "Y": -2.3974921E-12,
+            "Z": -11.12384
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1224,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013722,
+          "Position": {
+            "X": -0.06517491,
+            "Y": 1.083085,
+            "Z": 8.115898
+          },
+          "TerritoryId": 1224,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1224
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2013724,
+          "Position": {
+            "X": 498.34436,
+            "Y": 60.593506,
+            "Z": 129.13708
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1223,
+          "AethernetShortcut": [
+            "[Solution Nine] The Arcadion",
+            "[Solution Nine] True Vue"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1223
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1053740,
+          "Position": {
+            "X": 4.8675537,
+            "Y": 0,
+            "Z": -6.5462036
+          },
+          "TerritoryId": 1223,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013725,
+          "Position": {
+            "X": 4.074883,
+            "Y": 0.8100026,
+            "Z": 10.57586
+          },
+          "TerritoryId": 1223,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1186,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                1223
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1050471,
+          "Position": {
+            "X": 494.7433,
+            "Y": 59.55,
+            "Z": 125.10864
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

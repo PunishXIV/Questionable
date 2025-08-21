@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046982,
+          "Position": {
+            "X": -349.53845,
+            "Y": 18.823906,
+            "Z": -106.401184
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051610,
+          "Position": {
+            "X": -123.88806,
+            "Y": 16.006582,
+            "Z": -375.9671
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046986,
+          "Position": {
+            "X": 198.74878,
+            "Y": -17.59426,
+            "Z": -520.9888
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "StopDistance": 8,
+          "TerritoryId": 1190,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Shaaloani - Mehwahhetsoan"
+        },
+        {
+          "DataId": 1046988,
+          "Position": {
+            "X": 302.96777,
+            "Y": -15.629961,
+            "Z": -514.6716
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 299.9144,
+            "Y": -15.679968,
+            "Z": -508.8957
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1046996,
+          "Position": {
+            "X": 343.9231,
+            "Y": -16.501034,
+            "Z": -444.23596
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039402,
+          "Position": {
+            "X": 741.0239,
+            "Y": 70,
+            "Z": 510.61267
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039415,
+          "Position": {
+            "X": 6.9122925,
+            "Y": 29.999926,
+            "Z": 25.558838
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 144.94531,
+            "Y": 3.9999998,
+            "Z": 16.464417
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] The Chamber of Rule",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 147.52042,
+            "Y": 3.9999995,
+            "Z": -7.714897
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WaitForNpcAtPosition",
+          "Sprint": false
+        },
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 147.70839,
+            "Y": 4,
+            "Z": -11.791445
+          },
+          "StopDistance": 10,
+          "TerritoryId": 131,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 2,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 134.52821,
+            "Y": 4,
+            "Z": -65.066986
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "Sprint": false
+        },
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 129.31218,
+            "Y": 4,
+            "Z": -66.995674
+          },
+          "StopDistance": 10,
+          "TerritoryId": 131,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 2,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 117.33298,
+            "Y": 4,
+            "Z": -72.35007
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "Sprint": false
+        },
+        {
+          "DataId": 1039418,
+          "Position": {
+            "X": 116.47475,
+            "Y": 4,
+            "Z": -76.0361
+          },
+          "StopDistance": 10,
+          "TerritoryId": 131,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 2,
+          "Sprint": false
+        },
+        {
+          "DataId": 1039419,
+          "Position": {
+            "X": 102.311646,
+            "Y": 4,
+            "Z": -102.64752
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "Sprint": false
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 120,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA221_04110_Q2_000_000",
+              "Answer": "TEXT_AKTKBA221_04110_A2_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039419,
+          "Position": {
+            "X": 102.311646,
+            "Y": 4,
+            "Z": -102.64752
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1039419,
+          "Position": {
+            "X": 73.12596,
+            "Y": 12.789965,
+            "Z": 47.394222
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1039415,
+          "Position": {
+            "X": 6.9122925,
+            "Y": 29.999926,
+            "Z": 25.558838
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Weavers' Guild",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039410,
+          "Position": {
+            "X": 738.70447,
+            "Y": 70,
+            "Z": 511.0398
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "NextQuestId": 4111
+        }
+      ]
+    }
+  ]
+}

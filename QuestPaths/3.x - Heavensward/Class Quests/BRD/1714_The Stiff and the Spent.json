@@ -1,0 +1,113 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014208,
+          "Position": {
+            "X": -52.536804,
+            "Y": 8.059147,
+            "Z": 31.72351
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014215,
+          "Position": {
+            "X": 446.4026,
+            "Y": 212.53983,
+            "Z": 697.444
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014217,
+          "Position": {
+            "X": 59.128662,
+            "Y": 101.451355,
+            "Z": -50.797363
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006300,
+          "Position": {
+            "X": 66.11731,
+            "Y": 103.86804,
+            "Z": -127.03143
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4680
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014218,
+          "Position": {
+            "X": 58.76245,
+            "Y": 101.43757,
+            "Z": -51.682373
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014216,
+          "Position": {
+            "X": 445.365,
+            "Y": 212.53983,
+            "Z": 699.7938
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "NextQuestId": 1715
+        }
+      ]
+    }
+  ]
+}

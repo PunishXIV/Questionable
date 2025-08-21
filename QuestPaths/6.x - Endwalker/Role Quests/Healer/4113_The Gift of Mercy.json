@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039402,
+          "Position": {
+            "X": 741.0239,
+            "Y": 70,
+            "Z": 510.61267
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039431,
+          "Position": {
+            "X": 735.25586,
+            "Y": 70,
+            "Z": 437.33875
+          },
+          "StopDistance": 7,
+          "TerritoryId": 621,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.1.8",
+            "Notes": [
+              "AI doesn't target boss",
+              "AI doesn't heal NPCs"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039432,
+          "Position": {
+            "X": 606.1035,
+            "Y": 80.000015,
+            "Z": 623.77356
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039411,
+          "Position": {
+            "X": -182.20801,
+            "Y": 4.06,
+            "Z": -80.73547
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ]
+        }
+      ]
+    }
+  ]
+}

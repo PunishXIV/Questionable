@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029011,
+          "Position": {
+            "X": -88.822815,
+            "Y": -19.053196,
+            "Z": 296.65063
+          },
+          "StopDistance": 5,
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029194,
+          "Position": {
+            "X": -37.216797,
+            "Y": -18.920458,
+            "Z": 336.62915
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -64.28227,
+            "Y": -19.16186,
+            "Z": 319.19778
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2009894,
+          "Position": {
+            "X": -259.51025,
+            "Y": -2.395752,
+            "Z": 332.81445
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029558,
+          "Position": {
+            "X": 28.732666,
+            "Y": 0,
+            "Z": 1.87677
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "Sprint": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030610,
+          "Position": {
+            "X": 65.11023,
+            "Y": 1.7160122,
+            "Z": 249.7749
+          },
+          "StopDistance": 7,
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Pendants"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMC121_03342_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

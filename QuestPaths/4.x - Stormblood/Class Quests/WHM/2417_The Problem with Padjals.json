@@ -1,0 +1,114 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018753,
+          "Position": {
+            "X": -623.621,
+            "Y": 130.24214,
+            "Z": -474.72345
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019125,
+          "Position": {
+            "X": -651.81964,
+            "Y": 40.067055,
+            "Z": 370.80945
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -175.06683,
+            "Y": 59.779804,
+            "Z": -558.8312
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7215
+          ],
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true
+        },
+        {
+          "DataId": 1019128,
+          "Position": {
+            "X": -175.06683,
+            "Y": 59.779804,
+            "Z": -558.8312
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -650.58673,
+            "Y": 39.856243,
+            "Z": 371.54846
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1019131,
+          "Position": {
+            "X": -663.7522,
+            "Y": 43.594555,
+            "Z": 363.75977
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019132,
+          "Position": {
+            "X": -655.02405,
+            "Y": 40.43195,
+            "Z": 375.96704
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2418
+        }
+      ]
+    }
+  ]
+}

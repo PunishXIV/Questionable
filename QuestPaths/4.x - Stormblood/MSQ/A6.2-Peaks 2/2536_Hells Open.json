@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": [
+    "JerryWester",
+    "ewlame"
+  ],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020630,
+          "Position": {
+            "X": -297.47473,
+            "Y": 257.52652,
+            "Z": 765.31616
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Ghiri",
+          "StopDistance": 6,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008202,
+          "Position": {
+            "X": -549.7368,
+            "Y": 257.3739,
+            "Z": 557.6714
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            8033,
+            8045
+          ],
+          "$": "QW: 0 0    0 0    0 0 -> QW: 16 32    0 0    0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2008203,
+          "Position": {
+            "X": -460.92932,
+            "Y": 295.58252,
+            "Z": 256.0005
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            8031,
+            8032
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2007981,
+          "Position": {
+            "X": -485.22168,
+            "Y": 304.46313,
+            "Z": 247.39441
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818154
+        },
+        {
+          "DataId": 1020608,
+          "Position": {
+            "X": -346.15094,
+            "Y": 305.93304,
+            "Z": 149.03479
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

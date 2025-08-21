@@ -1,0 +1,64 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051600,
+          "Position": {
+            "X": 111.16199,
+            "Y": 4,
+            "Z": -98.92432
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGYR301_05187_Q1_000_000",
+              "Answer": "TEXT_KINGYR301_05187_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051601,
+          "Position": {
+            "X": -45.5177,
+            "Y": 7.9999995,
+            "Z": -100.72485
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051600,
+          "Position": {
+            "X": 111.16199,
+            "Y": 4,
+            "Z": -98.92432
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    }
+  ]
+}

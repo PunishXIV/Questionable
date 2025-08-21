@@ -1,0 +1,135 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010930,
+          "Position": {
+            "X": -1.2664795,
+            "Y": -1.9957249,
+            "Z": -42.069153
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1010931,
+          "Position": {
+            "X": 232.50171,
+            "Y": 302,
+            "Z": -190.93622
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -123.426254,
+            "Y": 301.84348,
+            "Z": -283.14267
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1010942,
+          "Position": {
+            "X": -132.12793,
+            "Y": 304.28772,
+            "Z": -298.3902
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "$": "0 0  0 0  0 0 -> 1 0  0 0  0 16"
+        },
+        {
+          "DataId": 1010940,
+          "Position": {
+            "X": -143.23651,
+            "Y": 304.15378,
+            "Z": -289.35687
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$": "1 0  0 0  0 16 -> 2 0  0 0  0 80"
+        },
+        {
+          "DataId": 1010941,
+          "Position": {
+            "X": -157.00012,
+            "Y": 304.1538,
+            "Z": -308.1255
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$": "2 0  0 0  0 80 -> 3 0  0 0  0 112"
+        },
+        {
+          "DataId": 1010939,
+          "Position": {
+            "X": -152.69702,
+            "Y": 304.1538,
+            "Z": -321.21765
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1010951,
+          "Position": {
+            "X": -144.1825,
+            "Y": 304.15393,
+            "Z": -300.7401
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022892,
+          "Position": {
+            "X": 252.64355,
+            "Y": -43.032913,
+            "Z": 625.0857
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022890,
+          "Position": {
+            "X": -620.5692,
+            "Y": 130,
+            "Z": -527.5807
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -284.4574,
+            "Y": 73.94617,
+            "Z": -692.77094
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1022902,
+          "Position": {
+            "X": -359.51782,
+            "Y": 63.3675,
+            "Z": -727.93164
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022904,
+          "Position": {
+            "X": -276.75293,
+            "Y": 74.50722,
+            "Z": -695.8572
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 25.767,
+            "Y": 54.715424,
+            "Z": -532.3533
+          },
+          "StopDistance": 1,
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7491
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 2
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1022905,
+          "Position": {
+            "X": 25.101074,
+            "Y": 54.83547,
+            "Z": -533.04346
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022908,
+          "Position": {
+            "X": 182.8794,
+            "Y": 54.52025,
+            "Z": -491.56943
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022910,
+          "Position": {
+            "X": 301.31982,
+            "Y": 56.419365,
+            "Z": -470.08472
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1022911,
+          "Position": {
+            "X": 383.65747,
+            "Y": 65.514336,
+            "Z": -539.4217
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2008667,
+          "Position": {
+            "X": 386.95337,
+            "Y": 65.537476,
+            "Z": -540.9171
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Action",
+          "Action": "Souleater"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 2008668,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 5.3864136,
+            "Z": -77.592224
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Emote",
+          "Emote": "respect",
+          "AetheryteShortcut": "Rhalgr's Reach"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013969,
+          "Position": {
+            "X": 104.234375,
+            "Y": 14.999986,
+            "Z": 40.787354
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "NextQuestId": 2919
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046619,
+          "Position": {
+            "X": 140.70337,
+            "Y": -14,
+            "Z": 13.199036
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -164.51695,
+            "Y": -14.999356,
+            "Z": 208.03928
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] The For'ard Cabins"
+          ]
+        },
+        {
+          "DataId": 1048375,
+          "Position": {
+            "X": -166.85742,
+            "Y": -14.999356,
+            "Z": 208.30078
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046681,
+          "Position": {
+            "X": -194.78143,
+            "Y": 120.795235,
+            "Z": -359.24316
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.294"
+          },
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Vollok Shoonsa"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046628,
+          "Position": {
+            "X": -173.75458,
+            "Y": 120.79523,
+            "Z": -326.37524
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMB104_04883_Q1_000_000",
+              "Answer": "TEXT_KINGMB104_04883_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039645,
+          "Position": {
+            "X": -338.33832,
+            "Y": 55,
+            "Z": -68.40625
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039655,
+          "Position": {
+            "X": -478.29407,
+            "Y": 4.851227,
+            "Z": 22.507019
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Great Work"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039627,
+          "Position": {
+            "X": -270.25262,
+            "Y": 0.07863108,
+            "Z": 605.9204
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1056
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039663,
+          "Position": {
+            "X": 110.82617,
+            "Y": -350,
+            "Z": -81.9563
+          },
+          "TerritoryId": 1056,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1056,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 869,
+            "Enabled": false,
+            "Notes": [
+              "No VBM module"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042063,
+          "Position": {
+            "X": -88.51758,
+            "Y": 376.4496,
+            "Z": -158.31238
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1089,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000859,
+          "Position": {
+            "X": -166.76587,
+            "Y": 4.5496645,
+            "Z": 150.04187
+          },
+          "TerritoryId": 129,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSFSH001_01134_Q1_000_1",
+              "Yes": true
+            }
+          ],
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1000859,
+          "Position": {
+            "X": -166.76587,
+            "Y": 4.5496645,
+            "Z": 150.04187
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    }
+  ]
+}

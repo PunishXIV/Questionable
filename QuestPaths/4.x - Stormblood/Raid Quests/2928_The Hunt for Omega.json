@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021926,
+          "Position": {
+            "X": 71.06128,
+            "Y": -0.10695544,
+            "Z": 59.372803
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021930,
+          "Position": {
+            "X": 112.41321,
+            "Y": 0.65204173,
+            "Z": 56.290405
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021933,
+          "Position": {
+            "X": 466.20886,
+            "Y": 69.27097,
+            "Z": 525.7495
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021941,
+          "Position": {
+            "X": 467.00232,
+            "Y": 69.270096,
+            "Z": 521.14136
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021937,
+          "Position": {
+            "X": 465.5984,
+            "Y": 69.25287,
+            "Z": 518.88293
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021942,
+          "Position": {
+            "X": -208.57562,
+            "Y": -223.5,
+            "Z": -124.16266
+          },
+          "TerritoryId": 724,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2929
+        }
+      ]
+    }
+  ]
+}

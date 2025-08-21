@@ -1,0 +1,145 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051894,
+          "Position": {
+            "X": 0.869751,
+            "Y": 14.000016,
+            "Z": -21.591614
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -9.184601,
+            "Y": 9.999999,
+            "Z": -35.359993
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051895,
+          "Position": {
+            "X": -25.0401,
+            "Y": 4.9999785,
+            "Z": -131.45648
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_FESPDX002_05238_Q1_000_000",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESPDX002_05238_Q2_000_000",
+              "Answer": "TEXT_FESPDX002_05238_A2_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESPDX002_05238_Q3_000_000",
+              "Answer": "TEXT_FESPDX002_05238_A3_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESPDX002_05238_Q4_000_000",
+              "Answer": "TEXT_FESPDX002_05238_A4_000_001"
+            }
+          ],
+          "PointMenuChoices": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051899,
+          "Position": {
+            "X": -53.421875,
+            "Y": 18,
+            "Z": 60.16626
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051884,
+          "Position": {
+            "X": -35.111023,
+            "Y": 5.000001,
+            "Z": -130.35785
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Goldsmiths' Guild",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051901,
+          "Position": {
+            "X": -33.859802,
+            "Y": 5.0000005,
+            "Z": -130.6325
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

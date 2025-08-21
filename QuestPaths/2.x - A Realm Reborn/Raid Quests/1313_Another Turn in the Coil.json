@@ -1,0 +1,148 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "Comment": "Only Turn 9 is required for the next quest to unlock",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140,
+                212
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                212
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                212
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1007478,
+          "Position": {
+            "X": -2.822998,
+            "Y": -3.0000014,
+            "Z": -56.229553
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008538,
+          "Position": {
+            "X": -35.26361,
+            "Y": -45.545444,
+            "Z": 295.36877
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -43.719337,
+            "Y": -46.570717,
+            "Z": 288.87
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -238.82307,
+            "Y": -75.39517,
+            "Z": 422.71375
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1008539,
+          "Position": {
+            "X": -236.74377,
+            "Y": -75.699936,
+            "Z": 423.0868
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -43.719337,
+            "Y": -46.570717,
+            "Z": 288.87
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1008538,
+          "Position": {
+            "X": -35.26361,
+            "Y": -45.545444,
+            "Z": 295.36877
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1314
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051381,
+          "Position": {
+            "X": 261.7074,
+            "Y": 59.699993,
+            "Z": 5.0201416
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051381,
+          "Position": {
+            "X": 261.7074,
+            "Y": 59.699993,
+            "Z": 5.0201416
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051382,
+          "Position": {
+            "X": 317.46387,
+            "Y": 70.75,
+            "Z": -64.01166
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1051383,
+          "Position": {
+            "X": 363.24097,
+            "Y": 50.75,
+            "Z": 185.77856
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1051384,
+          "Position": {
+            "X": 253.52856,
+            "Y": 50.3,
+            "Z": 189.07446
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051385,
+          "Position": {
+            "X": 451.5907,
+            "Y": 61.38527,
+            "Z": 319.44763
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] The Arcadion"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051386,
+          "Position": {
+            "X": 453.1776,
+            "Y": 61.38527,
+            "Z": 321.85852
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

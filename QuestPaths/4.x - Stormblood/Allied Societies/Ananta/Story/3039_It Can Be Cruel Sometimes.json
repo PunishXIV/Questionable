@@ -1,0 +1,162 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024771,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024915,
+          "Position": {
+            "X": -127.45862,
+            "Y": 41.197662,
+            "Z": 7.248047
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024915,
+          "Position": {
+            "X": -127.45862,
+            "Y": 41.197662,
+            "Z": 7.248047
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "ItemId": 2002429
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024915,
+          "Position": {
+            "X": -127.45862,
+            "Y": 41.197662,
+            "Z": 7.248047
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "ItemId": 2002429
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024915,
+          "Position": {
+            "X": -127.45862,
+            "Y": 41.197662,
+            "Z": 7.248047
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "ItemId": 2002429
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019486,
+          "Position": {
+            "X": -116.746826,
+            "Y": 0.6342248,
+            "Z": -55.832825
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Western Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -496.6736,
+            "Y": 118.65279,
+            "Z": -424.7939
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            8577
+          ],
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1024920,
+          "Position": {
+            "X": -495.01794,
+            "Y": 118.79865,
+            "Z": -427.1153
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024952,
+          "Position": {
+            "X": 12.008789,
+            "Y": 55.97821,
+            "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Peering Stones"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -193.89642,
+            "Y": -49.19972,
+            "Z": -262.13477
+          },
+          "TerritoryId": 959,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "StopDistance": 5,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -193.89642,
+                  "Y": -49.19972,
+                  "Z": -262.13477
+                },
+                "TerritoryId": 959,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+        ,
+        {
+          "DataId": 1044402,
+          "Position": {
+            "X": -193.89642,
+            "Y": -49.19972,
+            "Z": -262.13477
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044924,
+          "Position": {
+            "X": 344.625,
+            "Y": -168.00002,
+            "Z": -403.89105
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044926,
+          "Position": {
+            "X": 500.96887,
+            "Y": -164.43474,
+            "Z": -698.3902
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044928,
+          "Position": {
+            "X": -172.74744,
+            "Y": -49.199722,
+            "Z": -250.8736
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 959,
+          "InteractionType": "Craft",
+          "ItemId": 38845,
+          "ItemCount": 2
+        },
+        {
+          "DataId": 1044928,
+          "Position": {
+            "X": -172.74744,
+            "Y": -49.199722,
+            "Z": -250.8736
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

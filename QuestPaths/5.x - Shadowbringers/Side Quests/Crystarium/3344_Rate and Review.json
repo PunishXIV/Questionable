@@ -1,0 +1,149 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027244,
+          "Position": {
+            "X": 76.157715,
+            "Y": 0.0889954,
+            "Z": -44.26648
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027316,
+          "Position": {
+            "X": -127.30603,
+            "Y": 0,
+            "Z": -109.48352
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] Temenos Rookery"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1027227,
+          "Position": {
+            "X": -65.78168,
+            "Y": -27.23603,
+            "Z": -272.99915
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] Temenos Rookery",
+            "[Crystarium] The Cabinet of Curiosity"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1030258,
+          "Position": {
+            "X": 65.659546,
+            "Y": 36.197685,
+            "Z": -148.54657
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] The Amaro Launch"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": 80.6178,
+            "Y": 35.999687,
+            "Z": -146.81993
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 819,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 98.63616,
+              "Y": 0.5,
+              "Z": -153.71947
+            }
+          }
+        },
+        {
+          "DataId": 1027826,
+          "Position": {
+            "X": 89.15845,
+            "Y": 0.49999997,
+            "Z": -145.4643
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027244,
+          "Position": {
+            "X": 76.157715,
+            "Y": 0.0889954,
+            "Z": -44.26648
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZA002_03344_Q1_000_051",
+              "Answer": "TEXT_LUCKZA002_03344_A1_000_052"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

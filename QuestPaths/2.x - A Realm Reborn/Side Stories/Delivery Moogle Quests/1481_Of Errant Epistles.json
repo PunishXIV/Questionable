@@ -1,0 +1,53 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006550,
+          "Position": {
+            "X": 449.33228,
+            "Y": -12.436822,
+            "Z": -387.5639
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003596,
+          "Position": {
+            "X": -41.428284,
+            "Y": 20,
+            "Z": -5.661133
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_SUBPST000_01481_Q1_000_000",
+              "Yes": true,
+              "PromptIsRegularExpression": true
+            }
+          ],
+          "NextQuestId": 1483
+        }
+      ]
+    }
+  ]
+}

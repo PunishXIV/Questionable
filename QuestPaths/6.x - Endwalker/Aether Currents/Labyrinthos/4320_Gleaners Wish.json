@@ -1,0 +1,75 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041313,
+          "Position": {
+            "X": 89.28052,
+            "Y": -17.530382,
+            "Z": -74.906555
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZI005_04320_Q1_000_000",
+              "Answer": "TEXT_AKTKZI005_04320_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041314,
+          "Position": {
+            "X": 78.3855,
+            "Y": -29.79994,
+            "Z": 159.5636
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012494,
+          "Position": {
+            "X": 78.96533,
+            "Y": -29.098999,
+            "Z": 161.02844
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "Emote",
+          "Emote": "pray"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041313,
+          "Position": {
+            "X": 89.28052,
+            "Y": -17.530382,
+            "Z": -74.906555
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

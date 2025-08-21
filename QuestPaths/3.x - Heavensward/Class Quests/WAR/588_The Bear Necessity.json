@@ -1,0 +1,227 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013279,
+          "Position": {
+            "X": 441.70276,
+            "Y": 8.670496,
+            "Z": 18.814331
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011920,
+          "Position": {
+            "X": 519.8595,
+            "Y": -51.071976,
+            "Z": 88.24292
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": 502.8876,
+            "Y": -48.989826,
+            "Z": 34.93356
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1011919,
+          "Position": {
+            "X": 497.82556,
+            "Y": -49.790283,
+            "Z": 11.825684
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "$": "0 0 0 0 0 0 -> 1 0 0 0 0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1011921,
+          "Position": {
+            "X": 453.36072,
+            "Y": -51.141403,
+            "Z": 58.579346
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "$": "1 0 0 0 0 128 -> 2 0 0 0 0 160",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005574,
+          "Position": {
+            "X": 447.07397,
+            "Y": -47.715027,
+            "Z": -283.68048
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 0.25,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 2005574,
+          "Position": {
+            "X": 447.07397,
+            "Y": -47.715027,
+            "Z": -283.68048
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 423.53406,
+            "Y": -26.253891,
+            "Z": -550.60297
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 2005573,
+          "Position": {
+            "X": 441.94702,
+            "Y": -21.530518,
+            "Z": -545.03705
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001590,
+          "KillEnemyDataIds": [
+            4373
+          ],
+          "Fly": true,
+          "StopDistance": 0.25,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "DataId": 2005573,
+          "Position": {
+            "X": 441.94702,
+            "Y": -21.530518,
+            "Z": -545.03705
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001590,
+          "KillEnemyDataIds": [
+            4373
+          ],
+          "Fly": false,
+          "StopDistance": 0.25,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 427.1206,
+            "Y": 7.9075317,
+            "Z": 24.77774
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "DataId": 1013279,
+          "Position": {
+            "X": 441.70276,
+            "Y": 8.670496,
+            "Z": 18.814331
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 596
+        }
+      ]
+    }
+  ]
+}

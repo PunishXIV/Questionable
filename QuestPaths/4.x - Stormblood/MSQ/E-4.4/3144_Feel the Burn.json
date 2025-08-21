@@ -1,0 +1,67 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025597,
+          "Position": {
+            "X": 0.19836426,
+            "Y": 0.021091362,
+            "Z": -3.0060425
+          },
+          "TerritoryId": 744,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026261,
+          "Position": {
+            "X": 337.78882,
+            "Y": 54.860683,
+            "Z": -531.2734
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yanxia - House of the Fierce"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 614,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 585,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026268,
+          "Position": {
+            "X": 117.7843,
+            "Y": -4.178714,
+            "Z": 87.296875
+          },
+          "StopDistance": 7,
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

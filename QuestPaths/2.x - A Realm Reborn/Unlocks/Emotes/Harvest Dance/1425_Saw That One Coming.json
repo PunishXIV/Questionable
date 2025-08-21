@@ -1,0 +1,249 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "kaiser",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 54.415092,
+            "Y": -8.047034,
+            "Z": 104.69259
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "We have get here first just to make sure we don't run into walls."
+        },
+        {
+          "Position": {
+            "X": 37.72773,
+            "Y": -8,
+            "Z": 104.152405
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Cool now go inside"
+        },
+        {
+          "DataId": 1000375,
+          "Position": {
+            "X": 42.313232,
+            "Y": -8,
+            "Z": 96.54382
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 40.8096,
+            "Y": -8,
+            "Z": 104.92199
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -87.84625,
+                  "Y": -3.3081923,
+                  "Z": 41.70288
+                },
+                "TerritoryId": 132,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1007792,
+          "Position": {
+            "X": -87.84625,
+            "Y": -3.3081923,
+            "Z": 41.70288
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Interact with the gal now!"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000153,
+          "Position": {
+            "X": -44.87683,
+            "Y": -1.2500024,
+            "Z": 56.839844
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Speak with the man now!"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1007795,
+          "Position": {
+            "X": 28.94629,
+            "Y": 8.45142,
+            "Z": -96.421814
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "Give the First kid his present",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1007794,
+          "Position": {
+            "X": -124.864624,
+            "Y": 6.567382,
+            "Z": -120.74469
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AethernetShortcut": [
+            "[Gridania] Leatherworkers' Guild & Shaded Bower",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "$": "Give the second kid his present.",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1007793,
+          "Position": {
+            "X": -143.3891,
+            "Y": 4.123518,
+            "Z": -29.312622
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "AethernetShortcut": [
+            "[Gridania] Mih Khetto's Amphitheatre",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "$": "Give the third kid his present.",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -128.09769,
+            "Y": 5.6480865,
+            "Z": -36.499104
+          },
+          "TerritoryId": 133,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1007792,
+          "Position": {
+            "X": -87.84625,
+            "Y": -3.3081923,
+            "Z": 41.70288
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Aetheryte Plaza"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023280,
+          "Position": {
+            "X": -62.790894,
+            "Y": -198.96509,
+            "Z": -64.34735
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023282,
+          "Position": {
+            "X": -32.791687,
+            "Y": 0.5718597,
+            "Z": -554.7723
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDZ309_02705_Q1_100_091",
+              "Answer": "TEXT_STMBDZ309_02705_A1_101_091"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023285,
+          "Position": {
+            "X": 119.493286,
+            "Y": 5.006782,
+            "Z": -862.6078
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDZ309_02705_Q2_100_151",
+              "Answer": "TEXT_STMBDZ309_02705_A2_101_151"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 322.1539,
+            "Y": -121.22571,
+            "Z": -314.2446
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "Position": {
+            "X": 22.288645,
+            "Y": -196.2301,
+            "Z": -155.5739
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "$": "Sui-no-Sato, NE outside",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 1023280,
+          "Position": {
+            "X": -62.790894,
+            "Y": -198.96509,
+            "Z": -64.34735
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2706
+        }
+      ]
+    }
+  ]
+}

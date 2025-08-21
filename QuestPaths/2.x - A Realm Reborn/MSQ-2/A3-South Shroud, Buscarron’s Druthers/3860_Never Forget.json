@@ -1,0 +1,177 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000590,
+          "Position": {
+            "X": -165.9419,
+            "Y": 9.869227,
+            "Z": -81.34589
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "South Shroud - Quarrymill",
+          "TerritoryId": 153
+        },
+        {
+          "DataId": 1003272,
+          "Position": {
+            "X": -262.92822,
+            "Y": 16.2,
+            "Z": 51.407593
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1001208,
+          "Position": {
+            "X": -228.16821,
+            "Y": 16,
+            "Z": 50.644653
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1007721,
+          "Position": {
+            "X": -191.36346,
+            "Y": 0.9999907,
+            "Z": 212.9701
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Hawkers' Alley",
+            "[Limsa Lominsa] Fishermens' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 135,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lower La Noscea - Moraby Drydocks",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            }
+          }
+        },
+        {
+          "TerritoryId": 134,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Middle La Noscea - Summerford Farms",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
+            }
+          }
+        },
+        {
+          "TerritoryId": 138,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western La Noscea - Swiftperch",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Western La Noscea - Swiftperch"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Western La Noscea - Swiftperch"
+            }
+          }
+        },
+        {
+          "DataId": 1003393,
+          "Position": {
+            "X": 305.47034,
+            "Y": -36.325005,
+            "Z": 351.76624
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 410.07083,
+            "Y": 31.504957,
+            "Z": -12.586371
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 139
+        },
+        {
+          "DataId": 1006193,
+          "Position": {
+            "X": -334.0658,
+            "Y": -0.81366825,
+            "Z": 148.91272
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

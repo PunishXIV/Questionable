@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020484,
+          "Position": {
+            "X": 126.57361,
+            "Y": 14.054269,
+            "Z": -99.47363
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019070,
+          "Position": {
+            "X": 151.20166,
+            "Y": 14.7757225,
+            "Z": 95.78088
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 639,
+          "AethernetShortcut": [
+            "[Kugane] Sekiseigumi Barracks",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020485,
+          "Position": {
+            "X": -124.1322,
+            "Y": -6.999998,
+            "Z": -58.51837
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA207_02476_Q1_000_000",
+              "Answer": "TEXT_STMBDA207_02476_A1_000_001"
+            }
+          ],
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019891,
+          "Position": {
+            "X": 852.4147,
+            "Y": 5.923008,
+            "Z": 847.7759
+          },
+          "StopDistance": 7,
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

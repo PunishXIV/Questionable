@@ -1,0 +1,187 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031577,
+          "Position": {
+            "X": -425.58942,
+            "Y": 417.21378,
+            "Z": -636.7438
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kholusia - Tomra",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031578,
+          "Position": {
+            "X": 737.48376,
+            "Y": 285.0224,
+            "Z": -84.97754
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKYA003_03671_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031579,
+          "Position": {
+            "X": 735.89685,
+            "Y": 285.08194,
+            "Z": -82.35297
+          },
+          "StopDistance": 5,
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKYA003_03671_Q2_000_000",
+              "Answer": "TEXT_LUCKYA003_03671_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031580,
+          "Position": {
+            "X": 665.21704,
+            "Y": 297.47797,
+            "Z": -159.77728
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010753,
+          "Position": {
+            "X": 631.9523,
+            "Y": 325.82593,
+            "Z": -228.68695
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1031580,
+          "Position": {
+            "X": 665.21704,
+            "Y": 297.47797,
+            "Z": -159.77728
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKYA003_03671_Q5_000_000",
+              "Answer": "TEXT_LUCKYA003_03671_A5_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 544.0766,
+            "Y": 295.72742,
+            "Z": -218.72057
+          },
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2010754,
+          "Position": {
+            "X": 542.9313,
+            "Y": 296.19275,
+            "Z": -217.02905
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1031579,
+          "Position": {
+            "X": 735.89685,
+            "Y": 285.08194,
+            "Z": -82.35297
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031577,
+          "Position": {
+            "X": -425.58942,
+            "Y": 417.21378,
+            "Z": -636.7438
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Tomra",
+          "NextQuestId": 3717
+        }
+      ]
+    }
+  ]
+}

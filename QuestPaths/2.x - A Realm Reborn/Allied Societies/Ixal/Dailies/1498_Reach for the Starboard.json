@@ -1,0 +1,123 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009214,
+                    "Position": {
+                        "X": 159.3805,
+                        "Y": -5.6866503,
+                        "Z": 69.29114
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 153.8872,
+                                    "Y": -9.001622,
+                                    "Z": 77.50049
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "TerritoryId": 400,
+                    "InteractionType": "SwitchClass",
+                    "TargetClass": "Botanist"
+                },
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Gather",
+                    "ItemsToGather": [
+                        {
+                            "ItemId": 2001388,
+                            "ItemCount": 15
+                        },
+                        {
+                            "ItemId": 2001389,
+                            "ItemCount": 5
+                        }
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1009635,
+                    "Position": {
+                        "X": 12.49707,
+                        "Y": -46.518524,
+                        "Z": 234.24121
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1009218,
+                    "Position": {
+                        "X": -4.1047363,
+                        "Y": -40.949986,
+                        "Z": 176.83679
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8105,
+                    "ItemCount": 4,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009214,
+                    "Position": {
+                        "X": 159.3805,
+                        "Y": -5.6866503,
+                        "Z": 69.29114
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        }
+    ]
+}

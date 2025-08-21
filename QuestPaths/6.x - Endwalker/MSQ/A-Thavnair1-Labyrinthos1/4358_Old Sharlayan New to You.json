@@ -1,0 +1,230 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": 49.69861,
+            "Y": -16.246998,
+            "Z": 145.2201
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038584,
+          "Position": {
+            "X": 47.68445,
+            "Y": -16.246998,
+            "Z": 147.02063
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": 49.69861,
+            "Y": -16.246998,
+            "Z": 145.2201
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Old Sharlayan] Scholar's Harbor"
+        },
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": -56.737106,
+            "Y": -15.127001,
+            "Z": 130.76611
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -8.38828,
+            "Y": 3.2249968,
+            "Z": 9.224017
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": -0.03130532,
+            "Y": 3.2249997,
+            "Z": 8.909777
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Old Sharlayan"
+        },
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": 66.10567,
+            "Y": 5.0999994,
+            "Z": -63.37148
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 93.30914,
+            "Y": 8.920153,
+            "Z": -89.12467
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 96.67595,
+            "Y": 15.025446,
+            "Z": -134.08261
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": -0.4629783,
+            "Y": 41.37599,
+            "Z": -142.5033
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Old Sharlayan] The Rostra"
+        },
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": 149.26689,
+            "Y": 18.800978,
+            "Z": -142.65858
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Old Sharlayan] The Leveilleur Estate"
+        },
+        {
+          "TerritoryId": 962,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Old Sharlayan] Journey's End"
+        },
+        {
+          "DataId": 1038578,
+          "Position": {
+            "X": -82.642426,
+            "Y": 1.0594833,
+            "Z": 30.052902
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Journey's End",
+            "[Old Sharlayan] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987
+        },
+        {
+          "DataId": 1038586,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.9073486E-06,
+            "Z": -0.77819824
+          },
+          "TerritoryId": 987,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

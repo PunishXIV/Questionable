@@ -1,0 +1,169 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026388,
+          "Position": {
+            "X": -82.414,
+            "Y": -2.9999976,
+            "Z": 62.42456
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026395,
+          "Position": {
+            "X": 857.4501,
+            "Y": 6.9450293,
+            "Z": 804.7455
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] The Ruby Price"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026398,
+          "Position": {
+            "X": 840.3906,
+            "Y": 6.9450293,
+            "Z": 819.6688
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1026397,
+          "Position": {
+            "X": 848.6304,
+            "Y": 1.1792068,
+            "Z": 863.8589
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026399,
+          "Position": {
+            "X": 867.42944,
+            "Y": 1.1792068,
+            "Z": 844.75464
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026401,
+          "Position": {
+            "X": -773.1289,
+            "Y": 2.941284,
+            "Z": -360.9217
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Onokoro"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1026406,
+          "Position": {
+            "X": -722.9267,
+            "Y": 1.2855811,
+            "Z": -568.5359
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1026404,
+          "Position": {
+            "X": -716.09064,
+            "Y": 1.2506801,
+            "Z": -593.62177
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1026405,
+          "Position": {
+            "X": -739.98627,
+            "Y": 1.960285,
+            "Z": -611.2917
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026401,
+          "Position": {
+            "X": -773.1289,
+            "Y": 2.941284,
+            "Z": -360.9217
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 3163
+        }
+      ]
+    }
+  ]
+}

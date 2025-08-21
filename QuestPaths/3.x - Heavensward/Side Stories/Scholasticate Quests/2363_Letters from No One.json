@@ -1,0 +1,146 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017914,
+                    "Position": {
+                        "X": -38.529114,
+                        "Y": 15.965062,
+                        "Z": -70.45099
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "AcceptQuest",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_CHREND303_02363_Q1_000_000",
+                            "Answer": "TEXT_CHREND303_02363_A1_000_001"
+                        }
+                    ],
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ],
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [ 419 ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1011215,
+                    "Position": {
+                        "X": -145.37274,
+                        "Y": 14.80313,
+                        "Z": -129.25922
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 427
+                },
+                {
+                    "DataId": 2007426,
+                    "Position": {
+                        "X": 11.856201,
+                        "Y": 0.19836426,
+                        "Z": 10.421875
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 1017919,
+                    "Position": {
+                        "X": -9.323303,
+                        "Y": 0.20000005,
+                        "Z": -10.238831
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 1017920,
+                    "Position": {
+                        "X": 4.714966,
+                        "Y": 0.22499956,
+                        "Z": -5.9663696
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 1017918,
+                    "Position": {
+                        "X": 10.391357,
+                        "Y": 0.20000005,
+                        "Z": -0.56463623
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2007425,
+                    "Position": {
+                        "X": -8.346741,
+                        "Y": 0.015197754,
+                        "Z": 0.8086548
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1017916,
+                    "Position": {
+                        "X": -2.609314,
+                        "Y": 0.024999565,
+                        "Z": 6.1798096
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 2005332,
+                    "Position": {
+                        "X": -5.0202637,
+                        "Y": 1.1443481,
+                        "Z": 11.856201
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 419
+                },
+                {
+                    "DataId": 1017923,
+                    "Position": {
+                        "X": -45.090515,
+                        "Y": 15.8744135,
+                        "Z": -91.32526
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "CompleteQuest",
+                    "NextQuestId": 2364
+                }
+            ]
+        }
+    ]
+}

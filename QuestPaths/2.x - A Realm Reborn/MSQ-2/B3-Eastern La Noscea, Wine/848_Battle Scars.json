@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006312,
+          "Position": {
+            "X": -369.0395,
+            "Y": 54.28071,
+            "Z": 441.24512
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002059,
+          "Position": {
+            "X": -282.88702,
+            "Y": 33.951294,
+            "Z": 308.24744
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2002061,
+          "Position": {
+            "X": -248.40167,
+            "Y": 33.98181,
+            "Z": 299.39722
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -301.2062,
+            "Y": 35.646942,
+            "Z": 273.47797
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2002060,
+          "Position": {
+            "X": -298.2987,
+            "Y": 33.89026,
+            "Z": 276.53918
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006305,
+          "Position": {
+            "X": 10.60498,
+            "Y": 71.47817,
+            "Z": -16.617126
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+        }
+      ]
+    }
+  ]
+}

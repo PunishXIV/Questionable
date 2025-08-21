@@ -1,0 +1,65 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037671,
+          "Position": {
+            "X": -554.37555,
+            "Y": 1.120665,
+            "Z": 22.690125
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039384,
+          "Position": {
+            "X": 223.22424,
+            "Y": 10.211119,
+            "Z": 562.4321
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA021_04200_Q1_000_000",
+              "Answer": "TEXT_AKTKZA021_04200_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037671,
+          "Position": {
+            "X": -554.37555,
+            "Y": 1.120665,
+            "Z": 22.690125
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

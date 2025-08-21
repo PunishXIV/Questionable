@@ -1,0 +1,359 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036043,
+          "Position": {
+            "X": 653.8948,
+            "Y": 297.51984,
+            "Z": -171.80133
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKTA522_04051_Q1_000_000",
+              "Answer": "TEXT_LUCKTA522_04051_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011154,
+          "Position": {
+            "X": 703.1509,
+            "Y": 295.3993,
+            "Z": -160.20447
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 928,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                928
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -352.89597,
+            "Y": 106.840775,
+            "Z": 337.33798
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "TerritoryId": 928,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 3
+        },
+        {
+          "Position": {
+            "X": -271.62762,
+            "Y": 69.97228,
+            "Z": 273.0655
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "TerritoryId": 928,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "Position": {
+            "X": -234.40671,
+            "Y": 30,
+            "Z": 168.78214
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -237.90593,
+            "Y": 36.4109,
+            "Z": 107.25123
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -264.81836,
+            "Y": 20.597822,
+            "Z": 72.87652
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -246.3392,
+            "Y": 2.727209,
+            "Z": 47.629112
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2011477,
+          "Position": {
+            "X": -233.6004,
+            "Y": 2.5177002,
+            "Z": 49.637573
+          },
+          "TerritoryId": 928,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              1
+            ],
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -246.3392,
+            "Y": 2.727209,
+            "Z": 47.629112
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -233.77907,
+            "Y": -3.860001,
+            "Z": 31.767477
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2011234,
+          "Position": {
+            "X": -230.12134,
+            "Y": -2.609314,
+            "Z": 11.612061
+          },
+          "TerritoryId": 928,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 928
+        },
+        {
+          "Position": {
+            "X": -229.71193,
+            "Y": -115.06235,
+            "Z": -115.379684
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "TerritoryId": 928,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "Position": {
+            "X": -229.93883,
+            "Y": -150.49908,
+            "Z": -219.08035
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -229.96237,
+            "Y": -168.28922,
+            "Z": -329.79776
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -237.64621,
+            "Y": -168.16484,
+            "Z": -336.7267
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false,
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "TerritoryId": 928,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "DataId": 2011458,
+          "Position": {
+            "X": -295.1858,
+            "Y": -203.93689,
+            "Z": -329.36603
+          },
+          "TerritoryId": 928,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -305.8408,
+            "Y": -204.6433,
+            "Z": -336.8385
+          },
+          "TerritoryId": 928,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false,
+          "DelaySecondsAtStart": 2,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [2],
+            null,
+            null
+          ]
+        },
+        {
+          "TerritoryId": 928,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 2
+        },
+        {
+          "Position": {
+            "X": -366.50647,
+            "Y": -241.32147,
+            "Z": -311.57397
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 928,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "DataId": 2011269,
+            "Position": {
+              "X": -366.558,
+              "Y": -249.74661,
+              "Z": -301.74612
+            }
+          },
+          "DelaySecondsAtStart": 2,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [2],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2011269,
+          "Position": {
+            "X": -366.50647,
+            "Y": -248.43219,
+            "Z": -285.6947
+          },
+          "TerritoryId": 928,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 928,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [2],
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2011459,
+          "Position": {
+            "X": 205.8899,
+            "Y": -500.0229,
+            "Z": -167.86456
+          },
+          "TerritoryId": 928,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [2],
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036043,
+          "Position": {
+            "X": 653.8948,
+            "Y": 297.51984,
+            "Z": -171.80133
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

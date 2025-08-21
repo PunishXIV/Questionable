@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 398,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33300,
+          "Locations": [
+            {
+              "Position": {
+                "X": 560.8948,
+                "Y": -19.68621,
+                "Z": -534.3345
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 30
+            },
+            {
+              "Position": {
+                "X": 557.1625,
+                "Y": -19.65358,
+                "Z": -547.1852
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 200
+            }
+          ]
+        },
+        {
+          "DataId": 33299,
+          "Locations": [
+            {
+              "Position": {
+                "X": 571.0399,
+                "Y": -19.2677,
+                "Z": -544.8133
+              },
+              "MinimumAngle": 200,
+              "MaximumAngle": 320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33297,
+          "Locations": [
+            {
+              "Position": {
+                "X": 630.7735,
+                "Y": -18.70739,
+                "Z": -566.2144
+              },
+              "MinimumAngle": 85,
+              "MaximumAngle": 240
+            }
+          ]
+        },
+        {
+          "DataId": 33298,
+          "Locations": [
+            {
+              "Position": {
+                "X": 639.3101,
+                "Y": -18.78794,
+                "Z": -559.5169
+              },
+              "MinimumAngle": -175,
+              "MaximumAngle": 0
+            },
+            {
+              "Position": {
+                "X": 618.4453,
+                "Y": -18.9477,
+                "Z": -559.1786
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33295,
+          "Locations": [
+            {
+              "Position": {
+                "X": 731.6483,
+                "Y": -20.17027,
+                "Z": -614.199
+              },
+              "MinimumAngle": -35,
+              "MaximumAngle": 125
+            }
+          ]
+        },
+        {
+          "DataId": 33296,
+          "Locations": [
+            {
+              "Position": {
+                "X": 743.4034,
+                "Y": -19.02,
+                "Z": -621.8422
+              },
+              "MinimumAngle": 195,
+              "MaximumAngle": 325
+            },
+            {
+              "Position": {
+                "X": 727.6966,
+                "Y": -20.47985,
+                "Z": -627.8105
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 210
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

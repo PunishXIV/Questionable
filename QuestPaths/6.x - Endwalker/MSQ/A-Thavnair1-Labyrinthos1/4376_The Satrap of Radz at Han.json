@@ -1,0 +1,82 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038653,
+          "Position": {
+            "X": -492.0577,
+            "Y": 4.5676737,
+            "Z": 17.532532
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038656,
+          "Position": {
+            "X": 203.96729,
+            "Y": 60.34319,
+            "Z": -595.8496
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038657,
+          "Position": {
+            "X": 201.98364,
+            "Y": 60.34776,
+            "Z": -594.0185
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "TargetTerritoryId": 987
+        },
+        {
+          "DataId": 1038589,
+          "Position": {
+            "X": 4.0740967,
+            "Y": 1.9073486E-06,
+            "Z": 2.029419
+          },
+          "TerritoryId": 987,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

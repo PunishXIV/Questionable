@@ -1,0 +1,274 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027948,
+          "Position": {
+            "X": 40.42102,
+            "Y": 2.232896,
+            "Z": 261.49377
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028280,
+          "Position": {
+            "X": 784.0542,
+            "Y": 21.414852,
+            "Z": -9.414856
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028279,
+          "Position": {
+            "X": 715.053,
+            "Y": 21.41357,
+            "Z": -26.93219
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": 703.03595,
+            "Y": 21.400166,
+            "Z": -29.025133
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 704.28827,
+            "Y": 24.192482,
+            "Z": -17.380848
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1027339,
+          "Position": {
+            "X": 709.6819,
+            "Y": 24.19248,
+            "Z": 1.8157349
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": 702.572,
+            "Y": 21.395899,
+            "Z": -29.691013
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 681.9016,
+            "Y": 32.510292,
+            "Z": -62.020554
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 700.8876,
+            "Y": 21.146883,
+            "Z": -86.96297
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1027420,
+          "Position": {
+            "X": 702.38794,
+            "Y": 21.798542,
+            "Z": -81.34589
+          },
+          "StopDistance": 7,
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 735.5528,
+            "Y": 21.146883,
+            "Z": -88.66971
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 781.0609,
+            "Y": 23.037855,
+            "Z": -51.803383
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 805.13293,
+            "Y": 23.037834,
+            "Z": -45.432808
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1027341,
+          "Position": {
+            "X": 805.35596,
+            "Y": 30.86825,
+            "Z": 7.9804688
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 794.2938,
+            "Y": 33.028008,
+            "Z": 6.1403913
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 783.8015,
+              "Y": 21.431774,
+              "Z": 6.478429
+            },
+            "StopDistance": 0.25
+          }
+        },
+        {
+          "DataId": 1028280,
+          "Position": {
+            "X": 784.0542,
+            "Y": 21.414852,
+            "Z": -9.414856
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

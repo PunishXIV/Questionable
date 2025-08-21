@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 398,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34382,
+          "Locations": [
+            {
+              "Position": {
+                "X": -528.8412,
+                "Y": -89.70924,
+                "Z": 458.582
+              },
+              "MinimumAngle": -10,
+              "MaximumAngle": 80,
+              "MinimumDistance": 2.1,
+              "MaximumDistance": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34383,
+          "Locations": [
+            {
+              "Position": {
+                "X": -636.4533,
+                "Y": -100.1258,
+                "Z": 484.7436
+              },
+              "MinimumAngle": -75,
+              "MaximumAngle": 35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34384,
+          "Locations": [
+            {
+              "Position": {
+                "X": -589.4542,
+                "Y": -100.4852,
+                "Z": 528.1926
+              },
+              "MinimumAngle": -25,
+              "MaximumAngle": 120
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

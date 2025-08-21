@@ -1,0 +1,129 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033976,
+          "Position": {
+            "X": 13.961914,
+            "Y": 8,
+            "Z": -104.53961
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033997,
+          "Position": {
+            "X": -6.149414,
+            "Y": 20,
+            "Z": 16.189758
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033981,
+          "Position": {
+            "X": -344.74713,
+            "Y": 12.899759,
+            "Z": 13.076904
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1033999,
+          "Position": {
+            "X": 47.501343,
+            "Y": 44.70852,
+            "Z": 131.2428
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1033984,
+          "Position": {
+            "X": 2.7922974,
+            "Y": 44.011013,
+            "Z": -154.40613
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1000915,
+          "Position": {
+            "X": 18.387085,
+            "Y": 47.600006,
+            "Z": -162.12714
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033986,
+          "Position": {
+            "X": -2.8840332,
+            "Y": 43.999985,
+            "Z": -157.91565
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKHA203_03957_Q1_000_000",
+              "Answer": "TEXT_LUCKHA203_03957_A1_000_003"
+            }
+          ],
+          "NextQuestId": 3958
+        }
+      ]
+    }
+  ]
+}

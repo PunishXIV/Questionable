@@ -1,0 +1,105 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051283,
+          "Position": {
+            "X": 374.19702,
+            "Y": -0.24794838,
+            "Z": 437.2472
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051284,
+          "Position": {
+            "X": 362.84424,
+            "Y": 5.937199,
+            "Z": 427.2068
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051284,
+          "Position": {
+            "X": 362.84424,
+            "Y": 5.937199,
+            "Z": 427.2068
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 369.3906,
+            "Y": 5.9371996,
+            "Z": 417.16574
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 359.11545,
+            "Y": 1.9823306,
+            "Z": 419.5714
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (bottom)",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1051286,
+          "Position": {
+            "X": 272.72437,
+            "Y": -4.5877395,
+            "Z": 464.042
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051286,
+          "Position": {
+            "X": 272.72437,
+            "Y": -4.5877395,
+            "Z": 464.042
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest",
+          "Emote": "flex"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041271,
+          "Position": {
+            "X": 542.5039,
+            "Y": 7.6627564,
+            "Z": 50.91931
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041272,
+          "Position": {
+            "X": 228.19861,
+            "Y": 7.3858566,
+            "Z": 239.94812
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041273,
+          "Position": {
+            "X": 808.3772,
+            "Y": 152.22246,
+            "Z": -240.4975
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKRA102_04476_SYSTEM_046",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 1025,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 808,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041501,
+          "Position": {
+            "X": 101.51831,
+            "Y": -9.999997E-12,
+            "Z": 101.60974
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1025,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4477
+        }
+      ]
+    }
+  ]
+}

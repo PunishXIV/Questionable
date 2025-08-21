@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024853,
+          "Position": {
+            "X": -86.71704,
+            "Y": -72.25,
+            "Z": 179.58337
+          },
+          "StopDistance": 7,
+          "TerritoryId": 756,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024747,
+          "Position": {
+            "X": -88.304016,
+            "Y": -72.25,
+            "Z": 169.17664
+          },
+          "StopDistance": 7,
+          "TerritoryId": 756,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 756,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 289,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021947,
+          "Position": {
+            "X": 476.73767,
+            "Y": 69.83099,
+            "Z": 526.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023687,
+          "Position": {
+            "X": 112.7489,
+            "Y": 0.65204155,
+            "Z": 60.227295
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "NextQuestId": 3154
+        }
+      ]
+    }
+  ]
+}

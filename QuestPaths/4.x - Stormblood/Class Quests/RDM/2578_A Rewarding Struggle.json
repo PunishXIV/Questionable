@@ -1,0 +1,235 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021447,
+          "Position": {
+            "X": -496.75748,
+            "Y": -17.41137,
+            "Z": 28.091797
+          },
+          "StopDistance": 1,
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006355,
+          "Position": {
+            "X": -512.47424,
+            "Y": -16.42,
+            "Z": -7.522766
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021448,
+          "Position": {
+            "X": -56.717834,
+            "Y": -1.8104911E-06,
+            "Z": 102.708374
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gold Saucer",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Entrance & Card Squares"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008218,
+          "Position": {
+            "X": -0.07635498,
+            "Y": 20.98108,
+            "Z": 53.60486
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gold Saucer] Entrance & Card Squares",
+            "[Gold Saucer] Wonder Square West"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021450,
+          "Position": {
+            "X": -8.621399,
+            "Y": 20.99973,
+            "Z": 43.381348
+          },
+          "TerritoryId": 144,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 144,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "DataId": 1021451,
+          "Position": {
+            "X": -429.64832,
+            "Y": 23.743237,
+            "Z": -351.06433
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -408.92343,
+            "Y": 23.167036,
+            "Z": -351.16223
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Vesper Bay Gate"
+        },
+        {
+          "Position": {
+            "X": -375.8867,
+            "Y": 23,
+            "Z": -352.31714
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2008219,
+          "Position": {
+            "X": -326.1311,
+            "Y": 22.9953,
+            "Z": -348.19562
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7218
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -375.8867,
+            "Y": 23,
+            "Z": -352.31714
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -408.92343,
+            "Y": 23.167036,
+            "Z": -351.16223
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Vesper Bay Gate",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1021453,
+          "Position": {
+            "X": -407.98047,
+            "Y": 23.008799,
+            "Z": -320.36322
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "Position": {
+            "X": -405.64215,
+            "Y": 23.167034,
+            "Z": -350.37634
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1021456,
+          "Position": {
+            "X": -400.38147,
+            "Y": 23,
+            "Z": -348.13464
+          },
+          "StopDistance": 7,
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021457,
+          "Position": {
+            "X": -476.40198,
+            "Y": 23.228897,
+            "Z": -430.71643
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2579
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003929,
+          "Position": {
+            "X": -378.65265,
+            "Y": -55.75492,
+            "Z": 106.79785
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -338.71124,
+            "Y": -37.497707,
+            "Z": 243.90338
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            166
+          ]
+        },
+        {
+          "DataId": 1003943,
+          "Position": {
+            "X": -335.1645,
+            "Y": -37.195824,
+            "Z": 242.20642
+          },
+          "StopDistance": 7,
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1003944,
+          "Position": {
+            "X": -335.71375,
+            "Y": -37.370598,
+            "Z": 245.31921
+          },
+          "StopDistance": 7,
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1003942,
+          "Position": {
+            "X": -341.81738,
+            "Y": -37.60504,
+            "Z": 243.42712
+          },
+          "StopDistance": 7,
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -378.46735,
+            "Y": -38.009487,
+            "Z": 159.38092
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "$": "Camp Drybone cliff jump"
+        },
+        {
+          "Position": {
+            "X": -379.3895,
+            "Y": -59.000004,
+            "Z": 147.99257
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1003929,
+          "Position": {
+            "X": -378.65265,
+            "Y": -55.75492,
+            "Z": 106.79785
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

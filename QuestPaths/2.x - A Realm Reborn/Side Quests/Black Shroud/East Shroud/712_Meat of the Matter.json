@@ -1,0 +1,74 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000615,
+          "Position": {
+            "X": -246.44855,
+            "Y": 3.6067607,
+            "Z": 279.92664
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000720,
+          "Position": {
+            "X": -209.09442,
+            "Y": -4.654114,
+            "Z": 195.78845
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2000572
+        },
+        {
+          "DataId": 2000721,
+          "Position": {
+            "X": -146.04419,
+            "Y": -5.2644043,
+            "Z": 199.23706
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2000572
+        },
+        {
+          "DataId": 2000722,
+          "Position": {
+            "X": -173.32727,
+            "Y": 2.1820068,
+            "Z": 137.68213
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2000572
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000615,
+          "Position": {
+            "X": -246.44855,
+            "Y": 3.6067607,
+            "Z": 279.92664
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

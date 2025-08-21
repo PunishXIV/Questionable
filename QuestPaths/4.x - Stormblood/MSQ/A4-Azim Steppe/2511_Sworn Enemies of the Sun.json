@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019417,
+          "Position": {
+            "X": -39.414062,
+            "Y": 122.1,
+            "Z": 63.61487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021605,
+          "Position": {
+            "X": 63.70642,
+            "Y": 114.90497,
+            "Z": 72.55664
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023348,
+          "Position": {
+            "X": 79.24011,
+            "Y": 114.90497,
+            "Z": 95.994385
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2782
+        },
+        {
+          "Position": {
+            "X": -136.6883,
+            "Y": 15.660965,
+            "Z": 579.51746
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Emote",
+          "Emote": "lookout",
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "Azim Steppe - Reunion"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -291.58472,
+            "Y": 10.658516,
+            "Z": 602.01416
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7563
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 3
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 1021608,
+          "Position": {
+            "X": -291.58472,
+            "Y": 10.658516,
+            "Z": 602.01416
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021625,
+          "Position": {
+            "X": -290.33344,
+            "Y": 10.389871,
+            "Z": 598.9928
+          },
+          "StopDistance": 7,
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

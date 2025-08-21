@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005550,
+          "Position": {
+            "X": 105.27197,
+            "Y": 15.359643,
+            "Z": -357.3816
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2003141,
+          "Position": {
+            "X": -22.537598,
+            "Y": 3.616333,
+            "Z": -44.663208
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, null, null, [2, 3, 4], null, null]
+        },
+        {
+          "DataId": 2003148,
+          "Position": {
+            "X": 15.27417,
+            "Y": 2.1820068,
+            "Z": 22.9953
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, null, null, [1, 4, 5], null, null]
+        },
+        {
+          "DataId": 2003147,
+          "Position": {
+            "X": 25.192627,
+            "Y": 2.8533936,
+            "Z": 10.788086
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, null, null, [1, 3, 5], null, null]
+        },
+        {
+          "DataId": 2003140,
+          "Position": {
+            "X": -37.094727,
+            "Y": -0.5340576,
+            "Z": 14.90802
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, null, null, [2, 5], null, null]
+        },
+        {
+          "DataId": 2003136,
+          "Position": {
+            "X": -52.99463,
+            "Y": -1.2055054,
+            "Z": 17.532532
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [null, null, null, [1, 2, 3, 4], null, null]
+        },
+        {
+          "Position": {
+            "X": -52.99463,
+            "Y": -1.2055054,
+            "Z": 17.532532
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 740,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 741,
+              "MinimumKillCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -124.393555,
+            "Y": -2.04119,
+            "Z": 36.344994
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1005550,
+          "Position": {
+            "X": 105.27197,
+            "Y": 15.359643,
+            "Z": -357.3816
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DelaySecondsAtStart": 3
+        }
+      ]
+    }
+  ]
+}

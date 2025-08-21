@@ -1,0 +1,145 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030375,
+          "Position": {
+            "X": 611.9325,
+            "Y": 278.146,
+            "Z": -512.4437
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1027296,
+          "Position": {
+            "X": -469.77954,
+            "Y": 417.22958,
+            "Z": -649.2561
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Tomra"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030776,
+          "Position": {
+            "X": -450.85834,
+            "Y": 417.1344,
+            "Z": -610.8644
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "ExcelSheet": "quest/035/LucKzi101_03556",
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZI101_03556_Q1_000_000",
+              "Answer": "TEXT_LUCKZI101_03556_A1_000_001"
+            }
+          ],
+          "PickUpQuestId": 3556
+        },
+        {
+          "DataId": 1030292,
+          "Position": {
+            "X": -463.73694,
+            "Y": 334.0526,
+            "Z": -81.04071
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030243,
+          "Position": {
+            "X": -473.4417,
+            "Y": 334.0526,
+            "Z": -71.15283
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1030240,
+          "Position": {
+            "X": -464.49988,
+            "Y": 334.0526,
+            "Z": -65.53754
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1030244,
+          "Position": {
+            "X": -453.23877,
+            "Y": 334.0526,
+            "Z": -76.27985
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030292,
+          "Position": {
+            "X": -463.73694,
+            "Y": 334.0526,
+            "Z": -81.04071
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

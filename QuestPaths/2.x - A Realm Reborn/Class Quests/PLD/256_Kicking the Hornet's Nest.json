@@ -1,0 +1,299 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003990,
+          "Position": {
+            "X": 77.25635,
+            "Y": 4.0999947,
+            "Z": -138.62823
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "me",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1003984,
+          "Position": {
+            "X": 45.029297,
+            "Y": 3.9999998,
+            "Z": -128.16058
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "me",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1003992,
+          "Position": {
+            "X": 12.191956,
+            "Y": 4.0999947,
+            "Z": -155.53528
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "me",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1003994,
+          "Position": {
+            "X": 15.976135,
+            "Y": 7.9999995,
+            "Z": -124.071106
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "me",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004222,
+          "Position": {
+            "X": 21.927185,
+            "Y": 7.1999974,
+            "Z": -97.39838
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "me"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -112.70276,
+            "Y": 7.7544775,
+            "Z": 9.123527
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -183.00035,
+            "Y": 13.958975,
+            "Z": -13.998203
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1003985,
+          "Position": {
+            "X": 201.52588,
+            "Y": 52.038116,
+            "Z": 149.40112
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2001408,
+          "Position": {
+            "X": 154.37549,
+            "Y": 52.536743,
+            "Z": 200.91553
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1246
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2001409,
+          "Position": {
+            "X": 141.83252,
+            "Y": 52.994507,
+            "Z": 221.54565
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1390
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1003985,
+          "Position": {
+            "X": 201.52588,
+            "Y": 52.038116,
+            "Z": 149.40112
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 473.74796,
+            "Y": 96.62057,
+            "Z": 159.993
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -117.06801,
+            "Y": 9.195247,
+            "Z": 9.181297
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1001739,
+          "Position": {
+            "X": -94.529724,
+            "Y": 6.4999976,
+            "Z": 39.81079
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

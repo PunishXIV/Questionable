@@ -1,0 +1,200 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014202,
+          "Position": {
+            "X": 190.14258,
+            "Y": -2.5202732,
+            "Z": 73.136475
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000423,
+          "Position": {
+            "X": 232.04382,
+            "Y": 1.999974,
+            "Z": 45.578613
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBBRD501_01713_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1014203,
+          "Position": {
+            "X": 1.2359009,
+            "Y": 0.5000253,
+            "Z": -1.083435
+          },
+          "TerritoryId": 204,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014203,
+          "Position": {
+            "X": 1.2359009,
+            "Y": 0.5000253,
+            "Z": -1.083435
+          },
+          "TerritoryId": 204,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014207,
+          "Position": {
+            "X": 28.854736,
+            "Y": 6.655561,
+            "Z": 421.46936
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4684
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014207,
+          "Position": {
+            "X": 28.854736,
+            "Y": 6.655561,
+            "Z": 421.46936
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1014204,
+          "Position": {
+            "X": 24.673828,
+            "Y": 6.386869,
+            "Z": 414.9386
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1014205,
+          "Position": {
+            "X": 190.72253,
+            "Y": -2.5872245,
+            "Z": 74.75391
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014208,
+          "Position": {
+            "X": -52.536804,
+            "Y": 8.059147,
+            "Z": 31.72351
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 1714
+        }
+      ]
+    }
+  ]
+}

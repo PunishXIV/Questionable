@@ -1,0 +1,196 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043951,
+          "Position": {
+            "X": 303.8529,
+            "Y": 481.99442,
+            "Z": 154.83325
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1043865,
+          "Position": {
+            "X": 301.8081,
+            "Y": 482.13644,
+            "Z": 165.02625
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "TargetTerritoryId": 960,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANOMI004_04604_Q5_000_000",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1043586,
+          "Position": {
+            "X": 205.3711,
+            "Y": 567.4998,
+            "Z": 246.72314
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1043559,
+          "Position": {
+            "X": -573.3883,
+            "Y": 73.033104,
+            "Z": 212.78699
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011935,
+          "Position": {
+            "X": -285.63367,
+            "Y": 39.04305,
+            "Z": 53.72693
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 398,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38279,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 398,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 38303,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 2013072,
+          "Position": {
+            "X": 456.65674,
+            "Y": 438.04077,
+            "Z": 310.2312
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 960,
+          "Mount": true,
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1043865,
+          "Position": {
+            "X": 301.8081,
+            "Y": 482.13644,
+            "Z": 165.02625
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "TargetTerritoryId": 960
+        },
+        {
+          "DataId": 1043585,
+          "Position": {
+            "X": 203.84521,
+            "Y": 567.4998,
+            "Z": 246.87573
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043864,
+          "Position": {
+            "X": 244.83093,
+            "Y": 564.8203,
+            "Z": 261.76843
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "TargetTerritoryId": 960,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANOMI004_04604_Q4_000_000",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1043951,
+          "Position": {
+            "X": 303.8529,
+            "Y": 481.99442,
+            "Z": 154.83325
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

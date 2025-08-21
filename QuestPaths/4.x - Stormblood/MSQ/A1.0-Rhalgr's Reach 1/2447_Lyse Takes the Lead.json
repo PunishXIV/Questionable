@@ -1,0 +1,135 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020527,
+          "Position": {
+            "X": -612.0852,
+            "Y": 130,
+            "Z": -504.02078
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020311,
+          "Position": {
+            "X": -481.2848,
+            "Y": 96.387344,
+            "Z": -341.26807
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007965,
+          "Position": {
+            "X": -487.26636,
+            "Y": 76.70703,
+            "Z": -249.56134
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818133
+        },
+        {
+          "DataId": 1020316,
+          "Position": {
+            "X": -213.51953,
+            "Y": 59.159065,
+            "Z": -531.426
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -124.70333,
+            "Y": 58.571022,
+            "Z": -581.12805
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2007967,
+          "Position": {
+            "X": 155.84033,
+            "Y": 53.3302,
+            "Z": -499.44305
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818135
+        },
+        {
+          "DataId": 1020321,
+          "Position": {
+            "X": 447.77588,
+            "Y": 61.497482,
+            "Z": -543.72473
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 484.6969,
+            "Y": 61.72069,
+            "Z": -558.6724
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 635
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020329,
+          "Position": {
+            "X": -32.974792,
+            "Y": 18.045086,
+            "Z": 129.41174
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

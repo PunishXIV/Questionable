@@ -1,0 +1,248 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                131
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007875,
+          "Position": {
+            "X": -221.48468,
+            "Y": 26.16912,
+            "Z": -343.9536
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Mount": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBMNK451_01065_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -258.66748,
+            "Y": 26.617363,
+            "Z": -320.76898
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 38.911945,
+            "Y": 23.511465,
+            "Z": -142.86761
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2002447,
+          "Position": {
+            "X": 41.428223,
+            "Y": 25.101074,
+            "Z": -149.64526
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        },
+        {
+          "Position": {
+            "X": 46.038277,
+            "Y": 50.482662,
+            "Z": -578.6224
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 22.885742,
+            "Y": 17.930914,
+            "Z": -619.7939
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002548,
+          "Position": {
+            "X": 17.837708,
+            "Y": 20.523315,
+            "Z": -629.1448
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 214.89189,
+            "Y": 29.38419,
+            "Z": 59.154907
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true
+        },
+        {
+          "DataId": 2002448,
+          "Position": {
+            "X": 213.70251,
+            "Y": 30.19751,
+            "Z": 61.020752
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1007875,
+          "Position": {
+            "X": -221.48468,
+            "Y": 26.16912,
+            "Z": -343.9536
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1007877,
+          "Position": {
+            "X": -74.08258,
+            "Y": 2.6069984,
+            "Z": 716.39575
+          },
+          "TerritoryId": 135,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Fly": true,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "CombatDelaySecondsAtStart": 0,
+          "KillEnemyDataIds": [
+            81,
+            345,
+            348
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1007877,
+          "Position": {
+            "X": -74.08258,
+            "Y": 2.6069984,
+            "Z": 716.39575
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1007875,
+          "Position": {
+            "X": -221.48468,
+            "Y": 26.16912,
+            "Z": -343.9536
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006749,
+          "Position": {
+            "X": -30.47229,
+            "Y": 13.599918,
+            "Z": 95.26196
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "NextQuestId": 1066
+        }
+      ]
+    }
+  ]
+}

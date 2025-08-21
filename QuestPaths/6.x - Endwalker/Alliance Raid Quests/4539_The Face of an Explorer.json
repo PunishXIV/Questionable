@@ -1,0 +1,174 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042285,
+          "Position": {
+            "X": -4.623535,
+            "Y": 2.745737,
+            "Z": -39.505676
+          },
+          "StopDistance": 5,
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042286,
+          "Position": {
+            "X": -207.04968,
+            "Y": 18,
+            "Z": 87.84619
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": ["[Ul'dah] Aetheryte Plaza","[Ul'dah] Thaumaturges' Guild"]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1042287,
+          "Position": {
+            "X": -164.47705,
+            "Y": 14.004999,
+            "Z": 49.576538
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -157.07425,
+            "Y": 24.884384,
+            "Z": -354.37775
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true
+        },
+        {
+          "DataId": 1042288,
+          "Position": {
+            "X": 153.09375,
+            "Y": 10.362769,
+            "Z": -436.88104
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 135.51227,
+            "Y": 10.850319,
+            "Z": -487.7127
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2012869,
+          "Position": {
+            "X": 137.4685,
+            "Y": 10.696533,
+            "Z": -488.36502
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042288,
+          "Position": {
+            "X": 153.09375,
+            "Y": 10.362769,
+            "Z": -436.88104
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2012870,
+          "Position": {
+            "X": 154.46704,
+            "Y": -26.29132,
+            "Z": -437.46094
+          },
+          "StopDistance": 1,
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "TargetTerritoryId": 1061
+        },
+        {
+          "DataId": 1042281,
+          "Position": {
+            "X": 1.9378662,
+            "Y": 0.099999696,
+            "Z": -0.44250488
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042264,
+          "Position": {
+            "X": 124.22363,
+            "Y": 19.32629,
+            "Z": -617.42584
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 4666
+        }
+      ]
+    }
+  ]
+}

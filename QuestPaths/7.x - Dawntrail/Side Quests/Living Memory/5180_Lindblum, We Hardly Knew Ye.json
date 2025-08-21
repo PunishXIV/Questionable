@@ -1,0 +1,83 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050634,
+          "Position": {
+            "X": -181.62811,
+            "Y": 30.999819,
+            "Z": 22.079773
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1050635,
+          "Position": {
+            "X": -201.83112,
+            "Y": 29.999939,
+            "Z": -124.28479
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZH007_05180_Q1_000_005",
+              "Answer": "TEXT_KINGZH007_05180_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1050636,
+          "Position": {
+            "X": -410.5135,
+            "Y": 30.49998,
+            "Z": -131.94476
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZH007_05180_Q2_000_013",
+              "Answer": "TEXT_KINGZH007_05180_A2_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050813,
+          "Position": {
+            "X": -277.76,
+            "Y": 54.31037,
+            "Z": -382.58948
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Living Memory - Leynode Aero"
+        }
+      ]
+    }
+  ]
+}

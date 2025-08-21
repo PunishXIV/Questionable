@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -115.77283,
+            "Y": 7.1942587,
+            "Z": 130.61378
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2010911,
+          "Position": {
+            "X": -113.93915,
+            "Y": -36.087585,
+            "Z": 87.6936
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              2
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2010904,
+          "Position": {
+            "X": -164.93481,
+            "Y": -50.919373,
+            "Z": 71.15283
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              3
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2010910,
+          "Position": {
+            "X": -189.86804,
+            "Y": -66.941345,
+            "Z": 13.046387
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "RequiredQuestVariables": [
+            null,
+            [
+              1
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031809,
+          "Position": {
+            "X": -454.3069,
+            "Y": 71.43217,
+            "Z": 575.1278
+          },
+          "TerritoryId": 816,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

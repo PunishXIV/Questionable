@@ -1,0 +1,78 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032643,
+          "Position": {
+              "X": 787.0145,
+              "Y": -45.82774,
+              "Z": -218.555
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 33005,
+          "Position": {
+              "X": 214.7744,
+              "Y": -19.57758,
+              "Z": 623.6767
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 29537,
+              "ItemCount": 3
+            }
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 33020,
+          "Position": {
+              "X": 226.1767,
+              "Y": -20.10281,
+              "Z": 643.5543
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 29563,
+              "ItemCount": 3
+            }
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 1032643,
+          "Position": {
+              "X": 787.0145,
+              "Y": -45.82774,
+              "Z": -218.555
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

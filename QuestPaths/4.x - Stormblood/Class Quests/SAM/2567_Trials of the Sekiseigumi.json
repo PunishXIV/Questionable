@@ -1,0 +1,127 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021836,
+          "Position": {
+            "X": 36.850464,
+            "Y": 6.999999,
+            "Z": -83.78735
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022190,
+          "Position": {
+            "X": 128.61829,
+            "Y": 15,
+            "Z": -158.03778
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024622,
+          "Position": {
+            "X": 102.433716,
+            "Y": 0.2814351,
+            "Z": -550.9575
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 613,
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 568.7077,
+            "Y": 0.73303545,
+            "Z": 754.9407
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7496
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022191,
+          "Position": {
+            "X": 567.8645,
+            "Y": 0.73303545,
+            "Z": 755.1842
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022190,
+          "Position": {
+            "X": 128.61829,
+            "Y": 15,
+            "Z": -158.03778
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBSAM630_02567_Q1_000_054",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 2568
+        }
+      ]
+    }
+  ]
+}

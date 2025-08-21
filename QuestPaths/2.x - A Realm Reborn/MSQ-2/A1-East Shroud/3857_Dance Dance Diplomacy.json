@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006674,
+          "Position": {
+            "X": 21.98816,
+            "Y": -3.7664814,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000576,
+          "Position": {
+            "X": 21.469421,
+            "Y": -4.575074,
+            "Z": 221.75928
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1000563,
+          "Position": {
+            "X": -3.768982,
+            "Y": -5.8594565,
+            "Z": 217.2732
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000587,
+          "Position": {
+            "X": -7.248047,
+            "Y": -8.407776,
+            "Z": 268.23828
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006674,
+          "Position": {
+            "X": 21.98816,
+            "Y": -3.7664814,
+            "Z": 209.97937
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

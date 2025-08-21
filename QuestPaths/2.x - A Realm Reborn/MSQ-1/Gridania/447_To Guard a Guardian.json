@@ -1,0 +1,124 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000100,
+          "Position": {
+            "X": 23.819275,
+            "Y": -8,
+            "Z": 115.92273
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000423,
+          "Position": {
+            "X": 232.04382,
+            "Y": 1.999974,
+            "Z": 45.578613
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANFST007_00447_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1003061,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.500025,
+            "Z": -4.3793945
+          },
+          "StopDistance": 7,
+          "TerritoryId": 204,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000456,
+          "Position": {
+            "X": -303.5172,
+            "Y": 21.902342,
+            "Z": 127.45862
+          },
+          "TerritoryId": 148,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "(Phase 1) Healer NPCs are only killed after the boss dies - allied NPCs will kill them eventually; all NPCs need to be killed for the duty to complete"
+            ]
+          },
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000423,
+          "Position": {
+            "X": 232.04382,
+            "Y": 1.999974,
+            "Z": 45.578613
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANFST007_00447_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1003061,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.500025,
+            "Z": -4.3793945
+          },
+          "StopDistance": 7,
+          "TerritoryId": 204,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

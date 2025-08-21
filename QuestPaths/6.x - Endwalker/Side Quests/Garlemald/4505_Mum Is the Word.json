@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041770,
+          "Position": {
+            "X": 157.30518,
+            "Y": 23.164677,
+            "Z": -415.36584
+          },
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "you should be right next to it, but if you aren't..."
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041771,
+          "Position": {
+            "X": -157.67151,
+            "Y": 10.8,
+            "Z": -530.6325
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "there's an underpass flypathing that /looks/ like it should get stuck, but doesn't. not sure if WoL size and/or mount would make it stuck; YMMV"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041773,
+          "Position": {
+            "X": -78.446655,
+            "Y": 10.5,
+            "Z": -590.08167
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041774,
+          "Position": {
+            "X": -44.815796,
+            "Y": 10.8,
+            "Z": -614.40454
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041767,
+          "Position": {
+            "X": 541.03906,
+            "Y": -36.65,
+            "Z": -132.46362
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZD104_04505_Q1_000_000",
+              "Answer": "TEXT_AKTKZD104_04505_A1_000_002"
+            }
+          ],
+          "AetheryteShortcut": "Garlemald - Tertium",
+          "NextQuestId": 4506
+        }
+      ]
+    }
+  ]
+}

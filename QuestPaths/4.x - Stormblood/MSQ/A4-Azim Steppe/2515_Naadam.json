@@ -1,0 +1,162 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020539,
+          "Position": {
+            "X": 498.2832,
+            "Y": 40.836098,
+            "Z": -508.20172
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019386,
+          "Position": {
+            "X": 501.21313,
+            "Y": 40.836082,
+            "Z": -505.9129
+          },
+          "StopDistance": 7,
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1019388,
+          "Position": {
+            "X": 508.04907,
+            "Y": 40.4257,
+            "Z": -482.7802
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA416_02515_Q1_000_102",
+              "Answer": "TEXT_STMBDA416_02515_A1_000_103"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1021634,
+          "Position": {
+            "X": 547.0206,
+            "Y": 38.87306,
+            "Z": -484.2146
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA416_02515_Q1_100_070",
+              "Answer": "TEXT_STMBDA416_02515_A1_120_070"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1019396,
+          "Position": {
+            "X": 542.1378,
+            "Y": 40.425697,
+            "Z": -500.54172
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019382,
+          "Position": {
+            "X": 496.5437,
+            "Y": 40.859642,
+            "Z": -510.58215
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020539,
+          "Position": {
+            "X": 498.2832,
+            "Y": 40.836098,
+            "Z": -508.20172
+          },
+          "TerritoryId": 622,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020540,
+          "Position": {
+            "X": 486.6864,
+            "Y": 40.08099,
+            "Z": -465.72064
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

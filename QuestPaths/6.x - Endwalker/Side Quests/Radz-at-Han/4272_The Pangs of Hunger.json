@@ -1,0 +1,146 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041144,
+          "Position": {
+            "X": -63.34027,
+            "Y": 14,
+            "Z": 125.62744
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -48.856667,
+            "Y": 13.068996,
+            "Z": 118.292465
+          },
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 194,
+          "Position": {
+            "X": 6.6071167,
+            "Y": -2.02948,
+            "Z": 110.55151
+          },
+          "StopDistance": 3,
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -21.53136,
+            "Y": 1.7999926,
+            "Z": -182.28082
+          },
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Alzadaal's Peace",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ]
+        },
+        {
+          "DataId": 1037381,
+          "Position": {
+            "X": -23.697266,
+            "Y": 1.7999947,
+            "Z": -180.07172
+          },
+          "StopDistance": 4,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012387,
+          "Position": {
+            "X": -58.27423,
+            "Y": 0.9613037,
+            "Z": -199.42017
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012388,
+          "Position": {
+            "X": -65.62909,
+            "Y": 13.992493,
+            "Z": 129.1676
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041144,
+          "Position": {
+            "X": -63.34027,
+            "Y": 14,
+            "Z": 125.62744
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1037466,
+          "Position": {
+            "X": -205.31018,
+            "Y": 36,
+            "Z": 135.39331
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041145,
+          "Position": {
+            "X": -63.34027,
+            "Y": 14,
+            "Z": 126.207275
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

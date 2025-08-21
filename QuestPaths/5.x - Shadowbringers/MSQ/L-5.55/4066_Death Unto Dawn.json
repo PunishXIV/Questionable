@@ -1,0 +1,88 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003027,
+          "Position": {
+            "X": 4.8981323,
+            "Y": -1.92944,
+            "Z": -0.19836426
+          },
+          "TerritoryId": 205,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036439,
+          "Position": {
+            "X": 57.90796,
+            "Y": -8.556444,
+            "Z": 107.16406
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1036441,
+          "Position": {
+            "X": 32.60852,
+            "Y": -19.000002,
+            "Z": 103.34924
+          },
+          "StopDistance": 7,
+          "TerritoryId": 132,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.293",
+            "Notes": [
+              "(Lunar Odin) AI doesn't pull Odin to start combat",
+              "(Lunar Ravana) AI doesn't pull Ravana to start combat",
+              "(Lunar Ravana) AI doesn't move out of directional parry directions"
+            ]
+          },
+          "Comment": "Death Unto Dawn"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 351,
+          "InteractionType": "None",
+          "Comment": "Credits"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036444,
+          "Position": {
+            "X": -1.6937866,
+            "Y": 0,
+            "Z": -4.135254
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

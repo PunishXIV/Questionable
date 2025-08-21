@@ -1,0 +1,114 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005550,
+          "Position": {
+            "X": 105.27197,
+            "Y": 15.359643,
+            "Z": -357.3816
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2003169,
+          "Position": {
+            "X": -191.18036,
+            "Y": 3.6774292,
+            "Z": -162.00513
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [80],
+          "Fly": true
+        },
+        {
+          "DataId": 80,
+          "Position": {
+            "X": -198.6194,
+            "Y": 4.4395595,
+            "Z": -156.7357
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "ItemId": 2001191
+        },
+        {
+          "DataId": 2003168,
+          "Position": {
+            "X": -155.44366,
+            "Y": 3.8604736,
+            "Z": -132.21948
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [80],
+          "Fly": true
+        },
+        {
+          "DataId": 80,
+          "Position": {
+            "X": -159.83832,
+            "Y": 4.2440715,
+            "Z": -136.43097
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "ItemId": 2001191
+        },
+        {
+          "DataId": 2003172,
+          "Position": {
+            "X": -19.36377,
+            "Y": 0.47296143,
+            "Z": 15.182739
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [80],
+          "Fly": true
+        },
+        {
+          "DataId": 81,
+          "Position": {
+            "X": -19.760498,
+            "Y": 0.97421986,
+            "Z": 19.790894
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "ItemId": 2001191
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005550,
+          "Position": {
+            "X": 105.27197,
+            "Y": 15.359643,
+            "Z": -357.3816
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006725,
+          "Position": {
+            "X": 446.82983,
+            "Y": -5.306207,
+            "Z": -465.72064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "$": "0 0  0 0  0 0 -> 0 1  0 0  0 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1004093,
+          "Position": {
+            "X": -25.162231,
+            "Y": 12.200003,
+            "Z": 110.795654
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "AetheryteShortcut": "Ul'dah",
+          "$": "0 1  0 0  0 0 -> 0 16  0 0  0 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007755,
+          "Position": {
+            "X": -34.62274,
+            "Y": 13.599951,
+            "Z": 99.47351
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1007756,
+          "Position": {
+            "X": 4.501404,
+            "Y": 4.2257967,
+            "Z": 411.58154
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 243.06186,
+            "Y": 26.915272,
+            "Z": 74.2695
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1007759,
+          "Position": {
+            "X": 246.57043,
+            "Y": 25.742998,
+            "Z": 85.28259
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 242.94734,
+            "Y": 27.148706,
+            "Z": 74.460915
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 258.76767,
+            "Y": 25,
+            "Z": 43.66056
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002892,
+          "Position": {
+            "X": 259.38806,
+            "Y": 24.979004,
+            "Z": 44.174805
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "$": "0 16  0 0  0 0 -> 0 17  0 0  0 0"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 242.94734,
+            "Y": 27.148706,
+            "Z": 74.460915
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1007759,
+          "Position": {
+            "X": 246.57043,
+            "Y": 25.742998,
+            "Z": 85.28259
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 445.96164,
+            "Y": -5.3604937,
+            "Z": -466.67636
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 1006725,
+          "Position": {
+            "X": 446.82983,
+            "Y": -5.306207,
+            "Z": -465.72064
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1201
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049804,
+          "Position": {
+            "X": 105.69922,
+            "Y": 12.000006,
+            "Z": -77.37854
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Sekiseigumi Barracks"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013747,
+          "Position": {
+            "X": -57.63336,
+            "Y": 3.9520264,
+            "Z": -142.22937
+          },
+          "TerritoryId": 130,
+          "InteractionType": "UseItem",
+          "ItemId": 2003503,
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1049805,
+          "Position": {
+            "X": -152.14777,
+            "Y": 14.005,
+            "Z": 45.303955
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -286.10168,
+            "Y": -32,
+            "Z": 92.85731
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            17632,
+            17633,
+            17634,
+            17635,
+            17636,
+            17637,
+            17638,
+            17639,
+            17640
+          ],
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1049806,
+          "Position": {
+            "X": -152.60547,
+            "Y": 14.004998,
+            "Z": 46.73828
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1049805,
+          "Position": {
+            "X": -152.14777,
+            "Y": 14.005,
+            "Z": 45.303955
+          },
+          "StopDistance": 5,
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGBB231_04858_Q3_000_000",
+              "Answer": "TEXT_KINGBB231_04858_A3_000_002"
+            }
+          ],
+          "NextQuestId": 4859
+        }
+      ]
+    }
+  ]
+}

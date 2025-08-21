@@ -1,0 +1,217 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006752,
+          "Position": {
+              "X": 87.5105,
+              "Y": 18,
+              "Z": 113.725464
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130,
+                131
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007864,
+          "Position": {
+              "X": -167.40674,
+              "Y": 14.513778,
+              "Z": -251.3009
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002535,
+          "Position": {
+              "X": -178.39331,
+              "Y": 15.42688,
+              "Z": -244.64789
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            182
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2002431,
+          "Position": {
+              "X": -178.39331,
+              "Y": 15.42688,
+              "Z": -244.64789
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 2000810
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1007864,
+          "Position": {
+              "X": -167.40674,
+              "Y": 14.513778,
+              "Z": -251.3009
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1007865,
+          "Position": {
+              "X": -223.10223,
+              "Y": 14.513845,
+              "Z": -365.25525
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2002536,
+          "Position": {
+              "X": -211.16962,
+              "Y": 15.396301,
+              "Z": -345.41852
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            182
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2002432,
+          "Position": {
+              "X": -211.16962,
+              "Y": 15.396301,
+              "Z": -345.41852
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 2000811
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1007865,
+          "Position": {
+              "X": -223.10223,
+              "Y": 14.513845,
+              "Z": -365.25525
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1007863,
+          "Position": {
+              "X": -131.70062,
+              "Y": 17.982016,
+              "Z": -278.8587
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006753,
+          "Position": {
+              "X": 325.063,
+              "Y": 11.236564,
+              "Z": -6.2105103
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

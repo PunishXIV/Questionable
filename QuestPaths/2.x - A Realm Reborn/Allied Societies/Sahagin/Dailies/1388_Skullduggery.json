@@ -1,0 +1,87 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005938,
+                    "Position": {
+                        "X": -220.7218,
+                        "Y": -40.720844,
+                        "Z": 37.247192
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -220.7218,
+                                    "Y": -40.720844,
+                                    "Z": 37.247192
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1008793,
+                    "Position": {
+                        "X": -55.436035,
+                        "Y": -24.903355,
+                        "Z": 36.75891
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        2903
+                    ],
+                    "Fly": true
+                },
+                {
+                    "DataId": 1008796,
+                    "Position": {
+                        "X": 46.066895,
+                        "Y": -14.420642,
+                        "Z": 55.008667
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        2903
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005938,
+                    "Position": {
+                        "X": -220.7218,
+                        "Y": -40.720844,
+                        "Z": 37.247192
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

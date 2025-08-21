@@ -1,0 +1,60 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1012146,
+					"Position": {
+						"X": -643.76294,
+						"Y": -176.4502,
+						"Z": -527.3976
+					},
+					"TerritoryId": 402,
+					"InteractionType": "AcceptQuest"
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"Position": {
+						"X": -439.6144,
+						"Y": -186.3405,
+						"Z": -617.2911
+					},
+					"TerritoryId": 402,
+					"InteractionType": "Combat",
+					"EnemySpawnType": "OverworldEnemies",
+					"ComplexCombatData": [
+						{
+							"DataId": 4092,
+							"MinimumKillCount": 5
+						}
+					],
+					"Fly": true,
+					"$": "by starting here we can guarantee a more sane straightline progression instead of starting in the middle, going all the way to one side, then running all the way to the other side."
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1012146,
+					"Position": {
+						"X": -643.76294,
+						"Y": -176.4502,
+						"Z": -527.3976
+					},
+					"TerritoryId": 402,
+					"InteractionType": "CompleteQuest",
+					"AetheryteShortcut": "Azys Lla - Helix"
+				}
+			]
+		}
+	]
+}

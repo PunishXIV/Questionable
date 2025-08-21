@@ -1,0 +1,180 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012580,
+          "Position": {
+            "X": 16.006714,
+            "Y": 16.009666,
+            "Z": -3.189148
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016531,
+          "Position": {
+            "X": -323.99487,
+            "Y": 11.999983,
+            "Z": 44.96826
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1010388,
+          "Position": {
+            "X": 40.482178,
+            "Y": 20.495,
+            "Z": -650.96515
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1016541,
+          "Position": {
+            "X": 2.1514893,
+            "Y": 0,
+            "Z": -7.4921875
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1016538,
+          "Position": {
+            "X": 14.572327,
+            "Y": 0,
+            "Z": -9.964172
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1016540,
+          "Position": {
+            "X": 31.967651,
+            "Y": -1,
+            "Z": -4.196289
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 1016543,
+          "Position": {
+            "X": 33.0968,
+            "Y": -1,
+            "Z": 5.7526245
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1016542,
+          "Position": {
+            "X": 36.27063,
+            "Y": -0.25946045,
+            "Z": 2.4871826
+          },
+          "StopDistance": 5,
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016535,
+          "Position": {
+            "X": -2.6704102,
+            "Y": 0,
+            "Z": -5.2644043
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

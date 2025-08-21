@@ -1,0 +1,149 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Gridania",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2011737,
+                    "Position": {
+                        "X": 335.8053,
+                        "Y": -0.5340576,
+                        "Z": -179.85815
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Combat",
+                    "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        14011
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1038442,
+                    "Position": {
+                        "X": 336.56824,
+                        "Y": -1.022724,
+                        "Z": -173.63245
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 2011738,
+                    "Position": {
+                        "X": 256.8551,
+                        "Y": 15.823547,
+                        "Z": -109.51398
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Combat",
+                    "AetheryteShortcut": "South Shroud - Quarrymill",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        14010
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1038444,
+                    "Position": {
+                        "X": 250.87354,
+                        "Y": 15.565201,
+                        "Z": -107.83557
+                    },
+                    "TerritoryId": 153,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1038446,
+                    "Position": {
+                        "X": 325.73438,
+                        "Y": -5.688218,
+                        "Z": -97.76465
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 1039197,
+                    "Position": {
+                        "X": -311.39087,
+                        "Y": 20.991789,
+                        "Z": 175.12769
+                    },
+                    "TerritoryId": 148,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1038411,
+                    "Position": {
+                        "X": -69.41333,
+                        "Y": -0.5033642,
+                        "Z": 5.0201416
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "CompleteQuest",
+                    "NextQuestId": 4107
+                }
+            ]
+        }
+    ]
+}

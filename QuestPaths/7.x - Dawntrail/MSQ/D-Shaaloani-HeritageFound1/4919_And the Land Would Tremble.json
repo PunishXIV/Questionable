@@ -1,0 +1,148 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046995,
+          "Position": {
+            "X": 344.8081,
+            "Y": -16.536486,
+            "Z": -442.8626
+          },
+          "StopDistance": 6,
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013809,
+          "Position": {
+            "X": 342.61072,
+            "Y": -16.434021,
+            "Z": -441.91656
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013852,
+          "Position": {
+            "X": 119.61548,
+            "Y": -14.694458,
+            "Z": -517.052
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1050655,
+          "Position": {
+            "X": 289.02112,
+            "Y": -15.566031,
+            "Z": -478.78235
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5138
+        },
+        {
+          "Position": {
+            "X": 386.84927,
+            "Y": -0.84392637,
+            "Z": 435.0579
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
+          "SkipConditions": {
+            "StepIf": {
+              "QuestsCompleted": [
+                5140
+              ]
+            },
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                5140
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051283,
+          "Position": {
+            "X": 374.19702,
+            "Y": -0.24794838,
+            "Z": 437.2472
+          },
+          "StopDistance": 6,
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5140
+        },
+        {
+          "DataId": 1049324,
+          "Position": {
+            "X": -108.659546,
+            "Y": 4.055336,
+            "Z": 319.5697
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5130
+        },
+        {
+          "DataId": 1047001,
+          "Position": {
+            "X": -194.5373,
+            "Y": 16.084282,
+            "Z": -382.9862
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMD108_04919_SYSTEM_000_043",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047002,
+          "Position": {
+            "X": -16.494995,
+            "Y": 3.0954878,
+            "Z": -49.851257
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1170,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

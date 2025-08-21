@@ -1,0 +1,209 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052561,
+          "Position": {
+            "X": 578.14905,
+            "Y": -144.88388,
+            "Z": 721.8279
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053772,
+          "Position": {
+            "X": 57.694214,
+            "Y": 38.03109,
+            "Z": -279.8047
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053772,
+          "Position": {
+            "X": 57.694214,
+            "Y": 38.03109,
+            "Z": -279.8047
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014662,
+          "Position": {
+            "X": 28.94629,
+            "Y": 35.446655,
+            "Z": -330.73932
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [[0],null,null,null,null,null]
+
+        },
+        {
+          "DataId": 1053774,
+          "Position": {
+            "X": 10.055664,
+            "Y": 34.83803,
+            "Z": -387.2282
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [[16],null,null,null,null,null]
+
+        },
+        {
+          "DataId": 1053773,
+          "Position": {
+            "X": -13.748474,
+            "Y": 34.838024,
+            "Z": -403.55536
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "RequiredQuestVariables": [[33],null,null,null,null,null]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1053772,
+          "Position": {
+            "X": -54.151768,
+            "Y": 30.108292,
+            "Z": -418.1114
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1053775,
+          "Position": {
+            "X": 552.9717,
+            "Y": -150,
+            "Z": 757.71716
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1053775,
+          "Position": {
+            "X": 552.9717,
+            "Y": -150,
+            "Z": 757.71716
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Miner"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48018,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Gather",
+          "RequiredQuestAcceptedJob": [
+            "Botanist"
+          ],
+          "ItemsToGather": [
+            {
+              "ItemId": 48019,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "DataId": 1053775,
+          "Position": {
+            "X": 552.9717,
+            "Y": -150,
+            "Z": 757.71716
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 589.3186,
+                  "Y": -142.89168,
+                  "Z": 729.4575
+                },
+                "TerritoryId": 1189,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

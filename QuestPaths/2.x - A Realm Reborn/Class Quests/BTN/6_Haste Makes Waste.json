@@ -1,0 +1,108 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+
+          "DataId": 1000815,
+          "Position": {
+            "X": -233.9361,
+            "Y": 6.668152,
+            "Z": -171.03839
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000239,
+          "Position": {
+            "X": 170.30591,
+            "Y": 15.699951,
+            "Z": -118.638916
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Botanists' Guild",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 148,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "TerritoryId": 148,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 4832,
+              "ItemCount": 10
+            }
+          ]
+        },
+        {
+          "DataId": 1000239,
+          "Position": {
+            "X": 170.30591,
+            "Y": 15.699951,
+            "Z": -118.638916
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000815,
+          "Position": {
+            "X": -233.9361,
+            "Y": 6.668152,
+            "Z": -171.03839
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Leatherworkers' Guild & Shaded Bower",
+            "[Gridania] Botanists' Guild"
+          ],
+          "NextQuestId": 7
+        }
+      ]
+    }
+  ]
+}

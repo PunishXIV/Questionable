@@ -1,0 +1,65 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006382,
+          "Position": {
+            "X": 165.20935,
+            "Y": 222.99998,
+            "Z": 367.72717
+          },
+          "StopDistance": 7,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006383,
+          "Position": {
+            "X": 138.87231,
+            "Y": 285.06497,
+            "Z": 175.21924
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_GAIUSB608_00890_Q1_000_020",
+              "Answer": "TEXT_GAIUSB608_00890_A3_000_023"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "StopDistance": 5,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1006384,
+          "Position": {
+            "X": 263.5996,
+            "Y": 303.1,
+            "Z": -199.96954
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031996,
+          "Position": {
+            "X": 209.55212,
+            "Y": -40.000004,
+            "Z": 8.132996
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032844,
+          "Position": {
+            "X": 147.93616,
+            "Y": -49.999996,
+            "Z": 76.920654
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031689,
+          "Position": {
+            "X": 48.8136,
+            "Y": -16,
+            "Z": 150.92688
+          },
+          "TerritoryId": 886,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151,
+            "$": "This isn't the correct shop id, but it's also unclear how you'd find out"
+          },
+          "ItemId": 5768,
+          "ItemCount": 2,
+          "Comment": "Buy cream yellow dye",
+          "AethernetShortcut": [
+            "[Firmament] The New Nest",
+            "[Firmament] The Mendicant's Court"
+          ]
+        },
+        {
+          "DataId": 1032844,
+          "Position": {
+            "X": 147.93616,
+            "Y": -49.999996,
+            "Z": 76.920654
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The New Nest"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032003,
+          "Position": {
+            "X": 94.92627,
+            "Y": -18.500006,
+            "Z": 171.1604
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The New Nest",
+            "[Firmament] The Mendicant's Court"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKHA104_03728_Q1_000_000",
+              "Answer": "TEXT_LUCKHA104_03728_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2010924,
+          "Position": {
+            "X": 103.1051,
+            "Y": -20.004639,
+            "Z": 4.196167
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The Mattock"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031996,
+          "Position": {
+            "X": 209.55212,
+            "Y": -40.000004,
+            "Z": 8.132996
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mattock",
+            "[Firmament] Saint Roelle's Dais"
+          ],
+          "NextQuestId": 3837
+        }
+      ]
+    }
+  ]
+}

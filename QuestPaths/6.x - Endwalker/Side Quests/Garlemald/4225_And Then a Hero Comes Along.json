@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037767,
+          "Position": {
+            "X": 545.2506,
+            "Y": -36.61618,
+            "Z": -252.12488
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 541.0247,
+            "Y": -36.65,
+            "Z": -244.85428
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "$": "let's not get stuck on ceilings, now"
+        },
+        {
+          "DataId": 2011973,
+          "Position": {
+            "X": 370.5653,
+            "Y": 10.788086,
+            "Z": -450.6447
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZD001_04225_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$": "0 0 0 0 0 0 -> 0 0 0 128 0 64"
+        },
+        {
+          "DataId": 2011974,
+          "Position": {
+            "X": 282.39868,
+            "Y": 10.788086,
+            "Z": -323.07928
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZD001_04225_Q2_000_000",
+              "Yes": true
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$": "0 0 0 128 0 64 -> 0 0 0 192 0 96"
+        },
+        {
+          "DataId": 2011972,
+          "Position": {
+            "X": 241.19922,
+            "Y": 11.673096,
+            "Z": -292.98853
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037767,
+          "Position": {
+            "X": 545.2506,
+            "Y": -36.61618,
+            "Z": -252.12488
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Tertium"
+        }
+      ]
+    }
+  ]
+}

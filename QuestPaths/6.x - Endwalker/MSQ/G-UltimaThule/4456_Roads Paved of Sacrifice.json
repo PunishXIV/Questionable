@@ -1,0 +1,234 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040307,
+          "Position": {
+            "X": -469.29126,
+            "Y": 232.2548,
+            "Z": -252.8573
+          },
+          "StopDistance": 5,
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040315,
+          "Position": {
+            "X": -345.87628,
+            "Y": 254.66968,
+            "Z": -277.27173
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040313,
+          "Position": {
+            "X": -339.10126,
+            "Y": 255.53401,
+            "Z": -281.75793
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -308.91977,
+            "Y": 262.7334,
+            "Z": -332.3608
+          },
+          "TerritoryId": 960,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2012030,
+          "Position": {
+            "X": -333.547,
+            "Y": 270.83228,
+            "Z": -361.50153
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818389
+        },
+        {
+          "DataId": 1040317,
+          "Position": {
+            "X": -200.57983,
+            "Y": 268.01642,
+            "Z": -312.58112
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040318,
+          "Position": {
+            "X": 29.984009,
+            "Y": 270.45825,
+            "Z": -535.0271
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 37.10138,
+            "Y": 269.016,
+            "Z": -591.87366
+          },
+          "TerritoryId": 960,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2012354,
+          "Position": {
+            "X": 30.777344,
+            "Y": 272.51086,
+            "Z": -600.7019
+          },
+          "StopDistance": 4,
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.0": "[1]",
+          "$.1": "QuestVariables if done first: 1 0 0 0 0 128"
+        },
+        {
+          "DataId": 2012355,
+          "Position": {
+            "X": 64.10315,
+            "Y": 272.4497,
+            "Z": -616.4492
+          },
+          "StopDistance": 4,
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$.0": "[2]",
+          "$.1": "QuestVariables if done after [1]: 2 0 0 0 0 192"
+        },
+        {
+          "StopDistance": 8,
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Ultima Thule - Abode of the Ea"
+        },
+        {
+          "DataId": 2012356,
+          "Position": {
+            "X": 115.526,
+            "Y": 272.99915,
+            "Z": -617.853
+          },
+          "StopDistance": 4,
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "$.0": "[3]",
+          "$.1": "QuestVariables if done after [2]: 3 0 0 0 0 224",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2012357,
+          "Position": {
+            "X": 151.59839,
+            "Y": 272.9381,
+            "Z": -592.5841
+          },
+          "StopDistance": 4,
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "$.0": "[4]",
+          "$.1": "QuestVariables if done first: 1 0 0 0 0 16"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040318,
+          "Position": {
+            "X": 29.984009,
+            "Y": 270.45825,
+            "Z": -535.0271
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

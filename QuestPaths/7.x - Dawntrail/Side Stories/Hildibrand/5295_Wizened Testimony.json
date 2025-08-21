@@ -1,0 +1,281 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 311.757,
+            "Y": 70.0001,
+            "Z": -27.256859
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] True Vue"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 311.757,
+                  "Y": 70.0001,
+                  "Z": -27.256859
+                },
+                "TerritoryId": 1186,
+                "MaximumDistance": 50
+              }
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 311.757,
+                  "Y": 70.0001,
+                  "Z": -27.256859
+                },
+                "TerritoryId": 1186,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1051709,
+          "Position": {
+            "X": 307.6676,
+            "Y": 70.00009,
+            "Z": -26.962769
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053617,
+          "Position": {
+            "X": -120.47003,
+            "Y": 2.2297163,
+            "Z": 207.50745
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] True Vue",
+            "[Solution Nine] Information Center"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053617,
+          "Position": {
+            "X": -120.47003,
+            "Y": 2.2297163,
+            "Z": 207.50745
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053619,
+          "Position": {
+            "X": -127.244995,
+            "Y": 2.199962,
+            "Z": 236.71313
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1053620,
+          "Position": {
+            "X": -172.80847,
+            "Y": 2.2299733,
+            "Z": 207.96509
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1053621,
+          "Position": {
+            "X": -262.77563,
+            "Y": 2.1999757,
+            "Z": 236.25537
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1053626,
+          "Position": {
+            "X": -323.26245,
+            "Y": 13.999997,
+            "Z": 178.0575
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1053623,
+          "Position": {
+            "X": -252.21643,
+            "Y": 2.199965,
+            "Z": 257.95374
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1053627,
+          "Position": {
+            "X": -580.22437,
+            "Y": -0.89430946,
+            "Z": -521.5991
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Heritage Found - The Outskirts",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CHRHDB921_05295_SYSTEM_000_122",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1053630,
+          "Position": {
+            "X": 96.75745,
+            "Y": 12.03999,
+            "Z": 144.48767
+          },
+          "TerritoryId": 1254,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2014622,
+          "Position": {
+            "X": 97.70349,
+            "Y": 12.588623,
+            "Z": 127.885864
+          },
+          "TerritoryId": 1254,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2014623,
+          "Position": {
+            "X": 66.9718,
+            "Y": 13.534729,
+            "Z": 96.69641
+          },
+          "TerritoryId": 1254,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2014624,
+          "Position": {
+            "X": 104.14282,
+            "Y": 12.924377,
+            "Z": 4.9591064
+          },
+          "TerritoryId": 1254,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053633,
+          "Position": {
+            "X": 81.49841,
+            "Y": 12.039999,
+            "Z": 48.02002
+          },
+          "TerritoryId": 1254,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5296
+        }
+      ]
+    }
+  ]
+}

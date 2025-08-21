@@ -1,0 +1,222 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006646,
+          "Position": {
+            "X": -29.953552,
+            "Y": 46.99734,
+            "Z": 32.547485
+          },
+          "StopDistance": 7,
+          "TerritoryId": 147,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006657,
+          "Position": {
+            "X": -294.81964,
+            "Y": 88,
+            "Z": -225.17743
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "$": "This doesn't include the DRK/MCH/AST coffers that exist at level 50, but you cannot obtain them until HW",
+      "Steps": [
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 31337,
+          "$": "Lv49 Weapon Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20642,
+          "$": "Lv50 PLD Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20643,
+          "$": "Lv50 MNK Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20644,
+          "$": "Lv50 WAR Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20645,
+          "$": "Lv50 DRG Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20646,
+          "$": "Lv50 BRD Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20647,
+          "$": "Lv50 NIN Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20648,
+          "$": "Lv50 WHM Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20649,
+          "$": "Lv50 BLM Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20650,
+          "$": "Lv50 SMN Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "UseItem",
+          "ItemId": 20651,
+          "$": "Lv50 SCH Coffer",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 15,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006657,
+          "Position": {
+            "X": -294.81964,
+            "Y": 88,
+            "Z": -225.17743
+          },
+          "StopDistance": 7,
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

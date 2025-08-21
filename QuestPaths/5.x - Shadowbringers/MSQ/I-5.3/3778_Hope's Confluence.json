@@ -1,0 +1,62 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033854,
+          "Position": {
+            "X": 59.983154,
+            "Y": -3.0654925E-07,
+            "Z": 1.6021729
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMI108_03778_Q1_000_001",
+              "Answer": "TEXT_LUCKMI108_03778_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 931,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 738,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033856,
+          "Position": {
+            "X": 53.421753,
+            "Y": 0.019417252,
+            "Z": -0.045776367
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

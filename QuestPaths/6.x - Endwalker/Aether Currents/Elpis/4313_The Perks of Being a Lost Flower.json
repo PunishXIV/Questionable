@@ -1,0 +1,75 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041847,
+          "Position": {
+            "X": -484.2146,
+            "Y": 141.86789,
+            "Z": -97.21527
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041848,
+          "Position": {
+            "X": 258.35046,
+            "Y": -10.140662,
+            "Z": -95.71985
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZH018_04313_Q1_000_100",
+              "Answer": "TEXT_AKTKZH018_04313_A2_000_100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041848,
+          "Position": {
+            "X": -175.03741,
+            "Y": 12.098856,
+            "Z": 6.8771067
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041847,
+          "Position": {
+            "X": -484.2146,
+            "Y": 141.86789,
+            "Z": -97.21527
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos"
+        }
+      ]
+    }
+  ]
+}

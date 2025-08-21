@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029216,
+          "Position": {
+            "X": -235.09583,
+            "Y": 19.22425,
+            "Z": -70.72565
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029218,
+          "Position": {
+            "X": -704.43274,
+            "Y": 14.656629,
+            "Z": -45.5177
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -761.0279,
+            "Y": 36.49958,
+            "Z": -337.04126
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Comment": "Moves out of aggro range of the door guard"
+        },
+        {
+          "DataId": 1029764,
+          "Position": {
+            "X": -763.79034,
+            "Y": 36.49958,
+            "Z": -332.29572
+          },
+          "StopDistance": 7,
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029220,
+          "Position": {
+            "X": -801.4496,
+            "Y": 40.021206,
+            "Z": -393.6065
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009877,
+          "Position": {
+            "X": -820.6455,
+            "Y": 38.376343,
+            "Z": -359.4873
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Snipe",
+          "Comment": "Click murals"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029221,
+          "Position": {
+            "X": -523.09454,
+            "Y": 2.9589303,
+            "Z": -35.629883
+          },
+          "StopDistance": 7,
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

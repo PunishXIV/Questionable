@@ -1,0 +1,131 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030659,
+          "Position": {
+            "X": -131.15137,
+            "Y": 0,
+            "Z": -65.53754
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] Temenos Rookery"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "Craft",
+          "ItemId": 27255,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1030659,
+          "Position": {
+            "X": -131.15137,
+            "Y": 0,
+            "Z": -65.53754
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028489,
+          "Position": {
+            "X": 355.42847,
+            "Y": 3.8289368,
+            "Z": 224.17017
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1028491,
+          "Position": {
+            "X": 29.251465,
+            "Y": 36.20521,
+            "Z": -207.38544
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1030659,
+          "Position": {
+            "X": -131.15137,
+            "Y": 0,
+            "Z": -65.53754
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Amaro Launch",
+            "[Crystarium] Temenos Rookery"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] Temenos Rookery",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}

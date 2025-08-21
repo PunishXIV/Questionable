@@ -1,0 +1,86 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041278,
+          "Position": {
+            "X": 98.34436,
+            "Y": -1E-11,
+            "Z": -29.678833
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1025,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041279,
+          "Position": {
+            "X": 114.54944,
+            "Y": -9.999999E-12,
+            "Z": -25.742065
+          },
+          "TerritoryId": 1025,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1025,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 800,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041280,
+          "Position": {
+            "X": 98.95471,
+            "Y": -1E-11,
+            "Z": -29.953552
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1025,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041934,
+          "Position": {
+            "X": -639.765,
+            "Y": -27.175016,
+            "Z": 301.1062
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "NextQuestId": 4635
+        }
+      ]
+    }
+  ]
+}

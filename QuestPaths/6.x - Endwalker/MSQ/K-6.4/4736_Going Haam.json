@@ -1,0 +1,193 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1045397,
+          "Position": {
+            "X": 0.6560669,
+            "Y": 0.01927659,
+            "Z": 0.869751
+          },
+          "TerritoryId": 1161,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013358,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.2359009,
+            "Z": 5.9662476
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1161,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 963
+        },
+        {
+          "DataId": 1039602,
+          "Position": {
+            "X": 142.04614,
+            "Y": 4.783756,
+            "Z": -146.47144
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Meghaduta",
+            "[Radz-at-Han] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045401,
+          "Position": {
+            "X": -144.45721,
+            "Y": 28.05,
+            "Z": 219.1958
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMK102_04736_Q2_000_094",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 6.0711417,
+            "Y": -28.723347,
+            "Z": -43.467506
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "Mount": true
+        },
+        {
+          "DataId": 1045407,
+          "Position": {
+            "X": -32.578064,
+            "Y": -29.530006,
+            "Z": -125.96332
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1045412,
+          "Position": {
+            "X": -6.57666,
+            "Y": -31.530346,
+            "Z": 54.276245
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1045417,
+          "Position": {
+            "X": 135.9425,
+            "Y": -16.146997,
+            "Z": 236.22485
+          },
+          "StopDistance": 5,
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 822,
+            "Enabled": false,
+            "Notes": [
+              "Navigation issues for area transitions"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 8
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1045420,
+          "Position": {
+            "X": 142.07666,
+            "Y": -16.147,
+            "Z": 235.70605
+          },
+          "StopDistance": 7,
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

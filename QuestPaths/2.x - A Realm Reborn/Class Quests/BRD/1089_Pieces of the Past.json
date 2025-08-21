@@ -1,0 +1,161 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_JOBBRD451_01089_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002528,
+          "Position": {
+            "X": 512.291,
+            "Y": 10.482849,
+            "Z": 148.30237
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2002530,
+          "Position": {
+            "X": 576.2263,
+            "Y": -24.002502,
+            "Z": -423.75836
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "Position": {
+            "X": -143.16391,
+            "Y": -25.75711,
+            "Z": 34.669674
+          },
+          "TerritoryId": 138,
+          "Fly": true,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        },
+        {
+          "DataId": 2002527,
+          "Position": {
+            "X": -168.29181,
+            "Y": -21.5,
+            "Z": 44.144287
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -324.11298,
+            "Y": 89.13572,
+            "Z": -135.54353
+          },
+          "TerritoryId": 147,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "Fly": true
+        },
+        {
+          "DataId": 2002529,
+          "Position": {
+            "X": -324.7273,
+            "Y": 87.96814,
+            "Z": -133.50122
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006750,
+          "Position": {
+            "X": 16.464417,
+            "Y": 6.750492,
+            "Z": -7.3396606
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 1090
+        }
+      ]
+    }
+  ]
+}

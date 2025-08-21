@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046808,
+          "Position": {
+            "X": -20.73706,
+            "Y": -145.3148,
+            "Z": -649.3782
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047502,
+          "Position": {
+            "X": 196.27673,
+            "Y": -169.29994,
+            "Z": -483.48212
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046946,
+          "Position": {
+            "X": 275.7152,
+            "Y": -168.6204,
+            "Z": -453.8186
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050684,
+          "Position": {
+            "X": 391.37854,
+            "Y": -156.07434,
+            "Z": -388.50995
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5039,
+          "Comment": "Traveler to the Rescue"
+        },
+        {
+          "DataId": 1051195,
+          "Position": {
+            "X": 383.29138,
+            "Y": -154.50243,
+            "Z": -420.49292
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 5051,
+          "Comment": "Crisis of Corruption"
+        },
+        {
+          "DataId": 1046537,
+          "Position": {
+            "X": -32.822205,
+            "Y": -10.00001,
+            "Z": 142.93127
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ]
+        }
+      ]
+    }
+  ]
+}

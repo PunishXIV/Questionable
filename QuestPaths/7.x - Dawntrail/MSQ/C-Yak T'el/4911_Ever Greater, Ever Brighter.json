@@ -1,0 +1,124 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047726,
+          "Position": {
+            "X": -86.778076,
+            "Y": 100,
+            "Z": -167.37628
+          },
+          "StopDistance": 4,
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047730,
+          "Position": {
+            "X": -32.089783,
+            "Y": 95.5,
+            "Z": -77.683716
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047731,
+          "Position": {
+            "X": 93.18677,
+            "Y": -14,
+            "Z": 34.74475
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Vollok Shoonsa",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047735,
+          "Position": {
+            "X": -31.296265,
+            "Y": -10.00001,
+            "Z": 87.907104
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047740,
+          "Position": {
+            "X": -51.407654,
+            "Y": -19.32829,
+            "Z": 211.84094
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047812,
+          "Position": {
+            "X": -85.06909,
+            "Y": 100.04267,
+            "Z": -169.8482
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Vollok Shoonsa"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047742,
+          "Position": {
+            "X": 47.043457,
+            "Y": 48,
+            "Z": -425.5589
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Vollok Shoonsa",
+            "[Tuliyollal] Brightploom Post"
+          ]
+        }
+      ]
+    }
+  ]
+}

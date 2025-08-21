@@ -1,0 +1,189 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047986,
+          "Position": {
+            "X": -242.237,
+            "Y": 31,
+            "Z": -68.40625
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047991,
+          "Position": {
+            "X": -208.72821,
+            "Y": 30.49966,
+            "Z": -177.01996
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2013788,
+          "Position": {
+            "X": -202.86877,
+            "Y": 29.984009,
+            "Z": -229.29736
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1047992,
+          "Position": {
+            "X": -255.23767,
+            "Y": 31.341942,
+            "Z": -365.74353
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2013789,
+          "Position": {
+            "X": -286.97644,
+            "Y": 29.984009,
+            "Z": -335.74432
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Living Memory - Leynode Aero"
+        },
+        {
+          "DataId": 1047993,
+          "Position": {
+            "X": -281.91046,
+            "Y": 54.31037,
+            "Z": -412.2835
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047994,
+          "Position": {
+            "X": -247.7608,
+            "Y": 30.999998,
+            "Z": -71.27496
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -371.89844,
+            "Y": 30.099947,
+            "Z": -84.85613
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013790,
+          "Position": {
+            "X": -333.9132,
+            "Y": 33.951294,
+            "Z": -132.79932
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013983,
+          "Position": {
+            "X": -484.18402,
+            "Y": 37.979614,
+            "Z": -50.003845
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818488
+        },
+        {
+          "DataId": 1047999,
+          "Position": {
+            "X": -521.0803,
+            "Y": -10.000387,
+            "Z": -445.76184
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Living Memory - Leynode Aero"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000598,
+          "Position": {
+            "X": -170.82477,
+            "Y": 9.964111,
+            "Z": -84.153564
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -108.26998,
+            "Y": 2.4296746,
+            "Z": -35.70589
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
+            302
+          ],
+          "EnemySpawnType": "OverworldEnemies"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000598,
+          "Position": {
+            "X": -170.82477,
+            "Y": 9.964111,
+            "Z": -84.153564
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

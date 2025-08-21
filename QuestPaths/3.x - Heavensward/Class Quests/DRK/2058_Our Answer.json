@@ -1,0 +1,138 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014890,
+          "Position": {
+            "X": 6.9122925,
+            "Y": -1.9210143,
+            "Z": 47.287598
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006305,
+          "Position": {
+            "X": -94.95697,
+            "Y": 298.63428,
+            "Z": -212.66504
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_JOBDRK500_02058_SAY_000_000"
+          },
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1015328,
+          "Position": {
+            "X": -313.5271,
+            "Y": 244.50482,
+            "Z": 33.310425
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006306,
+          "Position": {
+            "X": -405.53906,
+            "Y": 274.70813,
+            "Z": 79.087524
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4678,
+            4679,
+            4696
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014906,
+          "Position": {
+            "X": -313.5271,
+            "Y": 244.50482,
+            "Z": 33.310425
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014907,
+          "Position": {
+            "X": -314.6258,
+            "Y": 244.62024,
+            "Z": 32.272827
+          },
+          "TerritoryId": 155,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014908,
+          "Position": {
+            "X": -431.26575,
+            "Y": 210.99998,
+            "Z": -251.20929
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

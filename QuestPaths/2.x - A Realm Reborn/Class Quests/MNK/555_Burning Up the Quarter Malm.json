@@ -1,0 +1,190 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": ["liza", "plogon_enjoyer"],
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001718,
+          "Position": {
+            "X": -108.2017,
+            "Y": 4.989685,
+            "Z": -105.7603
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            128,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2001719,
+          "Position": {
+            "X": -105.9365,
+            "Y": 4.9655,
+            "Z": -107.8618
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            64,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2001720,
+          "Position": {
+            "X": -77.89734,
+            "Y": 5.0201416,
+            "Z": -129.19812
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            32,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2001721,
+          "Position": {
+            "X": -74.906555,
+            "Y": 4.8981323,
+            "Z": -130.99878
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            16,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2001722,
+          "Position": {
+            "X": -71.732666,
+            "Y": 5.0201416,
+            "Z": -132.64673
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Action",
+          "Action": "Bootshine",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            8,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -210.32118,
+            "Y": 21.582167,
+            "Z": -94.337494
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            771
+          ],
+          "Fly": true,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "CombatDelaySecondsAtStart": 0,
+          "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -118.55462,
+            "Y": 8.216448,
+            "Z": -82.81951
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "AetheryteShortcut": "Ul'dah",
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 558
+        }
+      ]
+    }
+  ]
+}

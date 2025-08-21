@@ -1,0 +1,192 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026970,
+          "Position": {
+            "X": -58.457336,
+            "Y": 79.05602,
+            "Z": 43.686523
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024156,
+          "Position": {
+            "X": -59.098206,
+            "Y": 79.05602,
+            "Z": 45.303955
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 735,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                735
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1026973,
+          "Position": {
+            "X": -10.025269,
+            "Y": 0.046870913,
+            "Z": -2.5482788
+          },
+          "TerritoryId": 735,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026974,
+          "Position": {
+            "X": -10.788147,
+            "Y": 0.04687085,
+            "Z": -4.4404297
+          },
+          "StopDistance": 5,
+          "TerritoryId": 735,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009044,
+          "Position": {
+            "X": -28.763306,
+            "Y": 0.56451416,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 735,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 628,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                628
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1026969,
+          "Position": {
+            "X": -55.985413,
+            "Y": 79.05602,
+            "Z": 43.656006
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026976,
+          "Position": {
+            "X": 115.12927,
+            "Y": 12.000001,
+            "Z": 71.000244
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDI302_03188_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024156,
+          "Position": {
+            "X": -59.098206,
+            "Y": 79.05602,
+            "Z": 45.303955
+          },
+          "StopDistance": 5,
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Airship Landing"
+          ],
+          "TargetTerritoryId": 735
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1026977,
+          "Position": {
+            "X": -4.3793945,
+            "Y": -2.5159047E-06,
+            "Z": -6.3325195
+          },
+          "TerritoryId": 735,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDI302_03188_Q1_000_000",
+              "Answer": "TEXT_STMBDI302_03188_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026978,
+          "Position": {
+            "X": -9.10968,
+            "Y": -2.9294104E-06,
+            "Z": -7.309082
+          },
+          "TerritoryId": 735,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3189
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029249,
+          "Position": {
+            "X": 449.8817,
+            "Y": 6.955061,
+            "Z": -208.75867
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029251,
+          "Position": {
+            "X": 450.00366,
+            "Y": 6.955061,
+            "Z": -202.38043
+          },
+          "StopDistance": 7,
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 580.9263,
+            "Y": 18.753235,
+            "Z": -43.01526
+          },
+          "StopDistance": 1,
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002554
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009892,
+          "Position": {
+            "X": 580.9263,
+            "Y": 18.753235,
+            "Z": -43.01526
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029554,
+          "Position": {
+            "X": 585.7174,
+            "Y": 18.386158,
+            "Z": -59.18976
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMC118_03339_Q1_000_000",
+              "Answer": "TEXT_LUCKMC118_03339_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029555,
+          "Position": {
+            "X": 453.26917,
+            "Y": 6.955061,
+            "Z": -204.39465
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow"
+        }
+      ]
+    }
+  ]
+}

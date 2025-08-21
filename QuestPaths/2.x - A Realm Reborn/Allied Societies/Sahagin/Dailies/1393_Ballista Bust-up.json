@@ -1,0 +1,93 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005939,
+                    "Position": {
+                        "X": -247.73022,
+                        "Y": -42.09973,
+                        "Z": 52.017944
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -247.73022,
+                                    "Y": -42.09973,
+                                    "Z": 52.017944
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -289.73663,
+                        "Y": -41.544178,
+                        "Z": -358.22406
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "OverworldEnemies",
+                    "KillEnemyDataIds": [
+                        2836
+                    ],
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -245.65279,
+                        "Y": -41.732937,
+                        "Z": 52.040615
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "WalkTo",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -245.65279,
+                                    "Y": -41.732937,
+                                    "Z": 52.040615
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 5
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1005939,
+                    "Position": {
+                        "X": -247.73022,
+                        "Y": -42.09973,
+                        "Z": 52.017944
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025023,
+          "Position": {
+            "X": -1.7853394,
+            "Y": 0.024148807,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 639,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDD101_03070_EVENTAREA_WARP_100_027",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
+        {
+          "DataId": 1025552,
+          "Position": {
+            "X": 0.045776367,
+            "Y": 0.021091362,
+            "Z": -2.9145508
+          },
+          "TerritoryId": 744,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2009289,
+          "Position": {
+            "X": 0.02468622,
+            "Y": 0.9079783,
+            "Z": 18.30971
+          },
+          "TerritoryId": 744,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 759
+        },
+        {
+          "DataId": 1025555,
+          "Position": {
+            "X": 148.05823,
+            "Y": -4.178815,
+            "Z": 60.135742
+          },
+          "TerritoryId": 759,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Doman Enclave] Aetheryte Plaza",
+            "[Doman Enclave] Ferry Docks"
+          ]
+        }
+      ]
+    }
+  ]
+}

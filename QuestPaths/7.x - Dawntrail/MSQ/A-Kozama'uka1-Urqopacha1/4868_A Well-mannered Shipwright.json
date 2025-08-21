@@ -1,0 +1,211 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046725,
+          "Position": {
+            "X": -105.85187,
+            "Y": 9.773315,
+            "Z": -536.9192
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046840,
+          "Position": {
+            "X": 214.52649,
+            "Y": 10.257622,
+            "Z": -577.11145
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013934,
+          "Position": {
+            "X": 299.48877,
+            "Y": 1.3884888,
+            "Z": -688.4413
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818419
+        },
+        {
+          "DataId": 1046741,
+          "Position": {
+            "X": 335.22546,
+            "Y": 87.375534,
+            "Z": -612.54297
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046729,
+          "Position": {
+            "X": 323.0487,
+            "Y": 4.24628,
+            "Z": -638.4833
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046731,
+          "Position": {
+            "X": -182.20801,
+            "Y": 2.399998,
+            "Z": -388.50995
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046733,
+          "Position": {
+            "X": -445.97546,
+            "Y": 1.5936834,
+            "Z": -205.2796
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2013627,
+          "Position": {
+            "X": -576.2875,
+            "Y": -0.015319824,
+            "Z": -140.42883
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2013935,
+          "Position": {
+            "X": -599.57275,
+            "Y": 5.142273,
+            "Z": -179.46143
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818420
+        },
+        {
+          "DataId": 1046733,
+          "Position": {
+            "X": -445.97546,
+            "Y": 1.5936834,
+            "Z": -205.2796
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "Position": {
+            "X": -510.37933,
+            "Y": -0.39999998,
+            "Z": -277.78192
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -521.0261,
+            "Y": -0.40000004,
+            "Z": -329.19336
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013936,
+          "Position": {
+            "X": -638.056,
+            "Y": 6.5460815,
+            "Z": -486.50342
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818423
+        },
+        {
+          "DataId": 1046741,
+          "Position": {
+            "X": 335.22546,
+            "Y": 87.375534,
+            "Z": -612.54297
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046735,
+          "Position": {
+            "X": -96.60492,
+            "Y": 9.773315,
+            "Z": -533.40967
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    }
+  ]
+}

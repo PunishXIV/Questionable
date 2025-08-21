@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038702,
+          "Position": {
+            "X": 394.27783,
+            "Y": 165.94997,
+            "Z": -521.294
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Labyrinthos - Archeion"
+        },
+        {
+          "DataId": 1037475,
+          "Position": {
+            "X": 379.14087,
+            "Y": 170.1,
+            "Z": -410.97125
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038712,
+          "Position": {
+            "X": 415.8236,
+            "Y": 166.41167,
+            "Z": -451.10248
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038714,
+          "Position": {
+            "X": 383.01672,
+            "Y": 166.19273,
+            "Z": -464.7746
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1038716,
+          "Position": {
+            "X": 468.10095,
+            "Y": 166.2036,
+            "Z": -458.2132
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038717,
+          "Position": {
+            "X": 579.91907,
+            "Y": 168.84044,
+            "Z": -517.3572
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2011839,
+          "Position": {
+            "X": 576.8367,
+            "Y": 168.99365,
+            "Z": -519.18823
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Snipe",
+          "Comment": "Shoot Large Green Bird"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038718,
+          "Position": {
+            "X": 644.9835,
+            "Y": 185.14716,
+            "Z": -130.23578
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

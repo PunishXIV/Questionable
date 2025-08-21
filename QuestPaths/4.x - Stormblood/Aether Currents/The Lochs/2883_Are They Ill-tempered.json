@@ -1,0 +1,77 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022991,
+          "Position": {
+            "X": -539.6353,
+            "Y": 7.6119823,
+            "Z": 52.140015
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2007987,
+          "Position": {
+            "X": -380.2091,
+            "Y": 10.055664,
+            "Z": 16.891724
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818165
+        },
+        {
+          "Position": {
+            "X": -197.38828,
+            "Y": 3.820687,
+            "Z": 288.09766
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
+            6599
+          ],
+          "EnemySpawnType": "OverworldEnemies",
+          "CombatItemUse": {
+            "ItemId": 2002315,
+            "Condition": "Health%",
+            "Value": 50
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022991,
+          "Position": {
+            "X": -539.6353,
+            "Y": 7.6119823,
+            "Z": 52.140015
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027617,
+          "Position": {
+            "X": 45.944946,
+            "Y": -13.795549,
+            "Z": -118.0896
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030471,
+          "Position": {
+            "X": 88.05969,
+            "Y": -7.2009244,
+            "Z": -73.71637
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1030470,
+          "Position": {
+            "X": 98.039185,
+            "Y": -17.955051,
+            "Z": -77.10382
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1030468,
+          "Position": {
+            "X": 39.53601,
+            "Y": -23.440458,
+            "Z": 102.4032
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1030469,
+          "Position": {
+            "X": -112.16907,
+            "Y": -14.506645,
+            "Z": -49.515564
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] Southeast Derelicts",
+            "[Eulmore] Nightsoil Pots"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027617,
+          "Position": {
+            "X": 45.944946,
+            "Y": -13.795549,
+            "Z": -118.0896
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

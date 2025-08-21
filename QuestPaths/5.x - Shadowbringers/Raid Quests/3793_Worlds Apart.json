@@ -1,0 +1,70 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032590,
+          "Position": {
+            "X": 265.3086,
+            "Y": 7.1558266,
+            "Z": -237.78137
+          },
+          "StopDistance": 4,
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010961,
+          "Position": {
+            "X": -6.9733887,
+            "Y": 3.982544,
+            "Z": 221.36255
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 268.15204,
+            "Y": 7.1558266,
+            "Z": -237.94643
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true
+        },
+        {
+          "DataId": 1032590,
+          "Position": {
+            "X": 265.3086,
+            "Y": 7.1558266,
+            "Z": -237.78137
+          },
+          "StopDistance": 4,
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3975
+        }
+      ]
+    }
+  ]
+}

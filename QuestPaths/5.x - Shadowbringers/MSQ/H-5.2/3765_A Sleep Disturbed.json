@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032121,
+          "Position": {
+            "X": 0.045776367,
+            "Y": -5.996435E-14,
+            "Z": -5.5390625
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032506,
+          "Position": {
+            "X": 453.05554,
+            "Y": 33.66181,
+            "Z": -156.9696
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Fanow"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032509,
+          "Position": {
+            "X": 843.25916,
+            "Y": -65.313614,
+            "Z": -387.10614
+          },
+          "TerritoryId": 817,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "Doesn't walk to the teleporter to finish the duty"
+            ]
+          },
+          "Fly": true,
+          "Comment": "A Sleep Disturbed (Opo-Opo, Wolf, Serpent)",
+          "$": "The dialogue choices and data ids here are recycled",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "DataId": 2011009,
+              "ExcelSheet": "GimmickYesNo",
+              "Prompt": 138,
+              "Yes": true
+            },
+            {
+              "Type": "YesNo",
+              "DataId": 2011006,
+              "ExcelSheet": "GimmickYesNo",
+              "Prompt": 139,
+              "Yes": true
+            },
+            {
+              "Type": "YesNo",
+              "DataId": 2011007,
+              "ExcelSheet": "GimmickYesNo",
+              "Prompt": 142,
+              "Yes": true
+            },
+            {
+              "Type": "YesNo",
+              "ExcelSheet": "GimmickYesNo",
+              "Prompt": 137,
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032506,
+          "Position": {
+            "X": 453.05554,
+            "Y": 33.66181,
+            "Z": -156.9696
+          },
+          "StopDistance": 5,
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

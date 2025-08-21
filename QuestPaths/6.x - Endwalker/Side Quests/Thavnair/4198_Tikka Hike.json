@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039375,
+          "Position": {
+            "X": 148.3634,
+            "Y": 5.192836,
+            "Z": 611.2611
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039376,
+          "Position": {
+            "X": -15.640564,
+            "Y": 35.742054,
+            "Z": 392.20264
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011900,
+          "Position": {
+            "X": -17.135986,
+            "Y": 35.62976,
+            "Z": 394.39978
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14121
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039376,
+          "Position": {
+            "X": -15.640564,
+            "Y": 35.742054,
+            "Z": 392.20264
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039377,
+          "Position": {
+            "X": 147.60046,
+            "Y": 5.186336,
+            "Z": 610.62024
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA019_04198_Q1_000_000",
+              "Answer": "TEXT_AKTKZA019_04198_A1_000_002"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

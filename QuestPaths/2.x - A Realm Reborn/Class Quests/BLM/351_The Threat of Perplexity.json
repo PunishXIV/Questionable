@@ -1,0 +1,226 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "Comment": "TODO Fix pathing if flying is locked",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001712,
+          "Position": {
+            "X": -241.50458,
+            "Y": 19.57727,
+            "Z": 84.64172
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002305,
+          "Position": {
+            "X": 14.419739,
+            "Y": 22.157166,
+            "Z": 72.3125
+          },
+          "TerritoryId": 140,
+          "Fly": true,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002324,
+          "Position": {
+            "X": 112.80994,
+            "Y": 17.536886,
+            "Z": 31.296265
+          },
+          "TerritoryId": 140,
+          "Fly": true,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1002322,
+          "Position": {
+            "X": 116.89929,
+            "Y": 17.536886,
+            "Z": 12.954895
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1002323,
+          "Position": {
+            "X": 132.43298,
+            "Y": 21.104982,
+            "Z": 9.018005
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002305,
+          "Position": {
+            "X": 14.419739,
+            "Y": 22.157166,
+            "Z": 72.3125
+          },
+          "TerritoryId": 140,
+          "Fly": true,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2001472,
+          "Position": {
+            "X": 150.71338,
+            "Y": 18.783813,
+            "Z": -5.7526855
+          },
+          "TerritoryId": 140,
+          "Fly": true,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.3.2.4",
+            "Notes": [
+              "Duty somewhat expects you to put the boss to sleep, vbm doesn't and lets the friendly NPC die"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1002305,
+          "Position": {
+            "X": 14.419739,
+            "Y": 22.157166,
+            "Z": 72.3125
+          },
+          "TerritoryId": 140,
+          "Fly": true,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2001474,
+          "Position": {
+            "X": 96.238525,
+            "Y": 16.952698,
+            "Z": 188.83032
+          },
+          "TerritoryId": 140,
+          "Fly": true,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1001712,
+          "Position": {
+            "X": -241.50458,
+            "Y": 19.57727,
+            "Z": 84.64172
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001708,
+          "Position": {
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 352
+        }
+      ]
+    }
+  ]
+}

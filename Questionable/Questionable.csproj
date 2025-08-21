@@ -1,0 +1,38 @@
+﻿<Project Sdk="Dalamud.NET.Sdk/13.0.0">
+    <PropertyGroup>
+        <OutputPath>dist</OutputPath>
+        <PathMap Condition="$(SolutionDir) != ''">$(SolutionDir)=X:\</PathMap>
+        <Platforms>x64</Platforms>
+    </PropertyGroup>
+
+    <Import Project="..\LLib\LLib.targets" />
+    <Import Project="..\LLib\RenameZip.targets" />
+
+    <ItemGroup>
+        <PackageReference Include="Dalamud.Extensions.MicrosoftLogging" Version="4.0.1" />
+        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" ExcludeAssets="runtime" />
+        <PackageReference Include="JsonSchema.Net" Version="7.4.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
+        <PackageReference Include="NotificationMasterAPI" Version="1.0.0.1" />
+        <PackageReference Include="System.Text.Json" Version="9.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GatheringPaths\GatheringPaths.csproj" />
+        <ProjectReference Include="..\LLib\LLib.csproj" />
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
+        <ProjectReference Include="..\QuestPaths\QuestPaths.csproj" />
+        <ProjectReference Include="..\vendor\NotificationMasterAPI\NotificationMasterAPI\NotificationMasterAPI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Controller\CombatModules\BossModPreset_Overworld.json" />
+        <None Remove="Controller\CombatModules\BossModPreset.QuestBattle.json" />
+        <EmbeddedResource Include="Controller\CombatModules\BossModPreset_Overworld.json">
+            <LogicalName>Questionable.Controller.CombatModules.BossModPreset.Overworld</LogicalName>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Controller\CombatModules\BossModPreset_QuestBattle.json">
+            <LogicalName>Questionable.Controller.CombatModules.BossModPreset.QuestBattle</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
+</Project>

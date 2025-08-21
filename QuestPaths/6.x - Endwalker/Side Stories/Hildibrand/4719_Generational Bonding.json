@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042573,
+          "Position": {
+            "X": 565.91125,
+            "Y": 13.300535,
+            "Z": 242.48108
+          },
+          "StopDistance": 7,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044765,
+          "Position": {
+            "X": 9.567322,
+            "Y": -6.762952E-05,
+            "Z": 17.715698
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1044752,
+          "Position": {
+            "X": -432.02875,
+            "Y": 22.24389,
+            "Z": 507.53027
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044754,
+          "Position": {
+            "X": -458.3963,
+            "Y": 20.805109,
+            "Z": -333.69952
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2013272,
+          "Position": {
+            "X": 697.8712,
+            "Y": 30.105957,
+            "Z": -789.7612
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Tertium",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1044762,
+          "Position": {
+            "X": 694.97217,
+            "Y": 30.104027,
+            "Z": -785.8244
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "SinglePlayerDuty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044765,
+          "Position": {
+            "X": 9.567322,
+            "Y": -6.762952E-05,
+            "Z": 17.715698
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4754
+        }
+      ]
+    }
+  ]
+}

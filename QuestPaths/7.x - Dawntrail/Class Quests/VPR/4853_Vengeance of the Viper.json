@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046371,
+          "Position": {
+            "X": 205.06592,
+            "Y": 8.660461,
+            "Z": -71.70221
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014381,
+          "Position": {
+            "X": -64.59149,
+            "Y": -0.5036011,
+            "Z": 7.7667847
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046388,
+          "Position": {
+            "X": -275.01337,
+            "Y": 27.017544,
+            "Z": 636.8047
+          },
+          "TerritoryId": 146,
+          "InteractionType": "SinglePlayerDuty",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046391,
+          "Position": {
+            "X": -414.87756,
+            "Y": -0.4116819,
+            "Z": 747.7378
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046393,
+          "Position": {
+            "X": 204.48608,
+            "Y": 8.565186,
+            "Z": -71.488525
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        }
+      ]
+    }
+  ]
+}

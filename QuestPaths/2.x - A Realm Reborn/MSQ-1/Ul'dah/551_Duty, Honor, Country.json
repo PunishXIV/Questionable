@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1004005,
+          "Position": {
+            "X": -123.88806,
+            "Y": 40,
+            "Z": 95.384155
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Alchemists' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANWIL007_00551_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1004002,
+          "Position": {
+            "X": 1.0527954,
+            "Y": 0.014807776,
+            "Z": -1.6633301
+          },
+          "TerritoryId": 210,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001427,
+          "Position": {
+            "X": 246.93665,
+            "Y": -17.105408,
+            "Z": -131.48706
+          },
+          "TerritoryId": 141,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292",
+            "Notes": [
+              "(Phase 1) Healer NPCs are only killed after the boss dies - allied NPCs will kill them eventually; all NPCs need to be killed for the duty to complete"
+            ]
+          },
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004005,
+          "Position": {
+            "X": -123.88806,
+            "Y": 40,
+            "Z": 95.384155
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANWIL007_00551_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1004003,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 0.014807776,
+            "Z": -1.6937866
+          },
+          "TerritoryId": 210,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

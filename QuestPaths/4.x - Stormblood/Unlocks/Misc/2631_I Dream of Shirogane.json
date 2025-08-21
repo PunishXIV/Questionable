@@ -1,0 +1,102 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022628,
+          "Position": {
+            "X": 38.651123,
+            "Y": 2.99999,
+            "Z": -66.7583
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023604,
+          "Position": {
+            "X": -113.96973,
+            "Y": -7.010037,
+            "Z": -39.292053
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019006,
+          "Position": {
+            "X": -116.80786,
+            "Y": -7.0101376,
+            "Z": -39.108948
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 641,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Addon",
+              "Prompt": 6347,
+              "Answer": 6349
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023605,
+          "Position": {
+            "X": -99.99243,
+            "Y": 2.1199996,
+            "Z": 117.57068
+          },
+          "TerritoryId": 641,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022628,
+          "Position": {
+            "X": 38.651123,
+            "Y": 2.99999,
+            "Z": -66.7583
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane"
+        }
+      ]
+    }
+  ]
+}

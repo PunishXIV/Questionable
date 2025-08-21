@@ -1,0 +1,110 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1015978,
+          "Position": {
+            "X": 111.283936,
+            "Y": 24.388157,
+            "Z": -4.3793945
+          },
+          "StopDistance": 7,
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -132.00812,
+            "Y": 304.1538,
+            "Z": -292.25592
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1016587,
+          "Position": {
+            "X": -133.92847,
+            "Y": 304.15384,
+            "Z": -300.83167
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016587,
+          "Position": {
+            "X": -133.92847,
+            "Y": 304.15384,
+            "Z": -300.83167
+          },
+          "TerritoryId": 155,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016072,
+          "Position": {
+            "X": -53.543945,
+            "Y": 298.9,
+            "Z": -204.36407
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -132.00812,
+            "Y": 304.1538,
+            "Z": -292.25592
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1016588,
+          "Position": {
+            "X": -136.64453,
+            "Y": 304.15384,
+            "Z": -308.36963
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

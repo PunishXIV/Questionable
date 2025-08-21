@@ -1,0 +1,132 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 400,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Churning Mists - Zenith"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32366,
+          "Locations": [
+            {
+              "Position": {
+                "X": -699.5319,
+                "Y": 91.18189,
+                "Z": -362.7602
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32367,
+          "Locations": [
+            {
+              "Position": {
+                "X": -681.9284,
+                "Y": 91.30399,
+                "Z": -363.0468
+              }
+            },
+            {
+              "Position": {
+                "X": -709.8129,
+                "Y": 91.42828,
+                "Z": -361.5186
+              },
+              "MinimumAngle": 85,
+              "MaximumAngle": 285
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32364,
+          "Locations": [
+            {
+              "Position": {
+                "X": -680.1304,
+                "Y": 91.30952,
+                "Z": -479.2773
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 275
+            }
+          ]
+        },
+        {
+          "DataId": 32365,
+          "Locations": [
+            {
+              "Position": {
+                "X": -691.5847,
+                "Y": 91.2657,
+                "Z": -491.8746
+              },
+              "MinimumAngle": -115,
+              "MaximumAngle": 90
+            },
+            {
+              "Position": {
+                "X": -685.3473,
+                "Y": 91.26568,
+                "Z": -474.3657
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 205
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32362,
+          "Locations": [
+            {
+              "Position": {
+                "X": -764.3091,
+                "Y": 91.5154,
+                "Z": -554.3649
+              },
+              "MinimumAngle": -125,
+              "MaximumAngle": 65
+            }
+          ]
+        },
+        {
+          "DataId": 32363,
+          "Locations": [
+            {
+              "Position": {
+                "X": -763.1495,
+                "Y": 91.37257,
+                "Z": -542.7809
+              },
+              "MinimumAngle": 70,
+              "MaximumAngle": 305
+            },
+            {
+              "Position": {
+                "X": -776.5944,
+                "Y": 91.16921,
+                "Z": -566.8766
+              },
+              "MinimumAngle": -95,
+              "MaximumAngle": 110
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

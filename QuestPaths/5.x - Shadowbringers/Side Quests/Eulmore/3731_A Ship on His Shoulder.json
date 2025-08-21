@@ -1,0 +1,50 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1027570,
+                    "Position": {
+                        "X": 47.989624,
+                        "Y": 83.00107,
+                        "Z": -75.30328
+                    },
+                    "TerritoryId": 820,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Eulmore",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 47.989624,
+                                    "Y": 83.00107,
+                                    "Z": -75.30328
+                                },
+                                "TerritoryId": 820,
+                                "MaximumDistance": 100
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1031118,
+                    "Position": {
+                        "X": -2.3041382,
+                        "Y": 85.537865,
+                        "Z": -82.65814
+                    },
+                    "TerritoryId": 820,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

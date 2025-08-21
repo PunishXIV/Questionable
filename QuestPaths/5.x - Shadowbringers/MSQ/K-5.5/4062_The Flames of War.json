@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1036352,
+          "Position": {
+            "X": -679.92676,
+            "Y": -41.30151,
+            "Z": 429.00732
+          },
+          "TerritoryId": 402,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1036368,
+          "Position": {
+            "X": -137.56012,
+            "Y": 4.1,
+            "Z": -109.819214
+          },
+          "StopDistance": 5,
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1036374,
+          "Position": {
+            "X": -25.0401,
+            "Y": 83.19998,
+            "Z": 10.452393
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 130,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 777,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1036376,
+          "Position": {
+            "X": -20.065674,
+            "Y": 83.2,
+            "Z": 15.121643
+          },
+          "StopDistance": 7,
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

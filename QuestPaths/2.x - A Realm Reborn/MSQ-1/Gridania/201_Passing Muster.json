@@ -1,0 +1,110 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000421,
+          "Position": {
+            "X": 98.25281,
+            "Y": -8,
+            "Z": -78.446655
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 148,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "DataId": 1000396,
+          "Position": {
+            "X": 82.597046,
+            "Y": -7.893894,
+            "Z": -103.349365
+          },
+          "TerritoryId": 148,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262227
+          },
+          "ItemId": 2653,
+          "ItemCount": 1,
+          "RequiredCurrentJob": [
+            "DoW"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000396,
+          "Position": {
+            "X": 82.597046,
+            "Y": -7.893894,
+            "Z": -103.349365
+          },
+          "TerritoryId": 148,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262227
+          },
+          "ItemId": 2655,
+          "ItemCount": 1,
+          "RequiredCurrentJob": [
+            "DoM"
+          ]
+        },
+        {
+          "TerritoryId": 148,
+          "InteractionType": "EquipItem",
+          "ItemId": 2653,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 148,
+          "InteractionType": "EquipItem",
+          "ItemId": 2655,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000421,
+          "Position": {
+            "X": 98.25281,
+            "Y": -8,
+            "Z": -78.446655
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "Comment": "All starting gear (except the hat) is ilvl 5 already"
+        }
+      ]
+    }
+  ]
+}

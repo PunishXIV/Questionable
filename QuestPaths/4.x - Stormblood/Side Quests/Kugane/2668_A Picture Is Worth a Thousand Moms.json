@@ -1,0 +1,160 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022958,
+          "Position": {
+            "X": 25.253662,
+            "Y": 7.9999995,
+            "Z": 159.47205
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -59.62348,
+            "Y": 7.999999,
+            "Z": -59.427254
+          },
+          "TerritoryId": 628,
+          "InteractionType": "WalkTo",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "AethernetShortcut": [
+            "[Kugane] Thavnairian Consulate",
+            "[Kugane] Shiokaze Hostelry"
+          ],
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "Position": {
+            "X": -74.28216,
+            "Y": 18,
+            "Z": -164.39622
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Jump",
+          "AethernetShortcut": [
+            "[Kugane] Shiokaze Hostelry",
+            "[Kugane] Bokairo Inn"
+          ],
+          "JumpDestination": {
+            "Position": {
+              "X": -67.259315,
+              "Y": 20.530502,
+              "Z": -163.86617
+            },
+            "StopDistance": 0.5,
+            "Type": "RepeatedJumps"
+          }
+        },
+        {
+          "Position": {
+            "X": -37.85175,
+            "Y": 20.196363,
+            "Z": -163.43034
+          },
+          "TerritoryId": 628,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -37.806847,
+            "Y": 21.332985,
+            "Z": -161.45049
+          },
+          "StopDistance": 1,
+          "TerritoryId": 628,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -31.778416,
+              "Y": 23.141376,
+              "Z": -159.92921
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -32.529102,
+            "Y": 23.164635,
+            "Z": -159.86409
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 628,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -28.255697,
+              "Y": 24.146992,
+              "Z": -159.81477
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -28.255697,
+            "Y": 24.146992,
+            "Z": -159.81477
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 628,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -24.809277,
+              "Y": 24.899979,
+              "Z": -159.88982
+            },
+            "StopDistance": 0.5
+          },
+          "RestartNavigationIfCancelled": false,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022958,
+          "Position": {
+            "X": 25.253662,
+            "Y": 7.9999995,
+            "Z": 159.47205
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Thavnairian Consulate"
+          ]
+        }
+      ]
+    }
+  ]
+}

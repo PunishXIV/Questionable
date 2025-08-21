@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014232,
+          "Position": {
+            "X": 544.97595,
+            "Y": -51.27571,
+            "Z": 65.384766
+          },
+          "StopDistance": 7,
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBBRD560_01716_Q1_000_000",
+              "Answer": "TEXT_JOBBRD560_01716_A1_000_000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014248,
+          "Position": {
+            "X": 218.43286,
+            "Y": -104.75025,
+            "Z": 592.00415
+          },
+          "TerritoryId": 398,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014249,
+          "Position": {
+            "X": 186.08374,
+            "Y": -119.0711,
+            "Z": 480.4912
+          },
+          "StopDistance": 5,
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014231,
+          "Position": {
+            "X": 544.4877,
+            "Y": -51.27571,
+            "Z": 64.62195
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        }
+      ]
+    }
+  ]
+}

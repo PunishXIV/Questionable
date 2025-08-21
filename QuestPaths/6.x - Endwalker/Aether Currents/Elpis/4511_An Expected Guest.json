@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041369,
+          "Position": {
+            "X": -639.85657,
+            "Y": 162.30406,
+            "Z": -189.47137
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -588.7367,
+            "Y": 158.76302,
+            "Z": -195.30913
+          },
+          "TerritoryId": 961,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -318.20203,
+            "Y": 147.32677,
+            "Z": -31.146088
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            14070
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040888,
+          "Position": {
+            "X": -320.0885,
+            "Y": 147.4287,
+            "Z": -30.594421
+          },
+          "StopDistance": 5,
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041369,
+          "Position": {
+            "X": -639.85657,
+            "Y": 162.30406,
+            "Z": -189.47137
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos"
+        }
+      ]
+    }
+  ]
+}

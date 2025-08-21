@@ -1,0 +1,59 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 816,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 816,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "DataId": 1044547,
+          "Position": {
+            "X": -241.68768,
+            "Y": 51.058994,
+            "Z": 620.8744
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/008/CtsSfsCharacter9_00815",
+              "Prompt": "TEXT_CTSSFSCHARACTER9_00815_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER9_00815_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/008/CtsSfsCharacter9_00815",
+              "Prompt": "TEXT_CTSSFSCHARACTER9_00815_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER9_00815_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

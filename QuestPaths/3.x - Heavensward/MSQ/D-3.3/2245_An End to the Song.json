@@ -1,0 +1,59 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016813,
+          "Position": {
+            "X": -755.30634,
+            "Y": 123.72871,
+            "Z": 210.95593
+          },
+          "StopDistance": 7,
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Churning Mists - Zenith",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 569,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 169,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016589,
+          "Position": {
+            "X": 7.4005737,
+            "Y": 1.2791227,
+            "Z": 104.35632
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

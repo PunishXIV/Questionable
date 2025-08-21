@@ -1,0 +1,162 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046702,
+          "Position": {
+            "X": -122.453674,
+            "Y": 9.842161,
+            "Z": -441.21466
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046707,
+          "Position": {
+            "X": 39.16992,
+            "Y": 0.998726,
+            "Z": -390.0359
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013624,
+          "Position": {
+            "X": 86.71704,
+            "Y": -0.13739014,
+            "Z": -388.8152
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1046712,
+          "Position": {
+            "X": 142.1073,
+            "Y": 0.7218611,
+            "Z": -421.5
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2013625,
+          "Position": {
+            "X": 131.0597,
+            "Y": -0.13739014,
+            "Z": -370.2907
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2013626,
+          "Position": {
+            "X": 177.44714,
+            "Y": -0.13739014,
+            "Z": -371.63348
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1046713,
+          "Position": {
+            "X": 225.11633,
+            "Y": -0.40000004,
+            "Z": -352.19354
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1046718,
+          "Position": {
+            "X": -101.18262,
+            "Y": 9.773315,
+            "Z": -532.15845
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Snipe",
+          "Comment": "Inspect Eye, Carrying Pole and Tail",
+          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046723,
+          "Position": {
+            "X": -103.379944,
+            "Y": 9.773315,
+            "Z": -537.0718
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

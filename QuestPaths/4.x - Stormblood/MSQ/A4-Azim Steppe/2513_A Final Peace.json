@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021615,
+          "Position": {
+            "X": -399.0387,
+            "Y": 2.257562,
+            "Z": 599.26746
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023193,
+          "Position": {
+            "X": -434.0429,
+            "Y": 2.5501096,
+            "Z": 650.01904
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2791
+        },
+        {
+          "DataId": 1020280,
+          "Position": {
+            "X": -448.1422,
+            "Y": 2.2771428,
+            "Z": 632.1354
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -704.3717,
+            "Y": 6.362976,
+            "Z": 615.0759
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7529
+          ]
+        },
+        {
+          "DataId": 2008484,
+          "Position": {
+            "X": -704.3717,
+            "Y": 6.362976,
+            "Z": 615.0759
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021628,
+          "Position": {
+            "X": -705.50085,
+            "Y": 6.554513,
+            "Z": 613.1837
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

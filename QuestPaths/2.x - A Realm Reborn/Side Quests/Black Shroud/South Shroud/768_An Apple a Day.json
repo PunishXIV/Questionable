@@ -1,0 +1,138 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006236,
+          "Position": {
+            "X": 156.78638,
+            "Y": 11.218727,
+            "Z": -74.26575
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006237,
+          "Position": {
+            "X": 213.09216,
+            "Y": 29.495605,
+            "Z": -164.5686
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002269,
+          "Position": {
+            "X": 209.30798,
+            "Y": 31.72351,
+            "Z": -165.14844
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2001969,
+          "Position": {
+            "X": 209.12476,
+            "Y": 29.373535,
+            "Z": -151.04907
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2001970,
+          "Position": {
+            "X": 198.96228,
+            "Y": 31.998047,
+            "Z": -159.59418
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 9,
+              "MinimumKillCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 2001971,
+          "Position": {
+            "X": 199.45056,
+            "Y": 34.531128,
+            "Z": -170.33649
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2001972,
+          "Position": {
+            "X": 209.70471,
+            "Y": 32.669556,
+            "Z": -171.83191
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 9,
+              "MinimumKillCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 2001973,
+          "Position": {
+            "X": 218.21924,
+            "Y": 28.94629,
+            "Z": -160.63171
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 9,
+              "MinimumKillCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006237,
+          "Position": {
+            "X": 213.09216,
+            "Y": 29.495605,
+            "Z": -164.5686
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 769
+        }
+      ]
+    }
+  ]
+}

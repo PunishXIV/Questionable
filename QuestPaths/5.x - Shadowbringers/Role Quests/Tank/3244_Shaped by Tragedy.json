@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029889,
+          "Position": {
+            "X": -35.385742,
+            "Y": 3.9998174,
+            "Z": 251.75854
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029893,
+          "Position": {
+            "X": -248.34064,
+            "Y": 21.086334,
+            "Z": 346.0287
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Wright"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029895,
+          "Position": {
+            "X": -317.43347,
+            "Y": 19.407524,
+            "Z": 404.3794
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1029896,
+          "Position": {
+            "X": -311.57397,
+            "Y": 17.772081,
+            "Z": 443.8086
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029893,
+          "Position": {
+            "X": -248.34064,
+            "Y": 21.086334,
+            "Z": 346.0287
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 3245
+        }
+      ]
+    }
+  ]
+}

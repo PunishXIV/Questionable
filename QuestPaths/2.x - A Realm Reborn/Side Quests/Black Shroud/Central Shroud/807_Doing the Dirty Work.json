@@ -1,0 +1,89 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -243.19783,
+            "Y": 58.69102,
+            "Z": -140.41818
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1006261,
+          "Position": {
+            "X": -244.73944,
+            "Y": 58.69352,
+            "Z": -140.06262
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -327.70383,
+            "Y": 57.159073,
+            "Z": -13.640016
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 2193,
+              "NameId": 2057
+            }
+          ],
+          "CombatItemUse": {
+            "ItemId": 2000958,
+            "Condition": "MissingStatus",
+            "Value": 22
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -243.19783,
+            "Y": 58.69102,
+            "Z": -140.41818
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006261,
+          "Position": {
+            "X": -244.73944,
+            "Y": 58.69352,
+            "Z": -140.06262
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1485
+        }
+      ]
+    }
+  ]
+}

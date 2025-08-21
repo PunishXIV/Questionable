@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020431,
+          "Position": {
+            "X": -91.233765,
+            "Y": -3.968323E-12,
+            "Z": -19.821533
+          },
+          "StopDistance": 5,
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020400,
+          "Position": {
+            "X": 71.30542,
+            "Y": 0.024691548,
+            "Z": -75.76111
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Western Rhalgr's Reach",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020841,
+          "Position": {
+            "X": 146.01355,
+            "Y": 118.1921,
+            "Z": -730.4951
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 2655,
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                2655
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1020432,
+          "Position": {
+            "X": -612.3904,
+            "Y": 130.1009,
+            "Z": -481.68158
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020525,
+          "Position": {
+            "X": -610.2846,
+            "Y": 130,
+            "Z": -501.8845
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

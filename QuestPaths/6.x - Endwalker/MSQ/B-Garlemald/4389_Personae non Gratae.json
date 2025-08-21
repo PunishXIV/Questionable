@@ -1,0 +1,243 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039896,
+          "Position": {
+            "X": 530.1747,
+            "Y": -36.65,
+            "Z": -175.86023
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037716,
+          "Position": {
+            "X": 524.43726,
+            "Y": -36.65,
+            "Z": -186.69415
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Caeso",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1037718,
+          "Position": {
+            "X": 512.62683,
+            "Y": -36.65,
+            "Z": -160.3266
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Octavia",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "Position": {
+            "X": 502.34732,
+            "Y": -36.65,
+            "Z": -178.38684
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1037715,
+          "Position": {
+            "X": 500.57214,
+            "Y": -36.65,
+            "Z": -178.85101
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Sabinianus",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1037717,
+          "Position": {
+            "X": 495.35352,
+            "Y": -36.06746,
+            "Z": -205.1576
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Marcellinus",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2012062,
+          "Position": {
+            "X": 512.1679,
+            "Y": -34.82775,
+            "Z": -201.7169
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Comment": "Magitek Radio",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039899,
+          "Position": {
+            "X": 549.6758,
+            "Y": -36.616077,
+            "Z": -216.84601
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 548.01605,
+            "Y": -36.61611,
+            "Z": -237.499
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 547.66595,
+            "Y": -36.616203,
+            "Z": -244.51854
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1037719,
+          "Position": {
+            "X": 549.7977,
+            "Y": -36.61618,
+            "Z": -260.57837
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 547.021,
+            "Y": -36.616203,
+            "Z": -244.6051
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 549.7444,
+            "Y": -36.61608,
+            "Z": -225.64955
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1039899,
+          "Position": {
+            "X": 549.6758,
+            "Y": -36.616077,
+            "Z": -216.84601
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039896,
+          "Position": {
+            "X": 530.1747,
+            "Y": -36.65,
+            "Z": -175.86023
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

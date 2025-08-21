@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039570,
+          "Position": {
+            "X": 36.453735,
+            "Y": 29,
+            "Z": -799.7101
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1037318,
+          "Position": {
+            "X": -4.1047363,
+            "Y": 2.9999943,
+            "Z": -203.8758
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039571,
+          "Position": {
+            "X": -24.429688,
+            "Y": 3.0099995,
+            "Z": -225.42157
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMH102_04527_Q9_100_111",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH102_04527_Q1_000_000",
+              "Answer": "TEXT_AKTKMH102_04527_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH102_04527_Q2_000_000",
+              "Answer": "TEXT_AKTKMH102_04527_A2_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH102_04527_Q3_000_000",
+              "Answer": "TEXT_AKTKMH102_04527_A3_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH102_04527_Q4_000_000",
+              "Answer": "TEXT_AKTKMH102_04527_A4_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMH102_04527_Q5_000_000",
+              "Answer": "TEXT_AKTKMH102_04527_A5_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1039574,
+          "Position": {
+            "X": -13.870483,
+            "Y": 1.51,
+            "Z": -178.14911
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1039577,
+          "Position": {
+            "X": 1.7852783,
+            "Y": -3.2177195E-06,
+            "Z": -13.687378
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039578,
+          "Position": {
+            "X": -254.50525,
+            "Y": 4.3609705,
+            "Z": 570.94666
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Yedlihmad",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

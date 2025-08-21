@@ -1,0 +1,171 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033800,
+          "Position": {
+            "X": -27.878296,
+            "Y": -0.65,
+            "Z": -51.285645
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033807,
+          "Position": {
+            "X": 761.2573,
+            "Y": 25.95656,
+            "Z": 417.99023
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] Tessellation (Lakeland)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Comment": "This isn't solving for the 'best' results, but for the closest waypoints",
+      "Steps": [
+        {
+          "DataId": 2011078,
+          "Position": {
+            "X": 754.45166,
+            "Y": 15.8845825,
+            "Z": 273.88416
+          },
+          "StopDistance": 1,
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003001,
+          "KillEnemyDataIds": [
+            12168
+          ],
+          "Fly": true,
+          "$.0": "[1]",
+          "$.1": "QuestVariables if done first: 0 0 0 3 0 0 during fight; 16 1 0 2 16 8 after",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 2011076,
+          "Position": {
+            "X": 495.4756,
+            "Y": 10.299805,
+            "Z": 290.547
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003001,
+          "KillEnemyDataIds": [
+            12166
+          ],
+          "Fly": true,
+          "$.1": "QuestVariables if done after [1]: 34 1 0 1 48 40",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2011079,
+          "Position": {
+            "X": 685.5725,
+            "Y": 6.881775,
+            "Z": 497.12354
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2003001,
+          "KillEnemyDataIds": [
+            12168
+          ],
+          "Fly": true,
+          "$.2": "QuestVariables if done after [1, 2]: irrelevant because it automatically progresses to the next step"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1033808,
+          "Position": {
+            "X": 763.9734,
+            "Y": 25.874697,
+            "Z": 419.51624
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 837.8474,
+            "Y": 37.845993,
+            "Z": 408.60828
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2011107,
+          "Position": {
+            "X": -223.13275,
+            "Y": 38.590088,
+            "Z": -86.80859
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033811,
+          "Position": {
+            "X": -208.11786,
+            "Y": 38.64859,
+            "Z": -82.65814
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000540,
+          "Position": {
+            "X": -238.17816,
+            "Y": 3.543561,
+            "Z": 283.71094
+          },
+          "StopDistance": 5,
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000615,
+          "Position": {
+            "X": -246.44855,
+            "Y": 3.5452707,
+            "Z": 279.92664
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000557,
+          "Position": {
+            "X": -206.0426,
+            "Y": 2.663525,
+            "Z": 303.94446
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1000553,
+          "Position": {
+            "X": -187.48767,
+            "Y": 4.4436555,
+            "Z": 292.50012
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000540,
+          "Position": {
+            "X": -238.17816,
+            "Y": 3.543561,
+            "Z": 283.71094
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

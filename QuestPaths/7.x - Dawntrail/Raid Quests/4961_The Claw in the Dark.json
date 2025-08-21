@@ -1,0 +1,87 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1049793,
+          "Position": {
+            "X": 364.3396,
+            "Y": 60.125,
+            "Z": 357.1068
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] The Arcadion"
+          ],
+          "TargetTerritoryId": 1224,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [1224]
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 1.6021729,
+                  "Y": 0,
+                  "Z": -6.088379
+                },
+                "MaximumDistance": 100,
+                "TerritoryId": 1224
+              },
+              "InTerritory": [
+                1224
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1049788,
+          "Position": {
+            "X": 1.6021729,
+            "Y": 0,
+            "Z": -6.088379
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1224,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1224,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 985,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1050476,
+          "Position": {
+            "X": 0.1373291,
+            "Y": -3.3667622E-13,
+            "Z": -9.658997
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1224,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4962
+        }
+      ]
+    }
+  ]
+}

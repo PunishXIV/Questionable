@@ -1,0 +1,161 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1050871,
+          "Position": {
+            "X": -51.895935,
+            "Y": -17.97287,
+            "Z": 182.7268
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The For'ard Cabins"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001657,
+          "Position": {
+            "X": 94.80432,
+            "Y": 7.9804688,
+            "Z": -34.042908
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1006440,
+          "Position": {
+            "X": 140.3982,
+            "Y": 4,
+            "Z": -54.154297
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1051655,
+          "Position": {
+            "X": 137.74304,
+            "Y": 4,
+            "Z": 5.9662476
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 146.12386,
+            "Y": 4,
+            "Z": -23.562449
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "angry"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051656,
+          "Position": {
+            "X": 56.443115,
+            "Y": 10,
+            "Z": 5.935669
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2012114,
+          "Position": {
+            "X": 0,
+            "Y": 1.15,
+            "Z": 10.23451
+          },
+          "TerritoryId": 1255,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 131,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                131
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1051656,
+          "Position": {
+            "X": 56.443115,
+            "Y": 10,
+            "Z": 5.935669
+          },
+          "StopDistance": 7,
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5189
+        }
+      ]
+    }
+  ]
+}

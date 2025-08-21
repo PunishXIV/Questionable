@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006196,
+          "Position": {
+            "X": -63.98114,
+            "Y": -20.296238,
+            "Z": -5.142395
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -171.46503,
+            "Y": -46.504063,
+            "Z": 491.88867
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 146
+        },
+        {
+          "Position": {
+            "X": -47.50145,
+            "Y": 16.362688,
+            "Z": -439.62503
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "$": "vnav sometimes attempts to walk to the aetheryte using exactly one waypoint between zone boundary and aetheryte, which means walking into walls"
+        },
+        {
+          "TerritoryId": 146,
+          "InteractionType": "AttuneAetheryte",
+          "StopDistance": 7,
+          "Aetheryte": "Southern Thanalan - Little Ala Mhigo"
+        },
+        {
+          "DataId": 1006211,
+          "Position": {
+            "X": -217.48688,
+            "Y": 26.258211,
+            "Z": -361.2574
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006215,
+          "Position": {
+            "X": -227.34424,
+            "Y": 26.16842,
+            "Z": -352.98694
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

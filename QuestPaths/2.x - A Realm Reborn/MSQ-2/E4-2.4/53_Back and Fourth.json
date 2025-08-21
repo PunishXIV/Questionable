@@ -1,0 +1,276 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009961,
+          "Position": {
+            "X": -131.88379,
+            "Y": 4.1,
+            "Z": -109.63611
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "Position": {
+            "X": 2.0206594,
+            "Y": 0,
+            "Z": -5.7291903
+          },
+          "TerritoryId": 351,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010078,
+          "Position": {
+            "X": 31.540405,
+            "Y": -1,
+            "Z": -0.80877686
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 2.0206594,
+            "Y": 0,
+            "Z": -5.7291903
+          },
+          "TerritoryId": 351,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2002879,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 2.9754639,
+            "Z": 27.481445
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "Position": {
+            "X": 30.917934,
+            "Y": 20.495003,
+            "Z": -656.1909
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "$": "Rising Stones Door"
+        },
+        {
+          "DataId": 1009962,
+          "Position": {
+            "X": -354.60443,
+            "Y": -15.981883,
+            "Z": -477.4395
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -455.26733,
+            "Y": -4.2369456,
+            "Z": -300.13348
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            61,
+            62,
+            63
+          ],
+          "$": "0 0  0 0  0 0 -> 3 0  0 0  0 0",
+          "Fly": true
+        },
+        {
+          "DataId": 1009966,
+          "Position": {
+            "X": -455.89386,
+            "Y": -4.098249,
+            "Z": -302.72375
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -464.29688,
+            "Y": -3.2168088,
+            "Z": -231.61989
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            63,
+            64,
+            3566
+          ],
+          "Fly": true,
+          "$": "0 0  0 0  0 0 -> 16 3  0 0  0 128",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Position": {
+            "X": -542.5233,
+            "Y": -1.7329574,
+            "Z": -291.1239
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            55,
+            3566
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Position": {
+            "X": -598.8258,
+            "Y": -3.216822,
+            "Z": -398.18915
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            61,
+            62,
+            55,
+            64
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009112,
+          "Position": {
+            "X": -355.45898,
+            "Y": -16.030567,
+            "Z": -477.04285
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "Position": {
+            "X": 2.0206594,
+            "Y": 0,
+            "Z": -5.7291903
+          },
+          "TerritoryId": 351,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010078,
+          "Position": {
+            "X": 31.540405,
+            "Y": -1,
+            "Z": -0.80877686
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

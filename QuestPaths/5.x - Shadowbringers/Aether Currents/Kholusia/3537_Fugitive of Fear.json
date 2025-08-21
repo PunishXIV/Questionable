@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027956,
+          "Position": {
+            "X": -128.77094,
+            "Y": 354.35815,
+            "Z": -179.18677
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030748,
+          "Position": {
+            "X": -514.8852,
+            "Y": 334.116,
+            "Z": -9.262268
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -515.5618,
+            "Y": 334.116,
+            "Z": -15.381194
+          },
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": -518.69183,
+            "Y": 331.39224,
+            "Z": -23.225534
+          },
+          "TerritoryId": 814,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1030749,
+          "Position": {
+            "X": -504.5701,
+            "Y": 332.93307,
+            "Z": -112.077515
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030749,
+          "Position": {
+            "X": -504.5701,
+            "Y": 332.93307,
+            "Z": -112.077515
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZI001_03537_Q1_000_000",
+              "Answer": "TEXT_LUCKZI001_03537_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027956,
+          "Position": {
+            "X": -128.77094,
+            "Y": 354.35815,
+            "Z": -179.18677
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008639,
+          "Position": {
+            "X": -497.94766,
+            "Y": 19.009045,
+            "Z": -354.75702
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -406.26895,
+            "Y": 23.167036,
+            "Z": -351.92947
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1008632,
+          "Position": {
+            "X": -388.6931,
+            "Y": 23,
+            "Z": -350.94226
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003573,
+          "Position": {
+            "X": 184.64929,
+            "Y": 52.140015,
+            "Z": 29.06836
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2848
+          ],
+          "Fly": true,
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1008640,
+          "Position": {
+            "X": 126.17676,
+            "Y": 49.276558,
+            "Z": -173.23572
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008623,
+          "Position": {
+            "X": 24.887451,
+            "Y": 6.999997,
+            "Z": -80.03363
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}

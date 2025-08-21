@@ -1,0 +1,150 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013623,
+          "Position": {
+            "X": 486.93054,
+            "Y": -51.1414,
+            "Z": 25.986084
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013624,
+          "Position": {
+            "X": -183.61182,
+            "Y": -104.708206,
+            "Z": 505.60767
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -561.82196,
+            "Y": -46.707886,
+            "Z": 300.46533
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4691,
+            4692
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            4,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2005859,
+          "Position": {
+            "X": -561.82196,
+            "Y": -46.707886,
+            "Z": 300.46533
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013625,
+          "Position": {
+            "X": -679.9573,
+            "Y": -100.52397,
+            "Z": 775.1736
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013625,
+          "Position": {
+            "X": -679.9573,
+            "Y": -100.52397,
+            "Z": 775.1736
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4690,
+            4691
+          ]
+        },
+        {
+          "DataId": 2005861,
+          "Position": {
+            "X": -678.4009,
+            "Y": -100.60278,
+            "Z": 778.13367
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013625,
+          "Position": {
+            "X": -679.9573,
+            "Y": -100.52397,
+            "Z": 775.1736
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBWHM580_01723_Q1_000_000",
+              "Answer": "TEXT_JOBWHM580_01723_A1_000_001"
+            }
+          ],
+          "NextQuestId": 1724
+        }
+      ]
+    }
+  ]
+}

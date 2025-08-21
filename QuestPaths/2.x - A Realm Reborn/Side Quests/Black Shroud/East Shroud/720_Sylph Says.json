@@ -1,0 +1,69 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "croizat",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006190,
+          "Position": {
+            "X": 26.871094,
+            "Y": -3.6219776,
+            "Z": 209.64368
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006190,
+          "Position": {
+            "X": 26.871094,
+            "Y": -3.6219776,
+            "Z": 209.64368
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "poke"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006190,
+          "Position": {
+            "X": 26.871094,
+            "Y": -3.6219776,
+            "Z": 209.64368
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Emote",
+          "Emote": "examineself"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006190,
+          "Position": {
+            "X": 26.871094,
+            "Y": -3.6219776,
+            "Z": 209.64368
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "Emote": "congratulate"
+        }
+      ]
+    }
+  ]
+}

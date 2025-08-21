@@ -1,0 +1,126 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042599,
+          "Position": {
+            "X": 31.998047,
+            "Y": 5.1499996,
+            "Z": -67.73486
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033637,
+          "Position": {
+            "X": -533.4402,
+            "Y": 8.187748,
+            "Z": -46.341675
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Porta Praetoria",
+          "Fly": true,
+          "TargetTerritoryId": 919
+        },
+        {
+          "DataId": 1033629,
+          "Position": {
+            "X": -0.3204956,
+            "Y": 41,
+            "Z": 17.56311
+          },
+          "TerritoryId": 919,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKSA401_04761_Q2_000_000",
+              "Answer": "TEXT_AKTKSA401_04761_A2_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1045296,
+          "Position": {
+            "X": -1.1750488,
+            "Y": 41.01997,
+            "Z": 30.289062
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKSA401_04761_Q5_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1045299,
+          "Position": {
+            "X": 84.73328,
+            "Y": 0,
+            "Z": 106.46216
+          },
+          "StopDistance": 7,
+          "TerritoryId": 991,
+          "InteractionType": "Instruction",
+          "Comment": "Really short sequence of the Christmas minigame",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKSA401_04761_SYSTEM_100_076",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033629,
+          "Position": {
+            "X": -0.3204956,
+            "Y": 41,
+            "Z": 17.56311
+          },
+          "StopDistance": 7,
+          "TerritoryId": 919,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4762
+        }
+      ]
+    }
+  ]
+}

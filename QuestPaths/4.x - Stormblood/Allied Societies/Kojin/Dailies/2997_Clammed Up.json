@@ -1,0 +1,111 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 318.06195,
+            "Y": -83.027016,
+            "Z": -226.5931
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 2009135,
+          "Position": {
+            "X": -77.74481,
+            "Y": -180.6211,
+            "Z": 33.157837
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null,null,null,[{"Low":2}],null,null],
+          "Fly": true
+        },
+        {
+          "DataId": 2009136,
+          "Position": {
+            "X": -150.10309,
+            "Y": -167.01001,
+            "Z": 87.60205
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null,null,null,[{"Low":2}],null,null],
+          "Fly": true
+        },
+        {
+          "DataId": 2009137,
+          "Position": {
+            "X": -141.68011,
+            "Y": -149.34009,
+            "Z": -214.64868
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null,null,null,[{"Low":2}],null,null],
+          "Fly": true
+        },
+        {
+          "DataId": 2009139,
+          "Position": {
+            "X": -131.7312,
+            "Y": -191.97375,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [null,null,null,[{"Low":2}],null,null],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 391.50903,
+            "Y": -119.58932,
+            "Z": -236.18898
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        },
+        {
+          "DataId": 1024217,
+          "Position": {
+            "X": 394.39978,
+            "Y": -119.58932,
+            "Z": -232.28815
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

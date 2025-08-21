@@ -1,0 +1,69 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035391,
+          "Position": {
+            "X": 296.86414,
+            "Y": 69.333755,
+            "Z": -147.32587
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKMJ108_04014_SYSTEM_100_010",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

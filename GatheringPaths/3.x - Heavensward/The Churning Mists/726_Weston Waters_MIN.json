@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 400,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Churning Mists - Zenith"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33305,
+          "Locations": [
+            {
+              "Position": {
+                "X": -560.7639,
+                "Y": 266.9573,
+                "Z": -744.8922
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 80
+            }
+          ]
+        },
+        {
+          "DataId": 33306,
+          "Locations": [
+            {
+              "Position": {
+                "X": -547.9997,
+                "Y": 268.3711,
+                "Z": -737.2209
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 95
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33304,
+          "Locations": [
+            {
+              "Position": {
+                "X": -682.6185,
+                "Y": 261.1417,
+                "Z": -778.2869
+              },
+              "MinimumAngle": -50,
+              "MaximumAngle": 20,
+              "MinimumDistance": 1.5,
+              "MaximumDistance": 3
+            }
+          ]
+        },
+        {
+          "DataId": 33303,
+          "Locations": [
+            {
+              "Position": {
+                "X": -696.5138,
+                "Y": 261.6092,
+                "Z": -759.7711
+              },
+              "MinimumAngle": 215,
+              "MaximumAngle": 310
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33301,
+          "Locations": [
+            {
+              "Position": {
+                "X": -792.3468,
+                "Y": 271.3054,
+                "Z": -737.431
+              },
+              "MinimumAngle": 280,
+              "MaximumAngle": 360,
+              "MinimumDistance": 2,
+              "MaximumDistance": 3
+            }
+          ]
+        },
+        {
+          "DataId": 33302,
+          "Locations": [
+            {
+              "Position": {
+                "X": -800.0043,
+                "Y": 269.2748,
+                "Z": -729.5305
+              },
+              "MinimumAngle": 230,
+              "MaximumAngle": 340
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

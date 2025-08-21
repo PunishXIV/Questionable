@@ -1,0 +1,287 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040166,
+          "Position": {
+            "X": 68.74182,
+            "Y": 40,
+            "Z": 66.300415
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA351_04119_Q1_000_000",
+              "Answer": "TEXT_AKTKBA351_04119_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040189,
+          "Position": {
+            "X": -52.140076,
+            "Y": 39.999992,
+            "Z": 21.805054
+          },
+          "TerritoryId": 128,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.1.8",
+            "Notes": [
+              "AI doesn't attempt to move to the correct direction when killing orbs",
+              "AI only dodges some, but not all AOEs",
+              "AI doesn't move behind the shield for 'Extinction Flare' and dies"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040214,
+          "Position": {
+            "X": -59.40338,
+            "Y": 39.999916,
+            "Z": 24.093994
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040190,
+          "Position": {
+            "X": -58.884644,
+            "Y": 39.999916,
+            "Z": 21.22528
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA351_04119_Q3_000_000",
+              "Answer": "TEXT_AKTKBA351_04119_A3_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1040191,
+          "Position": {
+            "X": -57.63336,
+            "Y": 39.999992,
+            "Z": 20.09607
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA351_04119_Q4_000_000",
+              "Answer": "TEXT_AKTKBA351_04119_A4_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1040192,
+          "Position": {
+            "X": -56.168518,
+            "Y": 39.999992,
+            "Z": 19.638367
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA351_04119_Q5_000_000",
+              "Answer": "TEXT_AKTKBA351_04119_A5_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1040193,
+          "Position": {
+            "X": -55.00885,
+            "Y": 39.999992,
+            "Z": 19.4552
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA351_04119_Q6_000_000",
+              "Answer": "TEXT_AKTKBA351_04119_A6_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1040194,
+          "Position": {
+            "X": -53.818604,
+            "Y": 39.999992,
+            "Z": 19.516235
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKBA351_04119_Q7_000_000",
+              "Answer": "TEXT_AKTKBA351_04119_A7_000_001"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040214,
+          "Position": {
+            "X": -59.40338,
+            "Y": 39.999916,
+            "Z": 24.093994
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1040213,
+          "Position": {
+            "X": -54.459473,
+            "Y": 39.999992,
+            "Z": 25.986084
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1040189,
+          "Position": {
+            "X": -52.140076,
+            "Y": 39.999992,
+            "Z": 21.805054
+          },
+          "StopDistance": 7,
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040165,
+          "Position": {
+            "X": -175.0058,
+            "Y": 4.061,
+            "Z": -81.22388
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] Hall of the Radiant Host"
+          ]
+        }
+      ]
+    }
+  ]
+}

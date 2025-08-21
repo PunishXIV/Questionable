@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002864,
+          "Position": {
+            "X": 270.28296,
+            "Y": -0.25946045,
+            "Z": 168.53589
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005570,
+          "Position": {
+            "X": 292.77478,
+            "Y": -0.00153354,
+            "Z": 145.12854
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005565,
+          "Position": {
+            "X": 22.47644,
+            "Y": -6.2105103,
+            "Z": 252.552
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 45.84424,
+            "Y": 6.073427,
+            "Z": 248.96754
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANSYL002_01253_SYSYTEM_Q1_000_1",
+              "Answer": "TEXT_BANSYL002_01253_SYSYTEM_A1_000_1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

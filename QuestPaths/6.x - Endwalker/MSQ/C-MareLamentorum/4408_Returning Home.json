@@ -1,0 +1,159 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038953,
+          "Position": {
+            "X": -611.1391,
+            "Y": 128.6778,
+            "Z": 566.8573
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -614.86835,
+            "Y": 128.67761,
+            "Z": 677.33923
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Comment": "Avoids Combat",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 2012531,
+          "Position": {
+            "X": -663.29443,
+            "Y": 132.6466,
+            "Z": 728.96924
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1024,
+          "Fly": true
+        },
+        {
+          "DataId": 1038960,
+          "Position": {
+            "X": 0.99176025,
+            "Y": 0,
+            "Z": 22.171326
+          },
+          "TerritoryId": 1024,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038963,
+          "Position": {
+            "X": -338.2467,
+            "Y": 23.803604,
+            "Z": 407.79736
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038965,
+          "Position": {
+            "X": -104.9668,
+            "Y": 3.8989396,
+            "Z": 9.262146
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987
+        },
+        {
+          "DataId": 2012188,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -0.015319824,
+            "Z": -5.081299
+          },
+          "TerritoryId": 987,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMC110_04408_Q3_000_170",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357494,
+            "Z": 0.7476196
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMC110_04408_Q4_000_204",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

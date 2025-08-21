@@ -1,0 +1,135 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009214,
+                    "Position": {
+                        "X": 159.3805,
+                        "Y": -5.6866503,
+                        "Z": 69.29114
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 153.8872,
+                                    "Y": -9.001622,
+                                    "Z": 77.50049
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2004478,
+                    "Position": {
+                        "X": -108.293274,
+                        "Y": -7.2786255,
+                        "Z": -51.377197
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "Fly": true,
+                    "Land": true,
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        2
+                    ]
+                },
+                {
+                    "DataId": 2004475,
+                    "Position": {
+                        "X": -91.44739,
+                        "Y": -5.2644043,
+                        "Z": -100.93848
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        16
+                    ]
+                },
+                {
+                    "DataId": 2004476,
+                    "Position": {
+                        "X": -123.91852,
+                        "Y": -7.736328,
+                        "Z": -118.24219
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1009218,
+                    "Position": {
+                        "X": -4.1047363,
+                        "Y": -40.949986,
+                        "Z": 176.83679
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8107,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1009214,
+                    "Position": {
+                        "X": 159.3805,
+                        "Y": -5.6866503,
+                        "Z": 69.29114
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true,
+                    "Land": true
+                }
+            ]
+        }
+    ]
+}

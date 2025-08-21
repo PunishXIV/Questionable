@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039047,
+          "Position": {
+            "X": 537.77356,
+            "Y": 10.226297,
+            "Z": 238.75781
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012207,
+          "Position": {
+            "X": 270.0083,
+            "Y": 11.550964,
+            "Z": 147.6615
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039051,
+          "Position": {
+            "X": 153.33789,
+            "Y": -35.629883,
+            "Z": 141.25269
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012208,
+          "Position": {
+            "X": 163.80554,
+            "Y": -60.471558,
+            "Z": 133.25696
+          },
+          "StopDistance": 1,
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 235.94444,
+            "Y": -0.6,
+            "Z": 145.83025
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "Mount": true
+        },
+        {
+          "Position": {
+            "X": 252.0308,
+            "Y": 0.57823455,
+            "Z": 150.66217
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1039052,
+          "Position": {
+            "X": 155.2605,
+            "Y": 11.6644,
+            "Z": 217.85303
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039056,
+          "Position": {
+            "X": -36.484375,
+            "Y": 25.65825,
+            "Z": -319.87494
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

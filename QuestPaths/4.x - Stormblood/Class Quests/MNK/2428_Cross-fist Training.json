@@ -1,0 +1,171 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "StopDistance": 5,
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1003817,
+          "Position": {
+            "X": -74.57086,
+            "Y": 1.9999951,
+            "Z": -42.404846
+          },
+          "TerritoryId": 130,
+          "AetheryteShortcut": "Ul'dah",
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022390,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022404,
+          "Position": {
+            "X": 76.43237,
+            "Y": 62.148823,
+            "Z": -667.2923
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Fringes Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -96.72436,
+            "Y": 60.086643,
+            "Z": -602.3445
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -109.40343,
+            "Y": 60.039776,
+            "Z": -612.03217
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7217
+          ],
+          "CombatDelaySecondsAtStart": 0,
+          "Mount": false
+        },
+        {
+          "DataId": 1022405,
+          "Position": {
+            "X": -106.82843,
+            "Y": 60.07189,
+            "Z": -609.49115
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1022411,
+          "Position": {
+            "X": -107.927124,
+            "Y": 60.035603,
+            "Z": -609.76575
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1022412,
+          "Position": {
+            "X": 103.77649,
+            "Y": 118.18349,
+            "Z": -707.393
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023728,
+          "Position": {
+            "X": 51.132935,
+            "Y": 118.44431,
+            "Z": -789.27295
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2429
+        }
+      ]
+    }
+  ]
+}

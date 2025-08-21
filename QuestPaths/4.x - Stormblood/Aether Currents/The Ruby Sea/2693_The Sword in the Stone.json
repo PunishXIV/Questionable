@@ -1,0 +1,152 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023357,
+          "Position": {
+            "X": 565.0873,
+            "Y": -62.272896,
+            "Z": -147.84473
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023358,
+          "Position": {
+            "X": 608.5145,
+            "Y": -3.4784377,
+            "Z": -92.82062
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 611.58606,
+            "Y": -1.6943853,
+            "Z": -91.26402
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Jump",
+          "StopDistance": 0.25,
+          "JumpDestination": {
+            "Position": {
+              "X": 617.04565,
+              "Y": -17.818226,
+              "Z": -108.994415
+            }
+          },
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 617.01825,
+            "Y": -18.570948,
+            "Z": -114.45003
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Jump",
+          "StopDistance": 0.25,
+          "JumpDestination": {
+            "Position": {
+              "X": 619.67755,
+              "Y": -28.768707,
+              "Z": -127.102554
+            }
+          },
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 617.17053,
+            "Y": -29.302427,
+            "Z": -130.22484
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Jump",
+          "StopDistance": 0.25,
+          "JumpDestination": {
+            "Position": {
+              "X": 604.2836,
+              "Y": -34.756268,
+              "Z": -136.64783
+            }
+          },
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 601.5953,
+            "Y": -36.643044,
+            "Z": -144.1365
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Jump",
+          "StopDistance": 0.25,
+          "JumpDestination": {
+            "Position": {
+              "X": 598.6192,
+              "Y": -43.845043,
+              "Z": -154.23668
+            }
+          },
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 594.64703,
+            "Y": -43.869747,
+            "Z": -156.01822
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 570.09125,
+            "Y": -62.583626,
+            "Z": -145.46727
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1023358,
+          "Position": {
+            "X": 608.5145,
+            "Y": -3.4784377,
+            "Z": -92.82062
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027736,
+          "Position": {
+            "X": 396.38354,
+            "Y": 20.422523,
+            "Z": -179.12573
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031383,
+          "Position": {
+            "X": 569.51245,
+            "Y": 27.331062,
+            "Z": 143.69421
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1031381,
+          "Position": {
+            "X": 558.64795,
+            "Y": 27.378386,
+            "Z": 152.42236
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1031382,
+          "Position": {
+            "X": 575.1887,
+            "Y": 27.872107,
+            "Z": 161.39453
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027736,
+          "Position": {
+            "X": 396.38354,
+            "Y": 20.422523,
+            "Z": -179.12573
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051393,
+          "Position": {
+            "X": -315.4193,
+            "Y": 14,
+            "Z": 155.7793
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051393,
+          "Position": {
+            "X": -315.4193,
+            "Y": 14,
+            "Z": 155.7793
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051393,
+          "Position": {
+            "X": -206.10861,
+            "Y": 2.1999774,
+            "Z": 213.03752
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGZG003_05166_Q2_000_000",
+              "Answer": "TEXT_KINGZG003_05166_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1051393,
+          "Position": {
+            "X": -23.899967,
+            "Y": -5.8484287,
+            "Z": 230.24123
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051395,
+          "Position": {
+            "X": -3.55542,
+            "Y": 0.0005434508,
+            "Z": -85.89307
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Solution Nine] Information Center",
+            "[Solution Nine] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

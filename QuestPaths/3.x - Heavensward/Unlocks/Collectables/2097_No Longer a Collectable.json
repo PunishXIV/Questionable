@@ -1,0 +1,40 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013395,
+          "Position": {
+            "X": 45.609253,
+            "Y": 31.195326,
+            "Z": -732.9061
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001428,
+          "Position": {
+            "X": 116.80774,
+            "Y": 30.907087,
+            "Z": -359.63995
+          },
+          "StopDistance": 1,
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "Fly": true,
+          "NextQuestId": 2098
+        }
+      ]
+    }
+  ]
+}

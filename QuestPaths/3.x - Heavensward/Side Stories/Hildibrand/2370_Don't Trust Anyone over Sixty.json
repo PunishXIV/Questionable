@@ -1,0 +1,213 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017983,
+          "Position": {
+            "X": 11.520508,
+            "Y": 207.49994,
+            "Z": 85.34363
+          },
+          "StopDistance": 7,
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1017988,
+          "Position": {
+            "X": -544.1825,
+            "Y": 144.84157,
+            "Z": -346.7918
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017993,
+          "Position": {
+            "X": -544.1825,
+            "Y": 144.84157,
+            "Z": -346.7918
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1017997,
+          "Position": {
+            "X": -595.48334,
+            "Y": 147.9601,
+            "Z": -37.43042
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1018005,
+          "Position": {
+            "X": -761.31836,
+            "Y": 149.64381,
+            "Z": 16.739136
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1018005,
+          "Position": {
+            "X": -761.31836,
+            "Y": 149.64381,
+            "Z": 16.739136
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1018122,
+          "Position": {
+            "X": -761.2573,
+            "Y": 149.64243,
+            "Z": 16.80011
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1018122,
+          "Position": {
+            "X": -761.2573,
+            "Y": 149.64243,
+            "Z": 16.80011
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1018122,
+          "Position": {
+            "X": -761.2573,
+            "Y": 149.64243,
+            "Z": 16.80011
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1018122,
+          "Position": {
+            "X": -761.2573,
+            "Y": 149.64243,
+            "Z": 16.80011
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1017997,
+          "Position": {
+            "X": -595.48334,
+            "Y": 147.9601,
+            "Z": -37.43042
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1018007,
+          "Position": {
+            "X": -602.5941,
+            "Y": 147.58852,
+            "Z": -39.230957
+          },
+          "StopDistance": 7,
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016619,
+          "Position": {
+            "X": -66.84979,
+            "Y": 8.05915,
+            "Z": 9.506287
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "NextQuestId": 2371
+        }
+      ]
+    }
+  ]
+}

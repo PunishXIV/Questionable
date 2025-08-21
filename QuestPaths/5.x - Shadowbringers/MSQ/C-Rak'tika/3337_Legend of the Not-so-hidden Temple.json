@@ -1,0 +1,58 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029242,
+          "Position": {
+            "X": 122.697754,
+            "Y": -8.781986,
+            "Z": -891.4168
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029243,
+          "Position": {
+            "X": 121.3855,
+            "Y": -8.781985,
+            "Z": -890.62335
+          },
+          "TerritoryId": 817,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "(room 2) AI tries to walk straight to the next door, ignoring all walls"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029244,
+          "Position": {
+            "X": 171.19092,
+            "Y": -19.76173,
+            "Z": -534.05054
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

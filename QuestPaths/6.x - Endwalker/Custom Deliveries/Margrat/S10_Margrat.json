@@ -1,0 +1,68 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 956,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Blue Mage"
+        },
+        {
+          "TerritoryId": 956,
+          "InteractionType": "Gather",
+          "ItemsToGather": []
+        },
+        {
+          "Position": {
+            "X": -44.066154,
+            "Y": -29.530005,
+            "Z": -55.85129
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true
+        },
+        {
+          "DataId": 1046073,
+          "Position": {
+            "X": -53.635498,
+            "Y": -29.497286,
+            "Z": -65.14081
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/008/CtsSfsCharacter10_00842",
+              "Prompt": "TEXT_CTSSFSCHARACTER10_00842_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER10_00842_TOPMENU_000_001",
+              "AnswerIsRegularExpression": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "None",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/008/CtsSfsCharacter10_00842",
+              "Prompt": "TEXT_CTSSFSCHARACTER10_00842_TOPMENU_000_000",
+              "Answer": "TEXT_CTSSFSCHARACTER10_00842_TOPMENU_000_004"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

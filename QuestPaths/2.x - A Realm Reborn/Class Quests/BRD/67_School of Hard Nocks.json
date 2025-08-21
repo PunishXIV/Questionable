@@ -1,0 +1,413 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000200,
+          "Position": {
+            "X": 209.55212,
+            "Y": 0.9999819,
+            "Z": 35.01941
+          },
+          "StopDistance": 7,
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000199,
+          "Position": {
+            "X": 211.13904,
+            "Y": 1.5032018e-5,
+            "Z": 28.580078
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -87.448326,
+            "Y": -3.8114734,
+            "Z": -77.68485
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "Fly": true
+        },
+        {
+          "DataId": 2001173,
+          "Position": {
+            "X": -88.24298,
+            "Y": 3.768982,
+            "Z": -88.24298
+          },
+          "TerritoryId": 148,
+          "StopDistance": 15,
+          "InteractionType": "Action",
+          "Action": "Heavy Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2
+          ]
+        },
+        {
+          "Position": {
+            "X": -113.806755,
+            "Y": -3.824695,
+            "Z": -61.20561
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                4
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2001171,
+          "Position": {
+            "X": -115.58716,
+            "Y": -3.402832,
+            "Z": -51.07196
+          },
+          "TerritoryId": 148,
+          "StopDistance": 15,
+          "InteractionType": "Action",
+          "Action": "Heavy Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "Position": {
+            "X": -142.90863,
+            "Y": -1.355497,
+            "Z": -69.45994
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                8
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2000940,
+          "Position": {
+            "X": -143.32806,
+            "Y": -0.41204834,
+            "Z": -58.884644
+          },
+          "TerritoryId": 148,
+          "StopDistance": 15,
+          "InteractionType": "Action",
+          "Action": "Heavy Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "Position": {
+            "X": -154.95493,
+            "Y": 4.0352364,
+            "Z": -132.85217
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2000939,
+          "Position": {
+            "X": -166.97955,
+            "Y": 10.2387085,
+            "Z": -138.41461
+          },
+          "TerritoryId": 148,
+          "StopDistance": 15,
+          "InteractionType": "Action",
+          "Action": "Heavy Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "Position": {
+            "X": -114.08684,
+            "Y": 7.6589117,
+            "Z": -173.19547
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2000938,
+          "Position": {
+            "X": -120.68359,
+            "Y": 12.49707,
+            "Z": -182.39111
+          },
+          "TerritoryId": 148,
+          "StopDistance": 15,
+          "InteractionType": "Action",
+          "Action": "Heavy Shot",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": -74.71171,
+            "Y": -4,
+            "Z": -190.44055
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2000937,
+          "Position": {
+            "X": -80.76605,
+            "Y": -2.3651733,
+            "Z": -196.49048
+          },
+          "TerritoryId": 148,
+          "StopDistance": 15,
+          "InteractionType": "Action",
+          "Action": "Heavy Shot"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000199,
+          "Position": {
+            "X": 211.13904,
+            "Y": 1.5032018e-5,
+            "Z": 28.580078
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1001263,
+          "Position": {
+            "X": 181.41443,
+            "Y": -2.3519497,
+            "Z": -240.40594
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 152,
+          "AethernetShortcut": [
+            "[Gridania] Archers' Guild",
+            "[Gridania] Lancers' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        },
+        {
+          "TerritoryId": 152,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "East Shroud - Hawthorne Hut"
+        },
+        {
+          "Position": {
+            "X": -431.09494,
+            "Y": 2.9039853,
+            "Z": 239.26413
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 12,
+              "MinimumKillCount": 8,
+              "$": "Slay northern vultures.",
+              "CompletionQuestVariablesFlags": [
+                null,
+                {
+                  "High": 8
+                },
+                null,
+                null,
+                null,
+                null
+              ]
+            },
+            {
+              "DataId": 39,
+              "MinimumKillCount": 8,
+              "$": "Slay tree slugs.",
+              "CompletionQuestVariablesFlags": [
+                {
+                  "Low": 8
+                },
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          ],
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "AetheryteLocked": "East Shroud - Hawthorne Hut"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1000199,
+          "Position": {
+            "X": 211.13904,
+            "Y": 1.5032018e-5,
+            "Z": 28.580078
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000200,
+          "Position": {
+            "X": 209.55212,
+            "Y": 0.9999819,
+            "Z": 35.01941
+          },
+          "StopDistance": 7,
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_CLSARC002_00067_Q1_000_1",
+              "Yes": true
+            }
+          ],
+          "NextQuestId": 68
+        }
+      ]
+    }
+  ]
+}

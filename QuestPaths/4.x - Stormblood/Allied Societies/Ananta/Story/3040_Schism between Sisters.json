@@ -1,0 +1,116 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "skiaz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024771,
+          "Position": {
+              "X": 12.008789,
+              "Y": 55.97821,
+              "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024924,
+          "Position": {
+              "X": 143.26697,
+              "Y": 40.296085,
+              "Z": 410.23877
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024929,
+          "Position": {
+              "X": 120.46985,
+              "Y": 48.569233,
+              "Z": 596.15466
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024934,
+          "Position": {
+              "X": 274.95227,
+              "Y": 38.278767,
+              "Z": 343.00745
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024934,
+          "Position": {
+              "X": 274.95227,
+              "Y": 38.278767,
+              "Z": 343.00745
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1024934,
+          "Position": {
+              "X": 274.95227,
+              "Y": 38.278767,
+              "Z": 343.00745
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false
+          },
+          "Comment": "Solo Duty"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024952,
+          "Position": {
+              "X": 12.008789,
+              "Y": 55.97821,
+              "Z": 237.96448
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

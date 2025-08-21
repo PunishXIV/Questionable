@@ -1,0 +1,91 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009049,
+          "Position": {
+            "X": 187.54858,
+            "Y": -1,
+            "Z": -302.93738
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009050,
+          "Position": {
+            "X": 57.419678,
+            "Y": -5.5366235,
+            "Z": -1.2664795
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2852,
+            3114,
+            3115,
+            3116,
+            3117
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009050,
+          "Position": {
+            "X": 57.419678,
+            "Y": -5.5366235,
+            "Z": -1.2664795
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 187.86679,
+            "Y": -1,
+            "Z": -301.48148
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1009049,
+          "Position": {
+            "X": 187.54858,
+            "Y": -1,
+            "Z": -302.93738
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

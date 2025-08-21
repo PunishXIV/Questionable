@@ -1,0 +1,88 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -119.1183,
+            "Y": 3.7999938,
+            "Z": -104.33473
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah",
+          "$": "Ul'dah Aetheryte to Immortal Flames"
+        },
+        {
+          "DataId": 1004576,
+          "Position": {
+            "X": -141.64954,
+            "Y": 4.1,
+            "Z": -114.67157
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002390,
+          "Position": {
+            "X": -143.45007,
+            "Y": 4.5499268,
+            "Z": -108.537415
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Instruction",
+          "Comment": "Buy Flame Chocobo Issuance"
+        },
+        {
+          "DataId": 1001978,
+          "Position": {
+            "X": 55.344482,
+            "Y": 4.124078,
+            "Z": -143.9079
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006003,
+          "Position": {
+            "X": 51.621216,
+            "Y": 4,
+            "Z": -142.22937
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001978,
+          "Position": {
+            "X": 55.344482,
+            "Y": 4.124078,
+            "Z": -143.9079
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016008,
+          "Position": {
+            "X": 125.93262,
+            "Y": 24.458836,
+            "Z": -5.5390625
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016034,
+          "Position": {
+            "X": -182.39111,
+            "Y": -0.23098835,
+            "Z": -70.72565
+          },
+          "TerritoryId": 419,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          },
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ],
+          "$": "Changed aethernet from Jeweled Crozier, since navmesh thinks the pillar atop the stairs is walk-through"
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016049,
+          "Position": {
+            "X": -3.0975952,
+            "Y": 27.79051,
+            "Z": -140.36774
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433
+        },
+        {
+          "DataId": 1016050,
+          "Position": {
+            "X": 0.7476196,
+            "Y": 0.022254243,
+            "Z": 4.623413
+          },
+          "StopDistance": 7,
+          "TerritoryId": 433,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

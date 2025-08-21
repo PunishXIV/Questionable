@@ -1,0 +1,205 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1044783,
+          "Position": {
+            "X": -313.4051,
+            "Y": 93.68002,
+            "Z": -316.7926
+          },
+          "StopDistance": 5,
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Great Work",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1044788,
+          "Position": {
+            "X": -42.191284,
+            "Y": 2.4950514,
+            "Z": -36.14868
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB842_04755_Q2_000_000",
+              "Answer": "TEXT_CHRHDB842_04755_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039544,
+          "Position": {
+            "X": -29.617859,
+            "Y": 179.71387,
+            "Z": -826.2302
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Hall of Artifice (Labyrinthos)"
+          ],
+          "TargetTerritoryId": 962
+        },
+        {
+          "DataId": 1044794,
+          "Position": {
+            "X": -63.09613,
+            "Y": 18,
+            "Z": -297.59674
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1044799,
+          "Position": {
+            "X": 408.49915,
+            "Y": 170.17088,
+            "Z": -431.7235
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Archeion"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1044805,
+          "Position": {
+            "X": 435.26355,
+            "Y": 65.16199,
+            "Z": -134.20312
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1044806,
+          "Position": {
+            "X": 414.87744,
+            "Y": 65.16199,
+            "Z": -117.784424
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1044807,
+          "Position": {
+            "X": 494.40747,
+            "Y": 65.16199,
+            "Z": -82.993835
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1044809,
+          "Position": {
+            "X": 470.90857,
+            "Y": 65.16199,
+            "Z": -85.61841
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1044765,
+          "Position": {
+            "X": 9.567322,
+            "Y": -6.762952E-05,
+            "Z": 17.715698
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Radz-at-Han"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1044768,
+          "Position": {
+            "X": 11.154297,
+            "Y": -0.00010118321,
+            "Z": 14.816467
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4799
+        }
+      ]
+    }
+  ]
+}

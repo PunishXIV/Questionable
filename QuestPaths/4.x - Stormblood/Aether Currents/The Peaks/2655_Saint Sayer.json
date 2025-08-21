@@ -1,0 +1,96 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020841,
+          "Position": {
+            "X": 146.01355,
+            "Y": 118.1921,
+            "Z": -730.4951
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021752,
+          "Position": {
+            "X": 14.724915,
+            "Y": 118.08588,
+            "Z": -776.82153
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021752,
+          "Position": {
+            "X": 14.724915,
+            "Y": 118.08588,
+            "Z": -776.82153
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 656.90076,
+            "Y": 231.05865,
+            "Z": -611.2172
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 6609,
+              "MinimumKillCount": 2,
+              "RewardItemId": 2002205,
+              "RewardItemCount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021752,
+          "Position": {
+            "X": 14.724915,
+            "Y": 118.08588,
+            "Z": -776.82153
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    }
+  ]
+}

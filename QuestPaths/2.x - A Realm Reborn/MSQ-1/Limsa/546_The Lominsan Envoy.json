@@ -1,0 +1,377 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001835,
+          "Position": {
+            "X": 0.0235393,
+            "Y": 2.330988,
+            "Z": 9.8216
+          },
+          "TerritoryId": 198,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 129
+        },
+        {
+          "DataId": 1003611,
+          "Position": {
+            "X": 9.781006,
+            "Y": 20.999247,
+            "Z": 15.0911255
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 128,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131093
+            }
+          ]
+        },
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003597,
+          "Position": {
+            "X": 8.194031,
+            "Y": 39.999973,
+            "Z": 17.746216
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 128,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131092
+            }
+          ]
+        },
+        {
+          "DataId": 1002695,
+          "Position": {
+            "X": -25.92511,
+            "Y": 91.999954,
+            "Z": -3.6774292
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA200_00546_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2001668,
+          "Position": {
+            "X": -11.10527,
+            "Y": 92.04318,
+            "Z": 17.18466
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA200_00546_Q3_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1000109,
+          "Position": {
+            "X": 29.770264,
+            "Y": -19.000002,
+            "Z": 114.12219
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA200_00546_Q7_000_1",
+              "Yes": true
+            }
+          ],
+          "Comment": "Gridania Arrivals Attendant"
+        },
+        {
+          "DataId": 1002830,
+          "Position": {
+            "X": 36.63684,
+            "Y": -18.800003,
+            "Z": 89.64673
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 132,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Gridania"
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Gridania"
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gridania] Archers' Guild"
+        },
+        {
+          "Position": {
+            "X": 12.761639,
+            "Y": 1.2659149,
+            "Z": -18.021421
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 133,
+          "AethernetShortcut": [
+            "[Gridania] Archers' Guild",
+            "[Gridania] Aetheryte Plaza"
+          ]
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gridania] Leatherworkers' Guild & Shaded Bower"
+        },
+        {
+          "Position": {
+            "X": 121.70568,
+            "Y": 12.25941,
+            "Z": -100.795494
+          },
+          "TerritoryId": 133,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gridania] Lancers' Guild"
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre",
+          "AethernetShortcut": [
+            "[Gridania] Lancers' Guild",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        },
+        {
+          "Position": {
+            "X": -174.09056,
+            "Y": 10.91981,
+            "Z": -162.12527
+          },
+          "TerritoryId": 133,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gridania] Botanists' Guild"
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Gridania] Conjurers' Guild",
+          "AethernetShortcut": [
+            "[Gridania] Botanists' Guild",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        },
+        {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1000106,
+          "Position": {
+            "X": 29.007324,
+            "Y": -19.000002,
+            "Z": 105.485596
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Airship Landing"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA200_00546_Q5_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2001671,
+          "Position": {
+            "X": 7.156433,
+            "Y": -21.957764,
+            "Z": 123.73535
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA200_00546_Q3_000_1",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1004434,
+          "Position": {
+            "X": -27.17633,
+            "Y": 83.19998,
+            "Z": 2.304016
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_MANSEA200_00546_Q7_000_1",
+              "Yes": true
+            }
+          ],
+          "Comment": "Ul'dah Arrivals Attendant"
+        },
+        {
+          "DataId": 1004336,
+          "Position": {
+            "X": -12.619263,
+            "Y": 82.99987,
+            "Z": 4.562378
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004339,
+          "Position": {
+            "X": -25.986206,
+            "Y": 81.799995,
+            "Z": -31.99823
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 131,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "Warp",
+              "Prompt": null,
+              "Answer": 131096
+            }
+          ]
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] The Chamber of Rule"
+        },
+        {
+          "DataId": 1001821,
+          "Position": {
+            "X": -24.124573,
+            "Y": 38.000004,
+            "Z": 85.31323
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

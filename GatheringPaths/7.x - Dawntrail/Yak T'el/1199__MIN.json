@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "Censored",
+  "Steps": [
+    {
+      "TerritoryId": 1189,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+      "SkipConditions": {
+        "AetheryteShortcutIf": {
+          "NearPosition": {
+            "Position": {
+              "X": -605.548,
+              "Y": 9.998135,
+              "Z": -373.28378
+            },
+            "TerritoryId": 1189,
+            "MaximumDistance": 250
+          }
+        }
+      }
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 35260,
+          "Locations": [
+            {
+              "Position": {
+                "X": -601.0465,
+                "Y": 10.95519,
+                "Z": -366.7967
+              },
+              "MinimumAngle": -215,
+              "MaximumAngle": -30
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 35259,
+          "Locations": [
+            {
+              "Position": {
+                "X": -606.3102,
+                "Y": 11.02901,
+                "Z": -372.3002
+              },
+              "MinimumAngle": -240,
+              "MaximumAngle": -45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 35258,
+          "Locations": [
+            {
+              "Position": {
+                "X": -612.5112,
+                "Y": 11.75366,
+                "Z": -374.3395
+              },
+              "MinimumAngle": -235,
+              "MaximumAngle": -60
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

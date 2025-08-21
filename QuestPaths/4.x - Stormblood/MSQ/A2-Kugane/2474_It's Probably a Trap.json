@@ -1,0 +1,136 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020472,
+          "Position": {
+            "X": -32.39496,
+            "Y": 0.029811792,
+            "Z": -68.3147
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020473,
+          "Position": {
+            "X": -34.65332,
+            "Y": 14.001162,
+            "Z": -46.616333
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019070,
+          "Position": {
+            "X": 151.20166,
+            "Y": 14.7757225,
+            "Z": 95.78088
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 639,
+          "AethernetShortcut": [
+            "[Kugane] Shiokaze Hostelry",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        },
+        {
+          "DataId": 1020465,
+          "Position": {
+            "X": 1.5411377,
+            "Y": 0,
+            "Z": -0.96136475
+          },
+          "TerritoryId": 639,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020468,
+          "Position": {
+            "X": -0.9309082,
+            "Y": 0.024139475,
+            "Z": -0.13739014
+          },
+          "TerritoryId": 639,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2008134,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 1.1443481,
+            "Z": 13.504211
+          },
+          "TerritoryId": 639,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 628
+        },
+        {
+          "DataId": 1020475,
+          "Position": {
+            "X": -52.140076,
+            "Y": 16.75975,
+            "Z": -6.729248
+          },
+          "TerritoryId": 628,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          },
+          "AethernetShortcut": [
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020476,
+          "Position": {
+            "X": 147.75305,
+            "Y": 14.775722,
+            "Z": 91.721924
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

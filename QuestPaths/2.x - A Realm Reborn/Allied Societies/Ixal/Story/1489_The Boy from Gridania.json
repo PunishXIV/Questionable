@@ -1,0 +1,142 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1009204,
+                    "Position": {
+                        "X": 151.93408,
+                        "Y": -18.41936,
+                        "Z": 100.72473
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 151.93408,
+                                    "Y": -18.41936,
+                                    "Z": 100.72473
+                                },
+                                "TerritoryId": 154,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1000107,
+                    "Position": {
+                        "X": 27.145752,
+                        "Y": -19.000002,
+                        "Z": 106.67578
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1000195,
+                    "Position": {
+                        "X": 197.4364,
+                        "Y": 0.0026046988,
+                        "Z": 57.114502
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Gridania",
+                    "AethernetShortcut": [
+                        "[Gridania] Aetheryte Plaza",
+                        "[Gridania] Archers' Guild"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1009607,
+                    "Position": {
+                        "X": 191.05823,
+                        "Y": -3.1634123E-15,
+                        "Z": 46.341675
+                    },
+                    "TerritoryId": 132,
+                    "InteractionType": "Interact",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_BANIXA004_01489_Q1_000_001",
+                            "Answer": "TEXT_BANIXA004_01489_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1009218,
+                    "Position": {
+                        "X": -4.1047363,
+                        "Y": -40.949986,
+                        "Z": 176.83679
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "North Shroud - Fallgourd Float"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "TerritoryId": 154,
+                    "InteractionType": "Craft",
+                    "ItemId": 8131,
+                    "ItemCount": 1,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "Item": {
+                                "NotInInventory": false
+                            }
+                        }
+                    },
+                    "RequiredCurrentJob": [
+                        "DoH"
+                    ]
+                },
+                {
+                    "DataId": 1009204,
+                    "Position": {
+                        "X": 151.93408,
+                        "Y": -18.41936,
+                        "Z": 100.72473
+                    },
+                    "TerritoryId": 154,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

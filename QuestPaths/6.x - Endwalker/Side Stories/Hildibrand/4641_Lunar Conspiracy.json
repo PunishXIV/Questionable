@@ -1,0 +1,211 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042512,
+          "Position": {
+            "X": 31.387817,
+            "Y": -5.021957E-07,
+            "Z": -0.65618896
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB821_04641_Q2_000_000",
+              "Answer": "TEXT_CHRHDB821_04641_A2_000_002"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CHRHDB821_04641_Q3_000_000",
+              "Answer": "TEXT_CHRHDB821_04641_A3_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042524,
+          "Position": {
+            "X": -432.70013,
+            "Y": 22.328213,
+            "Z": 508.75085
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012531,
+          "Position": {
+            "X": -663.29443,
+            "Y": 132.6466,
+            "Z": 728.96924
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1024,
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        },
+        {
+          "DataId": 2012529,
+          "Position": {
+            "X": 0.07623291,
+            "Y": 0.83917236,
+            "Z": 52.506226
+          },
+          "TerritoryId": 1024,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 958
+        },
+        {
+          "DataId": 1042525,
+          "Position": {
+            "X": -446.0365,
+            "Y": 10.5,
+            "Z": -616.14404
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1042526,
+          "Position": {
+            "X": -657.9232,
+            "Y": 130.61172,
+            "Z": 722.62134
+          },
+          "StopDistance": 7,
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1042528,
+          "Position": {
+            "X": -15.213318,
+            "Y": -129.20917,
+            "Z": -475.6695
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1042531,
+          "Position": {
+            "X": -103.07471,
+            "Y": -137.41672,
+            "Z": -444.66315
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -59.250706,
+            "Y": -133.00002,
+            "Z": -587.20355
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1042532,
+          "Position": {
+            "X": -60.624146,
+            "Y": -132.80109,
+            "Z": -587.4266
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1037816,
+          "Position": {
+            "X": 114.3053,
+            "Y": -132.87448,
+            "Z": -559.35
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2013061,
+          "Position": {
+            "X": 249.19507,
+            "Y": 66.544556,
+            "Z": 367.2693
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042544,
+          "Position": {
+            "X": 324.422,
+            "Y": 130.1783,
+            "Z": 711.94006
+          },
+          "StopDistance": 7,
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4642
+        }
+      ]
+    }
+  ]
+}

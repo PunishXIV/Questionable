@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 620,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Peaks - Ala Gannha"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33321,
+          "Locations": [
+            {
+              "Position": {
+                "X": 518.1079,
+                "Y": 218.4718,
+                "Z": -593.7597
+              },
+              "MinimumAngle": -140,
+              "MaximumAngle": 70
+            }
+          ]
+        },
+        {
+          "DataId": 33322,
+          "Locations": [
+            {
+              "Position": {
+                "X": 543.8551,
+                "Y": 223.6571,
+                "Z": -583.9418
+              },
+              "MinimumAngle": 175,
+              "MaximumAngle": 290
+            },
+            {
+              "Position": {
+                "X": 513.8116,
+                "Y": 218.4708,
+                "Z": -580.1434
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 145
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33323,
+          "Locations": [
+            {
+              "Position": {
+                "X": 648.0388,
+                "Y": 230.7679,
+                "Z": -678.8027
+              },
+              "MinimumAngle": 225,
+              "MaximumAngle": 345
+            }
+          ]
+        },
+        {
+          "DataId": 33324,
+          "Locations": [
+            {
+              "Position": {
+                "X": 675.1682,
+                "Y": 234.6712,
+                "Z": -675.749
+              },
+              "MinimumAngle": -55,
+              "MaximumAngle": 85
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33320,
+          "Locations": [
+            {
+              "Position": {
+                "X": 722.4699,
+                "Y": 242.8886,
+                "Z": -598.9974
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 195
+            }
+          ]
+        },
+        {
+          "DataId": 33319,
+          "Locations": [
+            {
+              "Position": {
+                "X": 718.4479,
+                "Y": 244.6019,
+                "Z": -583.6996
+              },
+              "MinimumAngle": 45,
+              "MaximumAngle": 190
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Thaksin",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013651,
+          "Position": {
+            "X": -475.76105,
+            "Y": 155.8605,
+            "Z": -209.76581
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -654.5463,
+            "Y": 148.56897,
+            "Z": 187.12466
+          },
+          "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1013655,
+          "Position": {
+            "X": -669.9169,
+            "Y": 154.30952,
+            "Z": 191.08862
+          },
+          "Land": true,
+          "TerritoryId": 399,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -894.6883,
+            "Y": 215.50499,
+            "Z": 157.66754
+          },
+          "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 5047,
+          "Position": {
+            "X": -894.9264,
+            "Y": 215.16266,
+            "Z": 155.29102
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            5047,
+            5048
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -654.5463,
+            "Y": 148.56897,
+            "Z": 187.12466
+          },
+          "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1013655,
+          "Position": {
+            "X": -669.9169,
+            "Y": 154.30952,
+            "Z": 191.08862
+          },
+          "Land": true,
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

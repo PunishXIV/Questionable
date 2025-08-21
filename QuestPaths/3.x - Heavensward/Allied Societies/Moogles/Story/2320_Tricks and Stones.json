@@ -1,0 +1,182 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1017328,
+                    "Position": {
+                        "X": 234.33276,
+                        "Y": -42.20274,
+                        "Z": 601.00696
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "The Churning Mists - Moghome",
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 234.33276,
+                                    "Y": -42.20274,
+                                    "Z": 601.00696
+                                },
+                                "TerritoryId": 400,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1017329,
+                    "Position": {
+                        "X": 351.76624,
+                        "Y": -74.80417,
+                        "Z": 629.96875
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1012163,
+                    "Position": {
+                        "X": 128.25195,
+                        "Y": 24.458832,
+                        "Z": -0.6867676
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] The Forgotten Knight"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "DataId": 1017330,
+                    "Position": {
+                        "X": -246.72314,
+                        "Y": -20.034918,
+                        "Z": -90.10455
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "AethernetShortcut": [
+                        "[Ishgard] The Forgotten Knight",
+                        "[Ishgard] The Jeweled Crozier"
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "TerritoryId": 419,
+                    "InteractionType": "Craft",
+                    "ItemId": 15720,
+                    "ItemCount": 1
+                },
+                {
+                    "DataId": 1017330,
+                    "Position": {
+                        "X": -246.72314,
+                        "Y": -20.034918,
+                        "Z": -90.10455
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1017331,
+                    "Position": {
+                        "X": -366.84216,
+                        "Y": 60.89617,
+                        "Z": 312.6726
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "The Churning Mists - Zenith",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 1017334,
+                    "Position": {
+                        "X": -614.374,
+                        "Y": 48,
+                        "Z": 326.28357
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "The Churning Mists - Zenith"
+                }
+            ]
+        },
+        {
+            "Sequence": 7,
+            "Steps": [
+                {
+                    "DataId": 1017331,
+                    "Position": {
+                        "X": -366.84216,
+                        "Y": 60.89617,
+                        "Z": 312.6726
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1017335,
+                    "Position": {
+                        "X": -370.9926,
+                        "Y": 60.86112,
+                        "Z": 309.8954
+                    },
+                    "TerritoryId": 400,
+                    "InteractionType": "CompleteQuest",
+                    "DialogueChoices": [
+                        {
+                            "Type": "List",
+                            "Prompt": "TEXT_BANMOG001_02320_Q1_000_000",
+                            "Answer": "TEXT_BANMOG001_02320_A1_000_001"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

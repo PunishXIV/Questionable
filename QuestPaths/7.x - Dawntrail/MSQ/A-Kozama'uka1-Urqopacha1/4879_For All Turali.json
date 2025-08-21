@@ -1,0 +1,119 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046762,
+          "Position": {
+            "X": -112.56586,
+            "Y": -19.725424,
+            "Z": 203.72314
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046764,
+          "Position": {
+            "X": 139.94043,
+            "Y": -14,
+            "Z": 12.405518
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] The For'ard Cabins",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046766,
+          "Position": {
+            "X": 55.252808,
+            "Y": -14,
+            "Z": 87.99878
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 1185,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 826,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1046790,
+          "Position": {
+            "X": 748.71436,
+            "Y": 114.61811,
+            "Z": 565.3314
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1046776,
+          "Position": {
+            "X": 552.1476,
+            "Y": 115.77393,
+            "Z": 222.156
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046781,
+          "Position": {
+            "X": 579.9801,
+            "Y": 119.49004,
+            "Z": 148.76013
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

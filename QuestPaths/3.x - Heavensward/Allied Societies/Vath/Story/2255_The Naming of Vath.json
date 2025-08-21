@@ -1,0 +1,215 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011928,
+          "Position": {
+            "X": 73.19751,
+            "Y": -49.19563,
+            "Z": -139.05548
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016835,
+          "Position": {
+            "X": 447.37915,
+            "Y": -51.141407,
+            "Z": 108.53735
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1016836,
+          "Position": {
+            "X": 212.42078,
+            "Y": -58.007248,
+            "Z": -228.07666
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANGNA001_02255_Q1_000_031",
+              "Answer": "TEXT_BANGNA001_02255_A1_000_032"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006874,
+          "Position": {
+            "X": 222.156,
+            "Y": -74.93713,
+            "Z": 122.51465
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            5540
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1016836,
+          "Position": {
+            "X": 212.42078,
+            "Y": -58.007248,
+            "Z": -228.07666
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 471.25446,
+            "Y": -51.141403,
+            "Z": 35.94126
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
+        },
+        {
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 471.25446,
+            "Y": -51.141403,
+            "Z": 35.94126
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1011928,
+          "Position": {
+            "X": 73.19751,
+            "Y": -49.19563,
+            "Z": -139.05548
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1016837,
+          "Position": {
+            "X": 58.88452,
+            "Y": -48.000004,
+            "Z": -171.06891
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "Position": {
+            "X": 215.13696,
+            "Y": -87.32745,
+            "Z": 217.94458
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Action",
+          "Action": "Fumigate",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 58.88452,
+            "Y": -48.000004,
+            "Z": -171.06891
+          },
+          "StopDistance": 2,
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1016837,
+          "Position": {
+            "X": 58.88452,
+            "Y": -48.000004,
+            "Z": -171.06891
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Mount": false,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANGNA001_02255_Q1_000_105",
+              "Answer": "TEXT_BANGNA001_02255_A1_000_106"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

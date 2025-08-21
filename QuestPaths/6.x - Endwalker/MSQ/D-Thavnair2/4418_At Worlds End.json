@@ -1,0 +1,156 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040372,
+          "Position": {
+            "X": -214.40454,
+            "Y": 36,
+            "Z": 64.86609
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040373,
+          "Position": {
+            "X": -0.3204956,
+            "Y": -2.514571E-07,
+            "Z": -2.1210327
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Radz-at-Han",
+          "DisableNavmesh": true
+        },
+        {
+          "TerritoryId": 963,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Radz-at-Han] Hall of the Radiant Host"
+        },
+        {
+          "DataId": 1040374,
+          "Position": {
+            "X": -145.80005,
+            "Y": 3.9999294,
+            "Z": -83.9704
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040375,
+          "Position": {
+            "X": -172.1676,
+            "Y": 4.061,
+            "Z": -87.90729
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040375,
+          "Position": {
+            "X": -172.1676,
+            "Y": 4.061,
+            "Z": -87.90729
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMD110_04418_Q2_000_172",
+              "Answer": "TEXT_AKTKMD110_04418_A2_000_173"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1037318,
+          "Position": {
+            "X": -4.1047363,
+            "Y": 2.9999943,
+            "Z": -203.8758
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Hall of the Radiant Host",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMD110_04418_Q3_000_223",
+              "Answer": "TEXT_AKTKMD110_04418_A3_000_225"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1040379,
+          "Position": {
+            "X": 8.010925,
+            "Y": 3.02,
+            "Z": -198.19946
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040382,
+          "Position": {
+            "X": 2.9450073,
+            "Y": -1.9999962,
+            "Z": 87.44946
+          },
+          "StopDistance": 5,
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

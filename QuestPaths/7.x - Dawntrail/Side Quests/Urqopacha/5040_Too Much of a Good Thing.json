@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051369,
+          "Position": {
+            "X": 357.83923,
+            "Y": -156.11935,
+            "Z": -386.43475
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051370,
+          "Position": {
+            "X": 302.02173,
+            "Y": -163.4447,
+            "Z": -420.34027
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051371,
+          "Position": {
+            "X": 303.02893,
+            "Y": -163.416,
+            "Z": -421.53052
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

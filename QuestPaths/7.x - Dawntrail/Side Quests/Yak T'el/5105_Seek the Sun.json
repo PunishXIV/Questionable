@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051055,
+          "Position": {
+            "X": 563.5918,
+            "Y": -144.04688,
+            "Z": 702.26587
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -45.87303,
+            "Y": -174.86252,
+            "Z": 649.25995
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1051056,
+          "Position": {
+            "X": -49.149292,
+            "Y": -174.58734,
+            "Z": 651.4839
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051056,
+          "Position": {
+            "X": -49.149292,
+            "Y": -174.58734,
+            "Z": 651.4839
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1189,
+          "InteractionType": "Say",
+          "ChatMessage": {
+            "Key": "TEXT_KINGZD106_05105_SAYTODO_000_011"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051055,
+          "Position": {
+            "X": 563.5918,
+            "Y": -144.04688,
+            "Z": 702.26587
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

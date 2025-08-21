@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000503,
+          "Position": {
+            "X": 178.33215,
+            "Y": -32.015224,
+            "Z": 333.30273
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001018,
+          "Position": {
+            "X": 155.47412,
+            "Y": -23.66681,
+            "Z": 490.74524
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            26
+          ]
+        },
+        {
+          "DataId": 2001016,
+          "Position": {
+            "X": 152.60547,
+            "Y": -23.758362,
+            "Z": 494.71265
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2001018,
+          "Position": {
+            "X": 155.47412,
+            "Y": -23.66681,
+            "Z": 490.74524
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000470,
+          "Position": {
+            "X": -59.006653,
+            "Y": -0.010835781,
+            "Z": 26.41333
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    }
+  ]
+}

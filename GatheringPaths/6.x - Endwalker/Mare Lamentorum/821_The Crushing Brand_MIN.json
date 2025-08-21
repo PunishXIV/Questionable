@@ -1,0 +1,163 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 959,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33929,
+          "Locations": [
+            {
+              "Position": {
+                "X": 304.4121,
+                "Y": 118.8077,
+                "Z": 673.4494
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 230
+            },
+            {
+              "Position": {
+                "X": 297.7666,
+                "Y": 119.4976,
+                "Z": 679.5604
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 220
+            },
+            {
+              "Position": {
+                "X": 322.163,
+                "Y": 119.0883,
+                "Z": 657.4384
+              },
+              "MinimumAngle": 55,
+              "MaximumAngle": 235
+            }
+          ]
+        },
+        {
+          "DataId": 33928,
+          "Locations": [
+            {
+              "Position": {
+                "X": 313.72,
+                "Y": 118.3442,
+                "Z": 664.8668
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 230
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33927,
+          "Locations": [
+            {
+              "Position": {
+                "X": 394.3838,
+                "Y": 144.7951,
+                "Z": 820.7851
+              },
+              "MinimumAngle": 75,
+              "MaximumAngle": 250
+            },
+            {
+              "Position": {
+                "X": 421.0549,
+                "Y": 143.6111,
+                "Z": 805.9457
+              },
+              "MinimumAngle": 60,
+              "MaximumAngle": 225
+            },
+            {
+              "Position": {
+                "X": 414.2961,
+                "Y": 143.2405,
+                "Z": 811.3884
+              },
+              "MinimumAngle": 65,
+              "MaximumAngle": 230
+            }
+          ]
+        },
+        {
+          "DataId": 33926,
+          "Locations": [
+            {
+              "Position": {
+                "X": 405.2481,
+                "Y": 143.6621,
+                "Z": 816.6496
+              },
+              "MinimumAngle": 75,
+              "MaximumAngle": 230
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33925,
+          "Locations": [
+            {
+              "Position": {
+                "X": 474.679,
+                "Y": 143.4776,
+                "Z": 698.5961
+              },
+              "MinimumAngle": 20,
+              "MaximumAngle": 170
+            },
+            {
+              "Position": {
+                "X": 474.8585,
+                "Y": 144.2588,
+                "Z": 685.7468
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 155
+            },
+            {
+              "Position": {
+                "X": 467.506,
+                "Y": 144.9235,
+                "Z": 654.2
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 150
+            }
+          ]
+        },
+        {
+          "DataId": 33924,
+          "Locations": [
+            {
+              "Position": {
+                "X": 470.7754,
+                "Y": 144.8793,
+                "Z": 672.114
+              },
+              "MinimumAngle": -5,
+              "MaximumAngle": 165
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037729,
+          "Position": {
+            "X": -342.67188,
+            "Y": 22.377153,
+            "Z": 466.8496
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039392,
+          "Position": {
+            "X": -378.4085,
+            "Y": 22.105467,
+            "Z": 535.33215
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1037731,
+          "Position": {
+            "X": -356.80176,
+            "Y": 22,
+            "Z": 518.9745
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$": "0 0 0 0 0 0 -> 0 128 0 0 0 64"
+        },
+        {
+          "DataId": 1037754,
+          "Position": {
+            "X": -431.29626,
+            "Y": 22.278519,
+            "Z": 437.6134
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "$": "0 128 0 0 0 64 -> 0 192 0 0 0 96"
+        },
+        {
+          "DataId": 1039393,
+          "Position": {
+            "X": -415.9762,
+            "Y": 21.392963,
+            "Z": 384.9087
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "$": "0 192 0 0 0 96 -> 0 224 0 0 0 112"
+        },
+        {
+          "DataId": 1039392,
+          "Position": {
+            "X": -378.4085,
+            "Y": 22.105467,
+            "Z": 535.33215
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC015_04224_Q1_000_000",
+              "Answer": "TEXT_AKTKZC015_04224_A1_000_000"
+            }
+          ],
+          "$": "any answer works, but you need all 3 to continue"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037729,
+          "Position": {
+            "X": -342.67188,
+            "Y": 22.377153,
+            "Z": 466.8496
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

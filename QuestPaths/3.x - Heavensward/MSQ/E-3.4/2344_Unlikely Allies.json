@@ -1,0 +1,134 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1017728,
+          "Position": {
+            "X": -126.78729,
+            "Y": 64.801445,
+            "Z": -211.0476
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017732,
+          "Position": {
+            "X": -74.99817,
+            "Y": 64.60398,
+            "Z": -289.53992
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1017733,
+          "Position": {
+            "X": -29.221008,
+            "Y": 57.161472,
+            "Z": -235.4925
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -112.94925,
+            "Y": 74.435455,
+            "Z": -281.74304
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1017734,
+          "Position": {
+            "X": -105.4552,
+            "Y": 67.90736,
+            "Z": -277.7295
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Mount": false,
+          "DisableNavmesh": true,
+          "DelaySecondsAtStart": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1017735,
+          "Position": {
+            "X": -39.230957,
+            "Y": 64.43301,
+            "Z": -226.94745
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017736,
+          "Position": {
+            "X": -42.008118,
+            "Y": 64.500336,
+            "Z": -228.47339
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

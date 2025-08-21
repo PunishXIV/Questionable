@@ -1,0 +1,88 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 886,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ]
+        },
+        {
+          "DataId": 1035506,
+          "Position": {
+            "X": 49.729126,
+            "Y": -18.746954,
+            "Z": 7.675232
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The Mattock"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035508,
+          "Position": {
+            "X": -99.13794,
+            "Y": 0,
+            "Z": -132.86035
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] Western Risensong Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1035509,
+          "Position": {
+            "X": 119.58484,
+            "Y": -20,
+            "Z": -135.36285
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] Western Risensong Quarter",
+            "[Firmament] Eastern Risensong Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035510,
+          "Position": {
+            "X": 21.011597,
+            "Y": 1.0151416E-07,
+            "Z": -159.53314
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4000
+        }
+      ]
+    }
+  ]
+}

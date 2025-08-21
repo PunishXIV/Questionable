@@ -1,0 +1,226 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021878,
+          "Position": {
+            "X": 112.41321,
+            "Y": 3.6299734,
+            "Z": 62.302612
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 89.911125,
+            "Y": 0.8319905,
+            "Z": 69.05516
+          },
+          "TerritoryId": 418,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 79.70269,
+            "Y": -15.835008,
+            "Z": 69.00836
+          },
+          "TerritoryId": 418,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1021882,
+          "Position": {
+            "X": 104.29541,
+            "Y": -20.020874,
+            "Z": 60.624023
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1021883,
+          "Position": {
+            "X": 35.202515,
+            "Y": -14.000005,
+            "Z": 34.74475
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1021884,
+          "Position": {
+            "X": 20.645447,
+            "Y": -12.020878,
+            "Z": 37.79651
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 52.22194,
+            "Y": -12.020878,
+            "Z": 75.08158
+          },
+          "TerritoryId": 418,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1021885,
+          "Position": {
+            "X": 36.63684,
+            "Y": -6.947115,
+            "Z": 79.39258
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022094,
+          "Position": {
+            "X": 110.27698,
+            "Y": -20.000004,
+            "Z": 69.93213
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021886,
+          "Position": {
+            "X": 0.015197754,
+            "Y": 13.46524,
+            "Z": 59.15918
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 360.62927,
+            "Y": 161.10802,
+            "Z": 27.17857
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7237,
+            7494
+          ],
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1021888,
+          "Position": {
+            "X": 358.87683,
+            "Y": 161.108,
+            "Z": 26.5354
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021879,
+          "Position": {
+            "X": 112.50476,
+            "Y": 3.6299736,
+            "Z": 60.837646
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "NextQuestId": 2565
+        }
+      ]
+    }
+  ]
+}

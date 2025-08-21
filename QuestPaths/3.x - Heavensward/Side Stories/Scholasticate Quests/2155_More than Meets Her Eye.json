@@ -1,0 +1,210 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "pot0to",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1011215,
+                    "Position": {
+                        "X": -145.37274,
+                        "Y": 14.80313,
+                        "Z": -129.25922
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 427,
+                    "AetheryteShortcut": "Ishgard",
+                    "AethernetShortcut": [
+                        "[Ishgard] Aetheryte Plaza",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ],
+                    "SkipConditions": {
+                        "StepIf": {
+                            "InTerritory": [ 427 ]
+                        },
+                        "AetheryteShortcutIf": {
+                            "InTerritory": [ 419, 427 ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 1015952,
+                    "Position": {
+                        "X": -1.3886108,
+                        "Y": 0.20000005,
+                        "Z": -9.903137
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "AcceptQuest"
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 2005332,
+                    "Position": {
+                        "X": -5.012468,
+                        "Y": 1.1515,
+                        "Z": 11.86189
+                    },
+                    "TerritoryId": 427,
+                    "InteractionType": "Interact",
+                    "TargetTerritoryId": 419
+                },
+                {
+                    "DataId": 1015965,
+                    "Position": {
+                        "X": -31.631958,
+                        "Y": 15.965061,
+                        "Z": -66.941345
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1015975,
+                    "Position": {
+                        "X": -63.98114,
+                        "Y": -4.734931,
+                        "Z": -36.14868
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 3,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": -15.249258,
+                        "Y": -13.663432,
+                        "Z": -64.45602
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "WalkTo"
+                },
+                {
+                    "DataId": 1015968,
+                    "Position": {
+                        "X": -41.001038,
+                        "Y": 19.008322,
+                        "Z": -31.296265
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 4,
+            "Steps": [
+                {
+                    "DataId": 1015972,
+                    "Position": {
+                        "X": -41.73346,
+                        "Y": 19.008322,
+                        "Z": -31.845642
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 5,
+            "Steps": [
+                {
+                    "DataId": 1015973,
+                    "Position": {
+                        "X": 782.62,
+                        "Y": 216.88771,
+                        "Z": 222.9801
+                    },
+                    "TerritoryId": 397,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 6,
+            "Steps": [
+                {
+                    "DataId": 2006603,
+                    "Position": {
+                        "X": 782.1926,
+                        "Y": 216.6322,
+                        "Z": 219.74512
+                    },
+                    "TerritoryId": 397,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [ 4676 ]
+                }
+            ]
+        },
+        {
+            "Sequence": 7,
+            "Steps": [
+                {
+                    "DataId": 2006617,
+                    "Position": {
+                        "X": 782.1926,
+                        "Y": 216.6322,
+                        "Z": 219.74512
+                    },
+                    "TerritoryId": 397,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 8,
+            "Steps": [
+                {
+                    "DataId": 1015970,
+                    "Position": {
+                        "X": -37.82715,
+                        "Y": 19.008322,
+                        "Z": -28.976868
+                    },
+                    "TerritoryId": 418,
+                    "InteractionType": "Interact",
+                    "AetheryteShortcut": "Ishgard"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1015976,
+                    "Position": {
+                        "X": -122.51471,
+                        "Y": 14.553129,
+                        "Z": -166.97955
+                    },
+                    "TerritoryId": 419,
+                    "InteractionType": "CompleteQuest",
+                    "AethernetShortcut": [
+                        "[Ishgard] Skysteel Manufactory",
+                        "[Ishgard] Saint Reymanaud's Cathedral"
+                    ],
+                    "NextQuestId": 2207
+                }
+            ]
+        }
+    ]
+}

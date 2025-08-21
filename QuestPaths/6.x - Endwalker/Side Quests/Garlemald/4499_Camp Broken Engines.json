@@ -1,0 +1,62 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "goatzone",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041755,
+          "Position": {
+            "X": -340.35254,
+            "Y": 22,
+            "Z": 502.037
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZC102_04499_Q1_000_000",
+              "Answer": "TEXT_AKTKZC102_04499_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012620,
+          "Position": {
+            "X": 64.68298,
+            "Y": -14.358765,
+            "Z": 395.22388
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "multi option, this one is correct so we can skip the rest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041754,
+          "Position": {
+            "X": -340.84082,
+            "Y": 22,
+            "Z": 500.57214
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Garlemald - Camp Broken Glass",
+          "NextQuestId": 4500
+        }
+      ]
+    }
+  ]
+}

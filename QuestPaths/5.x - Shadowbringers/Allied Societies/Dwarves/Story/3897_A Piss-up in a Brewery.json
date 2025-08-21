@@ -1,0 +1,90 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033710,
+          "Position": {
+            "X": -607.72107,
+            "Y": 65.601006,
+            "Z": -412.71082
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033730,
+          "Position": {
+            "X": -593.9269,
+            "Y": 71.99991,
+            "Z": -444.9989
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1033749,
+          "Position": {
+            "X": -628.04614,
+            "Y": 65.6009,
+            "Z": -414.66394
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 813,
+          "InteractionType": "Craft",
+          "ItemId": 31139,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1033730,
+          "Position": {
+            "X": -593.9269,
+            "Y": 71.99991,
+            "Z": -444.9989
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033730,
+          "Position": {
+            "X": -593.9269,
+            "Y": 71.99991,
+            "Z": -444.9989
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

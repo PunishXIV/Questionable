@@ -1,0 +1,43 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 621,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Lochs - Porta Praetoria"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32274,
+          "Locations": [
+            {
+              "Position": {
+                "X": -737.3265,
+                "Y": 76.50858,
+                "Z": -591.2296
+              }
+            },
+            {
+              "Position": {
+                "X": -787.0406,
+                "Y": 78.22382,
+                "Z": -640.0532
+              }
+            },
+            {
+              "Position": {
+                "X": -670.0129,
+                "Y": 70.42876,
+                "Z": -645.2087
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010897,
+          "Position": {
+            "X": 0.9613037,
+            "Y": -1.9957249,
+            "Z": -45.609253
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002880,
+          "Position": {
+            "X": 0,
+            "Y": -1,
+            "Z": -29.25
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010903,
+          "Position": {
+            "X": 24.887451,
+            "Y": -1,
+            "Z": -1.0223389
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002879,
+          "Position": {
+            "X": 0,
+            "Y": 3,
+            "Z": 27.5
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 156
+        },
+        {
+          "Position": {
+            "X": 30.917934,
+            "Y": 20.495003,
+            "Z": -656.1909
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "$": "Rising Stones Door"
+        },
+        {
+          "Position": {
+            "X": 26.405773,
+            "Y": 29.49983,
+            "Z": -767.3998
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 25.629164,
+            "Y": 28.999998,
+            "Z": -823.2204
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.589355,
+            "Y": 29,
+            "Z": -825.37573
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 26.405773,
+            "Y": 29.49983,
+            "Z": -767.3998
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -145.66704,
+            "Y": 43.906273,
+            "Z": -189.70813
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1010929,
+          "Position": {
+            "X": -146.80713,
+            "Y": 43.495255,
+            "Z": -187.39612
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 156,
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona"
+        },
+        {
+          "DataId": 2002878,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0223389,
+            "Z": -26.779602
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351
+        },
+        {
+          "DataId": 1010930,
+          "Position": {
+            "X": -1.2664795,
+            "Y": -1.9957249,
+            "Z": -42.069153
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

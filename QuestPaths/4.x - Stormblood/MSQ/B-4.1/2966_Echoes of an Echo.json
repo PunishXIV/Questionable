@@ -1,0 +1,169 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024125,
+          "Position": {
+            "X": 775.6007,
+            "Y": 69.99993,
+            "Z": 639.4292
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024113,
+          "Position": {
+            "X": 754.26855,
+            "Y": 70,
+            "Z": 424.70435
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDB105_02966_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024114,
+          "Position": {
+            "X": 5.2338257,
+            "Y": 0.054396715,
+            "Z": -3.3417358
+          },
+          "TerritoryId": 738,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -2.9216702,
+            "Y": -2.0000002,
+            "Z": -34.863174
+          },
+          "TerritoryId": 738,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -2.9769177,
+              "Y": -1.3092512,
+              "Z": -36.29651
+            },
+            "DelaySeconds": 0.1
+          },
+          "StopDistance": 0.25
+        },
+        {
+          "Position": {
+            "X": -2.9769177,
+            "Y": -1.3092512,
+            "Z": -36.29651
+          },
+          "TerritoryId": 738,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -2.8188858,
+              "Y": 0.16235979,
+              "Z": -38.626305
+            },
+            "DelaySeconds": 0.1
+          },
+          "StopDistance": 0.25
+        },
+        {
+          "DataId": 2009058,
+          "Position": {
+            "X": -2.8188858,
+            "Y": 0.16235979,
+            "Z": -38.626305
+          },
+          "TerritoryId": 738,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "DelaySecondsAtStart": 3,
+          "$": "QW: 0 0 0 0 0 0 -> QW: 16 16 0 0 0 128"
+        },
+        {
+          "Position": {
+            "X": -0.01923807,
+            "Y": -2.0000002,
+            "Z": -35.31207
+          },
+          "TerritoryId": 738,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1024118,
+          "Position": {
+            "X": 24.612793,
+            "Y": -0.3670061,
+            "Z": 5.0201416
+          },
+          "TerritoryId": 738,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024114,
+          "Position": {
+            "X": 5.2338257,
+            "Y": 0.054396715,
+            "Z": -3.3417358
+          },
+          "TerritoryId": 738,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024119,
+          "Position": {
+            "X": 758.6632,
+            "Y": 70,
+            "Z": 446.31104
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

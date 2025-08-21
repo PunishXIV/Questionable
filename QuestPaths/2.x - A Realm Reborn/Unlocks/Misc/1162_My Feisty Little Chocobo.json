@@ -1,0 +1,120 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002754,
+          "Position": {
+            "X": -219.22644,
+            "Y": 20.923328,
+            "Z": 338.4298
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001467,
+          "Position": {
+            "X": -44.419067,
+            "Y": 1.4190674,
+            "Z": -36.850586
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -230.51279,
+            "Y": 57.95885,
+            "Z": -84.411194
+          },
+          "TerritoryId": 148,
+          "InteractionType": "UseItem",
+          "ItemId": 4868,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -230.51279,
+            "Y": 57.95885,
+            "Z": -84.411194
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "ComplexCombatData": [
+            {
+              "DataId": 178,
+              "MinimumKillCount": 3
+            }
+          ],
+          "EnemySpawnType": "OverworldEnemies"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000471,
+          "Position": {
+            "X": -60.471558,
+            "Y": 0.19999865,
+            "Z": 6.301941
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

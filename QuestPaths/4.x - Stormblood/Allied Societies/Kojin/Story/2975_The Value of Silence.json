@@ -1,0 +1,179 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024215,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024248,
+          "Position": {
+            "X": 539.48267,
+            "Y": -19.505934,
+            "Z": 416.09827
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Reunion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024250,
+          "Position": {
+            "X": 561.21155,
+            "Y": -19.505632,
+            "Z": 365.28564
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1024251,
+          "Position": {
+            "X": 553.6124,
+            "Y": -19.505638,
+            "Z": 314.7478
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1024252,
+          "Position": {
+            "X": 571.2213,
+            "Y": -19.505638,
+            "Z": 296.46753
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024248,
+          "Position": {
+            "X": 539.48267,
+            "Y": -19.505934,
+            "Z": 416.09827
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKJN003_02975_Q1_000_000",
+              "Answer": "TEXT_BANKJN003_02975_A1_000_001"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1024253,
+          "Position": {
+            "X": 355.30627,
+            "Y": -13.019889,
+            "Z": 471.1222
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKJN003_02975_Q2_000_000",
+              "Answer": "TEXT_BANKJN003_02975_A2_000_001"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 474.09186,
+            "Y": -25.232485,
+            "Z": 550.5908
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [8251, 8252, 8253],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1024256,
+          "Position": {
+            "X": 355.79456,
+            "Y": -12.957703,
+            "Z": 470.29822
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024215,
+          "Position": {
+            "X": 400.07617,
+            "Y": -119.589325,
+            "Z": -247.54712
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKJN003_02975_Q3_000_000",
+              "Answer": "TEXT_BANKJN003_02975_A3_000_002"
+            }
+          ],
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

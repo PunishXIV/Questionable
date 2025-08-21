@@ -1,0 +1,58 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022344,
+          "Position": {
+            "X": 353.78027,
+            "Y": 323.77386,
+            "Z": 273.30432
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020642,
+          "Position": {
+            "X": 302.93726,
+            "Y": 324.3033,
+            "Z": 383.04712
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDA617_02543_Q1_000_000",
+              "Answer": "TEXT_STMBDA617_02543_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020645,
+          "Position": {
+            "X": 257.80115,
+            "Y": 314.40753,
+            "Z": 416.15918
+          },
+          "TerritoryId": 620,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

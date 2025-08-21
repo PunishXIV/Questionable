@@ -1,0 +1,185 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013610,
+          "Position": {
+            "X": 209.21643,
+            "Y": 302,
+            "Z": -204.85242
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013613,
+          "Position": {
+            "X": 479.91138,
+            "Y": 226.62401,
+            "Z": 817.0442
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011232,
+          "Position": {
+            "X": 506.8589,
+            "Y": 217.95148,
+            "Z": 792.4772
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1011237,
+          "Position": {
+            "X": 447.3181,
+            "Y": 212.53984,
+            "Z": 725.00183
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013614,
+          "Position": {
+            "X": 463.5232,
+            "Y": 200.23772,
+            "Z": 651.911
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013617,
+          "Position": {
+            "X": -513.0846,
+            "Y": 101.57904,
+            "Z": -653.3456
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": -336.4157,
+            "Y": 89.00586,
+            "Z": -586.5721
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4677
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            2,
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2005855,
+          "Position": {
+            "X": -336.4157,
+            "Y": 89.00586,
+            "Z": -586.5721
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1013618,
+          "Position": {
+            "X": -402.12103,
+            "Y": 90.9028,
+            "Z": -688.53284
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013614,
+          "Position": {
+            "X": 463.5232,
+            "Y": 200.23772,
+            "Z": 651.911
+          },
+          "TerritoryId": 397,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "NextQuestId": 1722
+        }
+      ]
+    }
+  ]
+}

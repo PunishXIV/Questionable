@@ -1,0 +1,186 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014890,
+          "Position": {
+            "X": 6.9122925,
+            "Y": -1.9210143,
+            "Z": 47.287598
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014894,
+          "Position": {
+            "X": 329.57947,
+            "Y": -11.1054125,
+            "Z": 157.64087
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006295,
+          "Position": {
+            "X": 298.6648,
+            "Y": -11.7647705,
+            "Z": 159.96033
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            4694,
+            4695
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014894,
+          "Position": {
+            "X": 329.57947,
+            "Y": -11.1054125,
+            "Z": 157.64087
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014895,
+          "Position": {
+            "X": -367.14734,
+            "Y": -55.99894,
+            "Z": 107.10303
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBDRK400_02056_Q1_000_056",
+              "Answer": "TEXT_JOBDRK400_02056_A2_000_058"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014896,
+          "Position": {
+            "X": -200.30524,
+            "Y": -28.35069,
+            "Z": 324.75757
+          },
+          "StopDistance": 2,
+          "TerritoryId": 145,
+          "InteractionType": "SinglePlayerDuty",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1015329,
+          "Position": {
+            "X": -177.05048,
+            "Y": -31.365185,
+            "Z": 310.68884
+          },
+          "StopDistance": 7,
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1003929,
+          "Position": {
+            "X": -378.65265,
+            "Y": -55.75492,
+            "Z": 106.79785
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1014895,
+          "Position": {
+            "X": -367.14734,
+            "Y": -55.99894,
+            "Z": 107.10303
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014895,
+          "Position": {
+            "X": -367.14734,
+            "Y": -55.99894,
+            "Z": 107.10303
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2057
+        }
+      ]
+    }
+  ]
+}

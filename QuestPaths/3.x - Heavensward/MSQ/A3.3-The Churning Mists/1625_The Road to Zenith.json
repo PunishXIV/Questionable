@@ -1,0 +1,93 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012682,
+          "Position": {
+            "X": 241.19922,
+            "Y": -42.249466,
+            "Z": 609.27747
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 305.3146,
+            "Y": -41.478928,
+            "Z": 327.0319
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4487,
+            4490
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 208.34923,
+            "Y": -23.294632,
+            "Z": 165.22832
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4488,
+            4491
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012285,
+          "Position": {
+            "X": 247.11987,
+            "Y": -42.33362,
+            "Z": 565.3314
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1823,
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                1823
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1013202,
+          "Position": {
+            "X": -79.88104,
+            "Y": -8.844478,
+            "Z": 206.22559
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1029637,
+          "Position": {
+            "X": -483.23798,
+            "Y": 45.473377,
+            "Z": -211.3222
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Amh Araeng - Twine"
+        },
+        {
+          "DataId": 1029640,
+          "Position": {
+            "X": -545.31165,
+            "Y": 45.512848,
+            "Z": -230.6402
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -410.60504,
+            "Y": 46.19129,
+            "Z": -245.38031
+          },
+          "StopDistance": 2,
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "ItemId": 2002559,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMD108_03613_Q1_000_000",
+              "Answer": "TEXT_LUCKMD108_03613_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -341.64484,
+            "Y": 46.191288,
+            "Z": -244.7952
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2010050,
+          "Position": {
+            "X": -343.80103,
+            "Y": 46.98242,
+            "Z": -235.43152
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818259,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -341.64484,
+            "Y": 46.191288,
+            "Z": -244.7952
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -226.30658,
+            "Y": 46.19127,
+            "Z": -247.21143
+          },
+          "StopDistance": 2,
+          "TerritoryId": 815,
+          "InteractionType": "UseItem",
+          "ItemId": 2002559,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMD108_03613_Q2_000_000",
+              "Answer": "TEXT_LUCKMD108_03613_A2_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2009910,
+          "Position": {
+            "X": -170.48907,
+            "Y": 46.189087,
+            "Z": -279.56055
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10883
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2009911,
+          "Position": {
+            "X": -181.5061,
+            "Y": 46.189087,
+            "Z": -362.6917
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10883
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2009912,
+          "Position": {
+            "X": -127.58075,
+            "Y": 45.914307,
+            "Z": -456.59576
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10883
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1029642,
+          "Position": {
+            "X": -226.30658,
+            "Y": 46.19127,
+            "Z": -247.21143
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029643,
+          "Position": {
+            "X": -453.60498,
+            "Y": 45.48443,
+            "Z": -236.86578
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Twine"
+        }
+      ]
+    }
+  ]
+}

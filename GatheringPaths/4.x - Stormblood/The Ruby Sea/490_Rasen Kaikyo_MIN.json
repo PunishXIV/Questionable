@@ -1,0 +1,149 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "Position": {
+        "X": 322.1539,
+        "Y": -121.22571,
+        "Z": -314.2446
+      },
+      "TerritoryId": 613,
+      "InteractionType": "WalkTo",
+      "AetheryteShortcut": "Ruby Sea - Tamamizu",
+      "RestartNavigationIfCancelled": false
+    },
+    {
+      "TerritoryId": 613,
+      "InteractionType": "None"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 32153,
+          "Locations": [
+            {
+              "Position": {
+                "X": -373.2205,
+                "Y": -136.6522,
+                "Z": -274.8914
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32154,
+          "Locations": [
+            {
+              "Position": {
+                "X": -448.4877,
+                "Y": -116.7225,
+                "Z": -302.5894
+              }
+            },
+            {
+              "Position": {
+                "X": -367.8707,
+                "Y": -141.2844,
+                "Z": -234.9824
+              }
+            },
+            {
+              "Position": {
+                "X": -410.8549,
+                "Y": -118.3526,
+                "Z": -327.6413
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32158,
+          "Locations": [
+            {
+              "Position": {
+                "X": -541.3218,
+                "Y": -110.9725,
+                "Z": -162.0661
+              }
+            },
+            {
+              "Position": {
+                "X": -541.0571,
+                "Y": -101.0088,
+                "Z": -238.4313
+              }
+            },
+            {
+              "Position": {
+                "X": -557.3869,
+                "Y": -91.38704,
+                "Z": -232.6365
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32157,
+          "Locations": [
+            {
+              "Position": {
+                "X": -527.4707,
+                "Y": -125.4386,
+                "Z": -165.366
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 32155,
+          "Locations": [
+            {
+              "Position": {
+                "X": -460.3799,
+                "Y": -154.5827,
+                "Z": -110.9484
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 32156,
+          "Locations": [
+            {
+              "Position": {
+                "X": -399.089,
+                "Y": -145.1425,
+                "Z": -6.001478
+              }
+            },
+            {
+              "Position": {
+                "X": -474.2804,
+                "Y": -142.6447,
+                "Z": -92.2213
+              }
+            },
+            {
+              "Position": {
+                "X": -474.9154,
+                "Y": -132.8651,
+                "Z": -73.47042
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

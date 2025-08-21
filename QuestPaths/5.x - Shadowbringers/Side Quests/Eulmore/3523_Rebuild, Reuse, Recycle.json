@@ -1,0 +1,121 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027595,
+          "Position": {
+            "X": 41.58081,
+            "Y": -7.639986,
+            "Z": -109.57507
+          },
+          "TerritoryId": 820,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010119,
+          "Position": {
+            "X": 23.697266,
+            "Y": -23.361572,
+            "Z": 121.23291
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Eulmore] The Glory Gate",
+            "[Eulmore] Southeast Derelicts"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2010117,
+          "Position": {
+            "X": 26.596436,
+            "Y": -21.957764,
+            "Z": 130.81555
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2010118,
+          "Position": {
+            "X": 46.860474,
+            "Y": -15.884705,
+            "Z": 132.21936
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2010120,
+          "Position": {
+            "X": 45.76172,
+            "Y": -8.773987,
+            "Z": 139.05542
+          },
+          "TerritoryId": 820,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027595,
+          "Position": {
+            "X": 41.58081,
+            "Y": -7.639986,
+            "Z": -109.57507
+          },
+          "TerritoryId": 820,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Eulmore] Southeast Derelicts",
+            "[Eulmore] The Glory Gate"
+          ]
+        }
+      ]
+    }
+  ]
+}

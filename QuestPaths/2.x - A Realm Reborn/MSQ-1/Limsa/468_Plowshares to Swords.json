@@ -1,0 +1,89 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002631,
+          "Position": {
+            "X": 0.045776367,
+            "Y": 57.85028,
+            "Z": -308.76636
+          },
+          "TerritoryId": 134,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -42.099247,
+            "Y": 54.599857,
+            "Z": -262.0961
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            348,
+            349
+          ],
+          "$": "These flags don't exist, just want this step to not-finish",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002631,
+          "Position": {
+            "X": 0.045776367,
+            "Y": 57.85028,
+            "Z": -308.76636
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 205.08835,
+            "Y": 111.9045,
+            "Z": -245.44336
+          },
+          "TerritoryId": 134,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
+        },
+        {
+          "DataId": 1002626,
+          "Position": {
+            "X": 207.2633,
+            "Y": 112.860374,
+            "Z": -222.43079
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

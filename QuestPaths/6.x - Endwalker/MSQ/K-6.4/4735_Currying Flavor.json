@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039645,
+          "Position": {
+            "X": -338.33832,
+            "Y": 55,
+            "Z": -68.40625
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1045392,
+          "Position": {
+            "X": -52.75049,
+            "Y": -1.5635975E-05,
+            "Z": -138.96393
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Meghaduta",
+            "[Radz-at-Han] Mehryde's Meyhane"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013349,
+          "Position": {
+            "X": -53.87964,
+            "Y": 0.59503174,
+            "Z": -141.71057
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMK101_04735_Q1_000_000",
+              "Answer": "TEXT_AKTKMK101_04735_A1_000_003"
+            },
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMK101_04735_Q1_000_065",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -52.03956,
+            "Y": -5.209446E-05,
+            "Z": -140.01839
+          },
+          "TerritoryId": 963,
+          "InteractionType": "UseItem",
+          "ItemId": 2003461
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1045395,
+          "Position": {
+            "X": -21.713623,
+            "Y": 1.7999926,
+            "Z": -181.81128
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043847,
+          "Position": {
+            "X": -350.24036,
+            "Y": 55,
+            "Z": -81.28485
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Mehryde's Meyhane",
+            "[Radz-at-Han] Meghaduta"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMK101_04735_Q2_000_182",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

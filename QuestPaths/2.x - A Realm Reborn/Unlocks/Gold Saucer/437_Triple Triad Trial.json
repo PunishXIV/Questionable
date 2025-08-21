@@ -1,0 +1,34 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1011060,
+          "Position": {
+            "X": -96.87958,
+            "Y": -0.86297023,
+            "Z": 67.826294
+          },
+          "TerritoryId": 144,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gold Saucer",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Yes": true,
+              "Prompt": "TEXT_SUBGSC102_00437_Q1_000_000"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

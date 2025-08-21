@@ -1,0 +1,176 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022620,
+          "Position": {
+            "X": -4.7455444,
+            "Y": 0.022830343,
+            "Z": -113.96973
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023127,
+          "Position": {
+            "X": -102.9527,
+            "Y": 11.80004,
+            "Z": -114.76312
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1023131,
+          "Position": {
+            "X": -88.304016,
+            "Y": -6.9999995,
+            "Z": -63.09613
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Bokairo Inn",
+            "[Kugane] Shiokaze Hostelry"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 1023126,
+          "Position": {
+            "X": 32.60852,
+            "Y": 2.9999993,
+            "Z": -49.881836
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Shiokaze Hostelry",
+            "[Kugane] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1023130,
+          "Position": {
+            "X": 80.460815,
+            "Y": 4.000001,
+            "Z": 71.488525
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 1023128,
+          "Position": {
+            "X": -34.103943,
+            "Y": 15.000004,
+            "Z": 68.86389
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1023129,
+          "Position": {
+            "X": 17.593567,
+            "Y": 11.44387,
+            "Z": 174.45642
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Thavnairian Consulate"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022620,
+          "Position": {
+            "X": -4.7455444,
+            "Y": 0.022830343,
+            "Z": -113.96973
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Kugane] Thavnairian Consulate",
+            "[Kugane] Rakuza District"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDZ710_02813_Q1_000_031",
+              "Answer": "TEXT_STMBDZ710_02813_A1_000_032"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

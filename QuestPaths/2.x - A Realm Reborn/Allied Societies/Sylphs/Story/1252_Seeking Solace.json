@@ -1,0 +1,89 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 45.84424,
+            "Y": 6.073427,
+            "Z": 248.96754
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        },
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005577,
+          "Position": {
+            "X": 28.488525,
+            "Y": -3.6319542,
+            "Z": 210.62024
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 45.84424,
+            "Y": 6.073427,
+            "Z": 248.96754
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1253
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013038,
+          "Position": {
+            "X": 1.9989014,
+            "Y": 1.1445954E-06,
+            "Z": -2.5177612
+          },
+          "TerritoryId": 212,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014644,
+          "Position": {
+            "X": 15.854065,
+            "Y": 15.96505,
+            "Z": -0.77819824
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011217,
+          "Position": {
+            "X": 17.990356,
+            "Y": 16.009666,
+            "Z": -9.567444
+          },
+          "StopDistance": 7,
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 433
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012579,
+          "Position": {
+            "X": 1.1138916,
+            "Y": 0.022254243,
+            "Z": -4.409851
+          },
+          "StopDistance": 5,
+          "TerritoryId": 433,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_HEAVNA301_01602_Q1_000_000",
+              "Answer": "TEXT_HEAVNA301_01602_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

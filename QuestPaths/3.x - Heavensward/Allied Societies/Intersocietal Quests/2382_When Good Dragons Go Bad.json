@@ -1,0 +1,190 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "plogon_enjoyer",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.015137,
+            "Y": 206.04718,
+            "Z": 56.50415
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016802,
+          "Position": {
+            "X": 53.360718,
+            "Y": -48.000004,
+            "Z": -169.97028
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1018232,
+          "Position": {
+            "X": 236.01123,
+            "Y": -42.313934,
+            "Z": 596.3989
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1017320,
+          "Position": {
+            "X": -342.15308,
+            "Y": 59.03801,
+            "Z": 315.14453
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Churning Mists - Zenith",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1017170,
+          "Position": {
+            "X": -344.22827,
+            "Y": 59.038006,
+            "Z": 317.1587
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1017173,
+          "Position": {
+            "X": -363.82086,
+            "Y": 60.896187,
+            "Z": 306.38586
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1017173,
+          "Position": {
+            "X": -363.82086,
+            "Y": 60.896187,
+            "Z": 306.38586
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Emote",
+          "Emote": "rally"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1017170,
+          "Position": {
+            "X": -344.22827,
+            "Y": 59.038006,
+            "Z": 317.1587
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2007517,
+          "Position": {
+            "X": -332.6314,
+            "Y": 59.067627,
+            "Z": 298.39014
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1018234,
+          "Position": {
+            "X": -635.85876,
+            "Y": 82.249985,
+            "Z": 142.96167
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017320,
+          "Position": {
+            "X": -342.15308,
+            "Y": 59.03801,
+            "Z": 315.14453
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 2383
+        }
+      ]
+    }
+  ]
+}

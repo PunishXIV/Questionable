@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032720,
+          "Position": {
+            "X": -22.90387,
+            "Y": -25.207546,
+            "Z": 310.6278
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032721,
+          "Position": {
+            "X": 463.79797,
+            "Y": 6.95506,
+            "Z": -199.02344
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010996,
+          "Position": {
+            "X": 607.84314,
+            "Y": -41.031555,
+            "Z": -281.8189
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1032724,
+          "Position": {
+            "X": 796.7803,
+            "Y": -45.83978,
+            "Z": -194.01855
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1032725,
+          "Position": {
+            "X": 795.7732,
+            "Y": -45.836327,
+            "Z": -192.40106
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANQIQ001_03794_Q3_000_000",
+              "Answer": "TEXT_BANQIQ001_03794_A3_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 817,
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 29512,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1032724,
+          "Position": {
+            "X": 796.7803,
+            "Y": -45.83978,
+            "Z": -194.01855
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

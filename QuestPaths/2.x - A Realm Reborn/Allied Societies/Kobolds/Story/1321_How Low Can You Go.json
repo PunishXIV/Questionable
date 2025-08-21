@@ -1,0 +1,189 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 155.47716,
+            "Y": 68.658165,
+            "Z": -256.36594
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2003715,
+          "Position": {
+            "X": 154.49756,
+            "Y": 69.047,
+            "Z": -254.32214
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2003713,
+          "Position": {
+            "X": 181.47546,
+            "Y": 64.59143,
+            "Z": -282.42926
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2003716,
+          "Position": {
+            "X": 180.28528,
+            "Y": 64.62195,
+            "Z": -255.17664
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2003714,
+          "Position": {
+            "X": 197.00916,
+            "Y": 64.042114,
+            "Z": -225.60468
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2003717,
+          "Position": {
+            "X": 0.38146973,
+            "Y": 16.433899,
+            "Z": -177.47778
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "StopDistance": 5,
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "StopDistance": 5,
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKOB002_01321_Q1_000_000",
+              "Answer": "TEXT_BANKOB002_01321_A1_000_001"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

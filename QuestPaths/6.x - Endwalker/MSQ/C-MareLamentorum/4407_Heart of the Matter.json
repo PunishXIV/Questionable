@@ -1,0 +1,166 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038946,
+          "Position": {
+            "X": 362.50854,
+            "Y": -168.00002,
+            "Z": -625.11633
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041555,
+          "Position": {
+            "X": 26.443848,
+            "Y": -129.20917,
+            "Z": -536.9497
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4516,
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "QuestsCompleted": [
+                4516
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1041123,
+          "Position": {
+            "X": -81.864685,
+            "Y": -132.74333,
+            "Z": -521.6602
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 4253,
+          "DialogueChoices": [
+            {
+              "ExcelSheet": "quest/042/AktKze014_04253",
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZE014_04253_Q1_000_000",
+              "Answer": "TEXT_AKTKZE014_04253_A1_000_002"
+            }
+          ]
+        },
+        {
+          "DataId": 2012664,
+          "Position": {
+            "X": -26.901672,
+            "Y": -130.47992,
+            "Z": -580.4685
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 959
+        },
+        {
+          "Position": {
+            "X": 65.32143,
+            "Y": -49.589592,
+            "Z": -690.11676
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1038947,
+          "Position": {
+            "X": 184.00854,
+            "Y": -49.589592,
+            "Z": -627.9545
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 167.0076,
+            "Y": -49.589592,
+            "Z": -637.9577
+          },
+          "StopDistance": 3,
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            13995,
+            13996,
+            13997,
+            13995
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 172.90228,
+            "Y": -49.589603,
+            "Z": -509.59824
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": 18.495846,
+            "Y": -49.589592,
+            "Z": -301.7225
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1038950,
+          "Position": {
+            "X": -2.7008667,
+            "Y": -27.758478,
+            "Z": -214.77081
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038952,
+          "Position": {
+            "X": -609.12494,
+            "Y": 128.67769,
+            "Z": 572.0454
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

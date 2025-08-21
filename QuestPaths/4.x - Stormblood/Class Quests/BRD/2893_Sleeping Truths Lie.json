@@ -1,0 +1,127 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022523,
+          "Position": {
+            "X": -653.04034,
+            "Y": 130,
+            "Z": -522.17896
+          },
+          "StopDistance": 5,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBBRD680_02893_Q1_000_000",
+              "Answer": "TEXT_JOBBRD680_02893_A1_000_003"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022514,
+          "Position": {
+            "X": -586.0533,
+            "Y": 130.0406,
+            "Z": -534.59985
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2008682,
+          "Position": {
+            "X": -610.2846,
+            "Y": 42.801514,
+            "Z": 290.79114
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7494,
+            7499
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1022514,
+          "Position": {
+            "X": -586.0533,
+            "Y": 130.0406,
+            "Z": -534.59985
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1022527,
+          "Position": {
+            "X": -555.871,
+            "Y": 91.035034,
+            "Z": -185.8396
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBBRD680_02893_Q2_000_000",
+              "Answer": "TEXT_JOBBRD680_02893_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022528,
+          "Position": {
+            "X": -52.35376,
+            "Y": -3.326972,
+            "Z": 20.58435
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "NextQuestId": 2894
+        }
+      ]
+    }
+  ]
+}

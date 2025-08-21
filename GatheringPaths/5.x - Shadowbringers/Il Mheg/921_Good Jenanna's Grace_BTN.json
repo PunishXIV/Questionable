@@ -1,0 +1,120 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 816,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Il Mheg - Wolekdorf"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 34422,
+          "Locations": [
+            {
+              "Position": {
+                "X": -161.9915,
+                "Y": 60.04895,
+                "Z": -647.3901
+              }
+            },
+            {
+              "Position": {
+                "X": -179.2945,
+                "Y": 60.84981,
+                "Z": -630.9084
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34421,
+          "Locations": [
+            {
+              "Position": {
+                "X": -182.311,
+                "Y": 60.81965,
+                "Z": -640.2197
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34423,
+          "Locations": [
+            {
+              "Position": {
+                "X": -182.0749,
+                "Y": 60.70063,
+                "Z": -567.6271
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34424,
+          "Locations": [
+            {
+              "Position": {
+                "X": -184.7115,
+                "Y": 59.23207,
+                "Z": -573.9592
+              }
+            },
+            {
+              "Position": {
+                "X": -171.0273,
+                "Y": 62.20385,
+                "Z": -576.3321
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 34425,
+          "Locations": [
+            {
+              "Position": {
+                "X": -333.3387,
+                "Y": 82.66466,
+                "Z": -505.7937
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 34426,
+          "Locations": [
+            {
+              "Position": {
+                "X": -333.0683,
+                "Y": 82.72758,
+                "Z": -501.5885
+              },
+              "MinimumAngle": 75,
+              "MaximumAngle": 265
+            },
+            {
+              "Position": {
+                "X": -349.0388,
+                "Y": 89.44427,
+                "Z": -512.492
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

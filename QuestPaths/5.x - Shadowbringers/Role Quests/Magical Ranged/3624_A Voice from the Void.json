@@ -1,0 +1,111 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 218.73804,
+                  "Y": 7.1558266,
+                  "Z": -249.1341
+                },
+                "MaximumDistance": 100,
+                "TerritoryId": 815
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010166,
+          "Position": {
+            "X": 599.115,
+            "Y": -33.61566,
+            "Z": -304.49384
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            10837
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2010214,
+          "Position": {
+            "X": 488.85327,
+            "Y": -26.16925,
+            "Z": -12.008911
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKBA411_03624_Q1_000_100",
+              "Answer": "TEXT_LUCKBA411_03624_A1_000_100"
+            }
+          ],
+          "NextQuestId": 3625
+        }
+      ]
+    }
+  ]
+}

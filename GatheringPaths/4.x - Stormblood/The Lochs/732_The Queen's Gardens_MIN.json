@@ -1,0 +1,120 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 621,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33339,
+          "Locations": [
+            {
+              "Position": {
+                "X": 440.6299,
+                "Y": 74.86803,
+                "Z": -205.3779
+              },
+              "MinimumAngle": 85,
+              "MaximumAngle": 215
+            }
+          ]
+        },
+        {
+          "DataId": 33340,
+          "Locations": [
+            {
+              "Position": {
+                "X": 426.4497,
+                "Y": 70.57706,
+                "Z": -198.046
+              },
+              "MinimumAngle": 95,
+              "MaximumAngle": 180,
+              "MinimumDistance": 1.3,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": 453.1248,
+                "Y": 77.29013,
+                "Z": -211.6347
+              },
+              "MinimumAngle": 85,
+              "MaximumAngle": 190
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33337,
+          "Locations": [
+            {
+              "Position": {
+                "X": 561.2196,
+                "Y": 94.65154,
+                "Z": -315.6258
+              },
+              "MinimumAngle": 50,
+              "MaximumAngle": 160
+            }
+          ]
+        },
+        {
+          "DataId": 33338,
+          "Locations": [
+            {
+              "Position": {
+                "X": 563.1749,
+                "Y": 93.41929,
+                "Z": -335.4834
+              },
+              "MinimumAngle": -25,
+              "MaximumAngle": 75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33341,
+          "Locations": [
+            {
+              "Position": {
+                "X": 388.9345,
+                "Y": 54.85489,
+                "Z": -350.8919
+              },
+              "MinimumAngle": 55,
+              "MaximumAngle": 150
+            }
+          ]
+        },
+        {
+          "DataId": 33342,
+          "Locations": [
+            {
+              "Position": {
+                "X": 394.7824,
+                "Y": 51.66671,
+                "Z": -369.6645
+              },
+              "MinimumAngle": 70,
+              "MaximumAngle": 135
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

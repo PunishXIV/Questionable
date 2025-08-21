@@ -1,0 +1,64 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046851,
+          "Position": {
+            "X": -412.13092,
+            "Y": 113.87041,
+            "Z": 550.7439
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 1187,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 824,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013931,
+          "Position": {
+            "X": 70.17627,
+            "Y": 0.6560669,
+            "Z": 746.4254
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818411
+        },
+        {
+          "DataId": 1046864,
+          "Position": {
+            "X": 403.31128,
+            "Y": 122.535,
+            "Z": 614.8928
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DataId": 1005884,
+          "Position": {
+            "X": -526.26843,
+            "Y": 5.4049973,
+            "Z": -249.25616
+          },
+          "StopDistance": 5,
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "DataId": 1003931,
+          "Position": {
+            "X": -379.6292,
+            "Y": -55.85506,
+            "Z": 95.04846
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140
+        },
+        {
+          "DataId": 1008709,
+          "Position": {
+            "X": -431.7846,
+            "Y": 28.038658,
+            "Z": -383.1693
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "Fly": true,
+          "DataId": 1008713,
+          "Position": {
+            "X": 108.99512,
+            "Y": 57.816406,
+            "Z": 12.191956
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "Fly": true,
+          "DataId": 1002022,
+          "Position": {
+            "X": 12.039368,
+            "Y": 22.144684,
+            "Z": 65.384766
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "Fly": true,
+          "DataId": 1008715,
+          "Position": {
+            "X": -69.90167,
+            "Y": 13.38208,
+            "Z": 158.73962
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2003654,
+          "Position": {
+            "X": -68.55884,
+            "Y": 13.809326,
+            "Z": 159.16675
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2003658,
+          "Position": {
+            "X": -71.06128,
+            "Y": 13.443176,
+            "Z": 155.9624
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2003656,
+          "Position": {
+            "X": -72.95343,
+            "Y": 13.504211,
+            "Z": 159.19727
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2003657,
+          "Position": {
+            "X": -80.18622,
+            "Y": 13.412659,
+            "Z": 158.12915
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2003659,
+          "Position": {
+            "X": -76.15784,
+            "Y": 13.443176,
+            "Z": 155.90137
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008716,
+          "Position": {
+            "X": -68.00946,
+            "Y": 13.443176,
+            "Z": 157.5188
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1316
+        }
+      ]
+    }
+  ]
+}

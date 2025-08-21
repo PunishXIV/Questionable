@@ -1,0 +1,84 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028923,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0530548E-13,
+            "Z": -6.0273438
+          },
+          "TerritoryId": 844,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Crystarium] Temenos Rookery",
+          "AetheryteShortcut": "Crystarium"
+        },
+        {
+          "DataId": 1027246,
+          "Position": {
+            "X": -136.98022,
+            "Y": 0,
+            "Z": -73.777466
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMA201_03282_Q1_000_013",
+              "Answer": "TEXT_LUCKMA201_03282_A1_000_015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1029806,
+          "Position": {
+            "X": 62.394165,
+            "Y": 36.247692,
+            "Z": -169.39038
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] Temenos Rookery",
+            "[Crystarium] The Amaro Launch"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029807,
+          "Position": {
+            "X": 802.2124,
+            "Y": 1.2725923,
+            "Z": 253.00977
+          },
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

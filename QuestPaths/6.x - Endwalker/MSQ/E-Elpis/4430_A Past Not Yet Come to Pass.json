@@ -1,0 +1,187 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040109,
+          "Position": {
+            "X": -491.11166,
+            "Y": 140.39177,
+            "Z": -113.81708
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "StopDistance": 7,
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Elpis - Poieten Oikos"
+        },
+        {
+          "DataId": 1040112,
+          "Position": {
+            "X": -586.5721,
+            "Y": 167.99568,
+            "Z": -265.49176
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040112,
+          "Position": {
+            "X": -586.5721,
+            "Y": 167.99568,
+            "Z": -265.49176
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040115,
+          "Position": {
+            "X": -595.0561,
+            "Y": 159.70364,
+            "Z": -175.24994
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1040116,
+          "Position": {
+            "X": -578.4542,
+            "Y": 159.66537,
+            "Z": -173.75458
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKME112_04430_Q1_000_072",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME112_04430_Q2_000_076",
+              "Answer": "TEXT_AKTKME112_04430_A2_000_077"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME112_04430_Q3_000_089",
+              "Answer": "TEXT_AKTKME112_04430_A3_000_091"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME112_04430_Q4_000_098",
+              "Answer": "TEXT_AKTKME112_04430_A4_000_099"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040115,
+          "Position": {
+            "X": -595.0561,
+            "Y": 159.70364,
+            "Z": -175.24994
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -585.33386,
+            "Y": 159.16429,
+            "Z": -197.54811
+          },
+          "TerritoryId": 961,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1040117,
+          "Position": {
+            "X": -442.43536,
+            "Y": 140.56909,
+            "Z": -155.5047
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKME112_04430_Q5_000_152",
+              "Yes": true
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME112_04430_Q6_000_154",
+              "Answer": "TEXT_AKTKME112_04430_A6_000_156"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME112_04430_Q7_000_168",
+              "Answer": "TEXT_AKTKME112_04430_A7_000_170"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKME112_04430_Q8_000_181",
+              "Answer": "TEXT_AKTKME112_04430_A8_000_182"
+            }
+          ],
+          "Comment": "Talk (2, 2, 1)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040115,
+          "Position": {
+            "X": -595.0561,
+            "Y": 159.70364,
+            "Z": -175.24994
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

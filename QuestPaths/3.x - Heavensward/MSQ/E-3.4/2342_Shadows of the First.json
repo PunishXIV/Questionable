@@ -1,0 +1,88 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1017721,
+          "Position": {
+            "X": 2.0598755,
+            "Y": 0.022254245,
+            "Z": -1.3275757
+          },
+          "StopDistance": 5,
+          "TerritoryId": 433,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1017723,
+          "Position": {
+            "X": 248.40149,
+            "Y": 302,
+            "Z": -260.85297
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1017725,
+          "Position": {
+            "X": 603.6315,
+            "Y": 331.42905,
+            "Z": -306.508
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 182,
+            "Enabled": false,
+            "Notes": [
+              "(after boss 1) the drawbridges being up will lead you to die from the spikes",
+              "(after boss 1) the lift isn't working properly"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017724,
+          "Position": {
+            "X": 601.9531,
+            "Y": 331.81714,
+            "Z": -308.8579
+          },
+          "StopDistance": 7,
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

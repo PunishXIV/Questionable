@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1033969,
+          "Position": {
+            "X": 126.63464,
+            "Y": 12.680123,
+            "Z": -103.53253
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033971,
+          "Position": {
+            "X": -14.4198,
+            "Y": 9.999999,
+            "Z": -79.88104
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011140,
+          "Position": {
+            "X": -47.837036,
+            "Y": 5.203247,
+            "Z": -125.84119
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033976,
+          "Position": {
+            "X": 13.961914,
+            "Y": 8,
+            "Z": -104.53961
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKHA202_03956_Q1_000_000",
+              "Answer": "TEXT_LUCKHA202_03956_A1_000_001"
+            }
+          ],
+          "NextQuestId": 3957
+        }
+      ]
+    }
+  ]
+}

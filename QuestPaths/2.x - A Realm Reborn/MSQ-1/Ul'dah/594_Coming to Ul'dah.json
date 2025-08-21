@@ -1,0 +1,44 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003987,
+          "Position": {
+            "X": 33.37146,
+            "Y": 4.0999947,
+            "Z": -151.99518
+          },
+          "TerritoryId": 182,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "opening/OpeningUldah",
+              "Prompt": "TEXT_OPENINGULDAH_FST_SYSTEM_Q_01",
+              "Answer": "TEXT_OPENINGULDAH_FST_SYSTEM_A_01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003988,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.84338
+          },
+          "TerritoryId": 182,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

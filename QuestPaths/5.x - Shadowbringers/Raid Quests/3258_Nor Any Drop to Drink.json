@@ -1,0 +1,93 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030110,
+          "Position": {
+            "X": 99.99231,
+            "Y": -7.687662E-13,
+            "Z": 92.51538
+          },
+          "StopDistance": 6,
+          "TerritoryId": 857,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030117,
+          "Position": {
+            "X": -1.3580933,
+            "Y": -2.0308912,
+            "Z": -16.647583
+          },
+          "TerritoryId": 878,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010135,
+          "Position": {
+            "X": -14.66394,
+            "Y": -2.5788574,
+            "Z": 23.819275
+          },
+          "TerritoryId": 878,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 857
+        },
+        {
+          "DataId": 1030110,
+          "Position": {
+            "X": 99.99231,
+            "Y": -7.687662E-13,
+            "Z": 92.51538
+          },
+          "TerritoryId": 857,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 878,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 682,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030110,
+          "Position": {
+            "X": 99.99231,
+            "Y": -7.687662E-13,
+            "Z": 92.51538
+          },
+          "StopDistance": 6,
+          "TerritoryId": 857,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3259
+        }
+      ]
+    }
+  ]
+}

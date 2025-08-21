@@ -1,0 +1,80 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006264,
+          "Position": {
+            "X": 710.90247,
+            "Y": 66.027,
+            "Z": -277.66846
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006265,
+          "Position": {
+            "X": 703.5171,
+            "Y": 65.78333,
+            "Z": -288.77704
+          },
+          "TerritoryId": 135,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 696.00323,
+            "Y": 80.20443,
+            "Z": -391.9752
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 137
+        },
+        {
+          "Position": {
+            "X": 378.54834,
+            "Y": 21.81276,
+            "Z": 478.4722
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "$": "Avoids the beach due to rocks, doesn't even look like a faster path"
+        },
+        {
+          "TerritoryId": 137,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Eastern La Noscea - Costa Del Sol"
+        },
+        {
+          "DataId": 1006266,
+          "Position": {
+            "X": 560.35706,
+            "Y": 20.721315,
+            "Z": 455.89368
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

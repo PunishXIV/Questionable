@@ -1,0 +1,36 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -69.61145,
+            "Y": 0.00999999,
+            "Z": 62.405437
+          },
+          "TerritoryId": 635,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1019459,
+          "Position": {
+            "X": -70.54254,
+            "Y": 0.4599931,
+            "Z": 64.37781
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    }
+  ]
+}

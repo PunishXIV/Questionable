@@ -1,0 +1,142 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038824,
+          "Position": {
+            "X": 750.97266,
+            "Y": 69.99991,
+            "Z": 534.78296
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038825,
+          "Position": {
+            "X": 742.5803,
+            "Y": 69.99999,
+            "Z": 539.6046
+          },
+          "TerritoryId": 621,
+          "InteractionType": "SinglePlayerDuty",
+          "Comment": "A Frosty Reception",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.0.0.293",
+            "Notes": [
+              "(Thancred) How many enemies get pulled during the stealth section is random; if you pull multiple you can die here. Can probably be fixed by retrying on very easy."
+            ]
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": 264,
+              "Answer": 267
+            },
+            {
+              "Type": "YesNo",
+              "Prompt": 268,
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Garlemald - Camp Broken Glass"
+        },
+        {
+          "DataId": 1038826,
+          "Position": {
+            "X": -399.31335,
+            "Y": 22.03761,
+            "Z": 454.45935
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1038836,
+          "Position": {
+            "X": -439.9939,
+            "Y": 22.000002,
+            "Z": 497.79492
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1038835,
+          "Position": {
+            "X": -366.17078,
+            "Y": 22,
+            "Z": 514.4884
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1038828,
+          "Position": {
+            "X": -334.5846,
+            "Y": 23.803606,
+            "Z": 404.65393
+          },
+          "StopDistance": 7,
+          "TerritoryId": 958,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038837,
+          "Position": {
+            "X": -353.41425,
+            "Y": 22.717295,
+            "Z": 435.62976
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

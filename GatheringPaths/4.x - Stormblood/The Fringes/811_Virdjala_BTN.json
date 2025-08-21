@@ -1,0 +1,109 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 612,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Fringes - Peering Stones"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33875,
+          "Locations": [
+            {
+              "Position": {
+                "X": 567.9412,
+                "Y": 50.43103,
+                "Z": 373.1152
+              },
+              "MinimumAngle": 200,
+              "MaximumAngle": 350
+            }
+          ]
+        },
+        {
+          "DataId": 33876,
+          "Locations": [
+            {
+              "Position": {
+                "X": 578.4171,
+                "Y": 48.36443,
+                "Z": 365.4806
+              },
+              "MinimumAngle": -45,
+              "MaximumAngle": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33873,
+          "Locations": [
+            {
+              "Position": {
+                "X": 599.5352,
+                "Y": 75.60928,
+                "Z": 244.3069
+              },
+              "MinimumAngle": -80,
+              "MaximumAngle": 70
+            }
+          ]
+        },
+        {
+          "DataId": 33874,
+          "Locations": [
+            {
+              "Position": {
+                "X": 592.9609,
+                "Y": 75.62624,
+                "Z": 268.9515
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 285
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33878,
+          "Locations": [
+            {
+              "Position": {
+                "X": 753.3094,
+                "Y": 72.73058,
+                "Z": 364.073
+              },
+              "MinimumAngle": 95,
+              "MaximumAngle": 240
+            }
+          ]
+        },
+        {
+          "DataId": 33877,
+          "Locations": [
+            {
+              "Position": {
+                "X": 764.3023,
+                "Y": 74.18732,
+                "Z": 337.2563
+              },
+              "MinimumAngle": -70,
+              "MaximumAngle": 105
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

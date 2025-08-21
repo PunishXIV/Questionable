@@ -1,0 +1,141 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 956,
+      "InteractionType": "None",
+      "AetheryteShortcut": "Labyrinthos - Archeion"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 33980,
+          "Locations": [
+            {
+              "Position": {
+                "X": 331.2026,
+                "Y": 86.06693,
+                "Z": -318.6516
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 33981,
+          "Locations": [
+            {
+              "Position": {
+                "X": 334.0037,
+                "Y": 85.40742,
+                "Z": -300.7174
+              }
+            },
+            {
+              "Position": {
+                "X": 355.6456,
+                "Y": 86.62501,
+                "Z": -308.6764
+              }
+            },
+            {
+              "Position": {
+                "X": 340.9933,
+                "Y": 86.25529,
+                "Z": -324.239
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33979,
+          "Locations": [
+            {
+              "Position": {
+                "X": 255.936,
+                "Y": 70.96983,
+                "Z": -233.1732
+              }
+            },
+            {
+              "Position": {
+                "X": 239.4902,
+                "Y": 69.74259,
+                "Z": -224.506
+              }
+            },
+            {
+              "Position": {
+                "X": 265.0269,
+                "Y": 70.56706,
+                "Z": -208.2487
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 33978,
+          "Locations": [
+            {
+              "Position": {
+                "X": 262.5149,
+                "Y": 69.96209,
+                "Z": -200.2567
+              },
+              "MinimumAngle": 55,
+              "MaximumAngle": 320
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 33976,
+          "Locations": [
+            {
+              "Position": {
+                "X": 375.1279,
+                "Y": 67.35788,
+                "Z": -150.6431
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 33977,
+          "Locations": [
+            {
+              "Position": {
+                "X": 392.5393,
+                "Y": 65.98527,
+                "Z": -141.6628
+              }
+            },
+            {
+              "Position": {
+                "X": 368.5759,
+                "Y": 67.33283,
+                "Z": -140.4326
+              }
+            },
+            {
+              "Position": {
+                "X": 383.0393,
+                "Y": 67.01035,
+                "Z": -158.8207
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005561,
+                    "Position": {
+                        "X": 47.01306,
+                        "Y": 6.0734644,
+                        "Z": 254.01685
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "InSameTerritory": true
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1008329,
+                    "Position": {
+                        "X": 175.86023,
+                        "Y": 8.627428,
+                        "Z": 204.18091
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact",
+                    "Fly": true
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 2003079,
+                    "Position": {
+                        "X": 225.78772,
+                        "Y": 5.996765,
+                        "Z": 181.78064
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact",
+                    "SkipConditions": {
+                        "StepIf": {
+                            "CompletionQuestVariablesFlags": [
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                8
+                            ]
+                        }
+                    }
+                },
+                {
+                    "DataId": 2003303,
+                    "Position": {
+                        "X": 267.96362,
+                        "Y": -0.16790771,
+                        "Z": 168.9325
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact",
+                    "CompletionQuestVariablesFlags": [
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        8
+                    ]
+                },
+                {
+                    "DataId": 2003301,
+                    "Position": {
+                        "X": 220.29443,
+                        "Y": -1.4801636,
+                        "Z": 100.48059
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2003081,
+                    "Position": {
+                        "X": 175.24988,
+                        "Y": -0.22894287,
+                        "Z": 57.328125
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2003082,
+                    "Position": {
+                        "X": 97.67297,
+                        "Y": 7.1259155,
+                        "Z": -7.9194946
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact"
+                },
+                {
+                    "DataId": 2003076,
+                    "Position": {
+                        "X": -19.150085,
+                        "Y": 19.33313,
+                        "Z": -11.490112
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "Interact"
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "Position": {
+                        "X": 37.71168,
+                        "Y": 4.7303743,
+                        "Z": 250.62769
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "WalkTo",
+                    "Fly": true,
+                    "Land": true,
+                    "SkipConditions": {
+                        "StepIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": 37.71168,
+                                    "Y": 4.7303743,
+                                    "Z": 250.62769
+                                },
+                                "TerritoryId": 152,
+                                "MaximumDistance": 10
+                            }
+                        }
+                    }
+                },
+                {
+                    "DataId": 1005561,
+                    "Position": {
+                        "X": 47.01306,
+                        "Y": 6.0734644,
+                        "Z": 254.01685
+                    },
+                    "TerritoryId": 152,
+                    "InteractionType": "CompleteQuest"
+                }
+            ]
+        }
+    ]
+}

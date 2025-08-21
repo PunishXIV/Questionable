@@ -1,0 +1,289 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1054551,
+          "Position": {
+            "X": -23.544739,
+            "Y": 38.806587,
+            "Z": -412.19202
+          },
+          "StopDistance": 7,
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1054936,
+          "Position": {
+            "X": -57.41974,
+            "Y": 42.8066,
+            "Z": -546.7765
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMI105_05368_SYSTEM_000_061",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014877,
+          "Position": {
+            "X": -53.76658,
+            "Y": 0.4967778,
+            "Z": 10.78857
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMI105_05368_SYSTEM_000_117",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2014879,
+          "Position": {
+            "X": -31.18711,
+            "Y": 1.386986,
+            "Z": 14.38922
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "UseItem",
+          "ItemId": 2003767
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2014880,
+          "Position": {
+            "X": 5.563949,
+            "Y": 1.29885,
+            "Z": -7.714191
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "UseItem",
+          "ItemId": 2003789
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1054888,
+          "Position": {
+            "X": -9.079163,
+            "Y": 0.9997301,
+            "Z": -45.731323
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2014883,
+          "Position": {
+            "X": 6.94281,
+            "Y": 1.480042,
+            "Z": -53.72705
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMI105_05368_SYSTEM_120_250",
+              "Yes": true
+            }
+          ],
+          "PointMenuChoices": [
+            0,
+            0,
+            4,
+            10,
+            8,
+            11
+          ],
+          "$": "1..9 -> 0..8, Clear -> 9, 0 -> 10, Confirm -> 11, View Current Input -> 12, Cancel -> 13"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2014881,
+          "Position": {
+            "X": 7.765003,
+            "Y": 1.296952,
+            "Z": 5.581435
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "UseItem",
+          "ItemId": 2003768
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1054901,
+          "Position": {
+            "X": 15.6710205,
+            "Y": -1.036562E-06,
+            "Z": 28.244385
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1054907,
+          "Position": {
+            "X": 43.289795,
+            "Y": 0.30650482,
+            "Z": 12.436096
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "$": "Initial QW: 0 16 108 0 0 0",
+      "Steps": [
+        {
+          "DataId": 2014884,
+          "Position": {
+            "X": 44.99468,
+            "Y": 0.7551205,
+            "Z": 18.96421
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "$": "108 -> 44",
+              "$.1": "Choices are, in order for QW: 0 16 X 0 0 0: triangle 128, circle 64, square 192, rotated square 0",
+              "Type": "List",
+              "Prompt": "TEXT_KINGMI105_05368_Q1_100_000",
+              "Answer": "TEXT_KINGMI105_05368_A1_100_004"
+            }
+          ]
+        },
+        {
+          "DataId": 2014885,
+          "Position": {
+            "X": 50.98755,
+            "Y": 0.7551,
+            "Z": 19.03446
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "$": "44 -> 28",
+              "$.1": "Choices are, in order for QW: 0 16 X 0 0 0: triangle 32, circle 16, square 48, rotated square 0",
+              "Type": "List",
+              "Prompt": "TEXT_KINGMI105_05368_Q1_100_000",
+              "Answer": "TEXT_KINGMI105_05368_A1_100_002"
+            }
+          ]
+        },
+        {
+          "DataId": 2014887,
+          "Position": {
+            "X": 51.00287,
+            "Y": 0.7551,
+            "Z": 24.9874
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "$": "28 -> 31",
+              "$.1": "Choices are, in order for QW: 0 16 X 0 0 0: triangle 2, circle 1, square 3, rotated square 0",
+              "Type": "List",
+              "Prompt": "TEXT_KINGMI105_05368_Q1_100_000",
+              "Answer": "TEXT_KINGMI105_05368_A1_100_003"
+            }
+          ]
+        },
+        {
+          "DataId": 2014886,
+          "Position": {
+            "X": 44.9988,
+            "Y": 0.7551,
+            "Z": 25.03204
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "$": "Choices are, in order for QW: 0 16 X 0 0 0: triangle 16, circle 8, square 24, rotated square 0",
+              "Type": "List",
+              "Prompt": "TEXT_KINGMI105_05368_Q1_100_000",
+              "Answer": "TEXT_KINGMI105_05368_A1_100_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054916,
+          "Position": {
+            "X": 16.189758,
+            "Y": -1.8225983E-06,
+            "Z": 28.030762
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

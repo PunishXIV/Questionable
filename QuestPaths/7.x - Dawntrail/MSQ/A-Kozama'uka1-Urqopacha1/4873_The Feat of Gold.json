@@ -1,0 +1,117 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046570,
+          "Position": {
+            "X": 210.65076,
+            "Y": -168.37555,
+            "Z": -468.95557
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046574,
+          "Position": {
+            "X": 313.1609,
+            "Y": -156.11737,
+            "Z": -396.07843
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1046577,
+          "Position": {
+            "X": 495.32312,
+            "Y": -136.24503,
+            "Z": -383.56604
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013924,
+          "Position": {
+            "X": 353.56665,
+            "Y": -107.71344,
+            "Z": -238.81903
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818404
+        },
+        {
+          "DataId": 1046580,
+          "Position": {
+            "X": 403.5553,
+            "Y": -116.815155,
+            "Z": -170.24493
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1048192,
+          "Position": {
+            "X": 402.48718,
+            "Y": -116.815155,
+            "Z": -171.58777
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGMA114_04873_Q1_000_000",
+              "Answer": "TEXT_KINGMA114_04873_A1_000_001"
+            }
+          ],
+          "PointMenuChoices": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046994,
+          "Position": {
+            "X": 398.8861,
+            "Y": -116.81501,
+            "Z": -219.89783
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

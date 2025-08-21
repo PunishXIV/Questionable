@@ -1,0 +1,146 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028923,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0530548E-13,
+            "Z": -6.0273438
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028923,
+          "Position": {
+            "X": -0.015319824,
+            "Y": -1.0530548E-13,
+            "Z": -6.0273438
+          },
+          "StopDistance": 7,
+          "TerritoryId": 844,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010024,
+          "Position": {
+            "X": 554.2534,
+            "Y": 17.92926,
+            "Z": 352.1018
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818223,
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Tessellation (Lakeland)"
+          ]
+        },
+        {
+          "DataId": 1028928,
+          "Position": {
+            "X": 347.98206,
+            "Y": 3.5166266,
+            "Z": 167.89502
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 697.40857,
+            "Y": 21.402163,
+            "Z": -28.658777
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "TerritoryId": 813,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lakeland - Fort Jobb"
+        },
+        {
+          "Position": {
+            "X": 601.42426,
+            "Y": 23.210327,
+            "Z": -223.36815
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2010028,
+          "Position": {
+            "X": 613.24475,
+            "Y": 24.002441,
+            "Z": -231.15894
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818227
+        },
+        {
+          "DataId": 1029846,
+          "Position": {
+            "X": 682.33765,
+            "Y": 101.7017,
+            "Z": -710.3533
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 813,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 676,
+            "Enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029846,
+          "Position": {
+            "X": 682.33765,
+            "Y": 101.7017,
+            "Z": -710.3533
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

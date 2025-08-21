@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/GatheringPaths/gatheringlocation-v1.json",
+  "Author": "liza",
+  "Steps": [
+    {
+      "TerritoryId": 400,
+      "InteractionType": "None",
+      "AetheryteShortcut": "The Churning Mists - Moghome"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 31363,
+          "Locations": [
+            {
+              "Position": {
+                "X": 338.6716,
+                "Y": -29.70343,
+                "Z": -89.65448
+              },
+              "MinimumAngle": 145,
+              "MaximumAngle": 275
+            },
+            {
+              "Position": {
+                "X": 285.6898,
+                "Y": -32.99854,
+                "Z": -100.1466
+              },
+              "MinimumAngle": 115,
+              "MaximumAngle": 275
+            },
+            {
+              "Position": {
+                "X": 326.7051,
+                "Y": -27.26759,
+                "Z": -89.31528
+              },
+              "MinimumAngle": 110,
+              "MaximumAngle": 205
+            }
+          ]
+        },
+        {
+          "DataId": 31362,
+          "Locations": [
+            {
+              "Position": {
+                "X": 299.2141,
+                "Y": -33.21008,
+                "Z": -103.5859
+              },
+              "MinimumAngle": 75,
+              "MaximumAngle": 295
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Nodes": [
+        {
+          "DataId": 31358,
+          "Locations": [
+            {
+              "Position": {
+                "X": 316.6238,
+                "Y": -30.77305,
+                "Z": -230.0326
+              },
+              "MinimumAngle": -35,
+              "MaximumAngle": 75
+            }
+          ]
+        },
+        {
+          "DataId": 31359,
+          "Locations": [
+            {
+              "Position": {
+                "X": 297.7187,
+                "Y": -32.66696,
+                "Z": -234.9031
+              },
+              "MinimumAngle": 15,
+              "MaximumAngle": 135
+            },
+            {
+              "Position": {
+                "X": 288.7547,
+                "Y": -33.61605,
+                "Z": -239.764
+              },
+              "MinimumAngle": -30,
+              "MaximumAngle": 65
+            },
+            {
+              "Position": {
+                "X": 324.8526,
+                "Y": -28.45777,
+                "Z": -209.4378
+              },
+              "MinimumAngle": -5,
+              "MaximumAngle": 120
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

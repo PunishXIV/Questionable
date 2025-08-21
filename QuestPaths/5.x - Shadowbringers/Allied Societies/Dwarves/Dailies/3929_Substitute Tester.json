@@ -1,0 +1,368 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "pot0to",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -615.73865,
+            "Y": 65.602264,
+            "Z": -423.84705
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lakeland - Ostall Imperative",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1033712,
+          "Position": {
+            "X": -617.1206,
+            "Y": 65.602264,
+            "Z": -425.25372
+          },
+          "TerritoryId": 813,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1033715,
+          "Position": {
+            "X": -614.4961,
+            "Y": 65.60227,
+            "Z": -405.56958
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -270.43753,
+            "Y": 101.31912,
+            "Z": -445.69028
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 32, 48, 64, 128 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "west of The Stay - landing point"
+        },
+        {
+          "Position": {
+            "X": -251.79787,
+            "Y": 101.4096,
+            "Z": -436.75403
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 32, 48, 64, 128 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "west of The Stay - walk up to target"
+        },
+        {
+          "DataId": 2011130,
+          "Position": {
+            "X": -245.7771,
+            "Y": 101.426636,
+            "Z": -433.98187
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Action",
+          "Action": "Cannonfire",
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 32, 48, 64, 128 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "west of The Stay - fire cannon"
+        },
+        {
+          "Position": {
+            "X": -214.99785,
+            "Y": 100.41297,
+            "Z": -449.9386
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 32, 80, 96, 112, 128 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "inside The Stay - landing point"
+        },
+        {
+          "Position": {
+            "X": -205.86038,
+            "Y": 100.41297,
+            "Z": -450.21674
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 32, 80, 96, 112, 128 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "inside The Stay - walk up to target"
+        },
+        {
+          "DataId": 2011131,
+          "Position": {
+            "X": -199.42017,
+            "Y": 100.38904,
+            "Z": -450.7973
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Action",
+          "Action": "Cannonfire",
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 32, 80, 96, 112, 128 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "inside The Stay - fire cannon"
+        },
+        {
+          "Position": {
+            "X": -204.52136,
+            "Y": 86.09296,
+            "Z": -519.285
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 48, 64, 96, 112, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "north of The Stay - landing point"
+        },
+        {
+          "Position": {
+            "X": -193.84006,
+            "Y": 86.09295,
+            "Z": -508.64786
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 48, 64, 96, 112, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "north of The Stay - walk up to target"
+        },
+        {
+          "DataId": 2011133,
+          "Position": {
+            "X": -193.13348,
+            "Y": 86.045654,
+            "Z": -502.76953
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Action",
+          "Action": "Cannonfire",
+          "RequiredQuestVariables": [
+            null,
+            [ 16, 48, 64, 96, 112, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "north of The Stay - fire cannon"
+        },
+        {
+          "Position": {
+            "X": -166.87851,
+            "Y": 85.39617,
+            "Z": -487.57132
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [ 32, 48, 80, 112, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "NE of The Stay - landing point"
+        },
+        {
+          "Position": {
+            "X": -151.61143,
+            "Y": 85.348495,
+            "Z": -488.9138
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            null,
+            [ 32, 48, 80, 112, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "NE of The Stay - walk up to target"
+        },
+        {
+          "DataId": 2011132,
+          "Position": {
+            "X": -145.61688,
+            "Y": 85.34363,
+            "Z": -494.86536
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Action",
+          "Action": "Cannonfire",
+          "RequiredQuestVariables": [
+            null,
+            [ 32, 48, 80, 112, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "NE of The Stay - fire cannon"
+        },
+        {
+          "Position": {
+            "X": -153.4956,
+            "Y": 100.40788,
+            "Z": -442.20892
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            [ 64, 80, 96, 128, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "east of The Stay - landing point"
+        },
+        {
+          "Position": {
+            "X": -135.49406,
+            "Y": 103.20949,
+            "Z": -442.19656
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            null,
+            [ 64, 80, 96, 128, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "east of The Stay - walk up to target"
+        },
+        {
+          "DataId": 2011129,
+          "Position": {
+            "X": -126.878784,
+            "Y": 103.196655,
+            "Z": -442.649
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Action",
+          "Action": "Cannonfire",
+          "RequiredQuestVariables": [
+            null,
+            [ 64, 80, 96, 128, 144 ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Comment": "east of The Stay - fire cannon"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -615.73865,
+            "Y": 65.602264,
+            "Z": -423.84705
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Lakeland - Ostall Imperative"
+        },
+        {
+          "DataId": 1033712,
+          "Position": {
+            "X": -617.1206,
+            "Y": 65.602264,
+            "Z": -425.25372
+          },
+          "TerritoryId": 813,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

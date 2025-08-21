@@ -1,0 +1,212 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "FalconTaterz",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010290,
+          "Position": {
+            "X": -144.73187,
+            "Y": 11.999999,
+            "Z": -5.661133
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -153.18225,
+            "Y": 14.005,
+            "Z": 43.458076
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "DataId": 1010169,
+          "Position": {
+            "X": -47.501343,
+            "Y": 9.999995,
+            "Z": -11.886841
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -45.67461,
+            "Y": 11.927631,
+            "Z": -16.919664
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 131,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -48.14437,
+              "Y": 9.999995,
+              "Z": -10.52473
+            }
+          }
+        },
+        {
+          "DataId": 1010316,
+          "Position": {
+            "X": -54.581604,
+            "Y": 9.999972,
+            "Z": -12.64978
+          },
+          "StopDistance": 7,
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "DataId": 2004901,
+          "Position": {
+            "X": 103.50195,
+            "Y": 7.9804688,
+            "Z": 8.255066
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "Position": {
+            "X": 108.07826,
+            "Y": 8,
+            "Z": 8.036793
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2004900,
+          "Position": {
+            "X": 103.715576,
+            "Y": 7.9804688,
+            "Z": -35.233154
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2004899,
+          "Position": {
+            "X": 68.0094,
+            "Y": 7.9804688,
+            "Z": -74.05206
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 98.252335,
+            "Y": 8.000075,
+            "Z": -38.319664
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "DataId": 1010316,
+          "Position": {
+            "X": -54.581604,
+            "Y": 9.999972,
+            "Z": -12.64978
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ],
+          "Position": {
+            "X": 137.68585,
+            "Y": 3.9999998,
+            "Z": -58.555218
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1001679,
+          "Position": {
+            "X": 140.48975,
+            "Y": 4.0099983,
+            "Z": -59.80017
+          },
+          "StopDistance": 5,
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 204
+        }
+      ]
+    }
+  ]
+}

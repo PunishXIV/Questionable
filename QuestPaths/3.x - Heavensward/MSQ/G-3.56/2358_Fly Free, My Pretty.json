@@ -1,0 +1,95 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018043,
+          "Position": {
+            "X": -1.1444702,
+            "Y": 0,
+            "Z": -3.2807007
+          },
+          "StopDistance": 5,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 29.352629,
+            "Y": 21.285944,
+            "Z": -652.1081
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1018044,
+          "Position": {
+            "X": 127.73328,
+            "Y": -15.353702,
+            "Z": -421.1338
+          },
+          "TerritoryId": 156,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "TestedBossModVersion": "0.1.0.1",
+            "Notes": [
+              "(phase 2) AI doesn't use any of the Red Baron's attacks, just moves with it and eventually dies (after a few minutes)"
+            ]
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1018045,
+          "Position": {
+            "X": 2.1514893,
+            "Y": 0.93368113,
+            "Z": 12.741211
+          },
+          "TerritoryId": 636,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNG103_02358_Q2_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1018046,
+          "Position": {
+            "X": 40.604248,
+            "Y": -19.000013,
+            "Z": 92.36279
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

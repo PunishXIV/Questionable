@@ -1,0 +1,152 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003061,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.500025,
+            "Z": -4.3793945
+          },
+          "TerritoryId": 204,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001215,
+          "Position": {
+            "X": 0.002457563,
+            "Y": 1.052062,
+            "Z": 9.820032
+          },
+          "TerritoryId": 204,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 132,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                204
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1000195,
+          "Position": {
+            "X": 197.4364,
+            "Y": 0.0026046988,
+            "Z": 57.114502
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 1000156,
+          "Position": {
+            "X": 6.6376343,
+            "Y": 1.1442462,
+            "Z": -11.795227
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Archers' Guild",
+            "[Gridania] Aetheryte Plaza"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 1000122,
+          "Position": {
+            "X": 88.60913,
+            "Y": -8.685379,
+            "Z": 128.64868
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1000372,
+          "Position": {
+            "X": 39.53601,
+            "Y": -8.041565,
+            "Z": 112.13855
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000423,
+          "Position": {
+            "X": 232.04382,
+            "Y": 1.999974,
+            "Z": 45.578613
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 204,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ]
+        },
+        {
+          "DataId": 1003061,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0.500025,
+            "Z": -4.3793945
+          },
+          "TerritoryId": 204,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true,
+          "NextQuestId": 1009
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+    "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+    "Author": "Censored",
+    "QuestSequence": [
+        {
+            "Sequence": 0,
+            "Steps": [
+                {
+                    "DataId": 1005938,
+                    "Position": {
+                        "X": -220.7218,
+                        "Y": -40.720844,
+                        "Z": 37.247192
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "AcceptQuest",
+                    "AetheryteShortcut": "Western La Noscea - Aleport",
+                    "Fly": true,
+                    "SkipConditions": {
+                        "AetheryteShortcutIf": {
+                            "NearPosition": {
+                                "Position": {
+                                    "X": -220.7218,
+                                    "Y": -40.720844,
+                                    "Z": 37.247192
+                                },
+                                "TerritoryId": 138,
+                                "MaximumDistance": 50
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Sequence": 1,
+            "Steps": [
+                {
+                    "DataId": 1008818,
+                    "Position": {
+                        "X": -188.89148,
+                        "Y": -41.164997,
+                        "Z": -42.832153
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        767
+                    ],
+                    "Fly": true,
+                    "Land": true
+                },
+                {
+                    "DataId": 1008819,
+                    "Position": {
+                        "X": -156.35925,
+                        "Y": -38.790955,
+                        "Z": -49.302002
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        767
+                    ]
+                },
+                {
+                    "DataId": 1008820,
+                    "Position": {
+                        "X": -153.27692,
+                        "Y": -35.290905,
+                        "Z": -72.70929
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "Combat",
+                    "EnemySpawnType": "AfterInteraction",
+                    "KillEnemyDataIds": [
+                        767
+                    ]
+                }
+            ]
+        },
+        {
+            "Sequence": 2,
+            "Steps": [
+                {
+                    "DataId": 1008825,
+                    "Position": {
+                        "X": -212.72601,
+                        "Y": -40.03688,
+                        "Z": -102.80011
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001254
+                },
+                {
+                    "DataId": 1008823,
+                    "Position": {
+                        "X": -213.58057,
+                        "Y": -40.036037,
+                        "Z": -103.593506
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001254
+                },
+                {
+                    "DataId": 1008824,
+                    "Position": {
+                        "X": -212.75659,
+                        "Y": -40.002003,
+                        "Z": -104.631165
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "UseItem",
+                    "ItemId": 2001254
+                }
+            ]
+        },
+        {
+            "Sequence": 255,
+            "Steps": [
+                {
+                    "DataId": 1005938,
+                    "Position": {
+                        "X": -220.7218,
+                        "Y": -40.720844,
+                        "Z": 37.247192
+                    },
+                    "TerritoryId": 138,
+                    "InteractionType": "CompleteQuest",
+                    "Fly": true
+                }
+            ]
+        }
+    ]
+}

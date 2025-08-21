@@ -1,0 +1,65 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035354,
+          "Position": {
+            "X": -1.0223389,
+            "Y": 0,
+            "Z": -8.529846
+          },
+          "StopDistance": 5,
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKMJ104_04010_Q1_000_000",
+              "Answer": "TEXT_LUCKMJ104_04010_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035364,
+          "Position": {
+            "X": 68.558716,
+            "Y": 40,
+            "Z": 69.90149
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035366,
+          "Position": {
+            "X": -110.09387,
+            "Y": 39.999992,
+            "Z": 116.990845
+          },
+          "StopDistance": 5,
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

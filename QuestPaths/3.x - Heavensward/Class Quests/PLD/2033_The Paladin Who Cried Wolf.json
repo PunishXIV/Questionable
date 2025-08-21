@@ -1,0 +1,150 @@
+{
+	"$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+	"Author": "goatzone",
+	"QuestSequence": [
+		{
+			"Sequence": 0,
+			"Steps": [
+				{
+					"DataId": 1003995,
+					"Position": {
+						"X": 75.33374,
+						"Y": 2.135708,
+						"Z": 316.33472
+					},
+					"TerritoryId": 141,
+					"InteractionType": "AcceptQuest",
+					"Fly": true,
+					"AetheryteShortcut": "Ul'dah",
+					"AethernetShortcut": [
+						"[Ul'dah] Aetheryte Plaza",
+						"[Ul'dah] Gate of Thal (Central Thanalan)"
+					],
+					"SkipConditions": {
+						"AetheryteShortcutIf": {
+							"InSameTerritory": true,
+							"InTerritory": [141]
+						},
+						"AethernetShortcutIf": { "InSameTerritory": true }
+					},
+					"$":"you could swap this shortcut out for black brush station, just figured it worked once."
+				}
+			]
+		},
+		{
+			"Sequence": 1,
+			"Steps": [
+				{
+					"DataId": 1011237,
+					"Position": {
+						"X": 447.3181,
+						"Y": 212.53984,
+						"Z": 725.00183
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+					"SkipConditions": {
+						"AetheryteShortcutIf": { "InSameTerritory": true }
+					},
+					"CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
+					"$": "0 0 0 0 0 0 -> 1 0 0 0 0 32"
+				},
+				{
+					"DataId": 1011233,
+					"Position": {
+						"X": 518.9136,
+						"Y": 217.95152,
+						"Z": 769.9243
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"Fly": true,
+					"CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
+					"$": "1 0 0 0 0 32 -> 2 0 0 0 0 160"
+				},
+				{
+					"DataId": 1011235,
+					"Position": {
+						"X": 522.54517,
+						"Y": 228.3512,
+						"Z": 723.5675
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"Fly": true,
+					"CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
+					"$": "if done as second step, 1 0 0 0 0 32 -> 2 0 0 0 0 96"
+				}
+			]
+		},
+		{
+			"Sequence": 2,
+			"Steps": [
+				{
+					"DataId": 1014052,
+					"Position": {
+						"X": 458.12158,
+						"Y": 200.23763,
+						"Z": 658.0757
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact",
+					"Fly": true
+				}
+			]
+		},
+		{
+			"Sequence": 3,
+			"Steps": [
+				{
+					"Position": {
+						"X": 50.883884,
+						"Y": 124.41451,
+						"Z": 174.64914
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Combat",
+					"EnemySpawnType": "AutoOnEnterArea",
+					"Fly": true,
+					"KillEnemyDataIds": [5043, 4619],
+					"CompletionQuestVariablesFlags": [
+						{ "Low": 3 },
+						null,
+						null,
+						null,
+						null,
+						null
+					]
+				},
+				{
+					"DataId": 1014053,
+					"Position": {
+						"X": 48.966187,
+						"Y": 124.34676,
+						"Z": 175.73816
+					},
+					"TerritoryId": 397,
+					"InteractionType": "Interact"
+				}
+			]
+		},
+		{
+			"Sequence": 255,
+			"Steps": [
+				{
+					"DataId": 1014054,
+					"Position": {
+						"X": 509.17822,
+						"Y": 212.5399,
+						"Z": 695.796
+					},
+					"TerritoryId": 397,
+					"InteractionType": "CompleteQuest",
+					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+					"NextQuestId": 2034
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,222 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009357,
+          "Position": {
+            "X": -173.3883,
+            "Y": 58.1521,
+            "Z": -449.48505
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "ItemId": 2002446,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            8594
+          ],
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2009356,
+          "Position": {
+            "X": -210.2846,
+            "Y": 59.250732,
+            "Z": -512.0775
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "ItemId": 2002446,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            8594
+          ],
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 6
+              }
+            ],
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2009355,
+          "Position": {
+            "X": -210.98651,
+            "Y": 59.28125,
+            "Z": -668.6351
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "ItemId": 2002446,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            8594
+          ],
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2009358,
+          "Position": {
+            "X": -171.03839,
+            "Y": 59.098145,
+            "Z": -750.3014
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "ItemId": 2002446,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            8594
+          ],
+          "Fly": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              },
+              {
+                "Low": 6
+              }
+            ],
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -25.868523,
+            "Y": 56.02146,
+            "Z": 231.54045
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1024773,
+          "Position": {
+            "X": -28.33606,
+            "Y": 56.113926,
+            "Z": 236.25537
+          },
+          "StopDistance": 7,
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

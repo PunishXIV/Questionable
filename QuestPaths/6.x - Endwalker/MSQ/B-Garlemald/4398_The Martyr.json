@@ -1,0 +1,83 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039987,
+          "Position": {
+            "X": 189.25769,
+            "Y": 63.36112,
+            "Z": 467.46008
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKMB119_04398_Q1_000_001",
+              "Answer": "TEXT_AKTKMB119_04398_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039987,
+          "Position": {
+            "X": 189.25769,
+            "Y": 63.36112,
+            "Z": 467.46008
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKMB119_04398_Q2_000_010",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1028,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 802,
+            "Enabled": false
+          },
+          "Comment": "The Dark Inside"
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039989,
+          "Position": {
+            "X": -279.95728,
+            "Y": 76.14732,
+            "Z": 480.91858
+          },
+          "StopDistance": 5,
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035520,
+          "Position": {
+            "X": 19.943481,
+            "Y": 1.8347055E-07,
+            "Z": -158.92273
+          },
+          "StopDistance": 5,
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035507,
+          "Position": {
+            "X": 48.41687,
+            "Y": -18.742718,
+            "Z": 6.576599
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011307,
+          "Position": {
+            "X": 49.94275,
+            "Y": -18.753357,
+            "Z": 10.910156
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011308,
+          "Position": {
+            "X": 215.62524,
+            "Y": -36.881104,
+            "Z": -3.5858765
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] The Mattock",
+            "[Firmament] Saint Roelle's Dais"
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKHA302_04000_Q2_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2011308,
+          "Position": {
+            "X": 215.62524,
+            "Y": -36.881104,
+            "Z": -3.5858765
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_LUCKHA302_04000_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035521,
+          "Position": {
+            "X": 207.599,
+            "Y": -40,
+            "Z": -13.290649
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4001
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018994,
+          "Position": {
+            "X": 49.240845,
+            "Y": 4.0000005,
+            "Z": 55.77173
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1024140,
+          "Position": {
+            "X": -40.665344,
+            "Y": 15.000004,
+            "Z": 42.22168
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024155,
+          "Position": {
+            "X": -58.18268,
+            "Y": 79.05602,
+            "Z": 43.9917
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024160,
+          "Position": {
+            "X": -11.581665,
+            "Y": 0.04687078,
+            "Z": -3.7385254
+          },
+          "TerritoryId": 735,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024142,
+          "Position": {
+            "X": -15.365906,
+            "Y": -1.1998292,
+            "Z": -4.837158
+          },
+          "TerritoryId": 736,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3004
+        }
+      ]
+    }
+  ]
+}

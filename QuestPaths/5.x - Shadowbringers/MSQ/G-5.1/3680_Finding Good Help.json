@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031760,
+          "Position": {
+            "X": -60.04431,
+            "Y": 377.92743,
+            "Z": -451.6518
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031761,
+          "Position": {
+            "X": -423.78882,
+            "Y": 334.0526,
+            "Z": -26.199768
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010813,
+          "Position": {
+            "X": -421.71362,
+            "Y": 339.62,
+            "Z": -161.45575
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Snipe",
+          "Comment": "Help Master Chai dodge enemies"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031765,
+          "Position": {
+            "X": -418.90594,
+            "Y": 339.968,
+            "Z": -162.03558
+          },
+          "StopDistance": 7,
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031769,
+          "Position": {
+            "X": 168.5968,
+            "Y": 39.939266,
+            "Z": 585.90063
+          },
+          "StopDistance": 7,
+          "TerritoryId": 814,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

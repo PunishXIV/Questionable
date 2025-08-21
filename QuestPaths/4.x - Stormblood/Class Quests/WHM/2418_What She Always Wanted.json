@@ -1,0 +1,141 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "Cacahuetes",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019132,
+          "Position": {
+            "X": -655.02405,
+            "Y": 40.43195,
+            "Z": 375.96704
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018759,
+          "Position": {
+            "X": -636.8048,
+            "Y": 130,
+            "Z": -528.6183
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -650.58673,
+            "Y": 39.856243,
+            "Z": 371.54846
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1019130,
+          "Position": {
+            "X": -665.3696,
+            "Y": 43.594574,
+            "Z": 364.40063
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1019130,
+          "Position": {
+            "X": -665.3696,
+            "Y": 43.594574,
+            "Z": 364.40063
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_JOBWHM700_02418_Q1_000_000",
+              "Answer": "TEXT_JOBWHM700_02418_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -381.88757,
+            "Y": 40.283813,
+            "Z": 484.82483
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7216
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019127,
+          "Position": {
+            "X": -381.88757,
+            "Y": 40.283813,
+            "Z": 484.82483
+          },
+          "TerritoryId": 612,
+          "InteractionType": "SinglePlayerDuty",
+          "ItemId": 2002053
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019588,
+          "Position": {
+            "X": -382.71155,
+            "Y": 40.275818,
+            "Z": 484.36694
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

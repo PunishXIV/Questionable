@@ -1,0 +1,121 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039733,
+          "Position": {
+            "X": -20.767578,
+            "Y": -30.155542,
+            "Z": 638.7273
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039750,
+          "Position": {
+            "X": 28.091797,
+            "Y": -31.530422,
+            "Z": 90.196045
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1037271,
+          "Position": {
+            "X": 84.64172,
+            "Y": -31.530367,
+            "Z": 31.021484
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "$.0": "[1] Navmesh navigates here first, even if you feed it [2]",
+          "$.1": "QuestVariables if done first: 1 0 0 0 0 64"
+        },
+        {
+          "DataId": 1037253,
+          "Position": {
+            "X": 34.74475,
+            "Y": -28.549177,
+            "Z": 45.548096
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "$.0": "[2]",
+          "$.1": "QuestVariables after: 2 0 0 0 0 192"
+        },
+        {
+          "DataId": 1037275,
+          "Position": {
+            "X": 106.126465,
+            "Y": -29.529999,
+            "Z": -14.450317
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "StopDistance": 7,
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Labyrinthos - Sharlayan Hamlet"
+        },
+        {
+          "DataId": 1039761,
+          "Position": {
+            "X": -17.685242,
+            "Y": -31.53043,
+            "Z": -76.798706
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

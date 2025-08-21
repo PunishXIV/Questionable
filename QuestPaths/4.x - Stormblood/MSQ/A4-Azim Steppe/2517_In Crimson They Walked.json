@@ -1,0 +1,98 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021633,
+          "Position": {
+            "X": 495.10938,
+            "Y": 40.836124,
+            "Z": -508.50693
+          },
+          "StopDistance": 7,
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1019417,
+          "Position": {
+            "X": -39.414062,
+            "Y": 122.1,
+            "Z": 63.61487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 12.142036,
+            "Y": 121,
+            "Z": 63.4195
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "Fly": true
+        },
+        {
+          "DataId": 1019424,
+          "Position": {
+            "X": 66.056274,
+            "Y": 114.904976,
+            "Z": -8.377258
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 622,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1020280,
+          "Position": {
+            "X": -448.1422,
+            "Y": 2.2771428,
+            "Z": 632.1354
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021646,
+          "Position": {
+            "X": -167.89502,
+            "Y": 0.88495153,
+            "Z": 816.8002
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

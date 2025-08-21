@@ -1,0 +1,158 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024063,
+          "Position": {
+            "X": 339.62,
+            "Y": 74.00002,
+            "Z": 75.48633
+          },
+          "StopDistance": 5,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_STMBDB111_02972_Q1_000_000",
+              "Answer": "TEXT_STMBDB111_02972_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009048,
+          "Position": {
+            "X": 593.56055,
+            "Y": 79.972534,
+            "Z": 621.9425
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024065,
+          "Position": {
+            "X": 749.9961,
+            "Y": 70.139626,
+            "Z": 522.88086
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDB111_02972_Q2_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024066,
+          "Position": {
+            "X": 245.07507,
+            "Y": 122,
+            "Z": -349.0807
+          },
+          "StopDistance": 5,
+          "TerritoryId": 737,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.1.0.1"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1024206,
+          "Position": {
+            "X": 251.69751,
+            "Y": 122,
+            "Z": -345.5406
+          },
+          "TerritoryId": 737,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1024068,
+          "Position": {
+            "X": 741.1764,
+            "Y": 70,
+            "Z": 525.5055
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1024068,
+          "Position": {
+            "X": 741.1764,
+            "Y": 70,
+            "Z": 525.5055
+          },
+          "StopDistance": 6,
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019468,
+          "Position": {
+            "X": 170.58057,
+            "Y": 13.02367,
+            "Z": -91.96619
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ]
+        }
+      ]
+    }
+  ]
+}

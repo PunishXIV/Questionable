@@ -1,0 +1,113 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014028,
+          "Position": {
+            "X": -126.57361,
+            "Y": 4.0999947,
+            "Z": -96.23871
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014033,
+          "Position": {
+            "X": 47.16565,
+            "Y": 4,
+            "Z": 466.14783
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005972,
+          "Position": {
+            "X": -6.8513794,
+            "Y": 5.722107,
+            "Z": 290.8827
+          },
+          "StopDistance": 1,
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 13.795937,
+            "Y": 5.0408907,
+            "Z": 280.2135
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 147,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4787,
+            4788
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014034,
+          "Position": {
+            "X": 13.687317,
+            "Y": 4.983316,
+            "Z": 284.38232
+          },
+          "StopDistance": 7,
+          "TerritoryId": 147,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1014028,
+          "Position": {
+            "X": -126.57361,
+            "Y": 4.0999947,
+            "Z": -96.23871
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "NextQuestId": 2104
+        }
+      ]
+    }
+  ]
+}

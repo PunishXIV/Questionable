@@ -1,0 +1,87 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020519,
+          "Position": {
+            "X": 173.78503,
+            "Y": 5.16971,
+            "Z": -417.41058
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020524,
+          "Position": {
+            "X": 173.20508,
+            "Y": 5.1910434,
+            "Z": -433.24945
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020519,
+          "Position": {
+            "X": 173.78503,
+            "Y": 5.16971,
+            "Z": -417.41058
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Yanxia - House of the Fierce"
+        },
+        {
+          "DataId": 1019070,
+          "Position": {
+            "X": 151.20166,
+            "Y": 14.7757225,
+            "Z": 95.78088
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 639,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        },
+        {
+          "DataId": 1023084,
+          "Position": {
+            "X": -1.5717163,
+            "Y": 0,
+            "Z": -1.449646
+          },
+          "TerritoryId": 639,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

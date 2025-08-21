@@ -1,0 +1,118 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041667,
+          "Position": {
+            "X": 443.96118,
+            "Y": 65.162,
+            "Z": -105.4552
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012725,
+          "Position": {
+            "X": 693.1715,
+            "Y": 99.01575,
+            "Z": 123.52173
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012726,
+          "Position": {
+            "X": 806.79016,
+            "Y": 154.10083,
+            "Z": -149.64526
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041681,
+          "Position": {
+            "X": 436.69788,
+            "Y": 166.19273,
+            "Z": -430.4723
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Archeion"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041668,
+          "Position": {
+            "X": 394.12524,
+            "Y": 173.82095,
+            "Z": -646.75366
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1041670,
+          "Position": {
+            "X": 285.23682,
+            "Y": 185.65448,
+            "Z": -729.67114
+          },
+          "StopDistance": 1,
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14069
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041670,
+          "Position": {
+            "X": 285.23682,
+            "Y": 185.65448,
+            "Z": -729.67114
+          },
+          "StopDistance": 5,
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

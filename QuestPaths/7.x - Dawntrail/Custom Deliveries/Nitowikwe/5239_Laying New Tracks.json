@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1048604,
+          "Position": {
+            "X": 36.75891,
+            "Y": -14.000003,
+            "Z": 57.694214
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051496,
+          "Position": {
+            "X": -84.42822,
+            "Y": 15.678356,
+            "Z": -242.17596
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -363.22934,
+            "Y": 20.162338,
+            "Z": -90.19407
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+        },
+        {
+          "DataId": 1051495,
+          "Position": {
+            "X": -365.28577,
+            "Y": 20.14268,
+            "Z": -88.51758
+          },
+          "StopDistance": 5,
+          "TerritoryId": 1190,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048605,
+          "Position": {
+            "X": -358.38867,
+            "Y": 19.728025,
+            "Z": -105.02789
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

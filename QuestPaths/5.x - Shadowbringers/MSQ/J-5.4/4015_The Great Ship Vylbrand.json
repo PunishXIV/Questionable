@@ -1,0 +1,111 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002694,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.6001425,
+            "Z": -7.0039062
+          },
+          "TerritoryId": 198,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035399,
+          "Position": {
+            "X": -105.21106,
+            "Y": 64.43899,
+            "Z": -243.15253
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 46.600548,
+            "Y": 77.45801,
+            "Z": -366.82053
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 111.927666,
+            "Y": 26.050894,
+            "Z": -612.8873
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 82.19566,
+            "Y": 25.922153,
+            "Z": -711.6839
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 129.6921,
+            "Y": 23.33508,
+            "Z": -719.46643
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1035401,
+          "Position": {
+            "X": 142.71753,
+            "Y": 24.40421,
+            "Z": -634.54645
+          },
+          "TerritoryId": 180,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035407,
+          "Position": {
+            "X": -103.71564,
+            "Y": 64.39152,
+            "Z": -241.32147
+          },
+          "StopDistance": 5,
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

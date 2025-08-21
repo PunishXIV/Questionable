@@ -1,0 +1,123 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "JerryWester",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1010951,
+          "Position": {
+            "X": -144.1825,
+            "Y": 304.15393,
+            "Z": -300.7401
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 241.6446,
+            "Y": 303.12494,
+            "Z": -199.8039
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "DataId": 1006384,
+          "Position": {
+            "X": 263.5996,
+            "Y": 303.1,
+            "Z": -199.96954
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1007603,
+          "Position": {
+            "X": 264.91187,
+            "Y": 302.26236,
+            "Z": -223.71259
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSE603_00372_FORTEMPSGUARD00054_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "Position": {
+            "X": 4.0611796,
+            "Y": 0.0149827,
+            "Z": 4.914047
+          },
+          "TerritoryId": 395,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1009974,
+          "Position": {
+            "X": 3.8604736,
+            "Y": 0.014982708,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 395,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 4.0818396,
+            "Y": 0,
+            "Z": 6.262639
+          },
+          "TerritoryId": 395,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -2.7646873,
+            "Y": 0.0149827,
+            "Z": 6.104938
+          },
+          "TerritoryId": 395,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1010953,
+          "Position": {
+            "X": -2.7924194,
+            "Y": 0.014982709,
+            "Z": -0.7477417
+          },
+          "TerritoryId": 395,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

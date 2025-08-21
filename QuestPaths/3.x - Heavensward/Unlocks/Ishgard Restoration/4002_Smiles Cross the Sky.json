@@ -1,0 +1,56 @@
+﻿{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1035527,
+          "Position": {
+            "X": 196.82605,
+            "Y": -40,
+            "Z": -11.062805
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035529,
+          "Position": {
+            "X": -7.156494,
+            "Y": -16,
+            "Z": 163.43933
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Firmament] Saint Roelle's Dais",
+            "[Firmament] The Mendicant's Court"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035529,
+          "Position": {
+            "X": -7.156494,
+            "Y": -16,
+            "Z": 163.43933
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4079
+        }
+      ]
+    }
+  ]
+}

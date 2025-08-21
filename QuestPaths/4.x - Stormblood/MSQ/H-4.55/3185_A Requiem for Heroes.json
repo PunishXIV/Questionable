@@ -1,0 +1,101 @@
+{
+  "$schema": "https://git.carvel.li/liza/Questionable/raw/branch/master/QuestPaths/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026804,
+          "Position": {
+            "X": -524.55945,
+            "Y": 8.698304,
+            "Z": -15.487976
+          },
+          "StopDistance": 7,
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026804,
+          "Position": {
+            "X": -524.55945,
+            "Y": 8.698304,
+            "Z": -15.487976
+          },
+          "StopDistance": 7,
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 829,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDG102_03185_Q1_000_002",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 1026845,
+          "Position": {
+            "X": -476.67664,
+            "Y": 107.63,
+            "Z": 103.74609
+          },
+          "TerritoryId": 829,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false,
+            "Notes": [
+              "(phase 1) Need to manually move in range to trigger combat",
+              "(phase 1) VBM doesn't know about some AOEs (e.g. Vein Splitter)",
+              "(phase 1) VBM ignores markers to stack on Lyse (she still survives)",
+              "(phase 2) AI can walk outside the arena to get a bleed + damage down when dodging mechanics"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "TargetTerritoryId": 351
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026990,
+          "Position": {
+            "X": -2.4262085,
+            "Y": 0,
+            "Z": -9.10968
+          },
+          "StopDistance": 7,
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
