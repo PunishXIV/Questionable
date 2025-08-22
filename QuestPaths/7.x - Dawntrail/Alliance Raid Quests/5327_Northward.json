@@ -1,0 +1,172 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2014450,
+          "Position": {
+            "X": -528.37415,
+            "Y": -152.20874,
+            "Z": 671.13745
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1265,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1265
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1054311,
+          "Position": {
+            "X": -2.9450073,
+            "Y": 41.99998,
+            "Z": -7.034485
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1054315,
+          "Position": {
+            "X": 133.22644,
+            "Y": 42,
+            "Z": -348.95862
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Brightploom Post"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2014787,
+          "Position": {
+            "X": -326.16168,
+            "Y": 18.44812,
+            "Z": -104.57007
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1049334,
+          "Position": {
+            "X": -139.05548,
+            "Y": 1.4543211,
+            "Z": 324.72717
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1054321,
+          "Position": {
+            "X": -145.25067,
+            "Y": 2.0168247,
+            "Z": 374.3191
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            160
+          ]
+        },
+        {
+          "DataId": 1049327,
+          "Position": {
+            "X": -207.47699,
+            "Y": -1.806,
+            "Z": 367.87964
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1054324,
+          "Position": {
+            "X": -171.89288,
+            "Y": 1.6836945,
+            "Z": 347.219
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "Interact",
+          "Mount": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054326,
+          "Position": {
+            "X": -40.116028,
+            "Y": -4.257869,
+            "Z": 574.18164
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 5328
+        }
+      ]
+    }
+  ]
+}

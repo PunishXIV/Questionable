@@ -1,0 +1,164 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051949,
+          "Position": {
+            "X": 141.2832,
+            "Y": 42,
+            "Z": -351.9494
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Brightploom Post"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_KINGEA201_05326_Q2_000_000",
+              "Answer": "TEXT_KINGEA201_05326_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1054347,
+          "Position": {
+            "X": 730.03735,
+            "Y": -133.17451,
+            "Z": 542.2903
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGEA201_05326_SYSTEM_000_103",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1054301,
+          "Position": {
+            "X": -502.76953,
+            "Y": -162.12943,
+            "Z": 419.8518
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014450,
+          "Position": {
+            "X": -528.37415,
+            "Y": -152.20874,
+            "Z": 671.13745
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1265,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1265
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2014786,
+          "Position": {
+            "X": -2.456726,
+            "Y": 41.97754,
+            "Z": -2.822998
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1265,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 1058,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1054310,
+          "Position": {
+            "X": -5.2339478,
+            "Y": 41.999985,
+            "Z": -5.935791
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054313,
+          "Position": {
+            "X": -1.9074707,
+            "Y": 41.99998,
+            "Z": -4.4709473
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": "5327"
+        }
+      ]
+    }
+  ]
+}
