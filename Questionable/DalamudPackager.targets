@@ -6,7 +6,7 @@
                 OutputPath="$(OutputPath)"
                 AssemblyName="$(AssemblyName)"
                 MakeZip="false"
-                VersionComponents="2"/>
+                VersionComponents="4"/>
     </Target>
 
     <Target Name="PackagePlugin" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
@@ -15,7 +15,7 @@
                 OutputPath="$(OutputPath)"
                 AssemblyName="$(AssemblyName)"
                 MakeZip="true"
-                VersionComponents="2"
+                VersionComponents="4"
                 Exclude="Questionable.deps.json;LLib.pdb"/>
     </Target>
 </Project>
