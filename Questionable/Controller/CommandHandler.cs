@@ -81,12 +81,12 @@ internal sealed class CommandHandler : IDisposable
         {
             HelpMessage = string.Join($"{Environment.NewLine}\t",
                 "Opens the Questing window",
-                "/qst config - opens the configuration window",
-                "/qst start - starts doing quests",
-                "/qst stop - stops doing quests",
-                "/qst reload - reload all quest data",
-                "/qst which - shows all quests starting with your selected target",
-                "/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)")
+                "/qst config - Opens the Configuration window",
+                "/qst start - Starts doing quests",
+                "/qst stop - Stops doing quests",
+                "/qst reload - Reloads all quest data",
+                "/qst which - Shows all quests starting with your selected target",
+                "/qst zone - Shows all quests starting in the current zone (only supports quests with a defined quest path that are currently visible but not yet accepted)")
         });
 #if DEBUG
         _commandManager.AddHandler("/qst@", new CommandInfo(ProcessDebugCommand)

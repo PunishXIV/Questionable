@@ -1,12 +1,12 @@
 ﻿{
   "Name": "Questionable",
-  "Author": "Liza Carvelli",
-  "Punchline": "A tiny quest helper plugin.",
-  "Description": "A tiny little quest helper plugin, which does quests for you automatically where possible. Uses navmesh to automatically walk to all quest waypoints, and tries to automatically complete all steps along the way (excluding dungeons, single player duties and combat).\n\nNot all quests are supported, check the discord or git repository for an up-to-date list.\n\nRequired Plugins: vnavmesh, TextAdvance, Lifestream",
+  "Author": "Liza, NightmareXIV, Akechi",
+  "Punchline": "A tiny quest helper plugin",
+  "Description": "A small quest helper plugin designed to automatically do your quests for you where possible. Utilizes navmesh to automatically travel to all quest waypoints and (attempts to) complete all steps along the way (excluding dungeons, single-player duties and combat).\n\nNot all quests are supported.\n\nRequired Plugins: vnavmesh, TextAdvance, Lifestream",
   "Tags": [
     "quests",
     "msq"
   ],
-  "RepoUrl": "https://git.carvel.li/liza/Questionable",
-  "IconUrl": "https://plugins.carvel.li/icons/Questionable.png"
+  "RepoUrl": "https://github.com/PunishXIV/Questionable",
+  "IconUrl": "https://raw.githubusercontent.com/PunishXIV/Questionable/main/Questionable/Icons/QST.png"
 }
