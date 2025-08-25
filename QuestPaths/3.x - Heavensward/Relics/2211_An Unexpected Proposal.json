@@ -1,0 +1,50 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013713,
+          "Position": {
+            "X": -20.706482,
+            "Y": 211.34477,
+            "Z": -28.275024
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016135,
+          "Position": {
+            "X": -754.696,
+            "Y": -182.96056,
+            "Z": -550.7744
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
