@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
@@ -72,6 +72,38 @@ internal sealed class QuestData
     private static readonly IReadOnlyList<uint> MeleeRoleQuestChapters = [138, 156, 180];
     private static readonly IReadOnlyList<uint> PhysicalRangedRoleQuestChapters = [138, 157, 181];
     private static readonly IReadOnlyList<uint> CasterRoleQuestChapters = [139, 158, 182];
+
+    public static readonly HashSet<ushort> UnobtainableEventQuests = new HashSet<ushort>
+    {
+        // Heavensturn
+        1292, 1293, 1294, 1295, 1296, 252, 289, 290, 309, 287, 2217, 1549, 2425, 3014, 3176, 3738, 3751, 4023, 4024, 4588, 4589, 4679, 4680, 5186,
+        // Valentione's Day
+        1297, 1298, 1299, 1300, 1301, 512, 515, 523, 527, 547, 2218, 2219, 2220, 2419, 2420, 3082, 3083, 3205, 3206, 3752, 3753, 3754, 3755, 3756,
+        3757, 3758, 4465, 4466, 4467, 4654, 4808, 4809, 5251,
+        // Valentione's & Little Ladies' Day
+        3996, 3997,
+        // Little Ladies' Day
+        1302, 1303, 1304, 1305, 1306, 1307, 499, 500, 501, 2221, 2222, 2223, 2399, 2400, 2401, 2406, 2407, 2408, 3084, 3085, 3208, 3209, 3850, 3851,
+        4471, 4472, 4720, 5237, 5238,
+        // Little Ladies' & Hatching-tide
+        4810, 4811,
+        // Hatching-tide
+        1414, 1415, 1416, 1417, 1418, 1419, 1420, 556, 557, 559, 2128, 2129, 2130, 2131, 2132, 2421, 2422, 2423, 3079, 3080, 3202, 3203, 3204, 3846,
+        3847, 4089, 4090, 4590, 4721, 4722, 5242, 5243,
+        // Gold Saucer
+        2133, 2135, 2424, 3133, 3134, 3207, 3963, 3964, 4054, 4055, 4056, 4584, 4727, 4728, 4814, 5322,
+        // Moonfire Faire
+        1534, 1535, 1536, 1537, 1538, 1539, 1540, 1541, 1542, 1543, 2124, 2125, 2126, 2127, 2136, 2137, 2138, 2139, 2140, 2956, 2957, 2958, 2959, 2960,
+        3135, 3136, 3137, 3663, 3664, 3665, 3666, 3667, 3966, 3967, 4082, 4083, 4540, 4541, 4723, 4724, 5182, 5183, 5321,
+        // Rising
+        1546, 2134, 2329, 2330, 2331, 2961, 3138, 3660, 3661, 3973, 3974, 4091, 4544, 4765, 4766, 5015, 5016, 5297, 5298,
+        // All Saints' Wake
+        1163, 1164, 1165, 1166, 1167, 1168, 1169, 1170, 1171, 1172, 1173, 1174, 236, 237, 238, 2149, 2150, 2151, 1548, 3011, 3012, 3013, 3169, 3170,
+        3171, 3172, 3668, 3669, 3670, 3995, 4520, 4655, 4656, 4657, 4785, 4786, 5184, 5185, 5375, 5376,
+        // Starlight Celebration
+        250, 251, 325, 338, 340, 247, 248, 249, 354, 2224, 2375, 2376, 2377, 2378, 3009, 3010, 3173, 3174, 3175, 3722, 3723, 3724, 4017, 4018, 4019, 4020,
+        4021, 4022, 4468, 4469, 4470, 4658, 4659, 4781, 4782, 4783, 5227, 5228, 5231
+    };
 
     public static readonly IReadOnlyList<IReadOnlyList<uint>> AllRoleQuestChapters =
     [
@@ -483,5 +515,10 @@ internal sealed class QuestData
             startingClass == EClassJob.Arcanist ? [451, 452, 454, 457] : [453, 456],
         ];
         return startingClassQuests.SelectMany(x => x).Select(x => new QuestId(x)).ToList();
+    }
+
+    public List<QuestId> GetUnobtainableEventQuests()
+    {
+        return UnobtainableEventQuests.Select(x => new QuestId(x)).ToList();
     }
 }
