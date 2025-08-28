@@ -721,9 +721,6 @@ internal sealed unsafe class QuestFunctions
                 return true;
         }
 
-        if (_questData.GetUnobtainableEventQuests().Contains(questId))
-            return true;
-
         if (_questData.GetLockedClassQuests().Contains(questId))
             return true;
 
