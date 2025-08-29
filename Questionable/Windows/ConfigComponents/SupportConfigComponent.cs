@@ -1,13 +1,10 @@
 ﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
-using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Numerics;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Questionable.Windows.ConfigComponents;
 
@@ -17,7 +14,6 @@ internal sealed class SupportConfigComponent : ConfigComponent
 
     private const float ButtonWidth = 180f;
     private const float ButtonHeight = 40f;
-    private const float SectionSpacing = 25f;
     private const string DiscordUrl = "https://discord.gg/Zzrcc8kmvy";
     private const string GithubUrl = "https://github.com/PunishXIV/Questionable";
     private const string WikiUrl = "https://github.com/PunishXIV/Questionable/wiki";
@@ -33,7 +29,8 @@ internal sealed class SupportConfigComponent : ConfigComponent
         " Please refer to the buttons below for more information. Thank you for your support! "
     };
 
-    public SupportConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<SupportConfigComponent> logger) : base(pluginInterface, configuration) => _logger = logger;
+    public SupportConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<SupportConfigComponent> logger) 
+        : base(pluginInterface, configuration) => _logger = logger;
 
     public override void DrawTab()
     {
@@ -43,7 +40,6 @@ internal sealed class SupportConfigComponent : ConfigComponent
 
         var windowWidth = ImGui.GetWindowWidth();
         var contentWidth = windowWidth - (ImGui.GetStyle().WindowPadding.X * 2);
-
         ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 5f);
         DrawHeaderText(contentWidth);
         ImGui.Spacing();
@@ -90,8 +86,8 @@ internal sealed class SupportConfigComponent : ConfigComponent
                 {
                     ImGui.BeginTooltip();
                     ImGui.TextUnformatted(
-                        " Join our beautiful Discord community to stay up-to-date with the latest \n" +
-                        " updates and share feedback directly with the developer team. ");
+                        " Join our beautiful Discord community to stay up-to-date with the \n" +
+                        " latest updates and share feedback directly with the developers. ");
                     ImGui.EndTooltip();
                 }
             }
