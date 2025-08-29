@@ -315,6 +315,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<StopConditionComponent>();
         serviceCollection.AddSingleton<NotificationConfigComponent>();
         serviceCollection.AddSingleton<DebugConfigComponent>();
+        serviceCollection.AddSingleton<SupportConfigComponent>();
     }
 
     private static void AddQuestValidators(ServiceCollection serviceCollection)
@@ -340,6 +341,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceProvider.GetRequiredService<QuestRegistry>().Reload();
         serviceProvider.GetRequiredService<GatheringPointRegistry>().Reload();
         serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
+        serviceProvider.GetRequiredService<SupportConfigComponent>();
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
         serviceProvider.GetRequiredService<CraftworksSupplyController>();

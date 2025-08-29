@@ -16,6 +16,7 @@ internal sealed class ConfigWindow : LWindow, IPersistableWindowConfig
     private readonly StopConditionComponent _stopConditionComponent;
     private readonly NotificationConfigComponent _notificationConfigComponent;
     private readonly DebugConfigComponent _debugConfigComponent;
+    private readonly SupportConfigComponent _supportConfigComponent;
     private readonly Configuration _configuration;
 
     public ConfigWindow(
@@ -27,6 +28,7 @@ internal sealed class ConfigWindow : LWindow, IPersistableWindowConfig
         StopConditionComponent stopConditionComponent,
         NotificationConfigComponent notificationConfigComponent,
         DebugConfigComponent debugConfigComponent,
+        SupportConfigComponent supportConfigComponent,
         Configuration configuration)
         : base("Config - Questionable###QuestionableConfig", ImGuiWindowFlags.AlwaysAutoResize)
     {
@@ -38,6 +40,7 @@ internal sealed class ConfigWindow : LWindow, IPersistableWindowConfig
         _stopConditionComponent = stopConditionComponent;
         _notificationConfigComponent = notificationConfigComponent;
         _debugConfigComponent = debugConfigComponent;
+        _supportConfigComponent = supportConfigComponent;
         _configuration = configuration;
     }
 
@@ -56,6 +59,7 @@ internal sealed class ConfigWindow : LWindow, IPersistableWindowConfig
         _stopConditionComponent.DrawTab();
         _notificationConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
+        _supportConfigComponent.DrawTab();
     }
 
     public void SaveWindowConfig() => _pluginInterface.SavePluginConfig(_configuration);
