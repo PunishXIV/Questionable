@@ -1,0 +1,116 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053660,
+          "Position": {
+            "X": 3.5552979,
+            "Y": 44.499996,
+            "Z": 125.62744
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001024,
+          "Position": {
+            "X": 28.519043,
+            "Y": 44.499977,
+            "Z": 176.3789
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 24.869625,
+            "Y": 44.499928,
+            "Z": 181.0
+          },
+          "TerritoryId": 128,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1053662,
+          "Position": {
+            "X": -32.425476,
+            "Y": 71.50164,
+            "Z": 135.91211
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053663,
+          "Position": {
+            "X": -34.01245,
+            "Y": 71.548134,
+            "Z": 135.63745
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128,
+                135
+              ]
+            }
+          },
+          "NextQuestId": 5298
+        }
+      ]
+    }
+  ]
+}

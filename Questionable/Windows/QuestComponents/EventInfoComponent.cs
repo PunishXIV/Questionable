@@ -23,8 +23,8 @@ internal sealed class EventInfoComponent
     private readonly List<EventQuest> _eventQuests =
     [
         new EventQuest("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
-        new EventQuest("Moonfire Faire", [new QuestId(5321)], AtDailyReset(new DateOnly(2025, 8, 26)))
-    ];
+        new EventQuest("The Rising (2025)", [new QuestId(5297), new QuestId(5298)], AtDailyReset(new DateOnly(2025, 9, 11)))
+    ]; 
 
     private readonly QuestData _questData;
     private readonly QuestRegistry _questRegistry;

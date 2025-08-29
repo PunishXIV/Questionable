@@ -1,0 +1,153 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053663,
+          "Position": {
+            "X": -34.01245,
+            "Y": 71.548134,
+            "Z": 135.63745
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                128,
+                135
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053666,
+          "Position": {
+            "X": 184.40515,
+            "Y": 32.156242,
+            "Z": 112.962524
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053667,
+          "Position": {
+            "X": 76.24927,
+            "Y": 71.28403,
+            "Z": 366.3844
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESANX102_05298_Q50_000_001",
+              "Answer": "TEXT_FESANX102_05298_A50_000_004"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053669,
+          "Position": {
+            "X": -43.47296,
+            "Y": 55.10932,
+            "Z": 488.1819
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1053671,
+          "Position": {
+            "X": 6.6071167,
+            "Y": 44.311028,
+            "Z": 797.3906
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1002445,
+          "Position": {
+            "X": 136.82764,
+            "Y": 58.937588,
+            "Z": 937.43787
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 4.0
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1053676,
+          "Position": {
+            "X": 24.39917,
+            "Y": 44.499973,
+            "Z": 163.07312
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053677,
+          "Position": {
+            "X": -178.4848,
+            "Y": 40.99994,
+            "Z": 185.44287
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
