@@ -1,0 +1,74 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038549,
+          "Position": {
+            "X": -350.3014,
+            "Y": 21.648558,
+            "Z": -86.32031
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1038550,
+          "Position": {
+            "X": -6.6377563,
+            "Y": 3.2249951,
+            "Z": 9.872559
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.56183,
+            "Y": 21.84602,
+            "Z": -79.972595
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
