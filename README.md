@@ -1,6 +1,6 @@
 <section id="top">
     <p style="text-align:center;" align="center">
-        <img width="256" height="256" alt="image" src="https://github.com/user-attachments/assets/0b8cc240-c170-4a61-a063-e92551ffbb9e" />
+        <img align="center" src="/Questionable/Icons/QST.png" width="250" />
     </p>
     <h1 style="text-align:center;" align="center">Questionable</h1>
     <p style="text-align:center;" align="center">
