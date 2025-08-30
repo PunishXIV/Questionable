@@ -1,0 +1,42 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005419,
+          "Position": {
+            "X": 61.661743,
+            "Y": 5.2003365,
+            "Z": -15.915161
+          },
+          "TerritoryId": 250,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Wolves' Den Pier",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005418,
+          "Position": {
+            "X": 112.321655,
+            "Y": 2.3101983,
+            "Z": -17.013855
+          },
+          "TerritoryId": 250,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
