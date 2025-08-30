@@ -1,0 +1,61 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028448,
+          "Position": {
+            "X": 76.98169,
+            "Y": 35.999687,
+            "Z": -135.69855
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
