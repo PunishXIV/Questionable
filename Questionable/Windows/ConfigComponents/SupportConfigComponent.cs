@@ -21,15 +21,6 @@ internal sealed class SupportConfigComponent : ConfigComponent
     private const string AkechiSponsorUrl = "https://ko-fi.com/akechikun";
     private const string LimianaSponsorUrl = "https://www.patreon.com/NightmareXIV";
 
-    private static readonly string[] HeaderTextLines =
-    {
-        " - Originated by Liza Carvelli - ",
-        "- Maintained by Akechi and Limiana - ",
-        " Contributions are always welcome and greatly appreciated! ",
-        " We appreciate any contributions in the continued development of this plugin. ",
-        " Please refer to the buttons below for more information. Thank you for your support! "
-    };
-
     public SupportConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<SupportConfigComponent> logger) 
         : base(pluginInterface, configuration) => _logger = logger;
 
@@ -51,17 +42,41 @@ internal sealed class SupportConfigComponent : ConfigComponent
         ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 5f);
     }
 
+    private static readonly string[] HeaderTextLines =
+    {
+        " - Originated by Liza Carvelli - ",
+        " - Maintained by Akechi and Limiana - ",
+        " Contributions are always welcome! ",
+        " We appreciate any support given in the continued development of this plugin. ",
+        " Please refer the buttons below for more information. ",
+        " Thank you! "
+    };
+
     private static void DrawHeaderText(float contentWidth)
     {
-        foreach (var line in HeaderTextLines)
+        for (int i = 0; i < HeaderTextLines.Length; i++)
         {
+            var line = HeaderTextLines[i];
             var textSize = ImGui.CalcTextSize(line);
             var centerOffset = (contentWidth - textSize.X) * 0.5f;
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + centerOffset);
-            ImGui.TextUnformatted(line);
-            if (Array.IndexOf(HeaderTextLines, line) < HeaderTextLines.Length - 1)
+
+            if (line.Contains("Liza Carvelli", StringComparison.Ordinal))
             {
-                ImGui.SetCursorPosY(ImGui.GetCursorPosY() + 4f);
+                using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(1.0f, 0.9f, 0.4f, 1.0f)))
+                    ImGui.TextUnformatted(line);
+            }
+            else if (line.Contains("Akechi", StringComparison.Ordinal) || line.Contains("Limiana", StringComparison.Ordinal))
+            {
+                using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.8f, 1.0f, 1.0f)))
+                    ImGui.TextUnformatted(line);
+                ImGui.Spacing();
+                ImGui.Separator();
+                ImGui.Spacing();
+            }
+            else
+            {
+                ImGui.TextUnformatted(line);
             }
         }
     }
@@ -95,7 +110,7 @@ internal sealed class SupportConfigComponent : ConfigComponent
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
                         ImGui.Text("Puni.sh Discord Server Invite");
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
-                        ImGui.TextWrapped("Join our Discord community to stay up-to-date with the latest updates.");
+                        ImGui.TextWrapped("Join our Discord community to stay up-to-date with the latest updates and announcements.");
                     ImGui.Spacing();
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
                         ImGui.Text("Right Click");
@@ -105,7 +120,7 @@ internal sealed class SupportConfigComponent : ConfigComponent
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
                         ImGui.Text("Questionable's Dedicated Channel");
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
-                        ImGui.TextWrapped("Share feedback directly with the developers of the plugin.");
+                        ImGui.TextWrapped("Share feedback directly with the developers of the plugin by visiting our Discord channel.");
                     ImGui.EndTooltip();
                 }
             }
@@ -131,7 +146,7 @@ internal sealed class SupportConfigComponent : ConfigComponent
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
                         ImGui.Text("GitHub Repository");
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
-                        ImGui.TextWrapped("Access our repository to view source code, report issues, contribute to the project, etc.");
+                        ImGui.TextWrapped("Access our repository to view source code, report issues, make pull requests, and more.");
                     ImGui.Spacing();
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
                         ImGui.Text("Right Click");
@@ -164,20 +179,16 @@ internal sealed class SupportConfigComponent : ConfigComponent
                     ImGui.SameLine();
                     ImGui.Text("→");
                     ImGui.SameLine();
-                    ImGui.Text("Sponsor ");
-                    ImGui.SameLine(0, 0);
-                    using (ImRaii.PushColor(ImGuiCol.Text, 0xFFE1D18E)) // Gold for names
-                        ImGui.Text("Akechi");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
+                        ImGui.Text("Sponsor Akechi");
                     ImGui.Spacing();
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
                         ImGui.Text("Right Click");
                     ImGui.SameLine();
                     ImGui.Text("→");
                     ImGui.SameLine();
-                    ImGui.Text("Sponsor ");
-                    ImGui.SameLine(0, 0);
-                    using (ImRaii.PushColor(ImGuiCol.Text, 0xCCD86EB8)) // Purple for names
-                        ImGui.Text("Limiana");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
+                        ImGui.Text("Sponsor Limiana");
                     ImGui.EndTooltip();
                 }
             }
