@@ -15,8 +15,9 @@ internal sealed class SupportConfigComponent : ConfigComponent
     private const float ButtonWidth = 180f;
     private const float ButtonHeight = 40f;
     private const string DiscordUrl = "https://discord.gg/Zzrcc8kmvy";
-    private const string GithubUrl = "https://github.com/PunishXIV/Questionable";
-    private const string WikiUrl = "https://github.com/PunishXIV/Questionable/wiki";
+    private const string DiscordChannelUrl = "https://discord.com/channels/1001823907193552978/1408201462722596945";
+    private const string GitHubUrl = "https://GitHub.com/PunishXIV/Questionable";
+    private const string WikiUrl = "https://GitHub.com/PunishXIV/Questionable/wiki";
     private const string AkechiSponsorUrl = "https://ko-fi.com/akechikun";
     private const string LimianaSponsorUrl = "https://www.patreon.com/NightmareXIV";
 
@@ -81,35 +82,66 @@ internal sealed class SupportConfigComponent : ConfigComponent
             {
                 if (ImGui.Button("Discord", new Vector2(ButtonWidth, ButtonHeight)))
                     OpenLink(DiscordUrl);
-
+                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                    OpenLink(DiscordChannelUrl);
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-                    ImGui.TextUnformatted(
-                        " Join our beautiful Discord community to stay up-to-date with the \n" +
-                        " latest updates and share feedback directly with the developers. ");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
+                        ImGui.Text("Left Click");
+                    ImGui.SameLine();
+                    ImGui.Text("→");
+                    ImGui.SameLine();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
+                        ImGui.Text("Puni.sh Discord Server Invite");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
+                        ImGui.TextWrapped("Join our Discord community to stay up-to-date with the latest updates.");
+                    ImGui.Spacing();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
+                        ImGui.Text("Right Click");
+                    ImGui.SameLine();
+                    ImGui.Text("→");
+                    ImGui.SameLine();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
+                        ImGui.Text("Questionable's Dedicated Channel");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
+                        ImGui.TextWrapped("Share feedback directly with the developers of the plugin.");
                     ImGui.EndTooltip();
                 }
             }
             ImGui.SameLine();
 
-            //Github
+            //GitHub
             using (ImRaii.PushColor(ImGuiCol.Button, new Vector4(0.04f, 0.17f, 0.35f, 1.0f)))
             using (ImRaii.PushColor(ImGuiCol.ButtonHovered, new Vector4(0.06f, 0.24f, 0.49f, 1.0f)))
             using (ImRaii.PushColor(ImGuiCol.ButtonActive, new Vector4(0.03f, 0.12f, 0.25f, 1.0f)))
             {
-                if (ImGui.Button("Github", new Vector2(ButtonWidth, ButtonHeight)))
-                    OpenLink(GithubUrl);
-
+                if (ImGui.Button("GitHub", new Vector2(ButtonWidth, ButtonHeight)))
+                    OpenLink(GitHubUrl);
                 if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
                     OpenLink(WikiUrl);
-
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-                    ImGui.Text("Access our repository for the source code, or consult our Wiki for FAQs, setup, and other documentation.");
-                    ImGui.TextUnformatted("Left Click -> Repository");
-                    ImGui.TextUnformatted("Right Click -> Wiki");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
+                        ImGui.Text("Left Click");
+                    ImGui.SameLine();
+                    ImGui.Text("→");
+                    ImGui.SameLine();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
+                        ImGui.Text("GitHub Repository");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
+                        ImGui.TextWrapped("Access our repository to view source code, report issues, contribute to the project, etc.");
+                    ImGui.Spacing();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
+                        ImGui.Text("Right Click");
+                    ImGui.SameLine();
+                    ImGui.Text("→");
+                    ImGui.SameLine();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
+                        ImGui.Text("GitHub Wiki Homepage");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.8f, 0.8f, 0.8f, 1.0f)))
+                        ImGui.TextWrapped("Consult our Wiki page for FAQs, guides, and other useful documentation on the plugin.");
                     ImGui.EndTooltip();
                 }
             }
@@ -122,28 +154,35 @@ internal sealed class SupportConfigComponent : ConfigComponent
             {
                 if (ImGui.Button("Sponsor", new Vector2(ButtonWidth, ButtonHeight)))
                     OpenLink(AkechiSponsorUrl);
-
                 if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
                     OpenLink(LimianaSponsorUrl);
-
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
-                    ImGui.Text("The project is currently maintained by two developers.");
-                    ImGui.TextUnformatted("Left Click -> Sponsor ");
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
+                        ImGui.Text("Left Click");
+                    ImGui.SameLine();
+                    ImGui.Text("→");
+                    ImGui.SameLine();
+                    ImGui.Text("Sponsor ");
                     ImGui.SameLine(0, 0);
-                    using (ImRaii.PushColor(ImGuiCol.Text, 0xFFE1D18E))
+                    using (ImRaii.PushColor(ImGuiCol.Text, 0xFFE1D18E)) // Gold for names
                         ImGui.Text("Akechi");
-                    ImGui.TextUnformatted("Right Click -> Sponsor ");
+                    ImGui.Spacing();
+                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
+                        ImGui.Text("Right Click");
+                    ImGui.SameLine();
+                    ImGui.Text("→");
+                    ImGui.SameLine();
+                    ImGui.Text("Sponsor ");
                     ImGui.SameLine(0, 0);
-                    using (ImRaii.PushColor(ImGuiCol.Text, 0xCCD86EB8))
+                    using (ImRaii.PushColor(ImGuiCol.Text, 0xCCD86EB8)) // Purple for names
                         ImGui.Text("Limiana");
                     ImGui.EndTooltip();
                 }
             }
         }
     }
-
     private void OpenLink(string link)
     {
         try
