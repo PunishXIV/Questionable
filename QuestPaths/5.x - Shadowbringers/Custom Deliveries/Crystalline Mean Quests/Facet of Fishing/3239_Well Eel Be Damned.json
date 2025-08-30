@@ -1,0 +1,93 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Akechi",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009924,
+          "Position": {
+            "X": 16.922241,
+            "Y": 2.304016,
+            "Z": 669.8862
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Lakeland - Fort Jobb",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028472,
+          "Position": {
+            "X": -66.819336,
+            "Y": -36.75,
+            "Z": -273.27386
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Cabinet of Curiosity"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
