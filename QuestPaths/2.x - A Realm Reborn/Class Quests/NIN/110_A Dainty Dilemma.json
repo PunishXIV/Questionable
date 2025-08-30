@@ -18,7 +18,7 @@
           "TargetTerritoryId": 129,
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
@@ -93,7 +93,7 @@
             324
           ],
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
           ]
         }
@@ -115,7 +115,7 @@
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
@@ -168,7 +168,7 @@
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] The Aftcastle"
           ],
           "DialogueChoices": [
@@ -251,7 +251,7 @@
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {

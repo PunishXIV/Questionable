@@ -90,7 +90,7 @@
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "DialogueChoices": [
             {
@@ -130,7 +130,7 @@
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] The Aftcastle"
           ],
           "NextQuestId": 4118

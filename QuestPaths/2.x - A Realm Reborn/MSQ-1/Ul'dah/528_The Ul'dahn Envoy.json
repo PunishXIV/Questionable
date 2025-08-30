@@ -172,7 +172,7 @@
         {
           "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] Fishermens' Guild",
+          "AethernetShard": "[Limsa Lominsa] Fishermen's Guild",
           "AethernetShortcut": [
             "[Limsa Lominsa] Arcanists' Guild",
             "[Limsa Lominsa] Hawkers' Alley"
@@ -189,7 +189,7 @@
           "TargetTerritoryId": 128,
           "Comment": "Walk to Culinarians' Guild",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] Aetheryte Plaza"
           ]
         },

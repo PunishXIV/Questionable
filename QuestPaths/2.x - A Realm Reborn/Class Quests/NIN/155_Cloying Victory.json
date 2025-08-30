@@ -18,7 +18,7 @@
           "TargetTerritoryId": 129,
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
@@ -66,7 +66,7 @@
           "TerritoryId": 128,
           "InteractionType": "SinglePlayerDuty",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] The Aftcastle"
           ]
         }
@@ -87,7 +87,7 @@
           "TargetTerritoryId": 129,
           "AethernetShortcut": [
             "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ]
         },
         {

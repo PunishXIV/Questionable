@@ -18,7 +18,7 @@
           "TargetTerritoryId": 129,
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
@@ -66,7 +66,7 @@
           "TerritoryId": 134,
           "InteractionType": "Interact",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
           ],
           "Fly": true
@@ -172,7 +172,7 @@
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ]
         },
         {
@@ -237,7 +237,7 @@
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ]
         },
         {

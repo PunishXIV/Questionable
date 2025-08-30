@@ -46,7 +46,7 @@
           "TerritoryId": 128,
           "InteractionType": "PurchaseItem",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] The Aftcastle"
           ],
           "PurchaseMenu": {
@@ -74,7 +74,7 @@
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
             "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermens' Guild"
+            "[Limsa Lominsa] Fishermen's Guild"
           ],
           "NextQuestId": 3843,
           "Comment": "Complete quest"

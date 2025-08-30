@@ -37,7 +37,7 @@ public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation
 
         { EAetheryteLocation.Limsa, "[Limsa Lominsa] Aetheryte Plaza" },
         { EAetheryteLocation.LimsaArcanist, "[Limsa Lominsa] Arcanists' Guild" },
-        { EAetheryteLocation.LimsaFisher, "[Limsa Lominsa] Fishermens' Guild" },
+        { EAetheryteLocation.LimsaFisher, "[Limsa Lominsa] Fishermen's Guild" },
         { EAetheryteLocation.LimsaHawkersAlley, "[Limsa Lominsa] Hawkers' Alley" },
         { EAetheryteLocation.LimsaAftcastle, "[Limsa Lominsa] The Aftcastle" },
         { EAetheryteLocation.LimsaCulinarian, "[Limsa Lominsa] Culinarians' Guild" },
