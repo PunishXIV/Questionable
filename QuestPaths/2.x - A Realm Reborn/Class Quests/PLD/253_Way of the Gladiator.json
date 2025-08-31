@@ -20,7 +20,20 @@
               "Prompt": "TEXT_CLSGLA020_00253_Q1_000_1",
               "Yes": true
             }
-          ]
+          ],
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [ 130, 131 ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
         }
       ]
     },
@@ -94,7 +107,7 @@
               ]
             },
             {
-              "DataId": 141,
+              "DataId": 385,
               "MinimumKillCount": 3,
               "CompletionQuestVariablesFlags": [
                 null,
