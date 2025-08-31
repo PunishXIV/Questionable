@@ -1,0 +1,92 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031019,
+          "Position": {
+            "X": 505.88232,
+            "Y": 371.189,
+            "Z": -342.79395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 410.2937,
+            "Y": 374.61343,
+            "Z": -573.46985
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 10318,
+              "MinimumKillCount": 1
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031019,
+          "Position": {
+            "X": 505.88232,
+            "Y": 371.189,
+            "Z": -342.79395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Tempest - Ondo Cups"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031017,
+          "Position": {
+            "X": 603.02124,
+            "Y": 348.01245,
+            "Z": -165.30103
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031019,
+          "Position": {
+            "X": 505.88232,
+            "Y": 371.189,
+            "Z": -342.79395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

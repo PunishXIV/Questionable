@@ -1,0 +1,107 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027763,
+          "Position": {
+            "X": 517.1741,
+            "Y": 348.7536,
+            "Z": -175.92126
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030442,
+          "Position": {
+            "X": 528.4352,
+            "Y": 374.76505,
+            "Z": -121.08038
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030442,
+          "Position": {
+            "X": 528.4352,
+            "Y": 374.76505,
+            "Z": -121.08038
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Emote",
+          "Emote": "beckon"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030444,
+          "Position": {
+            "X": 638.239,
+            "Y": 357.3194,
+            "Z": -210.16254
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030444,
+          "Position": {
+            "X": 638.239,
+            "Y": 357.3194,
+            "Z": -210.16254
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Emote",
+          "Emote": "chuckle",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZJ017_03580_Q1_000_000",
+              "Answer": "TEXT_LUCKZJ017_03580_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027763,
+          "Position": {
+            "X": 517.1741,
+            "Y": 348.7536,
+            "Z": -175.92126
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

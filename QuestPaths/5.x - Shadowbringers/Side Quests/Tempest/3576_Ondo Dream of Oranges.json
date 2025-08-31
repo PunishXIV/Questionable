@@ -1,0 +1,135 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031170,
+          "Position": {
+            "X": 569.54297,
+            "Y": 371.87646,
+            "Z": -131.76166
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031172,
+          "Position": {
+            "X": 760.28076,
+            "Y": 398.7008,
+            "Z": -288.56335
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031171,
+          "Position": {
+            "X": 467.55164,
+            "Y": 384.9501,
+            "Z": -573.84607
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZJ013_03576_Q1_000_000",
+              "Answer": "TEXT_LUCKZJ013_03576_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031576,
+          "Position": {
+            "X": 513.2981,
+            "Y": 356.34845,
+            "Z": -262.47046
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1031173,
+          "Position": {
+            "X": 280.5371,
+            "Y": 256.37317,
+            "Z": -317.6471
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZJ013_03576_Q2_000_000",
+              "Answer": "TEXT_LUCKZJ013_03576_A2_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 335.4814,
+            "Y": 307.59262,
+            "Z": -294.14676
+          },
+          "TerritoryId": 818,
+          "InteractionType":"None",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 462.85025,
+            "Y": 345.97366,
+            "Z": -281.7148
+          },
+          "TerritoryId": 818,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 1031170,
+          "Position": {
+            "X": 569.54297,
+            "Y": 371.87646,
+            "Z": -131.76166
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
