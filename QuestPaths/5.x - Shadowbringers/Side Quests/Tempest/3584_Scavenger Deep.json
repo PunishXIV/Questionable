@@ -1,0 +1,86 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1028062,
+          "Position": {
+            "X": 635.2483,
+            "Y": 359.2978,
+            "Z": -170.15338
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010752,
+          "Position": {
+            "X": 372.33533,
+            "Y": 353.93298,
+            "Z": -125.01721
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2010751,
+          "Position": {
+            "X": 420.06555,
+            "Y": 364.1565,
+            "Z": -56.168518
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2010750,
+          "Position": {
+            "X": 773.8612,
+            "Y": 404.16565,
+            "Z": -84.763916
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2010746,
+          "Position": {
+            "X": 810.7881,
+            "Y": 395.86487,
+            "Z": -249.80548
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1028062,
+          "Position": {
+            "X": 635.2483,
+            "Y": 359.2978,
+            "Z": -170.15338
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031019,
+          "Position": {
+            "X": 505.88232,
+            "Y": 371.189,
+            "Z": -342.79395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2010470,
+          "Position": {
+            "X": 650.04944,
+            "Y": 407.12585,
+            "Z": -434.86688
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11150
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2010468,
+          "Position": {
+            "X": 532.34143,
+            "Y": 388.2047,
+            "Z": -522.7894
+          },
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11150
+          ],
+          "TerritoryId": 818,
+          "Fly": true
+        },
+        {
+          "DataId": 2010469,
+          "Position": {
+            "X": 575.70764,
+            "Y": 409.2926,
+            "Z": -578.9426
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11150
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031019,
+          "Position": {
+            "X": 505.88232,
+            "Y": 371.189,
+            "Z": -342.79395
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Tempest - Ondo Cups"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031017,
+          "Position": {
+            "X": 603.02124,
+            "Y": 348.01245,
+            "Z": -165.30103
+          },
+          "TerritoryId": 818,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030762,
+          "Position": {
+            "X": 599.90845,
+            "Y": 347.67673,
+            "Z": -165.57574
+          },
+          "TerritoryId": 818,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
