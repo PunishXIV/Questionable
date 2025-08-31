@@ -48,5 +48,7 @@ public sealed class EmoteConverter() : EnumConverter<EEmote>(Values)
         { EEmote.Uchiwasshoi, "uchiwasshoi" },
         { EEmote.Unbound, "unbound" },
         { EEmote.Congratulate, "congratulate" },
+        { EEmote.Beckon, "beckon" },
+        { EEmote.Chuckle, "chuckle" }
     };
 }
