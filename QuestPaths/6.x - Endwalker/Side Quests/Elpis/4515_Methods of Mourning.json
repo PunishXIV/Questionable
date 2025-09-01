@@ -1,0 +1,152 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041369,
+          "Position": {
+            "X": -639.85657,
+            "Y": 162.30406,
+            "Z": -189.47137
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041328,
+          "Position": {
+            "X": 166.39954,
+            "Y": 9.457411,
+            "Z": 236.34692
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041323,
+          "Position": {
+            "X": -89.76886,
+            "Y": -21.090672,
+            "Z": 518.9136
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZH201_04515_Q1_000_000",
+              "Answer": "TEXT_AKTKZH201_04515_A1_000_001"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041507,
+          "Position": {
+            "X": 150.13354,
+            "Y": -4.9100704,
+            "Z": 411.0017
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2012489,
+          "Position": {
+            "X": 153.73462,
+            "Y": -5.661133,
+            "Z": 422.11023
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012488,
+          "Position": {
+            "X": 145.4954,
+            "Y": -6.786681,
+            "Z": 424.40875
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012487,
+          "Position": {
+            "X": 140.33716,
+            "Y": -6.088379,
+            "Z": 417.89868
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1041323,
+          "Position": {
+            "X": -89.76886,
+            "Y": -21.090672,
+            "Z": 518.9136
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041369,
+          "Position": {
+            "X": -639.85657,
+            "Y": 162.30406,
+            "Z": -189.47137
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

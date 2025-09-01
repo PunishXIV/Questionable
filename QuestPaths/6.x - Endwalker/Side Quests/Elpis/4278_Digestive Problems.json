@@ -1,0 +1,89 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037939,
+          "Position": {
+            "X": 153.39893,
+            "Y": 7.985903,
+            "Z": 290.79114
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 137.74304,
+            "Y": -9.384338,
+            "Z": -123.15564
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003338,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            192,
+            null
+          ]
+        },
+        {
+          "DataId": 2012578,
+          "Position": {
+            "X": 137.74304,
+            "Y": -9.384338,
+            "Z": -123.15564
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012579,
+          "Position": {
+            "X": 136.55298,
+            "Y": -11.459534,
+            "Z": -134.47784
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037939,
+          "Position": {
+            "X": 153.39893,
+            "Y": 7.985903,
+            "Z": 290.79114
+          },
+          "TerritoryId": 961,
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

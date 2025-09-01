@@ -1,0 +1,125 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041365,
+          "Position": {
+            "X": 640.2228,
+            "Y": 10.127236,
+            "Z": 15.731995
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012444,
+          "Position": {
+            "X": 351.7356,
+            "Y": 4.0740967,
+            "Z": 206.073
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "$": "Preventing vnavmesh from getting stuck on tree.",
+          "Position": {
+            "X": 400.6505,
+            "Y": -1.9833281,
+            "Z": 242.33978
+          },
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 2012446,
+          "Position": {
+            "X": 396.20044,
+            "Y": -1.8463745,
+            "Z": 246.479
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012445,
+          "Position": {
+            "X": 376.63843,
+            "Y": -3.616455,
+            "Z": 291.55408
+          },
+          "StopDistance": 1,
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041328,
+          "Position": {
+            "X": 166.39954,
+            "Y": 9.457411,
+            "Z": 236.34692
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DelaySecondsAtStart": 2,
+          "Position": {
+            "X": 166.39954,
+            "Y": 9.457411,
+            "Z": 236.34692
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003299
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041362,
+          "Position": {
+            "X": 165.20935,
+            "Y": 9.457411,
+            "Z": 235.15674
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

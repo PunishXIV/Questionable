@@ -1,0 +1,88 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037978,
+          "Position": {
+            "X": -582.60474,
+            "Y": -22.405125,
+            "Z": 578.7594
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG018_04293_Q1_000_000",
+              "Answer": "TEXT_AKTKZG018_04293_Q1_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Elpis - Twelve Wonders",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041866,
+          "Position": {
+            "X": -568.0476,
+            "Y": -22.783405,
+            "Z": 477.59204
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2012644,
+          "Position": {
+            "X": -596.09375,
+            "Y": -22.415588,
+            "Z": 457.60278
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1041867,
+          "Position": {
+            "X": -656.8551,
+            "Y": -23.221924,
+            "Z": 445.8839
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037978,
+          "Position": {
+            "X": -582.60474,
+            "Y": -22.405125,
+            "Z": 578.7594
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

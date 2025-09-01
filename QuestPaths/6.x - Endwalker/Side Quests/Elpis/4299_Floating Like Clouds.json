@@ -1,0 +1,104 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041140,
+          "Position": {
+            "X": -611.6885,
+            "Y": 158.71773,
+            "Z": -200.3357
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012586,
+          "Position": {
+            "X": -585.1682,
+            "Y": 159.53308,
+            "Z": -151.75104
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2012587,
+          "Position": {
+            "X": -634.4854,
+            "Y": 148.21082,
+            "Z": -131.76166
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2012588,
+          "Position": {
+            "X": -506.4317,
+            "Y": 140.15405,
+            "Z": -111.680786
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2012584,
+          "Position": {
+            "X": -492.51547,
+            "Y": 149.95032,
+            "Z": -163.34784
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2012585,
+          "Position": {
+            "X": -484.3061,
+            "Y": 150.71338,
+            "Z": -194.32367
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041140,
+          "Position": {
+            "X": -611.6885,
+            "Y": 158.71773,
+            "Z": -200.3357
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

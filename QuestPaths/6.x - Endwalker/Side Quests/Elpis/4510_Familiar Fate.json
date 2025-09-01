@@ -1,0 +1,128 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041362,
+          "Position": {
+            "X": 165.20935,
+            "Y": 9.457411,
+            "Z": 235.15674
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 108.28996,
+            "Y": 10.385857,
+            "Z": 106.01689
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "Land": true,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 94.6636,
+            "Y": 10.6655855,
+            "Z": 107.03581
+          },
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 1041366,
+          "Position": {
+            "X": 94.31604,
+            "Y": 10.70921,
+            "Z": 110.09375
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012471,
+          "Position": {
+            "X": 92.088135,
+            "Y": 12.191956,
+            "Z": 109.513916
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012447,
+          "Position": {
+            "X": 91.47778,
+            "Y": 12.039368,
+            "Z": 105.69922
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012470,
+          "Position": {
+            "X": 91.447266,
+            "Y": 11.154297,
+            "Z": 104.9668
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 108.604225,
+            "Y": 10.385857,
+            "Z": 106.40102
+          },
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "DisableNavmesh": true,
+          "Fly": true
+        },
+        {
+          "DataId": 1041905,
+          "Position": {
+            "X": 184.43579,
+            "Y": 10.385857,
+            "Z": 164.66003
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

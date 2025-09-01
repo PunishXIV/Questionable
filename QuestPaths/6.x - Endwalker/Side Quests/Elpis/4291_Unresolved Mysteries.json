@@ -1,0 +1,99 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037980,
+          "Position": {
+            "X": -654.7799,
+            "Y": -20.39482,
+            "Z": 584.9241
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG016_04291_Q1_000_002",
+              "Answer": "TEXT_AKTKZG016_04291_A1_000_002"
+            }
+          ],
+          "AetheryteShortcut": "Elpis - Twelve Wonders",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041870,
+          "Position": {
+            "X": -720.88196,
+            "Y": -24.74898,
+            "Z": 601.4343
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "Fly": true
+        },
+        {
+          "DataId": 1041869,
+          "Position": {
+            "X": -743.2517,
+            "Y": -27.026318,
+            "Z": 614.25183
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "Fly": true
+        },
+        {
+          "DataId": 1041868,
+          "Position": {
+            "X": -775.1736,
+            "Y": -35.683693,
+            "Z": 618.61584
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Emote",
+          "Emote": "doubt",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037980,
+          "Position": {
+            "X": -654.7799,
+            "Y": -20.39482,
+            "Z": 584.9241
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG016_04291_Q2_000_026",
+              "Answer": "TEXT_AKTKZG016_04291_A2_000_002"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

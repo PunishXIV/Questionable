@@ -1,0 +1,261 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040867,
+          "Position": {
+            "X": -550.65234,
+            "Y": 166.97908,
+            "Z": -253.92542
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040868,
+          "Position": {
+            "X": -673.1212,
+            "Y": 153.79333,
+            "Z": -212.08514
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -703.6396,
+            "Y": 149.24722,
+            "Z": -219.15305
+          },
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "DelaySecondsAtStart": 4,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -784.93933,
+            "Y": 164.81262,
+            "Z": -268.7572
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 2,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            12322
+          ]
+        },
+        {
+          "DataId": 2012278,
+          "Position": {
+            "X": -784.93933,
+            "Y": 164.81262,
+            "Z": -268.7572
+          },
+          "TerritoryId": 961,
+          "DelaySecondsAtStart": 5,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+
+          "Position": {
+            "X": -789.93115,
+            "Y": 163.8504,
+            "Z": -235.91583
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": -819.2092,
+            "Y": 169.3925,
+            "Z": -165.57906
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": -826.693,
+            "Y": 164.90277,
+            "Z": -142.14305
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": -769.40564,
+            "Y": 164.99573,
+            "Z": -135.729
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": -769.40564,
+            "Y": 164.99573,
+            "Z": -135.729
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "DelaySecondsAtStart": 3,
+          "KillEnemyDataIds": [
+            13433,
+            14060,
+            14060
+          ]
+        },
+        {
+          "DataId": 2012279,
+          "Position": {
+            "X": -769.40564,
+            "Y": 164.99573,
+            "Z": -135.729
+          },
+          "TerritoryId": 961,
+          "DelaySecondsAtStart": 3,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -757.24963,
+            "Y": 165.59544,
+            "Z": -65.322914
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": -793.3928,
+            "Y": 167.1626,
+            "Z": 4.5929565
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "None"
+        },
+        {
+          "Position": {
+            "X": -793.3928,
+            "Y": 167.1626,
+            "Z": 4.5929565
+          },
+          "DelaySecondsAtStart": 3,
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            14059
+          ]
+        },
+        {
+          "DataId": 2012280,
+          "Position": {
+            "X": -793.3928,
+            "Y": 167.1626,
+            "Z": 4.5929565
+          },
+          "TerritoryId": 961,
+          "DelaySecondsAtStart": 3,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1040869,
+          "Position": {
+            "X": -793.82007,
+            "Y": 167.68048,
+            "Z": -0.9309082
+          },
+          "TerritoryId": 961,
+          "Mount": false,
+          "Sprint": false,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040867,
+          "Position": {
+            "X": -550.65234,
+            "Y": 166.97908,
+            "Z": -253.92542
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

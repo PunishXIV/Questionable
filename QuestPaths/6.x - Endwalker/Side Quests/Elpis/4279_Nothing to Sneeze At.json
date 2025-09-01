@@ -1,0 +1,143 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037959,
+          "Position": {
+            "X": 135.14917,
+            "Y": 8.025631,
+            "Z": 189.53223
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG004_04279_Q1_000_000",
+              "Answer": "TEXT_AKTKZG004_04279_A1_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041521,
+          "Position": {
+            "X": 345.11328,
+            "Y": -9.357962,
+            "Z": -41.21466
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "$": "QuestCleanUp.cs is looking for interaction with the Allied Society quest issuer or else it will teleport to hawthorne hut for Mount ID 24. This step should do nothing.",
+          "DataId": 1052562,
+          "Position": {
+            "X": 351.23395,
+            "Y": -9.025981,
+            "Z": -34.50507
+          },
+          "TerritoryId": 961,
+          "InteractionType": "None"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011718,
+          "Position": {
+            "X": 380.9414,
+            "Y": -9.414856,
+            "Z": -39.44464
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
+        },
+        {
+          "DataId": 2012635,
+          "Position": {
+            "X": 382.10107,
+            "Y": -8.255188,
+            "Z": -26.81018
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
+        },
+        {
+          "DataId": 2012634,
+          "Position": {
+            "X": 406.42407,
+            "Y": -10.269409,
+            "Z": -14.908142
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 347.78192,
+            "Y": -9.68798,
+            "Z": -40.082848
+          },
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "Mount": false
+        },
+        {
+          "DataId": 1041521,
+          "Position": {
+            "X": 345.11328,
+            "Y": -9.357962,
+            "Z": -41.21466
+          },
+          "DelaySecondsAtStart": 1,
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037959,
+          "Position": {
+            "X": 135.14917,
+            "Y": 8.025631,
+            "Z": 189.53223
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
