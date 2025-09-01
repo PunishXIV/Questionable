@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Questionable.Model.Questing;
+using System;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using static Questionable.QuestPathGenerator.RoslynShortcuts;
 

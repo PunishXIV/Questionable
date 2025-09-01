@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Keys;
 using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
@@ -17,6 +13,10 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows.ConfigComponents;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller;
@@ -930,7 +930,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 ManualPriorityQuests.Insert(index, quest);
             return true;
         }
-        catch (Exception e) {
+        catch (Exception e)
+        {
             _logger.LogError(e, "Failed to insert quest in priority list");
             _chatGui.PrintError("Failed to insert quest in priority list, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
             return false;

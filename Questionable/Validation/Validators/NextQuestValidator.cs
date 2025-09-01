@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Questionable.Model;
+using System.Collections.Generic;
 using System.Linq;
-using Questionable.Model;
 
 namespace Questionable.Validation.Validators;
 

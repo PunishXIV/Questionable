@@ -1,8 +1,8 @@
-﻿using System;
-using Dalamud.Plugin;
+﻿using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
+using System;
 
 namespace Questionable.External;
 

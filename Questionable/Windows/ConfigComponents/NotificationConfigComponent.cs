@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Components;
@@ -7,6 +5,8 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Utility;
 using Questionable.External;
+using System;
+using System.Linq;
 
 namespace Questionable.Windows.ConfigComponents;
 

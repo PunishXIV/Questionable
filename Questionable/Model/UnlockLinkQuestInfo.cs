@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System.Collections.Immutable;
 using LLib.GameData;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace Questionable.Model;
 

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dalamud.Plugin.Services;
+using Lumina.Excel;
+using Lumina.Text.Payloads;
+using Lumina.Text.ReadOnly;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Dalamud.Game.Text.SeStringHandling.Payloads;
-using Dalamud.Plugin.Services;
-using Dalamud.Utility;
-using Lumina.Excel;
-using Lumina.Excel.Sheets;
-using Lumina.Text;
-using Lumina.Text.Payloads;
-using Lumina.Text.ReadOnly;
 
 namespace LLib;
 

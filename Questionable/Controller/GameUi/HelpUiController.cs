@@ -1,10 +1,10 @@
-﻿using System;
-using Dalamud.Game.Addon.Lifecycle;
+﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameUI;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Questionable.Controller.GameUi;
 

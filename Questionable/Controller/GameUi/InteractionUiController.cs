@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Dalamud.Game.Addon.Lifecycle;
+﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Objects;
 using Dalamud.Plugin.Services;
@@ -23,6 +18,11 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Quest = Questionable.Model.Quest;
 using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
@@ -361,7 +361,7 @@ internal sealed class InteractionUiController : IDisposable
                             Answer = step.PurchaseMenu.Key,
                         }));
 
-                    if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: {} aetheryte })
+                    if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryte })
                         freeOrFavoredAetheryteRegistrations = [aetheryte];
 
                     isTaxiStandUnlock = step.InteractionType == EInteractionType.UnlockTaxiStand;
@@ -394,7 +394,8 @@ internal sealed class InteractionUiController : IDisposable
                     Answer = ExcelRef.FromKey("TEXT_AETHERYTE_REGISTER_TOKEN_FAVORITE"),
                     AnswerIsRegularExpression = true,
                 }));
-            } else if (freeOrFavoredAetheryteRegistrations.Any(x =>
+            }
+            else if (freeOrFavoredAetheryteRegistrations.Any(x =>
                     _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
                     AetheryteRegistrationResult.FavoredDestinationAvailable))
             {
@@ -641,7 +642,7 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe bool HandleDefaultYesNo(AddonSelectYesno* addonSelectYesno, Quest quest,
         QuestStep? step, List<DialogueChoice> dialogueChoices, string actualPrompt)
     {
-        if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: {} aetheryteLocation })
+        if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
         {
             var registrationResult = _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(aetheryteLocation);
             if (registrationResult == AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable)

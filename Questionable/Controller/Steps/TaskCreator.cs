@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Interactions;
@@ -9,6 +6,9 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionable.Controller.Steps;
 

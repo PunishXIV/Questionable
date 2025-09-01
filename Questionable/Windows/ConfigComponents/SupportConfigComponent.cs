@@ -21,7 +21,7 @@ internal sealed class SupportConfigComponent : ConfigComponent
     private const string AkechiSponsorUrl = "https://ko-fi.com/akechikun";
     private const string LimianaSponsorUrl = "https://www.patreon.com/NightmareXIV";
 
-    public SupportConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<SupportConfigComponent> logger) 
+    public SupportConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<SupportConfigComponent> logger)
         : base(pluginInterface, configuration) => _logger = logger;
 
     public override void DrawTab()

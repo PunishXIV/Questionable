@@ -1,9 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using Lumina.Text.ReadOnly;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionable.Validation.Validators;
 

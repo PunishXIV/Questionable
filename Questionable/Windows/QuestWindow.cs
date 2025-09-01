@@ -1,6 +1,4 @@
-﻿using System;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Plugin;
@@ -10,6 +8,8 @@ using Questionable.Controller;
 using Questionable.Controller.GameUi;
 using Questionable.Data;
 using Questionable.Windows.QuestComponents;
+using System;
+using System.Numerics;
 
 namespace Questionable.Windows;
 

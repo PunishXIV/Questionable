@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Controller;
@@ -9,6 +6,9 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Windows.QuestComponents;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionable.Windows.JournalComponents;
 

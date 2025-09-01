@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using LLib.GameData;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Linq;
 
 namespace Questionable.Controller.Steps.Shared;
 

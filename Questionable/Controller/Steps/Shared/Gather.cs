@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.Text;
+﻿using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -13,6 +10,9 @@ using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Action = Questionable.Controller.Steps.Interactions.Action;
 
 namespace Questionable.Controller.Steps.Shared;

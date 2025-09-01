@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -20,6 +15,11 @@ using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Numerics;
 using BattleNpcSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind;
 
 namespace Questionable.Controller;
@@ -250,11 +250,11 @@ internal sealed class CombatController : IDisposable
         }
 
         return _objectTable.Select(x => new
-            {
-                GameObject = x,
-                GetKillPriority(x).Priority,
-                Distance = Vector3.Distance(x.Position, _clientState.LocalPlayer!.Position),
-            })
+        {
+            GameObject = x,
+            GetKillPriority(x).Priority,
+            Distance = Vector3.Distance(x.Position, _clientState.LocalPlayer!.Position),
+        })
             .Where(x => x.Priority > 0)
             .OrderByDescending(x => x.Priority)
             .ThenBy(x => x.Distance)

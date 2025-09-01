@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -10,6 +7,9 @@ using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.External;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 using Quest = Questionable.Model.Quest;
 

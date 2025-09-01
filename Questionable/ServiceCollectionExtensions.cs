@@ -8,7 +8,7 @@ internal static class ServiceCollectionExtensions
 {
     public static void AddTaskFactory<
         [MeansImplicitUse(ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature)]
-        TFactory>(
+    TFactory>(
         this IServiceCollection serviceCollection)
         where TFactory : class, ITaskFactory
     {
@@ -18,7 +18,7 @@ internal static class ServiceCollectionExtensions
 
     public static void AddTaskExecutor<T,
         [MeansImplicitUse(ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature)]
-        TExecutor>(
+    TExecutor>(
         this IServiceCollection serviceCollection)
         where T : class, ITask
         where TExecutor : TaskExecutor<T>
@@ -29,9 +29,9 @@ internal static class ServiceCollectionExtensions
 
     public static void AddTaskFactoryAndExecutor<T,
         [MeansImplicitUse(ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature)]
-        TFactory,
+    TFactory,
         [MeansImplicitUse(ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature)]
-        TExecutor>(
+    TExecutor>(
         this IServiceCollection serviceCollection)
         where TFactory : class, ITaskFactory
         where T : class, ITask

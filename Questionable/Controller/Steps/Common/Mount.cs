@@ -1,5 +1,4 @@
-﻿using System;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -8,6 +7,7 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
+using System;
 
 namespace Questionable.Controller.Steps.Common;
 
@@ -207,7 +207,7 @@ internal static class Mount
             IPlayerCharacter? localPlayer = clientState.LocalPlayer;
             if (localPlayer != null)
             {
-                BattleChara* battleChara = (BattleChara*) localPlayer.Address;
+                BattleChara* battleChara = (BattleChara*)localPlayer.Address;
                 return (battleChara->Mount.Flags & 1) == 1;
             }
 

@@ -1,9 +1,9 @@
-using System;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Questionable.Controller.Steps.Movement;
 

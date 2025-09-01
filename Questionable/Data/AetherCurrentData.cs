@@ -1,7 +1,7 @@
-﻿using System.Collections.Immutable;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
+using System.Collections.Immutable;
+using System.Linq;
 
 namespace Questionable.Data;
 

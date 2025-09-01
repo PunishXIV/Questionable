@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
@@ -10,6 +7,9 @@ using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 
 namespace Questionable.Windows.ConfigComponents;

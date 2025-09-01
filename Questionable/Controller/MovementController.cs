@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -23,6 +15,14 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Questionable.Controller;
 
@@ -364,7 +364,7 @@ internal sealed class MovementController : IDisposable
         if (nextWaypoint == default)
             return false;
 
-        var distance = Vector2.Distance(new Vector2(start.X, start.Z), 
+        var distance = Vector2.Distance(new Vector2(start.X, start.Z),
             new Vector2(nextWaypoint.X, nextWaypoint.Z));
         if (Destination.LastWaypoint == null ||
             (Destination.LastWaypoint.Position - nextWaypoint).Length() > 0.1f)

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using Dalamud.Plugin;
+﻿using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using LLib.GameData;
@@ -17,6 +9,14 @@ using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Questionable.Controller;
 
@@ -260,7 +260,7 @@ internal sealed class QuestRegistry
 
     public List<QuestInfo> GetKnownClassJobQuests(EClassJob classJob, bool includeRoleQuests = true)
     {
-        List<QuestInfo> allQuests = [.._questData.GetClassJobQuests(classJob, includeRoleQuests)];
+        List<QuestInfo> allQuests = [.. _questData.GetClassJobQuests(classJob, includeRoleQuests)];
         if (classJob.AsJob() != classJob)
             allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
 

@@ -1,5 +1,5 @@
-﻿using System;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
+using System;
 
 namespace Questionable.Controller.Steps;
 

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using LLib.GameData;
+using Lumina.Excel.Sheets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using LLib.GameData;
-using Lumina.Excel.Sheets;
 
 namespace Questionable.Model;
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -9,6 +7,8 @@ using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Windows.QuestComponents;
+using System;
+using System.Linq;
 
 namespace Questionable.Windows.JournalComponents;
 

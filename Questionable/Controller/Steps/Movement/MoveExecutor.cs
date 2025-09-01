@@ -1,5 +1,3 @@
-using System;
-using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
@@ -10,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Numerics;
 using Action = System.Action;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 
@@ -147,7 +147,7 @@ internal sealed class MoveExecutor : TaskExecutor<MoveTask>, IToastAware
 
     public override ETaskResult Update()
     {
-        if (UpdateMountState() is {} mountStateResult)
+        if (UpdateMountState() is { } mountStateResult)
             return mountStateResult;
 
         if (_startAction == null)
@@ -181,7 +181,7 @@ internal sealed class MoveExecutor : TaskExecutor<MoveTask>, IToastAware
 
     private ETaskResult? UpdateMountState()
     {
-        if (_mountBeforeMovement is { Executor: {} mountBeforeMoveExecutor })
+        if (_mountBeforeMovement is { Executor: { } mountBeforeMoveExecutor })
         {
             if (mountBeforeMoveExecutor.Update() == ETaskResult.TaskComplete)
             {
@@ -205,7 +205,7 @@ internal sealed class MoveExecutor : TaskExecutor<MoveTask>, IToastAware
 
             return ETaskResult.StillRunning;
         }
-        else if (_mountDuringMovement is { Executor: { } mountDuringMoveExecutor, Task: {} mountTask })
+        else if (_mountDuringMovement is { Executor: { } mountDuringMoveExecutor, Task: { } mountTask })
         {
             if (mountDuringMoveExecutor.Update() == ETaskResult.TaskComplete)
             {
@@ -232,7 +232,7 @@ internal sealed class MoveExecutor : TaskExecutor<MoveTask>, IToastAware
     {
         DateTime retryAt = DateTime.Now;
         if (Task.Fly && _condition[ConditionFlag.InCombat] && !_condition[ConditionFlag.Mounted] &&
-            _mountBeforeMovement is { Task: {} mountTask } &&
+            _mountBeforeMovement is { Task: { } mountTask } &&
             _mountEvaluator.EvaluateMountState(mountTask, true, ref retryAt) == Mount.MountResult.WhenOutOfCombat)
         {
             return true;

@@ -1,9 +1,9 @@
 ﻿using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using Dalamud.Plugin.Services;
 
 namespace LLib;
 

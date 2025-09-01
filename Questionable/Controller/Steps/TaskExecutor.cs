@@ -43,7 +43,7 @@ internal abstract class TaskExecutor<T> : ITaskExecutor
 
     public virtual bool WasInterrupted()
     {
-        if (ProgressContext is {} progressContext)
+        if (ProgressContext is { } progressContext)
         {
             progressContext.Update();
             return progressContext.WasInterrupted();

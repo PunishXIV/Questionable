@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using Questionable.Model.Common.Converter;
+﻿using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Questionable.Model.Gathering;
 

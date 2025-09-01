@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
@@ -8,6 +7,7 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using LLib.ImGui;
 using Questionable.Data;
 using Questionable.Validation;
+using System.Globalization;
 
 namespace Questionable.Windows;
 

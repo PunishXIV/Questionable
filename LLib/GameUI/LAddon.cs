@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
+using System;
+using System.Linq;
 
 namespace LLib.GameUI;
 

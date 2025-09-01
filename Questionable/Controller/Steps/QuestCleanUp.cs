@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameUI;
 using Microsoft.Extensions.Logging;
@@ -9,6 +7,8 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionable.Controller.Steps;
 

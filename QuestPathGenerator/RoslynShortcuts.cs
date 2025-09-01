@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Questionable.Model.Common;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Questionable.QuestPathGenerator.RoslynElements;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Questionable.QuestPathGenerator;

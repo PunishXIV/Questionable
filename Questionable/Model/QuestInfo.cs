@@ -1,10 +1,10 @@
-﻿using System;
+﻿using LLib.GameData;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Questing;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using LLib.GameData;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
@@ -129,7 +129,7 @@ internal sealed class QuestInfo : IQuestInfo
 
     public void AddPreviousQuest(PreviousQuestInfo questId)
     {
-        PreviousQuests = [..PreviousQuests, questId];
+        PreviousQuests = [.. PreviousQuests, questId];
     }
 
     public void AddQuestLocks(EQuestJoin questJoin, params QuestId[] questId)
@@ -138,6 +138,6 @@ internal sealed class QuestInfo : IQuestInfo
             throw new InvalidOperationException();
 
         QuestLockJoin = questJoin;
-        QuestLocks = [..QuestLocks, ..questId];
+        QuestLocks = [.. QuestLocks, .. questId];
     }
 }

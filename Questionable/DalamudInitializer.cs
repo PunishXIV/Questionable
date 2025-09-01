@@ -1,5 +1,4 @@
-﻿using System;
-using Dalamud.Game.Gui.Toast;
+﻿using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -8,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Windows;
+using System;
 
 namespace Questionable;
 

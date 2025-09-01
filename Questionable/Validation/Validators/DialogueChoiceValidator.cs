@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Questionable.Functions;
+﻿using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
 
 namespace Questionable.Validation.Validators;
 

@@ -1,5 +1,5 @@
-﻿using System.Text.Json.Serialization;
-using Questionable.Model.Questing.Converter;
+﻿using Questionable.Model.Questing.Converter;
+using System.Text.Json.Serialization;
 
 namespace Questionable.Model.Questing;
 
@@ -17,7 +17,7 @@ public enum EAction
     HeavyShot = 97,
     Cure = 120,
     Cure2 = 135,
-    Eukrasia = 24290, 
+    Eukrasia = 24290,
     Diagnosis = 24284,
     EukrasianDiagnosis = 24291,
     Esuna = 7568,

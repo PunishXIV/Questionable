@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
@@ -11,6 +9,8 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Questionable.Windows.ConfigComponents;
 

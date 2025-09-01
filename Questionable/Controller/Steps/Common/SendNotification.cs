@@ -23,7 +23,7 @@ internal static class SendNotification
                 EInteractionType.Snipe when !automatonIpc.IsAutoSnipeEnabled =>
                     new Task(step.InteractionType, step.Comment),
                 EInteractionType.Duty when !autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) =>
-                    new Task(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is {} contentFinderConditionId
+                    new Task(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
                         ? territoryData.GetContentFinderCondition(contentFinderConditionId)?.Name
                         : step.Comment),
                 EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions) =>

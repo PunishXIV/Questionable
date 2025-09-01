@@ -1,281 +1,281 @@
 {
-    "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
-    "Author": "Censored",
-    "QuestSequence": [
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
         {
-            "Sequence": 0,
-            "Steps": [
-                {
-                    "DataId": 1005927,
-                    "Position": {
-                        "X": -2.8534546,
-                        "Y": 16.03717,
-                        "Z": -172.5033
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "AcceptQuest",
-                    "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-                    "Fly": true,
-                    "SkipConditions": {
-                        "AetheryteShortcutIf": {
-                            "NearPosition": {
-                                "Position": {
-                                    "X": -2.8534546,
-                                    "Y": 16.03717,
-                                    "Z": -172.5033
-                                },
-                                "TerritoryId": 180,
-                                "MaximumDistance": 50
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "Sequence": 1,
-            "Steps": [
-                {
-                    "DataId": 1007949,
-                    "Position": {
-                        "X": 14.633362,
-                        "Y": 16.165525,
-                        "Z": -184.31378
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 2,
-            "Steps": [
-                {
-                    "DataId": 1005927,
-                    "Position": {
-                        "X": -2.8534546,
-                        "Y": 16.03717,
-                        "Z": -172.5033
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 3,
-            "Steps": [
-                {
-                    "DataId": 1005932,
-                    "Position": {
-                        "X": -1.236023,
-                        "Y": 33.38838,
-                        "Z": -244.19019
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact",
-                    "Fly": true
-                }
-            ]
-        },
-        {
-            "Sequence": 4,
-            "Steps": [
-                {
-                    "DataId": 2003723,
-                    "Position": {
-                        "X": 87.08313,
-                        "Y": 22.018738,
-                        "Z": -635.5535
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "UseItem",
-                    "ItemId": 2001237,
-                    "Fly": true,
-                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 128 ]
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -2.8534546,
+                  "Y": 16.03717,
+                  "Z": -172.5033
                 },
-                {
-                    "DataId": 2003724,
-                    "Position": {
-                        "X": 96.11658,
-                        "Y": 21.896606,
-                        "Z": -644.9531
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "UseItem",
-                    "ItemId": 2001237,
-                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 64 ]
-                },
-                {
-                    "DataId": 2003725,
-                    "Position": {
-                        "X": 92.94263,
-                        "Y": 25.833496,
-                        "Z": -655.0851
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "UseItem",
-                    "ItemId": 2001237
-                }
-            ]
-        },
-        {
-            "Sequence": 5,
-            "Steps": [
-                {
-                    "DataId": 1007942,
-                    "Position": {
-                        "X": 74.93701,
-                        "Y": 24.490723,
-                        "Z": -665.5528
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 6,
-            "Steps": [
-                {
-                    "DataId": 2003727,
-                    "Position": {
-                        "X": 157.7019,
-                        "Y": 22.11029,
-                        "Z": -713.28296
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "UseItem",
-                    "ItemId": 2001237,
-                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 64 ]
-                },
-                {
-                    "DataId": 2003728,
-                    "Position": {
-                        "X": 167.65088,
-                        "Y": 21.927185,
-                        "Z": -707.5151
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "UseItem",
-                    "ItemId": 2001237,
-                    "CompletionQuestVariablesFlags": [ null, null, null, null, null, 32 ]
-                },
-                {
-                    "DataId": 2003726,
-                    "Position": {
-                        "X": 163.53088,
-                        "Y": 25.925049,
-                        "Z": -688.38025
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "UseItem",
-                    "ItemId": 2001237
-                }
-            ]
-        },
-        {
-            "Sequence": 7,
-            "Steps": [
-                {
-                    "DataId": 1007943,
-                    "Position": {
-                        "X": 176.98938,
-                        "Y": 24.795776,
-                        "Z": -688.53284
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 8,
-            "Steps": [
-                {
-                    "DataId": 1007944,
-                    "Position": {
-                        "X": 178.45422,
-                        "Y": 23.483582,
-                        "Z": -641.01624
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact",
-                    "DialogueChoices": [
-                        {
-                            "Type": "List",
-                            "Prompt": "TEXT_BANKOB005_01324_Q1_000_000",
-                            "Answer": "TEXT_BANKOB005_01324_A1_000_001"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "Sequence": 9,
-            "Steps": [
-                {
-                    "DataId": 1007946,
-                    "Position": {
-                        "X": 220.66064,
-                        "Y": 21.481783,
-                        "Z": -592.64514
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 10,
-            "Steps": [
-                {
-                    "DataId": 1007947,
-                    "Position": {
-                        "X": 150.86597,
-                        "Y": 26.382812,
-                        "Z": -551.751
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 11,
-            "Steps": [
-                {
-                    "DataId": 1005927,
-                    "Position": {
-                        "X": -2.8534546,
-                        "Y": 16.03717,
-                        "Z": -172.5033
-                    },
-                    "TerritoryId": 180,
-                    "InteractionType": "Interact",
-                    "Fly": true
-                }
-            ]
-        },
-        {
-            "Sequence": 255,
-            "Steps": [
-                {
-                    "DataId": 1003550,
-                    "Position": {
-                        "X": 76.85962,
-                        "Y": 39.99632,
-                        "Z": 78.99597
-                    },
-                    "TerritoryId": 128,
-                    "InteractionType": "CompleteQuest",
-                    "AetheryteShortcut": "Limsa Lominsa",
-                    "AethernetShortcut": [
-                        "[Limsa Lominsa] Aetheryte Plaza",
-                        "[Limsa Lominsa] The Aftcastle"
-                    ]
-                }
-            ]
+                "TerritoryId": 180,
+                "MaximumDistance": 50
+              }
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007949,
+          "Position": {
+            "X": 14.633362,
+            "Y": 16.165525,
+            "Z": -184.31378
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005932,
+          "Position": {
+            "X": -1.236023,
+            "Y": 33.38838,
+            "Z": -244.19019
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2003723,
+          "Position": {
+            "X": 87.08313,
+            "Y": 22.018738,
+            "Z": -635.5535
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001237,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, 128 ]
+        },
+        {
+          "DataId": 2003724,
+          "Position": {
+            "X": 96.11658,
+            "Y": 21.896606,
+            "Z": -644.9531
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001237,
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, 64 ]
+        },
+        {
+          "DataId": 2003725,
+          "Position": {
+            "X": 92.94263,
+            "Y": 25.833496,
+            "Z": -655.0851
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001237
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1007942,
+          "Position": {
+            "X": 74.93701,
+            "Y": 24.490723,
+            "Z": -665.5528
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2003727,
+          "Position": {
+            "X": 157.7019,
+            "Y": 22.11029,
+            "Z": -713.28296
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001237,
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, 64 ]
+        },
+        {
+          "DataId": 2003728,
+          "Position": {
+            "X": 167.65088,
+            "Y": 21.927185,
+            "Z": -707.5151
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001237,
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, 32 ]
+        },
+        {
+          "DataId": 2003726,
+          "Position": {
+            "X": 163.53088,
+            "Y": 25.925049,
+            "Z": -688.38025
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2001237
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1007943,
+          "Position": {
+            "X": 176.98938,
+            "Y": 24.795776,
+            "Z": -688.53284
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1007944,
+          "Position": {
+            "X": 178.45422,
+            "Y": 23.483582,
+            "Z": -641.01624
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANKOB005_01324_Q1_000_000",
+              "Answer": "TEXT_BANKOB005_01324_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1007946,
+          "Position": {
+            "X": 220.66064,
+            "Y": 21.481783,
+            "Z": -592.64514
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1007947,
+          "Position": {
+            "X": 150.86597,
+            "Y": 26.382812,
+            "Z": -551.751
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1005927,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 16.03717,
+            "Z": -172.5033
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003550,
+          "Position": {
+            "X": 76.85962,
+            "Y": 39.99632,
+            "Z": 78.99597
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
 }

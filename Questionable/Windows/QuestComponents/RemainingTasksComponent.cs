@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Questionable.Controller;
+using System.Collections.Generic;
 
 namespace Questionable.Windows.QuestComponents;
 

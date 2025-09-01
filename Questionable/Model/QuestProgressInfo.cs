@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
+﻿using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using LLib.GameData;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
 
 namespace Questionable.Model;
 
@@ -14,7 +14,7 @@ internal sealed class QuestProgressInfo
         Id = new QuestId(questWork.QuestId);
         Sequence = questWork.Sequence;
         Flags = questWork.Flags;
-        Variables = [..questWork.Variables.ToArray()];
+        Variables = [.. questWork.Variables.ToArray()];
         IsHidden = questWork.IsHidden;
         ClassJob = (EClassJob)questWork.AcceptClassJob;
 

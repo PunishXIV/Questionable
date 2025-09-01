@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
@@ -10,6 +7,9 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
+using System;
+using System.Globalization;
+using System.Numerics;
 
 namespace Questionable.Windows.QuestComponents;
 

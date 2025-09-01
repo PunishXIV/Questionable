@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using Dalamud.Game.Text;
+﻿using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameData;
@@ -9,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Questionable.Controller.Steps.Gathering;
 

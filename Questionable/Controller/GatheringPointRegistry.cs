@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using Dalamud.Plugin;
+﻿using Dalamud.Plugin;
 using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.GatheringPaths;
 using Questionable.Model;
 using Questionable.Model.Gathering;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
 
 namespace Questionable.Controller;
 

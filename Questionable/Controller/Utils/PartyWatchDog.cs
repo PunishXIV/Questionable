@@ -1,9 +1,9 @@
-using System;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using LLib.GameData;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Questionable.Controller.Utils;
 

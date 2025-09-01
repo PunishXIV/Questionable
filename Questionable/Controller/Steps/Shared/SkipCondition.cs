@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -14,6 +11,9 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -274,14 +274,14 @@ internal static class SkipCondition
 
         private bool CheckAetheryteCondition(QuestStep step, SkipStepConditions skipConditions)
         {
-            if (step is { Aetheryte: {} aetheryteLocation, InteractionType: EInteractionType.AttuneAetheryte } &&
+            if (step is { Aetheryte: { } aetheryteLocation, InteractionType: EInteractionType.AttuneAetheryte } &&
                 aetheryteFunctions.IsAetheryteUnlocked(aetheryteLocation))
             {
                 logger.LogInformation("Skipping step, as aetheryte is unlocked");
                 return true;
             }
 
-            if (step is { Aetheryte: {} aethernetShard, InteractionType: EInteractionType.AttuneAethernetShard } &&
+            if (step is { Aetheryte: { } aethernetShard, InteractionType: EInteractionType.AttuneAethernetShard } &&
                 aetheryteFunctions.IsAetheryteUnlocked(aethernetShard))
             {
                 logger.LogInformation("Skipping step, as aethernet shard is unlocked");

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.ClientState.Objects;
+﻿using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.Command;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -10,6 +7,9 @@ using Lumina.Excel.Sheets;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Windows;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller;
@@ -201,7 +201,7 @@ internal sealed class CommandHandler : IDisposable
                     List<string> taxiStands = [];
                     var taxiStandNames = _dataManager.GetExcelSheet<ChocoboTaxiStand>();
                     var uiState = UIState.Instance();
-                    for (byte i = 0; i < uiState->ChocoboTaxiStandsBitmask.Length * 8; ++ i)
+                    for (byte i = 0; i < uiState->ChocoboTaxiStandsBitmask.Length * 8; ++i)
                     {
                         if (uiState->IsChocoboTaxiStandUnlocked(i))
                             taxiStands.Add($"{taxiStandNames.GetRow(i + 0x120000u).PlaceName} ({i})");

@@ -1,156 +1,156 @@
 {
-    "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
-    "Author": "Censored",
-    "QuestSequence": [
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Censored",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
         {
-            "Sequence": 0,
-            "Steps": [
-                {
-                    "DataId": 1005561,
-                    "Position": {
-                        "X": 47.01306,
-                        "Y": 6.0734644,
-                        "Z": 254.01685
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "AcceptQuest",
-                    "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-                    "Fly": true,
-                    "SkipConditions": {
-                        "AetheryteShortcutIf": {
-                            "InSameTerritory": true
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "Sequence": 1,
-            "Steps": [
-                {
-                    "DataId": 2003073,
-                    "Position": {
-                        "X": 180.98718,
-                        "Y": -0.38153076,
-                        "Z": 68.03992
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "Interact",
-                    "Fly": true,
-                    "CompletionQuestVariablesFlags": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        2
-                    ]
-                },
-                {
-                    "DataId": 2003069,
-                    "Position": {
-                        "X": 327.65686,
-                        "Y": -6.088379,
-                        "Z": -7.9194946
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "Interact",
-                    "Fly": true,
-                    "CompletionQuestVariablesFlags": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        32
-                    ]
-                },
-                {
-                    "DataId": 2003068,
-                    "Position": {
-                        "X": 323.81165,
-                        "Y": -5.783203,
-                        "Z": -17.898865
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "Interact",
-                    "CompletionQuestVariablesFlags": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        64
-                    ]
-                },
-                {
-                    "DataId": 2003070,
-                    "Position": {
-                        "X": 328.08423,
-                        "Y": -4.867676,
-                        "Z": -31.296265
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "Interact",
-                    "CompletionQuestVariablesFlags": [
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        16
-                    ]
-                },
-                {
-                    "DataId": 2003067,
-                    "Position": {
-                        "X": 354.57385,
-                        "Y": -4.623535,
-                        "Z": -11.39856
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "Interact"
-                }
-            ]
-        },
-        {
-            "Sequence": 255,
-            "Steps": [
-                {
-                    "Position": {
-                        "X": 37.71168,
-                        "Y": 4.7303743,
-                        "Z": 250.62769
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "WalkTo",
-                    "Fly": true,
-                    "Land": true,
-                    "SkipConditions": {
-                        "StepIf": {
-                            "NearPosition": {
-                                "Position": {
-                                    "X": 37.71168,
-                                    "Y": 4.7303743,
-                                    "Z": 250.62769
-                                },
-                                "TerritoryId": 152,
-                                "MaximumDistance": 10
-                            }
-                        }
-                    }
-                },
-                {
-                    "DataId": 1005561,
-                    "Position": {
-                        "X": 47.01306,
-                        "Y": 6.0734644,
-                        "Z": 254.01685
-                    },
-                    "TerritoryId": 152,
-                    "InteractionType": "CompleteQuest"
-                }
-            ]
+          "DataId": 1005561,
+          "Position": {
+            "X": 47.01306,
+            "Y": 6.0734644,
+            "Z": 254.01685
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2003073,
+          "Position": {
+            "X": 180.98718,
+            "Y": -0.38153076,
+            "Z": 68.03992
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2
+          ]
+        },
+        {
+          "DataId": 2003069,
+          "Position": {
+            "X": 327.65686,
+            "Y": -6.088379,
+            "Z": -7.9194946
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2003068,
+          "Position": {
+            "X": 323.81165,
+            "Y": -5.783203,
+            "Z": -17.898865
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2003070,
+          "Position": {
+            "X": 328.08423,
+            "Y": -4.867676,
+            "Z": -31.296265
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2003067,
+          "Position": {
+            "X": 354.57385,
+            "Y": -4.623535,
+            "Z": -11.39856
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 37.71168,
+            "Y": 4.7303743,
+            "Z": 250.62769
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 37.71168,
+                  "Y": 4.7303743,
+                  "Z": 250.62769
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1005561,
+          "Position": {
+            "X": 47.01306,
+            "Y": 6.0734644,
+            "Z": 254.01685
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

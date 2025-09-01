@@ -11,7 +11,7 @@ public sealed class TestQuestLoader : IEnumerable<object[]>
         var assembly = typeof(TestQuestLoader).Assembly;
         _data = assembly.GetManifestResourceNames()
             .Where(x => x.StartsWith("QuestPaths/") && x.EndsWith(".json"))
-            .Select(x => new object[]{new QuestWrapper(x)})
+            .Select(x => new object[] { new QuestWrapper(x) })
             .ToList();
     }
     public IEnumerator<object[]> GetEnumerator() => _data.GetEnumerator();

@@ -1,7 +1,7 @@
-using System;
-using System.Numerics;
 using Dalamud.Plugin.Services;
 using Questionable.Model.Questing;
+using System;
+using System.Numerics;
 
 namespace Questionable.Controller.Steps.Shared;
 

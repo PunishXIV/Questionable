@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
@@ -12,6 +7,11 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -111,24 +111,24 @@ internal static class WaitAtEnd
                     ];
 
                 case EInteractionType.AcceptQuest:
-                {
-                    var accept = new WaitQuestAccepted(step.PickUpQuestId ?? quest.Id);
-                    var delay = new WaitDelay();
-                    if (step.PickUpQuestId != null)
-                        return [accept, delay, Next(quest, sequence)];
-                    else
-                        return [accept, delay];
-                }
+                    {
+                        var accept = new WaitQuestAccepted(step.PickUpQuestId ?? quest.Id);
+                        var delay = new WaitDelay();
+                        if (step.PickUpQuestId != null)
+                            return [accept, delay, Next(quest, sequence)];
+                        else
+                            return [accept, delay];
+                    }
 
                 case EInteractionType.CompleteQuest:
-                {
-                    var complete = new WaitQuestCompleted(step.TurnInQuestId ?? quest.Id);
-                    var delay = new WaitDelay();
-                    if (step.TurnInQuestId != null)
-                        return [complete, delay, Next(quest, sequence)];
-                    else
-                        return [complete, delay];
-                }
+                    {
+                        var complete = new WaitQuestCompleted(step.TurnInQuestId ?? quest.Id);
+                        var delay = new WaitDelay();
+                        if (step.TurnInQuestId != null)
+                            return [complete, delay, Next(quest, sequence)];
+                        else
+                            return [complete, delay];
+                    }
 
                 case EInteractionType.Interact:
                 default:

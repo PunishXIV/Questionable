@@ -1,5 +1,5 @@
-﻿using System.Numerics;
-using FFXIVClientStructs.FFXIV.Component.GUI;
+﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+using System.Numerics;
 
 namespace LLib.Shop;
 

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Dalamud.Game;
+using Dalamud.Plugin.Services;
+using Dalamud.Utility;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Questing;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-using Dalamud.Game;
-using Dalamud.Plugin.Services;
-using Dalamud.Utility;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 
 namespace Questionable.Data;
 

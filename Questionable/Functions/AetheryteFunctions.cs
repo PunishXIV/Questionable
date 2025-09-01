@@ -1,11 +1,11 @@
-﻿using System;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using System;
 using Action = Lumina.Excel.Sheets.Action;
 
 namespace Questionable.Functions;

@@ -1,13 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameUI;
 using LLib.Shop;
 using LLib.Shop.Model;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
+using System;
+using System.Linq;
+using System.Numerics;
 using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 namespace Questionable.Controller.GameUi;

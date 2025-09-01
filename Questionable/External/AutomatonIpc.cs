@@ -8,7 +8,7 @@ namespace Questionable.External;
 internal sealed class AutomatonIpc
 {
     private readonly ILogger<AutomatonIpc> _logger;
-    private readonly ICallGateSubscriber<string,bool> _isTweakEnabled;
+    private readonly ICallGateSubscriber<string, bool> _isTweakEnabled;
     private bool _loggedIpcError;
 
     public AutomatonIpc(IDalamudPluginInterface pluginInterface, ILogger<AutomatonIpc> logger)

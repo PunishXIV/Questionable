@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -12,6 +8,10 @@ using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using Questionable.Controller;
 using Questionable.External;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Questionable.Windows.ConfigComponents;
 

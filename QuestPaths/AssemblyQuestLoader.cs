@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Questionable.Model.Questing;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using Questionable.Model.Questing;
 
 namespace Questionable.QuestPaths;
 

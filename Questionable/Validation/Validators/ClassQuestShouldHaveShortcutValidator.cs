@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using LLib.GameData;
+﻿using LLib.GameData;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
 
 namespace Questionable.Validation.Validators;
 

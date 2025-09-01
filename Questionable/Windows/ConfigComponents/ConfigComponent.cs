@@ -1,10 +1,10 @@
-using System.Collections.Generic;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
+using System.Collections.Generic;
 
 namespace Questionable.Windows.ConfigComponents;
 

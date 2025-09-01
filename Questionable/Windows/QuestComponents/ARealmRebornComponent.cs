@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
@@ -8,6 +7,7 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
+using System.Linq;
 
 namespace Questionable.Windows.QuestComponents;
 

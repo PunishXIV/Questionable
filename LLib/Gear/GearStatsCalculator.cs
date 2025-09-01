@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace LLib.Gear;
 
@@ -193,7 +193,8 @@ public sealed class GearStatsCalculator
     {
         uint sum = 0U;
         var calculatedSlots = 12;
-        for (var i = 0; i < 13; i++) {
+        for (var i = 0; i < 13; i++)
+        {
             if (i == 5) // belt
                 continue;
 
@@ -205,7 +206,8 @@ public sealed class GearStatsCalculator
                 continue;
 
             // blue mage weapon
-            if (item.Value.ItemUICategory.RowId == 105) {
+            if (item.Value.ItemUICategory.RowId == 105)
+            {
                 if (i == 0)
                     calculatedSlots -= 1;
                 calculatedSlots -= 1;
@@ -213,7 +215,8 @@ public sealed class GearStatsCalculator
             }
 
             // count main hand weapon twice if no offhand is equippable
-            if (i == 0 && !CanHaveOffhand.Contains(item.Value.ItemUICategory.RowId)) {
+            if (i == 0 && !CanHaveOffhand.Contains(item.Value.ItemUICategory.RowId))
+            {
                 sum += item.Value.LevelItem.RowId;
                 i++;
             }

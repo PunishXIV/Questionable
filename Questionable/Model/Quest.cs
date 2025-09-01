@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Questionable.Model.Questing;
+using System.Collections.Generic;
 using System.Linq;
-using Questionable.Model.Questing;
 
 namespace Questionable.Model;
 

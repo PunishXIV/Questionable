@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Dalamud.Hooking;
+﻿using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
@@ -8,6 +6,8 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
+using System;
+using System.Runtime.InteropServices;
 
 namespace Questionable.Controller;
 

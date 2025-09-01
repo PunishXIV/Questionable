@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -13,6 +8,11 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Gathering;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 
 namespace GatheringPathRenderer.Windows;
 

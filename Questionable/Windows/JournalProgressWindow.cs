@@ -1,10 +1,10 @@
-﻿using System;
-using System.Numerics;
-using Dalamud.Interface.Utility.Raii;
+﻿using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin.Services;
 using LLib.ImGui;
 using Questionable.Controller;
 using Questionable.Windows.JournalComponents;
+using System;
+using System.Numerics;
 
 namespace Questionable.Windows;
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Text.RegularExpressions;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
@@ -20,6 +14,12 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Text.RegularExpressions;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 
 namespace Questionable.Controller;

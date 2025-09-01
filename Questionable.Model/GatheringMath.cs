@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Questionable.Model.Gathering;
+using System;
 using System.Numerics;
-using Questionable.Model.Gathering;
 
 namespace Questionable.Model;
 

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
 
 namespace Questionable.Controller.NavigationOverrides;
 

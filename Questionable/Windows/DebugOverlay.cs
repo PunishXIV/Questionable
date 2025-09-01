@@ -1,8 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface.Windowing;
@@ -10,6 +6,10 @@ using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model.Questing;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 
 namespace Questionable.Windows;
 
@@ -161,12 +161,12 @@ internal sealed class DebugOverlay : Window
             position = step.Position;
             return true;
         }
-        else if (step is { InteractionType: EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: {} aetheryteLocation })
+        else if (step is { InteractionType: EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
         {
             position = _aetheryteData.Locations[aetheryteLocation];
             return true;
         }
-        else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: {} aethernetShard })
+        else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
         {
             position = _aetheryteData.Locations[aethernetShard];
             return true;

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Game.Gui.ContextMenu;
+﻿using Dalamud.Game.Gui.ContextMenu;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
@@ -13,6 +11,8 @@ using Questionable.Functions;
 using Questionable.GameStructs;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Linq;
 
 namespace Questionable.Controller;
 

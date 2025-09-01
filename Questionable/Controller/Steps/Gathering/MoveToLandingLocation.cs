@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Objects.Enums;
+﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
@@ -10,6 +7,9 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 
 namespace Questionable.Controller.Steps.Gathering;
 

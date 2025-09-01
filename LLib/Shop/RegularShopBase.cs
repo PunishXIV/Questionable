@@ -1,13 +1,13 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
-using Dalamud.Game.Addon.Lifecycle;
+﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameUI;
 using LLib.Shop.Model;
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 
 namespace LLib.Shop;
 
@@ -86,7 +86,7 @@ public class RegularShopBase
             addon->GetSize(&width, &height, true);
             x += width;
 
-            if (_parentWindow.Position is {} position && ((short)position.X != x || (short)position.Y != y))
+            if (_parentWindow.Position is { } position && ((short)position.X != x || (short)position.Y != y))
                 _parentWindow.Position = new Vector2(x, y);
 
             _parentWindow.IsOpen = true;

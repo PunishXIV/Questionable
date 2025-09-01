@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
@@ -14,6 +9,11 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
 
 namespace Questionable.Windows.QuestComponents;
 
@@ -24,7 +24,7 @@ internal sealed class EventInfoComponent
     [
         new EventQuest("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
         new EventQuest("The Rising (2025)", [new QuestId(5297), new QuestId(5298)], AtDailyReset(new DateOnly(2025, 9, 11)))
-    ]; 
+    ];
 
     private readonly QuestData _questData;
     private readonly QuestRegistry _questRegistry;

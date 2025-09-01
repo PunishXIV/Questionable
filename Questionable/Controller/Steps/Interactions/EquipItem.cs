@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.Text.SeStringHandling;
+﻿using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using LLib;
@@ -9,6 +6,9 @@ using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;

@@ -1,4 +1,12 @@
-﻿using System;
+﻿using Dalamud.Game.ClientState.Objects;
+using Dalamud.Interface.Windowing;
+using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
+using GatheringPathRenderer.Windows;
+using LLib.GameData;
+using Pictomancy;
+using Questionable.Model.Gathering;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,14 +18,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
-using Dalamud.Game.ClientState.Objects;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using GatheringPathRenderer.Windows;
-using LLib.GameData;
-using Pictomancy;
-using Questionable.Model.Gathering;
 
 namespace GatheringPathRenderer;
 
@@ -57,7 +57,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         var configWindow = new ConfigWindow(pluginInterface, configuration);
         _editorWindow = new EditorWindow(this, _editorCommands, dataManager, targetManager, clientState, objectTable,
                 configWindow)
-            { IsOpen = true };
+        { IsOpen = true };
         _windowSystem.AddWindow(configWindow);
         _windowSystem.AddWindow(_editorWindow);
 

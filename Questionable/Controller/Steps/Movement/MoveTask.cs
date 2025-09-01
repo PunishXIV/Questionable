@@ -1,6 +1,6 @@
+using Questionable.Model.Questing;
 using System.Globalization;
 using System.Numerics;
-using Questionable.Model.Questing;
 
 namespace Questionable.Controller.Steps.Movement;
 

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Dalamud.Plugin.Services;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Common;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Plugin.Services;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
 
 namespace Questionable.Data;
 

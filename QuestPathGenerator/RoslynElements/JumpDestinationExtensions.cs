@@ -1,7 +1,7 @@
-﻿using System.Numerics;
-using Microsoft.CodeAnalysis.CSharp;
+﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Questionable.Model.Questing;
+using System.Numerics;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 using static Questionable.QuestPathGenerator.RoslynShortcuts;
 

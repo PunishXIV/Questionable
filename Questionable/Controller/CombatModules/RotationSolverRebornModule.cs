@@ -1,10 +1,10 @@
-﻿using System;
-using Dalamud.Game.ClientState.Objects.Types;
+﻿using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Questionable.Controller.CombatModules;
 

@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace Questionable.Controller.Steps.Movement;
 
@@ -28,15 +28,15 @@ internal static class MoveTo
                 return [new WaitForNearDataId(step.DataId.Value, step.StopDistance.Value)];
             }
             else if (step is
-                     {
-                         InteractionType: EInteractionType.AttuneAetheryte
+            {
+                InteractionType: EInteractionType.AttuneAetheryte
                              or EInteractionType.RegisterFreeOrFavoredAetheryte,
-                         Aetheryte: {} aetheryteLocation
-                     })
+                Aetheryte: { } aetheryteLocation
+            })
             {
                 return CreateMoveTasks(step, aetheryteData.Locations[aetheryteLocation]);
             }
-            else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: {} aethernetShard })
+            else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
             {
                 return CreateMoveTasks(step, aetheryteData.Locations[aethernetShard]);
             }

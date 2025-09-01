@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Collections.Immutable;
-using LLib.GameData;
+﻿using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using QQuestId = Questionable.Model.Questing.QuestId;
 
 namespace Questionable.Model;
