@@ -1,0 +1,75 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041434,
+          "Position": {
+            "X": -417.56317,
+            "Y": 148.1228,
+            "Z": 148.33289
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041432,
+          "Position": {
+            "X": -414.63342,
+            "Y": 148.43988,
+            "Z": 156.32861
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012486,
+          "Position": {
+            "X": -417.22748,
+            "Y": 148.14978,
+            "Z": 149.5841
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041369,
+          "Position": {
+            "X": -639.85657,
+            "Y": 162.30406,
+            "Z": -189.47137
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

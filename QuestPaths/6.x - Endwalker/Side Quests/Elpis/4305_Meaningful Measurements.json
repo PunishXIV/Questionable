@@ -1,0 +1,149 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041834,
+          "Position": {
+            "X": -650.1106,
+            "Y": 157.0817,
+            "Z": -216.78491
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZH010_04305_Q1_000_000",
+              "Answer": "TEXT_AKTKZH010_04305_A1_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041919,
+          "Position": {
+            "X": -669.3065,
+            "Y": 152.56584,
+            "Z": -30.35028
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012695,
+          "Position": {
+            "X": -539.66583,
+            "Y": 147.96667,
+            "Z": -28.70227
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "GroundTarget": true,
+          "ItemId": 2003361,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012696,
+          "Position": {
+            "X": -543.05334,
+            "Y": 146.6239,
+            "Z": -28.000305
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012698,
+          "Position": {
+            "X": -544.7013,
+            "Y": 146.16614,
+            "Z": -30.380737
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2012697,
+          "Position": {
+            "X": -540.5204,
+            "Y": 146.19666,
+            "Z": -33.00531
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "$": "Dodge overworld mobs.",
+          "Position": {
+            "X": -669.89874,
+            "Y": 162.07521,
+            "Z": -30.204943
+          },
+          "TerritoryId": 961,
+          "StopDistance": 0.25,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 1041919,
+          "Position": {
+            "X": -669.3065,
+            "Y": 152.56584,
+            "Z": -30.35028
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041834,
+          "Position": {
+            "X": -650.1106,
+            "Y": 157.0817,
+            "Z": -216.78491
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

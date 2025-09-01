@@ -1,0 +1,96 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041545,
+          "Position": {
+            "X": -503.37988,
+            "Y": 159.75583,
+            "Z": -226.21503
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041546,
+          "Position": {
+            "X": -336.8429,
+            "Y": 135.34044,
+            "Z": -229.66364
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003352,
+          "Fly": true
+        },
+        {
+          "DataId": 1041547,
+          "Position": {
+            "X": -366.41492,
+            "Y": 145.72229,
+            "Z": -197.74176
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003352,
+          "Fly": true
+        },
+        {
+          "DataId": 1041548,
+          "Position": {
+            "X": -349.23328,
+            "Y": 142.819,
+            "Z": -119.73761
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003352,
+          "Fly": true
+        },
+        {
+          "DataId": 1041549,
+          "Position": {
+            "X": -385.09198,
+            "Y": 146.64151,
+            "Z": -125.1698
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003352,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041545,
+          "Position": {
+            "X": -503.37988,
+            "Y": 159.75583,
+            "Z": -226.21503
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

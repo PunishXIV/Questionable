@@ -1,0 +1,73 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041103,
+          "Position": {
+            "X": -637.20154,
+            "Y": 162.75209,
+            "Z": -161.51685
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Prevent vnavmesh from getting stuck on rock.",
+          "Position": {
+            "X": -714.6946,
+            "Y": 153.37344,
+            "Z": 90.81024
+          },
+          "TerritoryId": 961,
+          "StopDistance": 0.25,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 2012589,
+          "Position": {
+            "X": -711.1162,
+            "Y": 152.72742,
+            "Z": 89.86035
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041103,
+          "Position": {
+            "X": -637.20154,
+            "Y": 162.75209,
+            "Z": -161.51685
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

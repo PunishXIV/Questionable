@@ -1,0 +1,108 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038000,
+          "Position": {
+            "X": -497.94766,
+            "Y": 140.19383,
+            "Z": -129.32025
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041854,
+          "Position": {
+            "X": -569.7261,
+            "Y": 144.73572,
+            "Z": -20.035156
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012699,
+          "Position": {
+            "X": -513.6339,
+            "Y": 156.4812,
+            "Z": 114.67151
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Snipe",
+          "Comment": "Hit the creature with the blow dart",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041855,
+          "Position": {
+            "X": -527.8248,
+            "Y": 151.66438,
+            "Z": 143.69421
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041854,
+          "Position": {
+            "X": -569.7261,
+            "Y": 144.73572,
+            "Z": -20.035156
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038000,
+          "Position": {
+            "X": -497.94766,
+            "Y": 140.19383,
+            "Z": -129.32025
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

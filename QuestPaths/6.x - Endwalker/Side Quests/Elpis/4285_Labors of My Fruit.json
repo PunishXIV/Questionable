@@ -1,0 +1,94 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041537,
+          "Position": {
+            "X": 189.10498,
+            "Y": 3.5163531,
+            "Z": 354.818
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041536,
+          "Position": {
+            "X": 204.66919,
+            "Y": 7.9313364,
+            "Z": 267.65845
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "$": "Prevent vnavmesh from getting stuck on tree",
+          "Position": {
+            "X": 151.51833,
+            "Y": 8.025645,
+            "Z": 191.7166
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 961,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 1041534,
+          "Position": {
+            "X": 152.33081,
+            "Y": 8.025643,
+            "Z": 184.03906
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1041535,
+          "Position": {
+            "X": 109.60547,
+            "Y": 8.368781,
+            "Z": 224.81116
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041537,
+          "Position": {
+            "X": 189.10498,
+            "Y": 3.5163531,
+            "Z": 354.818
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

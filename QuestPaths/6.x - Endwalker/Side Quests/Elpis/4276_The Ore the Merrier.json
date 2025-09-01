@@ -1,0 +1,124 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037942,
+          "Position": {
+            "X": 182.17737,
+            "Y": 8.025646,
+            "Z": 186.78564
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040897,
+          "Position": {
+            "X": 231.86072,
+            "Y": -2.4413753,
+            "Z": 381.85706
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040895,
+          "Position": {
+            "X": 414.54187,
+            "Y": -8.804526,
+            "Z": 268.1162
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003265,
+          "Fly": true
+        },
+        {
+          "DataId": 1040894,
+          "Position": {
+            "X": 461.9364,
+            "Y": -10.488545,
+            "Z": 206.16455
+          },
+          "$": "vnavmesh gets stuck trying to land on tree. Increasing StopDistance a bit.",
+          "StopDistance": 3,
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003265,
+          "Fly": true
+        },
+        {
+          "DataId": 1040896,
+          "Position": {
+            "X": 437.94922,
+            "Y": -13.039528,
+            "Z": 20.798035
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [
+            14067
+          ],
+          "ItemId": 2003265,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040897,
+          "Position": {
+            "X": 231.86072,
+            "Y": -2.4413753,
+            "Z": 381.85706
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037942,
+          "Position": {
+            "X": 182.17737,
+            "Y": 8.025646,
+            "Z": 186.78564
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041426,
+          "Position": {
+            "X": -416.5561,
+            "Y": 142.10878,
+            "Z": -205.67645
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Poieten Oikos",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041431,
+          "Position": {
+            "X": -388.8457,
+            "Y": 153.32294,
+            "Z": -28.152893
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041432,
+          "Position": {
+            "X": -414.63342,
+            "Y": 148.43988,
+            "Z": 156.32861
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041432,
+          "Position": {
+            "X": -414.63342,
+            "Y": 148.43988,
+            "Z": 156.32861
+          },
+          "TerritoryId": 961,
+          "InteractionType": "UseItem",
+          "ItemId": 2003304
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041434,
+          "Position": {
+            "X": -417.56317,
+            "Y": 148.1228,
+            "Z": 148.33289
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4514
+        }
+      ]
+    }
+  ]
+}

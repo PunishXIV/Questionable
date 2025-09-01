@@ -1,0 +1,83 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040639,
+          "Position": {
+            "X": 137.65161,
+            "Y": 7.3858566,
+            "Z": 281.84937
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040638,
+          "Position": {
+            "X": 214.67908,
+            "Y": 20.261322,
+            "Z": 601.15967
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG002_04277_Q1_000_000",
+              "Answer": "TEXT_AKTKZG002_04277_A1_000_001"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041878,
+          "Position": {
+            "X": 302.87634,
+            "Y": -9.890027,
+            "Z": 417.99023
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041877,
+          "Position": {
+            "X": 135.97314,
+            "Y": 7.3858566,
+            "Z": 281.42212
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

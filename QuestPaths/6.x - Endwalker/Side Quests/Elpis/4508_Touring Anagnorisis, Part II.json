@@ -1,0 +1,97 @@
+{
+  "$schema": "https://github.com/PunishXIV/Questionable/raw/refs/heads/main/QuestPaths/quest-v1.json",
+  "Author": "Clockwise Starr",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041328,
+          "Position": {
+            "X": 166.39954,
+            "Y": 9.457411,
+            "Z": 236.34692
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG102_04508_Q1_000_000",
+              "Answer": "TEXT_AKTKZG102_04508_A1_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Elpis - Anagnorisis",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041363,
+          "Position": {
+            "X": 258.68616,
+            "Y": 6.731658,
+            "Z": 325.55127
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG102_04508_Q2_000_000",
+              "Answer": "TEXT_AKTKZG102_04508_A2_000_001"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041364,
+          "Position": {
+            "X": 284.77905,
+            "Y": 17.185234,
+            "Z": 585.687
+          },
+          "TerritoryId": 961,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041365,
+          "Position": {
+            "X": 640.2228,
+            "Y": 10.127236,
+            "Z": 15.731995
+          },
+          "TerritoryId": 961,
+          "InteractionType": "CompleteQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZG102_04508_Q4_000_000",
+              "Answer": "TEXT_AKTKZG102_04508_A4_000_002"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
