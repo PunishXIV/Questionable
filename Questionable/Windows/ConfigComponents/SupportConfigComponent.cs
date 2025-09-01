@@ -19,7 +19,6 @@ internal sealed class SupportConfigComponent : ConfigComponent
     private const string GitHubUrl = "https://GitHub.com/PunishXIV/Questionable";
     private const string WikiUrl = "https://GitHub.com/PunishXIV/Questionable/wiki";
     private const string AkechiSponsorUrl = "https://ko-fi.com/akechikun";
-    private const string LimianaSponsorUrl = "https://www.patreon.com/NightmareXIV";
 
     public SupportConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<SupportConfigComponent> logger)
         : base(pluginInterface, configuration) => _logger = logger;
@@ -169,8 +168,6 @@ internal sealed class SupportConfigComponent : ConfigComponent
             {
                 if (ImGui.Button("Sponsor", new Vector2(ButtonWidth, ButtonHeight)))
                     OpenLink(AkechiSponsorUrl);
-                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-                    OpenLink(LimianaSponsorUrl);
                 if (ImGui.IsItemHovered())
                 {
                     ImGui.BeginTooltip();
@@ -181,14 +178,6 @@ internal sealed class SupportConfigComponent : ConfigComponent
                     ImGui.SameLine();
                     using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
                         ImGui.Text("Sponsor Akechi");
-                    ImGui.Spacing();
-                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.9f, 0.9f, 0.2f, 1.0f)))
-                        ImGui.Text("Right Click");
-                    ImGui.SameLine();
-                    ImGui.Text("→");
-                    ImGui.SameLine();
-                    using (ImRaii.PushColor(ImGuiCol.Text, new Vector4(0.7f, 0.7f, 1.0f, 1.0f)))
-                        ImGui.Text("Sponsor Limiana");
                     ImGui.EndTooltip();
                 }
             }
