@@ -43,6 +43,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool AutoStepRefreshEnabled { get; set; } = true;
         public int AutoStepRefreshDelaySeconds { get; set; } = 10;
+        public bool HideSeasonalEventsFromJournalProgress { get; set; }
     }
 
     internal sealed class StopConfiguration

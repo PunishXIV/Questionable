@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Globalization;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
@@ -34,6 +35,8 @@ internal sealed class QuestRegistry
     private readonly Dictionary<ElementId, Quest> _quests = [];
     private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _contentFinderConditionIds = [];
     private readonly List<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> _lowPriorityContentFinderConditionQuests = [];
+
+    private readonly Dictionary<ElementId, string> _questFolderNames = new();
 
     public QuestRegistry(
         IDalamudPluginInterface pluginInterface,
@@ -70,6 +73,7 @@ internal sealed class QuestRegistry
         _quests.Clear();
         _contentFinderConditionIds.Clear();
         _lowPriorityContentFinderConditionQuests.Clear();
+        _questFolderNames.Clear();
 
         LoadQuestsFromAssembly();
         LoadQuestsFromProjectDirectory();
@@ -190,7 +194,7 @@ internal sealed class QuestRegistry
         _questValidator.Validate(_quests.Values.Where(x => x.Source != Quest.ESource.Assembly).ToList());
     }
 
-    private void LoadQuestFromStream(string fileName, Stream stream, Quest.ESource source)
+    private void LoadQuestFromStream(string fileName, Stream stream, Quest.ESource source, string directoryName)
     {
         if (source == Quest.ESource.UserDirectory)
             _logger.LogTrace("Loading quest from '{FileName}'", fileName);
@@ -201,8 +205,52 @@ internal sealed class QuestRegistry
         var questNode = JsonNode.Parse(stream)!;
         _jsonSchemaValidator.Enqueue(questId, questNode);
 
+        // Parse optional seasonal override fields from the JSON before creating the Quest object.
+        bool? isSeasonalOverride = null;
+        DateTime? expiryOverride = null;
+        if (questNode is JsonObject obj)
+        {
+            if (obj.TryGetPropertyValue("IsSeasonalQuest", out var seasonalNode) && seasonalNode != null)
+            {
+                try
+                {
+                    isSeasonalOverride = seasonalNode.GetValue<bool>();
+                    _logger.LogDebug("Quest {QuestId}: parsed IsSeasonalQuest override = {IsSeasonal}", questId, isSeasonalOverride);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogWarning(e, "Quest {QuestId}: failed to parse IsSeasonalQuest from JSON", questId);
+                }
+            }
+
+            if (obj.TryGetPropertyValue("SeasonalQuestExpiry", out var expiryNode) && expiryNode != null)
+            {
+                try
+                {
+                    var s = expiryNode.GetValue<string>();
+                    if (!string.IsNullOrEmpty(s))
+                    {
+                        if (DateTime.TryParse(s, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var dt))
+                            expiryOverride = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
+                        else
+                            expiryOverride = DateTime.Parse(s, null, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal);
+
+                        _logger.LogDebug("Quest {QuestId}: parsed SeasonalQuestExpiry override = {Expiry}", questId, expiryOverride?.ToString("o"));
+                    }
+                }
+                catch (Exception e)
+                {
+                    _logger.LogWarning(e, "Quest {QuestId}: failed to parse SeasonalQuestExpiry from JSON", questId);
+                }
+            }
+        }
+
         var questRoot = questNode.Deserialize<QuestRoot>()!;
         var questInfo = _questData.GetQuestInfo(questId);
+        // Apply overrides if present
+        if (isSeasonalOverride.HasValue || expiryOverride.HasValue)
+            _questData.ApplySeasonalOverride(questId, isSeasonalOverride ?? questInfo.IsSeasonalQuest, expiryOverride);
+
         Quest quest = new Quest
         {
             Id = questId,
@@ -211,6 +259,9 @@ internal sealed class QuestRegistry
             Source = source,
         };
         _quests[quest.Id] = quest;
+
+        if (!string.IsNullOrEmpty(directoryName))
+            _questFolderNames[questId] = directoryName;
     }
 
     private void LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,
@@ -229,7 +280,8 @@ internal sealed class QuestRegistry
             try
             {
                 using FileStream stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read);
-                LoadQuestFromStream(fileInfo.Name, stream, source);
+                // pass directory.Name as the folder (event) name
+                LoadQuestFromStream(fileInfo.Name, stream, source, directory.Name);
             }
             catch (Exception e)
             {
@@ -279,5 +331,14 @@ internal sealed class QuestRegistry
 
         dutyOptions = null;
         return false;
+    }
+    public IEnumerable<ElementId> GetAllQuestIds()
+    {
+        return _quests.Keys;
+    }
+
+    public bool TryGetQuestFolderName(ElementId questId, [NotNullWhen(true)] out string? folderName)
+    {
+        return _questFolderNames.TryGetValue(questId, out folderName);
     }
 }

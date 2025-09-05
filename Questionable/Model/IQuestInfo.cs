@@ -13,6 +13,8 @@ internal interface IQuestInfo
     public string Name { get; }
     public uint IssuerDataId { get; }
     public bool IsRepeatable { get; }
+    public bool IsSeasonalQuest => false;
+    public DateTime? SeasonalQuestExpiry => null;
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; }
     public EQuestJoin PreviousQuestJoin { get; }
     public ushort Level { get; }

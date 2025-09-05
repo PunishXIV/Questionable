@@ -1,0 +1,1864 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qstxiv.github.io/schema/quest-v1.json",
+  "title": "Questionable V1",
+  "description": "A series of quest sequences",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://qstxiv.github.io/schema/quest-v1.json"
+    },
+    "Author": {
+      "description": "Author of the quest sequence",
+      "type": [
+        "string",
+        "array"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "Disabled": {
+      "type": "boolean"
+    },
+    "Interruptible": {
+      "type": "boolean",
+      "description": "If set to false, no priority quest (e.g. class quests) will be done while this is the currently active quest"
+    },
+    "IsSeasonalQuest": {
+      "type": "boolean",
+      "description": "Set to true if this is an event quest (e.g. seasonal event)"
+    },
+    "SeasonalQuestExpiry": {
+      "description": "If this is an seasonal (event) quest, the date and time (in UTC) when this quest should no longer be available",
+      "format": "date-time",
+      "type": [ "string", "null" ]
+    },
+    "Comment": {
+      "type": "string"
+    },
+    "$": {
+      "type": "string",
+      "description": "Dev Comment (not visible in-game)"
+    },
+    "QuestSequence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Sequence": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+          },
+          "Steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/Step"
+            },
+            "minItems": 1,
+            "description": "All steps necessary to complete the quest sequence. If a sequence has no steps (e.g. if it is cutscene-only), this element should not be used."
+          },
+          "Comment": {
+            "type": "string"
+          },
+          "$": {
+            "type": "string",
+            "description": "Dev Comment (not visible in-game)"
+          }
+        },
+        "required": [
+          "Sequence"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "QuestSequence",
+    "Author"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "Step": {
+      "type": "object",
+      "properties": {
+        "DataId": {
+          "type": "integer",
+          "description": "The data id of the NPC/Object/Aetheryte/Aether Current",
+          "exclusiveMinimum": 0
+        },
+        "Position": {
+          "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+        },
+        "StopDistance": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Set if pathfinding should stop closer or further away from the default stop distance",
+          "minimum": 0.25
+        },
+        "IgnoreDistanceToObject": {
+          "type": "boolean",
+          "description": "Most interactions with objects are checked for a Y (height) difference of 2 in-game units. If set to true, the game won't attempt to get any closer if the height difference is larger than this."
+        },
+        "RestartNavigationIfCancelled": {
+          "type": "boolean",
+          "description": "For some specific loading screen transitions (e.g. when entering/leaving the water through the portals in the ruby sea), setting this to 'false' means it won't re-attempt to move to the portal after the loading animation"
+        },
+        "TerritoryId": {
+          "type": "integer",
+          "description": "The territory id associated with the location",
+          "exclusiveMinimum": 0
+        },
+        "TargetTerritoryId": {
+          "type": "integer",
+          "description": "If set, this step is complete (movement-wise) if this territory id is reached",
+          "exclusiveMinimum": 0
+        },
+        "InteractionType": {
+          "type": "string",
+          "description": "What to do at the position",
+          "enum": [
+            "None",
+            "Interact",
+            "WalkTo",
+            "AttuneAethernetShard",
+            "AttuneAetheryte",
+            "RegisterFreeOrFavoredAetheryte",
+            "AttuneAetherCurrent",
+            "Combat",
+            "UseItem",
+            "EquipItem",
+            "PurchaseItem",
+            "EquipRecommended",
+            "Say",
+            "Emote",
+            "Action",
+            "StatusOff",
+            "WaitForNpcAtPosition",
+            "WaitForManualProgress",
+            "Duty",
+            "SinglePlayerDuty",
+            "Jump",
+            "Dive",
+            "Craft",
+            "Gather",
+            "Snipe",
+            "SwitchClass",
+            "UnlockTaxiStand",
+            "Instruction",
+            "AcceptQuest",
+            "CompleteQuest",
+            "InitiateLeve"
+          ]
+        },
+        "Disabled": {
+          "description": "Whether this step is disabled (see SkipIf for more control)",
+          "type": "boolean"
+        },
+        "DisableNavmesh": {
+          "description": "If true, will go to the position in a straight line instead of using pathfinding",
+          "type": "boolean"
+        },
+        "Mount": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "If true, will mount regardless of distance to position. If false, will unmount."
+        },
+        "Fly": {
+          "type": "boolean",
+          "description": "If true and flying is unlocked in a zone, will use a flight path"
+        },
+        "Land": {
+          "type": "boolean",
+          "description": "If true and flying, will attempt to land on the ground"
+        },
+        "Sprint": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "AetheryteShortcut": {
+          "description": "The Aetheryte to teleport to (before moving)",
+          "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+        },
+        "AethernetShortcut": {
+          "type": "array",
+          "description": "A pair of aethernet locations (from + to) to use as a shortcut",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "$ref": "https://qstxiv.github.io/schema/common-aethernetshard.json"
+          }
+        },
+        "ItemId": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The Item to use",
+          "exclusiveMinimum": 0,
+          "maximum": 2010000
+        },
+        "SkipConditions": {
+          "type": "object",
+          "properties": {
+            "StepIf": {
+              "type": "object",
+              "properties": {
+                "Never": {
+                  "type": "boolean"
+                },
+                "CompletionQuestVariablesFlags": {
+                  "$ref": "https://qstxiv.github.io/schema/common-completionflags.json"
+                },
+                "Flying": {
+                  "type": "string",
+                  "enum": [
+                    "Locked",
+                    "Unlocked"
+                  ]
+                },
+                "Chocobo": {
+                  "type": "string",
+                  "enum": [
+                    "Locked",
+                    "Unlocked"
+                  ]
+                },
+                "Diving": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                },
+                "NotTargetable": {
+                  "type": "boolean"
+                },
+                "InTerritory": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "NotInTerritory": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "Item": {
+                  "type": "object",
+                  "properties": {
+                    "NotInInventory": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "QuestsAccepted": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "number",
+                      "string"
+                    ]
+                  }
+                },
+                "QuestsCompleted": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "number",
+                      "string"
+                    ]
+                  }
+                },
+                "NotNamePlateIconId": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "AetheryteLocked": {
+                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                },
+                "AetheryteUnlocked": {
+                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                },
+                "NearPosition": {
+                  "type": "object",
+                  "properties": {
+                    "Position": {
+                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                    },
+                    "MaximumDistance": {
+                      "type": "number"
+                    },
+                    "TerritoryId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "Position",
+                    "MaximumDistance",
+                    "TerritoryId"
+                  ],
+                  "additionalProperties": false
+                },
+                "NotNearPosition": {
+                  "type": "object",
+                  "properties": {
+                    "Position": {
+                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                    },
+                    "MaximumDistance": {
+                      "type": "number"
+                    },
+                    "TerritoryId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "Position",
+                    "MaximumDistance",
+                    "TerritoryId"
+                  ],
+                  "additionalProperties": false
+                },
+                "ExtraCondition": {
+                  "type": "string",
+                  "enum": [
+                    "WakingSandsMainArea",
+                    "WakingSandsSolar",
+                    "RisingStonesSolar",
+                    "RoguesGuild",
+                    "NotRoguesGuild",
+                    "DockStorehouse",
+                    "SkipFreeFantasia"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "AetheryteShortcutIf": {
+              "type": "object",
+              "properties": {
+                "Never": {
+                  "type": "boolean"
+                },
+                "InSameTerritory": {
+                  "type": "boolean"
+                },
+                "InTerritory": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "QuestsAccepted": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "number",
+                      "string"
+                    ]
+                  }
+                },
+                "QuestsCompleted": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "number",
+                      "string"
+                    ]
+                  }
+                },
+                "AetheryteLocked": {
+                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                },
+                "AetheryteUnlocked": {
+                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                },
+                "RequiredQuestVariablesNotMet": {
+                  "type": "boolean"
+                },
+                "NearPosition": {
+                  "type": "object",
+                  "properties": {
+                    "Position": {
+                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                    },
+                    "MaximumDistance": {
+                      "type": "number"
+                    },
+                    "TerritoryId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "Position",
+                    "MaximumDistance",
+                    "TerritoryId"
+                  ],
+                  "additionalProperties": false
+                },
+                "NotNearPosition": {
+                  "type": "object",
+                  "properties": {
+                    "Position": {
+                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                    },
+                    "MaximumDistance": {
+                      "type": "number"
+                    },
+                    "TerritoryId": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "Position",
+                    "MaximumDistance",
+                    "TerritoryId"
+                  ],
+                  "additionalProperties": false
+                },
+                "ExtraCondition": {
+                  "type": "string",
+                  "enum": [
+                    "SkipFreeFantasia"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "AethernetShortcutIf": {
+              "type": "object",
+              "properties": {
+                "Never": {
+                  "type": "boolean"
+                },
+                "InSameTerritory": {
+                  "type": "boolean"
+                },
+                "AetheryteLocked": {
+                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                },
+                "AetheryteUnlocked": {
+                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "CompletionQuestVariablesFlags": {
+          "$ref": "https://qstxiv.github.io/schema/common-completionflags.json"
+        },
+        "RequiredQuestVariables": {
+          "type": "array",
+          "description": "Certain quests (primarily beast tribes/allied societies) have a RNG element to spawning targets, and the step should be skipped in its entirety if none of the sets below match",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "number",
+                "object"
+              ],
+              "properties": {
+                "High": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 15
+                },
+                "Low": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "minimum": 0,
+                  "maximum": 15
+                }
+              },
+              "minimum": 0,
+              "maximum": 255
+            }
+          }
+        },
+        "RequiredCurrentJob": {
+          "description": "Which class or job you are using whenever this step gets executed",
+          "type": "array",
+          "items": {
+            "$ref": "https://qstxiv.github.io/schema/common-classjob.json"
+          }
+        },
+        "RequiredQuestAcceptedJob": {
+          "description": "Which class or job you were using when accepting this quest (e.g. for beast tribes)",
+          "type": "array",
+          "items": {
+            "$ref": "https://qstxiv.github.io/schema/common-classjob.json"
+          }
+        },
+        "DelaySecondsAtStart": {
+          "description": "Time to wait before starting",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "Comment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "TerritoryId",
+        "InteractionType"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "IsSeasonalQuest": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "SeasonalQuestExpiry": {
+                "description": "If this is an seasonal (event) quest, the date and time (in UTC) when this quest should no longer be available",
+                "format": "date-time",
+                "type": [ "string", "null" ]
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "required": [
+                "SeasonalQuestExpiry"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Interact"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "PickUpItemId": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "DataId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "WalkTo"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "Position"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "anyOf": [
+                  {
+                    "const": "AttuneAetheryte"
+                  },
+                  {
+                    "const": "RegisterFreeOrFavoredAetheryte"
+                  }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "Aetheryte": {
+                "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
+              },
+              "DataId": {
+                "type": "null"
+              },
+              "Position": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "Aetheryte"
+            ]
+          },
+          "else": {
+            "properties": {
+              "Aetheryte": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "AttuneAethernetShard"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "AethernetShard": {
+                "$ref": "https://qstxiv.github.io/schema/common-aethernetshard.json"
+              },
+              "DataId": {
+                "type": "null"
+              },
+              "Position": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "AethernetShard"
+            ]
+          },
+          "else": {
+            "properties": {
+              "AethernetShard": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "AttuneAetherCurrent"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "AetherCurrentId": {
+                "type": "integer",
+                "description": "The aether current id, used to check if a given aetheryte is unlocked",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "DataId",
+              "Position",
+              "AetherCurrentId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Combat"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "EnemySpawnType": {
+                "type": "string",
+                "description": "Determines how enemy spawning is handled in combat locations",
+                "enum": [
+                  "AutoOnEnterArea",
+                  "AfterInteraction",
+                  "AfterItemUse",
+                  "AfterAction",
+                  "AfterEmote",
+                  "OverworldEnemies",
+                  "FateEnemies",
+                  "FinishCombatIfAny"
+                ]
+              },
+              "KillEnemyDataIds": {
+                "description": "The enemy data ids which are supposed to be killed",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "ComplexCombatData": {
+                "description": "If multiple different enemies are supposed to be killed in a single quest step, this typically is handled via items",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "DataId": {
+                      "description": "The enemy data id which is supposed to be killed",
+                      "type": "integer"
+                    },
+                    "NameId": {
+                      "description": "Name id of the enemy which is supposed to be killed, helpful if multiple nearby enemies share the same DataId",
+                      "type": "integer"
+                    },
+                    "MinimumKillCount": {
+                      "description": "Overworld mobs: If this number of mobs has been killed, will wait a bit before attempting to pull another mob to see if the quest progresses",
+                      "type": "integer"
+                    },
+                    "RewardItemId": {
+                      "type": "integer"
+                    },
+                    "RewardItemCount": {
+                      "type": "integer"
+                    },
+                    "CompletionQuestVariablesFlags": {
+                      "$ref": "https://qstxiv.github.io/schema/common-completionflags.json"
+                    },
+                    "IgnoreQuestMarker": {
+                      "type": "boolean"
+                    },
+                    "$": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "DataId"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "CombatItemUse": {
+                "description": "Unlike the 'AfterItemUse' condition that is used for spawning an enemy in the first place, interacting with an item at a certain stage of combat is required",
+                "type": "object",
+                "properties": {
+                  "ItemId": {
+                    "type": "integer",
+                    "maximum": 2010000
+                  },
+                  "Condition": {
+                    "type": "string",
+                    "enum": [
+                      "Incapacitated",
+                      "Health%",
+                      "MissingStatus"
+                    ]
+                  },
+                  "Value": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "ItemId",
+                  "Condition"
+                ],
+                "additionalProperties": false
+              },
+              "CombatDelaySecondsAtStart": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "Position",
+              "EnemySpawnType"
+            ],
+            "oneOf": [
+              {
+                "required": [
+                  "KillEnemyDataIds"
+                ]
+              },
+              {
+                "required": [
+                  "ComplexCombatData"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "UseItem"
+              },
+              "ItemId": {
+                "minimum": 2000000
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "Position"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "UseItem"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "GroundTarget": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "default": false
+              }
+            },
+            "required": [
+              "ItemId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Combat"
+              },
+              "EnemySpawnType": {
+                "const": "AfterItemUse"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "GroundTarget": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "default": false
+              }
+            },
+            "required": [
+              "ItemId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "EquipItem"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "ItemId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "PurchaseItem"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ItemCount": {
+                "type": "integer"
+              },
+              "PurchaseMenu": {
+                "type": "object",
+                "description": "The text to use with /say",
+                "properties": {
+                  "ExcelSheet": {
+                    "type": "string"
+                  },
+                  "Key": {
+                    "type": [
+                      "string",
+                      "integer"
+                    ]
+                  }
+                },
+                "required": [
+                  "Key"
+                ]
+              }
+            },
+            "required": [
+              "ItemId",
+              "ItemCount"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "anyOf": [
+                  {
+                    "const": "Emote"
+                  },
+                  {
+                    "const": "AcceptQuest"
+                  },
+                  {
+                    "const": "CompleteQuest"
+                  },
+                  {
+                    "const": "SinglePlayerDuty"
+                  }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "Emote": {
+                "type": "string",
+                "description": "The emote to use",
+                "enum": [
+                  "surprised",
+                  "angry",
+                  "furious",
+                  "blush",
+                  "bow",
+                  "cheer",
+                  "clap",
+                  "beckon",
+                  "comfort",
+                  "cry",
+                  "dance",
+                  "doubt",
+                  "doze",
+                  "fume",
+                  "goodbye",
+                  "wave",
+                  "huh",
+                  "joy",
+                  "kneel",
+                  "chuckle",
+                  "laugh",
+                  "lookout",
+                  "me",
+                  "no",
+                  "deny",
+                  "panic",
+                  "point",
+                  "poke",
+                  "congratulate",
+                  "psych",
+                  "salute",
+                  "shocked",
+                  "shrug",
+                  "rally",
+                  "soothe",
+                  "stagger",
+                  "stretch",
+                  "sulk",
+                  "think",
+                  "upset",
+                  "welcome",
+                  "yes",
+                  "thumbsup",
+                  "examineself",
+                  "pose",
+                  "blowkiss",
+                  "grovel",
+                  "happy",
+                  "disappointed",
+                  "lounge",
+                  "groundsit",
+                  "airquotes",
+                  "gcsalute",
+                  "pray",
+                  "imperialsalute",
+                  "visor",
+                  "megaflare",
+                  "crimsonlotus",
+                  "charmed",
+                  "cheeron",
+                  "cheerwave",
+                  "cheerjump",
+                  "straightface",
+                  "smile",
+                  "grin",
+                  "smirk",
+                  "taunt",
+                  "shuteyes",
+                  "sad",
+                  "scared",
+                  "amazed",
+                  "ouch",
+                  "annoyed",
+                  "alert",
+                  "worried",
+                  "biggrin",
+                  "reflect",
+                  "furrow",
+                  "scoff",
+                  "throw",
+                  "changepose",
+                  "stepdance",
+                  "harvestdance",
+                  "balldance",
+                  "mandervilledance",
+                  "stroke",
+                  "handover",
+                  "bombdance",
+                  "hurray",
+                  "slap",
+                  "hug",
+                  "embrace",
+                  "hildibrand",
+                  "fistbump",
+                  "thavdance",
+                  "golddance",
+                  "sundance",
+                  "battlestance",
+                  "victorypose",
+                  "backflip",
+                  "easterngreeting",
+                  "eureka",
+                  "mogdance",
+                  "haurchefant",
+                  "easternstretch",
+                  "easterndance",
+                  "rangerpose1r",
+                  "rangerpose2r",
+                  "rangerpose3r",
+                  "wink",
+                  "rangerpose1l",
+                  "rangerpose2l",
+                  "rangerpose3l",
+                  "facepalm",
+                  "zantetsuken",
+                  "flex",
+                  "respect",
+                  "sneer",
+                  "prettyplease",
+                  "playdead",
+                  "iceheart",
+                  "moonlift",
+                  "dote",
+                  "spectacles",
+                  "songbird",
+                  "waterfloat",
+                  "waterflip",
+                  "puckerup",
+                  "powerup",
+                  "easternbow",
+                  "squats",
+                  "pushups",
+                  "situps",
+                  "breathcontrol",
+                  "converse",
+                  "concentrate",
+                  "disturbed",
+                  "simper",
+                  "beam",
+                  "attention",
+                  "atease",
+                  "box",
+                  "ritualprayer",
+                  "tremble",
+                  "winded",
+                  "aback",
+                  "greet",
+                  "boxstep",
+                  "sidestep",
+                  "ultima",
+                  "yoldance",
+                  "splash",
+                  "sweat",
+                  "shiver",
+                  "elucidate",
+                  "ponder",
+                  "leftwink",
+                  "getfantasy",
+                  "popotostep",
+                  "hum",
+                  "confirm",
+                  "scheme",
+                  "endure",
+                  "tomestone",
+                  "heeltoe",
+                  "goobbuedo",
+                  "gratuity",
+                  "fistpump",
+                  "reprimand",
+                  "sabotender",
+                  "mandervillemambo",
+                  "laliho",
+                  "simulationm",
+                  "simulationf",
+                  "toast",
+                  "lean",
+                  "headache",
+                  "snap",
+                  "breakfast",
+                  "read",
+                  "insist",
+                  "consider",
+                  "wasshoi",
+                  "flowershower",
+                  "flamedance",
+                  "highfive",
+                  "guard",
+                  "malevolence",
+                  "beesknees",
+                  "lalihop",
+                  "eatriceball",
+                  "eatapple",
+                  "wringhands",
+                  "sweep",
+                  "paintblack",
+                  "paintred",
+                  "paintyellow",
+                  "paintblue",
+                  "fakesmile",
+                  "pantomime",
+                  "vexed",
+                  "shush",
+                  "eatpizza",
+                  "clutchhead",
+                  "eatchocolate",
+                  "eategg",
+                  "content",
+                  "sheathe",
+                  "draw",
+                  "tea",
+                  "determined",
+                  "showright",
+                  "showleft",
+                  "deride",
+                  "wow",
+                  "eatpumpkincookie",
+                  "spirit",
+                  "magictrick",
+                  "littleladiesdance",
+                  "linkpearl",
+                  "earwiggle",
+                  "frighten",
+                  "adventoflight",
+                  "jumpforjoy1",
+                  "jumpforjoy2",
+                  "jumpforjoy3",
+                  "jumpforjoy4",
+                  "jumpforjoy5",
+                  "handtoheart",
+                  "cheeronbright",
+                  "cheerwaveviolet",
+                  "cheerjumpgreen",
+                  "allsaintscharm",
+                  "lophop",
+                  "reference",
+                  "eatchicken",
+                  "sundering",
+                  "slump",
+                  "loveheart",
+                  "humbletriumph",
+                  "victoryreveal",
+                  "fryegg",
+                  "uchiwasshoi",
+                  "attend",
+                  "water",
+                  "shakedrink",
+                  "unbound",
+                  "bouquet",
+                  "blowbubbles",
+                  "ohokaliy",
+                  "visage",
+                  "photograph",
+                  "overreact",
+                  "twirl",
+                  "dazed",
+                  "rage",
+                  "tomescroll",
+                  "study",
+                  "gridaniansip",
+                  "uldahnsip",
+                  "lominsansip",
+                  "gridaniangulp",
+                  "uldahngulp",
+                  "lominsangulp",
+                  "pen"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Emote"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "Position",
+              "Emote"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "anyOf": [
+                  {
+                    "const": "Say"
+                  },
+                  {
+                    "const": "CompleteQuest"
+                  }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ChatMessage": {
+                "type": "object",
+                "description": "The text to use with /say",
+                "properties": {
+                  "ExcelSheet": {
+                    "type": "string"
+                  },
+                  "Key": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "Key"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Say"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "ChatMessage"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Action"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "Action": {
+                "type": "string",
+                "description": "The action to use",
+                "enum": [
+                  "Heavy Swing",
+                  "Bootshine",
+                  "Twin Snakes",
+                  "Demolish",
+                  "Dragon Kick",
+                  "Heavy Shot",
+                  "Cure",
+                  "Cure II",
+                  "Eukrasia",
+                  "Diagnosis",
+                  "Eukrasian Diagnosis",
+                  "Esuna",
+                  "Physick",
+                  "Aspected Benefic",
+                  "Form Shift",
+                  "Fiery Breath",
+                  "Buffet (Sanuwa)",
+                  "Buffet (Griffin)",
+                  "Trample",
+                  "Fumigate",
+                  "Roar",
+                  "Seed",
+                  "Inhale",
+                  "Siphon Snout",
+                  "Peculiar Light",
+                  "Cannonfire",
+                  "Red Gulal",
+                  "Yellow Gulal",
+                  "Blue Gulal",
+                  "Electric Flux",
+                  "Hop-step",
+                  "Fuma Shuriken",
+                  "Katon",
+                  "Raiton",
+                  "Hide",
+                  "Slug Shot",
+                  "Bosom Brook",
+                  "Souleater",
+                  "Fire III",
+                  "Adloquium",
+                  "Water Cannon",
+                  "Wasshoi",
+                  "Shrouded Luminescence",
+                  "Big Sneeze",
+                  "Duty Action I",
+                  "Duty Action II"
+                ]
+              }
+            },
+            "required": [
+              "Action"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "StatusOff"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "Status": {
+                "type": "string",
+                "description": "The status to disable",
+                "enum": [
+                  "Hidden"
+                ]
+              }
+            },
+            "required": [
+              "Status"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Jump"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "JumpDestination": {
+                "type": "object",
+                "properties": {
+                  "Position": {
+                    "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
+                  },
+                  "StopDistance": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "description": "Set if pathfinding should stop closer or further away from the default stop distance",
+                    "exclusiveMinimum": 0
+                  },
+                  "DelaySeconds": {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  },
+                  "Type": {
+                    "type": "string",
+                    "enum": [
+                      "SingleJump",
+                      "RepeatedJumps"
+                    ],
+                    "default": "SingleJump"
+                  }
+                },
+                "required": [
+                  "Position"
+                ]
+              }
+            },
+            "required": [
+              "Position",
+              "JumpDestination"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "anyOf": [
+                  {
+                    "const": "Interact"
+                  },
+                  {
+                    "const": "SinglePlayerDuty"
+                  },
+                  {
+                    "const": "WaitForManualProgress"
+                  },
+                  {
+                    "const": "AcceptQuest"
+                  },
+                  {
+                    "const": "CompleteQuest"
+                  },
+                  {
+                    "const": "Instruction"
+                  },
+                  {
+                    "const": "Say"
+                  },
+                  {
+                    "const": "Emote"
+                  },
+                  {
+                    "const": "UseItem"
+                  }
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "DialogueChoices": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Type": {
+                      "type": "string",
+                      "enum": [
+                        "YesNo",
+                        "List"
+                      ]
+                    },
+                    "ExcelSheet": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Type"
+                  ],
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "Type": {
+                            "const": "YesNo"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "Prompt": {
+                            "type": [
+                              "string",
+                              "integer"
+                            ]
+                          },
+                          "PromptIsRegularExpression": {
+                            "type": "boolean"
+                          },
+                          "Yes": {
+                            "type": "boolean",
+                            "default": true
+                          }
+                        },
+                        "required": [
+                          "Prompt",
+                          "Yes"
+                        ]
+                      }
+                    },
+                    {
+                      "if": {
+                        "properties": {
+                          "Type": {
+                            "const": "List"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "Prompt": {
+                            "type": [
+                              "string",
+                              "integer",
+                              "null"
+                            ]
+                          },
+                          "PromptIsRegularExpression": {
+                            "type": "boolean"
+                          },
+                          "Answer": {
+                            "type": [
+                              "string",
+                              "integer"
+                            ]
+                          },
+                          "AnswerIsRegularExpression": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "Prompt",
+                          "Answer"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "PointMenuChoices": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Duty"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "DutyOptions": {
+                "type": "object",
+                "properties": {
+                  "ContentFinderConditionId": {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "exclusiveMaximum": 3000
+                  },
+                  "Enabled": {
+                    "type": "boolean"
+                  },
+                  "Notes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "TestedAutoDutyVersion": {
+                    "type": "string",
+                    "pattern": "^0\\.\\d+\\.\\d+\\.\\d+$"
+                  },
+                  "TestedBossModVersion": {
+                    "type": "string",
+                    "pattern": "^0\\.\\d+\\.\\d+\\.\\d+$"
+                  },
+                  "LowPriority": {
+                    "type": "boolean",
+                    "description": "Indicates that this dungeon is included in the 'Skip certain optional dungeons and raids' option"
+                  },
+                  "$": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "ContentFinderConditionId",
+                  "Enabled"
+                ]
+              },
+              "DataId": {
+                "type": "null"
+              },
+              "Position": {
+                "type": "null"
+              }
+            },
+            "required": [
+              "DutyOptions"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "SinglePlayerDuty"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "SinglePlayerDutyOptions": {
+                "type": "object",
+                "properties": {
+                  "Enabled": {
+                    "type": "boolean"
+                  },
+                  "Notes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "Index": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "If a quest has multiple solo instances (which affects 5 quests total), indicates which one this is"
+                  },
+                  "TestedBossModVersion": {
+                    "type": "string",
+                    "pattern": "^0\\.\\d+\\.\\d+\\.\\d+$"
+                  },
+                  "$": {
+                    "type": "string"
+                  }
+                },
+                "TODO_required": [
+                  "Enabled"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "WaitForNpcAtPosition"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "NpcWaitDistance": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "UnlockTaxiStand"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "TaxiStandId": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "DataId",
+              "Position",
+              "TaxiStandId"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "AcceptQuest"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "PickUpQuestId": {
+                "type": [
+                  "null",
+                  "number",
+                  "string"
+                ],
+                "description": "Determines the quest which should be accepted. If empty/null, accepts the quest corresponding to the file name."
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "CompleteQuest"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "TurnInQuestId": {
+                "type": [
+                  "null",
+                  "number",
+                  "string"
+                ],
+                "description": "Determines the quest which should be turned in. If empty/null, turns in the quest corresponding to the file name."
+              },
+              "NextQuestId": {
+                "type": [
+                  "null",
+                  "number",
+                  "string"
+                ],
+                "description": "For quest chains (e.g. DT healer role quests) Which quest to do next, given that you meet the required level."
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Craft"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ItemCount": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "ItemId",
+              "ItemCount"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Gather"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ItemsToGather": {
+                "type": "array",
+                "description": "Unlike crafting steps, which will always craft a single item id regardless of class, this allows for gathering different items depending on whether you've picked the quest up as miner or botanist",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ItemId": {
+                      "type": "number"
+                    },
+                    "AlternativeItemId": {
+                      "description": "For leves that allow you to gather two items with different chance percentage, this is the preferred item if the gathering chance is 100% (after buffs)",
+                      "type": "number"
+                    },
+                    "ItemCount": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "Collectability": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000
+                    }
+                  },
+                  "required": [
+                    "ItemId",
+                    "ItemCount"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "ItemsToGather"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "anyOf": [
+                  {
+                    "const": "WaitForManualProgress"
+                  },
+                  {
+                    "const": "Instruction"
+                  },
+                  {
+                    "const": "Snipe"
+                  }
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "Comment"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "SwitchClass"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "TargetClass": {
+                "$ref": "https://qstxiv.github.io/schema/common-classjob.json"
+              }
+            },
+            "required": [
+              "TargetClass"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

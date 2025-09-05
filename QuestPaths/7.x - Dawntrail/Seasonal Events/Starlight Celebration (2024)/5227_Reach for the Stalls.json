@@ -1,6 +1,8 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Starr",
+  "IsSeasonalQuest": true,
+  "SeasonalQuestExpiry": "2024-12-31",
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -15,6 +15,7 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameData;
 using LLib.GameUI;
 using Lumina.Excel.Sheets;
+using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
@@ -22,6 +23,7 @@ using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using Quest = Questionable.Model.Quest;
+using Questionable.Windows.QuestComponents;
 
 namespace Questionable.Functions;
 
@@ -37,6 +39,9 @@ internal sealed unsafe class QuestFunctions
     private readonly IClientState _clientState;
     private readonly IGameGui _gameGui;
     private readonly IAetheryteList _aetheryteList;
+    private readonly ILogger<QuestFunctions> _logger;
+
+    private readonly HashSet<ushort> _alreadyLoggedUnobtainableQuests = new();
 
     public QuestFunctions(
         QuestRegistry questRegistry,
@@ -48,7 +53,8 @@ internal sealed unsafe class QuestFunctions
         IDataManager dataManager,
         IClientState clientState,
         IGameGui gameGui,
-        IAetheryteList aetheryteList)
+        IAetheryteList aetheryteList,
+        ILogger<QuestFunctions> logger)
     {
         _questRegistry = questRegistry;
         _questData = questData;
@@ -60,6 +66,7 @@ internal sealed unsafe class QuestFunctions
         _clientState = clientState;
         _gameGui = gameGui;
         _aetheryteList = aetheryteList;
+        _logger = logger;
     }
 
     public QuestReference GetCurrentQuest(bool allowNewMsq = true)
@@ -712,6 +719,27 @@ internal sealed unsafe class QuestFunctions
         if (questInfo.Expansion > (EExpansionVersion)PlayerState.Instance()->MaxExpansion)
             return true;
 
+        // If journal genre is between 234 and 247 (inclusive) it's an event/seasonal quest.
+        // Only treat it as unobtainable if the quest has no quest path in the registry.
+        if (questInfo.JournalGenre >= 234 && questInfo.JournalGenre <= 247)
+        {
+            var hasPath = _questRegistry.TryGetQuest(questId, out Quest? q) &&
+                          q?.Root?.QuestSequence is { Count: > 0 };
+
+            if (!hasPath)
+            {
+                if (_alreadyLoggedUnobtainableQuests.Add(questId.Value))
+                {
+                    _questData.ApplySeasonalOverride(questId, true, null);
+                    _logger.LogDebug("Quest {QuestId} unobtainable: journal genre is 'event (seasonal)' and no quest path", questId);
+                    _logger.LogDebug("QuestInfo Genre is {JournalGenre}, Expansion is {Expansion}, StartingCity is {StartingCity}",
+                        questInfo.JournalGenre, questInfo.Expansion, questInfo.StartingCity);
+                }
+
+                return true;
+            }
+        }
+
         if (questInfo.QuestLocks.Count > 0)
         {
             var completedQuests = questInfo.QuestLocks.Count(x => IsQuestComplete(x) || x.Equals(extraCompletedQuest));
@@ -719,6 +747,42 @@ internal sealed unsafe class QuestFunctions
                 return true;
             else if (questInfo.QuestLockJoin == EQuestJoin.AtLeastOne && completedQuests > 0)
                 return true;
+        }
+
+        // treat expiry alone as authoritative
+        if (questInfo.SeasonalQuestExpiry is DateTime expiryValue)
+        {
+            DateTime expiryUtc;
+            if (expiryValue.TimeOfDay == TimeSpan.Zero)
+                expiryUtc = EventInfoComponent.AtDailyReset(DateOnly.FromDateTime(expiryValue));
+            else
+                expiryUtc = expiryValue.Kind == DateTimeKind.Utc ? expiryValue : expiryValue.ToUniversalTime();
+
+            if (DateTime.UtcNow > expiryUtc)
+            {
+                if (_alreadyLoggedUnobtainableQuests.Add(questId.Value))
+                {
+                    _logger.LogDebug("Quest {QuestId} unobtainable: seasonal expiry {ExpiryUtc} (UTC) is before now {NowUtc}",
+                        questId, expiryUtc.ToString("o"), DateTime.UtcNow.ToString("o"));
+                }
+
+                return true;
+            }
+        }
+
+        // Seasonal handling: if a quest is flagged seasonal and has no expiry, fall back to user preference.
+        if (questInfo.IsSeasonalQuest)
+        {
+            if (questInfo.SeasonalQuestExpiry is DateTime)
+            {
+                // expiry already handled above; not expired - allow
+            }
+            else
+            {
+                // No expiry provided: fall back to user preference whether to show incomplete seasonal events.
+                if (!_configuration.General.ShowIncompleteSeasonalEvents)
+                    return true;
+            }
         }
 
         if (_questData.GetLockedClassQuests().Contains(questId))

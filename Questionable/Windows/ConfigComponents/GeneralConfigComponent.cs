@@ -142,6 +142,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Configuration.General.ShowIncompleteSeasonalEvents = showIncompleteSeasonalEvents;
                 Save();
             }
+
+            bool hideSeasonalFromJournal = Configuration.General.HideSeasonalEventsFromJournalProgress;
+            if (ImGui.Checkbox("Hide Seasonal Events from Journal Progress", ref hideSeasonalFromJournal))
+            {
+                Configuration.General.HideSeasonalEventsFromJournalProgress = hideSeasonalFromJournal;
+                Save();
+            }
         }
 
         ImGui.Separator();

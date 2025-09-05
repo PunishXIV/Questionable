@@ -1,6 +1,8 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "WigglyMuffin",
+  "IsSeasonalQuest": true,
+  "SeasonalQuestExpiry": "2025-09-11",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -50,9 +52,9 @@
       "Steps": [
         {
           "Position": {
-              "X": 25.724976,
-              "Y": 44.5,
-              "Z": 186.5
+            "X": 25.724976,
+            "Y": 44.5,
+            "Z": 186.5
           },
           "TerritoryId": 128,
           "InteractionType": "WalkTo"
@@ -76,9 +78,9 @@
         {
           "DataId": 1053663,
           "Position": {
-              "X": -34.01245,
-              "Y": 71.548134,
-              "Z": 135.63745
+            "X": -34.01245,
+            "Y": 71.548134,
+            "Z": 135.63745
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
