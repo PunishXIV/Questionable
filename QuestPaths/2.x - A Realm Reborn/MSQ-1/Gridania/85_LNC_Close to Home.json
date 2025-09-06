@@ -62,7 +62,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "Comment": "TODO Questflags",
           "$": "If done after aetheryte: 33 1 0 0 0 128"
         },
         {
@@ -83,34 +82,6 @@
           "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gridania] Lancers' Guild"
-        },
-        {
-          "DataId": 1000251,
-          "Position": {
-            "X": 147.08167,
-            "Y": 15.5,
-            "Z": -267.99426
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "Comment": "Lancer Receptionist"
-        }
-      ]
-    },
-    {
-      "Sequence": 255,
-      "Steps": [
-        {
-          "DataId": 1000251,
-          "Position": {
-            "X": 147.08167,
-            "Y": 15.5,
-            "Z": -267.99426
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "Comment": "Pick up Class Quest",
-          "Disabled": true
         },
         {
           "TerritoryId": 133,
@@ -145,6 +116,37 @@
           ]
         },
         {
+          "DataId": 1000251,
+          "Position": {
+            "X": 147.08167,
+            "Y": 15.5,
+            "Z": -267.99426
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Lancers' Guild"
+          ],
+          "Comment": "Lancer Receptionist"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000251,
+          "Position": {
+            "X": 147.08167,
+            "Y": 15.5,
+            "Z": -267.99426
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 23
+        },
+        {
           "DataId": 1000100,
           "Position": {
             "X": 23.819275,
@@ -154,7 +156,7 @@
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
+            "[Gridania] Lancers' Guild",
             "[Gridania] Airship Landing"
           ]
         }

@@ -26,6 +26,7 @@
           "AethernetShard": "[Ul'dah] Adventurers' Guild"
         },
         {
+          "$": "Walk to zone border",
           "Position": {
             "X": 95.43315,
             "Y": 4,
@@ -35,6 +36,7 @@
           "InteractionType": "WalkTo"
         },
         {
+          "$": "Speak with Seseroga",
           "DataId": 1003908,
           "Position": {
             "X": 137.95679,
@@ -53,6 +55,7 @@
           ]
         },
         {
+          "$": "Activate all aethernet shards",
           "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Sapphire Avenue Exchange"
@@ -78,44 +81,28 @@
           "AethernetShard": "[Ul'dah] Gladiators' Guild"
         },
         {
-          "DataId": 1002277,
-          "Position": {
-            "X": -97.550964,
-            "Y": 7.05,
-            "Z": 23.605652
-          },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            64
-          ]
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] The Chamber of Rule"
         },
         {
-          "DataId": 1002277,
-          "Position": {
-            "X": -97.550964,
-            "Y": 7.05,
-            "Z": 23.605652
-          },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 253,
-          "Disabled": true,
-          "Comment": "Level 1 class quest isn't finished"
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Ul'dah] Alchemists' Guild"
         },
         {
+          "$": "Go back to gladiator guild, walk to zone border",
           "Position": {
             "X": -112.64317,
             "Y": 7.734872,
             "Z": 9.960203
           },
           "TerritoryId": 131,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "AethernetShortcut": [
+            "[Ul'dah] Alchemists' Guild",
+            "[Ul'dah] Gladiators' Guild"
+          ]
         },
         {
           "TerritoryId": 130,
@@ -134,6 +121,34 @@
             null,
             128
           ]
+        },
+        {
+          "TerritoryId": 130,
+          "InteractionType": "RegisterFreeOrFavoredAetheryte",
+          "Aetheryte": "Ul'dah"
+        },
+        {
+          "$": "Class guild",
+          "DataId": 1002277,
+          "Position": {
+            "X": -97.550964,
+            "Y": 7.05,
+            "Z": 23.605652
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
         }
       ]
     },
@@ -141,9 +156,15 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 130,
-          "InteractionType": "RegisterFreeOrFavoredAetheryte",
-          "Aetheryte": "Ul'dah"
+          "DataId": 1002277,
+          "Position": {
+            "X": -97.550964,
+            "Y": 7.05,
+            "Z": 23.605652
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 253
         },
         {
           "DataId": 1001353,
@@ -155,7 +176,7 @@
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild",
             "[Ul'dah] Adventurers' Guild"
           ]
         }

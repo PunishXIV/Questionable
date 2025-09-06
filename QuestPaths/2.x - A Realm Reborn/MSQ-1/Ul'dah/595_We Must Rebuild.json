@@ -21,27 +21,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1001834,
-          "Position": {
-            "X": -23.331116,
-            "Y": 10,
-            "Z": -43.442444
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 131
-        },
-        {
-          "TerritoryId": 131,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Ul'dah] The Chamber of Rule"
-        },
-        {
-          "TerritoryId": 131,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Ul'dah] Alchemists' Guild"
-        },
-        {
           "DataId": 1003995,
           "Position": {
             "X": 75.33374,
@@ -51,7 +30,7 @@
           "TerritoryId": 141,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
+            "[Ul'dah] Adventurers' Guild",
             "[Ul'dah] Gate of Nald (Central Thanalan)"
           ]
         }
