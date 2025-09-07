@@ -1,0 +1,74 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "liza",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005563,
+          "Position": {
+            "X": 48.874634,
+            "Y": 6.0734596,
+            "Z": 251.17871
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 94.444595,
+            "Y": -30.168226,
+            "Z": -174.97914
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            2469,
+            2470
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003285,
+          "Position": {
+            "X": 93.79712,
+            "Y": -30.10614,
+            "Z": -177.29462
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2001184
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005563,
+          "Position": {
+            "X": 48.874634,
+            "Y": 6.0734596,
+            "Z": 251.17871
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
