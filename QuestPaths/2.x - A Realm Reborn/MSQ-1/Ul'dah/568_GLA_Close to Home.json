@@ -164,7 +164,9 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 253
+          "PickUpQuestId": 253,
+          "Comment": "Manual interaction required on 'yes'",
+          "$": "No clue why this requires manual. Tried copying DialogueChoices from 253, got a NPE. -aly"
         },
         {
           "DataId": 1001353,
