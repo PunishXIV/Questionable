@@ -40,14 +40,14 @@
         {
           "DataId": 2006950,
           "Position": {
-            "X": -450.9499,
-            "Y": -7.7058716,
-            "Z": -222.61395
+              "X": -450.2754,
+              "Y": -7.755768,
+              "Z": -223.37074
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "StopDistance": 1,
+          "Fly": true
         }
       ]
     },
@@ -78,8 +78,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "Fly": true
         }
       ]
     },
