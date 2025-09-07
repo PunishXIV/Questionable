@@ -21,11 +21,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 128,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] The Aftcastle"
-        },
-        {
           "TerritoryId": 134,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Middle La Noscea - Summerford Farms",

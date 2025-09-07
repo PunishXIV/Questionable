@@ -88,18 +88,23 @@
         },
         {
           "Position": {
-            "X": -83.8817,
-            "Y": 18.475962,
-            "Z": -29.903847
+            "X": -90.39562,
+            "Y": 22.249847,
+            "Z": 116.80034
           },
           "TerritoryId": 129,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 128,
-          "Comment": "Walk to Culinarians' Guild",
+          "Comment": "Walk to Aftcastle",
           "AethernetShortcut": [
             "[Limsa Lominsa] Fishermens' Guild",
             "[Limsa Lominsa] Aetheryte Plaza"
           ]
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] The Aftcastle"
         },
         {
           "TerritoryId": 128,
@@ -143,9 +148,15 @@
             "Z": -245.80762
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "Comment": "Pick up Class Quest",
-          "Disabled": true
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 311,
+          "SkipConditions": {
+            "StepIf": {
+              "QuestsCompleted": [
+                311
+              ]
+            }
+          }
         },
         {
           "DataId": 1000972,
@@ -155,7 +166,11 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }
