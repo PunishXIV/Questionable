@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -20,11 +20,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 128,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] The Aftcastle"
-        },
         {
           "TerritoryId": 134,
           "InteractionType": "AttuneAetheryte",

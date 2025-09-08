@@ -1,6 +1,6 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -62,7 +62,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "Comment": "TODO Questflags",
           "$": "If done after aetheryte: 33 1 0 0 0 128"
         },
         {
@@ -140,9 +139,8 @@
             "Z": -11.093384
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "Comment": "Pick up Class Quest",
-          "Disabled": true
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 22
         },
         {
           "DataId": 1000100,

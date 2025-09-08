@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -78,6 +78,45 @@
           "AethernetShard": "[Limsa Lominsa] Arcanists' Guild"
         },
         {
+          "TerritoryId": 129,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Fishermens' Guild",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ]
+        },
+        {
+          "Position": {
+            "X": -90.39562,
+            "Y": 22.249847,
+            "Z": 116.80034
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 128,
+          "Comment": "Walk to Aftcastle",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermens' Guild",
+            "[Limsa Lominsa] Aetheryte Plaza"
+          ]
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] The Aftcastle"
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Culinarians' Guild"
+        },
+        {
+          "TerritoryId": 128,
+          "InteractionType": "AttuneAethernetShard",
+          "AethernetShard": "[Limsa Lominsa] Marauders' Guild"
+        },
+        {
           "DataId": 1000895,
           "Position": {
             "X": -335.74432,
@@ -87,6 +126,10 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "Comment": "ACN Receptionist",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -109,43 +152,15 @@
             "Z": 1.3884888
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "Comment": "Pick up Class Quest",
-          "Disabled": true
-        },
-        {
-          "TerritoryId": 129,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] Fishermens' Guild",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
-        },
-        {
-          "Position": {
-            "X": -83.8817,
-            "Y": 18.475962,
-            "Z": -29.903847
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 128,
-          "Comment": "Walk to Culinarians' Guild",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermens' Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
-        },
-        {
-          "TerritoryId": 128,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] Culinarians' Guild"
-        },
-        {
-          "TerritoryId": 128,
-          "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] Marauders' Guild"
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 453,
+          "SkipConditions": {
+            "StepIf": {
+              "QuestsCompleted": [
+                453
+              ]
+            }
+          }
         },
         {
           "DataId": 1000972,
@@ -155,7 +170,11 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Arcanists' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     }

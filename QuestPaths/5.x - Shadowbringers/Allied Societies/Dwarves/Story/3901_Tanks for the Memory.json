@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "Theo",
+  "Author": "Theo,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +13,14 @@
             "Z": -412.71082
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANDWA006_03901_Q1_000_000",
+              "Answer": "TEXT_BANDWA006_03901_A1_000_001"
+            }
+          ]
         }
       ]
     },
@@ -29,7 +36,8 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true
+          "Fly": true,
+          "StopDistance": 1
         }
       ]
     },

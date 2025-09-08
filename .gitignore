@@ -1,6 +1,6 @@
 ﻿obj/
 bin/
-/.idea
-/.vs
-/.vscode
+.idea
+.vs
+.vscode
 *.user

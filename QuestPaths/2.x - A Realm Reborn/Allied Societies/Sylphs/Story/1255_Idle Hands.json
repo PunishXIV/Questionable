@@ -1,0 +1,115 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000277,
+          "Position": {
+            "X": 102.76941,
+            "Y": 8.161996,
+            "Z": 187.94531
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 274.1283,
+            "Y": -10.386538,
+            "Z": -70.20685
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            33
+          ]
+        },
+        {
+          "DataId": 1005572,
+          "Position": {
+            "X": 274.1283,
+            "Y": -10.386538,
+            "Z": -70.20685
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005577,
+          "Position": {
+            "X": 28.488525,
+            "Y": -3.6319597,
+            "Z": 210.62024
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "Fly": true,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

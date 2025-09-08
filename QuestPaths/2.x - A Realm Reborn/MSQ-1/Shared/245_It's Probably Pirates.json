@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -72,7 +72,14 @@
           "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 138
+          "TargetTerritoryId": 138,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                138
+              ]
+            }
+          }
         },
         {
           "TerritoryId": 138,

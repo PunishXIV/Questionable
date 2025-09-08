@@ -1,6 +1,6 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -44,29 +44,6 @@
           "AethernetShard": "[Gridania] Archers' Guild"
         },
         {
-          "DataId": 1000197,
-          "Position": {
-            "X": 201.31226,
-            "Y": -3.1634123E-15,
-            "Z": 43.900146
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "Comment": "Archer Receptionist"
-        },
-        {
-          "DataId": 1000197,
-          "Position": {
-            "X": 201.31226,
-            "Y": -3.1634123E-15,
-            "Z": 43.900146
-          },
-          "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "Comment": "Pick up Class Quest",
-          "Disabled": true
-        },
-        {
           "Position": {
             "X": 102.810745,
             "Y": 5.4071116,
@@ -85,14 +62,8 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "Comment": "TODO Questflags",
           "$": "If done after aetheryte: 33 1 0 0 0 128"
-        }
-      ]
-    },
-    {
-      "Sequence": 255,
-      "Steps": [
+        },
         {
           "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
@@ -145,6 +116,37 @@
           ]
         },
         {
+          "DataId": 1000197,
+          "Position": {
+            "X": 201.31226,
+            "Y": -3.1634123E-15,
+            "Z": 43.900146
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Archers' Guild"
+          ],
+          "Comment": "Archer Receptionist"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000197,
+          "Position": {
+            "X": 201.31226,
+            "Y": -3.1634123E-15,
+            "Z": 43.900146
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 21
+        },
+        {
           "DataId": 1000100,
           "Position": {
             "X": 23.819275,
@@ -154,7 +156,7 @@
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
+            "[Gridania] Archers' Guild",
             "[Gridania] Airship Landing"
           ]
         }
