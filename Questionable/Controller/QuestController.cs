@@ -313,6 +313,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _gameFunctions.IsOccupied() ||
             _movementController.IsPathfinding ||
             _movementController.IsPathRunning ||
+            !_movementController.IsNavmeshReady ||
+            (_taskQueue.CurrentTaskExecutor?.CurrentTask.GetType().Namespace == typeof(WaitAtEnd).Namespace) ||
             DateTime.Now < _safeAnimationEnd)
         {
             _lastProgressUpdate = DateTime.Now;
