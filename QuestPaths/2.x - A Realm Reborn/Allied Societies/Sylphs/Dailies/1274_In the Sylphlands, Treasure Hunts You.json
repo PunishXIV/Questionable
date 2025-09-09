@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
+  "Comment": "Unsupported: Use Skip/Step manually",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -57,15 +58,41 @@
           "KillEnemyDataIds": [
             764
           ],
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            16
-          ]
+          "Fly": true
+        },
+        {
+          "DataId": 2003491,
+          "Position": {
+            "X": 398.70288,
+            "Y": -17.441101,
+            "Z": -237.04895
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2003492,
+          "Position": {
+            "X": 387.4723,
+            "Y": -15.030151,
+            "Z": -267.26184
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true
         },
         {
           "DataId": 2003041,
@@ -82,15 +109,7 @@
           "KillEnemyDataIds": [
             764
           ],
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            4
-          ]
+          "Fly": true
         },
         {
           "DataId": 2003040,
