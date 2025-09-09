@@ -28,8 +28,7 @@
             "Z": -425.5589
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,6 +47,16 @@
           "Fly": true
         },
         {
+          "Position": {
+            "X": 237.02913,
+            "Y": 169.13622,
+            "Z": -44.168194
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
           "DataId": 2006681,
           "Position": {
             "X": 237.07935,
@@ -55,8 +64,7 @@
             "Z": -46.433228
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "Position": {
@@ -86,12 +94,13 @@
       "Steps": [
         {
           "Position": {
-            "X": 317.41415,
-            "Y": 110.85538,
-            "Z": -34.527588
+            "X": 319.62088,
+            "Y": 110.66706,
+            "Z": -6.8085513
           },
           "TerritoryId": 401,
           "InteractionType": "WalkTo",
+          "DelaySecondsAtStart": 3,
           "$": "Run away from the enemy to TP",
           "SkipConditions": {
             "StepIf": {

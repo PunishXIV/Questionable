@@ -1,0 +1,292 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Disabled": false,
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Comment": "Unsupported: Use Skip/Step manually throughout sequence 2, and Reload Data/Step if Transparent effect is lost",
+      "Steps": [
+        {
+          "DataId": 1005562,
+          "Position": {
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Comment": "Unsupported: Use Skip/Step manually throughout sequence 2, and Reload Data/Step if Transparent effect is lost",
+      "Steps": [
+        {
+          "Position": {
+            "X": 255.45511,
+            "Y": -7.2411766,
+            "Z": -64.145386
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1005883,
+          "Position": {
+            "X": 256.64148,
+            "Y": -7.335247,
+            "Z": -63.34027
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Comment": "Unsupported WIP: Use Skip/Step manually throughout, and Reload Data/Step if Transparent effect is lost",
+      "Steps": [
+        {
+          "Position": {
+            "X": 255.45511,
+            "Y": -7.2411766,
+            "Z": -64.145386
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "StopDistance": 5
+        },
+        {
+          "$": "Mysterious Sylph",
+          "DataId": 1005883,
+          "Position": {
+            "X": 256.64148,
+            "Y": -7.335247,
+            "Z": -63.34027
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Fragrant Bloom",
+          "DataId": 2003338,
+          "Position": {
+            "X": 303.8529,
+            "Y": -16.006714,
+            "Z": -152.20874
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Deepspring Water",
+          "DataId": 2003255,
+          "Position": {
+            "X": 339.9862,
+            "Y": -19.058533,
+            "Z": -154.31458
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Fragrant Bloom",
+          "DataId": 2003339,
+          "Position": {
+            "X": 358.26648,
+            "Y": -19.913086,
+            "Z": -207.3244
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Deepspring Water",
+          "DataId": 2003349,
+          "Position": {
+            "X": 360.82996,
+            "Y": -16.983276,
+            "Z": -250.66003
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Fragrant Bloom",
+          "DataId": 2003337,
+          "Position": {
+            "X": 437.15564,
+            "Y": -14.66394,
+            "Z": -260.05957
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Deepspring Water",
+          "DataId": 2003256,
+          "Position": {
+            "X": 451.2854,
+            "Y": -15.610046,
+            "Z": -283.1922
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Fragrant Bloom",
+          "DataId": 2003337,
+          "Position": {
+            "X": 437.15564,
+            "Y": -14.66394,
+            "Z": -260.05957
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Deepspring Water",
+          "DataId": 2003351,
+          "Position": {
+            "X": 442.2522,
+            "Y": -17.380127,
+            "Z": -225.84882
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Fragrant Bloom",
+          "DataId": 2003339,
+          "Position": {
+            "X": 358.26648,
+            "Y": -19.913086,
+            "Z": -207.3244
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Fragrant Bloom",
+          "DataId": 2003341,
+          "Position": {
+            "X": 306.2943,
+            "Y": -19.668945,
+            "Z": -262.50098
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "$": "Deepspring Water",
+          "DataId": 2003350,
+          "Position": {
+            "X": 261.12756,
+            "Y": -21.286377,
+            "Z": -269.9779
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Remove Transparent buff before continuing",
+          "Position": {
+            "X": 384.3904,
+            "Y": -34.5,
+            "Z": -432.85358
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2003257,
+          "Position": {
+            "X": 384.3904,
+            "Y": -34.5,
+            "Z": -432.85358
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2001182
+        },
+        {
+          "Position": {
+            "X": 363.38544,
+            "Y": -25.735306,
+            "Z": -439.31894
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2003259,
+          "Position": {
+            "X": 363.38544,
+            "Y": -25.735306,
+            "Z": -439.31894
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2001182
+        },
+        {
+          "Position": {
+            "X": 394.9429,
+            "Y": -34.629555,
+            "Z": -459.20053
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2003258,
+          "Position": {
+            "X": 394.9429,
+            "Y": -34.629555,
+            "Z": -459.20053
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UseItem",
+          "ItemId": 2001182
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005562,
+          "Position": {
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
