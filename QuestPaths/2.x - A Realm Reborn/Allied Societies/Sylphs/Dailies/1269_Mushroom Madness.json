@@ -1,0 +1,52 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Disabled": true,
+  "Comment": "Unsupported: future release",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005562,
+          "Position": {
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005562,
+          "Position": {
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

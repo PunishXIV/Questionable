@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "AnimaMachinae",
+  "Author": "AnimaMachinae,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -83,6 +83,8 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001961,
+          "Comment": "Manually attack",
+          "$": "TODO fix",
           "KillEnemyDataIds": [
             5548
           ],
@@ -160,12 +162,12 @@
             "AetheryteShortcutIf": {
               "NearPosition": {
                 "Position": {
-                  "X": 66.20886,
-                  "Y": -49.2817,
-                  "Z": -159.44159
+                  "X": 57.297607,
+                  "Y": -47.842846,
+                  "Z": -174.63953
                 },
                 "TerritoryId": 398,
-                "MaximumDistance": 30
+                "MaximumDistance": 500
               }
             }
           }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "AnimaMachinae",
+  "Author": "AnimaMachinae,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -141,6 +141,28 @@
             "X": 129.8695,
             "Y": -92.17981,
             "Z": 293.11047
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006672,
+          "Position": {
+            "X": 219.92822,
+            "Y": -82.139404,
+            "Z": 246.1737
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2006668,
+          "Position": {
+            "X": 281.9104,
+            "Y": -82.16986,
+            "Z": 282.7954
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",

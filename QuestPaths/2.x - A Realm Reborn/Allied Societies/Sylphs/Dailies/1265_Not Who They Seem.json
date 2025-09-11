@@ -1,0 +1,203 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "Unsupported: Use Skip/Step manually",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005561,
+          "Position": {
+            "X": 47.01306,
+            "Y": 6.0734644,
+            "Z": 254.01685
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Shifty Crone",
+          "DataId": 1008303,
+          "Position": {
+            "X": 201.67847,
+            "Y": 3.594169,
+            "Z": 127.092285
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        },
+        {
+          "$": "Shifty Brute",
+          "DataId": 1008305,
+          "Position": {
+            "X": 189.92896,
+            "Y": -1.1231554,
+            "Z": 86.13721
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        },
+        {
+          "$": "Shifty Codger",
+          "DataId": 1008302,
+          "Position": {
+            "X": 218.70752,
+            "Y": -2.6175609,
+            "Z": 86.533936
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        },
+        {
+          "$": "Suspicious Object",
+          "DataId": 2003039,
+          "Position": {
+            "X": 244.92249,
+            "Y": -1.2664795,
+            "Z": 100.51111
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        },
+        {
+          "$": "Suspicious Object TODO DataId",
+          "Position": {
+            "X": 290.6616,
+            "Y": -4.996854,
+            "Z": 51.885204
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        },
+        {
+          "$": "Suspicious Object TODO DataId",
+          "Position": {
+            "X": 287.32123,
+            "Y": -5.6284122,
+            "Z": 29.403198
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        },
+        {
+          "$": "Shifty Youth TODO DataId",
+          "Position": {
+            "X": 218.99098,
+            "Y": -3.393092,
+            "Z": -6.7971077
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001153,
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            72
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 37.71168,
+            "Y": 4.7303743,
+            "Z": 250.62769
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 37.71168,
+                  "Y": 4.7303743,
+                  "Z": 250.62769
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1005561,
+          "Position": {
+            "X": 47.01306,
+            "Y": 6.0734644,
+            "Z": 254.01685
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
