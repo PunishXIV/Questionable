@@ -40,7 +40,7 @@ internal sealed class TaskCreator
         if (sequence == null)
         {
             _chatGui.PrintError(
-                $"Path for quest '{quest.Info.Name}' ({quest.Id}) does not contain sequence {sequenceNumber}, please report this.",
+                $"Path for quest '{quest.Info.Name}' ({quest.Id}) does not contain sequence {sequenceNumber}, please report this: https://github.com/PunishXIV/Questionable/discussions/20",
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
         }
