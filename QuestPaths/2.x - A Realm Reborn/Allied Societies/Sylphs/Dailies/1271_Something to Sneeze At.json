@@ -28,58 +28,72 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1008334,
           "Position": {
-            "X": 286.51855,
-            "Y": -13.687378,
-            "Z": -124.68152
+            "X": 184.64929,
+            "Y": 9.065049,
+            "Z": 197.28381
           },
           "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "GroundTarget": true,
-          "Fly": true,
-          "ItemId": 2001175
+          "InteractionType": "Interact",
+          "Fly": true
         },
         {
-          "DataId": 2003143,
+          "$": "QuestCleanUp.cs is looking for interaction with the Allied Society quest issuer or else it will teleport to hawthorne hut for Mount ID 24. This step should do nothing. Discussion in #6",
+          "DataId": 1052562,
           "Position": {
-            "X": 259.0829,
-            "Y": -11.154419,
-            "Z": -167.62042
+            "X": 184.64929,
+            "Y": 9.065049,
+            "Z": 197.28381
           },
           "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "GroundTarget": true,
-          "Fly": true,
-          "ItemId": 2001175
-        },
-        {
-          "Position": {
-            "X": 295.1858,
-            "Y": -13.01593,
-            "Z": -186.87726
-          },
-          "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "GroundTarget": true,
-          "Fly": true,
-          "ItemId": 2001175
+          "InteractionType": "None"
         }
       ]
     },
     {
       "Sequence": 2,
+      "Comment": "WIP: If mount action misses, press Stop and try the action again manually",
       "Steps": [
         {
-          "DataId": 2003145,
           "Position": {
-            "X": 291.15735,
-            "Y": -12.954956,
-            "Z": -155.62683
+            "X": 358.78497,
+            "Y": -17.264332,
+            "Z": -131.23358
           },
           "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "Fly": true,
-          "ItemId": 2001176
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
+        },
+        {
+          "Position": {
+            "X": 438.96085,
+            "Y": -18.217512,
+            "Z": -200.25444
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
+        },
+        {
+          "Position": {
+            "X": 407.7888,
+            "Y": -17.223122,
+            "Z": -252.10526
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
+        },
+        {
+          "Position": {
+            "X": 326.5522,
+            "Y": -17.807482,
+            "Z": -220.38939
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Action",
+          "Action": "Big Sneeze"
         }
       ]
     },

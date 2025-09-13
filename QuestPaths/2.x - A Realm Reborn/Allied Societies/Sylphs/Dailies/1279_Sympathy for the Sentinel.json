@@ -2,17 +2,17 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Disabled": true,
-  "Comment": "This is a FATE Allied Society Quest",
+  "Comment": "Unsupported: future release",
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1005561,
+          "DataId": 1005563,
           "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
+            "X": 48.874634,
+            "Y": 6.0734596,
+            "Z": 251.17871
           },
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
@@ -25,9 +25,6 @@
           }
         }
       ]
-    },
-    {
-      "Sequence": 1
     },
     {
       "Sequence": 255,
@@ -57,11 +54,11 @@
           }
         },
         {
-          "DataId": 1005561,
+          "DataId": 1005563,
           "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
+            "X": 48.874634,
+            "Y": 6.0734596,
+            "Z": 251.17871
           },
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",

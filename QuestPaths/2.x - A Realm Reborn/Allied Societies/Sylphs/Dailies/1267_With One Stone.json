@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "QuestSequence": [
@@ -29,57 +29,52 @@
       "Steps": [
         {
           "Position": {
-            "X": 286.51855,
-            "Y": -13.687378,
-            "Z": -124.68152
+            "X": 364.53506,
+            "Y": -20.349842,
+            "Z": -183.44962
           },
           "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "GroundTarget": true,
-          "Fly": true,
-          "ItemId": 2001175
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 764,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 763,
+              "MinimumKillCount": 1,
+              "$": "Part of aggro group"
+            }
+          ],
+          "Fly": true
         },
         {
-          "DataId": 2003143,
+          "DataId": 764,
           "Position": {
-            "X": 259.0829,
-            "Y": -11.154419,
-            "Z": -167.62042
+            "X": 351.4945,
+            "Y": -15.727029,
+            "Z": -259.4912
           },
           "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "GroundTarget": true,
-          "Fly": true,
-          "ItemId": 2001175
-        },
-        {
-          "Position": {
-            "X": 295.1858,
-            "Y": -13.01593,
-            "Z": -186.87726
-          },
-          "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "GroundTarget": true,
-          "Fly": true,
-          "ItemId": 2001175
-        }
-      ]
-    },
-    {
-      "Sequence": 2,
-      "Steps": [
-        {
-          "DataId": 2003145,
-          "Position": {
-            "X": 291.15735,
-            "Y": -12.954956,
-            "Z": -155.62683
-          },
-          "TerritoryId": 152,
-          "InteractionType": "UseItem",
-          "Fly": true,
-          "ItemId": 2001176
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 764,
+              "MinimumKillCount": 1
+            },
+            {
+              "DataId": 403,
+              "MinimumKillCount": 2
+            },
+            {
+              "DataId": 2464,
+              "MinimumKillCount": 1,
+              "$": "Part of aggro group"
+            }
+          ],
+          "Fly": true
         }
       ]
     },

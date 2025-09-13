@@ -2,17 +2,17 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Disabled": true,
-  "Comment": "This is a FATE Allied Society Quest",
+  "Comment": "Unsupported: future release",
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1005561,
+          "DataId": 1005562,
           "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
           },
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
@@ -27,41 +27,14 @@
       ]
     },
     {
-      "Sequence": 1
-    },
-    {
       "Sequence": 255,
       "Steps": [
         {
+          "DataId": 1005562,
           "Position": {
-            "X": 37.71168,
-            "Y": 4.7303743,
-            "Z": 250.62769
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 37.71168,
-                  "Y": 4.7303743,
-                  "Z": 250.62769
-                },
-                "TerritoryId": 152,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1005561,
-          "Position": {
-            "X": 47.01306,
-            "Y": 6.0734644,
-            "Z": 254.01685
+            "X": 36.850464,
+            "Y": -4.8778634,
+            "Z": 249.19507
           },
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",

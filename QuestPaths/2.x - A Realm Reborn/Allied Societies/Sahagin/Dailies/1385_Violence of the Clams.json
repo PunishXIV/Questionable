@@ -1,0 +1,303 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005938,
+          "Position": {
+            "X": -220.7218,
+            "Y": -40.720844,
+            "Z": 37.247192
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -220.7218,
+                  "Y": -40.720844,
+                  "Z": 37.247192
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Comment": "WIP, adds spawn when walking over certain spots, please attack manually",
+      "Steps": [
+        {
+          "DataId": 1005946,
+          "Position": {
+            "X": -239.27673,
+            "Y": -42.130188,
+            "Z": 15.213196
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_BANSAH107_01385_Q1_000_000",
+              "Answer": "TEXT_BANSAH107_01385_A1_000_001"
+            }
+          ]
+        },
+        {
+          "DataId": 2003845,
+          "Position": {
+            "X": -813.22955,
+            "Y": -41.763977,
+            "Z": 670.3745
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              1,17,33,49,65,
+              2,18,34,50,66,
+              3,19,35,51,67
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        },
+        {
+          "DataId": 2003853,
+          "Position": {
+            "X": -810.23883,
+            "Y": -41.763977,
+            "Z": 662.16516
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              1,17,33,49,65
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ]
+        },
+        {
+          "DataId": 2003847,
+          "Position": {
+            "X": -803.9826,
+            "Y": -41.21466,
+            "Z": 675.2268
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              1,17,33,49,65,
+              2,18,34,50,66,
+              3,19,35,51,67
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 2003854,
+          "Position": {
+            "X": -789.5781,
+            "Y": -41.36731,
+            "Z": 676.3561
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              2,18,34,50,66
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ]
+        },
+        {
+          "DataId": 2003846,
+          "Position": {
+            "X": -800.7782,
+            "Y": -41.672424,
+            "Z": 690.7606
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              1,17,33,49,65,
+              2,18,34,50,66,
+              3,19,35,51,67
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 2003848,
+          "Position": {
+            "X": -797.72644,
+            "Y": -41.703003,
+            "Z": 704.219
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              1,17,33,49,65,
+              2,18,34,50,66,
+              3,19,35,51,67
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
+        },
+        {
+          "DataId": 2003855,
+          "Position": {
+            "X": -790.12744,
+            "Y": -41.794495,
+            "Z": 708.5831
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            [
+              3,19,35,51,67
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008802,
+          "Position": {
+            "X": -814.84705,
+            "Y": -42.154568,
+            "Z": 694.3312
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1005938,
+          "Position": {
+            "X": -220.7218,
+            "Y": -40.720844,
+            "Z": 37.247192
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -220.7218,
+                  "Y": -40.720844,
+                  "Z": 37.247192
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
