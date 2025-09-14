@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250914",
   "Author": "alydev",
-  "Disabled": false,
-  "Comment": "Unsupported: Use Skip/Step manually",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -20,7 +19,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }
@@ -30,6 +37,7 @@
       "Sequence": 1,
       "Steps": [
         {
+          "Comment": "Shifty Carpenter",
           "Position": {
             "X": 76.06616,
             "Y": -27.906652,
@@ -40,12 +48,28 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
           ]
         },
         {
+          "Comment": "Vorsaile",
           "Position": {
             "X": 101.91492,
             "Y": -27.463612,
@@ -56,12 +80,31 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
           ]
         },
         {
+          "Comment": "Shifty Botanist",
           "Position": {
             "X": 94.19385,
             "Y": -26.596497,
@@ -72,12 +115,28 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
           ]
         },
         {
+          "Comment": "Shifty Conjurer",
           "DataId": 1008311,
           "Position": {
             "X": 92.48486,
@@ -89,12 +148,28 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
           ]
         },
         {
+          "Comment": "Shifty Youngling",
           "Position": {
             "X": 113.69495,
             "Y": -27.054321,
@@ -105,12 +180,28 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
           ]
         },
         {
+          "Comment": "Shifty Leatherworker",
           "Position": {
             "X": 150.62183,
             "Y": -24.002502,
@@ -121,12 +212,28 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
           ]
         },
         {
+          "Comment": "Shifty Merchant",
           "DataId": 1008423,
           "Position": {
             "X": 118.73035,
@@ -138,6 +245,21 @@
           "GroundTarget": true,
           "Fly": true,
           "ItemId": 2001155,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [
             762
@@ -151,9 +273,9 @@
         {
           "DataId": 1005562,
           "Position": {
-            "X": 36.850464,
-            "Y": -4.8778634,
-            "Z": 249.19507
+            "X": 48.874634,
+            "Y": 6.0734596,
+            "Z": 251.17871
           },
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
@@ -161,7 +283,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }

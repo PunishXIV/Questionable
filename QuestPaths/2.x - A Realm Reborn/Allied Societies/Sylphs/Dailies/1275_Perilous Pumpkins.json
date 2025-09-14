@@ -1,5 +1,6 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250914",
   "Author": "liza",
   "QuestSequence": [
     {
@@ -18,7 +19,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }
@@ -81,7 +90,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }

@@ -1,8 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250914",
   "Author": "alydev",
-  "Disabled": true,
-  "Comment": "Unsupported: future release",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -20,7 +19,339 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 158.40814,
+            "Y": -24.117186,
+            "Z": -482.71136
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 24,
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                {
+                  "Low": 3
+                },
+                null,
+                null
+              ],
+              "MinimumKillCount": 2
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2003107,
+          "Position": {
+            "X": 152.39172,
+            "Y": -27.023743,
+            "Z": -559.3805
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2003106,
+          "Position": {
+            "X": 165.23987,
+            "Y": -26.474487,
+            "Z": -576.379
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              }
+            ],
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2003105,
+          "Position": {
+            "X": 173.2356,
+            "Y": -26.749084,
+            "Z": -587.8539
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -38.196537,
+            "Y": -35.524384,
+            "Z": -534.42535
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ]
+        },
+        {
+          "DataId": 2003109,
+          "Position": {
+            "X": -42.588013,
+            "Y": -35.599304,
+            "Z": -533.3181
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                8
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -30.919758,
+            "Y": -35.512676,
+            "Z": -553.97894
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ]
+        },
+        {
+          "DataId": 2003108,
+          "Position": {
+            "X": -36.972656,
+            "Y": -35.568848,
+            "Z": -560.7843
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2003110,
+          "Position": {
+            "X": -18.35669,
+            "Y": -35.629883,
+            "Z": -535.3323
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                4
+              ]
             }
           }
         }
@@ -30,25 +361,25 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Comment": "Moving out of combat range",
           "Position": {
-            "X": 37.71168,
-            "Y": 4.7303743,
-            "Z": 250.62769
+            "X": 45.215626,
+            "Y": -20.8526,
+            "Z": -510.42453
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
+          "Mount": true,
           "SkipConditions": {
             "StepIf": {
-              "NearPosition": {
+              "NotNearPosition": {
                 "Position": {
-                  "X": 37.71168,
-                  "Y": 4.7303743,
-                  "Z": 250.62769
+                  "X": 45.215626,
+                  "Y": -20.8526,
+                  "Z": -510.42453
                 },
                 "TerritoryId": 152,
-                "MaximumDistance": 10
+                "MaximumDistance": 100
               }
             }
           }
@@ -66,7 +397,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }
