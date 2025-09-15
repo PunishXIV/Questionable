@@ -357,6 +357,7 @@ internal sealed partial class ActiveQuestComponent
 
             if (ImGui.IsItemHovered())
             {
+                ImGui.SetTooltip(questWork.Tooltip);
                 ImGui.SameLine();
                 ImGui.PushFont(UiBuilder.IconFont);
                 ImGui.Text(FontAwesomeIcon.Copy.ToIconString());

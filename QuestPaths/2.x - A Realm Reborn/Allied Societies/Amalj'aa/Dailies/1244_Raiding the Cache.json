@@ -1,105 +1,521 @@
 {
-    "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-    "Author": "skiaz",
-    "QuestSequence": [
-      {
-        "Sequence": 0,
-        "Steps": [
-          {
-            "DataId": 1005552,
-            "Position": {
-                "X": 85.618286,
-                "Y": 15.28719,
-                "Z": -355.70312
-            },
-            "TerritoryId": 146,
-            "InteractionType": "AcceptQuest",
-            "Fly": true
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250915",
+  "Author": "skiaz,alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 85.618286,
+            "Y": 15.28719,
+            "Z": -355.70312
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 85.618286,
+                  "Y": 15.28719,
+                  "Z": -355.70312
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 300
+              }
+            }
           }
-        ]
-      },
-      {
-        "Sequence": 1,
-        "Steps": [
-          {
-            "DataId": 2003024,
-            "Position": {
-                "X": 345.23523,
-                "Y": 8.590759,
-                "Z": -24.399231
-            },
-            "TerritoryId": 146,
-            "InteractionType": "Interact",
-            "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 82.300514,
+            "Y": 27.434578,
+            "Z": -334.66284
           },
-          {
-            "DataId": 2003027,
-            "Position": {
-                "X": 501.0299,
-                "Y": 7.614197,
-                "Z": -144.39618
-            },
-            "TerritoryId": 146,
-            "InteractionType": "Interact"
-          },
-          {
-            "Position": {
-                "X": 534.8477,
-                "Y": 7.5996237,
-                "Z": -156.95335
-            },
-            "TerritoryId": 146,
-            "InteractionType": "WalkTo"
-          },
-          {
-            "DataId": 2003030,
-            "Position": {
-                "X": 552.20874,
-                "Y": 7.614197,
-                "Z": -175.18884
-            },
-            "TerritoryId": 146,
-            "InteractionType": "Interact"
-          },
-          {
-            "DataId": 2003031,
-            "Position": {
-                "X": 558.5259,
-                "Y": 7.583679,
-                "Z": -166.79645
-            },
-            "TerritoryId": 146,
-            "InteractionType": "Interact"
-          },
-          {
-            "DataId": 2003029,
-            "Position": {
-                "X": 546.68494,
-                "Y": 10.543945,
-                "Z": -141.86316
-            },
-            "TerritoryId": 146,
-            "InteractionType": "Interact"
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 82.300514,
+                  "Y": 27.434578,
+                  "Z": -334.66284
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 32
+              }
+            }
           }
-        ]
-      },
-      {
-        "Sequence": 255,
-        "Steps": [
-          {
-            "DataId": 1005552,
-            "Position": {
-                "X": 85.618286,
-                "Y": 15.28719,
-                "Z": -355.70312
-            },
-            "TerritoryId": 146,
-            "InteractionType": "CompleteQuest",
-            "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-            "Fly": true
+        },
+        {
+          "Position": {
+            "X": 52.157562,
+            "Y": 58.146656,
+            "Z": -123.75839
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 52.157562,
+                  "Y": 58.146656,
+                  "Z": -123.75839
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 220
+              }
+            }
+          },
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 128.78984,
+            "Y": 55.80173,
+            "Z": -56.721222
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 128.78984,
+                  "Y": 55.80173,
+                  "Z": -56.721222
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 105
+              }
+            }
+          },
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 315.71594,
+            "Y": 29.292376,
+            "Z": -35.018597
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 315.71594,
+                  "Y": 29.292376,
+                  "Z": -35.018597
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 192
+              }
+            }
+          },
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003024,
+          "Position": {
+            "X": 345.15866,
+            "Y": 8.493445,
+            "Z": -25.18495
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003025,
+          "Position": {
+            "X": 360.3926,
+            "Y": 10.924339,
+            "Z": -47.932247
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003026,
+          "Position": {
+            "X": 491.8211,
+            "Y": 7.6132584,
+            "Z": -164.92244
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003027,
+          "Position": {
+            "X": 498.00604,
+            "Y": 7.599617,
+            "Z": -144.36598
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003028,
+          "Position": {
+            "X": 494.01062,
+            "Y": 7.8111744,
+            "Z": -137.80615
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            8
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 534.8477,
+            "Y": 7.5996237,
+            "Z": -156.95335
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 2003030,
+          "Position": {
+            "X": 552.20874,
+            "Y": 7.614197,
+            "Z": -175.18884
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            2
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2003031,
+          "Position": {
+            "X": 556.0752,
+            "Y": 7.5996237,
+            "Z": -166.26447
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            1
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 550.1119,
+            "Y": 7.695256,
+            "Z": -148.53879
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2003029,
+          "Position": {
+            "X": 546.68494,
+            "Y": 10.543945,
+            "Z": -141.86316
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 85.618286,
+            "Y": 15.28719,
+            "Z": -355.70312
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 85.618286,
+                  "Y": 15.28719,
+                  "Z": -355.70312
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 300
+              }
+            }
           }
-        ]
-      }
-    ]
-  }
-  
+        }
+      ]
+    }
+  ]
+}

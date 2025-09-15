@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "plogon_enjoyer",
+  "$": "Checked by alydev 20250915",
+  "Author": "plogon_enjoyer,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,22 @@
             "Z": -357.3816
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 105.27197,
+                  "Y": 15.359643,
+                  "Z": -357.3816
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 500
+              }
+            }
+          }
         }
       ]
     },
@@ -29,7 +45,61 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [1, 2], null, null, null, null],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2002980,
+          "Position": {
+            "X": -125.93274,
+            "Y": 7.095398,
+            "Z": -104.78375
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
           "Fly": true,
           "Land": true
         },
@@ -42,7 +112,35 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [4, 17], null, null, null, null],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
           "Fly": true,
           "Land": true
         },
@@ -55,7 +153,111 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [18, 20], null, null, null, null],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2002984,
+          "Position": {
+            "X": -189.83752,
+            "Y": 9.231689,
+            "Z": 17.959839
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            4
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2002986,
+          "Position": {
+            "X": -80.20015,
+            "Y": -1.8261992,
+            "Z": 43.605022
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            1
+          ],
+          "RequiredQuestVariables": [
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null,
+            null,
+            null,
+            null
+          ],
           "Fly": true,
           "Land": true
         },
@@ -68,29 +270,27 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [
-            null,
-            [33, 34, 36],
+          "CompletionQuestVariablesFlags": [
             null,
             null,
             null,
-            null
+            null,
+            null,
+            2
           ],
-          "Fly": true,
-          "Land": true
-        },
-        {
-          "DataId": 2002986,
-          "Position": {
-            "X": -78.81293,
-            "Y": -1.083435,
-            "Z": 44.052734
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
           "RequiredQuestVariables": [
             null,
-            [49, 50, 52],
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
+            ],
             null,
             null,
             null,
@@ -113,7 +313,21 @@
           },
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
-          "Fly": true
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 105.27197,
+                  "Y": 15.359643,
+                  "Z": -357.3816
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 500
+              }
+            }
+          }
         }
       ]
     }
