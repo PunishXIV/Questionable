@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250914",
   "Author": "liza,alydev",
-  "Comment": "Unsupported: Use Skip/Step manually",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,7 +19,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }
@@ -29,38 +37,34 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 2003041,
           "Position": {
-            "X": 321.08926,
-            "Y": -17.347095,
-            "Z": -201.61072
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                16
-              ]
-            }
-          }
-        },
-        {
-          "DataId": 2003494,
-          "Position": {
-            "X": 319.44763,
-            "Y": -17.227417,
-            "Z": -200.88507
+            "X": 386.099,
+            "Y": -20.187744,
+            "Z": -200.763
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             764
@@ -78,6 +82,53 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2003042,
+          "Position": {
+            "X": 439.78027,
+            "Y": -18.204102,
+            "Z": -247.36401
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             764
@@ -95,6 +146,21 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             764
@@ -102,16 +168,28 @@
           "Fly": true
         },
         {
-          "DataId": 2003041,
+          "DataId": 2003493,
           "Position": {
-            "X": 386.099,
-            "Y": -20.187744,
-            "Z": -200.763
+            "X": 356.43542,
+            "Y": -14.084106,
+            "Z": -264.42358
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             764
@@ -129,6 +207,56 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
+          "GroundTarget": true,
+          "KillEnemyDataIds": [
+            764
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 2003494,
+          "Position": {
+            "X": 319.44763,
+            "Y": -17.227417,
+            "Z": -200.88507
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001154,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             764
@@ -153,7 +281,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 48.874634,
+                  "Y": 6.0734596,
+                  "Z": 251.17871
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }

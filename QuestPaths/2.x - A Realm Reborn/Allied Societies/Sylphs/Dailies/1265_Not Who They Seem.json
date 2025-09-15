@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250914",
   "Author": "alydev",
-  "Comment": "Unsupported: Use Skip/Step manually",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -29,7 +29,7 @@
       "Sequence": 1,
       "Steps": [
         {
-          "$": "Shifty Crone",
+          "Comment": "Shifty Crone",
           "DataId": 1008303,
           "Position": {
             "X": 201.67847,
@@ -40,6 +40,21 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
@@ -47,7 +62,7 @@
           "Fly": true
         },
         {
-          "$": "Shifty Brute",
+          "Comment": "Shifty Brute",
           "DataId": 1008305,
           "Position": {
             "X": 189.92896,
@@ -58,6 +73,21 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 1
+              },
+              {
+                "Low": 5
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
@@ -65,7 +95,7 @@
           "Fly": true
         },
         {
-          "$": "Shifty Codger",
+          "Comment": "Shifty Codger",
           "DataId": 1008302,
           "Position": {
             "X": 218.70752,
@@ -76,6 +106,21 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
@@ -83,7 +128,7 @@
           "Fly": true
         },
         {
-          "$": "Suspicious Object",
+          "Comment": "Suspicious Object",
           "DataId": 2003039,
           "Position": {
             "X": 244.92249,
@@ -101,7 +146,8 @@
           "Fly": true
         },
         {
-          "$": "Suspicious Object TODO DataId",
+          "Comment": "Suspicious Object",
+          "DataId": 2003038,
           "Position": {
             "X": 290.6616,
             "Y": -4.996854,
@@ -111,6 +157,18 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 4
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
@@ -118,7 +176,8 @@
           "Fly": true
         },
         {
-          "$": "Suspicious Object TODO DataId",
+          "Comment": "Suspicious Object",
+          "DataId": 2003037,
           "Position": {
             "X": 287.32123,
             "Y": -5.6284122,
@@ -128,6 +187,18 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
@@ -135,7 +206,8 @@
           "Fly": true
         },
         {
-          "$": "Shifty Youth TODO DataId",
+          "Comment": "Shifty Youth",
+          "DataId": 1008304,
           "Position": {
             "X": 218.99098,
             "Y": -3.393092,
@@ -145,6 +217,18 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001153,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            null,
+            [
+              {
+                "Low": 2
+              }
+            ],
+            null
+          ],
           "GroundTarget": true,
           "KillEnemyDataIds": [
             72
