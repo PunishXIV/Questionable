@@ -1,0 +1,229 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250915",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 85.618286,
+            "Y": 15.28719,
+            "Z": -355.70312
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 85.618286,
+                  "Y": 15.28719,
+                  "Z": -355.70312
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 300
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005860,
+          "Position": {
+            "X": -123.73547,
+            "Y": -1.773061,
+            "Z": 2.3345947
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 31.530312,
+            "Y": 3.656009,
+            "Z": 6.4622016
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "Position": {
+            "X": 70.39711,
+            "Y": 12.356229,
+            "Z": 23.314192
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 67.634125,
+            "Y": 16.594261,
+            "Z": 31.034203
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            [
+              0
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2003197,
+          "Position": {
+            "X": 45.548096,
+            "Y": 22.049255,
+            "Z": 34.409058
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ],
+          "StopDistance": 5,
+          "Action": "Fiery Breath"
+        },
+        {
+          "Position": {
+            "X": 130.30806,
+            "Y": 8.897401,
+            "Z": -13.150017
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            [
+              16
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 319.66522,
+            "Y": 8,
+            "Z": -36.07819
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "RequiredQuestVariables": [
+            [
+              16
+            ],
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2003199,
+          "Position": {
+            "X": 361.07422,
+            "Y": 13.38208,
+            "Z": -35.690857
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Action",
+          "DisableNavmesh": true,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ],
+          "StopDistance": 5,
+          "Action": "Fiery Breath"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 85.618286,
+            "Y": 15.28719,
+            "Z": -355.70312
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 85.618286,
+                  "Y": 15.28719,
+                  "Z": -355.70312
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 300
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250915",
   "Author": "plogon_enjoyer,alydev",
   "QuestSequence": [
     {
@@ -46,10 +47,18 @@
           "RequiredQuestVariables": [
             null,
             [
-              1,17,33,49,
-              2,18,34,50,
-              3,19,35,51,
-              5,21,37,53
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
             ],
             null,
             null,
@@ -78,7 +87,9 @@
           "RequiredQuestVariables": [
             null,
             [
-              1,17,33,49
+              {
+                "Low": 1
+              }
             ],
             null,
             null,
@@ -107,9 +118,15 @@
           "RequiredQuestVariables": [
             null,
             [
-              2,18,34,50,
-              3,19,35,51,
-              5,21,37,53
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
             ],
             null,
             null,
@@ -129,10 +146,18 @@
           "RequiredQuestVariables": [
             null,
             [
-              1,17,33,49,
-              2,18,34,50,
-              3,19,35,51,
-              4,20,36,52
+              {
+                "Low": 1
+              },
+              {
+                "Low": 2
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
             ],
             null,
             null,
@@ -161,7 +186,9 @@
           "RequiredQuestVariables": [
             null,
             [
-              4,20,36,52
+              {
+                "Low": 4
+              }
             ],
             null,
             null,
@@ -190,8 +217,12 @@
           "RequiredQuestVariables": [
             null,
             [
-              1,17,33,49,
-              5,21,37,53
+              {
+                "Low": 1
+              },
+              {
+                "Low": 5
+              }
             ],
             null,
             null,
@@ -220,8 +251,12 @@
           "RequiredQuestVariables": [
             null,
             [
-              2,18,34,50,
-              4,20,36,52
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              }
             ],
             null,
             null,
@@ -250,8 +285,12 @@
           "RequiredQuestVariables": [
             null,
             [
-              3,19,35,51,
-              5,21,37,53
+              {
+                "Low": 3
+              },
+              {
+                "Low": 5
+              }
             ],
             null,
             null,
@@ -280,9 +319,15 @@
           "RequiredQuestVariables": [
             null,
             [
-              1,17,33,49,
-              3,19,35,51,
-              4,20,36,52
+              {
+                "Low": 1
+              },
+              {
+                "Low": 3
+              },
+              {
+                "Low": 4
+              }
             ],
             null,
             null,
@@ -311,9 +356,15 @@
           "RequiredQuestVariables": [
             null,
             [
-              2,18,34,50,
-              4,20,36,52,
-              5,21,37,53
+              {
+                "Low": 2
+              },
+              {
+                "Low": 4
+              },
+              {
+                "Low": 5
+              }
             ],
             null,
             null,

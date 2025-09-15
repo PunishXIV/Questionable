@@ -1,5 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$": "Checked by alydev 20250915",
   "Author": "plogon_enjoyer",
   "QuestSequence": [
     {
@@ -13,7 +14,22 @@
             "Z": -357.3816
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 105.27197,
+                  "Y": 15.359643,
+                  "Z": -357.3816
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 500
+              }
+            }
+          }
         }
       ]
     },
@@ -22,9 +38,9 @@
       "Steps": [
         {
           "Position": {
-            "X": -40.402416,
-            "Y": -1.1266766,
-            "Z": 0.71999836
+            "X": -119.81865,
+            "Y": -2.1205988,
+            "Z": 21.23899
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
@@ -55,7 +71,21 @@
           },
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
-          "Fly": true
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 105.27197,
+                  "Y": 15.359643,
+                  "Z": -357.3816
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 500
+              }
+            }
+          }
         }
       ]
     }
