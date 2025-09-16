@@ -1,6 +1,6 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "liza,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,55 +19,8 @@
     },
     {
       "Sequence": 1,
+      "Comment": "Avoid AOEs/turn on VBM if you have it",
       "Steps": [
-        {
-          "Position": {
-            "X": 459.86548,
-            "Y": 17.983778,
-            "Z": -76.51779
-          },
-          "StopDistance": 1,
-          "TerritoryId": 148,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "FinishCombatIfAny",
-          "KillEnemyDataIds": []
-        },
-        {
-          "Position": {
-            "X": 486.40424,
-            "Y": 24.968294,
-            "Z": -88.684456
-          },
-          "StopDistance": 1,
-          "TerritoryId": 148,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "FinishCombatIfAny",
-          "KillEnemyDataIds": []
-        },
-        {
-          "Position": {
-            "X": 485.05884,
-            "Y": 30.642492,
-            "Z": -59.45244
-          },
-          "StopDistance": 1,
-          "TerritoryId": 148,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "FinishCombatIfAny",
-          "KillEnemyDataIds": []
-        },
-        {
-          "Position": {
-            "X": 480.88794,
-            "Y": 30.746826,
-            "Z": -49.729187
-          },
-          "StopDistance": 1,
-          "TerritoryId": 148,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "FinishCombatIfAny",
-          "KillEnemyDataIds": []
-        },
         {
           "DataId": 2000010,
           "Position": {
@@ -88,9 +41,9 @@
         },
         {
           "Position": {
-            "X": 480.88794,
-            "Y": 30.746826,
-            "Z": -49.729187
+            "X": 434.71976,
+            "Y": 8.614418,
+            "Z": -87.96375
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
