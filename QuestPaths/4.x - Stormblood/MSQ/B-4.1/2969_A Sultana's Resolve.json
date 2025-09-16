@@ -15,6 +15,10 @@
           "TerritoryId": 144,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Gold Saucer",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Wonder Square West"
+          ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InSameTerritory": true
