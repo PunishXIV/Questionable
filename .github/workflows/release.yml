@@ -1,0 +1,216 @@
+name: Auto release on watched branch push
+
+on:
+  push:
+    branches: [ new-main, testing ]
+  workflow_dispatch:
+    inputs:
+      force_release:
+        description: 'Force create release even if tag exists'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  detect-version-change:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
+      should-release: ${{ steps.check-release.outputs.should-release }}
+      tag-exists: ${{ steps.check-tag.outputs.exists }}
+      testing: ${{ steps.is-testing.outputs.testing }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from Directory.Build.targets
+        id: get-version
+        run: |
+          # Extract version using xmllint for more reliable parsing
+          if command -v xmllint >/dev/null 2>&1; then
+            VERSION=$(xmllint --xpath "string(//PropertyGroup/Version)" Directory.Build.targets 2>/dev/null || true)
+          fi
+          
+          # Fallback to grep if xmllint fails or is not available
+          if [ -z "$VERSION" ]; then
+            VERSION=$(grep -oP '<Version>\K[^<]+' Directory.Build.targets | head -1)
+          fi
+          
+          if [ -z "$VERSION" ]; then
+            echo "Error: Could not extract version from Directory.Build.targets"
+            exit 1
+          fi
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Detected version: $VERSION"
+      - name: Check if branch is testing
+        id: is-testing
+        run: |
+          BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          if [ "$BRANCH" = "main" ]; then
+            echo "testing=false" >> $GITHUB_OUTPUT
+          else
+            echo "testing=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check if tag already exists
+        id: check-tag
+        run: |
+          TAG="v${{ steps.get-version.outputs.version }}"
+          if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Tag $TAG already exists"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "Tag $TAG does not exist"
+          fi
+
+      - name: Determine if release should be created
+        id: check-release
+        run: |
+          FORCE_RELEASE="${{ github.event.inputs.force_release }}"
+          TAG_EXISTS="${{ steps.check-tag.outputs.exists }}"
+          
+          if [ "$FORCE_RELEASE" = "true" ] || [ "$TAG_EXISTS" = "false" ]; then
+            echo "should-release=true" >> $GITHUB_OUTPUT
+            echo "Will create release"
+          else
+            echo "should-release=false" >> $GITHUB_OUTPUT
+            echo "Will not create release (tag exists and not forced)"
+          fi
+
+  build-and-release:
+    needs: detect-version-change
+    if: needs.detect-version-change.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.detect-version-change.outputs.version }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Download and setup Dalamud
+        run: |
+          echo "Downloading Dalamud..."
+          wget -q https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -O dalamud.zip
+          unzip -q dalamud.zip -d .dalamud
+          echo "DALAMUD_HOME=$PWD/.dalamud/" >> $GITHUB_ENV
+
+      - name: Restore NuGet packages
+        run: dotnet restore /p:Configuration=Release --packages .nuget
+
+      - name: Build Project
+        run: |
+          dotnet build Questionable/Questionable.csproj \
+          -c Release \
+          -f net9.0-windows \
+          -p:DalamudLibPath=$DALAMUD_HOME \
+          --source $PWD/.nuget
+
+      - name: Prepare artifacts
+        run: |
+          mkdir -p release
+          if [ -f "Questionable/dist/Questionable/latest.zip" ]; then
+            cp "Questionable/dist/Questionable/latest.zip" "release/latest.zip"
+          else
+            echo "Warning: latest.zip not found"
+          fi
+          
+          if [ -f "Questionable/dist/Questionable/Questionable.json" ]; then
+            cp "Questionable/dist/Questionable/Questionable.json" "release/Questionable.json"
+          else
+            echo "Warning: Questionable.json not found"
+          fi
+          ls -la release/
+
+      - name: Generate checksums
+        run: |
+          cd release
+          for file in *; do
+            if [ -f "$file" ]; then
+              sha256sum "$file" > "$file.sha256"
+            fi
+          done
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -n "$PREVIOUS_TAG" ]; then
+            CHANGELOG=$(git log --pretty=format:"- %s (%h) by %an" ${PREVIOUS_TAG}..HEAD --no-merges | grep -v "Version bump")
+            COMMIT_COUNT=$(git rev-list --count ${PREVIOUS_TAG}..HEAD --no-merges)
+            echo "Found $COMMIT_COUNT commits since $PREVIOUS_TAG"
+          else
+            CHANGELOG=$(git log --pretty=format:"- %s (%h) by %an" -10 --no-merges)
+            COMMIT_COUNT=$(git rev-list --count HEAD --no-merges | head -10)
+          fi
+
+          if [ -z "$CHANGELOG" ]; then
+            CHANGELOG="- Version bump to ${VERSION}"
+          fi
+
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        run: |
+          TAG="v${VERSION}"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Delete tag if it exists (for force release)
+          if [ "${{ needs.detect-version-change.outputs.tag-exists }}" = "true" ]; then
+            echo "Deleting existing tag $TAG"
+            git tag -d $TAG || true
+            git push origin :refs/tags/$TAG || true
+          fi
+          
+          git tag $TAG -m "Release version ${VERSION}"
+          git push origin $TAG
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: "Questionable v${{ env.VERSION }}"
+          body: |
+            ## Questionable v${{ env.VERSION }}
+            
+            This release was automatically created following a version bump.
+            
+            ### Changes in this release
+            ${{ steps.changelog.outputs.changelog }}
+            
+            ### Installation Files
+            - `latest.zip` - **Plugin archive for installation**
+            - `Questionable.json` - Plugin manifest
+            - `*.sha256` - Checksums for verification
+            
+            ---
+            *Detailed changes and pull requests are listed below in the auto-generated release notes.*
+          files: |
+            release/*
+          draft: false
+          prerelease: ${{ needs.detect-version-change.outputs.testing }}
+          generate_release_notes: true
