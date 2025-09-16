@@ -193,11 +193,11 @@ internal sealed class PluginConfigComponent : ConfigComponent
                 }
 
                 allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
+                allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
             }
-            ImGui.Text("The following rotation/combat plugins are provided for compatibility and testing purposes:");
+            ImGui.Text("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:");
             using (ImRaii.PushIndent())
             {
-                allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
                 allRequiredInstalled &=
                     DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
             }
