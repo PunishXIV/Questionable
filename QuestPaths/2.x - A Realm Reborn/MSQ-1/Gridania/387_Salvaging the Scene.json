@@ -30,8 +30,12 @@
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            26
+          "ComplexCombatData": [
+            {
+              "DataId": 26,
+              "NameId": 592,
+              "IgnoreQuestMarker": true
+            }
           ]
         },
         {
