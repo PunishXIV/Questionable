@@ -52,7 +52,7 @@ jobs:
         id: is-testing
         run: |
           BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
-          if [ "$BRANCH" = "main" ]; then
+          if [ "$BRANCH" = "new-main" ]; then
             echo "testing=false" >> $GITHUB_OUTPUT
           else
             echo "testing=true" >> $GITHUB_OUTPUT
