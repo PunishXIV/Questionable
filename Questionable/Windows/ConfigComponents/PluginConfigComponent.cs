@@ -179,11 +179,11 @@ internal sealed class PluginConfigComponent : ConfigComponent
         ImGui.Separator();
         ImGui.Spacing();
 
-        ImGui.Text("Questionable supports multiple rotation/combat plugins, please pick the one\nyou want to use:");
+        ImGui.Text("Questionable recommends Boss Mod (VBM) for rotation/combat automation.");
 
-        using (ImRaii.PushIndent())
+        using (ImRaii.Disabled(_combatController.IsRunning))
         {
-            using (ImRaii.Disabled(_combatController.IsRunning))
+            using (ImRaii.PushIndent())
             {
                 if (ImGui.RadioButton("No rotation/combat plugin (combat must be done manually)",
                         _configuration.General.CombatModule == Configuration.ECombatModule.None))
@@ -193,6 +193,10 @@ internal sealed class PluginConfigComponent : ConfigComponent
                 }
 
                 allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
+            }
+            ImGui.Text("The following rotation/combat plugins are provided for compatibility and testing purposes:");
+            using (ImRaii.PushIndent())
+            {
                 allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
                 allRequiredInstalled &=
                     DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
