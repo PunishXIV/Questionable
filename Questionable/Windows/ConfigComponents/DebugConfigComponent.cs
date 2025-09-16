@@ -129,6 +129,16 @@ internal sealed class DebugConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step.");
+
+            bool showWindowOnStart = Configuration.Advanced.ShowWindowOnStart;
+            if (ImGui.Checkbox("Show window on start", ref showWindowOnStart))
+            {
+                Configuration.Advanced.ShowWindowOnStart = showWindowOnStart;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker("When enabled, Questionable's progress window will show when the plugin is loaded.");
         }
     }
 }
