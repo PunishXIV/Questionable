@@ -74,9 +74,10 @@ jobs:
         id: check-release
         run: |
           FORCE_RELEASE="${{ github.event.inputs.force_release }}"
+          TESTING="${{ steps.is-testing.outputs.testing }}"
           TAG_EXISTS="${{ steps.check-tag.outputs.exists }}"
           
-          if [ "$FORCE_RELEASE" = "true" ] || [ "$TAG_EXISTS" = "false" ]; then
+          if [ "$FORCE_RELEASE" = "true" ] || [ "$TESTING" = "true" ] || [ "$TAG_EXISTS" = "false" ]; then
             echo "should-release=true" >> $GITHUB_OUTPUT
             echo "Will create release"
           else
