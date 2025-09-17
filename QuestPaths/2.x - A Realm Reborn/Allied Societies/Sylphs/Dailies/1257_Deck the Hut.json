@@ -121,6 +121,25 @@
           "ItemId": 2001117
         },
         {
+          "Position": {
+            "X": -233.39812,
+            "Y": 3.5426886,
+            "Z": 285.5684
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -228.49472,
+            "Y": 3.5543644,
+            "Z": 284.51855
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
           "DataId": 2003156,
           "Position": {
             "X": -227.19159,
@@ -129,6 +148,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
+          "DisableNavmesh": true,
           "ItemId": 2001117
         }
       ]
@@ -137,6 +157,26 @@
       "Sequence": 2,
       "Steps": [
         {
+          "Position": {
+            "X": -228.49472,
+            "Y": 3.5543644,
+            "Z": 284.51855
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -233.39812,
+            "Y": 3.5426886,
+            "Z": 285.5684
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
+        },
+        {
           "DataId": 1000540,
           "Position": {
             "X": -238.17816,
@@ -144,7 +184,8 @@
             "Z": 283.71094
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
         }
       ]
     },
