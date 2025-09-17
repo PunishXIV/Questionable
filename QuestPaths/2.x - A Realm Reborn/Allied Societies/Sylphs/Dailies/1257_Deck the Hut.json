@@ -18,7 +18,15 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 47.01306,
+                  "Y": 6.0734644,
+                  "Z": 254.01685
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }
@@ -193,39 +201,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -235.16263,
-            "Y": 1.5017104,
-            "Z": 299.5493
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 37.71168,
-            "Y": 4.7303743,
-            "Z": 250.62769
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 37.71168,
-                  "Y": 4.7303743,
-                  "Z": 250.62769
-                },
-                "TerritoryId": 152,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1005561,
           "Position": {
             "X": 47.01306,
@@ -235,9 +210,18 @@
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true
+              "NearPosition": {
+                "Position": {
+                  "X": 47.01306,
+                  "Y": 6.0734644,
+                  "Z": 254.01685
+                },
+                "TerritoryId": 152,
+                "MaximumDistance": 500
+              }
             }
           }
         }
