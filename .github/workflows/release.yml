@@ -215,3 +215,28 @@ jobs:
           draft: false
           prerelease: ${{ needs.detect-version-change.outputs.testing }}
           generate_release_notes: true
+
+  update-pluginmaster:
+    needs: build-and-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: dlmd
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Generate and push pluginmaster
+        run: |
+          pip install -r requirements.txt
+          python3 .github/gen_pluginmaster.py
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add pluginmaster.json
+          git commit -a -m "Update pluginmaster"
+          git push origin dlmd
