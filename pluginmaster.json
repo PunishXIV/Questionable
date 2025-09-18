@@ -1,0 +1,26 @@
+[
+  {
+    "Author": "Liza Carvelli & various contributors",
+    "Name": "Questionable",
+    "Punchline": "A tiny quest helper plugin.",
+    "Description": "A small quest helper plugin designed to automatically do your quests for you where possible. Utilizes navmesh to automatically travel to all quest waypoints and (attempts to) complete all steps along the way (excluding dungeons, single-player duties and combat).\n\nNot all quests are supported.\n\nRequired Plugins: vnavmesh, TextAdvance, Lifestream",
+    "Tags": [
+      "quests",
+      "msq"
+    ],
+    "InternalName": "Questionable",
+    "RepoUrl": "https://github.com/PunishXIV/Questionable",
+    "DownloadCount": 21,
+    "LastUpdate": 1758238882,
+    "DownloadLinkInstall": "https://github.com/PunishXIV/Questionable/releases/download/v6.6.0.10/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/PunishXIV/Questionable/releases/download/v6.6.0.10/latest.zip",
+    "AssemblyVersion": "6.6.0.10",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": "13",
+    "Changelog": "v6.6.0.10:\n- tribes 1222,1223,1257 fixes (a766402a) by alydev\n- workflow Correct branch name again (5ad1940c) by alydev\n- Rotation plugin list order update: move Wrath above the separator (f865b7d8) by alydev\n- Add note recommending VBM over other rotation plogon (98a0cc24) by alydev\n- New feature: Show Questionable window on start (9ba583e0) by alydev\n- grd 387 additional info on combat (c88c871e) by alydev\n- grd 3855 simplify route, avoid KO (ac81b121) by alydev\n- Post stb: 2962,2969 add shortcuts (124cab70) by alydev\n- Tested amaljaa quests 1223,1233,1243 (4402ebb8) by alydev\n- Fix plugin metadata (381b55b4) by alydev\n\nv6.6.0.11:\n- 3326 reduce stop distance #35 (bf8f546) by alydev",
+    "TestingAssemblyVersion": "6.6.0.11",
+    "DownloadLinkTesting": "https://github.com/PunishXIV/Questionable/releases/download/v6.6.0.11/latest.zip",
+    "TestingDalamudApiLevel": "13",
+    "IconUrl": "https://s3.puni.sh/media/plugin/94/icon-ayf2kn3uloc.png"
+  }
+]
