@@ -12,7 +12,7 @@
             "Y": -19.713022,
             "Z": 385.51917
           },
-          "StopDistance": 5,
+          "StopDistance": 4,
           "TerritoryId": 817,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Rak'tika - Slitherbough",
@@ -34,7 +34,7 @@
             "Y": -19.59217,
             "Z": 388.84558
           },
-          "StopDistance": 7,
+          "StopDistance": 4,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -65,7 +65,7 @@
             "Y": -19.59217,
             "Z": 388.84558
           },
-          "StopDistance": 7,
+          "StopDistance": 4,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
