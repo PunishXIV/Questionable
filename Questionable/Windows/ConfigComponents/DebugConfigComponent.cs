@@ -139,6 +139,16 @@ internal sealed class DebugConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("When enabled, Questionable's progress window will show when the plugin is loaded.");
+
+            bool startMinimized = Configuration.Advanced.StartMinimized;
+            if (ImGui.Checkbox("Start minimized", ref startMinimized))
+            {
+                Configuration.Advanced.StartMinimized = startMinimized;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker("When enabled, Questionable's progress window will be in its minimized state when loaded.");
         }
     }
 }
