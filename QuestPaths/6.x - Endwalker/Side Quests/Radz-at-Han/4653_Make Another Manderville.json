@@ -1,0 +1,69 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1043891,
+          "Position": {
+            "X": 41.33667,
+            "Y": -24.693443,
+            "Z": -201.67853
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] The High Crucible of Al-Kimiya"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043892,
+          "Position": {
+            "X": 48.325317,
+            "Y": -0.0003188569,
+            "Z": -12.802368
+          },
+          "TerritoryId": 963,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Radz-at-Han] The High Crucible of Al-Kimiya",
+            "[Radz-at-Han] Aetheryte Plaza"
+          ],
+          "ItemId": 38420,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1043891,
+          "Position": {
+            "X": 41.33667,
+            "Y": -24.693443,
+            "Z": -201.67853
+          },
+          "TerritoryId": 963,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "AethernetShortcut": [
+            "[Radz-at-Han] Aetheryte Plaza",
+            "[Radz-at-Han] The High Crucible of Al-Kimiya"
+          ]
+        }
+      ]
+    }
+  ]
+}
