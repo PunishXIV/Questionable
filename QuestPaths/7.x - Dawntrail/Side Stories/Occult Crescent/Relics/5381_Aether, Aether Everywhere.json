@@ -1,0 +1,38 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039457,
+          "Position": {
+            "X": 25.802979,
+            "Y": 0,
+            "Z": 13.38208
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053908,
+          "Position": {
+            "X": 28.854736,
+            "Y": 0,
+            "Z": 13.351624
+          },
+          "TerritoryId": 1278,
+          "$": "Default value on start is 0 16 0 0 0 0. Setting required to 32 so it doesn't try to complete immediately",
+          "RequiredQuestVariables": [null,[{"High": 2}],null,null,null,null],
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

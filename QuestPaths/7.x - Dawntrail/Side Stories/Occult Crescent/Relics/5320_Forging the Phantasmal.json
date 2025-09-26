@@ -1,0 +1,60 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053906,
+          "Position": {
+            "X": 25.802979,
+            "Y": 0,
+            "Z": 13.38208
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053904,
+          "Position": {
+            "X": 40.81787,
+            "Y": 0,
+            "Z": 20.828491
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "PurchaseItem",
+          "ItemId": 47750,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053905,
+          "Position": {
+            "X": 29.55664,
+            "Y": 0,
+            "Z": 10.788086
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
