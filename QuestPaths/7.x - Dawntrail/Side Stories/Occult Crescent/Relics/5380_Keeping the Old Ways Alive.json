@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "WigglyMuffin",
+  "Author": "WigglyMuffin,alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -37,6 +37,104 @@
       "Sequence": 2,
       "Steps": [
         {
+          "DataId": 1048933,
+          "Position": {
+            "X": -381.5824,
+            "Y": 23.535583,
+            "Z": -436.94214
+          },
+          "TerritoryId": 1189,
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
+          "InteractionType": "PurchaseItem",
+          "ItemId": 46852,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1048382,
+          "Position": {
+            "X": -9.597961,
+            "Y": -9.628479,
+            "Z": 90.34863
+          },
+          "TerritoryId": 1185,
+          "AetheryteShortcut": "Tuliyollal",
+          "InteractionType": "PurchaseItem",
+          "ItemId": 46854,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 46855,
+          "ItemCount": 1,
+          "TerritoryId": 1185,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 46856,
+          "ItemCount": 1,
+          "TerritoryId": 1185,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "ItemId": 46857,
+          "ItemCount": 1,
+          "TerritoryId": 1185,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2014671,
+          "Position": {
+            "X": 206.31714,
+            "Y": -17.990417,
+            "Z": 63.309692
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        },
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 1278
+        },
+        {
           "DataId": 1053908,
           "Position": {
             "X": 28.854736,
@@ -61,6 +159,10 @@
           "TerritoryId": 1278,
           "InteractionType": "Interact",
           "NextQuestId": 5381
+        },
+        {
+          "InteractionType": "CompleteQuest",
+          "TerritoryId": 1278
         }
       ]
     }

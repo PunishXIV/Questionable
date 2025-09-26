@@ -1,0 +1,369 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005577,
+          "Position": {
+            "X": 28.488525,
+            "Y": -3.6319597,
+            "Z": 210.62024
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1008361,
+          "Position": {
+            "X": 253.04065,
+            "Y": -6.5746136,
+            "Z": -65.56492
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Comment": "Turn on RP walk, kill every enemy you\ncome across so chocobo man isn't distracted",
+      "Steps": [
+        {
+          "Position": {
+            "X": 274.21375,
+            "Y": -11.57235,
+            "Z": -143.24345
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "DelaySecondsAtStart": 3,
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            27
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 311.25394,
+            "Y": -16.537638,
+            "Z": -171.698
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "DelaySecondsAtStart": 3,
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            27
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 326.8417,
+            "Y": -17.631077,
+            "Z": -185.55954
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            27
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 330.1656,
+            "Y": -18.237339,
+            "Z": -219.81784
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            403
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 315.46304,
+            "Y": -18.326637,
+            "Z": -264.94223
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 324.47534,
+            "Y": -17.542734,
+            "Z": -261.2537
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            403
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 247.6315,
+            "Y": -22.630655,
+            "Z": -373.3534
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 210.71255,
+            "Y": -20.98461,
+            "Z": -409.86917
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            48
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "Position": {
+            "X": 147.78357,
+            "Y": -23.618519,
+            "Z": -480.24725
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            24
+          ],
+          "Sprint": false,
+          "Mount": false
+        },
+        {
+          "DataId": 2474,
+          "Position": {
+            "X": -6.240205,
+            "Y": -34.019325,
+            "Z": -529.8713
+          },
+          "StopDistance": 1,
+          "TerritoryId": 152,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5
+        },
+        {
+          "DataId": 2003388,
+          "Position": {
+            "X": -8.194153,
+            "Y": -34.836426,
+            "Z": -531.5176
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Sprint": false,
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005616,
+          "Position": {
+            "X": -8.133057,
+            "Y": -34.827404,
+            "Z": -531.57855
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "Position": {
+            "X": 101.51831,
+            "Y": -20.269941,
+            "Z": -513.2982
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            2471,
+            2472,
+            2473
+          ]
+        },
+        {
+          "DataId": 1005575,
+          "Position": {
+            "X": 101.51831,
+            "Y": -20.269941,
+            "Z": -513.2982
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2002883,
+          "Position": {
+            "X": 102.49487,
+            "Y": -20.340332,
+            "Z": -512.87103
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Comment": "Final stretch, almost there",
+      "Steps": [
+        {
+          "DataId": 2003345,
+          "Position": {
+            "X": 257.1908,
+            "Y": -23.422668,
+            "Z": -374.3191
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2003346,
+          "Position": {
+            "X": 314.19836,
+            "Y": -17.929382,
+            "Z": -269.61163
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2003470,
+          "Position": {
+            "X": 243.79333,
+            "Y": -5.203369,
+            "Z": -51.71283
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2003471,
+          "Position": {
+            "X": 234.79053,
+            "Y": -3.8911133,
+            "Z": 67.673706
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2003473,
+          "Position": {
+            "X": 68.61975,
+            "Y": 4.8981323,
+            "Z": 183.79492
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2003423,
+          "Position": {
+            "X": 45.944946,
+            "Y": 6.0578003,
+            "Z": 250.56836
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1005564,
+          "Position": {
+            "X": 48.203125,
+            "Y": 6.0734696,
+            "Z": 247.79126
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000168,
+          "Position": {
+            "X": -75.48645,
+            "Y": -0.5013741,
+            "Z": -5.081299
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    }
+  ]
+}
