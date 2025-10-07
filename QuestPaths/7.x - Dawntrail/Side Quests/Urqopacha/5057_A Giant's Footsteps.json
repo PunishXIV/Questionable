@@ -53,7 +53,8 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 6,
+          "NpcWaitDistance": 8,
+          "StopDistance": 1,
           "Mount": false,
           "Sprint": false
         },
@@ -66,7 +67,8 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 6,
+          "NpcWaitDistance": 8,
+          "StopDistance": 1,
           "Mount": false,
           "Sprint": false
         },
@@ -79,7 +81,8 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 6,
+          "NpcWaitDistance": 8,
+          "StopDistance": 1,
           "Mount": false,
           "Sprint": false
         },
@@ -122,7 +125,8 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 6.5,
+          "NpcWaitDistance": 8,
+          "StopDistance": 1,
           "Mount": false,
           "Sprint": false
         },
@@ -135,7 +139,8 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 6.5,
+          "NpcWaitDistance": 8,
+          "StopDistance": 1,
           "Mount": false,
           "Sprint": false
         },

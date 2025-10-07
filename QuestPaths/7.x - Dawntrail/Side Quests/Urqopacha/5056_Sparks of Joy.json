@@ -15,6 +15,21 @@
           "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "TerritoryId": 1187,
+                "Position": {
+                  "X": 425.07043,
+                  "Y": 118.935005,
+                  "Z": 606.13403
+                },
+                "MaximumDistance": 50
+              }
+            }
+          },
           "DialogueChoices": [
             {
               "Type": "List",
