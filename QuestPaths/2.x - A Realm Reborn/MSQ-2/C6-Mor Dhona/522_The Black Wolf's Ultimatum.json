@@ -1,6 +1,9 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "JerryWester",
+  "Author": [
+    "JerryWester",
+    "Kiarra"
+  ],
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -21,6 +24,16 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "Position": {
+            "X": -139.75781,
+            "Y": -3.288031,
+            "Z": -175.0319
+          },
+          "TerritoryId": 130,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ul'dah"
+        },
         {
           "DataId": 1001821,
           "Position": {
