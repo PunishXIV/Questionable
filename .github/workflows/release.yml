@@ -17,7 +17,7 @@ permissions:
 jobs:
   detect-version-change:
     runs-on: ubuntu-latest
-    if: contains(fromJson(vars.RELEASE_USERNAMES), github.actor)
+    if: github.actor == "octocat"
     outputs:
       version: ${{ steps.get-version.outputs.version }}
       should-release: ${{ steps.check-release.outputs.should-release }}
