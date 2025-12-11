@@ -1,3 +1,4 @@
+- Migrate xan preset changes to Overworld -Kiarra
 - Add shortcuts to the initial pvp quests -Kiarra
 - Increase delays in combat recovery by 0.5s
 - Disable Lifestream shortcut until bugs are fixed
