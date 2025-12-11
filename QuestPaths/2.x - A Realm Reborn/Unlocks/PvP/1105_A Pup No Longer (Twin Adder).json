@@ -39,12 +39,22 @@
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            }
+          }
         },
         {
           "TerritoryId": 135,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Lower La Noscea - Moraby Drydocks"
+          "Aetheryte": "Lower La Noscea - Moraby Drydocks",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            }
+          }
         },
         {
           "DataId": 1002484,
@@ -55,7 +65,13 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 250
+          "TargetTerritoryId": 250,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
         },
         {
           "TerritoryId": 250,
