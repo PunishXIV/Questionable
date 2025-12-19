@@ -333,7 +333,7 @@ internal sealed class QuestData
     public List<IQuestInfo> GetAllByJournalGenre(uint journalGenre)
     {
         return _quests.Values
-            .Where(x => x is QuestInfo { IsSeasonalEvent: false } or not QuestInfo)
+            .Where(x => x is QuestInfo { IsSeasonalEvent: false } or not null)
             .Where(x => x.JournalGenre == journalGenre)
             .OrderBy(x => x.SortKey)
             .ThenBy(x => x.QuestId)
