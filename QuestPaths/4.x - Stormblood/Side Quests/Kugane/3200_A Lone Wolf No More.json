@@ -1,0 +1,86 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026860,
+          "Position": {
+            "X": 18.478638,
+            "Y": 0.0000029802322,
+            "Z": -63.401245
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_SUBCTS825_03200_Q1_000_000",
+              "Answer": "TEXT_SUBCTS825_03200_A1_000_001"
+            }
+          ],
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 18.478638,
+                  "Y": 0.0000029802322,
+                  "Z": -63.401245
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026861,
+          "Position": {
+            "X": 458.5182,
+            "Y": 69.204285,
+            "Z": -63.797974
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 458.5182,
+                  "Y": 69.204285,
+                  "Z": -63.797974
+                },
+                "TerritoryId": 135,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2009663,
+          "Position": {
+            "X": 180.89563,
+            "Y": 144.51819,
+            "Z": -8.835022
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
