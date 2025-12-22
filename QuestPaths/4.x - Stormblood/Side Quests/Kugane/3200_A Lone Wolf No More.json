@@ -78,6 +78,17 @@
             "Z": -8.835022
           },
           "TerritoryId": 614,
+          "InteractionType": "UseItem",
+          "ItemId": 2002496
+        },
+        {
+          "DataId": 2009663,
+          "Position": {
+            "X": 180.89563,
+            "Y": 144.51819,
+            "Z": -8.835022
+          },
+          "TerritoryId": 614,
           "InteractionType": "CompleteQuest"
         }
       ]
