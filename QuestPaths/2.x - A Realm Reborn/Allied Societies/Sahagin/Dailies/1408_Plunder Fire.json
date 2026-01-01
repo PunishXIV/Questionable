@@ -1,0 +1,191 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "eyjafjallascomb",
+  "Disabled": true,
+  "Comment": "WIP",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005940,
+          "Position": {
+            "X": -226.12347,
+            "Y": -40.48583,
+            "Z": 57.083984
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        }
+      ]
+    },
+    { 
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005946,
+          "Position": {
+            "X": -239.27673,
+            "Y": -42.130188,
+            "Z": 15.213196
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -830.1075,
+                  "Y": -28.771336,
+                  "Z": 970.3592
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
+          "Comment": "Stuck, due to the quest [Sea Scraps] also existed and were teleported into quest [Sea Scraps]. Please discard [Sea Scraps] or this quest and re-run. ",
+          "DataId": 1005946,
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": 0
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -926.28375,
+                  "Y": -32.617805,
+                  "Z": 845.52545
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
+          "Comment": "Chest nearest",
+          "DataId": 2004016,
+          "Position": {
+            "X": -939.1165,
+            "Y": -31.784546,
+            "Z": 846.0364
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "GroundTarget": false,
+          "Fly": false,
+          "ItemId": 2001292
+        },
+        {
+          "Comment": "Chest secondary-nearest",
+          "DataId": 2004019,
+          "Position": {
+            "X": -929.015,
+            "Y": -29.770386,
+            "Z": 842.8624
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "GroundTarget": false,
+          "Fly": false,
+          "ItemId": 2001292
+        },
+        {
+          "Comment": "Chest secondary-farest",
+          "DataId": 2004017, 
+          "Position": {
+            "X": -931.6091,
+            "Y": -30.289246,
+            "Z": 829.34314
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "GroundTarget": false,
+          "Fly": false,
+          "ItemId": 2001292
+        },
+        {
+          "Comment": "Chest farest",
+          "DataId": 2004018,
+          "Position": {
+            "X": -917.57074,
+            "Y": -31.75409,
+            "Z": 823.14795
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "GroundTarget": false,
+          "Fly": false,
+          "ItemId": 2001292
+        }
+      ]
+    },
+    { 
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Optional step to exit the quest instance via the local exit NPC for better efficiency.",
+          "DataId": 2004015,
+          "Position": {
+            "X": -924.4068,
+            "Y": -33.432617,
+            "Z": 842.31323
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -241.11604,
+                  "Y": -41.869278,
+                  "Z": 21.059464
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005940,
+          "Position": {
+            "X": -226.12347,
+            "Y": -40.48583,
+            "Z": 57.083984
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
