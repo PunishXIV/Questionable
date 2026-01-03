@@ -29,6 +29,7 @@ internal sealed class AlliedSocietyData
         {
             return questId.Value switch
             {
+                >= 1257 and <= 1286 => EAlliedSociety.Sylphs,
                 >= 2171 and <= 2200 => EAlliedSociety.VanuVanu,
                 >= 2261 and <= 2280 => EAlliedSociety.Vath,
                 >= 2290 and <= 2319 => EAlliedSociety.Moogles,
