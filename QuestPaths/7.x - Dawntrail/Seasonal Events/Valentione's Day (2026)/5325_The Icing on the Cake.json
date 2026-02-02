@@ -82,6 +82,7 @@
         },
         {
           "InteractionType": "WaitForManualProgress",
+          "TerritoryId": 133,
           "Comment": " Skip this step after finishing atleast 1 cake(out of instance) "
         }
       ]
