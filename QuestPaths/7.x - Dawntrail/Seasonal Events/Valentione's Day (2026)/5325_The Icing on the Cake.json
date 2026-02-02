@@ -1,0 +1,178 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1054046,
+          "Position": {
+            "X": -50.06488,
+            "Y": 6.5,
+            "Z": -90.25714
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "Comment": "This quest goes into an instance(",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2014714,
+          "Position": {
+            "X": -45.212524,
+            "Y": 6.7596436,
+            "Z": -127.42816
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": " This Queues for an instance (solo) ",
+          "DataId": 1054051,
+          "Position": {
+            "X": -41.12317,
+            "Y": 6.8356857,
+            "Z": -125.32239
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/009/FesVlt2026Entrance_00938",
+              "Prompt": "TEXT_FESVLT2026ENTRANCE_00938_Q1_000_000",
+              "Answer": "TEXT_FESVLT2026ENTRANCE_00938_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "ExcelSheet": "custom/009/FesVlt2026Entrance_00938",
+              "Prompt": "TEXT_FESVLT2026ENTRANCE_00938_Q2_000_000",
+              "Answer": "TEXT_FESVLT2026ENTRANCE_00938_A2_000_002"
+            },
+            {
+              "Type": "YesNo",
+              "ExcelSheet": "custom/009/FesVlt2026Entrance_00938",
+              "Prompt": "TEXT_FESVLT2026ENTRANCE_00938_TALK_SYSTEM_000_015",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "InteractionType": "WaitForManualProgress",
+          "Comment": " Skip this step after finishing atleast 1 cake(out of instance) "
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1054048,
+          "Position": {
+            "X": -47.196167,
+            "Y": 6.7986083,
+            "Z": -124.80359
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESVLX201_05325_Q3_000_000",
+              "Answer": "TEXT_FESVLX201_05325_A1_000_002"
+            }
+          ],
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1054050,
+          "Position": {
+            "X": -45.15149,
+            "Y": 6.8105283,
+            "Z": -125.352905
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1054052,
+          "Position": {
+            "X": 92.729004,
+            "Y": 12.160356,
+            "Z": -247.88281
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Mih Khetto's Amphitheatre",
+            "[Gridania] Lancers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1054137,
+          "Position": {
+            "X": -52.811523,
+            "Y": 6.5,
+            "Z": -88.39557
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Lancers' Guild",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    }
+  ]
+}
