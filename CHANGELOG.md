@@ -2,3 +2,4 @@
   - ok it works now -alydev
 - Miner quest just buy copper for 20gil -Kiarra
 - Miner lv 5 just buy bonechip for 50gil -Kiarra
+- BTN lv 1 buy if uldah available 70gil -Kiarra

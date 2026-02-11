@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": ["liza","Kiarra"],
   "LastChecked":{"Username": "alydev", "Date": "2025-12-14"},
   "QuestSequence": [
     {
@@ -35,9 +35,47 @@
         }
       ]
     },
-    {
+     {
       "Sequence": 255,
       "Steps": [
+        {
+          "TerritoryId": 131,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ],
+          "DataId": 1004418,
+          "Position": {
+            "X": -114.0307,
+            "Y": 41.600136,
+            "Z": 118.30322
+          },
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": "262177"
+          },
+          "ItemId": 5509,
+          "ItemCount": 10,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                131
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              },
+              "AetheryteLocked": "Ul'dah"
+            }
+          }
+        },
         {
           "TerritoryId": 154,
           "InteractionType": "Gather",
