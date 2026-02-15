@@ -592,9 +592,11 @@ internal sealed class InteractionUiController : IDisposable
             return;
 
         string? actualPrompt = addonSelectYesno->AtkUnitBase.AtkValues[0].ReadAtkString();
-
-        actualPrompt ??= string.Empty;
-
+        if (actualPrompt is null)
+        {
+            _logger.LogTrace("Prompt is null in SelectYesnoPostSetup; skipping automated handling.");
+            return;
+        }
         _logger.LogTrace("Prompt: '{Prompt}'", actualPrompt);
         if (_shopController.IsAwaitingYesNo && _purchaseItemRegex.IsMatch(actualPrompt))
         {
