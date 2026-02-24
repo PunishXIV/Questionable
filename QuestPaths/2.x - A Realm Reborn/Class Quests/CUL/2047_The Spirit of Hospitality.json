@@ -1,0 +1,207 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "Comment": "Crafted Item:\n1x Morel Salad HQ\n1x Deep-Friend okeanis HQ\n1x Marron Glace HQ\nAutocrafting requires:\n1x Abalathian Rock Salt\n3x Birch Sap\n4x Cinderfoot Olive\n1x Cooking Sherry\n1x Dalamud Popoto\n3x Dark Chestnut\n2x Emerald Beans\n5x Highland Wheat\n1x La Noscean Lettuce(Jossy)\n2x Morel\n3x Okeanis Tail\n1x Sesame Seeds\n1x Young Cieldalaes Spinach",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012568,
+          "Position": {
+            "X": 69.71838,
+            "Y": 44.399895,
+            "Z": 135.9425
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129,
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012575,
+          "Position": {
+            "X": -84.42822,
+            "Y": 40.99998,
+            "Z": -136.79718
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012568,
+          "Position": {
+            "X": 69.71838,
+            "Y": 44.399895,
+            "Z": 135.9425
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSCUL600_02047_Q1_000_122",
+              "Answer": "TEXT_CLSCUL600_02047_A1_000_123",
+              "Type": "List"
+            },
+            {
+              "Prompt": "TEXT_CLSCUL600_02047_Q1_000_127",
+              "Answer": "TEXT_CLSCUL600_02047_A1_000_128",
+              "Type": "List"
+            },
+            {
+              "Prompt": "TEXT_CLSCUL600_02047_Q1_000_134",
+              "Answer": "TEXT_CLSCUL600_02047_A1_000_135",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 12881,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 4857,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 12860,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 12854,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 12892,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 12847,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012576,
+          "Position": {
+            "X": -80.91864,
+            "Y": 40.99999,
+            "Z": -139.3302
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
+          "AllowHighQuality": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012568,
+          "Position": {
+            "X": 69.71838,
+            "Y": 44.399895,
+            "Z": 135.9425
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
+}

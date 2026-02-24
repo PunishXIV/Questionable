@@ -1,0 +1,65 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000947,
+          "Position": {
+            "X": -54.64258,
+            "Y": 44.000008,
+            "Z": -151.23218
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129,
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020143,
+          "Position": {
+            "X": -68.16211,
+            "Y": 41.99949,
+            "Z": -135.0271
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    }
+  ]
+}

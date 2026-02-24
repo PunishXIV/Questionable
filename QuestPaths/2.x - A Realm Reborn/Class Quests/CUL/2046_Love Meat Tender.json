@@ -1,0 +1,286 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "Comment": "Crafted Item:\n1x Cockatrice Meatballs HQ\nAutocrafting requires:\n3x Cockatrice Thigh\n2x Cyclops Onion\n1x Abalathian Rock Salt",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012568,
+          "Position": {
+            "X": 69.71838,
+            "Y": 44.399895,
+            "Z": 135.9425
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129,
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000947,
+          "Position": {
+            "X": -54.64258,
+            "Y": 44.000008,
+            "Z": -151.23218
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003249,
+          "Position": {
+            "X": -62.912964,
+            "Y": 42.29963,
+            "Z": -164.75171
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262174
+          },
+          "ItemId": 4751,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1003249,
+          "Position": {
+            "X": -62.912964,
+            "Y": 42.29963,
+            "Z": -164.75171
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262174
+          },
+          "ItemId": 4777,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1003249,
+          "Position": {
+            "X": -62.912964,
+            "Y": 42.29963,
+            "Z": -164.75171
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262174
+          },
+          "ItemId": 4823,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1003249,
+          "Position": {
+            "X": -62.912964,
+            "Y": 42.29963,
+            "Z": -164.75171
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262174
+          },
+          "ItemId": 4780,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1003249,
+          "Position": {
+            "X": -62.912964,
+            "Y": 42.29963,
+            "Z": -164.75171
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262174
+          },
+          "ItemId": 5518,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1003249,
+          "Position": {
+            "X": -62.912964,
+            "Y": 42.29963,
+            "Z": -164.75171
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262174
+          },
+          "ItemId": 4829,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 4825,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 4847,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 4696,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 4865,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 12858,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000947,
+          "Position": {
+            "X": -54.64258,
+            "Y": 44.000008,
+            "Z": -151.23218
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129,
+                128
+              ]
+            }
+          },
+          "AllowHighQuality": true
+        }
+      ]
+    }
+  ]
+}

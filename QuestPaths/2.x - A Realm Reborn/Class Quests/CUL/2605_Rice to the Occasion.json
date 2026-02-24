@@ -1,0 +1,144 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020147,
+          "Position": {
+            "X": 39.96338,
+            "Y": 29.62615,
+            "Z": -730.1289
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
+        },
+        {
+          "DataId": 1020146,
+          "Position": {
+            "X": 58.54883,
+            "Y": 20.973509,
+            "Z": -683.61945
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
+        },
+        {
+          "DataId": 1020145,
+          "Position": {
+            "X": 20.523315,
+            "Y": 28.620823,
+            "Z": -689.9672
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 156,
+          "ItemId": 17934,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020149,
+          "Position": {
+            "X": 69.13855,
+            "Y": 33.06653,
+            "Z": -701.8082
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

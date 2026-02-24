@@ -1,0 +1,153 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000947,
+          "Position": {
+            "X": -54.64258,
+            "Y": 44.000008,
+            "Z": -151.23218
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129,
+                128
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000915,
+          "Position": {
+            "X": 18.387085,
+            "Y": 47.600006,
+            "Z": -162.12714
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000918,
+          "Position": {
+            "X": 84.09241,
+            "Y": 44.399914,
+            "Z": 132.34143
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 156,
+          "ItemId": 17936,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
