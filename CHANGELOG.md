@@ -1,2 +1,3 @@
--  1-65 CUL Quests -Kiarra
+- 1-65 CUL Quests -Kiarra
 - 3018 Emp New Clothes/prism book unlock -Kiarra
+- path around Sui in StB MSQ 2486
