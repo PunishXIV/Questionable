@@ -167,9 +167,9 @@
     },
     {
       "Sequence": 7,
-      "Comment": "Fate required here.\nTalk to the handmaiden to get costume.\n Shoot the performers with the actions.",
       "Steps": [
         {
+          "Comment": "Fate required here.\nTalk to the handmaiden to get costume.\n Shoot the performers with the actions.",
           "DataId": 1055771,
           "Position": {
             "X": -37.369385,
