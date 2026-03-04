@@ -1,0 +1,115 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "h-y3na",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001291,
+          "Position": {
+            "X": -164.29395,
+            "Y": 14.005,
+            "Z": 41.94702
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 130,
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+          {
+            "DataId": 1001292,
+            "Position": {
+              "X": -124.55945,
+              "Y": 10.0,
+              "Z": 1.2054443
+            },
+            "StopDistance": 3.0,
+            "TerritoryId": 130,
+            "InteractionType": "Interact"
+          }
+        ]
+      },
+      {
+        "Sequence": 2,
+        "Steps": [
+          {
+            "Position": {
+              "X": -106.025,
+              "Y": 6.9845657,
+              "Z": 8.604177
+            },
+            "StopDistance": 3.0,
+            "TerritoryId": 130,
+            "InteractionType": "WalkTo"
+          },
+          {
+            "DataId": 2000691,
+            "Position": {
+              "X": -85.67944,
+              "Y": 8.46875,
+              "Z": 18.539673
+            },
+            "StopDistance": 3.0,
+            "TerritoryId": 131,
+            "InteractionType": "UseItem",
+            "ItemId": 2000137
+          },
+          {
+            "DataId": 2000692,
+            "Position": {
+              "X": -68.61987,
+              "Y": 8.438171,
+              "Z": 0.10675049
+            },
+            "StopDistance": 3.0,
+            "TerritoryId": 131,
+            "InteractionType": "UseItem",
+            "ItemId": 2000137
+          },
+          {
+            "DataId": 2000693,
+            "Position": {
+              "X": -86.86963,
+              "Y": 8.651855,
+              "Z": -18.661804
+            },
+            "StopDistance": 3.0,
+            "TerritoryId": 131,
+            "InteractionType": "UseItem",
+            "ItemId": 2000137
+          }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003896,
+          "Position": {
+            "X": -96.17767,
+            "Y": 6.5999684,
+            "Z": 21.286316
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ] 
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "h-y3na",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001288,
+          "Position": {
+            "X": -151.59845,
+            "Y": 12.0,
+            "Z": 16.220276
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 130,
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001289,
+          "Position": {
+            "X": -207.90424,
+            "Y": 18.5,
+            "Z": 70.7865
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 153
+        }
+      ]
+    }
+  ]
+}
