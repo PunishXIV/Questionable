@@ -1,7 +1,10 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-02-09"},
+  "LastChecked": {
+    "Username": "Kiarra",
+    "Date": "2026-03-18"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -31,6 +34,17 @@
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 123.33862,
+                  "Y": 30.999996,
+                  "Z": -384.9394
+                },
+                "TerritoryId": 141,
+                "MaximumDistance": 30
+              }
+            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
