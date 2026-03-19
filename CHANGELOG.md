@@ -1,1 +1,1 @@
-Fix unneeded shortcut 272 arr msq
+Fix unneeded shortcut 272 arr msq, minor fix to 342
