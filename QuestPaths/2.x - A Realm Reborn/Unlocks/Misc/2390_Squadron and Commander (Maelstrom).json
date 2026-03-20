@@ -1,0 +1,41 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002388,
+          "Position": {
+            "X": 95.68933,
+            "Y": 40.250282,
+            "Z": 74.54028
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_COMLIM101_02390_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                128,
+                129
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

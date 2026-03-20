@@ -1,1 +1,1 @@
-Fix unneeded shortcut 272 arr msq, minor fix to 342
+land fixes for 4616, add maelstrom squadron quasi-quest -K
