@@ -1,0 +1,76 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006950,
+          "Position": {
+            "X": 14.755432,
+            "Y": 21.252728,
+            "Z": -640.71106
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008278,
+          "Position": {
+            "X": 15.27417,
+            "Y": 21.252728,
+            "Z": -634.8516
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 155,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 68,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008278,
+          "Position": {
+            "X": 15.27417,
+            "Y": 21.252728,
+            "Z": -634.8516
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

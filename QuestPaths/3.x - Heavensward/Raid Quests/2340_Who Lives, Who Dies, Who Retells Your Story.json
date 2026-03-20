@@ -1,0 +1,56 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1008278,
+          "Position": {
+            "X": 15.27417,
+            "Y": 21.252728,
+            "Z": -634.8516
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1017948,
+          "Position": {
+            "X": 47.16565,
+            "Y": 71.58435,
+            "Z": 75.028564
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                399,
+                478
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
