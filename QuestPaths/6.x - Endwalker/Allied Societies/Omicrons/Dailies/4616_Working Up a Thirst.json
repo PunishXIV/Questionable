@@ -76,6 +76,7 @@
               "RequiredQuestVariablesNotMet": true
             }
           },
+          "Land": true,
           "Fly": true
         },
         {
@@ -91,6 +92,7 @@
             {"Low": 1}
             ],null,null
           ],
+          "Land": true,
           "Fly": true,
           "$": "It's the only pair that increases the significant element by 16"
         },
@@ -113,6 +115,7 @@
               "RequiredQuestVariablesNotMet": true
             }
           },
+          "Land": true,
           "Fly": true
         },
         {
@@ -128,6 +131,7 @@
             {"Low": 2}
             ],null,null
           ],
+          "Land": true,
           "Fly": true
         },
         {
@@ -149,6 +153,7 @@
               "RequiredQuestVariablesNotMet": true
             }
           },
+          "Land": true,
           "Fly": true
         },
         {
@@ -164,6 +169,7 @@
             {"Low": 3}
             ],null,null
           ],
+          "Land": true,
           "Fly": true
         }
       ]
