@@ -1,2 +1,1 @@
-Add route to Outer La Noscea in PLD 1056, minor fix to BLM route,
-reorganize CUL quests by expansion -K
+minor land fix to vath 2276 and blm 1077 -K
