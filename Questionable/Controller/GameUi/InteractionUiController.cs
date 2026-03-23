@@ -565,7 +565,9 @@ internal sealed class InteractionUiController : IDisposable
         if (actualAnswer == null || expectedAnswer == null)
             return false;
 
-        return expectedAnswer.IsMatch(actualAnswer) || expectedAnswer.IsMatch(actualAnswer.Replace("\n", string.Empty));
+        return expectedAnswer.IsMatch(actualAnswer) ||
+            expectedAnswer.IsMatch(actualAnswer.Replace("\n", string.Empty)) ||
+            expectedAnswer.IsMatch(actualAnswer.Split('\n')[0]);
     }
 
     private int? HandleInstanceListChoice(string? actualPrompt)

@@ -1337,6 +1337,8 @@
                 "type": "string",
                 "description": "The action to use",
                 "enum": [
+                  "Duty Action I",
+                  "Duty Action II",
                   "Heavy Swing",
                   "Bootshine",
                   "Twin Snakes",
@@ -1368,10 +1370,10 @@
                   "Blue Gulal",
                   "Electric Flux",
                   "Hop-step",
+                  "Hide",
                   "Fuma Shuriken",
                   "Katon",
                   "Raiton",
-                  "Hide",
                   "Slug Shot",
                   "Bosom Brook",
                   "Souleater",
@@ -1383,8 +1385,9 @@
                   "Big Sneeze",
                   "Trickster's Treat",
                   "Treater's Trick",
-                  "Duty Action I",
-                  "Duty Action II",
+                  "Pruning Pirouette",
+                  "Roaring Eggscapade",
+                  "The Spriganator",
                   "FSHCast",
                   "FSHQuit"
                 ]

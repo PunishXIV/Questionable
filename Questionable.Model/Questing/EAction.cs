@@ -62,6 +62,9 @@ public enum EAction
     BigSneeze = 1765,
     TrickstersTreat = 44517,
     TreatersTrick = 44518,
+    PruningPirouette = 45127,
+    RoaringEggscapade = 42039,
+    TheSpriganator = 42038,
 
     Prospect = 227,
     CollectMiner = 240,
