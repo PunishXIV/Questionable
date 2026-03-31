@@ -5,7 +5,7 @@
     "Username": "alydev",
     "Date": "2026-03-23"
   },
-  "Comment": "This instance requires manual interaction currently.",
+  "Comment": "This instance requires manual interaction or Splatoon script.",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -225,7 +225,7 @@
         {
           "TerritoryId": 1336,
           "InteractionType": "WaitForManualProgress",
-          "Comment": "This instance requires manual interaction currently."
+          "Comment": "This instance requires manual interaction or Splatoon script."
         },
         {
           "TerritoryId": 1336,
