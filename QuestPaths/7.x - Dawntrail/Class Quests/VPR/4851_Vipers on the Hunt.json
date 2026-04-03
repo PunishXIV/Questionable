@@ -94,7 +94,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
