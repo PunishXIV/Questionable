@@ -1,7 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
-  "Comment": "WIP",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -36,7 +35,7 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Comment": "WIP; step currently only implemented with flying unlocked.",
+          "$": "Currently only implemented with flying unlocked. Future devs, need interaction with lift operator for grounded.",
           "Position": {
             "X": -505.21997,
             "Y": -192.11905,
@@ -160,7 +159,7 @@
     },
     {
       "Sequence": 255,
-      "Comment": "WIP; only implemented with flying currently, needs interaction with NPCs to warp up for grounded",
+      "$": "Currently only implemented with flying unlocked. Future devs, need interaction with portal for grounded.",
       "Steps": [
         {
           "DataId": 1041896,
