@@ -124,7 +124,20 @@
           "AethernetShortcut": [
             "[Old Sharlayan] Journey's End",
             "[Old Sharlayan] Scholar's Harbor"
-          ]
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 176.77563,
+                  "Y": 4.58709,
+                  "Z": -5.7526855
+                },
+                "TerritoryId": 962,
+                "MaximumDistance": 20
+              }
+            }
+          }
         }
       ]
     }
