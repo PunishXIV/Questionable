@@ -1,0 +1,46 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "May need possible consideration for non-flying route to avoid a possible A-rank?",
+          "DataId": 1001428,
+          "Position": {
+            "X": 116.80774,
+            "Y": 30.907087,
+            "Z": -359.63995
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001425,
+          "Position": {
+            "X": 115.12927,
+            "Y": 31.876099,
+            "Z": -392.2027
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest",
+          "Mount": false,
+          "Fly": false
+        }
+      ]
+    }
+  ]
+}

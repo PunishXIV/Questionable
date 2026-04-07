@@ -1,0 +1,46 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "Requires a DoH class at level 19 or higher",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "May need possible consideration for non-flying route to avoid a possible A-rank?",
+          "DataId": 1001427,
+          "Position": {
+            "X": 102.89148,
+            "Y": 30.941309,
+            "Z": -377.95074
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001427,
+          "Position": {
+            "X": 102.89148,
+            "Y": 30.941309,
+            "Z": -377.95074
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest"
+        },
+        "NextQuestId": 640
+      ]
+    }
+  ]
+}
