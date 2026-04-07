@@ -1,0 +1,34 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "New Game Plus unlock",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1032363,
+          "Position": {
+            "X": -472.6482,
+            "Y": 23.008791,
+            "Z": -373.22046
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    }
+  ]
+}
