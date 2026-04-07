@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": ["JerryWester, Friendly"],
+  "Author": ["JerryWester", "Friendly"],
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -48,23 +48,32 @@
       "Steps": [
         {
           "Position": {
-              "X": -404.08105,
-              "Y": -25.560223,
-              "Z": 378.66812
+            "X": -404.08105,
+            "Y": -25.560223,
+            "Z": 378.66812
           },
           "TerritoryId": 145,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
         },
         {
-      "DataId": 1004582,
-      "Position": {
-        "X": -331.13605,
-        "Y": -22.476562,
-        "Z": 434.86682
-      },
-      "TerritoryId": 145,
-      "InteractionType": "CompleteQuest"
+          "DataId": 1004582,
+          "Position": {
+            "X": -331.13605,
+            "Y": -22.476562,
+            "Z": 434.86682
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
         }
       ]
     }
