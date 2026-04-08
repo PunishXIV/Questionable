@@ -1,4 +1,4 @@
-bonfire melding quests, desynth, ng+ quests 152 639 640 1463 3759
-mor dhona glam quests 1421 1422
-minor fixes to dungeon quests 697 921 979
-add ARR optional dungeon quests all by ShermTank
+Added HW optional dungeon quests 2112 2113 2201 2202 2248 2282 2402
+Added SB optional dungeon quests 2633 2634 3077
+Added 'NextQuestId's to 1209 1389 1526 (hard mode unlocks)
+Added quest accept/quest complete teleport support to 3142 -All by ShermTank

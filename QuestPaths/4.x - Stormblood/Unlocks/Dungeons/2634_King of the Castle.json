@@ -59,14 +59,14 @@
           }
         },
         {
-          "$": "Main Path",
+          "$": "Main Path, Tested; if backup path (above) is used, this step is automatically skipped (since the user will end up near the Rakuza District)",
           "TerritoryId": 628,
           "InteractionType": "None",
           "AethernetShortcut":[
             "[Kugane] The Ruby Bazaar",
             "[Kugane] Rakuza District"
-          ],
-          "$": "Tested; if backup path (above) is used, this step is automatically skipped (since the user will end up near the Rakuza District)"
+          ]
+          
         },
         {
           "DataId": 1023613,
