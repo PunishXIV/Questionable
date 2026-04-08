@@ -1,0 +1,95 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000692,
+          "Position": {
+            "X": -258.8083,
+            "Y": -5.7735243,
+            "Z": -27.267883
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "$": "No need to have non-flying route to Raya-O-Senna (like the WHM quests); will always have flying during this quest",
+      "Steps": [
+        {
+          "Position": {
+            "X": -139.04318,
+            "Y": 8.522301,
+            "Z": 280.0128
+          },
+          "TerritoryId": 153,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1006751,
+          "Position": {
+            "X": -139.45221,
+            "Y": 8.712891,
+            "Z": 281.69678
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008543,
+          "Position": {
+            "X": -360.00616,
+            "Y": 1.2644191,
+            "Z": 459.83057
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "South Shroud - Camp Tranquil",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                153
+              ]
+            }
+          }
+        }
+      ],
+      "$": "Can set 'One More Night in Amdapor' as next quest once implemented; that quest only needs this quest as a pre-req, not dungeon completed"
+    }
+  ]
+}

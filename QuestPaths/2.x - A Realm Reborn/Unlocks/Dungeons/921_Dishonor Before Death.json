@@ -23,7 +23,7 @@
             "AetheryteShortcutIf": {
               "InSameTerritory": true,
               "InTerritory": [
-                130
+                131
               ]
             },
             "AethernetShortcutIf": {
@@ -46,7 +46,13 @@
           "TerritoryId": 141,
           "InteractionType": "UseItem",
           "ItemId": 2000715,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "Fly": true,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
         }
       ]
     },
