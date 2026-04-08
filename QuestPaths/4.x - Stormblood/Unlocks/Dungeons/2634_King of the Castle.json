@@ -1,0 +1,122 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023612,
+          "Position": {
+            "X": 135.51526,
+            "Y": 12,
+            "Z": 107.04199
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut":[
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Backup Path: used if user teleported away",
+          "TerritoryId": 628,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut":[
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Rakuza District"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                628
+              ]
+            },
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 47.501343,
+                  "Y": 8.438171,
+                  "Z": -37.30841
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "$": "Main Path",
+          "TerritoryId": 628,
+          "InteractionType": "None",
+          "AethernetShortcut":[
+            "[Kugane] The Ruby Bazaar",
+            "[Kugane] Rakuza District"
+          ],
+          "$": "Tested; if backup path (above) is used, this step is automatically skipped (since the user will end up near the Rakuza District)"
+        },
+        {
+          "DataId": 1023613,
+          "Position": {
+            "X": 71.12219,
+            "Y": -7.8500767,
+            "Z": -251.66705
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 628,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 262,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023612,
+          "Position": {
+            "X": 135.51526,
+            "Y": 12,
+            "Z": 107.04199
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut":[
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

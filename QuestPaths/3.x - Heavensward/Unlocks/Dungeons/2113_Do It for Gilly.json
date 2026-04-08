@@ -1,0 +1,136 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012153,
+          "Position": {
+            "X": 168.44421,
+            "Y": -14.348959,
+            "Z": 49.576538
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1015104,
+          "Position": {
+            "X": -63.58441,
+            "Y": 271.23285,
+            "Z": -4.8982544
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                402
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.80292,
+            "Y": 21.783838,
+            "Z": 556.45264
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                402
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2005561,
+          "Position": {
+            "X": 206.40869,
+            "Y": 21.774597,
+            "Z": 558.77014
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 402,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 35,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1015104,
+          "Position": {
+            "X": -63.58441,
+            "Y": 271.23285,
+            "Z": -4.8982544
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                402
+              ]
+            }
+          },
+          "NextQuestId": 3077,
+          "$": "Next quest: Fractal Continuum Hard unlock quest 'An Unwanted Truth'. Technically this only requires dungeon completion, not quest completion, but you will have completed the dungeon in order to complete this quest."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1018427,
+          "Position": {
+            "X": -72.98395,
+            "Y": 195.24638,
+            "Z": 115.983765
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Idyllshire",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018429,
+          "Position": {
+            "X": 169.54297,
+            "Y": -64.3624,
+            "Z": 703.7003
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 400,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 221,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Dungeon spits you out at the base of Sohm Al, but interaction with Solemn Dragon to warp up there seems to be not working at this time",
+          "DataId": 1018429,
+          "Position": {
+            "X": 169.54297,
+            "Y": -64.3624,
+            "Z": 703.7003
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

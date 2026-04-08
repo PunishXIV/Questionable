@@ -1,0 +1,169 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003550,
+          "Position": {
+            "X": 76.85962,
+            "Y": 39.99632,
+            "Z": 78.99597
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Main Path; should be used after accepting quest. Skip if not in upper decks.",
+          "TerritoryId": 128,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Airship Landing"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                128
+              ]
+            }
+          }
+        },
+        {
+          "$": "Backup Path; used if someone teleports elsewhere after accepting quest. Contains aetheryte teleport. Skip if in upper decks.",
+          "TerritoryId": 129,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Airship Landing"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                128
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                128
+              ]
+            }
+          }
+        },
+        {
+          "$": "Main/Backup path setup breaks if user starts QST while on the airship landing, but this shouldn't happen in most cases",
+          "DataId": 1016103,
+          "Position": {
+            "X": -23.025879,
+            "Y": 91.999985,
+            "Z": -9.567444
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 40,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003584,
+          "Position": {
+            "X": 317.43335,
+            "Y": -36.325005,
+            "Z": 352.86487
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 138,
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                138
+              ]
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -259.0232,
+                  "Y": -40.444656,
+                  "Z": 456.90884
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1016105,
+          "Position": {
+            "X": -267.99426,
+            "Y": -40.891766,
+            "Z": 443.86963
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1016104,
+          "Position": {
+            "X": 241.474,
+            "Y": -24.999445,
+            "Z": 244.67834
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    }
+  ]
+}
