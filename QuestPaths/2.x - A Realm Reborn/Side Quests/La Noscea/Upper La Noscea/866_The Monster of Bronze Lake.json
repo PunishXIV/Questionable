@@ -1,0 +1,174 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006332,
+          "Position": {
+            "X": 426.96265,
+            "Y": 8.373348,
+            "Z": 20.004517
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 317.71744,
+            "Y": -3.1370237,
+            "Z": 62.031395
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            139
+          ],
+          "CompletionQuestVariablesFlags": [null,64,null,null,null,null],
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Don't be intimidated by Godbert, just imagine him in his underwe- oh no",
+          "DataId": 1006339,
+          "Position": {
+            "X": 496.57434,
+            "Y": 16.560684,
+            "Z": 64.530396
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "$": "Pour the salamander oil on Godbert, and remember that generosity is a virtue",
+          "DataId": 1006339,
+          "Position": {
+            "X": 496.57434,
+            "Y": 16.560684,
+            "Z": 64.530396
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UseItem",
+          "ItemId": 2000673
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "$": "Aetheryte shortcut & skip is needed to cause a micro-wait; without it the step seems to have trouble using items",
+      "Steps": [
+        {
+          "$": "Unfortunately, there is still plenty more of Godbert in need of oiling",
+          "DataId": 1006339,
+          "Position": {
+            "X": 496.57434,
+            "Y": 16.560684,
+            "Z": 64.530396
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UseItem",
+          "ItemId": 2000673,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "$": "Knead the oil into Godbert's weary flesh",
+          "DataId": 1006339,
+          "Position": {
+            "X": 496.57434,
+            "Y": 16.560684,
+            "Z": 64.530396
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "$": "Keep working those knots out of Godbert's tense muscles",
+          "DataId": 1006339,
+          "Position": {
+            "X": 496.57434,
+            "Y": 16.560684,
+            "Z": 64.530396
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006332,
+          "Position": {
+            "X": 426.96265,
+            "Y": 8.373348,
+            "Z": 20.004517
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
+          "NextQuestId": 868,
+          "$": "Next quest: 'The Adventure of the Fainting Goldsmith'."
+        }
+      ]
+    }
+  ]
+}
