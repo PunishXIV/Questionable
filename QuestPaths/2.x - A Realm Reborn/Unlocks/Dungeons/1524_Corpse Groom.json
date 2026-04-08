@@ -1,0 +1,143 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001894,
+          "Position": {
+            "X": 52.8114,
+            "Y": 4.099994,
+            "Z": -152.84961
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2004329,
+          "Position": {
+            "X": -409.07916,
+            "Y": -30.47229,
+            "Z": 36.75891
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -70.992165,
+            "Y": -40,
+            "Z": 311.87912
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1001173,
+          "Position": {
+            "X": -113.23718,
+            "Y": -39.73311,
+            "Z": 338.64343
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 148,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 24,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -70.992165,
+            "Y": -40,
+            "Z": 311.87912
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -94.529724,
+                  "Y": -40.05186,
+                  "Z": 324.5747
+                },
+                "TerritoryId": 148,
+                "MaximumDistance": 25
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1009367,
+          "Position": {
+            "X": -94.529724,
+            "Y": -40.05186,
+            "Z": 324.5747
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "Fly": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "This is an interim quest between the Pharos Sirius and Pharos Sirius (Hard) dungeon unlocks",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005525,
+          "Position": {
+            "X": 251.20923,
+            "Y": -25,
+            "Z": 262.92822
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 296.91254,
+            "Y": -40.425003,
+            "Z": 380.83066
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                138
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1005398,
+          "Position": {
+            "X": 295.76562,
+            "Y": -40.425003,
+            "Z": 382.52844
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": false
+        }
+      ],
+      "$": "Can set 'Things Are Getting Sirius' as next quest once implemented"
+    }
+  ]
+}
