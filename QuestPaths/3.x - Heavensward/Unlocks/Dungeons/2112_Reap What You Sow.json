@@ -1,0 +1,86 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012066,
+          "Position": {
+            "X": -539.6353,
+            "Y": -37.0904,
+            "Z": -381.7655
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Comment": "Requires flight",
+      "Steps": [
+        {
+          "DataId": 1013745,
+          "Position": {
+            "X": 879.45374,
+            "Y": -97.81962,
+            "Z": -740.01685
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                401
+              ]
+            },
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 401,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 33,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012066,
+          "Position": {
+            "X": -539.6353,
+            "Y": -37.0904,
+            "Z": -381.7655
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}

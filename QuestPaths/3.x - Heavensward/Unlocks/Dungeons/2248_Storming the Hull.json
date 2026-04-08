@@ -6,40 +6,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
-        },
-        {
-          "DataId": 1006975,
-          "Position": {
-            "X": 32.822144,
-            "Y": 21.25273,
-            "Z": -635.46204
-          },
-          "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
-        }
-      ]
-    },
-    {
-      "Sequence": 1,
-      "Steps": [
-        {
           "DataId": 1009231,
           "Position": {
             "X": -9.140198,
@@ -47,7 +13,7 @@
             "Z": -40.08551
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
+          "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
@@ -68,7 +34,7 @@
       ]
     },
     {
-      "Sequence": 2,
+      "Sequence": 1,
       "Steps": [
         {
           "Position": {
@@ -100,13 +66,13 @@
       ]
     },
     {
-      "Sequence": 3,
+      "Sequence": 2,
       "Steps": [
         {
           "TerritoryId": 135,
           "InteractionType": "Duty",
           "DutyOptions": {
-            "ContentFinderConditionId": 23,
+            "ContentFinderConditionId": 172,
             "Enabled": false
           }
         }
@@ -139,8 +105,7 @@
             "AethernetShortcutIf": {
               "InSameTerritory": true
             }
-          },
-          "NextQuestId": 2248
+          }
         }
       ]
     }

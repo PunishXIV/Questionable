@@ -56,10 +56,11 @@
           },
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
-          "Fly": false
+          "Fly": false,
+          "NextQuestId": 2201,
+          "$": "Next quest: Pharos Sirius Hard unlock quest 'Things Are Getting Sirius'"
         }
-      ],
-      "$": "Can set 'Things Are Getting Sirius' as next quest once implemented"
+      ]
     }
   ]
 }

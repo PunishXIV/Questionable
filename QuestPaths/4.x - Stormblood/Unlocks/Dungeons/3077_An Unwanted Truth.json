@@ -1,0 +1,152 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1025166,
+          "Position": {
+            "X": 99.74817,
+            "Y": 0.6520424,
+            "Z": 48.355713
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 207.80292,
+            "Y": 21.783838,
+            "Z": 556.45264
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                402
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1025167,
+          "Position": {
+            "X": 206.56128,
+            "Y": 21.78384,
+            "Z": 556.4508
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 402,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 285,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 199.77194,
+            "Y": 18.458643,
+            "Z": 550.1916
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                402
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1024718,
+          "Position": {
+            "X": 196.3988,
+            "Y": 18.458643,
+            "Z": 547.60046
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1025169,
+          "Position": {
+            "X": 132.31091,
+            "Y": -13.6001005,
+            "Z": 120.10376
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1025169,
+          "Position": {
+            "X": 132.31091,
+            "Y": -13.6001005,
+            "Z": 120.10376
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
