@@ -1,0 +1,261 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "Choice of Chocobo Dyeing rewards.\nYou may want to disable RewardPick (RP)\nin TextAdvance to choose what you want.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Path to Hervoix",
+          "Position": {
+            "X": 453.9474,
+            "Y": -51.141403,
+            "Z": 19.29933
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 455.5581,
+                  "Y": -51.141403,
+                  "Z": 21.591492
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "$": "Hervoix",
+          "DataId": 1014502,
+          "Position": {
+            "X": 455.5581,
+            "Y": -51.141403,
+            "Z": 21.591492
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Fly to area",
+          "Position": {
+            "X": 855.29456,
+            "Y": -4.719991,
+            "Z": 247.32393
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 855.29456,
+                  "Y": -4.719991,
+                  "Z": 247.32393
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 15
+              }
+            }
+          }
+        },
+        {
+          "$": "Southwest",
+          "Position": {
+            "X": 847.1502,
+            "Y": -4.925739,
+            "Z": 275.1737
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "Mount": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            22
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+            }
+          }
+        },
+        {
+          "$": "Northeast",
+          "Position": {
+            "X": 868.00336,
+            "Y": -3.5871706,
+            "Z": 243.56834
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "Mount": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            22
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+            }
+          }
+        },
+        {
+          "$": "Path to Northwest, around rock",
+          "Position": {
+            "X": 844.26807,
+            "Y": -6.1181707,
+            "Z": 229.28525
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+            }
+          }
+        },
+        {
+          "$": "Northwest",
+          "Position": {
+            "X": 838.4255,
+            "Y": -6.478032,
+            "Z": 237.16998
+          },
+          "StopDistance": 3.0,
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "Mount": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            22
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Path to Hervoix",
+          "Position": {
+            "X": 453.9474,
+            "Y": -51.141403,
+            "Z": 19.29933
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 455.5581,
+                  "Y": -51.141403,
+                  "Z": 21.591492
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "$": "Hervoix",
+          "DataId": 1014502,
+          "Position": {
+            "X": 455.5581,
+            "Y": -51.141403,
+            "Z": 21.591492
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014504,
+          "Position": {
+            "X": 460.53247,
+            "Y": -53.537544,
+            "Z": 132.24988
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Path to Hervoix",
+          "Position": {
+            "X": 453.9474,
+            "Y": -51.141403,
+            "Z": 19.29933
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "DataId": 1014502,
+          "Position": {
+            "X": 455.5581,
+            "Y": -51.141403,
+            "Z": 21.591492
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1923,
+          "$": "Completing this quest unlocks 3 more quests; this will do them in index order (1923, 1924, 1925)"
+        }
+      ]
+    }
+  ]
+}

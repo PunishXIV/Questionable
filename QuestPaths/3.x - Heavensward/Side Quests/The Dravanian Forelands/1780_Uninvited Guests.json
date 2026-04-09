@@ -1,0 +1,104 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Path out of Marcechamp's building (if you're still there from turning in the previous quest)",
+          "Position": {
+            "X": 471.40442,
+            "Y": -51.141407,
+            "Z": 36.84344
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            },
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 470.02356,
+                  "Y": -49.89133,
+                  "Z": 20.370789
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1013364,
+          "Position": {
+            "X": 344.93018,
+            "Y": -30.12832,
+            "Z": -419.21112
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 300.65573,
+            "Y": -20.856728,
+            "Z": -514.3892
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            4029
+          ],
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013364,
+          "Position": {
+            "X": 344.93018,
+            "Y": -30.12832,
+            "Z": -419.21112
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            }
+          },
+          "NextQuestId": 1785
+        }
+      ]
+    }
+  ]
+}
