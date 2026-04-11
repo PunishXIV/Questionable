@@ -1,0 +1,198 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "This quest rewards a Thavnairian Onion",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012181,
+          "Position": {
+            "X": -248.55426,
+            "Y": -20.034918,
+            "Z": -90.98956
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2006242,
+          "Position": {
+            "X": -245.4414,
+            "Y": -20.035156,
+            "Z": -87.66315
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012176,
+          "Position": {
+            "X": -164.69067,
+            "Y": 2.1700032,
+            "Z": 27.572998
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                419
+              ]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "$": "Enter Proving Grounds",
+          "DataId": 1011214,
+          "Position": {
+            "X": 94.590576,
+            "Y": 24.06099,
+            "Z": -32.303406
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "TargetTerritoryId": 439,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_HEAVNZ004_01729_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                418,
+                439
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                439
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1014710,
+          "Position": {
+            "X": 19.790894,
+            "Y": 4.1140323,
+            "Z": -8.529846
+          },
+          "TerritoryId": 439,
+          "InteractionType": "Interact",
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Exit Proving Grounds",
+          "DataId": 2005335,
+          "Position": {
+            "X": 30.777344,
+            "Y": 7.6447144,
+            "Z": -21.439026
+          },
+          "TerritoryId": 439,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "TargetTerritoryId": 418,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                418,
+                439
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                418
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1012176,
+          "Position": {
+            "X": -164.69067,
+            "Y": 2.1700032,
+            "Z": 27.572998
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    }
+  ]
+}

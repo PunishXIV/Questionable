@@ -1,0 +1,78 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "This quest rewards the Head Bandage glamour",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019477,
+          "Position": {
+            "X": 78.93494,
+            "Y": 0.04551731,
+            "Z": -25.467346
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008088,
+          "Position": {
+            "X": 656.8856,
+            "Y": 86.19812,
+            "Z": 627.1305
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2002091,
+          "KillEnemyDataIds": [
+            7213
+          ],
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019477,
+          "Position": {
+            "X": 78.93494,
+            "Y": 0.04551731,
+            "Z": -25.467346
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

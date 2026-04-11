@@ -1,0 +1,297 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "This quest rewards a Thavnairian Onion",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Path to Hervoix",
+          "Position": {
+            "X": 453.9474,
+            "Y": -51.141403,
+            "Z": 19.29933
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 455.5581,
+                  "Y": -51.141403,
+                  "Z": 21.591492
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "$": "Hervoix",
+          "DataId": 1014502,
+          "Position": {
+            "X": 455.5581,
+            "Y": -51.141403,
+            "Z": 21.591492
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014504,
+          "Position": {
+            "X": 460.53247,
+            "Y": -53.537544,
+            "Z": 132.24988
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Fly to location",
+          "Position": {
+            "X": 195.12386,
+            "Y": -28.197079,
+            "Z": -444.58627
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 195.12386,
+                  "Y": -28.197079,
+                  "Z": -444.58627
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 15
+              }
+            }
+          }
+        },
+        {
+          "$": "Combat",
+          "Position": {
+            "X": 184.67993,
+            "Y": -27.767006,
+            "Z": -443.28986
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            81
+          ],
+          "CompletionQuestVariablesFlags": [1,null,null,null,null,null],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
+            }
+          }
+        },
+        {
+          "$": "Interact",
+          "DataId": 1014506,
+          "Position": {
+            "X": 184.67993,
+            "Y": -27.767006,
+            "Z": -443.28986
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Non-flying route 0",
+          "Position": {
+            "X": 86.77677,
+            "Y": -27.5831,
+            "Z": -410.85645
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            },
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 1",
+          "Position": {
+            "X": 110.30496,
+            "Y": -16.34831,
+            "Z": -401.4478
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 2",
+          "Position": {
+            "X": 118.59972,
+            "Y": -20.556011,
+            "Z": -389.2515
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 3",
+          "Position": {
+            "X": 149.07782,
+            "Y": -17.796997,
+            "Z": -413.46735
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 4",
+          "Position": {
+            "X": 148.45782,
+            "Y": -8.547052,
+            "Z": -426.11005
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 5",
+          "Position": {
+            "X": 152.01218,
+            "Y": -2.9488924,
+            "Z": -445.20065
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 6",
+          "Position": {
+            "X": 151.75952,
+            "Y": -5.3812466,
+            "Z": -454.7163
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "$": "Non-flying route 7",
+          "Position": {
+            "X": 151.61133,
+            "Y": -6.1493254,
+            "Z": -456.53964
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 151.91422,
+              "Y": -5.1268244,
+              "Z": -458.4945
+            }
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "DataId": 1014508,
+          "Position": {
+            "X": 98.527466,
+            "Y": -2.2554767,
+            "Z": -493.12582
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1927,
+          "$": "Next Quest: 'Smells Like Team Spirit'"
+        }
+      ]
+    }
+  ]
+}

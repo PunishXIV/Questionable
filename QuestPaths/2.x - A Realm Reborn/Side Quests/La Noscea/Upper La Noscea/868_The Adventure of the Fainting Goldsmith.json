@@ -1,0 +1,139 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006332,
+          "Position": {
+            "X": 426.96265,
+            "Y": 8.373348,
+            "Z": 20.004517
+          },
+          "TerritoryId": 139,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "See if a determined /poke will rouse him",
+          "DataId": 1006695,
+          "Position": {
+            "X": 507.86584,
+            "Y": 15.992688,
+            "Z": 58.335205
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Emote",
+          "Emote": "poke",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Do as the physicians do and douse him with a bottle of ice-cold lake water",
+          "DataId": 1006695,
+          "Position": {
+            "X": 507.86584,
+            "Y": 15.992688,
+            "Z": 58.335205
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UseItem",
+          "ItemId": 2000676
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "$": "Aetheryte shortcut & skip is needed to cause a micro-wait; without it the step seems to have trouble using items",
+      "Steps": [
+        {
+          "$": "This calls for another dose of ice-cold lake water",
+          "DataId": 1006695,
+          "Position": {
+            "X": 507.86584,
+            "Y": 15.992688,
+            "Z": 58.335205
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UseItem",
+          "ItemId": 2000676,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "$": "Aetheryte shortcut & skip is needed to cause a micro-wait; without it the step seems to have trouble using items",
+      "Steps": [
+        {
+          "$": "Perhaps another dose of ice-cold lake water will do the trick",
+          "DataId": 1006695,
+          "Position": {
+            "X": 507.86584,
+            "Y": 15.992688,
+            "Z": 58.335205
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UseItem",
+          "ItemId": 2000676,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006332,
+          "Position": {
+            "X": 426.96265,
+            "Y": 8.373348,
+            "Z": 20.004517
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
