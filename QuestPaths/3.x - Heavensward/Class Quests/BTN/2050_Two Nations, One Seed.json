@@ -117,7 +117,8 @@
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 419,
+          "TerritoryId": 400,
+          "AetheryteShortcut": "The Churning Mists - Zenith",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
