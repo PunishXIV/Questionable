@@ -59,15 +59,13 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InTerritory": [
                 398
               ]
-            },
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
             }
           }
         },
@@ -99,11 +97,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "$": "Path to 'By tree, top level'",
@@ -133,11 +127,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
           "$": "Walk off ledge if flying not unlocked",
@@ -169,11 +159,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "$": "By tree, under rocky outcropping",
@@ -186,11 +172,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },

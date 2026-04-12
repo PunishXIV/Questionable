@@ -118,12 +118,7 @@
           "KillEnemyDataIds": [
             81
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "East",
@@ -136,11 +131,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "$": "Southwest",
@@ -153,11 +144,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },

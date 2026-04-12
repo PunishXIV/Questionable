@@ -81,13 +81,11 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InSameTerritory": true
-            },
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
             }
           }
         },
@@ -119,11 +117,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Mount": false,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "$": "Path out of building",
@@ -160,11 +154,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },

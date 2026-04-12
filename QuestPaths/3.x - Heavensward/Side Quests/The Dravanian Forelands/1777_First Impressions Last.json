@@ -99,15 +99,13 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InTerritory": [
                 398
               ]
-            },
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
             }
           }
         },
@@ -122,11 +120,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "Southwest",
@@ -139,11 +133,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
