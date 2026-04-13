@@ -1,0 +1,31 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040956,
+          "Position": {
+            "X": 74.052,
+            "Y": -16.147,
+            "Z": 151.6289
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
