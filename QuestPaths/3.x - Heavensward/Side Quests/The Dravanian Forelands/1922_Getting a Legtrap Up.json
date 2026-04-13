@@ -229,7 +229,14 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            }
+          }
         },
         {
           "DataId": 1014502,
