@@ -108,11 +108,7 @@
             39
           ],
           "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "$": "Northeast",
@@ -130,11 +126,7 @@
             39
           ],
           "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "Southeast",
@@ -152,11 +144,7 @@
             39
           ],
           "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
     },
