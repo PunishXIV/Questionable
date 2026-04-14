@@ -139,22 +139,6 @@
 		"Steps":
 		[
 		{
-			"InteractionType": "Craft",
-			"TerritoryId": 128,
-			"ItemId": 17886,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
 			"DataId": 1000997,
 			"Position":
 			{
