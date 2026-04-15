@@ -34,6 +34,7 @@
             "[Idyllshire] Prologue Gate (Western Hinterlands)"
           ],
           "Fly": true,
+          "Land": true,
           "TargetTerritoryId": 463
         },
         {
@@ -84,6 +85,18 @@
       "Sequence": 4,
       "Steps": [
         {
+          "$": "Move to Tiamat's location before interaction; without this step, would often see qst stop before pathfinding",
+          "Position": {
+            "X": -698.36835,
+            "Y": -45.76334,
+            "Z": 415.04565
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
           "DataId": 2007064,
           "Position": {
             "X": -696.0708,
@@ -91,8 +104,7 @@
             "Z": 432.33386
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
