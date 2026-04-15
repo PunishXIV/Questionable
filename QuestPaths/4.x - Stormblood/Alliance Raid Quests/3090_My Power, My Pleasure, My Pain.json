@@ -6,6 +6,37 @@
       "Sequence": 0,
       "Steps": [
         {
+          "$": "TP to Kugane > Airship Landing > Prima Vista if not there already",
+          "DataId": 1024156,
+          "Position": {
+            "X": -59.098206,
+            "Y": 79.05602,
+            "Z": 45.303955
+          },
+          "StopDistance": 7,
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 735,
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Airship Landing"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                735
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                735
+              ]
+            }
+          }
+        },
+        {
           "DataId": 1026029,
           "Position": {
             "X": 1.3274536,
