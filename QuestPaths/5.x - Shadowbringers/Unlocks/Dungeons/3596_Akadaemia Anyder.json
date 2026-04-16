@@ -13,7 +13,12 @@
             "Z": 59.494873
           },
           "TerritoryId": 820,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eulmore",
+          "AethernetShortcut": [
+            "[Eulmore] Aetheryte Plaza",
+            "[Eulmore] Southeast Derelicts"
+          ]
         }
       ]
     },

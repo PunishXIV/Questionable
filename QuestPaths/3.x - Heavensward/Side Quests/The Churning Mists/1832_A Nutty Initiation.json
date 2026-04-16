@@ -10,6 +10,23 @@
       "Sequence": 0,
       "Steps": [
         {
+          "Position": {
+            "X": 455.38995,
+            "Y": -23.982193,
+            "Z": 106.70966
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
           "DataId": 1014442,
           "Position": {
             "X": 455.28345,
@@ -17,14 +34,7 @@
             "Z": 109.05615
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

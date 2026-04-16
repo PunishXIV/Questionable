@@ -112,7 +112,9 @@
           },
           "TerritoryId": 180,
           "InteractionType": "UseItem",
-          "ItemId": 2001334
+          "ItemId": 2001334,
+          "$": "Delay is needed; without it the step seems to have trouble using items consecutively",
+          "DelaySecondsAtStart": 1
         }
       ]
     },
@@ -128,7 +130,9 @@
           },
           "TerritoryId": 180,
           "InteractionType": "UseItem",
-          "ItemId": 2001334
+          "ItemId": 2001334,
+          "$": "Delay is needed; without it the step seems to have trouble using items consecutively",
+          "DelaySecondsAtStart": 1
         }
       ]
     },
