@@ -1,2 +1,3 @@
-CE Oizys mainquest 5449
-minor fixes to 2111, 2617,2927
+fixes to rog/nin 148 154 215 -K
+-
+shb/ew unlock 3662 4171 4175 by ShermTank

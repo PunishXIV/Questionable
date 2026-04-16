@@ -126,6 +126,21 @@
       "Sequence": 5,
       "Steps": [
         {
+"Position": {
+            "X": 406.15826,
+            "Y": 28.205755,
+            "Z": -7.3764772
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [139] },
+            "StepIf": { "InTerritory": [139] }
+          }
+        },
+        {
           "Position": {
             "X": 407.71924,
             "Y": 32.11566,
@@ -133,9 +148,7 @@
           },
           "TerritoryId": 138,
           "TargetTerritoryId": 139,
-          "Fly": true,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {
             "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
