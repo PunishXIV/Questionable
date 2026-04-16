@@ -44,15 +44,24 @@
       "Steps": [
         {
           "Position": {
+            "X": 408.68936,
+            "Y": 29.246174,
+            "Z": -8.903874
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        },
+        {
+          "Position": {
             "X": 410.07083,
             "Y": 31.504957,
             "Z": -12.586371
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "TargetTerritoryId": 139,
-          "Fly": true
+          "TargetTerritoryId": 139
         },
         {
           "Position": {
