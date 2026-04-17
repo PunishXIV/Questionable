@@ -1,3 +1,3 @@
-fixes to rog/nin 148 154 215 -K
+cautios fix for new artisan endurance option
 -
-shb/ew unlock 3662 4171 4175 by ShermTank
+misc fixes and Nier added path by ShermTank
