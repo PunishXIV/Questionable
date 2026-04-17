@@ -139,15 +139,15 @@ internal static class Craft
                 if (agentRecipeNote != null && agentRecipeNote->IsAgentActive())
                 {
                     uint addonId = agentRecipeNote->GetAddonId();
-                    if (addonId == 0)
-                        return ETaskResult.StillRunning;
+//                    if (addonId == 0)
+//                        return ETaskResult.StillRunning;
 
                     AtkUnitBase* addon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById((ushort)addonId);
                     if (addon != null)
                     {
                         addon->FireCallbackInt(-1);
-                        return ETaskResult.TaskComplete;
                     }
+                        return ETaskResult.TaskComplete;
                 }
             }
 
