@@ -14,11 +14,6 @@
           },
           "TerritoryId": 137,
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "InteractionType": "AcceptQuest"
         }
       ]
