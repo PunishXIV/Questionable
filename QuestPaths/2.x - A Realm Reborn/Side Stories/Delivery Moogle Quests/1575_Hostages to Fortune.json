@@ -35,7 +35,8 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
         }
       ]
     },
@@ -125,7 +126,8 @@
             "Z": 140.91699
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },
@@ -157,6 +159,30 @@
     {
       "Sequence": 8,
       "Steps": [
+        {
+          "$": "Path out of The Bobbing Cork",
+          "Position": {
+            "X": -31.059683,
+            "Y": -40.708477,
+            "Z": 195.24632
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -31.059683,
+                  "Y": -40.708477,
+                  "Z": 195.24632
+                },
+                "TerritoryId": 154,
+                "MaximumDistance": 30
+              }
+            }
+          }
+        },
         {
           "DataId": 1006406,
           "Position": {
@@ -190,6 +216,16 @@
       "Sequence": 10,
       "Steps": [
         {
+          "Position": {
+            "X": 63.714115,
+            "Y": -13.671487,
+            "Z": 143.30328
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
           "DataId": 1010509,
           "Position": {
             "X": 63.370728,
@@ -197,8 +233,7 @@
             "Z": 141.86316
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -230,6 +265,30 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "$": "Path out of The Bobbing Cork",
+          "Position": {
+            "X": -31.059683,
+            "Y": -40.708477,
+            "Z": 195.24632
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -31.059683,
+                  "Y": -40.708477,
+                  "Z": 195.24632
+                },
+                "TerritoryId": 154,
+                "MaximumDistance": 30
+              }
+            }
+          }
+        },
         {
           "DataId": 1006406,
           "Position": {

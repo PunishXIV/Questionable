@@ -183,6 +183,7 @@
               "Answer": "TEXT_SUBPST021_00241_A1_000_001"
             }
           ],
+          "DelaySecondsAtStart": 1,
           "NextQuestId": 242
         }
       ]

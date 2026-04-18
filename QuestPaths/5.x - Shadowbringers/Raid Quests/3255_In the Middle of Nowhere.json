@@ -13,7 +13,9 @@
             "Z": 55.954834
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "SkipConditions": {"AetheryteShortcutIf": {"InSameTerritory": true}}
         }
       ]
     },

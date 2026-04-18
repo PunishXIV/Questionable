@@ -1,0 +1,182 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "This quest rewards a Han Lemon",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Path to Hervoix",
+          "Position": {
+            "X": 453.9474,
+            "Y": -51.141403,
+            "Z": 19.29933
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 455.5581,
+                  "Y": -51.141403,
+                  "Z": 21.591492
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "$": "Hervoix",
+          "DataId": 1014502,
+          "Position": {
+            "X": 455.5581,
+            "Y": -51.141403,
+            "Z": 21.591492
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013364,
+          "Position": {
+            "X": 344.93018,
+            "Y": -30.12832,
+            "Z": -419.21112
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Fly to area",
+          "Position": {
+            "X": 447.44937,
+            "Y": -33.461884,
+            "Z": -450.60486
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 448.36893,
+                  "Y": -35.84928,
+                  "Z": -426.83197
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 25
+              }
+            }
+          }
+        },
+        {
+          "$": "Northwest",
+          "DataId": 2006151,
+          "Position": {
+            "X": 439.44446,
+            "Y": -34.989014,
+            "Z": -444.11383
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            81
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+        },
+        {
+          "$": "East",
+          "DataId": 2006150,
+          "Position": {
+            "X": 465.5984,
+            "Y": -34.77533,
+            "Z": -417.71576
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "$": "Southwest",
+          "DataId": 2006149,
+          "Position": {
+            "X": 431.26562,
+            "Y": -39.35309,
+            "Z": -413.65686
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Path to Hervoix",
+          "Position": {
+            "X": 453.9474,
+            "Y": -51.141403,
+            "Z": 19.29933
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "DataId": 1014502,
+          "Position": {
+            "X": 455.5581,
+            "Y": -51.141403,
+            "Z": 21.591492
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1925,
+          "$": "This is one of three quests unlocked by 1922; will do other quests in index order (1925)"
+        }
+      ]
+    }
+  ]
+}

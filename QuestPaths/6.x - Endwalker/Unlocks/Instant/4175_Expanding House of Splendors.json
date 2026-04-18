@@ -1,0 +1,27 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037323,
+          "Position": {
+            "X": 24.215942,
+            "Y": 0.8999999,
+            "Z": -80.73547
+          },
+          "TerritoryId": 963,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Radz-at-Han",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

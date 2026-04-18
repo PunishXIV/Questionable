@@ -1,0 +1,190 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014507,
+          "Position": {
+            "X": 95.68933,
+            "Y": -2.2463098,
+            "Z": -492.79013
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014500,
+          "Position": {
+            "X": 164.69055,
+            "Y": -18.146557,
+            "Z": -566.2471
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014514,
+          "Position": {
+            "X": 534.08093,
+            "Y": -51.36134,
+            "Z": 65.049194
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011917,
+          "Position": {
+            "X": 535.30164,
+            "Y": -51.340645,
+            "Z": 65.293335
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1014521,
+          "Position": {
+            "X": 496.42163,
+            "Y": -48.96616,
+            "Z": -56.595703
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "$": "Sequence immediately starts with combat; resolve",
+          "Position": {
+            "X": 496.42163,
+            "Y": -48.96616,
+            "Z": -56.595703
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            5051
+          ]
+        },
+        {
+          "$": "Interact (O'bhen)",
+          "DataId": 1014521,
+          "Position": {
+            "X": 496.42163,
+            "Y": -48.96616,
+            "Z": -56.595703
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1014518,
+          "Position": {
+            "X": 354.3297,
+            "Y": -30.13275,
+            "Z": -414.4198
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1011917,
+          "Position": {
+            "X": 535.30164,
+            "Y": -51.340645,
+            "Z": 65.293335
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        }
+      ]
+    }
+  ]
+}

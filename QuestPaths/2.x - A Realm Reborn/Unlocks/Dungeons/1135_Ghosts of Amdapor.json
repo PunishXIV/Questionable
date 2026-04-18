@@ -1,0 +1,56 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1005021,
+          "Position": {
+            "X": -472.49567,
+            "Y": 23.008797,
+            "Z": -355.00116
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007574,
+          "Position": {
+            "X": 163.40881,
+            "Y": 37.62593,
+            "Z": 175.03625
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

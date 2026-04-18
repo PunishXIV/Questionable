@@ -65,8 +65,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 2,
-          "DisableNavmesh": true,
           "$": "Fun fact: This is underground in Southern Thanalan (including mobs, fates, etc.), and will build the navmesh for the entire zone"
         }
       ]

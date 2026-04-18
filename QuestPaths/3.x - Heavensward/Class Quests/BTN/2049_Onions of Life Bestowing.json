@@ -51,7 +51,8 @@
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 133,
+          "TerritoryId": 398,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {

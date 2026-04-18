@@ -149,6 +149,7 @@ internal static class Craft
                         return ETaskResult.TaskComplete;
                     }
                 }
+                return ETaskResult.TaskComplete;
             }
 
             return ETaskResult.StillRunning;

@@ -63,9 +63,9 @@
         },
         {
           "Position": {
-            "X": 212.54845,
-            "Y": 65.80573,
-            "Z": 285.71436
+            "X": 202.81476,
+            "Y": 65.189224,
+            "Z": 285.26105
           },
           "TerritoryId": 134,
           "InteractionType": "WalkTo",
@@ -74,6 +74,22 @@
             "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
           ],
           "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                135
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 212.54845,
+            "Y": 65.80573,
+            "Z": 285.71436
+          },
+          "TerritoryId": 134,
+          "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [

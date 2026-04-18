@@ -22,14 +22,15 @@
       "Steps": [
         {
           "Position": {
-            "X": 643.84,
-            "Y": 287.48834,
-            "Z": 175.5028
+            "X": 640.8983,
+            "Y": 287.51288,
+            "Z": 176.23267
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "DataId": 2003456,

@@ -1,6 +1,6 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": ["liza","Kiarra"],
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -57,6 +57,26 @@
           "InteractionType": "Dive"
         },
         {
+          "Position": {
+            "X": -592.18555,
+            "Y": -92.21053,
+            "Z": 332.84787
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.1711,
+            "Y": -95.40693,
+            "Z": 322.00018
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
           "DataId": 2009879,
           "Position": {
             "X": -591.97375,
@@ -79,6 +99,46 @@
     {
       "Sequence": 3,
       "Steps": [
+        {
+          "Position": {
+            "X": -592.2156,
+            "Y": -93.874176,
+            "Z": 320.71866
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.3709,
+            "Y": -92.52614,
+            "Z": 331.4997
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -611.0002,
+            "Y": -88.73192,
+            "Z": 373.62137
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.89636,
+            "Y": -93.7854,
+            "Z": 413.84235
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
         {
           "DataId": 2009880,
           "Position": {
@@ -126,6 +186,36 @@
       "Steps": [
         {
           "Position": {
+            "X": -824.45575,
+            "Y": -93.84162,
+            "Z": 290.20068
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -593.26575,
+            "Y": -90.185776,
+            "Z": 335.34296
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.0053,
+            "Y": -95.700905,
+            "Z": 320.31943
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
             "X": -591.7246,
             "Y": -92.929955,
             "Z": 279.56708
@@ -162,6 +252,26 @@
           "Fly": true,
           "DisableNavmesh": true,
           "Mount": true
+        },
+        {
+          "Position": {
+            "X": -592.0902,
+            "Y": -92.86652,
+            "Z": 321.9379
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.63586,
+            "Y": -92.44665,
+            "Z": 331.28445
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
         },
         {
           "Position": {

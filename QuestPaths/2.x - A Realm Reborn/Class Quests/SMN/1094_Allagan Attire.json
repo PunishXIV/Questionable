@@ -86,6 +86,17 @@
       "Sequence": 4,
       "Steps": [
         {
+          "Position": {
+            "X": 495.98267,
+            "Y": -2.6789598,
+            "Z": -473.95493
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
           "DataId": 1006790,
           "Position": {
             "X": 496.45215,
@@ -97,8 +108,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1948
-          ],
-          "Fly": true
+          ]
         }
       ]
     },

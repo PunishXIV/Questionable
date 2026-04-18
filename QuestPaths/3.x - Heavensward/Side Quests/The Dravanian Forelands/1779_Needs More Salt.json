@@ -1,0 +1,183 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Path to building/Marchechamp",
+          "Position": {
+            "X": 471.40442,
+            "Y": -51.141407,
+            "Z": 36.84344
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 470.02356,
+                  "Y": -49.89133,
+                  "Z": 20.370789
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "$": "Marcechamp",
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AcceptQuest",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Path out of building",
+          "Position": {
+            "X": 471.40442,
+            "Y": -51.141407,
+            "Z": 36.84344
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                398
+              ]
+            },
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 470.02356,
+                  "Y": -49.89133,
+                  "Z": 20.370789
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "$": "Fly to area",
+          "Position": {
+            "X": 643.0321,
+            "Y": -34.386024,
+            "Z": 324.79504
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "$": "West",
+          "DataId": 2005603,
+          "Position": {
+            "X": 641.90125,
+            "Y": -34.13446,
+            "Z": 332.0515
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001609,
+          "KillEnemyDataIds": [
+            39
+          ],
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        },
+        {
+          "$": "Northeast",
+          "DataId": 2005605,
+          "Position": {
+            "X": 663.4164,
+            "Y": -32.48651,
+            "Z": 321.37012
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001609,
+          "KillEnemyDataIds": [
+            39
+          ],
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+        },
+        {
+          "$": "Southeast",
+          "DataId": 2005604,
+          "Position": {
+            "X": 665.3695,
+            "Y": -30.71643,
+            "Z": 340.6881
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterItemUse",
+          "ItemId": 2001609,
+          "KillEnemyDataIds": [
+            39
+          ],
+          "Mount": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Path to building/Marchechamp",
+          "Position": {
+            "X": 471.40442,
+            "Y": -51.141407,
+            "Z": 36.84344
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+        },
+        {
+          "$": "Marcechamp",
+          "DataId": 1011916,
+          "Position": {
+            "X": 470.02356,
+            "Y": -49.89133,
+            "Z": 20.370789
+          },
+          "TerritoryId": 398,
+          "InteractionType": "CompleteQuest",
+          "Mount": false,
+          "NextQuestId": 1780
+        }
+      ]
+    }
+  ]
+}

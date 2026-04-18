@@ -25,6 +25,19 @@
       "Sequence": 1,
       "Steps": [
         {
+          "$": "Land here first; otherwise pathing gets caught on cliff",
+          "Position": {
+            "X": 629.24475,
+            "Y": 300.92084,
+            "Z": -18.094275
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "Land": true
+        },
+        {
           "DataId": 1009649,
           "Position": {
             "X": 627.8019,
@@ -33,12 +46,10 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Say",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "ChatMessage": {
             "Key": "TEXT_BANIXA607_01568_SYSTEM_100_062"
           },
-          "Fly": true,
-          "Land": true
+          "Mount": false
         }
       ]
     },

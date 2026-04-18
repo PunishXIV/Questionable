@@ -1,0 +1,93 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019479,
+          "Position": {
+            "X": 86.22864,
+            "Y": 0,
+            "Z": 78.538086
+          },
+          "TerritoryId": 635,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023611,
+          "Position": {
+            "X": 49.607056,
+            "Y": 23.640757,
+            "Z": -286.54926
+          },
+          "TerritoryId": 635,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 635,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 236,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023611,
+          "Position": {
+            "X": 49.607056,
+            "Y": 23.640757,
+            "Z": -286.54926
+          },
+          "TerritoryId": 635,
+          "InteractionType": "CompleteQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Rhalgr's Reach",
+          "AethernetShortcut": [
+            "[Rhalgr's Reach] Aetheryte Plaza",
+            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

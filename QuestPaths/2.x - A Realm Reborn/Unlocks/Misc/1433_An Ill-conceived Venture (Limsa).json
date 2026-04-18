@@ -34,6 +34,8 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Combat",
+          "Fly": true,
+          "Land": true,
           "AetheryteShortcut": "Western La Noscea - Aleport",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [

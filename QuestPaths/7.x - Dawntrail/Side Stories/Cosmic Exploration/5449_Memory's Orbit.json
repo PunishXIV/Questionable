@@ -1,0 +1,140 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "LastChecked": {
+    "Username": "Kiarra",
+    "Date": "2026-04-13"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053347,
+          "Position": {
+            "X": -214.03827,
+            "Y": 0.49999455,
+            "Z": 67.429565
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053350,
+          "Position": {
+            "X": -212.90918,
+            "Y": 0.49999422,
+            "Z": 66.33093
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -150.87642,
+            "Y": 0.4999528,
+            "Z": -32.872852
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1053350,
+          "TerritoryId": 1310,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 178.9768,
+            "Y": -1.0270685,
+            "Z": -53.013298
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1053350,
+          "TerritoryId": 1310,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 378.45917,
+            "Y": 150.62898,
+            "Z": 529.2559
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 1053350,
+          "TerritoryId": 1310,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2015098,
+          "Position": {
+            "X": 573.8816,
+            "Y": 130.9777,
+            "Z": 178.3217
+          },
+          "Comment": "Click the 7 arrows other than Namingway",
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGWK302_05449_Q2_100_000",
+              "Type": "YesNo",
+              "Yes": true
+            },
+            {
+              "Prompt": "TEXT_KINGWK302_05449_Q4_000_000",
+              "Type": "List",
+              "Answer": "TEXT_KINGWK302_05449_A4_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053349,
+          "Position": {
+            "X": -214.03827,
+            "Y": 0.49999455,
+            "Z": 67.429565
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

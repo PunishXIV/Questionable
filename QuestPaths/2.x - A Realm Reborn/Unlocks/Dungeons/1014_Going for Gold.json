@@ -1,0 +1,99 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1005021,
+          "Position": {
+            "X": -472.49567,
+            "Y": 23.008797,
+            "Z": -355.00116
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 123.6,
+            "Y": 31.6,
+            "Z": -768.8
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Mor Dhona",
+              "InSameTerritory": true,
+              "InTerritory": [
+                155
+              ]
+            },
+            "StepIf": {
+              "AetheryteLocked": "Mor Dhona",
+              "InTerritory": [
+                155
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 129.3,
+            "Y": 31.71,
+            "Z": -774.87
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 155,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteLocked": "Mor Dhona",
+              "InTerritory": [
+                155
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1007625,
+          "Position": {
+            "X": -354.1772,
+            "Y": 214.60808,
+            "Z": 692.65283
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -78,6 +78,12 @@
           "TerritoryId": 400,
           "InteractionType": "WalkTo",
           "Fly": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          },
           "$": "Moglin"
         },
         {

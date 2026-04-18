@@ -1,0 +1,100 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005525,
+          "Position": {
+            "X": 251.20923,
+            "Y": -25,
+            "Z": 262.92822
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 296.91254,
+            "Y": -40.425003,
+            "Z": 380.83066
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                138
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1005398,
+          "Position": {
+            "X": 295.76562,
+            "Y": -40.425003,
+            "Z": 382.52844
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Comment": "Must complete dungeon and Why So Sirius quest\nfor the Hard mode quest to be available",
+      "Steps": [
+        {
+          "$": "Even with flying unlocked, taking the ferry is quicker",
+          "DataId": 1003584,
+          "Position": {
+            "X": 317.43335,
+            "Y": -36.325005,
+            "Z": 352.86487
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 138,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                138
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1006503,
+          "Position": {
+            "X": -266.5904,
+            "Y": -40.040386,
+            "Z": 461.72266
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

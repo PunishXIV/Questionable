@@ -1,0 +1,286 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-03-23"
+  },
+  "Comment": "This instance requires manual interaction or Splatoon script.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1056053,
+          "Position": {
+            "X": -50.003845,
+            "Y": 6.5,
+            "Z": -89.76886
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1056054,
+          "Position": {
+            "X": 24.64331,
+            "Y": -1.0772418,
+            "Z": 58.121582
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Mih Khetto's Amphitheatre",
+            "[Gridania] Aetheryte Plaza"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1056057,
+          "Position": {
+            "X": 25.497803,
+            "Y": -8,
+            "Z": 104.93628
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 8
+            }
+          ]
+        },
+        {
+          "DataId": 1056059,
+          "Position": {
+            "X": 24.093994,
+            "Y": -8,
+            "Z": 119.40173
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 2
+            }
+          ]
+        },
+        {
+          "DataId": 1056058,
+          "Position": {
+            "X": 33.920776,
+            "Y": -8.20001,
+            "Z": 125.56641
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1056060,
+          "Position": {
+            "X": 24.673828,
+            "Y": -1.0534565,
+            "Z": 58.701416
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1056061,
+          "Position": {
+            "X": -41.21466,
+            "Y": 10.918522,
+            "Z": -232.25757
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1056063,
+          "Position": {
+            "X": 126.51245,
+            "Y": 12.991126,
+            "Z": -92.484924
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Mih Khetto's Amphitheatre",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1056065,
+          "Position": {
+            "X": -52.262207,
+            "Y": 6.774475,
+            "Z": -110.307495
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Leatherworkers' Guild & Shaded Bower",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1056067,
+          "Position": {
+            "X": -54.551025,
+            "Y": 6.851239,
+            "Z": -110.948364
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "Never": true
+            }
+          },
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_FESEST2026ENTRANCE_00960_Q1_000_000",
+              "Answer": "TEXT_FESEST2026ENTRANCE_00960_A1_000_001",
+              "ExcelSheet": "custom/009/FesEst2026Entrance_00960"
+            }
+          ]
+        },
+        {
+          "TerritoryId": 1336,
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "This instance requires manual interaction or Splatoon script."
+        },
+        {
+          "TerritoryId": 1336,
+          "InteractionType": "None",
+          "Comment": "Stage 2"
+        },
+        {
+          "TerritoryId": 1336,
+          "InteractionType": "None",
+          "Comment": "Stage 3"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1056065,
+          "Position": {
+            "X": -52.262207,
+            "Y": 6.774475,
+            "Z": -110.307495
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1056056,
+          "Position": {
+            "X": -50.003845,
+            "Y": 6.5,
+            "Z": -89.7384
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true,
+              "InTerritory": [
+                133
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

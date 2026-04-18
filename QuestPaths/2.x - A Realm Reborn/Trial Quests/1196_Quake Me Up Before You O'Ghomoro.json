@@ -53,13 +53,22 @@
         },
         {
           "Position": {
-            "X": 111.7023,
-            "Y": 28.568699,
-            "Z": -611.7063
+            "X": 111.74668,
+            "Y": 23.614925,
+            "Z": -611.95605
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
           "Fly": true
+        },
+        {
+          "Position": {
+            "X": 109.48248,
+            "Y": 23.333044,
+            "Z": -622.1924
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {

@@ -205,7 +205,8 @@
           },
           "TerritoryId": 145,
           "InteractionType": "UseItem",
-          "ItemId": 2001488
+          "ItemId": 2001488,
+          "DelaySecondsAtStart": 1
         }
       ]
     },

@@ -71,7 +71,8 @@
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 419,
+          "TerritoryId": 401,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {

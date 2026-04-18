@@ -1,0 +1,63 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "Glamour unlock, mutually exclusive with 'If I Had a Glamour'",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006969,
+          "Position": {
+            "X": 34.78627,
+            "Y": 28.999964,
+            "Z": -736.66284
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.589355,
+            "Y": 29,
+            "Z": -825.37573
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Mount": true,
+          "Fly": false,
+          "$": "Don't fly in the building, it takes a long time for pathing"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006969,
+          "Position": {
+            "X": 34.78627,
+            "Y": 28.999964,
+            "Z": -736.66284
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "Mount": true,
+          "Fly": false
+        }
+      ]
+    }
+  ]
+}

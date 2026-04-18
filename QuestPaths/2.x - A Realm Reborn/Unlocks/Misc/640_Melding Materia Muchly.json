@@ -1,0 +1,53 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001425,
+          "Position": {
+            "X": 115.12927,
+            "Y": 31.876099,
+            "Z": -392.2027
+          },
+          "TerritoryId": 141,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 141,
+          "Comment": "Meld 8 materia (any) while near Mutamix.\nRetrieving materia and re-melding is okay.",
+          "InteractionType": "WaitForManualProgress",
+          "$": "First byte of QW tracks the progress (1L->2L->3L->etc.); can maybe use this in a future auto implementation?"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001425,
+          "Position": {
+            "X": 115.12927,
+            "Y": 31.876099,
+            "Z": -392.2027
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

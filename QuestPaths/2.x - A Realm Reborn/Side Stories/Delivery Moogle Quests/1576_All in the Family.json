@@ -107,6 +107,18 @@
       "Sequence": 4,
       "Steps": [
         {
+          "$": "Fly near Hihibaru",
+          "Position": {
+            "X": -73.61801,
+            "Y": -22.01302,
+            "Z": -3.8327198
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        },
+        {
           "DataId": 1006196,
           "Position": {
             "X": -63.98114,
@@ -114,9 +126,7 @@
             "Z": -5.142395
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,13 +171,26 @@
           },
           "StopDistance": 5,
           "TerritoryId": 145,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1
         }
       ]
     },
     {
       "Sequence": 7,
       "Steps": [
+        {
+          "$": "Fly near Hihibaru first; otherwise gets caught on tent",
+          "Position": {
+            "X": -73.61801,
+            "Y": -22.01302,
+            "Z": -3.8327198
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true
+        },
         {
           "DataId": 1006196,
           "Position": {
@@ -176,9 +199,7 @@
             "Z": -5.142395
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -130,10 +130,7 @@
           "TerritoryId": 928,
           "InteractionType": "Interact",
           "DisableNavmesh": true,
-          "RequiredQuestVariables": [null,null,null,[
-              1
-            ],null,null
-          ],
+          "RequiredQuestVariables": [null,null,null,[1,3],null,null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -226,6 +223,7 @@
           },
           "TerritoryId": 928,
           "InteractionType": "Interact",
+          "RequiredQuestVariables": [null,null,null,[2,17],null,null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -238,7 +236,7 @@
           "InteractionType": "WalkTo",
           "RestartNavigationIfCancelled": false,
           "DelaySecondsAtStart": 2,
-          "RequiredQuestVariables": [null,null,null,[2],null,null]
+          "RequiredQuestVariables": [null,null,null,[2,19],null,null]
         },
         {
           "TerritoryId": 928,
@@ -263,7 +261,7 @@
             }
           },
           "DelaySecondsAtStart": 2,
-          "RequiredQuestVariables": [null,null,null,[2],null,null]
+          "RequiredQuestVariables": [null,null,null,[2,19],null,null]
         },
         {
           "DataId": 2011269,
@@ -275,7 +273,7 @@
           "TerritoryId": 928,
           "InteractionType": "Interact",
           "TargetTerritoryId": 928,
-          "RequiredQuestVariables": [null,null,null,[2],null,null]
+          "RequiredQuestVariables": [null,null,null,[2,19],null,null]
         },
         {
           "DataId": 2011459,
@@ -286,7 +284,7 @@
           },
           "TerritoryId": 928,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null,null,null,[2],null,null]
+          "RequiredQuestVariables": [null,null,null,[2,19],null,null]
         }
       ]
     },

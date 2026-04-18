@@ -71,6 +71,7 @@ internal static class SinglePlayerDuty
                 if (tId == SpecialTerritories.Lahabrea)
                 {
                     yield return new SetTarget(14643);
+                    yield return new EnableAi();
                     yield return new WaitCondition.Task(
                         () => condition[ConditionFlag.Unconscious] || clientState.TerritoryType != SpecialTerritories.Lahabrea,
                         "Wait(death)");

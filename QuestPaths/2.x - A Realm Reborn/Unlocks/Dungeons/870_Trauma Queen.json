@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                140
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1006340,
+          "Position": {
+            "X": -498.8327,
+            "Y": 19.027954,
+            "Z": -376.69952
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "Fly": false,
+          "$": "Flying pathing is a bit wonky since quest giver is on a corner; just walk"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006356,
+          "Position": {
+            "X": 208.51453,
+            "Y": -2.0489888,
+            "Z": 78.50769
+          },
+          "TerritoryId": 139,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -11.886841,
+            "Y": -16.246998,
+            "Z": 126.26831
+          },
+          "TerritoryId": 962,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        },
+        {
+          "DataId": 1041891,
+          "Position": {
+            "X": -11.886841,
+            "Y": -16.246998,
+            "Z": 126.26831
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Currently only implemented with flying unlocked. Future devs, need interaction with lift operator for grounded.",
+          "Position": {
+            "X": -505.21997,
+            "Y": -192.11905,
+            "Z": 301.68753
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -413.58185,
+            "Y": -220.16248,
+            "Z": 301.542
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": false
+        },
+        {
+          "DataId": 1041892,
+          "Position": {
+            "X": -350.3014,
+            "Y": -224.2927,
+            "Z": 309.71228
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041893,
+          "Position": {
+            "X": -390.85986,
+            "Y": 80.782646,
+            "Z": 605.4321
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041894,
+          "Position": {
+            "X": 472.83118,
+            "Y": 438,
+            "Z": 281.60522
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041904,
+          "Position": {
+            "X": 665.40015,
+            "Y": 440.4633,
+            "Z": 366.32324
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 960,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 784,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1041904,
+          "Position": {
+            "X": 665.40015,
+            "Y": 440.4633,
+            "Z": 366.32324
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ultima Thule - Base Omicron",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "$": "Currently only implemented with flying unlocked. Future devs, need interaction with portal for grounded.",
+      "Steps": [
+        {
+          "DataId": 1041896,
+          "Position": {
+            "X": 200.48828,
+            "Y": 567.50006,
+            "Z": 242.78625
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 4601
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "Mount": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Enter workshop (Slafborn)",
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "TargetTerritoryId": 156,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_SUBCTS818_00164_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                156
+              ]
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -7.1260376,
+                  "Y": -158.5813,
+                  "Z": -2.3651733
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
+          "$": "Talk to Jessie",
+          "DataId": 1006980,
+          "Position": {
+            "X": -7.1260376,
+            "Y": -158.5813,
+            "Z": -2.3651733
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Exit workshop",
+          "DataId": 2002502,
+          "Position": {
+            "X": 0.7476196,
+            "Y": -156.93909,
+            "Z": 16.281311
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "TargetTerritoryId": 156,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                156
+              ]
+            },
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -7.1260376,
+                  "Y": -158.5813,
+                  "Z": -2.3651733
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
+          "$": "Magitek Converter #49 - PathTo",
+          "Position": {
+            "X": -643.4109,
+            "Y": -2.9330235,
+            "Z": -380.4485
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+            }
+          }
+        },
+        {
+          "$": "Magitek Converter #49 - Pickup",
+          "DataId": 2004314,
+          "Position": {
+            "X": -644.67847,
+            "Y": -1.3580933,
+            "Z": -382.1012
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+            }
+          }
+        },
+        {
+          "$": "Magitek Cannon Barrel #51 - PathTo",
+          "Position": {
+            "X": -568.7724,
+            "Y": -2.9615695,
+            "Z": -316.0917
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+            }
+          }
+        },
+        {
+          "$": "Magitek Cannon Barrel #51 - Pickup",
+          "DataId": 2004316,
+          "Position": {
+            "X": -569.8787,
+            "Y": -1.3886108,
+            "Z": -318.07434
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+            }
+          }
+        },
+        {
+          "$": "Magitek Oscillator #50 - PathTo",
+          "Position": {
+            "X": -449.4682,
+            "Y": -4.004792,
+            "Z": -280.67694
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+            }
+          }
+        },
+        {
+          "$": "Magitek Oscillator #50 - Pickup",
+          "DataId": 2004315,
+          "Position": {
+            "X": -451.34668,
+            "Y": -2.395752,
+            "Z": -280.72028
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Enter workshop (Slafborn)",
+          "DataId": 1006530,
+          "Position": {
+            "X": 21.927185,
+            "Y": 20.746975,
+            "Z": -682.06305
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "TargetTerritoryId": 156,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_SUBCTS818_00164_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            },
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -7.1260376,
+                  "Y": -158.5813,
+                  "Z": -2.3651733
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
+          "$": "Talk to Jessie",
+          "DataId": 1006980,
+          "Position": {
+            "X": -7.1260376,
+            "Y": -158.5813,
+            "Z": -2.3651733
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
