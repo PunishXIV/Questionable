@@ -1,0 +1,88 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013580,
+          "Position": {
+            "X": -238.05603,
+            "Y": 103.02109,
+            "Z": -243.54932
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012067,
+          "Position": {
+            "X": -498.00873,
+            "Y": -37.442852,
+            "Z": -403.6164
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013580,
+          "Position": {
+            "X": -238.05603,
+            "Y": 103.02109,
+            "Z": -243.54932
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [4500,4484]
+        },
+        {
+          "DataId": 1013580,
+          "Position": {
+            "X": -238.05603,
+            "Y": 103.02109,
+            "Z": -243.54932
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001673
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012067,
+          "Position": {
+            "X": -498.00873,
+            "Y": -37.442852,
+            "Z": -403.6164
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}

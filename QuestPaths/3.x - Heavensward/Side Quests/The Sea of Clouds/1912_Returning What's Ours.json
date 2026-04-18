@@ -1,0 +1,80 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012071,
+          "Position": {
+            "X": -568.3833,
+            "Y": -50.605247,
+            "Z": -449.11877
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005829,
+          "Position": {
+            "X": 80.24719,
+            "Y": 98.55798,
+            "Z": -309.07147
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 2005827,
+          "Position": {
+            "X": 86.045654,
+            "Y": 98.55798,
+            "Z": -335.1645
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 2005828,
+          "Position": {
+            "X": 180.80408,
+            "Y": 98.55798,
+            "Z": -309.5293
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012071,
+          "Position": {
+            "X": -568.3833,
+            "Y": -50.605247,
+            "Z": -449.11877
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012054,
+          "Position": {
+            "X": -640.1007,
+            "Y": -119.56208,
+            "Z": 469.5963
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 4063,
+          "Position": {
+            "X": -399.86273,
+            "Y": -152.81575,
+            "Z": 312.03174
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [4063]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012054,
+          "Position": {
+            "X": -640.1007,
+            "Y": -119.56208,
+            "Z": 469.5963
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    }
+  ]
+}

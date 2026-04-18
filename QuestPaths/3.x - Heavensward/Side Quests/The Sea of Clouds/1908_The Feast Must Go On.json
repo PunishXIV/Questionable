@@ -1,0 +1,59 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012071,
+          "Position": {
+            "X": -568.3833,
+            "Y": -50.605247,
+            "Z": -449.11877
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 4054,
+          "Position": {
+            "X": -399.16077,
+            "Y": -55.9948,
+            "Z": -577.8134
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            4054
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012071,
+          "Position": {
+            "X": -568.3833,
+            "Y": -50.605247,
+            "Z": -449.11877
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}

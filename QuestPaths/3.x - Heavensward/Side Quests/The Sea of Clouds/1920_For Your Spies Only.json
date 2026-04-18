@@ -1,0 +1,85 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013576,
+          "Position": {
+            "X": 24.826416,
+            "Y": 150.46924,
+            "Z": -137.71265
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013577,
+          "Position": {
+            "X": 239.52087,
+            "Y": 127.79431,
+            "Z": 121.14136
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1013579,
+          "Position": {
+            "X": 223.80408,
+            "Y": 155.53516,
+            "Z": -47.379333
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1013578,
+          "Position": {
+            "X": -108.81213,
+            "Y": 164.29382,
+            "Z": -395.28497
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013576,
+          "Position": {
+            "X": 24.826416,
+            "Y": 150.46924,
+            "Z": -137.71265
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+        }
+      ]
+    }
+  ]
+}
