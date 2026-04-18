@@ -1,1 +1,1 @@
-- Sea of Clouds sidequests -alydev
+pathing fixes for arr 887, 897, 3865, 1211 -K 
