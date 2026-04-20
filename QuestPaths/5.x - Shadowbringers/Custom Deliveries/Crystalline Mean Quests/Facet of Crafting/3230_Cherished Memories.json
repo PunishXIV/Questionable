@@ -1,0 +1,67 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Comment": "Requires CRP, LTW, or WVR",
+      "Steps": [
+        {
+          "DataId": 1028326,
+          "Position": {
+            "X": 10.940674,
+            "Y": 20.186,
+            "Z": -142.53455
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028436,
+          "Position": {
+            "X": -19.394226,
+            "Y": 19.999794,
+            "Z": -29.58728
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Comment": "Crafting turn-ins will need to be done manually",
+      "Steps": [
+        {
+          "DataId": 1027234,
+          "Position": {
+            "X": 10.2387085,
+            "Y": 20.185999,
+            "Z": -138.2315
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "$": "No next quest, since that requires turn-ins before being available"
+        }
+      ]
+    }
+  ]
+}

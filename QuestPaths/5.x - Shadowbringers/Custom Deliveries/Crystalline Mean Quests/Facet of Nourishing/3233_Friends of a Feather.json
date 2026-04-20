@@ -1,0 +1,102 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Comment": "Requires ALC or CUL",
+      "Steps": [
+        {
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028481,
+          "Position": {
+            "X": 52.96399,
+            "Y": 36.197685,
+            "Z": -179.46143
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Amaro Launch"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028482,
+          "Position": {
+            "X": 54.184692,
+            "Y": 36.197685,
+            "Z": -182.69635
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Emote",
+          "Emote": "pet"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029854,
+          "Position": {
+            "X": -130.20526,
+            "Y": 0,
+            "Z": -63.95056
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Amaro Launch",
+            "[Crystarium] Temenos Rookery"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Comment": "Crafting turn-ins will need to be done manually",
+      "Steps": [
+        {
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] Temenos Rookery",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "$": "No next quest, since that requires turn-ins before being available"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Comment": "Requires FSH",
+      "Steps": [
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] Tessellation (Lakeland)"
+          ]
+        },
+        {
+          "Position": {
+            "X": 55.589294,
+            "Y": 2.0276523,
+            "Z": 669.1557
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          },
+          "$": "bridges have navmesh problems"
+        },
+        {
+          "Position": {
+            "X": 20.713037,
+            "Y": 1.7985868,
+            "Z": 675.3628
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Unlocked"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 16.098186,
+            "Y": 2.2509232,
+            "Z": 671.5291
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009924,
+          "Position": {
+            "X": 16.922241,
+            "Y": 2.304016,
+            "Z": 669.8862
+          },
+          "TerritoryId": 813,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028472,
+          "Position": {
+            "X": -66.819336,
+            "Y": -36.75,
+            "Z": -273.27386
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Comment": "Fishing turn-ins will need to be done manually",
+      "Steps": [
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Cabinet of Curiosity",
+            "[Crystarium] The Crystalline Mean"
+          ],
+          "$": "No next quest, since that requires turn-ins before being available"
+        }
+      ]
+    }
+  ]
+}
