@@ -1,0 +1,104 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012056,
+          "Position": {
+            "X": -658.89984,
+            "Y": -127.78361,
+            "Z": 622.98
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005774,
+          "Position": {
+            "X": -21.194885,
+            "Y": -175.2804,
+            "Z": 737.7278
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 2005777,
+          "Position": {
+            "X": 1.2359009,
+            "Y": -175.2804,
+            "Z": 705.7754
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        },
+        {
+          "DataId": 2005775,
+          "Position": {
+            "X": 55.77173,
+            "Y": -175.2804,
+            "Z": 722.9877
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 2005778,
+          "Position": {
+            "X": 95.90283,
+            "Y": -175.2804,
+            "Z": 769.10046
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
+        },
+        {
+          "DataId": 2005776,
+          "Position": {
+            "X": 36.850464,
+            "Y": -175.2804,
+            "Z": 774.0748
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012056,
+          "Position": {
+            "X": -658.89984,
+            "Y": -127.78361,
+            "Z": 622.98
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    }
+  ]
+}

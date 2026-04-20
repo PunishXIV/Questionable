@@ -1,3 +1,1 @@
-cautios fix for new artisan endurance option
--
-misc fixes and Nier added path by ShermTank
+pathing fixes for arr 887, 897, 3865, 1211 -K 

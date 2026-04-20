@@ -1,0 +1,74 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked":{"Username": "alydev", "Date": "2026-04-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012059,
+          "Position": {
+            "X": -344.96075,
+            "Y": -164.64145,
+            "Z": 836.33167
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012054,
+          "Position": {
+            "X": -640.1007,
+            "Y": -119.56208,
+            "Z": 469.5963
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006000,
+          "Position": {
+            "X": -181.9882,
+            "Y": -166.07298,
+            "Z": 537.2229
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012059,
+          "Position": {
+            "X": -344.96075,
+            "Y": -164.64145,
+            "Z": 836.33167
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    }
+  ]
+}
