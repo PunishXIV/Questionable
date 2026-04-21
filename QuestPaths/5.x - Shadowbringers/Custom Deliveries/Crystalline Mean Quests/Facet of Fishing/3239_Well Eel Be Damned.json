@@ -7,6 +7,11 @@
       "Comment": "Requires FSH",
       "Steps": [
         {
+          "TerritoryId": 819,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Fisher"
+        },
+        {
           "DataId": 1027237,
           "Position": {
             "X": -8.957031,

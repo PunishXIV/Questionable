@@ -1,0 +1,146 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "WIP; Manual gathering step",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027236,
+          "Position": {
+            "X": -3.1586914,
+            "Y": 20.186,
+            "Z": -148.91284
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028500,
+          "Position": {
+            "X": -400.10687,
+            "Y": 56.978058,
+            "Z": 451.89587
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
+          "AetheryteShortcut": "Il Mheg - Lydha Lran",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        },
+        {
+          "DataId": 1028499,
+          "Position": {
+            "X": -470.08472,
+            "Y": 70.15228,
+            "Z": 481.95605
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "DataId": 1028498,
+          "Position": {
+            "X": -508.7816,
+            "Y": 72.426414,
+            "Z": 533.56213
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028496,
+          "Position": {
+            "X": -586.511,
+            "Y": 90.98404,
+            "Z": 579.6139
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1028503,
+          "Position": {
+            "X": -496.42178,
+            "Y": 3.886272,
+            "Z": -80.857605
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 816,
+          "InteractionType": "Instruction",
+          "Comment": "Gather manually; Ancient Animal Skin is not currently supported\nMIN node: ( 8.6 , 19.6 )\nBTN node: ( 11.5 , 20.3 )",
+          "$": "QST is stuck at 'Gather(Pending for 26756)', even if specifying the gathering point id (MIN: 32627, BTN:32721)."
+        },
+        {
+          "DataId": 1028501,
+          "Position": {
+            "X": -494.4076,
+            "Y": 3.763135,
+            "Z": -78.78235
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027236,
+          "Position": {
+            "X": -3.1586914,
+            "Y": 20.186,
+            "Z": -148.91284
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}
