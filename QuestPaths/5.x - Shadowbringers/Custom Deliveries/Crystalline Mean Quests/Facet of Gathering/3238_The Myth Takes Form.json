@@ -1,0 +1,103 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "WIP; Manual gathering step",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027236,
+          "Position": {
+            "X": -3.1586914,
+            "Y": 20.186,
+            "Z": -148.91284
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028504,
+          "Position": {
+            "X": 119.035645,
+            "Y": 361.51562,
+            "Z": -463.88953
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Tomra",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 814,
+          "InteractionType": "Instruction",
+          "Comment": "Gather manually; Black Aethersand is not currently supported\nMIN node: ( 23.0 , 16.7 )\nBTN node: ( 15.4 , 13.7 )",
+          "$": "QST is stuck at 'Gather(Pending for 26757)', even if specifying the gathering point id (MIN: 32664, BTN:32764)."
+        },
+        {
+          "DataId": 1028504,
+          "Position": {
+            "X": 119.035645,
+            "Y": 361.51562,
+            "Z": -463.88953
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009806,
+          "Position": {
+            "X": 125.596924,
+            "Y": 361.16577,
+            "Z": -471.30542
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UseItem",
+          "ItemId": 2002566,
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031128,
+          "Position": {
+            "X": -3.1586914,
+            "Y": 20.186,
+            "Z": -148.91284
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}

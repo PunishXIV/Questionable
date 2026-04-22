@@ -1,0 +1,158 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "WIP; Manual fishing step",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Fisher"
+        },
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028475,
+          "Position": {
+            "X": 719.173,
+            "Y": 26.886168,
+            "Z": 298.39014
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kholusia - Stilltide",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1028476,
+          "Position": {
+            "X": 695.12463,
+            "Y": 28.117487,
+            "Z": 274.92175
+          },
+          "TerritoryId": 814,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Comment": "Fish for 1x Prospero Eel (!) using Moyebi Shrimp or Versatile Lure",
+      "Steps": [
+        {
+          "$": "Teleport and fly to fishing hole",
+          "Position": {
+            "X": 463.6224,
+            "Y": 312.5834,
+            "Z": -292.67758
+          },
+          "TerritoryId": 818,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Tempest - Ondo Cups",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 463.6224,
+                  "Y": 312.5834,
+                  "Z": -292.67758
+                },
+                "TerritoryId": 818,
+                "MaximumDistance": 20
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "TerritoryId": 818,
+          "InteractionType": "Instruction",
+          "Comment": "Fish for 1x Prospero Eel (!) using Moyebi Shrimp or Versatile Lure",
+          "$": "Use Instruction since turn-in is part of the same Sequence and has no QW flags (unlike tribal dailies); otherwise we'd fish forever"
+        },
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1029869,
+          "Position": {
+            "X": -3.7995605,
+            "Y": -7.264316E-07,
+            "Z": -63.70642
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Dossal Gate"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Dossal Gate",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}

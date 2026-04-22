@@ -13,7 +13,12 @@
             "Z": -130.1748
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
         }
       ]
     },
