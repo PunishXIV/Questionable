@@ -114,9 +114,14 @@
         },
         {
           "TerritoryId": 816,
-          "InteractionType": "Instruction",
           "Comment": "Fish for 1x Calico Trout (!) using Fruit Worm or Versatile Lure",
-          "$": "Use Instruction since turn-in is part of the same Sequence and has no QW flags (unlike tribal dailies); otherwise we'd fish forever"
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 26750,
+              "ItemCount": 1
+            }
+          ]
         },
         {
           "DataId": 1031217,

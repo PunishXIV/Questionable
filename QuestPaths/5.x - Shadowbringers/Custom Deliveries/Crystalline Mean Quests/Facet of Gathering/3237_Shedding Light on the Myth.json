@@ -105,9 +105,15 @@
       "Steps": [
         {
           "TerritoryId": 816,
-          "InteractionType": "Instruction",
-          "Comment": "Gather manually; Ancient Animal Skin is not currently supported\nMIN node: ( 8.6 , 19.6 )\nBTN node: ( 11.5 , 20.3 )",
-          "$": "QST is stuck at 'Gather(Pending for 26756)', even if specifying the gathering point id (MIN: 32627, BTN:32721)."
+          "Comment": "MIN node: ( 8.6 , 19.6 )\nBTN node: ( 11.5 , 20.3 )",
+          "$": "QST is stuck at 'Gather(Pending for 26756)', even if specifying the gathering point id (MIN: 32627, BTN:32721).",
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 26756,
+              "ItemCount": 1
+            }
+          ]
         },
         {
           "DataId": 1028501,
