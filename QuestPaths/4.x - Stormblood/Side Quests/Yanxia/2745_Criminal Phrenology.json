@@ -1,0 +1,107 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Theo",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019301,
+          "Position": {
+            "X": -289.2348,
+            "Y": 17.31996,
+            "Z": 520.9276
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Yanxia - Namai",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022463,
+          "Position": {
+            "X": -515.8313,
+            "Y": 55.46367,
+            "Z": 332.5398
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            7527
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022463,
+          "Position": {
+            "X": -515.8313,
+            "Y": 55.46367,
+            "Z": 332.5398
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 5
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -607.8938,
+            "Y": -1.1090204,
+            "Z": 522.04504
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Dive",
+          "Fly": true
+        },
+        {
+          "DataId": 2008522,
+          "Position": {
+            "X": -614.0078,
+            "Y": -97.032104,
+            "Z": 500.23633
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019301,
+          "Position": {
+            "X": -289.2348,
+            "Y": 17.31996,
+            "Z": 520.9276
+          },
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
