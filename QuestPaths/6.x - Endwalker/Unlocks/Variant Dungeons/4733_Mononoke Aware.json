@@ -79,7 +79,12 @@
             "Z": -121.049866
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Bokairo Inn"
+          ]
         }
       ]
     },

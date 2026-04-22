@@ -44,6 +44,29 @@
       "Sequence": 2,
       "Steps": [
         {
+          "$": "Path to aetheryte manually first; normal pathing bypasses the aethernet shortcut for some reason",
+          "Position": {
+            "X": 33.341263,
+            "Y": 0.09998739,
+            "Z": -30.881794
+          },
+          "TerritoryId": 963,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 129.59485,
+                  "Y": 26.993164,
+                  "Z": 13.473633
+                },
+                "TerritoryId": 963,
+                "MaximumDistance": 30
+              }
+            }
+          }
+        },
+        {
           "DataId": 1042489,
           "Position": {
             "X": 147.75305,
@@ -163,13 +186,29 @@
         {
           "DataId": 1042492,
           "Position": {
+            "X": -219.96817,
+            "Y": 1.8110301,
+            "Z": 756.0097
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+            }
+          }
+        },
+        {
+          "DataId": 1042492,
+          "Position": {
             "X": -218.76862,
             "Y": 1.9084097,
             "Z": 756.16077
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]

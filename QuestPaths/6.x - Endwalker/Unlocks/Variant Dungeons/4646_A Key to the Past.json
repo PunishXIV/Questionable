@@ -81,7 +81,24 @@
       "Sequence": 4,
       "Steps": [
         {
-          "DataId": 1043777,
+          "DataId": 1043626,
+          "Position": {
+            "X": -230.94531,
+            "Y": -32,
+            "Z": 110.185425
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1044158,
           "Position": {
             "X": 66.20886,
             "Y": 4.0999947,
@@ -93,7 +110,12 @@
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"
-          ]
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
         }
       ]
     },
