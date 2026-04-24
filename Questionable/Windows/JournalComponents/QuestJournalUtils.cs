@@ -3,6 +3,7 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Functions;
@@ -12,11 +13,13 @@ using Questionable.Model.Questing;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalUtils(QuestController questController, QuestFunctions questFunctions,
-    ICommandManager commandManager)
+    ICommandManager commandManager, Configuration configuration, IDalamudPluginInterface pluginInterface)
 {
     private readonly QuestController _questController = questController;
     private readonly QuestFunctions _questFunctions = questFunctions;
     private readonly ICommandManager _commandManager = commandManager;
+    private readonly Configuration _configuration = configuration;
+    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
 
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {
@@ -54,6 +57,12 @@ internal sealed class QuestJournalUtils(QuestController questController, QuestFu
             {
                 _commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
             }
+        }
+
+        if (ImGui.MenuItem("Add to Stop condition"))
+        {
+            _configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
+            _pluginInterface.SavePluginConfig(_configuration);
         }
     }
 

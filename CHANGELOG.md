@@ -1,3 +1,3 @@
-add 2745 catfish tt -K 
---
-misc questfixes by ShermTank
+- "Add to Stop condition" right-click option in Journal Progress -alydev
+- add 2745 catfish tt -Kiarra
+- misc questfixes by ShermTank
