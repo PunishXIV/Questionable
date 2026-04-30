@@ -130,7 +130,7 @@
       "llib": {
         "type": "Project",
         "dependencies": {
-          "DalamudPackager": "[13.1.0, )",
+          "DalamudPackager": "[15.0.0, )",
           "ECommons": "[3.1.0.16, )",
           "JetBrains.Annotations": "[2024.3.0, )"
         }
