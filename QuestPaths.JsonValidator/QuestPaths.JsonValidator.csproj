@@ -48,9 +48,6 @@
         <EmbeddedResource Include="..\QuestPaths\7.x - Dawntrail\**\*.json">
             <LogicalName>$([System.String]::new('%(RelativeDir)').Substring(3).Replace('\','/'))%(FileName)%(Extension)</LogicalName>
         </EmbeddedResource>
-        <EmbeddedResource Update="..\QuestPaths\2.x - A Realm Reborn\Side Quests\Thanalan\Nothern Thanalan\66574_High Standards.json">
-          <Link>Side Quests\Thanalan\Northern Thanalan\_High Standards.json</Link>
-        </EmbeddedResource>
     </ItemGroup>
 
 </Project>
