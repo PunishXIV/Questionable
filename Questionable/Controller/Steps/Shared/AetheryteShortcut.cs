@@ -46,7 +46,7 @@ internal static class AetheryteShortcut
         QuestStep? Step,
         ElementId? ElementId,
         EAetheryteLocation TargetAetheryte,
-        ushort ExpectedTerritoryId) : ISkippableTask
+        uint ExpectedTerritoryId) : ISkippableTask
     {
         public override string ToString() => $"UseAetheryte({TargetAetheryte})";
     }
@@ -86,7 +86,7 @@ internal static class AetheryteShortcut
 
         private bool ShouldSkipTeleport()
         {
-            ushort territoryType = clientState.TerritoryType;
+            var territoryType = clientState.TerritoryType;
             if (Task.Step != null)
             {
                 var skipConditions = Task.Step.SkipConditions?.AetheryteShortcutIf ?? new();

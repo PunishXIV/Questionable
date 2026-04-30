@@ -8,7 +8,6 @@ using LLib.Shop;
 using LLib.Shop.Model;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
-using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 namespace Questionable.Controller.GameUi;
 
@@ -136,9 +135,9 @@ internal sealed class ShopController : IDisposable, IShopWindow
     {
         var buyItem = stackalloc AtkValue[]
         {
-            new() { Type = ValueType.Int, Int = 0 },
-            new() { Type = ValueType.Int, Int = _shop.ItemForSale!.Position },
-            new() { Type = ValueType.Int, Int = buyNow },
+            new() { Type = AtkValueType.Int, Int = 0 },
+            new() { Type = AtkValueType.Int, Int = _shop.ItemForSale!.Position },
+            new() { Type = AtkValueType.Int, Int = buyNow },
             new() { Type = 0, Int = 0 }
         };
         addonShop->FireCallback(4, buyItem);

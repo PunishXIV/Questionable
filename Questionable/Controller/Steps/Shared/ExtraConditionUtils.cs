@@ -18,7 +18,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
                MatchesExtraCondition(skipCondition, position.Value, _clientState.TerritoryType);
     }
 
-    public static bool MatchesExtraCondition(EExtraSkipCondition skipCondition, Vector3 position, ushort territoryType)
+    public static bool MatchesExtraCondition(EExtraSkipCondition skipCondition, Vector3 position, uint territoryType)
     {
         return skipCondition switch
         {

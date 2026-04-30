@@ -24,7 +24,6 @@ using Questionable.Model.Common;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Quest = Questionable.Model.Quest;
-using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 namespace Questionable.Controller.GameUi;
 
@@ -194,7 +193,7 @@ internal sealed class InteractionUiController : IDisposable
         List<string?> answers = [];
         for (ushort i = 7; i < addonSelectString->AtkUnitBase.AtkValuesCount; ++i)
         {
-            if (addonSelectString->AtkUnitBase.AtkValues[i].Type == ValueType.String)
+            if (addonSelectString->AtkUnitBase.AtkValues[i].Type == AtkValueType.String)
                 answers.Add(addonSelectString->AtkUnitBase.AtkValues[i].ReadAtkString());
         }
 
@@ -829,8 +828,8 @@ internal sealed class InteractionUiController : IDisposable
             _logger.LogInformation("Confirming difficulty ({Difficulty}) for quest battle", _configuration.SinglePlayerDuties.RetryDifficulty);
             var selectChoice = stackalloc AtkValue[]
             {
-                new() { Type = ValueType.Int, Int = 0 },
-                new() { Type = ValueType.Int, Int = _configuration.SinglePlayerDuties.RetryDifficulty }
+                new() { Type = AtkValueType.Int, Int = 0 },
+                new() { Type = AtkValueType.Int, Int = _configuration.SinglePlayerDuties.RetryDifficulty }
             };
             addonDifficultySelectYesNo->FireCallback(2, selectChoice);
         }
@@ -1000,8 +999,8 @@ internal sealed class InteractionUiController : IDisposable
         _logger.LogInformation("Handling point menu, picking choice {Choice} (index = {Index})", choice, counter);
         var selectChoice = stackalloc AtkValue[]
         {
-            new() { Type = ValueType.Int, Int = 13 },
-            new() { Type = ValueType.UInt, UInt = choice }
+            new() { Type = AtkValueType.Int, Int = 13 },
+            new() { Type = AtkValueType.UInt, UInt = choice }
         };
         addonPointMenu->FireCallback(2, selectChoice);
 

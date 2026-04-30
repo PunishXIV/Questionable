@@ -354,6 +354,6 @@ internal sealed class QuestionableIpc : IDisposable
         public required int Step { get; init; }
         public required string InteractionType { get; init; }
         public required Vector3? Position { get; init; }
-        public required ushort TerritoryId { get; init; }
+        public required uint TerritoryId { get; init; }
     }
 }

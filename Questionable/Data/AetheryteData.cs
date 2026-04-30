@@ -12,18 +12,18 @@ internal sealed class AetheryteData
 {
     public AetheryteData(IDataManager dataManager)
     {
-        Dictionary<EAetheryteLocation, ushort> territoryIds = [];
+        Dictionary<EAetheryteLocation, uint> territoryIds = [];
         Dictionary<EAetheryteLocation, ushort> aethernetGroups = [];
 
 
-        void ConfigureAetheryte(EAetheryteLocation aetheryteLocation, ushort territoryId,
+        void ConfigureAetheryte(EAetheryteLocation aetheryteLocation, uint territoryId,
             ushort aethernetGroup)
         {
             territoryIds[aetheryteLocation] = territoryId;
             aethernetGroups[aetheryteLocation] = aethernetGroup;
         }
 
-        void ConfigureAetheryteWithAutoGroup(EAetheryteLocation aetheryteLocation, ushort territoryId)
+        void ConfigureAetheryteWithAutoGroup(EAetheryteLocation aetheryteLocation, uint territoryId)
         {
             ConfigureAetheryte(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
         }
@@ -52,7 +52,7 @@ internal sealed class AetheryteData
 
         TownTerritoryIds = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0 && !string.IsNullOrEmpty(x.Name.ToString()) && x.TerritoryIntendedUse.RowId == 0)
-            .Select(x => (ushort)x.RowId)
+            .Select(x => x.RowId)
             .ToList();
     }
 
@@ -307,13 +307,13 @@ internal sealed class AetheryteData
             { EAetheryteLocation.IshgardFirmament, new(9.92315f, -15.2f, 173.5059f) },
         }.AsReadOnly();
 
-    public ReadOnlyDictionary<EAetheryteLocation, ushort> TerritoryIds { get; }
+    public ReadOnlyDictionary<EAetheryteLocation, uint> TerritoryIds { get; }
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
-    private IReadOnlyList<ushort> TownTerritoryIds { get; set; }
+    private IReadOnlyList<uint> TownTerritoryIds { get; set; }
 
-    public float CalculateDistance(Vector3 fromPosition, ushort fromTerritoryType, EAetheryteLocation to)
+    public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
-        if (!TerritoryIds.TryGetValue(to, out ushort toTerritoryType) || fromTerritoryType != toTerritoryType)
+        if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
             return float.MaxValue;
 
         if (!Locations.TryGetValue(to, out Vector3 toPosition))
@@ -322,9 +322,9 @@ internal sealed class AetheryteData
         return (fromPosition - toPosition).Length();
     }
 
-    public float CalculateAirshipLandingDistance(Vector3 fromPosition, ushort fromTerritoryType, EAetheryteLocation to)
+    public float CalculateAirshipLandingDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
-        if (!TerritoryIds.TryGetValue(to, out ushort toTerritoryType) || fromTerritoryType != toTerritoryType)
+        if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
             return float.MaxValue;
 
         if (!AirshipLandingLocations.TryGetValue(to, out Vector3 toPosition))

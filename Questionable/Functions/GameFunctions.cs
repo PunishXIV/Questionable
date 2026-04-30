@@ -58,17 +58,17 @@ internal sealed unsafe class GameFunctions(
     private readonly AbandonDutyDelegate _abandonDuty =
             Marshal.GetDelegateForFunctionPointer<AbandonDutyDelegate>(EventFramework.Addresses.LeaveCurrentContent.Value);
 
-    private readonly ReadOnlyDictionary<ushort, uint> _territoryToAetherCurrentCompFlgSet = dataManager.GetExcelSheet<TerritoryType>()
+    private readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0)
             .Where(x => x.AetherCurrentCompFlgSet.RowId > 0)
-            .ToDictionary(x => (ushort)x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
+            .ToDictionary(x => x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
             .AsReadOnly();
     private readonly ReadOnlyDictionary<uint, uint> _contentFinderConditionToContentId = dataManager.GetExcelSheet<ContentFinderCondition>()
             .Where(x => x.RowId > 0 && x.Content.RowId > 0)
             .ToDictionary(x => x.RowId, x => x.Content.RowId)
             .AsReadOnly();
 
-    public bool IsFlyingUnlocked(ushort territoryId)
+    public bool IsFlyingUnlocked(uint territoryId)
     {
         if (_configuration.Advanced.NeverFly)
             return false;
@@ -109,8 +109,8 @@ internal sealed unsafe class GameFunctions(
     {
         foreach (var gameObject in _objectTable)
         {
-            if (gameObject.ObjectKind is ObjectKind.Player or ObjectKind.Companion or ObjectKind.MountType
-                or ObjectKind.Retainer or ObjectKind.Housing)
+            if (gameObject.ObjectKind is ObjectKind.Pc or ObjectKind.Companion or ObjectKind.Mount
+                or ObjectKind.Retainer or ObjectKind.HousingEventObject)
                 continue;
 
             // multiple objects in the object table can share the same data id for gathering points; only one of those

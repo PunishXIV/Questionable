@@ -5,7 +5,6 @@ using LLib.GameUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 namespace Questionable.Controller.Steps.Gathering;
 
@@ -74,8 +73,8 @@ internal static class TurnInDelivery
 
             var pickGatheringItem = stackalloc AtkValue[]
             {
-                new() { Type = ValueType.Int, Int = 1 },
-                new() { Type = ValueType.Int, Int = 1 }
+                new() { Type = AtkValueType.Int, Int = 1 },
+                new() { Type = AtkValueType.Int, Int = 1 }
             };
             addon->FireCallback(2, pickGatheringItem);
             return ETaskResult.StillRunning;

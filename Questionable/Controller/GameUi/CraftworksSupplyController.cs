@@ -6,7 +6,6 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using LLib.GameUI;
 using Microsoft.Extensions.Logging;
-using ValueType = FFXIVClientStructs.FFXIV.Component.GUI.ValueType;
 
 namespace Questionable.Controller.GameUi;
 
@@ -63,8 +62,8 @@ internal sealed class CraftworksSupplyController : IDisposable
             _logger.LogInformation("Selecting an item for slot {Slot}", slot);
             var selectSlot = stackalloc AtkValue[]
             {
-                new() { Type = ValueType.Int, Int = 2 },
-                new() { Type = ValueType.Int, Int = slot /* slot */ },
+                new() { Type = AtkValueType.Int, Int = 2 },
+                new() { Type = AtkValueType.Int, Int = slot /* slot */ },
             };
             addon->FireCallback(2, selectSlot);
             return;
@@ -88,7 +87,7 @@ internal sealed class CraftworksSupplyController : IDisposable
         if (!addonContextIconMenu->IsVisible)
             return;
 
-        ushort parentId = addonContextIconMenu->ContextMenuParentId;
+        ushort parentId = addonContextIconMenu->BlockedParentId;
         if (parentId == 0)
             return;
 
@@ -98,10 +97,10 @@ internal sealed class CraftworksSupplyController : IDisposable
             _logger.LogInformation("Picking item for {AddonName}", parentAddon->NameString);
             var selectSlot = stackalloc AtkValue[]
             {
-                new() { Type = ValueType.Int, Int = 0 },
-                new() { Type = ValueType.Int, Int = 0 /* slot */ },
-                new() { Type = ValueType.UInt, UInt = 20802 /* probably the item's icon */ },
-                new() { Type = ValueType.UInt, UInt = 0 },
+                new() { Type = AtkValueType.Int, Int = 0 },
+                new() { Type = AtkValueType.Int, Int = 0 /* slot */ },
+                new() { Type = AtkValueType.UInt, UInt = 20802 /* probably the item's icon */ },
+                new() { Type = AtkValueType.UInt, UInt = 0 },
                 new() { Type = 0, Int = 0 },
             };
             addonContextIconMenu->FireCallback(5, selectSlot);

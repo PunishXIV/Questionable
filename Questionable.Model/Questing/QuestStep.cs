@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Text.Json.Serialization;
@@ -20,7 +20,7 @@ public sealed class QuestStep
     public Vector3? Position { get; set; }
 
     public float? StopDistance { get; set; }
-    public ushort TerritoryId { get; set; }
+    public uint TerritoryId { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
     public EInteractionType InteractionType { get; set; }
@@ -106,7 +106,7 @@ public sealed class QuestStep
     {
     }
 
-    public QuestStep(EInteractionType interactionType, uint? dataId, Vector3? position, ushort territoryId)
+    public QuestStep(EInteractionType interactionType, uint? dataId, Vector3? position, uint territoryId)
     {
         InteractionType = interactionType;
         DataId = dataId;

@@ -603,13 +603,10 @@ internal sealed class SinglePlayerDutyConfigComponent(
                     if (ImGui.IsItemHovered() && Configuration.Advanced.AdditionalStatusInformation)
                     {
                         using var tooltip = ImRaii.Tooltip();
-                        if (tooltip)
-                        {
-                            ImGui.TextUnformatted(dutyInfo.Name);
-                            ImGui.Separator();
-                            ImGui.BulletText($"TerritoryId: {dutyInfo.TerritoryId}");
-                            ImGui.BulletText($"ContentFinderConditionId: {dutyInfo.ContentFinderConditionId}");
-                        }
+                        ImGui.TextUnformatted(dutyInfo.Name);
+                        ImGui.Separator();
+                        ImGui.BulletText($"TerritoryId: {dutyInfo.TerritoryId}");
+                        ImGui.BulletText($"ContentFinderConditionId: {dutyInfo.ContentFinderConditionId}");
                     }
 
                     if (!dutyInfo.Enabled)
@@ -645,7 +642,7 @@ internal sealed class SinglePlayerDutyConfigComponent(
         }
     }
 
-    private static ImRaii.IEndObject BeginChildArea() => ImRaii.Child("DutyConfiguration", new Vector2(675, 400), true);
+    private static ImRaii.ChildDisposable BeginChildArea() => ImRaii.Child("DutyConfiguration", new Vector2(675, 400), true);
 
     private void DrawEnableAllButton()
     {

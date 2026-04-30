@@ -45,9 +45,6 @@ internal sealed class ARealmRebornComponent(QuestFunctions questFunctions, Quest
             return;
 
         using var tooltip = ImRaii.Tooltip();
-        if (!tooltip)
-            return;
-
         foreach (var instanceId in RequiredPrimalInstances)
         {
             (Vector4 color, FontAwesomeIcon icon) = UiUtils.GetInstanceStyle(instanceId);
@@ -64,9 +61,6 @@ internal sealed class ARealmRebornComponent(QuestFunctions questFunctions, Quest
             return;
 
         using var tooltip = ImRaii.Tooltip();
-        if (!tooltip)
-            return;
-
         foreach (var questId in QuestData.CrystalTowerQuests)
         {
             (Vector4 color, FontAwesomeIcon icon, _) = _uiUtils.GetQuestStyle(questId);

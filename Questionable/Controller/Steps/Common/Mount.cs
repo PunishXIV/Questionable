@@ -14,7 +14,7 @@ namespace Questionable.Controller.Steps.Common;
 internal static class Mount
 {
     internal sealed record MountTask(
-        ushort TerritoryId,
+        uint TerritoryId,
         EMountIf MountIf,
         Vector3? Position = null) : ITask
     {

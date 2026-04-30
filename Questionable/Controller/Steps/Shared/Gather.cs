@@ -90,7 +90,7 @@ internal static class Gather
                 }
             }
 
-            ushort territoryId = gatheringRoot.Steps.Last().TerritoryId;
+            var territoryId = gatheringRoot.Steps.Last().TerritoryId;
             yield return new WaitCondition.Task(() => clientState.TerritoryType == territoryId,
                 $"Wait(territory: {territoryData.GetNameAndId(territoryId)})");
 
