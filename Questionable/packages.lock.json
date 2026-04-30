@@ -139,7 +139,10 @@
         "type": "Project"
       },
       "questionable.model": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "System.Text.Json": "[9.0.3, )"
+        }
       },
       "questpaths": {
         "type": "Project",

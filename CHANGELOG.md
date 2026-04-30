@@ -1,3 +1,2 @@
-- "Add to Stop condition" right-click option in Journal Progress -alydev
-- add 2745 catfish tt -Kiarra
-- misc questfixes by ShermTank
+- update for Dalamud api15 (7.5)
+  - dependency plugins are not yet updated, please be patient
