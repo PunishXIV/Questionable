@@ -15,8 +15,8 @@ namespace Questionable.Data;
 internal sealed class TerritoryData
 {
     private readonly ImmutableDictionary<uint, string> _territoryNames;
-    private readonly ImmutableHashSet<ushort> _territoriesWithMount;
-    private readonly ImmutableDictionary<ushort, uint> _dutyTerritories;
+    private readonly ImmutableHashSet<uint> _territoriesWithMount;
+    private readonly ImmutableDictionary<uint, uint> _dutyTerritories;
     private readonly ImmutableDictionary<uint, string> _instanceNames;
     private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
     private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattlesToContentFinderCondition;
@@ -36,12 +36,12 @@ internal sealed class TerritoryData
 
         _territoriesWithMount = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0 && x.Mount)
-            .Select(x => (ushort)x.RowId)
+            .Select(x => x.RowId)
             .ToImmutableHashSet();
 
         _dutyTerritories = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0 && x.ContentFinderCondition.RowId != 0)
-            .ToImmutableDictionary(x => (ushort)x.RowId, x => x.ContentFinderCondition.Value.ContentType.RowId);
+            .ToImmutableDictionary(x => x.RowId, x => x.ContentFinderCondition.Value.ContentType.RowId);
 
         _instanceNames = dataManager.GetExcelSheet<ContentFinderCondition>()
             .Where(x => x.RowId > 0 && x.Content.RowId != 0 && x.ContentLinkType == 1 && x.ContentType.RowId != 6)
@@ -60,9 +60,9 @@ internal sealed class TerritoryData
             .ToImmutableDictionary(x => (x.QuestId, x.Index), x => x.CfcId);
     }
 
-    public string? GetName(ushort territoryId) => _territoryNames.GetValueOrDefault(territoryId);
+    public string? GetName(uint territoryId) => _territoryNames.GetValueOrDefault(territoryId);
 
-    public string GetNameAndId(ushort territoryId)
+    public string GetNameAndId(uint territoryId)
     {
         string? territoryName = GetName(territoryId);
         if (territoryName != null)
@@ -71,11 +71,11 @@ internal sealed class TerritoryData
             return territoryId.ToString(CultureInfo.InvariantCulture);
     }
 
-    public bool CanUseMount(ushort territoryId) => _territoriesWithMount.Contains(territoryId);
+    public bool CanUseMount(uint territoryId) => _territoriesWithMount.Contains(territoryId);
 
-    public bool IsDutyInstance(ushort territoryId) => _dutyTerritories.ContainsKey(territoryId);
+    public bool IsDutyInstance(uint territoryId) => _dutyTerritories.ContainsKey(territoryId);
 
-    public bool IsQuestBattleInstance(ushort territoryId) =>
+    public bool IsQuestBattleInstance(uint territoryId) =>
         _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
 
     public string? GetInstanceName(ushort instanceId) => _instanceNames.GetValueOrDefault(instanceId);
@@ -130,7 +130,7 @@ internal sealed class TerritoryData
         if (questBattleId >= 5000)
             return dataManager.GetExcelSheet<InstanceContent>().GetRow(questBattleId).ContentFinderCondition.RowId;
         else
-            return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).Unknown0;
+            return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).SoloDuty.RowId;
     }
 
     public sealed record ContentFinderConditionData(

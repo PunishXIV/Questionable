@@ -16,7 +16,7 @@ namespace Questionable.Controller.Steps.Gathering;
 internal static class MoveToLandingLocation
 {
     internal sealed record Task(
-        ushort TerritoryId,
+        uint TerritoryId,
         bool FlyBetweenNodes,
         GatheringNode GatheringNode) : ITask
     {

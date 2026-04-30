@@ -131,7 +131,7 @@ internal sealed unsafe class GatheringController(
         if (currentNode == null)
             return;
 
-        ushort territoryId = _currentRequest.Root.Steps.Last().TerritoryId;
+        var territoryId = _currentRequest.Root.Steps.Last().TerritoryId;
         _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
 
         bool fly = currentNode.Fly.GetValueOrDefault(_currentRequest.Root.FlyBetweenNodes.GetValueOrDefault(true)) &&

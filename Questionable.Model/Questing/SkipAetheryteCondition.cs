@@ -9,7 +9,7 @@ public sealed class SkipAetheryteCondition
 {
     public bool Never { get; set; }
     public bool InSameTerritory { get; set; }
-    public List<ushort> InTerritory { get; set; } = new();
+    public List<uint> InTerritory { get; set; } = new();
 
     [JsonConverter(typeof(ElementIdListConverter))]
     public List<ElementId> QuestsAccepted { get; set; } = new();

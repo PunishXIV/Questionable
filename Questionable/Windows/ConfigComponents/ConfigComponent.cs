@@ -46,8 +46,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     protected static void DrawNotes(bool enabledByDefault, IEnumerable<string> notes)
     {
-        using var color = new ImRaii.Color();
-        color.Push(ImGuiCol.TextDisabled, !enabledByDefault ? ImGuiColors.DalamudYellow : ImGuiColors.ParsedBlue);
+        using var color = ImRaii.PushColor(ImGuiCol.TextDisabled, !enabledByDefault ? ImGuiColors.DalamudYellow : ImGuiColors.ParsedBlue);
 
         ImGui.SameLine();
         using (ImRaii.PushFont(UiBuilder.IconFont))

@@ -82,16 +82,8 @@ internal sealed partial class ActiveQuestComponent(
                 QuestStep? currentStep = currentSequence?.FindStep(currentQuest.Step);
                 if (!isMinimized)
                 {
-                    using (var color = new ImRaii.Color())
+                    using (var color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, currentStep is { InteractionType: EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe }))
                     {
-                        bool colored = currentStep is
-                        {
-                            InteractionType: EInteractionType.Instruction or EInteractionType.WaitForManualProgress
-                            or EInteractionType.Snipe
-                        };
-                        if (colored)
-                            color.Push(ImGuiCol.Text, ImGuiColors.DalamudOrange);
-
                         ImGui.TextUnformatted(currentStep?.Comment ??
                                               currentSequence?.Comment ??
                                               currentQuest.Quest.Root.Comment ?? string.Empty);
@@ -218,51 +210,48 @@ internal sealed partial class ActiveQuestComponent(
                     if (ImGui.IsItemHovered())
                     {
                         using var tooltip = ImRaii.Tooltip();
-                        if (tooltip)
+                        ImGui.Text("Stop Conditions:");
+                        ImGui.Separator();
+
+                        // Level stop condition
+                        if (hasLevelCondition)
                         {
-                            ImGui.Text("Stop Conditions:");
-                            ImGui.Separator();
+                            unsafe
+                            {
+                                int currentLevel = PlayerState.Instance()->CurrentLevel;
+                                ImGui.BulletText($"Stop at level {_configuration.Stop.TargetLevel}");
+                                if (currentLevel > 0)
+                                {
+                                    ImGui.SameLine();
+                                    if (currentLevel >= _configuration.Stop.TargetLevel)
+                                    {
+                                        ImGui.TextColored(ImGuiColors.ParsedGreen, $"(Current: {currentLevel} - Reached!)");
+                                    }
+                                    else
+                                    {
+                                        ImGui.TextColored(ImGuiColors.ParsedBlue, $"(Current: {currentLevel})");
+                                    }
+                                }
+                            }
+                        }
 
-                            // Level stop condition
+                        // Quest stop conditions
+                        if (hasQuestConditions)
+                        {
                             if (hasLevelCondition)
+                                ImGui.Spacing();
+
+                            ImGui.BulletText("Stop after completing any of these quests:");
+                            ImGui.Indent();
+                            foreach (var questId in _configuration.Stop.QuestsToStopAfter)
                             {
-                                unsafe
+                                if (_questRegistry.TryGetQuest(questId, out var quest))
                                 {
-                                    int currentLevel = PlayerState.Instance()->CurrentLevel;
-                                    ImGui.BulletText($"Stop at level {_configuration.Stop.TargetLevel}");
-                                    if (currentLevel > 0)
-                                    {
-                                        ImGui.SameLine();
-                                        if (currentLevel >= _configuration.Stop.TargetLevel)
-                                        {
-                                            ImGui.TextColored(ImGuiColors.ParsedGreen, $"(Current: {currentLevel} - Reached!)");
-                                        }
-                                        else
-                                        {
-                                            ImGui.TextColored(ImGuiColors.ParsedBlue, $"(Current: {currentLevel})");
-                                        }
-                                    }
+                                    (Vector4 color, FontAwesomeIcon icon, _) = _uiUtils.GetQuestStyle(questId);
+                                    _uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon);
                                 }
                             }
-
-                            // Quest stop conditions
-                            if (hasQuestConditions)
-                            {
-                                if (hasLevelCondition)
-                                    ImGui.Spacing();
-
-                                ImGui.BulletText("Stop after completing any of these quests:");
-                                ImGui.Indent();
-                                foreach (var questId in _configuration.Stop.QuestsToStopAfter)
-                                {
-                                    if (_questRegistry.TryGetQuest(questId, out var quest))
-                                    {
-                                        (Vector4 color, FontAwesomeIcon icon, _) = _uiUtils.GetQuestStyle(questId);
-                                        _uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon);
-                                    }
-                                }
-                                ImGui.Unindent();
-                            }
+                            ImGui.Unindent();
                         }
                     }
                 }
@@ -283,31 +272,28 @@ internal sealed partial class ActiveQuestComponent(
                     if (ImGui.IsItemHovered())
                     {
                         using var tooltip = ImRaii.Tooltip();
-                        if (tooltip)
+                        ImGui.Text(
+                            "Certain priority quest (e.g. class quests) may be started/completed by\nthe plugin prior to continuing, usually at a teleport step.");
+                        ImGui.Separator();
+                        ImGui.Text("Available priority quests:");
+                        if (availablePriorityQuests.Count > 0)
                         {
-                            ImGui.Text(
-                                "Certain priority quest (e.g. class quests) may be started/completed by\nthe plugin prior to continuing, usually at a teleport step.");
-                            ImGui.Separator();
-                            ImGui.Text("Available priority quests:");
-                            if (availablePriorityQuests.Count > 0)
+                            foreach (var questId in availablePriorityQuests)
                             {
-                                foreach (var questId in availablePriorityQuests)
-                                {
-                                    if (_questRegistry.TryGetQuest(questId, out var quest))
-                                        ImGui.BulletText($"{quest.Info.Name} ({questId})");
-                                }
+                                if (_questRegistry.TryGetQuest(questId, out var quest))
+                                    ImGui.BulletText($"{quest.Info.Name} ({questId})");
                             }
-                            else
-                                ImGui.BulletText("(none)");
+                        }
+                        else
+                            ImGui.BulletText("(none)");
 
-                            if (unavailablePriorityQuests.Count > 0)
+                        if (unavailablePriorityQuests.Count > 0)
+                        {
+                            ImGui.Text("Unavailable priority quests:");
+                            foreach (var (questId, reason) in unavailablePriorityQuests)
                             {
-                                ImGui.Text("Unavailable priority quests:");
-                                foreach (var (questId, reason) in unavailablePriorityQuests)
-                                {
-                                    if (_questRegistry.TryGetQuest(questId, out var quest))
-                                        ImGui.BulletText($"{quest.Info.Name} ({questId}) - {reason}");
-                                }
+                                if (_questRegistry.TryGetQuest(questId, out var quest))
+                                    ImGui.BulletText($"{quest.Info.Name} ({questId}) - {reason}");
                             }
                         }
                     }

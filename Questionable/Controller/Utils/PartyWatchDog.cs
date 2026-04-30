@@ -14,7 +14,7 @@ internal sealed class PartyWatchDog : IDisposable
     private readonly IChatGui _chatGui;
     private readonly ILogger<PartyWatchDog> _logger;
 
-    private ushort? _uncheckedTeritoryId;
+    private uint? _uncheckedTeritoryId;
 
     public PartyWatchDog(QuestController questController, IClientState clientState, IChatGui chatGui,
         ILogger<PartyWatchDog> logger)
@@ -27,7 +27,7 @@ internal sealed class PartyWatchDog : IDisposable
         _clientState.TerritoryChanged += TerritoryChanged;
     }
 
-    private unsafe void TerritoryChanged(ushort newTerritoryId)
+    private unsafe void TerritoryChanged(uint newTerritoryId)
     {
         var intendedUse = (ETerritoryIntendedUse)GameMain.Instance()->CurrentTerritoryIntendedUseId;
         switch (intendedUse)

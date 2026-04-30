@@ -85,7 +85,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         _pluginInterface.GetIpcSubscriber<object>("Questionable.ReloadData")
             .Subscribe(Reload);
 
-        PictoService.Initialize(pluginInterface);
+        PctService.Initialize(pluginInterface);
         LoadGatheringLocationsFromDirectory();
 
         _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;
@@ -294,7 +294,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         return result;
     }
 
-    internal IEnumerable<GatheringLocationContext> GetLocationsInTerritory(ushort territoryId)
+    internal IEnumerable<GatheringLocationContext> GetLocationsInTerritory(uint territoryId)
         => _gatheringLocations.Where(x => x.Root.Steps.LastOrDefault()?.TerritoryId == territoryId);
 
     internal void Save(FileInfo targetFile, GatheringRoot root)
@@ -354,7 +354,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         if (!_currentClassJob.IsGatherer())
             return;
 
-        using var drawList = PictoService.Draw();
+        using var drawList = PctService.Draw();
         if (drawList == null)
             return;
 
@@ -453,7 +453,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         _pluginInterface.UiBuilder.Draw -= Draw;
         _pluginInterface.UiBuilder.Draw -= _windowSystem.Draw;
 
-        PictoService.Dispose();
+        PctService.Dispose();
 
         _pluginInterface.GetIpcSubscriber<object>("Questionable.ReloadData")
             .Unsubscribe(Reload);

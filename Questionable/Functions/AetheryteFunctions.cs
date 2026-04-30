@@ -90,7 +90,7 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
         var playerState = PlayerState.Instance();
         return playerState != null &&
                (playerState->FreeAetheryteId == (uint)aetheryteLocation ||
-                playerState->FreeAetherytePlayStationPlus == (uint)aetheryteLocation);
+                playerState->FreeAetherytePSPlus == (uint)aetheryteLocation);
     }
 
     public AetheryteRegistrationResult CanRegisterFreeOrFavoriteAetheryte(EAetheryteLocation aetheryteLocation)

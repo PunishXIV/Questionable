@@ -352,7 +352,7 @@ internal sealed class CombatController : IDisposable
             }
 
             // enemies that we have aggro on
-            if (battleNpc.BattleNpcKind is BattleNpcSubKind.BattleNpcPart or BattleNpcSubKind.Enemy)
+            if (battleNpc.BattleNpcKind is BattleNpcSubKind.BNpcPart or BattleNpcSubKind.Combatant)
             {
                 // npc that starts a fate or does turn-ins; not sure why they're marked as hostile
                 if (gameObjectStruct->NamePlateIconId is 60093 or 60732)
@@ -495,7 +495,7 @@ internal sealed class CombatController : IDisposable
         _wasInCombat = false;
     }
 
-    private void TerritoryChanged(ushort territoryId) => Stop("TerritoryChanged");
+    private void TerritoryChanged(uint territoryId) => Stop("TerritoryChanged");
 
     public void Dispose()
     {

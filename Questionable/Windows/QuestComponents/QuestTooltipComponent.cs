@@ -29,8 +29,7 @@ internal sealed class QuestTooltipComponent(
     public void Draw(IQuestInfo questInfo)
     {
         using var tooltip = ImRaii.Tooltip();
-        if (tooltip)
-            DrawInner(questInfo, true);
+        DrawInner(questInfo, true);
     }
 
     public void DrawInner(IQuestInfo questInfo, bool showItemRewards)

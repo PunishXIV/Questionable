@@ -72,9 +72,6 @@ internal sealed class QuestRewardComponent(
                 if (_uiUtils.ChecklistItem(name, color, icon))
                 {
                     using var tooltip = ImRaii.Tooltip();
-                    if (!tooltip)
-                        continue;
-
                     ImGui.Text($"Obtained from: {questInfo.Name}");
                     using (ImRaii.PushIndent())
                         _questTooltipComponent.DrawInner(questInfo, false);

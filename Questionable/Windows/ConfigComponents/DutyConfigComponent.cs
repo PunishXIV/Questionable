@@ -166,13 +166,10 @@ internal sealed class DutyConfigComponent : ConfigComponent
                                         Configuration.Advanced.AdditionalStatusInformation)
                                     {
                                         using var tooltip = ImRaii.Tooltip();
-                                        if (tooltip)
-                                        {
-                                            ImGui.TextUnformatted(name);
-                                            ImGui.Separator();
-                                            ImGui.BulletText($"TerritoryId: {territoryId}");
-                                            ImGui.BulletText($"ContentFinderConditionId: {cfcId}");
-                                        }
+                                        ImGui.TextUnformatted(name);
+                                        ImGui.Separator();
+                                        ImGui.BulletText($"TerritoryId: {territoryId}");
+                                        ImGui.BulletText($"ContentFinderConditionId: {cfcId}");
                                     }
 
                                     if (runInstancedContentWithAutoDuty && !_autoDutyIpc.HasPath(cfcId))

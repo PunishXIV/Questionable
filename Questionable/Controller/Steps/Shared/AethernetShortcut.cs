@@ -125,7 +125,7 @@ internal static class AethernetShortcut
             if (aetheryteFunctions.IsAetheryteUnlocked(Task.From) &&
                 aetheryteFunctions.IsAetheryteUnlocked(Task.To))
             {
-                ushort territoryType = clientState.TerritoryType;
+                var territoryType = clientState.TerritoryType;
                 Vector3 playerPosition = objectTable[0]!.Position;
 
                 // closer to the source

@@ -285,7 +285,7 @@ internal sealed unsafe class QuestFunctions(
         if (scenarioTree->Data == null)
             return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), "Scenario Tree Data is null");
 
-        QuestId currentQuest = new QuestId(scenarioTree->Data->CurrentScenarioQuest);
+        QuestId currentQuest = new QuestId(scenarioTree->Data->MainScenarioQuestIds[0]);
         string extraData = $"sq: {currentQuest}";
         if (currentQuest.Value == 0)
         {

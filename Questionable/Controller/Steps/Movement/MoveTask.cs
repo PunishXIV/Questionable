@@ -5,7 +5,7 @@ using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed record MoveTask(
-    ushort TerritoryId,
+    uint TerritoryId,
     Vector3 Destination,
     bool? Mount = null,
     float? StopDistance = null,

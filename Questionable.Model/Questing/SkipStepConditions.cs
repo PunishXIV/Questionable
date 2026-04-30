@@ -14,8 +14,8 @@ public sealed class SkipStepConditions
     public ELockedSkipCondition? Chocobo { get; set; }
     public bool? Diving { get; set; }
     public bool NotTargetable { get; set; }
-    public List<ushort> InTerritory { get; set; } = [];
-    public List<ushort> NotInTerritory { get; set; } = [];
+    public List<uint> InTerritory { get; set; } = [];
+    public List<uint> NotInTerritory { get; set; } = [];
     public SkipItemConditions? Item { get; set; }
 
     [JsonConverter(typeof(ElementIdListConverter))]
