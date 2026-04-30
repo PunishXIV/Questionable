@@ -86,7 +86,7 @@ internal static class AethernetShortcut
                     return false;
                 }
 
-                if (Task.SkipConditions.InTerritory.Contains(clientState.TerritoryType))
+                if (Task.SkipConditions.InTerritory.Contains((ushort)clientState.TerritoryType))
                 {
                     logger.LogInformation(
                         "Skipping aethernet shortcut because the target is in the specified territory");
@@ -125,7 +125,7 @@ internal static class AethernetShortcut
             if (aetheryteFunctions.IsAetheryteUnlocked(Task.From) &&
                 aetheryteFunctions.IsAetheryteUnlocked(Task.To))
             {
-                ushort territoryType = clientState.TerritoryType;
+                ushort territoryType = (ushort)clientState.TerritoryType;
                 Vector3 playerPosition = objectTable[0]!.Position;
 
                 // closer to the source
@@ -252,12 +252,12 @@ internal static class AethernetShortcut
 
             if (aetheryteData.IsAirshipLanding(Task.To))
             {
-                if (aetheryteData.CalculateAirshipLandingDistance(position.Value, clientState.TerritoryType, Task.To) > 5)
+                if (aetheryteData.CalculateAirshipLandingDistance(position.Value, (ushort)clientState.TerritoryType, Task.To) > 5)
                     return ETaskResult.StillRunning;
             }
             else if (aetheryteData.IsCityAetheryte(Task.To) || aetheryteData.IsGoldSaucerAetheryte(Task.To))
             {
-                if (aetheryteData.CalculateDistance(position.Value, clientState.TerritoryType, Task.To) > 20)
+                if (aetheryteData.CalculateDistance(position.Value, (ushort)clientState.TerritoryType, Task.To) > 20)
                     return ETaskResult.StillRunning;
             }
             else

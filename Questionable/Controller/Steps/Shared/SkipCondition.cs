@@ -160,14 +160,14 @@ internal static class SkipCondition
         private bool CheckTerritoryCondition(SkipStepConditions skipConditions)
         {
             if (skipConditions.InTerritory.Count > 0 &&
-                skipConditions.InTerritory.Contains(clientState.TerritoryType))
+                skipConditions.InTerritory.Contains((ushort)clientState.TerritoryType))
             {
                 logger.LogInformation("Skipping step, as in a skip.InTerritory");
                 return true;
             }
 
             if (skipConditions.NotInTerritory.Count > 0 &&
-                !skipConditions.NotInTerritory.Contains(clientState.TerritoryType))
+                !skipConditions.NotInTerritory.Contains((ushort)clientState.TerritoryType))
             {
                 logger.LogInformation("Skipping step, as not in a skip.NotInTerritory");
                 return true;

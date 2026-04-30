@@ -15,7 +15,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
         var position = _objectTable[0]?.Position;
         return position != null &&
                _clientState.TerritoryType != 0 &&
-               MatchesExtraCondition(skipCondition, position.Value, _clientState.TerritoryType);
+               MatchesExtraCondition(skipCondition, position.Value, (ushort)_clientState.TerritoryType);
     }
 
     public static bool MatchesExtraCondition(EExtraSkipCondition skipCondition, Vector3 position, ushort territoryType)

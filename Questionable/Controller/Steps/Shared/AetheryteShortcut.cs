@@ -78,7 +78,7 @@ internal static class AetheryteShortcut
                 return ETaskResult.StillRunning;
             }
 
-            if (clientState.TerritoryType == Task.ExpectedTerritoryId)
+            if ((ushort)clientState.TerritoryType == Task.ExpectedTerritoryId)
                 return ETaskResult.TaskComplete;
 
             return ETaskResult.StillRunning;
@@ -86,7 +86,7 @@ internal static class AetheryteShortcut
 
         private bool ShouldSkipTeleport()
         {
-            ushort territoryType = clientState.TerritoryType;
+            ushort territoryType = (ushort)clientState.TerritoryType;
             if (Task.Step != null)
             {
                 var skipConditions = Task.Step.SkipConditions?.AetheryteShortcutIf ?? new();
@@ -294,7 +294,7 @@ internal static class AetheryteShortcut
         {
             // only relevant if we're actually near the s9 aetheryte at the end
             Vector3 playerPosition = objectTable[0]!.Position;
-            if (aetheryteData.CalculateDistance(playerPosition, clientState.TerritoryType, Task.TargetAetheryte) >= 20)
+            if (aetheryteData.CalculateDistance(playerPosition, (ushort)clientState.TerritoryType, Task.TargetAetheryte) >= 20)
                 return false;
 
             Vector3 closestPoint = AetherytesToMoveFrom[Task.TargetAetheryte]

@@ -42,7 +42,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
     {
         try
         {
-            if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))
+            if (!_territoryData.IsDutyInstance((ushort)_clientState.TerritoryType)) // minimal fix ushort
             {
                 for (int i = 0; i < effectHeader->TargetCount; i++)
                 {

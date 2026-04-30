@@ -60,7 +60,7 @@ internal static class CreateGearset
             // - Use the player's current job for the gearset
             // - Name it based on the current job (e.g., "Culinarian", "Paladin")
             // - Find the next available slot (0-99)
-            sbyte gearsetId = gearsetModule->CreateGearset();
+            int gearsetId = gearsetModule->CreateGearset();
 
             if (gearsetId < 0)
             {

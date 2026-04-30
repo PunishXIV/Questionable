@@ -27,7 +27,7 @@ internal sealed class PartyWatchDog : IDisposable
         _clientState.TerritoryChanged += TerritoryChanged;
     }
 
-    private unsafe void TerritoryChanged(ushort newTerritoryId)
+    private unsafe void TerritoryChanged(uint newTerritoryId)
     {
         var intendedUse = (ETerritoryIntendedUse)GameMain.Instance()->CurrentTerritoryIntendedUseId;
         switch (intendedUse)
@@ -66,7 +66,7 @@ internal sealed class PartyWatchDog : IDisposable
             case ETerritoryIntendedUse.SeasonalEvent2:
             case ETerritoryIntendedUse.CriterionDuty:
             case ETerritoryIntendedUse.CriterionSavageDuty:
-                _uncheckedTeritoryId = newTerritoryId;
+                _uncheckedTeritoryId = (ushort)newTerritoryId;
                 _logger.LogInformation("Will check territory {TerritoryId} after loading", newTerritoryId);
                 break;
         }

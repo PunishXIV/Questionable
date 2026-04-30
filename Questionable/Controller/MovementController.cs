@@ -294,7 +294,7 @@ internal sealed class MovementController(NavmeshIpc navmeshIpc, IClientState cli
         _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
 
         Vector3 startPosition = _objectTable[0]!.Position;
-        if (fly && _aetheryteData.CalculateDistance(startPosition, _clientState.TerritoryType,
+        if (fly && _aetheryteData.CalculateDistance(startPosition, (ushort)_clientState.TerritoryType, // minimal fix ushort_clientState
                 EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
         {
             startPosition = startPosition with { Y = startPosition.Y + 1f };
