@@ -211,7 +211,7 @@ jobs:
           version_number: ${{ env.VERSION }}
           path: 'release/latest.zip'
           type: ${{ needs.detect-version-change.outputs.branch }}
-          dalamud_version: '14'
+          dalamud_version: '15'
           changelog: ${{ steps.changelog.outputs.changelog }}
         env:
           PUBLISHER_KEY: ${{ secrets.PUBLISHER_KEY }}
