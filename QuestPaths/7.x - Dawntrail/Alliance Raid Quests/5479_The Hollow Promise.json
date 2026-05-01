@@ -1,0 +1,125 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1054357,
+          "Position": {
+            "X": 141.2832,
+            "Y": 42,
+            "Z": -351.9494
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Brightploom Post"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058885,
+          "Position": {
+            "X": -262.92822,
+            "Y": 32,
+            "Z": -658.2894
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Heritage Found - The Outskirts"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058889,
+          "Position": {
+            "X": 464.8661,
+            "Y": -150.9661,
+            "Z": 473.10596
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2014450,
+          "Position": {
+            "X": -528.37415,
+            "Y": -152.20874,
+            "Z": 671.13745
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1265,
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1265
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1058894,
+          "Position": {
+            "X": -11.062805,
+            "Y": 41.999992,
+            "Z": -5.0202637
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "TerritoryId": 1265,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 1117,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058898,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 41.999977,
+            "Z": 1.7852783
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

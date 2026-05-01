@@ -1,0 +1,220 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058898,
+          "Position": {
+            "X": -2.8534546,
+            "Y": 41.999977,
+            "Z": 1.7852783
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058924,
+          "Position": {
+            "X": 469.65735,
+            "Y": -150.94077,
+            "Z": 473.1975
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058902,
+          "Position": {
+            "X": -622.6444,
+            "Y": -182.22296,
+            "Z": 553.30725
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058905,
+          "Position": {
+            "X": 686.7628,
+            "Y": -137.174,
+            "Z": 497.15417
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1058908,
+          "Position": {
+            "X": -410.94073,
+            "Y": 3,
+            "Z": -60.16632
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Dirigible Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1054357,
+          "Position": {
+            "X": 141.2832,
+            "Y": 42,
+            "Z": -351.9494
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Dirigible Landing",
+            "[Tuliyollal] Brightploom Post"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": -18.715277,
+            "Y": -10.00001,
+            "Z": 159.6352
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Jump",
+          "AethernetShortcut": [
+            "[Tuliyollal] Brightploom Post",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
+          "JumpDestination": {
+            "Position": {
+              "X": -18.120121,
+              "Y": -19.328289,
+              "Z": 169.10738
+            }
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -19.608326,
+                  "Y": -19.328289,
+                  "Z": 189.75145
+                },
+                "TerritoryId": 1185,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1058910,
+          "Position": {
+            "X": -19.608326,
+            "Y": -19.328289,
+            "Z": 189.75145
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1058912,
+          "Position": {
+            "X": -80.27777,
+            "Y": -19.328289,
+            "Z": 185.8396
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1265
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1058915,
+          "Position": {
+            "X": -0.5340576,
+            "Y": 41.999996,
+            "Z": -115.739685
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1058919,
+          "Position": {
+            "X": -2.7314453,
+            "Y": 42,
+            "Z": -112.474304
+          },
+          "TerritoryId": 1265,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058927,
+          "Position": {
+            "X": 567.6814,
+            "Y": -131.41925,
+            "Z": 610.1013
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook"
+        }
+      ]
+    }
+  ]
+}
