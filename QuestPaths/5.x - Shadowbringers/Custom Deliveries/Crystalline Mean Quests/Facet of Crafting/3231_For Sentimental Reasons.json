@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "plogon_enjoyer",
+  "Author": "ShermTank",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -26,49 +26,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1028326,
-          "Position": {
-            "X": 10.940674,
-            "Y": 20.186,
-            "Z": -142.53455
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "DialogueChoices": [
-            {
-              "Prompt": "TEXT_LUCKLA203_03232_Q1_000_000",
-              "Type": "List",
-              "Answer": "TEXT_LUCKLA203_03232_A1_000_001"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Sequence": 2,
-      "Steps": [
-        {
-          "TerritoryId": 819,
-          "InteractionType": "Craft",
-          "ItemId": 27247,
-          "ItemCount": 1
-        },
-        {
-          "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact"
-        }
-      ]
-    },
-    {
-      "Sequence": 3,
-      "Steps": [
-        {
           "DataId": 1028438,
           "Position": {
             "X": -55.832825,
@@ -85,22 +42,7 @@
       ]
     },
     {
-      "Sequence": 4,
-      "Steps": [
-        {
-          "DataId": 1028438,
-          "Position": {
-            "X": -55.832825,
-            "Y": 3.9998174,
-            "Z": 198.6571
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact"
-        }
-      ]
-    },
-    {
-      "Sequence": 255,
+      "Sequence": 2,
       "Steps": [
         {
           "DataId": 1027234,
@@ -110,11 +52,39 @@
             "Z": -138.2315
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKLA202_03231_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKLA202_03231_A1_000_002"
+            }
+          ],
           "AethernetShortcut": [
             "[Crystarium] Musica Universalis Markets",
             "[Crystarium] The Crystalline Mean"
           ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "Craft",
+          "ItemId": 27245,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1027234,
+          "Position": {
+            "X": 10.2387085,
+            "Y": 20.185999,
+            "Z": -138.2315
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

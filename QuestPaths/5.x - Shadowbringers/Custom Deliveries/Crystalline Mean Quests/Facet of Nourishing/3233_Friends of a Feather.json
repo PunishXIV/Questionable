@@ -1,9 +1,10 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "plogon_enjoyer",
+  "Author": "ShermTank",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "Comment": "Requires ALC or CUL",
       "Steps": [
         {
           "DataId": 1027235,
@@ -26,17 +27,17 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1030659,
+          "DataId": 1028481,
           "Position": {
-            "X": -131.15137,
-            "Y": 0,
-            "Z": -65.53754
+            "X": 52.96399,
+            "Y": 36.197685,
+            "Z": -179.46143
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "AethernetShortcut": [
             "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Temenos Rookery"
+            "[Crystarium] The Amaro Launch"
           ]
         }
       ]
@@ -45,20 +46,15 @@
       "Sequence": 2,
       "Steps": [
         {
-          "TerritoryId": 819,
-          "InteractionType": "Craft",
-          "ItemId": 27255,
-          "ItemCount": 1
-        },
-        {
-          "DataId": 1030659,
+          "DataId": 1028482,
           "Position": {
-            "X": -131.15137,
-            "Y": 0,
-            "Z": -65.53754
+            "X": 54.184692,
+            "Y": 36.197685,
+            "Z": -182.69635
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact"
+          "InteractionType": "Emote",
+          "Emote": "pet"
         }
       ]
     },
@@ -66,43 +62,11 @@
       "Sequence": 3,
       "Steps": [
         {
-          "DataId": 1028489,
+          "DataId": 1029854,
           "Position": {
-            "X": 355.42847,
-            "Y": 3.8289368,
-            "Z": 224.17017
-          },
-          "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
-        }
-      ]
-    },
-    {
-      "Sequence": 4,
-      "Steps": [
-        {
-          "DataId": 1028491,
-          "Position": {
-            "X": 29.251465,
-            "Y": 36.20521,
-            "Z": -207.38544
-          },
-          "TerritoryId": 819,
-          "InteractionType": "Interact"
-        }
-      ]
-    },
-    {
-      "Sequence": 5,
-      "Steps": [
-        {
-          "DataId": 1030659,
-          "Position": {
-            "X": -131.15137,
+            "X": -130.20526,
             "Y": 0,
-            "Z": -65.53754
+            "Z": -63.95056
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
@@ -115,6 +79,7 @@
     },
     {
       "Sequence": 255,
+      "Comment": "Crafting turn-ins will need to be done manually",
       "Steps": [
         {
           "DataId": 1027235,
@@ -128,7 +93,8 @@
           "AethernetShortcut": [
             "[Crystarium] Temenos Rookery",
             "[Crystarium] The Crystalline Mean"
-          ]
+          ],
+          "$": "No next quest, since that requires turn-ins before being available"
         }
       ]
     }

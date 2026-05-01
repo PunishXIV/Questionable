@@ -1,0 +1,194 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031093,
+          "Position": {
+            "X": 59.80005,
+            "Y": -4.970777E-05,
+            "Z": 197.07019
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1031091,
+          "Position": {
+            "X": 60.440918,
+            "Y": -2.1575283E-05,
+            "Z": 194.20154
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        },
+        {
+          "DataId": 1031092,
+          "Position": {
+            "X": 62.485718,
+            "Y": -2.636388E-05,
+            "Z": 194.68982
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKLZ001_03242_Q1_000_000",
+              "Type": "List",
+              "Answer": "TEXT_LUCKLZ001_03242_A1_000_001"
+            }
+          ],
+          "AethernetShortcut": [
+            "[Crystarium] The Pendants",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "$": "Interact in clockwise order",
+      "Steps": [
+        {
+          "$": "Qeshi-Rae",
+          "DataId": 1027236,
+          "Position": {
+            "X": -3.1586914,
+            "Y": 20.186,
+            "Z": -148.91284
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+        },
+        {
+          "$": "Thiuna",
+          "DataId": 1027234,
+          "Position": {
+            "X": 10.2387085,
+            "Y": 20.185999,
+            "Z": -138.2315
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "$": "Iola",
+          "DataId": 1027233,
+          "Position": {
+            "X": 9.292725,
+            "Y": 20.186,
+            "Z": -124.55945
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        },
+        {
+          "$": "Frithrik",
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
+        },
+        {
+          "$": "Bethric",
+          "DataId": 1027235,
+          "Position": {
+            "X": -19.516357,
+            "Y": 20.186,
+            "Z": -130.1748
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1027232,
+          "Position": {
+            "X": -9.323303,
+            "Y": 20.1973,
+            "Z": -136.52252
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2010514,
+          "Position": {
+            "X": -125.383484,
+            "Y": -0.015319824,
+            "Z": 14.389221
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] Aetheryte Plaza"
+          ]
+        }
+      ]
+    }
+  ]
+}

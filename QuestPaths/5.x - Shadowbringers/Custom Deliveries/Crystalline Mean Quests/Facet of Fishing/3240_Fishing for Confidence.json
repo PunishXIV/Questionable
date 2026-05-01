@@ -1,0 +1,144 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "WIP; Manual fishing step",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 819,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Fisher"
+        },
+        {
+          "DataId": 1027237,
+          "Position": {
+            "X": -8.957031,
+            "Y": 20.186,
+            "Z": -119.18823
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1028473,
+          "Position": {
+            "X": -59.18976,
+            "Y": -27.235973,
+            "Z": -270.19153
+          },
+          "TerritoryId": 819,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Crystarium] The Crystalline Mean",
+            "[Crystarium] The Cabinet of Curiosity"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -437.83975,
+            "Y": 53.93014,
+            "Z": -331.56207
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+        },
+        {
+          "DataId": 1028474,
+          "Position": {
+            "X": -435.75195,
+            "Y": 53.79563,
+            "Z": -332.23468
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -437.83975,
+            "Y": 53.93014,
+            "Z": -331.56207
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -435.4137,
+                  "Y": 52.479874,
+                  "Z": -328.0926
+                },
+                "TerritoryId": 816,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -435.4137,
+            "Y": 52.479874,
+            "Z": -328.0926
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "Comment": "Fish for 1x Calico Trout (!) using Fruit Worm or Versatile Lure",
+          "Mount": false
+        },
+        {
+          "TerritoryId": 816,
+          "Comment": "Fish for 1x Calico Trout (!) using Fruit Worm or Versatile Lure",
+          "InteractionType": "Gather",
+          "ItemsToGather": [
+            {
+              "ItemId": 26750,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1031217,
+          "Position": {
+            "X": -13.626343,
+            "Y": 20.185999,
+            "Z": -119.523926
+          },
+          "TerritoryId": 819,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Crystalline Mean"
+          ]
+        }
+      ]
+    }
+  ]
+}
