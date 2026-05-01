@@ -1,0 +1,127 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1056202,
+          "Position": {
+            "X": 14.938599,
+            "Y": 38.806587,
+            "Z": -408.74347
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Resolution"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1054936,
+          "Position": {
+            "X": -57.41974,
+            "Y": 42.8066,
+            "Z": -546.7765
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1299,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1299
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1058782,
+          "Position": {
+            "X": 4.043579,
+            "Y": 1.1999818,
+            "Z": 41.61133
+          },
+          "TerritoryId": 1299,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038588,
+          "Position": {
+            "X": -101.76245,
+            "Y": 4.357501,
+            "Z": 0.7476196
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                987
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2015337,
+          "Position": {
+            "X": 0.008126731,
+            "Y": 1.907349E-06,
+            "Z": -8.997082
+          },
+          "TerritoryId": 987,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058789,
+          "Position": {
+            "X": -0.045776367,
+            "Y": 1.9073486E-06,
+            "Z": 1.3884888
+          },
+          "TerritoryId": 987,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

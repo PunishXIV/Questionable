@@ -290,27 +290,38 @@ internal sealed class MovementController(NavmeshIpc navmeshIpc, IClientState cli
         _logger.LogInformation("Pathfinding to {Destination}", Destination);
 
         Destination.NavmeshCalculations++;
-        _cancellationTokenSource = new();
-        _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
+        //_cancellationTokenSource = new();
+        //_cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
 
-        Vector3 startPosition = _objectTable[0]!.Position;
-        if (fly && _aetheryteData.CalculateDistance(startPosition, _clientState.TerritoryType,
-                EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
-        {
-            startPosition = startPosition with { Y = startPosition.Y + 1f };
-            _logger.LogInformation("Using modified start position for flying pathfinding: {StartPosition}",
-                startPosition.ToString("G", CultureInfo.InvariantCulture));
-        }
-        else if (fly)
-        {
-            // other positions have a (lesser) chance of starting from underground too, in which case pathfinding takes
-            // >10 seconds and gets stuck trying to go through the ground.
-            // only for flying; as walking uses a different algorithm
-            startPosition = startPosition with { Y = startPosition.Y + 0.2f };
-        }
+        //Vector3 startPosition = _objectTable[0]!.Position;
+        //if (fly && _aetheryteData.CalculateDistance(startPosition, _clientState.TerritoryType,
+        //        EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
+        //{
+        //    startPosition = startPosition with { Y = startPosition.Y + 1f };
+        //    _logger.LogInformation("Using modified start position for flying pathfinding: {StartPosition}",
+        //        startPosition.ToString("G", CultureInfo.InvariantCulture));
+        //}
+        //else if (fly)
+        //{
+        //    // other positions have a (lesser) chance of starting from underground too, in which case pathfinding takes
+        //    // >10 seconds and gets stuck trying to go through the ground.
+        //    // only for flying; as walking uses a different algorithm
+        //    startPosition = startPosition with { Y = startPosition.Y + 0.2f };
+        //}
 
-        _pathfindTask =
-            _navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);
+        //_pathfindTask =
+        //    _navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);
+        float range = stopDistance ?? 2.8f;
+        if (!_navmeshIpc.SimplePathfindAndMoveCloseTo(to, fly, range))
+        {
+            _logger.LogWarning("SimpleMove rejected pathfind request (already in progress), stopping first");
+			_navmeshIpc.Stop();
+			if (!_navmeshIpc.SimplePathfindAndMoveCloseTo(to, fly, range))
+			{
+				_logger.LogWarning("SimpleMove still rejected after stop");
+			}
+		}
+        MovementStartedAt = DateTime.Now;
     }
 
     public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, bool fly, bool sprint,

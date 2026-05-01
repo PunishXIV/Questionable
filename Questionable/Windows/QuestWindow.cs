@@ -156,6 +156,13 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 ImGui.Separator();
             }
             #endif
+            string notice = "";
+            if (notice.Length != 0)
+            {
+                ImGui.TextColored(ImGuiColors.DPSRed, "Notice");
+                ImGui.TextWrapped(notice);
+                ImGui.Separator();
+            }
             _activeQuestComponent.Draw(IsMinimized);
             if (!IsMinimized)
             {
