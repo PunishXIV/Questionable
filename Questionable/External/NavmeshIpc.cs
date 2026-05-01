@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -93,12 +95,23 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     {
         try
         {
+            var plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
+                x.InternalName == "vnavmesh" && x.IsLoaded);
+            if (plugin != null && plugin.Version < new System.Version(1,2,3,2))
+            {
+                throw new IpcValueNullError("vnavmesh", typeof(System.Version), 0);
+            }
             _pathSetTolerance.InvokeAction(0.25f);
             return _navPathfind.InvokeFunc(localPlayerPosition, targetPosition, fly, cancellationToken);
         }
-        catch (IpcError e)
+        catch (IpcNotReadyError e)
         {
             _logger.LogWarning(e, "Could not pathfind via navmesh");
+            return Task.FromException<List<Vector3>>(e);
+        }
+        catch (IpcValueNullError e)
+        {
+            _logger.LogWarning(e, "Unsupported version of vnavmesh");
             return Task.FromException<List<Vector3>>(e);
         }
     }

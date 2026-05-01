@@ -1,3 +1,4 @@
 - update for Dalamud api15 (7.5) -croizat
 - vnavmesh workaround -alydev
+  - update to vnavmesh v1.2.3.2 please -alydev
 - 7.5 MSQ -alydev
