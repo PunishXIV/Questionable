@@ -1,0 +1,124 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058804,
+          "Position": {
+            "X": 531.3954,
+            "Y": -36.65,
+            "Z": -231.95245
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -19.821533,
+            "Y": 57.32972,
+            "Z": 88.0293
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            20055,
+            20056,
+            20057
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058809,
+          "Position": {
+            "X": -19.821533,
+            "Y": 57.32972,
+            "Z": 88.0293
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -187.36554,
+            "Y": 57.16567,
+            "Z": 411.24585
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            20058
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1058812,
+          "Position": {
+            "X": -187.36554,
+            "Y": 57.16567,
+            "Z": 411.24585
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 1373,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 1115,
+            "Enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 7
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058818,
+          "Position": {
+            "X": 28.122314,
+            "Y": 56.632263,
+            "Z": 481.4984
+          },
+          "TerritoryId": 1162,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

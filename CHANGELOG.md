@@ -1,2 +1,3 @@
-- update for Dalamud api15 (7.5)
-  - dependency plugins are not yet updated, please be patient
+- update for Dalamud api15 (7.5) -croizat
+- vnavmesh workaround -alydev
+- 7.5 MSQ -alydev

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058834,
+          "Position": {
+            "X": -23.941406,
+            "Y": -47.54248,
+            "Z": -490.28766
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002881,
+          "Position": {
+            "X": 21.133728,
+            "Y": 22.323914,
+            "Z": -631.281
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                351
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                351
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1058854,
+          "Position": {
+            "X": -0.16790771,
+            "Y": 0,
+            "Z": -8.346741
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058841,
+          "Position": {
+            "X": -3.0975952,
+            "Y": 0.018040119,
+            "Z": -10.086243
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1058843,
+          "Position": {
+            "X": 3.40271,
+            "Y": 0,
+            "Z": -8.590881
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1058850,
+          "Position": {
+            "X": 9.47583,
+            "Y": 0.009977883,
+            "Z": -4.5625
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
+        },
+        {
+          "DataId": 1058842,
+          "Position": {
+            "X": 4.135132,
+            "Y": 0.009977884,
+            "Z": -4.287842
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1058844,
+          "Position": {
+            "X": -6.240967,
+            "Y": 0.009977883,
+            "Z": -4.867676
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058861,
+          "Position": {
+            "X": -0.015319824,
+            "Y": 0,
+            "Z": -7.2175903
+          },
+          "TerritoryId": 351,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

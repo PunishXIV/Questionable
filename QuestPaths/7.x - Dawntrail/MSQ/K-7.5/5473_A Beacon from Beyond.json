@@ -1,0 +1,143 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058818,
+          "Position": {
+            "X": 28.122314,
+            "Y": 56.632263,
+            "Z": 481.4984
+          },
+          "TerritoryId": 1162,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058821,
+          "Position": {
+            "X": 7.9804688,
+            "Y": 57.865685,
+            "Z": 429.22095
+          },
+          "TerritoryId": 1162,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1077,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMK104_05473_SYSTEM_000_105",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058824,
+          "Position": {
+            "X": -1.3275757,
+            "Y": -0.40000772,
+            "Z": -59.494934
+          },
+          "TerritoryId": 1077,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058827,
+          "Position": {
+            "X": -35.996094,
+            "Y": -0.21963452,
+            "Z": 52.353638
+          },
+          "TerritoryId": 1077,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2015319,
+          "Position": {
+            "X": -35.29428,
+            "Y": 0.2805768,
+            "Z": 53.37022
+          },
+          "TerritoryId": 1077,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2015321,
+          "Position": {
+            "X": 128.8068,
+            "Y": 24.30001,
+            "Z": 60.58372
+          },
+          "TerritoryId": 1077,
+          "InteractionType": "UseItem",
+          "ItemId": 2003823
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1058830,
+          "Position": {
+            "X": 132.06677,
+            "Y": 24.30001,
+            "Z": 59.830566
+          },
+          "TerritoryId": 1077,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 959,
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_KINGMK104_05473_SYSTEM_000_502",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059789,
+          "Position": {
+            "X": -21.164307,
+            "Y": -47.543007,
+            "Z": -490.95905
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

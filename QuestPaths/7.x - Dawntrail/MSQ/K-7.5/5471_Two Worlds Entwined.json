@@ -1,0 +1,71 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058790,
+          "Position": {
+            "X": -1.1750488,
+            "Y": 1.9073486E-06,
+            "Z": -0.289917
+          },
+          "TerritoryId": 987,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058791,
+          "Position": {
+            "X": 531.6395,
+            "Y": -36.65,
+            "Z": -231.49463
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Garlemald - Tertium"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 958,
+          "InteractionType": "Duty",
+          "DutyOptions": {
+            "ContentFinderConditionId": 1011,
+            "Enabled": false,
+            "TestedBossModVersion": "0.4.27.0",
+            "TestedAutoDutyVersion": "0.0.0.303",
+            "Notes": ["No BossMod modules"]
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058801,
+          "Position": {
+            "X": 533.4706,
+            "Y": -36.65,
+            "Z": -228.56494
+          },
+          "TerritoryId": 958,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
