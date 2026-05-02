@@ -57,7 +57,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1061,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
