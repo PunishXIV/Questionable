@@ -1,5 +1,5 @@
 - update for Dalamud api15 (7.5) -croizat
 - vnavmesh workaround -alydev
-  - update to vnavmesh v1.2.3.2 please -alydev
-- 7.5 MSQ -alydev
-- 7.5 alliance raid quests -alydev
+- update to vnavmesh v1.2.3.2 please -alydev
+- 7.5 MSQ, alliance raid quests -alydev
+- dye itemchange for 3728 (HW), extra hill step for ms 756 -K
