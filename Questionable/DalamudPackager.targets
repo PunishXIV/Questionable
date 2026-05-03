@@ -16,6 +16,6 @@
                 AssemblyName="$(AssemblyName)"
                 MakeZip="true"
                 VersionComponents="4"
-                Exclude="Questionable.deps.json;LLib.pdb"/>
+                Exclude="Questionable.deps.json"/>
     </Target>
 </Project>
