@@ -1,6 +1,6 @@
 ﻿using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Model;
 using Questionable.Model.Questing;
@@ -363,69 +363,69 @@ internal sealed class QuestData
             .ToList();
     }
 
-    public List<QuestInfo> GetClassJobQuests(EClassJob classJob, bool includeRoleQuests = false)
+    public List<QuestInfo> GetClassJobQuests(Job classJob, bool includeRoleQuests = false)
     {
         List<uint> chapterIds = classJob switch
         {
-            EClassJob.Adventurer => throw new ArgumentOutOfRangeException(nameof(classJob)),
+            Job.ADV => throw new ArgumentOutOfRangeException(nameof(classJob)),
 
             // ARR
-            EClassJob.Gladiator => [63],
-            EClassJob.Paladin => [72, 73, 74],
-            EClassJob.Marauder => [64],
-            EClassJob.Warrior => [76, 77, 78],
-            EClassJob.Conjurer => [65],
-            EClassJob.WhiteMage => [86, 87, 88],
-            EClassJob.Arcanist => [66],
-            EClassJob.Summoner => [127, 128, 129],
-            EClassJob.Scholar => [90, 91, 92],
-            EClassJob.Pugilist => [67],
-            EClassJob.Monk => [98, 99, 100],
-            EClassJob.Lancer => [68],
-            EClassJob.Dragoon => [102, 103, 104],
-            EClassJob.Rogue => [69],
-            EClassJob.Ninja => [106, 107, 108],
-            EClassJob.Archer => [70],
-            EClassJob.Bard => [113, 114, 115],
-            EClassJob.Thaumaturge => [71],
-            EClassJob.BlackMage => [123, 124, 125],
+            Job.GLA => [63],
+            Job.PLD => [72, 73, 74],
+            Job.MRD => [64],
+            Job.WAR => [76, 77, 78],
+            Job.CNJ => [65],
+            Job.WHM => [86, 87, 88],
+            Job.ACN => [66],
+            Job.SMN => [127, 128, 129],
+            Job.SCH => [90, 91, 92],
+            Job.PGL => [67],
+            Job.MNK => [98, 99, 100],
+            Job.LNC => [68],
+            Job.DRG => [102, 103, 104],
+            Job.ROG => [69],
+            Job.NIN => [106, 107, 108],
+            Job.ARC => [70],
+            Job.BRD => [113, 114, 115],
+            Job.THM => [71],
+            Job.BLM => [123, 124, 125],
 
             // HW
-            EClassJob.DarkKnight => [80, 81, 82],
-            EClassJob.Astrologian => [94, 95, 96],
-            EClassJob.Machinist => [117, 118, 119],
+            Job.DRK => [80, 81, 82],
+            Job.AST => [94, 95, 96],
+            Job.MCH => [117, 118, 119],
 
             // SB
-            EClassJob.Samurai => [110, 111],
-            EClassJob.RedMage => [131, 132],
-            EClassJob.BlueMage => [134, 135, 146, 170],
+            Job.SAM => [110, 111],
+            Job.RDM => [131, 132],
+            Job.BLU => [134, 135, 146, 170],
 
             // ShB
-            EClassJob.Gunbreaker => [84],
-            EClassJob.Dancer => [121],
+            Job.GNB => [84],
+            Job.DNC => [121],
 
             // EW
-            EClassJob.Sage => [152],
-            EClassJob.Reaper => [153],
+            Job.SGE => [152],
+            Job.RPR => [153],
 
             // DT
-            EClassJob.Viper => [176],
-            EClassJob.Pictomancer => [177],
+            Job.VPR => [176],
+            Job.PCT => [177],
 
             // Crafter
-            EClassJob.Alchemist => [48, 49, 50],
-            EClassJob.Armorer => [36, 37, 38],
-            EClassJob.Blacksmith => [33, 34, 35],
-            EClassJob.Carpenter => [30, 31, 32],
-            EClassJob.Culinarian => [51, 52, 53],
-            EClassJob.Goldsmith => [39, 40, 41],
-            EClassJob.Leatherworker => [42, 43, 44],
-            EClassJob.Weaver => [45, 46, 47],
+            Job.ALC => [48, 49, 50],
+            Job.ARM => [36, 37, 38],
+            Job.BSM => [33, 34, 35],
+            Job.CRP => [30, 31, 32],
+            Job.CUL => [51, 52, 53],
+            Job.GSM => [39, 40, 41],
+            Job.LTW => [42, 43, 44],
+            Job.WVR => [45, 46, 47],
 
             // Gatherer
-            EClassJob.Miner => [54, 55, 56],
-            EClassJob.Botanist => [57, 58, 59],
-            EClassJob.Fisher => [60, 61, 62],
+            Job.MIN => [54, 55, 56],
+            Job.BTN => [57, 58, 59],
+            Job.FSH => [60, 61, 62],
 
             var _ => throw new ArgumentOutOfRangeException(nameof(classJob))
         };
@@ -438,12 +438,12 @@ internal sealed class QuestData
         return GetQuestsInNewGamePlusChapters(chapterIds);
     }
 
-    public List<QuestInfo> GetRoleQuests(EClassJob referenceClassJob)
+    public List<QuestInfo> GetRoleQuests(Job referenceClassJob)
     {
         return GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToList());
     }
 
-    private static IEnumerable<uint> GetRoleQuestIds(EClassJob classJob)
+    private static IEnumerable<uint> GetRoleQuestIds(Job classJob)
     {
         return classJob switch
         {
@@ -451,7 +451,7 @@ internal sealed class QuestData
             var _ when classJob.IsHealer() => HealerRoleQuestChapters,
             var _ when classJob.IsMelee() => MeleeRoleQuestChapters,
             var _ when classJob.IsPhysicalRanged() => PhysicalRangedRoleQuestChapters,
-            var _ when classJob.IsCaster() && classJob != EClassJob.BlueMage => CasterRoleQuestChapters,
+            var _ when classJob.IsCaster() && classJob != Job.BLU => CasterRoleQuestChapters,
             var _ => []
         };
     }
@@ -467,21 +467,21 @@ internal sealed class QuestData
 
     public List<QuestId> GetLockedClassQuests()
     {
-        EClassJob startingClass;
+        Job startingClass;
         unsafe
         {
             PlayerState* playerState = PlayerState.Instance();
             if (playerState != null)
             {
-                startingClass = (EClassJob)playerState->FirstClass;
+                startingClass = (Job)playerState->FirstClass;
             }
             else
             {
-                startingClass = EClassJob.Adventurer;
+                startingClass = Job.ADV;
             }
         }
 
-        if (startingClass == EClassJob.Adventurer)
+        if (startingClass == Job.ADV)
         {
             return [];
         }
@@ -495,14 +495,14 @@ internal sealed class QuestData
         // In both cases, the level 10 quests are different
         List<List<ushort>> startingClassQuests =
         [
-            startingClass == EClassJob.Gladiator ? [177, 285, 286, 288] : [253, 261],
-            startingClass == EClassJob.Pugilist ? [178, 532, 553, 698] : [533, 555],
-            startingClass == EClassJob.Marauder ? [179, 310, 312, 315] : [311, 314],
-            startingClass == EClassJob.Lancer ? [180, 132, 218, 143] : [23, 35],
-            startingClass == EClassJob.Archer ? [181, 131, 219, 134] : [21, 67],
-            startingClass == EClassJob.Conjurer ? [182, 133, 211, 147] : [22, 91],
-            startingClass == EClassJob.Thaumaturge ? [183, 344, 346, 349] : [345, 348],
-            startingClass == EClassJob.Arcanist ? [451, 452, 454, 457] : [453, 456]
+            startingClass == Job.GLA ? [177, 285, 286, 288] : [253, 261],
+            startingClass == Job.PGL ? [178, 532, 553, 698] : [533, 555],
+            startingClass == Job.MRD ? [179, 310, 312, 315] : [311, 314],
+            startingClass == Job.LNC ? [180, 132, 218, 143] : [23, 35],
+            startingClass == Job.ARC ? [181, 131, 219, 134] : [21, 67],
+            startingClass == Job.CNJ ? [182, 133, 211, 147] : [22, 91],
+            startingClass == Job.THM ? [183, 344, 346, 349] : [345, 348],
+            startingClass == Job.ACN ? [451, 452, 454, 457] : [453, 456]
         ];
         return startingClassQuests.SelectMany(x => x).Select(x => new QuestId(x)).ToList();
     }

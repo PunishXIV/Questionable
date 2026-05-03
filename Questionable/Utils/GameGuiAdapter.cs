@@ -1,6 +1,6 @@
-﻿using Dalamud.Plugin.Services;
+﻿using Dalamud.Game.NativeWrapper;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
 namespace Questionable.Utils;
 
 internal unsafe interface IGameGuiAdapter
@@ -13,11 +13,27 @@ internal sealed unsafe class LLibGameGuiAdapter(IGameGui gameGui) : IGameGuiAdap
 {
     public bool TryGetAddonByName(string name, out AtkUnitBase* addon)
     {
-        return gameGui.TryGetAddonByName(name, out addon);
+        AtkUnitBasePtr a = gameGui.GetAddonByName(name);
+        if (!a.IsNull)
+        {
+            addon = (AtkUnitBase*)a.Address;
+            return true;
+        }
+
+        addon = null;
+        return false;
     }
 
     public bool TryGetAddonByName<TAddon>(string name, out TAddon* addon) where TAddon : unmanaged
     {
-        return gameGui.TryGetAddonByName(name, out addon);
+        AtkUnitBasePtr a = gameGui.GetAddonByName(name);
+        if (!a.IsNull)
+        {
+            addon = (TAddon*)a.Address;
+            return true;
+        }
+
+        addon = null;
+        return false;
     }
 }

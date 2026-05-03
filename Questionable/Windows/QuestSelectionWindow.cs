@@ -9,7 +9,6 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
-using LLib.ImGui;
 using Questionable.Controller;
 using Questionable.Controller.GameUi;
 using Questionable.Data;
@@ -17,6 +16,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
+using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
 using System;
 using System.Collections.Generic;
@@ -86,7 +86,7 @@ internal sealed class QuestSelectionWindow : LWindow
             WindowName = $"Quests starting with {targetName} [{targetId}]{WindowId}";
 
             _quests = _questData.GetAllByIssuerDataId(targetId);
-            if (_gameGui.TryGetAddonByName<AddonSelectIconString>("SelectIconString", out AddonSelectIconString* addonSelectIconString))
+            if (_gameGui.TryGetAddonByName("SelectIconString", out AddonSelectIconString* addonSelectIconString))
             {
                 List<string?> answers = InteractionUiController.GetChoices(addonSelectIconString);
                 _offeredQuests = _quests

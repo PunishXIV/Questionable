@@ -1,4 +1,4 @@
-namespace LLib.ImGui;
+namespace Questionable.Windows.Common;
 
 public class WindowConfig
 {

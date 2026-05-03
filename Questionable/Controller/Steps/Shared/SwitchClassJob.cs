@@ -1,6 +1,6 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.UI;
+﻿using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using LLib.GameData;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.Model;
@@ -19,12 +19,12 @@ internal static class SwitchClassJob
                 return null;
             }
 
-            EClassJob classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
+            Job classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
             return new Task(classJob);
         }
     }
 
-    internal sealed record Task(EClassJob ClassJob) : ITask
+    internal sealed record Task(Job ClassJob) : ITask
     {
         public override string ToString()
         {

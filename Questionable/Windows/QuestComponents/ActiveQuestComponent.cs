@@ -445,7 +445,7 @@ internal sealed partial class ActiveQuestComponent
             bool colored = currentStep != null
                            && !lastStep
                            && currentStep.InteractionType == EInteractionType.Instruction
-                           && _questController.HasCurrentTaskMatching<WaitAtEnd.WaitNextStepOrSequence>(out WaitAtEnd.WaitNextStepOrSequence? _);
+                           && _questController.HasCurrentTaskMatching(out WaitAtEnd.WaitNextStepOrSequence? _);
 
             using (ImRaii.Disabled(lastStep))
             {

@@ -1,5 +1,5 @@
-﻿using Dalamud.Plugin;
-using LLib.GameData;
+using Dalamud.Plugin;
+using ECommons.ExcelServices;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.GatheringPaths;
@@ -199,10 +199,10 @@ internal sealed class GatheringPointRegistry : IDisposable
         return _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
     }
 
-    public bool TryGetGatheringPointId(uint itemId, EClassJob classJobId,
+    public bool TryGetGatheringPointId(uint itemId, Job classJobId,
         [NotNullWhen(true)] out GatheringPointId? gatheringPointId)
     {
-        if (classJobId == EClassJob.Miner)
+        if (classJobId == Job.MIN)
         {
             if (_gatheringData.TryGetMinerGatheringPointByItemId(itemId, out gatheringPointId))
             {
@@ -215,7 +215,7 @@ internal sealed class GatheringPointRegistry : IDisposable
                 .FirstOrDefault(x => _gatheringData.MinerGatheringPoints.Contains(x));
             return gatheringPointId != null;
         }
-        else if (classJobId == EClassJob.Botanist)
+        else if (classJobId == Job.BTN)
         {
             if (_gatheringData.TryGetBotanistGatheringPointByItemId(itemId, out gatheringPointId))
             {

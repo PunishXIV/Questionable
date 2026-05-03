@@ -372,7 +372,7 @@ internal static class SinglePlayerDuty
 
         public override unsafe ETaskResult Update()
         {
-            if (GenericHelpers.TryGetAddonMaster<AddonMaster.ContentsFinderConfirm>(out AddonMaster.ContentsFinderConfirm m) && m.IsAddonReady)
+            if (GenericHelpers.TryGetAddonMaster(out AddonMaster.ContentsFinderConfirm m) && m.IsAddonReady)
             {
                 if (EzThrottler.Throttle("Confirm", 2000))
                 {

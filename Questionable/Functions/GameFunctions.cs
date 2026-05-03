@@ -377,8 +377,6 @@ internal sealed unsafe class GameFunctions
                     _logger.LogInformation("Using preferred mount");
                     return true;
                 }
-
-                return false;
             }
         }
         else
@@ -391,8 +389,6 @@ internal sealed unsafe class GameFunctions
                     _logger.LogInformation("Using mount roulette");
                     return true;
                 }
-
-                return false;
             }
         }
 
@@ -552,7 +548,7 @@ internal sealed unsafe class GameFunctions
         return false;
     }
 
-    public int GetFreeInventorySlots()
+    public static int GetFreeInventorySlots()
     {
         InventoryManager* inventoryManager = InventoryManager.Instance();
         if (inventoryManager == null)

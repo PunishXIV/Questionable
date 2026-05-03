@@ -1,8 +1,10 @@
-﻿using Dalamud.Plugin.Services;
+using Dalamud.Plugin.Services;
+using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.Shop;
-using LLib.Shop.Model;
+using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
+using Questionable.Controller.GameUi.Shop;
+using Questionable.Controller.GameUi.Shop.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using System;
@@ -12,24 +14,26 @@ namespace Questionable.Controller.GameUi;
 
 internal sealed class ShopController : IDisposable, IShopWindow
 {
+    private readonly IDataManager _dataManager;
     private readonly IFramework _framework;
     private readonly IGameGuiAdapter _gameGuiAdapter;
     private readonly ILogger<ShopController> _logger;
     private readonly QuestController _questController;
-    // Intentionally retained integration boundary: shop automation still relies on LLib.Shop internals.
     private readonly RegularShopBase _shop;
 
-    public ShopController(QuestController questController, IGameGui gameGui, IGameGuiAdapter gameGuiAdapter, IAddonLifecycle addonLifecycle,
-        IFramework framework, ILogger<ShopController> logger, IPluginLog pluginLog)
+    public ShopController(QuestController questController, IGameGui gameGui, IGameGuiAdapter gameGuiAdapter, IDataManager dataManager,
+        IAddonLifecycle addonLifecycle, IFramework framework, ILogger<ShopController> logger, IPluginLog pluginLog)
     {
         _questController = questController;
         _gameGuiAdapter = gameGuiAdapter;
+        _dataManager = dataManager;
         _framework = framework;
         _shop = new(this, "Shop", pluginLog, gameGui, addonLifecycle);
         _logger = logger;
 
         _framework.Update += FrameworkUpdate;
     }
+
     public bool IsAutoBuyEnabled => _shop.AutoBuyEnabled;
 
     public bool IsAwaitingYesNo
@@ -64,51 +68,36 @@ internal sealed class ShopController : IDisposable, IShopWindow
             return;
         }
 
-        if (addon->AtkValuesCount != 625)
-        {
-            _logger.LogError("Unexpected amount of atkvalues for Shop addon ({AtkValueCount})", addon->AtkValuesCount);
-            _shop.ItemForSale = null;
-            return;
-        }
-
-        AtkValue* atkValues = addon->AtkValues;
-
-        // Check if on 'Current Stock' tab?
-        if (atkValues[0].UInt != 0)
+        AddonMaster.Shop addonMaster = new(addon);
+        AddonMaster.Shop.ShopItemInfo[] shopItems = addonMaster.ShopItems;
+        if (shopItems.Length == 0)
         {
             _shop.ItemForSale = null;
             return;
         }
 
-        uint itemCount = atkValues[2].UInt;
-        if (itemCount == 0)
-        {
-            _shop.ItemForSale = null;
-            return;
-        }
-
-        _shop.ItemForSale = Enumerable.Range(0, (int)itemCount)
-            .Select(i => new ItemForSale
+        _shop.ItemForSale = shopItems
+            .Select((item, i) => new ItemForSale
             {
                 Position = i,
-                ItemName = AtkValueAdapter.ReadString(atkValues[14 + i]),
-                Price = atkValues[75 + i].UInt,
-                OwnedItems = atkValues[136 + i].UInt,
-                ItemId = atkValues[441 + i].UInt
+                ItemId = item.ItemId,
+                ItemName = _dataManager.GetExcelSheet<Item>().GetRowOrDefault(item.ItemId)?.Name.ToString() ?? string.Empty,
+                Price = item.CostAmount,
+                OwnedItems = (uint)_shop.GetItemCount(item.ItemId)
             })
             .FirstOrDefault(x => x.ItemId == currentStep.ItemId);
     }
 
     public unsafe void TriggerPurchase(AtkUnitBase* addonShop, int buyNow)
     {
-        AtkValue* buyItem = stackalloc AtkValue[]
+        if (_shop.ItemForSale == null)
         {
-            new() { Type = AtkValueType.Int, Int = 0 },
-            new() { Type = AtkValueType.Int, Int = _shop.ItemForSale!.Position },
-            new() { Type = AtkValueType.Int, Int = buyNow },
-            new() { Type = 0, Int = 0 }
-        };
-        addonShop->FireCallback(4, buyItem);
+            return;
+        }
+
+        AddonMaster.Shop addonMaster = new(addonShop);
+        AddonMaster.Shop.ShopItemInfo? item = addonMaster.ShopItems.ElementAtOrDefault(_shop.ItemForSale.Position);
+        item?.Select(buyNow);
     }
 
     public void SaveExternalPluginState()

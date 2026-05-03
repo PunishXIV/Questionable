@@ -1,9 +1,9 @@
 ﻿using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.External;
@@ -82,17 +82,17 @@ internal static class Craft
             QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
                     questWork.ClassJob :
-                    (EClassJob)PlayerState.Instance()->CurrentClassJobId
+                    (Job)PlayerState.Instance()->CurrentClassJobId
                 ) switch
                 {
-                    EClassJob.Carpenter => recipeLookup.Value.CRP.RowId,
-                    EClassJob.Blacksmith => recipeLookup.Value.BSM.RowId,
-                    EClassJob.Armorer => recipeLookup.Value.ARM.RowId,
-                    EClassJob.Goldsmith => recipeLookup.Value.GSM.RowId,
-                    EClassJob.Leatherworker => recipeLookup.Value.LTW.RowId,
-                    EClassJob.Weaver => recipeLookup.Value.WVR.RowId,
-                    EClassJob.Alchemist => recipeLookup.Value.ALC.RowId,
-                    EClassJob.Culinarian => recipeLookup.Value.CUL.RowId,
+                    Job.CRP => recipeLookup.Value.CRP.RowId,
+                    Job.BSM => recipeLookup.Value.BSM.RowId,
+                    Job.ARM => recipeLookup.Value.ARM.RowId,
+                    Job.GSM => recipeLookup.Value.GSM.RowId,
+                    Job.LTW => recipeLookup.Value.LTW.RowId,
+                    Job.WVR => recipeLookup.Value.WVR.RowId,
+                    Job.ALC => recipeLookup.Value.ALC.RowId,
+                    Job.CUL => recipeLookup.Value.CUL.RowId,
                     var _ => 0
                 };
 

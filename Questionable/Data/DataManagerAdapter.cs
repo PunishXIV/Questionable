@@ -1,5 +1,4 @@
 ﻿using Dalamud.Plugin.Services;
-using LLib;
 using Lumina.Excel;
 using Lumina.Text.ReadOnly;
 using System;
@@ -8,7 +7,6 @@ namespace Questionable.Data;
 
 internal static class DataManagerAdapter
 {
-    // Intentionally retained temporary bridge: keeps call sites LLib-agnostic until adapter internals are swapped.
     public static string? GetString<T>(IDataManager dataManager, uint rowId, Func<T, ReadOnlySeString?> textSelector)
     where T : struct, IExcelRow<T>
     {

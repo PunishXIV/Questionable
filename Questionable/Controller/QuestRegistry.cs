@@ -1,9 +1,9 @@
-﻿using Dalamud.Plugin;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Model;
@@ -280,7 +280,7 @@ internal sealed class QuestRegistry
         return _quests.TryGetValue(questId, out quest);
     }
 
-    public List<QuestInfo> GetKnownClassJobQuests(EClassJob classJob, bool includeRoleQuests = true)
+    public List<QuestInfo> GetKnownClassJobQuests(Job classJob, bool includeRoleQuests = true)
     {
         List<QuestInfo> allQuests = [.. _questData.GetClassJobQuests(classJob, includeRoleQuests)];
         if (classJob.AsJob() != classJob)

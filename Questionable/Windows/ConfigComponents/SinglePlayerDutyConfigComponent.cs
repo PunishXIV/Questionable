@@ -5,7 +5,7 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using LLib.GameData;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
@@ -37,13 +37,13 @@ internal sealed class SinglePlayerDutyConfigComponent
 {
     private const string SinglePlayerDutyClipboardPrefix = "qst:single:";
 
-    private static readonly List<(EClassJob ClassJob, string Name)> RoleQuestCategories =
+    private static readonly List<(Job ClassJob, string Name)> RoleQuestCategories =
     [
-        (EClassJob.Paladin, "Tank Role Quests"),
-        (EClassJob.WhiteMage, "Healer Role Quests"),
-        (EClassJob.Lancer, "Melee Role Quests"),
-        (EClassJob.Bard, "Physical Ranged Role Quests"),
-        (EClassJob.BlackMage, "Magical Ranged Role Quests")
+        (Job.PLD, "Tank Role Quests"),
+        (Job.WHM, "Healer Role Quests"),
+        (Job.LNC, "Melee Role Quests"),
+        (Job.BRD, "Physical Ranged Role Quests"),
+        (Job.BLM, "Magical Ranged Role Quests")
     ];
 
 #if false
@@ -63,11 +63,11 @@ internal sealed class SinglePlayerDutyConfigComponent
     private ImmutableDictionary<EExpansionVersion, List<SinglePlayerDutyInfo>> _mainScenarioBattles =
         ImmutableDictionary<EExpansionVersion, List<SinglePlayerDutyInfo>>.Empty;
 
-    private ImmutableDictionary<EClassJob, List<SinglePlayerDutyInfo>> _jobQuestBattles =
-        ImmutableDictionary<EClassJob, List<SinglePlayerDutyInfo>>.Empty;
+    private ImmutableDictionary<Job, List<SinglePlayerDutyInfo>> _jobQuestBattles =
+        ImmutableDictionary<Job, List<SinglePlayerDutyInfo>>.Empty;
 
-    private ImmutableDictionary<EClassJob, List<SinglePlayerDutyInfo>> _roleQuestBattles =
-        ImmutableDictionary<EClassJob, List<SinglePlayerDutyInfo>>.Empty;
+    private ImmutableDictionary<Job, List<SinglePlayerDutyInfo>> _roleQuestBattles =
+        ImmutableDictionary<Job, List<SinglePlayerDutyInfo>>.Empty;
 
     private ImmutableList<SinglePlayerDutyInfo> _otherRoleQuestBattles = ImmutableList<SinglePlayerDutyInfo>.Empty;
 
@@ -93,19 +93,19 @@ internal sealed class SinglePlayerDutyConfigComponent
 
         List<SinglePlayerDutyInfo> otherBattles = [];
 
-        Dictionary<ElementId, EClassJob> questIdsToJob = Enum.GetValues<EClassJob>()
-            .Where(x => x != EClassJob.Adventurer && !x.IsCrafter() && !x.IsGatherer())
+        Dictionary<ElementId, Job> questIdsToJob = Enum.GetValues<Job>()
+            .Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer())
             .Where(x => x.IsClass() || !x.HasBaseClass())
             .SelectMany(x => _questRegistry.GetKnownClassJobQuests(x, false).Select(y => (y.QuestId, ClassJob: x)))
             .ToDictionary(x => x.QuestId, x => x.ClassJob);
-        Dictionary<EClassJob, List<SinglePlayerDutyInfo>> jobQuestBattles = questIdsToJob.Values.Distinct()
+        Dictionary<Job, List<SinglePlayerDutyInfo>> jobQuestBattles = questIdsToJob.Values.Distinct()
             .ToDictionary(x => x, _ => new List<SinglePlayerDutyInfo>());
 
-        Dictionary<ElementId, List<EClassJob>> questIdToRole = RoleQuestCategories
+        Dictionary<ElementId, List<Job>> questIdToRole = RoleQuestCategories
             .SelectMany(x => _questData.GetRoleQuests(x.ClassJob).Select(y => (y.QuestId, x.ClassJob)))
             .GroupBy(x => x.QuestId)
             .ToDictionary(x => x.Key, x => x.Select(y => y.ClassJob).ToList());
-        Dictionary<EClassJob, List<SinglePlayerDutyInfo>> roleQuestBattles = RoleQuestCategories
+        Dictionary<Job, List<SinglePlayerDutyInfo>> roleQuestBattles = RoleQuestCategories
             .ToDictionary(x => x.ClassJob, _ => new List<SinglePlayerDutyInfo>());
         List<SinglePlayerDutyInfo> otherRoleQuestBattles = [];
 
@@ -147,13 +147,13 @@ internal sealed class SinglePlayerDutyConfigComponent
             {
                 mainScenarioBattles.Add(dutyInfo);
             }
-            else if (questIdsToJob.TryGetValue(questId, out EClassJob classJob))
+            else if (questIdsToJob.TryGetValue(questId, out Job classJob))
             {
                 jobQuestBattles[classJob].Add(dutyInfo);
             }
-            else if (questIdToRole.TryGetValue(questId, out List<EClassJob>? classJobs))
+            else if (questIdToRole.TryGetValue(questId, out List<Job>? classJobs))
             {
-                foreach(EClassJob roleClassJob in classJobs)
+                foreach(Job roleClassJob in classJobs)
                 {
                     roleQuestBattles[roleClassJob].Add(dutyInfo);
                 }
@@ -460,7 +460,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
 
         int oldPriority = 0;
-        foreach((EClassJob classJob, int priority) in _classJobUtils.SortedClassJobs)
+        foreach((Job classJob, int priority) in _classJobUtils.SortedClassJobs)
         {
             if (classJob.IsCrafter() || classJob.IsGatherer())
             {
@@ -524,7 +524,7 @@ internal sealed class SinglePlayerDutyConfigComponent
             return;
         }
 
-        foreach((EClassJob classJob, string label) in RoleQuestCategories)
+        foreach((Job classJob, string label) in RoleQuestCategories)
         {
             if (_roleQuestBattles.TryGetValue(classJob, out List<SinglePlayerDutyInfo>? dutyInfos))
             {

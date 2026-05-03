@@ -1,11 +1,59 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
+using Dalamud.Game.Text.SeStringHandling;
+using Dalamud.Memory;
+using FFXIVClientStructs.FFXIV.Component.GUI;
+using Lumina.Text.Payloads;
+using Lumina.Text.ReadOnly;
+using System.Linq;
 namespace Questionable.Utils;
 
 internal static class AtkValueAdapter
 {
-    public static string? ReadString(AtkValue value)
+    public static unsafe string? ReadString(AtkValue value)
     {
-        return value.ReadAtkString();
+        if (value.Type == AtkValueType.Undefined)
+        {
+            return null;
+        }
+
+        if (value.String.HasValue)
+        {
+            return MemoryHelper.ReadSeStringNullTerminated(new(value.String)).WithCertainMacroCodeReplacements();
+        }
+
+        return null;
+    }
+}
+
+internal static class SeStringAdapterExtensions
+{
+    public static string WithCertainMacroCodeReplacements(this SeString? str)
+    {
+        if (str == null)
+        {
+            return string.Empty;
+        }
+
+        ReadOnlySeString seString = new(str.Encode());
+        return seString.WithCertainMacroCodeReplacementsFromReadOnly();
+    }
+
+    public static string WithCertainMacroCodeReplacementsFromReadOnly(this ReadOnlySeString text)
+    {
+        return string.Join("", text.Select(payload =>
+        {
+            return payload.Type switch
+            {
+                ReadOnlySePayloadType.Text => payload.ToString(),
+                ReadOnlySePayloadType.Macro => payload.MacroCode switch
+                {
+                    MacroCode.NewLine => "",
+                    MacroCode.NonBreakingSpace => " ",
+                    MacroCode.Hyphen => "-",
+                    MacroCode.SoftHyphen => "",
+                    var _ => payload.ToString()
+                },
+                var _ => payload.ToString()
+            };
+        }));
     }
 }

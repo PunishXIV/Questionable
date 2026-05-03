@@ -1,10 +1,10 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Utils;
 using Questionable.Data;
@@ -417,12 +417,12 @@ internal static class SkipCondition
 
                 if (step is { RequiredQuestAcceptedJob.Count: > 0 })
                 {
-                    List<EClassJob> expectedJobs = step.RequiredQuestAcceptedJob
+                    List<Job> expectedJobs = step.RequiredQuestAcceptedJob
                         .SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
-                    EClassJob questJob = questWork.ClassJob;
+                    Job questJob = questWork.ClassJob;
                     logger.LogInformation("Checking quest job {QuestJob} against {ExpectedJobs}", questJob,
                         string.Join(",", expectedJobs));
-                    if (questJob != EClassJob.Adventurer && !expectedJobs.Contains(questJob))
+                    if (questJob != Job.ADV && !expectedJobs.Contains(questJob))
                     {
                         logger.LogInformation("Skipping step, as quest was accepted on a different job");
                         return true;
@@ -437,9 +437,9 @@ internal static class SkipCondition
         {
             if (step is { RequiredCurrentJob.Count: > 0 })
             {
-                List<EClassJob> expectedJobs =
+                List<Job> expectedJobs =
                     step.RequiredCurrentJob.SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
-                EClassJob currentJob = (EClassJob)PlayerState.Instance()->CurrentClassJobId;
+                Job currentJob = (Job)PlayerState.Instance()->CurrentClassJobId;
                 logger.LogInformation("Checking current job {CurrentJob} against {ExpectedJobs}", currentJob,
                     string.Join(",", expectedJobs));
                 if (!expectedJobs.Contains(currentJob))

@@ -2,8 +2,8 @@
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib.GameData;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -60,7 +60,7 @@ internal static class Gather
 
         public IEnumerable<ITask> CreateExtraTasks()
         {
-            EClassJob currentClassJob = (EClassJob)((IPlayerCharacter)objectTable[0]!).ClassJob.RowId;
+            Job currentClassJob = (Job)((IPlayerCharacter)objectTable[0]!).ClassJob.RowId;
             GatheringPointId? gatheringPointId;
             if (Task.Step.GatheringPoint is ushort gatheringPoint)
             {
@@ -82,11 +82,11 @@ internal static class Gather
                 yield break;
             }
 
-            if (currentClassJob == EClassJob.Miner)
+            if (currentClassJob == Job.MIN)
             {
                 yield return new Action.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
             }
-            else if (currentClassJob == EClassJob.Botanist)
+            else if (currentClassJob == Job.BTN)
             {
                 yield return new Action.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
             }

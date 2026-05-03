@@ -1,10 +1,10 @@
-﻿using Dalamud.Game.Gui.ContextMenu;
+using Dalamud.Game.Gui.ContextMenu;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
@@ -97,8 +97,8 @@ internal sealed class ContextMenuController : IDisposable
 
         if (_gatheringData.TryGetCustomDeliveryNpc(itemId, out uint npcId))
         {
-            AddContextMenuEntry(args, itemId, npcId, EClassJob.Miner, "Mine");
-            AddContextMenuEntry(args, itemId, npcId, EClassJob.Botanist, "Harvest");
+            AddContextMenuEntry(args, itemId, npcId, Job.MIN, "Mine");
+            AddContextMenuEntry(args, itemId, npcId, Job.BTN, "Harvest");
         }
         else
         {
@@ -125,10 +125,10 @@ internal sealed class ContextMenuController : IDisposable
         return 0;
     }
 
-    private unsafe void AddContextMenuEntry(IMenuOpenedArgs args, uint itemId, uint npcId, EClassJob classJob,
+    private unsafe void AddContextMenuEntry(IMenuOpenedArgs args, uint itemId, uint npcId, Job classJob,
         string verb)
     {
-        EClassJob currentClassJob = (EClassJob)PlayerState.Instance()->CurrentClassJobId;
+        Job currentClassJob = (Job)PlayerState.Instance()->CurrentClassJobId;
         if (classJob != currentClassJob)
         {
             return;
@@ -184,7 +184,7 @@ internal sealed class ContextMenuController : IDisposable
     }
 
     private void StartGathering(uint npcId, uint itemId, int quantity, ushort collectability,
-        EClassJob classJob)
+        Job classJob)
     {
         SatisfactionSupplyInfo info = (SatisfactionSupplyInfo)_questData.GetAllByIssuerDataId(npcId)
             .Single(x => x is SatisfactionSupplyInfo);
@@ -195,8 +195,8 @@ internal sealed class ContextMenuController : IDisposable
             QuestStep switchClassStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.SwitchClass);
             switchClassStep.TargetClass = classJob switch
             {
-                EClassJob.Miner => EExtendedClassJob.Miner,
-                EClassJob.Botanist => EExtendedClassJob.Botanist,
+                Job.MIN => EExtendedClassJob.Miner,
+                Job.BTN => EExtendedClassJob.Botanist,
                 var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
             };
 

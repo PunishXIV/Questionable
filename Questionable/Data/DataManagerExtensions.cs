@@ -6,7 +6,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
-namespace LLib;
+namespace Questionable.Data;
 
 public static class DataManagerExtensions
 {

@@ -1,8 +1,8 @@
 ﻿using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
-using LLib.ImGui;
 using Questionable.Controller;
+using Questionable.Windows.Common;
 using Questionable.Windows.JournalComponents;
 using System;
 namespace Questionable.Windows;

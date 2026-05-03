@@ -1,9 +1,9 @@
 ﻿using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
@@ -80,7 +80,7 @@ internal static class DoGatherCollectable
                 }
             }
 
-            if (gameFunctions.GetFreeInventorySlots() == 0)
+            if (GameFunctions.GetFreeInventorySlots() == 0)
             {
                 throw new TaskException("Inventory full");
             }
@@ -218,7 +218,7 @@ internal static class DoGatherCollectable
 
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
-            if ((EClassJob?)PlayerState.Instance()->CurrentClassJobId == EClassJob.Miner)
+            if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
             {
                 return minerAction;
             }

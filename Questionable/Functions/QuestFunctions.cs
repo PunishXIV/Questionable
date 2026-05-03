@@ -1,13 +1,13 @@
-﻿using Dalamud.Game.Text;
+using Dalamud.Game.Text;
 using Dalamud.Memory;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
@@ -581,9 +581,9 @@ internal sealed unsafe class QuestFunctions
 
         if (!_configuration.Advanced.SkipClassJobQuests)
         {
-            EClassJob classJob = (EClassJob?)PlayerState.Instance()->CurrentClassJobId ?? EClassJob.Adventurer;
+            Job classJob = (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV;
             uint[] shadowbringersRoleQuestChapters = QuestData.AllRoleQuestChapters.Select(x => x[0]).ToArray();
-            if (classJob != EClassJob.Adventurer)
+            if (classJob != Job.ADV)
             {
                 priorityQuests.AddRange(_questRegistry.GetKnownClassJobQuests(classJob)
                     .Where(x =>
@@ -899,16 +899,16 @@ internal sealed unsafe class QuestFunctions
             return true;
         }
 
-        Dictionary<ushort, EClassJob> closeToHomeQuests = new()
+        Dictionary<ushort, Job> closeToHomeQuests = new()
         {
-            { 108, EClassJob.Marauder },
-            { 109, EClassJob.Arcanist },
-            { 85, EClassJob.Lancer },
-            { 123, EClassJob.Archer },
-            { 124, EClassJob.Conjurer },
-            { 568, EClassJob.Gladiator },
-            { 569, EClassJob.Pugilist },
-            { 570, EClassJob.Thaumaturge }
+            { 108, Job.MRD },
+            { 109, Job.ACN },
+            { 85, Job.LNC },
+            { 123, Job.ARC },
+            { 124, Job.CNJ },
+            { 568, Job.GLA },
+            { 569, Job.PGL },
+            { 570, Job.THM }
         };
 
         // The starting class experience is a bit confusing. If you start in Gridania, the MSQ next quest data will
@@ -918,10 +918,10 @@ internal sealed unsafe class QuestFunctions
         // While the NPC offers all 3 quests, there's no manual selection, and interacting will automatically select the
         // quest for your current class, then switch you from a dead-ish intro zone to the actual starting city
         // (so that you can't come back later to pick up another quest).
-        if (closeToHomeQuests.TryGetValue(questId.Value, out EClassJob neededStartingClass) &&
+        if (closeToHomeQuests.TryGetValue(questId.Value, out Job neededStartingClass) &&
             closeToHomeQuests.Any(x => IsQuestAcceptedOrComplete(new QuestId(x.Key))))
         {
-            EClassJob actualStartingClass = (EClassJob)PlayerState.Instance()->FirstClass;
+            Job actualStartingClass = (Job)PlayerState.Instance()->FirstClass;
             if (actualStartingClass != neededStartingClass)
             {
                 return true;
@@ -1050,7 +1050,7 @@ internal sealed unsafe class QuestFunctions
         }
     }
 
-    public bool IsClassJobUnlocked(EClassJob classJob)
+    public bool IsClassJobUnlocked(Job classJob)
     {
         ClassJob classJobRow = _dataManager.GetExcelSheet<ClassJob>().GetRow((uint)classJob);
         ushort questId = (ushort)classJobRow.UnlockQuest.RowId;
@@ -1063,10 +1063,10 @@ internal sealed unsafe class QuestFunctions
         return playerState != null && playerState->ClassJobLevels[classJobRow.ExpArrayIndex] > 0;
     }
 
-    public bool IsJobUnlocked(EClassJob classJob)
+    public bool IsJobUnlocked(Job classJob)
     {
         ClassJob classJobRow = _dataManager.GetExcelSheet<ClassJob>().GetRow((uint)classJob);
-        return IsClassJobUnlocked((EClassJob)classJobRow.ClassJobParent.RowId);
+        return IsClassJobUnlocked((Job)classJobRow.ClassJobParent.RowId);
     }
 
     public GrandCompany GetGrandCompany()

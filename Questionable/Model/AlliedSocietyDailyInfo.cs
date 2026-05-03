@@ -1,4 +1,4 @@
-﻿using LLib.GameData;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Data;
 using Questionable.Model.Questing;
@@ -21,7 +21,7 @@ internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, C
     public uint? JournalGenre => null;
     public ushort SortKey => 0;
     public bool IsMainScenarioQuest => false;
-    public IReadOnlyList<EClassJob> ClassJobs { get; } = (EAlliedSociety)beastTribe.RowId switch
+    public IReadOnlyList<Job> ClassJobs { get; } = (EAlliedSociety)beastTribe.RowId switch
     {
         EAlliedSociety.Amaljaa or EAlliedSociety.Sylphs or EAlliedSociety.Kobolds or EAlliedSociety.Sahagin or
             EAlliedSociety.VanuVanu or EAlliedSociety.Vath or

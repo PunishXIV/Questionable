@@ -1,5 +1,5 @@
 using System;
-namespace LLib.Shop.Model;
+namespace Questionable.Controller.GameUi.Shop.Model;
 
 public sealed class PurchaseState
 {

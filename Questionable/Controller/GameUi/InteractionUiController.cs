@@ -1,12 +1,12 @@
-﻿using Dalamud.Game.Addon.Lifecycle;
+using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
@@ -316,7 +316,6 @@ internal sealed class InteractionUiController : IDisposable
             _logger.LogInformation("Checking if next quest {Name} is on the list", nextQuest.Quest.Info.Name);
             if (CheckQuestSelection(addonSelectIconString, nextQuest.Quest, answers))
             {
-                return;
             }
         }
     }
@@ -682,7 +681,6 @@ internal sealed class InteractionUiController : IDisposable
         QuestController.QuestProgress? nextQuest = _questController.NextQuest;
         if (nextQuest != null && CheckQuestYesNo(addonSelectYesno, nextQuest, actualPrompt, checkAllSteps))
         {
-            return;
         }
     }
 
@@ -936,7 +934,7 @@ internal sealed class InteractionUiController : IDisposable
             step.InteractionType == EInteractionType.Gather)
         {
             if (_gatheringPointRegistry.TryGetGatheringPointId(step.ItemsToGather[0].ItemId,
-                    (EClassJob?)PlayerState.Instance()->CurrentClassJobId ?? EClassJob.Adventurer,
+                    (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV,
                     out GatheringPointId? gatheringPointId) &&
                 _gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? root))
             {

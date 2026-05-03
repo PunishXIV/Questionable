@@ -1,7 +1,7 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
 using System.Diagnostics.CodeAnalysis;
-namespace LLib.ImGui;
+namespace Questionable.Windows.Common;
 
 [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
 public abstract class LWindow : Window
@@ -68,7 +68,7 @@ public abstract class LWindow : Window
 
     private void UpdateWindowConfig()
     {
-        if (this is IPersistableWindowConfig pwc && !Dalamud.Bindings.ImGui.ImGui.IsAnyMouseDown())
+        if (this is IPersistableWindowConfig pwc && !ImGui.IsAnyMouseDown())
         {
             WindowConfig? config = pwc.WindowConfig;
             if (config != null)
@@ -125,7 +125,7 @@ public abstract class LWindow : Window
 
         if (UncollapseNextFrame)
         {
-            Dalamud.Bindings.ImGui.ImGui.SetNextWindowCollapsed(false);
+            ImGui.SetNextWindowCollapsed(false);
             UncollapseNextFrame = false;
         }
 

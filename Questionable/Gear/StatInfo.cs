@@ -1,4 +1,4 @@
-namespace LLib.Gear;
+namespace Questionable.Gear;
 
 public sealed record StatInfo(short EquipmentValue, short MateriaValue, bool Overcapped)
 {

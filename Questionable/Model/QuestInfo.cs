@@ -1,5 +1,5 @@
-﻿using ECommons.DalamudServices;
-using LLib.GameData;
+using ECommons.DalamudServices;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 using System;
@@ -117,7 +117,7 @@ internal sealed class QuestInfo : IQuestInfo
     public ushort SortKey { get; set; }
     public bool IsMainScenarioQuest { get; }
     public EAlliedSociety AlliedSociety { get; }
-    public IReadOnlyList<EClassJob> ClassJobs { get; }
+    public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }
 
     private static QuestId ReplaceOldQuestIds(QuestId questId)

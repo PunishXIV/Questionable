@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +17,7 @@ using Dalamud.Plugin.Services;
 using ECommons;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using GatheringPathRenderer.Windows;
-using LLib.GameData;
+using ECommons.ExcelServices;
 using Pictomancy;
 using Questionable.Model.Gathering;
 
@@ -39,7 +39,7 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private readonly List<GatheringLocationContext> _gatheringLocations = [];
     private readonly Dictionary<uint, List<Vector3>> _gbrLocationData;
-    private EClassJob _currentClassJob = EClassJob.Adventurer;
+    private Job _currentClassJob = Job.ADV;
 
     internal List<GatheringLocationContext> GatheringLocations => _gatheringLocations;
     internal Dictionary<uint, List<Vector3>> GBRLocationData => _gbrLocationData;
@@ -78,7 +78,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         {
             unsafe
             {
-                _currentClassJob = (EClassJob?)PlayerState.Instance()->CurrentClassJobId ?? EClassJob.Adventurer;
+                _currentClassJob = (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV;
             }
         });
 
@@ -346,12 +346,12 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private void ClassJobChanged(uint classJobId)
     {
-        _currentClassJob = (EClassJob)classJobId;
+        _currentClassJob = (Job)classJobId;
     }
 
     private void Draw()
     {
-        if (!_currentClassJob.IsGatherer())
+        if (!ExcelJobHelper.IsDol(_currentClassJob))
             return;
 
         using var drawList = PctService.Draw();

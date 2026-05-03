@@ -1,6 +1,3 @@
-[submodule "LLib"]
-	path = LLib
-	url = https://github.com/qstxiv/LLib.git
 [submodule "vendor/NotificationMasterAPI"]
 	path = vendor/NotificationMasterAPI
 	url = https://github.com/NightmareXIV/NotificationMasterAPI.git

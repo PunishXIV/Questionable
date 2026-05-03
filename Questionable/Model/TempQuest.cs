@@ -135,7 +135,7 @@ public unsafe readonly struct TempQuest(ExcelPage page, uint offset, uint row) :
             5 => RowRef.Create<Item>(page.Module, page.ReadUInt32(offset + 2560 + i * 4), page.Language),
             6 => RowRef.CreateSubrow<QuestClassJobReward>(page.Module, page.ReadUInt32(offset + 2560 + i * 4), page.Language),
             7 => RowRef.Create<BeastRankBonus>(page.Module, page.ReadUInt32(offset + 2560 + i * 4), page.Language),
-            _ => RowRef.CreateUntyped(page.ReadUInt32(offset + 2560 + i * 4), page.Language)
+            var _ => RowRef.CreateUntyped(page.ReadUInt32(offset + 2560 + i * 4), page.Language)
         };
     }
     private static RowRef<Item> OptionalItemRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)

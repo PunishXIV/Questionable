@@ -1,5 +1,5 @@
-﻿using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
-using LLib.GameData;
+﻿using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using Questionable.Model.Questing;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ internal sealed class QuestProgressInfo
         Flags = questWork.Flags;
         Variables = [.. questWork.Variables.ToArray()];
         IsHidden = questWork.IsHidden;
-        ClassJob = (EClassJob)questWork.AcceptClassJob;
+        ClassJob = (Job)questWork.AcceptClassJob;
         Tooltip = "";
 
         Span<byte> qw = questWork.Variables; // 6 bytes
@@ -66,7 +66,7 @@ internal sealed class QuestProgressInfo
     public ushort Flags { get; init; }
     public List<byte> Variables { get; }
     public bool IsHidden { get; }
-    public EClassJob ClassJob { get; }
+    public Job ClassJob { get; }
     public string Tooltip { get; }
 
     public override string ToString()

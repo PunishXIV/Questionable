@@ -1,7 +1,7 @@
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using System;
 namespace Questionable.Controller.Utils;
@@ -33,43 +33,42 @@ internal sealed class PartyWatchDog : IDisposable
 
     private unsafe void TerritoryChanged(uint newTerritoryId)
     {
-        ETerritoryIntendedUse intendedUse = (ETerritoryIntendedUse)GameMain.Instance()->CurrentTerritoryIntendedUseId;
+        TerritoryIntendedUseEnum intendedUse = (TerritoryIntendedUseEnum)GameMain.Instance()->CurrentTerritoryIntendedUseId;
         switch (intendedUse)
         {
-            case ETerritoryIntendedUse.Gaol:
-            case ETerritoryIntendedUse.Frontline:
-            case ETerritoryIntendedUse.LordOfVerminion:
-            case ETerritoryIntendedUse.Diadem:
-            case ETerritoryIntendedUse.CrystallineConflict:
-            case ETerritoryIntendedUse.Battlehall:
-            case ETerritoryIntendedUse.CrystallineConflict2:
-            case ETerritoryIntendedUse.DeepDungeon:
-            case ETerritoryIntendedUse.TreasureMapDuty:
-            case ETerritoryIntendedUse.Diadem2:
-            case ETerritoryIntendedUse.RivalWings:
-            case ETerritoryIntendedUse.Eureka:
-            case ETerritoryIntendedUse.LeapOfFaith:
-            case ETerritoryIntendedUse.OceanFishing:
-            case ETerritoryIntendedUse.Diadem3:
-            case ETerritoryIntendedUse.Bozja:
-            case ETerritoryIntendedUse.Battlehall2:
-            case ETerritoryIntendedUse.Battlehall3:
-            case ETerritoryIntendedUse.LargeScaleRaid:
-            case ETerritoryIntendedUse.LargeScaleSavageRaid:
-            case ETerritoryIntendedUse.Blunderville:
+            case TerritoryIntendedUseEnum.Gaol:
+            case TerritoryIntendedUseEnum.Frontline:
+            case TerritoryIntendedUseEnum.Lord_of_Verminion:
+            case TerritoryIntendedUseEnum.Diadem:
+            case TerritoryIntendedUseEnum.Crystalline_Conflict:
+            case TerritoryIntendedUseEnum.Battlehall:
+            case TerritoryIntendedUseEnum.Crystalline_Conflict_2:
+            case TerritoryIntendedUseEnum.Deep_Dungeon:
+            case TerritoryIntendedUseEnum.Treasure_Map_Duty:
+            case TerritoryIntendedUseEnum.Diadem_2:
+            case TerritoryIntendedUseEnum.Rival_Wings:
+            case TerritoryIntendedUseEnum.Eureka:
+            case TerritoryIntendedUseEnum.Leap_of_Faith:
+            case TerritoryIntendedUseEnum.Ocean_Fishing:
+            case TerritoryIntendedUseEnum.Diadem_3:
+            case TerritoryIntendedUseEnum.Bozja:
+            case TerritoryIntendedUseEnum.Battlehall_2:
+            case TerritoryIntendedUseEnum.Battlehall_3:
+            case TerritoryIntendedUseEnum.Large_Scale_Raid:
+            case TerritoryIntendedUseEnum.Large_Scale_Savage_Raid:
+            case TerritoryIntendedUseEnum.Blunderville:
                 StopIfRunning($"Unsupported Area entered ({newTerritoryId})");
                 break;
-
-            case ETerritoryIntendedUse.Dungeon:
-            case ETerritoryIntendedUse.VariantDungeon:
-            case ETerritoryIntendedUse.AllianceRaid:
-            case ETerritoryIntendedUse.Trial:
-            case ETerritoryIntendedUse.Raid:
-            case ETerritoryIntendedUse.Raid2:
-            case ETerritoryIntendedUse.SeasonalEvent:
-            case ETerritoryIntendedUse.SeasonalEvent2:
-            case ETerritoryIntendedUse.CriterionDuty:
-            case ETerritoryIntendedUse.CriterionSavageDuty:
+            case TerritoryIntendedUseEnum.Dungeon:
+            case TerritoryIntendedUseEnum.Variant_Dungeon:
+            case TerritoryIntendedUseEnum.Alliance_Raid:
+            case TerritoryIntendedUseEnum.Trial:
+            case TerritoryIntendedUseEnum.Raid:
+            case TerritoryIntendedUseEnum.Raid_2:
+            case TerritoryIntendedUseEnum.Seasonal_Event:
+            case TerritoryIntendedUseEnum.Seasonal_Event_2:
+            case TerritoryIntendedUseEnum.Criterion_Duty:
+            case TerritoryIntendedUseEnum.Criterion_Savage_Duty:
                 _uncheckedTeritoryId = newTerritoryId;
                 _logger.LogInformation("Will check territory {TerritoryId} after loading", newTerritoryId);
                 break;

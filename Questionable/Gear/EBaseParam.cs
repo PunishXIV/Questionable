@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-namespace LLib.Gear;
+namespace Questionable.Gear;
 
 [SuppressMessage("Design", "CA1028", Justification = "Game Value")]
 public enum EBaseParam : byte

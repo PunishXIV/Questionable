@@ -1,6 +1,6 @@
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using System.Numerics;
-namespace LLib.Shop;
+namespace Questionable.Controller.GameUi.Shop;
 
 public interface IShopWindow
 {

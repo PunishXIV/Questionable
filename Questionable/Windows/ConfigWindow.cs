@@ -1,7 +1,7 @@
 ﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
-using LLib.ImGui;
+using Questionable.Windows.Common;
 using Questionable.Windows.ConfigComponents;
 namespace Questionable.Windows;
 

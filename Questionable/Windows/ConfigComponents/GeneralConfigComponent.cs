@@ -3,8 +3,8 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
-using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
@@ -19,14 +19,13 @@ namespace Questionable.Windows.ConfigComponents;
 internal sealed class GeneralConfigComponent : ConfigComponent
 {
     private static readonly List<(uint Id, string Name)> DefaultMounts = [(0, "Mount Roulette")];
-    private static readonly List<(EClassJob ClassJob, string Name)> DefaultClassJobs = [(EClassJob.Adventurer, "Auto (highest level/item level)")];
+    private static readonly List<(Job ClassJob, string Name)> DefaultClassJobs = [(Job.ADV, "Auto (highest level/item level)")];
 
-    private readonly EClassJob[] _classJobIds;
+    private readonly Job[] _classJobIds;
     private readonly string[] _classJobNames;
-    private readonly string[] _combatModuleNames = ["None", "Boss Mod (VBM)", "Wrath Combo", "Rotation Solver Reborn"];
-    private readonly EClassJob[] _craftJobIds;
+    private readonly Job[] _craftJobIds;
     private readonly string[] _craftJobNames;
-    private readonly EClassJob[] _gatherJobIds;
+    private readonly Job[] _gatherJobIds;
     private readonly string[] _gatherJobNames;
 
     private readonly string[] _grandCompanyNames =
@@ -59,9 +58,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _mountIds = DefaultMounts.Select(x => x.Id).Concat(mounts.Select(x => x.MountId)).ToArray();
         _mountNames = DefaultMounts.Select(x => x.Name).Concat(mounts.Select(x => x.Name)).ToArray();
 
-        List<EClassJob> sortedClassJobs = classJobUtils.SortedClassJobs.Select(x => x.ClassJob).ToList();
-        List<EClassJob> classJobs = Enum.GetValues<EClassJob>()
-            .Where(x => x != EClassJob.Adventurer)
+        List<Job> sortedClassJobs = classJobUtils.SortedClassJobs.Select(x => x.ClassJob).ToList();
+        List<Job> classJobs = Enum.GetValues<Job>()
+            .Where(x => x != Job.ADV)
             .Where(x => !x.IsCrafter() && !x.IsGatherer())
             .Where(x => !x.IsClass())
             .OrderBy(x => sortedClassJobs.IndexOf(x))
@@ -69,17 +68,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _classJobIds = DefaultClassJobs.Select(x => x.ClassJob).Concat(classJobs).ToArray();
         _classJobNames = DefaultClassJobs.Select(x => x.Name).Concat(classJobs.Select(x => x.ToFriendlyString())).ToArray();
 
-        List<EClassJob> craftJobs = Enum.GetValues<EClassJob>()
-            .Where(x => x != EClassJob.Adventurer)
+        List<Job> craftJobs = Enum.GetValues<Job>()
+            .Where(x => x != Job.ADV)
             .Where(x => x.IsCrafter())
             .OrderBy(x => sortedClassJobs.IndexOf(x))
             .ToList();
         _craftJobIds = craftJobs.ToArray();
         _craftJobNames = craftJobs.Select(x => x.ToFriendlyString()).ToArray();
 
-        List<EClassJob> gatherJobs = Enum.GetValues<EClassJob>()
-            .Where(x => x != EClassJob.Adventurer)
-            .Where(x => x == EClassJob.Miner || x == EClassJob.Botanist)
+        List<Job> gatherJobs = Enum.GetValues<Job>()
+            .Where(x => x != Job.ADV)
+            .Where(x => x == Job.MIN || x == Job.BTN)
             .OrderBy(x => sortedClassJobs.IndexOf(x))
             .ToList();
         _gatherJobIds = gatherJobs.ToArray();
@@ -95,14 +94,11 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         }
 
 
+        Configuration.ECombatModule combatModule = Configuration.General.CombatModule;
+        if (ImGuiEx.EnumCombo("Preferred Combat Module", ref combatModule))
         {
-            int selectedCombatModule = (int)Configuration.General.CombatModule;
-            if (ImGui.Combo("Preferred Combat Module", ref selectedCombatModule, _combatModuleNames,
-                _combatModuleNames.Length))
-            {
-                Configuration.General.CombatModule = (Configuration.ECombatModule)selectedCombatModule;
-                Save();
-            }
+            Configuration.General.CombatModule = combatModule;
+            Save();
         }
 
         int selectedMount = Array.FindIndex(_mountIds, x => x == Configuration.General.MountId);
@@ -130,7 +126,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         int combatJob = Array.IndexOf(_classJobIds, Configuration.General.CombatJob);
         if (combatJob == -1)
         {
-            Configuration.General.CombatJob = EClassJob.Adventurer;
+            Configuration.General.CombatJob = Job.ADV;
             Save();
 
             combatJob = 0;
@@ -146,7 +142,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         int craftingJob = Array.IndexOf(_craftJobIds, Configuration.General.CraftingJob);
         if (craftingJob == -1)
         {
-            Configuration.General.CraftingJob = EClassJob.Carpenter;
+            Configuration.General.CraftingJob = Job.CRP;
             Save();
 
             craftingJob = 8;
@@ -162,7 +158,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         int gatherJob = Array.IndexOf(_gatherJobIds, Configuration.General.GatheringJob);
         if (gatherJob == -1)
         {
-            Configuration.General.GatheringJob = EClassJob.Miner;
+            Configuration.General.GatheringJob = Job.MIN;
             Save();
 
             gatherJob = 16;

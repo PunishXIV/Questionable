@@ -1,14 +1,14 @@
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
+using Dalamud.Game.NativeWrapper;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
-using LLib.Shop.Model;
+using Questionable.Controller.GameUi.Shop.Model;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-namespace LLib.Shop;
+namespace Questionable.Controller.GameUi.Shop;
 
 [SuppressMessage("ReSharper", "ClassCanBeSealed.Global")]
 public class RegularShopBase
@@ -158,16 +158,20 @@ public class RegularShopBase
         }
         else if (!PurchaseState.IsComplete)
         {
-            if (PurchaseState.NextStep <= DateTime.Now &&
-                _gameGui.TryGetAddonByName(_addonName, out AtkUnitBase* addonShop))
+            if (PurchaseState.NextStep <= DateTime.Now)
             {
-                int buyNow = Math.Min(PurchaseState.ItemsLeftToBuy, maxStackSize);
-                _pluginLog.Information($"Buying {buyNow}x {ItemForSale.ItemName}");
+                AtkUnitBasePtr addonShopPtr = _gameGui.GetAddonByName(_addonName);
+                if (!addonShopPtr.IsNull)
+                {
+                    AtkUnitBase* addonShop = (AtkUnitBase*)addonShopPtr.Address;
+                    int buyNow = Math.Min(PurchaseState.ItemsLeftToBuy, maxStackSize);
+                    _pluginLog.Information($"Buying {buyNow}x {ItemForSale.ItemName}");
 
-                _parentWindow.TriggerPurchase(addonShop, buyNow);
+                    _parentWindow.TriggerPurchase(addonShop, buyNow);
 
-                PurchaseState.NextStep = DateTime.MaxValue;
-                PurchaseState.IsAwaitingYesNo = true;
+                    PurchaseState.NextStep = DateTime.MaxValue;
+                    PurchaseState.IsAwaitingYesNo = true;
+                }
             }
         }
         else

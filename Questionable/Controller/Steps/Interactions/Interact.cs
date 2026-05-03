@@ -2,11 +2,11 @@
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
@@ -278,8 +278,8 @@ internal static class Interact
 
             if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
             {
-                List<EClassJob> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
-                EClassJob playerJob = (EClassJob)player.ClassJob.Value.RowId;
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
+                Job playerJob = (Job)player.ClassJob.Value.RowId;
                 if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
                 {
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
@@ -315,7 +315,7 @@ internal static class Interact
                             for(int i = 0; i < 100; ++i)
                             {
                                 RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                                if (acceptableJobs[0].Equals((EClassJob)gearset->ClassJob))
+                                if (acceptableJobs[0].Equals((Job)gearset->ClassJob))
                                 {
                                     gearsetModule->EquipGearset(gearset->Id);
                                     changed = true;

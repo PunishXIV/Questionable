@@ -4,8 +4,8 @@ using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib.GameData;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
@@ -89,9 +89,9 @@ internal sealed class GatheringJournalComponent
                 Point = new DefaultGatheringPoint(new((ushort)x.GatheringPointBase.RowId),
                     x.GatheringPointBase.Value.GatheringType.RowId switch
                     {
-                        0 or 1 => EClassJob.Miner,
-                        2 or 3 => EClassJob.Botanist,
-                        var _ => EClassJob.Fisher
+                        0 or 1 => Job.MIN,
+                        2 or 3 => Job.BTN,
+                        var _ => Job.FSH
                     },
                     x.GatheringPointBase.Value.GatheringLevel,
                     x.GatheringPointBase.Value.Item.Where(y => y.RowId != 0).Select(y => (ushort)y.RowId).ToList(),
@@ -100,7 +100,7 @@ internal sealed class GatheringJournalComponent
                     x.TerritoryType.ValueNullable?.PlaceName.ValueNullable?.Name.ToString(),
                     $"{x.GatheringPointBase.RowId} - {x.PlaceName.ValueNullable?.Name}")
             })
-            .Where(x => x.Point.ClassJob != EClassJob.Fisher)
+            .Where(x => x.Point.ClassJob != Job.FSH)
             .Select(x =>
             {
                 if (leveGatheringPoints.Contains(x.GatheringPointId))
@@ -483,7 +483,7 @@ internal sealed class GatheringJournalComponent
     private sealed record DefaultGatheringPoint
     (
         GatheringPointId Id,
-        EClassJob ClassJob,
+        Job ClassJob,
         byte Level,
         List<ushort> GatheringItemIds,
         EExpansionVersion Expansion,

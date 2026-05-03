@@ -1,7 +1,7 @@
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
@@ -21,7 +21,7 @@ internal static class UpdateGearset
                 return null;
             }
 
-            EClassJob? classJob = null;
+            Job? classJob = null;
             if (step.TargetClass != EExtendedClassJob.None)
             {
                 classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
@@ -31,7 +31,7 @@ internal static class UpdateGearset
         }
     }
 
-    internal sealed record Task(EClassJob? TargetClass) : ITask
+    internal sealed record Task(Job? TargetClass) : ITask
     {
         public override string ToString()
         {

@@ -1,4 +1,4 @@
-﻿using LLib.GameData;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 using System.Collections.Generic;
@@ -36,5 +36,5 @@ internal sealed class SatisfactionSupplyInfo : IQuestInfo
     /// <summary>
     ///     We don't have collectables implemented for any other class.
     /// </summary>
-    public IReadOnlyList<EClassJob> ClassJobs { get; } = [EClassJob.Miner, EClassJob.Botanist];
+    public IReadOnlyList<Job> ClassJobs { get; } = [Job.MIN, Job.BTN];
 }

@@ -3,8 +3,6 @@ using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using ECommons;
-using LLib;
-using LLib.Gear;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
@@ -21,6 +19,7 @@ using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
+using Questionable.Gear;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
@@ -128,7 +127,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<ChatFunctions>();
         serviceCollection.AddSingleton<QuestFunctions>();
         serviceCollection.AddSingleton<AlliedSocietyQuestFunctions>();
-        serviceCollection.AddSingleton<DalamudReflector>();
         serviceCollection.AddSingleton<IGameGuiAdapter, LLibGameGuiAdapter>();
         serviceCollection.AddSingleton<Mount.MountEvaluator>();
 
@@ -151,7 +149,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<PandorasBoxIpc>();
         serviceCollection.AddSingleton<YesAlreadyIpc>();
         serviceCollection.AddSingleton<StylistIpc>();
-        // Intentionally retained integration boundary: gear calculations remain on LLib.Gear for now.
 
         serviceCollection.AddSingleton<GearStatsCalculator>();
     }

@@ -1,14 +1,14 @@
-﻿using Dalamud.Configuration;
+using Dalamud.Configuration;
 using Dalamud.Game.Text;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using LLib.GameData;
-using LLib.ImGui;
 using Newtonsoft.Json;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
@@ -41,9 +41,9 @@ internal sealed class Configuration : IPluginConfiguration
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
         public uint MountId { get; set; } = 71;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
-        public EClassJob CombatJob { get; set; } = EClassJob.Adventurer;
-        public EClassJob CraftingJob { get; set; } = EClassJob.Carpenter;
-        public EClassJob GatheringJob { get; set; } = EClassJob.Miner;
+        public Job CombatJob { get; set; } = Job.ADV;
+        public Job CraftingJob { get; set; } = Job.CRP;
+        public Job GatheringJob { get; set; } = Job.MIN;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public bool HideInAllInstances { get; set; } = true;
         public bool UseEscToCancelQuesting { get; set; } = true;

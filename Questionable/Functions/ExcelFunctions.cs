@@ -1,11 +1,11 @@
 ﻿using Dalamud.Plugin.Services;
 using Dalamud.Utility;
-using LLib;
 using Lumina.Excel;
 using Lumina.Excel.Exceptions;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
+using Questionable.Data;
 using Questionable.Model;
 using System;
 using System.Linq;
