@@ -40,8 +40,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 36,
-            "Enabled": false,
-            "LowPriority": true
+            "Enabled": true
           }
         }
       ]
