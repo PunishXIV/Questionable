@@ -1,6 +1,6 @@
 ﻿using Dalamud.Plugin.Services;
-using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Model;
 using Questionable.Model.Questing;
@@ -83,9 +83,11 @@ internal sealed class QuestData
         [new(3248), new(3272), new(3278), new(3628)];
 
     private readonly Dictionary<ElementId, IQuestInfo> _quests;
+    private readonly IPluginLog? _pluginLog;
 
-    public QuestData(IDataManager dataManager, ClassJobUtils classJobUtils)
+    public QuestData(IDataManager dataManager, ClassJobUtils classJobUtils, IPluginLog? pluginLog = null)
     {
+        _pluginLog = pluginLog;
         JournalGenreOverrides journalGenreOverrides = new()
         {
             ARelicRebornQuests = dataManager.GetExcelSheet<Quest>().GetRow(65742).JournalGenre.RowId,
@@ -367,7 +369,7 @@ internal sealed class QuestData
     {
         List<uint> chapterIds = classJob switch
         {
-            Job.ADV => throw new ArgumentOutOfRangeException(nameof(classJob)),
+            Job.ADV => [],
             // ARR
             Job.GLA => [63],
             Job.PLD => [72, 73, 74],
@@ -418,7 +420,7 @@ internal sealed class QuestData
             Job.MIN => [54, 55, 56],
             Job.BTN => [57, 58, 59],
             Job.FSH => [60, 61, 62],
-            var _ => throw new ArgumentOutOfRangeException(nameof(classJob))
+            var _ => LogUnsupportedClassJobAndReturnEmpty(classJob)
         };
 
         if (includeRoleQuests)
@@ -427,6 +429,12 @@ internal sealed class QuestData
         }
 
         return GetQuestsInNewGamePlusChapters(chapterIds);
+    }
+
+    private List<uint> LogUnsupportedClassJobAndReturnEmpty(Job classJob)
+    {
+        _pluginLog?.Debug("Ignoring unsupported class job in GetClassJobQuests: {ClassJob}", classJob);
+        return [];
     }
 
     public List<QuestInfo> GetRoleQuests(Job referenceClassJob)
