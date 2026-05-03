@@ -368,7 +368,6 @@ internal sealed class QuestData
         List<uint> chapterIds = classJob switch
         {
             Job.ADV => throw new ArgumentOutOfRangeException(nameof(classJob)),
-
             // ARR
             Job.GLA => [63],
             Job.PLD => [72, 73, 74],
@@ -389,29 +388,23 @@ internal sealed class QuestData
             Job.BRD => [113, 114, 115],
             Job.THM => [71],
             Job.BLM => [123, 124, 125],
-
             // HW
             Job.DRK => [80, 81, 82],
             Job.AST => [94, 95, 96],
             Job.MCH => [117, 118, 119],
-
             // SB
             Job.SAM => [110, 111],
             Job.RDM => [131, 132],
             Job.BLU => [134, 135, 146, 170],
-
             // ShB
             Job.GNB => [84],
             Job.DNC => [121],
-
             // EW
             Job.SGE => [152],
             Job.RPR => [153],
-
             // DT
             Job.VPR => [176],
             Job.PCT => [177],
-
             // Crafter
             Job.ALC => [48, 49, 50],
             Job.ARM => [36, 37, 38],
@@ -421,12 +414,10 @@ internal sealed class QuestData
             Job.GSM => [39, 40, 41],
             Job.LTW => [42, 43, 44],
             Job.WVR => [45, 46, 47],
-
             // Gatherer
             Job.MIN => [54, 55, 56],
             Job.BTN => [57, 58, 59],
             Job.FSH => [60, 61, 62],
-
             var _ => throw new ArgumentOutOfRangeException(nameof(classJob))
         };
 
