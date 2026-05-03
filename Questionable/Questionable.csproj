@@ -25,7 +25,6 @@
         <ProjectReference Include="..\GatheringPaths\GatheringPaths.csproj"/>
         <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj"/>
         <ProjectReference Include="..\QuestPaths\QuestPaths.csproj"/>
-        <ProjectReference Include="..\vendor\NotificationMasterAPI\NotificationMasterAPI\NotificationMasterAPI.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

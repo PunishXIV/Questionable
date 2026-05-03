@@ -25,8 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vendor", "vendor", "{8F5EC9D5-4CE7-433B-BB3A-782500E84DDB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationMasterAPI", "vendor\NotificationMasterAPI\NotificationMasterAPI\NotificationMasterAPI.csproj", "{9BD494ED-22F2-487B-BCE1-435399A8720E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionable.IpcTest", "Questionable.IpcTest\Questionable.IpcTest.csproj", "{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestPaths.JsonValidator", "QuestPaths.JsonValidator\QuestPaths.JsonValidator.csproj", "{2521F2BA-9647-4851-92E1-F56280D1663C}"
@@ -65,10 +63,6 @@ Global
 		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Debug|x64.Build.0 = Debug|x64
 		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Release|x64.ActiveCfg = Release|x64
 		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Release|x64.Build.0 = Release|x64
-		{9BD494ED-22F2-487B-BCE1-435399A8720E}.Debug|x64.ActiveCfg = Debug|x64
-		{9BD494ED-22F2-487B-BCE1-435399A8720E}.Debug|x64.Build.0 = Debug|x64
-		{9BD494ED-22F2-487B-BCE1-435399A8720E}.Release|x64.ActiveCfg = Release|x64
-		{9BD494ED-22F2-487B-BCE1-435399A8720E}.Release|x64.Build.0 = Release|x64
 		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Debug|x64.ActiveCfg = Debug|x64
 		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Debug|x64.Build.0 = Debug|x64
 		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Release|x64.ActiveCfg = Release|x64
@@ -82,7 +76,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9BD494ED-22F2-487B-BCE1-435399A8720E} = {8F5EC9D5-4CE7-433B-BB3A-782500E84DDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6C60C7E-BEEA-422F-85B3-639BAD5A4B75}

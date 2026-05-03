@@ -120,14 +120,6 @@ internal sealed class PluginConfigComponent
                     """,
                     () => pandorasBoxIpc.IsAutoActiveTimeManeuverEnabled)
             ]),
-        new("NotificationMaster",
-            "NotificationMaster",
-            """
-            Sends a configurable out-of-game notification if a quest
-            requires manual actions.
-            """,
-            new("https://github.com/NightmareXIV/NotificationMaster"),
-            null),
         new("Artisan",
             "Artisan",
             """
