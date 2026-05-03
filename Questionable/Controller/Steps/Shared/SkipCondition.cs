@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -14,7 +11,9 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SkipCondition
@@ -23,9 +22,11 @@ internal static class SkipCondition
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            var skipConditions = step.SkipConditions?.StepIf;
+            SkipStepConditions? skipConditions = step.SkipConditions?.StepIf;
             if (skipConditions is { Never: true })
+            {
                 return null;
+            }
 
             if ((skipConditions == null || !skipConditions.HasSkipConditions()) &&
                 !QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&
@@ -36,21 +37,28 @@ internal static class SkipCondition
                 step.RequiredCurrentJob.Count == 0 &&
                 step.RequiredQuestAcceptedJob.Count == 0 &&
                 !(step.InteractionType == EInteractionType.AttuneAetherCurrent && configuration.Advanced.SkipAetherCurrents))
+            {
                 return null;
+            }
 
             return new SkipTask(step, skipConditions ?? new(), quest.Id);
         }
     }
 
-    internal sealed record SkipTask(
+    internal sealed record SkipTask
+    (
         QuestStep Step,
         SkipStepConditions SkipConditions,
         ElementId ElementId) : ITask
     {
-        public override string ToString() => "CheckSkip";
+        public override string ToString()
+        {
+            return "CheckSkip";
+        }
     }
 
-    internal sealed class CheckSkip(
+    internal sealed class CheckSkip
+    (
         ILogger<CheckSkip> logger,
         Configuration configuration,
         AetheryteFunctions aetheryteFunctions,
@@ -65,50 +73,76 @@ internal static class SkipCondition
     {
         protected override bool Start()
         {
-            var skipConditions = Task.SkipConditions;
-            var step = Task.Step;
-            var elementId = Task.ElementId;
+            SkipStepConditions skipConditions = Task.SkipConditions;
+            QuestStep step = Task.Step;
+            ElementId elementId = Task.ElementId;
 
             logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
 
             if (CheckFlyingCondition(step, skipConditions))
+            {
                 return true;
+            }
 
             if (CheckUnlockedMountCondition(skipConditions))
+            {
                 return true;
+            }
 
             if (CheckDivingCondition(skipConditions))
+            {
                 return true;
+            }
 
             if (CheckTerritoryCondition(skipConditions))
+            {
                 return true;
+            }
 
             if (CheckQuestConditions(skipConditions))
+            {
                 return true;
+            }
 
             if (CheckTargetableCondition(step, skipConditions))
+            {
                 return true;
+            }
 
             if (CheckNameplateCondition(step, skipConditions))
+            {
                 return true;
+            }
 
             if (CheckItemCondition(step, skipConditions))
+            {
                 return true;
+            }
 
             if (CheckAetheryteCondition(step, skipConditions))
+            {
                 return true;
+            }
 
             if (CheckAetherCurrentCondition(step))
+            {
                 return true;
+            }
 
             if (CheckQuestWorkConditions(elementId, step))
+            {
                 return true;
+            }
 
             if (CheckJobCondition(elementId, step))
+            {
                 return true;
+            }
 
             if (CheckPositionCondition(skipConditions))
+            {
                 return true;
+            }
 
             if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
                 extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
@@ -118,10 +152,14 @@ internal static class SkipCondition
             }
 
             if (CheckPickUpTurnInQuestIds(step))
+            {
                 return true;
+            }
 
             if (CheckTaxiStandUnlocked(step))
+            {
                 return true;
+            }
 
             return false;
         }
@@ -266,8 +304,8 @@ internal static class SkipCondition
             }
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false)
-                          + inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+            int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
+                            + inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
 
             if (itemCount == 0 && skipConditions.Item is { NotInInventory: true })
             {
@@ -481,7 +519,9 @@ internal static class SkipCondition
             {
                 uint? taxiStandId = step.TaxiStandId;
                 if ((int)taxiStandId < 0)
+                {
                     taxiStandId += 0x120000u;
+                }
                 if (uiState->IsChocoboTaxiStandUnlocked(taxiStandId.Value))
                 {
                     logger.LogInformation("Skipping step, as taxi stand {TaxiStandId} is unlocked", taxiStandId);
@@ -492,8 +532,14 @@ internal static class SkipCondition
             return false;
         }
 
-        public override ETaskResult Update() => ETaskResult.SkipRemainingTasksForStep;
+        public override ETaskResult Update()
+        {
+            return ETaskResult.SkipRemainingTasksForStep;
+        }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

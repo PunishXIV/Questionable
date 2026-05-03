@@ -1,27 +1,27 @@
 {
   "Name": "Questionable - Normal Movement",
-    "Modules": {
-        "BossMod.Autorotation.MiscAI.AutoTarget": [
-            {
-                "Track": "QuestBattle",
-                "Option": "Enabled"
-            },
-            {
-                "Track": "Retarget",
-                "Option": "Always"
-            }
-        ],
-        "BossMod.Autorotation.MiscAI.NormalMovement": [
-            {
-                "Track": "Destination",
-                "Option": "Pathfind"
-            }
-        ],
-        "BossMod.Autorotation.xan.HealerAI": [
-            {
-                "Track": "Esuna2",
-                "Option": "HintOnly"
-            }
-        ]
-    }
+  "Modules": {
+    "BossMod.Autorotation.MiscAI.AutoTarget": [
+      {
+        "Track": "QuestBattle",
+        "Option": "Enabled"
+      },
+      {
+        "Track": "Retarget",
+        "Option": "Always"
+      }
+    ],
+    "BossMod.Autorotation.MiscAI.NormalMovement": [
+      {
+        "Track": "Destination",
+        "Option": "Pathfind"
+      }
+    ],
+    "BossMod.Autorotation.xan.HealerAI": [
+      {
+        "Track": "Esuna2",
+        "Option": "HintOnly"
+      }
+    ]
+  }
 }

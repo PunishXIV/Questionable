@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Collections.Immutable;
-using LLib.GameData;
+﻿using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using QQuestId = Questionable.Model.Questing.QuestId;
 
 namespace Questionable.Model;
@@ -17,7 +17,7 @@ internal sealed class SatisfactionSupplyInfo : IQuestInfo
         Level = npc.LevelUnlock;
         SortKey = QuestId.Value;
         Expansion = (EExpansionVersion)npc.QuestRequired.Value.Expansion.RowId;
-        PreviousQuests = [new PreviousQuestInfo(QQuestId.FromRowId(npc.QuestRequired.RowId))];
+        PreviousQuests = [new(QQuestId.FromRowId(npc.QuestRequired.RowId))];
     }
 
     public ElementId QuestId { get; }
@@ -34,7 +34,7 @@ internal sealed class SatisfactionSupplyInfo : IQuestInfo
     public EExpansionVersion Expansion { get; }
 
     /// <summary>
-    /// We don't have collectables implemented for any other class.
+    ///     We don't have collectables implemented for any other class.
     /// </summary>
     public IReadOnlyList<EClassJob> ClassJobs { get; } = [EClassJob.Miner, EClassJob.Botanist];
 }

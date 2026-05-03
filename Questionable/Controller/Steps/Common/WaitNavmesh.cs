@@ -4,24 +4,38 @@ internal sealed class WaitNavmesh
 {
     internal sealed record Task : ITask
     {
-        public override string ToString() => "Wait(navmesh)";
+        public override string ToString()
+        {
+            return "Wait(navmesh)";
+        }
     }
 
     internal sealed class Executor(MovementController movementController) : TaskExecutor<Task>, IDebugStateProvider
     {
-        protected override bool Start() => true;
+        public override ETaskResult Update()
+        {
+            return movementController.IsNavmeshReady ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        }
 
-        public override ETaskResult Update() =>
-            movementController.IsNavmeshReady ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
-
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
 
         public string? GetDebugState()
         {
             if (!movementController.IsNavmeshReady)
+            {
                 return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
+            }
             else
+            {
                 return null;
+            }
+        }
+        protected override bool Start()
+        {
+            return true;
         }
     }
 }

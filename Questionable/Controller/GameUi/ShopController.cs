@@ -1,47 +1,42 @@
-﻿using System;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
 using LLib.Shop;
 using LLib.Shop.Model;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
-
+using Questionable.Utils;
+using System;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class ShopController : IDisposable, IShopWindow
 {
-    private readonly QuestController _questController;
-    private readonly IGameGui _gameGui;
     private readonly IFramework _framework;
-    private readonly RegularShopBase _shop;
+    private readonly IGameGuiAdapter _gameGuiAdapter;
     private readonly ILogger<ShopController> _logger;
+    private readonly QuestController _questController;
+    // Intentionally retained integration boundary: shop automation still relies on LLib.Shop internals.
+    private readonly RegularShopBase _shop;
 
-    public ShopController(QuestController questController, IGameGui gameGui, IAddonLifecycle addonLifecycle,
+    public ShopController(QuestController questController, IGameGui gameGui, IGameGuiAdapter gameGuiAdapter, IAddonLifecycle addonLifecycle,
         IFramework framework, ILogger<ShopController> logger, IPluginLog pluginLog)
     {
         _questController = questController;
-        _gameGui = gameGui;
+        _gameGuiAdapter = gameGuiAdapter;
         _framework = framework;
-        _shop = new RegularShopBase(this, "Shop", pluginLog, gameGui, addonLifecycle);
+        _shop = new(this, "Shop", pluginLog, gameGui, addonLifecycle);
         _logger = logger;
 
         _framework.Update += FrameworkUpdate;
     }
-
-    public bool IsEnabled => _questController.IsRunning;
-    public bool IsOpen { get; set; }
     public bool IsAutoBuyEnabled => _shop.AutoBuyEnabled;
 
     public bool IsAwaitingYesNo
     {
-        get { return _shop.IsAwaitingYesNo; }
-        set { _shop.IsAwaitingYesNo = value; }
+        get => _shop.IsAwaitingYesNo;
+        set => _shop.IsAwaitingYesNo = value;
     }
-
-    public Vector2? Position { get; set; } // actual implementation doesn't matter, not a real window
 
     public void Dispose()
     {
@@ -49,47 +44,20 @@ internal sealed class ShopController : IDisposable, IShopWindow
         _shop.Dispose();
     }
 
-    private void FrameworkUpdate(IFramework framework)
+    public bool IsEnabled => _questController.IsRunning;
+    public bool IsOpen { get; set; }
+
+    public Vector2? Position { get; set; } // actual implementation doesn't matter, not a real window
+
+    public int GetCurrencyCount()
     {
-        if (IsOpen && _shop.ItemForSale != null)
-        {
-            if (_shop.PurchaseState != null)
-            {
-                _shop.HandleNextPurchaseStep();
-            }
-            else
-            {
-                var currentStep = FindCurrentStep();
-                if (currentStep == null || currentStep.InteractionType != EInteractionType.PurchaseItem)
-                    return;
-
-                int missingItems = Math.Max(0,
-                    currentStep.ItemCount.GetValueOrDefault() - (int)_shop.ItemForSale.OwnedItems);
-                int toPurchase = Math.Min(_shop.GetMaxItemsToPurchase(), missingItems);
-                if (toPurchase > 0)
-                {
-                    _logger.LogDebug("Auto-buying {MissingItems} {ItemName}", missingItems, _shop.ItemForSale.ItemName);
-                    _shop.StartAutoPurchase(missingItems);
-                    _shop.HandleNextPurchaseStep();
-                }
-                else
-                    _shop.CancelAutoPurchase();
-            }
-        }
-    }
-
-    public int GetCurrencyCount() => _shop.GetItemCount(1); // TODO: support other currencies
-
-    private QuestStep? FindCurrentStep()
-    {
-        var currentQuest = _questController.CurrentQuest;
-        QuestSequence? currentSequence = currentQuest?.Quest.FindSequence(currentQuest.Sequence);
-        return currentSequence?.FindStep(currentQuest?.Step ?? 0);
+        return _shop.GetItemCount(1);
+        // TODO: support other currencies
     }
 
     public unsafe void UpdateShopStock(AtkUnitBase* addon)
     {
-        var currentStep = FindCurrentStep();
+        QuestStep? currentStep = FindCurrentStep();
         if (currentStep == null || currentStep.InteractionType != EInteractionType.PurchaseItem)
         {
             _shop.ItemForSale = null;
@@ -103,7 +71,7 @@ internal sealed class ShopController : IDisposable, IShopWindow
             return;
         }
 
-        var atkValues = addon->AtkValues;
+        AtkValue* atkValues = addon->AtkValues;
 
         // Check if on 'Current Stock' tab?
         if (atkValues[0].UInt != 0)
@@ -123,17 +91,17 @@ internal sealed class ShopController : IDisposable, IShopWindow
             .Select(i => new ItemForSale
             {
                 Position = i,
-                ItemName = atkValues[14 + i].ReadAtkString(),
+                ItemName = AtkValueAdapter.ReadString(atkValues[14 + i]),
                 Price = atkValues[75 + i].UInt,
                 OwnedItems = atkValues[136 + i].UInt,
-                ItemId = atkValues[441 + i].UInt,
+                ItemId = atkValues[441 + i].UInt
             })
             .FirstOrDefault(x => x.ItemId == currentStep.ItemId);
     }
 
     public unsafe void TriggerPurchase(AtkUnitBase* addonShop, int buyNow)
     {
-        var buyItem = stackalloc AtkValue[]
+        AtkValue* buyItem = stackalloc AtkValue[]
         {
             new() { Type = AtkValueType.Int, Int = 0 },
             new() { Type = AtkValueType.Int, Int = _shop.ItemForSale!.Position },
@@ -149,7 +117,49 @@ internal sealed class ShopController : IDisposable, IShopWindow
 
     public unsafe void RestoreExternalPluginState()
     {
-        if (_gameGui.TryGetAddonByName("Shop", out AtkUnitBase* addonShop))
+        if (_gameGuiAdapter.TryGetAddonByName("Shop", out AtkUnitBase* addonShop))
+        {
             addonShop->FireCallbackInt(-1);
+        }
+    }
+
+    private void FrameworkUpdate(IFramework framework)
+    {
+        if (IsOpen && _shop.ItemForSale != null)
+        {
+            if (_shop.PurchaseState != null)
+            {
+                _shop.HandleNextPurchaseStep();
+            }
+            else
+            {
+                QuestStep? currentStep = FindCurrentStep();
+                if (currentStep == null || currentStep.InteractionType != EInteractionType.PurchaseItem)
+                {
+                    return;
+                }
+
+                int missingItems = Math.Max(0,
+                    currentStep.ItemCount.GetValueOrDefault() - (int)_shop.ItemForSale.OwnedItems);
+                int toPurchase = Math.Min(_shop.GetMaxItemsToPurchase(), missingItems);
+                if (toPurchase > 0)
+                {
+                    _logger.LogDebug("Auto-buying {MissingItems} {ItemName}", missingItems, _shop.ItemForSale.ItemName);
+                    _shop.StartAutoPurchase(missingItems);
+                    _shop.HandleNextPurchaseStep();
+                }
+                else
+                {
+                    _shop.CancelAutoPurchase();
+                }
+            }
+        }
+    }
+
+    private QuestStep? FindCurrentStep()
+    {
+        QuestController.QuestProgress? currentQuest = _questController.CurrentQuest;
+        QuestSequence? currentSequence = currentQuest?.Quest.FindSequence(currentQuest.Sequence);
+        return currentSequence?.FindStep(currentQuest?.Step ?? 0);
     }
 }

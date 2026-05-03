@@ -1,7 +1,4 @@
-﻿using System;
-using Dalamud.Extensions.MicrosoftLogging;
-using Dalamud.Game;
-using Dalamud.Game.ClientState.Objects;
+﻿using Dalamud.Extensions.MicrosoftLogging;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -24,6 +21,7 @@ using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
+using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
 using Questionable.Windows;
@@ -31,6 +29,7 @@ using Questionable.Windows.ConfigComponents;
 using Questionable.Windows.JournalComponents;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
+using System;
 using WrathCombo.API;
 using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 using Action = Questionable.Controller.Steps.Interactions.Action;
@@ -107,11 +106,17 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             _serviceProvider = serviceCollection.BuildServiceProvider();
             Initialize(_serviceProvider);
         }
-        catch (Exception)
+        catch(Exception)
         {
             chatGui.PrintError("Unable to load plugin, check /xllog for details", "Questionable");
             throw;
         }
+    }
+
+    public void Dispose()
+    {
+        _serviceProvider?.Dispose();
+        ECommonsMain.Dispose();
     }
 
     private static void AddBasicFunctionsAndData(ServiceCollection serviceCollection)
@@ -124,6 +129,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<QuestFunctions>();
         serviceCollection.AddSingleton<AlliedSocietyQuestFunctions>();
         serviceCollection.AddSingleton<DalamudReflector>();
+        serviceCollection.AddSingleton<IGameGuiAdapter, LLibGameGuiAdapter>();
         serviceCollection.AddSingleton<Mount.MountEvaluator>();
 
         serviceCollection.AddSingleton<AetherCurrentData>();
@@ -145,6 +151,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<PandorasBoxIpc>();
         serviceCollection.AddSingleton<YesAlreadyIpc>();
         serviceCollection.AddSingleton<StylistIpc>();
+        // Intentionally retained integration boundary: gear calculations remain on LLib.Gear for now.
 
         serviceCollection.AddSingleton<GearStatsCalculator>();
     }
@@ -366,11 +373,5 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceProvider.GetRequiredService<DalamudInitializer>();
         serviceProvider.GetRequiredService<TextAdvanceIpc>();
         serviceProvider.GetRequiredService<YesAlreadyIpc>();
-    }
-
-    public void Dispose()
-    {
-        _serviceProvider?.Dispose();
-        ECommonsMain.Dispose();
     }
 }

@@ -1,24 +1,26 @@
-﻿using System;
-using Dalamud.Game.ClientState.Objects.Types;
+﻿using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
 using Questionable.External;
-
+using System;
 namespace Questionable.Controller.CombatModules;
 
-internal sealed class BossModModule(
+internal sealed class BossModModule
+(
     ILogger<BossModModule> logger,
     BossModIpc bossModIpc,
     Configuration configuration) : ICombatModule, IDisposable
 {
-    private readonly ILogger<BossModModule> _logger = logger;
     private readonly BossModIpc _bossModIpc = bossModIpc;
     private readonly Configuration _configuration = configuration;
+    private readonly ILogger<BossModModule> _logger = logger;
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (_configuration.General.CombatModule != Configuration.ECombatModule.BossMod)
+        {
             return false;
+        }
 
         return _bossModIpc.IsSupported();
     }
@@ -30,7 +32,7 @@ internal sealed class BossModModule(
             _bossModIpc.SetPreset(BossModIpc.EPreset.Overworld);
             return true;
         }
-        catch (IpcError e)
+        catch(IpcError e)
         {
             _logger.LogWarning(e, "Could not start combat");
             return false;
@@ -44,7 +46,7 @@ internal sealed class BossModModule(
             _bossModIpc.ClearPreset();
             return true;
         }
-        catch (IpcError e)
+        catch(IpcError e)
         {
             _logger.LogWarning(e, "Could not turn off combat");
             return false;
@@ -55,7 +57,13 @@ internal sealed class BossModModule(
     {
     }
 
-    public bool CanAttack(IBattleNpc target) => true;
+    public bool CanAttack(IBattleNpc target)
+    {
+        return true;
+    }
 
-    public void Dispose() => Stop();
+    public void Dispose()
+    {
+        Stop();
+    }
 }

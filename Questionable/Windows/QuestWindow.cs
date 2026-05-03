@@ -1,6 +1,4 @@
-﻿using System;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
@@ -11,29 +9,29 @@ using Questionable.Controller;
 using Questionable.Controller.GameUi;
 using Questionable.Data;
 using Questionable.Windows.QuestComponents;
-
+using System;
 namespace Questionable.Windows;
 
 internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 {
     private static readonly Version PluginVersion = typeof(QuestionablePlugin).Assembly.GetName().Version!;
-
-    private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly QuestController _questController;
-    private readonly IClientState _clientState;
-    private readonly IObjectTable _objectTable;
-    private readonly Configuration _configuration;
-    private readonly TerritoryData _territoryData;
     private readonly ActiveQuestComponent _activeQuestComponent;
     private readonly ARealmRebornComponent _aRealmRebornComponent;
+    private readonly IClientState _clientState;
+    private readonly Configuration _configuration;
     private readonly CreationUtilsComponent _creationUtilsComponent;
     private readonly EventInfoComponent _eventInfoComponent;
-    private readonly QuickAccessButtonsComponent _quickAccessButtonsComponent;
-    private readonly RemainingTasksComponent _remainingTasksComponent;
-    private readonly ReportWarningComponent _reportWarningComponent;
     private readonly IFramework _framework;
     private readonly InteractionUiController _interactionUiController;
     private readonly TitleBarButton _minimizeButton;
+    private readonly IObjectTable _objectTable;
+
+    private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QuestController _questController;
+    private readonly QuickAccessButtonsComponent _quickAccessButtonsComponent;
+    private readonly RemainingTasksComponent _remainingTasksComponent;
+    private readonly ReportWarningComponent _reportWarningComponent;
+    private readonly TerritoryData _territoryData;
 
     public QuestWindow(IDalamudPluginInterface pluginInterface,
         QuestController questController,
@@ -72,30 +70,30 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(240, 30),
+            MinimumSize = new(240, 30),
             MaximumSize = default
         };
         RespectCloseHotkey = false;
         AllowClickthrough = false;
 
-        _minimizeButton = new TitleBarButton
+        _minimizeButton = new()
         {
             Icon = FontAwesomeIcon.Minus,
             Priority = int.MinValue,
-            IconOffset = new Vector2(1.5f, 1),
+            IconOffset = new(1.5f, 1),
             Click = _ =>
             {
                 IsMinimized = !IsMinimized;
                 _minimizeButton!.Icon = IsMinimized ? FontAwesomeIcon.WindowMaximize : FontAwesomeIcon.Minus;
             },
-            AvailableClickthrough = true,
+            AvailableClickthrough = true
         };
         TitleBarButtons.Insert(0, _minimizeButton);
 
-        TitleBarButtons.Add(new TitleBarButton
+        TitleBarButtons.Add(new()
         {
             Icon = FontAwesomeIcon.Cog,
-            IconOffset = new Vector2(1.5f, 1),
+            IconOffset = new(1.5f, 1),
             Click = _ => configWindow.IsOpenAndUncollapsed = true,
             Priority = int.MinValue,
             ShowTooltip = () =>
@@ -110,11 +108,14 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _quickAccessButtonsComponent.Reload += OnReload;
         _questController.IsQuestWindowOpenFunction = () => IsOpen;
     }
-
-    public WindowConfig WindowConfig => _configuration.DebugWindowConfig;
     public bool IsMinimized { get; set; }
 
-    public void SaveWindowConfig() => _pluginInterface.SavePluginConfig(_configuration);
+    public WindowConfig WindowConfig => _configuration.DebugWindowConfig;
+
+    public void SaveWindowConfig()
+    {
+        _pluginInterface.SavePluginConfig(_configuration);
+    }
 
     public override void PreOpenCheck()
     {
@@ -134,13 +135,19 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     public override bool DrawConditions()
     {
         if (!_configuration.IsPluginSetupComplete())
+        {
             return false;
+        }
 
         if (!_clientState.IsLoggedIn || _objectTable[0] == null || _clientState.IsPvPExcludingDen)
+        {
             return false;
+        }
 
         if (_configuration.General.HideInAllInstances && _territoryData.IsDutyInstance(_clientState.TerritoryType))
+        {
             return false;
+        }
 
         return true;
     }
@@ -149,13 +156,13 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     {
         try
         {
-            #if REPORTING
+#if REPORTING
             if (!_configuration.General.DismissedReportWarning)
             {
                 _reportWarningComponent.Draw();
                 ImGui.Separator();
             }
-            #endif
+#endif
             string notice = "";
             if (notice.Length != 0)
             {
@@ -192,13 +199,16 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 _remainingTasksComponent.Draw();
             }
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             ImGui.TextColored(ImGuiColors.DalamudRed, e.ToString());
         }
     }
 
-    private void OnReload(object? sender, EventArgs e) => Reload();
+    private void OnReload(object? sender, EventArgs e)
+    {
+        Reload();
+    }
 
     internal void Reload()
     {

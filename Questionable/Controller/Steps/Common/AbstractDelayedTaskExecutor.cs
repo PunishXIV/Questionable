@@ -1,9 +1,8 @@
 ﻿using System;
-
 namespace Questionable.Controller.Steps.Common;
 
 internal abstract class AbstractDelayedTaskExecutor<T>(TimeSpan delay) : TaskExecutor<T>
-    where T : class, ITask
+where T : class, ITask
 {
     private DateTime _continueAt;
 
@@ -26,10 +25,15 @@ internal abstract class AbstractDelayedTaskExecutor<T>(TimeSpan delay) : TaskExe
     public override ETaskResult Update()
     {
         if (_continueAt >= DateTime.Now)
+        {
             return ETaskResult.StillRunning;
+        }
 
         return UpdateInternal();
     }
 
-    protected virtual ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
+    protected virtual ETaskResult UpdateInternal()
+    {
+        return ETaskResult.TaskComplete;
+    }
 }

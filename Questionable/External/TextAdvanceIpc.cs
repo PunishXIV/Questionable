@@ -1,22 +1,21 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Dalamud.Plugin;
+﻿using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
-
+using System;
+using System.Diagnostics.CodeAnalysis;
 namespace Questionable.External;
 
 internal sealed class TextAdvanceIpc : IDisposable
 {
-    private bool _isExternalControlActivated;
-    private readonly QuestController _questController;
     private readonly Configuration _configuration;
+    private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
+    private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
     private readonly IFramework _framework;
     private readonly ICallGateSubscriber<bool> _isInExternalControl;
-    private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
-    private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
     private readonly string _pluginName;
+    private readonly QuestController _questController;
+    private bool _isExternalControlActivated;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
         QuestController questController, Configuration configuration)
@@ -51,7 +50,7 @@ internal sealed class TextAdvanceIpc : IDisposable
             if (!_isInExternalControl.InvokeFunc())
             {
                 if (_enableExternalControl.InvokeFunc(
-                      _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
+                    _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
                 {
                     _isExternalControlActivated = true;
                 }
@@ -71,7 +70,7 @@ internal sealed class TextAdvanceIpc : IDisposable
 
     private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes)
     {
-        return new ExternalTerritoryConfig
+        return new()
         {
             EnableQuestAccept = true,
             EnableQuestComplete = true,

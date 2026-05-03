@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
@@ -17,16 +16,20 @@ internal static class RedeemRewardItems
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AcceptQuest)
+            {
                 return [];
+            }
 
             List<ITask> tasks = [];
             unsafe
             {
                 InventoryManager* inventoryManager = InventoryManager.Instance();
                 if (inventoryManager == null)
+                {
                     return tasks;
+                }
 
-                foreach (var itemReward in questData.RedeemableItems)
+                foreach(ItemReward itemReward in questData.RedeemableItems)
                 {
                     if (inventoryManager->GetInventoryItemCount(itemReward.ItemId) > 0 &&
                         !itemReward.IsUnlocked())
@@ -42,10 +45,14 @@ internal static class RedeemRewardItems
 
     internal sealed record Task(ItemReward ItemReward) : ITask
     {
-        public override string ToString() => $"TryRedeem({ItemReward.Name})";
+        public override string ToString()
+        {
+            return $"TryRedeem({ItemReward.Name})";
+        }
     }
 
-    internal sealed class Executor(
+    internal sealed class Executor
+    (
         GameFunctions gameFunctions,
         ICondition condition) : TaskExecutor<Task>
     {
@@ -55,11 +62,15 @@ internal static class RedeemRewardItems
         protected override bool Start()
         {
             if (condition[ConditionFlag.Mounted])
+            {
                 return false;
+            }
 
             TimeSpan castTime = Task.ItemReward.CastTime;
             if (castTime < MinimumCastTime)
+            {
                 castTime = MinimumCastTime;
+            }
 
             _continueAt = DateTime.Now
                 .Add(castTime)
@@ -70,11 +81,16 @@ internal static class RedeemRewardItems
         public override ETaskResult Update()
         {
             if (condition[ConditionFlag.Casting])
+            {
                 return ETaskResult.StillRunning;
+            }
 
             return DateTime.Now <= _continueAt ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

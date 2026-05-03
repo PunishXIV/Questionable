@@ -1,10 +1,9 @@
-﻿using System;
-using Dalamud.Game.Addon.Lifecycle;
+﻿using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Microsoft.Extensions.Logging;
-
+using System;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class CreditsController : IDisposable
@@ -22,9 +21,16 @@ internal sealed class CreditsController : IDisposable
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "CreditPlayer", CreditPlayerPostSetup);
     }
 
+    public void Dispose()
+    {
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CreditPlayer", CreditPlayerPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Credit", CreditPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CreditScroll", CreditScrollPostSetup);
+    }
+
 
     /// <summary>
-    /// ARR Credits.
+    ///     ARR Credits.
     /// </summary>
     private unsafe void CreditScrollPostSetup(AddonEvent type, AddonArgs args)
     {
@@ -34,7 +40,7 @@ internal sealed class CreditsController : IDisposable
     }
 
     /// <summary>
-    /// Credits for (possibly all?) expansions, not used for ARR.
+    ///     Credits for (possibly all?) expansions, not used for ARR.
     /// </summary>
     private unsafe void CreditPostSetup(AddonEvent type, AddonArgs args)
     {
@@ -48,12 +54,5 @@ internal sealed class CreditsController : IDisposable
         _logger.LogInformation("Closing CreditPlayer");
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
         addon->Close(true);
-    }
-
-    public void Dispose()
-    {
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CreditPlayer", CreditPlayerPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Credit", CreditPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CreditScroll", CreditScrollPostSetup);
     }
 }

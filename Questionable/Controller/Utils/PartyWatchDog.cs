@@ -1,18 +1,17 @@
-using System;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using LLib.GameData;
 using Microsoft.Extensions.Logging;
-
+using System;
 namespace Questionable.Controller.Utils;
 
 internal sealed class PartyWatchDog : IDisposable
 {
-    private readonly QuestController _questController;
-    private readonly IClientState _clientState;
     private readonly IChatGui _chatGui;
+    private readonly IClientState _clientState;
     private readonly ILogger<PartyWatchDog> _logger;
+    private readonly QuestController _questController;
 
     private uint? _uncheckedTeritoryId;
 
@@ -27,9 +26,14 @@ internal sealed class PartyWatchDog : IDisposable
         _clientState.TerritoryChanged += TerritoryChanged;
     }
 
+    public void Dispose()
+    {
+        _clientState.TerritoryChanged -= TerritoryChanged;
+    }
+
     private unsafe void TerritoryChanged(uint newTerritoryId)
     {
-        var intendedUse = (ETerritoryIntendedUse)GameMain.Instance()->CurrentTerritoryIntendedUseId;
+        ETerritoryIntendedUse intendedUse = (ETerritoryIntendedUse)GameMain.Instance()->CurrentTerritoryIntendedUseId;
         switch (intendedUse)
         {
             case ETerritoryIntendedUse.Gaol:
@@ -76,16 +80,20 @@ internal sealed class PartyWatchDog : IDisposable
     {
         if (_uncheckedTeritoryId == _clientState.TerritoryType && GameMain.Instance()->TerritoryLoadState == 2)
         {
-            var groupManager = GroupManager.Instance();
+            GroupManager* groupManager = GroupManager.Instance();
             if (groupManager == null)
+            {
                 return;
+            }
 
             byte memberCount = groupManager->MainGroup.MemberCount;
             bool isInAlliance = groupManager->MainGroup.IsAlliance;
             _logger.LogDebug("Territory {TerritoryId} with {MemberCount} members, alliance: {IsInAlliance}",
                 _uncheckedTeritoryId, memberCount, isInAlliance);
             if (memberCount > 1 || isInAlliance)
+            {
                 StopIfRunning("Other party members present");
+            }
 
             _uncheckedTeritoryId = null;
         }
@@ -100,10 +108,5 @@ internal sealed class PartyWatchDog : IDisposable
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop(reason);
         }
-    }
-
-    public void Dispose()
-    {
-        _clientState.TerritoryChanged -= TerritoryChanged;
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
@@ -11,6 +8,10 @@ using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 
 namespace Questionable.Windows.ConfigComponents;
@@ -20,22 +21,22 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private static readonly List<(uint Id, string Name)> DefaultMounts = [(0, "Mount Roulette")];
     private static readonly List<(EClassJob ClassJob, string Name)> DefaultClassJobs = [(EClassJob.Adventurer, "Auto (highest level/item level)")];
 
-    private readonly QuestRegistry _questRegistry;
-    private readonly TerritoryData _territoryData;
-
-    private readonly uint[] _mountIds;
-    private readonly string[] _mountNames;
-    private readonly string[] _combatModuleNames = ["None", "Boss Mod (VBM)", "Wrath Combo", "Rotation Solver Reborn"];
-
-    private readonly string[] _grandCompanyNames =
-        ["None (manually pick quest)", "Maelstrom", "Twin Adder", "Immortal Flames"];
-
     private readonly EClassJob[] _classJobIds;
     private readonly string[] _classJobNames;
+    private readonly string[] _combatModuleNames = ["None", "Boss Mod (VBM)", "Wrath Combo", "Rotation Solver Reborn"];
     private readonly EClassJob[] _craftJobIds;
     private readonly string[] _craftJobNames;
     private readonly EClassJob[] _gatherJobIds;
     private readonly string[] _gatherJobNames;
+
+    private readonly string[] _grandCompanyNames =
+        ["None (manually pick quest)", "Maelstrom", "Twin Adder", "Immortal Flames"];
+
+    private readonly uint[] _mountIds;
+    private readonly string[] _mountNames;
+
+    private readonly QuestRegistry _questRegistry;
+    private readonly TerritoryData _territoryData;
 
     public GeneralConfigComponent(
         IDalamudPluginInterface pluginInterface,
@@ -49,7 +50,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _questRegistry = questRegistry;
         _territoryData = territoryData;
 
-        var mounts = dataManager.GetExcelSheet<Mount>()
+        List<(uint MountId, string Name)> mounts = dataManager.GetExcelSheet<Mount>()
             .Where(x => x is { RowId: > 0, Icon: > 0 })
             .Select(x => (MountId: x.RowId, Name: x.Singular.ToString()))
             .Where(x => !string.IsNullOrEmpty(x.Name))
@@ -58,8 +59,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _mountIds = DefaultMounts.Select(x => x.Id).Concat(mounts.Select(x => x.MountId)).ToArray();
         _mountNames = DefaultMounts.Select(x => x.Name).Concat(mounts.Select(x => x.Name)).ToArray();
 
-        var sortedClassJobs = classJobUtils.SortedClassJobs.Select(x => x.ClassJob).ToList();
-        var classJobs = Enum.GetValues<EClassJob>()
+        List<EClassJob> sortedClassJobs = classJobUtils.SortedClassJobs.Select(x => x.ClassJob).ToList();
+        List<EClassJob> classJobs = Enum.GetValues<EClassJob>()
             .Where(x => x != EClassJob.Adventurer)
             .Where(x => !x.IsCrafter() && !x.IsGatherer())
             .Where(x => !x.IsClass())
@@ -68,7 +69,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _classJobIds = DefaultClassJobs.Select(x => x.ClassJob).Concat(classJobs).ToArray();
         _classJobNames = DefaultClassJobs.Select(x => x.Name).Concat(classJobs.Select(x => x.ToFriendlyString())).ToArray();
 
-        var craftJobs = Enum.GetValues<EClassJob>()
+        List<EClassJob> craftJobs = Enum.GetValues<EClassJob>()
             .Where(x => x != EClassJob.Adventurer)
             .Where(x => x.IsCrafter())
             .OrderBy(x => sortedClassJobs.IndexOf(x))
@@ -76,7 +77,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _craftJobIds = craftJobs.ToArray();
         _craftJobNames = craftJobs.Select(x => x.ToFriendlyString()).ToArray();
 
-        var gatherJobs = Enum.GetValues<EClassJob>()
+        List<EClassJob> gatherJobs = Enum.GetValues<EClassJob>()
             .Where(x => x != EClassJob.Adventurer)
             .Where(x => x == EClassJob.Miner || x == EClassJob.Botanist)
             .OrderBy(x => sortedClassJobs.IndexOf(x))
@@ -87,15 +88,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     public override void DrawTab()
     {
-        using var tab = ImRaii.TabItem("General###General");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("General###General");
         if (!tab)
+        {
             return;
+        }
 
 
         {
             int selectedCombatModule = (int)Configuration.General.CombatModule;
             if (ImGui.Combo("Preferred Combat Module", ref selectedCombatModule, _combatModuleNames,
-                    _combatModuleNames.Length))
+                _combatModuleNames.Length))
             {
                 Configuration.General.CombatModule = (Configuration.ECombatModule)selectedCombatModule;
                 Save();
@@ -118,7 +121,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         int grandCompany = (int)Configuration.General.GrandCompany;
         if (ImGui.Combo("Preferred Grand Company", ref grandCompany, _grandCompanyNames,
-                _grandCompanyNames.Length))
+            _grandCompanyNames.Length))
         {
             Configuration.General.GrandCompany = (GrandCompany)grandCompany;
             Save();
@@ -171,7 +174,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             Save();
         }
 
-        Configuration.EGearsetUpdateSource gearsetSource = this.Configuration.General.GearsetUpdateSource;
+        Configuration.EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
         if (ImGuiEx.EnumCombo("Preferred Gear Upgrade Source", ref gearsetSource))
         {
             Configuration.General.GearsetUpdateSource = gearsetSource;
@@ -210,8 +213,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
         }
-        
-        #if REPORTING
+
+#if REPORTING
         ImGui.Separator();
         ImGui.Text("Bug Report");
         using (ImRaii.PushIndent())
@@ -238,9 +241,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
             }
-
         }
-        #endif
+#endif
 
         ImGui.Separator();
         ImGui.Text("Questing");
@@ -248,7 +250,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         {
             bool configureTextAdvance = Configuration.General.ConfigureTextAdvance;
             if (ImGui.Checkbox("Automatically configure TextAdvance with the recommended settings",
-                    ref configureTextAdvance))
+                ref configureTextAdvance))
             {
                 Configuration.General.ConfigureTextAdvance = configureTextAdvance;
                 Save();
@@ -288,9 +290,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
                     ImGui.Separator();
                     ImGui.Text("This affects the following dungeons and raids:");
-                    foreach (var lowPriorityCfc in _questRegistry.LowPriorityContentFinderConditionQuests)
+                    foreach((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityContentFinderConditionQuests)
                     {
-                        if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.ContentFinderConditionId, out var cfcData))
+                        if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.ContentFinderConditionId, out TerritoryData.ContentFinderConditionData? cfcData))
                         {
                             ImGui.BulletText($"{cfcData.Name}");
                         }

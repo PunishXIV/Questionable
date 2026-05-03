@@ -1,8 +1,7 @@
-using System;
-using System.Numerics;
 using Dalamud.Plugin.Services;
 using Questionable.Model.Questing;
-
+using System;
+using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable objectTable)
@@ -12,7 +11,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
 
     public bool MatchesExtraCondition(EExtraSkipCondition skipCondition)
     {
-        var position = _objectTable[0]?.Position;
+        Vector3? position = _objectTable[0]?.Position;
         return position != null &&
                _clientState.TerritoryType != 0 &&
                MatchesExtraCondition(skipCondition, position.Value, _clientState.TerritoryType);
@@ -28,7 +27,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
             EExtraSkipCondition.RoguesGuild => territoryType == 129 && position.Y <= -115,
             EExtraSkipCondition.NotRoguesGuild => territoryType == 129 && position.Y > -115,
             EExtraSkipCondition.DockStorehouse => territoryType == 137 && position.Y <= -20,
-            _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, null)
+            var _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, null)
         };
     }
 }

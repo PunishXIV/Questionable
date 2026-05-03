@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
@@ -18,8 +13,11 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-using static Questionable.Controller.GatheringController;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
 namespace Questionable.Windows;
 
 internal sealed class PriorityWindow : LWindow
@@ -27,15 +25,15 @@ internal sealed class PriorityWindow : LWindow
     private const string ClipboardPrefix = "qst:priority:";
     private const string LegacyClipboardPrefix = "qst:v1:";
     private const char ClipboardSeparator = ';';
+    private readonly IChatGui _chatGui;
+    private readonly IDalamudPluginInterface _pluginInterface;
 
     private readonly QuestController _questController;
     private readonly QuestFunctions _questFunctions;
+    private readonly QuestRegistry _questRegistry;
     private readonly QuestSelector _questSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
-    private readonly IChatGui _chatGui;
-    private readonly QuestRegistry _questRegistry;
-    private readonly IDalamudPluginInterface _pluginInterface;
 
     private ElementId? _draggedItem;
 
@@ -64,14 +62,13 @@ internal sealed class PriorityWindow : LWindow
         SizeCondition = ImGuiCond.Once;
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(400, 30),
+            MinimumSize = new(400, 30),
             MaximumSize = default
         };
     }
 
     public override void DrawContent()
     {
-
         if (ImGui.CollapsingHeader("Explanation"))
         {
             ImGui.TextWrapped(
@@ -93,24 +90,34 @@ internal sealed class PriorityWindow : LWindow
         List<ElementId> clipboardItems = ParseClipboardItems();
         ImGui.BeginDisabled(clipboardItems.Count == 0);
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Download, "Import from Clipboard"))
+        {
             ImportFromClipboard(clipboardItems);
+        }
         ImGui.EndDisabled();
         ImGui.SameLine();
         ImGui.BeginDisabled(_questController.ManualPriorityQuests.Count == 0);
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
+        {
             ExportToClipboard();
+        }
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
+        {
             _questController.ManualPriorityQuests.RemoveAll(q => _questFunctions.IsQuestComplete(q.Id));
+        }
         ImGui.SameLine();
 
         using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
             if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+            {
                 _questController.ClearQuestPriority();
+            }
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+        {
             ImGui.SetTooltip("Hold CTRL to enable this button.");
+        }
 
         ImGui.EndDisabled();
     }
@@ -125,16 +132,16 @@ internal sealed class PriorityWindow : LWindow
         float width = ImGui.GetContentRegionAvail().X;
         List<(Vector2 TopLeft, Vector2 BottomRight)> itemPositions = [];
 
-        for (int i = 0; i < priorityQuests.Count; ++i)
+        for(int i = 0; i < priorityQuests.Count; ++i)
         {
             Vector2 topLeft = ImGui.GetCursorScreenPos() +
                               new Vector2(0, -ImGui.GetStyle().ItemSpacing.Y / 2);
-            var quest = priorityQuests[i];
+            Quest quest = priorityQuests[i];
             using (ImRaii.PushId($"Quest{quest.Id}"))
             {
-                var style = _uiUtils.GetQuestStyle(quest.Id);
+                (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(quest.Id);
                 bool hovered;
-                using (var _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     ImGui.AlignTextToFramePadding();
                     ImGui.TextColored(style.Color, style.Icon.ToIconString());
@@ -147,16 +154,18 @@ internal sealed class PriorityWindow : LWindow
                 hovered |= ImGui.IsItemHovered();
 
                 if (hovered)
+                {
                     _questTooltipComponent.Draw(quest.Info);
+                }
 
                 if (priorityQuests.Count > 1)
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
                         int _pad = 4;
-                        #if DEBUG
+#if DEBUG
                         _pad += 4;
-                        #endif
+#endif
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.ArrowsUpDown.ToIconString()).X -
@@ -174,10 +183,14 @@ internal sealed class PriorityWindow : LWindow
                             ImGui.ColorConvertU32ToFloat4(ImGui.GetColorU32(ImGuiCol.ButtonActive)));
                     }
                     else
+                    {
                         ImGuiComponents.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
+                    }
 
                     if (_draggedItem == null && ImGui.IsItemActive() && ImGui.IsMouseDragging(ImGuiMouseButton.Left))
+                    {
                         _draggedItem = quest.Id;
+                    }
 
                     ImGui.SameLine();
                 }
@@ -186,9 +199,9 @@ internal sealed class PriorityWindow : LWindow
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
                         int _pad = 2;
-                        #if DEBUG
+#if DEBUG
                         _pad += 4;
-                        #endif
+#endif
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
@@ -201,27 +214,33 @@ internal sealed class PriorityWindow : LWindow
 
 #if DEBUG
                 if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
-                    var (success, filename) = QuestRegistry.OpenEditor(_questRegistry.AssemblyLocation, $"{quest.Info.QuestId}_{quest.Info.SimplifiedName}.json");
+                {
+                    (bool success, string filename) = QuestRegistry.OpenEditor(_questRegistry.AssemblyLocation, $"{quest.Info.QuestId}_{quest.Info.SimplifiedName}.json");
+                }
                 ImGui.SameLine();
 #endif
 
                 if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                {
                     itemToRemove = quest;
+                }
             }
 
-            Vector2 bottomRight = new Vector2(topLeft.X + width,
+            Vector2 bottomRight = new(topLeft.X + width,
                 ImGui.GetCursorScreenPos().Y - ImGui.GetStyle().ItemSpacing.Y + 2);
             itemPositions.Add((topLeft, bottomRight));
         }
 
         if (!ImGui.IsMouseDragging(ImGuiMouseButton.Left))
+        {
             _draggedItem = null;
+        }
         else if (_draggedItem != null)
         {
-            var draggedItem = priorityQuests.Single(x => x.Id == _draggedItem);
+            Quest draggedItem = priorityQuests.Single(x => x.Id == _draggedItem);
             int oldIndex = priorityQuests.IndexOf(draggedItem);
 
-            var (topLeft, bottomRight) = itemPositions[oldIndex];
+            (Vector2 topLeft, Vector2 bottomRight) = itemPositions[oldIndex];
             ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(ImGuiColors.DalamudGrey), 3f,
                 ImDrawFlags.RoundCornersAll);
 
@@ -273,7 +292,7 @@ internal sealed class PriorityWindow : LWindow
                 {
                     clipboardText = clipboardText.Substring(prefixToRemove.Length);
                     string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
-                    foreach (string part in text.Split(ClipboardSeparator))
+                    foreach(string part in text.Split(ClipboardSeparator))
                     {
                         ElementId elementId = ElementId.FromString(part);
                         clipboardItems.Add(elementId);
@@ -281,7 +300,7 @@ internal sealed class PriorityWindow : LWindow
                 }
             }
         }
-        catch (Exception)
+        catch(Exception)
         {
             clipboardItems.Clear();
         }

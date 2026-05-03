@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -10,13 +6,18 @@ using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 namespace Questionable.Data;
 
 internal sealed class ClassJobUtils
 {
-    private readonly Configuration _configuration;
     private readonly ReadOnlyDictionary<EClassJob, sbyte> _classJobToExpArrayIndex;
+    private readonly Configuration _configuration;
+
+    public readonly ReadOnlyCollection<(EClassJob ClassJob, int Category)> SortedClassJobs;
 
     public ClassJobUtils(
         Configuration configuration,
@@ -36,8 +37,6 @@ internal sealed class ClassJobUtils
             .ToList()
             .AsReadOnly();
     }
-
-    public readonly ReadOnlyCollection<(EClassJob ClassJob, int Category)> SortedClassJobs;
 
     public IEnumerable<EClassJob> AsIndividualJobs(EExtendedClassJob classJob, ElementId? referenceQuest)
     {
@@ -86,10 +85,10 @@ internal sealed class ClassJobUtils
             EExtendedClassJob.Viper => [EClassJob.Viper],
             EExtendedClassJob.Pictomancer => [EClassJob.Pictomancer],
 
-            EExtendedClassJob.DoW => Enum.GetValues<EClassJob>().Where(x => x.DealsPhysicalDamage()),
-            EExtendedClassJob.DoM => Enum.GetValues<EClassJob>().Where(x => x.DealsMagicDamage()),
-            EExtendedClassJob.DoH => Enum.GetValues<EClassJob>().Where(x => x.IsCrafter()),
-            EExtendedClassJob.DoL => Enum.GetValues<EClassJob>().Where(x => x.IsGatherer()),
+            EExtendedClassJob.DoW => Enum.GetValues<EClassJob>().Where(GameDataAdapter.DealsPhysicalDamage),
+            EExtendedClassJob.DoM => Enum.GetValues<EClassJob>().Where(GameDataAdapter.DealsMagicDamage),
+            EExtendedClassJob.DoH => Enum.GetValues<EClassJob>().Where(GameDataAdapter.IsCrafter),
+            EExtendedClassJob.DoL => Enum.GetValues<EClassJob>().Where(GameDataAdapter.IsGatherer),
             EExtendedClassJob.ConfiguredCombatJob => LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob) is var combatJob &&
                                                      combatJob != EClassJob.Adventurer
                 ? [combatJob]
@@ -99,15 +98,15 @@ internal sealed class ClassJobUtils
                 ? [startJob]
                 : [],
             EExtendedClassJob.ConfiguredCraftingJob => LookupConfiguredJob(EExtendedClassJob.DoH) is var craftJob &&
-                                                     craftJob != EClassJob.Adventurer
+                                                       craftJob != EClassJob.Adventurer
                 ? [craftJob]
                 : [],
             EExtendedClassJob.ConfiguredGatheringJob => LookupConfiguredJob(EExtendedClassJob.DoL) is var gatherJob &&
-                                                     gatherJob != EClassJob.Adventurer
+                                                        gatherJob != EClassJob.Adventurer
                 ? [gatherJob]
                 : [],
 
-            _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
+            var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
         };
     }
 
@@ -115,14 +114,22 @@ internal sealed class ClassJobUtils
     {
         EClassJob configuredJob;
         if (jobType is EExtendedClassJob.ConfiguredCombatJob)
+        {
             configuredJob = _configuration.General.CombatJob;
+        }
         else if (jobType is EExtendedClassJob.DoH)
+        {
             configuredJob = _configuration.General.CraftingJob;
+        }
         else if (jobType is EExtendedClassJob.DoL)
+        {
             configuredJob = _configuration.General.GatheringJob;
+        }
         else
+        {
             return EClassJob.Adventurer;
-        var jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
+        }
+        ReadOnlyCollection<(EClassJob ClassJob, short Level, short ItemLevel)> jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
         HashSet<EClassJob> jobsWithGearSet = jobGearSets
             .Select(x => x.ClassJob)
             .Distinct()
@@ -131,12 +138,16 @@ internal sealed class ClassJobUtils
         if (configuredJob != EClassJob.Adventurer)
         {
             if (jobsWithGearSet.Contains(configuredJob))
+            {
                 return configuredJob;
+            }
 
             EClassJob baseClass = Enum.GetValues<EClassJob>()
-                .SingleOrDefault(x => x.IsClass() && x.AsJob() == configuredJob);
+                .SingleOrDefault(x => GameDataAdapter.IsClass(x) && GameDataAdapter.AsJob(x) == configuredJob);
             if (baseClass != EClassJob.Adventurer && jobsWithGearSet.Contains(baseClass))
+            {
                 return baseClass;
+            }
         }
 
         return jobGearSets
@@ -144,39 +155,45 @@ internal sealed class ClassJobUtils
             .ThenByDescending(x => x.ItemLevel)
             .ThenByDescending(x => x.ClassJob switch
             {
-                _ when x.ClassJob.IsCaster() => 50,
-                _ when x.ClassJob.IsPhysicalRanged() => 40,
-                _ when x.ClassJob.IsMelee() => 30,
-                _ when x.ClassJob.IsTank() => 20,
-                _ when x.ClassJob.IsHealer() => 10,
-                _ => 0,
+                var _ when GameDataAdapter.IsCaster(x.ClassJob) => 50,
+                var _ when GameDataAdapter.IsPhysicalRanged(x.ClassJob) => 40,
+                var _ when GameDataAdapter.IsMelee(x.ClassJob) => 30,
+                var _ when GameDataAdapter.IsTank(x.ClassJob) => 20,
+                var _ when GameDataAdapter.IsHealer(x.ClassJob) => 10,
+                var _ => 0
             })
             .Select(x => x.ClassJob)
             .DefaultIfEmpty(EClassJob.Adventurer)
             .FirstOrDefault();
     }
 
-    private unsafe ReadOnlyCollection<(EClassJob ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combat=true)
+    private unsafe ReadOnlyCollection<(EClassJob ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combat = true)
     {
         List<(EClassJob, short, short)> jobs = [];
 
-        var playerState = PlayerState.Instance();
-        var gearsetModule = RaptureGearsetModule.Instance();
+        PlayerState* playerState = PlayerState.Instance();
+        RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
         if (playerState == null || gearsetModule == null)
-            return jobs.AsReadOnly();
-
-        for (int i = 0; i < 100; ++i)
         {
-            var gearset = gearsetModule->GetGearset(i);
+            return jobs.AsReadOnly();
+        }
+
+        for(int i = 0; i < 100; ++i)
+        {
+            RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
             if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
             {
                 EClassJob classJob = (EClassJob)gearset->ClassJob;
-                if (combat && (classJob.IsCrafter() || classJob.IsGatherer()))
+                if (combat && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
+                {
                     continue;
+                }
 
                 short level = playerState->ClassJobLevels[_classJobToExpArrayIndex[classJob]];
                 if (level == 0)
+                {
                     continue;
+                }
 
                 short itemLevel = gearset->ItemLevel;
                 jobs.Add((classJob, level, itemLevel));
@@ -194,7 +211,9 @@ internal sealed class ClassJobUtils
         {
             QuestWork* questWork = QuestManager.Instance()->GetQuestById(questId.Value);
             if (questWork->AcceptClassJob != 0)
+            {
                 return (EClassJob)questWork->AcceptClassJob;
+            }
         }
 
         return EClassJob.Adventurer;

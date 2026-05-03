@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Plugin.Services;
-using ECommons.MathHelpers;
+﻿using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Interactions;
@@ -10,27 +6,30 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace Questionable.Controller.Steps;
 
-internal sealed class TaskCreator(
+internal sealed class TaskCreator
+(
     IServiceProvider serviceProvider,
     TerritoryData territoryData,
     IClientState clientState,
     IChatGui chatGui,
     ILogger<TaskCreator> logger)
 {
+    private readonly IChatGui _chatGui = chatGui;
+    private readonly IClientState _clientState = clientState;
+    private readonly ILogger<TaskCreator> _logger = logger;
     private readonly IServiceProvider _serviceProvider = serviceProvider;
     private readonly TerritoryData _territoryData = territoryData;
-    private readonly IClientState _clientState = clientState;
-    private readonly IChatGui _chatGui = chatGui;
-    private readonly ILogger<TaskCreator> _logger = logger;
 
     public IReadOnlyList<ITask> CreateTasks(Quest quest, byte sequenceNumber, QuestSequence? sequence, QuestStep? step)
     {
         List<ITask> newTasks;
-        # if !DEBUG
-        if (quest.Root.Disabled && sequenceNumber.InRange(1,2))
+# if !DEBUG
+        if (quest.Root.Disabled && sequenceNumber.InRange(1, 2))
         {
             var reason = (quest.Root.Comment ?? "<no reason specified>").Split('\n', 2)[0];
             _chatGui.PrintError($"The quest '{quest.Info.Name}' has been marked as Disabled for the following reason: {reason}",
@@ -40,7 +39,7 @@ internal sealed class TaskCreator(
             _chatGui.PrintError("Thank you for your patience as we expand QST's support to include this quest in a future update.",
                 CommandHandler.MessageTag, CommandHandler.TagColor);
         }
-        # endif
+# endif
         if (sequence == null)
         {
             if (!quest.Root.Disabled)
@@ -57,7 +56,7 @@ internal sealed class TaskCreator(
         }
         else
         {
-            using var scope = _serviceProvider.CreateScope();
+            using IServiceScope scope = _serviceProvider.CreateScope();
             newTasks = scope.ServiceProvider.GetRequiredService<IEnumerable<ITaskFactory>>()
                 .SelectMany(x =>
                 {
@@ -67,7 +66,9 @@ internal sealed class TaskCreator(
                     {
                         string factoryName = x.GetType().FullName ?? x.GetType().Name;
                         if (factoryName.Contains('.', StringComparison.Ordinal))
+                        {
                             factoryName = factoryName[(factoryName.LastIndexOf('.') + 1)..];
+                        }
 
                         _logger.LogTrace("Factory {FactoryName} created Task {TaskNames}",
                             factoryName, string.Join(", ", tasks.Select(y => y.ToString())));
@@ -77,13 +78,13 @@ internal sealed class TaskCreator(
                 })
                 .ToList();
 
-            var singlePlayerDutyTask = newTasks
+            SinglePlayerDuty.StartSinglePlayerDuty? singlePlayerDutyTask = newTasks
                 .Where(y => y is SinglePlayerDuty.StartSinglePlayerDuty)
                 .Cast<SinglePlayerDuty.StartSinglePlayerDuty>()
                 .FirstOrDefault();
             if (singlePlayerDutyTask != null &&
                 _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
-                    out var cfcData))
+                    out TerritoryData.ContentFinderConditionData? cfcData))
             {
                 // if we have a single player duty in queue, we check if we're in the matching territory
                 // if yes, skip all steps before (e.g. teleporting, waiting for navmesh, moving, interacting)
@@ -103,7 +104,9 @@ internal sealed class TaskCreator(
         }
 
         if (newTasks.Count == 0)
+        {
             _logger.LogInformation("Nothing to execute for step?");
+        }
         else
         {
             _logger.LogInformation("Tasks for {QuestId}, {Sequence}, {Step}: {Tasks}",

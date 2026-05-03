@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Components;
@@ -7,10 +5,12 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Utility;
 using Questionable.External;
-
+using System;
+using System.Linq;
 namespace Questionable.Windows.ConfigComponents;
 
-internal sealed class NotificationConfigComponent(
+internal sealed class NotificationConfigComponent
+(
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     NotificationMasterIpc notificationMasterIpc) : ConfigComponent(pluginInterface, configuration)
@@ -19,9 +19,11 @@ internal sealed class NotificationConfigComponent(
 
     public override void DrawTab()
     {
-        using var tab = ImRaii.TabItem("Notifications###Notifications");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Notifications###Notifications");
         if (!tab)
+        {
             return;
+        }
 
         bool enabled = Configuration.Notifications.Enabled;
         if (ImGui.Checkbox("Enable notifications when manual interaction is required", ref enabled))
@@ -34,15 +36,15 @@ internal sealed class NotificationConfigComponent(
         {
             using (ImRaii.PushIndent())
             {
-                var xivChatTypes = Enum.GetValues<XivChatType>()
+                XivChatType[] xivChatTypes = Enum.GetValues<XivChatType>()
                     .Where(x => x != XivChatType.StandardEmote)
                     .ToArray();
-                var selectedChatType = Array.IndexOf(xivChatTypes, Configuration.Notifications.ChatType);
+                int selectedChatType = Array.IndexOf(xivChatTypes, Configuration.Notifications.ChatType);
                 string[] chatTypeNames = xivChatTypes
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
                 if (ImGui.Combo("Chat channel", ref selectedChatType, chatTypeNames,
-                        chatTypeNames.Length))
+                    chatTypeNames.Length))
                 {
                     Configuration.Notifications.ChatType = xivChatTypes[selectedChatType];
                     Save();

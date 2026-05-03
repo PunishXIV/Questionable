@@ -1,48 +1,49 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Questionable.Model;
+﻿using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System.Collections.Generic;
+using System.Linq;
 namespace Questionable.Validation.Validators;
 
 internal sealed class BasicSequenceValidator : IQuestValidator
 {
     /// <summary>
-    /// A quest should have sequences from 0 to N, and (if more than 'AcceptQuest' exists), a 255 sequence.
+    ///     A quest should have sequences from 0 to N, and (if more than 'AcceptQuest' exists), a 255 sequence.
     /// </summary>
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        var sequences = quest.Root.QuestSequence;
-        var foundStart = sequences.FirstOrDefault(x => x.Sequence == 0);
+        List<QuestSequence> sequences = quest.Root.QuestSequence;
+        QuestSequence? foundStart = sequences.FirstOrDefault(x => x.Sequence == 0);
         if (foundStart == null)
         {
-            yield return new ValidationIssue
+            yield return new()
             {
                 ElementId = quest.Id,
                 Sequence = 0,
                 Step = null,
                 Type = EIssueType.MissingSequence0,
                 Severity = EIssueSeverity.Error,
-                Description = "Missing quest start",
+                Description = "Missing quest start"
             };
             yield break;
         }
 
         if (quest.Info is QuestInfo { CompletesInstantly: true })
         {
-            foreach (var sequence in sequences)
+            foreach(QuestSequence sequence in sequences)
             {
                 if (sequence == foundStart)
+                {
                     continue;
+                }
 
-                yield return new ValidationIssue
+                yield return new()
                 {
                     ElementId = quest.Id,
                     Sequence = sequence.Sequence,
                     Step = null,
                     Type = EIssueType.InstantQuestWithMultipleSteps,
                     Severity = EIssueSeverity.Error,
-                    Description = "Instant quest should not have any sequences after the start",
+                    Description = "Instant quest should not have any sequences after the start"
                 };
             }
         }
@@ -52,18 +53,22 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 .Where(x => x != 255)
                 .Max();
 
-            for (int i = 0; i < maxSequence; i++)
+            for(int i = 0; i < maxSequence; i++)
             {
-                var foundSequences = sequences.Where(x => x.Sequence == i).ToList();
-                var issue = ValidateSequences(quest, i, foundSequences);
+                List<QuestSequence> foundSequences = sequences.Where(x => x.Sequence == i).ToList();
+                ValidationIssue? issue = ValidateSequences(quest, i, foundSequences);
                 if (issue != null)
+                {
                     yield return issue;
+                }
             }
 
-            var foundEnding = sequences.Where(x => x.Sequence == 255).ToList();
-            var endingIssue = ValidateSequences(quest, 255, foundEnding);
+            List<QuestSequence> foundEnding = sequences.Where(x => x.Sequence == 255).ToList();
+            ValidationIssue? endingIssue = ValidateSequences(quest, 255, foundEnding);
             if (endingIssue != null)
+            {
                 yield return endingIssue;
+            }
         }
     }
 
@@ -71,29 +76,31 @@ internal sealed class BasicSequenceValidator : IQuestValidator
     {
         if (foundSequences.Count == 0)
         {
-            return new ValidationIssue
+            return new()
             {
                 ElementId = quest.Id,
                 Sequence = (byte)sequenceNo,
                 Step = null,
                 Type = EIssueType.MissingSequence,
                 Severity = EIssueSeverity.Error,
-                Description = "Missing sequence",
+                Description = "Missing sequence"
             };
         }
         else if (foundSequences.Count == 2)
         {
-            return new ValidationIssue
+            return new()
             {
                 ElementId = quest.Id,
                 Sequence = (byte)sequenceNo,
                 Step = null,
                 Type = EIssueType.DuplicateSequence,
                 Severity = EIssueSeverity.Error,
-                Description = "Duplicate sequence",
+                Description = "Duplicate sequence"
             };
         }
         else
+        {
             return null;
+        }
     }
 }

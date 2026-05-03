@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin;
+﻿using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using JetBrains.Annotations;
+using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Functions;
+using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.External;
 
 internal sealed class QuestionableIpc : IDisposable
@@ -39,34 +40,34 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcStop = "Questionable.Stop";
     private const string IpcRedoLookup = "Questionable.RedoLookup";
     private const string IpcRedoLookupIndex = "Questionable.RedoLookupIndex";
-
-    private readonly QuestController _questController;
-    private readonly QuestRegistry _questRegistry;
-    private readonly QuestFunctions _questFunctions;
-    private readonly ILogger<QuestionableIpc> _logger;
-    private readonly RedoUtil _redoUtil;
-
-    private readonly ICallGateProvider<bool> _isRunning;
-    private readonly ICallGateProvider<string?> _getCurrentQuestId;
-    private readonly ICallGateProvider<StepData?> _getCurrentStepData;
-    private readonly ICallGateProvider<List<string>> _getCurrentlyActiveEventQuests;
-    private readonly ICallGateProvider<string, bool> _startQuest;
-    private readonly ICallGateProvider<string, bool> _startSingleQuest;
-    private readonly ICallGateProvider<string, bool> _isQuestLocked;
-    private readonly ICallGateProvider<string, bool> _isQuestComplete;
-    private readonly ICallGateProvider<string, bool> _isReadyToAcceptQuest;
-    private readonly ICallGateProvider<string, bool> _isQuestAccepted;
-    private readonly ICallGateProvider<string, bool> _isQuestUnobtainable;
-    private readonly ICallGateProvider<string, bool> _importQuestPriority;
     private readonly ICallGateProvider<string, bool> _addQuestPriority;
     private readonly ICallGateProvider<bool> _clearQuestPriority;
-    private readonly ICallGateProvider<int, string, bool> _insertQuestPriority;
     private readonly ICallGateProvider<string> _exportQuestPriority;
+    private readonly ICallGateProvider<List<string>> _getCurrentlyActiveEventQuests;
+    private readonly ICallGateProvider<string?> _getCurrentQuestId;
+    private readonly ICallGateProvider<StepData?> _getCurrentStepData;
+    private readonly ICallGateProvider<string, bool> _importQuestPriority;
+    private readonly ICallGateProvider<int, string, bool> _insertQuestPriority;
+    private readonly ICallGateProvider<string, bool> _isQuestAccepted;
+    private readonly ICallGateProvider<string, bool> _isQuestComplete;
+    private readonly ICallGateProvider<string, bool> _isQuestLocked;
+    private readonly ICallGateProvider<string, bool> _isQuestUnobtainable;
+    private readonly ICallGateProvider<string, bool> _isReadyToAcceptQuest;
+
+    private readonly ICallGateProvider<bool> _isRunning;
+    private readonly ILogger<QuestionableIpc> _logger;
+
+    private readonly QuestController _questController;
+    private readonly QuestFunctions _questFunctions;
+    private readonly QuestRegistry _questRegistry;
+    private readonly ICallGateProvider<uint, string> _redoLookup;
+    private readonly ICallGateProvider<uint, Tuple<string, int>> _redoLookupIndex;
+    private readonly RedoUtil _redoUtil;
     private readonly ICallGateProvider<uint, uint, byte, int, bool> _startGathering;
     private readonly ICallGateProvider<uint, uint, byte, int, ushort, bool> _startGatheringComplex;
+    private readonly ICallGateProvider<string, bool> _startQuest;
+    private readonly ICallGateProvider<string, bool> _startSingleQuest;
     private readonly ICallGateProvider<string, bool> _stop;
-    private readonly ICallGateProvider<uint, string> _redoLookup;
-    private readonly ICallGateProvider<uint, Tuple<string,int>> _redoLookupIndex;
 
     public QuestionableIpc(
         QuestController questController,
@@ -142,26 +143,54 @@ internal sealed class QuestionableIpc : IDisposable
         _stop = pluginInterface.GetIpcProvider<string, bool>(IpcStop);
         _stop.RegisterFunc(Stop);
 
-        _redoUtil = new RedoUtil();
+        _redoUtil = new();
 
         _redoLookup = pluginInterface.GetIpcProvider<uint, string>(IpcRedoLookup);
         _redoLookup.RegisterFunc(RedoLookup);
 
-        _redoLookupIndex = pluginInterface.GetIpcProvider<uint, Tuple<string,int>>(IpcRedoLookupIndex);
+        _redoLookupIndex = pluginInterface.GetIpcProvider<uint, Tuple<string, int>>(IpcRedoLookupIndex);
         _redoLookupIndex.RegisterFunc(RedoLookupIndex);
+    }
+
+    public void Dispose()
+    {
+        _isRunning.UnregisterFunc();
+        _getCurrentQuestId.UnregisterFunc();
+        _getCurrentStepData.UnregisterFunc();
+        _getCurrentlyActiveEventQuests.UnregisterFunc();
+        _startQuest.UnregisterFunc();
+        _startSingleQuest.UnregisterFunc();
+        _isQuestLocked.UnregisterFunc();
+        _isQuestComplete.UnregisterFunc();
+        _isReadyToAcceptQuest.UnregisterFunc();
+        _isQuestAccepted.UnregisterFunc();
+        _isQuestUnobtainable.UnregisterFunc();
+        _importQuestPriority.UnregisterFunc();
+        _addQuestPriority.UnregisterFunc();
+        _clearQuestPriority.UnregisterFunc();
+        _insertQuestPriority.UnregisterFunc();
+        _exportQuestPriority.UnregisterFunc();
+        _startGathering.UnregisterFunc();
+        _startGatheringComplex.UnregisterFunc();
+        _stop.UnregisterFunc();
+        _redoLookup.UnregisterFunc();
     }
 
     private bool StartQuest(string questId, bool single)
     {
         _logger.LogDebug($"StartQuest({questId},{single})");
-        if (ElementId.TryFromString(questId, out var elementId) && elementId != null &&
-            _questRegistry.TryGetQuest(elementId, out var quest))
+        if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
+            _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
             _questController.SetNextQuest(quest);
             if (single)
+            {
                 _questController.StartSingleQuest("IPCQuestSelection");
+            }
             else
+            {
                 _questController.Start("IPCQuestSelection");
+            }
             return true;
         }
 
@@ -171,19 +200,25 @@ internal sealed class QuestionableIpc : IDisposable
     private StepData? GetStepData()
     {
         _logger.LogDebug("GetStepData()");
-        var progress = _questController.CurrentQuest;
+        QuestController.QuestProgress? progress = _questController.CurrentQuest;
         if (progress == null)
+        {
             return null;
+        }
 
         string questId = progress.Quest.Id.ToString();
         if (string.IsNullOrEmpty(questId))
+        {
             return null;
+        }
 
         QuestStep? step = progress.Quest.FindSequence(progress.Sequence)?.FindStep(progress.Step);
         if (step == null)
+        {
             return null;
+        }
 
-        return new StepData
+        return new()
         {
             QuestId = questId,
             Sequence = progress.Sequence,
@@ -198,7 +233,7 @@ internal sealed class QuestionableIpc : IDisposable
     {
         _logger.LogDebug($"IsQuestLocked({questId})");
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
-            _questRegistry.TryGetQuest(elementId, out _))
+            _questRegistry.TryGetQuest(elementId, out Quest? _))
         {
             return _questFunctions.IsQuestLocked(elementId);
         }
@@ -264,7 +299,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool AddQuestPriority(string questId)
     {
         _logger.LogDebug($"AddQuestPriority({questId})");
-        if (ElementId.TryFromString(questId, out var elementId) && elementId != null &&
+        if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.IsKnownQuest(elementId))
         {
             return _questController.AddQuestPriority(elementId);
@@ -276,7 +311,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool InsertQuestPriority(int index, string questId)
     {
         _logger.LogDebug($"InsertQuestPriority({index},{questId})");
-        if (ElementId.TryFromString(questId, out var elementId) && elementId != null &&
+        if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.IsKnownQuest(elementId))
         {
             return _questController.InsertQuestPriority(index, elementId);
@@ -306,44 +341,28 @@ internal sealed class QuestionableIpc : IDisposable
     private string RedoLookup(uint questId)
     {
         if (questId >= 131072)
+        {
             return "";
+        }
         if (questId >= 65536)
+        {
             questId -= 65536;
+        }
         return _redoUtil.GetChapter(questId).Item1.ToString();
     }
 
-    private Tuple<string,int> RedoLookupIndex(uint questId)
+    private Tuple<string, int> RedoLookupIndex(uint questId)
     {
         if (questId >= 131072)
-            return new("",-1);
+        {
+            return new("", -1);
+        }
         if (questId >= 65536)
+        {
             questId -= 65536;
-        var outp = _redoUtil.GetChapter(questId);
+        }
+        Tuple<ReadOnlySeString, int> outp = _redoUtil.GetChapter(questId);
         return new(outp.Item1.ToString(), outp.Item2);
-    }
-
-    public void Dispose()
-    {
-        _isRunning.UnregisterFunc();
-        _getCurrentQuestId.UnregisterFunc();
-        _getCurrentStepData.UnregisterFunc();
-        _getCurrentlyActiveEventQuests.UnregisterFunc();
-        _startQuest.UnregisterFunc();
-        _startSingleQuest.UnregisterFunc();
-        _isQuestLocked.UnregisterFunc();
-        _isQuestComplete.UnregisterFunc();
-        _isReadyToAcceptQuest.UnregisterFunc();
-        _isQuestAccepted.UnregisterFunc();
-        _isQuestUnobtainable.UnregisterFunc();
-        _importQuestPriority.UnregisterFunc();
-        _addQuestPriority.UnregisterFunc();
-        _clearQuestPriority.UnregisterFunc();
-        _insertQuestPriority.UnregisterFunc();
-        _exportQuestPriority.UnregisterFunc();
-        _startGathering.UnregisterFunc();
-        _startGatheringComplex.UnregisterFunc();
-        _stop.UnregisterFunc();
-        _redoLookup.UnregisterFunc();
     }
 
     [UsedImplicitly(ImplicitUseKindFlags.Access, ImplicitUseTargetFlags.WithMembers)]

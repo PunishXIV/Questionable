@@ -25,9 +25,9 @@
       },
       "ECommons": {
         "type": "Direct",
-        "requested": "[3.2.0.9, )",
-        "resolved": "3.2.0.9",
-        "contentHash": "JWD/HU+CUBFRCRTJzdyL+Ld6BedndYXk10bZHNbaGleO6WZQWxUUwAAKtJNZgvyrzQ53fqEvnuHml3mNYORl5w=="
+        "requested": "[3.2.0.13, )",
+        "resolved": "3.2.0.13",
+        "contentHash": "7S85hhmzMoARE3q+Elf+dQaasVu/k0NNld7uffzmQqKCqdWjGWv+kxD28JL0zU17aK6k57IfSklNqbq3XLYVuw=="
       },
       "JetBrains.Annotations": {
         "type": "Direct",
@@ -124,30 +124,19 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[14.207.70, )"
-        }
-      },
-      "llib": {
-        "type": "Project",
-        "dependencies": {
-          "DalamudPackager": "[15.0.0, )",
-          "ECommons": "[3.1.0.16, )",
-          "JetBrains.Annotations": "[2024.3.0, )"
+          "Questionable.Model": "[15.277.3, )"
         }
       },
       "notificationmasterapi": {
         "type": "Project"
       },
       "questionable.model": {
-        "type": "Project",
-        "dependencies": {
-          "System.Text.Json": "[9.0.3, )"
-        }
+        "type": "Project"
       },
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[14.207.70, )"
+          "Questionable.Model": "[15.277.3, )"
         }
       }
     }

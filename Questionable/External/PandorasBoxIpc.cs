@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using Dalamud.Plugin;
+﻿using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
-
+using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 namespace Questionable.External;
 
 internal sealed class PandorasBoxIpc : IDisposable
@@ -29,17 +28,17 @@ internal sealed class PandorasBoxIpc : IDisposable
         "Auto-interact with Gathering Nodes",
 
         // Other
-        "Pandora Quick Gather",
+        "Pandora Quick Gather"
     }.ToImmutableHashSet();
+    private readonly IClientState _clientState;
 
     private readonly IFramework _framework;
-    private readonly QuestController _questController;
-    private readonly TerritoryData _territoryData;
-    private readonly IClientState _clientState;
-    private readonly ILogger<PandorasBoxIpc> _logger;
 
     private readonly ICallGateSubscriber<string, bool?> _getFeatureEnabled;
+    private readonly ILogger<PandorasBoxIpc> _logger;
+    private readonly QuestController _questController;
     private readonly ICallGateSubscriber<string, bool, object?> _setFeatureEnabled;
+    private readonly TerritoryData _territoryData;
 
     private bool _loggedIpcError;
     private HashSet<string>? _pausedFeatures;
@@ -72,7 +71,7 @@ internal sealed class PandorasBoxIpc : IDisposable
             {
                 return _getFeatureEnabled.InvokeFunc("Auto Active Time Maneuver") == true;
             }
-            catch (IpcError e)
+            catch(IpcError e)
             {
                 if (!_loggedIpcError)
                 {
@@ -83,6 +82,12 @@ internal sealed class PandorasBoxIpc : IDisposable
                 return false;
             }
         }
+    }
+
+    public void Dispose()
+    {
+        _framework.Update -= OnUpdate;
+        RestoreConflictingFeatures();
     }
 
     private void OnUpdate(IFramework framework)
@@ -99,20 +104,16 @@ internal sealed class PandorasBoxIpc : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        _framework.Update -= OnUpdate;
-        RestoreConflictingFeatures();
-    }
-
     private void DisableConflictingFeatures()
     {
         if (_pausedFeatures != null)
+        {
             return;
+        }
 
         _pausedFeatures = [];
 
-        foreach (var feature in ConflictingFeatures)
+        foreach(string feature in ConflictingFeatures)
         {
             try
             {
@@ -124,7 +125,7 @@ internal sealed class PandorasBoxIpc : IDisposable
                     _logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
                 }
             }
-            catch (IpcError e)
+            catch(IpcError e)
             {
                 _logger.LogWarning(e, "Failed to pause Pandora's Box feature: {Feature}", feature);
             }
@@ -134,16 +135,18 @@ internal sealed class PandorasBoxIpc : IDisposable
     private void RestoreConflictingFeatures()
     {
         if (_pausedFeatures == null)
+        {
             return;
+        }
 
-        foreach (var feature in _pausedFeatures)
+        foreach(string feature in _pausedFeatures)
         {
             try
             {
                 _setFeatureEnabled.InvokeAction(feature, true);
                 _logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
             }
-            catch (IpcError e)
+            catch(IpcError e)
             {
                 _logger.LogWarning(e, "Failed to restore Pandora's Box feature: {Feature}", feature);
             }

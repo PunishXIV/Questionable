@@ -1,26 +1,24 @@
-﻿using System;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using ECommons.EzIpcManager;
 using ECommons.Reflection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
-
+using System;
 namespace Questionable.External;
 
 internal sealed class YesAlreadyIpc : IDisposable
 {
-
-    private readonly IFramework _framework;
-    private readonly QuestController _questController;
-    private readonly TerritoryData _territoryData;
-    private readonly IClientState _clientState;
-    private readonly ILogger<YesAlreadyIpc> _logger;
-
-    private readonly static EzIPCDisposalToken[] _disposalTokens = EzIPC.Init(typeof(YesAlreadyIpc), "YesAlready", SafeWrapper.IPCException);
+    private static readonly EzIPCDisposalToken[] _disposalTokens = EzIPC.Init(typeof(YesAlreadyIpc), "YesAlready", SafeWrapper.IPCException);
     [EzIPC("IsPluginEnabled")] public static readonly Func<bool> IsPluginEnabled;
     [EzIPC("SetPluginEnabled")] private static readonly Action<bool> SetPluginEnabled;
+    private readonly IClientState _clientState;
+
+    private readonly IFramework _framework;
+    private readonly ILogger<YesAlreadyIpc> _logger;
+    private readonly QuestController _questController;
+    private readonly TerritoryData _territoryData;
 
     private bool _wasEnabled;
 
@@ -41,12 +39,18 @@ internal sealed class YesAlreadyIpc : IDisposable
         _framework.Update += OnUpdate;
     }
 
+    public void Dispose()
+    {
+        _framework.Update -= OnUpdate;
+        IPCSubscriber_Common.DisposeAll(_disposalTokens);
+    }
+
     private void OnUpdate(IFramework framework)
     {
         if (IPCSubscriber_Common.IsReady("YesAlready"))
         {
             bool hasActiveQuest = (_questController.IsRunning ||
-                                  _questController.AutomationType != QuestController.EAutomationType.Manual) &&
+                                   _questController.AutomationType != QuestController.EAutomationType.Manual) &&
                                   !_territoryData.IsDutyInstance(_clientState.TerritoryType);
             if (hasActiveQuest)
             {
@@ -69,40 +73,36 @@ internal sealed class YesAlreadyIpc : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        _framework.Update -= OnUpdate;
-        IPCSubscriber_Common.DisposeAll(_disposalTokens);
-    }
-
     internal sealed class IPCSubscriber_Common
     {
-        internal static bool IsReady(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out _, false, true);
+        internal static bool IsReady(string pluginName)
+        {
+            return DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
+        }
 
         internal static Version? Version(string pluginName)
         {
             Version _version;
-            if (DalamudReflector.TryGetDalamudPlugin(pluginName, out var dalamudPlugin, false, true))
+            if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, false, true))
             {
                 _version = dalamudPlugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
-                dalamudPlugin.Dispose();
             }
             else
             {
-                _version = new Version(0, 0, 0, 0);
+                _version = new(0, 0, 0, 0);
             }
             return _version;
         }
 
         internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
         {
-            foreach (var token in _disposalTokens)
+            foreach(EzIPCDisposalToken token in _disposalTokens)
             {
                 try
                 {
                     token.Dispose();
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     Svc.Log.Error($"Error while unregistering IPC: {ex}");
                 }

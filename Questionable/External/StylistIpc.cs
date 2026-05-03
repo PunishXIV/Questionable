@@ -2,15 +2,14 @@
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
-
 namespace Questionable.External;
 
 internal sealed class StylistIpc
 {
+    private readonly ICallGateSubscriber<bool> _isBusy;
     private readonly ILogger<AutomatonIpc> _logger;
     private readonly ICallGateSubscriber<bool?, bool?, object?> _updateGearset; //bool? moveItemsFromInventory, bool? shouldEquip
-    private          bool _loggedIpcError;
-    private readonly ICallGateSubscriber<bool> _isBusy;
+    private bool _loggedIpcError;
 
     public StylistIpc(IDalamudPluginInterface pluginInterface, ILogger<AutomatonIpc> logger)
     {
@@ -19,7 +18,7 @@ internal sealed class StylistIpc
         _isBusy = pluginInterface.GetIpcSubscriber<bool>("Stylist.IsBusy");
     }
 
-    public bool IsBusy => 
+    public bool IsBusy =>
         _isBusy.InvokeFunc();
 
     public void UpdateGearset()
@@ -28,7 +27,7 @@ internal sealed class StylistIpc
         {
             _updateGearset.InvokeAction(true, true);
         }
-        catch (IpcError e)
+        catch(IpcError e)
         {
             if (!_loggedIpcError)
             {

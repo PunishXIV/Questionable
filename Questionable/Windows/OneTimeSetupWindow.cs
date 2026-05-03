@@ -7,15 +7,14 @@ using Dalamud.Plugin;
 using LLib.ImGui;
 using Microsoft.Extensions.Logging;
 using Questionable.Windows.ConfigComponents;
-
 namespace Questionable.Windows;
 
 internal sealed class OneTimeSetupWindow : LWindow
 {
-    private readonly PluginConfigComponent _pluginConfigComponent;
     private readonly Configuration _configuration;
-    private readonly IDalamudPluginInterface _pluginInterface;
     private readonly ILogger<OneTimeSetupWindow> _logger;
+    private readonly PluginConfigComponent _pluginConfigComponent;
+    private readonly IDalamudPluginInterface _pluginInterface;
 
     public OneTimeSetupWindow(
         PluginConfigComponent pluginConfigComponent,
@@ -64,7 +63,9 @@ internal sealed class OneTimeSetupWindow : LWindow
             using (ImRaii.Disabled())
             {
                 using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudRed))
+                {
                     ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Check, "Missing required plugins");
+                }
             }
         }
 

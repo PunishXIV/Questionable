@@ -2,13 +2,12 @@
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
-
 namespace Questionable.External;
 
 internal sealed class AutomatonIpc
 {
-    private readonly ILogger<AutomatonIpc> _logger;
     private readonly ICallGateSubscriber<string, bool> _isTweakEnabled;
+    private readonly ILogger<AutomatonIpc> _logger;
     private bool _loggedIpcError;
 
     public AutomatonIpc(IDalamudPluginInterface pluginInterface, ILogger<AutomatonIpc> logger)
@@ -26,7 +25,7 @@ internal sealed class AutomatonIpc
             {
                 return _isTweakEnabled.InvokeFunc("AutoSnipeQuests");
             }
-            catch (IpcError e)
+            catch(IpcError e)
             {
                 if (!_loggedIpcError)
                 {

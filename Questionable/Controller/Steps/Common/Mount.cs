@@ -1,5 +1,4 @@
-﻿using System;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -8,12 +7,19 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
-
+using System;
 namespace Questionable.Controller.Steps.Common;
 
 internal static class Mount
 {
-    internal sealed record MountTask(
+    public enum EMountIf
+    {
+        Always,
+        AwayFromPosition
+    }
+
+    internal sealed record MountTask
+    (
         uint TerritoryId,
         EMountIf MountIf,
         Vector3? Position = null) : ITask
@@ -22,12 +28,19 @@ internal static class Mount
             ? Position ?? throw new ArgumentNullException(nameof(Position))
             : null;
 
-        public bool ShouldRedoOnInterrupt() => true;
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
 
-        public override string ToString() => "Mount";
+        public override string ToString()
+        {
+            return "Mount";
+        }
     }
 
-    internal sealed class MountEvaluator(
+    internal sealed class MountEvaluator
+    (
         GameFunctions gameFunctions,
         ICondition condition,
         TerritoryData territoryData,
@@ -38,7 +51,9 @@ internal static class Mount
         public unsafe MountResult EvaluateMountState(MountTask task, bool dryRun, ref DateTime retryAt)
         {
             if (condition[ConditionFlag.Mounted])
+            {
                 return MountResult.DontMount;
+            }
 
             LogLevel logLevel = dryRun ? LogLevel.None : LogLevel.Information;
 
@@ -69,20 +84,27 @@ internal static class Mount
                     distance, task.TerritoryId);
             }
             else
+            {
                 logger.Log(logLevel, "Want to use mount, trying (in territory {Id})...", task.TerritoryId);
+            }
 
             if (!condition[ConditionFlag.InCombat])
             {
                 if (dryRun)
+                {
                     retryAt = DateTime.Now.AddSeconds(0.5);
+                }
                 return MountResult.Mount;
             }
             else
+            {
                 return MountResult.WhenOutOfCombat;
+            }
         }
     }
 
-    internal sealed class MountExecutor(
+    internal sealed class MountExecutor
+    (
         GameFunctions gameFunctions,
         ICondition condition,
         MountEvaluator mountEvaluator,
@@ -126,37 +148,49 @@ internal static class Mount
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 
     internal enum MountResult
     {
         DontMount,
         Mount,
-        WhenOutOfCombat,
+        WhenOutOfCombat
     }
 
     internal sealed record UnmountTask : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
 
-        public override string ToString() => "Unmount";
+        public override string ToString()
+        {
+            return "Unmount";
+        }
     }
 
-    internal sealed class UnmountExecutor(
+    internal sealed class UnmountExecutor
+    (
         ICondition condition,
         ILogger<UnmountTask> logger,
         GameFunctions gameFunctions,
         IObjectTable objectTable)
         : TaskExecutor<UnmountTask>
     {
-        private bool _unmountTriggered;
         private DateTime _continueAt = DateTime.MinValue;
+        private bool _unmountTriggered;
 
         protected override bool Start()
         {
             if (!condition[ConditionFlag.Mounted])
+            {
                 return false;
+            }
 
             logger.LogInformation("Step explicitly wants no mount, trying to unmount...");
             if (condition[ConditionFlag.InFlight])
@@ -174,18 +208,26 @@ internal static class Mount
         public override ETaskResult Update()
         {
             if (_continueAt >= DateTime.Now)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (IsUnmounting())
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (!_unmountTriggered)
             {
                 // if still flying, we still need to land
                 if (condition[ConditionFlag.InFlight])
+                {
                     gameFunctions.Unmount();
+                }
                 else
+                {
                     _unmountTriggered = gameFunctions.Unmount();
+                }
 
                 _continueAt = DateTime.Now.AddSeconds(1);
                 return ETaskResult.StillRunning;
@@ -215,12 +257,9 @@ internal static class Mount
             return false;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
-    }
-
-    public enum EMountIf
-    {
-        Always,
-        AwayFromPosition,
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

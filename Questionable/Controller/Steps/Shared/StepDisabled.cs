@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class StepDisabled
@@ -11,7 +10,9 @@ internal static class StepDisabled
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!step.Disabled)
+            {
                 return null;
+            }
 
             return new SkipRemainingTasks();
         }
@@ -19,12 +20,18 @@ internal static class StepDisabled
 
     internal sealed class SkipRemainingTasks : ITask
     {
-        public override string ToString() => "StepDisabled";
+        public override string ToString()
+        {
+            return "StepDisabled";
+        }
     }
 
     internal sealed class SkipDisabledStepsExecutor(ILogger<SkipRemainingTasks> logger) : TaskExecutor<SkipRemainingTasks>
     {
-        protected override bool Start() => true;
+        protected override bool Start()
+        {
+            return true;
+        }
 
         public override ETaskResult Update()
         {
@@ -32,6 +39,9 @@ internal static class StepDisabled
             return ETaskResult.SkipRemainingTasksForStep;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

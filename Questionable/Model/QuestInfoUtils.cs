@@ -1,9 +1,8 @@
-﻿using System;
+﻿using LLib.GameData;
+using Lumina.Excel.Sheets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using LLib.GameData;
-using Lumina.Excel.Sheets;
-
 namespace Questionable.Model;
 
 internal static class QuestInfoUtils
@@ -13,11 +12,15 @@ internal static class QuestInfoUtils
     internal static IReadOnlyList<EClassJob> AsList(ClassJobCategory? optionalClassJobCategory)
     {
         if (optionalClassJobCategory == null)
+        {
             return Enum.GetValues<EClassJob>();
+        }
 
         ClassJobCategory classJobCategory = optionalClassJobCategory.Value;
         if (CachedClassJobs.TryGetValue(classJobCategory.RowId, out IReadOnlyList<EClassJob>? classJobs))
+        {
             return classJobs;
+        }
 
         classJobs = new Dictionary<EClassJob, bool>
             {
