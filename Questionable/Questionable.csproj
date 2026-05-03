@@ -13,7 +13,7 @@
 
     <ItemGroup>
         <PackageReference Include="Dalamud.Extensions.MicrosoftLogging" Version="4.0.1"/>
-        <PackageReference Include="ECommons" Version="3.2.0.13"/>
+        <PackageReference Include="ECommons" Version="3.2.0.15" />
         <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" ExcludeAssets="runtime"/>
         <PackageReference Include="JsonSchema.Net" Version="7.4.0"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8"/>

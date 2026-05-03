@@ -25,9 +25,9 @@
       },
       "ECommons": {
         "type": "Direct",
-        "requested": "[3.2.0.13, )",
-        "resolved": "3.2.0.13",
-        "contentHash": "7S85hhmzMoARE3q+Elf+dQaasVu/k0NNld7uffzmQqKCqdWjGWv+kxD28JL0zU17aK6k57IfSklNqbq3XLYVuw=="
+        "requested": "[3.2.0.15, )",
+        "resolved": "3.2.0.15",
+        "contentHash": "f7IoU8fYDjVqetKKCSBDPK4Up585DTgVRfNHTkVWq6Q2xZgvrhsjR8RCG1RYIyUp4pqjFekr34NjW570k9Lmng=="
       },
       "JetBrains.Annotations": {
         "type": "Direct",
@@ -124,7 +124,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.277.3, )"
+          "Questionable.Model": "[15.277.6, )"
         }
       },
       "notificationmasterapi": {
@@ -136,7 +136,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.277.3, )"
+          "Questionable.Model": "[15.277.6, )"
         }
       }
     }
