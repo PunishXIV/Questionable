@@ -88,26 +88,15 @@ internal sealed class BossModIpc
         if (!_configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod)
             return false;
 
-        if (questId.Value.Equals(5325)) // Valentiones 2026
-        {
-            return true;
-        }
-
         dutyOptions ??= new();
         if (!_territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out TerritoryData.ContentFinderConditionData? cfcData))
             return false;
 
-        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData
-            .ContentFinderConditionId))
-        {
+        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
             return false;
-        }
 
-        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData
-            .ContentFinderConditionId))
-        {
+        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
             return true;
-        }
 
         return dutyOptions.Enabled;
     }

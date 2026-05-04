@@ -79,8 +79,8 @@ internal sealed class TaskCreator
                 .Cast<SinglePlayerDuty.StartSinglePlayerDuty>()
                 .FirstOrDefault();
             if (singlePlayerDutyTask != null &&
-                _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
-                    out TerritoryData.ContentFinderConditionData? cfcData))
+                    _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
+                        out TerritoryData.ContentFinderConditionData? cfcData))
             {
                 // if we have a single player duty in queue, we check if we're in the matching territory
                 // if yes, skip all steps before (e.g. teleporting, waiting for navmesh, moving, interacting)

@@ -202,7 +202,7 @@ internal sealed class MovementController
                             // TODO Unsure if this is per-aetheryte or what; because e.g. old sharlayan is at -1.53;
                             //      but Elpis aetherytes fail at around -0.95
                             if (localPlayerPosition.Y - gameObject.Position.Y < 2.95f &&
-                                localPlayerPosition.Y - gameObject.Position.Y > -0.9f)
+                                    localPlayerPosition.Y - gameObject.Position.Y > -0.9f)
                                 Stop();
                             */
                             Stop();
@@ -233,10 +233,8 @@ internal sealed class MovementController
                         return;
 
                     if (!Destination.IsFlying && !condition[ConditionFlag.Mounted] &&
-                        !gameFunctions.HasStatusPreventingSprint() && Destination.CanSprint)
-                    {
+                            !gameFunctions.HasStatusPreventingSprint() && Destination.CanSprint)
                         TriggerSprintIfNeeded(navPoints, start.Value);
-                    }
                 }
             }
         }
@@ -297,19 +295,17 @@ internal sealed class MovementController
 
         Vector3 startPosition = objectTable[0]!.Position;
         if (fly && aetheryteData.CalculateDistance(startPosition, clientState.TerritoryType,
-            EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
+                EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
         {
             startPosition = startPosition with { Y = startPosition.Y + 1f };
             logger.LogInformation("Using modified start position for flying pathfinding: {StartPosition}",
                 startPosition.ToString("G", CultureInfo.InvariantCulture));
         }
         else if (fly)
-        {
             // other positions have a (lesser) chance of starting from underground too, in which case pathfinding takes
             // >10 seconds and gets stuck trying to go through the ground.
             // only for flying; as walking uses a different algorithm
             startPosition = startPosition with { Y = startPosition.Y + 0.2f };
-        }
 
         _pathfindTask =
             navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);

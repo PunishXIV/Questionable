@@ -442,14 +442,12 @@ internal sealed unsafe class QuestFunctions
                     .Select(y =>
                     {
                         if (y.Step.AetheryteShortcut is { } aetheryteShortcut &&
-                            !_aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut))
+                                !_aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut))
                         {
-                            if (y.Step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked == aetheryteShortcut)
-                            {
-                                // _logger.LogTrace("Checking priority quest {QuestId}: aetheryte locked, but is listed as skippable", quest.Id);
-                            }
-                            else
+                            if ((y.Step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked) != aetheryteShortcut)
                                 return aetheryteShortcut;
+                            // else _logger.LogTrace("Checking priority quest {QuestId}: aetheryte locked, but is listed as skippable", quest.Id);
+                                
                         }
 
                         if (y.Step.AethernetShortcut is { } aethernetShortcut)
@@ -659,11 +657,9 @@ internal sealed unsafe class QuestFunctions
         {
             byte currentDeliveryLevel = PlayerState.Instance()->DeliveryLevel;
             if (extraCompletedQuest != null &&
-                _questData.TryGetQuestInfo(extraCompletedQuest, out IQuestInfo? extraQuestInfo) &&
-                extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
-            {
+                    _questData.TryGetQuestInfo(extraCompletedQuest, out IQuestInfo? extraQuestInfo) &&
+                    extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
                 currentDeliveryLevel++;
-            }
 
             if (questInfo.MoogleDeliveryLevel > currentDeliveryLevel)
                 return true;
@@ -816,10 +812,8 @@ internal sealed unsafe class QuestFunctions
         int completedQuests = questInfo.PreviousQuests.Count(x =>
             HasEnoughProgressOnPreviousQuest(x) || x.QuestId.Equals(extraCompletedQuest));
         if (questInfo.PreviousQuestJoin == EQuestJoin.All &&
-            questInfo.PreviousQuests.Count == completedQuests)
-        {
+                questInfo.PreviousQuests.Count == completedQuests)
             return true;
-        }
         else if (questInfo.PreviousQuestJoin == EQuestJoin.AtLeastOne && completedQuests > 0)
             return true;
         else
@@ -847,10 +841,8 @@ internal sealed unsafe class QuestFunctions
 
         int completedInstances = questInfo.PreviousInstanceContent.Count(x => UIState.IsInstanceContentCompleted(x));
         if (questInfo.PreviousInstanceContentJoin == EQuestJoin.All &&
-            questInfo.PreviousInstanceContent.Count == completedInstances)
-        {
+                questInfo.PreviousInstanceContent.Count == completedInstances)
             return true;
-        }
         else if (questInfo.PreviousInstanceContentJoin == EQuestJoin.AtLeastOne && completedInstances > 0)
             return true;
         else

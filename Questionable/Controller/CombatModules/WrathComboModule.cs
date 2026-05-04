@@ -1,11 +1,13 @@
 ﻿#region
 
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
+using Dalamud.Utility;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps;
 using WrathCombo.API;
@@ -42,10 +44,8 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (_configuration.General.CombatModule !=
-            Configuration.ECombatModule.WrathCombo)
-        {
+                Configuration.ECombatModule.WrathCombo)
             return false;
-        }
 
         try
         {
@@ -162,18 +162,18 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                     false);
 
             if (!WrathResultExtensions.AllSuccessful(out string failed,
-                ("HealerRotationMode", healerRotationMode),
-                ("DPSRotationMode", targetingMode),
-                ("InCombatOnly", combatOnly),
-                ("IncludeNPCs", includeNPCs),
-                ("OnlyAttackInCombat", targetCombatOnly),
-                ("AutoRez", rez),
-                ("AutoRezDPSJobs", rezAsDPS),
-                ("AutoCleanse", cleanse),
-                ("HealerAlwaysHardTarget", healerMagicTargeting),
-                ("ManageKardia", kardia),
-                ("DPSAoETargets", aoeTargetThreshold),
-                ("AutoRezOutOfParty", rezNonParty)))
+                    ("HealerRotationMode", healerRotationMode),
+                    ("DPSRotationMode", targetingMode),
+                    ("InCombatOnly", combatOnly),
+                    ("IncludeNPCs", includeNPCs),
+                    ("OnlyAttackInCombat", targetCombatOnly),
+                    ("AutoRez", rez),
+                    ("AutoRezDPSJobs", rezAsDPS),
+                    ("AutoCleanse", cleanse),
+                    ("HealerAlwaysHardTarget", healerMagicTargeting),
+                    ("ManageKardia", kardia),
+                    ("DPSAoETargets", aoeTargetThreshold),
+                    ("AutoRezOutOfParty", rezNonParty)))
             {
                 _logger.LogError("Unable to configure Wrath Auto Rotation " +
                                  "settings: {Result}",
@@ -239,10 +239,11 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     private void Callback(int reason, string additionalInfo)
     {
         CancellationReason realReason = (CancellationReason)reason;
-        _logger.LogWarning("WrathCombo IPC Lease Cancelled: {ReasonDescription} " +
-                           "({Reason}; for: {Info})",
-            realReason.ToString(), realReason.ToString(), additionalInfo);
-        //            realReason.Description, realReason.ToString(), additionalInfo);
+        string description = realReason.GetAttribute<DescriptionAttribute>()?.Description ?? "no reason";
+        _logger.LogWarning(
+                "WrathCombo IPC Lease Cancelled: {ReasonDescription} " +
+                "({Reason}; for: {Info})",
+                description, realReason.ToString(), additionalInfo);
         _lease = null;
     }
 }

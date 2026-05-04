@@ -28,11 +28,9 @@ internal static class EquipRecommended
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Duty &&
-                step.InteractionType != EInteractionType.SinglePlayerDuty &&
-                step.InteractionType != EInteractionType.Combat)
-            {
+                    step.InteractionType != EInteractionType.SinglePlayerDuty &&
+                    step.InteractionType != EInteractionType.Combat)
                 return null;
-            }
 
             return new EquipTask();
         }

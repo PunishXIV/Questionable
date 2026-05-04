@@ -114,11 +114,9 @@ internal sealed class CombatController : IDisposable
             return EStatus.Complete;
 
         if (_movementController.IsPathfinding ||
-            _movementController.IsPathRunning ||
-            _movementController.MovementStartedAt > DateTime.Now.AddSeconds(-1))
-        {
+                _movementController.IsPathRunning ||
+                _movementController.MovementStartedAt > DateTime.Now.AddSeconds(-1))
             return EStatus.Moving;
-        }
 
         // Overworld enemies typically means that if we want to kill 3 enemies, we could have anywhere from 0 to 20
         // enemies in the area (0 if someone else killed them before, like can happen with bots in Fools' Falls in
@@ -146,21 +144,16 @@ internal sealed class CombatController : IDisposable
                                 : null;
 
                             if (questProgressInfo != null &&
-                                questProgressInfo.Sequence == _currentFight.Data.Sequence &&
-                                QuestWorkUtils.HasCompletionFlags(_currentFight.Data.CompletionQuestVariablesFlags) &&
-                                QuestWorkUtils.MatchesQuestWork(_currentFight.Data.CompletionQuestVariablesFlags,
-                                    questProgressInfo))
-                            {
-                                // would be the final enemy of the bunch
-                                return EStatus.InCombat;
-                            }
+                                    questProgressInfo.Sequence == _currentFight.Data.Sequence &&
+                                    QuestWorkUtils.HasCompletionFlags(_currentFight.Data.CompletionQuestVariablesFlags) &&
+                                    QuestWorkUtils.MatchesQuestWork(_currentFight.Data.CompletionQuestVariablesFlags,
+                                        questProgressInfo))
+                                return EStatus.InCombat; // would be the final enemy of the bunch
                             else if (questProgressInfo != null &&
                                      questProgressInfo.Sequence == _currentFight.Data.Sequence &&
                                      _previousQuestVariables != null &&
                                      !questProgressInfo.Variables.SequenceEqual(_previousQuestVariables))
-                            {
                                 UpdateLastTargetAndQuestVariables(null);
-                            }
                             else
                                 return EStatus.InCombat;
                         }
@@ -256,7 +249,7 @@ internal sealed class CombatController : IDisposable
                 {
                     QuestProgressInfo? questWork = _questFunctions.GetQuestProgressInfo(questId);
                     if (questWork != null &&
-                        QuestWorkUtils.MatchesQuestWork(condition.CompletionQuestVariablesFlags, questWork))
+                            QuestWorkUtils.MatchesQuestWork(condition.CompletionQuestVariablesFlags, questWork))
                     {
                         _logger.LogInformation("Complex combat condition fulfilled: QuestWork matches");
                         _currentFight.Data.CompletedComplexDatas.Add(i);
@@ -323,11 +316,9 @@ internal sealed class CombatController : IDisposable
             List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
             GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
             if (gameObjectStruct->FateId != 0 &&
-                gameObject.TargetObjectId != _objectTable[0]?.GameObjectId &&
-                _currentFight.Data.SpawnType != EEnemySpawnType.FateEnemies)
-            {
+                    gameObject.TargetObjectId != _objectTable[0]?.GameObjectId &&
+                    _currentFight.Data.SpawnType != EEnemySpawnType.FateEnemies)
                 return (null, "FATE mob");
-            }
 
             Vector3 ownPosition = _objectTable[0]?.Position ?? Vector3.Zero;
             bool expectQuestMarker;
@@ -347,11 +338,9 @@ internal sealed class CombatController : IDisposable
                         continue;
 
                     if (expectQuestMarker &&
-                        !complexCombatData[i].IgnoreQuestMarker &&
-                        gameObjectStruct->NamePlateIconId == 0)
-                    {
+                            !complexCombatData[i].IgnoreQuestMarker &&
+                            gameObjectStruct->NamePlateIconId == 0)
                         continue;
-                    }
 
                     if (complexCombatData[i].DataId == GameFunctions.GetBaseID(battleNpc) &&
                         (complexCombatData[i].NameId == null || complexCombatData[i].NameId == battleNpc.NameId))

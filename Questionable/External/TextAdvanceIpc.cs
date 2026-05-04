@@ -48,26 +48,19 @@ internal sealed class TextAdvanceIpc : IDisposable
             if (!_isInExternalControl.InvokeFunc())
             {
                 if (_enableExternalControl.InvokeFunc(
-                    _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
-                {
+                        _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
                     _isExternalControlActivated = true;
-                }
             }
         }
         else
         {
             if (_isExternalControlActivated)
-            {
                 if (_disableExternalControl.InvokeFunc(_pluginName) || !_isInExternalControl.InvokeFunc())
                     _isExternalControlActivated = false;
-            }
         }
     }
 
-    private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes)
-    {
-        return new()
-        {
+    private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes) => new() {
             EnableQuestAccept = true,
             EnableQuestComplete = true,
             EnableRewardPick = true,
@@ -77,8 +70,7 @@ internal sealed class TextAdvanceIpc : IDisposable
             EnableTalkSkip = !dontSkipCutscenes,
             EnableRequestFill = true,
             EnableAutoInteract = false
-        };
-    }
+    };
 
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public sealed class ExternalTerritoryConfig

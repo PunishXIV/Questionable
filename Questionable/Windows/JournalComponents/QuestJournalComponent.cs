@@ -418,10 +418,8 @@ internal sealed class QuestJournalComponent
             return false;
 
         if (filter.HideNoPaths &&
-            (!_questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) || quest.Root.Disabled))
-        {
+                (!_questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) || quest.Root.Disabled))
             return false;
-        }
 
         return true;
     }

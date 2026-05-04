@@ -28,7 +28,7 @@ internal static class Interact
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
-                or EInteractionType.SinglePlayerDuty)
+                    or EInteractionType.SinglePlayerDuty)
             {
                 // 'PreventQuestCompletion' config check
                 if (step.InteractionType is EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion)
@@ -47,20 +47,14 @@ internal static class Interact
                     yield break;
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
-            {
                 if (step.DataId == null)
                     yield break;
-            }
             else if (step.InteractionType == EInteractionType.Snipe)
-            {
                 if (!automatonIpc.IsAutoSnipeEnabled)
                     yield break;
-            }
             else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
-            {
                 if (step.TaxiStandId == null)
                     yield break;
-            }
             else if (step.InteractionType != EInteractionType.Interact)
                 yield break;
 
@@ -291,8 +285,8 @@ internal static class Interact
 
             logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
             if (_interactionState == EInteractionState.InteractionTriggered &&
-                flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
-                value)
+                    flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
+                    value)
             {
                 logger.LogInformation("Interaction was most likely triggered");
                 _interactionState = EInteractionState.InteractionConfirmed;
@@ -322,7 +316,7 @@ internal static class Interact
 
             // this is only relevant for followers on quests
             if (!gameObject.IsTargetable && condition[ConditionFlag.Mounted] &&
-                gameObject.ObjectKind != ObjectKind.GatheringPoint)
+                    gameObject.ObjectKind != ObjectKind.GatheringPoint)
             {
                 logger.LogInformation("Preparing interaction for {DataId} by unmounting", Task.DataId);
                 _needsUnmount = true;

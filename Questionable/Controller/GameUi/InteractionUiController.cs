@@ -148,7 +148,7 @@ internal sealed class InteractionUiController : IDisposable
             }
 
             if (_gameGui.TryGetAddonByName("CutSceneSelectString",
-                out AddonCutSceneSelectString* addonCutSceneSelectString))
+                    out AddonCutSceneSelectString* addonCutSceneSelectString))
             {
                 _logger.LogInformation("CutSceneSelectString window is open");
                 CutsceneSelectStringPostSetup(addonCutSceneSelectString, true);
@@ -278,7 +278,7 @@ internal sealed class InteractionUiController : IDisposable
             QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
             QuestStep? step = sequence?.FindStep(currentQuest.Step);
             if (step is { InteractionType: EInteractionType.AcceptQuest, PickUpQuestId: not null } &&
-                _questRegistry.TryGetQuest(step.PickUpQuestId, out Quest? pickupQuest))
+                    _questRegistry.TryGetQuest(step.PickUpQuestId, out Quest? pickupQuest))
             {
                 _logger.LogInformation("Checking if current picked-up {Name} is on the list", pickupQuest.Info.Name);
                 if (CheckQuestSelection(addonSelectIconString, pickupQuest, answers))
@@ -400,8 +400,8 @@ internal sealed class InteractionUiController : IDisposable
             }
 
             if (freeOrFavoredAetheryteRegistrations.Any(x =>
-                _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
-                AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable))
+                    _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
+                    AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable))
             {
                 _logger.LogInformation("Adding security token aetheryte unlock dialogue choice");
                 dialogueChoices.Add(new(quest, new()
@@ -535,7 +535,7 @@ internal sealed class InteractionUiController : IDisposable
             }
 
             if (actualPrompt != null &&
-                (excelPrompt == null || !IsMatch(actualPrompt, excelPrompt)))
+                    (excelPrompt == null || !IsMatch(actualPrompt, excelPrompt)))
             {
                 _logger.LogInformation("Unexpected excelPrompt: {ExcelPrompt}, actualPrompt: {ActualPrompt}",
                     excelPrompt, actualPrompt);
@@ -555,10 +555,8 @@ internal sealed class InteractionUiController : IDisposable
                     if (quest?.Id is SatisfactionSupplyNpcId)
                     {
                         if (_questController.GatheringQuest == null ||
-                            _questController.GatheringQuest.Sequence == 255)
-                        {
+                                _questController.GatheringQuest.Sequence == 255)
                             return null;
-                        }
 
                         _questController.GatheringQuest.SetSequence(1);
                         _questController.StartGatheringQuest("SatisfactionSupply turn in");
@@ -642,10 +640,8 @@ internal sealed class InteractionUiController : IDisposable
         {
             QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
             if (sequence != null &&
-                sequence.Steps.Any(step => HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt)))
-            {
+                    sequence.Steps.Any(step => HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt)))
                 return true;
-            }
         }
         else
         {
@@ -744,7 +740,7 @@ internal sealed class InteractionUiController : IDisposable
     private bool CheckSinglePlayerDutyYesNo(ElementId questId, QuestStep? step)
     {
         if (step is { InteractionType: EInteractionType.SinglePlayerDuty } &&
-            _bossModIpc.IsConfiguredToRunSoloInstance(questId, step.SinglePlayerDutyOptions))
+                _bossModIpc.IsConfiguredToRunSoloInstance(questId, step.SinglePlayerDutyOptions))
         {
             // Most of these are yes/no dialogs "Duty calls, ...".
             //
@@ -801,7 +797,7 @@ internal sealed class InteractionUiController : IDisposable
 
         ushort? targetTerritoryId = FindTargetTerritoryFromQuestStep(currentQuest);
         if (targetTerritoryId != null &&
-            TryFindWarp(targetTerritoryId.Value, actualPrompt, out uint? warpId, out string? warpText))
+                TryFindWarp(targetTerritoryId.Value, actualPrompt, out uint? warpId, out string? warpText))
         {
             _logger.LogInformation("Using warp {Id}, {Prompt}", warpId, warpText);
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
@@ -872,14 +868,13 @@ internal sealed class InteractionUiController : IDisposable
             step.InteractionType == EInteractionType.Gather)
         {
             if (_gatheringPointRegistry.TryGetGatheringPointId(step.ItemsToGather[0].ItemId,
-                    (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV,
-                    out GatheringPointId? gatheringPointId) &&
-                _gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? root))
+                        (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV,
+                        out GatheringPointId? gatheringPointId) &&
+                    _gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? root))
             {
                 foreach (QuestStep gatheringStep in root.Steps)
                 {
-                    if (gatheringStep.TerritoryId == _clientState.TerritoryType &&
-                        gatheringStep.TargetTerritoryId != null)
+                    if (gatheringStep.TerritoryId == _clientState.TerritoryType && gatheringStep.TargetTerritoryId != null)
                     {
                         _logger.LogTrace(
                             "FindTargetTerritoryFromQuestStep (gathering): {CurrentTerritory}, {TargetTerritory}",

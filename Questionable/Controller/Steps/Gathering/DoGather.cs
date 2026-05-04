@@ -191,7 +191,7 @@ internal static class DoGather
                 if (alternativeSlot.GatheringChance > 0)
                 {
                     if (alternativeSlot.GatheringChance >= 95 &&
-                        CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
+                            CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
                     {
                         _slotToGather = alternativeSlot;
                         logger.LogDebug("GatheringChance != 100, >= 95, using SharpVision1/FieldMastery1");
@@ -200,7 +200,7 @@ internal static class DoGather
                     }
 
                     if (alternativeSlot.GatheringChance >= 85 &&
-                        CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
+                            CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
                     {
                         _slotToGather = alternativeSlot;
                         logger.LogDebug("GatheringChance != 100, >= 85, using SharpVision2/FieldMastery2");
@@ -209,7 +209,7 @@ internal static class DoGather
                     }
 
                     if (alternativeSlot.GatheringChance >= 50 &&
-                        CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
+                            CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
                     {
                         _slotToGather = alternativeSlot;
                         logger.LogDebug("GatheringChance != 100, >= 50, using SharpVision3/FieldMastery3");
@@ -223,8 +223,8 @@ internal static class DoGather
             if (slot == null)
             {
                 if (!_usedLuck &&
-                    nodeCondition.CurrentIntegrity == nodeCondition.MaxIntegrity &&
-                    CanUseAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer))
+                        nodeCondition.CurrentIntegrity == nodeCondition.MaxIntegrity &&
+                        CanUseAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer))
                 {
                     _usedLuck = true;
                     logger.LogDebug("Using Luck");
@@ -249,7 +249,7 @@ internal static class DoGather
             if (slot is { GatheringChance: > 0 and < 100 })
             {
                 if (slot.GatheringChance >= 95 &&
-                    CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
+                        CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
                 {
                     logger.LogDebug("GatheringChance != 100, >= 95, using SharpVision1/FieldMastery1");
                     actions.Enqueue(PickAction(EAction.SharpVision1, EAction.FieldMastery1));
@@ -257,7 +257,7 @@ internal static class DoGather
                 }
 
                 if (slot.GatheringChance >= 85 &&
-                    CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
+                        CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
                 {
                     logger.LogDebug("GatheringChance != 100, >= 85, using SharpVision1/FieldMastery1");
                     actions.Enqueue(PickAction(EAction.SharpVision2, EAction.FieldMastery2));
@@ -265,7 +265,7 @@ internal static class DoGather
                 }
 
                 if (slot.GatheringChance >= 50 &&
-                    CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
+                        CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
                 {
                     logger.LogDebug("GatheringChance != 100, >= 50, using SharpVision1/FieldMastery1");
                     actions.Enqueue(PickAction(EAction.SharpVision3, EAction.FieldMastery3));

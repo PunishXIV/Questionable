@@ -163,10 +163,8 @@ internal static class UseItem
             {
                 QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
-                    QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
-                {
+                        QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
                     return ETaskResult.TaskComplete;
-                }
             }
 
             if (DateTime.Now <= _continueAt)
