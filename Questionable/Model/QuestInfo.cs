@@ -1,11 +1,11 @@
-﻿using System;
+using ECommons.DalamudServices;
+using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Questing;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using ECommons.DalamudServices;
-using LLib.GameData;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
@@ -16,7 +16,7 @@ internal sealed class QuestInfo : IQuestInfo
 {
     public QuestInfo(ExcelQuest ogquest, uint newGamePlusChapter, byte startingCity, JournalGenreOverrides journalGenreOverrides)
     {
-        var quest = Svc.Data.GetExcelSheet<TempQuest>().GetRow(ogquest.RowId);
+        TempQuest quest = Svc.Data.GetExcelSheet<TempQuest>().GetRow(ogquest.RowId);
         QuestId = QQuestId.FromRowId(quest.RowId);
 
         string suffix = QuestId.Value switch
@@ -34,7 +34,7 @@ internal sealed class QuestInfo : IQuestInfo
             1432 => " (Gridania)",
             1433 => " (Limsa)",
             1434 => " (Ul'dah)",
-            _ => "",
+            var _ => ""
         };
 
         Name = $"{quest.Name}{suffix}";
@@ -62,7 +62,7 @@ internal sealed class QuestInfo : IQuestInfo
             >= 1119 and <= 1127 or 1579 => (journalGenreOverrides.ARelicRebornQuests, 0),
             >= 4196 and <= 4209 => (journalGenreOverrides.ThavnairSideQuests, null),
             4173 => (journalGenreOverrides.RadzAtHanSideQuests, null),
-            _ => (quest.JournalGenre.ValueNullable?.RowId, null),
+            var _ => (quest.JournalGenre.ValueNullable?.RowId, null)
         };
         JournalGenre = genreAndSortKey.Item1;
         SortKey = genreAndSortKey.Item2 ?? quest.SortKey;
@@ -91,15 +91,20 @@ internal sealed class QuestInfo : IQuestInfo
             .ToList();
         Expansion = (EExpansionVersion)quest.Expansion.RowId;
     }
-
-    private static QuestId ReplaceOldQuestIds(QuestId questId)
-    {
-        return questId.Value switch
-        {
-            524 => new QuestId(4522),
-            _ => questId,
-        };
-    }
+    public ImmutableList<QQuestId> QuestLocks { get; private set; }
+    public EQuestJoin QuestLockJoin { get; private set; }
+    public List<ushort> PreviousInstanceContent { get; }
+    public EQuestJoin PreviousInstanceContentJoin { get; }
+    public bool CompletesInstantly { get; }
+    public GrandCompany GrandCompany { get; }
+    public byte AlliedSocietyQuestGroup { get; }
+    public int AlliedSocietyRank { get; }
+    public bool IsSeasonalEvent { get; }
+    public uint NewGamePlusChapter { get; }
+    public byte StartingCity { get; set; }
+    public byte MoogleDeliveryLevel { get; }
+    public bool IsMoogleDeliveryQuest => JournalGenre == 87;
+    public IReadOnlyList<ItemReward> ItemRewards { get; }
 
     public ElementId QuestId { get; }
     public string Name { get; }
@@ -108,26 +113,21 @@ internal sealed class QuestInfo : IQuestInfo
     public bool IsRepeatable { get; }
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; private set; }
     public EQuestJoin PreviousQuestJoin { get; }
-    public ImmutableList<QuestId> QuestLocks { get; private set; }
-    public EQuestJoin QuestLockJoin { get; private set; }
-    public List<ushort> PreviousInstanceContent { get; }
-    public EQuestJoin PreviousInstanceContentJoin { get; }
     public uint? JournalGenre { get; set; }
     public ushort SortKey { get; set; }
     public bool IsMainScenarioQuest { get; }
-    public bool CompletesInstantly { get; }
-    public GrandCompany GrandCompany { get; }
     public EAlliedSociety AlliedSociety { get; }
-    public byte AlliedSocietyQuestGroup { get; }
-    public int AlliedSocietyRank { get; }
-    public IReadOnlyList<EClassJob> ClassJobs { get; }
-    public bool IsSeasonalEvent { get; }
-    public uint NewGamePlusChapter { get; }
-    public byte StartingCity { get; set; }
-    public byte MoogleDeliveryLevel { get; }
-    public bool IsMoogleDeliveryQuest => JournalGenre == 87;
-    public IReadOnlyList<ItemReward> ItemRewards { get; }
+    public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }
+
+    private static QuestId ReplaceOldQuestIds(QuestId questId)
+    {
+        return questId.Value switch
+        {
+            524 => new(4522),
+            var _ => questId
+        };
+    }
 
     public void AddPreviousQuest(PreviousQuestInfo questId)
     {
@@ -137,7 +137,9 @@ internal sealed class QuestInfo : IQuestInfo
     public void AddQuestLocks(EQuestJoin questJoin, params QuestId[] questId)
     {
         if (QuestLocks.Count > 0 && QuestLockJoin != questJoin)
+        {
             throw new InvalidOperationException();
+        }
 
         QuestLockJoin = questJoin;
         QuestLocks = [.. QuestLocks, .. questId];

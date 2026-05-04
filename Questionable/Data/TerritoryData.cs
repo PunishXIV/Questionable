@@ -1,25 +1,24 @@
-﻿using System;
+﻿using Dalamud.Game;
+using Dalamud.Plugin.Services;
+using Dalamud.Utility;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Questing;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-using Dalamud.Game;
-using Dalamud.Plugin.Services;
-using Dalamud.Utility;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
-
 namespace Questionable.Data;
 
 internal sealed class TerritoryData
 {
-    private readonly ImmutableDictionary<uint, string> _territoryNames;
-    private readonly ImmutableHashSet<uint> _territoriesWithMount;
+    private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
     private readonly ImmutableDictionary<uint, uint> _dutyTerritories;
     private readonly ImmutableDictionary<uint, string> _instanceNames;
-    private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
     private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattlesToContentFinderCondition;
+    private readonly ImmutableHashSet<uint> _territoriesWithMount;
+    private readonly ImmutableDictionary<uint, string> _territoryNames;
 
     public TerritoryData(IDataManager dataManager)
     {
@@ -29,7 +28,7 @@ internal sealed class TerritoryData
                 new
                 {
                     x.RowId,
-                    Name = x.PlaceName.ValueNullable?.Name.ToString() ?? x.PlaceNameZone.ValueNullable?.Name.ToString(),
+                    Name = x.PlaceName.ValueNullable?.Name.ToString() ?? x.PlaceNameZone.ValueNullable?.Name.ToString()
                 })
             .Where(x => !string.IsNullOrEmpty(x.Name))
             .ToImmutableDictionary(x => x.RowId, x => x.Name!);
@@ -60,38 +59,62 @@ internal sealed class TerritoryData
             .ToImmutableDictionary(x => (x.QuestId, x.Index), x => x.CfcId);
     }
 
-    public string? GetName(uint territoryId) => _territoryNames.GetValueOrDefault(territoryId);
+    public string? GetName(uint territoryId)
+    {
+        return _territoryNames.GetValueOrDefault(territoryId);
+    }
 
     public string GetNameAndId(uint territoryId)
     {
         string? territoryName = GetName(territoryId);
         if (territoryName != null)
+        {
             return string.Create(CultureInfo.InvariantCulture, $"{territoryName} ({territoryId})");
+        }
         else
+        {
             return territoryId.ToString(CultureInfo.InvariantCulture);
+        }
     }
 
-    public bool CanUseMount(uint territoryId) => _territoriesWithMount.Contains(territoryId);
+    public bool CanUseMount(uint territoryId)
+    {
+        return _territoriesWithMount.Contains(territoryId);
+    }
 
-    public bool IsDutyInstance(uint territoryId) => _dutyTerritories.ContainsKey(territoryId);
+    public bool IsDutyInstance(uint territoryId)
+    {
+        return _dutyTerritories.ContainsKey(territoryId);
+    }
 
-    public bool IsQuestBattleInstance(uint territoryId) =>
-        _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
+    public bool IsQuestBattleInstance(uint territoryId)
+    {
+        return _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
+    }
 
-    public string? GetInstanceName(ushort instanceId) => _instanceNames.GetValueOrDefault(instanceId);
+    public string? GetInstanceName(ushort instanceId)
+    {
+        return _instanceNames.GetValueOrDefault(instanceId);
+    }
 
-    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId) =>
-        _contentFinderConditions.GetValueOrDefault(cfcId);
+    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId)
+    {
+        return _contentFinderConditions.GetValueOrDefault(cfcId);
+    }
 
     public bool TryGetContentFinderCondition(uint cfcId,
-        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData) =>
-        _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
+        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)
+    {
+        return _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
+    }
 
     public bool TryGetContentFinderConditionForSoloInstance(ElementId questId, byte index,
         [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)
     {
         if (_questBattlesToContentFinderCondition.TryGetValue((questId, index), out uint cfcId))
+        {
             return _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
+        }
         else
         {
             contentFinderConditionData = null;
@@ -107,33 +130,46 @@ internal sealed class TerritoryData
     private static string FixName(string name, ClientLanguage language)
     {
         if (string.IsNullOrEmpty(name) || language != ClientLanguage.English)
+        {
             return name;
+        }
 
         return string.Concat(name[0].ToString().ToUpper(CultureInfo.InvariantCulture), name.AsSpan(1));
     }
 
     private static IEnumerable<(ElementId QuestId, byte Index, uint QuestBattleId)> GetQuestBattles(Quest quest)
     {
-        foreach (Quest.QuestParamsStruct t in quest.QuestParams)
+        foreach(Quest.QuestParamsStruct t in quest.QuestParams)
         {
             if (t.ScriptInstruction == "QUESTBATTLE0" || (quest.RowId.Equals(5325) && t.ScriptInstruction == "INSTANCEDUNGEON0"))
+            {
                 yield return (QuestId.FromRowId(quest.RowId), 0, t.ScriptArg);
+            }
             else if (t.ScriptInstruction == "QUESTBATTLE1")
+            {
                 yield return (QuestId.FromRowId(quest.RowId), 1, t.ScriptArg);
+            }
             else if (t.ScriptInstruction.IsEmpty)
+            {
                 break;
+            }
         }
     }
 
     private static uint LookupContentFinderConditionForQuestBattle(IDataManager dataManager, uint questBattleId)
     {
         if (questBattleId >= 5000)
+        {
             return dataManager.GetExcelSheet<InstanceContent>().GetRow(questBattleId).ContentFinderCondition.RowId;
+        }
         else
+        {
             return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).SoloDuty.RowId;
+        }
     }
 
-    public sealed record ContentFinderConditionData(
+    public sealed record ContentFinderConditionData
+    (
         uint ContentFinderConditionId,
         string Name,
         uint TerritoryId,

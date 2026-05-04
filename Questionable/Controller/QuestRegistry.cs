@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using Dalamud.Bindings.ImGui;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
-using ECommons.Reflection;
+using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Model;
@@ -21,25 +11,31 @@ using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
-using TerritoryType = Lumina.Excel.Sheets.TerritoryType;
-
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 namespace Questionable.Controller;
 
 internal sealed class QuestRegistry
 {
-    private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly QuestData _questData;
-    private readonly QuestValidator _questValidator;
+    private readonly IChatGui _chatGui;
+    private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _contentFinderConditionIds = [];
+    private readonly IDataManager _dataManager;
     private readonly JsonSchemaValidator _jsonSchemaValidator;
     private readonly ILogger<QuestRegistry> _logger;
-    private readonly TerritoryData _territoryData;
-    private readonly IChatGui _chatGui;
-    private readonly IDataManager _dataManager;
+    private readonly List<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> _lowPriorityContentFinderConditionQuests = [];
+    private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QuestData _questData;
+    private readonly Dictionary<ElementId, Quest> _quests = [];
+    private readonly QuestValidator _questValidator;
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
-    private readonly Dictionary<ElementId, Quest> _quests = [];
-    private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _contentFinderConditionIds = [];
-    private readonly List<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> _lowPriorityContentFinderConditionQuests = [];
+    private readonly TerritoryData _territoryData;
 
     public QuestRegistry(
         IDalamudPluginInterface pluginInterface,
@@ -84,10 +80,10 @@ internal sealed class QuestRegistry
 
         try
         {
-            LoadFromDirectory(new DirectoryInfo(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
+            LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
                 Quest.ESource.UserDirectory);
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             _logger.LogError(e,
                 "Failed to load all quests from user directory (some may have been successfully loaded)");
@@ -100,7 +96,7 @@ internal sealed class QuestRegistry
         {
             _reloadDataIpc.SendMessage();
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             // why does this even throw
             _logger.LogWarning(e, "Error during Reload.SendMessage IPC");
@@ -114,21 +110,21 @@ internal sealed class QuestRegistry
     {
         _logger.LogInformation("Loading quests from assembly");
 
-        foreach ((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.GetQuests())
+        foreach((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.GetQuests())
         {
             try
             {
-                var questInfo = _questData.GetQuestInfo(questId);
+                IQuestInfo questInfo = _questData.GetQuestInfo(questId);
                 Quest quest = new()
                 {
                     Id = questId,
                     Root = questRoot,
                     Info = questInfo,
-                    Source = Quest.ESource.Assembly,
+                    Source = Quest.ESource.Assembly
                 };
                 _quests[quest.Id] = quest;
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 _logger.LogWarning("Not loading unknown quest {QuestId} from assembly: {Message}", questId, e.Message);
             }
@@ -143,19 +139,20 @@ internal sealed class QuestRegistry
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
         if (solutionDirectory != null)
         {
-            DirectoryInfo pathProjectDirectory =
-                new DirectoryInfo(Path.Combine(solutionDirectory.FullName, "QuestPaths"));
+            DirectoryInfo pathProjectDirectory = new(Path.Combine(solutionDirectory.FullName, "QuestPaths"));
             if (pathProjectDirectory.Exists)
             {
                 try
                 {
-                    foreach (var expansionFolder in ExpansionData.ExpansionFolders.Values)
+                    foreach(string expansionFolder in ExpansionData.ExpansionFolders.Values)
+                    {
                         LoadFromDirectory(
-                            new DirectoryInfo(Path.Combine(pathProjectDirectory.FullName, expansionFolder)),
+                            new(Path.Combine(pathProjectDirectory.FullName, expansionFolder)),
                             Quest.ESource.ProjectDirectory,
                             LogLevel.Trace);
+                    }
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     _quests.Clear();
 
@@ -168,12 +165,12 @@ internal sealed class QuestRegistry
 
     private void LoadCfcIds()
     {
-        foreach (var quest in _quests.Values)
+        foreach(Quest quest in _quests.Values)
         {
-            foreach (var dutySequence in quest.AllSequences())
+            foreach(QuestSequence dutySequence in quest.AllSequences())
             {
-                foreach (var dutyStep in dutySequence.Steps.Where(x =>
-                             x.InteractionType is EInteractionType.Duty or EInteractionType.SinglePlayerDuty))
+                foreach(QuestStep dutyStep in dutySequence.Steps.Where(x =>
+                    x.InteractionType is EInteractionType.Duty or EInteractionType.SinglePlayerDuty))
                 {
                     if (dutyStep is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
                     {
@@ -186,87 +183,14 @@ internal sealed class QuestRegistry
                     }
                     else if (dutyStep.InteractionType == EInteractionType.SinglePlayerDuty &&
                              _territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id,
-                                 dutyStep.SinglePlayerDutyIndex, out var cfcData))
+                                 dutyStep.SinglePlayerDutyIndex, out TerritoryData.ContentFinderConditionData? cfcData))
+                    {
                         _contentFinderConditionIds[cfcData.ContentFinderConditionId] = (quest.Id, dutyStep);
+                    }
                 }
             }
         }
     }
-
-#if DEBUG
-    internal FileInfo AssemblyLocation => _pluginInterface.AssemblyLocation;
-    public static string GetFilename(IQuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
-    public (bool, string) OpenEditor(IQuestInfo info)
-    {
-        _logger.LogDebug("OpenEditor IQuestInfo");
-        return OpenEditor(AssemblyLocation, GetFilename(info));
-    }
-    public (bool, string) OpenEditor(ushort questId)
-    {
-        _logger.LogDebug("OpenEditor ushort");
-        if (TryGetQuest(new QuestId(questId), out Quest? quest))
-            return OpenEditor(AssemblyLocation, GetFilename(quest.Info));
-        return (false, $"could not get quest from {questId}");
-    }
-    public unsafe (bool, string) OpenEditor()
-    {
-        _logger.LogDebug("OpenEditor trackedQuests");
-        var questManager = QuestManager.Instance();
-        ushort? questId = null;
-        if (questManager != null)
-        {
-            for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
-            {
-                var trackedQuest = questManager->TrackedQuests[i];
-                switch (trackedQuest.QuestType)
-                {
-                    case 1:
-                        questId = questManager->NormalQuests[trackedQuest.Index].QuestId;
-                        break;
-                    default:
-                        break;
-                    case 2:
-                        break;
-                }
-                if (questId != null)
-                    break;
-            }
-        }
-        if (questId != null)
-            return OpenEditor(questId.Value);
-        return (false, $"could not get tracked quest");
-    }
-
-    public static (bool, string) OpenEditor(FileInfo assemblyLocation, string filename)
-    {
-        DirectoryInfo? targetFolder = new(Path.Combine(assemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
-        if (targetFolder == null)
-            return (false, $"couldn't find QuestPaths folder");
-        FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
-        if (file == null)
-            return (false, $"couldn't find {filename}");
-        Process.Start(new ProcessStartInfo()
-        {
-            FileName = filename,
-            WorkingDirectory = file.DirectoryName,
-            UseShellExecute = true
-        });
-        return (true, file.FullName);
-    }
-
-    public static FileInfo? FindFilenameInDirectory(DirectoryInfo root, string filename)
-    {
-        foreach (var file in root.GetFiles())
-            if (file.Name == filename)
-                return file;
-        foreach (var directory in root.GetDirectories())
-        {
-            if (FindFilenameInDirectory(directory, filename) is FileInfo result)
-                return result;
-        }
-        return null;
-    }
-#endif
 
     private void ValidateQuests()
     {
@@ -276,22 +200,26 @@ internal sealed class QuestRegistry
     private void LoadQuestFromStream(string fileName, Stream stream, Quest.ESource source)
     {
         if (source == Quest.ESource.UserDirectory)
+        {
             _logger.LogTrace("Loading quest from '{FileName}'", fileName);
+        }
         ElementId? questId = ExtractQuestIdFromName(fileName);
         if (questId == null)
+        {
             return;
+        }
 
-        var questNode = JsonNode.Parse(stream)!;
+        JsonNode questNode = JsonNode.Parse(stream)!;
         _jsonSchemaValidator.Enqueue(questId, questNode);
 
-        var questRoot = questNode.Deserialize<QuestRoot>()!;
-        var questInfo = _questData.GetQuestInfo(questId);
-        Quest quest = new Quest
+        QuestRoot questRoot = questNode.Deserialize<QuestRoot>()!;
+        IQuestInfo questInfo = _questData.GetQuestInfo(questId);
+        Quest quest = new()
         {
             Id = questId,
             Root = questRoot,
             Info = questInfo,
-            Source = source,
+            Source = source
         };
         _quests[quest.Id] = quest;
     }
@@ -306,22 +234,26 @@ internal sealed class QuestRegistry
         }
 
         if (source == Quest.ESource.UserDirectory)
+        {
             _logger.Log(logLevel, "Loading quests from {DirectoryName}", directory);
-        foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
+        }
+        foreach(FileInfo fileInfo in directory.GetFiles("*.json"))
         {
             try
             {
-                using FileStream stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read);
+                using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
                 LoadQuestFromStream(fileInfo.Name, stream, source);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 throw new InvalidDataException($"Unable to load file {fileInfo.FullName}", e);
             }
         }
 
-        foreach (DirectoryInfo childDirectory in directory.GetDirectories())
+        foreach(DirectoryInfo childDirectory in directory.GetDirectories())
+        {
             LoadFromDirectory(childDirectory, source, logLevel);
+        }
     }
 
     private static ElementId? ExtractQuestIdFromName(string resourceName)
@@ -330,22 +262,31 @@ internal sealed class QuestRegistry
         name = name.Substring(name.LastIndexOf('.') + 1);
 
         if (!name.Contains('_', StringComparison.Ordinal))
+        {
             return null;
+        }
 
         string[] parts = name.Split('_', 2);
         return ElementId.FromString(parts[0]);
     }
 
-    public bool IsKnownQuest(ElementId questId) => _quests.ContainsKey(questId);
+    public bool IsKnownQuest(ElementId questId)
+    {
+        return _quests.ContainsKey(questId);
+    }
 
     public bool TryGetQuest(ElementId questId, [NotNullWhen(true)] out Quest? quest)
-        => _quests.TryGetValue(questId, out quest);
+    {
+        return _quests.TryGetValue(questId, out quest);
+    }
 
-    public List<QuestInfo> GetKnownClassJobQuests(EClassJob classJob, bool includeRoleQuests = true)
+    public List<QuestInfo> GetKnownClassJobQuests(Job classJob, bool includeRoleQuests = true)
     {
         List<QuestInfo> allQuests = [.. _questData.GetClassJobQuests(classJob, includeRoleQuests)];
         if (classJob.AsJob() != classJob)
+        {
             allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
+        }
 
         return allQuests
             .Where(x => IsKnownQuest(x.QuestId))
@@ -354,7 +295,7 @@ internal sealed class QuestRegistry
 
     public bool TryGetDutyByContentFinderConditionId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
     {
-        if (_contentFinderConditionIds.TryGetValue(cfcId, out var value))
+        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))
         {
             dutyOptions = value.Step.DutyOptions;
             return dutyOptions != null;
@@ -363,4 +304,96 @@ internal sealed class QuestRegistry
         dutyOptions = null;
         return false;
     }
+
+#if DEBUG
+    internal FileInfo AssemblyLocation => _pluginInterface.AssemblyLocation;
+    public static string GetFilename(IQuestInfo info)
+    {
+        return $"{info.QuestId}_{info.SimplifiedName}.json";
+    }
+    public (bool, string) OpenEditor(IQuestInfo info)
+    {
+        _logger.LogDebug("OpenEditor IQuestInfo");
+        return OpenEditor(AssemblyLocation, GetFilename(info));
+    }
+    public (bool, string) OpenEditor(ushort questId)
+    {
+        _logger.LogDebug("OpenEditor ushort");
+        if (TryGetQuest(new QuestId(questId), out Quest? quest))
+        {
+            return OpenEditor(AssemblyLocation, GetFilename(quest.Info));
+        }
+        return (false, $"could not get quest from {questId}");
+    }
+    public unsafe (bool, string) OpenEditor()
+    {
+        _logger.LogDebug("OpenEditor trackedQuests");
+        QuestManager* questManager = QuestManager.Instance();
+        ushort? questId = null;
+        if (questManager != null)
+        {
+            for(int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
+            {
+                TrackingWork trackedQuest = questManager->TrackedQuests[i];
+                switch (trackedQuest.QuestType)
+                {
+                    case 1:
+                        questId = questManager->NormalQuests[trackedQuest.Index].QuestId;
+                        break;
+                    case 2:
+                        break;
+                }
+                if (questId != null)
+                {
+                    break;
+                }
+            }
+        }
+        if (questId != null)
+        {
+            return OpenEditor(questId.Value);
+        }
+        return (false, "could not get tracked quest");
+    }
+
+    public static (bool, string) OpenEditor(FileInfo assemblyLocation, string filename)
+    {
+        DirectoryInfo? targetFolder = new(Path.Combine(assemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
+        if (targetFolder == null)
+        {
+            return (false, "couldn't find QuestPaths folder");
+        }
+        FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
+        if (file == null)
+        {
+            return (false, $"couldn't find {filename}");
+        }
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = filename,
+            WorkingDirectory = file.DirectoryName,
+            UseShellExecute = true
+        });
+        return (true, file.FullName);
+    }
+
+    public static FileInfo? FindFilenameInDirectory(DirectoryInfo root, string filename)
+    {
+        foreach(FileInfo file in root.GetFiles())
+        {
+            if (file.Name == filename)
+            {
+                return file;
+            }
+        }
+        foreach(DirectoryInfo directory in root.GetDirectories())
+        {
+            if (FindFilenameInDirectory(directory, filename) is FileInfo result)
+            {
+                return result;
+            }
+        }
+        return null;
+    }
+#endif
 }

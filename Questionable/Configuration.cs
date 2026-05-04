@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using Dalamud.Configuration;
 using Dalamud.Game.Text;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using LLib.GameData;
-using LLib.ImGui;
 using Newtonsoft.Json;
 using Questionable.Model.Questing;
-
+using Questionable.Windows.Common;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
 {
     public const int PluginSetupVersion = 5;
-
-    public int Version { get; set; } = 1;
     public int PluginSetupCompleteVersion { get; set; }
     public GeneralConfiguration General { get; } = new();
     public StopConfiguration Stop { get; } = new();
@@ -27,19 +24,27 @@ internal sealed class Configuration : IPluginConfiguration
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
 
-    internal bool IsPluginSetupComplete() => PluginSetupCompleteVersion == PluginSetupVersion;
+    public int Version { get; set; } = 1;
 
-    internal void MarkPluginSetupComplete() => PluginSetupCompleteVersion = PluginSetupVersion;
+    internal bool IsPluginSetupComplete()
+    {
+        return PluginSetupCompleteVersion == PluginSetupVersion;
+    }
+
+    internal void MarkPluginSetupComplete()
+    {
+        PluginSetupCompleteVersion = PluginSetupVersion;
+    }
 
     internal sealed class GeneralConfiguration
     {
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
         public uint MountId { get; set; } = 71;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
-        public EClassJob CombatJob { get; set; } = EClassJob.Adventurer;
-        public EClassJob CraftingJob { get; set; } = EClassJob.Carpenter;
-        public EClassJob GatheringJob { get; set; } = EClassJob.Miner;
-        public EGearsetUpdateSource GearsetUpdateSource { get; set;} = EGearsetUpdateSource.Vanilla;
+        public Job CombatJob { get; set; } = Job.ADV;
+        public Job CraftingJob { get; set; } = Job.CRP;
+        public Job GatheringJob { get; set; } = Job.MIN;
+        public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public bool HideInAllInstances { get; set; } = true;
         public bool UseEscToCancelQuesting { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
@@ -124,12 +129,13 @@ internal sealed class Configuration : IPluginConfiguration
         Vanilla,
         Stylist
     }
+
     internal enum ECombatModule
     {
         None,
         BossMod,
         WrathCombo,
-        RotationSolverReborn,
+        RotationSolverReborn
     }
 
     public sealed class ElementIdNConverter : JsonConverter<ElementId>

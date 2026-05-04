@@ -2,14 +2,13 @@
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
-
 namespace Questionable.External;
 
 internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogger<ArtisanIpc> logger)
 {
-    private readonly ILogger<ArtisanIpc> _logger = logger;
     private readonly ICallGateSubscriber<ushort, int, object> _craftItem = pluginInterface.GetIpcSubscriber<ushort, int, object>("Artisan.CraftItem");
     private readonly ICallGateSubscriber<bool> _getEnduranceStatus = pluginInterface.GetIpcSubscriber<bool>("Artisan.GetEnduranceStatus");
+    private readonly ILogger<ArtisanIpc> _logger = logger;
 
     public bool CraftItem(ushort recipeId, int quantity)
     {
@@ -20,7 +19,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
             _craftItem.InvokeAction(recipeId, quantity);
             return true;
         }
-        catch (IpcError e)
+        catch(IpcError e)
         {
             _logger.LogError(e, "Unable to craft items");
             return false;
@@ -28,7 +27,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
     }
 
     /// <summary>
-    /// This ignores crafting lists, but we can't create/use those.
+    ///     This ignores crafting lists, but we can't create/use those.
     /// </summary>
     public bool IsCrafting()
     {
@@ -36,7 +35,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
         {
             return _getEnduranceStatus.InvokeFunc();
         }
-        catch (IpcError e)
+        catch(IpcError e)
         {
             _logger.LogError(e, "Unable to check for Artisan endurance status");
             return false;

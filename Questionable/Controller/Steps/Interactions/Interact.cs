@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Enums;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
-using ECommons.GameHelpers;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
@@ -18,6 +14,10 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -37,55 +37,74 @@ internal static class Interact
                 }
 
                 if (step.Emote != null)
+                {
                     yield break;
+                }
 
                 if (step.ChatMessage != null)
+                {
                     yield break;
+                }
 
                 if (step.ItemId != null)
+                {
                     yield break;
+                }
 
                 if (step.DataId == null)
+                {
                     yield break;
+                }
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
             {
                 if (step.DataId == null)
+                {
                     yield break;
+                }
             }
             else if (step.InteractionType == EInteractionType.Snipe)
             {
                 if (!automatonIpc.IsAutoSnipeEnabled)
+                {
                     yield break;
+                }
             }
             else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
             {
                 if (step.TaxiStandId == null)
+                {
                     yield break;
+                }
             }
             else if (step.InteractionType != EInteractionType.Interact)
+            {
                 yield break;
+            }
 
             ArgumentNullException.ThrowIfNull(step.DataId);
 
             // if we're fast enough, it is possible to get the smalltalk prompt
             if (sequence.Sequence == 0 && sequence.Steps.IndexOf(step) == 0)
+            {
                 yield return new WaitAtEnd.WaitDelay();
+            }
 
             yield return new Task(
-                DataId: step.DataId.Value,
-                Quest: quest,
-                InteractionType: step.InteractionType,
-                SkipMarkerCheck: step.TargetTerritoryId != null || quest.Id is SatisfactionSupplyNpcId ||
-                    step.SkipConditions is { StepIf.Never: true } || step.InteractionType == EInteractionType.PurchaseItem || step.DataId == 1052475,
-                PickUpItemId: step.PickUpItemId,
-                TaxiStandId: step.TaxiStandId,
-                SkipConditions: step.SkipConditions?.StepIf,
-                CompletionQuestVariablesFlags: step.CompletionQuestVariablesFlags);
+                step.DataId.Value,
+                quest,
+                step.InteractionType,
+                step.TargetTerritoryId != null || quest.Id is SatisfactionSupplyNpcId ||
+                step.SkipConditions is { StepIf.Never: true } || step.InteractionType == EInteractionType.PurchaseItem || step.DataId == 1052475,
+                step.PickUpItemId,
+                step.TaxiStandId,
+                step.SkipConditions?.StepIf,
+                step.CompletionQuestVariablesFlags);
         }
     }
 
-    internal sealed record Task(
+    internal sealed record Task
+    (
         uint DataId,
         Quest? Quest,
         EInteractionType InteractionType,
@@ -102,13 +121,19 @@ internal static class Interact
             CompletionQuestVariablesFlags != null &&
             QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
 
-        public bool ShouldRedoOnInterrupt() => true;
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
 
-        public override string ToString() =>
-            $"Interact{(HasCompletionQuestVariablesFlags ? "*" : "")}({DataId})";
+        public override string ToString()
+        {
+            return $"Interact{(HasCompletionQuestVariablesFlags ? "*" : "")}({DataId})";
+        }
     }
 
-    internal sealed class DoInteract(
+    internal sealed class DoInteract
+    (
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         CameraFunctions cameraFunctions,
@@ -119,26 +144,235 @@ internal static class Interact
         ILogger<DoInteract> logger)
         : TaskExecutor<Task>, IConditionChangeAware
     {
+        private DateTime _continueAt = DateTime.MinValue;
+        private EInteractionState _interactionState = EInteractionState.None;
         private bool _needsFacing;
         private bool _needsUnmount;
         private bool _reportedGameObjNull;
-        private EInteractionState _interactionState = EInteractionState.None;
-        private DateTime _continueAt = DateTime.MinValue;
 
         /// <summary>
-        /// A slight delay when we think an interaction has ended, to make sure that we're processing "Action cancelled"
-        /// prior to the next step (in case we're attacked).
+        ///     A slight delay when we think an interaction has ended, to make sure that we're processing "Action cancelled"
+        ///     prior to the next step (in case we're attacked).
         /// </summary>
         private bool delayedFinalCheck;
 
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
 
+        public override ETaskResult Update()
+        {
+            logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
+            if (DateTime.Now <= _continueAt)
+            {
+                return ETaskResult.StillRunning;
+            }
+
+            if (_needsUnmount)
+            {
+                if (condition[ConditionFlag.Mounted])
+                {
+                    logger.LogDebug("Attempting unmount");
+                    gameFunctions.Unmount();
+                    _continueAt = DateTime.Now.AddSeconds(1);
+                    return ETaskResult.StillRunning;
+                }
+                else
+                {
+                    _needsUnmount = false;
+                }
+            }
+            else
+            {
+                logger.LogDebug("Does not need unmount");
+            }
+
+            if (Task.PickUpItemId is { } pickUpItemId)
+            {
+                logger.LogDebug($"PickUpItemId {pickUpItemId}");
+                unsafe
+                {
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    if (inventoryManager->GetInventoryItemCount(pickUpItemId) > 0)
+                    {
+                        return ETaskResult.TaskComplete;
+                    }
+                }
+            }
+            else if (Task.TaxiStandId is { } taxiStandId)
+            {
+                logger.LogDebug($"TaxiStandId {taxiStandId}");
+                unsafe
+                {
+                    UIState* uiState = UIState.Instance();
+                    if (uiState->IsChocoboTaxiStandUnlocked(taxiStandId))
+                    {
+                        return ETaskResult.TaskComplete;
+                    }
+                }
+            }
+            else if (InteractionType == EInteractionType.Gather && condition[ConditionFlag.Gathering])
+            {
+                return ETaskResult.TaskComplete;
+            }
+            else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
+            {
+                logger.LogDebug("Checking QW");
+                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Quest.Id);
+
+                if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
+                {
+                    return ETaskResult.TaskComplete;
+                }
+            }
+            else if (ProgressContext != null)
+            {
+                logger.LogDebug("Entered ProgressContext");
+                if (ProgressContext.WasInterrupted())
+                {
+                    return ETaskResult.StillRunning;
+                }
+                else if (ProgressContext.WasSuccessful() ||
+                         _interactionState == EInteractionState.InteractionConfirmed)
+                {
+                    if (delayedFinalCheck)
+                    {
+                        return ETaskResult.TaskComplete;
+                    }
+
+                    _continueAt = DateTime.Now.AddSeconds(0.2);
+                    delayedFinalCheck = true;
+                    return ETaskResult.StillRunning;
+                }
+            }
+            else
+            {
+                logger.LogDebug("Conditions block passed");
+            }
+
+            IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
+            //if (gameObject == null || !gameObject.IsTargetable || !HasAnyMarker(gameObject))
+            if (gameObject == null)
+            {
+                if (!_reportedGameObjNull)
+                {
+                    logger.LogDebug("gameObject is null");
+                    _reportedGameObjNull = true;
+                }
+                return ETaskResult.StillRunning;
+            }
+            _reportedGameObjNull = false;
+            logger.LogDebug("gameObject != null");
+
+            if (_needsFacing)
+            {
+                logger.LogInformation("Facing target");
+                cameraFunctions.Face(gameObject.Position);
+                _continueAt = DateTime.Now.AddSeconds(0.2);
+                _needsFacing = false;
+                return ETaskResult.StillRunning;
+            }
+            else
+            {
+                logger.LogDebug("Does not need facing");
+            }
+
+            if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
+            {
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
+                Job playerJob = (Job)player.ClassJob.Value.RowId;
+                if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
+                {
+                    if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
+                    {
+                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
+                    }
+                    else if (acceptableJobs[0].IsCrafter())
+                    {
+                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
+                    }
+                    else if (acceptableJobs[0].IsGatherer())
+                    {
+                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                    }
+                    if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
+                    {
+                        if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())
+                        {
+                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
+                        }
+                        else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
+                        {
+                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                        }
+                    }
+                    logger.LogInformation($"Current ClassJob {playerJob} not valid for {Task.Quest.Id}, attempting to switch");
+                    unsafe
+                    {
+                        bool changed = false;
+                        RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
+                        if (gearsetModule != null)
+                        {
+                            for(int i = 0; i < 100; ++i)
+                            {
+                                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
+                                if (acceptableJobs[0].Equals((Job)gearset->ClassJob))
+                                {
+                                    gearsetModule->EquipGearset(gearset->Id);
+                                    changed = true;
+                                }
+                            }
+                        }
+                        if (!changed)
+                        {
+                            chatGui.PrintError($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
+                                               "but you do not have a valid job configured in QST Settings.");
+                        }
+                    }
+                    _continueAt = DateTime.Now.AddSeconds(0.2);
+                    return ETaskResult.StillRunning;
+                }
+            }
+            else
+            {
+                logger.LogDebug("is not AcceptQuest");
+            }
+
+            if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
+            {
+                return ETaskResult.StillRunning;
+            }
+
+            TriggerInteraction(gameObject);
+            return ETaskResult.StillRunning;
+        }
+
+        public void OnConditionChange(ConditionFlag flag, bool value)
+        {
+            if (ProgressContext != null && (ProgressContext.WasInterrupted() || ProgressContext.WasSuccessful()))
+            {
+                return;
+            }
+
+            logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
+            if (_interactionState == EInteractionState.InteractionTriggered &&
+                flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
+                value)
+            {
+                logger.LogInformation("Interaction was most likely triggered");
+                _interactionState = EInteractionState.InteractionConfirmed;
+            }
+        }
+
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
+
         protected override bool Start()
         {
             InteractionType = Task.InteractionType;
 
-            this._needsFacing = true;
+            _needsFacing = true;
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
             if (gameObject == null)
             {
@@ -167,172 +401,19 @@ internal static class Interact
             return true;
         }
 
-        public override ETaskResult Update()
-        {
-            logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
-            if (DateTime.Now <= _continueAt)
-                return ETaskResult.StillRunning;
-
-            if (_needsUnmount)
-            {
-                if (condition[ConditionFlag.Mounted])
-                {
-                    logger.LogDebug("Attempting unmount");
-                    gameFunctions.Unmount();
-                    _continueAt = DateTime.Now.AddSeconds(1);
-                    return ETaskResult.StillRunning;
-                }
-                else
-                    _needsUnmount = false;
-            }
-            else
-            {
-                logger.LogDebug("Does not need unmount");
-            }
-
-            if (Task.PickUpItemId is { } pickUpItemId)
-            {
-                logger.LogDebug($"PickUpItemId {pickUpItemId}");
-                unsafe
-                {
-                    InventoryManager* inventoryManager = InventoryManager.Instance();
-                    if (inventoryManager->GetInventoryItemCount(pickUpItemId) > 0)
-                        return ETaskResult.TaskComplete;
-                }
-            }
-            else if (Task.TaxiStandId is { } taxiStandId)
-            {
-                logger.LogDebug($"TaxiStandId {taxiStandId}");
-                unsafe
-                {
-                    UIState* uiState = UIState.Instance();
-                    if (uiState->IsChocoboTaxiStandUnlocked(taxiStandId))
-                        return ETaskResult.TaskComplete;
-                }
-            }
-            else if (InteractionType == EInteractionType.Gather && condition[ConditionFlag.Gathering])
-                return ETaskResult.TaskComplete;
-            else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
-            {
-                logger.LogDebug($"Checking QW");
-                var questWork = questFunctions.GetQuestProgressInfo(Quest.Id);
-
-                if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
-                    return ETaskResult.TaskComplete;
-            }
-            else if (ProgressContext != null)
-            {
-                logger.LogDebug($"Entered ProgressContext");
-                if (ProgressContext.WasInterrupted())
-                    return ETaskResult.StillRunning;
-                else if (ProgressContext.WasSuccessful() ||
-                         _interactionState == EInteractionState.InteractionConfirmed)
-                {
-                    if (delayedFinalCheck)
-                        return ETaskResult.TaskComplete;
-
-                    _continueAt = DateTime.Now.AddSeconds(0.2);
-                    delayedFinalCheck = true;
-                    return ETaskResult.StillRunning;
-                }
-            }
-            else
-            {
-                logger.LogDebug("Conditions block passed");
-            }
-
-            IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
-            //if (gameObject == null || !gameObject.IsTargetable || !HasAnyMarker(gameObject))
-            if (gameObject == null)
-            {
-                if (!_reportedGameObjNull)
-                {
-                    logger.LogDebug($"gameObject is null");
-                    _reportedGameObjNull = true;
-                }
-                return ETaskResult.StillRunning;
-            }
-            _reportedGameObjNull = false;
-            logger.LogDebug("gameObject != null");
-
-            if (_needsFacing)
-            {
-                logger.LogInformation("Facing target");
-                cameraFunctions.Face(gameObject.Position);
-                _continueAt = DateTime.Now.AddSeconds(0.2);
-                _needsFacing = false;
-                return ETaskResult.StillRunning;
-            }
-            else
-            {
-                logger.LogDebug("Does not need facing");
-            }
-
-            if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
-            {
-                List<EClassJob> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
-                var playerJob = (EClassJob)player.ClassJob.Value.RowId;
-                if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
-                {
-                    if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
-                    else if (acceptableJobs[0].IsCrafter())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
-                    else if (acceptableJobs[0].IsGatherer())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
-                    if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
-                    {
-                        if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
-                        else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
-                    }
-                    logger.LogInformation($"Current ClassJob {playerJob} not valid for {Task.Quest.Id}, attempting to switch");
-                    unsafe
-                    {
-                        bool changed = false;
-                        var gearsetModule = RaptureGearsetModule.Instance();
-                        if (gearsetModule != null)
-                        {
-                            for (int i = 0; i < 100; ++i)
-                            {
-                                var gearset = gearsetModule->GetGearset(i);
-                                if (acceptableJobs[0].Equals((EClassJob)gearset->ClassJob))
-                                {
-                                    gearsetModule->EquipGearset(gearset->Id);
-                                    changed = true;
-                                }
-                            }
-                        }
-                        if (!changed)
-                            chatGui.PrintError($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
-                                                "but you do not have a valid job configured in QST Settings.");
-                    }
-                    _continueAt = DateTime.Now.AddSeconds(0.2);
-                    return ETaskResult.StillRunning;
-                }
-            }
-            else
-            {
-                logger.LogDebug("is not AcceptQuest");
-            }
-
-            if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
-                return ETaskResult.StillRunning;
-
-            TriggerInteraction(gameObject);
-            return ETaskResult.StillRunning;
-        }
-
         private void TriggerInteraction(IGameObject gameObject)
         {
             ProgressContext =
                 InteractionProgressContext.FromActionUseOrDefault(() =>
                 {
                     if (gameFunctions.InteractWith(gameObject))
+                    {
                         _interactionState = EInteractionState.InteractionTriggered;
+                    }
                     else
+                    {
                         _interactionState = EInteractionState.None;
+                    }
                     return _interactionState != EInteractionState.None;
                 });
             _continueAt = DateTime.Now.AddSeconds(0.5);
@@ -341,34 +422,19 @@ internal static class Interact
         private unsafe bool HasAnyMarker(IGameObject gameObject)
         {
             if (Task.SkipMarkerCheck || gameObject.ObjectKind != ObjectKind.EventNpc)
+            {
                 return true;
+            }
 
-            var gameObjectStruct = (FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject*)gameObject.Address;
+            GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
             return gameObjectStruct->NamePlateIconId != 0;
         }
-
-        public void OnConditionChange(ConditionFlag flag, bool value)
-        {
-            if (ProgressContext != null && (ProgressContext.WasInterrupted() || ProgressContext.WasSuccessful()))
-                return;
-
-            logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
-            if (_interactionState == EInteractionState.InteractionTriggered &&
-                flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
-                value)
-            {
-                logger.LogInformation("Interaction was most likely triggered");
-                _interactionState = EInteractionState.InteractionConfirmed;
-            }
-        }
-
-        public override bool ShouldInterruptOnDamage() => true;
 
         private enum EInteractionState
         {
             None,
             InteractionTriggered,
-            InteractionConfirmed,
+            InteractionConfirmed
         }
     }
 }

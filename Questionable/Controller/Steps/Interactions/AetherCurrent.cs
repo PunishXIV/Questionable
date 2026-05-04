@@ -1,24 +1,26 @@
-﻿using System;
-using Dalamud.Game.ClientState.Objects.Enums;
+﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetherCurrent
 {
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         AetherCurrentData aetherCurrentData,
         IChatGui chatGui) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AttuneAetherCurrent)
+            {
                 return null;
+            }
 
             ArgumentNullException.ThrowIfNull(step.DataId);
             ArgumentNullException.ThrowIfNull(step.AetherCurrentId);
@@ -37,11 +39,18 @@ internal static class AetherCurrent
 
     internal sealed record Attune(uint DataId, uint AetherCurrentId) : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
-        public override string ToString() => $"AttuneAetherCurrent({AetherCurrentId})";
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
+        public override string ToString()
+        {
+            return $"AttuneAetherCurrent({AetherCurrentId})";
+        }
     }
 
-    internal sealed class DoAttune(
+    internal sealed class DoAttune
+    (
         GameFunctions gameFunctions,
         ILogger<DoAttune> logger) : TaskExecutor<Attune>
     {
@@ -63,11 +72,16 @@ internal static class AetherCurrent
             return false;
         }
 
-        public override ETaskResult Update() =>
-            gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId)
+        public override ETaskResult Update()
+        {
+            return gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

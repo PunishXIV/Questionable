@@ -2,7 +2,6 @@
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Common;
 
 internal static class NextQuest
@@ -12,17 +11,25 @@ internal static class NextQuest
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.CompleteQuest)
+            {
                 return null;
+            }
 
             if (step.NextQuestId == null)
+            {
                 return null;
+            }
 
             if (step.NextQuestId == quest.Id)
+            {
                 return null;
+            }
 
             // probably irrelevant, since pick up is handled elsewhere (and, in particular, checks for aetherytes and stuff)
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
+            {
                 return null;
+            }
 
             return new SetQuestTask(step.NextQuestId, quest.Id);
         }
@@ -30,11 +37,18 @@ internal static class NextQuest
 
     internal sealed record SetQuestTask(ElementId NextQuestId, ElementId CurrentQuestId) : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
-        public override string ToString() => $"SetNextQuest({NextQuestId})";
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
+        public override string ToString()
+        {
+            return $"SetNextQuest({NextQuestId})";
+        }
     }
 
-    internal sealed class NextQuestExecutor(
+    internal sealed class NextQuestExecutor
+    (
         QuestRegistry questRegistry,
         QuestController questController,
         QuestFunctions questFunctions,
@@ -66,8 +80,14 @@ internal static class NextQuest
             return true;
         }
 
-        public override ETaskResult Update() => ETaskResult.TaskComplete;
+        public override ETaskResult Update()
+        {
+            return ETaskResult.TaskComplete;
+        }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-
 namespace Questionable.Controller.NavigationOverrides;
 
 internal sealed class MovementOverrideController(IClientState clientState, ILogger<MovementOverrideController> logger)
@@ -87,25 +86,27 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
         // solution nine: walks behind the bar in front of the backrooms thing
         new BlacklistedPoint(1186, new(284.25f, 50.75f, 171.25f), new(284.25f, 50.75f, 166.25f)),
         new BlacklistedPoint(1186, new(283.75f, 50.75f, 167.25f), new(284.25f, 50.75f, 166.25f)),
-        new BlacklistedPoint(1186, new(287.75f, 51.25f, 172f), new(288.875f, 50.75f, 166.25f)),
+        new BlacklistedPoint(1186, new(287.75f, 51.25f, 172f), new(288.875f, 50.75f, 166.25f))
     ];
 
     private readonly IClientState _clientState = clientState;
     private readonly ILogger<MovementOverrideController> _logger = logger;
 
     /// <summary>
-    /// Certain areas shouldn't have navmesh points in them, e.g. the aetheryte in HF Outskirts can't be
-    /// walked on without jumping, but if you teleport to the wrong side you're fucked otherwise.
+    ///     Certain areas shouldn't have navmesh points in them, e.g. the aetheryte in HF Outskirts can't be
+    ///     walked on without jumping, but if you teleport to the wrong side you're fucked otherwise.
     /// </summary>
     /// <param name="navPoints">list of points to check</param>
     public (List<Vector3>, bool) AdjustPath(List<Vector3> navPoints)
     {
-        foreach (var blacklistedArea in BlacklistedLocations)
+        foreach(IBlacklistedLocation blacklistedArea in BlacklistedLocations)
         {
             if (_clientState.TerritoryType != blacklistedArea.TerritoryId)
+            {
                 continue;
+            }
 
-            for (int i = 0; i < navPoints.Count; ++i)
+            for(int i = 0; i < navPoints.Count; ++i)
             {
                 AlternateLocation? alternateLocation = blacklistedArea.AdjustPoint(navPoints[i]);
 
@@ -117,7 +118,9 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
 
                     navPoints[i] = alternateLocation.Point;
                     if (alternateLocation.RecalculateNavmesh)
+                    {
                         return (navPoints.Take(i + 1).ToList(), true);
+                    }
                 }
             }
         }

@@ -1,20 +1,21 @@
-using System;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
-
+using System;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration) : ConfigComponent(pluginInterface, configuration)
 {
     public override void DrawTab()
     {
-        using var tab = ImRaii.TabItem("Advanced###Debug");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Advanced###Debug");
         if (!tab)
+        {
             return;
+        }
 
         ImGui.TextColored(ImGuiColors.DalamudRed,
             "Enabling any option here may cause unexpected behavior. Use at your own risk.");
@@ -52,9 +53,9 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
         {
             using (ImRaii.PushIndent())
             {
-                var highlightColorNames = Enum.GetNames<ObjectHighlightColor>();
-                var highlightColorValues = Enum.GetValues<ObjectHighlightColor>();
-                var selectedHighlightColor = Array.IndexOf(highlightColorValues, Configuration.Advanced.HighlightColor);
+                string[] highlightColorNames = Enum.GetNames<ObjectHighlightColor>();
+                ObjectHighlightColor[] highlightColorValues = Enum.GetValues<ObjectHighlightColor>();
+                int selectedHighlightColor = Array.IndexOf(highlightColorValues, Configuration.Advanced.HighlightColor);
                 ImGui.SetNextItemWidth(150f);
                 if (ImGui.Combo("Highlight Color", ref selectedHighlightColor, highlightColorNames, highlightColorNames.Length))
                 {
@@ -218,7 +219,7 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("When enabled, Questionable's progress window will be in its minimized state when loaded.");
 
-            #if DEBUG
+#if DEBUG
             bool openEditor = Configuration.Advanced.OpenEditor;
             if (ImGui.Checkbox("Open editor when starting quest", ref openEditor))
             {
@@ -228,7 +229,7 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("When enabled, Questionable will open the path for the current quest in your default text editor.");
-            #endif
+#endif
         }
     }
 }

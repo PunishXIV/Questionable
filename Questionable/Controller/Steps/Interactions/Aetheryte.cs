@@ -1,11 +1,10 @@
-﻿using System;
-using Dalamud.Game.ClientState.Objects.Enums;
+﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
+using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte
@@ -15,7 +14,9 @@ internal static class Aetheryte
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AttuneAetheryte)
+            {
                 return null;
+            }
 
             ArgumentNullException.ThrowIfNull(step.Aetheryte);
 
@@ -25,11 +26,18 @@ internal static class Aetheryte
 
     internal sealed record Attune(EAetheryteLocation AetheryteLocation) : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
-        public override string ToString() => $"AttuneAetheryte({AetheryteLocation})";
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
+        public override string ToString()
+        {
+            return $"AttuneAetheryte({AetheryteLocation})";
+        }
     }
 
-    internal sealed class DoAttune(
+    internal sealed class DoAttune
+    (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         ILogger<DoAttune> logger) : TaskExecutor<Attune>
@@ -49,11 +57,16 @@ internal static class Aetheryte
             return false;
         }
 
-        public override ETaskResult Update() =>
-            aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
+        public override ETaskResult Update()
+        {
+            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

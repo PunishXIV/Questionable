@@ -1,14 +1,13 @@
-using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System.Linq;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class UpdateGearset
@@ -18,22 +17,30 @@ internal static class UpdateGearset
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.UpdateGearset)
+            {
                 return null;
+            }
 
-            EClassJob? classJob = null;
+            Job? classJob = null;
             if (step.TargetClass != EExtendedClassJob.None)
+            {
                 classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
+            }
 
             return new Task(classJob);
         }
     }
 
-    internal sealed record Task(EClassJob? TargetClass) : ITask
+    internal sealed record Task(Job? TargetClass) : ITask
     {
-        public override string ToString() => $"UpdateGearset({TargetClass?.ToString() ?? "current"})";
+        public override string ToString()
+        {
+            return $"UpdateGearset({TargetClass?.ToString() ?? "current"})";
+        }
     }
 
-    internal sealed class UpdateGearsetExecutor(
+    internal sealed class UpdateGearsetExecutor
+    (
         IClientState clientState,
         ICondition condition,
         ILogger<UpdateGearsetExecutor> logger) : AbstractDelayedTaskExecutor<Task>
@@ -48,7 +55,7 @@ internal static class UpdateGearset
             }
 
             // Safety check: ensure gearset module is available
-            var gearsetModule = RaptureGearsetModule.Instance();
+            RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule == null)
             {
                 logger.LogWarning("Cannot update gearset: RaptureGearsetModule is not available");
@@ -72,9 +79,9 @@ internal static class UpdateGearset
                 bool found = false;
                 gearsetId = -1;
 
-                for (int i = 0; i < 100; ++i)
+                for(int i = 0; i < 100; ++i)
                 {
-                    var gearset = gearsetModule->GetGearset(i);
+                    RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
                     if (gearset != null &&
                         gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
                         gearset->ClassJob == (byte)Task.TargetClass.Value)
@@ -121,8 +128,14 @@ internal static class UpdateGearset
             return true;
         }
 
-        protected override ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
+        protected override ETaskResult UpdateInternal()
+        {
+            return ETaskResult.TaskComplete;
+        }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

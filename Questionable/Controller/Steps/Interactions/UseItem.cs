@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
@@ -16,13 +11,19 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
 
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class UseItem
 {
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         IClientState clientState,
         TerritoryData territoryData,
         ILogger<Factory> logger)
@@ -33,10 +34,14 @@ internal static class UseItem
             if (step.InteractionType is EInteractionType.SinglePlayerDuty or EInteractionType.CompleteQuest)
             {
                 if (step.ItemId == null)
+                {
                     return [];
+                }
             }
             else if (step.InteractionType != EInteractionType.UseItem)
+            {
                 return [];
+            }
 
             ArgumentNullException.ThrowIfNull(step.ItemId);
 
@@ -46,10 +51,12 @@ internal static class UseItem
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     if (inventoryManager->GetInventoryItemCount(step.ItemId.Value) == 0)
+                    {
                         return CreateVesperBayFallbackTask();
+                    }
                 }
 
-                var task = new UseOnSelf(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
+                UseOnSelf task = new(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
 
                 int currentStepIndex = sequence.Steps.IndexOf(step);
                 QuestStep? nextStep = sequence.Steps.Skip(currentStepIndex + 1).FirstOrDefault();
@@ -63,18 +70,20 @@ internal static class UseItem
                         nextPosition != null ? Mount.EMountIf.AwayFromPosition : Mount.EMountIf.Always,
                         nextPosition),
                     new MoveTask(140, new(-408.92343f, 23.167036f, -351.16223f), null, 0.25f,
-                        DataId: null, DisableNavmesh: true, Sprint: false, Fly: false,
+                        null, true, false,
                         InteractionType: EInteractionType.WalkTo)
                 ];
             }
 
-            var unmount = new Mount.UnmountTask();
+            Mount.UnmountTask unmount = new();
             if (step.GroundTarget == true)
             {
                 ITask task;
                 if (step.DataId != null)
+                {
                     task = new UseOnGround(quest.Id, step.DataId.Value, step.ItemId.Value,
                         step.CompletionQuestVariablesFlags);
+                }
                 else
                 {
                     ArgumentNullException.ThrowIfNull(step.Position);
@@ -86,13 +95,13 @@ internal static class UseItem
             }
             else if (step.DataId != null)
             {
-                var task = new UseOnObject(quest.Id, step.DataId.Value, step.ItemId.Value,
+                UseOnObject task = new(quest.Id, step.DataId.Value, step.ItemId.Value,
                     step.CompletionQuestVariablesFlags);
                 return [unmount, task];
             }
             else
             {
-                var task = new UseOnSelf(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
+                UseOnSelf task = new(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
                 return [unmount, task];
             }
         }
@@ -121,15 +130,16 @@ internal static class UseItem
         bool StartingCombat { get; }
     }
 
-    internal abstract class UseItemExecutorBase<T>(
+    internal abstract class UseItemExecutorBase<T>
+    (
         QuestFunctions questFunctions,
         ICondition condition,
         ILogger logger) : TaskExecutor<T>
-        where T : class, IUseItemBase
+    where T : class, IUseItemBase
     {
-        private bool _usedItem;
         private DateTime _continueAt;
         private int _itemCount;
+        private bool _usedItem;
 
         private ElementId? QuestId => Task.QuestId;
         protected uint ItemId => Task.ItemId;
@@ -142,11 +152,15 @@ internal static class UseItem
         {
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
+            {
                 throw new TaskException("No InventoryManager");
+            }
 
             _itemCount = inventoryManager->GetInventoryItemCount(ItemId);
             if (_itemCount == 0)
+            {
                 throw new TaskException($"Don't have any {ItemId} in inventory (checks NQ only)");
+            }
 
             ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
             _continueAt = DateTime.Now.Add(GetRetryDelay());
@@ -160,14 +174,20 @@ internal static class UseItem
                 QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
                     QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
+                {
                     return ETaskResult.TaskComplete;
+                }
             }
 
             if (DateTime.Now <= _continueAt)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (StartingCombat && condition[ConditionFlag.InCombat])
+            {
                 return ETaskResult.TaskComplete;
+            }
 
             if (ItemId == QuestStep.VesperBayAetheryteTicket && _usedItem)
             {
@@ -202,91 +222,129 @@ internal static class UseItem
         private TimeSpan GetRetryDelay()
         {
             if (ItemId == QuestStep.VesperBayAetheryteTicket)
+            {
                 return TimeSpan.FromSeconds(11);
+            }
             else
+            {
                 return TimeSpan.FromSeconds(5);
+            }
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 
-    internal sealed record UseOnGround(
+    internal sealed record UseOnGround
+    (
         ElementId? QuestId,
         uint DataId,
         uint ItemId,
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString() => $"UseItem({ItemId} on ground at {DataId})";
+        public override string ToString()
+        {
+            return $"UseItem({ItemId} on ground at {DataId})";
+        }
     }
 
-    internal sealed class UseOnGroundExecutor(
+    internal sealed class UseOnGroundExecutor
+    (
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         ICondition condition,
         ILogger<UseOnGroundExecutor> logger)
         : UseItemExecutorBase<UseOnGround>(questFunctions, condition, logger)
     {
-        protected override bool UseItem() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
+        protected override bool UseItem()
+        {
+            return gameFunctions.UseItemOnGround(Task.DataId, ItemId);
+        }
     }
 
-    internal sealed record UseOnPosition(
+    internal sealed record UseOnPosition
+    (
         ElementId? QuestId,
         Vector3 Position,
         uint ItemId,
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString() =>
-            $"UseItem({ItemId} on ground at {Position.ToString("G", CultureInfo.InvariantCulture)})";
+        public override string ToString()
+        {
+            return $"UseItem({ItemId} on ground at {Position.ToString("G", CultureInfo.InvariantCulture)})";
+        }
     }
 
-    internal sealed class UseOnPositionExecutor(
+    internal sealed class UseOnPositionExecutor
+    (
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         ICondition condition,
         ILogger<UseOnPosition> logger)
         : UseItemExecutorBase<UseOnPosition>(questFunctions, condition, logger)
     {
-        protected override bool UseItem() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
+        protected override bool UseItem()
+        {
+            return gameFunctions.UseItemOnPosition(Task.Position, ItemId);
+        }
     }
 
-    internal sealed record UseOnObject(
+    internal sealed record UseOnObject
+    (
         ElementId? QuestId,
         uint DataId,
         uint ItemId,
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString() => $"UseItem({ItemId} on {DataId})";
+        public override string ToString()
+        {
+            return $"UseItem({ItemId} on {DataId})";
+        }
     }
 
-    internal sealed class UseOnObjectExecutor(
+    internal sealed class UseOnObjectExecutor
+    (
         QuestFunctions questFunctions,
         GameFunctions gameFunctions,
         ICondition condition,
         ILogger<UseOnObject> logger)
         : UseItemExecutorBase<UseOnObject>(questFunctions, condition, logger)
     {
-        protected override bool UseItem() => gameFunctions.UseItem(Task.DataId, ItemId);
+        protected override bool UseItem()
+        {
+            return gameFunctions.UseItem(Task.DataId, ItemId);
+        }
     }
 
-    internal sealed record UseOnSelf(
+    internal sealed record UseOnSelf
+    (
         ElementId? QuestId,
         uint ItemId,
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString() => $"UseItem({ItemId})";
+        public override string ToString()
+        {
+            return $"UseItem({ItemId})";
+        }
     }
 
-    internal sealed class UseOnSelfExecutor(
+    internal sealed class UseOnSelfExecutor
+    (
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         ICondition condition,
         ILogger<UseOnSelf> logger)
         : UseItemExecutorBase<UseOnSelf>(questFunctions, condition, logger)
     {
-        protected override bool UseItem() => gameFunctions.UseItem(ItemId);
+        protected override bool UseItem()
+        {
+            return gameFunctions.UseItem(ItemId);
+        }
     }
 }

@@ -1,49 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Game.ClientState.Objects;
-using Dalamud.Game.Command;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Plugin.Services;
 using ECommons;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Humanizer;
+using Lumina.Excel;
 using Lumina.Excel.Sheets;
-using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Windows;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller;
 
 internal sealed class CommandHandler : IDisposable
 {
-    public static readonly string MessageTag = $"QST v{typeof(QuestionablePlugin).Assembly.GetName().Version!.ToString(4)}";
     public const ushort TagColor = 576;
+    public static readonly string MessageTag = $"QST v{typeof(QuestionablePlugin).Assembly.GetName().Version!.ToString(4)}";
+    private readonly IChatGui _chatGui;
+    private readonly IClientState _clientState;
 
     private readonly ICommandManager _commandManager;
-    private readonly IChatGui _chatGui;
-    private readonly QuestController _questController;
-    private readonly MovementController _movementController;
-    private readonly QuestRegistry _questRegistry;
-    private readonly ConfigWindow _configWindow;
-    private readonly DebugOverlay _debugOverlay;
-    private readonly OneTimeSetupWindow _oneTimeSetupWindow;
-    private readonly QuestWindow _questWindow;
-    private readonly QuestSelectionWindow _questSelectionWindow;
-    private readonly JournalProgressWindow _journalProgressWindow;
-    private readonly PriorityWindow _priorityWindow;
-    private readonly QuestValidationWindow _questValidationWindow;
-    private readonly ITargetManager _targetManager;
-    private readonly QuestFunctions _questFunctions;
-    private readonly GameFunctions _gameFunctions;
-    private readonly IDataManager _dataManager;
-    private readonly IClientState _clientState;
     private readonly Configuration _configuration;
+    private readonly ConfigWindow _configWindow;
+    private readonly IDataManager _dataManager;
+    private readonly DebugOverlay _debugOverlay;
+    private readonly GameFunctions _gameFunctions;
+    private readonly JournalProgressWindow _journalProgressWindow;
+    private readonly MovementController _movementController;
+    private readonly OneTimeSetupWindow _oneTimeSetupWindow;
+    private readonly PriorityWindow _priorityWindow;
+    private readonly QuestController _questController;
+    private readonly QuestFunctions _questFunctions;
+    private readonly QuestRegistry _questRegistry;
+    private readonly QuestSelectionWindow _questSelectionWindow;
+    private readonly QuestValidationWindow _questValidationWindow;
+    private readonly QuestWindow _questWindow;
+    private readonly ITargetManager _targetManager;
 
     private IReadOnlyList<uint> _previouslyUnlockedUnlockLinks = [];
 
@@ -89,7 +86,7 @@ internal sealed class CommandHandler : IDisposable
         _configuration = configuration;
 
         _clientState.Logout += OnLogout;
-        _commandManager.AddHandler("/qst", new CommandInfo(ProcessCommand)
+        _commandManager.AddHandler("/qst", new(ProcessCommand)
         {
             HelpMessage = string.Join($"{Environment.NewLine}\t",
                 "Opens the Questing window",
@@ -97,20 +94,31 @@ internal sealed class CommandHandler : IDisposable
                 "/qst help-all - displays all available commands",
                 "/qst config - opens the configuration window",
                 "/qst start - starts doing quests",
-                "/qst stop - stops doing quests"),
+                "/qst stop - stops doing quests")
         });
 #if DEBUG
-        _commandManager.AddHandler("/qst@", new CommandInfo(ProcessDebugCommand)
+        _commandManager.AddHandler("/qst@", new(ProcessDebugCommand)
         {
-            ShowInHelp = false,
+            ShowInHelp = false
         });
 #endif
+    }
+
+    public void Dispose()
+    {
+#if DEBUG
+        _commandManager.RemoveHandler("/qst@");
+#endif
+        _commandManager.RemoveHandler("/qst");
+        _clientState.Logout -= OnLogout;
     }
 
     private void ProcessCommand(string command, string arguments)
     {
         if (OpenSetupIfNeeded(arguments))
+        {
             return;
+        }
 
         string[] parts = arguments.Split(' ');
         switch (parts[0])
@@ -213,16 +221,20 @@ internal sealed class CommandHandler : IDisposable
 
             case "d2qwh":
                 if (parts.Length < 2)
+                {
                     break;
-                var highOutp = D2QW(parts.Skip(1).ToArray(), true);
+                }
+                string highOutp = D2QW(parts.Skip(1).ToArray(), true);
                 ImGui.SetClipboardText(highOutp);
                 _chatGui.Print(highOutp);
                 break;
 
             case "d2qwl":
                 if (parts.Length < 2)
+                {
                     break;
-                var lowOutp = D2QW(parts.Skip(1).ToArray(), false);
+                }
+                string lowOutp = D2QW(parts.Skip(1).ToArray());
                 ImGui.SetClipboardText(lowOutp);
                 _chatGui.Print(lowOutp);
                 break;
@@ -245,16 +257,18 @@ internal sealed class CommandHandler : IDisposable
     }
 
     [SuppressMessage("Globalization", "CA1305")]
-    private static string D2QW(string[] parts, bool High=false)
+    private static string D2QW(string[] parts, bool High = false)
     {
         List<string> outp = [];
-        foreach (var part in parts)
+        foreach(string part in parts)
         {
             byte d = byte.Parse(part.RemoveOtherChars("0123456789"), CultureInfo.InvariantCulture);
-            var qw = new QuestWorkValue(d);
-            string value = " {\"" + (High ? "High" : "Low") + "\": " + (High ? qw.High : qw.Low).ToString() + "}";
+            QuestWorkValue qw = new(d);
+            string value = " {\"" + (High ? "High" : "Low") + "\": " + (High ? qw.High : qw.Low) + "}";
             if (!outp.Contains(value))
+            {
                 outp.Add(value);
+            }
         }
         return outp.Join(",");
     }
@@ -262,7 +276,9 @@ internal sealed class CommandHandler : IDisposable
     private void ProcessDebugCommand(string command, string arguments)
     {
         if (OpenSetupIfNeeded(arguments))
+        {
             return;
+        }
 
         string[] parts = arguments.Split(' ');
         switch (parts[0])
@@ -277,12 +293,16 @@ internal sealed class CommandHandler : IDisposable
                 {
                     _chatGui.Print($"Saved {unlockedUnlockLinks.Count} unlock links to log.", MessageTag, TagColor);
 
-                    var newUnlockLinks = unlockedUnlockLinks.Except(_previouslyUnlockedUnlockLinks).ToList();
+                    List<uint> newUnlockLinks = unlockedUnlockLinks.Except(_previouslyUnlockedUnlockLinks).ToList();
                     if (_previouslyUnlockedUnlockLinks.Count > 0 && newUnlockLinks.Count > 0)
+                    {
                         _chatGui.Print($"New unlock links: {string.Join(", ", newUnlockLinks)}", MessageTag, TagColor);
+                    }
                 }
                 else
+                {
                     _chatGui.PrintError("Could not query unlock links.", MessageTag, TagColor);
+                }
 
                 _previouslyUnlockedUnlockLinks = unlockedUnlockLinks;
                 break;
@@ -291,22 +311,26 @@ internal sealed class CommandHandler : IDisposable
                 unsafe
                 {
                     List<string> taxiStands = [];
-                    var taxiStandNames = _dataManager.GetExcelSheet<ChocoboTaxiStand>();
-                    var uiState = UIState.Instance();
-                    for (byte i = 0; i < uiState->UnlockedChocoboTaxiStands.Length * 8; ++i)
+                    ExcelSheet<ChocoboTaxiStand> taxiStandNames = _dataManager.GetExcelSheet<ChocoboTaxiStand>();
+                    UIState* uiState = UIState.Instance();
+                    for(byte i = 0; i < uiState->UnlockedChocoboTaxiStands.Length * 8; ++i)
                     {
                         if (!(uiState->IsChocoboTaxiStandUnlocked(i)) && taxiStandNames.HasRow(i + 0x120000u))
                         {
                             ChocoboTaxiStand row = taxiStandNames.GetRow(i + 0x120000u);
                             // 0 and 1 are unused
                             if (row.TargetLocations[0].RowId >= 2)
+                            {
                                 taxiStands.Add($"{row.PlaceName} ({i})");
+                            }
                         }
                     }
 
                     _chatGui.Print("Locked taxi stands:", MessageTag, TagColor);
-                    foreach (var taxiStand in taxiStands)
+                    foreach(string taxiStand in taxiStands)
+                    {
                         _chatGui.Print($"- {taxiStand}", MessageTag, TagColor);
+                    }
                 }
                 break;
 
@@ -314,11 +338,13 @@ internal sealed class CommandHandler : IDisposable
                 unsafe
                 {
                     List<string> activeFestivals = [];
-                    for (byte i = 0; i < 4; ++i)
+                    for(byte i = 0; i < 4; ++i)
                     {
-                        var festival = GameMain.Instance()->ActiveFestivals[i];
+                        GameMain.Festival festival = GameMain.Instance()->ActiveFestivals[i];
                         if (festival.Id == 0)
+                        {
                             continue;
+                        }
 
                         activeFestivals.Add($"{festival.Id}({festival.Phase})");
                     }
@@ -334,9 +360,13 @@ internal sealed class CommandHandler : IDisposable
         if (!_configuration.IsPluginSetupComplete())
         {
             if (string.IsNullOrEmpty(arguments))
+            {
                 _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
+            }
             else
+            {
                 _chatGui.PrintError("Please complete the one-time setup first.", MessageTag, TagColor);
+            }
             return true;
         }
 
@@ -359,7 +389,9 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print($"Set highlighted quest to {questId} ({quest.Info.Name}).", MessageTag, TagColor);
             }
             else
+            {
                 _chatGui.PrintError($"Unknown quest {questId}.", MessageTag, TagColor);
+            }
         }
         else
         {
@@ -373,7 +405,9 @@ internal sealed class CommandHandler : IDisposable
         if (arguments.Length >= 1 && ElementId.TryFromString(arguments[0], out ElementId? questId) && questId != null)
         {
             if (_questFunctions.IsQuestLocked(questId))
+            {
                 _chatGui.PrintError($"Quest {questId} is locked.", MessageTag, TagColor);
+            }
             else if (_questRegistry.TryGetQuest(questId, out Quest? quest))
             {
                 _questController.SetNextQuest(quest);
@@ -409,7 +443,9 @@ internal sealed class CommandHandler : IDisposable
                         {
                             QuestStep? step = sequence.FindStep(parsedStep);
                             if (step != null)
+                            {
                                 stepId = parsedStep;
+                            }
                         }
                     }
                 }
@@ -418,7 +454,9 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print($"Simulating quest {questId} ({quest.Info.Name}).", MessageTag, TagColor);
             }
             else
+            {
                 _chatGui.PrintError($"Unknown quest {questId}.", MessageTag, TagColor);
+            }
         }
         else
         {
@@ -432,26 +470,19 @@ internal sealed class CommandHandler : IDisposable
         ushort? mountId = _gameFunctions.GetMountId();
         if (mountId != null)
         {
-            var row = _dataManager.GetExcelSheet<Mount>().GetRowOrDefault(mountId.Value);
+            Mount? row = _dataManager.GetExcelSheet<Mount>().GetRowOrDefault(mountId.Value);
             _chatGui.Print(
                 $"Mount ID: {mountId}, Name: {row?.Singular}, Obtainable: {(row?.Order == -1 ? "No" : "Yes")}",
                 MessageTag, TagColor);
         }
         else
+        {
             _chatGui.Print("You are not mounted.", MessageTag, TagColor);
+        }
     }
 
     private void OnLogout(int type, int code)
     {
         _previouslyUnlockedUnlockLinks = [];
-    }
-
-    public void Dispose()
-    {
-#if DEBUG
-        _commandManager.RemoveHandler("/qst@");
-#endif
-        _commandManager.RemoveHandler("/qst");
-        _clientState.Logout -= OnLogout;
     }
 }

@@ -116,8 +116,6 @@ CBT is a tweak collection plugin that largely focuses on automating small and fr
 - ### [Pandora's Box](https://github.com/PunishXIV/PandorasBox)
 Pandora's Box is a tweak collection plugin. Questionable uses it for the "Auto Active Time Maneuver" tweak, which automatically completes active time maneuvers in duties.
 
-- ### [NotificationMaster](https://github.com/NightmareXIV/NotificationMaster)
-NotificationMaster is a plugin for configuring out-of-game notifications for game events.
 
 - ### [Artisan](https://github.com/PunishXIV/Artisan)
 Artisan is a plugin for automating crafting. Questionable uses it for quests that involve crafting.

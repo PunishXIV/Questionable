@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Dalamud.Hooking;
+﻿using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
@@ -8,19 +6,17 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
-
+using System;
+using System.Runtime.InteropServices;
 namespace Questionable.Controller;
 
 internal sealed unsafe class InterruptHandler : IDisposable
 {
-    private readonly Hook<ProcessActionEffect> _processActionEffectHook;
     private readonly IClientState _clientState;
-    private readonly IObjectTable _objectTable;
-    private readonly TerritoryData _territoryData;
     private readonly ILogger<InterruptHandler> _logger;
-
-    private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail);
+    private readonly IObjectTable _objectTable;
+    private readonly Hook<ProcessActionEffect> _processActionEffectHook;
+    private readonly TerritoryData _territoryData;
 
     public InterruptHandler(IGameInteropProvider gameInteropProvider, IClientState clientState,
         IObjectTable objectTable, TerritoryData territoryData, ILogger<InterruptHandler> logger)
@@ -35,6 +31,12 @@ internal sealed unsafe class InterruptHandler : IDisposable
         _processActionEffectHook.Enable();
     }
 
+    public void Dispose()
+    {
+        _processActionEffectHook.Disable();
+        _processActionEffectHook.Dispose();
+    }
+
     public event EventHandler? Interrupted;
 
     private void HandleProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
@@ -44,7 +46,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
         {
             if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))
             {
-                for (int i = 0; i < effectHeader->TargetCount; i++)
+                for(int i = 0; i < effectHeader->TargetCount; i++)
                 {
                     uint targetId = (uint)(effectTail[i] & uint.MaxValue);
                     EffectEntry* effect = effectArray + 8 * i;
@@ -61,7 +63,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
                 }
             }
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             _logger.LogWarning(e, "Unable to process action effect");
         }
@@ -71,11 +73,8 @@ internal sealed unsafe class InterruptHandler : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        _processActionEffectHook.Disable();
-        _processActionEffectHook.Dispose();
-    }
+    private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
+        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail);
 
     [StructLayout(LayoutKind.Explicit)]
     private struct EffectEntry
@@ -154,6 +153,6 @@ internal sealed unsafe class InterruptHandler : IDisposable
         SetModelState = 72,
         SetHP = 73,
         PartialInvulnerable = 74,
-        Interrupt = 75,
+        Interrupt = 75
     }
 }

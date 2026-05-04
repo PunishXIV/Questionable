@@ -1,8 +1,7 @@
-﻿using System;
-using Questionable.Controller.Steps.Common;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class WaitAtStart
@@ -12,7 +11,9 @@ internal static class WaitAtStart
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.DelaySecondsAtStart == null)
+            {
                 return null;
+            }
 
             return new WaitDelay(TimeSpan.FromSeconds(step.DelaySecondsAtStart.Value));
         }
@@ -21,7 +22,10 @@ internal static class WaitAtStart
 
     internal sealed record WaitDelay(TimeSpan Delay) : ITask
     {
-        public override string ToString() => $"Wait[S](seconds: {Delay.TotalSeconds})";
+        public override string ToString()
+        {
+            return $"Wait[S](seconds: {Delay.TotalSeconds})";
+        }
     }
 
     internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
@@ -32,6 +36,9 @@ internal static class WaitAtStart
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

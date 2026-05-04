@@ -1,40 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using Dalamud.Utility.Signatures;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib.GameData;
+using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Model;
 using Questionable.Model.Gathering;
-
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class GatheringJournalComponent
 {
+    private readonly List<ushort> _gatheredItems = [];
+    private readonly GatheringController _gatheringController;
+    private readonly Dictionary<int, string> _gatheringItems;
+    private readonly GatheringPointRegistry _gatheringPointRegistry;
+    private readonly List<ExpansionPoints> _gatheringPointsByExpansion;
+    private readonly ILogger<GatheringJournalComponent> _logger;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly UiUtils _uiUtils;
-    private readonly GatheringPointRegistry _gatheringPointRegistry;
-    private readonly Dictionary<int, string> _gatheringItems;
-    private readonly List<ExpansionPoints> _gatheringPointsByExpansion;
-    private readonly GatheringController _gatheringController;
-    private readonly ILogger<GatheringJournalComponent> _logger;
-    private readonly List<ushort> _gatheredItems = [];
 
     private List<FilteredExpansion> _filteredExpansions = [];
     private string _searchText = string.Empty;
-
-    private static bool IsGatheringItemGathered(uint item) => QuestManager.IsGatheringItemGathered((ushort)item);
 
     public GatheringJournalComponent(IDataManager dataManager, IDalamudPluginInterface pluginInterface, UiUtils uiUtils,
         IGameInteropProvider gameInteropProvider, GatheringController gatheringController, ILogger<GatheringJournalComponent> logger,
@@ -47,7 +43,7 @@ internal sealed class GatheringJournalComponent
         _logger = logger;
 
         // TODO some of the logic here would be better suited elsewhere, in particular the [item] → [gathering item] → [location] lookup
-        var routeToGatheringPoint = dataManager.GetExcelSheet<GatheringLeveRoute>()
+        Dictionary<uint, List<uint>> routeToGatheringPoint = dataManager.GetExcelSheet<GatheringLeveRoute>()
             .Where(x => x.GatheringPoint[0].RowId != 0)
             .SelectMany(x => x.GatheringPoint
                 .Where(y => y.RowId != 0)
@@ -58,9 +54,9 @@ internal sealed class GatheringJournalComponent
                 }))
             .GroupBy(x => x.RouteId)
             .ToDictionary(x => x.Key, x => x.Select(y => y.GatheringPointId).ToList());
-        var gatheringLeveSheet = dataManager.GetExcelSheet<GatheringLeve>();
-        var territoryTypeSheet = dataManager.GetExcelSheet<TerritoryType>();
-        var leveGatheringPoints = dataManager.GetExcelSheet<Leve>()
+        ExcelSheet<GatheringLeve> gatheringLeveSheet = dataManager.GetExcelSheet<GatheringLeve>();
+        ExcelSheet<TerritoryType> territoryTypeSheet = dataManager.GetExcelSheet<TerritoryType>();
+        HashSet<uint> leveGatheringPoints = dataManager.GetExcelSheet<Leve>()
             .Where(x => x.RowId > 0)
             .Select(x => gatheringLeveSheet.GetRowOrDefault(x.DataId.RowId))
             .Where(x => x != null)
@@ -71,7 +67,7 @@ internal sealed class GatheringJournalComponent
             .Distinct()
             .ToHashSet();
 
-        var itemSheet = dataManager.GetExcelSheet<Item>();
+        ExcelSheet<Item> itemSheet = dataManager.GetExcelSheet<Item>();
 
         _gatheringItems = dataManager.GetExcelSheet<GatheringItem>()
             .Where(x => x.RowId != 0 && x.GatheringItemLevel.RowId != 0)
@@ -90,12 +86,12 @@ internal sealed class GatheringJournalComponent
             .Select(x => new
             {
                 GatheringPointId = x.RowId,
-                Point = new DefaultGatheringPoint(new GatheringPointId((ushort)x.GatheringPointBase.RowId),
+                Point = new DefaultGatheringPoint(new((ushort)x.GatheringPointBase.RowId),
                     x.GatheringPointBase.Value.GatheringType.RowId switch
                     {
-                        0 or 1 => EClassJob.Miner,
-                        2 or 3 => EClassJob.Botanist,
-                        _ => EClassJob.Fisher
+                        0 or 1 => Job.MIN,
+                        2 or 3 => Job.BTN,
+                        var _ => Job.FSH
                     },
                     x.GatheringPointBase.Value.GatheringLevel,
                     x.GatheringPointBase.Value.Item.Where(y => y.RowId != 0).Select(y => (ushort)y.RowId).ToList(),
@@ -104,25 +100,29 @@ internal sealed class GatheringJournalComponent
                     x.TerritoryType.ValueNullable?.PlaceName.ValueNullable?.Name.ToString(),
                     $"{x.GatheringPointBase.RowId} - {x.PlaceName.ValueNullable?.Name}")
             })
-            .Where(x => x.Point.ClassJob != EClassJob.Fisher)
+            .Where(x => x.Point.ClassJob != Job.FSH)
             .Select(x =>
             {
                 if (leveGatheringPoints.Contains(x.GatheringPointId))
+                {
                     return null;
+                }
                 else if (x.Point.TerritoryType == 1 &&
                          _gatheringPointRegistry.TryGetGatheringPoint(x.Point.Id, out GatheringRoot? gatheringRoot))
                 {
                     // for some reason the game doesn't know where this gathering location is
-                    var territoryType = territoryTypeSheet.GetRow(gatheringRoot.Steps.Last().TerritoryId);
+                    TerritoryType territoryType = territoryTypeSheet.GetRow(gatheringRoot.Steps.Last().TerritoryId);
                     return x.Point with
                     {
                         Expansion = (EExpansionVersion)territoryType.ExVersion.RowId,
                         TerritoryType = (ushort)territoryType.RowId,
-                        TerritoryName = territoryType.PlaceName.ValueNullable?.Name.ToString(),
+                        TerritoryName = territoryType.PlaceName.ValueNullable?.Name.ToString()
                     };
                 }
                 else
+                {
                     return x.Point;
+                }
             })
             .Where(x => x != null)
             .Cast<DefaultGatheringPoint>()
@@ -146,32 +146,47 @@ internal sealed class GatheringJournalComponent
         gameInteropProvider.InitializeFromAttributes(this);
     }
 
+    private static bool IsGatheringItemGathered(uint item)
+    {
+        return QuestManager.IsGatheringItemGathered((ushort)item);
+    }
+
     public void DrawGatheringItems()
     {
-        using var tab = ImRaii.TabItem("Gathering Points");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Gathering Points");
         if (!tab)
+        {
             return;
+        }
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
         if (ImGui.InputTextWithHint(string.Empty, "Search areas, gathering points and items", ref _searchText, 256))
+        {
             UpdateFilter();
+        }
 
         if (_filteredExpansions.Count > 0)
         {
-            using var table = ImRaii.Table("GatheringPoints", 3, ImGuiTableFlags.NoSavedSettings);
+            using ImRaii.TableDisposable table = ImRaii.Table("GatheringPoints", 3, ImGuiTableFlags.NoSavedSettings);
             if (!table)
+            {
                 return;
+            }
 
             ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.NoHide);
             ImGui.TableSetupColumn("Supported", ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
             ImGui.TableSetupColumn("Collected", ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
             ImGui.TableHeadersRow();
 
-            foreach (var expansion in _filteredExpansions)
+            foreach(FilteredExpansion expansion in _filteredExpansions)
+            {
                 DrawExpansion(expansion);
+            }
         }
         else
+        {
             ImGui.Text("No area, gathering point or item matches your search text.");
+        }
     }
 
     private void DrawExpansion(FilteredExpansion expansion)
@@ -189,8 +204,10 @@ internal sealed class GatheringJournalComponent
 
         if (open)
         {
-            foreach (var territory in expansion.Territories)
+            foreach(FilteredTerritory territory in expansion.Territories)
+            {
                 DrawTerritory(territory);
+            }
 
             ImGui.TreePop();
         }
@@ -210,8 +227,10 @@ internal sealed class GatheringJournalComponent
 
         if (open)
         {
-            foreach (var point in territory.GatheringPoints)
+            foreach(FilteredGatheringPoint point in territory.GatheringPoints)
+            {
                 DrawPoint(point);
+            }
 
             ImGui.TreePop();
         }
@@ -228,7 +247,7 @@ internal sealed class GatheringJournalComponent
         ImGui.TableNextColumn();
         float spacing;
         // ReSharper disable once UnusedVariable
-        using (var font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        using (IDisposable font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
             spacing = ImGui.GetColumnWidth() / 2 - ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X;
         }
@@ -241,8 +260,10 @@ internal sealed class GatheringJournalComponent
 
         if (open)
         {
-            foreach (var item in point.GatheringItemIds)
+            foreach(ushort item in point.GatheringItemIds)
+            {
                 DrawItem(item, point.Point.Id);
+            }
 
             ImGui.TreePop();
         }
@@ -256,10 +277,9 @@ internal sealed class GatheringJournalComponent
             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
         if (ImGui.IsItemClicked())
         {
-            var request = new GatheringController.GatheringRequest(pointId, item, 0, 1);
+            GatheringController.GatheringRequest request = new(pointId, item, 0, 1);
             _logger.LogDebug($"clicked, doing {request}");
             _gatheringController.Start(request);
-
         }
 
         ImGui.TableNextColumn();
@@ -267,16 +287,20 @@ internal sealed class GatheringJournalComponent
         ImGui.TableNextColumn();
         float spacing;
         // ReSharper disable once UnusedVariable
-        using (var font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        using (IDisposable font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
             spacing = ImGui.GetColumnWidth() / 2 - ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X;
         }
 
         ImGui.SetCursorPosX(ImGui.GetCursorPosX() + spacing);
         if (item < 10_000)
+        {
             _uiUtils.ChecklistItem(string.Empty, _gatheredItems.Contains(item));
+        }
         else
+        {
             _uiUtils.ChecklistItem(string.Empty, ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus);
+        }
     }
 
     private static void DrawCount(int count, int total)
@@ -287,9 +311,13 @@ internal sealed class GatheringJournalComponent
         string text =
             $"{count.ToString(CultureInfo.CurrentCulture).PadLeft(len.Length)} / {total.ToString(CultureInfo.CurrentCulture).PadLeft(len.Length)}";
         if (count == total)
+        {
             ImGui.TextColored(ImGuiColors.ParsedGreen, text);
+        }
         else
+        {
             ImGui.TextUnformatted(text);
+        }
 
         ImGui.PopFont();
     }
@@ -298,9 +326,13 @@ internal sealed class GatheringJournalComponent
     {
         Predicate<string> match;
         if (string.IsNullOrWhiteSpace(_searchText))
+        {
             match = _ => true;
+        }
         else
+        {
             match = x => x.Contains(_searchText, StringComparison.CurrentCultureIgnoreCase);
+        }
 
         _filteredExpansions = _gatheringPointsByExpansion
             .Select(section => FilterExpansion(section, match))
@@ -317,7 +349,9 @@ internal sealed class GatheringJournalComponent
             .Select(x => x!)
             .ToList();
         if (filteredTerritories.Count > 0)
-            return new FilteredExpansion(expansion, filteredTerritories);
+        {
+            return new(expansion, filteredTerritories);
+        }
 
         return null;
     }
@@ -326,7 +360,7 @@ internal sealed class GatheringJournalComponent
     {
         if (match(territory.TerritoryName))
         {
-            return new FilteredTerritory(territory,
+            return new(territory,
                 territory.Points
                     .Select(x => FilterGatheringPoint(x, _ => true)!)
                     .ToList());
@@ -339,7 +373,9 @@ internal sealed class GatheringJournalComponent
                 .Select(x => x!)
                 .ToList();
             if (filteredPoints.Count > 0)
-                return new FilteredTerritory(territory, filteredPoints);
+            {
+                return new(territory, filteredPoints);
+            }
         }
 
         return null;
@@ -349,13 +385,17 @@ internal sealed class GatheringJournalComponent
         Predicate<string> match)
     {
         if (match(gatheringPoint.PlaceName ?? string.Empty))
-            return new FilteredGatheringPoint(gatheringPoint, gatheringPoint.GatheringItemIds);
+        {
+            return new(gatheringPoint, gatheringPoint.GatheringItemIds);
+        }
         else
         {
             List<ushort> filteredItems = gatheringPoint.GatheringItemIds
                 .Where(x => match(_gatheringItems.GetValueOrDefault(x, string.Empty))).ToList();
             if (filteredItems.Count > 0)
-                return new FilteredGatheringPoint(gatheringPoint, filteredItems);
+            {
+                return new(gatheringPoint, filteredItems);
+            }
         }
 
         return null;
@@ -364,21 +404,23 @@ internal sealed class GatheringJournalComponent
     internal void RefreshCounts()
     {
         _gatheredItems.Clear();
-        foreach (ushort key in _gatheringItems.Keys)
+        foreach(ushort key in _gatheringItems.Keys)
         {
             if (IsGatheringItemGathered(key))
+            {
                 _gatheredItems.Add(key);
+            }
         }
 
-        foreach (var expansion in _gatheringPointsByExpansion)
+        foreach(ExpansionPoints expansion in _gatheringPointsByExpansion)
         {
-            foreach (var territory in expansion.PointsByTerritories)
+            foreach(TerritoryPoints territory in expansion.PointsByTerritories)
             {
-                foreach (var point in territory.Points)
+                foreach(DefaultGatheringPoint point in territory.Points)
                 {
                     point.TotalItems = point.GatheringItemIds.Count(x => x < 10_000);
                     point.CompletedItems = point.GatheringItemIds.Count(_gatheredItems.Contains);
-                    point.IsComplete = _gatheringPointRegistry.TryGetGatheringPoint(point.Id, out _);
+                    point.IsComplete = _gatheringPointRegistry.TryGetGatheringPoint(point.Id, out GatheringRoot? _);
                 }
 
                 territory.TotalItems = territory.Points.Sum(x => x.TotalItems);
@@ -395,17 +437,17 @@ internal sealed class GatheringJournalComponent
 
     public void ClearCounts(int type, int code)
     {
-        foreach (var expansion in _gatheringPointsByExpansion)
+        foreach(ExpansionPoints expansion in _gatheringPointsByExpansion)
         {
             expansion.CompletedItems = 0;
             expansion.CompletedPoints = 0;
 
-            foreach (var territory in expansion.PointsByTerritories)
+            foreach(TerritoryPoints territory in expansion.PointsByTerritories)
             {
                 territory.CompletedItems = 0;
                 territory.CompletedPoints = 0;
 
-                foreach (var point in territory.Points)
+                foreach(DefaultGatheringPoint point in territory.Points)
                 {
                     point.IsComplete = false;
                 }
@@ -421,7 +463,8 @@ internal sealed class GatheringJournalComponent
         public int CompletedPoints { get; set; }
     }
 
-    private sealed record TerritoryPoints(
+    private sealed record TerritoryPoints
+    (
         ushort TerritoryType,
         string TerritoryName,
         List<DefaultGatheringPoint> Points)
@@ -431,13 +474,16 @@ internal sealed class GatheringJournalComponent
         public int CompletedItems { get; set; }
         public int CompletedPoints { get; set; }
 
-        public string ToFriendlyString() =>
-            !string.IsNullOrEmpty(TerritoryName) ? TerritoryName : $"??? ({TerritoryType})";
+        public string ToFriendlyString()
+        {
+            return !string.IsNullOrEmpty(TerritoryName) ? TerritoryName : $"??? ({TerritoryType})";
+        }
     }
 
-    private sealed record DefaultGatheringPoint(
+    private sealed record DefaultGatheringPoint
+    (
         GatheringPointId Id,
-        EClassJob ClassJob,
+        Job ClassJob,
         byte Level,
         List<ushort> GatheringItemIds,
         EExpansionVersion Expansion,

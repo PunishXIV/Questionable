@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace Questionable.Controller.Steps;
 
 public class TaskException : Exception

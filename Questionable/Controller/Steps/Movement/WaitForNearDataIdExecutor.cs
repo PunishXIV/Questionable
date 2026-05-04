@@ -1,14 +1,17 @@
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using Questionable.Functions;
-
 namespace Questionable.Controller.Steps.Movement;
 
-internal sealed class WaitForNearDataIdExecutor(
+internal sealed class WaitForNearDataIdExecutor
+(
     GameFunctions gameFunctions,
     IObjectTable objectTable) : TaskExecutor<WaitForNearDataId>
 {
-    protected override bool Start() => true;
+    protected override bool Start()
+    {
+        return true;
+    }
 
     public override ETaskResult Update()
     {
@@ -22,5 +25,8 @@ internal sealed class WaitForNearDataIdExecutor(
         return ETaskResult.TaskComplete;
     }
 
-    public override bool ShouldInterruptOnDamage() => false;
+    public override bool ShouldInterruptOnDamage()
+    {
+        return false;
+    }
 }

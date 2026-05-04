@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
@@ -14,10 +9,17 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Windows.QuestComponents;
 
-internal sealed class EventInfoComponent(QuestData questData,
+internal sealed class EventInfoComponent
+(
+    QuestData questData,
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
     UiUtils uiUtils,
@@ -25,35 +27,37 @@ internal sealed class EventInfoComponent(QuestData questData,
     QuestTooltipComponent questTooltipComponent,
     Configuration configuration)
 {
+    private readonly Configuration _configuration = configuration;
     [SuppressMessage("ReSharper", "CollectionNeverUpdated.Local")]
     private readonly List<EventQuest> _eventQuests =
     [
-        new EventQuest("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
-        new EventQuest("Valentione's Day 2026", [new QuestId(5325)], AtDailyReset(new DateOnly(2026,2,16))) // January 15, 2026 at 6:59 a.m. (PST) 
+        new("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
+        new("Valentione's Day 2026", [new QuestId(5325)], AtDailyReset(new(2026, 2, 16))) // January 15, 2026 at 6:59 a.m. (PST) 
     ];
+    private readonly QuestController _questController = questController;
 
     private readonly QuestData _questData = questData;
-    private readonly QuestRegistry _questRegistry = questRegistry;
     private readonly QuestFunctions _questFunctions = questFunctions;
-    private readonly UiUtils _uiUtils = uiUtils;
-    private readonly QuestController _questController = questController;
+    private readonly QuestRegistry _questRegistry = questRegistry;
     private readonly QuestTooltipComponent _questTooltipComponent = questTooltipComponent;
-    private readonly Configuration _configuration = configuration;
+    private readonly UiUtils _uiUtils = uiUtils;
+
+    public bool ShouldDraw => _configuration.General.ShowIncompleteSeasonalEvents && _eventQuests.Any(IsIncomplete);
 
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
     private static DateTime AtDailyReset(DateOnly date)
     {
-        return new DateTime(date, new TimeOnly(14, 59), DateTimeKind.Utc);
+        return new(date, new(14, 59), DateTimeKind.Utc);
     }
-
-    public bool ShouldDraw => _configuration.General.ShowIncompleteSeasonalEvents && _eventQuests.Any(IsIncomplete);
 
     public void Draw()
     {
-        foreach (var eventQuest in _eventQuests)
+        foreach(EventQuest eventQuest in _eventQuests)
         {
             if (IsIncomplete(eventQuest))
+            {
                 DrawEventQuest(eventQuest);
+            }
         }
     }
 
@@ -62,14 +66,16 @@ internal sealed class EventInfoComponent(QuestData questData,
         if (eventQuest.EndsAtUtc != DateTime.MaxValue)
         {
             string time = (eventQuest.EndsAtUtc - DateTime.UtcNow).Humanize(
-                precision: 1,
-                culture: CultureInfo.InvariantCulture,
+                1,
+                CultureInfo.InvariantCulture,
                 minUnit: TimeUnit.Minute,
                 maxUnit: TimeUnit.Day);
             ImGui.Text($"{eventQuest.Name} ({time})");
         }
         else
+        {
             ImGui.Text(eventQuest.Name);
+        }
 
         List<ElementId> startableQuests = eventQuest.QuestIds.Where(x =>
                 _questRegistry.IsKnownQuest(x) &&
@@ -77,10 +83,12 @@ internal sealed class EventInfoComponent(QuestData questData,
                 x != _questController.StartedQuest?.Quest.Id &&
                 x != _questController.NextQuest?.Quest.Id)
             .ToList();
-        foreach (var questId in eventQuest.QuestIds)
+        foreach(ElementId questId in eventQuest.QuestIds)
         {
             if (_questFunctions.IsQuestComplete(questId))
+            {
                 continue;
+            }
 
             using (ImRaii.PushId($"##EventQuestSelection{questId}"))
             {
@@ -102,15 +110,19 @@ internal sealed class EventInfoComponent(QuestData questData,
                     hovered |= ImGui.IsItemHovered();
 
                     if (hovered)
+                    {
                         _questTooltipComponent.Draw(quest.Info);
+                    }
                 }
                 else
                 {
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX());
 
-                    var style = _uiUtils.GetQuestStyle(questId);
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
                     if (_uiUtils.ChecklistItem(questName, style.Color, style.Icon, ImGui.GetStyle().FramePadding.X))
+                    {
                         _questTooltipComponent.Draw(_questData.GetQuestInfo(questId));
+                    }
                 }
             }
         }
@@ -119,7 +131,9 @@ internal sealed class EventInfoComponent(QuestData questData,
     private bool IsIncomplete(EventQuest eventQuest)
     {
         if (eventQuest.EndsAtUtc <= DateTime.UtcNow)
+        {
             return false;
+        }
 
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }
@@ -132,8 +146,11 @@ internal sealed class EventInfoComponent(QuestData questData,
             .Where(ShouldShowQuest);
     }
 
-    private bool ShouldShowQuest(ElementId elementId) => !_questFunctions.IsQuestComplete(elementId) &&
-                                                         !_questFunctions.IsQuestUnobtainable(elementId);
+    private bool ShouldShowQuest(ElementId elementId)
+    {
+        return !_questFunctions.IsQuestComplete(elementId) &&
+               !_questFunctions.IsQuestUnobtainable(elementId);
+    }
 
     private sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc);
 }

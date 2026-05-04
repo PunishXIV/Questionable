@@ -6,39 +6,36 @@
         <NoWarn>NU1510</NoWarn>
     </PropertyGroup>
 
-    <Import Project="..\LLib\LLib.targets" />
-    <Import Project="..\LLib\RenameZip.targets" />
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DefineConstants>DEBUG;TRACE</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dalamud.Extensions.MicrosoftLogging" Version="4.0.1" />
-        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" ExcludeAssets="runtime" />
-        <PackageReference Include="JsonSchema.Net" Version="7.4.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8" />
-        <PackageReference Include="System.Text.Json" Version="9.0.3" />
-        <PackageReference Include="WrathCombo.API" Version="0.5.4" />
+        <PackageReference Include="Dalamud.Extensions.MicrosoftLogging" Version="4.0.1"/>
+        <PackageReference Include="ECommons" Version="3.2.0.16"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" ExcludeAssets="runtime"/>
+        <PackageReference Include="JsonSchema.Net" Version="7.4.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.8"/>
+        <PackageReference Include="System.Text.Json" Version="9.0.3"/>
+        <PackageReference Include="WrathCombo.API" Version="0.5.4"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GatheringPaths\GatheringPaths.csproj" />
-        <ProjectReference Include="..\LLib\LLib.csproj" />
-        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
-        <ProjectReference Include="..\QuestPaths\QuestPaths.csproj" />
-        <ProjectReference Include="..\vendor\NotificationMasterAPI\NotificationMasterAPI\NotificationMasterAPI.csproj" />
+        <ProjectReference Include="..\GatheringPaths\GatheringPaths.csproj"/>
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj"/>
+        <ProjectReference Include="..\QuestPaths\QuestPaths.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Controller\CombatModules\BossModPreset_Overworld.json" />
-        <None Remove="Controller\CombatModules\BossModPreset_QuestBattle.json" />
-        <None Remove="Controller\CombatModules\BossModPreset_NormalMovement.json" />
+        <None Remove="Controller\CombatModules\BossModPreset_Overworld.json"/>
+        <None Remove="Controller\CombatModules\BossModPreset_QuestBattle.json"/>
+        <None Remove="Controller\CombatModules\BossModPreset_NormalMovement.json"/>
         <EmbeddedResource Include="Controller\CombatModules\BossModPreset_Overworld.json">
             <LogicalName>Questionable.Controller.CombatModules.BossModPreset.Overworld</LogicalName>
         </EmbeddedResource>
         <EmbeddedResource Include="Controller\CombatModules\BossModPreset_NormalMovement.json">
-          <LogicalName>Questionable.Controller.CombatModules.BossModPreset.NormalMovement</LogicalName>
+            <LogicalName>Questionable.Controller.CombatModules.BossModPreset.NormalMovement</LogicalName>
         </EmbeddedResource>
         <EmbeddedResource Include="Controller\CombatModules\BossModPreset_QuestBattle.json">
             <LogicalName>Questionable.Controller.CombatModules.BossModPreset.QuestBattle</LogicalName>
@@ -46,7 +43,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Update="DalamudPackager" Version="15.0.0" />
-      <PackageReference Update="ECommons" Version="3.2.0.9" />
+        <PackageReference Update="DalamudPackager" Version="15.0.0"/>
     </ItemGroup>
 </Project>

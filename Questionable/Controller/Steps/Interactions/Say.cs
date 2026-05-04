@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Questionable.Controller.Steps.Common;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Say
@@ -16,10 +15,14 @@ internal static class Say
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest)
             {
                 if (step.ChatMessage == null)
+                {
                     return [];
+                }
             }
             else if (step.InteractionType != EInteractionType.Say)
+            {
                 return [];
+            }
 
 
             ArgumentNullException.ThrowIfNull(step.ChatMessage);
@@ -29,15 +32,18 @@ internal static class Say
                     .GetString();
             ArgumentNullException.ThrowIfNull(excelString);
 
-            var unmount = new Mount.UnmountTask();
-            var task = new Task(excelString);
+            Mount.UnmountTask unmount = new();
+            Task task = new(excelString);
             return [unmount, task];
         }
     }
 
     internal sealed record Task(string ChatMessage) : ITask
     {
-        public override string ToString() => $"Say({ChatMessage})";
+        public override string ToString()
+        {
+            return $"Say({ChatMessage})";
+        }
     }
 
     internal sealed class UseChat(ChatFunctions chatFunctions) : AbstractDelayedTaskExecutor<Task>
@@ -48,6 +54,9 @@ internal static class Say
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

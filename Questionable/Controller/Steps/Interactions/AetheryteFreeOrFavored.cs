@@ -1,11 +1,10 @@
-using System;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
+using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetheryteFreeOrFavored
@@ -15,7 +14,9 @@ internal static class AetheryteFreeOrFavored
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.RegisterFreeOrFavoredAetheryte)
+            {
                 return null;
+            }
 
             ArgumentNullException.ThrowIfNull(step.Aetheryte);
 
@@ -25,11 +26,18 @@ internal static class AetheryteFreeOrFavored
 
     internal sealed record Register(EAetheryteLocation AetheryteLocation) : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
-        public override string ToString() => $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
+        public override string ToString()
+        {
+            return $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
+        }
     }
 
-    internal sealed class DoRegister(
+    internal sealed class DoRegister
+    (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         ILogger<DoRegister> logger) : TaskExecutor<Register>
@@ -37,7 +45,9 @@ internal static class AetheryteFreeOrFavored
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
+            {
                 throw new TaskException($"Aetheryte {Task.AetheryteLocation} is not attuned");
+            }
 
             if (aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(Task.AetheryteLocation) ==
                 AetheryteRegistrationResult.NotPossible)
@@ -60,6 +70,9 @@ internal static class AetheryteFreeOrFavored
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

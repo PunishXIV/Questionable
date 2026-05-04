@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-
 namespace Questionable.Controller.Steps;
 
 internal sealed class TaskQueue
@@ -27,10 +26,14 @@ internal sealed class TaskQueue
     {
         task = _tasks.FirstOrDefault();
         if (task == null)
+        {
             return false;
+        }
 
         if (task.ShouldRedoOnInterrupt())
+        {
             _completedTasks.Add(task);
+        }
 
         _tasks.RemoveAt(0);
         return true;

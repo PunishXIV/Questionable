@@ -1,6 +1,5 @@
 ﻿using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Validation;
 
 internal sealed record ValidationIssue

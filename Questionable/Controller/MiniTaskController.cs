@@ -1,36 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
-using LLib;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
+using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 
 namespace Questionable.Controller;
 
 internal abstract class MiniTaskController<T> : IDisposable
 {
-    protected readonly TaskQueue _taskQueue = new();
+    private readonly Regex _actionCanceledText;
+    private readonly string _cantExecuteDueToStatusText;
 
     private readonly IChatGui _chatGui;
     private readonly ICondition _condition;
-    private readonly IServiceProvider _serviceProvider;
+    private readonly string _eventCanceledText;
     private readonly InterruptHandler _interruptHandler;
     private readonly ILogger<T> _logger;
-
-    private readonly Regex _actionCanceledText;
-    private readonly string _eventCanceledText;
-    private readonly string _cantExecuteDueToStatusText;
+    private readonly IServiceProvider _serviceProvider;
+    protected readonly TaskQueue _taskQueue = new();
 
     protected MiniTaskController(IChatGui chatGui, ICondition condition, IServiceProvider serviceProvider,
         InterruptHandler interruptHandler, IDataManager dataManager, ILogger<T> logger)
@@ -41,10 +40,15 @@ internal abstract class MiniTaskController<T> : IDisposable
         _interruptHandler = interruptHandler;
         _condition = condition;
 
-        _eventCanceledText = dataManager.GetString<LogMessage>(1318, x => x.Text)!;
-        _actionCanceledText = dataManager.GetRegex<LogMessage>(1314, x => x.Text)!;
-        _cantExecuteDueToStatusText = dataManager.GetString<LogMessage>(7728, x => x.Text)!;
+        _eventCanceledText = DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text)!;
+        _actionCanceledText = DataManagerAdapter.GetRegex<LogMessage>(dataManager, 1314, x => x.Text)!;
+        _cantExecuteDueToStatusText = DataManagerAdapter.GetString<LogMessage>(dataManager, 7728, x => x.Text)!;
         _interruptHandler.Interrupted += HandleInterruption;
+    }
+
+    public virtual void Dispose()
+    {
+        _interruptHandler.Interrupted -= HandleInterruption;
     }
 
     protected virtual void UpdateCurrentTask()
@@ -69,7 +73,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                         return;
                     }
                 }
-                catch (Exception e)
+                catch(Exception e)
                 {
                     _logger.LogError(e, "Failed to start task {TaskName}", upcomingTask.ToString());
                     _chatGui.PrintError(
@@ -79,7 +83,9 @@ internal abstract class MiniTaskController<T> : IDisposable
                 }
             }
             else
+            {
                 return;
+            }
         }
 
         ETaskResult result;
@@ -93,7 +99,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 
             result = _taskQueue.CurrentTaskExecutor.Update();
         }
-        catch (Exception e)
+        catch(Exception e)
         {
             _logger.LogError(e, "Failed to update task {TaskName}",
                 _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
@@ -113,7 +119,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                     _taskQueue.CurrentTaskExecutor.CurrentTask, result);
                 _taskQueue.CurrentTaskExecutor = null;
 
-                while (_taskQueue.TryDequeue(out ITask? nextTask))
+                while(_taskQueue.TryDequeue(out ITask? nextTask))
                 {
                     if (nextTask is ILastTask or Gather.SkipMarker)
                     {
@@ -135,7 +141,9 @@ internal abstract class MiniTaskController<T> : IDisposable
                 OnTaskComplete(_taskQueue.CurrentTaskExecutor.CurrentTask);
 
                 if (result == ETaskResult.CreateNewTasks && _taskQueue.CurrentTaskExecutor is IExtraTaskCreator extraTaskCreator)
+                {
                     _taskQueue.EnqueueAll(extraTaskCreator.CreateExtraTasks());
+                }
 
                 _taskQueue.CurrentTaskExecutor = null;
 
@@ -145,7 +153,7 @@ internal abstract class MiniTaskController<T> : IDisposable
             case ETaskResult.NextStep:
                 _logger.LogInformation("{Task} → {Result}", _taskQueue.CurrentTaskExecutor.CurrentTask, result);
 
-                var lastTask = (ILastTask)_taskQueue.CurrentTaskExecutor.CurrentTask;
+                ILastTask lastTask = (ILastTask)_taskQueue.CurrentTaskExecutor.CurrentTask;
                 _taskQueue.CurrentTaskExecutor = null;
 
                 OnNextStep(lastTask);
@@ -169,8 +177,10 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     public abstract void Stop(string label);
 
-    public virtual IList<string> GetRemainingTaskNames() =>
-        _taskQueue.RemainingTasks.Select(x => x.ToString() ?? "?").ToList();
+    public virtual IList<string> GetRemainingTaskNames()
+    {
+        return _taskQueue.RemainingTasks.Select(x => x.ToString() ?? "?").ToList();
+    }
 
     public void InterruptQueueWithCombat()
     {
@@ -179,14 +189,18 @@ internal abstract class MiniTaskController<T> : IDisposable
         {
             List<ITask> tasks = [];
             if (_condition[ConditionFlag.Mounted])
+            {
                 tasks.Add(new Mount.UnmountTask());
+            }
 
             tasks.Add(Combat.Factory.CreateTask(null, -1, false, EEnemySpawnType.QuestInterruption, [], [], [], null));
             tasks.Add(new WaitAtEnd.WaitDelay());
             _taskQueue.InterruptWith(tasks);
         }
         else
+        {
             _taskQueue.InterruptWith([new WaitAtEnd.WaitDelay()]);
+        }
 
         LogTasksAfterInterruption();
     }
@@ -205,8 +219,10 @@ internal abstract class MiniTaskController<T> : IDisposable
     private void LogTasksAfterInterruption()
     {
         _logger.LogInformation("Remaining tasks after interruption:");
-        foreach (ITask task in _taskQueue.RemainingTasks)
+        foreach(ITask task in _taskQueue.RemainingTasks)
+        {
             _logger.LogInformation("- {TaskName}", task);
+        }
     }
 
     public void OnErrorToast(ref SeString message, ref bool isHandled)
@@ -224,10 +240,14 @@ internal abstract class MiniTaskController<T> : IDisposable
             if (_actionCanceledText.IsMatch(message.TextValue) &&
                 !_condition[ConditionFlag.InFlight] &&
                 _taskQueue.CurrentTaskExecutor?.ShouldInterruptOnDamage() == true)
+            {
                 InterruptQueueWithCombat();
+            }
             else if (GameFunctions.GameStringEquals(_cantExecuteDueToStatusText, message.TextValue) ||
                      GameFunctions.GameStringEquals(_eventCanceledText, message.TextValue))
+            {
                 InterruptWithoutCombat();
+            }
         }
     }
 
@@ -235,11 +255,8 @@ internal abstract class MiniTaskController<T> : IDisposable
     {
         if (!_condition[ConditionFlag.InFlight] &&
             _taskQueue.CurrentTaskExecutor?.ShouldInterruptOnDamage() == true)
+        {
             InterruptQueueWithCombat();
-    }
-
-    public virtual void Dispose()
-    {
-        _interruptHandler.Interrupted -= HandleInterruption;
+        }
     }
 }

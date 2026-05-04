@@ -3,35 +3,34 @@ using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
-using FFXIVClientStructs.FFXIV.Client.Graphics.Kernel;
-using FFXIVClientStructs.FFXIV.Client.System.Input;
-using FFXIVClientStructs.FFXIV.Client.System.String;
-using FFXIVClientStructs.FFXIV.Client.UI;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Dive
 {
+    private static DiveDelegate DiveFunc = Marshal.GetDelegateForFunctionPointer<DiveDelegate>(Svc.SigScanner.ScanText("48 89 5C 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 48 8D 54 24"));
+    public static unsafe void ExecuteDive()
+    {
+        DiveFunc(Control.Instance());
+    }
+    private static unsafe void Dismount()
+    {
+        ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
+    }
     private unsafe delegate byte DiveDelegate(void* control);
-    private static unsafe DiveDelegate DiveFunc = Marshal.GetDelegateForFunctionPointer<DiveDelegate>(Svc.SigScanner.ScanText("48 89 5C 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 48 8D 54 24"));
-    public static unsafe void ExecuteDive() => DiveFunc(Control.Instance());
-    private static unsafe void Dismount() => ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
 
     internal sealed class Factory : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Dive)
+            {
                 return null;
+            }
 
             return new Task();
         }
@@ -39,8 +38,10 @@ internal static class Dive
 
     internal sealed class Task : ITask
     {
-
-        public override string ToString() => "Dive";
+        public override string ToString()
+        {
+            return "Dive";
+        }
     }
 
     internal sealed class DoDive(ICondition condition)
@@ -52,10 +53,14 @@ internal static class Dive
         protected override bool StartInternal()
         {
             if (condition[ConditionFlag.Diving])
+            {
                 return false;
+            }
 
             if (PerformDive())
+            {
                 return true;
+            }
 
             throw new TaskException("You aren't swimming, so we can't dive.");
         }
@@ -88,15 +93,22 @@ internal static class Dive
         //    return base.Update();
         //}
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
 
         protected override ETaskResult UpdateInternal()
         {
             if (condition[ConditionFlag.Diving])
+            {
                 return ETaskResult.TaskComplete;
+            }
 
             if (_attempts >= 3)
+            {
                 throw new TaskException("Please dive manually.");
+            }
 
             PerformDive();
             _attempts++;

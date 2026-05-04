@@ -1,13 +1,14 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Plugin.Services;
 using Dalamud.Utility;
-using LLib;
+using Lumina.Excel;
 using Lumina.Excel.Exceptions;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
+using Questionable.Data;
 using Questionable.Model;
+using System;
+using System.Linq;
 using GimmickYesNo = Lumina.Excel.Sheets.GimmickYesNo;
 using Quest = Questionable.Model.Quest;
 
@@ -20,27 +21,31 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
     public StringOrRegex GetDialogueText(Quest? currentQuest, string? excelSheetName, string key, bool isRegex)
     {
-        var seString = GetRawDialogueText(currentQuest, excelSheetName, key);
+        ReadOnlySeString? seString = GetRawDialogueText(currentQuest, excelSheetName, key);
         // Return empty string if dialogue text lookup fails to prevent ArgumentNullException
         if (seString == null)
         {
             _logger.LogWarning("Could not find dialogue text for key '{Key}' in sheet '{Sheet}'", key, excelSheetName);
-            return new StringOrRegex(string.Empty);
+            return new(string.Empty);
         }
 
         if (isRegex)
-            return new StringOrRegex(seString.ToRegex());
+        {
+            return new(seString.ToRegex());
+        }
         else
-            return new StringOrRegex(seString?.WithCertainMacroCodeReplacements());
+        {
+            return new(seString?.WithCertainMacroCodeReplacements());
+        }
     }
 
     public ReadOnlySeString? GetRawDialogueText(Quest? currentQuest, string? excelSheetName, string key)
     {
         if (currentQuest != null && excelSheetName == null)
         {
-            var questRow =
+            Lumina.Excel.Sheets.Quest? questRow =
                 _dataManager.GetExcelSheet<Lumina.Excel.Sheets.Quest>().GetRowOrDefault((uint)currentQuest.Id.Value +
-                    0x10000);
+                                                                                        0x10000);
             if (questRow == null)
             {
                 _logger.LogError("Could not find quest row for {QuestId}", currentQuest.Id);
@@ -53,11 +58,11 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         ArgumentNullException.ThrowIfNull(excelSheetName);
         try
         {
-            var excelSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheetName);
+            ExcelSheet<QuestDialogueText> excelSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheetName);
             return excelSheet.Cast<QuestDialogueText?>()
                 .FirstOrDefault(x => x!.Value.Key == key)?.Value;
         }
-        catch (SheetNotFoundException e)
+        catch(SheetNotFoundException e)
         {
             throw new SheetNotFoundException($"Sheet '{excelSheetName}' not found", e);
         }
@@ -65,11 +70,15 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
     public StringOrRegex GetDialogueTextByRowId(string? excelSheet, uint rowId, bool isRegex)
     {
-        var seString = GetRawDialogueTextByRowId(excelSheet, rowId);
+        ReadOnlySeString? seString = GetRawDialogueTextByRowId(excelSheet, rowId);
         if (isRegex)
-            return new StringOrRegex(seString.ToRegex());
+        {
+            return new(seString.ToRegex());
+        }
         else
-            return new StringOrRegex(seString?.ToDalamudString().ToString());
+        {
+            return new(seString?.ToDalamudString().ToString());
+        }
     }
 
     public ReadOnlySeString? GetRawDialogueTextByRowId(string? excelSheet, uint rowId)
@@ -81,10 +90,10 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         {
             try
             {
-                var dialogueSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheet);
+                ExcelSheet<QuestDialogueText>? dialogueSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheet);
                 return dialogueSheet?.GetRowOrDefault(rowId)?.Value;
             }
-            catch (SheetNotFoundException e)
+            catch(SheetNotFoundException e)
             {
                 _logger.LogError(e, "Could not find dialogue sheet '{Sheet}'", excelSheet);
                 return null;
@@ -92,35 +101,37 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         }
         else if (excelSheet == "GimmickYesNo")
         {
-            var questRow = _dataManager.GetExcelSheet<GimmickYesNo>().GetRowOrDefault(rowId);
+            GimmickYesNo? questRow = _dataManager.GetExcelSheet<GimmickYesNo>().GetRowOrDefault(rowId);
             return questRow?.YesButton;
         }
         else if (excelSheet == "Warp")
         {
-            var questRow = _dataManager.GetExcelSheet<Warp>().GetRowOrDefault(rowId);
+            Warp? questRow = _dataManager.GetExcelSheet<Warp>().GetRowOrDefault(rowId);
             return questRow?.Name;
         }
         else if (excelSheet is "Addon")
         {
-            var questRow = _dataManager.GetExcelSheet<Addon>().GetRowOrDefault(rowId);
+            Addon? questRow = _dataManager.GetExcelSheet<Addon>().GetRowOrDefault(rowId);
             return questRow?.Text;
         }
         else if (excelSheet is "EventPathMove")
         {
-            var questRow = _dataManager.GetExcelSheet<EventPathMove>().GetRowOrDefault(rowId);
+            EventPathMove? questRow = _dataManager.GetExcelSheet<EventPathMove>().GetRowOrDefault(rowId);
             return questRow?.Unknown0;
         }
         else if (excelSheet is "GilShop")
         {
-            var questRow = _dataManager.GetExcelSheet<GilShop>().GetRowOrDefault(rowId);
+            GilShop? questRow = _dataManager.GetExcelSheet<GilShop>().GetRowOrDefault(rowId);
             return questRow?.Name;
         }
         else if (excelSheet is "ContentTalk" or null)
         {
-            var questRow = _dataManager.GetExcelSheet<ContentTalk>().GetRowOrDefault(rowId);
+            ContentTalk? questRow = _dataManager.GetExcelSheet<ContentTalk>().GetRowOrDefault(rowId);
             return questRow?.Text;
         }
         else
+        {
             throw new ArgumentOutOfRangeException(nameof(excelSheet), $"Unsupported excel sheet {excelSheet}");
+        }
     }
 }

@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Questionable.Controller.Utils;
+﻿using Questionable.Controller.Utils;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Validation.Validators;
 
 internal sealed class CompletionFlagsValidator : IQuestValidator
@@ -13,11 +12,13 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
     {
         // this maybe should check for skipconditions, but this applies to one quest only atm
         if (quest.Id.Value == 5149)
-            yield break;
-
-        foreach (var sequence in quest.AllSequences())
         {
-            var mappedCompletionFlags = sequence.Steps
+            yield break;
+        }
+
+        foreach(QuestSequence sequence in quest.AllSequences())
+        {
+            List<long> mappedCompletionFlags = sequence.Steps
                 .Select(x =>
                 {
                     if (QuestWorkUtils.HasCompletionFlags(x.CompletionQuestVariablesFlags))
@@ -26,7 +27,9 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                             {
                                 QuestWorkValue? value = x.CompletionQuestVariablesFlags[y];
                                 if (value == null)
+                                {
                                     return 0;
+                                }
 
                                 // this isn't perfect, as it assumes {High: 1, Low: null} == {High: 1, Low: 0}
                                 return (long)BitOperations.RotateLeft(
@@ -35,19 +38,23 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                             .Sum();
                     }
                     else
+                    {
                         return 0;
+                    }
                 })
                 .ToList();
 
-            for (int i = 0; i < sequence.Steps.Count; ++i)
+            for(int i = 0; i < sequence.Steps.Count; ++i)
             {
-                var flags = mappedCompletionFlags[i];
+                long flags = mappedCompletionFlags[i];
                 if (flags == 0)
+                {
                     continue;
+                }
 
                 if (mappedCompletionFlags.Count(x => x == flags) >= 2)
                 {
-                    yield return new ValidationIssue
+                    yield return new()
                     {
                         ElementId = quest.Id,
                         Sequence = sequence.Sequence,
@@ -55,7 +62,7 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                         Type = EIssueType.DuplicateCompletionFlags,
                         Severity = EIssueSeverity.Error,
                         Description =
-                            $"Duplicate completion flags: {string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags)}",
+                            $"Duplicate completion flags: {string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags)}"
                     };
                 }
             }

@@ -1,9 +1,8 @@
-﻿using System;
-using Questionable.Controller.Steps.Common;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class StatusOff
@@ -13,7 +12,9 @@ internal static class StatusOff
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.StatusOff)
+            {
                 return null;
+            }
 
             ArgumentNullException.ThrowIfNull(step.Status);
             return new Task(step.Status.Value);
@@ -22,19 +23,28 @@ internal static class StatusOff
 
     internal sealed record Task(EStatus Status) : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
 
-        public override string ToString() => $"StatusOff({Status})";
+        public override string ToString()
+        {
+            return $"StatusOff({Status})";
+        }
     }
 
-    internal sealed class DoStatusOff(
+    internal sealed class DoStatusOff
+    (
         GameFunctions gameFunctions)
         : AbstractDelayedTaskExecutor<Task>
     {
         protected override bool StartInternal()
         {
             if (gameFunctions.HasStatus(Task.Status))
+            {
                 return GameFunctions.RemoveStatus(Task.Status);
+            }
 
             return false;
         }
@@ -44,6 +54,9 @@ internal static class StatusOff
             return gameFunctions.HasStatus(Task.Status) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

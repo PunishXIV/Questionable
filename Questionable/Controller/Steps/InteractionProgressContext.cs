@@ -1,19 +1,18 @@
-﻿using System;
-using FFXIVClientStructs.FFXIV.Client.Game;
-
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
+using System;
 namespace Questionable.Controller.Steps;
 
 internal sealed class InteractionProgressContext
 {
     private bool _firstUpdateDone;
-    public bool CheckSequence { get; private set; }
-    public int CurrentSequence { get; private set; }
 
     private InteractionProgressContext(bool checkSequence, int currentSequence)
     {
         CheckSequence = checkSequence;
         CurrentSequence = currentSequence;
     }
+    public bool CheckSequence { get; private set; }
+    public int CurrentSequence { get; private set; }
 
     public static unsafe InteractionProgressContext Create(bool checkSequence)
     {
@@ -24,17 +23,21 @@ internal sealed class InteractionProgressContext
             ActionManager.Instance()->CastTimeElapsed = ActionManager.Instance()->CastTimeTotal;
         }
 
-        return new InteractionProgressContext(checkSequence, ActionManager.Instance()->LastUsedActionSequence);
+        return new(checkSequence, ActionManager.Instance()->LastUsedActionSequence);
     }
 
     private static unsafe (bool, InteractionProgressContext?) FromActionUseInternal(Func<bool> func)
     {
         int oldSequence = ActionManager.Instance()->LastUsedActionSequence;
         if (!func())
+        {
             return (false, null);
+        }
         int newSequence = ActionManager.Instance()->LastUsedActionSequence;
         if (oldSequence == newSequence)
+        {
             return (true, null);
+        }
         return (true, Create(true));
     }
 
@@ -45,9 +48,11 @@ internal sealed class InteractionProgressContext
 
     public static InteractionProgressContext? FromActionUseOrDefault(Func<bool> func)
     {
-        var result = FromActionUseInternal(func);
+        (bool, InteractionProgressContext?) result = FromActionUseInternal(func);
         if (!result.Item1)
+        {
             return null;
+        }
         return result.Item2 ?? Create(false);
     }
 
@@ -72,7 +77,9 @@ internal sealed class InteractionProgressContext
         {
             if (CurrentSequence != ActionManager.Instance()->LastUsedActionSequence ||
                 CurrentSequence != ActionManager.Instance()->LastHandledActionSequence)
+            {
                 return false;
+            }
         }
 
         return ActionManager.Instance()->CastTimeElapsed > 0 &&
@@ -85,13 +92,17 @@ internal sealed class InteractionProgressContext
         {
             if (CurrentSequence == ActionManager.Instance()->LastHandledActionSequence &&
                 CurrentSequence == ActionManager.Instance()->LastUsedActionSequence)
+            {
                 return false;
+            }
         }
 
         return ActionManager.Instance()->CastTimeElapsed == 0 &&
                ActionManager.Instance()->CastTimeTotal > 0;
     }
 
-    public override string ToString() =>
-        $"IPCtx({(CheckSequence ? CurrentSequence : "-")} - {WasSuccessful()}, {WasInterrupted()})";
+    public override string ToString()
+    {
+        return $"IPCtx({(CheckSequence ? CurrentSequence : "-")} - {WasSuccessful()}, {WasInterrupted()})";
+    }
 }

@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
@@ -7,20 +6,21 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Common.Math;
-using LLib.ImGui;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Validation;
-
+using Questionable.Windows.Common;
+using System;
+using System.Globalization;
 namespace Questionable.Windows;
 
 internal sealed class QuestValidationWindow : LWindow
 {
-    private readonly QuestValidator _questValidator;
-    private readonly QuestData _questData;
-    private readonly QuestController _questController;
     private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QuestController _questController;
+    private readonly QuestData _questData;
+    private readonly QuestValidator _questValidator;
 
     public QuestValidationWindow(QuestValidator questValidator, QuestData questData,
         QuestController questController, IDalamudPluginInterface pluginInterface)
@@ -35,13 +35,13 @@ internal sealed class QuestValidationWindow : LWindow
         SizeCondition = ImGuiCond.Once;
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(600, 200),
+            MinimumSize = new Vector2(600, 200)
         };
     }
 
     public override void DrawContent()
     {
-        using var table = ImRaii.Table("QuestSelection", 5, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
+        using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 5, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
         {
             ImGui.Text("Not table");
@@ -55,7 +55,7 @@ internal sealed class QuestValidationWindow : LWindow
         ImGui.TableSetupColumn("Issue", ImGuiTableColumnFlags.None, 200);
         ImGui.TableHeadersRow();
 
-        foreach (ValidationIssue validationIssue in _questValidator.Issues)
+        foreach(ValidationIssue validationIssue in _questValidator.Issues)
         {
             ImGui.TableNextRow();
 
@@ -68,16 +68,20 @@ internal sealed class QuestValidationWindow : LWindow
                     IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
                     bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
+                    {
                         ImGui.SetTooltip("Copy as file name");
+                    }
                     if (copy)
                     {
                         string fileName = $"{quest.QuestId}_{quest.SimplifiedName}.json";
                         ImGui.SetClipboardText(fileName);
                     }
                     ImGui.SameLine();
-                    bool sim = ImGuiComponents.IconButton(FontAwesomeIcon.Play, new System.Numerics.Vector2(16));
+                    bool sim = ImGuiComponents.IconButton(FontAwesomeIcon.Play, new(16));
                     if (ImGui.IsItemHovered())
+                    {
                         ImGui.SetTooltip("Simulate quest");
+                    }
                     if (sim)
                     {
                         _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
@@ -86,29 +90,35 @@ internal sealed class QuestValidationWindow : LWindow
             }
 
             if (ImGui.TableNextColumn())
+            {
                 ImGui.TextUnformatted(validationIssue.ElementId != null
                     ? _questData.GetQuestInfo(validationIssue.ElementId).Name
                     : validationIssue.AlliedSociety.ToString());
+            }
 
             if (ImGui.TableNextColumn())
+            {
                 ImGui.TextUnformatted(validationIssue.Sequence?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
+            }
 
             if (ImGui.TableNextColumn())
+            {
                 ImGui.TextUnformatted(validationIssue.Step?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
+            }
 
             if (ImGui.TableNextColumn())
             {
                 // ReSharper disable once UnusedVariable
-                using (var font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                using (IDisposable font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     if (validationIssue.Severity == EIssueSeverity.Error)
                     {
-                        using var color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudRed);
+                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudRed);
                         ImGui.TextUnformatted(FontAwesomeIcon.ExclamationTriangle.ToIconString());
                     }
                     else
                     {
-                        using var color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.ParsedBlue);
+                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.ParsedBlue);
                         ImGui.TextUnformatted(FontAwesomeIcon.InfoCircle.ToIconString());
                     }
                 }

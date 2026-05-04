@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -13,12 +9,16 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AethernetShortcut
 {
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         AetheryteData aetheryteData,
         TerritoryData territoryData,
         IClientState clientState)
@@ -27,7 +27,9 @@ internal static class AethernetShortcut
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AethernetShortcut == null)
+            {
                 yield break;
+            }
 
             yield return new WaitNavmesh.Task();
             yield return new Task(step.AethernetShortcut.From, step.AethernetShortcut.To,
@@ -43,7 +45,8 @@ internal static class AethernetShortcut
         }
     }
 
-    internal sealed record Task(
+    internal sealed record Task
+    (
         EAetheryteLocation From,
         EAetheryteLocation To,
         SkipAetheryteCondition SkipConditions) : ISkippableTask
@@ -54,10 +57,14 @@ internal static class AethernetShortcut
         {
         }
 
-        public override string ToString() => $"UseAethernet({From} -> {To})";
+        public override string ToString()
+        {
+            return $"UseAethernet({From} -> {To})";
+        }
     }
 
-    internal sealed class UseAethernetShortcut(
+    internal sealed class UseAethernetShortcut
+    (
         ILogger<UseAethernetShortcut> logger,
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
@@ -70,10 +77,10 @@ internal static class AethernetShortcut
         MovementController movementController,
         ICondition condition) : TaskExecutor<Task>
     {
+        private DateTime _continueAt = DateTime.MinValue;
         private bool _moving;
         private bool _teleported;
         private bool _triedMounting;
-        private DateTime _continueAt = DateTime.MinValue;
 
         protected override bool Start()
         {
@@ -125,7 +132,7 @@ internal static class AethernetShortcut
             if (aetheryteFunctions.IsAetheryteUnlocked(Task.From) &&
                 aetheryteFunctions.IsAetheryteUnlocked(Task.To))
             {
-                var territoryType = clientState.TerritoryType;
+                uint territoryType = clientState.TerritoryType;
                 Vector3 playerPosition = objectTable[0]!.Position;
 
                 // closer to the source
@@ -146,7 +153,7 @@ internal static class AethernetShortcut
                             new(0, 8.442986f, 9),
                             new(9, 8.442986f, 0),
                             new(-9, 8.442986f, 0),
-                            new(0, 8.442986f, -9),
+                            new(0, 8.442986f, -9)
                         ];
 
                         Vector3 closestPoint = nearbyPoints.MinBy(x => Vector3.Distance(playerPosition, x));
@@ -175,11 +182,15 @@ internal static class AethernetShortcut
                 }
             }
             else if (clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
+            {
                 logger.LogWarning(
                     "Aethernet shortcut not unlocked (from: {FromAetheryte}, to: {ToAetheryte}), skipping as we are already in the destination territory",
                     Task.From, Task.To);
+            }
             else
+            {
                 throw new TaskException($"Aethernet shortcut not unlocked (from: {Task.From}, to: {Task.To})");
+            }
 
             return false;
         }
@@ -190,17 +201,17 @@ internal static class AethernetShortcut
             _moving = true;
             float distance = Task.From switch
             {
-                _ when Task.From.IsFirmamentAetheryte() => 4.4f,
+                var _ when Task.From.IsFirmamentAetheryte() => 4.4f,
                 EAetheryteLocation.UldahChamberOfRule => 5f,
-                _ when AetheryteConverter.IsLargeAetheryte(Task.From) => 10.9f,
-                _ => 6.9f,
+                var _ when AetheryteConverter.IsLargeAetheryte(Task.From) => 10.9f,
+                var _ => 6.9f
             };
 
             bool goldSaucerAethernetShard = aetheryteData.IsGoldSaucerAetheryte(Task.From) &&
-                                          !AetheryteConverter.IsLargeAetheryte(Task.From);
+                                            !AetheryteConverter.IsLargeAetheryte(Task.From);
             movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, aetheryteData.Locations[Task.From],
                 false, true, distance,
-                verticalStopDistance: goldSaucerAethernetShard ? 5f : null);
+                goldSaucerAethernetShard ? 5f : null);
         }
 
         private void DoTeleport()
@@ -213,7 +224,9 @@ internal static class AethernetShortcut
         public override ETaskResult Update()
         {
             if (DateTime.Now < _continueAt)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (_triedMounting)
             {
@@ -224,17 +237,23 @@ internal static class AethernetShortcut
                     return ETaskResult.StillRunning;
                 }
                 else
+                {
                     return ETaskResult.StillRunning;
+                }
             }
 
             if (_moving)
             {
-                var movementStartedAt = movementController.MovementStartedAt;
+                DateTime movementStartedAt = movementController.MovementStartedAt;
                 if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
+                {
                     return ETaskResult.StillRunning;
+                }
 
                 if (!movementController.IsPathfinding && !movementController.IsPathRunning)
+                {
                     _moving = false;
+                }
 
                 return ETaskResult.StillRunning;
             }
@@ -245,32 +264,46 @@ internal static class AethernetShortcut
                 return ETaskResult.StillRunning;
             }
 
-            if (objectTable[0] == null) return ETaskResult.StillRunning;
+            if (objectTable[0] == null)
+            {
+                return ETaskResult.StillRunning;
+            }
             Vector3? position = objectTable[0]!.Position;
             if (position == null)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (aetheryteData.IsAirshipLanding(Task.To))
             {
                 if (aetheryteData.CalculateAirshipLandingDistance(position.Value, clientState.TerritoryType, Task.To) > 5)
+                {
                     return ETaskResult.StillRunning;
+                }
             }
             else if (aetheryteData.IsCityAetheryte(Task.To) || aetheryteData.IsGoldSaucerAetheryte(Task.To))
             {
                 if (aetheryteData.CalculateDistance(position.Value, clientState.TerritoryType, Task.To) > 20)
+                {
                     return ETaskResult.StillRunning;
+                }
             }
             else
             {
                 // some overworld location (e.g. 'Tesselation (Lakeland)' would end up here
                 if (clientState.TerritoryType != aetheryteData.TerritoryIds[Task.To])
+                {
                     return ETaskResult.StillRunning;
+                }
             }
 
 
             return ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

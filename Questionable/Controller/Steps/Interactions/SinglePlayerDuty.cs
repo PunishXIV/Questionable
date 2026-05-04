@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons;
@@ -18,7 +13,10 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class SinglePlayerDuty
@@ -31,7 +29,8 @@ internal static class SinglePlayerDuty
         public const ushort Patisserie = 1298;
     }
 
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         BossModIpc bossModIpc,
         TerritoryData territoryData,
         IObjectTable objectTable,
@@ -41,7 +40,9 @@ internal static class SinglePlayerDuty
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.SinglePlayerDuty)
+            {
                 yield break;
+            }
 
             if (bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
             {
@@ -54,7 +55,9 @@ internal static class SinglePlayerDuty
                     tId = 1298;
                 }
                 else if (!territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id, step.SinglePlayerDutyIndex, out cfcData))
+                {
                     throw new TaskException("Failed to get content finder condition for solo instance");
+                }
                 if (cfcData != null)
                 {
                     cfcId = cfcData.ContentFinderConditionId;
@@ -93,9 +96,11 @@ internal static class SinglePlayerDuty
                         () =>
                         {
                             if (clientState.TerritoryType != SpecialTerritories.Naadam)
+                            {
                                 return true;
+                            }
 
-                            var pos = objectTable[0]?.Position ?? default;
+                            Vector3 pos = objectTable[0]?.Position ?? default;
                             return (new Vector3(352.01f, -1.45f, 288.59f) - pos).Length() < 10f;
                         },
                         "Wait(moving to Ovoo)");
@@ -125,43 +130,62 @@ internal static class SinglePlayerDuty
 
     internal sealed record StartSinglePlayerDuty(uint ContentFinderConditionId) : ITask
     {
-        public override string ToString() => $"Wait(BossMod, entered instance {ContentFinderConditionId})";
+        public override string ToString()
+        {
+            return $"Wait(BossMod, entered instance {ContentFinderConditionId})";
+        }
     }
 
     internal sealed class StartSinglePlayerDutyExecutor(ICondition condition) : TaskExecutor<StartSinglePlayerDuty>
     {
         private DateTime _enteredAt = DateTime.MinValue;
 
-        protected override bool Start() => true;
+        protected override bool Start()
+        {
+            return true;
+        }
 
         public override unsafe ETaskResult Update()
         {
-            var gameMain = GameMain.Instance();
+            GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (!condition[ConditionFlag.BoundByDuty])
+            {
                 return ETaskResult.StillRunning;
+            }
 
             // we add a minimum wait time to try avoid issues with starting too early
             // could also be adding unnecessary wait time but needs more investigation ig
             if (_enteredAt == DateTime.MinValue)
+            {
                 _enteredAt = DateTime.Now;
+            }
 
             return DateTime.Now - _enteredAt >= TimeSpan.FromSeconds(2)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 
     internal sealed record EnableAi(bool Passive = false) : ITask
     {
-        public override string ToString() => $"BossMod.EnableAi({(Passive ? "Passive" : "AutoPull")})";
+        public override string ToString()
+        {
+            return $"BossMod.EnableAi({(Passive ? "Passive" : "AutoPull")})";
+        }
     }
 
-    internal sealed class EnableAiExecutor(
+    internal sealed class EnableAiExecutor
+    (
         BossModIpc bossModIpc) : TaskExecutor<EnableAi>
     {
         protected override bool Start()
@@ -170,17 +194,27 @@ internal static class SinglePlayerDuty
             return true;
         }
 
-        public override ETaskResult Update() => ETaskResult.TaskComplete;
+        public override ETaskResult Update()
+        {
+            return ETaskResult.TaskComplete;
+        }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 
     internal sealed record SetPreset(BossModIpc.EPreset Preset) : ITask
     {
-        public override string ToString() => $"BossMod.SetPreset({Enum.GetName(Preset)})";
+        public override string ToString()
+        {
+            return $"BossMod.SetPreset({Enum.GetName(Preset)})";
+        }
     }
 
-    internal sealed class SetPresetExecutor(
+    internal sealed class SetPresetExecutor
+    (
         BossModIpc bossModIpc) : TaskExecutor<SetPreset>
     {
         protected override bool Start()
@@ -189,22 +223,42 @@ internal static class SinglePlayerDuty
             return true;
         }
 
-        public override ETaskResult Update() => ETaskResult.TaskComplete;
+        public override ETaskResult Update()
+        {
+            return ETaskResult.TaskComplete;
+        }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 
     internal sealed record WaitSinglePlayerDuty(uint ContentFinderConditionId) : ITask
     {
-        public override string ToString() => $"Wait(BossMod, left instance {ContentFinderConditionId})";
+        public override string ToString()
+        {
+            return $"Wait(BossMod, left instance {ContentFinderConditionId})";
+        }
     }
 
-    internal sealed class WaitSinglePlayerDutyExecutor(
+    internal sealed class WaitSinglePlayerDutyExecutor
+    (
         BossModIpc bossModIpc,
         MovementController movementController)
         : TaskExecutor<WaitSinglePlayerDuty>, IStoppableTaskExecutor, IDebugStateProvider
     {
-        protected override bool Start() => true;
+        public string? GetDebugState()
+        {
+            if (!movementController.IsNavmeshReady)
+            {
+                return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public override unsafe ETaskResult Update()
         {
@@ -213,25 +267,31 @@ internal static class SinglePlayerDuty
                 : ETaskResult.StillRunning;
         }
 
-        public void StopNow() => bossModIpc.DisableAi();
-
-        public override bool ShouldInterruptOnDamage() => false;
-
-        public string? GetDebugState()
+        public void StopNow()
         {
-            if (!movementController.IsNavmeshReady)
-                return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-            else
-                return null;
+            bossModIpc.DisableAi();
+        }
+
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
+        protected override bool Start()
+        {
+            return true;
         }
     }
 
     internal sealed record DisableAi : ITask
     {
-        public override string ToString() => "BossMod.DisableAi";
+        public override string ToString()
+        {
+            return "BossMod.DisableAi";
+        }
     }
 
-    internal sealed class DisableAiExecutor(
+    internal sealed class DisableAiExecutor
+    (
         BossModIpc bossModIpc) : TaskExecutor<DisableAi>
     {
         protected override bool Start()
@@ -240,73 +300,108 @@ internal static class SinglePlayerDuty
             return true;
         }
 
-        public override ETaskResult Update() => ETaskResult.TaskComplete;
+        public override ETaskResult Update()
+        {
+            return ETaskResult.TaskComplete;
+        }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 
     // TODO this should be handled in VBM
     internal sealed record SetTarget(uint DataId) : ITask
     {
-        public override string ToString() => $"SetTarget({DataId})";
+        public override string ToString()
+        {
+            return $"SetTarget({DataId})";
+        }
     }
 
-    internal sealed class SetTargetExecutor(
+    internal sealed class SetTargetExecutor
+    (
         ITargetManager targetManager,
         IObjectTable objectTable) : TaskExecutor<SetTarget>
     {
-        protected override bool Start() => true;
+        protected override bool Start()
+        {
+            return true;
+        }
 
         public override ETaskResult Update()
         {
             if (GameFunctions.GetBaseID(targetManager.Target) == Task.DataId)
+            {
                 return ETaskResult.TaskComplete;
+            }
 
             IGameObject? gameObject = objectTable.FirstOrDefault(x => GameFunctions.GetBaseID(x) == Task.DataId);
             if (gameObject == null)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             targetManager.Target = gameObject;
             return ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 
     // TODO valentiones hack
     internal sealed record Commence(uint ContentFinderConditionId) : ITask
     {
-        public override string ToString() => $"Commence({ContentFinderConditionId})";
+        public override string ToString()
+        {
+            return $"Commence({ContentFinderConditionId})";
+        }
     }
 
     internal sealed class CommenceExecutor(ICondition condition) : TaskExecutor<Commence>
     {
         private DateTime _enteredAt = DateTime.MinValue;
-        protected override bool Start() => true;
-
-        public unsafe override ETaskResult Update()
+        protected override bool Start()
         {
-            if (GenericHelpers.TryGetAddonMaster<AddonMaster.ContentsFinderConfirm>(out var m) && m.IsAddonReady)
+            return true;
+        }
+
+        public override unsafe ETaskResult Update()
+        {
+            if (GenericHelpers.TryGetAddonMaster(out AddonMaster.ContentsFinderConfirm m) && m.IsAddonReady)
             {
-                if(EzThrottler.Throttle("Confirm", 2000))
+                if (EzThrottler.Throttle("Confirm", 2000))
                 {
                     m.Commence();
                 }
             }
-            var gameMain = GameMain.Instance();
+            GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
+            {
                 return ETaskResult.StillRunning;
+            }
 
             if (!condition[ConditionFlag.BoundByDuty])
+            {
                 return ETaskResult.StillRunning;
+            }
             if (_enteredAt == DateTime.MinValue)
+            {
                 _enteredAt = DateTime.Now;
+            }
 
             return DateTime.Now - _enteredAt >= TimeSpan.FromSeconds(2)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return false;
+        }
     }
 }

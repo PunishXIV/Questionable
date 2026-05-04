@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
-using LLib.GameData;
 using Questionable.Model.Questing;
-
+using System;
+using System.Collections.Generic;
 namespace Questionable.Model;
 
 internal sealed class QuestProgressInfo
@@ -17,12 +16,12 @@ internal sealed class QuestProgressInfo
         Flags = questWork.Flags;
         Variables = [.. questWork.Variables.ToArray()];
         IsHidden = questWork.IsHidden;
-        ClassJob = (EClassJob)questWork.AcceptClassJob;
+        ClassJob = (Job)questWork.AcceptClassJob;
         Tooltip = "";
 
         Span<byte> qw = questWork.Variables; // 6 bytes
         string repr = "";
-        for (int i = 0; i < qw.Length; ++i)
+        for(int i = 0; i < qw.Length; ++i)
         {
             byte thisbyte = qw[i];
             Tooltip += $"{Convert.ToString(thisbyte, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
@@ -32,8 +31,14 @@ internal sealed class QuestProgressInfo
             if (upper != 0 || lower != 0)
             {
                 repr += "(";
-                if (upper != 0) repr += $"{upper}H";
-                if (lower != 0) repr += $"{lower}L";
+                if (upper != 0)
+                {
+                    repr += $"{upper}H";
+                }
+                if (lower != 0)
+                {
+                    repr += $"{lower}L";
+                }
                 repr += ") ";
             }
             else
@@ -41,7 +46,9 @@ internal sealed class QuestProgressInfo
                 repr += "(-) ";
             }
             if (i % 2 == 1)
+            {
                 repr += "   ";
+            }
         }
 
         // For combat quests, a sequence to kill 3 enemies works a bit like this:
@@ -59,8 +66,11 @@ internal sealed class QuestProgressInfo
     public ushort Flags { get; init; }
     public List<byte> Variables { get; }
     public bool IsHidden { get; }
-    public EClassJob ClassJob { get; }
+    public Job ClassJob { get; }
     public string Tooltip { get; }
 
-    public override string ToString() => _asString;
+    public override string ToString()
+    {
+        return _asString;
+    }
 }

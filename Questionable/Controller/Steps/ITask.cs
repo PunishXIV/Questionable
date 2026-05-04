@@ -2,5 +2,8 @@
 
 internal interface ITask
 {
-    bool ShouldRedoOnInterrupt() => false;
+    bool ShouldRedoOnInterrupt()
+    {
+        return false;
+    }
 }

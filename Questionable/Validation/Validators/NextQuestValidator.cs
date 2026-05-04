@@ -1,23 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using Questionable.Model;
+using Questionable.Model.Questing;
+using System.Collections.Generic;
 using System.Linq;
-using Questionable.Model;
-
 namespace Questionable.Validation.Validators;
 
 internal sealed class NextQuestValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        foreach (var invalidNextQuest in quest.AllSteps().Where(x => x.Step.NextQuestId == quest.Id))
+        foreach((QuestSequence Sequence, int StepId, QuestStep Step) invalidNextQuest in quest.AllSteps().Where(x => x.Step.NextQuestId == quest.Id))
         {
-            yield return new ValidationIssue
+            yield return new()
             {
                 ElementId = quest.Id,
                 Sequence = invalidNextQuest.Sequence.Sequence,
                 Step = invalidNextQuest.StepId,
                 Type = EIssueType.InvalidNextQuestId,
                 Severity = EIssueSeverity.Error,
-                Description = "Next quest should not reference itself",
+                Description = "Next quest should not reference itself"
             };
         }
     }

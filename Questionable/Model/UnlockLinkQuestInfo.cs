@@ -1,8 +1,7 @@
+using ECommons.ExcelServices;
+using Questionable.Model.Questing;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using LLib.GameData;
-using Questionable.Model.Questing;
-
 namespace Questionable.Model;
 
 internal sealed class UnlockLinkQuestInfo(UnlockLinkId unlockLinkId, string name, uint issuerDataId) : IQuestInfo
@@ -18,6 +17,6 @@ internal sealed class UnlockLinkQuestInfo(UnlockLinkId unlockLinkId, string name
     public uint? JournalGenre => null;
     public ushort SortKey => 0;
     public bool IsMainScenarioQuest => false;
-    public IReadOnlyList<EClassJob> ClassJobs => [];
+    public IReadOnlyList<Job> ClassJobs => [];
     public EExpansionVersion Expansion => EExpansionVersion.ARealmReborn;
 }

@@ -20,5 +20,5 @@ public enum EIssueType
     ClassQuestWithoutAetheryteShortcut,
     DuplicateSinglePlayerInstance,
     UnusedSinglePlayerInstance,
-    InvalidChatMessage,
+    InvalidChatMessage
 }

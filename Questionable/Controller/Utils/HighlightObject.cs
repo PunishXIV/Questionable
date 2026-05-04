@@ -1,25 +1,27 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
+using System;
+using System.Linq;
 using GameObject = FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject;
 
 namespace Questionable.Controller.Utils;
+
 // Adapted from https://github.com/electr0sheep/ItemVendorLocation/blob/main/ItemVendorLocation/HighlightObject.cs
 internal sealed class HighlightObject : IDisposable
 {
-    private uint[] _targetNpcDataId = [];
-    private DateTime _lastUpdateTime = DateTime.Now;
-    private readonly IFramework _framework;
     private readonly ICondition _condition;
-    private readonly IObjectTable _objectTable;
-    private readonly IDataManager _dataManager;
     private readonly Configuration _configuration;
+    private readonly IDataManager _dataManager;
+    private readonly IFramework _framework;
     private readonly ILogger<HighlightObject> _logger;
+    private readonly IObjectTable _objectTable;
+    private DateTime _lastUpdateTime = DateTime.Now;
+    private uint[] _targetNpcDataId = [];
 
     public HighlightObject(
         IFramework framework,
@@ -29,7 +31,6 @@ internal sealed class HighlightObject : IDisposable
         IDataManager dataManager,
         ILogger<HighlightObject> logger)
     {
-
         _framework = framework;
         _configuration = configuration;
         _condition = condition;
@@ -37,6 +38,11 @@ internal sealed class HighlightObject : IDisposable
         _dataManager = dataManager;
         _logger = logger;
         _framework.Update += Framework_OnUpdate;
+    }
+
+    public void Dispose()
+    {
+        _framework.Update -= Framework_OnUpdate;
     }
 
     private void Framework_OnUpdate(IFramework framework)
@@ -55,11 +61,11 @@ internal sealed class HighlightObject : IDisposable
         }
 
         if (_condition[ConditionFlag.Occupied] || _condition[ConditionFlag.Occupied30] ||
-               _condition[ConditionFlag.Occupied33] || _condition[ConditionFlag.Occupied38] ||
-               _condition[ConditionFlag.Occupied39] || _condition[ConditionFlag.OccupiedInEvent] ||
-               _condition[ConditionFlag.OccupiedInQuestEvent] || _condition[ConditionFlag.OccupiedInCutSceneEvent] ||
-               _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
-               _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51])
+            _condition[ConditionFlag.Occupied33] || _condition[ConditionFlag.Occupied38] ||
+            _condition[ConditionFlag.Occupied39] || _condition[ConditionFlag.OccupiedInEvent] ||
+            _condition[ConditionFlag.OccupiedInQuestEvent] || _condition[ConditionFlag.OccupiedInCutSceneEvent] ||
+            _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
+            _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51])
         {
             ToggleHighlight(false);
         }
@@ -67,7 +73,6 @@ internal sealed class HighlightObject : IDisposable
         {
             ToggleHighlight(true);
         }
-
     }
 
     public void AddHighlight(uint Id)
@@ -102,8 +107,10 @@ internal sealed class HighlightObject : IDisposable
         {
             ToggleHighlight(false);
             if (_targetNpcDataId.Length == 0 && Ids.Length == 0)
+            {
                 return;
-            _logger.LogDebug($"Setting highlight to {String.Join(',', Ids)}");
+            }
+            _logger.LogDebug($"Setting highlight to {string.Join(',', Ids)}");
             _targetNpcDataId = Ids;
             ToggleHighlight(true);
         });
@@ -116,11 +123,13 @@ internal sealed class HighlightObject : IDisposable
             return;
         }
 
-        var gameObjects = _objectTable.Where(i =>
+        IGameObject[] gameObjects = _objectTable.Where(i =>
         {
             if (!i.IsValid())
+            {
                 return false;
-            var obj = (GameObject*)i.Address;
+            }
+            GameObject* obj = (GameObject*)i.Address;
             return _targetNpcDataId.Contains(obj->BaseId);
         }).ToArray();
 
@@ -129,14 +138,9 @@ internal sealed class HighlightObject : IDisposable
             return;
         }
 
-        foreach (var obj in gameObjects)
+        foreach(IGameObject obj in gameObjects)
         {
             ((GameObject*)obj.Address)->Highlight(on ? _configuration.Advanced.HighlightColor : ObjectHighlightColor.None);
         }
-    }
-
-    public void Dispose()
-    {
-        _framework.Update -= Framework_OnUpdate;
     }
 }

@@ -13,25 +13,6 @@
         "requested": "[1.2.39, )",
         "resolved": "1.2.39",
         "contentHash": "fcFN01tDTIQqDuTwr1jUQK/geofiwjG5DycJQOnC72i1SsLAk1ELe+apBOuZ11UMQG8YKFZG1FgvjZPbqHyatg=="
-      },
-      "ECommons": {
-        "type": "Direct",
-        "requested": "[3.1.0.16, )",
-        "resolved": "3.1.0.16",
-        "contentHash": "wC2uvYyDLH77Wt1nmSAc4AyGVOKlPidN1qo+HslqA+HU69fiUX1JDIX2aRlDqd9thz1ALAnb+ojPBhbQSMbdCw=="
-      },
-      "JetBrains.Annotations": {
-        "type": "Transitive",
-        "resolved": "2024.3.0",
-        "contentHash": "ox5pkeLQXjvJdyAB4b2sBYAlqZGLh3PjSnP1bQNVx72ONuTJ9+34/+Rq91Fc0dG29XG9RgZur9+NcP4riihTug=="
-      },
-      "llib": {
-        "type": "Project",
-        "dependencies": {
-          "DalamudPackager": "[15.0.0, )",
-          "ECommons": "[3.1.0.16, )",
-          "JetBrains.Annotations": "[2024.3.0, )"
-        }
       }
     }
   }

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Globalization;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
+using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Text.ReadOnly;
@@ -23,11 +21,15 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Utils;
+using System;
+using System.Globalization;
+using System.Numerics;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Windows.QuestComponents;
 
-internal sealed class CreationUtilsComponent(
+internal sealed class CreationUtilsComponent
+(
     QuestController questController,
     MovementController movementController,
     GameFunctions gameFunctions,
@@ -47,29 +49,32 @@ internal sealed class CreationUtilsComponent(
     Configuration configuration,
     ILogger<CreationUtilsComponent> logger)
 {
-    private readonly QuestController _questController = questController;
-    private readonly MovementController _movementController = movementController;
-    private readonly GameFunctions _gameFunctions = gameFunctions;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestFunctions _questFunctions = questFunctions;
     private readonly CameraFunctions _cameraFunctions = cameraFunctions;
-    private readonly TerritoryData _territoryData = territoryData;
-    private readonly QuestData _questData = questData;
-    private readonly QuestSelectionWindow _questSelectionWindow = questSelectionWindow;
-    private readonly PriorityWindow _priorityWindow = priorityWindow;
     private readonly IClientState _clientState = clientState;
+    private readonly ICondition _condition = condition;
+    private readonly Configuration _configuration = configuration;
+    private readonly GameFunctions _gameFunctions = gameFunctions;
+    private readonly IGameGui _gameGui = gameGui;
+    private readonly ILogger<CreationUtilsComponent> _logger = logger;
+    private readonly MovementController _movementController = movementController;
     private readonly IObjectTable _objectTable = objectTable;
+    private readonly PriorityWindow _priorityWindow = priorityWindow;
+    private readonly QuestController _questController = questController;
+    private readonly QuestData _questData = questData;
+    private readonly QuestFunctions _questFunctions = questFunctions;
+    private readonly QuestRegistry _questRegistry = questRegistry;
+    private readonly QuestSelectionWindow _questSelectionWindow = questSelectionWindow;
+    private readonly RedoUtil _redoUtil = new();
     //private readonly IPlayerState _playerState;
     private readonly ITargetManager _targetManager = targetManager;
-    private readonly ICondition _condition = condition;
-    private readonly IGameGui _gameGui = gameGui;
-    private readonly Configuration _configuration = configuration;
-    private readonly ILogger<CreationUtilsComponent> _logger = logger;
-    private readonly RedoUtil _redoUtil = new RedoUtil();
+    private readonly TerritoryData _territoryData = territoryData;
 
     public void Draw()
     {
-        if (_objectTable[0] == null) return;
+        if (_objectTable[0] == null)
+        {
+            return;
+        }
 
         string territoryName = _territoryData.GetNameAndId(_clientState.TerritoryType);
         ImGui.Text(territoryName);
@@ -85,7 +90,7 @@ internal sealed class CreationUtilsComponent(
             ImGui.Separator();
             QuestReference q = _questFunctions.GetCurrentQuest();
             ImGui.Text($"QST prio: {q.CurrentQuest} → {q.Sequence}");
-            var simQ = _questController.SimulatedQuest?.Quest;
+            Quest? simQ = _questController.SimulatedQuest?.Quest;
             if (simQ != null)
             {
                 ImGui.Text($"Sim: {simQ.Id} → {_questController.SimulatedQuest?.Sequence}");
@@ -94,29 +99,35 @@ internal sealed class CreationUtilsComponent(
             {
                 if (_configuration.Advanced.ShowNewGamePlus)
                 {
-                    var qid = (uint)(q.CurrentQuest?.Value ?? 0) + 65536;
+                    uint qid = (uint)(q.CurrentQuest?.Value ?? 0) + 65536;
                     if (simQ != null)
+                    {
                         qid = (uint)simQ.Id.Value + 65536;
-                    var chapter = _redoUtil.GetChapter(qid);
+                    }
+                    Tuple<ReadOnlySeString, int> chapter = _redoUtil.GetChapter(qid);
                     string isSim = simQ != null ? " (sim)" : "";
                     if (!chapter.Item1.IsEmpty)
-                        ImGui.Text($"NG+{isSim}: {chapter.Item1} (#{chapter.Item2+1})");
+                    {
+                        ImGui.Text($"NG+{isSim}: {chapter.Item1} (#{chapter.Item2 + 1})");
+                    }
                 }
                 if (_configuration.Advanced.ShowDailies || _configuration.Advanced.ShowTracked)
                 {
-                    var questManager = QuestManager.Instance();
+                    QuestManager* questManager = QuestManager.Instance();
                     if (questManager != null)
                     {
                         if (_configuration.Advanced.ShowTracked)
                         {
-                            for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
+                            for(int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
                             {
-                                var trackedQuest = questManager->TrackedQuests[i];
+                                TrackingWork trackedQuest = questManager->TrackedQuests[i];
                                 switch (trackedQuest.QuestType)
                                 {
                                     default:
                                         if (trackedQuest.QuestType != 0 || trackedQuest.Index != 0)
+                                        {
                                             ImGui.Text($"Tracked Quest {i}: {trackedQuest.QuestType}, {trackedQuest.Index}");
+                                        }
                                         break;
 
                                     case 1:
@@ -133,22 +144,26 @@ internal sealed class CreationUtilsComponent(
                         }
                         if (_configuration.Advanced.ShowDailies)
                         {
-                            for (int i = 0; i < questManager->DailyQuests.Length; ++i)
+                            for(int i = 0; i < questManager->DailyQuests.Length; ++i)
                             {
-                                var dailyQuest = questManager->DailyQuests[i];
+                                DailyQuestWork dailyQuest = questManager->DailyQuests[i];
                                 if (dailyQuest.QuestId != 0 && !dailyQuest.IsCompleted)
                                 {
                                     ImGui.Text($"Daily Quest {i}: {dailyQuest.QuestId}, C:{dailyQuest.IsCompleted}");
-                                    if (_questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out var quest))
+                                    if (_questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out Quest? quest))
                                     {
                                         if (ImGui.IsItemHovered())
+                                        {
                                             ImGui.SetTooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
+                                        }
 
                                         if (ImGui.IsItemClicked())
                                         {
                                             _questController.AddQuestPriority(quest.Id);
                                             if (!_priorityWindow.IsOpen)
+                                            {
                                                 _priorityWindow.ToggleOrUncollapse();
+                                            }
                                             _priorityWindow.BringToFront();
                                         }
                                     }
@@ -159,7 +174,7 @@ internal sealed class CreationUtilsComponent(
                 }
                 if (_configuration.Advanced.ShowDirector)
                 {
-                    var director = UIState.Instance()->DirectorTodo.Director;
+                    Director* director = UIState.Instance()->DirectorTodo.Director;
                     if (director != null)
                     {
                         ImGui.Separator();
@@ -178,7 +193,7 @@ internal sealed class CreationUtilsComponent(
                 if (_configuration.Advanced.ShowActionManager)
                 {
                     ImGui.Separator();
-                    var actionManager = ActionManager.Instance();
+                    ActionManager* actionManager = ActionManager.Instance();
                     ImGui.Text(
                         $"A1: {actionManager->CastActionId} ({actionManager->LastUsedActionSequence} → {actionManager->LastHandledActionSequence})");
                     ImGui.Text($"A2: {actionManager->CastTimeElapsed} / {actionManager->CastTimeTotal}");
@@ -212,7 +227,9 @@ internal sealed class CreationUtilsComponent(
     {
         string nameId = string.Empty;
         if (target is ICharacter { NameId: > 0 } character)
+        {
             nameId = $"; n={character.NameId}";
+        }
 
         ImGui.Separator();
         ImGui.Text(string.Create(CultureInfo.InvariantCulture,
@@ -227,9 +244,13 @@ internal sealed class CreationUtilsComponent(
             float verticalDistance = target.Position.Y - _objectTable[0]!.Position.Y;
             string verticalDistanceText = string.Create(CultureInfo.InvariantCulture, $"Y: {verticalDistance:F2}");
             if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
+            {
                 ImGui.TextColored(ImGuiColors.DalamudOrange, verticalDistanceText);
+            }
             else
+            {
                 ImGui.Text(verticalDistanceText);
+            }
 
             ImGui.SameLine();
         }
@@ -247,14 +268,16 @@ internal sealed class CreationUtilsComponent(
             {
                 _movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
                     target.Position,
-                    fly: _condition[ConditionFlag.Mounted] && _gameFunctions.IsFlyingUnlockedInCurrentZone(),
-                    sprint: true);
+                    _condition[ConditionFlag.Mounted] && _gameFunctions.IsFlyingUnlockedInCurrentZone(),
+                    true);
             }
         }
         else
         {
             if (ImGui.Button("Cancel pathfinding"))
+            {
                 _movementController.ResetPathfinding();
+            }
         }
 
         ImGui.EndDisabled();
@@ -263,9 +286,13 @@ internal sealed class CreationUtilsComponent(
         ImGui.BeginDisabled(!_questData.IsIssuerOfAnyQuest(GameFunctions.GetBaseID(target)));
         bool showQuests = ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt);
         if (ImGui.IsItemHovered())
+        {
             ImGui.SetTooltip("Show all Quests starting with your current target.");
+        }
         if (showQuests)
+        {
             _questSelectionWindow.OpenForTarget(_targetManager.Target);
+        }
 
         ImGui.EndDisabled();
 
@@ -273,7 +300,9 @@ internal sealed class CreationUtilsComponent(
         ImGui.SameLine();
         bool interact = ImGuiComponents.IconButton(FontAwesomeIcon.MousePointer);
         if (ImGui.IsItemHovered())
+        {
             ImGui.SetTooltip("Interact with your current target.");
+        }
         if (interact)
         {
             _cameraFunctions.Face(target.Position);
@@ -287,11 +316,11 @@ internal sealed class CreationUtilsComponent(
 
     private string GetCurrentQuestInfoAsString()
     {
-        var q = _questFunctions.GetCurrentQuest();
+        QuestReference q = _questFunctions.GetCurrentQuest();
         string qw;
         if (q.CurrentQuest is QuestId)
         {
-            var progressInfo = _questFunctions.GetQuestProgressInfo(q.CurrentQuest);
+            QuestProgressInfo? progressInfo = _questFunctions.GetQuestProgressInfo(q.CurrentQuest);
             qw = progressInfo != null ? progressInfo.ToString() : "QW: -";
         }
         else
@@ -306,8 +335,10 @@ internal sealed class CreationUtilsComponent(
         GameObject* gameObject = (GameObject*)target.Address;
         bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
+        {
             ImGui.SetTooltip(
                 "Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.");
+        }
         if (copy)
         {
             if (target.ObjectKind == ObjectKind.GatheringPoint)
@@ -328,7 +359,7 @@ internal sealed class CreationUtilsComponent(
                     71201 or 71211 or 71221 or 71231 or 71341 or 71351 => "AcceptQuest",
                     71202 or 71212 or 71222 or 71232 or 71342 or 71352 => "AcceptQuest", // repeatable
                     71205 or 71215 or 71225 or 71235 or 71345 or 71355 => "CompleteQuest",
-                    _ => "Interact",
+                    var _ => "Interact"
                 };
                 ImGui.SetClipboardText($$"""
                                          "DataId": {{GameFunctions.GetBaseID(target)}},
@@ -351,20 +382,26 @@ internal sealed class CreationUtilsComponent(
                     $"{{EAetheryteLocation.{location}, new({target.Position.X}f, {target.Position.Y}f, {target.Position.Z}f)}},"));
             }
             else
+            {
                 ImGui.SetClipboardText(string.Create(CultureInfo.InvariantCulture,
                     $"new({target.Position.X}f, {target.Position.Y}f, {target.Position.Z}f)"));
+            }
         }
     }
 
     private void DrawCopyButton()
     {
         if (_objectTable[0] == null)
+        {
             return;
+        }
 
         bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
+        {
             ImGui.SetTooltip(
                 "Left click: Copy your position as JSON.\nRight click: Copy your position as C# code.");
+        }
         if (copy)
         {
             ImGui.SetClipboardText($$"""

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
@@ -9,26 +8,35 @@ using Questionable.Controller;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System.Collections.Generic;
 namespace Questionable.Windows.JournalComponents;
 
-internal sealed class QuestJournalUtils(QuestController questController, QuestFunctions questFunctions,
-    ICommandManager commandManager, Configuration configuration, IDalamudPluginInterface pluginInterface)
+internal sealed class QuestJournalUtils
+(
+    QuestController questController,
+    QuestFunctions questFunctions,
+    ICommandManager commandManager,
+    Configuration configuration,
+    IDalamudPluginInterface pluginInterface)
 {
-    private readonly QuestController _questController = questController;
-    private readonly QuestFunctions _questFunctions = questFunctions;
     private readonly ICommandManager _commandManager = commandManager;
     private readonly Configuration _configuration = configuration;
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
+    private readonly QuestController _questController = questController;
+    private readonly QuestFunctions _questFunctions = questFunctions;
 
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+        {
             ImGui.OpenPopup($"##QuestPopup{questInfo.QuestId}");
+        }
 
-        using var popup = ImRaii.Popup($"##QuestPopup{questInfo.QuestId}");
+        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestPopup{questInfo.QuestId}");
         if (!popup)
+        {
             return;
+        }
 
         using (ImRaii.Disabled(quest == null))
         {
@@ -47,7 +55,9 @@ internal sealed class QuestJournalUtils(QuestController questController, QuestFu
             }
 
             if (ImGui.MenuItem("Set as next quest"))
+            {
                 _questController.SetNextQuest(quest);
+            }
         }
 
         bool openInQuestMap = _commandManager.Commands.ContainsKey("/questinfo");
@@ -68,30 +78,40 @@ internal sealed class QuestJournalUtils(QuestController questController, QuestFu
 
     internal static void ShowFilterContextMenu(QuestJournalComponent journalUi)
     {
-        if (ImGuiComponents.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Filter, "Filter"))
+        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Filter, "Filter"))
+        {
             ImGui.OpenPopup("##QuestFilters");
+        }
 
-        using var popup = ImRaii.Popup("##QuestFilters");
+        using ImRaii.PopupDisposable popup = ImRaii.Popup("##QuestFilters");
         if (!popup)
+        {
             return;
+        }
 
         if (ImGui.Checkbox("Show only Available Quests", ref journalUi.Filter.AvailableOnly) ||
             ImGui.Checkbox("Hide Quests Without Path", ref journalUi.Filter.HideNoPaths))
+        {
             journalUi.UpdateFilter();
+        }
     }
 
     public void ShowQuestGroupContextMenu(string note, List<IQuestInfo> quests)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+        {
             ImGui.OpenPopup($"##QuestGroupPopup{note}");
+        }
 
-        using var popup = ImRaii.Popup($"##QuestGroupPopup{note}");
+        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestGroupPopup{note}");
         if (!popup)
+        {
             return;
+        }
 
         if (ImGui.MenuItem("Add all to Priority Quests"))
         {
-            foreach (var quest in quests)
+            foreach(IQuestInfo quest in quests)
             {
                 _questController.AddQuestPriority(quest.QuestId);
             }
@@ -99,7 +119,7 @@ internal sealed class QuestJournalUtils(QuestController questController, QuestFu
 
         if (ImGui.MenuItem("Remove all from Priority Quests"))
         {
-            foreach (var quest in quests)
+            foreach(IQuestInfo quest in quests)
             {
                 _questController.RemoveQuestPriority(quest.QuestId);
             }

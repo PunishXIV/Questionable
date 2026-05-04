@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Dalamud.Plugin.Services;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Common;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Plugin.Services;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-
 namespace Questionable.Data;
 
 internal sealed class AetheryteData
@@ -28,13 +27,17 @@ internal sealed class AetheryteData
             ConfigureAetheryte(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
         }
 
-        foreach (var aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
+        foreach(Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {
             if (aetheryte.Territory.RowId > 0)
+            {
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
+            }
 
             if (aetheryte.AethernetGroup > 0)
+            {
                 aethernetGroups[(EAetheryteLocation)aetheryte.RowId] = aetheryte.AethernetGroup;
+            }
         }
 
         ConfigureAetheryte(EAetheryteLocation.IshgardFirmament, 886, aethernetGroups[EAetheryteLocation.Ishgard]);
@@ -290,12 +293,12 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.HeritageFoundElectropeStrike, new(-219.53156f, 32.913696f, 120.77515f) },
                 { EAetheryteLocation.LivingMemoryLeynodeMnemo, new(-0.22894287f, 57.175537f, 796.9634f) },
                 { EAetheryteLocation.LivingMemoryLeynodePyro, new(657.98413f, 28.976807f, -284.01617f) },
-                { EAetheryteLocation.LivingMemoryLeynodeAero, new(-255.26825f, 59.433838f, -397.6654f) },
+                { EAetheryteLocation.LivingMemoryLeynodeAero, new(-255.26825f, 59.433838f, -397.6654f) }
             }
             .AsReadOnly();
 
     /// <summary>
-    /// Airship landings are special as they're one-way only (except for Radz-at-Han, which is a normal aetheryte).
+    ///     Airship landings are special as they're one-way only (except for Radz-at-Han, which is a normal aetheryte).
     /// </summary>
     private ReadOnlyDictionary<EAetheryteLocation, Vector3> AirshipLandingLocations { get; } =
         new Dictionary<EAetheryteLocation, Vector3>
@@ -304,20 +307,24 @@ internal sealed class AetheryteData
             { EAetheryteLocation.GridaniaAirship, new(24.86354f, -19.000002f, 96f) },
             { EAetheryteLocation.UldahAirship, new(-16.954851f, 82.999985f, -9.421141f) },
             { EAetheryteLocation.KuganeAirship, new(-55.72525f, 79.10602f, 46.23109f) },
-            { EAetheryteLocation.IshgardFirmament, new(9.92315f, -15.2f, 173.5059f) },
+            { EAetheryteLocation.IshgardFirmament, new(9.92315f, -15.2f, 173.5059f) }
         }.AsReadOnly();
 
     public ReadOnlyDictionary<EAetheryteLocation, uint> TerritoryIds { get; }
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
-    private IReadOnlyList<uint> TownTerritoryIds { get; set; }
+    private IReadOnlyList<uint> TownTerritoryIds { get; }
 
     public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
         if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
+        {
             return float.MaxValue;
+        }
 
         if (!Locations.TryGetValue(to, out Vector3 toPosition))
+        {
             return float.MaxValue;
+        }
 
         return (fromPosition - toPosition).Length();
     }
@@ -325,10 +332,14 @@ internal sealed class AetheryteData
     public float CalculateAirshipLandingDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
         if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
+        {
             return float.MaxValue;
+        }
 
         if (!AirshipLandingLocations.TryGetValue(to, out Vector3 toPosition))
+        {
             return float.MaxValue;
+        }
 
         return (fromPosition - toPosition).Length();
     }
@@ -336,13 +347,21 @@ internal sealed class AetheryteData
     public bool IsCityAetheryte(EAetheryteLocation aetheryte)
     {
         if (aetheryte == EAetheryteLocation.IshgardFirmament)
+        {
             return true;
+        }
 
-        var territoryId = TerritoryIds[aetheryte];
+        uint territoryId = TerritoryIds[aetheryte];
         return TownTerritoryIds.Contains(territoryId);
     }
 
-    public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
+    public bool IsAirshipLanding(EAetheryteLocation aetheryte)
+    {
+        return AirshipLandingLocations.ContainsKey(aetheryte);
+    }
 
-    public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
+    public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte)
+    {
+        return TerritoryIds[aetheryte] is 144 or 388;
+    }
 }

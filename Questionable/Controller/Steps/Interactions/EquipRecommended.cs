@@ -1,14 +1,13 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
-using ECommons.Configuration;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
+using FFXIVClientStructs.Interop;
+using Questionable.External;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using System;
-using Questionable.External;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class EquipRecommended
@@ -18,7 +17,9 @@ internal static class EquipRecommended
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.EquipRecommended)
+            {
                 return null;
+            }
 
             return new EquipTask();
         }
@@ -31,7 +32,9 @@ internal static class EquipRecommended
             if (step.InteractionType != EInteractionType.Duty &&
                 step.InteractionType != EInteractionType.SinglePlayerDuty &&
                 step.InteractionType != EInteractionType.Combat)
+            {
                 return null;
+            }
 
             return new EquipTask();
         }
@@ -39,7 +42,10 @@ internal static class EquipRecommended
 
     internal sealed class EquipTask : ITask
     {
-        public override string ToString() => "EquipRecommended";
+        public override string ToString()
+        {
+            return "EquipRecommended";
+        }
     }
 
     internal sealed unsafe class DoEquipRecommended(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist)
@@ -51,12 +57,14 @@ internal static class EquipRecommended
         protected override bool Start()
         {
             if (condition[ConditionFlag.InCombat])
+            {
                 return false;
+            }
 
             switch (config.General.GearsetUpdateSource)
             {
                 case Configuration.EGearsetUpdateSource.Vanilla:
-                    RecommendEquipModule.Instance()->SetupForClassJob((byte)PlayerState.Instance()->CurrentClassJobId);
+                    RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
                     RaptureGearsetModule.Instance()->UpdateGearset(RaptureGearsetModule.Instance()->CurrentGearsetIndex);
@@ -70,9 +78,11 @@ internal static class EquipRecommended
             switch (config.General.GearsetUpdateSource)
             {
                 case Configuration.EGearsetUpdateSource.Vanilla:
-                    var recommendedEquipModule = RecommendEquipModule.Instance();
+                    RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
                     if (recommendedEquipModule->IsUpdating)
+                    {
                         return ETaskResult.StillRunning;
+                    }
 
                     if (!_checkedOrTriggeredEquipmentUpdate)
                     {
@@ -89,7 +99,9 @@ internal static class EquipRecommended
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
                     if (stylist.IsBusy)
+                    {
                         return ETaskResult.StillRunning;
+                    }
                     else if (!_checkedOrTriggeredEquipmentUpdate)
                     {
                         stylist.UpdateGearset();
@@ -105,21 +117,23 @@ internal static class EquipRecommended
 
         private bool IsAllRecommendeGearEquipped()
         {
-            var recommendedEquipModule = RecommendEquipModule.Instance();
+            RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
             InventoryManager* inventoryManager = InventoryManager.Instance();
             InventoryContainer* equippedItems =
                 inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
             bool isAllEquipped = true;
-            foreach (var recommendedItemPtr in recommendedEquipModule->RecommendedItems)
+            foreach(Pointer<InventoryItem> recommendedItemPtr in recommendedEquipModule->RecommendedItems)
             {
-                var recommendedItem = recommendedItemPtr.Value;
+                InventoryItem* recommendedItem = recommendedItemPtr.Value;
                 if (recommendedItem == null || recommendedItem->ItemId == 0)
+                {
                     continue;
+                }
 
                 bool isEquipped = false;
-                for (int i = 0; i < equippedItems->Size; ++i)
+                for(int i = 0; i < equippedItems->Size; ++i)
                 {
-                    var equippedItem = equippedItems->Items[i];
+                    InventoryItem equippedItem = equippedItems->Items[i];
                     if (equippedItem.ItemId != 0 && equippedItem.ItemId == recommendedItem->ItemId)
                     {
                         isEquipped = true;
@@ -128,12 +142,17 @@ internal static class EquipRecommended
                 }
 
                 if (!isEquipped)
+                {
                     isAllEquipped = false;
+                }
             }
 
             return isAllEquipped;
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }

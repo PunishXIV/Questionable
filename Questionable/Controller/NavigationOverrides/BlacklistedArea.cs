@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
-
 namespace Questionable.Controller.NavigationOverrides;
 
-internal sealed record BlacklistedArea(
+internal sealed record BlacklistedArea
+(
     ushort TerritoryId,
     Vector3 Center,
     float MinDistance,
@@ -13,8 +13,10 @@ internal sealed record BlacklistedArea(
     {
         float distance = (point - Center).Length();
         if (distance < MinDistance || distance > MaxDistance)
+        {
             return null;
+        }
 
-        return new AlternateLocation(Center + Vector3.Normalize(point - Center) * MaxDistance, RecalculateNavmesh);
+        return new(Center + Vector3.Normalize(point - Center) * MaxDistance, RecalculateNavmesh);
     }
 }

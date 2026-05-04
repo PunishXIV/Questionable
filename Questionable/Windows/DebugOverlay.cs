@@ -1,8 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface.Windowing;
@@ -11,22 +7,26 @@ using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.Functions;
+using Questionable.Model;
 using Questionable.Model.Questing;
-
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
 namespace Questionable.Windows;
 
 internal sealed class DebugOverlay : Window
 {
+    private readonly AetheryteData _aetheryteData;
+    private readonly IClientState _clientState;
+    private readonly CombatController _combatController;
+    private readonly ICondition _condition;
+    private readonly Configuration _configuration;
+    private readonly IGameGui _gameGui;
+    private readonly HighlightObject _highlightObject;
+    private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
-    private readonly IGameGui _gameGui;
-    private readonly IClientState _clientState;
-    private readonly ICondition _condition;
-    private readonly AetheryteData _aetheryteData;
-    private readonly IObjectTable _objectTable;
-    private readonly CombatController _combatController;
-    private readonly Configuration _configuration;
-    private readonly HighlightObject _highlightObject;
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
@@ -57,7 +57,10 @@ internal sealed class DebugOverlay : Window
 
     public ElementId? HighlightedQuest { get; set; }
 
-    public override bool DrawConditions() => _configuration.Advanced.DebugOverlay || _configuration.Advanced.HighlightSelectedNpc;
+    public override bool DrawConditions()
+    {
+        return _configuration.Advanced.DebugOverlay || _configuration.Advanced.HighlightSelectedNpc;
+    }
 
     public override void PreDraw()
     {
@@ -67,35 +70,49 @@ internal sealed class DebugOverlay : Window
     public override void Draw()
     {
         if (_condition[ConditionFlag.OccupiedInCutSceneEvent])
+        {
             return;
+        }
 
         if (_clientState is not { IsLoggedIn: true, IsPvPExcludingDen: false })
+        {
             return;
+        }
 
         if (_objectTable[0] == null)
+        {
             return;
+        }
 
         if (!_questController.IsQuestWindowOpen)
+        {
             return;
+        }
 
         DrawCurrentQuest();
         DrawHighlightedQuest();
 
         if (_configuration.Advanced.CombatDataOverlay)
+        {
             DrawCombatTargets();
+        }
     }
 
     private void DrawCurrentQuest()
     {
-        var currentQuest = _questController.CurrentQuest;
+        QuestController.QuestProgress? currentQuest = _questController.CurrentQuest;
         if (currentQuest == null)
+        {
             return;
+        }
 
-        var sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (sequence == null)
+        {
             return;
+        }
 
-        for (int i = currentQuest.Step; i <= sequence.Steps.Count; ++i)
+        for(int i = currentQuest.Step; i <= sequence.Steps.Count; ++i)
         {
             QuestStep? step = sequence.FindStep(i);
             if (step != null && TryGetPosition(step, out Vector3? position))
@@ -111,12 +128,14 @@ internal sealed class DebugOverlay : Window
 
     private void DrawHighlightedQuest()
     {
-        if (HighlightedQuest == null || !_questRegistry.TryGetQuest(HighlightedQuest, out var quest))
-            return;
-
-        foreach (var sequence in quest.Root.QuestSequence)
+        if (HighlightedQuest == null || !_questRegistry.TryGetQuest(HighlightedQuest, out Quest? quest))
         {
-            for (int i = 0; i < sequence.Steps.Count; ++i)
+            return;
+        }
+
+        foreach(QuestSequence sequence in quest.Root.QuestSequence)
+        {
+            for(int i = 0; i < sequence.Steps.Count; ++i)
             {
                 QuestStep? step = sequence.FindStep(i);
                 if (step != null && TryGetPosition(step, out Vector3? position))
@@ -130,17 +149,25 @@ internal sealed class DebugOverlay : Window
     private void DrawStep(string counter, QuestStep step, Vector3 position, uint color)
     {
         if (step.Disabled || step.TerritoryId != _clientState.TerritoryType)
+        {
             return;
+        }
 
         if (_configuration.Advanced.HighlightSelectedNpc && step.DataId != null)
+        {
             _highlightObject.AddHighlight(step.DataId.Value);
+        }
 
         if (!_configuration.Advanced.DebugOverlay)
+        {
             return;
+        }
 
         bool visible = _gameGui.WorldToScreen(position, out Vector2 screenPos);
         if (!visible)
+        {
             return;
+        }
 
         ImGui.GetWindowDrawList().AddCircleFilled(screenPos, 3f, color);
         ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), color,
@@ -150,18 +177,24 @@ internal sealed class DebugOverlay : Window
     private void DrawCombatTargets()
     {
         if (!_combatController.IsRunning)
+        {
             return;
+        }
 
-        foreach (var x in _objectTable.Skip(1))
+        foreach(IGameObject x in _objectTable.Skip(1))
         {
             if (x is not IBattleNpc)
+            {
                 continue;
+            }
 
             bool visible = _gameGui.WorldToScreen(x.Position, out Vector2 screenPos);
             if (!visible)
+            {
                 continue;
+            }
 
-            var (priority, reason) = _combatController.GetKillPriority(x);
+            (int priority, string reason) = _combatController.GetKillPriority(x);
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
                 $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
         }

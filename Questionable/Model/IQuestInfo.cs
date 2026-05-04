@@ -1,10 +1,9 @@
-﻿using System;
+using Dalamud.Game.Text;
+using ECommons.ExcelServices;
+using Questionable.Model.Questing;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using Dalamud.Game.Text;
-using LLib.GameData;
-using Questionable.Model.Questing;
-
 namespace Questionable.Model;
 
 internal interface IQuestInfo
@@ -20,7 +19,7 @@ internal interface IQuestInfo
     public uint? JournalGenre { get; }
     public ushort SortKey { get; }
     public bool IsMainScenarioQuest { get; }
-    public IReadOnlyList<EClassJob> ClassJobs { get; }
+    public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }
 
     public string SimplifiedName => Name

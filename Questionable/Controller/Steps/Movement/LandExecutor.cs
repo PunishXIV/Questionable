@@ -1,17 +1,16 @@
-using System;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using Microsoft.Extensions.Logging;
-
+using System;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed class LandExecutor(IObjectTable objectTable, ICondition condition, ILogger<LandExecutor> logger)
     : TaskExecutor<LandTask>
 {
-    private bool _landing;
     private DateTime _continueAt;
+    private bool _landing;
 
     protected override bool Start()
     {
@@ -29,7 +28,9 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
     public override ETaskResult Update()
     {
         if (DateTime.Now < _continueAt)
+        {
             return ETaskResult.StillRunning;
+        }
 
         if (condition[ConditionFlag.InFlight])
         {
@@ -47,7 +48,7 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
 
     private unsafe bool AttemptLanding()
     {
-        var character = (Character*)(objectTable[0]?.Address ?? 0);
+        Character* character = (Character*)(objectTable[0]?.Address ?? 0);
         if (character != null)
         {
             if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 23) == 0)
@@ -60,5 +61,8 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
         return false;
     }
 
-    public override bool ShouldInterruptOnDamage() => false;
+    public override bool ShouldInterruptOnDamage()
+    {
+        return false;
+    }
 }

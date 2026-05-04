@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using System;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
@@ -15,7 +15,9 @@ internal static class AethernetShard
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AttuneAethernetShard)
+            {
                 return null;
+            }
 
             ArgumentNullException.ThrowIfNull(step.AethernetShard);
 
@@ -25,11 +27,18 @@ internal static class AethernetShard
 
     internal sealed record Attune(EAetheryteLocation AetheryteLocation) : ITask
     {
-        public bool ShouldRedoOnInterrupt() => true;
-        public override string ToString() => $"AttuneAethernetShard({AetheryteLocation})";
+        public bool ShouldRedoOnInterrupt()
+        {
+            return true;
+        }
+        public override string ToString()
+        {
+            return $"AttuneAethernetShard({AetheryteLocation})";
+        }
     }
 
-    internal sealed class DoAttune(
+    internal sealed class DoAttune
+    (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         ILogger<DoAttune> logger) : TaskExecutor<Attune>
@@ -48,11 +57,16 @@ internal static class AethernetShard
             return false;
         }
 
-        public override ETaskResult Update() =>
-            aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
+        public override ETaskResult Update()
+        {
+            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage()
+        {
+            return true;
+        }
     }
 }
