@@ -18,31 +18,25 @@ using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using GatheringPathRenderer.Windows;
 using Pictomancy;
+using Questionable.Model;
 using Questionable.Model.Gathering;
-
 namespace GatheringPathRenderer;
 
 public sealed class RendererPlugin : IDalamudPlugin
 {
-    private readonly WindowSystem _windowSystem = new(nameof(RendererPlugin));
-    private readonly List<uint> _colors = [0x40FF2020, 0x4020FF20, 0x402020FF, 0x40FFFF20, 0x40FF20FF, 0x4020FFFF];
-
-    private readonly IDalamudPluginInterface _pluginInterface;
     private readonly IClientState _clientState;
-    private readonly IObjectTable _objectTable;
-    //private readonly IPlayerState _playerState;
-    private readonly IPluginLog _pluginLog;
+    private readonly List<uint> _colors = [0x40FF2020, 0x4020FF20, 0x402020FF, 0x40FFFF20, 0x40FF20FF, 0x4020FFFF];
 
     private readonly EditorCommands _editorCommands;
     private readonly EditorWindow _editorWindow;
 
-    private readonly List<GatheringLocationContext> _gatheringLocations = [];
-    private readonly Dictionary<uint, List<Vector3>> _gbrLocationData;
-    private Job _currentClassJob = Job.ADV;
+    private readonly IObjectTable _objectTable;
 
-    internal List<GatheringLocationContext> GatheringLocations => _gatheringLocations;
-    internal Dictionary<uint, List<Vector3>> GBRLocationData => _gbrLocationData;
-    internal bool DistantRange { get; set; }
+    private readonly IDalamudPluginInterface _pluginInterface;
+    //private readonly IPlayerState _playerState;
+    private readonly IPluginLog _pluginLog;
+    private readonly WindowSystem _windowSystem = new(nameof(RendererPlugin));
+    private Job _currentClassJob = Job.ADV;
 
     public RendererPlugin(IDalamudPluginInterface pluginInterface, IClientState clientState,
         ICommandManager commandManager, IDataManager dataManager, ITargetManager targetManager, IChatGui chatGui,
@@ -53,23 +47,23 @@ public sealed class RendererPlugin : IDalamudPlugin
         _objectTable = objectTable;
         //_playerState = playerState;
         _pluginLog = pluginLog;
-        _gbrLocationData = LoadGBRPosData(_pluginInterface.AssemblyLocation.DirectoryName!);
-        pluginLog.Info($"Loaded {_gbrLocationData.Count} entries from GBR data");
+        GBRLocationData = LoadGBRPosData(_pluginInterface.AssemblyLocation.DirectoryName!);
+        pluginLog.Info($"Loaded {GBRLocationData.Count} entries from GBR data");
         ECommonsMain.Init(pluginInterface, this);
 
         Configuration? configuration = (Configuration?)pluginInterface.GetPluginConfig();
         if (configuration == null)
         {
-            configuration = new Configuration();
+            configuration = new();
             pluginInterface.SavePluginConfig(configuration);
         }
 
-        _editorCommands = new EditorCommands(this, dataManager, commandManager, targetManager, clientState,
+        _editorCommands = new(this, dataManager, commandManager, targetManager, clientState,
             objectTable, chatGui, pluginLog, configuration);
-        var configWindow = new ConfigWindow(pluginInterface, configuration);
-        _editorWindow = new EditorWindow(this, _editorCommands, dataManager, commandManager, targetManager, clientState, objectTable,
+        ConfigWindow configWindow = new(pluginInterface, configuration);
+        _editorWindow = new(this, _editorCommands, dataManager, commandManager, targetManager, clientState, objectTable,
                 configWindow)
-        { IsOpen = true };
+            { IsOpen = true };
         _windowSystem.AddWindow(configWindow);
         _windowSystem.AddWindow(_editorWindow);
 
@@ -93,6 +87,13 @@ public sealed class RendererPlugin : IDalamudPlugin
 
         //commandManager.AddHandler("/qipc", new CommandInfo(CallIPC));
     }
+
+    internal List<GatheringLocationContext> GatheringLocations { get; } =
+        [];
+
+    internal Dictionary<uint, List<Vector3>> GBRLocationData { get; }
+
+    internal bool DistantRange { get; set; }
 
     //private void CallIPC(string command, string argument)
     //{
@@ -189,10 +190,10 @@ public sealed class RendererPlugin : IDalamudPlugin
                     return pathProjectDirectory;
             }
 
-            throw new Exception($"Unable to resolve project path ({_pluginInterface.AssemblyLocation.Directory})");
+            throw new($"Unable to resolve project path ({_pluginInterface.AssemblyLocation.Directory})");
 #else
             var allPluginsDirectory =
- _pluginInterface.ConfigFile.Directory ?? throw new Exception("Unknown directory for plugin configs");
+                _pluginInterface.ConfigFile.Directory ?? throw new Exception("Unknown directory for plugin configs");
             return allPluginsDirectory
                 .CreateSubdirectory("Questionable")
                 .CreateSubdirectory("GatheringPaths");
@@ -200,20 +201,34 @@ public sealed class RendererPlugin : IDalamudPlugin
         }
     }
 
+    public void Dispose()
+    {
+        _clientState.ClassJobChanged -= ClassJobChanged;
+        _pluginInterface.UiBuilder.Draw -= Draw;
+        _pluginInterface.UiBuilder.Draw -= _windowSystem.Draw;
+
+        PctService.Dispose();
+
+        _pluginInterface.GetIpcSubscriber<object>("Questionable.ReloadData")
+            .Unsubscribe(Reload);
+
+        _editorCommands.Dispose();
+    }
+
     internal void Reload() => LoadGatheringLocationsFromDirectory();
 
     private void LoadGatheringLocationsFromDirectory()
     {
-        _gatheringLocations.Clear();
+        GatheringLocations.Clear();
 
         try
         {
 #if DEBUG
-            foreach (var expansionFolder in Questionable.Model.ExpansionData.ExpansionFolders.Values)
+            foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
                 LoadFromDirectory(
-                    new DirectoryInfo(Path.Combine(PathsDirectory.FullName, expansionFolder)));
+                    new(Path.Combine(PathsDirectory.FullName, expansionFolder)));
             _pluginLog.Information(
-                $"Loaded {_gatheringLocations.Count} gathering root locations from project directory");
+                $"Loaded {GatheringLocations.Count} gathering root locations from project directory");
 #else
             LoadFromDirectory(PathsDirectory);
             _pluginLog.Information(
@@ -251,36 +266,36 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private void LoadLocationFromStream(FileInfo fileInfo, Stream stream)
     {
-        var locationNode = JsonNode.Parse(stream)!;
+        JsonNode locationNode = JsonNode.Parse(stream)!;
         GatheringRoot root = locationNode.Deserialize<GatheringRoot>()!;
-        _gatheringLocations.Add(new GatheringLocationContext(fileInfo, ushort.Parse(fileInfo.Name.Split('_')[0]),
+        GatheringLocations.Add(new(fileInfo, ushort.Parse(fileInfo.Name.Split('_')[0]),
             root));
     }
 
     public static Dictionary<uint, List<Vector3>> LoadGBRPosData(string directoryName)
     {
-        var path = Path.Combine(directoryName, "world_locations.json");
+        string path = Path.Combine(directoryName, "world_locations.json");
         using FileStream stream = new(path, FileMode.Open, FileAccess.Read);
-        var root = JsonNode.Parse(stream);
-        var result = new Dictionary<uint, List<Vector3>>();
+        JsonNode? root = JsonNode.Parse(stream);
+        Dictionary<uint, List<Vector3>> result = new();
 
         if (root is not JsonObject obj)
             return result;
 
-        foreach (var kvp in obj)
+        foreach (KeyValuePair<string, JsonNode?> kvp in obj)
         {
             if (!uint.TryParse(kvp.Key, out uint key))
                 continue;
 
-            var vectorList = new List<Vector3>();
+            List<Vector3> vectorList = new();
             if (kvp.Value is JsonArray arr)
             {
-                foreach (var vecNode in arr)
+                foreach (JsonNode? vecNode in arr)
                 {
                     float x = vecNode?["X"]?.GetValue<float>() ?? 0f;
                     float y = vecNode?["Y"]?.GetValue<float>() ?? 0f;
                     float z = vecNode?["Z"]?.GetValue<float>() ?? 0f;
-                    vectorList.Add(new Vector3(x, y, z));
+                    vectorList.Add(new(x, y, z));
                 }
             }
 
@@ -291,7 +306,7 @@ public sealed class RendererPlugin : IDalamudPlugin
     }
 
     internal IEnumerable<GatheringLocationContext> GetLocationsInTerritory(uint territoryId)
-        => _gatheringLocations.Where(x => x.Root.Steps.LastOrDefault()?.TerritoryId == territoryId);
+        => GatheringLocations.Where(x => x.Root.Steps.LastOrDefault()?.TerritoryId == territoryId);
 
     internal void Save(FileInfo targetFile, GatheringRoot root)
     {
@@ -303,11 +318,11 @@ public sealed class RendererPlugin : IDalamudPlugin
             TypeInfoResolver = new DefaultJsonTypeInfoResolver
             {
                 Modifiers = { NoEmptyCollectionModifier }
-            },
+            }
         };
-        using (var stream = File.Create(targetFile.FullName))
+        using (FileStream stream = File.Create(targetFile.FullName))
         {
-            var jsonNode = (JsonObject)JsonSerializer.SerializeToNode(root, options)!;
+            JsonObject jsonNode = (JsonObject)JsonSerializer.SerializeToNode(root, options)!;
             JsonObject newNode = new()
             {
                 {
@@ -315,10 +330,10 @@ public sealed class RendererPlugin : IDalamudPlugin
                     "https://qstxiv.github.io/schema/gatheringlocation-v1.json"
                 }
             };
-            foreach (var (key, value) in jsonNode)
+            foreach ((string key, JsonNode? value) in jsonNode)
                 newNode.Add(key, value?.DeepClone());
 
-            using var writer = new Utf8JsonWriter(stream, new JsonWriterOptions
+            using Utf8JsonWriter writer = new(stream, new()
             {
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                 Indented = true
@@ -331,7 +346,7 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private static void NoEmptyCollectionModifier(JsonTypeInfo typeInfo)
     {
-        foreach (var property in typeInfo.Properties)
+        foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
             if (typeof(ICollection).IsAssignableFrom(property.PropertyType))
                 property.ShouldSerialize = (_, val) => val is ICollection { Count: > 0 };
@@ -342,28 +357,28 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private void Draw()
     {
-        if (!ExcelJobHelper.IsDol(_currentClassJob))
+        if (!_currentClassJob.IsDol())
             return;
 
-        using var drawList = PctService.Draw();
+        using PctDrawList? drawList = PctService.Draw();
         if (drawList == null)
             return;
 
         Vector3 position = _objectTable[0]?.Position ?? Vector3.Zero;
         float drawDistance = DistantRange ? 20000f : 200f;
-        foreach (var location in GetLocationsInTerritory(_clientState.TerritoryType))
+        foreach (GatheringLocationContext location in GetLocationsInTerritory(_clientState.TerritoryType))
         {
             if (!location.Root.Groups.Any(gr =>
-                    gr.Nodes.Any(
-                        no => no.Locations.Any(
-                            loc => Vector3.Distance(loc.Position, position) < drawDistance))))
+                gr.Nodes.Any(
+                    no => no.Locations.Any(
+                        loc => Vector3.Distance(loc.Position, position) < drawDistance))))
                 continue;
 
-            foreach (var group in location.Root.Groups)
+            foreach (GatheringNodeGroup group in location.Root.Groups)
             {
                 foreach (GatheringNode node in group.Nodes)
                 {
-                    foreach (var x in node.Locations)
+                    foreach (GatheringLocation x in node.Locations)
                     {
                         bool isUnsaved = false;
                         bool isCone = false;
@@ -407,7 +422,7 @@ public sealed class RendererPlugin : IDalamudPlugin
                             locationOverride?.MaximumDistance ?? x.CalculateMaximumDistance(),
                             minimumAngle, maximumAngle, color | 0xFF000000);
 
-                        drawList.AddText(x.Position, isUnsaved ? 0xFFFF0000 : 0xFFFFFFFF, $"{location.Root.Groups.IndexOf(group)} // {node.DataId} / {node.Locations.IndexOf(x)} || {minimumAngle}, {maximumAngle}", 1f);
+                        drawList.AddText(x.Position, isUnsaved ? 0xFFFF0000 : 0xFFFFFFFF, $"{location.Root.Groups.IndexOf(group)} // {node.DataId} / {node.Locations.IndexOf(x)} || {minimumAngle}, {maximumAngle}");
 #if false
                         var a = GatheringMath.CalculateLandingLocation(x, 0, 0);
                         var b = GatheringMath.CalculateLandingLocation(x, 1, 1);
@@ -436,20 +451,6 @@ public sealed class RendererPlugin : IDalamudPlugin
                 }
             }
         }
-    }
-
-    public void Dispose()
-    {
-        _clientState.ClassJobChanged -= ClassJobChanged;
-        _pluginInterface.UiBuilder.Draw -= Draw;
-        _pluginInterface.UiBuilder.Draw -= _windowSystem.Draw;
-
-        PctService.Dispose();
-
-        _pluginInterface.GetIpcSubscriber<object>("Questionable.ReloadData")
-            .Unsubscribe(Reload);
-
-        _editorCommands.Dispose();
     }
 
     internal sealed record GatheringLocationContext(FileInfo File, ushort Id, GatheringRoot Root);

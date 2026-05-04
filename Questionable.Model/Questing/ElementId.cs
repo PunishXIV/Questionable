@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-
 namespace Questionable.Model.Questing;
 
 public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
@@ -42,13 +41,13 @@ public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
     {
         if (value.StartsWith("S"))
             return new SatisfactionSupplyNpcId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("U"))
+        if (value.StartsWith("U"))
             return new UnlockLinkId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("N"))
+        if (value.StartsWith("N"))
             return new AethernetId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("C"))
+        if (value.StartsWith("C"))
             return new AetherCurrentId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("A"))
+        if (value.StartsWith("A"))
         {
             value = value.Substring(1);
             string[] parts = value.Split('x');
@@ -58,11 +57,9 @@ public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
                     byte.Parse(parts[0], CultureInfo.InvariantCulture),
                     byte.Parse(parts[1], CultureInfo.InvariantCulture));
             }
-            else
-                return new AlliedSocietyDailyId(byte.Parse(value, CultureInfo.InvariantCulture));
+            return new AlliedSocietyDailyId(byte.Parse(value, CultureInfo.InvariantCulture));
         }
-        else
-            return new QuestId(ushort.Parse(value, CultureInfo.InvariantCulture));
+        return new QuestId(ushort.Parse(value, CultureInfo.InvariantCulture));
     }
 
     public static bool TryFromString(string value, out ElementId? elementId)

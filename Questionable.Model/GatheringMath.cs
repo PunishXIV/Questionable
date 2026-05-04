@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Numerics;
 using Questionable.Model.Gathering;
-
 namespace Questionable.Model;
 
 public static class GatheringMath
 {
-    private static readonly Random Rng = new Random();
+    private static readonly Random Rng = new();
 
     public static (Vector3, int, float) CalculateLandingLocation(GatheringLocation location)
     {
         int degrees;
         if (location.IsCone())
+        {
             degrees = Rng.Next(
                 location.MinimumAngle.GetValueOrDefault(),
                 location.MaximumAngle.GetValueOrDefault());
+        }
         else
             degrees = Rng.Next(0, 360);
 
@@ -29,9 +30,11 @@ public static class GatheringMath
     {
         int degrees;
         if (location.IsCone())
+        {
             degrees = location.MinimumAngle.GetValueOrDefault()
                       + (int)(angleScale * (location.MaximumAngle.GetValueOrDefault() -
                                             location.MinimumAngle.GetValueOrDefault()));
+        }
         else
             degrees = (int)(rangeScale * 360);
 
@@ -44,7 +47,7 @@ public static class GatheringMath
     private static Vector3 CalculateLandingLocation(Vector3 position, int degrees, float range)
     {
         float rad = -(float)(degrees * Math.PI / 180);
-        return new Vector3
+        return new()
         {
             X = position.X + range * (float)Math.Sin(rad),
             Y = position.Y,

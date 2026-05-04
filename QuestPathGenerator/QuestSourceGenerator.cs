@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Json.Schema;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -15,8 +16,9 @@ using static Questionable.QuestPathGenerator.RoslynShortcuts;
 namespace Questionable.QuestPathGenerator;
 
 /// <summary>
-/// A sample source generator that creates C# classes based on the text file (in this case, Domain Driven Design ubiquitous language registry).
-/// When using a simple text file as a baseline, we can create a non-incremental source generator.
+///     A sample source generator that creates C# classes based on the text file (in this case, Domain Driven Design
+///     ubiquitous language registry).
+///     When using a simple text file as a baseline, we can create a non-incremental source generator.
 /// </summary>
 [Generator]
 [SuppressMessage("MicrosoftCodeAnalysisReleaseTracking", "RS2008")]
@@ -45,14 +47,14 @@ public class QuestSourceGenerator : ISourceGenerator
 
     private void GenerateQuestSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
-        var questSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());
-        var jsonSchemaFiles = Utils.RegisterSchemas(context);
+        JsonSchema questSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());
+        List<AdditionalText> jsonSchemaFiles = Utils.RegisterSchemas(context);
 
         List<(ElementId, QuestRoot)> quests = [];
-        foreach (var (id, node) in Utils.GetAdditionalFiles(context, jsonSchemaFiles, questSchema, InvalidJson,
-                     ElementId.FromString))
+        foreach ((ElementId id, JsonNode node) in Utils.GetAdditionalFiles(context, jsonSchemaFiles, questSchema, InvalidJson,
+            ElementId.FromString))
         {
-            var quest = node.Deserialize<QuestRoot>()!;
+            QuestRoot quest = node.Deserialize<QuestRoot>()!;
             if (quest.Disabled)
             {
                 quest.Author = [];
@@ -65,14 +67,14 @@ public class QuestSourceGenerator : ISourceGenerator
         if (quests.Count == 0)
             return;
 
-        var partitionedQuests = quests
+        List<IGrouping<string, (ElementId, QuestRoot)>> partitionedQuests = quests
             .OrderBy(x => x.Item1.Value)
             .GroupBy(x => $"LoadQuests{x.Item1.Value / 50}")
             .ToList();
 
-        var methods = Utils.CreateMethods("LoadQuests", partitionedQuests, CreateInitializer);
+        List<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadQuests", partitionedQuests, CreateInitializer);
 
-        var code =
+        CompilationUnitSyntax code =
             CompilationUnit()
                 .WithUsings(
                     List(
@@ -128,7 +130,7 @@ public class QuestSourceGenerator : ISourceGenerator
     {
         List<StatementSyntax> statements = [];
 
-        foreach (var quest in quests)
+        foreach ((ElementId QuestId, QuestRoot Root) quest in quests)
         {
             statements.Add(
                 ExpressionStatement(
@@ -175,47 +177,41 @@ public class QuestSourceGenerator : ISourceGenerator
         }
         catch (Exception e)
         {
-            throw new Exception($"QuestGen[{questId}]: {e.Message}", e);
+            throw new($"QuestGen[{questId}]: {e.Message}", e);
         }
     }
 
-    private static ObjectCreationExpressionSyntax CreateLastChecked(LastChecked lastChecked, LastChecked emptyLastChecked)
-    {
-        return ObjectCreationExpression(
-                    IdentifierName(nameof(LastChecked)))
-                .WithInitializer(
-                    InitializerExpression(
-                        SyntaxKind.ObjectInitializerExpression,
-                        SeparatedList<ExpressionSyntax>(
-                            SyntaxNodeList(
-                                Assignment(nameof(LastChecked.Username), lastChecked.Username, emptyLastChecked.Username)
-                                    .AsSyntaxNodeOrToken(),
-                                Assignment(nameof(LastChecked.Date), lastChecked.Date, emptyLastChecked.Date)
-                                    .AsSyntaxNodeOrToken()
-                            ))));
-    }
+    private static ObjectCreationExpressionSyntax CreateLastChecked(LastChecked lastChecked, LastChecked emptyLastChecked) => ObjectCreationExpression(
+            IdentifierName(nameof(LastChecked)))
+        .WithInitializer(
+            InitializerExpression(
+                SyntaxKind.ObjectInitializerExpression,
+                SeparatedList<ExpressionSyntax>(
+                    SyntaxNodeList(
+                        Assignment(nameof(LastChecked.Username), lastChecked.Username, emptyLastChecked.Username)
+                            .AsSyntaxNodeOrToken(),
+                        Assignment(nameof(LastChecked.Date), lastChecked.Date, emptyLastChecked.Date)
+                            .AsSyntaxNodeOrToken()
+                    ))));
 
-    private static ExpressionSyntax CreateQuestSequence(List<QuestSequence> sequences)
-    {
-        return CollectionExpression(
-            SeparatedList<CollectionElementSyntax>(
-                sequences.SelectMany(sequence => new SyntaxNodeOrToken[]
-                {
-                    ExpressionElement(
-                        ObjectCreationExpression(
-                                IdentifierName(nameof(QuestSequence)))
-                            .WithInitializer(
-                                InitializerExpression(
-                                    SyntaxKind.ObjectInitializerExpression,
-                                    SeparatedList<ExpressionSyntax>(
-                                        SyntaxNodeList(
-                                            Assignment<int?>(nameof(QuestSequence.Sequence), sequence.Sequence, null)
-                                                .AsSyntaxNodeOrToken(),
-                                            Assignment(nameof(QuestSequence.Comment), sequence.Comment, null)
-                                                .AsSyntaxNodeOrToken(),
-                                            AssignmentList(nameof(QuestSequence.Steps), sequence.Steps)
-                                                .AsSyntaxNodeOrToken()))))),
-                    Token(SyntaxKind.CommaToken),
-                }.ToArray())));
-    }
+    private static ExpressionSyntax CreateQuestSequence(List<QuestSequence> sequences) => CollectionExpression(
+        SeparatedList<CollectionElementSyntax>(
+            sequences.SelectMany(sequence => new SyntaxNodeOrToken[]
+            {
+                ExpressionElement(
+                    ObjectCreationExpression(
+                            IdentifierName(nameof(QuestSequence)))
+                        .WithInitializer(
+                            InitializerExpression(
+                                SyntaxKind.ObjectInitializerExpression,
+                                SeparatedList<ExpressionSyntax>(
+                                    SyntaxNodeList(
+                                        Assignment<int?>(nameof(QuestSequence.Sequence), sequence.Sequence, null)
+                                            .AsSyntaxNodeOrToken(),
+                                        Assignment(nameof(QuestSequence.Comment), sequence.Comment, null)
+                                            .AsSyntaxNodeOrToken(),
+                                        AssignmentList(nameof(QuestSequence.Steps), sequence.Steps)
+                                            .AsSyntaxNodeOrToken()))))),
+                Token(SyntaxKind.CommaToken)
+            })));
 }

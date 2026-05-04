@@ -1,5 +1,4 @@
 ﻿using System.IO;
-
 namespace Questionable.Model;
 
 public static class AssemblyModelLoader

@@ -2,20 +2,18 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Numerics;
-using Dalamud.Game.Command;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-
 namespace Questionable.IpcTest;
 
 // ReSharper disable once InconsistentNaming
 public sealed class IpcTestPlugin : IDalamudPlugin
 {
+    private readonly IChatGui _chatGui;
+    private readonly ICommandManager _commandManager;
     //private readonly WindowSystem _windowSystem = new("Questionable/" + nameof(IpcTestPlugin));
     private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly ICommandManager _commandManager;
-    private readonly IChatGui _chatGui;
 
     public IpcTestPlugin(
         IDalamudPluginInterface pluginInterface,
@@ -26,14 +24,16 @@ public sealed class IpcTestPlugin : IDalamudPlugin
         _commandManager = commandManager;
         _chatGui = chatGui;
 
-        commandManager.AddHandler("/qipc", new CommandInfo(ProcessCommand));
+        commandManager.AddHandler("/qipc", new(ProcessCommand));
     }
+
+    public void Dispose() => _commandManager.RemoveHandler("/qipc");
 
     private void ProcessCommand(string command, string arguments)
     {
         if (arguments == "stepdata")
         {
-            var stepData = _pluginInterface.GetIpcSubscriber<IpcStepData?>("Questionable.GetCurrentStepData").InvokeFunc();
+            IpcStepData? stepData = _pluginInterface.GetIpcSubscriber<IpcStepData?>("Questionable.GetCurrentStepData").InvokeFunc();
             _chatGui.Print(new SeStringBuilder()
                 .AddUiForeground("[IPC]", 576)
                 .AddText(": Type: ")
@@ -46,7 +46,7 @@ public sealed class IpcTestPlugin : IDalamudPlugin
         }
         else if (arguments == "events")
         {
-            var eventQuests = _pluginInterface.GetIpcSubscriber<List<string>>("Questionable.GetCurrentlyActiveEventQuests").InvokeFunc();
+            List<string> eventQuests = _pluginInterface.GetIpcSubscriber<List<string>>("Questionable.GetCurrentlyActiveEventQuests").InvokeFunc();
             _chatGui.Print(new SeStringBuilder()
                 .AddUiForeground("[IPC]", 576)
                 .AddText(": Quests: ")
@@ -56,8 +56,6 @@ public sealed class IpcTestPlugin : IDalamudPlugin
         else
             _chatGui.PrintError("Unknown subcommand");
     }
-
-    public void Dispose() => _commandManager.RemoveHandler("/qipc");
 
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Local")]
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]

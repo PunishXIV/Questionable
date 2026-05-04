@@ -10,7 +10,7 @@ internal static class SinglePlayerDutyOptionsExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this SinglePlayerDutyOptions dutyOptions)
     {
-        var emptyOptions = new SinglePlayerDutyOptions();
+        SinglePlayerDutyOptions emptyOptions = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(SinglePlayerDutyOptions)))
             .WithInitializer(

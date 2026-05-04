@@ -10,7 +10,7 @@ internal static class GatheredItemExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this GatheredItem gatheredItem)
     {
-        var emptyItem = new GatheredItem();
+        GatheredItem emptyItem = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(GatheredItem)))
             .WithInitializer(

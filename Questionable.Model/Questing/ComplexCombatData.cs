@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Questionable.Model.Questing;
 
 public sealed class ComplexCombatData
@@ -11,7 +10,7 @@ public sealed class ComplexCombatData
     public uint? MinimumKillCount { get; set; }
 
     /// <summary>
-    /// If a reward item has been set, this is (ping allowing) given to the player before the dead enemy despawns.
+    ///     If a reward item has been set, this is (ping allowing) given to the player before the dead enemy despawns.
     /// </summary>
     public uint? RewardItemId { get; set; }
     public int? RewardItemCount { get; set; }

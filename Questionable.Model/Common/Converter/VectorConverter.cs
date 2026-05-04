@@ -2,7 +2,6 @@
 using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Common.Converter;
 
 public sealed class VectorConverter : JsonConverter<Vector3>
@@ -12,7 +11,7 @@ public sealed class VectorConverter : JsonConverter<Vector3>
         if (reader.TokenType != JsonTokenType.StartObject)
             throw new JsonException();
 
-        Vector3 vec = new Vector3();
+        Vector3 vec = new();
         while (reader.Read())
         {
             switch (reader.TokenType)

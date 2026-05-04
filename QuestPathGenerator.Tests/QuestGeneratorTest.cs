@@ -1,7 +1,7 @@
+using Microsoft.CodeAnalysis;
 using Questionable.Model.Questing;
 using Questionable.QuestPathGenerator;
 using Xunit;
-
 namespace QuestPathGenerator.Tests;
 
 public sealed class QuestGeneratorTest
@@ -9,14 +9,14 @@ public sealed class QuestGeneratorTest
     [Fact]
     public void SyntaxNodeListWithNullValues()
     {
-        var complexCombatData = new ComplexCombatData
+        ComplexCombatData complexCombatData = new()
         {
             DataId = 47,
             IgnoreQuestMarker = true,
-            MinimumKillCount = 1,
+            MinimumKillCount = 1
         };
 
-        var list =
+        List<SyntaxNodeOrToken> list =
             RoslynShortcuts.SyntaxNodeList(
                 RoslynShortcuts.AssignmentList(nameof(ComplexCombatData.CompletionQuestVariablesFlags),
                     complexCombatData.CompletionQuestVariablesFlags)).ToList();

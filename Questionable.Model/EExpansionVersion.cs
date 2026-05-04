@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Questionable.Model;
 
 public enum EExpansionVersion : byte
@@ -25,12 +24,9 @@ public static class ExpansionData
             { EExpansionVersion.Dawntrail, "7.x - Dawntrail" }
         };
 
-    public static string ToFriendlyString(this EExpansionVersion expansionVersion)
+    public static string ToFriendlyString(this EExpansionVersion expansionVersion) => expansionVersion switch
     {
-        return expansionVersion switch
-        {
-            EExpansionVersion.ARealmReborn => "A Realm Reborn",
-            _ => expansionVersion.ToString(),
-        };
-    }
+        EExpansionVersion.ARealmReborn => "A Realm Reborn",
+        var _ => expansionVersion.ToString()
+    };
 }

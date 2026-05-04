@@ -1,11 +1,19 @@
 ﻿using System;
-
 namespace Questionable.Model.Questing;
 
 public class ExcelRef
 {
-    private readonly string? _stringValue;
+
+    public enum EType
+    {
+        None,
+        Key,
+        RowId,
+        RawString
+    }
+
     private readonly uint? _rowIdValue;
+    private readonly string? _stringValue;
 
     public ExcelRef(string value)
     {
@@ -28,11 +36,11 @@ public class ExcelRef
         Type = type;
     }
 
+    public EType Type { get; }
+
     public static ExcelRef FromKey(string value) => new(value, null, EType.Key);
     public static ExcelRef FromRowId(uint rowId) => new(null, rowId, EType.RowId);
     public static ExcelRef FromSheetValue(string value) => new(value, null, EType.RawString);
-
-    public EType Type { get; }
 
     public string AsKey()
     {
@@ -56,13 +64,5 @@ public class ExcelRef
             throw new InvalidOperationException();
 
         return _stringValue!;
-    }
-
-    public enum EType
-    {
-        None,
-        Key,
-        RowId,
-        RawString,
     }
 }

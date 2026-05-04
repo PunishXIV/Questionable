@@ -10,7 +10,7 @@ internal static class CombatItemUseExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this CombatItemUse combatItemuse)
     {
-        var emptyItemuse = new CombatItemUse();
+        CombatItemUse emptyItemuse = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(CombatItemUse)))
             .WithInitializer(

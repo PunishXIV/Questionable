@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class EmoteConverter() : EnumConverter<EEmote>(Values)
@@ -271,6 +270,6 @@ public sealed class EmoteConverter() : EnumConverter<EEmote>(Values)
         { EEmote.GridanianGulp, "gridaniangulp" },
         { EEmote.UldahnGulp, "uldahngulp" },
         { EEmote.LominsanGulp, "lominsangulp" },
-        { EEmote.Pen, "pen" },
+        { EEmote.Pen, "pen" }
     };
 }

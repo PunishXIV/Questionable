@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Questionable.Model.Common;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class AethernetShortcutConverter : JsonConverter<AethernetShortcut>
@@ -32,10 +31,10 @@ public sealed class AethernetShortcutConverter : JsonConverter<AethernetShortcut
         if (!reader.Read() || reader.TokenType != JsonTokenType.EndArray)
             throw new JsonException();
 
-        return new AethernetShortcut
+        return new()
         {
-            From = StringToEnum.TryGetValue(from, out var fromEnum) ? fromEnum : throw new JsonException(),
-            To = StringToEnum.TryGetValue(to, out var toEnum) ? toEnum : throw new JsonException()
+            From = StringToEnum.TryGetValue(from, out EAetheryteLocation fromEnum) ? fromEnum : throw new JsonException(),
+            To = StringToEnum.TryGetValue(to, out EAetheryteLocation toEnum) ? toEnum : throw new JsonException()
         };
     }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-
 namespace Questionable.Model.Gathering;
 
 public class GatheringPointId : IComparable<GatheringPointId>, IEquatable<GatheringPointId>
@@ -27,7 +26,7 @@ public class GatheringPointId : IComparable<GatheringPointId>, IEquatable<Gather
     {
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != this.GetType()) return false;
+        if (obj.GetType() != GetType()) return false;
         return Equals((GatheringPointId)obj);
     }
 
@@ -37,5 +36,5 @@ public class GatheringPointId : IComparable<GatheringPointId>, IEquatable<Gather
 
     public static bool operator !=(GatheringPointId? left, GatheringPointId? right) => !Equals(left, right);
 
-    public static GatheringPointId FromString(string value) => new GatheringPointId(ushort.Parse(value, CultureInfo.InvariantCulture));
+    public static GatheringPointId FromString(string value) => new(ushort.Parse(value, CultureInfo.InvariantCulture));
 }

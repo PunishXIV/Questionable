@@ -5,7 +5,6 @@ using System.Text.Json.Serialization;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [SuppressMessage("ReSharper", "CollectionNeverUpdated.Global")]
@@ -13,6 +12,19 @@ public sealed class QuestStep
 {
     public const float DefaultStopDistance = 3f;
     public const int VesperBayAetheryteTicket = 30362;
+
+    [JsonConstructor]
+    public QuestStep()
+    {
+    }
+
+    public QuestStep(EInteractionType interactionType, uint? dataId, Vector3? position, uint territoryId)
+    {
+        InteractionType = interactionType;
+        DataId = dataId;
+        Position = position;
+        TerritoryId = territoryId;
+    }
 
     public uint? DataId { get; set; }
 
@@ -43,12 +55,12 @@ public sealed class QuestStep
     public string? Comment { get; set; }
 
     /// <summary>
-    /// Only used when attuning to an aetheryte.
+    ///     Only used when attuning to an aetheryte.
     /// </summary>
     public EAetheryteLocation? Aetheryte { get; set; }
 
     /// <summary>
-    /// Only used when attuning to an aethernet shard.
+    ///     Only used when attuning to an aethernet shard.
     /// </summary>
     [JsonConverter(typeof(AethernetShardConverter))]
     public EAetheryteLocation? AethernetShard { get; set; }
@@ -101,19 +113,6 @@ public sealed class QuestStep
     [JsonConverter(typeof(ElementIdConverter))]
     public ElementId? NextQuestId { get; set; }
 
-    [JsonConstructor]
-    public QuestStep()
-    {
-    }
-
-    public QuestStep(EInteractionType interactionType, uint? dataId, Vector3? position, uint territoryId)
-    {
-        InteractionType = interactionType;
-        DataId = dataId;
-        Position = position;
-        TerritoryId = territoryId;
-    }
-
     public float CalculateActualStopDistance()
     {
         if (StopDistance is { } stopDistance)
@@ -123,12 +122,12 @@ public sealed class QuestStep
         {
             EInteractionType.WalkTo => 0.25f,
             EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte => 10f,
-            _ => DefaultStopDistance
+            var _ => DefaultStopDistance
         };
     }
 
     /// <summary>
-    /// Only relevant for the step 0 in sequence 0: Whether this step is valid for teleporting to it.
+    ///     Only relevant for the step 0 in sequence 0: Whether this step is valid for teleporting to it.
     /// </summary>
     /// <returns></returns>
     public bool IsTeleportableForPriorityQuests()

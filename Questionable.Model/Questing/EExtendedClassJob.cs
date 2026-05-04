@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(ExtendedClassJobConverter))]
@@ -56,6 +55,5 @@ public enum EExtendedClassJob
     ConfiguredCombatJob,
     QuestStartJob,
     ConfiguredCraftingJob,
-    ConfiguredGatheringJob,
+    ConfiguredGatheringJob
 }
-

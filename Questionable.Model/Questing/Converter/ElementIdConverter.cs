@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class ElementIdConverter : JsonConverter<ElementId>
@@ -10,8 +9,7 @@ public sealed class ElementIdConverter : JsonConverter<ElementId>
     {
         if (reader.TokenType == JsonTokenType.Number)
             return new QuestId(reader.GetUInt16());
-        else
-            return ElementId.FromString(reader.GetString() ?? throw new JsonException());
+        return ElementId.FromString(reader.GetString() ?? throw new JsonException());
     }
 
     public override void Write(Utf8JsonWriter writer, ElementId value, JsonSerializerOptions options) => writer.WriteStringValue(value.ToString());

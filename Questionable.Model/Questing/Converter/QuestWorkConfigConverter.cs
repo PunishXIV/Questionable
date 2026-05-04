@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class QuestWorkConfigConverter : JsonConverter<QuestWorkValue>
@@ -9,7 +8,7 @@ public sealed class QuestWorkConfigConverter : JsonConverter<QuestWorkValue>
     public override QuestWorkValue Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         if (reader.TokenType == JsonTokenType.Number)
-            return new QuestWorkValue(reader.GetByte());
+            return new(reader.GetByte());
 
         if (reader.TokenType != JsonTokenType.StartObject)
             throw new JsonException();
@@ -46,7 +45,7 @@ public sealed class QuestWorkConfigConverter : JsonConverter<QuestWorkValue>
                     break;
 
                 case JsonTokenType.EndObject:
-                    return new QuestWorkValue(high, low, mode);
+                    return new(high, low, mode);
 
                 default:
                     throw new JsonException();

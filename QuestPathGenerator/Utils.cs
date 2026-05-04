@@ -8,6 +8,7 @@ using Json.Schema;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Text;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 namespace Questionable.QuestPathGenerator;
@@ -16,43 +17,43 @@ public static class Utils
 {
     public static List<AdditionalText> RegisterSchemas(GeneratorExecutionContext context)
     {
-        var commonAethernetShardFile =
+        AdditionalText commonAethernetShardFile =
             context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-aethernetshard.json");
-        var commonAetheryteFile =
+        AdditionalText commonAetheryteFile =
             context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-aetheryte.json");
-        var commonClassJobFile =
+        AdditionalText commonClassJobFile =
             context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-classjob.json");
-        var commonCompletionFlagsFile =
+        AdditionalText commonCompletionFlagsFile =
             context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-completionflags.json");
-        var commonVector3File = context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-vector3.json");
-        var gatheringSchemaFile =
+        AdditionalText commonVector3File = context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-vector3.json");
+        AdditionalText? gatheringSchemaFile =
             context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "gatheringlocation-v1.json");
-        var questSchemaFile = context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "quest-v1.json");
+        AdditionalText? questSchemaFile = context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "quest-v1.json");
 
         SchemaRegistry.Global.Register(
-            new Uri(
+            new(
                 "https://qstxiv.github.io/schema/common-aethernetshard.json"),
             JsonSchema.FromText(commonAethernetShardFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
-            new Uri(
+            new(
                 "https://qstxiv.github.io/schema/common-aetheryte.json"),
             JsonSchema.FromText(commonAetheryteFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
-            new Uri(
+            new(
                 "https://qstxiv.github.io/schema/common-classjob.json"),
             JsonSchema.FromText(commonClassJobFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
-            new Uri(
+            new(
                 "https://qstxiv.github.io/schema/common-completionflags.json"),
             JsonSchema.FromText(commonCompletionFlagsFile.GetText()!.ToString()));
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-vector3.json"),
+            new("https://qstxiv.github.io/schema/common-vector3.json"),
             JsonSchema.FromText(commonVector3File.GetText()!.ToString()));
 
         if (gatheringSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
-                new Uri(
+                new(
                     "https://qstxiv.github.io/schema/gatheringlocation-v1.json"),
                 JsonSchema.FromText(gatheringSchemaFile.GetText()!.ToString()));
         }
@@ -60,7 +61,7 @@ public static class Utils
         if (questSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
-                new Uri("https://qstxiv.github.io/schema/quest-v1.json"),
+                new("https://qstxiv.github.io/schema/quest-v1.json"),
                 JsonSchema.FromText(questSchemaFile.GetText()!.ToString()));
         }
 
@@ -81,7 +82,7 @@ public static class Utils
         List<AdditionalText> jsonSchemaFiles, JsonSchema jsonSchema, DiagnosticDescriptor invalidJson,
         Func<string, T> idParser)
     {
-        foreach (var additionalFile in context.AdditionalFiles)
+        foreach (AdditionalText? additionalFile in context.AdditionalFiles)
         {
             if (additionalFile == null || jsonSchemaFiles.Contains(additionalFile))
                 continue;
@@ -95,11 +96,11 @@ public static class Utils
 
             T id = idParser(name.Substring(0, name.IndexOf('_')));
 
-            var text = additionalFile.GetText();
+            SourceText? text = additionalFile.GetText();
             if (text == null)
                 continue;
 
-            var node = JsonNode.Parse(text.ToString());
+            JsonNode? node = JsonNode.Parse(text.ToString());
             if (node == null)
                 continue;
 
@@ -107,14 +108,14 @@ public static class Utils
             if (schemaLocation == null || new Uri(schemaLocation) != jsonSchema.GetId())
                 continue;
 
-            var evaluationResult = jsonSchema.Evaluate(node, new EvaluationOptions
+            EvaluationResults evaluationResult = jsonSchema.Evaluate(node, new()
             {
                 Culture = CultureInfo.InvariantCulture,
-                OutputFormat = OutputFormat.List,
+                OutputFormat = OutputFormat.List
             });
             if (evaluationResult.HasErrors)
             {
-                var error = Diagnostic.Create(invalidJson,
+                Diagnostic error = Diagnostic.Create(invalidJson,
                     null,
                     Path.GetFileName(additionalFile.Path));
                 context.ReportDiagnostic(error);
@@ -148,7 +149,7 @@ public static class Utils
                                         IdentifierName(x.Key))))))
         ];
 
-        foreach (var partition in partitions)
+        foreach (IGrouping<string, (TId, TQuest)>? partition in partitions)
         {
             methods.Add(MethodDeclaration(
                     PredefinedType(

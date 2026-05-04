@@ -76,12 +76,12 @@ public static class RoslynShortcuts
                 CombatItemUse combatItemUse => combatItemUse.ToExpressionSyntax(),
                 not null when value.GetType().IsEnum => MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
                     IdentifierName(value.GetType().Name), IdentifierName(value.GetType().GetEnumName(value)!)),
-                _ => throw new Exception($"Unsupported data type {value.GetType()} = {value}")
+                var _ => throw new($"Unsupported data type {value.GetType()} = {value}")
             };
         }
         catch (Exception e)
         {
-            throw new Exception($"Unable to handle literal [{value}]: {e}", e);
+            throw new($"Unable to handle literal [{value}]: {e}", e);
         }
     }
 
@@ -102,7 +102,7 @@ public static class RoslynShortcuts
         }
         catch (Exception e)
         {
-            throw new Exception($"Unable to handle assignment [{name}]: {e}", e);
+            throw new($"Unable to handle assignment [{name}]: {e}", e);
         }
     }
 
@@ -128,7 +128,7 @@ public static class RoslynShortcuts
         }
         catch (Exception e)
         {
-            throw new Exception($"Unable to handle list [{name}]: {e}", e);
+            throw new($"Unable to handle list [{name}]: {e}", e);
         }
     }
 

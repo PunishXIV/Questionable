@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Common;
 
 [JsonConverter(typeof(AetheryteConverter))]
@@ -268,7 +267,7 @@ public enum EAetheryteLocation
     HeritageFoundElectropeStrike = 212,
     LivingMemoryLeynodeMnemo = 213,
     LivingMemoryLeynodePyro = 214,
-    LivingMemoryLeynodeAero = 215,
+    LivingMemoryLeynodeAero = 215
 }
 
 public static class EAetheryteLocationExtensions

@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Common;
 
 [JsonConverter(typeof(AethernetShortcutConverter))]

@@ -9,18 +9,15 @@ namespace Questionable.QuestPathGenerator.RoslynElements;
 
 internal static class AlliedSocietyDailyIdExtensions
 {
-    public static ExpressionSyntax ToExpressionSyntax(this AlliedSocietyDailyId alliedSocietyDailyId)
-    {
-        return ObjectCreationExpression(
-                IdentifierName(nameof(AlliedSocietyDailyId)))
-            .WithArgumentList(
-                ArgumentList(
-                    SeparatedList<ArgumentSyntax>(
-                        new SyntaxNodeOrToken[]
-                        {
-                            Argument(LiteralValue(alliedSocietyDailyId.AlliedSociety)),
-                            Token(SyntaxKind.CommaToken),
-                            Argument(LiteralValue(alliedSocietyDailyId.Rank)),
-                        })));
-    }
+    public static ExpressionSyntax ToExpressionSyntax(this AlliedSocietyDailyId alliedSocietyDailyId) => ObjectCreationExpression(
+            IdentifierName(nameof(AlliedSocietyDailyId)))
+        .WithArgumentList(
+            ArgumentList(
+                SeparatedList<ArgumentSyntax>(
+                    new SyntaxNodeOrToken[]
+                    {
+                        Argument(LiteralValue(alliedSocietyDailyId.AlliedSociety)),
+                        Token(SyntaxKind.CommaToken),
+                        Argument(LiteralValue(alliedSocietyDailyId.Rank))
+                    })));
 }

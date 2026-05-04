@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Common.Converter;
 
 public sealed class StringListOrValueConverter : JsonConverter<List<string>>
@@ -35,7 +34,7 @@ public sealed class StringListOrValueConverter : JsonConverter<List<string>>
         else
         {
             writer.WriteStartArray();
-            foreach (var v in value)
+            foreach (string? v in value)
                 writer.WriteStringValue(v);
             writer.WriteEndArray();
         }

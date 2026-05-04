@@ -8,16 +8,13 @@ namespace Questionable.QuestPathGenerator.RoslynElements;
 
 internal static class GatheringNodeGroupExtensions
 {
-    public static ExpressionSyntax ToExpressionSyntax(this GatheringNodeGroup nodeGroup)
-    {
-        return ObjectCreationExpression(
-                IdentifierName(nameof(GatheringNodeGroup)))
-            .WithInitializer(
-                InitializerExpression(
-                    SyntaxKind.ObjectInitializerExpression,
-                    SeparatedList<ExpressionSyntax>(
-                        SyntaxNodeList(
-                            AssignmentList(nameof(GatheringNodeGroup.Nodes), nodeGroup.Nodes)
-                                .AsSyntaxNodeOrToken()))));
-    }
+    public static ExpressionSyntax ToExpressionSyntax(this GatheringNodeGroup nodeGroup) => ObjectCreationExpression(
+            IdentifierName(nameof(GatheringNodeGroup)))
+        .WithInitializer(
+            InitializerExpression(
+                SyntaxKind.ObjectInitializerExpression,
+                SeparatedList<ExpressionSyntax>(
+                    SyntaxNodeList(
+                        AssignmentList(nameof(GatheringNodeGroup.Nodes), nodeGroup.Nodes)
+                            .AsSyntaxNodeOrToken()))));
 }

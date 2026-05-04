@@ -10,7 +10,7 @@ internal static class DutyOptionsExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this DutyOptions dutyOptions)
     {
-        var emptyOptions = new DutyOptions();
+        DutyOptions emptyOptions = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(DutyOptions)))
             .WithInitializer(
