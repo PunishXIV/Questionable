@@ -1,4 +1,6 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Globalization;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
@@ -11,8 +13,6 @@ using Questionable.Data;
 using Questionable.Model;
 using Questionable.Validation;
 using Questionable.Windows.Common;
-using System;
-using System.Globalization;
 namespace Questionable.Windows;
 
 internal sealed class QuestValidationWindow : LWindow
@@ -55,7 +55,7 @@ internal sealed class QuestValidationWindow : LWindow
         ImGui.TableSetupColumn("Issue", ImGuiTableColumnFlags.None, 200);
         ImGui.TableHeadersRow();
 
-        foreach(ValidationIssue validationIssue in _questValidator.Issues)
+        foreach (ValidationIssue validationIssue in _questValidator.Issues)
         {
             ImGui.TableNextRow();
 
@@ -68,9 +68,7 @@ internal sealed class QuestValidationWindow : LWindow
                     IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
                     bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
-                    {
                         ImGui.SetTooltip("Copy as file name");
-                    }
                     if (copy)
                     {
                         string fileName = $"{quest.QuestId}_{quest.SimplifiedName}.json";
@@ -79,13 +77,9 @@ internal sealed class QuestValidationWindow : LWindow
                     ImGui.SameLine();
                     bool sim = ImGuiComponents.IconButton(FontAwesomeIcon.Play, new(16));
                     if (ImGui.IsItemHovered())
-                    {
                         ImGui.SetTooltip("Simulate quest");
-                    }
                     if (sim)
-                    {
                         _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
-                    }
                 }
             }
 
@@ -97,14 +91,10 @@ internal sealed class QuestValidationWindow : LWindow
             }
 
             if (ImGui.TableNextColumn())
-            {
                 ImGui.TextUnformatted(validationIssue.Sequence?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
-            }
 
             if (ImGui.TableNextColumn())
-            {
                 ImGui.TextUnformatted(validationIssue.Step?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
-            }
 
             if (ImGui.TableNextColumn())
             {

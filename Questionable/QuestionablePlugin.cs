@@ -1,4 +1,5 @@
-﻿using Dalamud.Extensions.MicrosoftLogging;
+﻿using System;
+using Dalamud.Extensions.MicrosoftLogging;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -28,10 +29,9 @@ using Questionable.Windows.ConfigComponents;
 using Questionable.Windows.JournalComponents;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-using System;
 using WrathCombo.API;
-using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 using Action = Questionable.Controller.Steps.Interactions.Action;
+using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
 namespace Questionable;
 
@@ -105,7 +105,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             _serviceProvider = serviceCollection.BuildServiceProvider();
             Initialize(_serviceProvider);
         }
-        catch(Exception)
+        catch (Exception)
         {
             chatGui.PrintError("Unable to load plugin, check /xllog for details", "Questionable");
             throw;

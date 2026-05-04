@@ -1,4 +1,7 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Interactions;
@@ -6,9 +9,6 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace Questionable.Controller.Steps;
 
 internal sealed class TaskCreator
@@ -51,9 +51,7 @@ internal sealed class TaskCreator
             newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
         }
         else if (step == null)
-        {
             newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
-        }
         else
         {
             using IServiceScope scope = _serviceProvider.CreateScope();
@@ -66,9 +64,7 @@ internal sealed class TaskCreator
                     {
                         string factoryName = x.GetType().FullName ?? x.GetType().Name;
                         if (factoryName.Contains('.', StringComparison.Ordinal))
-                        {
                             factoryName = factoryName[(factoryName.LastIndexOf('.') + 1)..];
-                        }
 
                         _logger.LogTrace("Factory {FactoryName} created Task {TaskNames}",
                             factoryName, string.Join(", ", tasks.Select(y => y.ToString())));
@@ -104,9 +100,7 @@ internal sealed class TaskCreator
         }
 
         if (newTasks.Count == 0)
-        {
             _logger.LogInformation("Nothing to execute for step?");
-        }
         else
         {
             _logger.LogInformation("Tasks for {QuestId}, {Sequence}, {Step}: {Tasks}",

@@ -1,4 +1,10 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Text.RegularExpressions;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text.SeStringHandling;
@@ -15,12 +21,6 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Text.RegularExpressions;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 
 namespace Questionable.Controller;
@@ -97,9 +97,7 @@ internal sealed unsafe class GatheringController
         }
 
         if (_movementController.IsPathfinding || _movementController.IsPathfinding)
-        {
             return EStatus.Moving;
-        }
 
         if (HasRequestedItems() && !_condition[ConditionFlag.Gathering])
         {
@@ -108,9 +106,7 @@ internal sealed unsafe class GatheringController
         }
 
         if (_taskQueue.AllTasksComplete)
-        {
             GoToNextNode();
-        }
 
         UpdateCurrentTask();
         return EStatus.Gathering;
@@ -137,20 +133,14 @@ internal sealed unsafe class GatheringController
     private void GoToNextNode()
     {
         if (_currentRequest == null)
-        {
             return;
-        }
 
         if (!_taskQueue.AllTasksComplete)
-        {
             return;
-        }
 
         GatheringNode? currentNode = FindNextTargetableNodeAndUpdateIndex(_currentRequest);
         if (currentNode == null)
-        {
             return;
-        }
 
         uint territoryId = _currentRequest.Root.Steps.Last().TerritoryId;
         _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
@@ -168,9 +158,7 @@ internal sealed unsafe class GatheringController
 
             Vector3? pointOnFloor = _navmeshIpc.GetPointOnFloor(averagePosition, true);
             if (pointOnFloor != null)
-            {
                 pointOnFloor = pointOnFloor.Value with { Y = pointOnFloor.Value.Y + (fly ? 3f : 0f) };
-            }
 
             _taskQueue.Enqueue(new MoveTask(territoryId, pointOnFloor ?? averagePosition,
                 null, 50f, Fly: fly, IgnoreDistanceToObject: true, InteractionType: EInteractionType.WalkTo));
@@ -185,28 +173,22 @@ internal sealed unsafe class GatheringController
 
     private void QueueGatherNode(GatheringNode currentNode)
     {
-        foreach(bool revisitRequired in new[] { false, true })
+        foreach (bool revisitRequired in new[] { false, true })
         {
             _taskQueue.Enqueue(new DoGather.Task(_currentRequest!.Data, currentNode, revisitRequired));
             if (_currentRequest.Data.Collectability > 0)
-            {
                 _taskQueue.Enqueue(new DoGatherCollectable.Task(_currentRequest.Data, currentNode, revisitRequired));
-            }
         }
     }
 
     public bool HasRequestedItems()
     {
         if (_currentRequest == null)
-        {
             return true;
-        }
 
         InventoryManager* inventoryManager = InventoryManager.Instance();
         if (inventoryManager == null)
-        {
             return false;
-        }
 
         return inventoryManager->GetInventoryItemCount(_currentRequest.Data.ItemId,
             minCollectability: (short)_currentRequest.Data.Collectability) >= _currentRequest.Data.Quantity;
@@ -224,7 +206,7 @@ internal sealed unsafe class GatheringController
     /// </summary>
     private GatheringNode? FindNextTargetableNodeAndUpdateIndex(CurrentRequest currentRequest)
     {
-        for(int i = 0; i < currentRequest.Nodes.Count; ++i)
+        for (int i = 0; i < currentRequest.Nodes.Count; ++i)
         {
             int currentIndex = (currentRequest.CurrentIndex + i) % currentRequest.Nodes.Count;
             GatheringNode currentNode = currentRequest.Nodes[currentIndex];
@@ -257,13 +239,9 @@ internal sealed unsafe class GatheringController
     public override IList<string> GetRemainingTaskNames()
     {
         if (_taskQueue.CurrentTaskExecutor?.CurrentTask is { } currentTask)
-        {
             return [currentTask.ToString() ?? "?", .. base.GetRemainingTaskNames()];
-        }
         else
-        {
             return base.GetRemainingTaskNames();
-        }
     }
 
     public void OnNormalToast(SeString message)
@@ -271,16 +249,12 @@ internal sealed unsafe class GatheringController
         if (_revisitRegex.IsMatch(message.TextValue))
         {
             if (_taskQueue.CurrentTaskExecutor?.CurrentTask is IRevisitAware currentTaskRevisitAware)
-            {
                 currentTaskRevisitAware.OnRevisit();
-            }
 
-            foreach(ITask task in _taskQueue.RemainingTasks)
+            foreach (ITask task in _taskQueue.RemainingTasks)
             {
                 if (task is IRevisitAware taskRevisitAware)
-                {
                     taskRevisitAware.OnRevisit();
-                }
             }
         }
     }

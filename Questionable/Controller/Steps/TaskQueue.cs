@@ -26,14 +26,10 @@ internal sealed class TaskQueue
     {
         task = _tasks.FirstOrDefault();
         if (task == null)
-        {
             return false;
-        }
 
         if (task.ShouldRedoOnInterrupt())
-        {
             _completedTasks.Add(task);
-        }
 
         _tasks.RemoveAt(0);
         return true;

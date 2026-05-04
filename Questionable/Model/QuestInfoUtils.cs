@@ -1,8 +1,8 @@
-using ECommons.ExcelServices;
-using Lumina.Excel.Sheets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
 namespace Questionable.Model;
 
 internal static class QuestInfoUtils
@@ -12,15 +12,11 @@ internal static class QuestInfoUtils
     internal static IReadOnlyList<Job> AsList(ClassJobCategory? optionalClassJobCategory)
     {
         if (optionalClassJobCategory == null)
-        {
             return Enum.GetValues<Job>();
-        }
 
         ClassJobCategory classJobCategory = optionalClassJobCategory.Value;
         if (CachedClassJobs.TryGetValue(classJobCategory.RowId, out IReadOnlyList<Job>? classJobs))
-        {
             return classJobs;
-        }
 
         classJobs = new Dictionary<Job, bool>
             {

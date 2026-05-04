@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Objects.SubKinds;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
@@ -11,9 +14,6 @@ using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Action = Questionable.Controller.Steps.Interactions.Action;
 
 namespace Questionable.Controller.Steps.Shared;
@@ -25,14 +25,10 @@ internal static class Gather
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Gather)
-            {
                 yield break;
-            }
 
-            foreach(GatheredItem itemToGather in step.ItemsToGather)
-            {
+            foreach (GatheredItem itemToGather in step.ItemsToGather)
                 yield return new DelayedGatheringTask(itemToGather, quest, sequence.Sequence, step);
-            }
         }
     }
 
@@ -63,9 +59,7 @@ internal static class Gather
             Job currentClassJob = (Job)((IPlayerCharacter)objectTable[0]!).ClassJob.RowId;
             GatheringPointId? gatheringPointId;
             if (Task.Step.GatheringPoint is ushort gatheringPoint)
-            {
                 gatheringPointId = new(gatheringPoint);
-            }
             else if (!gatheringPointRegistry.TryGetGatheringPointId(Task.GatheredItem.ItemId, currentClassJob,
                 out gatheringPointId))
             {
@@ -73,23 +67,15 @@ internal static class Gather
             }
 
             if (!gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? gatheringRoot))
-            {
                 throw new TaskException($"No path found for gathering point {gatheringPointId.Value}");
-            }
 
             if (HasRequiredItems(Task.GatheredItem))
-            {
                 yield break;
-            }
 
             if (currentClassJob == Job.MIN)
-            {
                 yield return new Action.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
-            }
             else if (currentClassJob == Job.BTN)
-            {
                 yield return new Action.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
-            }
 
             using (IDisposable? _ = logger.BeginScope("Gathering(inner)"))
             {
@@ -98,19 +84,15 @@ internal static class Gather
                     Sequence = 0,
                     Steps = gatheringRoot.Steps
                 };
-                foreach(QuestStep gatheringStep in gatheringSequence.Steps)
+                foreach (QuestStep gatheringStep in gatheringSequence.Steps)
                 {
-                    foreach(ITask task in serviceProvider.GetRequiredService<TaskCreator>()
+                    foreach (ITask task in serviceProvider.GetRequiredService<TaskCreator>()
                         .CreateTasks(Task.Quest, Task.Sequence, gatheringSequence, gatheringStep))
                     {
                         if (task is WaitAtEnd.NextStep)
-                        {
                             yield return new SkipMarker();
-                        }
                         else
-                        {
                             yield return task;
-                        }
                     }
                 }
             }
@@ -152,9 +134,7 @@ internal static class Gather
         public override string ToString()
         {
             if (GatheredItem.Collectability == 0)
-            {
                 return $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
-            }
             else
             {
                 return
@@ -169,9 +149,7 @@ internal static class Gather
         public override ETaskResult Update()
         {
             if (gatheringController.Update() == GatheringController.EStatus.Complete)
-            {
                 return ETaskResult.TaskComplete;
-            }
 
             return ETaskResult.StillRunning;
         }

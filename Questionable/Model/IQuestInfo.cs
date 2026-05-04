@@ -1,9 +1,9 @@
-using Dalamud.Game.Text;
-using ECommons.ExcelServices;
-using Questionable.Model.Questing;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Dalamud.Game.Text;
+using ECommons.ExcelServices;
+using Questionable.Model.Questing;
 namespace Questionable.Model;
 
 internal interface IQuestInfo

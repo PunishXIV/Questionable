@@ -1,5 +1,5 @@
-using FFXIVClientStructs.FFXIV.Component.GUI;
 using System.Numerics;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace Questionable.Controller.GameUi.Shop;
 
 public interface IShopWindow

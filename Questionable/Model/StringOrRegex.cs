@@ -1,6 +1,6 @@
-﻿using Questionable.Functions;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
+using Questionable.Functions;
 namespace Questionable.Model;
 
 internal sealed class StringOrRegex
@@ -25,21 +25,15 @@ internal sealed class StringOrRegex
     public bool IsMatch(string other)
     {
         if (_regex != null)
-        {
             return _regex.IsMatch(other);
-        }
         else
-        {
             return GameFunctions.GameStringEquals(_stringValue, other);
-        }
     }
 
     public string? GetString()
     {
         if (_stringValue == null)
-        {
             throw new InvalidOperationException();
-        }
 
         return _stringValue;
     }

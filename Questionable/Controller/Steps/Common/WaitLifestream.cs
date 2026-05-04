@@ -26,13 +26,9 @@ internal sealed class WaitLifestream
         public string? GetDebugState()
         {
             if (lifestreamIpc.IsBusy)
-            {
                 return "Lifestream: busy";
-            }
             else
-            {
                 return null;
-            }
         }
         protected override bool Start()
         {

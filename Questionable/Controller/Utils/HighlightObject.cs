@@ -1,12 +1,12 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Linq;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
-using System;
-using System.Linq;
 using GameObject = FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject;
 
 namespace Questionable.Controller.Utils;
@@ -49,16 +49,12 @@ internal sealed class HighlightObject : IDisposable
     {
         //we want to update every 300 ms
         if (DateTime.Now - _lastUpdateTime <= TimeSpan.FromMilliseconds(300))
-        {
             return;
-        }
 
         _lastUpdateTime = DateTime.Now;
 
         if (!_configuration.Advanced.HighlightSelectedNpc || _targetNpcDataId.Length == 0)
-        {
             return;
-        }
 
         if (_condition[ConditionFlag.Occupied] || _condition[ConditionFlag.Occupied30] ||
             _condition[ConditionFlag.Occupied33] || _condition[ConditionFlag.Occupied38] ||
@@ -70,9 +66,7 @@ internal sealed class HighlightObject : IDisposable
             ToggleHighlight(false);
         }
         else
-        {
             ToggleHighlight(true);
-        }
     }
 
     public void AddHighlight(uint Id)
@@ -107,9 +101,7 @@ internal sealed class HighlightObject : IDisposable
         {
             ToggleHighlight(false);
             if (_targetNpcDataId.Length == 0 && Ids.Length == 0)
-            {
                 return;
-            }
             _logger.LogDebug($"Setting highlight to {string.Join(',', Ids)}");
             _targetNpcDataId = Ids;
             ToggleHighlight(true);
@@ -119,28 +111,20 @@ internal sealed class HighlightObject : IDisposable
     public unsafe void ToggleHighlight(bool on)
     {
         if (_targetNpcDataId.All(n => n == 0))
-        {
             return;
-        }
 
         IGameObject[] gameObjects = _objectTable.Where(i =>
         {
             if (!i.IsValid())
-            {
                 return false;
-            }
             GameObject* obj = (GameObject*)i.Address;
             return _targetNpcDataId.Contains(obj->BaseId);
         }).ToArray();
 
         if (gameObjects.Length == 0)
-        {
             return;
-        }
 
-        foreach(IGameObject obj in gameObjects)
-        {
+        foreach (IGameObject obj in gameObjects)
             ((GameObject*)obj.Address)->Highlight(on ? _configuration.Advanced.HighlightColor : ObjectHighlightColor.None);
-        }
     }
 }

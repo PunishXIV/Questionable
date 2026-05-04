@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -7,7 +8,6 @@ using FFXIVClientStructs.Interop;
 using Questionable.External;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class EquipRecommended
@@ -17,9 +17,7 @@ internal static class EquipRecommended
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.EquipRecommended)
-            {
                 return null;
-            }
 
             return new EquipTask();
         }
@@ -57,9 +55,7 @@ internal static class EquipRecommended
         protected override bool Start()
         {
             if (condition[ConditionFlag.InCombat])
-            {
                 return false;
-            }
 
             switch (config.General.GearsetUpdateSource)
             {
@@ -80,9 +76,7 @@ internal static class EquipRecommended
                 case Configuration.EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
                     if (recommendedEquipModule->IsUpdating)
-                    {
                         return ETaskResult.StillRunning;
-                    }
 
                     if (!_checkedOrTriggeredEquipmentUpdate)
                     {
@@ -99,9 +93,7 @@ internal static class EquipRecommended
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
                     if (stylist.IsBusy)
-                    {
                         return ETaskResult.StillRunning;
-                    }
                     else if (!_checkedOrTriggeredEquipmentUpdate)
                     {
                         stylist.UpdateGearset();
@@ -122,16 +114,14 @@ internal static class EquipRecommended
             InventoryContainer* equippedItems =
                 inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
             bool isAllEquipped = true;
-            foreach(Pointer<InventoryItem> recommendedItemPtr in recommendedEquipModule->RecommendedItems)
+            foreach (Pointer<InventoryItem> recommendedItemPtr in recommendedEquipModule->RecommendedItems)
             {
                 InventoryItem* recommendedItem = recommendedItemPtr.Value;
                 if (recommendedItem == null || recommendedItem->ItemId == 0)
-                {
                     continue;
-                }
 
                 bool isEquipped = false;
-                for(int i = 0; i < equippedItems->Size; ++i)
+                for (int i = 0; i < equippedItems->Size; ++i)
                 {
                     InventoryItem equippedItem = equippedItems->Items[i];
                     if (equippedItem.ItemId != 0 && equippedItem.ItemId == recommendedItem->ItemId)
@@ -142,9 +132,7 @@ internal static class EquipRecommended
                 }
 
                 if (!isEquipped)
-                {
                     isAllEquipped = false;
-                }
             }
 
             return isAllEquipped;

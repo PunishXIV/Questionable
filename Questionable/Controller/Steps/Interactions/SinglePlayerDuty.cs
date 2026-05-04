@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
@@ -13,10 +17,6 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class SinglePlayerDuty
@@ -40,9 +40,7 @@ internal static class SinglePlayerDuty
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.SinglePlayerDuty)
-            {
                 yield break;
-            }
 
             if (bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
             {
@@ -55,9 +53,7 @@ internal static class SinglePlayerDuty
                     tId = 1298;
                 }
                 else if (!territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id, step.SinglePlayerDutyIndex, out cfcData))
-                {
                     throw new TaskException("Failed to get content finder condition for solo instance");
-                }
                 if (cfcData != null)
                 {
                     cfcId = cfcData.ContentFinderConditionId;
@@ -66,9 +62,7 @@ internal static class SinglePlayerDuty
 
                 yield return new Mount.UnmountTask();
                 if (tId == SpecialTerritories.Patisserie)
-                {
                     yield return new Commence(cfcId);
-                }
                 yield return new StartSinglePlayerDuty(cfcId);
                 yield return new WaitAtStart.WaitDelay(TimeSpan.FromSeconds(2)); // maybe a delay will work here too, needs investigation
                 if (tId == SpecialTerritories.Lahabrea)
@@ -96,9 +90,7 @@ internal static class SinglePlayerDuty
                         () =>
                         {
                             if (clientState.TerritoryType != SpecialTerritories.Naadam)
-                            {
                                 return true;
-                            }
 
                             Vector3 pos = objectTable[0]?.Position ?? default;
                             return (new Vector3(352.01f, -1.45f, 288.59f) - pos).Length() < 10f;
@@ -108,13 +100,9 @@ internal static class SinglePlayerDuty
                     yield return new EnableAi();
                 }
                 else if (tId == SpecialTerritories.Patisserie)
-                {
                     yield return new SetPreset(BossModIpc.EPreset.NormalMovement);
-                }
                 else
-                {
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);
-                }
 
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();
@@ -149,21 +137,15 @@ internal static class SinglePlayerDuty
         {
             GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (!condition[ConditionFlag.BoundByDuty])
-            {
                 return ETaskResult.StillRunning;
-            }
 
             // we add a minimum wait time to try avoid issues with starting too early
             // could also be adding unnecessary wait time but needs more investigation ig
             if (_enteredAt == DateTime.MinValue)
-            {
                 _enteredAt = DateTime.Now;
-            }
 
             return DateTime.Now - _enteredAt >= TimeSpan.FromSeconds(2)
                 ? ETaskResult.TaskComplete
@@ -251,13 +233,9 @@ internal static class SinglePlayerDuty
         public string? GetDebugState()
         {
             if (!movementController.IsNavmeshReady)
-            {
                 return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-            }
             else
-            {
                 return null;
-            }
         }
 
         public override unsafe ETaskResult Update()
@@ -333,15 +311,11 @@ internal static class SinglePlayerDuty
         public override ETaskResult Update()
         {
             if (GameFunctions.GetBaseID(targetManager.Target) == Task.DataId)
-            {
                 return ETaskResult.TaskComplete;
-            }
 
             IGameObject? gameObject = objectTable.FirstOrDefault(x => GameFunctions.GetBaseID(x) == Task.DataId);
             if (gameObject == null)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             targetManager.Target = gameObject;
             return ETaskResult.StillRunning;
@@ -375,24 +349,16 @@ internal static class SinglePlayerDuty
             if (GenericHelpers.TryGetAddonMaster(out AddonMaster.ContentsFinderConfirm m) && m.IsAddonReady)
             {
                 if (EzThrottler.Throttle("Confirm", 2000))
-                {
                     m.Commence();
-                }
             }
             GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (!condition[ConditionFlag.BoundByDuty])
-            {
                 return ETaskResult.StillRunning;
-            }
             if (_enteredAt == DateTime.MinValue)
-            {
                 _enteredAt = DateTime.Now;
-            }
 
             return DateTime.Now - _enteredAt >= TimeSpan.FromSeconds(2)
                 ? ETaskResult.TaskComplete

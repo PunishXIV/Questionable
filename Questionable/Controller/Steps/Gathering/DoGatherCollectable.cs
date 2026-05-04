@@ -1,4 +1,6 @@
-﻿using Dalamud.Game.ClientState.Objects.SubKinds;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
@@ -9,8 +11,6 @@ using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class DoGatherCollectable
@@ -81,22 +81,16 @@ internal static class DoGatherCollectable
             }
 
             if (GameFunctions.GetFreeInventorySlots() == 0)
-            {
                 throw new TaskException("Inventory full");
-            }
 
             NodeCondition? nodeCondition = GetNodeCondition();
             if (nodeCondition == null)
-            {
                 return ETaskResult.TaskComplete;
-            }
 
             if (_expectedScrutiny != null)
             {
                 if (nodeCondition.ScrutinyActive != _expectedScrutiny)
-                {
                     return ETaskResult.StillRunning;
-                }
 
                 // continue on next frame
                 _expectedScrutiny = null;
@@ -126,10 +120,8 @@ internal static class DoGatherCollectable
                 _actionQueue = GetNextActions(nodeCondition);
                 if (_actionQueue != null)
                 {
-                    foreach(EAction action in _actionQueue)
-                    {
+                    foreach (EAction action in _actionQueue)
                         logger.LogInformation("Next Actions {Action}", action);
-                    }
                     return ETaskResult.StillRunning;
                 }
             }
@@ -163,9 +155,7 @@ internal static class DoGatherCollectable
             Queue<EAction> actions = new();
 
             if (objectTable[0] == null)
-            {
                 return actions;
-            }
 
             uint gp = ((IPlayerCharacter)objectTable[0]!).CurrentGp;
             logger.LogTrace(
@@ -219,13 +209,9 @@ internal static class DoGatherCollectable
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
             if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
-            {
                 return minerAction;
-            }
             else
-            {
                 return botanistAction;
-            }
         }
 
         public override bool ShouldInterruptOnDamage()
@@ -248,9 +234,7 @@ internal static class DoGatherCollectable
         public uint CollectabilityToGoal(uint goal)
         {
             if (goal >= CurrentCollectability)
-            {
                 return goal - CurrentCollectability;
-            }
             return CurrentCollectability == 0 ? 1u : 0u;
         }
     }

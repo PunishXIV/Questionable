@@ -1,4 +1,5 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System.Linq;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
@@ -7,7 +8,6 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-using System.Linq;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class ARealmRebornComponent
@@ -35,9 +35,7 @@ internal sealed class ARealmRebornComponent
     public void Draw()
     {
         if (!_questFunctions.IsQuestAcceptedOrComplete(GoodIntentions))
-        {
             DrawPrimals();
-        }
 
         DrawAllianceRaids();
     }
@@ -48,12 +46,10 @@ internal sealed class ARealmRebornComponent
         bool hover = _uiUtils.ChecklistItem("Hard Mode Primals", complete,
             _configuration.Advanced.SkipARealmRebornHardModePrimals ? ImGuiColors.DalamudGrey : null);
         if (complete || !hover)
-        {
             return;
-        }
 
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-        foreach(ushort instanceId in RequiredPrimalInstances)
+        foreach (ushort instanceId in RequiredPrimalInstances)
         {
             (Vector4 color, FontAwesomeIcon icon) = UiUtils.GetInstanceStyle(instanceId);
             _uiUtils.ChecklistItem(_territoryData.GetInstanceName(instanceId) ?? "?", color, icon, ImGui.GetStyle().FramePadding.X);
@@ -66,12 +62,10 @@ internal sealed class ARealmRebornComponent
         bool hover = _uiUtils.ChecklistItem("Crystal Tower Raids", complete,
             _configuration.Advanced.SkipCrystalTowerRaids ? ImGuiColors.DalamudGrey : null);
         if (complete || !hover)
-        {
             return;
-        }
 
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-        foreach(QuestId questId in QuestData.CrystalTowerQuests)
+        foreach (QuestId questId in QuestData.CrystalTowerQuests)
         {
             (Vector4 color, FontAwesomeIcon icon, string _) = _uiUtils.GetQuestStyle(questId);
             _uiUtils.ChecklistItem(_questData.GetQuestInfo(questId).Name, color, icon, ImGui.GetStyle().FramePadding.X);

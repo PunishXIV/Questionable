@@ -13,9 +13,7 @@ public sealed record BlacklistedPoint
     {
         float distance = (point - Original).Length();
         if (distance > CheckDistance)
-        {
             return null;
-        }
 
         return new(Replacement, RecalculateNavmesh);
     }

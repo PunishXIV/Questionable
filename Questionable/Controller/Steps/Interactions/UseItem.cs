@@ -1,4 +1,9 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
@@ -11,11 +16,6 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
 
 namespace Questionable.Controller.Steps.Interactions;
@@ -34,14 +34,10 @@ internal static class UseItem
             if (step.InteractionType is EInteractionType.SinglePlayerDuty or EInteractionType.CompleteQuest)
             {
                 if (step.ItemId == null)
-                {
                     return [];
-                }
             }
             else if (step.InteractionType != EInteractionType.UseItem)
-            {
                 return [];
-            }
 
             ArgumentNullException.ThrowIfNull(step.ItemId);
 
@@ -51,9 +47,7 @@ internal static class UseItem
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     if (inventoryManager->GetInventoryItemCount(step.ItemId.Value) == 0)
-                    {
                         return CreateVesperBayFallbackTask();
-                    }
                 }
 
                 UseOnSelf task = new(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
@@ -152,15 +146,11 @@ internal static class UseItem
         {
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
-            {
                 throw new TaskException("No InventoryManager");
-            }
 
             _itemCount = inventoryManager->GetInventoryItemCount(ItemId);
             if (_itemCount == 0)
-            {
                 throw new TaskException($"Don't have any {ItemId} in inventory (checks NQ only)");
-            }
 
             ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
             _continueAt = DateTime.Now.Add(GetRetryDelay());
@@ -180,14 +170,10 @@ internal static class UseItem
             }
 
             if (DateTime.Now <= _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (StartingCombat && condition[ConditionFlag.InCombat])
-            {
                 return ETaskResult.TaskComplete;
-            }
 
             if (ItemId == QuestStep.VesperBayAetheryteTicket && _usedItem)
             {
@@ -222,13 +208,9 @@ internal static class UseItem
         private TimeSpan GetRetryDelay()
         {
             if (ItemId == QuestStep.VesperBayAetheryteTicket)
-            {
                 return TimeSpan.FromSeconds(11);
-            }
             else
-            {
                 return TimeSpan.FromSeconds(5);
-            }
         }
 
         public override bool ShouldInterruptOnDamage()

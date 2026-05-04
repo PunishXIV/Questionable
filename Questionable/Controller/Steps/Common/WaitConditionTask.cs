@@ -25,9 +25,7 @@ internal static class WaitCondition
             if (_continueAt == DateTime.MaxValue)
             {
                 if (Task.Predicate())
-                {
                     _continueAt = DateTime.Now.AddSeconds(0.5);
-                }
             }
 
             return DateTime.Now >= _continueAt ? ETaskResult.TaskComplete : ETaskResult.StillRunning;

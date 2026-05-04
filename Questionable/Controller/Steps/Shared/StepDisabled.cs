@@ -10,9 +10,7 @@ internal static class StepDisabled
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!step.Disabled)
-            {
                 return null;
-            }
 
             return new SkipRemainingTasks();
         }

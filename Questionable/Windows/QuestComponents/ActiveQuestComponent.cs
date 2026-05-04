@@ -1,4 +1,9 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text.RegularExpressions;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -12,11 +17,6 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text.RegularExpressions;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed partial class ActiveQuestComponent
@@ -64,9 +64,7 @@ internal sealed partial class ActiveQuestComponent
             QuestProgressInfo? questWork = DrawQuestWork(currentQuest, isMinimized);
 
             if (_combatController.IsRunning)
-            {
                 ImGui.TextColored(ImGuiColors.DalamudOrange, "In Combat");
-            }
             else if (_questController.CurrentTaskState is { } currentTaskState)
             {
                 using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
@@ -99,7 +97,7 @@ internal sealed partial class ActiveQuestComponent
 
                 DrawQuestButtons(currentQuest, currentStep, questWork, isMinimized);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ImGui.TextColored(ImGuiColors.DalamudRed, e.ToString());
                 _logger.LogError(e, "Could not handle active quest buttons");
@@ -111,9 +109,7 @@ internal sealed partial class ActiveQuestComponent
         {
             ImGui.Text("No active quest");
             if (!isMinimized)
-            {
                 ImGui.TextColored(ImGuiColors.DalamudGrey, $"{_questRegistry.Count} quests loaded");
-            }
 
             if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop))
             {
@@ -124,9 +120,7 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
             if (ImGuiComponents.IconButton(FontAwesomeIcon.SortAmountDown))
-            {
                 _priorityWindow.ToggleOrUncollapse();
-            }
         }
 
 #if REPORTING
@@ -204,13 +198,9 @@ internal sealed partial class ActiveQuestComponent
                         {
                             short currentLevel = PlayerState.Instance()->CurrentLevel;
                             if (currentLevel > 0 && currentLevel >= _configuration.Stop.TargetLevel)
-                            {
                                 iconColor = ImGuiColors.ParsedGreen;
-                            }
                             else if (currentLevel > 0)
-                            {
                                 iconColor = ImGuiColors.ParsedBlue;
-                            }
                         }
                     }
 
@@ -232,13 +222,9 @@ internal sealed partial class ActiveQuestComponent
                                 {
                                     ImGui.SameLine();
                                     if (currentLevel >= _configuration.Stop.TargetLevel)
-                                    {
                                         ImGui.TextColored(ImGuiColors.ParsedGreen, $"(Current: {currentLevel} - Reached!)");
-                                    }
                                     else
-                                    {
                                         ImGui.TextColored(ImGuiColors.ParsedBlue, $"(Current: {currentLevel})");
-                                    }
                                 }
                             }
                         }
@@ -247,13 +233,11 @@ internal sealed partial class ActiveQuestComponent
                         if (hasQuestConditions)
                         {
                             if (hasLevelCondition)
-                            {
                                 ImGui.Spacing();
-                            }
 
                             ImGui.BulletText("Stop after completing any of these quests:");
                             ImGui.Indent();
-                            foreach(ElementId questId in _configuration.Stop.QuestsToStopAfter)
+                            foreach (ElementId questId in _configuration.Stop.QuestsToStopAfter)
                             {
                                 if (_questRegistry.TryGetQuest(questId, out Quest? quest))
                                 {
@@ -288,28 +272,22 @@ internal sealed partial class ActiveQuestComponent
                         ImGui.Text("Available priority quests:");
                         if (availablePriorityQuests.Count > 0)
                         {
-                            foreach(ElementId questId in availablePriorityQuests)
+                            foreach (ElementId questId in availablePriorityQuests)
                             {
                                 if (_questRegistry.TryGetQuest(questId, out Quest? quest))
-                                {
                                     ImGui.BulletText($"{quest.Info.Name} ({questId})");
-                                }
                             }
                         }
                         else
-                        {
                             ImGui.BulletText("(none)");
-                        }
 
                         if (unavailablePriorityQuests.Count > 0)
                         {
                             ImGui.Text("Unavailable priority quests:");
-                            foreach((ElementId questId, string? reason) in unavailablePriorityQuests)
+                            foreach ((ElementId questId, string? reason) in unavailablePriorityQuests)
                             {
                                 if (_questRegistry.TryGetQuest(questId, out Quest? quest))
-                                {
                                     ImGui.BulletText($"{quest.Info.Name} ({questId}) - {reason}");
-                                }
                             }
                         }
                     }
@@ -333,9 +311,7 @@ internal sealed partial class ActiveQuestComponent
         if (questWork != null)
         {
             if (isMinimized)
-            {
                 return questWork;
-            }
 
 
             Vector4 color;
@@ -343,13 +319,9 @@ internal sealed partial class ActiveQuestComponent
             {
                 Vector4* ptr = ImGui.GetStyleColorVec4(ImGuiCol.TextDisabled);
                 if (ptr != null)
-                {
                     color = *ptr;
-                }
                 else
-                {
                     color = ImGuiColors.ParsedOrange;
-                }
             }
 
             using ImRaii.ColorDisposable styleColor = ImRaii.PushColor(ImGuiCol.Text, color);
@@ -382,13 +354,9 @@ internal sealed partial class ActiveQuestComponent
             using ImRaii.DisabledDisposable disabled = ImRaii.Disabled();
 
             if (currentQuest.Quest.Id == _questController.NextQuest?.Quest.Id)
-            {
                 ImGui.TextUnformatted("(Next quest in story line not accepted)");
-            }
             else
-            {
                 ImGui.TextUnformatted("(Not accepted)");
-            }
         }
 
         return questWork;
@@ -403,9 +371,7 @@ internal sealed partial class ActiveQuestComponent
             {
                 // if we haven't accepted this quest, mark it as next quest so that we can optionally use aetherytes to travel
                 if (questProgressInfo == null)
-                {
                     _questController.SetNextQuest(currentQuest.Quest);
-                }
 
                 _questController.Start("UI start");
             }
@@ -415,9 +381,7 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.SameLine();
 
                 if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.StepForward, "Step"))
-                {
                     _questController.StartSingleStep("UI step");
-                }
             }
         }
 
@@ -434,9 +398,7 @@ internal sealed partial class ActiveQuestComponent
         {
             ImGui.SameLine();
             if (ImGuiComponents.IconButton(FontAwesomeIcon.RedoAlt))
-            {
                 Reload?.Invoke(this, EventArgs.Empty);
-            }
         }
         else
         {
@@ -458,9 +420,7 @@ internal sealed partial class ActiveQuestComponent
                     }
 
                     if (ImGui.IsItemHovered())
-                    {
                         ImGui.SetTooltip("Skip the current step of the quest path.");
-                    }
                 }
             }
 
@@ -468,14 +428,10 @@ internal sealed partial class ActiveQuestComponent
             {
                 ImGui.SameLine();
                 if (ImGuiComponents.IconButton(FontAwesomeIcon.Atlas))
-                {
                     _commandManager.ProcessCommand($"/questinfo {currentQuest.Quest.Id}");
-                }
 
                 if (ImGui.IsItemHovered())
-                {
                     ImGui.SetTooltip($"Show information about '{currentQuest.Quest.Info.Name}' in Quest Map plugin.");
-                }
             }
 
 #if DEBUG
@@ -493,9 +449,7 @@ internal sealed partial class ActiveQuestComponent
     private void DrawSimulationControls()
     {
         if (_questController.SimulatedQuest == null)
-        {
             return;
-        }
 
         QuestController.QuestProgress? simulatedQuest = _questController.SimulatedQuest;
 
@@ -571,9 +525,7 @@ internal sealed partial class ActiveQuestComponent
             ImGui.EndDisabled();
 
             if (ImGui.Button("Skip current task"))
-            {
                 _questController.SkipSimulatedTask();
-            }
 
             ImGui.SameLine();
             if (ImGui.Button("Clear sim"))
@@ -589,9 +541,7 @@ internal sealed partial class ActiveQuestComponent
     private static string Shorten(string text)
     {
         if (text.Length > 35)
-        {
             return string.Concat(text.AsSpan(0, 30).Trim(), ((SeIconChar)57434).ToIconString());
-        }
 
         return text;
     }

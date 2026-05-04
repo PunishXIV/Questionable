@@ -1,10 +1,10 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Jump
@@ -14,20 +14,14 @@ internal static class Jump
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Jump)
-            {
                 return null;
-            }
 
             ArgumentNullException.ThrowIfNull(step.JumpDestination);
 
             if (step.JumpDestination.Type == EJumpType.SingleJump)
-            {
                 return new SingleJumpTask(step.DataId, step.JumpDestination, step.Comment);
-            }
             else
-            {
                 return new RepeatedJumpTask(step.DataId, step.JumpDestination, step.Comment);
-            }
         }
     }
 
@@ -61,9 +55,7 @@ internal static class Jump
         {
             float stopDistance = Task.JumpDestination.CalculateStopDistance();
             if ((objectTable[0]!.Position - Task.JumpDestination.Position).Length() <= stopDistance)
-            {
                 return false;
-            }
 
             movementController.NavigateTo(EMovementType.Quest, Task.DataId, [Task.JumpDestination.Position], false,
                 false,
@@ -82,15 +74,11 @@ internal static class Jump
         public override ETaskResult Update()
         {
             if (movementController.IsPathfinding || movementController.IsPathRunning)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             DateTime movementStartedAt = movementController.MovementStartedAt;
             if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(1) >= DateTime.Now)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             return ETaskResult.TaskComplete;
         }
@@ -141,15 +129,11 @@ internal static class Jump
         public override ETaskResult Update()
         {
             if (DateTime.Now < _continueAt || condition[ConditionFlag.Jumping])
-            {
                 return ETaskResult.StillRunning;
-            }
 
             float stopDistance = Task.JumpDestination.CalculateStopDistance();
             if (_objectTable[0] == null)
-            {
                 return ETaskResult.StillRunning;
-            }
             if ((_objectTable[0]!.Position - Task.JumpDestination.Position).Length() <= stopDistance ||
                 _objectTable[0]?.Position.Y >= Task.JumpDestination.Position.Y - 0.5f)
             {
@@ -161,15 +145,11 @@ internal static class Jump
             unsafe
             {
                 if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 2))
-                {
                     ++_attempts;
-                }
             }
 
             if (_attempts >= 50)
-            {
                 throw new TaskException("Tried to jump too many times, didn't reach the target");
-            }
 
             _continueAt = DateTime.Now + TimeSpan.FromSeconds(Task.JumpDestination.DelaySeconds ?? 0.5f);
             return ETaskResult.StillRunning;

@@ -1,4 +1,8 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
@@ -7,10 +11,6 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
-using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Numerics;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuickAccessButtonsComponent
@@ -58,14 +58,10 @@ internal sealed class QuickAccessButtonsComponent
     private void DrawQuestPriorityButton()
     {
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Exclamation, "Priority Quests"))
-        {
             _priorityWindow.ToggleOrUncollapse();
-        }
 
         if (ImGui.IsItemHovered())
-        {
             ImGui.SetTooltip("Configure priority quests which will be done as soon as possible.");
-        }
     }
 
     private void DrawRebuildNavmeshButton()
@@ -74,43 +70,31 @@ internal sealed class QuickAccessButtonsComponent
         using (ImRaii.Disabled(!isNavmeshAvailable || !ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
             if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.GlobeEurope, "Rebuild Navmesh"))
-            {
                 _commandManager.ProcessCommand("/vnav rebuild");
-            }
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
             if (!isNavmeshAvailable)
-            {
                 ImGui.SetTooltip("vnavmesh is not available.\nPlease install it first.");
-            }
             else
-            {
                 ImGui.SetTooltip("Hold CTRL to enable this button.\nRebuilding the navmesh will take some time.");
-            }
         }
     }
 
     private void DrawReloadDataButton()
     {
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.RedoAlt, "Reload Data"))
-        {
             Reload?.Invoke(this, EventArgs.Empty);
-        }
     }
 
     private void DrawJournalProgressButton()
     {
         if (ImGuiComponents.IconButton(FontAwesomeIcon.BookBookmark))
-        {
             _journalProgressWindow.IsOpenAndUncollapsed = true;
-        }
 
         if (ImGui.IsItemHovered())
-        {
             ImGui.SetTooltip("Journal Progress");
-        }
     }
 
     private static void DrawSponsorButton()
@@ -125,9 +109,7 @@ internal sealed class QuickAccessButtonsComponent
         }
 
         if (ImGui.IsItemHovered())
-        {
             ImGui.SetTooltip("Sponsor QST development");
-        }
     }
 
     private void DrawValidationIssuesButton()
@@ -135,9 +117,7 @@ internal sealed class QuickAccessButtonsComponent
         int errorCount = _questRegistry.ValidationErrorCount;
         int infoCount = _questRegistry.ValidationIssueCount - _questRegistry.ValidationErrorCount;
         if (errorCount == 0 && infoCount == 0)
-        {
             return;
-        }
 
         int partsToRender = errorCount == 0 || infoCount == 0 ? 1 : 2;
         using ImRaii.IdDisposable id = ImRaii.PushId("validationissues");
@@ -197,8 +177,6 @@ internal sealed class QuickAccessButtonsComponent
         }
 
         if (button)
-        {
             _questValidationWindow.ToggleOrUncollapse();
-        }
     }
 }

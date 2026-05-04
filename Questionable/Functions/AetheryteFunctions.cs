@@ -1,11 +1,11 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using System;
 using Action = Lumina.Excel.Sheets.Action;
 
 namespace Questionable.Functions;
@@ -36,9 +36,7 @@ internal sealed unsafe class AetheryteFunctions
     public bool IsAetheryteUnlocked(EAetheryteLocation aetheryteLocation)
     {
         if (aetheryteLocation.IsFirmamentAetheryte())
-        {
             return _serviceProvider.GetRequiredService<QuestFunctions>().IsQuestComplete(new QuestId(3672));
-        }
         return IsAetheryteUnlocked((uint)aetheryteLocation, out byte _);
     }
 
@@ -106,24 +104,18 @@ internal sealed unsafe class AetheryteFunctions
     {
         PlayerState* playerState = PlayerState.Instance();
         if (playerState == null)
-        {
             return AetheryteRegistrationResult.NotPossible;
-        }
 
         // if we have a free or favored aetheryte assigned to this location, we don't override it (and don't upgrade
         // favored to free, either).
         if (IsFreeAetheryte(aetheryteLocation))
-        {
             return AetheryteRegistrationResult.NotPossible;
-        }
 
         bool freeFavoredSlotsAvailable = false;
-        for(int i = 0; i < playerState->FavouriteAetheryteCount; i++)
+        for (int i = 0; i < playerState->FavouriteAetheryteCount; i++)
         {
             if (playerState->FavouriteAetherytes[i] == (ushort)aetheryteLocation)
-            {
                 return AetheryteRegistrationResult.NotPossible;
-            }
             else if (playerState->FavouriteAetherytes[i] == 0)
             {
                 freeFavoredSlotsAvailable = true;

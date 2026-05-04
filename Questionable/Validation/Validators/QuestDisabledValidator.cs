@@ -1,5 +1,5 @@
-﻿using Questionable.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Questionable.Model;
 namespace Questionable.Validation.Validators;
 
 internal sealed class QuestDisabledValidator : IQuestValidator

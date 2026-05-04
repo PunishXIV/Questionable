@@ -1,9 +1,9 @@
-﻿using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging;
 namespace Questionable.Controller.NavigationOverrides;
 
 internal sealed class MovementOverrideController(IClientState clientState, ILogger<MovementOverrideController> logger)
@@ -99,14 +99,12 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
     /// <param name="navPoints">list of points to check</param>
     public (List<Vector3>, bool) AdjustPath(List<Vector3> navPoints)
     {
-        foreach(IBlacklistedLocation blacklistedArea in BlacklistedLocations)
+        foreach (IBlacklistedLocation blacklistedArea in BlacklistedLocations)
         {
             if (_clientState.TerritoryType != blacklistedArea.TerritoryId)
-            {
                 continue;
-            }
 
-            for(int i = 0; i < navPoints.Count; ++i)
+            for (int i = 0; i < navPoints.Count; ++i)
             {
                 AlternateLocation? alternateLocation = blacklistedArea.AdjustPoint(navPoints[i]);
 
@@ -118,9 +116,7 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
 
                     navPoints[i] = alternateLocation.Point;
                     if (alternateLocation.RecalculateNavmesh)
-                    {
                         return (navPoints.Take(i + 1).ToList(), true);
-                    }
                 }
             }
         }

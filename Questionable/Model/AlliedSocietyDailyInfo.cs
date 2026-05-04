@@ -1,11 +1,11 @@
-using ECommons.ExcelServices;
-using Lumina.Excel.Sheets;
-using Questionable.Data;
-using Questionable.Model.Questing;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
+using Questionable.Data;
+using Questionable.Model.Questing;
 namespace Questionable.Model;
 
 internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, ClassJobUtils classJobUtils) : IQuestInfo

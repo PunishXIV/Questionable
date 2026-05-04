@@ -1,4 +1,8 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -9,10 +13,6 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AethernetShortcut
@@ -27,9 +27,7 @@ internal static class AethernetShortcut
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AethernetShortcut == null)
-            {
                 yield break;
-            }
 
             yield return new WaitNavmesh.Task();
             yield return new Task(step.AethernetShortcut.From, step.AethernetShortcut.To,
@@ -188,9 +186,7 @@ internal static class AethernetShortcut
                     Task.From, Task.To);
             }
             else
-            {
                 throw new TaskException($"Aethernet shortcut not unlocked (from: {Task.From}, to: {Task.To})");
-            }
 
             return false;
         }
@@ -224,9 +220,7 @@ internal static class AethernetShortcut
         public override ETaskResult Update()
         {
             if (DateTime.Now < _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (_triedMounting)
             {
@@ -237,23 +231,17 @@ internal static class AethernetShortcut
                     return ETaskResult.StillRunning;
                 }
                 else
-                {
                     return ETaskResult.StillRunning;
-                }
             }
 
             if (_moving)
             {
                 DateTime movementStartedAt = movementController.MovementStartedAt;
                 if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
-                {
                     return ETaskResult.StillRunning;
-                }
 
                 if (!movementController.IsPathfinding && !movementController.IsPathRunning)
-                {
                     _moving = false;
-                }
 
                 return ETaskResult.StillRunning;
             }
@@ -265,36 +253,26 @@ internal static class AethernetShortcut
             }
 
             if (objectTable[0] == null)
-            {
                 return ETaskResult.StillRunning;
-            }
             Vector3? position = objectTable[0]!.Position;
             if (position == null)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (aetheryteData.IsAirshipLanding(Task.To))
             {
                 if (aetheryteData.CalculateAirshipLandingDistance(position.Value, clientState.TerritoryType, Task.To) > 5)
-                {
                     return ETaskResult.StillRunning;
-                }
             }
             else if (aetheryteData.IsCityAetheryte(Task.To) || aetheryteData.IsGoldSaucerAetheryte(Task.To))
             {
                 if (aetheryteData.CalculateDistance(position.Value, clientState.TerritoryType, Task.To) > 20)
-                {
                     return ETaskResult.StillRunning;
-                }
             }
             else
             {
                 // some overworld location (e.g. 'Tesselation (Lakeland)' would end up here
                 if (clientState.TerritoryType != aetheryteData.TerritoryIds[Task.To])
-                {
                     return ETaskResult.StillRunning;
-                }
             }
 
 

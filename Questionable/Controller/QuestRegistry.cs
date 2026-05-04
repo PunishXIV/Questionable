@@ -1,3 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
@@ -11,14 +19,6 @@ using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Nodes;
 namespace Questionable.Controller;
 
 internal sealed class QuestRegistry
@@ -83,7 +83,7 @@ internal sealed class QuestRegistry
             LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
                 Quest.ESource.UserDirectory);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             _logger.LogError(e,
                 "Failed to load all quests from user directory (some may have been successfully loaded)");
@@ -96,7 +96,7 @@ internal sealed class QuestRegistry
         {
             _reloadDataIpc.SendMessage();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             // why does this even throw
             _logger.LogWarning(e, "Error during Reload.SendMessage IPC");
@@ -110,7 +110,7 @@ internal sealed class QuestRegistry
     {
         _logger.LogInformation("Loading quests from assembly");
 
-        foreach((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.GetQuests())
+        foreach ((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.GetQuests())
         {
             try
             {
@@ -124,7 +124,7 @@ internal sealed class QuestRegistry
                 };
                 _quests[quest.Id] = quest;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogWarning("Not loading unknown quest {QuestId} from assembly: {Message}", questId, e.Message);
             }
@@ -144,7 +144,7 @@ internal sealed class QuestRegistry
             {
                 try
                 {
-                    foreach(string expansionFolder in ExpansionData.ExpansionFolders.Values)
+                    foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
                     {
                         LoadFromDirectory(
                             new(Path.Combine(pathProjectDirectory.FullName, expansionFolder)),
@@ -152,7 +152,7 @@ internal sealed class QuestRegistry
                             LogLevel.Trace);
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     _quests.Clear();
 
@@ -165,11 +165,11 @@ internal sealed class QuestRegistry
 
     private void LoadCfcIds()
     {
-        foreach(Quest quest in _quests.Values)
+        foreach (Quest quest in _quests.Values)
         {
-            foreach(QuestSequence dutySequence in quest.AllSequences())
+            foreach (QuestSequence dutySequence in quest.AllSequences())
             {
-                foreach(QuestStep dutyStep in dutySequence.Steps.Where(x =>
+                foreach (QuestStep dutyStep in dutySequence.Steps.Where(x =>
                     x.InteractionType is EInteractionType.Duty or EInteractionType.SinglePlayerDuty))
                 {
                     if (dutyStep is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
@@ -200,14 +200,10 @@ internal sealed class QuestRegistry
     private void LoadQuestFromStream(string fileName, Stream stream, Quest.ESource source)
     {
         if (source == Quest.ESource.UserDirectory)
-        {
             _logger.LogTrace("Loading quest from '{FileName}'", fileName);
-        }
         ElementId? questId = ExtractQuestIdFromName(fileName);
         if (questId == null)
-        {
             return;
-        }
 
         JsonNode questNode = JsonNode.Parse(stream)!;
         _jsonSchemaValidator.Enqueue(questId, questNode);
@@ -234,26 +230,22 @@ internal sealed class QuestRegistry
         }
 
         if (source == Quest.ESource.UserDirectory)
-        {
             _logger.Log(logLevel, "Loading quests from {DirectoryName}", directory);
-        }
-        foreach(FileInfo fileInfo in directory.GetFiles("*.json"))
+        foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
         {
             try
             {
                 using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
                 LoadQuestFromStream(fileInfo.Name, stream, source);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new InvalidDataException($"Unable to load file {fileInfo.FullName}", e);
             }
         }
 
-        foreach(DirectoryInfo childDirectory in directory.GetDirectories())
-        {
+        foreach (DirectoryInfo childDirectory in directory.GetDirectories())
             LoadFromDirectory(childDirectory, source, logLevel);
-        }
     }
 
     private static ElementId? ExtractQuestIdFromName(string resourceName)
@@ -262,9 +254,7 @@ internal sealed class QuestRegistry
         name = name.Substring(name.LastIndexOf('.') + 1);
 
         if (!name.Contains('_', StringComparison.Ordinal))
-        {
             return null;
-        }
 
         string[] parts = name.Split('_', 2);
         return ElementId.FromString(parts[0]);
@@ -284,9 +274,7 @@ internal sealed class QuestRegistry
     {
         List<QuestInfo> allQuests = [.. _questData.GetClassJobQuests(classJob, includeRoleQuests)];
         if (classJob.AsJob() != classJob)
-        {
             allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
-        }
 
         return allQuests
             .Where(x => IsKnownQuest(x.QuestId))
@@ -320,9 +308,7 @@ internal sealed class QuestRegistry
     {
         _logger.LogDebug("OpenEditor ushort");
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
-        {
             return OpenEditor(AssemblyLocation, GetFilename(quest.Info));
-        }
         return (false, $"could not get quest from {questId}");
     }
     public unsafe (bool, string) OpenEditor()
@@ -332,7 +318,7 @@ internal sealed class QuestRegistry
         ushort? questId = null;
         if (questManager != null)
         {
-            for(int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
+            for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
             {
                 TrackingWork trackedQuest = questManager->TrackedQuests[i];
                 switch (trackedQuest.QuestType)
@@ -344,15 +330,11 @@ internal sealed class QuestRegistry
                         break;
                 }
                 if (questId != null)
-                {
                     break;
-                }
             }
         }
         if (questId != null)
-        {
             return OpenEditor(questId.Value);
-        }
         return (false, "could not get tracked quest");
     }
 
@@ -360,14 +342,10 @@ internal sealed class QuestRegistry
     {
         DirectoryInfo? targetFolder = new(Path.Combine(assemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
         if (targetFolder == null)
-        {
             return (false, "couldn't find QuestPaths folder");
-        }
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
         if (file == null)
-        {
             return (false, $"couldn't find {filename}");
-        }
         Process.Start(new ProcessStartInfo
         {
             FileName = filename,
@@ -379,19 +357,15 @@ internal sealed class QuestRegistry
 
     public static FileInfo? FindFilenameInDirectory(DirectoryInfo root, string filename)
     {
-        foreach(FileInfo file in root.GetFiles())
+        foreach (FileInfo file in root.GetFiles())
         {
             if (file.Name == filename)
-            {
                 return file;
-            }
         }
-        foreach(DirectoryInfo directory in root.GetDirectories())
+        foreach (DirectoryInfo directory in root.GetDirectories())
         {
             if (FindFilenameInDirectory(directory, filename) is FileInfo result)
-            {
                 return result;
-            }
         }
         return null;
     }

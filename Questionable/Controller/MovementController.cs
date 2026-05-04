@@ -1,4 +1,12 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -15,14 +23,6 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.Threading;
-using System.Threading.Tasks;
 namespace Questionable.Controller;
 
 internal sealed class MovementController
@@ -52,7 +52,7 @@ internal sealed class MovementController
             {
                 return navmeshIpc.IsReady;
             }
-            catch(IpcNotReadyError)
+            catch (IpcNotReadyError)
             {
                 return false;
             }
@@ -67,7 +67,7 @@ internal sealed class MovementController
             {
                 return navmeshIpc.IsPathRunning;
             }
-            catch(IpcNotReadyError)
+            catch (IpcNotReadyError)
             {
                 return false;
             }
@@ -175,16 +175,12 @@ internal sealed class MovementController
             if (Destination.MovementType == EMovementType.Landing)
             {
                 if (!condition[ConditionFlag.InFlight])
-                {
                     Stop();
-                }
             }
             else if ((localPlayerPosition - Destination.Position).Length() < Destination.StopDistance)
             {
                 if (localPlayerPosition.Y - Destination.Position.Y <= Destination.VerticalStopDistance)
-                {
                     Stop();
-                }
                 else if (Destination.DataId != null)
                 {
                     IGameObject? gameObject = gameFunctions.FindObjectByDataId(Destination.DataId.Value);
@@ -225,14 +221,10 @@ internal sealed class MovementController
                         }
                     }
                     else
-                    {
                         Stop();
-                    }
                 }
                 else
-                {
                     Stop();
-                }
             }
             else
             {
@@ -241,9 +233,7 @@ internal sealed class MovementController
                 if (start != null)
                 {
                     if (Destination.ShouldRecalculateNavmesh() && RecalculateNavmesh(navPoints, start.Value))
-                    {
                         return;
-                    }
 
                     if (!Destination.IsFlying && !condition[ConditionFlag.Mounted] &&
                         !gameFunctions.HasStatusPreventingSprint() && Destination.CanSprint)
@@ -299,9 +289,7 @@ internal sealed class MovementController
     {
         fly |= condition[ConditionFlag.Diving];
         if (fly && land)
-        {
             to = to with { Y = to.Y + 2.6f };
-        }
 
         PrepareNavigation(type, dataId, to, fly, sprint, stopDistance, verticalStopDistance ?? DefaultVerticalInteractionDistance, land, true);
         logger.LogInformation("Pathfinding to {Destination}", Destination);
@@ -346,9 +334,7 @@ internal sealed class MovementController
     {
         fly |= condition[ConditionFlag.Diving];
         if (fly && land && to.Count > 0)
-        {
             to[^1] = to[^1] with { Y = to[^1].Y + 2.6f };
-        }
 
         PrepareNavigation(type, dataId, to.Last(), fly, sprint, stopDistance, verticalStopDistance ?? DefaultVerticalInteractionDistance, land, false);
 
@@ -365,7 +351,7 @@ internal sealed class MovementController
             {
                 _cancellationTokenSource.Cancel();
             }
-            catch(ObjectDisposedException)
+            catch (ObjectDisposedException)
             {
             }
 
@@ -378,20 +364,14 @@ internal sealed class MovementController
     private bool RecalculateNavmesh(List<Vector3> navPoints, Vector3 start)
     {
         if (Destination == null)
-        {
             throw new InvalidOperationException("Destination is null");
-        }
 
         if (DateTime.Now - MovementStartedAt <= TimeSpan.FromSeconds(5))
-        {
             return false;
-        }
 
         Vector3 nextWaypoint = navPoints.FirstOrDefault();
         if (nextWaypoint == default)
-        {
             return false;
-        }
 
         float distance = Vector2.Distance(new(start.X, start.Z),
             new(nextWaypoint.X, nextWaypoint.Z));
@@ -439,15 +419,13 @@ internal sealed class MovementController
             }
         }
         else
-        {
             return false;
-        }
     }
 
     private void TriggerSprintIfNeeded(IEnumerable<Vector3> navPoints, Vector3 start)
     {
         float actualDistance = 0;
-        foreach(Vector3 end in navPoints)
+        foreach (Vector3 end in navPoints)
         {
             actualDistance += (start - end).Length();
             start = end;

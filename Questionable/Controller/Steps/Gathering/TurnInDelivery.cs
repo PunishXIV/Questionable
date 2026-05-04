@@ -14,9 +14,7 @@ internal static class TurnInDelivery
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (quest.Id is not SatisfactionSupplyNpcId || sequence.Sequence != 1)
-            {
                 return null;
-            }
 
             return new Task();
         }
@@ -43,21 +41,15 @@ internal static class TurnInDelivery
         {
             AgentSatisfactionSupply* agentSatisfactionSupply = AgentSatisfactionSupply.Instance();
             if (agentSatisfactionSupply == null || !agentSatisfactionSupply->IsAgentActive())
-            {
                 return _remainingAllowances == null ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
-            }
 
             uint addonId = agentSatisfactionSupply->GetAddonId();
             if (addonId == 0)
-            {
                 return _remainingAllowances == null ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
-            }
 
             AtkUnitBase* addon = AddonUtils.GetAddonById(addonId);
             if (addon == null || !AddonUtils.IsAddonReady(addon))
-            {
                 return ETaskResult.StillRunning;
-            }
 
             ushort remainingAllowances = agentSatisfactionSupply->NpcData.RemainingAllowances;
             if (remainingAllowances == 0)
@@ -77,9 +69,7 @@ internal static class TurnInDelivery
 
             // we should at least wait until we have less allowances
             if (_remainingAllowances == remainingAllowances)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             // try turning it in...
             logger.LogInformation("Attempting turn-in (remaining allowances: {RemainingAllowances})",

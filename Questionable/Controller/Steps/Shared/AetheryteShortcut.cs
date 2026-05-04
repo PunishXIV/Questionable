@@ -1,4 +1,8 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -9,10 +13,6 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
@@ -23,9 +23,7 @@ internal static class AetheryteShortcut
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AetheryteShortcut == null)
-            {
                 yield break;
-            }
 
             yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
                 aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
@@ -82,9 +80,7 @@ internal static class AetheryteShortcut
         public override ETaskResult Update()
         {
             if (DateTime.Now < _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (!_teleported)
             {
@@ -93,9 +89,7 @@ internal static class AetheryteShortcut
             }
 
             if (clientState.TerritoryType == Task.ExpectedTerritoryId)
-            {
                 return ETaskResult.TaskComplete;
-            }
 
             return ETaskResult.StillRunning;
         }
@@ -245,9 +239,7 @@ internal static class AetheryteShortcut
             if (!aetheryteFunctions.CanTeleport(Task.TargetAetheryte))
             {
                 if (!aetheryteFunctions.IsTeleportUnlocked())
-                {
                     throw new TaskException("Teleport is not unlocked, attune to any aetheryte first.");
-                }
 
                 _continueAt = DateTime.Now.AddSeconds(1);
                 logger.LogTrace("Waiting for teleport cooldown...");
@@ -326,9 +318,7 @@ internal static class AetheryteShortcut
             // only relevant if we're actually near the s9 aetheryte at the end
             Vector3 playerPosition = objectTable[0]!.Position;
             if (aetheryteData.CalculateDistance(playerPosition, clientState.TerritoryType, Task.TargetAetheryte) >= 20)
-            {
                 return false;
-            }
 
             Vector3 closestPoint = AetherytesToMoveFrom[Task.TargetAetheryte]
                 .MinBy(x => Vector3.Distance(x, playerPosition));

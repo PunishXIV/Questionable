@@ -1,10 +1,10 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Dalamud.Plugin.Services;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Gathering;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 namespace Questionable.Data;
 
 internal sealed class GatheringData
@@ -20,20 +20,16 @@ internal sealed class GatheringData
             .Where(x => x.RowId != 0 && x.Item.RowId != 0)
             .ToDictionary(x => x.RowId, x => x.Item.RowId);
 
-        foreach(GatheringPointBase gatheringPointBase in dataManager.GetExcelSheet<GatheringPointBase>())
+        foreach (GatheringPointBase gatheringPointBase in dataManager.GetExcelSheet<GatheringPointBase>())
         {
-            foreach(RowRef gatheringItem in gatheringPointBase.Item.Where(x => x.RowId != 0))
+            foreach (RowRef gatheringItem in gatheringPointBase.Item.Where(x => x.RowId != 0))
             {
                 if (gatheringItemToItem.TryGetValue(gatheringItem.RowId, out uint itemId))
                 {
                     if (gatheringPointBase.GatheringType.RowId is 0 or 1)
-                    {
                         _minerGatheringPoints[itemId] = new((ushort)gatheringPointBase.RowId);
-                    }
                     else if (gatheringPointBase.GatheringType.RowId is 2 or 3)
-                    {
                         _botanistGatheringPoints[itemId] = new((ushort)gatheringPointBase.RowId);
-                    }
                 }
             }
         }

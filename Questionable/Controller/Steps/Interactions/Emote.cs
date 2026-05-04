@@ -1,9 +1,9 @@
-﻿using Questionable.Controller.Steps.Common;
+﻿using System;
+using System.Collections.Generic;
+using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Emote
@@ -16,14 +16,10 @@ internal static class Emote
                 or EInteractionType.SinglePlayerDuty)
             {
                 if (step.Emote == null)
-                {
                     return [];
-                }
             }
             else if (step.InteractionType != EInteractionType.Emote)
-            {
                 return [];
-            }
 
             ArgumentNullException.ThrowIfNull(step.Emote);
 

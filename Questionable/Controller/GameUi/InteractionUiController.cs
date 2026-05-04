@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -17,11 +22,6 @@ using Questionable.Model.Common;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller.GameUi;
@@ -110,9 +110,7 @@ internal sealed class InteractionUiController : IDisposable
         unsafe
         {
             if (_gameGui.TryGetAddonByName("RhythmAction", out AtkUnitBase* addon))
-            {
                 addon->Close(true);
-            }
         }
     }
 
@@ -135,9 +133,7 @@ internal sealed class InteractionUiController : IDisposable
     private void HandleCurrentDialogueChoices(object sender, QuestController.EAutomationType automationType)
     {
         if (automationType != QuestController.EAutomationType.Manual)
-        {
             HandleCurrentDialogueChoices();
-        }
     }
 
     internal unsafe void HandleCurrentDialogueChoices()
@@ -197,23 +193,17 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe void SelectStringPostSetup(AddonSelectString* addonSelectString, bool checkAllSteps)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         string? actualPrompt = AtkValueAdapter.ReadString(addonSelectString->AtkUnitBase.AtkValues[2]);
         if (actualPrompt == null)
-        {
             return;
-        }
 
         List<string?> answers = [];
-        for(ushort i = 7; i < addonSelectString->AtkUnitBase.AtkValuesCount; ++i)
+        for (ushort i = 7; i < addonSelectString->AtkUnitBase.AtkValuesCount; ++i)
         {
             if (addonSelectString->AtkUnitBase.AtkValues[i].Type == AtkValueType.String)
-            {
                 answers.Add(AtkValueAdapter.ReadString(addonSelectString->AtkUnitBase.AtkValues[i]));
-            }
         }
 
         int? answer = HandleListChoice(actualPrompt, answers, checkAllSteps) ?? HandleInstanceListChoice(actualPrompt);
@@ -234,27 +224,21 @@ internal sealed class InteractionUiController : IDisposable
         bool checkAllSteps)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         string? actualPrompt = AtkValueAdapter.ReadString(addonCutSceneSelectString->AtkUnitBase.AtkValues[2]);
         if (actualPrompt == null)
-        {
             return;
-        }
 
         List<string?> answers = [];
-        for(int i = 5; i < addonCutSceneSelectString->AtkUnitBase.AtkValuesCount; ++i)
+        for (int i = 5; i < addonCutSceneSelectString->AtkUnitBase.AtkValuesCount; ++i)
         {
             answers.Add(AtkValueAdapter.ReadString(addonCutSceneSelectString->AtkUnitBase.AtkValues[i]));
         }
 
         int? answer = HandleListChoice(actualPrompt, answers, checkAllSteps);
         if (answer != null)
-        {
             addonCutSceneSelectString->AtkUnitBase.FireCallbackInt(answer.Value);
-        }
     }
 
     private unsafe void SelectIconStringPostSetup(AddonEvent type, AddonArgs args)
@@ -266,15 +250,11 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe void SelectIconStringPostSetup(AddonSelectIconString* addonSelectIconString, bool checkAllSteps)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         string? actualPrompt = AtkValueAdapter.ReadString(addonSelectIconString->AtkUnitBase.AtkValues[3]);
         if (string.IsNullOrEmpty(actualPrompt))
-        {
             actualPrompt = null;
-        }
 
         List<string?> answers = GetChoices(addonSelectIconString);
         int? answer = HandleListChoice(actualPrompt, answers, checkAllSteps);
@@ -293,9 +273,7 @@ internal sealed class InteractionUiController : IDisposable
         {
             _logger.LogInformation("Checking if current quest {Name} is on the list", currentQuest.Quest.Info.Name);
             if (CheckQuestSelection(addonSelectIconString, currentQuest.Quest, answers))
-            {
                 return;
-            }
 
             QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
             QuestStep? step = sequence?.FindStep(currentQuest.Step);
@@ -304,9 +282,7 @@ internal sealed class InteractionUiController : IDisposable
             {
                 _logger.LogInformation("Checking if current picked-up {Name} is on the list", pickupQuest.Info.Name);
                 if (CheckQuestSelection(addonSelectIconString, pickupQuest, answers))
-                {
                     return;
-                }
             }
         }
 
@@ -315,8 +291,7 @@ internal sealed class InteractionUiController : IDisposable
         {
             _logger.LogInformation("Checking if next quest {Name} is on the list", nextQuest.Quest.Info.Name);
             if (CheckQuestSelection(addonSelectIconString, nextQuest.Quest, answers))
-            {
-            }
+                return;
         }
     }
 
@@ -339,7 +314,7 @@ internal sealed class InteractionUiController : IDisposable
     public static unsafe List<string?> GetChoices(AddonSelectIconString* addonSelectIconString)
     {
         List<string?> answers = [];
-        for(ushort i = 0; i < addonSelectIconString->AtkUnitBase.AtkValues[5].Int; i++)
+        for (ushort i = 0; i < addonSelectIconString->AtkUnitBase.AtkValues[5].Int; i++)
         {
             answers.Add(AtkValueAdapter.ReadString(addonSelectIconString->AtkValues[i * 3 + 7]));
         }
@@ -364,9 +339,7 @@ internal sealed class InteractionUiController : IDisposable
                 QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
                 IEnumerable<DialogueChoice>? choices = sequence?.Steps.SelectMany(x => x.DialogueChoices);
                 if (choices != null)
-                {
                     dialogueChoices.AddRange(choices.Select(x => new DialogueChoiceInfo(quest, x)));
-                }
 
                 isTaxiStandUnlock = sequence?.Steps.Any(x => x.InteractionType == EInteractionType.UnlockTaxiStand) ??
                                     false;
@@ -392,9 +365,7 @@ internal sealed class InteractionUiController : IDisposable
                 step ??= quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
 
                 if (step == null)
-                {
                     _logger.LogDebug("Ignoring current quest dialogue choices, no active step");
-                }
                 else
                 {
                     dialogueChoices.AddRange(step.DialogueChoices.Select(x => new DialogueChoiceInfo(quest, x)));
@@ -410,9 +381,7 @@ internal sealed class InteractionUiController : IDisposable
                     }
 
                     if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryte })
-                    {
                         freeOrFavoredAetheryteRegistrations = [aetheryte];
-                    }
 
                     isTaxiStandUnlock = step.InteractionType == EInteractionType.UnlockTaxiStand;
                 }
@@ -465,12 +434,10 @@ internal sealed class InteractionUiController : IDisposable
             ushort? targetTerritoryId = FindTargetTerritoryFromQuestStep(currentQuest);
             if (targetTerritoryId != null)
             {
-                foreach(string? answer in answers)
+                foreach (string? answer in answers)
                 {
                     if (answer == null)
-                    {
                         continue;
-                    }
 
                     if (TryFindWarp(targetTerritoryId.Value, answer, out uint? warpId, out string? warpText))
                     {
@@ -487,15 +454,13 @@ internal sealed class InteractionUiController : IDisposable
             }
         }
         else
-        {
             _logger.LogDebug("Ignoring current quest dialogue choices, no active quest");
-        }
 
         // add all quests that start with the targeted npc
         IGameObject? target = _targetManager.Target;
         if (target != null)
         {
-            foreach(IQuestInfo questInfo in _questData.GetAllByIssuerDataId(GameFunctions.GetBaseID(target)).Where(x => x.QuestId is QuestId))
+            foreach (IQuestInfo questInfo in _questData.GetAllByIssuerDataId(GameFunctions.GetBaseID(target)).Where(x => x.QuestId is QuestId))
             {
                 if (_questFunctions.IsReadyToAcceptQuest(questInfo.QuestId) &&
                     _questRegistry.TryGetQuest(questInfo.QuestId, out Quest? knownQuest))
@@ -519,12 +484,10 @@ internal sealed class InteractionUiController : IDisposable
             return null;
         }
 
-        foreach((Quest? quest, DialogueChoice dialogueChoice) in dialogueChoices)
+        foreach ((Quest? quest, DialogueChoice dialogueChoice) in dialogueChoices)
         {
             if (dialogueChoice.Type != EDialogChoiceType.List)
-            {
                 continue;
-            }
 
             if (dialogueChoice.SpecialCondition == "NoDutyActions")
             {
@@ -539,7 +502,7 @@ internal sealed class InteractionUiController : IDisposable
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     _logger.LogError(ex, "Failed to check for duty actions");
                     continue;
@@ -579,7 +542,7 @@ internal sealed class InteractionUiController : IDisposable
                 continue;
             }
 
-            for(int i = 0; i < answers.Count; ++i)
+            for (int i = 0; i < answers.Count; ++i)
             {
                 _logger.LogTrace("Checking if {ActualAnswer} == {ExpectedAnswer}",
                     answers[i], excelAnswer);
@@ -613,14 +576,10 @@ internal sealed class InteractionUiController : IDisposable
     private static bool IsMatch(string? actualAnswer, StringOrRegex? expectedAnswer)
     {
         if (actualAnswer == null && expectedAnswer == null)
-        {
             return true;
-        }
 
         if (actualAnswer == null || expectedAnswer == null)
-        {
             return false;
-        }
 
         return expectedAnswer.IsMatch(actualAnswer) ||
                expectedAnswer.IsMatch(actualAnswer.Replace("\n", string.Empty)) ||
@@ -648,15 +607,11 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe void SelectYesnoPostSetup(AddonSelectYesno* addonSelectYesno, bool checkAllSteps)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         string? actualPrompt = AtkValueAdapter.ReadString(addonSelectYesno->AtkUnitBase.AtkValues[0]);
         if (actualPrompt == null)
-        {
             return;
-        }
 
         _logger.LogTrace("Prompt: '{Prompt}'", actualPrompt);
         if (_shopController.IsAwaitingYesNo && _purchaseItemRegex.IsMatch(actualPrompt))
@@ -668,20 +623,15 @@ internal sealed class InteractionUiController : IDisposable
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
         if (currentQuest != null && CheckQuestYesNo(addonSelectYesno, currentQuest, actualPrompt, checkAllSteps))
-        {
             return;
-        }
 
         QuestController.QuestProgress? simulatedQuest = _questController.SimulatedQuest;
         if (simulatedQuest != null && HandleTravelYesNo(addonSelectYesno, simulatedQuest, actualPrompt))
-        {
             return;
-        }
 
         QuestController.QuestProgress? nextQuest = _questController.NextQuest;
         if (nextQuest != null && CheckQuestYesNo(addonSelectYesno, nextQuest, actualPrompt, checkAllSteps))
-        {
-        }
+            return;
     }
 
     private unsafe bool CheckQuestYesNo(AddonSelectYesno* addonSelectYesno, QuestController.QuestProgress currentQuest,
@@ -701,15 +651,11 @@ internal sealed class InteractionUiController : IDisposable
         {
             QuestStep? step = quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
             if (step != null && HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt))
-            {
                 return true;
-            }
         }
 
         if (HandleTravelYesNo(addonSelectYesno, currentQuest, actualPrompt))
-        {
             return true;
-        }
 
         return false;
     }
@@ -751,12 +697,10 @@ internal sealed class InteractionUiController : IDisposable
         }
 
         _logger.LogTrace("DefaultYesNo: Choice count: {Count}", dialogueChoices.Count);
-        foreach(DialogueChoice dialogueChoice in dialogueChoices)
+        foreach (DialogueChoice dialogueChoice in dialogueChoices)
         {
             if (dialogueChoice.Type != EDialogChoiceType.YesNo)
-            {
                 continue;
-            }
 
             //force Yes if prompt is set to `null` while an answer is still given - basically means no key is available on sheets yet
             if (dialogueChoice.Prompt == null && dialogueChoice.Yes)
@@ -834,18 +778,18 @@ internal sealed class InteractionUiController : IDisposable
 
         if (_questController.IsRunning && _hqTradeRegex != null && _hqTradeRegex.IsMatch(actualPrompt))
         {
-//            if (IsHqTradeAllowedInSequence(currentQuest))
-//            {
+            //            if (IsHqTradeAllowedInSequence(currentQuest))
+            //            {
             _logger.LogInformation("Automatically confirming HQ item trade");
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
             return true;
-//            }
-//            else
-//            {
-//                _logger.LogInformation("HQ item trade not allowed for current step, clicking No");
-//                addonSelectYesno->AtkUnitBase.FireCallbackInt(1);
-//                return true;
-//            }
+            //            }
+            //            else
+            //            {
+            //                _logger.LogInformation("HQ item trade not allowed for current step, clicking No");
+            //                addonSelectYesno->AtkUnitBase.FireCallbackInt(1);
+            //                return true;
+            //            }
         }
 
         if (_questController.IsRunning && _gameGui.TryGetAddonByName("HousingSelectBlock", out AtkUnitBase* _))
@@ -877,15 +821,11 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe void DifficultySelectYesNoPostSetup(AtkUnitBase* addonDifficultySelectYesNo, bool checkAllSteps)
     {
         if (!_questController.IsRunning)
-        {
             return;
-        }
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
         if (currentQuest == null)
-        {
             return;
-        }
 
         Quest quest = currentQuest.Quest;
         bool autoConfirm;
@@ -918,9 +858,7 @@ internal sealed class InteractionUiController : IDisposable
         // (in which case it is ~1 frame later, and the step counter has already been increased)
         QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (sequence == null)
-        {
             return null;
-        }
 
         QuestStep? step = sequence.FindStep(currentQuest.Step);
         if (step != null)
@@ -938,7 +876,7 @@ internal sealed class InteractionUiController : IDisposable
                     out GatheringPointId? gatheringPointId) &&
                 _gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? root))
             {
-                foreach(QuestStep gatheringStep in root.Steps)
+                foreach (QuestStep gatheringStep in root.Steps)
                 {
                     if (gatheringStep.TerritoryId == _clientState.TerritoryType &&
                         gatheringStep.TargetTerritoryId != null)
@@ -979,21 +917,15 @@ internal sealed class InteractionUiController : IDisposable
     private static bool IsHqTradeAllowed(QuestController.QuestProgress currentQuest)
     {
         if (currentQuest?.Quest == null)
-        {
             return false;
-        }
 
         QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (sequence == null)
-        {
             return false;
-        }
 
         QuestStep? step = sequence.FindStep(currentQuest.Step);
         if (step == null)
-        {
             return false;
-        }
 
         return step.AllowHighQuality == true;
     }
@@ -1001,15 +933,11 @@ internal sealed class InteractionUiController : IDisposable
     private static bool IsHqTradeAllowedInSequence(QuestController.QuestProgress currentQuest)
     {
         if (currentQuest?.Quest == null)
-        {
             return false;
-        }
 
         QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (sequence == null)
-        {
             return false;
-        }
 
         // Check all steps in the sequence for AllowHighQuality = true
         return sequence.Steps.Any(step => step.AllowHighQuality == true);
@@ -1020,7 +948,7 @@ internal sealed class InteractionUiController : IDisposable
     {
         IEnumerable<Warp> warps = _dataManager.GetExcelSheet<Warp>()
             .Where(x => x.RowId > 0 && x.TerritoryType.RowId == targetTerritoryId);
-        foreach(Warp entry in warps)
+        foreach (Warp entry in warps)
         {
             string excelName = entry.Name.WithCertainMacroCodeReplacements();
             string excelQuestion = entry.Question.WithCertainMacroCodeReplacements();
@@ -1038,9 +966,7 @@ internal sealed class InteractionUiController : IDisposable
                 return true;
             }
             else
-            {
                 _logger.LogDebug("Ignoring prompt '{Prompt}'", excelQuestion);
-            }
         }
 
         warpId = null;
@@ -1057,9 +983,7 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe void PointMenuPostSetup(AtkUnitBase* addonPointMenu)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
         if (currentQuest == null)
@@ -1070,15 +994,11 @@ internal sealed class InteractionUiController : IDisposable
 
         QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (sequence == null)
-        {
             return;
-        }
 
         QuestStep? step = sequence.FindStep(currentQuest.Step);
         if (step == null)
-        {
             return;
-        }
 
         if (step.PointMenuChoices.Count == 0)
         {
@@ -1109,9 +1029,7 @@ internal sealed class InteractionUiController : IDisposable
     private unsafe void HousingSelectBlockPostSetup(AddonEvent type, AddonArgs args)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         _logger.LogInformation("Confirming selected housing ward");
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
@@ -1121,22 +1039,14 @@ internal sealed class InteractionUiController : IDisposable
     private StringOrRegex? ResolveReference(Quest? quest, string? excelSheet, ExcelRef? excelRef, bool isRegExp)
     {
         if (excelRef == null)
-        {
             return null;
-        }
 
         if (excelRef.Type == ExcelRef.EType.Key)
-        {
             return _excelFunctions.GetDialogueText(quest, excelSheet, excelRef.AsKey(), isRegExp);
-        }
         else if (excelRef.Type == ExcelRef.EType.RowId)
-        {
             return _excelFunctions.GetDialogueTextByRowId(excelSheet, excelRef.AsRowId(), isRegExp);
-        }
         else if (excelRef.Type == ExcelRef.EType.RawString)
-        {
             return new(excelRef.AsRawString());
-        }
 
         return null;
     }

@@ -1,7 +1,7 @@
-﻿using Questionable.Controller.Steps.Common;
+﻿using System;
+using Questionable.Controller.Steps.Common;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class WaitAtStart
@@ -11,9 +11,7 @@ internal static class WaitAtStart
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.DelaySecondsAtStart == null)
-            {
                 return null;
-            }
 
             return new WaitDelay(TimeSpan.FromSeconds(step.DelaySecondsAtStart.Value));
         }

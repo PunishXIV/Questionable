@@ -1,9 +1,9 @@
-﻿using Questionable.Controller.Steps.Common;
+﻿using System;
+using System.Collections.Generic;
+using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Say
@@ -15,14 +15,10 @@ internal static class Say
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest)
             {
                 if (step.ChatMessage == null)
-                {
                     return [];
-                }
             }
             else if (step.InteractionType != EInteractionType.Say)
-            {
                 return [];
-            }
 
 
             ArgumentNullException.ThrowIfNull(step.ChatMessage);

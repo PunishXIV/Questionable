@@ -1,11 +1,11 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace Questionable.Functions;
 
 internal sealed class AlliedSocietyQuestFunctions
@@ -25,7 +25,7 @@ internal sealed class AlliedSocietyQuestFunctions
 
     public void Initialize()
     {
-        foreach(EAlliedSociety alliedSociety in Enum.GetValues<EAlliedSociety>().Where(x => x != EAlliedSociety.None))
+        foreach (EAlliedSociety alliedSociety in Enum.GetValues<EAlliedSociety>().Where(x => x != EAlliedSociety.None))
         {
             List<QuestInfo> allQuests = _questData.GetAllByAlliedSociety(alliedSociety);
             Dictionary<uint, List<QuestInfo>> questsByIssuer = allQuests
@@ -33,28 +33,22 @@ internal sealed class AlliedSocietyQuestFunctions
                 .GroupBy(x => x.IssuerDataId)
                 .ToDictionary(x => x.Key,
                     x => x.OrderBy(y => y.AlliedSocietyQuestGroup == 3).ThenBy(y => y.QuestId).ToList());
-            foreach((uint issuerDataId, List<QuestInfo> quests) in questsByIssuer)
+            foreach ((uint issuerDataId, List<QuestInfo> quests) in questsByIssuer)
             {
                 NpcData npcData = new()
-                    { IssuerDataId = issuerDataId, AllQuests = quests };
+                { IssuerDataId = issuerDataId, AllQuests = quests };
                 if (_questsByAlliedSociety.TryGetValue(alliedSociety, out List<NpcData>? existingNpcs))
-                {
                     existingNpcs.Add(npcData);
-                }
                 else
-                {
                     _questsByAlliedSociety[alliedSociety] = [npcData];
-                }
             }
         }
     }
 
     public void Reload()
     {
-        foreach((uint NpcDataId, byte Seed, bool OutranksAll, bool RankedUp) item in _dailyQuests.Keys)
-        {
+        foreach ((uint NpcDataId, byte Seed, bool OutranksAll, bool RankedUp) item in _dailyQuests.Keys)
             _dailyQuests.Remove(item);
-        }
     }
 
     public unsafe List<QuestId> GetAvailableAlliedSocietyQuests(EAlliedSociety alliedSociety)
@@ -62,26 +56,20 @@ internal sealed class AlliedSocietyQuestFunctions
         byte rankData = QuestManager.Instance()->BeastReputation[(int)alliedSociety - 1].Rank;
         byte currentRank = (byte)(rankData & 0x7F);
         if (currentRank == 0)
-        {
             return [];
-        }
 
         bool rankedUp = (rankData & 0x80) != 0;
         byte seed = QuestManager.Instance()->DailyQuestSeed;
         List<QuestId> result = [];
-        foreach(NpcData npcData in _questsByAlliedSociety[alliedSociety])
+        foreach (NpcData npcData in _questsByAlliedSociety[alliedSociety])
         {
             bool outranksAll = npcData.AllQuests.All(x => currentRank > x.AlliedSocietyRank);
             (uint NpcDataId, byte seed, bool outranksAll, bool rankedUp) key = (NpcDataId: npcData.IssuerDataId, seed, outranksAll, rankedUp);
             bool rankChanged = _alliedSocietyLastSeenRank.ContainsKey(alliedSociety) && _alliedSocietyLastSeenRank[alliedSociety] != currentRank;
             if (rankChanged)
-            {
                 Reload();
-            }
             if (_dailyQuests.TryGetValue(key, out List<QuestId>? questIds))
-            {
                 result.AddRange(questIds);
-            }
             else
             {
                 List<QuestId> quests = CalculateAvailableQuests(npcData.AllQuests, seed, outranksAll, currentRank, rankedUp);
@@ -102,17 +90,15 @@ internal sealed class AlliedSocietyQuestFunctions
         List<QuestInfo> eligible = [.. allQuests.Where(q => IsEligible(q, currentRank, rankedUp))];
         List<QuestInfo> available = [];
         if (eligible.Count == 0)
-        {
             return [];
-        }
 
         Rng rng = new(seed);
         if (outranksAll)
         {
-            for(int i = 0, cnt = Math.Min(eligible.Count, 3); i < cnt; ++i)
+            for (int i = 0, cnt = Math.Min(eligible.Count, 3); i < cnt; ++i)
             {
                 int index = rng.Next(eligible.Count);
-                while(available.Contains(eligible[index]))
+                while (available.Contains(eligible[index]))
                 {
                     index = (index + 1) % eligible.Count;
                 }
@@ -123,17 +109,13 @@ internal sealed class AlliedSocietyQuestFunctions
         {
             int firstExclusive = eligible.FindIndex(q => q.AlliedSocietyQuestGroup == 3);
             if (firstExclusive >= 0)
-            {
                 available.Add(eligible[firstExclusive + rng.Next(eligible.Count - firstExclusive)]);
-            }
             else
-            {
                 firstExclusive = eligible.Count;
-            }
-            for(int i = available.Count, cnt = Math.Min(firstExclusive, 3); i < cnt; ++i)
+            for (int i = available.Count, cnt = Math.Min(firstExclusive, 3); i < cnt; ++i)
             {
                 int index = rng.Next(firstExclusive);
-                while(available.Contains(eligible[index]))
+                while (available.Contains(eligible[index]))
                 {
                     index = (index + 1) % firstExclusive;
                 }

@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -8,9 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace Questionable.Controller.CombatModules;
 
 internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, ILogger<ItemUseModule> logger) : ICombatModule
@@ -27,9 +27,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (combatData.CombatItemUse == null)
-        {
             return false;
-        }
 
         _delegate = _serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
             .Where(x => x is not ItemUseModule)
@@ -68,14 +66,10 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     public void Update(IGameObject nextTarget)
     {
         if (_delegate == null)
-        {
             return;
-        }
 
         if (_continueAt > DateTime.Now)
-        {
             return;
-        }
 
         if (_combatData?.CombatItemUse == null)
         {
@@ -112,18 +106,14 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                     _continueAt = DateTime.Now.AddSeconds(2);
                 }
                 else
-                {
                     _delegate.Update(nextTarget);
-                }
             }
             else if (_condition[ConditionFlag.Casting])
             {
                 // do nothing
                 DateTime alternativeContinueAt = DateTime.Now.AddSeconds(0.5);
                 if (alternativeContinueAt > _continueAt)
-                {
                     _continueAt = alternativeContinueAt;
-                }
             }
             else
             {
@@ -132,9 +122,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             }
         }
         else if (_isDoingRotation)
-        {
             _delegate.Update(nextTarget);
-        }
     }
 
     public bool CanAttack(IBattleNpc target)
@@ -145,27 +133,19 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     private unsafe bool ShouldUseItem(IGameObject gameObject)
     {
         if (_combatData?.CombatItemUse == null)
-        {
             return false;
-        }
 
         if (gameObject is IBattleChara)
         {
             BattleChara* battleChara = (BattleChara*)gameObject.Address;
             if (_combatData.CombatItemUse.Condition == ECombatItemUseCondition.Incapacitated)
-            {
                 return (battleChara->ActorControlFlags & 0x40) != 0;
-            }
 
             if (_combatData.CombatItemUse.Condition == ECombatItemUseCondition.HealthPercent)
-            {
                 return (100f * battleChara->Health / battleChara->MaxHealth) < _combatData.CombatItemUse.Value;
-            }
 
             if (_combatData.CombatItemUse.Condition == ECombatItemUseCondition.MissingStatus)
-            {
                 return !battleChara->StatusManager.HasStatus((uint)_combatData.CombatItemUse.Value);
-            }
         }
 
         return false;

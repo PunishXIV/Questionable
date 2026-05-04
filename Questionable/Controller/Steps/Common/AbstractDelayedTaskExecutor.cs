@@ -25,9 +25,7 @@ where T : class, ITask
     public override ETaskResult Update()
     {
         if (_continueAt >= DateTime.Now)
-        {
             return ETaskResult.StillRunning;
-        }
 
         return UpdateInternal();
     }

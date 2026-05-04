@@ -1,7 +1,7 @@
-﻿using Questionable.Model;
-using Questionable.Model.Questing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Questionable.Model;
+using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 internal sealed class BasicSequenceValidator : IQuestValidator
@@ -29,12 +29,10 @@ internal sealed class BasicSequenceValidator : IQuestValidator
 
         if (quest.Info is QuestInfo { CompletesInstantly: true })
         {
-            foreach(QuestSequence sequence in sequences)
+            foreach (QuestSequence sequence in sequences)
             {
                 if (sequence == foundStart)
-                {
                     continue;
-                }
 
                 yield return new()
                 {
@@ -53,22 +51,18 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 .Where(x => x != 255)
                 .Max();
 
-            for(int i = 0; i < maxSequence; i++)
+            for (int i = 0; i < maxSequence; i++)
             {
                 List<QuestSequence> foundSequences = sequences.Where(x => x.Sequence == i).ToList();
                 ValidationIssue? issue = ValidateSequences(quest, i, foundSequences);
                 if (issue != null)
-                {
                     yield return issue;
-                }
             }
 
             List<QuestSequence> foundEnding = sequences.Where(x => x.Sequence == 255).ToList();
             ValidationIssue? endingIssue = ValidateSequences(quest, 255, foundEnding);
             if (endingIssue != null)
-            {
                 yield return endingIssue;
-            }
         }
     }
 
@@ -99,8 +93,6 @@ internal sealed class BasicSequenceValidator : IQuestValidator
             };
         }
         else
-        {
             return null;
-        }
     }
 }

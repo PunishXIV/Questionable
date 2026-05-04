@@ -1,4 +1,8 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -18,10 +22,6 @@ using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Windows;
 
 internal sealed class QuestSelectionWindow : LWindow
@@ -94,9 +94,7 @@ internal sealed class QuestSelectionWindow : LWindow
                     .ToList();
             }
             else
-            {
                 _offeredQuests = [];
-            }
         }
         else
         {
@@ -118,13 +116,11 @@ internal sealed class QuestSelectionWindow : LWindow
             .Select(x => _questData.GetQuestInfo(x.Id))
             .ToList();
 
-        foreach(MarkerInfo unacceptedQuest in Map.Instance()->UnacceptedQuestMarkers)
+        foreach (MarkerInfo unacceptedQuest in Map.Instance()->UnacceptedQuestMarkers)
         {
             QuestId questId = QuestId.FromRowId(unacceptedQuest.ObjectiveId);
             if (_quests.All(q => q.QuestId != questId))
-            {
                 _quests.Add(_questData.GetQuestInfo(questId));
-            }
         }
 
         _offeredQuests = [];
@@ -140,9 +136,7 @@ internal sealed class QuestSelectionWindow : LWindow
     public override void DrawContent()
     {
         if (_offeredQuests.Count != 0)
-        {
             ImGui.Checkbox("Only show quests currently offered", ref _onlyAvailableQuests);
-        }
 
         using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
@@ -171,7 +165,7 @@ internal sealed class QuestSelectionWindow : LWindow
         ImGui.TableSetupColumn("Actions", ImGuiTableColumnFlags.WidthFixed, actionIconSize);
         ImGui.TableHeadersRow();
 
-        foreach(IQuestInfo quest in (_offeredQuests.Count != 0 && _onlyAvailableQuests) ? _offeredQuests : _quests)
+        foreach (IQuestInfo quest in (_offeredQuests.Count != 0 && _onlyAvailableQuests) ? _offeredQuests : _quests)
         {
             ImGui.TableNextRow();
 
@@ -191,19 +185,13 @@ internal sealed class QuestSelectionWindow : LWindow
                 using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     if (isKnownQuest)
-                    {
                         ImGui.TextColored(color, icon.ToIconString());
-                    }
                     else
-                    {
                         ImGui.TextColored(ImGuiColors.DalamudGrey, icon.ToIconString());
-                    }
                 }
 
                 if (ImGui.IsItemHovered())
-                {
                     _questTooltipComponent.Draw(quest);
-                }
             }
 
             if (ImGui.TableNextColumn())
@@ -226,17 +214,11 @@ internal sealed class QuestSelectionWindow : LWindow
 
                 bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
                 if (ImGui.IsItemHovered())
-                {
                     ImGui.SetTooltip("Copy as file name");
-                }
                 if (copy)
-                {
                     CopyToClipboard(quest, true);
-                }
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-                {
                     CopyToClipboard(quest, false);
-                }
 
                 ImGui.SameLine();
 
@@ -248,9 +230,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
                     bool startNextQuest = ImGuiComponents.IconButton(FontAwesomeIcon.Play);
                     if (ImGui.IsItemHovered())
-                    {
                         ImGui.SetTooltip("Start as next quest");
-                    }
                     if (startNextQuest)
                     {
                         _questController.SetNextQuest(knownQuest);
@@ -261,13 +241,9 @@ internal sealed class QuestSelectionWindow : LWindow
 
                     bool setNextQuest = ImGuiComponents.IconButton(FontAwesomeIcon.AngleDoubleRight);
                     if (ImGui.IsItemHovered())
-                    {
                         ImGui.SetTooltip("Set as next quest");
-                    }
                     if (setNextQuest)
-                    {
                         _questController.SetNextQuest(knownQuest);
-                    }
 
                     ImGui.EndDisabled();
                 }

@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.Gui.Toast;
+﻿using System;
+using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Windows;
-using System;
 namespace Questionable;
 
 internal sealed class DalamudInitializer : IDisposable
@@ -77,13 +77,9 @@ internal sealed class DalamudInitializer : IDisposable
         _toastGui.ErrorToast += OnErrorToast;
         _toastGui.QuestToast += OnQuestToast;
         if (_configuration.Advanced.StartMinimized)
-        {
             _questWindow.IsMinimized = true;
-        }
         if (_configuration.Advanced.ShowWindowOnStart)
-        {
             ToggleQuestWindow();
-        }
     }
 
     public void Dispose()
@@ -108,7 +104,7 @@ internal sealed class DalamudInitializer : IDisposable
         {
             _movementController.Update();
         }
-        catch(MovementController.PathfindingFailedException)
+        catch (MovementController.PathfindingFailedException)
         {
             _questController.Stop("Pathfinding failed");
         }
@@ -132,12 +128,8 @@ internal sealed class DalamudInitializer : IDisposable
     private void ToggleQuestWindow()
     {
         if (_configuration.IsPluginSetupComplete())
-        {
             _questWindow.ToggleOrUncollapse();
-        }
         else
-        {
             _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
-        }
     }
 }

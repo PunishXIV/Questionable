@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Dalamud.Configuration;
 using Dalamud.Game.Text;
 using ECommons.ExcelServices;
@@ -5,9 +8,6 @@ using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
 

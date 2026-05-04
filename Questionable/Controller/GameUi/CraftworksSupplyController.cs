@@ -1,11 +1,11 @@
-﻿using Dalamud.Game.Addon.Lifecycle;
+﻿using System;
+using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Utils;
-using System;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class CraftworksSupplyController : IDisposable
@@ -42,9 +42,7 @@ internal sealed class CraftworksSupplyController : IDisposable
     private unsafe void BankaCraftworksSupplyPostUpdate(AddonEvent type, AddonArgs args)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
         InteractWithBankaCraftworksSupply(addon);
@@ -53,9 +51,7 @@ internal sealed class CraftworksSupplyController : IDisposable
     private unsafe void InteractWithBankaCraftworksSupply()
     {
         if (_gameGui.TryGetAddonByName("BankaCraftworksSupply", out AtkUnitBase* addon))
-        {
             InteractWithBankaCraftworksSupply(addon);
-        }
     }
 
     private unsafe void InteractWithBankaCraftworksSupply(AtkUnitBase* addon)
@@ -64,12 +60,10 @@ internal sealed class CraftworksSupplyController : IDisposable
 
         uint completedCount = atkValues[7].UInt;
         uint missingCount = 6 - completedCount;
-        for(int slot = 0; slot < missingCount; ++slot)
+        for (int slot = 0; slot < missingCount; ++slot)
         {
             if (atkValues[31 + slot].UInt != 0)
-            {
                 continue;
-            }
 
             _logger.LogInformation("Selecting an item for slot {Slot}", slot);
             AtkValue* selectSlot = stackalloc AtkValue[]
@@ -93,21 +87,15 @@ internal sealed class CraftworksSupplyController : IDisposable
     private unsafe void ContextIconMenuPostReceiveEvent(AddonEvent type, AddonArgs args)
     {
         if (!ShouldHandleUiInteractions)
-        {
             return;
-        }
 
         AddonContextIconMenu* addonContextIconMenu = (AddonContextIconMenu*)args.Addon.Address;
         if (!addonContextIconMenu->IsVisible)
-        {
             return;
-        }
 
         ushort parentId = addonContextIconMenu->BlockedParentId;
         if (parentId == 0)
-        {
             return;
-        }
 
         AtkUnitBase* parentAddon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById(parentId);
         if (parentAddon->NameString is "BankaCraftworksSupply")
@@ -125,13 +113,9 @@ internal sealed class CraftworksSupplyController : IDisposable
             addonContextIconMenu->Close(true);
 
             if (parentAddon->NameString == "BankaCraftworksSupply")
-            {
                 _framework.RunOnTick(InteractWithBankaCraftworksSupply, TimeSpan.FromMilliseconds(50));
-            }
         }
         else
-        {
             _logger.LogTrace("Ignoring contextmenu event for {AddonName}", parentAddon->NameString);
-        }
     }
 }

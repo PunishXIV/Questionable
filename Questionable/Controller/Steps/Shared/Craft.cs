@@ -1,4 +1,7 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -10,9 +13,6 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 using Quest = Questionable.Model.Quest;
 
@@ -25,9 +25,7 @@ internal static class Craft
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Craft)
-            {
                 return [];
-            }
 
             ArgumentNullException.ThrowIfNull(step.ItemId);
             ArgumentNullException.ThrowIfNull(step.ItemCount);
@@ -84,17 +82,17 @@ internal static class Craft
                     questWork.ClassJob :
                     (Job)PlayerState.Instance()->CurrentClassJobId
                 ) switch
-                {
-                    Job.CRP => recipeLookup.Value.CRP.RowId,
-                    Job.BSM => recipeLookup.Value.BSM.RowId,
-                    Job.ARM => recipeLookup.Value.ARM.RowId,
-                    Job.GSM => recipeLookup.Value.GSM.RowId,
-                    Job.LTW => recipeLookup.Value.LTW.RowId,
-                    Job.WVR => recipeLookup.Value.WVR.RowId,
-                    Job.ALC => recipeLookup.Value.ALC.RowId,
-                    Job.CUL => recipeLookup.Value.CUL.RowId,
-                    var _ => 0
-                };
+            {
+                Job.CRP => recipeLookup.Value.CRP.RowId,
+                Job.BSM => recipeLookup.Value.BSM.RowId,
+                Job.ARM => recipeLookup.Value.ARM.RowId,
+                Job.GSM => recipeLookup.Value.GSM.RowId,
+                Job.LTW => recipeLookup.Value.LTW.RowId,
+                Job.WVR => recipeLookup.Value.WVR.RowId,
+                Job.ALC => recipeLookup.Value.ALC.RowId,
+                Job.CUL => recipeLookup.Value.CUL.RowId,
+                var _ => 0
+            };
 
             if (recipeId == 0)
             {
@@ -113,18 +111,14 @@ internal static class Craft
             }
 
             if (recipeId == 0)
-            {
                 throw new TaskException($"Unable to determine recipe for item {Task.ItemId}");
-            }
 
             int remainingItemCount = Task.ItemCount - _startingItemCount;
             logger.LogInformation(
                 "Starting craft for item {ItemId} with recipe {RecipeId} for {RemainingItemCount} items (quality: {Quality}, owned: {OwnedCount})",
                 Task.ItemId, recipeId, remainingItemCount, _itemQuality, _startingItemCount);
             if (!artisanIpc.CraftItem((ushort)recipeId, remainingItemCount))
-            {
                 throw new TaskException($"Failed to start Artisan craft for recipe {recipeId}");
-            }
 
             return true;
         }
@@ -151,9 +145,7 @@ internal static class Craft
                 {
                     uint addonId = agentRecipeNote->GetAddonId();
                     if (addonId == 0)
-                    {
                         return ETaskResult.StillRunning;
-                    }
 
                     AtkUnitBase* addon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById((ushort)addonId);
                     if (addon != null)
@@ -175,9 +167,7 @@ internal static class Craft
             {
                 QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
                 if (sequence?.Steps.Count > currentQuest.Step)
-                {
                     return sequence.Steps[currentQuest.Step].ItemQuality;
-                }
             }
             return EItemQuality.Any;
         }

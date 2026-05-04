@@ -1,13 +1,13 @@
-﻿using Dalamud.Plugin;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
-using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
 namespace Questionable.External;
 
 internal sealed class PandorasBoxIpc : IDisposable
@@ -71,7 +71,7 @@ internal sealed class PandorasBoxIpc : IDisposable
             {
                 return _getFeatureEnabled.InvokeFunc("Auto Active Time Maneuver") == true;
             }
-            catch(IpcError e)
+            catch (IpcError e)
             {
                 if (!_loggedIpcError)
                 {
@@ -95,25 +95,19 @@ internal sealed class PandorasBoxIpc : IDisposable
         bool hasActiveQuest = _questController.IsRunning ||
                               _questController.AutomationType != QuestController.EAutomationType.Manual;
         if (hasActiveQuest && !_territoryData.IsDutyInstance(_clientState.TerritoryType))
-        {
             DisableConflictingFeatures();
-        }
         else
-        {
             RestoreConflictingFeatures();
-        }
     }
 
     private void DisableConflictingFeatures()
     {
         if (_pausedFeatures != null)
-        {
             return;
-        }
 
         _pausedFeatures = [];
 
-        foreach(string feature in ConflictingFeatures)
+        foreach (string feature in ConflictingFeatures)
         {
             try
             {
@@ -125,7 +119,7 @@ internal sealed class PandorasBoxIpc : IDisposable
                     _logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
                 }
             }
-            catch(IpcError e)
+            catch (IpcError e)
             {
                 _logger.LogWarning(e, "Failed to pause Pandora's Box feature: {Feature}", feature);
             }
@@ -135,18 +129,16 @@ internal sealed class PandorasBoxIpc : IDisposable
     private void RestoreConflictingFeatures()
     {
         if (_pausedFeatures == null)
-        {
             return;
-        }
 
-        foreach(string feature in _pausedFeatures)
+        foreach (string feature in _pausedFeatures)
         {
             try
             {
                 _setFeatureEnabled.InvokeAction(feature, true);
                 _logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
             }
-            catch(IpcError e)
+            catch (IpcError e)
             {
                 _logger.LogWarning(e, "Failed to restore Pandora's Box feature: {Feature}", feature);
             }

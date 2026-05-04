@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -10,11 +15,6 @@ using Dalamud.Utility;
 using ECommons.ImGuiMethods;
 using Questionable.Controller;
 using Questionable.External;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class PluginConfigComponent
@@ -135,9 +135,7 @@ internal sealed class PluginConfigComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Dependencies###Plugins");
         if (!tab)
-        {
             return;
-        }
 
         Draw(out bool allRequiredInstalled);
 
@@ -146,9 +144,7 @@ internal sealed class PluginConfigComponent
         ImGui.Spacing();
 
         if (allRequiredInstalled)
-        {
             ImGui.TextColored(ImGuiColors.ParsedGreen, "All required plugins are installed.");
-        }
         else
         {
             ImGui.TextColored(ImGuiColors.DalamudRed,
@@ -169,10 +165,8 @@ internal sealed class PluginConfigComponent
         allRequiredInstalled = true;
         using (ImRaii.PushIndent())
         {
-            foreach(PluginInfo plugin in RequiredPlugins)
-            {
+            foreach (PluginInfo plugin in RequiredPlugins)
                 allRequiredInstalled &= DrawPlugin(plugin, checklistPadding);
-            }
         }
 
         ImGui.Spacing();
@@ -210,10 +204,8 @@ internal sealed class PluginConfigComponent
         ImGui.Text("The following plugins are recommended, but not required:");
         using (ImRaii.PushIndent())
         {
-            foreach(PluginInfo plugin in _recommendedPlugins)
-            {
+            foreach (PluginInfo plugin in _recommendedPlugins)
                 DrawPlugin(plugin, checklistPadding);
-            }
         }
     }
 
@@ -225,9 +217,7 @@ internal sealed class PluginConfigComponent
             bool isInstalled = installedPlugin != null;
             string label = plugin.DisplayName;
             if (installedPlugin != null)
-            {
                 label += $" v{installedPlugin.Version}";
-            }
 
             _uiUtils.ChecklistItem(label, isInstalled);
 
@@ -247,9 +237,7 @@ internal sealed class PluginConfigComponent
             bool isInstalled = installedPlugin != null;
             string label = plugin.DisplayName;
             if (installedPlugin != null)
-            {
                 label += $" v{installedPlugin.Version}";
-            }
 
             if (ImGui.RadioButton(label, _configuration.General.CombatModule == combatModule))
             {
@@ -277,14 +265,12 @@ internal sealed class PluginConfigComponent
         using (ImRaii.PushIndent(checklistPadding))
         {
             if (!string.IsNullOrEmpty(plugin.Details))
-            {
                 ImGui.TextUnformatted(plugin.Details);
-            }
 
             bool allDetailsOk = true;
             if (plugin.DetailsToCheck != null)
             {
-                foreach(PluginDetailInfo detail in plugin.DetailsToCheck)
+                foreach (PluginDetailInfo detail in plugin.DetailsToCheck)
                 {
                     bool detailOk = detail.Predicate();
                     allDetailsOk &= detailOk;
@@ -307,25 +293,19 @@ internal sealed class PluginConfigComponent
                 if (!allDetailsOk && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
                 {
                     if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Cog, "Open configuration"))
-                    {
                         _commandManager.ProcessCommand(plugin.ConfigCommand);
-                    }
                 }
             }
             else
             {
                 if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Globe, "Open Website"))
-                {
                     Util.OpenLink(plugin.WebsiteUri.ToString());
-                }
 
                 ImGui.SameLine();
                 if (plugin.DalamudRepositoryUri != null)
                 {
                     if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Code, "Open Repository"))
-                    {
                         Util.OpenLink(plugin.DalamudRepositoryUri.ToString());
-                    }
                 }
                 else
                 {

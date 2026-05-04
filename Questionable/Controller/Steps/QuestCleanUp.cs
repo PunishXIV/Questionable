@@ -1,4 +1,6 @@
-﻿using FFXIVClientStructs.FFXIV.Component.GUI;
+﻿using System.Collections.Generic;
+using System.Linq;
+using FFXIVClientStructs.FFXIV.Component.GUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
@@ -7,8 +9,6 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System.Collections.Generic;
-using System.Linq;
 namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp
@@ -18,9 +18,7 @@ internal static class QuestCleanUp
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (sequence.Sequence == 0)
-            {
                 return null;
-            }
 
             // if you are on a allied society mount
             if (gameFunctions.GetMountId() is { } mountId &&
@@ -80,14 +78,10 @@ internal static class QuestCleanUp
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (IsAddonOpen("GatheringMasterpiece"))
-            {
                 yield return new CloseGatheringAddonTask("GatheringMasterpiece");
-            }
 
             if (IsAddonOpen("Gathering"))
-            {
                 yield return new CloseGatheringAddonTask("Gathering");
-            }
         }
 
         private unsafe bool IsAddonOpen(string name)

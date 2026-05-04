@@ -25,7 +25,7 @@ internal sealed class AutomatonIpc
             {
                 return _isTweakEnabled.InvokeFunc("AutoSnipeQuests");
             }
-            catch(IpcError e)
+            catch (IpcError e)
             {
                 if (!_loggedIpcError)
                 {

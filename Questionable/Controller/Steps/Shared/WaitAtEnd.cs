@@ -1,4 +1,9 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
@@ -7,11 +12,6 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class WaitAtEnd
@@ -40,9 +40,7 @@ internal static class WaitAtEnd
             {
                 case EInteractionType.Combat:
                     if (step.EnemySpawnType == EEnemySpawnType.FinishCombatIfAny)
-                    {
                         return [Next(quest, sequence)];
-                    }
 
                     WaitCondition.Task notInCombat = new(() => !condition[ConditionFlag.InCombat], "Wait(not in combat)");
                     return
@@ -95,9 +93,7 @@ internal static class WaitAtEnd
                             {
                                 Vector3? currentPosition = objectTable[0]?.Position;
                                 if (currentPosition == null)
-                                {
                                     return false;
-                                }
 
                                 // interaction moved to elsewhere in the zone
                                 // the 'closest' locations are probably
@@ -115,32 +111,24 @@ internal static class WaitAtEnd
                     ];
 
                 case EInteractionType.AcceptQuest:
-                {
-                    WaitQuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
-                    WaitDelay delay = new();
-                    if (step.PickUpQuestId != null)
                     {
-                        return [accept, delay, Next(quest, sequence)];
+                        WaitQuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
+                        WaitDelay delay = new();
+                        if (step.PickUpQuestId != null)
+                            return [accept, delay, Next(quest, sequence)];
+                        else
+                            return [accept, delay];
                     }
-                    else
-                    {
-                        return [accept, delay];
-                    }
-                }
 
                 case EInteractionType.CompleteQuest:
-                {
-                    WaitQuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
-                    WaitDelay delay = new();
-                    if (step.TurnInQuestId != null)
                     {
-                        return [complete, delay, Next(quest, sequence)];
+                        WaitQuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
+                        WaitDelay delay = new();
+                        if (step.TurnInQuestId != null)
+                            return [complete, delay, Next(quest, sequence)];
+                        else
+                            return [complete, delay];
                     }
-                    else
-                    {
-                        return [complete, delay];
-                    }
-                }
 
                 case EInteractionType.Interact:
                 default:

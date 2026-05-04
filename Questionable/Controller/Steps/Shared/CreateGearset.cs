@@ -14,9 +14,7 @@ internal static class CreateGearset
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.CreateGearset)
-            {
                 return null;
-            }
 
             return new Task();
         }

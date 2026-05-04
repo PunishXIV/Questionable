@@ -1,9 +1,9 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Collections.Generic;
-using System.Linq;
 namespace Questionable.Data;
 
 internal sealed class JournalData

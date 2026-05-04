@@ -1,14 +1,14 @@
-﻿using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using ECommons.ExcelServices;
-using Lumina.Excel.Sheets;
-using Questionable.Model;
-using Questionable.Model.Questing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Lumina.Excel.Sheets;
+using Questionable.Model;
+using Questionable.Model.Questing;
 using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.Data;
@@ -101,13 +101,11 @@ internal sealed class QuestData
                 .ToDictionary(x => x.Quest.RowId, x => x.Redo.RowId);
 
         Dictionary<uint, byte> startingCities = [];
-        for(byte redoChapter = 1; redoChapter <= 3; ++redoChapter)
+        for (byte redoChapter = 1; redoChapter <= 3; ++redoChapter)
         {
             QuestRedo questRedo = dataManager.GetExcelSheet<QuestRedo>().GetRow(redoChapter);
-            foreach(QuestRedo.QuestRedoParamStruct quest in questRedo.QuestRedoParam.Where(x => x.Quest.IsValid))
-            {
+            foreach (QuestRedo.QuestRedoParamStruct quest in questRedo.QuestRedoParam.Where(x => x.Quest.IsValid))
                 startingCities[quest.Quest.RowId] = redoChapter;
-            }
         }
 
         List<IQuestInfo> quests =
@@ -139,9 +137,7 @@ internal sealed class QuestData
                             .Select(rank => new AlliedSocietyDailyInfo(x, rank, classJobUtils));
                     }
                     else
-                    {
                         return [new(x, 0, classJobUtils)];
-                    }
                 }));
 
         quests.Add(new UnlockLinkQuestInfo(new(506), "Patch 7.2 Fantasia", 1052475));
@@ -262,24 +258,18 @@ internal sealed class QuestData
         // unclear if 470 can be started as the required quest isn't available anymore
         ushort[] limsaSideQuests =
             [107, 111, 112, 122, 663, 475, 472, 476, 470, 473, 474, 477, 486, 478, 479, 59, 400, 401, 693, 405];
-        foreach(ushort questId in limsaSideQuests)
-        {
+        foreach (ushort questId in limsaSideQuests)
             ((QuestInfo)_quests[new QuestId(questId)]).StartingCity = 1;
-        }
 
         ushort[] gridaniaQuests =
             [39, 1, 32, 34, 37, 172, 127, 130, 60, 220, 378];
-        foreach(ushort questId in gridaniaQuests)
-        {
+        foreach (ushort questId in gridaniaQuests)
             ((QuestInfo)_quests[new QuestId(questId)]).StartingCity = 2;
-        }
 
         ushort[] uldahSideQuests =
             [594, 389, 390, 321, 304, 322, 388, 308, 326, 58, 687, 341, 504, 531, 506, 530, 573, 342, 505];
-        foreach(ushort questId in uldahSideQuests)
-        {
+        foreach (ushort questId in uldahSideQuests)
             ((QuestInfo)_quests[new QuestId(questId)]).StartingCity = 3;
-        }
 
         // follow-up quests to picking a GC
         AddGcFollowUpQuests();
@@ -308,15 +298,13 @@ internal sealed class QuestData
     private void AddPreviousQuest(QuestId questToUpdate, QuestId requiredQuestId)
     {
         if (_quests.TryGetValue(questToUpdate, out IQuestInfo? quest) && quest is QuestInfo questInfo)
-        {
             questInfo.AddPreviousQuest(new(requiredQuestId));
-        }
     }
 
     private void AddGcFollowUpQuests()
     {
         QuestId[] questIds = [new(683), new(684), new(685)];
-        foreach(QuestId questId in questIds)
+        foreach (QuestId questId in questIds)
         {
             QuestInfo quest = (QuestInfo)_quests[questId];
             quest.AddQuestLocks(EQuestJoin.AtLeastOne, questIds.Where(x => x != questId).ToArray());
@@ -424,9 +412,7 @@ internal sealed class QuestData
         };
 
         if (includeRoleQuests)
-        {
             chapterIds.AddRange(GetRoleQuestIds(classJob));
-        }
 
         return GetQuestsInNewGamePlusChapters(chapterIds);
     }
@@ -471,19 +457,13 @@ internal sealed class QuestData
         {
             PlayerState* playerState = PlayerState.Instance();
             if (playerState != null)
-            {
                 startingClass = (Job)playerState->FirstClass;
-            }
             else
-            {
                 startingClass = Job.ADV;
-            }
         }
 
         if (startingClass == Job.ADV)
-        {
             return [];
-        }
 
         // If you start the game as another class, you get:
         // - "So you want to be a XX"

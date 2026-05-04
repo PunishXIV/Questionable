@@ -1,4 +1,6 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Common;
@@ -10,8 +12,6 @@ using Questionable.Functions;
 using Questionable.Gear;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Duty
@@ -21,9 +21,7 @@ internal static class Duty
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Duty)
-            {
                 yield break;
-            }
 
             ArgumentNullException.ThrowIfNull(step.DutyOptions);
 
@@ -36,16 +34,12 @@ internal static class Duty
                 yield return new WaitAutoDutyTask(step.DutyOptions.ContentFinderConditionId);
 
                 if (!QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
-                {
                     yield return new WaitAtEnd.WaitNextStepOrSequence();
-                }
             }
             else
             {
                 if (!step.DutyOptions.LowPriority)
-                {
                     yield return new OpenDutyFinderTask(step.DutyOptions.ContentFinderConditionId);
-                }
             }
         }
     }
@@ -105,15 +99,11 @@ internal static class Duty
             {
                 InventoryManager* inventoryManager = InventoryManager.Instance();
                 if (inventoryManager == null)
-                {
                     throw new TaskException("Inventory unavailable");
-                }
 
                 InventoryContainer* equippedItems = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
                 if (equippedItems == null)
-                {
                     throw new TaskException("Equipped items unavailable");
-                }
 
                 short currentItemLevel = gearStatsCalculator.CalculateAverageItemLevel(equippedItems);
                 if (cfcData.RequiredItemLevel > currentItemLevel)
@@ -121,9 +111,7 @@ internal static class Duty
                     string errorText =
                         $"Could not use AutoDuty to queue for {cfcData.Name}, required item level: {cfcData.RequiredItemLevel}, current item level: {currentItemLevel}.";
                     if (!sendNotificationExecutor.Start(new SendNotification.Task(EInteractionType.Duty, errorText)))
-                    {
                         chatGui.PrintError(errorText, CommandHandler.MessageTag, CommandHandler.TagColor);
-                    }
 
                     return false;
                 }
@@ -192,9 +180,7 @@ internal static class Duty
         protected override bool Start()
         {
             if (condition[ConditionFlag.InDutyQueue])
-            {
                 return false;
-            }
 
             gameFunctions.OpenDutyFinder(Task.ContentFinderConditionId);
             return true;

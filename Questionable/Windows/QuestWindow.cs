@@ -1,4 +1,5 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
@@ -9,7 +10,6 @@ using Questionable.Controller.GameUi;
 using Questionable.Data;
 using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
-using System;
 namespace Questionable.Windows;
 
 internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
@@ -135,19 +135,13 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     public override bool DrawConditions()
     {
         if (!_configuration.IsPluginSetupComplete())
-        {
             return false;
-        }
 
         if (!_clientState.IsLoggedIn || _objectTable[0] == null || _clientState.IsPvPExcludingDen)
-        {
             return false;
-        }
 
         if (_configuration.General.HideInAllInstances && _territoryData.IsDutyInstance(_clientState.TerritoryType))
-        {
             return false;
-        }
 
         return true;
     }
@@ -199,7 +193,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 _remainingTasksComponent.Draw();
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             ImGui.TextColored(ImGuiColors.DalamudRed, e.ToString());
         }

@@ -1,11 +1,11 @@
-﻿using ECommons.ExcelServices;
+﻿using System.Linq;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Linq;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SwitchClassJob
@@ -15,9 +15,7 @@ internal static class SwitchClassJob
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.SwitchClass)
-            {
                 return null;
-            }
 
             Job classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
             return new Task(classJob);
@@ -37,14 +35,12 @@ internal static class SwitchClassJob
         protected override unsafe bool StartInternal()
         {
             if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
-            {
                 return false;
-            }
 
             RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule != null)
             {
-                for(int i = 0; i < 100; ++i)
+                for (int i = 0; i < 100; ++i)
                 {
                     RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
                     if (gearset->ClassJob == (byte)Task.ClassJob)

@@ -1,11 +1,11 @@
-using Dalamud.Plugin.Services;
-using Lumina.Excel;
-using Lumina.Text.Payloads;
-using Lumina.Text.ReadOnly;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Dalamud.Plugin.Services;
+using Lumina.Excel;
+using Lumina.Text.Payloads;
+using Lumina.Text.ReadOnly;
 namespace Questionable.Data;
 
 public static class DataManagerExtensions
@@ -18,9 +18,7 @@ public static class DataManagerExtensions
 
         T? row = dataManager.GetExcelSheet<T>().GetRowOrDefault(rowId);
         if (row == null)
-        {
             return null;
-        }
 
         return mapper(row.Value);
     }
@@ -41,9 +39,7 @@ public static class DataManagerExtensions
     {
         ReadOnlySeString? text = dataManager.GetSeString(rowId, mapper);
         if (text == null)
-        {
             return null;
-        }
 
         Regex regex = text.ToRegex();
         pluginLog?.Verbose($"{typeof(T).Name}.{rowId} => /{regex}/");
@@ -56,13 +52,9 @@ public static class DataManagerExtensions
         return new(string.Join("", text.Value.Select(payload =>
         {
             if (payload.Type == ReadOnlySePayloadType.Text)
-            {
                 return Regex.Escape(payload.ToString());
-            }
             else
-            {
                 return "(.*)";
-            }
         })));
     }
 

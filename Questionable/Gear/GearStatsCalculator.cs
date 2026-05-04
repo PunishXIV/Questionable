@@ -1,11 +1,11 @@
-using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Lumina.Excel;
-using Lumina.Excel.Sheets;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Client.Game;
+using Lumina.Excel;
+using Lumina.Excel.Sheets;
 namespace Questionable.Gear;
 
 public sealed class GearStatsCalculator
@@ -38,7 +38,7 @@ public sealed class GearStatsCalculator
 
         _itemSheet = itemSheet;
 
-        foreach(ItemLevel itemLevel in itemLevelSheet)
+        foreach (ItemLevel itemLevel in itemLevelSheet)
         {
             _itemLevelStatCaps[(itemLevel.RowId, EBaseParam.Strength)] = itemLevel.Strength;
             _itemLevelStatCaps[(itemLevel.RowId, EBaseParam.Dexterity)] = itemLevel.Dexterity;
@@ -85,7 +85,7 @@ public sealed class GearStatsCalculator
         byte materiaCount = 0;
         if (item->ItemId != EternityRingItemId)
         {
-            for(int i = 0; i < 5; ++i)
+            for (int i = 0; i < 5; ++i)
             {
                 ushort materia = item->Materia[i];
                 if (materia != 0)
@@ -108,25 +108,23 @@ public sealed class GearStatsCalculator
         ArgumentNullException.ThrowIfNull(materias);
 
         Dictionary<EBaseParam, StatInfo> result = [];
-        for(int i = 0; i < item.BaseParam.Count; ++i)
+        for (int i = 0; i < item.BaseParam.Count; ++i)
         {
             AddEquipmentStat(result, item.BaseParam[i], item.BaseParamValue[i]);
         }
 
         if (highQuality)
         {
-            for(int i = 0; i < item.BaseParamSpecial.Count; ++i)
+            for (int i = 0; i < item.BaseParamSpecial.Count; ++i)
             {
                 AddEquipmentStat(result, item.BaseParamSpecial[i], item.BaseParamValueSpecial[i]);
             }
         }
 
-        foreach((uint MateriaId, byte Grade) materia in materias)
+        foreach ((uint MateriaId, byte Grade) materia in materias)
         {
             if (_materiaStats.TryGetValue(materia.MateriaId, out MateriaInfo? materiaStat))
-            {
                 AddMateriaStat(item, result, materiaStat, materia.Grade);
-            }
         }
 
         return new(result, 0);
@@ -136,9 +134,7 @@ public sealed class GearStatsCalculator
         short value)
     {
         if (baseParam.RowId == 0)
-        {
             return;
-        }
 
         if (result.TryGetValue((EBaseParam)baseParam.RowId, out StatInfo? statInfo))
         {
@@ -156,9 +152,7 @@ public sealed class GearStatsCalculator
         short grade)
     {
         if (!result.TryGetValue(materiaInfo.BaseParam, out StatInfo? statInfo))
-        {
             result[materiaInfo.BaseParam] = statInfo = new(0, 0, false);
-        }
 
         if (materiaInfo.HasItem)
         {
@@ -197,40 +191,30 @@ public sealed class GearStatsCalculator
                 MidpointRounding.AwayFromZero);
         }
         else
-        {
             return 0;
-        }
     }
 
     public unsafe short CalculateAverageItemLevel(InventoryContainer* container)
     {
         uint sum = 0U;
         int calculatedSlots = 12;
-        for(int i = 0; i < 13; i++)
+        for (int i = 0; i < 13; i++)
         {
             if (i == 5)
-            {
                 continue;
-            }
 
             InventoryItem* inventoryItem = container->GetInventorySlot(i);
             if (inventoryItem == null || inventoryItem->ItemId == 0)
-            {
                 continue;
-            }
 
             Item? item = _itemSheet.GetRowOrDefault(inventoryItem->ItemId);
             if (item == null)
-            {
                 continue;
-            }
 
             if (item.Value.ItemUICategory.RowId == 105)
             {
                 if (i == 0)
-                {
                     calculatedSlots -= 1;
-                }
                 calculatedSlots -= 1;
                 continue;
             }

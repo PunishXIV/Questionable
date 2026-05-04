@@ -1,13 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
 using Questionable.Data;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 namespace Questionable.External;
 
 internal sealed class BossModIpc
@@ -47,7 +47,7 @@ internal sealed class BossModIpc
         {
             return _getPreset.HasFunction;
         }
-        catch(IpcError)
+        catch (IpcError)
         {
             return false;
         }
@@ -57,9 +57,7 @@ internal sealed class BossModIpc
     {
         PresetDefinition definition = PresetDefinitions[preset];
         if (_getPreset.InvokeFunc(definition.Name) == null)
-        {
             _createPreset.InvokeFunc(definition.Content, true);
-        }
 
         _setPreset.InvokeFunc(definition.Name);
     }
@@ -88,14 +86,10 @@ internal sealed class BossModIpc
     public bool IsConfiguredToRunSoloInstance(ElementId questId, SinglePlayerDutyOptions? dutyOptions)
     {
         if (!IsSupported())
-        {
             return false;
-        }
 
         if (!_configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod)
-        {
             return false;
-        }
 
         if (questId.Value.Equals(5325)) // Valentiones 2026
         {
@@ -104,9 +98,7 @@ internal sealed class BossModIpc
 
         dutyOptions ??= new();
         if (!_territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out TerritoryData.ContentFinderConditionData? cfcData))
-        {
             return false;
-        }
 
         if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData
             .ContentFinderConditionId))

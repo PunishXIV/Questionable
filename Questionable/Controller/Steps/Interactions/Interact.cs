@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
@@ -14,9 +17,6 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
@@ -32,63 +32,43 @@ internal static class Interact
             {
                 // 'PreventQuestCompletion' config check
                 if (step.InteractionType is EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion)
-                {
                     yield break;
-                }
 
                 if (step.Emote != null)
-                {
                     yield break;
-                }
 
                 if (step.ChatMessage != null)
-                {
                     yield break;
-                }
 
                 if (step.ItemId != null)
-                {
                     yield break;
-                }
 
                 if (step.DataId == null)
-                {
                     yield break;
-                }
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
             {
                 if (step.DataId == null)
-                {
                     yield break;
-                }
             }
             else if (step.InteractionType == EInteractionType.Snipe)
             {
                 if (!automatonIpc.IsAutoSnipeEnabled)
-                {
                     yield break;
-                }
             }
             else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
             {
                 if (step.TaxiStandId == null)
-                {
                     yield break;
-                }
             }
             else if (step.InteractionType != EInteractionType.Interact)
-            {
                 yield break;
-            }
 
             ArgumentNullException.ThrowIfNull(step.DataId);
 
             // if we're fast enough, it is possible to get the smalltalk prompt
             if (sequence.Sequence == 0 && sequence.Steps.IndexOf(step) == 0)
-            {
                 yield return new WaitAtEnd.WaitDelay();
-            }
 
             yield return new Task(
                 step.DataId.Value,
@@ -163,9 +143,7 @@ internal static class Interact
         {
             logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
             if (DateTime.Now <= _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (_needsUnmount)
             {
@@ -177,14 +155,10 @@ internal static class Interact
                     return ETaskResult.StillRunning;
                 }
                 else
-                {
                     _needsUnmount = false;
-                }
             }
             else
-            {
                 logger.LogDebug("Does not need unmount");
-            }
 
             if (Task.PickUpItemId is { } pickUpItemId)
             {
@@ -193,9 +167,7 @@ internal static class Interact
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     if (inventoryManager->GetInventoryItemCount(pickUpItemId) > 0)
-                    {
                         return ETaskResult.TaskComplete;
-                    }
                 }
             }
             else if (Task.TaxiStandId is { } taxiStandId)
@@ -205,39 +177,29 @@ internal static class Interact
                 {
                     UIState* uiState = UIState.Instance();
                     if (uiState->IsChocoboTaxiStandUnlocked(taxiStandId))
-                    {
                         return ETaskResult.TaskComplete;
-                    }
                 }
             }
             else if (InteractionType == EInteractionType.Gather && condition[ConditionFlag.Gathering])
-            {
                 return ETaskResult.TaskComplete;
-            }
             else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
             {
                 logger.LogDebug("Checking QW");
                 QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Quest.Id);
 
                 if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
-                {
                     return ETaskResult.TaskComplete;
-                }
             }
             else if (ProgressContext != null)
             {
                 logger.LogDebug("Entered ProgressContext");
                 if (ProgressContext.WasInterrupted())
-                {
                     return ETaskResult.StillRunning;
-                }
                 else if (ProgressContext.WasSuccessful() ||
                          _interactionState == EInteractionState.InteractionConfirmed)
                 {
                     if (delayedFinalCheck)
-                    {
                         return ETaskResult.TaskComplete;
-                    }
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     delayedFinalCheck = true;
@@ -245,9 +207,7 @@ internal static class Interact
                 }
             }
             else
-            {
                 logger.LogDebug("Conditions block passed");
-            }
 
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
             //if (gameObject == null || !gameObject.IsTargetable || !HasAnyMarker(gameObject))
@@ -272,9 +232,7 @@ internal static class Interact
                 return ETaskResult.StillRunning;
             }
             else
-            {
                 logger.LogDebug("Does not need facing");
-            }
 
             if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
             {
@@ -283,27 +241,17 @@ internal static class Interact
                 if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
                 {
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
-                    {
                         acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
-                    }
                     else if (acceptableJobs[0].IsCrafter())
-                    {
                         acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
-                    }
                     else if (acceptableJobs[0].IsGatherer())
-                    {
                         acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
-                    }
                     if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
                     {
                         if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())
-                        {
                             acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
-                        }
                         else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
-                        {
                             acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
-                        }
                     }
                     logger.LogInformation($"Current ClassJob {playerJob} not valid for {Task.Quest.Id}, attempting to switch");
                     unsafe
@@ -312,7 +260,7 @@ internal static class Interact
                         RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
                         if (gearsetModule != null)
                         {
-                            for(int i = 0; i < 100; ++i)
+                            for (int i = 0; i < 100; ++i)
                             {
                                 RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
                                 if (acceptableJobs[0].Equals((Job)gearset->ClassJob))
@@ -333,14 +281,10 @@ internal static class Interact
                 }
             }
             else
-            {
                 logger.LogDebug("is not AcceptQuest");
-            }
 
             if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
-            {
                 return ETaskResult.StillRunning;
-            }
 
             TriggerInteraction(gameObject);
             return ETaskResult.StillRunning;
@@ -349,9 +293,7 @@ internal static class Interact
         public void OnConditionChange(ConditionFlag flag, bool value)
         {
             if (ProgressContext != null && (ProgressContext.WasInterrupted() || ProgressContext.WasSuccessful()))
-            {
                 return;
-            }
 
             logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
             if (_interactionState == EInteractionState.InteractionTriggered &&
@@ -407,13 +349,9 @@ internal static class Interact
                 InteractionProgressContext.FromActionUseOrDefault(() =>
                 {
                     if (gameFunctions.InteractWith(gameObject))
-                    {
                         _interactionState = EInteractionState.InteractionTriggered;
-                    }
                     else
-                    {
                         _interactionState = EInteractionState.None;
-                    }
                     return _interactionState != EInteractionState.None;
                 });
             _continueAt = DateTime.Now.AddSeconds(0.5);
@@ -422,9 +360,7 @@ internal static class Interact
         private unsafe bool HasAnyMarker(IGameObject gameObject)
         {
             if (Task.SkipMarkerCheck || gameObject.ObjectKind != ObjectKind.EventNpc)
-            {
                 return true;
-            }
 
             GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
             return gameObjectStruct->NamePlateIconId != 0;

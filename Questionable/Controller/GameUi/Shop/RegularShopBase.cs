@@ -1,3 +1,6 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.NativeWrapper;
@@ -5,9 +8,6 @@ using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Controller.GameUi.Shop.Model;
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Numerics;
 namespace Questionable.Controller.GameUi.Shop;
 
 [SuppressMessage("ReSharper", "ClassCanBeSealed.Global")]
@@ -54,9 +54,7 @@ public class RegularShopBase
         _parentWindow.UpdateShopStock((AtkUnitBase*)args.Addon.Address);
         PostUpdateShopStock();
         if (ItemForSale != null)
-        {
             _parentWindow.IsOpen = true;
-        }
     }
 
     private void ShopPreFinalize(AddonEvent type, AddonArgs args)
@@ -88,16 +86,12 @@ public class RegularShopBase
             x += (short)width;
 
             if (_parentWindow.Position is { } position && ((short)position.X != x || (short)position.Y != y))
-            {
                 _parentWindow.Position = new Vector2(x, y);
-            }
 
             _parentWindow.IsOpen = true;
         }
         else
-        {
             _parentWindow.IsOpen = false;
-        }
     }
 
     private void PostUpdateShopStock()
@@ -122,9 +116,7 @@ public class RegularShopBase
     public int GetMaxItemsToPurchase()
     {
         if (ItemForSale == null)
-        {
             return 0;
-        }
 
         int currency = _parentWindow.GetCurrencyCount();
         return (int)(currency / ItemForSale!.Price);
@@ -145,9 +137,7 @@ public class RegularShopBase
     public unsafe void HandleNextPurchaseStep()
     {
         if (ItemForSale == null || PurchaseState == null)
-        {
             return;
-        }
 
         int maxStackSize = DetermineMaxStackSize(ItemForSale.ItemId);
         if (maxStackSize == 0 && !HasFreeInventorySlot())
@@ -199,21 +189,17 @@ public class RegularShopBase
     {
         InventoryManager* inventoryManger = InventoryManager.Instance();
         if (inventoryManger == null)
-        {
             return 0;
-        }
 
         int count = 0;
-        for(InventoryType t = InventoryType.Inventory1; t <= InventoryType.Inventory4; ++t)
+        for (InventoryType t = InventoryType.Inventory1; t <= InventoryType.Inventory4; ++t)
         {
             InventoryContainer* container = inventoryManger->GetInventoryContainer(t);
-            for(int i = 0; i < container->Size; ++i)
+            for (int i = 0; i < container->Size; ++i)
             {
                 InventoryItem* item = container->GetInventorySlot(i);
                 if (item == null || item->ItemId == 0)
-                {
                     ++count;
-                }
             }
         }
 
@@ -224,29 +210,23 @@ public class RegularShopBase
     {
         InventoryManager* inventoryManger = InventoryManager.Instance();
         if (inventoryManger == null)
-        {
             return 0;
-        }
 
         int max = 0;
-        for(InventoryType t = InventoryType.Inventory1; t <= InventoryType.Inventory4; ++t)
+        for (InventoryType t = InventoryType.Inventory1; t <= InventoryType.Inventory4; ++t)
         {
             InventoryContainer* container = inventoryManger->GetInventoryContainer(t);
-            for(int i = 0; i < container->Size; ++i)
+            for (int i = 0; i < container->Size; ++i)
             {
                 InventoryItem* item = container->GetInventorySlot(i);
                 if (item == null || item->ItemId == 0)
-                {
                     return 99;
-                }
 
                 if (item->ItemId == itemId)
                 {
                     max += (999 - item->Quantity);
                     if (max >= 99)
-                    {
                         break;
-                    }
                 }
             }
         }
@@ -260,26 +240,20 @@ public class RegularShopBase
 
         InventoryManager* inventoryManager = InventoryManager.Instance();
         if (inventoryManager == null)
-        {
             return 0;
-        }
 
         int count = 0;
-        for(InventoryType t = InventoryType.Inventory1; t <= InventoryType.Inventory4; ++t)
+        for (InventoryType t = InventoryType.Inventory1; t <= InventoryType.Inventory4; ++t)
         {
             InventoryContainer* container = inventoryManager->GetInventoryContainer(t);
-            for(int i = 0; i < container->Size; ++i)
+            for (int i = 0; i < container->Size; ++i)
             {
                 InventoryItem* item = container->GetInventorySlot(i);
                 if (item == null || item->ItemId == 0)
-                {
                     continue;
-                }
 
                 if (item->ItemId == itemId && predicate(item->Quantity))
-                {
                     ++count;
-                }
             }
         }
 

@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
@@ -6,9 +9,6 @@ using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Action
@@ -18,21 +18,15 @@ internal static class Action
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Action)
-            {
                 return [];
-            }
 
             ArgumentNullException.ThrowIfNull(step.Action);
 
             ITask task = OnObject(step.DataId, quest, step.Action.Value, step.CompletionQuestVariablesFlags);
             if (step.Action.Value.RequiresMount())
-            {
                 return [task];
-            }
             else
-            {
                 return [new Mount.UnmountTask(), task];
-            }
         }
 
         public static ITask OnObject(uint? dataId, Quest quest, EAction action, List<QuestWorkValue?>? completionQuestVariablesFlags)
@@ -43,9 +37,7 @@ internal static class Action
                 return new UseMudraOnObject(dataId.Value, action);
             }
             else
-            {
                 return new UseOnObject(dataId, quest, action, completionQuestVariablesFlags);
-            }
         }
     }
 
@@ -120,9 +112,7 @@ internal static class Action
         public override ETaskResult Update()
         {
             if (DateTime.Now <= _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (!_usedAction)
             {
@@ -130,9 +120,7 @@ internal static class Action
                 {
                     IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId.Value);
                     if (gameObject == null || !gameObject.IsTargetable)
-                    {
                         return ETaskResult.StillRunning;
-                    }
 
                     _usedAction = gameFunctions.UseAction(gameObject, Task.Action);
                     _continueAt = DateTime.Now.AddSeconds(0.5);
@@ -201,9 +189,7 @@ internal static class Action
         public override unsafe ETaskResult Update()
         {
             if (DateTime.Now < _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             EAction adjustedNinjutsuId = (EAction)ActionManager.Instance()->GetAdjustedActionId((uint)EAction.Ninjutsu);
             if (adjustedNinjutsuId == EAction.RabbitMedium)
@@ -214,9 +200,7 @@ internal static class Action
 
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
             if (gameObject == null || !gameObject.IsTargetable)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (adjustedNinjutsuId == Task.Action)
             {
@@ -263,9 +247,7 @@ internal static class Action
         protected override bool Start()
         {
             if (gameFunctions.HasStatus(Task.Status))
-            {
                 return false;
-            }
 
             gameFunctions.UseAction(Task.Action);
             return true;

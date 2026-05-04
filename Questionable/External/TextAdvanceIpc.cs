@@ -1,9 +1,9 @@
-﻿using Dalamud.Plugin;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
-using System;
-using System.Diagnostics.CodeAnalysis;
 namespace Questionable.External;
 
 internal sealed class TextAdvanceIpc : IDisposable
@@ -36,9 +36,7 @@ internal sealed class TextAdvanceIpc : IDisposable
     {
         _framework.Update -= OnUpdate;
         if (_isExternalControlActivated)
-        {
             _disableExternalControl.InvokeFunc(_pluginName);
-        }
     }
 
     private void OnUpdate(IFramework framework)
@@ -61,9 +59,7 @@ internal sealed class TextAdvanceIpc : IDisposable
             if (_isExternalControlActivated)
             {
                 if (_disableExternalControl.InvokeFunc(_pluginName) || !_isInExternalControl.InvokeFunc())
-                {
                     _isExternalControlActivated = false;
-                }
             }
         }
     }

@@ -35,8 +35,6 @@ internal sealed class ReportWarningComponent(Configuration configuration)
         }
         ImGui.SameLine();
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", ImGuiColors.ParsedGreen))
-        {
             _configuration.General.DismissedReportWarning = true;
-        }
     }
 }

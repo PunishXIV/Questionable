@@ -1,7 +1,7 @@
-using Dalamud.Plugin.Services;
-using Questionable.Model.Questing;
 using System;
 using System.Numerics;
+using Dalamud.Plugin.Services;
+using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable objectTable)

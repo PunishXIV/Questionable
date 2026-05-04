@@ -1,6 +1,6 @@
-﻿using Questionable.Model.Questing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Questionable.Model.Questing;
 namespace Questionable.Model;
 
 internal sealed class Quest
@@ -29,9 +29,9 @@ internal sealed class Quest
 
     public IEnumerable<(QuestSequence Sequence, int StepId, QuestStep Step)> AllSteps()
     {
-        foreach(QuestSequence sequence in Root.QuestSequence)
+        foreach (QuestSequence sequence in Root.QuestSequence)
         {
-            for(int i = 0; i < sequence.Steps.Count; ++i)
+            for (int i = 0; i < sequence.Steps.Count; ++i)
             {
                 QuestStep step = sequence.Steps[i];
                 yield return (sequence, i, step);

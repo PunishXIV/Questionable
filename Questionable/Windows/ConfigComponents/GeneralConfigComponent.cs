@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
@@ -9,9 +12,6 @@ using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 
 namespace Questionable.Windows.ConfigComponents;
@@ -89,9 +89,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("General###General");
         if (!tab)
-        {
             return;
-        }
 
 
         Configuration.ECombatModule combatModule = Configuration.General.CombatModule;
@@ -286,12 +284,10 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
                     ImGui.Separator();
                     ImGui.Text("This affects the following dungeons and raids:");
-                    foreach((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityContentFinderConditionQuests)
+                    foreach ((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityContentFinderConditionQuests)
                     {
                         if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.ContentFinderConditionId, out TerritoryData.ContentFinderConditionData? cfcData))
-                        {
                             ImGui.BulletText($"{cfcData.Name}");
-                        }
                     }
                 }
             }

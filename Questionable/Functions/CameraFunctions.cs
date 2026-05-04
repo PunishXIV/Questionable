@@ -1,13 +1,13 @@
 ﻿//Taken and adapted from https://github.com/awgil/ffxiv_navmesh/blob/master/vnavmesh/Movement/OverrideCamera.cs.
 
+using System;
+using System.Numerics;
 using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
 using Dalamud.Utility.Signatures;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Numerics;
 namespace Questionable.Functions;
 
 internal sealed unsafe class CameraFunctions : IDisposable
@@ -34,13 +34,9 @@ internal sealed unsafe class CameraFunctions : IDisposable
         set
         {
             if (value)
-            {
                 _rmiCameraHook.Enable();
-            }
             else
-            {
                 _rmiCameraHook.Disable();
-            }
         }
     }
 
@@ -57,11 +53,11 @@ internal sealed unsafe class CameraFunctions : IDisposable
     // from https://github.com/NightmareXIV/ECommons/blob/master/ECommons/MathHelpers/Angle.cs
     private static float Normalized(float r)
     {
-        while(r < -MathF.PI)
+        while (r < -MathF.PI)
         {
             r += 2 * MathF.PI;
         }
-        while(r > MathF.PI)
+        while (r > MathF.PI)
         {
             r -= 2 * MathF.PI;
         }
@@ -74,9 +70,7 @@ internal sealed unsafe class CameraFunctions : IDisposable
         _logger.LogDebug("Facing " + pos);
         Enabled = true;
         if (_objectTable[0] == null)
-        {
             return;
-        }
         Vector3 diff = pos - _objectTable[0]!.Position;
         DesiredAzimuth = MathF.Atan2(diff.X, diff.Z) + Deg2Rad(180);
         DesiredAltitude = Deg2Rad(-30);

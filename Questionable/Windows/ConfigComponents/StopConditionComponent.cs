@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
@@ -11,10 +15,6 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class StopConditionComponent : ConfigComponent
@@ -60,9 +60,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Stop###StopConditionns");
         if (!tab)
-        {
             return;
-        }
 
         bool enabled = Configuration.Stop.Enabled;
         if (ImGui.Checkbox("Stop Questionable when any of the conditions below are met", ref enabled))
@@ -130,22 +128,18 @@ internal sealed class StopConditionComponent : ConfigComponent
                 }
 
                 if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                {
                     ImGui.SetTooltip("Hold CTRL to enable this button.");
-                }
 
                 ImGui.Separator();
             }
 
             Quest? itemToRemove = null;
-            for(int i = 0; i < questsToStopAfter.Count; i++)
+            for (int i = 0; i < questsToStopAfter.Count; i++)
             {
                 ElementId questId = questsToStopAfter[i];
 
                 if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
-                {
                     continue;
-                }
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
@@ -164,9 +158,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                     hovered |= ImGui.IsItemHovered();
 
                     if (hovered)
-                    {
                         _questTooltipComponent.Draw(quest.Info);
-                    }
 
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
@@ -177,9 +169,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                     }
 
                     if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
-                    {
                         itemToRemove = quest;
-                    }
                 }
             }
 

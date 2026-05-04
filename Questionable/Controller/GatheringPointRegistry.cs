@@ -1,10 +1,3 @@
-using Dalamud.Plugin;
-using ECommons.ExcelServices;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.GatheringPaths;
-using Questionable.Model;
-using Questionable.Model.Gathering;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,6 +5,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Dalamud.Plugin;
+using ECommons.ExcelServices;
+using Microsoft.Extensions.Logging;
+using Questionable.Data;
+using Questionable.GatheringPaths;
+using Questionable.Model;
+using Questionable.Model.Gathering;
 namespace Questionable.Controller;
 
 internal sealed class GatheringPointRegistry : IDisposable
@@ -57,7 +57,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         {
             LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "GatheringPoints")));
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             _logger.LogError(e,
                 "Failed to load gathering points from user directory (some may have been successfully loaded)");
@@ -71,16 +71,16 @@ internal sealed class GatheringPointRegistry : IDisposable
     {
         _logger.LogInformation("Loading gathering points from assembly");
 
-        foreach((ushort gatheringPointId, GatheringRoot gatheringRoot) in
+        foreach ((ushort gatheringPointId, GatheringRoot gatheringRoot) in
             AssemblyGatheringLocationLoader.GetLocations())
         {
             if (gatheringRoot.Steps.Count >= 1)
             {
-                foreach(GatheringNodeGroup group in gatheringRoot.Groups)
+                foreach (GatheringNodeGroup group in gatheringRoot.Groups)
                 {
-                    foreach(GatheringNode node in group.Nodes)
+                    foreach (GatheringNode node in group.Nodes)
                     {
-                        foreach(GatheringLocation position in node.Locations)
+                        foreach (GatheringLocation position in node.Locations)
                         {
                             gatheringRoot.Steps[0].Position = gatheringRoot.Steps[0].Position ?? position.Position;
                             gatheringRoot.Steps[0].Fly = gatheringRoot.Steps[0].Fly ?? true;
@@ -108,13 +108,13 @@ internal sealed class GatheringPointRegistry : IDisposable
             {
                 try
                 {
-                    foreach(string expansionFolder in ExpansionData.ExpansionFolders.Values)
+                    foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
                     {
                         LoadFromDirectory(
                             new(Path.Combine(pathProjectDirectory.FullName, expansionFolder)));
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     _gatheringPoints.Clear();
                     _logger.LogError(e, "Failed to load gathering points from project directory");
@@ -128,18 +128,16 @@ internal sealed class GatheringPointRegistry : IDisposable
         //_logger.LogTrace("Loading gathering point from '{FileName}'", fileName);
         GatheringPointId? gatheringPointId = ExtractGatheringPointIdFromName(fileName);
         if (gatheringPointId == null)
-        {
             return;
-        }
 
         GatheringRoot gatheringRoot = JsonSerializer.Deserialize<GatheringRoot>(stream)!;
         if (gatheringRoot.Steps.Count >= 1)
         {
-            foreach(GatheringNodeGroup group in gatheringRoot.Groups)
+            foreach (GatheringNodeGroup group in gatheringRoot.Groups)
             {
-                foreach(GatheringNode node in group.Nodes)
+                foreach (GatheringNode node in group.Nodes)
                 {
-                    foreach(GatheringLocation position in node.Locations)
+                    foreach (GatheringLocation position in node.Locations)
                     {
                         gatheringRoot.Steps[0].Position = gatheringRoot.Steps[0].Position ?? position.Position;
                         gatheringRoot.Steps[0].Fly = gatheringRoot.Steps[0].Fly ?? true;
@@ -161,23 +159,21 @@ internal sealed class GatheringPointRegistry : IDisposable
             return;
         }
 
-        foreach(FileInfo fileInfo in directory.GetFiles("*.json"))
+        foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
         {
             try
             {
                 using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
                 LoadGatheringPointFromStream(fileInfo.Name, stream);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new InvalidDataException($"Unable to load file {fileInfo.FullName}", e);
             }
         }
 
-        foreach(DirectoryInfo childDirectory in directory.GetDirectories())
-        {
+        foreach (DirectoryInfo childDirectory in directory.GetDirectories())
             LoadFromDirectory(childDirectory);
-        }
     }
 
     private static GatheringPointId? ExtractGatheringPointIdFromName(string resourceName)
@@ -186,9 +182,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         name = name.Substring(name.LastIndexOf('.') + 1);
 
         if (!name.Contains('_', StringComparison.Ordinal))
-        {
             return null;
-        }
 
         string[] parts = name.Split('_', 2);
         return GatheringPointId.FromString(parts[0]);
@@ -205,9 +199,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         if (classJobId == Job.MIN)
         {
             if (_gatheringData.TryGetMinerGatheringPointByItemId(itemId, out gatheringPointId))
-            {
                 return true;
-            }
 
             gatheringPointId = _gatheringPoints
                 .Where(x => x.Value.ExtraQuestItems.Contains(itemId))
@@ -218,9 +210,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         else if (classJobId == Job.BTN)
         {
             if (_gatheringData.TryGetBotanistGatheringPointByItemId(itemId, out gatheringPointId))
-            {
                 return true;
-            }
 
             gatheringPointId = _gatheringPoints
                 .Where(x => x.Value.ExtraQuestItems.Contains(itemId))

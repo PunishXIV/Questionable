@@ -1,3 +1,4 @@
+using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
@@ -7,7 +8,6 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Linq;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class UpdateGearset
@@ -17,15 +17,11 @@ internal static class UpdateGearset
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.UpdateGearset)
-            {
                 return null;
-            }
 
             Job? classJob = null;
             if (step.TargetClass != EExtendedClassJob.None)
-            {
                 classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
-            }
 
             return new Task(classJob);
         }
@@ -79,7 +75,7 @@ internal static class UpdateGearset
                 bool found = false;
                 gearsetId = -1;
 
-                for(int i = 0; i < 100; ++i)
+                for (int i = 0; i < 100; ++i)
                 {
                     RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
                     if (gearset != null &&

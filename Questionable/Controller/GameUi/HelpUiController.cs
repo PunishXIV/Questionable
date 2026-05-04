@@ -1,10 +1,10 @@
-﻿using Dalamud.Game.Addon.Lifecycle;
+﻿using System;
+using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Utils;
-using System;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class HelpUiController : IDisposable
@@ -54,9 +54,7 @@ internal sealed class HelpUiController : IDisposable
     private unsafe void CloseHelpWindowsWhenStartingQuests(object sender, QuestController.EAutomationType e)
     {
         if (e is QuestController.EAutomationType.Manual)
-        {
             return;
-        }
 
         if (_gameGui.TryGetAddonByName("Guide", out AtkUnitBase* addonGuide))
         {
@@ -96,9 +94,7 @@ internal sealed class HelpUiController : IDisposable
     private unsafe void ContentsTutorialPostSetup(AddonEvent type, AddonArgs args)
     {
         if (_questController.StartedQuest?.Quest.Id.Value is 245 or 3872 or 5253)
-        {
             ContentsTutorialPostSetup((AtkUnitBase*)args.Addon.Address);
-        }
     }
 
     private unsafe void ContentsTutorialPostSetup(AtkUnitBase* addon)
@@ -124,9 +120,7 @@ internal sealed class HelpUiController : IDisposable
     private unsafe void JobHudNoticePostSetup(AddonEvent type, AddonArgs args)
     {
         if (_questController.IsRunning || _questController.AutomationType != QuestController.EAutomationType.Manual)
-        {
             JobHudNoticePostSetup((AtkUnitBase*)args.Addon.Address);
-        }
     }
 
     private unsafe void JobHudNoticePostSetup(AtkUnitBase* addon)
@@ -138,9 +132,7 @@ internal sealed class HelpUiController : IDisposable
     private unsafe void GuidePostSetup(AddonEvent type, AddonArgs args)
     {
         if (_questController.IsRunning || _questController.AutomationType != QuestController.EAutomationType.Manual)
-        {
             GuidePostSetup((AtkUnitBase*)args.Addon.Address);
-        }
     }
 
     private unsafe void GuidePostSetup(AtkUnitBase* addon)
@@ -157,9 +149,7 @@ internal sealed class HelpUiController : IDisposable
             _framework.RunOnTick(() =>
             {
                 if (_gameGui.TryGetAddonByName("EventTutorial", out AtkUnitBase* addonEventTutorial))
-                {
                     EventTutorialPostSetup(addonEventTutorial);
-                }
             });
         }
     }

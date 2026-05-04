@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+using System.Numerics;
 using Dalamud.Plugin.Services;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -7,9 +10,6 @@ using Questionable.Controller.GameUi.Shop;
 using Questionable.Controller.GameUi.Shop.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class ShopController : IDisposable, IShopWindow
@@ -91,9 +91,7 @@ internal sealed class ShopController : IDisposable, IShopWindow
     public unsafe void TriggerPurchase(AtkUnitBase* addonShop, int buyNow)
     {
         if (_shop.ItemForSale == null)
-        {
             return;
-        }
 
         AddonMaster.Shop addonMaster = new(addonShop);
         AddonMaster.Shop.ShopItemInfo? item = addonMaster.ShopItems.ElementAtOrDefault(_shop.ItemForSale.Position);
@@ -107,9 +105,7 @@ internal sealed class ShopController : IDisposable, IShopWindow
     public unsafe void RestoreExternalPluginState()
     {
         if (_gameGuiAdapter.TryGetAddonByName("Shop", out AtkUnitBase* addonShop))
-        {
             addonShop->FireCallbackInt(-1);
-        }
     }
 
     private void FrameworkUpdate(IFramework framework)
@@ -117,16 +113,12 @@ internal sealed class ShopController : IDisposable, IShopWindow
         if (IsOpen && _shop.ItemForSale != null)
         {
             if (_shop.PurchaseState != null)
-            {
                 _shop.HandleNextPurchaseStep();
-            }
             else
             {
                 QuestStep? currentStep = FindCurrentStep();
                 if (currentStep == null || currentStep.InteractionType != EInteractionType.PurchaseItem)
-                {
                     return;
-                }
 
                 int missingItems = Math.Max(0,
                     currentStep.ItemCount.GetValueOrDefault() - (int)_shop.ItemForSale.OwnedItems);
@@ -138,9 +130,7 @@ internal sealed class ShopController : IDisposable, IShopWindow
                     _shop.HandleNextPurchaseStep();
                 }
                 else
-                {
                     _shop.CancelAutoPurchase();
-                }
             }
         }
     }

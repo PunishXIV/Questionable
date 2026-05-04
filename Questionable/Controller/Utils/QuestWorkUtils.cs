@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Questionable.Model;
-using Questionable.Model.Questing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Logging;
+using Questionable.Model;
+using Questionable.Model.Questing;
 namespace Questionable.Controller.Utils;
 
 internal static class QuestWorkUtils
@@ -16,17 +16,13 @@ internal static class QuestWorkUtils
     public static bool MatchesQuestWork(IList<QuestWorkValue?> completionQuestVariablesFlags, QuestProgressInfo questProgressInfo)
     {
         if (!HasCompletionFlags(completionQuestVariablesFlags) || questProgressInfo.Variables.Count != 6)
-        {
             return false;
-        }
 
-        for(int i = 0; i < questProgressInfo.Variables.Count; ++i)
+        for (int i = 0; i < questProgressInfo.Variables.Count; ++i)
         {
             QuestWorkValue? check = completionQuestVariablesFlags[i];
             if (check == null)
-            {
                 continue;
-            }
 
             EQuestWorkMode mode = check.Mode;
 
@@ -41,31 +37,21 @@ internal static class QuestWorkUtils
             if (mode == EQuestWorkMode.Exact)
             {
                 if (checkHigh != null && actualHigh != expectedHigh)
-                {
                     return false;
-                }
 
                 if (checkLow != null && actualLow != expectedLow)
-                {
                     return false;
-                }
             }
             else if (mode == EQuestWorkMode.Bitwise)
             {
                 if (checkHigh != null && (actualHigh & checkHigh) != expectedHigh)
-                {
                     return false;
-                }
 
                 if (checkLow != null && (actualLow & checkLow) != expectedLow)
-                {
                     return false;
-                }
             }
             else
-            {
                 throw new InvalidOperationException($"Unknown qw mode {mode}");
-            }
         }
 
         return true;
@@ -80,7 +66,7 @@ internal static class QuestWorkUtils
             return true;
         }
 
-        for(int i = 0; i < 6; ++i)
+        for (int i = 0; i < 6; ++i)
         {
             if (requiredQuestVariables[i] == null)
             {
@@ -91,19 +77,15 @@ internal static class QuestWorkUtils
             byte high = (byte)(questWork.Variables[i] >> 4);
             byte low = (byte)(questWork.Variables[i] & 0xF);
 
-            foreach(QuestWorkValue expectedValue in requiredQuestVariables[i]!)
+            foreach (QuestWorkValue expectedValue in requiredQuestVariables[i]!)
             {
                 logger.LogDebug("H: {ExpectedHigh} - {ActualHigh}, L: {ExpectedLow} - {ActualLow}",
                     expectedValue.High, high, expectedValue.Low, low);
                 if (expectedValue.High != null && expectedValue.High != high)
-                {
                     continue;
-                }
 
                 if (expectedValue.Low != null && expectedValue.Low != low)
-                {
                     continue;
-                }
 
                 return true;
             }

@@ -1,10 +1,10 @@
+using System;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
-using System;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration) : ConfigComponent(pluginInterface, configuration)
@@ -13,9 +13,7 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Advanced###Debug");
         if (!tab)
-        {
             return;
-        }
 
         ImGui.TextColored(ImGuiColors.DalamudRed,
             "Enabling any option here may cause unexpected behavior. Use at your own risk.");

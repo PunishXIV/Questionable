@@ -1,4 +1,6 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using System.Linq;
+using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using Lumina.Excel;
 using Lumina.Excel.Exceptions;
@@ -7,8 +9,6 @@ using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Model;
-using System;
-using System.Linq;
 using GimmickYesNo = Lumina.Excel.Sheets.GimmickYesNo;
 using Quest = Questionable.Model.Quest;
 
@@ -30,13 +30,9 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         }
 
         if (isRegex)
-        {
             return new(seString.ToRegex());
-        }
         else
-        {
             return new(seString?.WithCertainMacroCodeReplacements());
-        }
     }
 
     public ReadOnlySeString? GetRawDialogueText(Quest? currentQuest, string? excelSheetName, string key)
@@ -62,7 +58,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
             return excelSheet.Cast<QuestDialogueText?>()
                 .FirstOrDefault(x => x!.Value.Key == key)?.Value;
         }
-        catch(SheetNotFoundException e)
+        catch (SheetNotFoundException e)
         {
             throw new SheetNotFoundException($"Sheet '{excelSheetName}' not found", e);
         }
@@ -72,13 +68,9 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
     {
         ReadOnlySeString? seString = GetRawDialogueTextByRowId(excelSheet, rowId);
         if (isRegex)
-        {
             return new(seString.ToRegex());
-        }
         else
-        {
             return new(seString?.ToDalamudString().ToString());
-        }
     }
 
     public ReadOnlySeString? GetRawDialogueTextByRowId(string? excelSheet, uint rowId)
@@ -93,7 +85,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
                 ExcelSheet<QuestDialogueText>? dialogueSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheet);
                 return dialogueSheet?.GetRowOrDefault(rowId)?.Value;
             }
-            catch(SheetNotFoundException e)
+            catch (SheetNotFoundException e)
             {
                 _logger.LogError(e, "Could not find dialogue sheet '{Sheet}'", excelSheet);
                 return null;
@@ -130,8 +122,6 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
             return questRow?.Text;
         }
         else
-        {
             throw new ArgumentOutOfRangeException(nameof(excelSheet), $"Unsupported excel sheet {excelSheet}");
-        }
     }
 }

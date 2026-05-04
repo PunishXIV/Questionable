@@ -1,7 +1,7 @@
-﻿using Questionable.Functions;
+﻿using System.Collections.Generic;
+using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Collections.Generic;
 namespace Questionable.Validation.Validators;
 
 internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : IQuestValidator
@@ -10,14 +10,12 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        foreach((QuestSequence Sequence, int StepId, QuestStep Step) x in quest.AllSteps())
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) x in quest.AllSteps())
         {
             if (x.Step.DialogueChoices.Count == 0)
-            {
                 continue;
-            }
 
-            foreach(DialogueChoice dialogueChoice in x.Step.DialogueChoices)
+            foreach (DialogueChoice dialogueChoice in x.Step.DialogueChoices)
             {
                 ExcelRef? prompt = dialogueChoice.Prompt;
                 if (prompt != null)
@@ -25,9 +23,7 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
                     ValidationIssue? promptIssue = Validate(quest, x.Sequence, x.StepId, dialogueChoice.ExcelSheet,
                         prompt, "Prompt");
                     if (promptIssue != null)
-                    {
                         yield return promptIssue;
-                    }
                 }
 
                 ExcelRef? answer = dialogueChoice.Answer;
@@ -36,9 +32,7 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
                     ValidationIssue? answerIssue = Validate(quest, x.Sequence, x.StepId, dialogueChoice.ExcelSheet,
                         answer, "Answer");
                     if (answerIssue != null)
-                    {
                         yield return answerIssue;
-                    }
                 }
             }
         }

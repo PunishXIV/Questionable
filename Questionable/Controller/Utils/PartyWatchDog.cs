@@ -1,9 +1,9 @@
+using System;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using Microsoft.Extensions.Logging;
-using System;
 namespace Questionable.Controller.Utils;
 
 internal sealed class PartyWatchDog : IDisposable
@@ -81,18 +81,14 @@ internal sealed class PartyWatchDog : IDisposable
         {
             GroupManager* groupManager = GroupManager.Instance();
             if (groupManager == null)
-            {
                 return;
-            }
 
             byte memberCount = groupManager->MainGroup.MemberCount;
             bool isInAlliance = groupManager->MainGroup.IsAlliance;
             _logger.LogDebug("Territory {TerritoryId} with {MemberCount} members, alliance: {IsInAlliance}",
                 _uncheckedTeritoryId, memberCount, isInAlliance);
             if (memberCount > 1 || isInAlliance)
-            {
                 StopIfRunning("Other party members present");
-            }
 
             _uncheckedTeritoryId = null;
         }

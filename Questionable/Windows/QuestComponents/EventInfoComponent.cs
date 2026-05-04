@@ -1,4 +1,10 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
@@ -9,12 +15,6 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class EventInfoComponent
@@ -52,12 +52,10 @@ internal sealed class EventInfoComponent
 
     public void Draw()
     {
-        foreach(EventQuest eventQuest in _eventQuests)
+        foreach (EventQuest eventQuest in _eventQuests)
         {
             if (IsIncomplete(eventQuest))
-            {
                 DrawEventQuest(eventQuest);
-            }
         }
     }
 
@@ -73,9 +71,7 @@ internal sealed class EventInfoComponent
             ImGui.Text($"{eventQuest.Name} ({time})");
         }
         else
-        {
             ImGui.Text(eventQuest.Name);
-        }
 
         List<ElementId> startableQuests = eventQuest.QuestIds.Where(x =>
                 _questRegistry.IsKnownQuest(x) &&
@@ -83,12 +79,10 @@ internal sealed class EventInfoComponent
                 x != _questController.StartedQuest?.Quest.Id &&
                 x != _questController.NextQuest?.Quest.Id)
             .ToList();
-        foreach(ElementId questId in eventQuest.QuestIds)
+        foreach (ElementId questId in eventQuest.QuestIds)
         {
             if (_questFunctions.IsQuestComplete(questId))
-            {
                 continue;
-            }
 
             using (ImRaii.PushId($"##EventQuestSelection{questId}"))
             {
@@ -110,9 +104,7 @@ internal sealed class EventInfoComponent
                     hovered |= ImGui.IsItemHovered();
 
                     if (hovered)
-                    {
                         _questTooltipComponent.Draw(quest.Info);
-                    }
                 }
                 else
                 {
@@ -120,9 +112,7 @@ internal sealed class EventInfoComponent
 
                     (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
                     if (_uiUtils.ChecklistItem(questName, style.Color, style.Icon, ImGui.GetStyle().FramePadding.X))
-                    {
                         _questTooltipComponent.Draw(_questData.GetQuestInfo(questId));
-                    }
                 }
             }
         }
@@ -131,9 +121,7 @@ internal sealed class EventInfoComponent
     private bool IsIncomplete(EventQuest eventQuest)
     {
         if (eventQuest.EndsAtUtc <= DateTime.UtcNow)
-        {
             return false;
-        }
 
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }

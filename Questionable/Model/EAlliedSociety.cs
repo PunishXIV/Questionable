@@ -1,5 +1,5 @@
-﻿using JetBrains.Annotations;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 namespace Questionable.Model;
 
 [SuppressMessage("Design", "CA1028", Justification = "Game type")]

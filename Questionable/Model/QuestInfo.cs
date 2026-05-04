@@ -1,11 +1,11 @@
-using ECommons.DalamudServices;
-using ECommons.ExcelServices;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using ECommons.DalamudServices;
+using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Questing;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
@@ -137,9 +137,7 @@ internal sealed class QuestInfo : IQuestInfo
     public void AddQuestLocks(EQuestJoin questJoin, params QuestId[] questId)
     {
         if (QuestLocks.Count > 0 && QuestLockJoin != questJoin)
-        {
             throw new InvalidOperationException();
-        }
 
         QuestLockJoin = questJoin;
         QuestLocks = [.. QuestLocks, .. questId];

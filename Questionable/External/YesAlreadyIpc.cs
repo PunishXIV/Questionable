@@ -1,11 +1,11 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using ECommons.EzIpcManager;
 using ECommons.Reflection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
-using System;
 namespace Questionable.External;
 
 internal sealed class YesAlreadyIpc : IDisposable
@@ -84,25 +84,21 @@ internal sealed class YesAlreadyIpc : IDisposable
         {
             Version _version;
             if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, false, true))
-            {
                 _version = dalamudPlugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
-            }
             else
-            {
                 _version = new(0, 0, 0, 0);
-            }
             return _version;
         }
 
         internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
         {
-            foreach(EzIPCDisposalToken token in _disposalTokens)
+            foreach (EzIPCDisposalToken token in _disposalTokens)
             {
                 try
                 {
                     token.Dispose();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Svc.Log.Error($"Error while unregistering IPC: {ex}");
                 }

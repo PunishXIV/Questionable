@@ -1,4 +1,8 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
@@ -9,10 +13,6 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Windows.QuestComponents;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class AlliedSocietyJournalComponent
@@ -42,15 +42,11 @@ internal sealed class AlliedSocietyJournalComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Allied Societies");
         if (!tab)
-        {
             return;
-        }
         bool addPending = false;
 #if DEBUG
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Plus, "Add"))
-        {
             addPending = true;
-        }
         ImGui.SameLine();
 #endif
 
@@ -60,7 +56,7 @@ internal sealed class AlliedSocietyJournalComponent
             ImGui.Text($"Remaining: {allowances}/12");
         }
 
-        foreach(EAlliedSociety alliedSociety in Enum.GetValues<EAlliedSociety>().Where(x => x != EAlliedSociety.None))
+        foreach (EAlliedSociety alliedSociety in Enum.GetValues<EAlliedSociety>().Where(x => x != EAlliedSociety.None))
         {
             List<IQuestInfo> quests = _alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
                 .Select(x => _questData.GetQuestInfo(x))
@@ -98,42 +94,32 @@ internal sealed class AlliedSocietyJournalComponent
                     }
                 }
                 else
-                {
                     isOpen = ImGui.CollapsingHeader(label);
-                }
             }
 
             _questJournalUtils.ShowQuestGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests);
 
             if (!isOpen)
-            {
                 continue;
-            }
 
             if (alliedSociety <= EAlliedSociety.Ixal)
             {
-                for(byte i = 1; i <= 8; ++i)
+                for (byte i = 1; i <= 8; ++i)
                 {
                     List<IQuestInfo> questsByRank = quests.Where(quest => ((QuestInfo)quest).AlliedSocietyRank == i && !quest.QuestId.Value.Equals(1569)).ToList();
                     if (questsByRank.Count == 0)
-                    {
                         continue;
-                    }
 
                     ImGui.Text(RankNames[i - 1]);
                     _questJournalUtils.ShowQuestGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}/{RankNames[i - 1]}", questsByRank);
-                    foreach(IQuestInfo quest in questsByRank)
-                    {
+                    foreach (IQuestInfo quest in questsByRank)
                         DrawQuest((QuestInfo)quest, addPending);
-                    }
                 }
             }
             else
             {
-                foreach(IQuestInfo quest in quests)
-                {
+                foreach (IQuestInfo quest in quests)
                     DrawQuest((QuestInfo)quest, addPending);
-                }
             }
         }
     }
@@ -145,9 +131,7 @@ internal sealed class AlliedSocietyJournalComponent
         bool fate = false;
         string lastChecked = "";
         if (!_questRegistry.TryGetQuest(questInfo.QuestId, out quest))
-        {
             color = ImGuiColors.DalamudGrey;
-        }
         else
         {
             if (quest.Root.LastChecked.Date != null)
@@ -155,16 +139,12 @@ internal sealed class AlliedSocietyJournalComponent
                 lastChecked = $"({quest.Root.LastChecked.Date})";
 #if DEBUG
                 if (quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90)
-                {
                     color = ImGuiColors.DalamudRed;
-                }
 #endif
             }
 #if DEBUG
             else
-            {
                 color = ImGuiColors.DPSRed;
-            }
 #endif
             if (quest.Root.Disabled && (quest.Root.Comment ?? "").Contains("FATE"))
             {
@@ -174,17 +154,11 @@ internal sealed class AlliedSocietyJournalComponent
         }
         string checklistItem = $"{questInfo.Name} ({tooltipText}) {lastChecked}";
         if (fate)
-        {
             checklistItem = "(FATE) " + checklistItem;
-        }
         if (_uiUtils.ChecklistItem(checklistItem, color, icon))
-        {
             _questTooltipComponent.Draw(questInfo);
-        }
         if (addPending && (color.Equals(ImGuiColors.DalamudRed) || color.Equals(ImGuiColors.DPSRed)))
-        {
             _questController.AddQuestPriority(questInfo.QuestId);
-        }
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));
     }

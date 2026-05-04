@@ -1,3 +1,5 @@
+using System;
+using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
@@ -8,8 +10,6 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Numerics;
 using Action = System.Action;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 
@@ -48,25 +48,17 @@ internal sealed class MoveExecutor
     public override ETaskResult Update()
     {
         if (UpdateMountState() is { } mountStateResult)
-        {
             return mountStateResult;
-        }
 
         if (_startAction == null)
-        {
             return ETaskResult.TaskComplete;
-        }
 
         if (_movementController.IsPathfinding || _movementController.IsPathRunning)
-        {
             return ETaskResult.StillRunning;
-        }
 
         DateTime movementStartedAt = _movementController.MovementStartedAt;
         if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
-        {
             return ETaskResult.StillRunning;
-        }
 
         if (_canRestart &&
             Vector3.Distance(_objectTable[0]!.Position, _destination) >
@@ -112,9 +104,7 @@ internal sealed class MoveExecutor
     public bool OnErrorToast(SeString message)
     {
         if (GameFunctions.GameStringEquals(_cannotExecuteAtThisTime, message.TextValue))
-        {
             return true;
-        }
 
         return false;
     }
@@ -122,9 +112,7 @@ internal sealed class MoveExecutor
     private void PrepareMovementIfNeeded()
     {
         if (!_gameFunctions.IsFlyingUnlocked(Task.TerritoryId))
-        {
             Task = Task with { Fly = false, Land = false };
-        }
 
         if (!Task.DisableNavmesh)
         {
@@ -159,27 +147,21 @@ internal sealed class MoveExecutor
         float actualDistance = position == null ? float.MaxValue : Vector3.Distance(position.Value, _destination);
         bool requiresMovement = actualDistance > stopDistance;
         if (requiresMovement)
-        {
             PrepareMovementIfNeeded();
-        }
 
         if (Task.Mount == true)
         {
             Mount.MountTask mountTask = new(Task.TerritoryId, Mount.EMountIf.Always);
             _mountBeforeMovement = (_serviceProvider.GetRequiredService<Mount.MountExecutor>(), mountTask);
             if (!_mountBeforeMovement.Value.Executor.Start(mountTask))
-            {
                 _mountBeforeMovement = null;
-            }
         }
         else if (Task.Mount == false)
         {
             Mount.UnmountTask unmountTask = new();
             _unmountBeforeMovement = (_serviceProvider.GetRequiredService<Mount.UnmountExecutor>(), unmountTask);
             if (!_unmountBeforeMovement.Value.Executor.Start(unmountTask))
-            {
                 _unmountBeforeMovement = null;
-            }
         }
         else
         {
@@ -200,18 +182,12 @@ internal sealed class MoveExecutor
                     move.Value.Executor.Start(mountTask);
                 }
                 else
-                {
                     move = null;
-                }
 
                 if (Task.Fly)
-                {
                     _mountBeforeMovement = move;
-                }
                 else
-                {
                     _mountDuringMovement = move;
-                }
             }
         }
 
@@ -270,9 +246,7 @@ internal sealed class MoveExecutor
             return null; // still keep moving
         }
         else
-        {
             return null;
-        }
     }
 
     private bool ShouldResolveCombatBeforeNextInteraction()

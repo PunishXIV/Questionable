@@ -33,9 +33,7 @@ public sealed class ElementIdListConverter : JsonConverter<List<ElementId>>
     {
         writer.WriteStartArray();
         foreach (ElementId elementId in value)
-        {
             writer.WriteStringValue(elementId.ToString());
-        }
         writer.WriteEndArray();
     }
 }

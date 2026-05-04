@@ -1,4 +1,8 @@
-﻿using Dalamud.Plugin;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using JetBrains.Annotations;
@@ -11,10 +15,6 @@ using Questionable.Model.Questing;
 using Questionable.Windows;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.External;
 
 internal sealed class QuestionableIpc : IDisposable
@@ -184,13 +184,9 @@ internal sealed class QuestionableIpc : IDisposable
         {
             _questController.SetNextQuest(quest);
             if (single)
-            {
                 _questController.StartSingleQuest("IPCQuestSelection");
-            }
             else
-            {
                 _questController.Start("IPCQuestSelection");
-            }
             return true;
         }
 
@@ -202,21 +198,15 @@ internal sealed class QuestionableIpc : IDisposable
         _logger.LogDebug("GetStepData()");
         QuestController.QuestProgress? progress = _questController.CurrentQuest;
         if (progress == null)
-        {
             return null;
-        }
 
         string questId = progress.Quest.Id.ToString();
         if (string.IsNullOrEmpty(questId))
-        {
             return null;
-        }
 
         QuestStep? step = progress.Quest.FindSequence(progress.Sequence)?.FindStep(progress.Step);
         if (step == null)
-        {
             return null;
-        }
 
         return new()
         {
@@ -245,9 +235,7 @@ internal sealed class QuestionableIpc : IDisposable
     {
         _logger.LogDebug($"IsQuestComplete({questId})");
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
-        {
             return _questFunctions.IsQuestComplete(elementId);
-        }
         return false;
     }
 
@@ -255,9 +243,7 @@ internal sealed class QuestionableIpc : IDisposable
     {
         _logger.LogDebug($"IsReadyToAcceptQuest({questId})");
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
-        {
             return _questFunctions.IsReadyToAcceptQuest(elementId);
-        }
         return false;
     }
 
@@ -265,9 +251,7 @@ internal sealed class QuestionableIpc : IDisposable
     {
         _logger.LogDebug($"IsQuestAccepted({questId})");
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
-        {
             return _questFunctions.IsQuestAccepted(elementId);
-        }
         return false;
     }
 
@@ -275,9 +259,7 @@ internal sealed class QuestionableIpc : IDisposable
     {
         _logger.LogDebug($"IsQuestUnobtainable({questId})");
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
-        {
             return _questFunctions.IsQuestUnobtainable(elementId);
-        }
         return false;
     }
 
@@ -341,26 +323,18 @@ internal sealed class QuestionableIpc : IDisposable
     private string RedoLookup(uint questId)
     {
         if (questId >= 131072)
-        {
             return "";
-        }
         if (questId >= 65536)
-        {
             questId -= 65536;
-        }
         return _redoUtil.GetChapter(questId).Item1.ToString();
     }
 
     private Tuple<string, int> RedoLookupIndex(uint questId)
     {
         if (questId >= 131072)
-        {
             return new("", -1);
-        }
         if (questId >= 65536)
-        {
             questId -= 65536;
-        }
         Tuple<ReadOnlySeString, int> outp = _redoUtil.GetChapter(questId);
         return new(outp.Item1.ToString(), outp.Item2);
     }

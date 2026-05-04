@@ -1,4 +1,9 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Numerics;
+using System.Runtime.InteropServices;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -15,11 +20,6 @@ using Questionable.Controller.Utils;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.InteropServices;
 using Action = Lumina.Excel.Sheets.Action;
 using BattleChara = FFXIVClientStructs.FFXIV.Client.Game.Character.BattleChara;
 using ContentFinderCondition = Lumina.Excel.Sheets.ContentFinderCondition;
@@ -68,18 +68,14 @@ internal sealed unsafe class GameFunctions
     public bool IsFlyingUnlocked(uint territoryId)
     {
         if (_configuration.Advanced.NeverFly)
-        {
             return false;
-        }
 
         if (_questFunctions.IsQuestAccepted(new(3304)) && _condition[ConditionFlag.Mounted])
         {
             // special quest amaro, not the normal one
             // TODO Check if this also applies to beast tribe mounts
             if (GetMountId() == 198)
-            {
                 return true;
-            }
         }
 
         PlayerState* playerState = PlayerState.Instance();
@@ -92,13 +88,9 @@ internal sealed unsafe class GameFunctions
     {
         BattleChara* battleChara = (BattleChara*)(_objectTable[0]?.Address ?? 0);
         if (battleChara != null && battleChara->Mount.MountId != 0)
-        {
             return battleChara->Mount.MountId;
-        }
         else
-        {
             return null;
-        }
     }
 
     public bool IsFlyingUnlockedInCurrentZone()
@@ -115,7 +107,7 @@ internal sealed unsafe class GameFunctions
 
     public IGameObject? FindObjectByDataId(uint dataId, ObjectKind? kind = null)
     {
-        foreach(IGameObject gameObject in _objectTable)
+        foreach (IGameObject gameObject in _objectTable)
         {
             if (gameObject.ObjectKind is ObjectKind.Pc or ObjectKind.Companion or ObjectKind.Mount
                 or ObjectKind.Retainer or ObjectKind.HousingEventObject)
@@ -126,9 +118,7 @@ internal sealed unsafe class GameFunctions
             // multiple objects in the object table can share the same data id for gathering points; only one of those
             // (at most) is visible
             if (gameObject is { ObjectKind: ObjectKind.GatheringPoint, IsTargetable: false })
-            {
                 continue;
-            }
 
             if (GetBaseID(gameObject) == dataId && (kind == null || kind.Value == gameObject.ObjectKind))
             {
@@ -145,9 +135,7 @@ internal sealed unsafe class GameFunctions
     {
         IGameObject? gameObject = FindObjectByDataId(dataId, kind);
         if (gameObject != null)
-        {
             return InteractWith(gameObject);
-        }
 
         _logger.LogDebug("Game object is null");
         return false;
@@ -219,9 +207,7 @@ internal sealed unsafe class GameFunctions
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
         if (actionType == ActionType.Action)
-        {
             actionId = ActionManager.Instance()->GetAdjustedActionId(actionId);
-        }
 
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId) == 0)
         {
@@ -290,22 +276,16 @@ internal sealed unsafe class GameFunctions
     public bool HasStatusPreventingMount()
     {
         if (_condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
-        {
             return true;
-        }
 
         // company chocobo is locked
         PlayerState* playerState = PlayerState.Instance();
         if (playerState != null && !playerState->IsMountUnlocked(1))
-        {
             return true;
-        }
 
         IGameObject? localPlayer = _objectTable[0];
         if (localPlayer == null)
-        {
             return false;
-        }
 
         BattleChara* battleChara = (BattleChara*)localPlayer.Address;
         StatusManager* statusManager = battleChara->GetStatusManager();
@@ -327,9 +307,7 @@ internal sealed unsafe class GameFunctions
     {
         IGameObject? localPlayer = _objectTable[0];
         if (localPlayer == null)
-        {
             return false;
-        }
 
         BattleChara* battleChara = (BattleChara*)localPlayer.Address;
         StatusManager* statusManager = battleChara->GetStatusManager();
@@ -344,9 +322,7 @@ internal sealed unsafe class GameFunctions
     {
         IGameObject? localPlayer = _objectTable[0];
         if (localPlayer == null)
-        {
             return false;
-        }
 
         BattleChara* battleChara = (BattleChara*)localPlayer.Address;
         StatusManager* statusManager = battleChara->GetStatusManager();
@@ -361,9 +337,7 @@ internal sealed unsafe class GameFunctions
     public bool Mount()
     {
         if (_condition[ConditionFlag.Mounted])
-        {
             return true;
-        }
 
         PlayerState* playerState = PlayerState.Instance();
         if (playerState != null && _configuration.General.MountId != 0 &&
@@ -398,9 +372,7 @@ internal sealed unsafe class GameFunctions
     public bool Unmount()
     {
         if (!_condition[ConditionFlag.Mounted])
-        {
             return true;
-        }
 
         if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 23) == 0)
         {
@@ -425,9 +397,7 @@ internal sealed unsafe class GameFunctions
         if (_contentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out uint contentId))
         {
             if (UIState.IsInstanceContentUnlocked(contentId))
-            {
                 AgentContentsFinder.Instance()->OpenRegularDuty(contentFinderConditionId);
-            }
             else
             {
                 _logger.LogError(
@@ -448,14 +418,10 @@ internal sealed unsafe class GameFunctions
     public static bool GameStringEquals(string? a, string? b)
     {
         if (a == null)
-        {
             return b == null;
-        }
 
         if (b == null)
-        {
             return false;
-        }
 
         return a.ReplaceLineEndings().Replace('\u2013', '-') == b.ReplaceLineEndings().Replace('\u2013', '-');
     }
@@ -463,26 +429,18 @@ internal sealed unsafe class GameFunctions
     public bool IsOccupied()
     {
         if (!_clientState.IsLoggedIn || _objectTable[0] == null)
-        {
             return true;
-        }
 
         if (IsLoadingScreenVisible())
-        {
             return true;
-        }
 
         if (_condition[ConditionFlag.Crafting])
         {
             if (!AgentRecipeNote.Instance()->IsAgentActive())
-            {
                 return true;
-            }
 
             if (!_condition[ConditionFlag.PreparingToCraft])
-            {
                 return true;
-            }
         }
 
         if (_condition[ConditionFlag.Unconscious] &&
@@ -506,19 +464,13 @@ internal sealed unsafe class GameFunctions
     {
         // not a supply quest?
         if (currentQuest is not { Info: SatisfactionSupplyInfo })
-        {
             return false;
-        }
 
         if (_targetManager.Target == null || GetBaseID(_targetManager.Target) != currentQuest.Info.IssuerDataId)
-        {
             return false;
-        }
 
         if (!AgentSatisfactionSupply.Instance()->IsAgentActive())
-        {
             return false;
-        }
 
         HashSet<ConditionFlag> flags = _condition.AsReadOnlySet().ToHashSet();
         flags.Remove(ConditionFlag.InDutyQueue); // irrelevant
@@ -536,14 +488,10 @@ internal sealed unsafe class GameFunctions
         }
 
         if (_gameGui.TryGetAddonByName("FadeBack", out fade) && AddonUtils.IsAddonReady(fade) && fade->IsVisible)
-        {
             return true;
-        }
 
         if (_gameGui.TryGetAddonByName("NowLoading", out fade) && AddonUtils.IsAddonReady(fade) && fade->IsVisible)
-        {
             return true;
-        }
 
         return false;
     }
@@ -552,28 +500,22 @@ internal sealed unsafe class GameFunctions
     {
         InventoryManager* inventoryManager = InventoryManager.Instance();
         if (inventoryManager == null)
-        {
             return 0;
-        }
 
         int slots = 0;
-        for(InventoryType inventoryType = InventoryType.Inventory1;
+        for (InventoryType inventoryType = InventoryType.Inventory1;
             inventoryType <= InventoryType.Inventory4;
             ++inventoryType)
         {
             InventoryContainer* inventoryContainer = inventoryManager->GetInventoryContainer(inventoryType);
             if (inventoryContainer == null)
-            {
                 continue;
-            }
 
-            for(int i = 0; i < inventoryContainer->Size; ++i)
+            for (int i = 0; i < inventoryContainer->Size; ++i)
             {
                 InventoryItem* item = inventoryContainer->GetInventorySlot(i);
                 if (item == null || item->ItemId == 0)
-                {
                     ++slots;
-                }
             }
         }
 
@@ -583,18 +525,12 @@ internal sealed unsafe class GameFunctions
     public static uint GetBaseID(IGameObject? obj)
     {
         if (obj == null)
-        {
             return 0;
-        }
         if (obj.GetType().GetProperty("BaseId") is { } baseIdProp)
-        {
             return (uint)baseIdProp.GetValue(obj)!;
-        }
 
         if (obj.GetType().GetProperty("DataId") is { } dataIdProp)
-        {
             return (uint)dataIdProp.GetValue(obj)!;
-        }
 
         return 0;
     }
@@ -618,12 +554,10 @@ internal sealed unsafe class GameFunctions
         }
 
         List<uint> unlockedUnlockLinks = [];
-        foreach((int index, bool isUnlocked) in uiState->UnlockLinksBitArray)
+        foreach ((int index, bool isUnlocked) in uiState->UnlockLinksBitArray)
         {
             if (isUnlocked)
-            {
                 unlockedUnlockLinks.Add((uint)index);
-            }
         }
 
         _logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedUnlockLinks));

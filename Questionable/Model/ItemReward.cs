@@ -1,8 +1,8 @@
-﻿using Dalamud.Utility;
+﻿using System;
+using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Model;
 
 public enum EItemRewardType
@@ -35,28 +35,18 @@ public abstract record ItemReward(ItemRewardDetails Item)
             itemAction.Action.Value is { } action)
         {
             if (action.RowId is 1322)
-            {
                 return new MountReward(new(item, elementId), item.ItemAction.Value.Data[0]);
-            }
 
             if (action.RowId is 853)
-            {
                 return new MinionReward(new(item, elementId), item.ItemAction.Value.Data[0]);
-            }
 
             if (action.RowId is 20086)
-            {
                 return new FashionAccessoryReward(new(item, elementId), item.ItemAction.Value.Data[0]);
-            }
         }
         else if (item.AdditionalData.GetValueOrDefault<Orchestrion>() is { } orchestrionRoll)
-        {
             return new OrchestrionRollReward(new(item, elementId), orchestrionRoll.RowId);
-        }
         else if (item.AdditionalData.GetValueOrDefault<TripleTriadCard>() is { } tripleTriadCard)
-        {
             return new TripleTriadCardReward(new(item, elementId), (ushort)tripleTriadCard.RowId);
-        }
 
         return null;
     }

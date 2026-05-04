@@ -19,7 +19,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
             _craftItem.InvokeAction(recipeId, quantity);
             return true;
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             _logger.LogError(e, "Unable to craft items");
             return false;
@@ -35,7 +35,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
         {
             return _getEnduranceStatus.InvokeFunc();
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             _logger.LogError(e, "Unable to check for Artisan endurance status");
             return false;

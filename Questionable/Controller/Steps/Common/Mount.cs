@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -7,7 +8,6 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
-using System;
 namespace Questionable.Controller.Steps.Common;
 
 internal static class Mount
@@ -51,9 +51,7 @@ internal static class Mount
         public unsafe MountResult EvaluateMountState(MountTask task, bool dryRun, ref DateTime retryAt)
         {
             if (condition[ConditionFlag.Mounted])
-            {
                 return MountResult.DontMount;
-            }
 
             LogLevel logLevel = dryRun ? LogLevel.None : LogLevel.Information;
 
@@ -84,22 +82,16 @@ internal static class Mount
                     distance, task.TerritoryId);
             }
             else
-            {
                 logger.Log(logLevel, "Want to use mount, trying (in territory {Id})...", task.TerritoryId);
-            }
 
             if (!condition[ConditionFlag.InCombat])
             {
                 if (dryRun)
-                {
                     retryAt = DateTime.Now.AddSeconds(0.5);
-                }
                 return MountResult.Mount;
             }
             else
-            {
                 return MountResult.WhenOutOfCombat;
-            }
         }
     }
 
@@ -188,9 +180,7 @@ internal static class Mount
         protected override bool Start()
         {
             if (!condition[ConditionFlag.Mounted])
-            {
                 return false;
-            }
 
             logger.LogInformation("Step explicitly wants no mount, trying to unmount...");
             if (condition[ConditionFlag.InFlight])
@@ -208,26 +198,18 @@ internal static class Mount
         public override ETaskResult Update()
         {
             if (_continueAt >= DateTime.Now)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (IsUnmounting())
-            {
                 return ETaskResult.StillRunning;
-            }
 
             if (!_unmountTriggered)
             {
                 // if still flying, we still need to land
                 if (condition[ConditionFlag.InFlight])
-                {
                     gameFunctions.Unmount();
-                }
                 else
-                {
                     _unmountTriggered = gameFunctions.Unmount();
-                }
 
                 _continueAt = DateTime.Now.AddSeconds(1);
                 return ETaskResult.StillRunning;

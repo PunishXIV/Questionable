@@ -1,4 +1,7 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -7,9 +10,6 @@ using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Windows.QuestComponents;
-using System;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestRewardComponent
@@ -30,9 +30,7 @@ internal sealed class QuestRewardComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Item Rewards");
         if (!tab)
-        {
             return;
-        }
 
         ImGui.Checkbox("Show rewards from seasonal event quests", ref _showEventRewards);
         ImGui.Spacing();
@@ -50,26 +48,20 @@ internal sealed class QuestRewardComponent
     private void DrawGroup(string label, EItemRewardType type)
     {
         if (!ImGui.CollapsingHeader($"{label}###Reward{type}"))
-        {
             return;
-        }
 
-        foreach(ItemReward item in _questData.RedeemableItems.Where(x => x.Type == type)
+        foreach (ItemReward item in _questData.RedeemableItems.Where(x => x.Type == type)
             .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase))
         {
             if (_questData.TryGetQuestInfo(item.ElementId, out IQuestInfo? questInfo))
             {
                 bool isEventQuest = questInfo is QuestInfo { IsSeasonalEvent: true };
                 if (!_showEventRewards && isEventQuest)
-                {
                     continue;
-                }
 
                 string name = item.Name;
                 if (isEventQuest)
-                {
                     name += $" {SeIconChar.Clock.ToIconString()}";
-                }
 
                 bool complete = item.IsUnlocked();
                 Vector4 color = !_questRegistry.IsKnownQuest(item.ElementId)

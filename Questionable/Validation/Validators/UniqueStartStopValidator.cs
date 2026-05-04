@@ -1,7 +1,7 @@
-﻿using Questionable.Model;
-using Questionable.Model.Questing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Questionable.Model;
+using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 internal sealed class UniqueStartStopValidator : IQuestValidator
@@ -9,15 +9,13 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
         if (quest.Id is SatisfactionSupplyNpcId or AlliedSocietyDailyId)
-        {
             yield break;
-        }
 
         List<(QuestSequence Sequence, int StepId, QuestStep Step)> questAccepts =
             FindQuestStepsWithInteractionType(quest, [EInteractionType.AcceptQuest])
                 .Where(x => x.Step.PickUpQuestId == null)
                 .ToList();
-        foreach((QuestSequence Sequence, int StepId, QuestStep Step) accept in questAccepts)
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) accept in questAccepts)
         {
             if (accept.Sequence.Sequence != 0 || accept.StepId != quest.FindSequence(0)!.Steps.Count - 1)
             {
@@ -50,7 +48,7 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
             FindQuestStepsWithInteractionType(quest, [EInteractionType.CompleteQuest])
                 .Where(x => x.Step.TurnInQuestId == null)
                 .ToList();
-        foreach((QuestSequence Sequence, int StepId, QuestStep Step) complete in questCompletes)
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) complete in questCompletes)
         {
             if (complete.Sequence.Sequence != 255 || complete.StepId != quest.FindSequence(255)!.Steps.Count - 1)
             {

@@ -1,16 +1,15 @@
 ﻿#region
 
+using System;
+using System.Data;
+using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps;
-using System;
-using System.Data;
-using System.Linq;
 using WrathCombo.API;
 using WrathCombo.API.Enum;
-using WrathCombo.API.Extension;
 using WrathError = WrathCombo.API.Error;
 
 #endregion
@@ -52,23 +51,21 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
         {
             WrathIPCWrapper.Test();
             if (!WrathIPCWrapper.IPCReady())
-            {
                 throw new EvaluateException("WrathCombo IPC not ready");
-            }
             return true;
         }
-        catch(WrathError.Exception e) when(e is WrathError.APIBehindException or
+        catch (WrathError.Exception e) when (e is WrathError.APIBehindException or
             WrathError.UninitializedException)
         {
             _logger.LogWarning(e, "Problem with WrathCombo.API usage. " +
                                   "Please report to Questionable or Wrath team.");
         }
-        catch(EvaluateException e)
+        catch (EvaluateException e)
         {
             _logger.LogWarning(e, "Problem with WrathCombo usage. " +
                                   "Please report to Wrath team.");
         }
-        catch(Exception)
+        catch (Exception)
         {
             // Ignore
         }
@@ -186,12 +183,12 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
 
             return true;
         }
-        catch(WrathError.IPCException e)
+        catch (WrathError.IPCException e)
         {
             _logger.LogWarning(e, "Problem with Wrath Combo Setup. " +
                                   "Please report to Wrath team.");
         }
-        catch(Exception)
+        catch (Exception)
         {
             // Ignore
         }
@@ -204,18 +201,16 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
         try
         {
             if (_lease != null)
-            {
                 WrathIPCWrapper.ReleaseControl(_lease.Value);
-            }
 
             return true;
         }
-        catch(WrathError.IPCException e)
+        catch (WrathError.IPCException e)
         {
             _logger.LogWarning(e, "Problem with Wrath Combo stopping. " +
                                   "Please report to Wrath team.");
         }
-        catch(Exception)
+        catch (Exception)
         {
             // Ignore
         }
@@ -230,9 +225,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     public void Update(IGameObject nextTarget)
     {
         if (_lease == null)
-        {
             throw new TaskException("Wrath Combo Lease is cancelled");
-        }
     }
 
     public bool CanAttack(IBattleNpc target)

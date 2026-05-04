@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
@@ -215,9 +214,7 @@ internal sealed class EditorWindow : Window
 
             ImGui.SameLine();
             if (ImGui.Button("Reset"))
-            {
                 _changes[location.InternalId] = new LocationOverride();
-            }
 
             ImGui.EndDisabled();
 
@@ -317,9 +314,7 @@ internal sealed class EditorWindow : Window
         if (filterClass.Equals(FilterClass.Miner)) filterClassIcon = FontAwesomeIcon.HandRock;
         if (filterClass.Equals(FilterClass.Botanist)) filterClassIcon = FontAwesomeIcon.HandPaper;
         if (ImGuiComponents.IconButton(filterClassIcon))
-        {
             filterClass = (FilterClass)(((int)filterClass + 1) % Enum.GetValues(typeof(FilterClass)).Length);
-        }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("filter none/min/btn");
 
@@ -380,13 +375,9 @@ internal sealed class EditorWindow : Window
                         orange = true;
                     }
                     else if (distance < 500 && !_plugin.DistantRange || _plugin.DistantRange)
-                    {
                         line += $"  ({distance:F2})";
-                    }
                     else
-                    {
                         continue;
-                    }
                 }
             }
             output.Add(_point.RowId, new(line, coords, orange, distance, alreadyAdded));
@@ -404,9 +395,7 @@ internal sealed class EditorWindow : Window
                 else
                     ImGui.Text(line);
                 if (ImGui.IsItemClicked())
-                {
                     _commandManager.ProcessCommand($"/vnav flyto {coords}");
-                }
             }
         }
         else

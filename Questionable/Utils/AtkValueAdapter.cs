@@ -1,9 +1,9 @@
+using System.Linq;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Memory;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Text.Payloads;
 using Lumina.Text.ReadOnly;
-using System.Linq;
 namespace Questionable.Utils;
 
 internal static class AtkValueAdapter
@@ -11,14 +11,10 @@ internal static class AtkValueAdapter
     public static unsafe string? ReadString(AtkValue value)
     {
         if (value.Type == AtkValueType.Undefined)
-        {
             return null;
-        }
 
         if (value.String.HasValue)
-        {
             return MemoryHelper.ReadSeStringNullTerminated(new(value.String)).WithCertainMacroCodeReplacements();
-        }
 
         return null;
     }
@@ -29,9 +25,7 @@ internal static class SeStringAdapterExtensions
     public static string WithCertainMacroCodeReplacements(this SeString? str)
     {
         if (str == null)
-        {
             return string.Empty;
-        }
 
         ReadOnlySeString seString = new(str.Encode());
         return seString.WithCertainMacroCodeReplacementsFromReadOnly();

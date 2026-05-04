@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Collections.Generic;
-using System.Linq;
 namespace Questionable.Validation.Validators;
 
 internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData) : IQuestValidator
@@ -15,7 +15,7 @@ internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData)
     {
         if (_questIdToDutyIndexes.TryGetValue(quest.Id, out List<byte>? indexes))
         {
-            foreach(byte index in indexes)
+            foreach (byte index in indexes)
             {
                 if (quest.AllSteps().Any(x =>
                     x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&

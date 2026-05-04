@@ -9,15 +9,14 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using ECommons;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using GatheringPathRenderer.Windows;
-using ECommons.ExcelServices;
 using Pictomancy;
 using Questionable.Model.Gathering;
 
@@ -338,9 +337,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         foreach (var property in typeInfo.Properties)
         {
             if (typeof(ICollection).IsAssignableFrom(property.PropertyType))
-            {
                 property.ShouldSerialize = (_, val) => val is ICollection { Count: > 0 };
-            }
         }
     }
 

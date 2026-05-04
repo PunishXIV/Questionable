@@ -1,4 +1,5 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System.Collections.Generic;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
@@ -8,7 +9,6 @@ using Questionable.Controller;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Collections.Generic;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalUtils
@@ -28,22 +28,16 @@ internal sealed class QuestJournalUtils
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-        {
             ImGui.OpenPopup($"##QuestPopup{questInfo.QuestId}");
-        }
 
         using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestPopup{questInfo.QuestId}");
         if (!popup)
-        {
             return;
-        }
 
         using (ImRaii.Disabled(quest == null))
         {
             if (ImGui.MenuItem("Add to Priority Quests") && quest != null)
-            {
                 _questController.AddQuestPriority(quest.Id);
-            }
         }
 
         using (ImRaii.Disabled(!_questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
@@ -55,18 +49,14 @@ internal sealed class QuestJournalUtils
             }
 
             if (ImGui.MenuItem("Set as next quest"))
-            {
                 _questController.SetNextQuest(quest);
-            }
         }
 
         bool openInQuestMap = _commandManager.Commands.ContainsKey("/questinfo");
         using (ImRaii.Disabled(!(questInfo.QuestId is QuestId) || !openInQuestMap))
         {
             if (ImGui.MenuItem("View in Quest Map"))
-            {
                 _commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
-            }
         }
 
         if (ImGui.MenuItem("Add to Stop condition"))
@@ -79,15 +69,11 @@ internal sealed class QuestJournalUtils
     internal static void ShowFilterContextMenu(QuestJournalComponent journalUi)
     {
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Filter, "Filter"))
-        {
             ImGui.OpenPopup("##QuestFilters");
-        }
 
         using ImRaii.PopupDisposable popup = ImRaii.Popup("##QuestFilters");
         if (!popup)
-        {
             return;
-        }
 
         if (ImGui.Checkbox("Show only Available Quests", ref journalUi.Filter.AvailableOnly) ||
             ImGui.Checkbox("Hide Quests Without Path", ref journalUi.Filter.HideNoPaths))
@@ -99,30 +85,22 @@ internal sealed class QuestJournalUtils
     public void ShowQuestGroupContextMenu(string note, List<IQuestInfo> quests)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-        {
             ImGui.OpenPopup($"##QuestGroupPopup{note}");
-        }
 
         using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestGroupPopup{note}");
         if (!popup)
-        {
             return;
-        }
 
         if (ImGui.MenuItem("Add all to Priority Quests"))
         {
-            foreach(IQuestInfo quest in quests)
-            {
+            foreach (IQuestInfo quest in quests)
                 _questController.AddQuestPriority(quest.QuestId);
-            }
         }
 
         if (ImGui.MenuItem("Remove all from Priority Quests"))
         {
-            foreach(IQuestInfo quest in quests)
-            {
+            foreach (IQuestInfo quest in quests)
                 _questController.RemoveQuestPriority(quest.QuestId);
-            }
         }
     }
 }

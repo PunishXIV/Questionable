@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
-using Questionable.Model;
-using Questionable.Model.Questing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Questionable.Model;
+using Questionable.Model.Questing;
 namespace Questionable.Validation;
 
 internal sealed class QuestValidator
@@ -30,10 +30,8 @@ internal sealed class QuestValidator
 
     public void Reset()
     {
-        foreach(IQuestValidator validator in _validators)
-        {
+        foreach (IQuestValidator validator in _validators)
             validator.Reset();
-        }
         _validationIssues.Clear();
     }
 
@@ -47,13 +45,13 @@ internal sealed class QuestValidator
 
                 List<ValidationIssue> issues = [];
                 Dictionary<EAlliedSociety, int> disabledTribeQuests = [];
-                foreach(Quest quest in quests)
+                foreach (Quest quest in quests)
                 {
-                    foreach(IQuestValidator validator in _validators)
+                    foreach (IQuestValidator validator in _validators)
                     {
                         try
                         {
-                            foreach(ValidationIssue issue in validator.Validate(quest))
+                            foreach (ValidationIssue issue in validator.Validate(quest))
                             {
                                 /*
                                 var level = issue.Severity == EIssueSeverity.Error
@@ -69,12 +67,10 @@ internal sealed class QuestValidator
                                     disabledTribeQuests[quest.Info.AlliedSociety]++;
                                 }
                                 else
-                                {
                                     issues.Add(issue);
-                                }
                             }
                         }
-                        catch(ArgumentException e)
+                        catch (ArgumentException e)
                         {
                             _logger.LogError(e, $"Unable to validate {quest.Info.QuestId} {quest.Info.Name}");
                         }
@@ -95,7 +91,7 @@ internal sealed class QuestValidator
                     .Concat(DisabledTribesAsIssues(disabledTribeQuests))
                     .ToList();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 _logger.LogError(e, "Unable to validate quests");
             }

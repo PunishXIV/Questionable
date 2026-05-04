@@ -30,12 +30,10 @@ internal sealed class Mount128Module(GameFunctions gameFunctions) : ICombatModul
 
     public void Update(IGameObject gameObject)
     {
-        foreach(EAction action in _actions)
+        foreach (EAction action in _actions)
         {
             if (_gameFunctions.UseAction(gameObject, action, false))
-            {
                 return;
-            }
         }
     }
 

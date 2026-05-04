@@ -1,8 +1,8 @@
-﻿using ECommons.ExcelServices;
+﻿using System;
+using System.Collections.Generic;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
 namespace Questionable.Model;
 
 internal sealed class QuestProgressInfo
@@ -21,7 +21,7 @@ internal sealed class QuestProgressInfo
 
         Span<byte> qw = questWork.Variables; // 6 bytes
         string repr = "";
-        for(int i = 0; i < qw.Length; ++i)
+        for (int i = 0; i < qw.Length; ++i)
         {
             byte thisbyte = qw[i];
             Tooltip += $"{Convert.ToString(thisbyte, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
@@ -32,23 +32,15 @@ internal sealed class QuestProgressInfo
             {
                 repr += "(";
                 if (upper != 0)
-                {
                     repr += $"{upper}H";
-                }
                 if (lower != 0)
-                {
                     repr += $"{lower}L";
-                }
                 repr += ") ";
             }
             else
-            {
                 repr += "(-) ";
-            }
             if (i % 2 == 1)
-            {
                 repr += "   ";
-            }
         }
 
         // For combat quests, a sequence to kill 3 enemies works a bit like this:

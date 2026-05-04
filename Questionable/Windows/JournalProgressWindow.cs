@@ -1,10 +1,10 @@
-﻿using Dalamud.Interface.Utility.Raii;
+﻿using System;
+using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Windows.Common;
 using Questionable.Windows.JournalComponents;
-using System;
 namespace Questionable.Windows;
 
 internal sealed class JournalProgressWindow : LWindow, IDisposable
@@ -71,9 +71,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
     {
         using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("Journal");
         if (!tabBar)
-        {
             return;
-        }
 
         _questJournalComponent.DrawQuests();
         _alliedSocietyJournalComponent.DrawAlliedSocietyQuests();

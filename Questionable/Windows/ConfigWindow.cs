@@ -38,9 +38,7 @@ internal sealed class ConfigWindow
     {
         using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
         if (!tabBar)
-        {
             return;
-        }
 
         _generalConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();

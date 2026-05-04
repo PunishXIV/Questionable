@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -12,11 +17,6 @@ using Questionable.Data;
 using Questionable.External;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class DutyConfigComponent : ConfigComponent
@@ -66,9 +66,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Duties###Duties");
         if (!tab)
-        {
             return;
-        }
 
         bool runInstancedContentWithAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
         if (ImGui.Checkbox("Run instanced content with AutoDuty and BossMod", ref runInstancedContentWithAutoDuty))
@@ -113,11 +111,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
     {
         using ImRaii.ChildDisposable child = ImRaii.Child("DutyConfiguration", new(650, 400), true);
         if (!child)
-        {
             return;
-        }
 
-        foreach(EExpansionVersion expansion in Enum.GetValues<EExpansionVersion>())
+        foreach (EExpansionVersion expansion in Enum.GetValues<EExpansionVersion>())
         {
             (int enabledCount, int totalCount) = GetDutyCountsForExpansion(expansion);
 
@@ -147,7 +143,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
                     if (_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
                     {
-                        foreach((uint cfcId, uint territoryId, string name) in cfcNames)
+                        foreach ((uint cfcId, uint territoryId, string name) in cfcNames)
                         {
                             if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
                             {
@@ -158,13 +154,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
                                     : UnsupportedCfcOptions;
                                 int value = 0;
                                 if (Configuration.Duties.WhitelistedDutyCfcIds.Contains(cfcId))
-                                {
                                     value = 1;
-                                }
                                 if (Configuration.Duties.BlacklistedDutyCfcIds.Contains(cfcId))
-                                {
                                     value = 2;
-                                }
 
                                 if (ImGui.TableNextColumn())
                                 {
@@ -186,9 +178,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                                             FontAwesomeIcon.Times, ImGuiColors.DalamudRed);
                                     }
                                     else if (dutyOptions.Notes.Count > 0)
-                                    {
                                         DrawNotes(dutyOptions.Enabled, dutyOptions.Notes);
-                                    }
                                 }
 
                                 if (ImGui.TableNextColumn())
@@ -201,13 +191,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
                                         Configuration.Duties.BlacklistedDutyCfcIds.Remove(cfcId);
 
                                         if (value == 1)
-                                        {
                                             Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
-                                        }
                                         else if (value == 2)
-                                        {
                                             Configuration.Duties.BlacklistedDutyCfcIds.Add(cfcId);
-                                        }
 
                                         Save();
                                     }
@@ -230,14 +216,12 @@ internal sealed class DutyConfigComponent : ConfigComponent
     private (int enabledCount, int totalCount) GetDutyCountsForExpansion(EExpansionVersion expansion)
     {
         if (!_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
-        {
             return (0, 0);
-        }
 
         int enabledCount = 0;
         int totalCount = 0;
 
-        foreach((uint cfcId, uint _, string _) in cfcNames)
+        foreach ((uint cfcId, uint _, string _) in cfcNames)
         {
             if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
             {
@@ -250,9 +234,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                                  (!Configuration.Duties.BlacklistedDutyCfcIds.Contains(cfcId) && dutyOptions.Enabled);
 
                 if (isEnabled)
-                {
                     enabledCount++;
-                }
             }
         }
 
@@ -266,23 +248,19 @@ internal sealed class DutyConfigComponent : ConfigComponent
             Configuration.Duties.BlacklistedDutyCfcIds.Clear();
             Configuration.Duties.WhitelistedDutyCfcIds.Clear();
 
-            foreach(List<DutyInfo> cfcNames in _contentFinderConditionNames.Values)
+            foreach (List<DutyInfo> cfcNames in _contentFinderConditionNames.Values)
             {
-                foreach((uint cfcId, uint _, string _) in cfcNames)
+                foreach ((uint cfcId, uint _, string _) in cfcNames)
                 {
                     if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
-                    {
                         Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
-                    }
                 }
             }
             Save();
         }
 
         if (ImGui.IsItemHovered())
-        {
             ImGui.SetTooltip("Enable all of the duties, use at your own risk.");
-        }
     }
 
     private void DrawClipboardButtons()
@@ -315,7 +293,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
                 Configuration.Duties.WhitelistedDutyCfcIds.Clear();
                 Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-                foreach(string part in text.Split(DutyClipboardSeparator))
+                foreach (string part in text.Split(DutyClipboardSeparator))
                 {
                     if (part.StartsWith(DutyWhitelistPrefix, StringComparison.InvariantCulture) &&
                         uint.TryParse(part.AsSpan(DutyWhitelistPrefix.Length), CultureInfo.InvariantCulture,
@@ -348,9 +326,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-        {
             ImGui.SetTooltip("Hold CTRL to enable this button.");
-        }
     }
 
     private sealed record DutyInfo(uint CfcId, uint TerritoryId, string Name);

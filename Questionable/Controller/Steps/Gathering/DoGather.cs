@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -10,9 +13,6 @@ using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class DoGather
@@ -69,25 +69,19 @@ internal static class DoGather
             }
 
             if (GameFunctions.GetFreeInventorySlots() == 0)
-            {
                 throw new TaskException("Inventory full");
-            }
 
             if (condition[ConditionFlag.Gathering])
             {
                 if (gameGui.TryGetAddonByName("GatheringMasterpiece", out AtkUnitBase* _))
-                {
                     return ETaskResult.TaskComplete;
-                }
 
                 _wasGathering = true;
 
                 if (gameGui.TryGetAddonByName("Gathering", out AddonGathering* addonGathering))
                 {
                     if (gatheringController.HasRequestedItems())
-                    {
                         addonGathering->FireCallbackInt(-1);
-                    }
                     else
                     {
                         List<SlotInfo> slots = ReadSlots(addonGathering);
@@ -129,19 +123,13 @@ internal static class DoGather
                                 {
                                     InventoryManager* inventoryManager = InventoryManager.Instance();
                                     if (inventoryManager->GetInventoryItemCount(slot.ItemId) == 9999)
-                                    {
                                         slot = null;
-                                    }
                                 }
 
                                 if (slot != null)
-                                {
                                     addonGathering->FireCallbackInt(slot.Index);
-                                }
                                 else
-                                {
                                     addonGathering->FireCallbackInt(-1);
-                                }
                             }
                         }
                     }
@@ -156,35 +144,27 @@ internal static class DoGather
         private unsafe List<SlotInfo> ReadSlots(AddonGathering* addonGathering)
         {
             List<SlotInfo> slots = [];
-            for(int i = 0; i < 8; ++i)
+            for (int i = 0; i < 8; ++i)
             {
                 // +8 = new item?
                 uint itemId = addonGathering->ItemIds[i];
                 if (itemId == 0)
-                {
                     continue;
-                }
 
                 AtkComponentCheckBox* atkCheckbox = addonGathering->GatheredItemComponentCheckbox[i].Value;
 
                 AtkTextNode* atkGatheringChance = atkCheckbox->UldManager.SearchNodeById(10)->GetAsAtkTextNode();
                 if (!int.TryParse(atkGatheringChance->NodeText.ToString(), out int gatheringChance))
-                {
                     gatheringChance = 0;
-                }
 
                 AtkTextNode* atkBoonChance = atkCheckbox->UldManager.SearchNodeById(16)->GetAsAtkTextNode();
                 if (!int.TryParse(atkBoonChance->NodeText.ToString(), out int boonChance))
-                {
                     boonChance = 0;
-                }
 
                 AtkComponentNode* atkImage = atkCheckbox->UldManager.SearchNodeById(31)->GetAsAtkComponentNode();
                 AtkTextNode* atkQuantity = atkImage->Component->UldManager.SearchNodeById(7)->GetAsAtkTextNode();
                 if (!atkQuantity->IsVisible() || !int.TryParse(atkQuantity->NodeText.ToString(), out int quantity))
-                {
                     quantity = 1;
-                }
 
                 SlotInfo slot = new(i, itemId, gatheringChance, boonChance, quantity);
                 slots.Add(slot);
@@ -199,9 +179,7 @@ internal static class DoGather
         {
             // it's possible the item has disappeared
             if (_slotToGather != null && slots.All(x => x.Index != _slotToGather.Index))
-            {
                 _slotToGather = null;
-            }
 
             //uint gp = objectTable.CurrentGp;
             Queue<EAction> actions = new();
@@ -267,9 +245,7 @@ internal static class DoGather
                     // we still can't find the item, if this node has been hit at least once we just close it
                     logger.LogDebug("Didn't find item after using Luck, moving on...");
                     if (nodeCondition.CurrentIntegrity != nodeCondition.MaxIntegrity)
-                    {
                         return null;
-                    }
 
                     logger.LogDebug("Actually there's crystals, let's get those");
                     // otherwise, there most likely is -any- other item available, probably a shard/crystal
@@ -313,13 +289,9 @@ internal static class DoGather
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
             if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
-            {
                 return minerAction;
-            }
             else
-            {
                 return botanistAction;
-            }
         }
 
         private unsafe bool CanUseAction(EAction minerAction, EAction botanistAction)

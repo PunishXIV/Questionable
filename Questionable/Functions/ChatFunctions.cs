@@ -1,4 +1,11 @@
-﻿using Dalamud.Game.ClientState.Objects.Types;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.System.Memory;
@@ -7,13 +14,6 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 namespace Questionable.Functions;
 
 internal sealed unsafe class ChatFunctions
@@ -84,19 +84,13 @@ internal sealed unsafe class ChatFunctions
         _logger.LogDebug("Attempting to send chat message '{Message}'", message);
         byte[] bytes = Encoding.UTF8.GetBytes(message);
         if (bytes.Length == 0)
-        {
             throw new ArgumentException("message is empty", nameof(message));
-        }
 
         if (bytes.Length > 500)
-        {
             throw new ArgumentException("message is longer than 500 bytes", nameof(message));
-        }
 
         if (message.Length != SanitiseText(message).Length)
-        {
             throw new ArgumentException("message contained invalid characters", nameof(message));
-        }
 
         SendMessageUnsafe(bytes);
     }
@@ -130,9 +124,7 @@ internal sealed unsafe class ChatFunctions
     public void ExecuteCommand(string command)
     {
         if (!command.StartsWith('/'))
-        {
             return;
-        }
 
         SendMessage(command);
     }

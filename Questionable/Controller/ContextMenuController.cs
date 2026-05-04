@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Dalamud.Game.Gui.ContextMenu;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
@@ -13,8 +15,6 @@ using Questionable.Model;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using System;
-using System.Linq;
 namespace Questionable.Controller;
 
 internal sealed class ContextMenuController : IDisposable
@@ -74,9 +74,7 @@ internal sealed class ContextMenuController : IDisposable
     {
         // no clue why this isn't the actual name, but here we are
         if (args.AddonName != null)
-        {
             return;
-        }
 
         uint itemId = GetHoveredSatisfactionSupplyItemId();
         if (itemId == 0)
@@ -86,14 +84,10 @@ internal sealed class ContextMenuController : IDisposable
         }
 
         if (itemId > 1_000_000)
-        {
             itemId -= 1_000_000;
-        }
 
         if (itemId >= 500_000)
-        {
             itemId -= 500_000;
-        }
 
         if (_gatheringData.TryGetCustomDeliveryNpc(itemId, out uint npcId))
         {
@@ -101,18 +95,14 @@ internal sealed class ContextMenuController : IDisposable
             AddContextMenuEntry(args, itemId, npcId, Job.BTN, "Harvest");
         }
         else
-        {
             _logger.LogDebug("No custom delivery NPC found for item {ItemId}.", itemId);
-        }
     }
 
     private unsafe uint GetHoveredSatisfactionSupplyItemId()
     {
         AgentSatisfactionSupply* agent = AgentSatisfactionSupply.Instance();
         if (agent == null || !agent->IsAgentActive())
-        {
             return 0;
-        }
 
 
         if (_gameGui.TryGetAddonByName("SatisfactionSupply", out AddonSatisfactionSupply* addon) &&
@@ -130,9 +120,7 @@ internal sealed class ContextMenuController : IDisposable
     {
         Job currentClassJob = (Job)PlayerState.Instance()->CurrentClassJobId;
         if (classJob != currentClassJob)
-        {
             return;
-        }
 
         if (!_gatheringPointRegistry.TryGetGatheringPointId(itemId, classJob, out GatheringPointId? _))
         {
@@ -143,9 +131,7 @@ internal sealed class ContextMenuController : IDisposable
         ushort collectability = _gatheringData.GetRecommendedCollectability(itemId);
         int quantityToGather = collectability > 0 ? 6 : int.MaxValue;
         if (collectability == 0)
-        {
             return;
-        }
 
         AgentSatisfactionSupply* agentSatisfactionSupply = AgentSatisfactionSupply.Instance();
         if (agentSatisfactionSupply->IsAgentActive())
@@ -169,9 +155,7 @@ internal sealed class ContextMenuController : IDisposable
 
         string name = $"{verb} with Questionable";
         if (!string.IsNullOrEmpty(lockedReasonn))
-        {
             name += $" ({lockedReasonn})";
-        }
 
         args.AddMenuItem(new()
         {
@@ -214,8 +198,6 @@ internal sealed class ContextMenuController : IDisposable
             _questController.StartGatheringQuest("SatisfactionSupply prepare gathering");
         }
         else
-        {
             _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
-        }
     }
 }

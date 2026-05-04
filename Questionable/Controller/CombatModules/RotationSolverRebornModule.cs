@@ -1,10 +1,10 @@
-﻿using Dalamud.Game.ClientState.Objects.Types;
+﻿using System;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
-using System;
 namespace Questionable.Controller.CombatModules;
 
 internal sealed class RotationSolverRebornModule
@@ -22,16 +22,14 @@ internal sealed class RotationSolverRebornModule
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (_configuration.General.CombatModule != Configuration.ECombatModule.RotationSolverReborn)
-        {
             return false;
-        }
 
         try
         {
             _test.InvokeAction("Validate RSR is callable from Questionable");
             return true;
         }
-        catch(IpcError)
+        catch (IpcError)
         {
             return false;
         }
@@ -44,7 +42,7 @@ internal sealed class RotationSolverRebornModule
             _changeOperationMode.InvokeAction(StateCommandType.Manual);
             return true;
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             _logger.LogWarning(e, "Could not start combat");
             return false;
@@ -54,16 +52,14 @@ internal sealed class RotationSolverRebornModule
     public bool Stop()
     {
         if (!_changeOperationMode.HasAction)
-        {
             return true;
-        }
 
         try
         {
             _changeOperationMode.InvokeAction(StateCommandType.Off);
             return true;
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             _logger.LogWarning(e, "Could not turn off combat");
             return false;

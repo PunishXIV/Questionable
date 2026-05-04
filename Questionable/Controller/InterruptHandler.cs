@@ -1,4 +1,6 @@
-﻿using Dalamud.Hooking;
+﻿using System;
+using System.Runtime.InteropServices;
+using Dalamud.Hooking;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
@@ -6,8 +8,6 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
-using System;
-using System.Runtime.InteropServices;
 namespace Questionable.Controller;
 
 internal sealed unsafe class InterruptHandler : IDisposable
@@ -46,7 +46,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
         {
             if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))
             {
-                for(int i = 0; i < effectHeader->TargetCount; i++)
+                for (int i = 0; i < effectHeader->TargetCount; i++)
                 {
                     uint targetId = (uint)(effectTail[i] & uint.MaxValue);
                     EffectEntry* effect = effectArray + 8 * i;
@@ -63,7 +63,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
                 }
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             _logger.LogWarning(e, "Unable to process action effect");
         }

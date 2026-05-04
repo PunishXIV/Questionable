@@ -1034,3 +1034,5 @@ dotnet_analyzer_diagnostic.category-Globalization.severity = none
 
 # CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 dotnet_diagnostic.CS8618.severity = none
+
+"csharp_preserve_single_line_statements = true"

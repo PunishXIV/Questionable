@@ -1,10 +1,10 @@
+using System;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetheryteFreeOrFavored
@@ -14,9 +14,7 @@ internal static class AetheryteFreeOrFavored
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.RegisterFreeOrFavoredAetheryte)
-            {
                 return null;
-            }
 
             ArgumentNullException.ThrowIfNull(step.Aetheryte);
 
@@ -45,9 +43,7 @@ internal static class AetheryteFreeOrFavored
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
-            {
                 throw new TaskException($"Aetheryte {Task.AetheryteLocation} is not attuned");
-            }
 
             if (aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(Task.AetheryteLocation) ==
                 AetheryteRegistrationResult.NotPossible)

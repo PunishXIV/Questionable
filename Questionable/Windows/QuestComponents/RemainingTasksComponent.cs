@@ -1,6 +1,6 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System.Collections.Generic;
+using Dalamud.Bindings.ImGui;
 using Questionable.Controller;
-using System.Collections.Generic;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class RemainingTasksComponent(QuestController questController, GatheringController gatheringController)
@@ -15,10 +15,8 @@ internal sealed class RemainingTasksComponent(QuestController questController, G
         {
             ImGui.Separator();
             ImGui.BeginDisabled();
-            foreach(string task in gatheringTasks)
-            {
+            foreach (string task in gatheringTasks)
                 ImGui.TextUnformatted($"G: {task}");
-            }
             ImGui.EndDisabled();
         }
         else
@@ -28,10 +26,8 @@ internal sealed class RemainingTasksComponent(QuestController questController, G
             {
                 ImGui.Separator();
                 ImGui.BeginDisabled();
-                foreach(string task in remainingTasks)
-                {
+                foreach (string task in remainingTasks)
                     ImGui.TextUnformatted(task);
-                }
                 ImGui.EndDisabled();
             }
         }

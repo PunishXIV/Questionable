@@ -1,7 +1,7 @@
-using Questionable.Model;
-using Questionable.Model.Questing;
 using System.Collections.Generic;
 using System.Linq;
+using Questionable.Model;
+using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
@@ -14,7 +14,7 @@ internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
             .ToList();
         if (singlePlayerInstances.DistinctBy(x => x.SinglePlayerDutyIndex).Count() < singlePlayerInstances.Count)
         {
-            foreach((QuestSequence Sequence, int StepId, byte SinglePlayerDutyIndex) singlePlayerInstance in singlePlayerInstances)
+            foreach ((QuestSequence Sequence, int StepId, byte SinglePlayerDutyIndex) singlePlayerInstance in singlePlayerInstances)
             {
                 yield return new()
                 {

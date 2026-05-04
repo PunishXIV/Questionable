@@ -17,9 +17,7 @@ internal struct AgentSatisfactionSupply2
     public int CalculateTurnInsToNextRank(int maxTurnIns)
     {
         if (MaxSatisfaction == 0)
-        {
             return maxTurnIns;
-        }
 
         return maxTurnIns * (MaxSatisfaction - CurrentSatisfaction) / MaxSatisfaction;
     }

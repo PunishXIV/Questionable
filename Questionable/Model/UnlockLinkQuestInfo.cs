@@ -1,7 +1,7 @@
-using ECommons.ExcelServices;
-using Questionable.Model.Questing;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using ECommons.ExcelServices;
+using Questionable.Model.Questing;
 namespace Questionable.Model;
 
 internal sealed class UnlockLinkQuestInfo(UnlockLinkId unlockLinkId, string name, uint issuerDataId) : IQuestInfo

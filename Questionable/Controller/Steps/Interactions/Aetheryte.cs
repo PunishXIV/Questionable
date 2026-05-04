@@ -1,10 +1,10 @@
-﻿using Dalamud.Game.ClientState.Objects.Enums;
+﻿using System;
+using Dalamud.Game.ClientState.Objects.Enums;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte
@@ -14,9 +14,7 @@ internal static class Aetheryte
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AttuneAetheryte)
-            {
                 return null;
-            }
 
             ArgumentNullException.ThrowIfNull(step.Aetheryte);
 

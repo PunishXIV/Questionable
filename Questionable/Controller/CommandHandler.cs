@@ -1,4 +1,9 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Plugin.Services;
 using ECommons;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -8,11 +13,6 @@ using Lumina.Excel.Sheets;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Windows;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller;
@@ -116,9 +116,7 @@ internal sealed class CommandHandler : IDisposable
     private void ProcessCommand(string command, string arguments)
     {
         if (OpenSetupIfNeeded(arguments))
-        {
             return;
-        }
 
         string[] parts = arguments.Split(' ');
         switch (parts[0])
@@ -221,9 +219,7 @@ internal sealed class CommandHandler : IDisposable
 
             case "d2qwh":
                 if (parts.Length < 2)
-                {
                     break;
-                }
                 string highOutp = D2QW(parts.Skip(1).ToArray(), true);
                 ImGui.SetClipboardText(highOutp);
                 _chatGui.Print(highOutp);
@@ -231,9 +227,7 @@ internal sealed class CommandHandler : IDisposable
 
             case "d2qwl":
                 if (parts.Length < 2)
-                {
                     break;
-                }
                 string lowOutp = D2QW(parts.Skip(1).ToArray());
                 ImGui.SetClipboardText(lowOutp);
                 _chatGui.Print(lowOutp);
@@ -260,15 +254,13 @@ internal sealed class CommandHandler : IDisposable
     private static string D2QW(string[] parts, bool High = false)
     {
         List<string> outp = [];
-        foreach(string part in parts)
+        foreach (string part in parts)
         {
             byte d = byte.Parse(part.RemoveOtherChars("0123456789"), CultureInfo.InvariantCulture);
             QuestWorkValue qw = new(d);
             string value = " {\"" + (High ? "High" : "Low") + "\": " + (High ? qw.High : qw.Low) + "}";
             if (!outp.Contains(value))
-            {
                 outp.Add(value);
-            }
         }
         return outp.Join(",");
     }
@@ -276,9 +268,7 @@ internal sealed class CommandHandler : IDisposable
     private void ProcessDebugCommand(string command, string arguments)
     {
         if (OpenSetupIfNeeded(arguments))
-        {
             return;
-        }
 
         string[] parts = arguments.Split(' ');
         switch (parts[0])
@@ -295,14 +285,10 @@ internal sealed class CommandHandler : IDisposable
 
                     List<uint> newUnlockLinks = unlockedUnlockLinks.Except(_previouslyUnlockedUnlockLinks).ToList();
                     if (_previouslyUnlockedUnlockLinks.Count > 0 && newUnlockLinks.Count > 0)
-                    {
                         _chatGui.Print($"New unlock links: {string.Join(", ", newUnlockLinks)}", MessageTag, TagColor);
-                    }
                 }
                 else
-                {
                     _chatGui.PrintError("Could not query unlock links.", MessageTag, TagColor);
-                }
 
                 _previouslyUnlockedUnlockLinks = unlockedUnlockLinks;
                 break;
@@ -313,24 +299,20 @@ internal sealed class CommandHandler : IDisposable
                     List<string> taxiStands = [];
                     ExcelSheet<ChocoboTaxiStand> taxiStandNames = _dataManager.GetExcelSheet<ChocoboTaxiStand>();
                     UIState* uiState = UIState.Instance();
-                    for(byte i = 0; i < uiState->UnlockedChocoboTaxiStands.Length * 8; ++i)
+                    for (byte i = 0; i < uiState->UnlockedChocoboTaxiStands.Length * 8; ++i)
                     {
                         if (!(uiState->IsChocoboTaxiStandUnlocked(i)) && taxiStandNames.HasRow(i + 0x120000u))
                         {
                             ChocoboTaxiStand row = taxiStandNames.GetRow(i + 0x120000u);
                             // 0 and 1 are unused
                             if (row.TargetLocations[0].RowId >= 2)
-                            {
                                 taxiStands.Add($"{row.PlaceName} ({i})");
-                            }
                         }
                     }
 
                     _chatGui.Print("Locked taxi stands:", MessageTag, TagColor);
-                    foreach(string taxiStand in taxiStands)
-                    {
+                    foreach (string taxiStand in taxiStands)
                         _chatGui.Print($"- {taxiStand}", MessageTag, TagColor);
-                    }
                 }
                 break;
 
@@ -338,13 +320,11 @@ internal sealed class CommandHandler : IDisposable
                 unsafe
                 {
                     List<string> activeFestivals = [];
-                    for(byte i = 0; i < 4; ++i)
+                    for (byte i = 0; i < 4; ++i)
                     {
                         GameMain.Festival festival = GameMain.Instance()->ActiveFestivals[i];
                         if (festival.Id == 0)
-                        {
                             continue;
-                        }
 
                         activeFestivals.Add($"{festival.Id}({festival.Phase})");
                     }
@@ -360,13 +340,9 @@ internal sealed class CommandHandler : IDisposable
         if (!_configuration.IsPluginSetupComplete())
         {
             if (string.IsNullOrEmpty(arguments))
-            {
                 _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
-            }
             else
-            {
                 _chatGui.PrintError("Please complete the one-time setup first.", MessageTag, TagColor);
-            }
             return true;
         }
 
@@ -389,9 +365,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print($"Set highlighted quest to {questId} ({quest.Info.Name}).", MessageTag, TagColor);
             }
             else
-            {
                 _chatGui.PrintError($"Unknown quest {questId}.", MessageTag, TagColor);
-            }
         }
         else
         {
@@ -405,18 +379,14 @@ internal sealed class CommandHandler : IDisposable
         if (arguments.Length >= 1 && ElementId.TryFromString(arguments[0], out ElementId? questId) && questId != null)
         {
             if (_questFunctions.IsQuestLocked(questId))
-            {
                 _chatGui.PrintError($"Quest {questId} is locked.", MessageTag, TagColor);
-            }
             else if (_questRegistry.TryGetQuest(questId, out Quest? quest))
             {
                 _questController.SetNextQuest(quest);
                 _chatGui.Print($"Set next quest to {questId} ({quest.Info.Name}).", MessageTag, TagColor);
             }
             else
-            {
                 _chatGui.PrintError($"Unknown quest {questId}.", MessageTag, TagColor);
-            }
         }
         else
         {
@@ -443,9 +413,7 @@ internal sealed class CommandHandler : IDisposable
                         {
                             QuestStep? step = sequence.FindStep(parsedStep);
                             if (step != null)
-                            {
                                 stepId = parsedStep;
-                            }
                         }
                     }
                 }
@@ -454,9 +422,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print($"Simulating quest {questId} ({quest.Info.Name}).", MessageTag, TagColor);
             }
             else
-            {
                 _chatGui.PrintError($"Unknown quest {questId}.", MessageTag, TagColor);
-            }
         }
         else
         {
@@ -476,9 +442,7 @@ internal sealed class CommandHandler : IDisposable
                 MessageTag, TagColor);
         }
         else
-        {
             _chatGui.Print("You are not mounted.", MessageTag, TagColor);
-        }
     }
 
     private void OnLogout(int type, int code)

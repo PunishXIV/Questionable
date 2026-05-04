@@ -1,4 +1,8 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
@@ -10,10 +14,6 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 
 namespace Questionable.Controller;
@@ -73,7 +73,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                         return;
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     _logger.LogError(e, "Failed to start task {TaskName}", upcomingTask.ToString());
                     _chatGui.PrintError(
@@ -83,9 +83,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                 }
             }
             else
-            {
                 return;
-            }
         }
 
         ETaskResult result;
@@ -99,7 +97,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 
             result = _taskQueue.CurrentTaskExecutor.Update();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             _logger.LogError(e, "Failed to update task {TaskName}",
                 _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
@@ -119,7 +117,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                     _taskQueue.CurrentTaskExecutor.CurrentTask, result);
                 _taskQueue.CurrentTaskExecutor = null;
 
-                while(_taskQueue.TryDequeue(out ITask? nextTask))
+                while (_taskQueue.TryDequeue(out ITask? nextTask))
                 {
                     if (nextTask is ILastTask or Gather.SkipMarker)
                     {
@@ -141,9 +139,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                 OnTaskComplete(_taskQueue.CurrentTaskExecutor.CurrentTask);
 
                 if (result == ETaskResult.CreateNewTasks && _taskQueue.CurrentTaskExecutor is IExtraTaskCreator extraTaskCreator)
-                {
                     _taskQueue.EnqueueAll(extraTaskCreator.CreateExtraTasks());
-                }
 
                 _taskQueue.CurrentTaskExecutor = null;
 
@@ -189,18 +185,14 @@ internal abstract class MiniTaskController<T> : IDisposable
         {
             List<ITask> tasks = [];
             if (_condition[ConditionFlag.Mounted])
-            {
                 tasks.Add(new Mount.UnmountTask());
-            }
 
             tasks.Add(Combat.Factory.CreateTask(null, -1, false, EEnemySpawnType.QuestInterruption, [], [], [], null));
             tasks.Add(new WaitAtEnd.WaitDelay());
             _taskQueue.InterruptWith(tasks);
         }
         else
-        {
             _taskQueue.InterruptWith([new WaitAtEnd.WaitDelay()]);
-        }
 
         LogTasksAfterInterruption();
     }
@@ -219,10 +211,8 @@ internal abstract class MiniTaskController<T> : IDisposable
     private void LogTasksAfterInterruption()
     {
         _logger.LogInformation("Remaining tasks after interruption:");
-        foreach(ITask task in _taskQueue.RemainingTasks)
-        {
+        foreach (ITask task in _taskQueue.RemainingTasks)
             _logger.LogInformation("- {TaskName}", task);
-        }
     }
 
     public void OnErrorToast(ref SeString message, ref bool isHandled)
@@ -230,9 +220,7 @@ internal abstract class MiniTaskController<T> : IDisposable
         if (_taskQueue.CurrentTaskExecutor is IToastAware toastAware)
         {
             if (toastAware.OnErrorToast(message))
-            {
                 isHandled = true;
-            }
         }
 
         if (!isHandled)

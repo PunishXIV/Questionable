@@ -1,4 +1,8 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -15,10 +19,6 @@ using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 using BattleNpcSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind;
 
 namespace Questionable.Controller;
@@ -89,9 +89,7 @@ internal sealed class CombatController : IDisposable
 
         ICombatModule? combatModule = _combatModules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
-        {
             return false;
-        }
 
         if (combatModule.Start(combatData))
         {
@@ -107,17 +105,13 @@ internal sealed class CombatController : IDisposable
             return true;
         }
         else
-        {
             return false;
-        }
     }
 
     public EStatus Update()
     {
         if (_currentFight == null)
-        {
             return EStatus.Complete;
-        }
 
         if (_movementController.IsPathfinding ||
             _movementController.IsPathRunning ||
@@ -135,9 +129,7 @@ internal sealed class CombatController : IDisposable
         if (_currentFight.Data.SpawnType is EEnemySpawnType.OverworldEnemies)
         {
             if (_targetManager.Target != null)
-            {
                 _lastTargetId = _targetManager.Target?.GameObjectId;
-            }
             else
             {
                 if (_lastTargetId != null)
@@ -170,15 +162,11 @@ internal sealed class CombatController : IDisposable
                                 UpdateLastTargetAndQuestVariables(null);
                             }
                             else
-                            {
                                 return EStatus.InCombat;
-                            }
                         }
                     }
                     else
-                    {
                         _lastTargetId = null;
-                    }
                 }
             }
         }
@@ -198,7 +186,7 @@ internal sealed class CombatController : IDisposable
                     {
                         _currentFight.Module.Update(target);
                     }
-                    catch(TaskException e)
+                    catch (TaskException e)
                     {
                         _logger.LogWarning(e, "Combat was interrupted, stopping: {Exception}", e.Message);
                         SetTarget(null);
@@ -208,22 +196,16 @@ internal sealed class CombatController : IDisposable
             else if (nextTarget != null)
             {
                 if (nextTargetPriority > currentTargetPriority || currentTargetPriority == 0)
-                {
                     SetTarget(nextTarget);
-                }
             }
             else
-            {
                 SetTarget(null);
-            }
         }
         else
         {
             IGameObject? nextTarget = FindNextTarget();
             if (nextTarget is { IsDead: false })
-            {
                 SetTarget(nextTarget);
-            }
         }
 
         if (_condition[ConditionFlag.InCombat])
@@ -232,32 +214,24 @@ internal sealed class CombatController : IDisposable
             return EStatus.InCombat;
         }
         else if (_wasInCombat)
-        {
             return EStatus.Complete;
-        }
         else
-        {
             return EStatus.InCombat;
-        }
     }
 
     private IGameObject? FindNextTarget()
     {
         if (_currentFight == null)
-        {
             return null;
-        }
 
         // check if any complex combat conditions are fulfilled
         List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
         if (complexCombatData.Count > 0)
         {
-            for(int i = 0; i < complexCombatData.Count; ++i)
+            for (int i = 0; i < complexCombatData.Count; ++i)
             {
                 if (_currentFight.Data.CompletedComplexDatas.Contains(i))
-                {
                     continue;
-                }
 
                 ComplexCombatData condition = complexCombatData[i];
                 if (condition.RewardItemId != null && condition.RewardItemCount != null)
@@ -292,11 +266,11 @@ internal sealed class CombatController : IDisposable
         }
 
         return _objectTable.Select(x => new
-            {
-                GameObject = x,
-                GetKillPriority(x).Priority,
-                Distance = Vector3.Distance(x.Position, _objectTable[0]!.Position)
-            })
+        {
+            GameObject = x,
+            GetKillPriority(x).Priority,
+            Distance = Vector3.Distance(x.Position, _objectTable[0]!.Position)
+        })
             .Where(x => x.Priority > 0)
             .OrderByDescending(x => x.Priority)
             .ThenBy(x => x.Distance)
@@ -308,28 +282,22 @@ internal sealed class CombatController : IDisposable
     {
         (int? rawPriority, string reason) = GetRawKillPriority(gameObject);
         if (rawPriority == null)
-        {
             return (0, reason);
-        }
 
         // priority is a value between 0 and 100 inclusive; we want to always kill enemies we have fight with on first
         if (gameObject is IBattleNpc battleNpc && battleNpc.StatusFlags.HasFlag(StatusFlags.InCombat))
         {
             // stuff trying to kill us
             if (gameObject.TargetObjectId == _objectTable[0]?.GameObjectId)
-            {
                 return (rawPriority.Value + 150, reason + "/Targeted");
-            }
 
             // stuff on our enmity list that's not necessarily targeting us
             Hater haters = UIState.Instance()->Hater;
-            for(int i = 0; i < haters.HaterCount; ++i)
+            for (int i = 0; i < haters.HaterCount; ++i)
             {
                 HaterInfo hater = haters.Haters[i];
                 if (hater.EntityId == gameObject.GameObjectId)
-                {
                     return (rawPriority.Value + 125, reason + "/Enmity");
-                }
             }
         }
 
@@ -339,26 +307,18 @@ internal sealed class CombatController : IDisposable
     private unsafe (int? Priority, string Reason) GetRawKillPriority(IGameObject gameObject)
     {
         if (_currentFight == null)
-        {
             return (null, "Not Fighting");
-        }
 
         if (gameObject is IBattleNpc battleNpc)
         {
             if (!_currentFight.Module.CanAttack(battleNpc))
-            {
                 return (null, "Can't attack");
-            }
 
             if (battleNpc.IsDead)
-            {
                 return (null, "Dead");
-            }
 
             if (!battleNpc.IsTargetable)
-            {
                 return (null, "Untargetable");
-            }
 
             List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
             GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
@@ -372,27 +332,19 @@ internal sealed class CombatController : IDisposable
             Vector3 ownPosition = _objectTable[0]?.Position ?? Vector3.Zero;
             bool expectQuestMarker;
             if (_currentFight.Data.SpawnType == EEnemySpawnType.FinishCombatIfAny)
-            {
                 expectQuestMarker = false;
-            }
             else if (_currentFight.Data.SpawnType == EEnemySpawnType.OverworldEnemies &&
                      Vector3.Distance(ownPosition, battleNpc.Position) >= MaxNameplateRange)
-            {
                 expectQuestMarker = false;
-            }
             else
-            {
                 expectQuestMarker = true;
-            }
 
             if (complexCombatData.Count > 0)
             {
-                for(int i = 0; i < complexCombatData.Count; ++i)
+                for (int i = 0; i < complexCombatData.Count; ++i)
                 {
                     if (_currentFight.Data.CompletedComplexDatas.Contains(i))
-                    {
                         continue;
-                    }
 
                     if (expectQuestMarker &&
                         !complexCombatData[i].IgnoreQuestMarker &&
@@ -414,9 +366,7 @@ internal sealed class CombatController : IDisposable
                     _currentFight.Data.KillEnemyDataIds.Contains(GameFunctions.GetBaseID(battleNpc)))
                 {
                     if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && !PlayerState.Instance()->IsLevelSynced)
-                    {
                         _chatFunctions.ExecuteCommand("/lsync");
-                    }
                     return (90, "KED");
                 }
             }
@@ -426,9 +376,7 @@ internal sealed class CombatController : IDisposable
             {
                 // npc that starts a fate or does turn-ins; not sure why they're marked as hostile
                 if (gameObjectStruct->NamePlateIconId is 60093 or 60732)
-                {
                     return (null, "FATE NPC");
-                }
 
                 return (0, "Not part of quest");
             }
@@ -436,9 +384,7 @@ internal sealed class CombatController : IDisposable
             return (null, "Wrong BattleNpcKind");
         }
         else
-        {
             return (null, "Not BattleNpc");
-        }
     }
 
     private void SetTarget(IGameObject? target)
@@ -469,9 +415,7 @@ internal sealed class CombatController : IDisposable
     private bool IsMovingOrShouldMove(IGameObject gameObject)
     {
         if (_movementController.IsPathfinding || _movementController.IsPathRunning)
-        {
             return true;
-        }
 
         if (DateTime.Now > _currentFight!.LastDistanceCheck.AddSeconds(10))
         {
@@ -487,9 +431,7 @@ internal sealed class CombatController : IDisposable
     {
         IGameObject? player = _objectTable[0];
         if (player == null)
-        {
             return; // uh oh
-        }
 
         float hitboxOffset = player.HitboxRadius + gameObject.HitboxRadius;
         float actualDistance = Vector3.Distance(player.Position, gameObject.Position);

@@ -1,10 +1,10 @@
-﻿using Dalamud.Plugin.Services;
-using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
+using Dalamud.Plugin.Services;
+using Lumina.Excel.Sheets;
+using Questionable.Model.Common;
 namespace Questionable.Data;
 
 internal sealed class AetheryteData
@@ -27,17 +27,13 @@ internal sealed class AetheryteData
             ConfigureAetheryte(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
         }
 
-        foreach(Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
+        foreach (Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {
             if (aetheryte.Territory.RowId > 0)
-            {
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
-            }
 
             if (aetheryte.AethernetGroup > 0)
-            {
                 aethernetGroups[(EAetheryteLocation)aetheryte.RowId] = aetheryte.AethernetGroup;
-            }
         }
 
         ConfigureAetheryte(EAetheryteLocation.IshgardFirmament, 886, aethernetGroups[EAetheryteLocation.Ishgard]);
@@ -317,14 +313,10 @@ internal sealed class AetheryteData
     public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
         if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
-        {
             return float.MaxValue;
-        }
 
         if (!Locations.TryGetValue(to, out Vector3 toPosition))
-        {
             return float.MaxValue;
-        }
 
         return (fromPosition - toPosition).Length();
     }
@@ -332,14 +324,10 @@ internal sealed class AetheryteData
     public float CalculateAirshipLandingDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
         if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
-        {
             return float.MaxValue;
-        }
 
         if (!AirshipLandingLocations.TryGetValue(to, out Vector3 toPosition))
-        {
             return float.MaxValue;
-        }
 
         return (fromPosition - toPosition).Length();
     }
@@ -347,9 +335,7 @@ internal sealed class AetheryteData
     public bool IsCityAetheryte(EAetheryteLocation aetheryte)
     {
         if (aetheryte == EAetheryteLocation.IshgardFirmament)
-        {
             return true;
-        }
 
         uint territoryId = TerritoryIds[aetheryte];
         return TownTerritoryIds.Contains(territoryId);

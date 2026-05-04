@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Objects.Enums;
+﻿using System.Globalization;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
@@ -8,9 +11,6 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class MoveToLandingLocation
@@ -58,9 +58,7 @@ internal static class MoveToLandingLocation
                     x.ObjectKind == ObjectKind.GatheringPoint && GameFunctions.GetBaseID(x) == Task.GatheringNode.DataId &&
                     x.IsTargetable);
                 if (gameObject == null)
-                {
                     return false;
-                }
 
                 location = Task.GatheringNode.Locations.Single(x =>
                     Vector3.Distance(x.Position, gameObject.Position) < 0.1f);

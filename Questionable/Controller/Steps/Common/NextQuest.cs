@@ -11,25 +11,17 @@ internal static class NextQuest
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.CompleteQuest)
-            {
                 return null;
-            }
 
             if (step.NextQuestId == null)
-            {
                 return null;
-            }
 
             if (step.NextQuestId == quest.Id)
-            {
                 return null;
-            }
 
             // probably irrelevant, since pick up is handled elsewhere (and, in particular, checks for aetherytes and stuff)
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
-            {
                 return null;
-            }
 
             return new SetQuestTask(step.NextQuestId, quest.Id);
         }

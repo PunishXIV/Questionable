@@ -1,6 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
-using System.Diagnostics.CodeAnalysis;
 namespace Questionable.Windows.Common;
 
 [SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
@@ -50,14 +50,10 @@ public abstract class LWindow : Window
             if (config != null)
             {
                 if (AllowPinning)
-                {
                     IsPinned = config.IsPinned;
-                }
 
                 if (AllowClickthrough)
-                {
                     IsClickthrough = config.IsClickthrough;
-                }
 
                 Alpha = config.Alpha;
             }
@@ -93,9 +89,7 @@ public abstract class LWindow : Window
                 }
 
                 if (changed)
-                {
                     pwc.SaveWindowConfig();
-                }
             }
         }
     }
@@ -119,9 +113,7 @@ public abstract class LWindow : Window
     public override void PreDraw()
     {
         if (!_initializedConfig)
-        {
             LoadWindowConfig();
-        }
 
         if (UncollapseNextFrame)
         {
@@ -149,8 +141,6 @@ public abstract class LWindow : Window
         base.PostDraw();
 
         if (_initializedConfig)
-        {
             UpdateWindowConfig();
-        }
     }
 }

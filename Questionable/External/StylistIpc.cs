@@ -27,7 +27,7 @@ internal sealed class StylistIpc
         {
             _updateGearset.InvokeAction(true, true);
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             if (!_loggedIpcError)
             {

@@ -1,11 +1,11 @@
-﻿using Dalamud.Game.ClientState.Objects.Enums;
+﻿using System;
+using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetherCurrent
@@ -18,9 +18,7 @@ internal static class AetherCurrent
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AttuneAetherCurrent)
-            {
                 return null;
-            }
 
             ArgumentNullException.ThrowIfNull(step.DataId);
             ArgumentNullException.ThrowIfNull(step.AetherCurrentId);

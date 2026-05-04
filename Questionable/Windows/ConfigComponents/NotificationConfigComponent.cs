@@ -1,11 +1,11 @@
+using System;
+using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Utility;
-using System;
-using System.Linq;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class NotificationConfigComponent
@@ -18,9 +18,7 @@ internal sealed class NotificationConfigComponent
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Notifications###Notifications");
         if (!tab)
-        {
             return;
-        }
 
         bool enabled = Configuration.Notifications.Enabled;
         if (ImGui.Checkbox("Enable notifications when manual interaction is required", ref enabled))

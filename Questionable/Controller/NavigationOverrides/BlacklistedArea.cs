@@ -13,9 +13,7 @@ internal sealed record BlacklistedArea
     {
         float distance = (point - Center).Length();
         if (distance < MinDistance || distance > MaxDistance)
-        {
             return null;
-        }
 
         return new(Center + Vector3.Normalize(point - Center) * MaxDistance, RecalculateNavmesh);
     }

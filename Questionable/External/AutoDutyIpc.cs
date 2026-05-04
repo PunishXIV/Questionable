@@ -1,11 +1,11 @@
-﻿using Dalamud.Plugin;
+﻿using System;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps;
 using Questionable.Data;
 using Questionable.Model.Questing;
-using System;
 namespace Questionable.External;
 
 internal sealed class AutoDutyIpc
@@ -33,19 +33,13 @@ internal sealed class AutoDutyIpc
     public bool IsConfiguredToRunContent(DutyOptions? dutyOptions)
     {
         if (dutyOptions == null || dutyOptions.ContentFinderConditionId == 0)
-        {
             return false;
-        }
 
         if (!_configuration.Duties.RunInstancedContentWithAutoDuty)
-        {
             return false;
-        }
 
         if (_configuration.Duties.BlacklistedDutyCfcIds.Contains(dutyOptions.ContentFinderConditionId))
-        {
             return false;
-        }
 
         if (_configuration.Duties.WhitelistedDutyCfcIds.Contains(dutyOptions.ContentFinderConditionId) &&
             _territoryData.TryGetContentFinderCondition(dutyOptions.ContentFinderConditionId, out TerritoryData.ContentFinderConditionData? _))
@@ -59,15 +53,13 @@ internal sealed class AutoDutyIpc
     public bool HasPath(uint cfcId)
     {
         if (!_territoryData.TryGetContentFinderCondition(cfcId, out TerritoryData.ContentFinderConditionData? cfcData))
-        {
             return false;
-        }
 
         try
         {
             return _contentHasPath.InvokeFunc(cfcData.TerritoryId);
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             _logger.LogWarning("Unable to query AutoDuty for path in territory {TerritoryType}: {Message}",
                 cfcData.TerritoryId, e.Message);
@@ -78,9 +70,7 @@ internal sealed class AutoDutyIpc
     public void StartInstance(uint cfcId, DutyMode dutyMode)
     {
         if (!_territoryData.TryGetContentFinderCondition(cfcId, out TerritoryData.ContentFinderConditionData? cfcData))
-        {
             throw new TaskException($"Unknown ContentFinderConditionId {cfcId}");
-        }
 
         try
         {
@@ -94,7 +84,7 @@ internal sealed class AutoDutyIpc
 
             _run.InvokeAction(cfcData.TerritoryId, 1, !_configuration.Advanced.DisableAutoDutyBareMode);
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             throw new TaskException($"Unable to run content with AutoDuty: {e.Message}", e);
         }
@@ -106,7 +96,7 @@ internal sealed class AutoDutyIpc
         {
             return _isStopped.InvokeFunc();
         }
-        catch(IpcError)
+        catch (IpcError)
         {
             return true;
         }
@@ -119,7 +109,7 @@ internal sealed class AutoDutyIpc
             _logger.LogInformation("Calling AutoDuty.Stop");
             _stop.InvokeAction();
         }
-        catch(IpcError e)
+        catch (IpcError e)
         {
             throw new TaskException($"Unable to stop AutoDuty: {e.Message}", e);
         }

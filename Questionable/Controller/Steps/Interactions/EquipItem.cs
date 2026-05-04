@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.Text.SeStringHandling;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
@@ -6,9 +9,6 @@ using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;
@@ -20,9 +20,7 @@ internal static class EquipItem
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.EquipItem)
-            {
                 return null;
-            }
 
             ArgumentNullException.ThrowIfNull(step.ItemId);
             return new Task(step.ItemId.Value);
@@ -75,23 +73,17 @@ internal static class EquipItem
         public override unsafe ETaskResult Update()
         {
             if (DateTime.Now < _continueAt)
-            {
                 return ETaskResult.StillRunning;
-            }
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
-            {
                 return ETaskResult.StillRunning;
-            }
 
-            foreach(ushort x in _targetSlots)
+            foreach (ushort x in _targetSlots)
             {
                 InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
                 if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                {
                     return ETaskResult.TaskComplete;
-                }
             }
 
             Equip();
@@ -103,9 +95,7 @@ internal static class EquipItem
         {
             string? insufficientArmoryChestSpace = DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text);
             if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
-            {
                 _attempts = MaxAttempts;
-            }
 
             return false;
         }
@@ -130,23 +120,17 @@ internal static class EquipItem
         {
             ++_attempts;
             if (_attempts > MaxAttempts)
-            {
                 throw new TaskException("Unable to equip gear.");
-            }
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
-            {
                 return;
-            }
 
             InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
             if (equippedContainer == null)
-            {
                 return;
-            }
 
-            foreach(ushort slot in _targetSlots)
+            foreach (ushort slot in _targetSlots)
             {
                 InventoryItem* itemSlot = equippedContainer->GetInventorySlot(slot);
                 if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
@@ -156,13 +140,11 @@ internal static class EquipItem
                 }
             }
 
-            foreach(InventoryType sourceInventoryType in SourceInventoryTypes)
+            foreach (InventoryType sourceInventoryType in SourceInventoryTypes)
             {
                 InventoryContainer* sourceContainer = inventoryManager->GetInventoryContainer(sourceInventoryType);
                 if (sourceContainer == null)
-                {
                     continue;
-                }
 
                 if (inventoryManager->GetItemCountInContainer(Task.ItemId, sourceInventoryType, true) == 0 &&
                     inventoryManager->GetItemCountInContainer(Task.ItemId, sourceInventoryType) == 0)
@@ -170,13 +152,11 @@ internal static class EquipItem
                     continue;
                 }
 
-                for(ushort sourceSlot = 0; sourceSlot < sourceContainer->Size; sourceSlot++)
+                for (ushort sourceSlot = 0; sourceSlot < sourceContainer->Size; sourceSlot++)
                 {
                     InventoryItem* sourceItem = sourceContainer->GetInventorySlot(sourceSlot);
                     if (sourceItem == null || sourceItem->ItemId != Task.ItemId)
-                    {
                         continue;
-                    }
 
                     // Move the item to the first available slot
                     ushort targetSlot = _targetSlots
@@ -204,9 +184,7 @@ internal static class EquipItem
         private static List<ushort>? GetEquipSlot(Item? item)
         {
             if (item == null)
-            {
                 return [];
-            }
             return item.Value.EquipSlotCategory.RowId switch
             {
                 >= 1 and <= 11 => [(ushort)(item.Value.EquipSlotCategory.RowId - 1)],

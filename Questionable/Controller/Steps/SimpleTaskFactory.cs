@@ -1,6 +1,6 @@
-﻿using Questionable.Model;
+﻿using System.Collections.Generic;
+using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Collections.Generic;
 namespace Questionable.Controller.Steps;
 
 internal abstract class SimpleTaskFactory : ITaskFactory
@@ -9,9 +9,7 @@ internal abstract class SimpleTaskFactory : ITaskFactory
     {
         ITask? task = CreateTask(quest, sequence, step);
         if (task != null)
-        {
             yield return task;
-        }
     }
     public abstract ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step);
 }

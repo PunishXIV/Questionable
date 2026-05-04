@@ -25,13 +25,9 @@ internal sealed class WaitNavmesh
         public string? GetDebugState()
         {
             if (!movementController.IsNavmeshReady)
-            {
                 return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-            }
             else
-            {
                 return null;
-            }
         }
         protected override bool Start()
         {

@@ -49,9 +49,7 @@ internal static class SendNotification
         protected override bool Start()
         {
             if (!configuration.Notifications.Enabled)
-            {
                 return false;
-            }
 
             string text = Task.InteractionType switch
             {
@@ -63,9 +61,7 @@ internal static class SendNotification
             };
 
             if (!string.IsNullOrEmpty(Task.Comment))
-            {
                 text += $" - {Task.Comment}";
-            }
 
             if (configuration.Notifications.ChatType != XivChatType.None)
             {

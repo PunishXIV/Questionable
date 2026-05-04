@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Command;
@@ -76,9 +75,7 @@ internal sealed class EditorCommands : IDisposable
     {
         var layout = LayoutWorld.Instance()->ActiveLayout;
         if (layout == null || !layout->InstancesByType.TryGetValue(InstanceType.Gathering, out var mapPtr, false))
-        {
             return;
-        }
 
         foreach (ILayoutInstance* instance in mapPtr.Value->Values)
         {

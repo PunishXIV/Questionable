@@ -1,8 +1,8 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using System.Text.RegularExpressions;
+using Dalamud.Plugin.Services;
 using Lumina.Excel;
 using Lumina.Text.ReadOnly;
-using System;
-using System.Text.RegularExpressions;
 namespace Questionable.Data;
 
 internal static class DataManagerAdapter

@@ -1,4 +1,8 @@
-﻿using Dalamud.Plugin.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -6,10 +10,6 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 namespace Questionable.Data;
 
 internal sealed class ClassJobUtils
@@ -114,21 +114,13 @@ internal sealed class ClassJobUtils
     {
         Job configuredJob;
         if (jobType is EExtendedClassJob.ConfiguredCombatJob)
-        {
             configuredJob = _configuration.General.CombatJob;
-        }
         else if (jobType is EExtendedClassJob.DoH)
-        {
             configuredJob = _configuration.General.CraftingJob;
-        }
         else if (jobType is EExtendedClassJob.DoL)
-        {
             configuredJob = _configuration.General.GatheringJob;
-        }
         else
-        {
             return Job.ADV;
-        }
         ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
         HashSet<Job> jobsWithGearSet = jobGearSets
             .Select(x => x.ClassJob)
@@ -138,16 +130,12 @@ internal sealed class ClassJobUtils
         if (configuredJob != Job.ADV)
         {
             if (jobsWithGearSet.Contains(configuredJob))
-            {
                 return configuredJob;
-            }
 
             Job baseClass = Enum.GetValues<Job>()
                 .SingleOrDefault(x => GameDataAdapter.IsClass(x) && GameDataAdapter.AsJob(x) == configuredJob);
             if (baseClass != Job.ADV && jobsWithGearSet.Contains(baseClass))
-            {
                 return baseClass;
-            }
         }
 
         return jobGearSets
@@ -174,26 +162,20 @@ internal sealed class ClassJobUtils
         PlayerState* playerState = PlayerState.Instance();
         RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
         if (playerState == null || gearsetModule == null)
-        {
             return jobs.AsReadOnly();
-        }
 
-        for(int i = 0; i < 100; ++i)
+        for (int i = 0; i < 100; ++i)
         {
             RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
             if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
             {
                 Job classJob = (Job)gearset->ClassJob;
                 if (combat && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
-                {
                     continue;
-                }
 
                 short level = playerState->ClassJobLevels[_classJobToExpArrayIndex[classJob]];
                 if (level == 0)
-                {
                     continue;
-                }
 
                 short itemLevel = gearset->ItemLevel;
                 jobs.Add((classJob, level, itemLevel));
@@ -211,9 +193,7 @@ internal sealed class ClassJobUtils
         {
             QuestWork* questWork = QuestManager.Instance()->GetQuestById(questId.Value);
             if (questWork->AcceptClassJob != 0)
-            {
                 return (Job)questWork->AcceptClassJob;
-            }
         }
 
         return Job.ADV;

@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
@@ -11,9 +14,6 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SkipCondition
@@ -24,9 +24,7 @@ internal static class SkipCondition
         {
             SkipStepConditions? skipConditions = step.SkipConditions?.StepIf;
             if (skipConditions is { Never: true })
-            {
                 return null;
-            }
 
             if ((skipConditions == null || !skipConditions.HasSkipConditions()) &&
                 !QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&
@@ -80,69 +78,43 @@ internal static class SkipCondition
             logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
 
             if (CheckFlyingCondition(step, skipConditions))
-            {
                 return true;
-            }
 
             if (CheckUnlockedMountCondition(skipConditions))
-            {
                 return true;
-            }
 
             if (CheckDivingCondition(skipConditions))
-            {
                 return true;
-            }
 
             if (CheckTerritoryCondition(skipConditions))
-            {
                 return true;
-            }
 
             if (CheckQuestConditions(skipConditions))
-            {
                 return true;
-            }
 
             if (CheckTargetableCondition(step, skipConditions))
-            {
                 return true;
-            }
 
             if (CheckNameplateCondition(step, skipConditions))
-            {
                 return true;
-            }
 
             if (CheckItemCondition(step, skipConditions))
-            {
                 return true;
-            }
 
             if (CheckAetheryteCondition(step, skipConditions))
-            {
                 return true;
-            }
 
             if (CheckAetherCurrentCondition(step))
-            {
                 return true;
-            }
 
             if (CheckQuestWorkConditions(elementId, step))
-            {
                 return true;
-            }
 
             if (CheckJobCondition(elementId, step))
-            {
                 return true;
-            }
 
             if (CheckPositionCondition(skipConditions))
-            {
                 return true;
-            }
 
             if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
                 extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
@@ -152,14 +124,10 @@ internal static class SkipCondition
             }
 
             if (CheckPickUpTurnInQuestIds(step))
-            {
                 return true;
-            }
 
             if (CheckTaxiStandUnlocked(step))
-            {
                 return true;
-            }
 
             return false;
         }
@@ -299,9 +267,7 @@ internal static class SkipCondition
         {
             // Skip step if specified item is not in inventory (checks both NQ and HQ)
             if (step is { ItemId: null })
-            {
                 return false;
-            }
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
             int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
@@ -519,9 +485,7 @@ internal static class SkipCondition
             {
                 uint? taxiStandId = step.TaxiStandId;
                 if ((int)taxiStandId < 0)
-                {
                     taxiStandId += 0x120000u;
-                }
                 if (uiState->IsChocoboTaxiStandUnlocked(taxiStandId.Value))
                 {
                     logger.LogInformation("Skipping step, as taxi stand {TaxiStandId} is unlocked", taxiStandId);

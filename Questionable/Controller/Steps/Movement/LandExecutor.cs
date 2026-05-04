@@ -1,9 +1,9 @@
+using System;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using Microsoft.Extensions.Logging;
-using System;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed class LandExecutor(IObjectTable objectTable, ICondition condition, ILogger<LandExecutor> logger)
@@ -28,9 +28,7 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
     public override ETaskResult Update()
     {
         if (DateTime.Now < _continueAt)
-        {
             return ETaskResult.StillRunning;
-        }
 
         if (condition[ConditionFlag.InFlight])
         {
