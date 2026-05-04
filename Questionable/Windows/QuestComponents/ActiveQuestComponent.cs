@@ -132,6 +132,7 @@ internal sealed partial class ActiveQuestComponent
             {
                 // TODO report
             }
+
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip("Report issue to QST developers");
         }
@@ -245,6 +246,7 @@ internal sealed partial class ActiveQuestComponent
                                     _uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon);
                                 }
                             }
+
                             ImGui.Unindent();
                         }
                     }

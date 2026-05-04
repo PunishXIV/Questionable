@@ -51,10 +51,12 @@ internal sealed unsafe class CameraFunctions : IDisposable
         {
             r += 2 * MathF.PI;
         }
+
         while (r > MathF.PI)
         {
             r -= 2 * MathF.PI;
         }
+
         return r;
     }
 

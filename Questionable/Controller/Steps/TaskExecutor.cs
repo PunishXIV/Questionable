@@ -60,6 +60,7 @@ where T : class, ITask
             Task = t;
             return Start();
         }
+
         throw new TaskException($"Unable to cast {task.GetType()} to {typeof(T)}");
     }
 

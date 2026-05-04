@@ -38,11 +38,11 @@ internal sealed class MovementController
     ICommandManager commandManager,
     ILogger<MovementController> logger) : IDisposable
 {
-    public ICommandManager CommandManager { get; } = commandManager;
     public const float DefaultVerticalInteractionDistance = 1.95f;
 
     private CancellationTokenSource? _cancellationTokenSource;
     private Task<List<Vector3>>? _pathfindTask;
+    public ICommandManager CommandManager { get; } = commandManager;
 
     public bool IsNavmeshReady
     {
@@ -233,7 +233,7 @@ internal sealed class MovementController
                         return;
 
                     if (!Destination.IsFlying && !condition[ConditionFlag.Mounted] &&
-                            !gameFunctions.HasStatusPreventingSprint() && Destination.CanSprint)
+                        !gameFunctions.HasStatusPreventingSprint() && Destination.CanSprint)
                         TriggerSprintIfNeeded(navPoints, start.Value);
                 }
             }
@@ -295,7 +295,7 @@ internal sealed class MovementController
 
         Vector3 startPosition = objectTable[0]!.Position;
         if (fly && aetheryteData.CalculateDistance(startPosition, clientState.TerritoryType,
-                EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
+            EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
         {
             startPosition = startPosition with { Y = startPosition.Y + 1f };
             logger.LogInformation("Using modified start position for flying pathfinding: {StartPosition}",

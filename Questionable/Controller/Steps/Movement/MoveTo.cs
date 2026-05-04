@@ -42,8 +42,8 @@ internal static class MoveTo
         private IEnumerable<ITask> CreateMoveTasks(QuestStep step, Vector3 destination)
         {
             if (step.InteractionType == EInteractionType.Jump && step.JumpDestination != null &&
-                    (objectTable[0]!.Position - step.JumpDestination.Position).Length() <=
-                    (step.JumpDestination.StopDistance ?? 1f))
+                (objectTable[0]!.Position - step.JumpDestination.Position).Length() <=
+                (step.JumpDestination.StopDistance ?? 1f))
             {
                 logger.LogInformation("We're at the jump destination, skipping movement");
                 yield break;

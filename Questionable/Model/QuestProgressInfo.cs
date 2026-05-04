@@ -39,6 +39,7 @@ internal sealed class QuestProgressInfo
             }
             else
                 repr += "(-) ";
+
             if (i % 2 == 1)
                 repr += "   ";
         }

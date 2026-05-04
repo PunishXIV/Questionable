@@ -82,7 +82,7 @@ internal static class AethernetShortcut
             if (!Task.SkipConditions.Never)
             {
                 if (Task.SkipConditions.InSameTerritory &&
-                        clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
+                    clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
                 {
                     logger.LogInformation("Skipping aethernet shortcut because the target is in the same territory");
                     return false;
@@ -96,28 +96,28 @@ internal static class AethernetShortcut
                 }
 
                 if (Task.SkipConditions.QuestsCompleted.Count > 0 &&
-                        Task.SkipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
+                    Task.SkipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
                 {
                     logger.LogInformation("Skipping aethernet shortcut, all prequisite quests are complete");
                     return true;
                 }
 
                 if (Task.SkipConditions.QuestsAccepted.Count > 0 &&
-                        Task.SkipConditions.QuestsAccepted.All(questFunctions.IsQuestAccepted))
+                    Task.SkipConditions.QuestsAccepted.All(questFunctions.IsQuestAccepted))
                 {
                     logger.LogInformation("Skipping aethernet shortcut, all prequisite quests are accepted");
                     return true;
                 }
 
                 if (Task.SkipConditions.AetheryteLocked != null &&
-                        !aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteLocked.Value))
+                    !aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteLocked.Value))
                 {
                     logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is locked");
                     return false;
                 }
 
                 if (Task.SkipConditions.AetheryteUnlocked != null &&
-                        aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteUnlocked.Value))
+                    aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteUnlocked.Value))
                 {
                     logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is unlocked");
                     return false;

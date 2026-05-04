@@ -256,6 +256,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                         Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
                 }
             }
+
             Save();
         }
 

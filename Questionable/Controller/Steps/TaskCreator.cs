@@ -48,6 +48,7 @@ internal sealed class TaskCreator
                     $"Path for quest '{quest.Info.Name}' ({quest.Id}) does not contain sequence {sequenceNumber}, please report this: https://github.com/PunishXIV/Questionable/discussions/20",
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
+
             newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
         }
         else if (step == null)
@@ -79,8 +80,8 @@ internal sealed class TaskCreator
                 .Cast<SinglePlayerDuty.StartSinglePlayerDuty>()
                 .FirstOrDefault();
             if (singlePlayerDutyTask != null &&
-                    _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
-                        out TerritoryData.ContentFinderConditionData? cfcData))
+                _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
+                    out TerritoryData.ContentFinderConditionData? cfcData))
             {
                 // if we have a single player duty in queue, we check if we're in the matching territory
                 // if yes, skip all steps before (e.g. teleporting, waiting for navmesh, moving, interacting)

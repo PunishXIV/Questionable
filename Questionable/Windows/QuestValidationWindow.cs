@@ -74,6 +74,7 @@ internal sealed class QuestValidationWindow : LWindow
                         string fileName = $"{quest.QuestId}_{quest.SimplifiedName}.json";
                         ImGui.SetClipboardText(fileName);
                     }
+
                     ImGui.SameLine();
                     bool sim = ImGuiComponents.IconButton(FontAwesomeIcon.Play, new(16));
                     if (ImGui.IsItemHovered())

@@ -107,7 +107,7 @@ internal sealed unsafe class GameFunctions
         foreach (IGameObject gameObject in _objectTable)
         {
             if (gameObject.ObjectKind is ObjectKind.Pc or ObjectKind.Companion or ObjectKind.Mount
-                    or ObjectKind.Retainer or ObjectKind.HousingEventObject)
+                or ObjectKind.Retainer or ObjectKind.HousingEventObject)
                 continue;
 
             // multiple objects in the object table can share the same data id for gathering points; only one of those
@@ -327,7 +327,7 @@ internal sealed unsafe class GameFunctions
 
         PlayerState* playerState = PlayerState.Instance();
         if (playerState != null && _configuration.General.MountId != 0 &&
-                playerState->IsMountUnlocked(_configuration.General.MountId))
+            playerState->IsMountUnlocked(_configuration.General.MountId))
         {
             if (ActionManager.Instance()->GetActionStatus(ActionType.Mount, _configuration.General.MountId) == 0)
             {
@@ -430,8 +430,8 @@ internal sealed unsafe class GameFunctions
         }
 
         if (_condition[ConditionFlag.Unconscious] &&
-                _condition[ConditionFlag.SufferingStatusAffliction63] &&
-                _clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
+            _condition[ConditionFlag.SufferingStatusAffliction63] &&
+            _clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
             return false; // needed to process the tasks
 
         return _condition[ConditionFlag.Occupied] || _condition[ConditionFlag.Occupied30] ||

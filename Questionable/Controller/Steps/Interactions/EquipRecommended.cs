@@ -28,8 +28,8 @@ internal static class EquipRecommended
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Duty &&
-                    step.InteractionType != EInteractionType.SinglePlayerDuty &&
-                    step.InteractionType != EInteractionType.Combat)
+                step.InteractionType != EInteractionType.SinglePlayerDuty &&
+                step.InteractionType != EInteractionType.Combat)
                 return null;
 
             return new EquipTask();
@@ -61,6 +61,7 @@ internal static class EquipRecommended
                     RaptureGearsetModule.Instance()->UpdateGearset(RaptureGearsetModule.Instance()->CurrentGearsetIndex);
                     break;
             }
+
             return true;
         }
 
@@ -85,6 +86,7 @@ internal static class EquipRecommended
                         _checkedOrTriggeredEquipmentUpdate = true;
                         return ETaskResult.StillRunning;
                     }
+
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
                     if (stylist.IsBusy)
@@ -96,6 +98,7 @@ internal static class EquipRecommended
                         _continueAt = DateTime.Now.AddSeconds(1);
                         return ETaskResult.StillRunning;
                     }
+
                     break;
             }
 

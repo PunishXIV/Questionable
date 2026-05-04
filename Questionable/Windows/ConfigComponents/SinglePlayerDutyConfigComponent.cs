@@ -327,6 +327,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 Configuration.SinglePlayerDuties.HeaderStates[limsaKey] = true;
                 Save();
             }
+
             DrawQuestTable("LimsaLominsa", _startingCityBattles[EAetheryteLocation.Limsa]);
         }
         else
@@ -350,6 +351,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 Configuration.SinglePlayerDuties.HeaderStates[gridaniaKey] = true;
                 Save();
             }
+
             DrawQuestTable("Gridania", _startingCityBattles[EAetheryteLocation.Gridania]);
         }
         else
@@ -373,6 +375,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 Configuration.SinglePlayerDuties.HeaderStates[uldahKey] = true;
                 Save();
             }
+
             DrawQuestTable("Uldah", _startingCityBattles[EAetheryteLocation.Uldah]);
         }
         else
@@ -400,6 +403,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                         Configuration.SinglePlayerDuties.HeaderStates[expansionKey] = true;
                         Save();
                     }
+
                     DrawQuestTable($"Duties{expansion}", dutyInfos);
                 }
                 else
@@ -457,6 +461,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                         Configuration.SinglePlayerDuties.HeaderStates[jobKey] = true;
                         Save();
                     }
+
                     DrawQuestTable($"JobQuests{classJob}", dutyInfos);
                 }
                 else
@@ -498,6 +503,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                         Configuration.SinglePlayerDuties.HeaderStates[roleKey] = true;
                         Save();
                     }
+
                     DrawQuestTable($"RoleQuests{classJob}", dutyInfos);
                 }
                 else
@@ -523,6 +529,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 Configuration.SinglePlayerDuties.HeaderStates[otherRoleKey] = true;
                 Save();
             }
+
             DrawQuestTable("RoleQuestsGeneral", _otherRoleQuestBattles);
         }
         else
@@ -560,6 +567,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                     Configuration.SinglePlayerDuties.HeaderStates[otherKey] = true;
                     Save();
                 }
+
                 DrawQuestTable($"Other{label}", dutyInfos);
             }
             else

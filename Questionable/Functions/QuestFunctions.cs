@@ -68,14 +68,17 @@ internal sealed unsafe class QuestFunctions
             {
                 return new(new QuestId(107), 0, MainScenarioQuestState.Available);
             }
+
             if (_clientState.TerritoryType == 182) // Starting in Ul'dah
             {
                 return new(new QuestId(594), 0, MainScenarioQuestState.Available);
             }
+
             if (_clientState.TerritoryType == 183) // Starting in Gridania
             {
                 return new(new QuestId(39), 0, MainScenarioQuestState.Available);
             }
+
             return QuestReference.NoQuest(questState);
         }
         else if (currentQuest.Value == 681)
@@ -116,6 +119,7 @@ internal sealed unsafe class QuestFunctions
                                "This should have happened as part of the quest \"Close To Home\" if starting in Gridania, or \"The Ul'dahn/Lominsan Envoy\" for the other cities.\n" +
                                "Please unlock the aethernet shards, or complete the current quest sequence manually before continuing.");
             }
+
             QuestId broadeningHorizons = new(802);
             return new(broadeningHorizons, QuestManager.GetQuestSequence(broadeningHorizons.Value), questState);
         }
@@ -328,6 +332,7 @@ internal sealed unsafe class QuestFunctions
                     currentQuest = new(4359); // EW: Hitting the Books vs. For Thavnair Bound
                 else if (potentialQuests.Any(x => x.QuestId.Value == 4865))
                     currentQuest = new(4865); // DT: To Kozama'uk vs. To Urqopacha
+
                 if (potentialQuests.Count != 1)
                 {
                     return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "Multiple potential quests found: " +
@@ -442,12 +447,12 @@ internal sealed unsafe class QuestFunctions
                     .Select(y =>
                     {
                         if (y.Step.AetheryteShortcut is { } aetheryteShortcut &&
-                                !_aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut))
+                            !_aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut))
                         {
                             if ((y.Step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked) != aetheryteShortcut)
                                 return aetheryteShortcut;
                             // else _logger.LogTrace("Checking priority quest {QuestId}: aetheryte locked, but is listed as skippable", quest.Id);
-                                
+
                         }
 
                         if (y.Step.AethernetShortcut is { } aethernetShortcut)
@@ -657,8 +662,8 @@ internal sealed unsafe class QuestFunctions
         {
             byte currentDeliveryLevel = PlayerState.Instance()->DeliveryLevel;
             if (extraCompletedQuest != null &&
-                    _questData.TryGetQuestInfo(extraCompletedQuest, out IQuestInfo? extraQuestInfo) &&
-                    extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
+                _questData.TryGetQuestInfo(extraCompletedQuest, out IQuestInfo? extraQuestInfo) &&
+                extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
                 currentDeliveryLevel++;
 
             if (questInfo.MoogleDeliveryLevel > currentDeliveryLevel)
@@ -812,7 +817,7 @@ internal sealed unsafe class QuestFunctions
         int completedQuests = questInfo.PreviousQuests.Count(x =>
             HasEnoughProgressOnPreviousQuest(x) || x.QuestId.Equals(extraCompletedQuest));
         if (questInfo.PreviousQuestJoin == EQuestJoin.All &&
-                questInfo.PreviousQuests.Count == completedQuests)
+            questInfo.PreviousQuests.Count == completedQuests)
             return true;
         else if (questInfo.PreviousQuestJoin == EQuestJoin.AtLeastOne && completedQuests > 0)
             return true;
@@ -841,7 +846,7 @@ internal sealed unsafe class QuestFunctions
 
         int completedInstances = questInfo.PreviousInstanceContent.Count(x => UIState.IsInstanceContentCompleted(x));
         if (questInfo.PreviousInstanceContentJoin == EQuestJoin.All &&
-                questInfo.PreviousInstanceContent.Count == completedInstances)
+            questInfo.PreviousInstanceContent.Count == completedInstances)
             return true;
         else if (questInfo.PreviousInstanceContentJoin == EQuestJoin.AtLeastOne && completedInstances > 0)
             return true;

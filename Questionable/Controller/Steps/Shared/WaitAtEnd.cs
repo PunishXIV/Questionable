@@ -29,7 +29,7 @@ internal static class WaitAtEnd
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.CompletionQuestVariablesFlags.Count == 6 &&
-                    QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
+                QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
             {
                 WaitForCompletionFlags task = new((QuestId)quest.Id, step);
                 WaitDelay delay = new();

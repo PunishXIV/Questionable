@@ -262,6 +262,7 @@ internal sealed class CommandHandler : IDisposable
             if (!outp.Contains(value))
                 outp.Add(value);
         }
+
         return outp.Join(",");
     }
 
@@ -314,6 +315,7 @@ internal sealed class CommandHandler : IDisposable
                     foreach (string taxiStand in taxiStands)
                         _chatGui.Print($"- {taxiStand}", MessageTag, TagColor);
                 }
+
                 break;
 
             case "festivals":
@@ -331,6 +333,7 @@ internal sealed class CommandHandler : IDisposable
 
                     _chatGui.Print($"Active festivals: {string.Join(", ", activeFestivals)}", MessageTag, TagColor);
                 }
+
                 break;
         }
     }

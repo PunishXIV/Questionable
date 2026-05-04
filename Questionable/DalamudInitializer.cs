@@ -78,6 +78,7 @@ internal sealed class DalamudInitializer : IDisposable
         _toastGui.QuestToast += OnQuestToast;
         if (_configuration.Advanced.StartMinimized)
             _questWindow.IsMinimized = true;
+
         if (_configuration.Advanced.ShowWindowOnStart)
             ToggleQuestWindow();
     }
@@ -119,8 +120,12 @@ internal sealed class DalamudInitializer : IDisposable
     private void ToggleQuestWindow()
     {
         if (_configuration.IsPluginSetupComplete())
+        {
             _questWindow.ToggleOrUncollapse();
+        }
         else
+        {
             _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
+        }
     }
 }

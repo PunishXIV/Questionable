@@ -236,7 +236,7 @@ internal abstract class MiniTaskController<T> : IDisposable
     protected virtual void HandleInterruption(object? sender, EventArgs e)
     {
         if (!_condition[ConditionFlag.InFlight] &&
-                _taskQueue.CurrentTaskExecutor?.ShouldInterruptOnDamage() == true)
+            _taskQueue.CurrentTaskExecutor?.ShouldInterruptOnDamage() == true)
             InterruptQueueWithCombat();
     }
 }

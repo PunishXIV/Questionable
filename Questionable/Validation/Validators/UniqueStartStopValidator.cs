@@ -79,8 +79,5 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
     }
 
     private static IEnumerable<(QuestSequence Sequence, int StepId, QuestStep Step)> FindQuestStepsWithInteractionType(
-        Quest quest, List<EInteractionType> interactionType)
-    {
-        return quest.AllSteps().Where(x => interactionType.Contains(x.Step.InteractionType));
-    }
+        Quest quest, List<EInteractionType> interactionType) => quest.AllSteps().Where(x => interactionType.Contains(x.Step.InteractionType));
 }

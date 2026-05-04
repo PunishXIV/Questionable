@@ -103,6 +103,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                         _logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
                         AgentInventoryContext.Instance()->UseItem(_combatData.CombatItemUse.ItemId);
                     }
+
                     _continueAt = DateTime.Now.AddSeconds(2);
                 }
                 else

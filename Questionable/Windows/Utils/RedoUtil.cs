@@ -42,6 +42,7 @@ internal sealed class RedoUtil
                     Dict[chapter.Chapter.RowId].Add(quest.Quest.RowId);
             }
         }
+
         watch.Stop();
         return watch;
     }

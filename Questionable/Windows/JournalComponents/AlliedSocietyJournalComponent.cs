@@ -152,6 +152,7 @@ internal sealed class AlliedSocietyJournalComponent
                 fate = true;
             }
         }
+
         string checklistItem = $"{questInfo.Name} ({tooltipText}) {lastChecked}";
         if (fate)
             checklistItem = "(FATE) " + checklistItem;

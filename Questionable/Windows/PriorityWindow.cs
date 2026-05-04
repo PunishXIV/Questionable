@@ -81,6 +81,7 @@ internal sealed class PriorityWindow : LWindow
             ImGui.TextWrapped(
                 "If you don't have any active MSQ quest and there is no Priority Quest added here, it will always try to pick up the next quest in the MSQ first.");
         }
+
         ImGui.Separator();
         ImGui.Spacing();
         ImGui.Text("Quests to do first:");

@@ -81,9 +81,9 @@ internal sealed class QuestData
 
     public static readonly IReadOnlyList<QuestId> FinalShadowbringersRoleQuests =
         [new(3248), new(3272), new(3278), new(3628)];
+    private readonly IPluginLog? _pluginLog;
 
     private readonly Dictionary<ElementId, IQuestInfo> _quests;
-    private readonly IPluginLog? _pluginLog;
 
     public QuestData(IDataManager dataManager, ClassJobUtils classJobUtils, IPluginLog? pluginLog = null)
     {

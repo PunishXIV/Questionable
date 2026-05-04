@@ -190,6 +190,7 @@ internal sealed class QuestJournalComponent
                 else
                     lastChecked = $"{since / 7}w";
             }
+
             if ((quest.Root.Comment ?? "").Contains("FATE"))
                 fate = true;
             /*if ((quest.Root.Comment ?? "").Contains("Repeatable"))
@@ -418,7 +419,7 @@ internal sealed class QuestJournalComponent
             return false;
 
         if (filter.HideNoPaths &&
-                (!_questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) || quest.Root.Disabled))
+            (!_questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) || quest.Root.Disabled))
             return false;
 
         return true;

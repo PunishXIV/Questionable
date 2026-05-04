@@ -44,7 +44,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (_configuration.General.CombatModule !=
-                Configuration.ECombatModule.WrathCombo)
+            Configuration.ECombatModule.WrathCombo)
             return false;
 
         try
@@ -162,18 +162,18 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                     false);
 
             if (!WrathResultExtensions.AllSuccessful(out string failed,
-                    ("HealerRotationMode", healerRotationMode),
-                    ("DPSRotationMode", targetingMode),
-                    ("InCombatOnly", combatOnly),
-                    ("IncludeNPCs", includeNPCs),
-                    ("OnlyAttackInCombat", targetCombatOnly),
-                    ("AutoRez", rez),
-                    ("AutoRezDPSJobs", rezAsDPS),
-                    ("AutoCleanse", cleanse),
-                    ("HealerAlwaysHardTarget", healerMagicTargeting),
-                    ("ManageKardia", kardia),
-                    ("DPSAoETargets", aoeTargetThreshold),
-                    ("AutoRezOutOfParty", rezNonParty)))
+                ("HealerRotationMode", healerRotationMode),
+                ("DPSRotationMode", targetingMode),
+                ("InCombatOnly", combatOnly),
+                ("IncludeNPCs", includeNPCs),
+                ("OnlyAttackInCombat", targetCombatOnly),
+                ("AutoRez", rez),
+                ("AutoRezDPSJobs", rezAsDPS),
+                ("AutoCleanse", cleanse),
+                ("HealerAlwaysHardTarget", healerMagicTargeting),
+                ("ManageKardia", kardia),
+                ("DPSAoETargets", aoeTargetThreshold),
+                ("AutoRezOutOfParty", rezNonParty)))
             {
                 _logger.LogError("Unable to configure Wrath Auto Rotation " +
                                  "settings: {Result}",
@@ -241,9 +241,9 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
         CancellationReason realReason = (CancellationReason)reason;
         string description = realReason.GetAttribute<DescriptionAttribute>()?.Description ?? "no reason";
         _logger.LogWarning(
-                "WrathCombo IPC Lease Cancelled: {ReasonDescription} " +
-                "({Reason}; for: {Info})",
-                description, realReason.ToString(), additionalInfo);
+            "WrathCombo IPC Lease Cancelled: {ReasonDescription} " +
+            "({Reason}; for: {Info})",
+            description, realReason.ToString(), additionalInfo);
         _lease = null;
     }
 }

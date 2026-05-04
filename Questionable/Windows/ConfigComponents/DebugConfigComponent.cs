@@ -92,21 +92,25 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                     Configuration.Advanced.ShowTracked = showTracked;
                     Save();
                 }
+
                 if (ImGui.Checkbox("Show Accepted/Complete Daily Quests", ref showDailies))
                 {
                     Configuration.Advanced.ShowDailies = showDailies;
                     Save();
                 }
+
                 if (ImGui.Checkbox("Show Director info", ref showDirector))
                 {
                     Configuration.Advanced.ShowDirector = showDirector;
                     Save();
                 }
+
                 if (ImGui.Checkbox("Show Action Manager", ref showActionManager))
                 {
                     Configuration.Advanced.ShowActionManager = showActionManager;
                     Save();
                 }
+
                 if (ImGui.Checkbox("Show NG+ Chapter", ref showNewGamePlus))
                 {
                     Configuration.Advanced.ShowNewGamePlus = showNewGamePlus;

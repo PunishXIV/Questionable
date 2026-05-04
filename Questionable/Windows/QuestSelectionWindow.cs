@@ -223,8 +223,8 @@ internal sealed class QuestSelectionWindow : LWindow
                 ImGui.SameLine();
 
                 if (knownQuest != null &&
-                        knownQuest.FindSequence(0)?.LastStep()?.InteractionType is EInteractionType.AcceptQuest &&
-                        _questFunctions.IsReadyToAcceptQuest(quest.QuestId))
+                    knownQuest.FindSequence(0)?.LastStep()?.InteractionType is EInteractionType.AcceptQuest &&
+                    _questFunctions.IsReadyToAcceptQuest(quest.QuestId))
                 {
                     ImGui.BeginDisabled(_questController.NextQuest != null || _questController.SimulatedQuest != null);
 

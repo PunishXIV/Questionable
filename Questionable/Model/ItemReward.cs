@@ -32,7 +32,7 @@ public abstract record ItemReward(ItemRewardDetails Item)
     internal static ItemReward? CreateFromItem(Item item, ElementId elementId)
     {
         if (item.ItemAction.Value is { } itemAction &&
-                itemAction.Action.Value is { } action)
+            itemAction.Action.Value is { } action)
         {
             if (action.RowId is 1322)
                 return new MountReward(new(item, elementId), item.ItemAction.Value.Data[0]);

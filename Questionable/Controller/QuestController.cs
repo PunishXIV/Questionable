@@ -211,11 +211,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 return null;
         }
     }
+
     public event AutomationTypeChangedEventHandler? AutomationTypeChanged;
 
     public void Reload()
     {
-        lock (_progressLock)
+        lock(_progressLock)
         {
             _logger.LogInformation("Reload, resetting curent quest progress");
 
@@ -276,8 +277,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (_condition[ConditionFlag.Unconscious])
         {
             if (_condition[ConditionFlag.Unconscious] &&
-                    _condition[ConditionFlag.SufferingStatusAffliction63] &&
-                    _clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
+                _condition[ConditionFlag.SufferingStatusAffliction63] &&
+                _clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
             {
                 // ignore, we're in the lahabrea fight
             }
@@ -312,11 +313,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
 
         if (AutomationType == EAutomationType.Automatic &&
-                (_taskQueue.AllTasksComplete || _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.WaitQuestAccepted)
-                && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: 255 }
-                && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(15))
+            (_taskQueue.AllTasksComplete || _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.WaitQuestAccepted)
+            && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: 255 }
+            && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(15))
         {
-            lock (_progressLock)
+            lock(_progressLock)
             {
                 _logger.LogWarning("Quest accept apparently didn't work out, resetting progress");
                 CurrentQuest.SetStep(0);
@@ -334,30 +335,30 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private void CheckAutoRefreshCondition()
     {
         if (!_configuration.General.AutoStepRefreshEnabled ||
-                AutomationType != EAutomationType.Automatic ||
-                !IsRunning ||
-                CurrentQuest == null ||
-                !_clientState.IsLoggedIn ||
-                _objectTable[0] == null ||
-                DateTime.Now < _lastAutoRefresh.AddSeconds(5))
+            AutomationType != EAutomationType.Automatic ||
+            !IsRunning ||
+            CurrentQuest == null ||
+            !_clientState.IsLoggedIn ||
+            _objectTable[0] == null ||
+            DateTime.Now < _lastAutoRefresh.AddSeconds(5))
         {
             return;
         }
 
         if (_condition[ConditionFlag.InCombat] ||
-                _condition[ConditionFlag.Unconscious] ||
-                _condition[ConditionFlag.BoundByDuty] ||
-                _condition[ConditionFlag.InDeepDungeon] ||
-                _condition[ConditionFlag.WatchingCutscene] ||
-                _condition[ConditionFlag.WatchingCutscene78] ||
-                _condition[ConditionFlag.BetweenAreas] ||
-                _condition[ConditionFlag.BetweenAreas51] ||
-                _gameFunctions.IsOccupied() ||
-                _movementController.IsPathfinding ||
-                _movementController.IsPathRunning ||
-                !_movementController.IsNavmeshReady ||
-                (_taskQueue.CurrentTaskExecutor?.CurrentTask.GetType().Namespace == typeof(WaitAtEnd).Namespace) ||
-                DateTime.Now < _safeAnimationEnd)
+            _condition[ConditionFlag.Unconscious] ||
+            _condition[ConditionFlag.BoundByDuty] ||
+            _condition[ConditionFlag.InDeepDungeon] ||
+            _condition[ConditionFlag.WatchingCutscene] ||
+            _condition[ConditionFlag.WatchingCutscene78] ||
+            _condition[ConditionFlag.BetweenAreas] ||
+            _condition[ConditionFlag.BetweenAreas51] ||
+            _gameFunctions.IsOccupied() ||
+            _movementController.IsPathfinding ||
+            _movementController.IsPathRunning ||
+            !_movementController.IsNavmeshReady ||
+            (_taskQueue.CurrentTaskExecutor?.CurrentTask.GetType().Namespace == typeof(WaitAtEnd).Namespace) ||
+            DateTime.Now < _safeAnimationEnd)
         {
             _lastProgressUpdate = DateTime.Now;
             return;
@@ -407,7 +408,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void UpdateCurrentQuest()
     {
-        lock (_progressLock)
+        lock(_progressLock)
         {
             DebugState = null;
 
@@ -470,8 +471,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 questToRun = NextQuest;
                 currentSequence = NextQuest.Sequence; // by definition, this should always be 0
                 if (NextQuest.Step == 0 &&
-                        _taskQueue.AllTasksComplete &&
-                        AutomationType == EAutomationType.Automatic)
+                    _taskQueue.AllTasksComplete &&
+                    AutomationType == EAutomationType.Automatic)
                     ExecuteNextStep();
             }
             else if (GatheringQuest != null)
@@ -479,8 +480,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 questToRun = GatheringQuest;
                 currentSequence = GatheringQuest.Sequence;
                 if (GatheringQuest.Step == 0 &&
-                        _taskQueue.AllTasksComplete &&
-                        AutomationType == EAutomationType.Automatic)
+                    _taskQueue.AllTasksComplete &&
+                    AutomationType == EAutomationType.Automatic)
                     ExecuteNextStep();
             }
             else
@@ -522,9 +523,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 else if (StartedQuest == null || StartedQuest.Quest.Id != currentQuestId)
                 {
                     if (_configuration.Stop.Enabled &&
-                            StartedQuest != null &&
-                            _configuration.Stop.QuestsToStopAfter.Contains(StartedQuest.Quest.Id) &&
-                            _questFunctions.IsQuestComplete(StartedQuest.Quest.Id))
+                        StartedQuest != null &&
+                        _configuration.Stop.QuestsToStopAfter.Contains(StartedQuest.Quest.Id) &&
+                        _questFunctions.IsQuestComplete(StartedQuest.Quest.Id))
                     {
                         ElementId questId = StartedQuest.Quest.Id;
                         _logger.LogInformation("Reached stopping point (quest: {QuestId})", questId);
@@ -667,7 +668,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void IncreaseStepCount(ElementId? questId, int? sequence, bool shouldContinue = false)
     {
-        lock (_progressLock)
+        lock(_progressLock)
         {
             (QuestSequence? seq, QuestStep? step, bool _) = GetNextStep();
             if (CurrentQuest == null || seq == null || step == null)
@@ -909,9 +910,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (CurrentQuest == null || seq == null)
         {
             if (CurrentQuestDetails?.Progress.Quest.Id is SatisfactionSupplyNpcId &&
-                    CurrentQuestDetails?.Progress.Sequence == 1 &&
-                    CurrentQuestDetails?.Progress.Step == 255 &&
-                    CurrentQuestDetails?.Type == ECurrentQuestType.Gathering)
+                CurrentQuestDetails?.Progress.Sequence == 1 &&
+                CurrentQuestDetails?.Progress.Step == 255 &&
+                CurrentQuestDetails?.Type == ECurrentQuestType.Gathering)
             {
                 _logger.LogInformation("Completed delivery quest");
                 SetGatheringQuest(null);
@@ -946,6 +947,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         continue;
                     }
                 }
+
                 _taskQueue.Enqueue(task);
             }
 
@@ -998,7 +1000,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void Skip(ElementId elementId, byte currentQuestSequence)
     {
-        lock (_progressLock)
+        lock(_progressLock)
         {
             if (_taskQueue.CurrentTaskExecutor?.CurrentTask is ISkippableTask)
                 _taskQueue.CurrentTaskExecutor = null;
@@ -1108,6 +1110,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         {
             ManualPriorityQuests.Add(quest);
         }
+
         return true;
     }
 

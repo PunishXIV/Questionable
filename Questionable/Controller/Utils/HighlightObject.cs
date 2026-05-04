@@ -54,11 +54,11 @@ internal sealed class HighlightObject : IDisposable
             return;
 
         if (_condition[ConditionFlag.Occupied] || _condition[ConditionFlag.Occupied30] ||
-                _condition[ConditionFlag.Occupied33] || _condition[ConditionFlag.Occupied38] ||
-                _condition[ConditionFlag.Occupied39] || _condition[ConditionFlag.OccupiedInEvent] ||
-                _condition[ConditionFlag.OccupiedInQuestEvent] || _condition[ConditionFlag.OccupiedInCutSceneEvent] ||
-                _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
-                _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51])
+            _condition[ConditionFlag.Occupied33] || _condition[ConditionFlag.Occupied38] ||
+            _condition[ConditionFlag.Occupied39] || _condition[ConditionFlag.OccupiedInEvent] ||
+            _condition[ConditionFlag.OccupiedInQuestEvent] || _condition[ConditionFlag.OccupiedInCutSceneEvent] ||
+            _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
+            _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51])
             ToggleHighlight(false);
         else
             ToggleHighlight(true);

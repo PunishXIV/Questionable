@@ -65,7 +65,7 @@ internal static class Duty
         public override ETaskResult Update()
         {
             if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
-                    out TerritoryData.ContentFinderConditionData? cfcData))
+                out TerritoryData.ContentFinderConditionData? cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             return clientState.TerritoryType == cfcData.TerritoryId
@@ -79,7 +79,7 @@ internal static class Duty
         protected override bool Start()
         {
             if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
-                    out TerritoryData.ContentFinderConditionData? cfcData))
+                out TerritoryData.ContentFinderConditionData? cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             unsafe

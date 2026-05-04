@@ -115,7 +115,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         int grandCompany = (int)Configuration.General.GrandCompany;
         if (ImGui.Combo("Preferred Grand Company", ref grandCompany, _grandCompanyNames,
-                _grandCompanyNames.Length))
+            _grandCompanyNames.Length))
         {
             Configuration.General.GrandCompany = (GrandCompany)grandCompany;
             Save();
@@ -220,12 +220,14 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Configuration.General.DismissedReportWarning = true;
                 Save();
             }
+
             bool dismissedReportWarning = Configuration.General.DismissedReportWarning;
             if (ImGui.Checkbox("Hide Report warning", ref dismissedReportWarning))
             {
                 Configuration.General.DismissedReportWarning = dismissedReportWarning;
                 Save();
             }
+
             if (!reportOptOut)
             {
                 string reportMessage = Configuration.General.ReportMessage;
@@ -244,11 +246,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         {
             bool configureTextAdvance = Configuration.General.ConfigureTextAdvance;
             if (ImGui.Checkbox("Automatically configure TextAdvance with the recommended settings",
-                    ref configureTextAdvance))
+                ref configureTextAdvance))
             {
                 Configuration.General.ConfigureTextAdvance = configureTextAdvance;
                 Save();
             }
+
             if (configureTextAdvance)
             {
                 using (ImRaii.PushIndent())

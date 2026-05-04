@@ -33,7 +33,7 @@ internal static class JobExtensions
             Job.CNJ => Job.WHM,
             Job.THM => Job.BLM,
             Job.ACN => Job.SMN,
-            _ => classJob
+            var _ => classJob
         };
     }
 

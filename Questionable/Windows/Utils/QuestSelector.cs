@@ -30,10 +30,7 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
             IEnumerable<Quest> foundQuests;
             if (!string.IsNullOrEmpty(_searchString))
             {
-                bool DefaultPredicate(Quest x)
-                {
-                    return x.Info.Name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase);
-                }
+                bool DefaultPredicate(Quest x) => x.Info.Name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase);
 
                 Func<Quest, bool> searchPredicate;
                 if (ElementId.TryFromString(_searchString, out ElementId? elementId))

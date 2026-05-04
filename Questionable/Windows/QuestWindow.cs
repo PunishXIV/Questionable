@@ -161,6 +161,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 ImGui.TextWrapped(notice);
                 ImGui.Separator();
             }
+
             _activeQuestComponent.Draw(IsMinimized);
             if (!IsMinimized)
             {

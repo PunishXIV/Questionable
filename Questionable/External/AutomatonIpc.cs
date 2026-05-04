@@ -32,6 +32,7 @@ internal sealed class AutomatonIpc
                     _loggedIpcError = true;
                     _logger.LogWarning(e, "Could not query automaton for tweak status, probably not installed");
                 }
+
                 return false;
             }
         }

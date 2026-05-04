@@ -22,10 +22,7 @@ internal sealed class AetheryteData
             aethernetGroups[aetheryteLocation] = aethernetGroup;
         }
 
-        void ConfigureAetheryteWithAutoGroup(EAetheryteLocation aetheryteLocation, uint territoryId)
-        {
-            ConfigureAetheryte(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
-        }
+        void ConfigureAetheryteWithAutoGroup(EAetheryteLocation aetheryteLocation, uint territoryId) => ConfigureAetheryte(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
 
         foreach (Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {

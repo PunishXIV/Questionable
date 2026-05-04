@@ -80,11 +80,14 @@ internal sealed class GatheringPointRegistry : IDisposable
                             gatheringRoot.Steps[0].Fly = gatheringRoot.Steps[0].Fly ?? true;
                             break;
                         }
+
                         break;
                     }
+
                     break;
                 }
             }
+
             _gatheringPoints[new(gatheringPointId)] = gatheringRoot;
         }
 
@@ -137,11 +140,14 @@ internal sealed class GatheringPointRegistry : IDisposable
                         gatheringRoot.Steps[0].Fly = gatheringRoot.Steps[0].Fly ?? true;
                         break;
                     }
+
                     break;
                 }
+
                 break;
             }
         }
+
         _gatheringPoints[gatheringPointId] = gatheringRoot;
     }
 

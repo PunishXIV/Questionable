@@ -103,6 +103,7 @@ internal sealed class CreationUtilsComponent
                     if (!chapter.Item1.IsEmpty)
                         ImGui.Text($"NG+{isSim}: {chapter.Item1} (#{chapter.Item2 + 1})");
                 }
+
                 if (_configuration.Advanced.ShowDailies || _configuration.Advanced.ShowTracked)
                 {
                     QuestManager* questManager = QuestManager.Instance();
@@ -132,6 +133,7 @@ internal sealed class CreationUtilsComponent
                                 }
                             }
                         }
+
                         if (_configuration.Advanced.ShowDailies)
                         {
                             for (int i = 0; i < questManager->DailyQuests.Length; ++i)
@@ -158,6 +160,7 @@ internal sealed class CreationUtilsComponent
                         }
                     }
                 }
+
                 if (_configuration.Advanced.ShowDirector)
                 {
                     Director* director = UIState.Instance()->DirectorTodo.Director;
@@ -176,6 +179,7 @@ internal sealed class CreationUtilsComponent
                         }
                     }
                 }
+
                 if (_configuration.Advanced.ShowActionManager)
                 {
                     ImGui.Separator();
@@ -297,6 +301,7 @@ internal sealed class CreationUtilsComponent
         }
         else
             return "No active quest";
+
         return $"{q.CurrentQuest} → {q.Sequence} - {qw}";
     }
 
@@ -309,6 +314,7 @@ internal sealed class CreationUtilsComponent
             ImGui.SetTooltip(
                 "Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.");
         }
+
         if (copy)
         {
             if (target.ObjectKind == ObjectKind.GatheringPoint)
@@ -370,6 +376,7 @@ internal sealed class CreationUtilsComponent
             ImGui.SetTooltip(
                 "Left click: Copy your position as JSON.\nRight click: Copy your position as C# code.");
         }
+
         if (copy)
         {
             ImGui.SetClipboardText($$"""

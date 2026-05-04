@@ -182,8 +182,5 @@ public unsafe readonly struct TempQuest(ExcelPage page, uint offset, uint row) :
         private static RowRef<Level> ToDoLocationCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt32(offset + i * 4), page.Language);
     }
 
-    static TempQuest IExcelRow<TempQuest>.Create(ExcelPage page, uint offset, uint row)
-    {
-        return new(page, offset, row);
-    }
+    static TempQuest IExcelRow<TempQuest>.Create(ExcelPage page, uint offset, uint row) => new(page, offset, row);
 }

@@ -54,6 +54,7 @@ internal static class SinglePlayerDuty
                 }
                 else if (!territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id, step.SinglePlayerDutyIndex, out cfcData))
                     throw new TaskException("Failed to get content finder condition for solo instance");
+
                 if (cfcData != null)
                 {
                     cfcId = cfcData.ContentFinderConditionId;
@@ -285,6 +286,7 @@ internal static class SinglePlayerDuty
                 if (EzThrottler.Throttle("Confirm", 2000))
                     m.Commence();
             }
+
             GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
                 return ETaskResult.StillRunning;

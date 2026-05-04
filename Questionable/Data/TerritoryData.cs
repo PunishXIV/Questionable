@@ -81,10 +81,7 @@ internal sealed class TerritoryData
     public ContentFinderConditionData? GetContentFinderCondition(uint cfcId) => _contentFinderConditions.GetValueOrDefault(cfcId);
 
     public bool TryGetContentFinderCondition(uint cfcId,
-        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)
-    {
-        return _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
-    }
+        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData) => _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
 
     public bool TryGetContentFinderConditionForSoloInstance(ElementId questId, byte index,
         [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)

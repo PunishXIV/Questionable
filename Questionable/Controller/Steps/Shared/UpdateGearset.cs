@@ -76,8 +76,8 @@ internal static class UpdateGearset
                 {
                     RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
                     if (gearset != null &&
-                            gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
-                            gearset->ClassJob == (byte)Task.TargetClass.Value)
+                        gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) &&
+                        gearset->ClassJob == (byte)Task.TargetClass.Value)
                     {
                         gearsetId = i;
                         found = true;

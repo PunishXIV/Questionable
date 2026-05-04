@@ -13,11 +13,13 @@ internal static class Emote
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
-                    or EInteractionType.SinglePlayerDuty)
+                or EInteractionType.SinglePlayerDuty)
+            {
                 if (step.Emote == null)
                     return [];
-            else if (step.InteractionType != EInteractionType.Emote)
-                return [];
+                else if (step.InteractionType != EInteractionType.Emote)
+                    return [];
+            }
 
             ArgumentNullException.ThrowIfNull(step.Emote);
 

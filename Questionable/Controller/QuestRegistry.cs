@@ -317,10 +317,12 @@ internal sealed class QuestRegistry
                     case 2:
                         break;
                 }
+
                 if (questId != null)
                     break;
             }
         }
+
         if (questId != null)
             return OpenEditor(questId.Value);
         return (false, "could not get tracked quest");
@@ -350,11 +352,13 @@ internal sealed class QuestRegistry
             if (file.Name == filename)
                 return file;
         }
+
         foreach (DirectoryInfo directory in root.GetDirectories())
         {
             if (FindFilenameInDirectory(directory, filename) is FileInfo result)
                 return result;
         }
+
         return null;
     }
 #endif

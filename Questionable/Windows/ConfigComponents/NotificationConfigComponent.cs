@@ -39,7 +39,7 @@ internal sealed class NotificationConfigComponent
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
                 if (ImGui.Combo("Chat channel", ref selectedChatType, chatTypeNames,
-                        chatTypeNames.Length))
+                    chatTypeNames.Length))
                 {
                     Configuration.Notifications.ChatType = xivChatTypes[selectedChatType];
                     Save();

@@ -52,7 +52,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
                     EffectEntry* effect = effectArray + 8 * i;
 
                     if (targetId == _objectTable[0]?.GameObjectId &&
-                            effect->Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
+                        effect->Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
                             or EActionEffectType.ParriedDamage)
                     {
                         _logger.LogTrace("Damage action effect on self, from {SourceId} ({EffectType})", sourceId,

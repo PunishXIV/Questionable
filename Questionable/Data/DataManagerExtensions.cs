@@ -98,8 +98,5 @@ public readonly struct QuestDialogueText(ExcelPage page, uint offset, uint row) 
 
     uint IExcelRow<QuestDialogueText>.RowOffset => offset;
 
-    static QuestDialogueText IExcelRow<QuestDialogueText>.Create(ExcelPage page, uint offset, uint row)
-    {
-        return new(page, offset, row);
-    }
+    static QuestDialogueText IExcelRow<QuestDialogueText>.Create(ExcelPage page, uint offset, uint row) => new(page, offset, row);
 }

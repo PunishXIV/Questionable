@@ -103,28 +103,28 @@ internal static class AetheryteShortcut
                     }
 
                     if (skipConditions.QuestsCompleted.Count > 0 &&
-                            skipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
+                        skipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
                     {
                         logger.LogInformation("Skipping aetheryte, all prequisite quests are complete");
                         return true;
                     }
 
                     if (skipConditions.QuestsAccepted.Count > 0 &&
-                            skipConditions.QuestsAccepted.All(questFunctions.IsQuestAccepted))
+                        skipConditions.QuestsAccepted.All(questFunctions.IsQuestAccepted))
                     {
                         logger.LogInformation("Skipping aetheryte, all prequisite quests are accepted");
                         return true;
                     }
 
                     if (skipConditions.AetheryteLocked != null &&
-                            !aetheryteFunctions.IsAetheryteUnlocked(skipConditions.AetheryteLocked.Value))
+                        !aetheryteFunctions.IsAetheryteUnlocked(skipConditions.AetheryteLocked.Value))
                     {
                         logger.LogInformation("Skipping aetheryte teleport due to SkipCondition (AetheryteLocked)");
                         return true;
                     }
 
                     if (skipConditions.AetheryteUnlocked != null &&
-                            aetheryteFunctions.IsAetheryteUnlocked(skipConditions.AetheryteUnlocked.Value))
+                        aetheryteFunctions.IsAetheryteUnlocked(skipConditions.AetheryteUnlocked.Value))
                     {
                         logger.LogInformation("Skipping aetheryte teleport due to SkipCondition (AetheryteUnlocked)");
                         return true;
@@ -134,9 +134,9 @@ internal static class AetheryteShortcut
                     {
                         QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.ElementId);
                         if (skipConditions.RequiredQuestVariablesNotMet &&
-                                questWork != null &&
-                                !QuestWorkUtils.MatchesRequiredQuestWorkConfig(Task.Step.RequiredQuestVariables, questWork,
-                                    logger))
+                            questWork != null &&
+                            !QuestWorkUtils.MatchesRequiredQuestWorkConfig(Task.Step.RequiredQuestVariables, questWork,
+                                logger))
                         {
                             logger.LogInformation("Skipping aetheryte teleport, as required variables do not match");
                             return true;
@@ -145,7 +145,7 @@ internal static class AetheryteShortcut
 
 
                     if (skipConditions.NearPosition is { } nearPosition &&
-                            clientState.TerritoryType == nearPosition.TerritoryId)
+                        clientState.TerritoryType == nearPosition.TerritoryId)
                     {
                         if (Vector3.Distance(nearPosition.Position, objectTable[0]!.Position) <=
                             nearPosition.MaximumDistance)
@@ -156,10 +156,10 @@ internal static class AetheryteShortcut
                     }
 
                     if (skipConditions.NotNearPosition is { } notNearPosition &&
-                            clientState.TerritoryType == notNearPosition.TerritoryId)
+                        clientState.TerritoryType == notNearPosition.TerritoryId)
                     {
                         if (notNearPosition.MaximumDistance <=
-                                Vector3.Distance(notNearPosition.Position, objectTable[0]!.Position))
+                            Vector3.Distance(notNearPosition.Position, objectTable[0]!.Position))
                         {
                             logger.LogInformation("Skipping aetheryte shortcut, as we're not near the position");
                             return true;
@@ -167,7 +167,7 @@ internal static class AetheryteShortcut
                     }
 
                     if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
-                            extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
+                        extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
                     {
                         logger.LogInformation("Skipping step, extra condition {} matches", skipConditions.ExtraCondition);
                         return true;
@@ -193,9 +193,11 @@ internal static class AetheryteShortcut
                                 logger.LogInformation("Skipping aetheryte teleport, we're already there");
                                 return true;
                             }
+
                             logger.LogInformation("No step position, teleporting to aetheryte");
                             return false;
                         }
+
                         float distance_target = (pos - Task.Step.Position.Value).Length();
                         float distance_aetheryte_to_target = aetheryteData.CalculateDistance(Task.Step.Position.Value, territoryType, Task.TargetAetheryte);
                         if (distance_target < Task.Step.CalculateActualStopDistance())
@@ -211,6 +213,7 @@ internal static class AetheryteShortcut
                             distance_aethernet_from = aetheryteData.CalculateDistance(pos, territoryType, Task.Step.AethernetShortcut.From);
                             distance_aethernet_to = aetheryteData.CalculateDistance(Task.Step.Position.Value, territoryType, Task.Step.AethernetShortcut.To);
                         }
+
                         // if aetheryte route is further from the destination than just walking there, skip it
                         logger.LogDebug($"target direct: {distance_target}. target if tp: {30 + distance_aetheryte_to_target}" +
                                         (Task.Step.AethernetShortcut != null ? $", target if aethernet: {distance_aethernet_from + distance_aethernet_to + 30}" : ""));

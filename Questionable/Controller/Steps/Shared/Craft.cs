@@ -79,17 +79,17 @@ internal static class Craft
                     questWork.ClassJob :
                     (Job)PlayerState.Instance()->CurrentClassJobId
                 ) switch
-            {
-                Job.CRP => recipeLookup.Value.CRP.RowId,
-                Job.BSM => recipeLookup.Value.BSM.RowId,
-                Job.ARM => recipeLookup.Value.ARM.RowId,
-                Job.GSM => recipeLookup.Value.GSM.RowId,
-                Job.LTW => recipeLookup.Value.LTW.RowId,
-                Job.WVR => recipeLookup.Value.WVR.RowId,
-                Job.ALC => recipeLookup.Value.ALC.RowId,
-                Job.CUL => recipeLookup.Value.CUL.RowId,
-                var _ => 0
-            };
+                {
+                    Job.CRP => recipeLookup.Value.CRP.RowId,
+                    Job.BSM => recipeLookup.Value.BSM.RowId,
+                    Job.ARM => recipeLookup.Value.ARM.RowId,
+                    Job.GSM => recipeLookup.Value.GSM.RowId,
+                    Job.LTW => recipeLookup.Value.LTW.RowId,
+                    Job.WVR => recipeLookup.Value.WVR.RowId,
+                    Job.ALC => recipeLookup.Value.ALC.RowId,
+                    Job.CUL => recipeLookup.Value.CUL.RowId,
+                    var _ => 0
+                };
 
             if (recipeId == 0)
             {
@@ -151,6 +151,7 @@ internal static class Craft
                         return ETaskResult.TaskComplete;
                     }
                 }
+
                 return ETaskResult.TaskComplete;
             }
 
@@ -166,6 +167,7 @@ internal static class Craft
                 if (sequence?.Steps.Count > currentQuest.Step)
                     return sequence.Steps[currentQuest.Step].ItemQuality;
             }
+
             return EItemQuality.Any;
         }
 

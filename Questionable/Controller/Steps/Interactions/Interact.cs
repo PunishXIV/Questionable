@@ -28,7 +28,7 @@ internal static class Interact
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
-                    or EInteractionType.SinglePlayerDuty)
+                or EInteractionType.SinglePlayerDuty)
             {
                 // 'PreventQuestCompletion' config check
                 if (step.InteractionType is EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion)
@@ -47,16 +47,22 @@ internal static class Interact
                     yield break;
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
+            {
                 if (step.DataId == null)
                     yield break;
-            else if (step.InteractionType == EInteractionType.Snipe)
-                if (!automatonIpc.IsAutoSnipeEnabled)
-                    yield break;
-            else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
-                if (step.TaxiStandId == null)
-                    yield break;
-            else if (step.InteractionType != EInteractionType.Interact)
-                yield break;
+                else if (step.InteractionType == EInteractionType.Snipe)
+                {
+                    if (!automatonIpc.IsAutoSnipeEnabled)
+                        yield break;
+                    else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
+                    {
+                        if (step.TaxiStandId == null)
+                            yield break;
+                        else if (step.InteractionType != EInteractionType.Interact)
+                            yield break;
+                    }
+                }
+            }
 
             ArgumentNullException.ThrowIfNull(step.DataId);
 
@@ -206,8 +212,10 @@ internal static class Interact
                     logger.LogDebug("gameObject is null");
                     _reportedGameObjNull = true;
                 }
+
                 return ETaskResult.StillRunning;
             }
+
             _reportedGameObjNull = false;
             logger.LogDebug("gameObject != null");
 
@@ -241,6 +249,7 @@ internal static class Interact
                         else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
                             acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
                     }
+
                     logger.LogInformation($"Current ClassJob {playerJob} not valid for {Task.Quest.Id}, attempting to switch");
                     unsafe
                     {
@@ -258,12 +267,14 @@ internal static class Interact
                                 }
                             }
                         }
+
                         if (!changed)
                         {
                             chatGui.PrintError($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
                                                "but you do not have a valid job configured in QST Settings.");
                         }
                     }
+
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     return ETaskResult.StillRunning;
                 }
@@ -285,8 +296,8 @@ internal static class Interact
 
             logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
             if (_interactionState == EInteractionState.InteractionTriggered &&
-                    flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
-                    value)
+                flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
+                value)
             {
                 logger.LogInformation("Interaction was most likely triggered");
                 _interactionState = EInteractionState.InteractionConfirmed;
@@ -316,7 +327,7 @@ internal static class Interact
 
             // this is only relevant for followers on quests
             if (!gameObject.IsTargetable && condition[ConditionFlag.Mounted] &&
-                    gameObject.ObjectKind != ObjectKind.GatheringPoint)
+                gameObject.ObjectKind != ObjectKind.GatheringPoint)
             {
                 logger.LogInformation("Preparing interaction for {DataId} by unmounting", Task.DataId);
                 _needsUnmount = true;

@@ -61,8 +61,8 @@ internal sealed class MoveExecutor
             return ETaskResult.StillRunning;
 
         if (_canRestart &&
-                Vector3.Distance(_objectTable[0]!.Position, _destination) >
-                (Task.StopDistance ?? QuestStep.DefaultStopDistance) + 5f)
+            Vector3.Distance(_objectTable[0]!.Position, _destination) >
+            (Task.StopDistance ?? QuestStep.DefaultStopDistance) + 5f)
         {
             _canRestart = false;
             if (_clientState.TerritoryType == Task.TerritoryId)
@@ -85,8 +85,8 @@ internal sealed class MoveExecutor
     {
         DateTime retryAt = DateTime.Now;
         if (Task.Fly && _condition[ConditionFlag.InCombat] && !_condition[ConditionFlag.Mounted] &&
-                _mountBeforeMovement is { Task: { } mountTask } &&
-                _mountEvaluator.EvaluateMountState(mountTask, true, ref retryAt) == Mount.MountResult.WhenOutOfCombat)
+            _mountBeforeMovement is { Task: { } mountTask } &&
+            _mountEvaluator.EvaluateMountState(mountTask, true, ref retryAt) == Mount.MountResult.WhenOutOfCombat)
             return true;
 
         return base.WasInterrupted();
@@ -190,8 +190,8 @@ internal sealed class MoveExecutor
         }
 
         if (_mountBeforeMovement == null &&
-                _unmountBeforeMovement == null &&
-                _startAction != null)
+            _unmountBeforeMovement == null &&
+            _startAction != null)
             _startAction();
         return true;
     }
