@@ -22,20 +22,14 @@ internal static class TurnInDelivery
 
     internal sealed record Task : ITask
     {
-        public override string ToString()
-        {
-            return "WeeklyDeliveryTurnIn";
-        }
+        public override string ToString() => "WeeklyDeliveryTurnIn";
     }
 
     internal sealed class SatisfactionSupplyTurnIn(ILogger<SatisfactionSupplyTurnIn> logger) : TaskExecutor<Task>
     {
         private ushort? _remainingAllowances;
 
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override unsafe ETaskResult Update()
         {
@@ -86,9 +80,6 @@ internal static class TurnInDelivery
         }
 
         // not even sure if any turn-in npcs are NEAR mobs; but we also need to be on a gathering/crafting job
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

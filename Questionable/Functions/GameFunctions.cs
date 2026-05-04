@@ -93,10 +93,7 @@ internal sealed unsafe class GameFunctions
             return null;
     }
 
-    public bool IsFlyingUnlockedInCurrentZone()
-    {
-        return IsFlyingUnlocked(_clientState.TerritoryType);
-    }
+    public bool IsFlyingUnlockedInCurrentZone() => IsFlyingUnlocked(_clientState.TerritoryType);
 
     public bool IsAetherCurrentUnlocked(uint aetherCurrentId)
     {
@@ -197,10 +194,7 @@ internal sealed unsafe class GameFunctions
         return false;
     }
 
-    public bool UseItemOnPosition(Vector3 position, uint itemId)
-    {
-        return ActionManager.Instance()->UseActionLocation(ActionType.EventItem, itemId, location: &position);
-    }
+    public bool UseItemOnPosition(Vector3 position, uint itemId) => ActionManager.Instance()->UseActionLocation(ActionType.EventItem, itemId, location: &position);
 
     public bool UseAction(EAction action)
     {
@@ -298,10 +292,7 @@ internal sealed unsafe class GameFunctions
         return HasCharacterStatusPreventingMountOrSprint();
     }
 
-    public bool HasStatusPreventingSprint()
-    {
-        return HasCharacterStatusPreventingMountOrSprint();
-    }
+    public bool HasStatusPreventingSprint() => HasCharacterStatusPreventingMountOrSprint();
 
     private bool HasCharacterStatusPreventingMountOrSprint()
     {
@@ -329,10 +320,7 @@ internal sealed unsafe class GameFunctions
         return statusManager->HasStatus((uint)statusId);
     }
 
-    public static bool RemoveStatus(EStatus statusId)
-    {
-        return StatusManager.ExecuteStatusOff((uint)statusId);
-    }
+    public static bool RemoveStatus(EStatus statusId) => StatusManager.ExecuteStatusOff((uint)statusId);
 
     public bool Mount()
     {
@@ -539,10 +527,7 @@ internal sealed unsafe class GameFunctions
     ///     Abandons <em>some</em> quest battles/duties; but not all? Useful for debugging some quest battle/vbm related
     ///     issues.
     /// </summary>
-    public void AbandonDuty()
-    {
-        _abandonDuty(false);
-    }
+    public void AbandonDuty() => _abandonDuty(false);
 
     public IReadOnlyList<uint> GetUnlockLinks()
     {

@@ -57,13 +57,7 @@ internal sealed class JsonSchemaValidator : IQuestValidator
         }
     }
 
-    public void Reset()
-    {
-        _questNodes.Clear();
-    }
+    public void Reset() => _questNodes.Clear();
 
-    public void Enqueue(ElementId elementId, JsonNode questNode)
-    {
-        _questNodes[elementId] = questNode;
-    }
+    public void Enqueue(ElementId elementId, JsonNode questNode) => _questNodes[elementId] = questNode;
 }

@@ -200,10 +200,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         }
     }
 
-    internal void Reload()
-    {
-        LoadGatheringLocationsFromDirectory();
-    }
+    internal void Reload() => LoadGatheringLocationsFromDirectory();
 
     private void LoadGatheringLocationsFromDirectory()
     {
@@ -341,10 +338,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         }
     }
 
-    private void ClassJobChanged(uint classJobId)
-    {
-        _currentClassJob = (Job)classJobId;
-    }
+    private void ClassJobChanged(uint classJobId) => _currentClassJob = (Job)classJobId;
 
     private void Draw()
     {

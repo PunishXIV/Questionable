@@ -36,15 +36,9 @@ internal sealed class GatheringPointRegistry : IDisposable
         _questRegistry.Reloaded += OnReloaded;
     }
 
-    public void Dispose()
-    {
-        _questRegistry.Reloaded -= OnReloaded;
-    }
+    public void Dispose() => _questRegistry.Reloaded -= OnReloaded;
 
-    private void OnReloaded(object? sender, EventArgs e)
-    {
-        Reload();
-    }
+    private void OnReloaded(object? sender, EventArgs e) => Reload();
 
     public void Reload()
     {
@@ -188,10 +182,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         return GatheringPointId.FromString(parts[0]);
     }
 
-    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot)
-    {
-        return _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
-    }
+    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot) => _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
 
     public bool TryGetGatheringPointId(uint itemId, Job classJobId,
         [NotNullWhen(true)] out GatheringPointId? gatheringPointId)

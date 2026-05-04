@@ -29,10 +29,7 @@ internal sealed class ConfigWindow
 
     public WindowConfig WindowConfig => _configuration.ConfigWindowConfig;
 
-    public void SaveWindowConfig()
-    {
-        _pluginInterface.SavePluginConfig(_configuration);
-    }
+    public void SaveWindowConfig() => _pluginInterface.SavePluginConfig(_configuration);
 
     public override void DrawContent()
     {

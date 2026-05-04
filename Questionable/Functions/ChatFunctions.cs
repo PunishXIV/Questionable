@@ -139,10 +139,7 @@ internal sealed unsafe class ChatFunctions
         }
     }
 
-    public void UseEmote(EEmote emote)
-    {
-        ExecuteCommand($"{_emoteCommands[emote]} motion");
-    }
+    public void UseEmote(EEmote emote) => ExecuteCommand($"{_emoteCommands[emote]} motion");
     private delegate void ProcessChatBoxDelegate(nint uiModule, nint message, nint unused, byte a4);
 
     [StructLayout(LayoutKind.Explicit)]
@@ -169,9 +166,6 @@ internal sealed unsafe class ChatFunctions
             unk2 = 0;
         }
 
-        public void Dispose()
-        {
-            Marshal.FreeHGlobal(textPtr);
-        }
+        public void Dispose() => Marshal.FreeHGlobal(textPtr);
     }
 }

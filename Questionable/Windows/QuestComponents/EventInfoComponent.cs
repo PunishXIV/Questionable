@@ -45,10 +45,7 @@ internal sealed class EventInfoComponent
     public bool ShouldDraw => _configuration.General.ShowIncompleteSeasonalEvents && _eventQuests.Any(IsIncomplete);
 
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
-    private static DateTime AtDailyReset(DateOnly date)
-    {
-        return new(date, new(14, 59), DateTimeKind.Utc);
-    }
+    private static DateTime AtDailyReset(DateOnly date) => new(date, new(14, 59), DateTimeKind.Utc);
 
     public void Draw()
     {

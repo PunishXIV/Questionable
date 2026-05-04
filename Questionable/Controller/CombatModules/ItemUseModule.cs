@@ -125,10 +125,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             _delegate.Update(nextTarget);
     }
 
-    public bool CanAttack(IBattleNpc target)
-    {
-        return _delegate!.CanAttack(target);
-    }
+    public bool CanAttack(IBattleNpc target) => _delegate!.CanAttack(target);
 
     private unsafe bool ShouldUseItem(IGameObject gameObject)
     {

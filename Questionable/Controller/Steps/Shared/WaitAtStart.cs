@@ -20,10 +20,7 @@ internal static class WaitAtStart
 
     internal sealed record WaitDelay(TimeSpan Delay) : ITask
     {
-        public override string ToString()
-        {
-            return $"Wait[S](seconds: {Delay.TotalSeconds})";
-        }
+        public override string ToString() => $"Wait[S](seconds: {Delay.TotalSeconds})";
     }
 
     internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
@@ -34,9 +31,6 @@ internal static class WaitAtStart
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

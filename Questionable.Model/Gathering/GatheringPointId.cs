@@ -5,10 +5,7 @@ namespace Questionable.Model.Gathering;
 
 public class GatheringPointId : IComparable<GatheringPointId>, IEquatable<GatheringPointId>
 {
-    public GatheringPointId(ushort value)
-    {
-        Value = value;
-    }
+    public GatheringPointId(ushort value) => Value = value;
 
     public ushort Value { get; }
 
@@ -34,23 +31,11 @@ public class GatheringPointId : IComparable<GatheringPointId>, IEquatable<Gather
         return Equals((GatheringPointId)obj);
     }
 
-    public override int GetHashCode()
-    {
-        return Value.GetHashCode();
-    }
+    public override int GetHashCode() => Value.GetHashCode();
 
-    public static bool operator ==(GatheringPointId? left, GatheringPointId? right)
-    {
-        return Equals(left, right);
-    }
+    public static bool operator ==(GatheringPointId? left, GatheringPointId? right) => Equals(left, right);
 
-    public static bool operator !=(GatheringPointId? left, GatheringPointId? right)
-    {
-        return !Equals(left, right);
-    }
+    public static bool operator !=(GatheringPointId? left, GatheringPointId? right) => !Equals(left, right);
 
-    public static GatheringPointId FromString(string value)
-    {
-        return new GatheringPointId(ushort.Parse(value, CultureInfo.InvariantCulture));
-    }
+    public static GatheringPointId FromString(string value) => new GatheringPointId(ushort.Parse(value, CultureInfo.InvariantCulture));
 }

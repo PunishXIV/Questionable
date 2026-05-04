@@ -18,18 +18,12 @@ internal static class StepDisabled
 
     internal sealed class SkipRemainingTasks : ITask
     {
-        public override string ToString()
-        {
-            return "StepDisabled";
-        }
+        public override string ToString() => "StepDisabled";
     }
 
     internal sealed class SkipDisabledStepsExecutor(ILogger<SkipRemainingTasks> logger) : TaskExecutor<SkipRemainingTasks>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
@@ -37,9 +31,6 @@ internal static class StepDisabled
             return ETaskResult.SkipRemainingTasksForStep;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

@@ -114,18 +114,9 @@ public unsafe readonly struct TempQuest(ExcelPage page, uint offset, uint row) :
     public readonly bool Unknown12 => page.ReadPackedBool(offset + 2792, 5);
     public readonly bool Unknown13 => page.ReadPackedBool(offset + 2792, 6);
 
-    private static QuestParamsStruct QuestParamsCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page, parentOffset, offset + 4 + i * 8);
-    }
-    private static QuestListenerParamsStruct QuestListenerParamsCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page, parentOffset, offset + 404 + i * 20);
-    }
-    private static TodoParamsStruct TodoParamsCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page, parentOffset, offset + 1684 + i * 36);
-    }
+    private static QuestParamsStruct QuestParamsCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page, parentOffset, offset + 4 + i * 8);
+    private static QuestListenerParamsStruct QuestListenerParamsCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page, parentOffset, offset + 404 + i * 20);
+    private static TodoParamsStruct TodoParamsCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page, parentOffset, offset + 1684 + i * 36);
     private static RowRef RewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
     {
         return ( /* ItemRewardType */ page.ReadUInt8(offset + 2630)) switch
@@ -138,62 +129,20 @@ public unsafe readonly struct TempQuest(ExcelPage page, uint offset, uint row) :
             var _ => RowRef.CreateUntyped(page.ReadUInt32(offset + 2560 + i * 4), page.Language)
         };
     }
-    private static RowRef<Item> OptionalItemRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt32(offset + 2588 + i * 4), page.Language);
-    }
-    private static ushort SystemRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return page.ReadUInt16(offset + 2618 + i * 2);
-    }
-    private static RowRef<Item> ItemCatalystCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt8(offset + 2624 + i), page.Language);
-    }
-    private static byte ItemCountCatalystCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return page.ReadUInt8(offset + 2627 + i);
-    }
-    private static byte ItemCountRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return page.ReadUInt8(offset + 2631 + i);
-    }
-    private static RowRef<Stain> RewardStainCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt8(offset + 2638 + i), page.Language);
-    }
-    private static byte OptionalItemCountRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return page.ReadUInt8(offset + 2645 + i);
-    }
-    private static RowRef<Stain> OptionalItemStainRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt8(offset + 2650 + i), page.Language);
-    }
-    private static RowRef<GeneralAction> GeneralActionRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt8(offset + 2655 + i), page.Language);
-    }
-    private static bool OptionalItemIsHQRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return page.ReadBool(offset + 2669 + i);
-    }
-    private static RowRef<TempQuest> PreviousQuestCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt32(offset + 2680 + i * 4), page.Language);
-    }
-    private static RowRef<TempQuest> QuestLockCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt32(offset + 2692 + i * 4), page.Language);
-    }
-    private static RowRef<InstanceContent> InstanceContentCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return new(page.Module, page.ReadUInt32(offset + 2700 + i * 4), page.Language);
-    }
-    private static ushort ClassJobLevelCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return page.ReadUInt16(offset + 2740 + i * 2);
-    }
+    private static RowRef<Item> OptionalItemRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt32(offset + 2588 + i * 4), page.Language);
+    private static ushort SystemRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => page.ReadUInt16(offset + 2618 + i * 2);
+    private static RowRef<Item> ItemCatalystCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt8(offset + 2624 + i), page.Language);
+    private static byte ItemCountCatalystCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => page.ReadUInt8(offset + 2627 + i);
+    private static byte ItemCountRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => page.ReadUInt8(offset + 2631 + i);
+    private static RowRef<Stain> RewardStainCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt8(offset + 2638 + i), page.Language);
+    private static byte OptionalItemCountRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => page.ReadUInt8(offset + 2645 + i);
+    private static RowRef<Stain> OptionalItemStainRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt8(offset + 2650 + i), page.Language);
+    private static RowRef<GeneralAction> GeneralActionRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt8(offset + 2655 + i), page.Language);
+    private static bool OptionalItemIsHQRewardCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => page.ReadBool(offset + 2669 + i);
+    private static RowRef<TempQuest> PreviousQuestCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt32(offset + 2680 + i * 4), page.Language);
+    private static RowRef<TempQuest> QuestLockCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt32(offset + 2692 + i * 4), page.Language);
+    private static RowRef<InstanceContent> InstanceContentCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt32(offset + 2700 + i * 4), page.Language);
+    private static ushort ClassJobLevelCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => page.ReadUInt16(offset + 2740 + i * 2);
 
     public readonly struct QuestParamsStruct(ExcelPage page, uint parentOffset, uint offset)
     {
@@ -230,10 +179,7 @@ public unsafe readonly struct TempQuest(ExcelPage page, uint offset, uint row) :
         public readonly byte ToDoQty => page.ReadUInt8(offset + 33);
         public readonly byte CountableNum => page.ReadUInt8(offset + 34);
 
-        private static RowRef<Level> ToDoLocationCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-        {
-            return new(page.Module, page.ReadUInt32(offset + i * 4), page.Language);
-        }
+        private static RowRef<Level> ToDoLocationCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => new(page.Module, page.ReadUInt32(offset + i * 4), page.Language);
     }
 
     static TempQuest IExcelRow<TempQuest>.Create(ExcelPage page, uint offset, uint row)

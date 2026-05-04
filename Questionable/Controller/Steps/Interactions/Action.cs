@@ -48,14 +48,8 @@ internal static class Action
         EAction Action,
         List<QuestWorkValue?>? CompletionQuestVariablesFlags) : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
-        public override string ToString()
-        {
-            return $"Action({Action})";
-        }
+        public bool ShouldRedoOnInterrupt() => true;
+        public override string ToString() => $"Action({Action})";
     }
 
     internal sealed class UseOnObjectExecutor
@@ -148,10 +142,7 @@ internal static class Action
             return ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed record UseMudraOnObject
@@ -160,10 +151,7 @@ internal static class Action
         EAction Action)
         : ITask
     {
-        public override string ToString()
-        {
-            return $"Mudra({Action})";
-        }
+        public override string ToString() => $"Mudra({Action})";
     }
 
     internal sealed class UseMudraOnObjectExecutor
@@ -181,10 +169,7 @@ internal static class Action
 
         private DateTime _continueAt = DateTime.MinValue;
 
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override unsafe ETaskResult Update()
         {
@@ -227,18 +212,12 @@ internal static class Action
             return ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record TriggerStatusIfMissing(EStatus Status, EAction Action) : ITask
     {
-        public override string ToString()
-        {
-            return $"TriggerStatus({Status})";
-        }
+        public override string ToString() => $"TriggerStatus({Status})";
     }
 
     internal sealed class TriggerStatusIfMissingExecutor(GameFunctions gameFunctions)
@@ -253,14 +232,8 @@ internal static class Action
             return true;
         }
 
-        public override ETaskResult Update()
-        {
-            return gameFunctions.HasStatus(Task.Status) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
-        }
+        public override ETaskResult Update() => gameFunctions.HasStatus(Task.Status) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

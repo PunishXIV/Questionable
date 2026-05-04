@@ -213,10 +213,7 @@ internal static class UseItem
                 return TimeSpan.FromSeconds(5);
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed record UseOnGround
@@ -227,10 +224,7 @@ internal static class UseItem
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString()
-        {
-            return $"UseItem({ItemId} on ground at {DataId})";
-        }
+        public override string ToString() => $"UseItem({ItemId} on ground at {DataId})";
     }
 
     internal sealed class UseOnGroundExecutor
@@ -241,10 +235,7 @@ internal static class UseItem
         ILogger<UseOnGroundExecutor> logger)
         : UseItemExecutorBase<UseOnGround>(questFunctions, condition, logger)
     {
-        protected override bool UseItem()
-        {
-            return gameFunctions.UseItemOnGround(Task.DataId, ItemId);
-        }
+        protected override bool UseItem() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
     }
 
     internal sealed record UseOnPosition
@@ -255,10 +246,7 @@ internal static class UseItem
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString()
-        {
-            return $"UseItem({ItemId} on ground at {Position.ToString("G", CultureInfo.InvariantCulture)})";
-        }
+        public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G", CultureInfo.InvariantCulture)})";
     }
 
     internal sealed class UseOnPositionExecutor
@@ -269,10 +257,7 @@ internal static class UseItem
         ILogger<UseOnPosition> logger)
         : UseItemExecutorBase<UseOnPosition>(questFunctions, condition, logger)
     {
-        protected override bool UseItem()
-        {
-            return gameFunctions.UseItemOnPosition(Task.Position, ItemId);
-        }
+        protected override bool UseItem() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
     }
 
     internal sealed record UseOnObject
@@ -283,10 +268,7 @@ internal static class UseItem
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString()
-        {
-            return $"UseItem({ItemId} on {DataId})";
-        }
+        public override string ToString() => $"UseItem({ItemId} on {DataId})";
     }
 
     internal sealed class UseOnObjectExecutor
@@ -297,10 +279,7 @@ internal static class UseItem
         ILogger<UseOnObject> logger)
         : UseItemExecutorBase<UseOnObject>(questFunctions, condition, logger)
     {
-        protected override bool UseItem()
-        {
-            return gameFunctions.UseItem(Task.DataId, ItemId);
-        }
+        protected override bool UseItem() => gameFunctions.UseItem(Task.DataId, ItemId);
     }
 
     internal sealed record UseOnSelf
@@ -310,10 +289,7 @@ internal static class UseItem
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString()
-        {
-            return $"UseItem({ItemId})";
-        }
+        public override string ToString() => $"UseItem({ItemId})";
     }
 
     internal sealed class UseOnSelfExecutor
@@ -324,9 +300,6 @@ internal static class UseItem
         ILogger<UseOnSelf> logger)
         : UseItemExecutorBase<UseOnSelf>(questFunctions, condition, logger)
     {
-        protected override bool UseItem()
-        {
-            return gameFunctions.UseItem(ItemId);
-        }
+        protected override bool UseItem() => gameFunctions.UseItem(ItemId);
     }
 }

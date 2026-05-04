@@ -430,13 +430,7 @@ internal sealed class LocationOverride
     public float? MinimumDistance { get; set; }
     public float? MaximumDistance { get; set; }
 
-    public bool IsCone()
-    {
-        return MinimumAngle != null && MaximumAngle != null && MinimumAngle != MaximumAngle;
-    }
+    public bool IsCone() => MinimumAngle != null && MaximumAngle != null && MinimumAngle != MaximumAngle;
 
-    public bool NeedsSave()
-    {
-        return (MinimumAngle != null && MaximumAngle != null) || (MinimumDistance != null && MaximumDistance != null);
-    }
+    public bool NeedsSave() => (MinimumAngle != null && MaximumAngle != null) || (MinimumDistance != null && MaximumDistance != null);
 }

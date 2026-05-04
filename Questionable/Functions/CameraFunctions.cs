@@ -40,15 +40,9 @@ internal sealed unsafe class CameraFunctions : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        _rmiCameraHook.Dispose();
-    }
+    public void Dispose() => _rmiCameraHook.Dispose();
 
-    private static float Deg2Rad(int degrees)
-    {
-        return degrees * ((float)Math.PI / 180f);
-    }
+    private static float Deg2Rad(int degrees) => degrees * ((float)Math.PI / 180f);
 
     // from https://github.com/NightmareXIV/ECommons/blob/master/ECommons/MathHelpers/Angle.cs
     private static float Normalized(float r)

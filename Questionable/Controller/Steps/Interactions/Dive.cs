@@ -13,14 +13,8 @@ namespace Questionable.Controller.Steps.Interactions;
 internal static class Dive
 {
     private static DiveDelegate DiveFunc = Marshal.GetDelegateForFunctionPointer<DiveDelegate>(Svc.SigScanner.ScanText("48 89 5C 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 48 8D 54 24"));
-    public static unsafe void ExecuteDive()
-    {
-        DiveFunc(Control.Instance());
-    }
-    private static unsafe void Dismount()
-    {
-        ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
-    }
+    public static unsafe void ExecuteDive() => DiveFunc(Control.Instance());
+    private static unsafe void Dismount() => ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
     private unsafe delegate byte DiveDelegate(void* control);
 
     internal sealed class Factory : SimpleTaskFactory
@@ -36,10 +30,7 @@ internal static class Dive
 
     internal sealed class Task : ITask
     {
-        public override string ToString()
-        {
-            return "Dive";
-        }
+        public override string ToString() => "Dive";
     }
 
     internal sealed class DoDive(ICondition condition)
@@ -87,10 +78,7 @@ internal static class Dive
         //    return base.Update();
         //}
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
 
         protected override ETaskResult UpdateInternal()
         {

@@ -142,10 +142,7 @@ internal sealed class GatheringJournalComponent
         gameInteropProvider.InitializeFromAttributes(this);
     }
 
-    private static bool IsGatheringItemGathered(uint item)
-    {
-        return QuestManager.IsGatheringItemGathered((ushort)item);
-    }
+    private static bool IsGatheringItemGathered(uint item) => QuestManager.IsGatheringItemGathered((ushort)item);
 
     public void DrawGatheringItems()
     {
@@ -430,10 +427,7 @@ internal sealed class GatheringJournalComponent
         public int CompletedItems { get; set; }
         public int CompletedPoints { get; set; }
 
-        public string ToFriendlyString()
-        {
-            return !string.IsNullOrEmpty(TerritoryName) ? TerritoryName : $"??? ({TerritoryType})";
-        }
+        public string ToFriendlyString() => !string.IsNullOrEmpty(TerritoryName) ? TerritoryName : $"??? ({TerritoryType})";
     }
 
     private sealed record DefaultGatheringPoint

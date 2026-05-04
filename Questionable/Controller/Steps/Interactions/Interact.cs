@@ -101,15 +101,9 @@ internal static class Interact
             CompletionQuestVariablesFlags != null &&
             QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
 
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
+        public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString()
-        {
-            return $"Interact{(HasCompletionQuestVariablesFlags ? "*" : "")}({DataId})";
-        }
+        public override string ToString() => $"Interact{(HasCompletionQuestVariablesFlags ? "*" : "")}({DataId})";
     }
 
     internal sealed class DoInteract
@@ -305,10 +299,7 @@ internal static class Interact
             }
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
 
         protected override bool Start()
         {

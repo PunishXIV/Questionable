@@ -112,10 +112,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
     public WindowConfig WindowConfig => _configuration.DebugWindowConfig;
 
-    public void SaveWindowConfig()
-    {
-        _pluginInterface.SavePluginConfig(_configuration);
-    }
+    public void SaveWindowConfig() => _pluginInterface.SavePluginConfig(_configuration);
 
     public override void PreOpenCheck()
     {
@@ -199,10 +196,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         }
     }
 
-    private void OnReload(object? sender, EventArgs e)
-    {
-        Reload();
-    }
+    private void OnReload(object? sender, EventArgs e) => Reload();
 
     internal void Reload()
     {

@@ -29,10 +29,7 @@ internal static class UpdateGearset
 
     internal sealed record Task(Job? TargetClass) : ITask
     {
-        public override string ToString()
-        {
-            return $"UpdateGearset({TargetClass?.ToString() ?? "current"})";
-        }
+        public override string ToString() => $"UpdateGearset({TargetClass?.ToString() ?? "current"})";
     }
 
     internal sealed class UpdateGearsetExecutor
@@ -124,14 +121,8 @@ internal static class UpdateGearset
             return true;
         }
 
-        protected override ETaskResult UpdateInternal()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        protected override ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

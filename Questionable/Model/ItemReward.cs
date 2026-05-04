@@ -58,10 +58,7 @@ public sealed record MountReward(ItemRewardDetails Item, uint MountId)
 {
     public override EItemRewardType Type => EItemRewardType.Mount;
 
-    public override unsafe bool IsUnlocked()
-    {
-        return PlayerState.Instance()->IsMountUnlocked(MountId);
-    }
+    public override unsafe bool IsUnlocked() => PlayerState.Instance()->IsMountUnlocked(MountId);
 }
 
 public sealed record MinionReward(ItemRewardDetails Item, uint MinionId)
@@ -69,10 +66,7 @@ public sealed record MinionReward(ItemRewardDetails Item, uint MinionId)
 {
     public override EItemRewardType Type => EItemRewardType.Minion;
 
-    public override unsafe bool IsUnlocked()
-    {
-        return UIState.Instance()->IsCompanionUnlocked(MinionId);
-    }
+    public override unsafe bool IsUnlocked() => UIState.Instance()->IsCompanionUnlocked(MinionId);
 }
 
 public sealed record OrchestrionRollReward(ItemRewardDetails Item, uint OrchestrionRollId)
@@ -80,10 +74,7 @@ public sealed record OrchestrionRollReward(ItemRewardDetails Item, uint Orchestr
 {
     public override EItemRewardType Type => EItemRewardType.OrchestrionRoll;
 
-    public override unsafe bool IsUnlocked()
-    {
-        return PlayerState.Instance()->IsOrchestrionRollUnlocked(OrchestrionRollId);
-    }
+    public override unsafe bool IsUnlocked() => PlayerState.Instance()->IsOrchestrionRollUnlocked(OrchestrionRollId);
 }
 
 public sealed record TripleTriadCardReward(ItemRewardDetails Item, ushort TripleTriadCardId)
@@ -91,10 +82,7 @@ public sealed record TripleTriadCardReward(ItemRewardDetails Item, ushort Triple
 {
     public override EItemRewardType Type => EItemRewardType.TripleTriadCard;
 
-    public override unsafe bool IsUnlocked()
-    {
-        return UIState.Instance()->IsTripleTriadCardUnlocked(TripleTriadCardId);
-    }
+    public override unsafe bool IsUnlocked() => UIState.Instance()->IsTripleTriadCardUnlocked(TripleTriadCardId);
 }
 
 public sealed record FashionAccessoryReward(ItemRewardDetails Item, uint AccessoryId)
@@ -102,8 +90,5 @@ public sealed record FashionAccessoryReward(ItemRewardDetails Item, uint Accesso
 {
     public override EItemRewardType Type => EItemRewardType.FashionAccessory;
 
-    public override unsafe bool IsUnlocked()
-    {
-        return PlayerState.Instance()->IsOrnamentUnlocked(AccessoryId);
-    }
+    public override unsafe bool IsUnlocked() => PlayerState.Instance()->IsOrnamentUnlocked(AccessoryId);
 }

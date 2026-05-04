@@ -35,10 +35,7 @@ internal static class SendNotification
 
     internal sealed record Task(EInteractionType InteractionType, string? Comment) : ITask
     {
-        public override string ToString()
-        {
-            return "SendNotification";
-        }
+        public override string ToString() => "SendNotification";
     }
 
     internal sealed class Executor
@@ -106,14 +103,8 @@ internal static class SendNotification
             return true;
         }
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

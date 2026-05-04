@@ -25,15 +25,9 @@ internal static class DoGather
     {
         public bool RevisitTriggered { get; private set; }
 
-        public void OnRevisit()
-        {
-            RevisitTriggered = true;
-        }
+        public void OnRevisit() => RevisitTriggered = true;
 
-        public override string ToString()
-        {
-            return $"DoGather{(RevisitRequired ? " if revisit" : "")}";
-        }
+        public override string ToString() => $"DoGather{(RevisitRequired ? " if revisit" : "")}";
     }
 
     internal sealed class GatherExecutor
@@ -49,10 +43,7 @@ internal static class DoGather
         private bool _usedLuck;
         private bool _wasGathering;
 
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override unsafe ETaskResult Update()
         {
@@ -300,10 +291,7 @@ internal static class DoGather
             return ActionManager.Instance()->GetActionStatus(ActionType.Action, (uint)action) == 0;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Local")]

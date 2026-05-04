@@ -34,13 +34,7 @@ internal sealed record MoveTask
     {
     }
 
-    public bool ShouldRedoOnInterrupt()
-    {
-        return true;
-    }
+    public bool ShouldRedoOnInterrupt() => true;
 
-    public override string ToString()
-    {
-        return $"MoveTo({Destination.ToString("G", CultureInfo.InvariantCulture)})";
-    }
+    public override string ToString() => $"MoveTo({Destination.ToString("G", CultureInfo.InvariantCulture)})";
 }

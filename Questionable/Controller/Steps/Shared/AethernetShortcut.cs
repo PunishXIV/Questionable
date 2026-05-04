@@ -55,10 +55,7 @@ internal static class AethernetShortcut
         {
         }
 
-        public override string ToString()
-        {
-            return $"UseAethernet({From} -> {To})";
-        }
+        public override string ToString() => $"UseAethernet({From} -> {To})";
     }
 
     internal sealed class UseAethernetShortcut
@@ -279,9 +276,6 @@ internal static class AethernetShortcut
             return ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

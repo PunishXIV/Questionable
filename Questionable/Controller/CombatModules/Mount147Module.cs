@@ -13,20 +13,11 @@ internal sealed class Mount147Module(GameFunctions gameFunctions) : ICombatModul
 
     private readonly GameFunctions _gameFunctions = gameFunctions;
 
-    public bool CanHandleFight(CombatController.CombatData combatData)
-    {
-        return _gameFunctions.GetMountId() == MountId;
-    }
+    public bool CanHandleFight(CombatController.CombatData combatData) => _gameFunctions.GetMountId() == MountId;
 
-    public bool Start(CombatController.CombatData combatData)
-    {
-        return true;
-    }
+    public bool Start(CombatController.CombatData combatData) => true;
 
-    public bool Stop()
-    {
-        return true;
-    }
+    public bool Stop() => true;
 
     public void Update(IGameObject gameObject)
     {
@@ -37,8 +28,5 @@ internal sealed class Mount147Module(GameFunctions gameFunctions) : ICombatModul
         }
     }
 
-    public bool CanAttack(IBattleNpc target)
-    {
-        return GameFunctions.GetBaseID(target) is 8593;
-    }
+    public bool CanAttack(IBattleNpc target) => GameFunctions.GetBaseID(target) is 8593;
 }

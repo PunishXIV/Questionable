@@ -64,23 +64,11 @@ internal sealed class GatheringData
     public IEnumerable<GatheringPointId> MinerGatheringPoints => _minerGatheringPoints.Values;
     public IEnumerable<GatheringPointId> BotanistGatheringPoints => _botanistGatheringPoints.Values;
 
-    public bool TryGetMinerGatheringPointByItemId(uint itemId, [NotNullWhen(true)] out GatheringPointId? gatheringPointId)
-    {
-        return _minerGatheringPoints.TryGetValue(itemId, out gatheringPointId);
-    }
+    public bool TryGetMinerGatheringPointByItemId(uint itemId, [NotNullWhen(true)] out GatheringPointId? gatheringPointId) => _minerGatheringPoints.TryGetValue(itemId, out gatheringPointId);
 
-    public bool TryGetBotanistGatheringPointByItemId(uint itemId, [NotNullWhen(true)] out GatheringPointId? gatheringPointId)
-    {
-        return _botanistGatheringPoints.TryGetValue(itemId, out gatheringPointId);
-    }
+    public bool TryGetBotanistGatheringPointByItemId(uint itemId, [NotNullWhen(true)] out GatheringPointId? gatheringPointId) => _botanistGatheringPoints.TryGetValue(itemId, out gatheringPointId);
 
-    public ushort GetRecommendedCollectability(uint itemId)
-    {
-        return _itemIdToCollectability.GetValueOrDefault(itemId);
-    }
+    public ushort GetRecommendedCollectability(uint itemId) => _itemIdToCollectability.GetValueOrDefault(itemId);
 
-    public bool TryGetCustomDeliveryNpc(uint itemId, out uint npcId)
-    {
-        return _npcForCustomDeliveries.TryGetValue(itemId, out npcId);
-    }
+    public bool TryGetCustomDeliveryNpc(uint itemId, out uint npcId) => _npcForCustomDeliveries.TryGetValue(itemId, out npcId);
 }

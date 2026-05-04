@@ -136,10 +136,7 @@ internal static class WaitAtEnd
             }
         }
 
-        private static NextStep Next(Quest quest, QuestSequence sequence)
-        {
-            return new(quest.Id, sequence.Sequence);
-        }
+        private static NextStep Next(Quest quest, QuestSequence sequence) => new(quest.Id, sequence.Sequence);
     }
 
     internal sealed record WaitDelay(TimeSpan Delay) : ITask
@@ -149,15 +146,9 @@ internal static class WaitAtEnd
         {
         }
 
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
+        public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString()
-        {
-            return $"Wait(seconds: {Delay.TotalSeconds})";
-        }
+        public override string ToString() => $"Wait(seconds: {Delay.TotalSeconds})";
     }
 
     internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
@@ -168,53 +159,32 @@ internal static class WaitAtEnd
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed class WaitNextStepOrSequence : ITask
     {
-        public override string ToString()
-        {
-            return "Wait(next step or sequence)";
-        }
+        public override string ToString() => "Wait(next step or sequence)";
     }
 
     internal sealed class WaitNextStepOrSequenceExecutor : TaskExecutor<WaitNextStepOrSequence>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.StillRunning;
-        }
+        public override ETaskResult Update() => ETaskResult.StillRunning;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record WaitForCompletionFlags(QuestId Quest, QuestStep Step) : ITask
     {
-        public override string ToString()
-        {
-            return $"Wait(QW: {string.Join(", ", Step.CompletionQuestVariablesFlags.Select(x => x?.ToString() ?? "-"))})";
-        }
+        public override string ToString() => $"Wait(QW: {string.Join(", ", Step.CompletionQuestVariablesFlags.Select(x => x?.ToString() ?? "-"))})";
     }
 
     internal sealed class WaitForCompletionFlagsExecutor(QuestFunctions questFunctions)
         : TaskExecutor<WaitForCompletionFlags>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
@@ -225,10 +195,7 @@ internal static class WaitAtEnd
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record WaitObjectAtPosition
@@ -237,18 +204,12 @@ internal static class WaitAtEnd
         Vector3 Destination,
         float Distance) : ITask
     {
-        public override string ToString()
-        {
-            return $"WaitObj({DataId} at {Destination.ToString("G", CultureInfo.InvariantCulture)} < {Distance})";
-        }
+        public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G", CultureInfo.InvariantCulture)} < {Distance})";
     }
 
     internal sealed class WaitObjectAtPositionExecutor(GameFunctions gameFunctions) : TaskExecutor<WaitObjectAtPosition>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
@@ -257,26 +218,17 @@ internal static class WaitAtEnd
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record WaitQuestAccepted(ElementId ElementId) : ITask
     {
-        public override string ToString()
-        {
-            return $"WaitQuestAccepted({ElementId})";
-        }
+        public override string ToString() => $"WaitQuestAccepted({ElementId})";
     }
 
     internal sealed class WaitQuestAcceptedExecutor(QuestFunctions questFunctions) : TaskExecutor<WaitQuestAccepted>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
@@ -285,62 +237,35 @@ internal static class WaitAtEnd
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record WaitQuestCompleted(ElementId ElementId) : ITask
     {
-        public override string ToString()
-        {
-            return $"WaitQuestComplete({ElementId})";
-        }
+        public override string ToString() => $"WaitQuestComplete({ElementId})";
     }
 
     internal sealed class WaitQuestCompletedExecutor(QuestFunctions questFunctions) : TaskExecutor<WaitQuestCompleted>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
-        public override ETaskResult Update()
-        {
-            return questFunctions.IsQuestComplete(Task.ElementId) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
-        }
+        public override ETaskResult Update() => questFunctions.IsQuestComplete(Task.ElementId) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record NextStep(ElementId ElementId, int Sequence) : ILastTask
     {
-        public override string ToString()
-        {
-            return "NextStep";
-        }
+        public override string ToString() => "NextStep";
     }
 
     internal sealed class NextStepExecutor : TaskExecutor<NextStep>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.NextStep;
-        }
+        public override ETaskResult Update() => ETaskResult.NextStep;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed class EndAutomation : ILastTask
@@ -348,27 +273,15 @@ internal static class WaitAtEnd
         public ElementId ElementId => throw new InvalidOperationException();
         public int Sequence => throw new InvalidOperationException();
 
-        public override string ToString()
-        {
-            return "EndAutomation";
-        }
+        public override string ToString() => "EndAutomation";
     }
 
     internal sealed class EndAutomationExecutor : TaskExecutor<EndAutomation>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.End;
-        }
+        public override ETaskResult Update() => ETaskResult.End;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

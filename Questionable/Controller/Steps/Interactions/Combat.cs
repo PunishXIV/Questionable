@@ -178,10 +178,7 @@ internal static class Combat
     {
         private CombatController.EStatus _status = CombatController.EStatus.NotStarted;
 
-        protected override bool Start()
-        {
-            return combatController.Start(Task.CombatData);
-        }
+        protected override bool Start() => combatController.Start(Task.CombatData);
 
         public override ETaskResult Update()
         {
@@ -214,9 +211,6 @@ internal static class Combat
             }
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

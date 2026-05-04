@@ -25,14 +25,8 @@ internal static class AethernetShard
 
     internal sealed record Attune(EAetheryteLocation AetheryteLocation) : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
-        public override string ToString()
-        {
-            return $"AttuneAethernetShard({AetheryteLocation})";
-        }
+        public bool ShouldRedoOnInterrupt() => true;
+        public override string ToString() => $"AttuneAethernetShard({AetheryteLocation})";
     }
 
     internal sealed class DoAttune
@@ -62,9 +56,6 @@ internal static class AethernetShard
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

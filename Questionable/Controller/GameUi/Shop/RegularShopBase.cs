@@ -180,10 +180,7 @@ public class RegularShopBase
         _addonLifecycle.UnregisterListener(AddonEvent.PostUpdate, _addonName, ShopPostUpdate);
     }
 
-    public bool HasFreeInventorySlot()
-    {
-        return CountFreeInventorySlots() > 0;
-    }
+    public bool HasFreeInventorySlot() => CountFreeInventorySlots() > 0;
 
     public unsafe int CountFreeInventorySlots()
     {

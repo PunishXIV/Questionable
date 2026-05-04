@@ -12,15 +12,9 @@ internal sealed class TaskQueue
     public IEnumerable<ITask> RemainingTasks => _tasks;
     public bool AllTasksComplete => CurrentTaskExecutor == null && _tasks.Count == 0;
 
-    public void Enqueue(ITask task)
-    {
-        _tasks.Add(task);
-    }
+    public void Enqueue(ITask task) => _tasks.Add(task);
 
-    public void EnqueueAll(IEnumerable<ITask> tasks)
-    {
-        _tasks.InsertRange(0, tasks);
-    }
+    public void EnqueueAll(IEnumerable<ITask> tasks) => _tasks.InsertRange(0, tasks);
 
     public bool TryDequeue([NotNullWhen(true)] out ITask? task)
     {

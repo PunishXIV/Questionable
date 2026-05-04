@@ -26,10 +26,7 @@ internal sealed class PartyWatchDog : IDisposable
         _clientState.TerritoryChanged += TerritoryChanged;
     }
 
-    public void Dispose()
-    {
-        _clientState.TerritoryChanged -= TerritoryChanged;
-    }
+    public void Dispose() => _clientState.TerritoryChanged -= TerritoryChanged;
 
     private unsafe void TerritoryChanged(uint newTerritoryId)
     {

@@ -129,10 +129,7 @@ internal sealed class QuestInfo : IQuestInfo
         };
     }
 
-    public void AddPreviousQuest(PreviousQuestInfo questId)
-    {
-        PreviousQuests = [.. PreviousQuests, questId];
-    }
+    public void AddPreviousQuest(PreviousQuestInfo questId) => PreviousQuests = [.. PreviousQuests, questId];
 
     public void AddQuestLocks(EQuestJoin questJoin, params QuestId[] questId)
     {

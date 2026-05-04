@@ -249,8 +249,5 @@ internal sealed class MoveExecutor
             return null;
     }
 
-    private bool ShouldResolveCombatBeforeNextInteraction()
-    {
-        return Task.InteractionType is EInteractionType.Jump;
-    }
+    private bool ShouldResolveCombatBeforeNextInteraction() => Task.InteractionType is EInteractionType.Jump;
 }

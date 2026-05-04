@@ -98,10 +98,7 @@ internal sealed class QuestValidator
         }, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
     }
 
-    public List<ValidationIssue> GetIssues(ElementId elementId)
-    {
-        return _validationIssues.Where(x => x.ElementId == elementId).ToList();
-    }
+    public List<ValidationIssue> GetIssues(ElementId elementId) => _validationIssues.Where(x => x.ElementId == elementId).ToList();
 
     private static IEnumerable<ValidationIssue> DisabledTribesAsIssues(Dictionary<EAlliedSociety, int> disabledTribeQuests)
     {

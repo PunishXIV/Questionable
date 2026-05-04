@@ -8,10 +8,7 @@ internal sealed class ReportWarningComponent(Configuration configuration)
 {
     private readonly Configuration _configuration = configuration;
 
-    public void Draw()
-    {
-        DrawReportWarning();
-    }
+    public void Draw() => DrawReportWarning();
 
     private void DrawReportWarning()
     {

@@ -41,10 +41,7 @@ internal static class RedeemRewardItems
 
     internal sealed record Task(ItemReward ItemReward) : ITask
     {
-        public override string ToString()
-        {
-            return $"TryRedeem({ItemReward.Name})";
-        }
+        public override string ToString() => $"TryRedeem({ItemReward.Name})";
     }
 
     internal sealed class Executor
@@ -78,9 +75,6 @@ internal static class RedeemRewardItems
             return DateTime.Now <= _continueAt ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

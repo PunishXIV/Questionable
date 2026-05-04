@@ -302,10 +302,7 @@ internal sealed class QuestionableIpc : IDisposable
         return true;
     }
 
-    private bool StartGathering(uint npcId, uint itemId, byte classJob, int quantity)
-    {
-        return StartGatheringComplex(npcId, itemId, classJob, quantity);
-    }
+    private bool StartGathering(uint npcId, uint itemId, byte classJob, int quantity) => StartGatheringComplex(npcId, itemId, classJob, quantity);
 
     private bool StartGatheringComplex(uint npcId, uint itemId, byte classJob = ((byte)Job.MIN), int quantity = 1, ushort collectability = 0)
     {

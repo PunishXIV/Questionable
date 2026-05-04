@@ -75,10 +75,7 @@ internal sealed class YesAlreadyIpc : IDisposable
 
     internal sealed class IPCSubscriber_Common
     {
-        internal static bool IsReady(string pluginName)
-        {
-            return DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
-        }
+        internal static bool IsReady(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
 
         internal static Version? Version(string pluginName)
         {

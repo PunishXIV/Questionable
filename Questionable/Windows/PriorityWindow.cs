@@ -293,8 +293,5 @@ internal sealed class PriorityWindow : LWindow
         _chatGui.Print("Copied quests to clipboard.", CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
-    private void ImportFromClipboard(List<ElementId> questElements)
-    {
-        _questController.ImportQuestPriority(questElements);
-    }
+    private void ImportFromClipboard(List<ElementId> questElements) => _questController.ImportQuestPriority(questElements);
 }

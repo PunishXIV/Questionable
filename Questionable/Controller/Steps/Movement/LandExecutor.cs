@@ -59,8 +59,5 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
         return false;
     }
 
-    public override bool ShouldInterruptOnDamage()
-    {
-        return false;
-    }
+    public override bool ShouldInterruptOnDamage() => false;
 }

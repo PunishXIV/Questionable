@@ -55,13 +55,7 @@ internal sealed class BossModModule
     {
     }
 
-    public bool CanAttack(IBattleNpc target)
-    {
-        return true;
-    }
+    public bool CanAttack(IBattleNpc target) => true;
 
-    public void Dispose()
-    {
-        Stop();
-    }
+    public void Dispose() => Stop();
 }

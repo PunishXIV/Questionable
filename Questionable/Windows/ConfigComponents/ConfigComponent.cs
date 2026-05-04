@@ -33,10 +33,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     public abstract void DrawTab();
 
-    protected void Save()
-    {
-        _pluginInterface.SavePluginConfig(Configuration);
-    }
+    protected void Save() => _pluginInterface.SavePluginConfig(Configuration);
 
     protected static string FormatLevel(int level, bool includePrefix = true)
     {

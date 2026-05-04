@@ -14,8 +14,5 @@ public sealed class ElementIdConverter : JsonConverter<ElementId>
             return ElementId.FromString(reader.GetString() ?? throw new JsonException());
     }
 
-    public override void Write(Utf8JsonWriter writer, ElementId value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value.ToString());
-    }
+    public override void Write(Utf8JsonWriter writer, ElementId value, JsonSerializerOptions options) => writer.WriteStringValue(value.ToString());
 }

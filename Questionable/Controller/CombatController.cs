@@ -515,10 +515,7 @@ internal sealed class CombatController : IDisposable
         _wasInCombat = false;
     }
 
-    private void TerritoryChanged(uint territoryId)
-    {
-        Stop("TerritoryChanged");
-    }
+    private void TerritoryChanged(uint territoryId) => Stop("TerritoryChanged");
 
     private sealed class CurrentFight
     {

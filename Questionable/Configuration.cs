@@ -26,15 +26,9 @@ internal sealed class Configuration : IPluginConfiguration
 
     public int Version { get; set; } = 1;
 
-    internal bool IsPluginSetupComplete()
-    {
-        return PluginSetupCompleteVersion == PluginSetupVersion;
-    }
+    internal bool IsPluginSetupComplete() => PluginSetupCompleteVersion == PluginSetupVersion;
 
-    internal void MarkPluginSetupComplete()
-    {
-        PluginSetupCompleteVersion = PluginSetupVersion;
-    }
+    internal void MarkPluginSetupComplete() => PluginSetupCompleteVersion = PluginSetupVersion;
 
     internal sealed class GeneralConfiguration
     {
@@ -140,10 +134,7 @@ internal sealed class Configuration : IPluginConfiguration
 
     public sealed class ElementIdNConverter : JsonConverter<ElementId>
     {
-        public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer)
-        {
-            writer.WriteValue(value?.ToString());
-        }
+        public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
         public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
             bool hasExistingValue, JsonSerializer serializer)

@@ -23,15 +23,9 @@ internal static class DoGatherCollectable
     {
         public bool RevisitTriggered { get; private set; }
 
-        public void OnRevisit()
-        {
-            RevisitTriggered = true;
-        }
+        public void OnRevisit() => RevisitTriggered = true;
 
-        public override string ToString()
-        {
-            return $"DoGatherCollectable({SeIconChar.Collectible.ToIconString()}/{Request.Collectability}){(RevisitRequired ? " if revist" : "")}";
-        }
+        public override string ToString() => $"DoGatherCollectable({SeIconChar.Collectible.ToIconString()}/{Request.Collectability}){(RevisitRequired ? " if revist" : "")}";
     }
 
     internal sealed class GatherCollectableExecutor
@@ -46,10 +40,7 @@ internal static class DoGatherCollectable
 
         private bool? _expectedScrutiny;
 
-        protected override bool Start()
-        {
-            return true;
-        }
+        protected override bool Start() => true;
 
         public override unsafe ETaskResult Update()
         {
@@ -214,10 +205,7 @@ internal static class DoGatherCollectable
                 return botanistAction;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Local")]

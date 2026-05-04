@@ -50,10 +50,7 @@ internal static class Duty
         AutoDutyIpc.DutyMode DutyMode)
         : ITask
     {
-        public override string ToString()
-        {
-            return $"StartAutoDuty({ContentFinderConditionId}, {DutyMode})";
-        }
+        public override string ToString() => $"StartAutoDuty({ContentFinderConditionId}, {DutyMode})";
     }
 
     internal sealed class StartAutoDutyExecutor
@@ -78,15 +75,9 @@ internal static class Duty
                 : ETaskResult.StillRunning;
         }
 
-        public void StopNow()
-        {
-            autoDutyIpc.Stop();
-        }
+        public void StopNow() => autoDutyIpc.Stop();
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start()
         {
             if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
@@ -124,10 +115,7 @@ internal static class Duty
 
     internal sealed record WaitAutoDutyTask(uint ContentFinderConditionId) : ITask
     {
-        public override string ToString()
-        {
-            return $"Wait(AutoDuty, left instance {ContentFinderConditionId})";
-        }
+        public override string ToString() => $"Wait(AutoDuty, left instance {ContentFinderConditionId})";
     }
 
     internal sealed class WaitAutoDutyExecutor
@@ -149,27 +137,15 @@ internal static class Duty
                 : ETaskResult.StillRunning;
         }
 
-        public void StopNow()
-        {
-            autoDutyIpc.Stop();
-        }
+        public void StopNow() => autoDutyIpc.Stop();
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
-        protected override bool Start()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
+        protected override bool Start() => true;
     }
 
     internal sealed record OpenDutyFinderTask(uint ContentFinderConditionId) : ITask
     {
-        public override string ToString()
-        {
-            return $"OpenDutyFinder({ContentFinderConditionId})";
-        }
+        public override string ToString() => $"OpenDutyFinder({ContentFinderConditionId})";
     }
 
     internal sealed class OpenDutyFinderExecutor
@@ -186,14 +162,8 @@ internal static class Duty
             return true;
         }
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

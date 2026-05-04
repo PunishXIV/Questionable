@@ -236,8 +236,5 @@ internal sealed class EditorCommands : IDisposable
         return (targetFile, root);
     }
 
-    public void Dispose()
-    {
-        _commandManager.RemoveHandler("/qg");
-    }
+    public void Dispose() => _commandManager.RemoveHandler("/qg");
 }

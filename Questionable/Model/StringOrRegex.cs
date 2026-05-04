@@ -38,8 +38,5 @@ internal sealed class StringOrRegex
         return _stringValue;
     }
 
-    public override string? ToString()
-    {
-        return _regex?.ToString() ?? _stringValue;
-    }
+    public override string? ToString() => _regex?.ToString() ?? _stringValue;
 }

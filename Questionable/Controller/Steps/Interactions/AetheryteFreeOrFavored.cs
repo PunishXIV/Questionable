@@ -24,14 +24,8 @@ internal static class AetheryteFreeOrFavored
 
     internal sealed record Register(EAetheryteLocation AetheryteLocation) : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
-        public override string ToString()
-        {
-            return $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
-        }
+        public bool ShouldRedoOnInterrupt() => true;
+        public override string ToString() => $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
     }
 
     internal sealed class DoRegister
@@ -66,9 +60,6 @@ internal static class AetheryteFreeOrFavored
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

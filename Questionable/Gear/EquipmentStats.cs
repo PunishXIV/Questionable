@@ -11,10 +11,7 @@ public sealed record EquipmentStats(Dictionary<EBaseParam, StatInfo> Stats, byte
                MateriaCount == other.MateriaCount &&
                Stats.SequenceEqual(other.Stats, new KeyValuePairComparer());
     }
-    public short Get(EBaseParam param)
-    {
-        return (short)(GetEquipment(param) + GetMateria(param));
-    }
+    public short Get(EBaseParam param) => (short)(GetEquipment(param) + GetMateria(param));
 
     public short GetEquipment(EBaseParam param)
     {
@@ -34,30 +31,15 @@ public sealed record EquipmentStats(Dictionary<EBaseParam, StatInfo> Stats, byte
         return v?.Overcapped ?? false;
     }
 
-    public bool Has(EBaseParam substat)
-    {
-        return Stats.ContainsKey(substat);
-    }
-    public bool HasMateria()
-    {
-        return Stats.Values.Any(x => x.MateriaValue > 0);
-    }
+    public bool Has(EBaseParam substat) => Stats.ContainsKey(substat);
+    public bool HasMateria() => Stats.Values.Any(x => x.MateriaValue > 0);
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(MateriaCount, Stats);
-    }
+    public override int GetHashCode() => HashCode.Combine(MateriaCount, Stats);
 
     private sealed class KeyValuePairComparer : IEqualityComparer<KeyValuePair<EBaseParam, StatInfo>>
     {
-        public bool Equals(KeyValuePair<EBaseParam, StatInfo> x, KeyValuePair<EBaseParam, StatInfo> y)
-        {
-            return x.Key == y.Key && Equals(x.Value, y.Value);
-        }
+        public bool Equals(KeyValuePair<EBaseParam, StatInfo> x, KeyValuePair<EBaseParam, StatInfo> y) => x.Key == y.Key && Equals(x.Value, y.Value);
 
-        public int GetHashCode(KeyValuePair<EBaseParam, StatInfo> obj)
-        {
-            return HashCode.Combine((int)obj.Key, obj.Value);
-        }
+        public int GetHashCode(KeyValuePair<EBaseParam, StatInfo> obj) => HashCode.Combine((int)obj.Key, obj.Value);
     }
 }

@@ -24,10 +24,7 @@ internal static class SwitchClassJob
 
     internal sealed record Task(Job ClassJob) : ITask
     {
-        public override string ToString()
-        {
-            return $"SwitchJob({ClassJob})";
-        }
+        public override string ToString() => $"SwitchJob({ClassJob})";
     }
 
     internal sealed class SwitchClassJobExecutor : AbstractDelayedTaskExecutor<Task>
@@ -54,15 +51,9 @@ internal static class SwitchClassJob
             throw new TaskException($"No gearset found for {Task.ClassJob}");
         }
 
-        protected override ETaskResult UpdateInternal()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        protected override ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
 
         // can we even take damage while switching jobs? we should be out of combat...
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

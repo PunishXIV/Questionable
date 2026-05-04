@@ -21,10 +21,7 @@ internal static class MoveToLandingLocation
         bool FlyBetweenNodes,
         GatheringNode GatheringNode) : ITask
     {
-        public override string ToString()
-        {
-            return $"Land/{FlyBetweenNodes}";
-        }
+        public override string ToString() => $"Land/{FlyBetweenNodes}";
     }
 
     internal sealed class MoveToLandingLocationExecutor
@@ -36,18 +33,9 @@ internal static class MoveToLandingLocation
     {
         private ITask _moveTask = null!;
 
-        public override ETaskResult Update()
-        {
-            return moveExecutor.Update();
-        }
-        public bool OnErrorToast(SeString message)
-        {
-            return moveExecutor.OnErrorToast(message);
-        }
-        public override bool ShouldInterruptOnDamage()
-        {
-            return moveExecutor.ShouldInterruptOnDamage();
-        }
+        public override ETaskResult Update() => moveExecutor.Update();
+        public bool OnErrorToast(SeString message) => moveExecutor.OnErrorToast(message);
+        public override bool ShouldInterruptOnDamage() => moveExecutor.ShouldInterruptOnDamage();
 
         protected override bool Start()
         {

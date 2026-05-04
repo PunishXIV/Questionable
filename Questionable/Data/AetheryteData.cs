@@ -341,13 +341,7 @@ internal sealed class AetheryteData
         return TownTerritoryIds.Contains(territoryId);
     }
 
-    public bool IsAirshipLanding(EAetheryteLocation aetheryte)
-    {
-        return AirshipLandingLocations.ContainsKey(aetheryte);
-    }
+    public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
 
-    public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte)
-    {
-        return TerritoryIds[aetheryte] is 144 or 388;
-    }
+    public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
 }

@@ -70,15 +70,9 @@ internal sealed class RotationSolverRebornModule
     {
     }
 
-    public bool CanAttack(IBattleNpc target)
-    {
-        return true;
-    }
+    public bool CanAttack(IBattleNpc target) => true;
 
-    public void Dispose()
-    {
-        Stop();
-    }
+    public void Dispose() => Stop();
 
     [PublicAPI]
     private enum StateCommandType : byte

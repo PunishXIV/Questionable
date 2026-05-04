@@ -34,10 +34,7 @@ internal static class Gather
 
     internal sealed record DelayedGatheringTask(GatheredItem GatheredItem, Quest Quest, byte Sequence, QuestStep Step) : ITask
     {
-        public override string ToString()
-        {
-            return $"Gathering(pending for {GatheredItem.ItemId})";
-        }
+        public override string ToString() => $"Gathering(pending for {GatheredItem.ItemId})";
     }
 
     internal sealed class DelayedGatheringExecutor
@@ -49,10 +46,7 @@ internal static class Gather
         IServiceProvider serviceProvider,
         ILogger<DelayedGatheringExecutor> logger) : TaskExecutor<DelayedGatheringTask>, IExtraTaskCreator
     {
-        public override ETaskResult Update()
-        {
-            return ETaskResult.CreateNewTasks;
-        }
+        public override ETaskResult Update() => ETaskResult.CreateNewTasks;
 
         public IEnumerable<ITask> CreateExtraTasks()
         {
@@ -107,14 +101,8 @@ internal static class Gather
             yield return new WaitAtEnd.WaitDelay();
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
-        protected override bool Start()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
+        protected override bool Start() => true;
 
         private unsafe bool HasRequiredItems(GatheredItem itemToGather)
         {
@@ -162,10 +150,7 @@ internal static class Gather
         }
 
         // we're on a gathering class, so combat doesn't make much sense (we also can't change classes in combat...)
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start()
         {
             return gatheringController.Start(new(Task.GatheringPointId,
@@ -180,26 +165,14 @@ internal static class Gather
     /// </summary>
     internal sealed class SkipMarker : ITask
     {
-        public override string ToString()
-        {
-            return "Gather/SkipMarker";
-        }
+        public override string ToString() => "Gather/SkipMarker";
     }
 
     internal sealed class DoSkip : TaskExecutor<SkipMarker>
     {
-        protected override bool Start()
-        {
-            return true;
-        }
-        public override ETaskResult Update()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        protected override bool Start() => true;
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

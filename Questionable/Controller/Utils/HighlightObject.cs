@@ -40,10 +40,7 @@ internal sealed class HighlightObject : IDisposable
         _framework.Update += Framework_OnUpdate;
     }
 
-    public void Dispose()
-    {
-        _framework.Update -= Framework_OnUpdate;
-    }
+    public void Dispose() => _framework.Update -= Framework_OnUpdate;
 
     private void Framework_OnUpdate(IFramework framework)
     {
@@ -90,10 +87,7 @@ internal sealed class HighlightObject : IDisposable
         });
     }
 
-    public void HighlightQuestObjects(ElementId questId)
-    {
-        SetHighlight(_dataManager.GetExcelSheet<EObj>().Where(obj => obj.Data.Equals((uint)questId.Value)).Select(obj => obj.RowId).ToArray());
-    }
+    public void HighlightQuestObjects(ElementId questId) => SetHighlight(_dataManager.GetExcelSheet<EObj>().Where(obj => obj.Data.Equals((uint)questId.Value)).Select(obj => obj.RowId).ToArray());
 
     public void SetHighlight(uint[] Ids)
     {

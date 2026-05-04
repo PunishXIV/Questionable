@@ -87,10 +87,7 @@ internal sealed unsafe class AetheryteFunctions
         return false;
     }
 
-    public bool TeleportAetheryte(EAetheryteLocation aetheryteLocation)
-    {
-        return TeleportAetheryte((uint)aetheryteLocation);
-    }
+    public bool TeleportAetheryte(EAetheryteLocation aetheryteLocation) => TeleportAetheryte((uint)aetheryteLocation);
 
     public bool IsFreeAetheryte(EAetheryteLocation aetheryteLocation)
     {

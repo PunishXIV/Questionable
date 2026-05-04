@@ -62,10 +62,7 @@ internal sealed class BossModIpc
         _setPreset.InvokeFunc(definition.Name);
     }
 
-    public void ClearPreset()
-    {
-        _clearPreset.InvokeFunc();
-    }
+    public void ClearPreset() => _clearPreset.InvokeFunc();
 
     // TODO this should use your actual rotation plugin, not always vbm
     public void EnableAi(bool passive)

@@ -17,15 +17,9 @@ internal sealed class Quest
     public required IQuestInfo Info { get; init; }
     public required ESource Source { get; init; }
 
-    public QuestSequence? FindSequence(byte currentSequence)
-    {
-        return Root.QuestSequence.SingleOrDefault(seq => seq.Sequence == currentSequence);
-    }
+    public QuestSequence? FindSequence(byte currentSequence) => Root.QuestSequence.SingleOrDefault(seq => seq.Sequence == currentSequence);
 
-    public IEnumerable<QuestSequence> AllSequences()
-    {
-        return Root.QuestSequence;
-    }
+    public IEnumerable<QuestSequence> AllSequences() => Root.QuestSequence;
 
     public IEnumerable<(QuestSequence Sequence, int StepId, QuestStep Step)> AllSteps()
     {

@@ -872,10 +872,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             SimulatedQuest = null;
     }
 
-    protected override void OnNextStep(ILastTask task)
-    {
-        IncreaseStepCount(task.ElementId, task.Sequence, true);
-    }
+    protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);
 
     public void Start(string label)
     {
@@ -1033,10 +1030,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
     }
 
-    public void SkipSimulatedTask()
-    {
-        _taskQueue.CurrentTaskExecutor = null;
-    }
+    public void SkipSimulatedTask() => _taskQueue.CurrentTaskExecutor = null;
 
     public bool IsInterruptible()
     {
@@ -1105,15 +1099,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 ManualPriorityQuests.Add(quest);
         }
     }
-    public string ExportQuestPriority()
-    {
-        return string.Join(ClipboardSeparator, ManualPriorityQuests.Select(x => x.Id.ToString()));
-    }
+    public string ExportQuestPriority() => string.Join(ClipboardSeparator, ManualPriorityQuests.Select(x => x.Id.ToString()));
 
-    public void ClearQuestPriority()
-    {
-        ManualPriorityQuests.Clear();
-    }
+    public void ClearQuestPriority() => ManualPriorityQuests.Clear();
 
     public bool AddQuestPriority(ElementId elementId)
     {
@@ -1162,10 +1150,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             conditionChangeAware.OnConditionChange(flag, value);
     }
 
-    private void OnNormalToast(ref SeString message, ref ToastOptions options, ref bool isHandled)
-    {
-        _gatheringController.OnNormalToast(message);
-    }
+    private void OnNormalToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _gatheringController.OnNormalToast(message);
 
     protected override void HandleInterruption(object? sender, EventArgs e)
     {

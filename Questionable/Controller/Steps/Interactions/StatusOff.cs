@@ -21,15 +21,9 @@ internal static class StatusOff
 
     internal sealed record Task(EStatus Status) : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
+        public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString()
-        {
-            return $"StatusOff({Status})";
-        }
+        public override string ToString() => $"StatusOff({Status})";
     }
 
     internal sealed class DoStatusOff
@@ -45,14 +39,8 @@ internal static class StatusOff
             return false;
         }
 
-        public override ETaskResult Update()
-        {
-            return gameFunctions.HasStatus(Task.Status) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
-        }
+        public override ETaskResult Update() => gameFunctions.HasStatus(Task.Status) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

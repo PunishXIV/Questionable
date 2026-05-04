@@ -57,15 +57,9 @@ internal sealed class DebugOverlay : Window
 
     public ElementId? HighlightedQuest { get; set; }
 
-    public override bool DrawConditions()
-    {
-        return _configuration.Advanced.DebugOverlay || _configuration.Advanced.HighlightSelectedNpc;
-    }
+    public override bool DrawConditions() => _configuration.Advanced.DebugOverlay || _configuration.Advanced.HighlightSelectedNpc;
 
-    public override void PreDraw()
-    {
-        Size = ImGui.GetIO().DisplaySize;
-    }
+    public override void PreDraw() => Size = ImGui.GetIO().DisplaySize;
 
     public override void Draw()
     {

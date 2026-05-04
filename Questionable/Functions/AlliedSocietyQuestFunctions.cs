@@ -126,10 +126,7 @@ internal sealed class AlliedSocietyQuestFunctions
         return available.Select(x => (QuestId)x.QuestId).ToList();
     }
 
-    private static bool IsEligible(QuestInfo questInfo, byte currentRank, bool rankedUp)
-    {
-        return rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
-    }
+    private static bool IsEligible(QuestInfo questInfo, byte currentRank, bool rankedUp) => rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
 
     private sealed class NpcData
     {

@@ -30,8 +30,5 @@ where T : class, ITask
         return UpdateInternal();
     }
 
-    protected virtual ETaskResult UpdateInternal()
-    {
-        return ETaskResult.TaskComplete;
-    }
+    protected virtual ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
 }

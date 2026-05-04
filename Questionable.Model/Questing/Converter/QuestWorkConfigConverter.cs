@@ -56,8 +56,5 @@ public sealed class QuestWorkConfigConverter : JsonConverter<QuestWorkValue>
         throw new JsonException();
     }
 
-    public override void Write(Utf8JsonWriter writer, QuestWorkValue value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value.ToString());
-    }
+    public override void Write(Utf8JsonWriter writer, QuestWorkValue value, JsonSerializerOptions options) => writer.WriteStringValue(value.ToString());
 }

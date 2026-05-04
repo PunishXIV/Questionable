@@ -79,10 +79,7 @@ internal sealed class MovementController
     public DateTime MovementStartedAt { get; private set; } = DateTime.Now;
     public int BuiltNavmeshPercent => navmeshIpc.GetBuildProgress();
 
-    public void Dispose()
-    {
-        Stop();
-    }
+    public void Dispose() => Stop();
 
     public void Update()
     {
@@ -482,10 +479,7 @@ internal sealed class MovementController
         public List<Vector3> PartialRoute { get; } = [];
         public LastWaypointData? LastWaypoint { get; set; }
 
-        public bool ShouldRecalculateNavmesh()
-        {
-            return NavmeshCalculations < 10;
-        }
+        public bool ShouldRecalculateNavmesh() => NavmeshCalculations < 10;
     }
 
     public sealed record LastWaypointData(Vector3 Position)

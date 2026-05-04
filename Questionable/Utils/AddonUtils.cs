@@ -15,8 +15,5 @@ internal static unsafe class AddonUtils
         return atkStage->RaptureAtkUnitManager->GetAddonById((ushort)addonId);
     }
 
-    public static bool IsAddonReady(AtkUnitBase* addon)
-    {
-        return addon != null && addon->AtkValues != null;
-    }
+    public static bool IsAddonReady(AtkUnitBase* addon) => addon != null && addon->AtkValues != null;
 }

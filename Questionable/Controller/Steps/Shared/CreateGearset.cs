@@ -22,10 +22,7 @@ internal static class CreateGearset
 
     internal sealed record Task : ITask
     {
-        public override string ToString()
-        {
-            return "CreateGearset";
-        }
+        public override string ToString() => "CreateGearset";
     }
 
     internal sealed class CreateGearsetExecutor
@@ -75,14 +72,8 @@ internal static class CreateGearset
             return true;
         }
 
-        protected override ETaskResult UpdateInternal()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        protected override ETaskResult UpdateInternal() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

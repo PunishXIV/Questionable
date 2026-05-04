@@ -46,10 +46,7 @@ internal abstract class MiniTaskController<T> : IDisposable
         _interruptHandler.Interrupted += HandleInterruption;
     }
 
-    public virtual void Dispose()
-    {
-        _interruptHandler.Interrupted -= HandleInterruption;
-    }
+    public virtual void Dispose() => _interruptHandler.Interrupted -= HandleInterruption;
 
     protected virtual void UpdateCurrentTask()
     {
@@ -173,10 +170,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     public abstract void Stop(string label);
 
-    public virtual IList<string> GetRemainingTaskNames()
-    {
-        return _taskQueue.RemainingTasks.Select(x => x.ToString() ?? "?").ToList();
-    }
+    public virtual IList<string> GetRemainingTaskNames() => _taskQueue.RemainingTasks.Select(x => x.ToString() ?? "?").ToList();
 
     public void InterruptQueueWithCombat()
     {

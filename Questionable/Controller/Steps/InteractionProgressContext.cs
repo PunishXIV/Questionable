@@ -37,10 +37,7 @@ internal sealed class InteractionProgressContext
         return (true, Create(true));
     }
 
-    public static InteractionProgressContext? FromActionUse(Func<bool> func)
-    {
-        return FromActionUseInternal(func).Item2;
-    }
+    public static InteractionProgressContext? FromActionUse(Func<bool> func) => FromActionUseInternal(func).Item2;
 
     public static InteractionProgressContext? FromActionUseOrDefault(Func<bool> func)
     {
@@ -95,8 +92,5 @@ internal sealed class InteractionProgressContext
                ActionManager.Instance()->CastTimeTotal > 0;
     }
 
-    public override string ToString()
-    {
-        return $"IPCtx({(CheckSequence ? CurrentSequence : "-")} - {WasSuccessful()}, {WasInterrupted()})";
-    }
+    public override string ToString() => $"IPCtx({(CheckSequence ? CurrentSequence : "-")} - {WasSuccessful()}, {WasInterrupted()})";
 }

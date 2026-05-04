@@ -36,10 +36,7 @@ internal static class Say
 
     internal sealed record Task(string ChatMessage) : ITask
     {
-        public override string ToString()
-        {
-            return $"Say({ChatMessage})";
-        }
+        public override string ToString() => $"Say({ChatMessage})";
     }
 
     internal sealed class UseChat(ChatFunctions chatFunctions) : AbstractDelayedTaskExecutor<Task>
@@ -50,9 +47,6 @@ internal static class Say
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

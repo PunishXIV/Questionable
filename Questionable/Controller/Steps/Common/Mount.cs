@@ -28,15 +28,9 @@ internal static class Mount
             ? Position ?? throw new ArgumentNullException(nameof(Position))
             : null;
 
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
+        public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString()
-        {
-            return "Mount";
-        }
+        public override string ToString() => "Mount";
     }
 
     internal sealed class MountEvaluator
@@ -140,10 +134,7 @@ internal static class Mount
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal enum MountResult
@@ -155,15 +146,9 @@ internal static class Mount
 
     internal sealed record UnmountTask : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
+        public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString()
-        {
-            return "Unmount";
-        }
+        public override string ToString() => "Unmount";
     }
 
     internal sealed class UnmountExecutor
@@ -239,9 +224,6 @@ internal static class Mount
             return false;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

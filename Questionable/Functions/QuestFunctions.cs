@@ -588,10 +588,7 @@ internal sealed unsafe class QuestFunctions
         return true;
     }
 
-    public bool IsQuestAcceptedOrComplete(ElementId elementId)
-    {
-        return IsQuestComplete(elementId) || IsQuestAccepted(elementId);
-    }
+    public bool IsQuestAcceptedOrComplete(ElementId elementId) => IsQuestComplete(elementId) || IsQuestAccepted(elementId);
 
     public bool IsQuestAccepted(ElementId elementId)
     {
@@ -628,15 +625,9 @@ internal sealed unsafe class QuestFunctions
     }
 
     [SuppressMessage("Performance", "CA1822")]
-    public bool IsQuestComplete(QuestId questId)
-    {
-        return QuestManager.IsQuestComplete(questId.Value);
-    }
+    public bool IsQuestComplete(QuestId questId) => QuestManager.IsQuestComplete(questId.Value);
 
-    public bool IsQuestComplete(UnlockLinkId unlockLinkId)
-    {
-        return UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
-    }
+    public bool IsQuestComplete(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
 
     public bool IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
     {
@@ -694,10 +685,7 @@ internal sealed unsafe class QuestFunctions
         return currentRank == 0 || currentRank < alliedSocietyDailyId.Rank;
     }
 
-    private static bool IsQuestLocked(UnlockLinkId unlockLinkId)
-    {
-        return IsQuestUnobtainable(unlockLinkId);
-    }
+    private static bool IsQuestLocked(UnlockLinkId unlockLinkId) => IsQuestUnobtainable(unlockLinkId);
 
     public bool IsDailyAlliedSocietyQuest(QuestId questId)
     {
@@ -818,10 +806,7 @@ internal sealed unsafe class QuestFunctions
     }
 
     [SuppressMessage("Performance", "CA1822")]
-    private bool IsQuestRemoved(QuestId questId)
-    {
-        return questId.Value is 487 or 1428 or 1429;
-    }
+    private bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
 
     private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
     {
@@ -889,23 +874,14 @@ internal sealed unsafe class QuestFunctions
         return IsClassJobUnlocked((Job)classJobRow.ClassJobParent.RowId);
     }
 
-    public GrandCompany GetGrandCompany()
-    {
-        return (GrandCompany)PlayerState.Instance()->GrandCompany;
-    }
+    public GrandCompany GetGrandCompany() => (GrandCompany)PlayerState.Instance()->GrandCompany;
 
-    public bool IsMainScenarioQuestComplete()
-    {
-        return IsQuestComplete(_questData.LastMainScenarioQuestId);
-    }
+    public bool IsMainScenarioQuestComplete() => IsQuestComplete(_questData.LastMainScenarioQuestId);
 }
 
 public sealed record QuestReference(ElementId? CurrentQuest, byte Sequence, MainScenarioQuestState State)
 {
-    public static QuestReference NoQuest(MainScenarioQuestState state)
-    {
-        return new(null, 0, state);
-    }
+    public static QuestReference NoQuest(MainScenarioQuestState state) => new(null, 0, state);
 }
 
 public enum MainScenarioQuestState

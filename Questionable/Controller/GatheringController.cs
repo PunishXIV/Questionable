@@ -112,10 +112,7 @@ internal sealed unsafe class GatheringController
         return EStatus.Gathering;
     }
 
-    protected override void OnTaskComplete(ITask task)
-    {
-        GoToNextNode();
-    }
+    protected override void OnTaskComplete(ITask task) => GoToNextNode();
 
     public override void Stop(string label)
     {

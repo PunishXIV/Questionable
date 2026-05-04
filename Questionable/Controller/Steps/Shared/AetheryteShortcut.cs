@@ -51,10 +51,7 @@ internal static class AetheryteShortcut
         EAetheryteLocation TargetAetheryte,
         uint ExpectedTerritoryId) : ISkippableTask
     {
-        public override string ToString()
-        {
-            return $"UseAetheryte({TargetAetheryte})";
-        }
+        public override string ToString() => $"UseAetheryte({TargetAetheryte})";
     }
 
     internal sealed class UseAetheryteShortcut
@@ -72,10 +69,7 @@ internal static class AetheryteShortcut
         private DateTime _continueAt;
         private bool _teleported;
 
-        protected override bool Start()
-        {
-            return !ShouldSkipTeleport();
-        }
+        protected override bool Start() => !ShouldSkipTeleport();
 
         public override ETaskResult Update()
         {
@@ -269,23 +263,14 @@ internal static class AetheryteShortcut
             }
         }
 
-        public override bool WasInterrupted()
-        {
-            return condition[ConditionFlag.InCombat] || base.WasInterrupted();
-        }
+        public override bool WasInterrupted() => condition[ConditionFlag.InCombat] || base.WasInterrupted();
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed record MoveAwayFromAetheryte(EAetheryteLocation TargetAetheryte) : ITask
     {
-        public override string ToString()
-        {
-            return $"MoveAway({TargetAetheryte})";
-        }
+        public override string ToString() => $"MoveAway({TargetAetheryte})";
     }
 
     internal sealed class MoveAwayFromAetheryteExecutor
@@ -308,10 +293,7 @@ internal static class AetheryteShortcut
             }
         };
 
-        public static bool AppliesTo(EAetheryteLocation location)
-        {
-            return AetherytesToMoveFrom.ContainsKey(location);
-        }
+        public static bool AppliesTo(EAetheryteLocation location) => AetherytesToMoveFrom.ContainsKey(location);
 
         protected override bool Start()
         {
@@ -328,14 +310,8 @@ internal static class AetheryteShortcut
             return moveExecutor.Start(task);
         }
 
-        public override ETaskResult Update()
-        {
-            return moveExecutor.Update();
-        }
+        public override ETaskResult Update() => moveExecutor.Update();
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

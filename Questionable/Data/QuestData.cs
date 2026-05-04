@@ -311,15 +311,9 @@ internal sealed class QuestData
         }
     }
 
-    public IQuestInfo GetQuestInfo(ElementId elementId)
-    {
-        return _quests[elementId] ?? throw new ArgumentOutOfRangeException(nameof(elementId));
-    }
+    public IQuestInfo GetQuestInfo(ElementId elementId) => _quests[elementId] ?? throw new ArgumentOutOfRangeException(nameof(elementId));
 
-    public bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo)
-    {
-        return _quests.TryGetValue(elementId, out questInfo);
-    }
+    public bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo) => _quests.TryGetValue(elementId, out questInfo);
 
     public List<IQuestInfo> GetAllByIssuerDataId(uint targetId)
     {
@@ -328,10 +322,7 @@ internal sealed class QuestData
             .ToList();
     }
 
-    public bool IsIssuerOfAnyQuest(uint targetId)
-    {
-        return _quests.Values.Any(x => x.IssuerDataId == targetId);
-    }
+    public bool IsIssuerOfAnyQuest(uint targetId) => _quests.Values.Any(x => x.IssuerDataId == targetId);
 
     public List<IQuestInfo> GetAllByJournalGenre(uint journalGenre)
     {
@@ -423,10 +414,7 @@ internal sealed class QuestData
         return [];
     }
 
-    public List<QuestInfo> GetRoleQuests(Job referenceClassJob)
-    {
-        return GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToList());
-    }
+    public List<QuestInfo> GetRoleQuests(Job referenceClassJob) => GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToList());
 
     private static IEnumerable<uint> GetRoleQuestIds(Job classJob)
     {

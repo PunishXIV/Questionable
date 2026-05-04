@@ -49,10 +49,7 @@ internal static class SkipCondition
         SkipStepConditions SkipConditions,
         ElementId ElementId) : ITask
     {
-        public override string ToString()
-        {
-            return "CheckSkip";
-        }
+        public override string ToString() => "CheckSkip";
     }
 
     internal sealed class CheckSkip
@@ -496,14 +493,8 @@ internal static class SkipCondition
             return false;
         }
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.SkipRemainingTasksForStep;
-        }
+        public override ETaskResult Update() => ETaskResult.SkipRemainingTasksForStep;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

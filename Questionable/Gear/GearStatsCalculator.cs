@@ -251,13 +251,7 @@ public unsafe readonly struct ExtendedBaseParam(ExcelPage page, uint offset, uin
 
     uint IExcelRow<ExtendedBaseParam>.RowOffset => offset;
 
-    private static ushort EquipSlotCategoryPctCtor(ExcelPage page, uint parentOffset, uint offset, uint i)
-    {
-        return i == 0 ? (ushort)0 : page.ReadUInt16(offset + 8 + (i - 1) * 2);
-    }
+    private static ushort EquipSlotCategoryPctCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => i == 0 ? (ushort)0 : page.ReadUInt16(offset + 8 + (i - 1) * 2);
 
-    public static ExtendedBaseParam Create(ExcelPage page, uint offset, uint row)
-    {
-        return new(page, offset, row);
-    }
+    public static ExtendedBaseParam Create(ExcelPage page, uint offset, uint row) => new(page, offset, row);
 }

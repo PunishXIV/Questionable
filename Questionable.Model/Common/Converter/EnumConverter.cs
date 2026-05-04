@@ -34,8 +34,5 @@ public abstract class EnumConverter<T> : JsonConverter<T>
         return _stringToEnum.TryGetValue(str, out T? value) ? value : throw new JsonException();
     }
 
-    public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(_enumToString[value]);
-    }
+    public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options) => writer.WriteStringValue(_enumToString[value]);
 }

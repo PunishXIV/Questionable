@@ -29,14 +29,8 @@ internal static class NextQuest
 
     internal sealed record SetQuestTask(ElementId NextQuestId, ElementId CurrentQuestId) : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
-        public override string ToString()
-        {
-            return $"SetNextQuest({NextQuestId})";
-        }
+        public bool ShouldRedoOnInterrupt() => true;
+        public override string ToString() => $"SetNextQuest({NextQuestId})";
     }
 
     internal sealed class NextQuestExecutor
@@ -72,14 +66,8 @@ internal static class NextQuest
             return true;
         }
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

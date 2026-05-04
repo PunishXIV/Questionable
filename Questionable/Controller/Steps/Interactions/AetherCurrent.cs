@@ -37,14 +37,8 @@ internal static class AetherCurrent
 
     internal sealed record Attune(uint DataId, uint AetherCurrentId) : ITask
     {
-        public bool ShouldRedoOnInterrupt()
-        {
-            return true;
-        }
-        public override string ToString()
-        {
-            return $"AttuneAetherCurrent({AetherCurrentId})";
-        }
+        public bool ShouldRedoOnInterrupt() => true;
+        public override string ToString() => $"AttuneAetherCurrent({AetherCurrentId})";
     }
 
     internal sealed class DoAttune
@@ -77,9 +71,6 @@ internal static class AetherCurrent
                 : ETaskResult.StillRunning;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

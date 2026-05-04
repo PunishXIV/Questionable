@@ -38,10 +38,7 @@ internal static class Jump
         JumpDestination JumpDestination,
         string? Comment) : IJumpTask
     {
-        public override string ToString()
-        {
-            return $"Jump({Comment})";
-        }
+        public override string ToString() => $"Jump({Comment})";
     }
 
     internal abstract class JumpBase<T>
@@ -83,10 +80,7 @@ internal static class Jump
             return ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed class DoSingleJump
@@ -101,10 +95,7 @@ internal static class Jump
         JumpDestination JumpDestination,
         string? Comment) : IJumpTask
     {
-        public override string ToString()
-        {
-            return $"RepeatedJump({Comment})";
-        }
+        public override string ToString() => $"RepeatedJump({Comment})";
     }
 
     internal sealed class DoRepeatedJumps

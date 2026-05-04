@@ -51,10 +51,7 @@ where T : class, ITask
         return false;
     }
 
-    public Type GetTaskType()
-    {
-        return typeof(T);
-    }
+    public Type GetTaskType() => typeof(T);
 
     public bool Start(ITask task)
     {

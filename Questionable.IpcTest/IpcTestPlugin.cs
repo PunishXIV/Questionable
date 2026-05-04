@@ -57,10 +57,7 @@ public sealed class IpcTestPlugin : IDalamudPlugin
             _chatGui.PrintError("Unknown subcommand");
     }
 
-    public void Dispose()
-    {
-        _commandManager.RemoveHandler("/qipc");
-    }
+    public void Dispose() => _commandManager.RemoveHandler("/qipc");
 
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Local")]
     [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]

@@ -65,10 +65,7 @@ internal sealed class ContextMenuController : IDisposable
         _contextMenu.OnMenuOpened += MenuOpened;
     }
 
-    public void Dispose()
-    {
-        _contextMenu.OnMenuOpened -= MenuOpened;
-    }
+    public void Dispose() => _contextMenu.OnMenuOpened -= MenuOpened;
 
     private void MenuOpened(IMenuOpenedArgs args)
     {

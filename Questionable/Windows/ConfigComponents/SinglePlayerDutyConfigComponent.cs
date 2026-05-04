@@ -641,10 +641,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         }
     }
 
-    private static ImRaii.ChildDisposable BeginChildArea()
-    {
-        return ImRaii.Child("DutyConfiguration", new(675, 400), true);
-    }
+    private static ImRaii.ChildDisposable BeginChildArea() => ImRaii.Child("DutyConfiguration", new(675, 400), true);
 
     private void DrawEnableAllButton()
     {

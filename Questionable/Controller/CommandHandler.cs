@@ -445,8 +445,5 @@ internal sealed class CommandHandler : IDisposable
             _chatGui.Print("You are not mounted.", MessageTag, TagColor);
     }
 
-    private void OnLogout(int type, int code)
-    {
-        _previouslyUnlockedUnlockLinks = [];
-    }
+    private void OnLogout(int type, int code) => _previouslyUnlockedUnlockLinks = [];
 }

@@ -169,10 +169,7 @@ internal sealed class QuestJournalComponent
         }
     }
 
-    private void DrawQuest(IQuestInfo questInfo)
-    {
-        DrawQuest((QuestInfo)questInfo);
-    }
+    private void DrawQuest(IQuestInfo questInfo) => DrawQuest((QuestInfo)questInfo);
 
     private void DrawQuest(QuestInfo questInfo)
     {

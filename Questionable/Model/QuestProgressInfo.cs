@@ -61,8 +61,5 @@ internal sealed class QuestProgressInfo
     public Job ClassJob { get; }
     public string Tooltip { get; }
 
-    public override string ToString()
-    {
-        return _asString;
-    }
+    public override string ToString() => _asString;
 }

@@ -40,10 +40,7 @@ internal static class EquipRecommended
 
     internal sealed class EquipTask : ITask
     {
-        public override string ToString()
-        {
-            return "EquipRecommended";
-        }
+        public override string ToString() => "EquipRecommended";
     }
 
     internal sealed unsafe class DoEquipRecommended(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist)
@@ -138,9 +135,6 @@ internal static class EquipRecommended
             return isAllEquipped;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
     }
 }

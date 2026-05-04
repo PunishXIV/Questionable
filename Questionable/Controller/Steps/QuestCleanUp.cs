@@ -84,18 +84,12 @@ internal static class QuestCleanUp
                 yield return new CloseGatheringAddonTask("Gathering");
         }
 
-        private unsafe bool IsAddonOpen(string name)
-        {
-            return gameGui.TryGetAddonByName(name, out AtkUnitBase* addon) && addon->IsVisible;
-        }
+        private unsafe bool IsAddonOpen(string name) => gameGui.TryGetAddonByName(name, out AtkUnitBase* addon) && addon->IsVisible;
     }
 
     internal sealed record CloseGatheringAddonTask(string AddonName) : ITask
     {
-        public override string ToString()
-        {
-            return $"CloseAddon({AddonName})";
-        }
+        public override string ToString() => $"CloseAddon({AddonName})";
     }
 
     internal sealed class DoCloseAddon(IGameGuiAdapter gameGui) : TaskExecutor<CloseGatheringAddonTask>
@@ -111,14 +105,8 @@ internal static class QuestCleanUp
             return false;
         }
 
-        public override ETaskResult Update()
-        {
-            return ETaskResult.TaskComplete;
-        }
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

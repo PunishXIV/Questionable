@@ -192,10 +192,7 @@ internal sealed class QuestRegistry
         }
     }
 
-    private void ValidateQuests()
-    {
-        _questValidator.Validate(_quests.Values.Where(x => x.Source != Quest.ESource.Assembly).ToList());
-    }
+    private void ValidateQuests() => _questValidator.Validate(_quests.Values.Where(x => x.Source != Quest.ESource.Assembly).ToList());
 
     private void LoadQuestFromStream(string fileName, Stream stream, Quest.ESource source)
     {
@@ -260,15 +257,9 @@ internal sealed class QuestRegistry
         return ElementId.FromString(parts[0]);
     }
 
-    public bool IsKnownQuest(ElementId questId)
-    {
-        return _quests.ContainsKey(questId);
-    }
+    public bool IsKnownQuest(ElementId questId) => _quests.ContainsKey(questId);
 
-    public bool TryGetQuest(ElementId questId, [NotNullWhen(true)] out Quest? quest)
-    {
-        return _quests.TryGetValue(questId, out quest);
-    }
+    public bool TryGetQuest(ElementId questId, [NotNullWhen(true)] out Quest? quest) => _quests.TryGetValue(questId, out quest);
 
     public List<QuestInfo> GetKnownClassJobQuests(Job classJob, bool includeRoleQuests = true)
     {
@@ -295,10 +286,7 @@ internal sealed class QuestRegistry
 
 #if DEBUG
     internal FileInfo AssemblyLocation => _pluginInterface.AssemblyLocation;
-    public static string GetFilename(IQuestInfo info)
-    {
-        return $"{info.QuestId}_{info.SimplifiedName}.json";
-    }
+    public static string GetFilename(IQuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
     public (bool, string) OpenEditor(IQuestInfo info)
     {
         _logger.LogDebug("OpenEditor IQuestInfo");

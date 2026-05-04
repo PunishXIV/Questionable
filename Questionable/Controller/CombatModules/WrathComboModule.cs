@@ -228,10 +228,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             throw new TaskException("Wrath Combo Lease is cancelled");
     }
 
-    public bool CanAttack(IBattleNpc target)
-    {
-        return true;
-    }
+    public bool CanAttack(IBattleNpc target) => true;
 
     public void Dispose()
     {
@@ -244,7 +241,8 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
         CancellationReason realReason = (CancellationReason)reason;
         _logger.LogWarning("WrathCombo IPC Lease Cancelled: {ReasonDescription} " +
                            "({Reason}; for: {Info})",
-            realReason.Description, realReason.ToString(), additionalInfo);
+            realReason.ToString(), realReason.ToString(), additionalInfo);
+        //            realReason.Description, realReason.ToString(), additionalInfo);
         _lease = null;
     }
 }
@@ -264,8 +262,5 @@ internal static class WrathResultExtensions
         return failed.Length == 0;
     }
 
-    public static bool IsSuccess(this SetResult result)
-    {
-        return result is SetResult.Okay or SetResult.OkayWorking;
-    }
+    public static bool IsSuccess(this SetResult result) => result is SetResult.Okay or SetResult.OkayWorking;
 }

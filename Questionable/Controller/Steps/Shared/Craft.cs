@@ -43,10 +43,7 @@ internal static class Craft
         uint ItemId,
         int ItemCount) : ITask
     {
-        public override string ToString()
-        {
-            return $"Craft({ItemCount}x {ItemId})";
-        }
+        public override string ToString() => $"Craft({ItemCount}x {ItemId})";
     }
 
     internal sealed class DoCraft
@@ -187,9 +184,6 @@ internal static class Craft
         }
 
         // we're on a crafting class, so combat doesn't make much sense (we also can't change classes in combat...)
-        public override bool ShouldInterruptOnDamage()
-        {
-            return false;
-        }
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }

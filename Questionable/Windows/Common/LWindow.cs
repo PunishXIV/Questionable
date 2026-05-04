@@ -94,10 +94,7 @@ public abstract class LWindow : Window
         }
     }
 
-    public void ToggleOrUncollapse()
-    {
-        IsOpenAndUncollapsed ^= true;
-    }
+    public void ToggleOrUncollapse() => IsOpenAndUncollapsed ^= true;
 
     public override void OnOpen()
     {
@@ -105,10 +102,7 @@ public abstract class LWindow : Window
         base.OnOpen();
     }
 
-    public override void Update()
-    {
-        _wasCollapsedLastFrame = true;
-    }
+    public override void Update() => _wasCollapsedLastFrame = true;
 
     public override void PreDraw()
     {

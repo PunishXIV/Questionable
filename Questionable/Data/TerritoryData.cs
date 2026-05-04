@@ -59,10 +59,7 @@ internal sealed class TerritoryData
             .ToImmutableDictionary(x => (x.QuestId, x.Index), x => x.CfcId);
     }
 
-    public string? GetName(uint territoryId)
-    {
-        return _territoryNames.GetValueOrDefault(territoryId);
-    }
+    public string? GetName(uint territoryId) => _territoryNames.GetValueOrDefault(territoryId);
 
     public string GetNameAndId(uint territoryId)
     {
@@ -73,30 +70,15 @@ internal sealed class TerritoryData
             return territoryId.ToString(CultureInfo.InvariantCulture);
     }
 
-    public bool CanUseMount(uint territoryId)
-    {
-        return _territoriesWithMount.Contains(territoryId);
-    }
+    public bool CanUseMount(uint territoryId) => _territoriesWithMount.Contains(territoryId);
 
-    public bool IsDutyInstance(uint territoryId)
-    {
-        return _dutyTerritories.ContainsKey(territoryId);
-    }
+    public bool IsDutyInstance(uint territoryId) => _dutyTerritories.ContainsKey(territoryId);
 
-    public bool IsQuestBattleInstance(uint territoryId)
-    {
-        return _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
-    }
+    public bool IsQuestBattleInstance(uint territoryId) => _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
 
-    public string? GetInstanceName(ushort instanceId)
-    {
-        return _instanceNames.GetValueOrDefault(instanceId);
-    }
+    public string? GetInstanceName(ushort instanceId) => _instanceNames.GetValueOrDefault(instanceId);
 
-    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId)
-    {
-        return _contentFinderConditions.GetValueOrDefault(cfcId);
-    }
+    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId) => _contentFinderConditions.GetValueOrDefault(cfcId);
 
     public bool TryGetContentFinderCondition(uint cfcId,
         [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)
@@ -116,10 +98,7 @@ internal sealed class TerritoryData
         }
     }
 
-    public IEnumerable<(ElementId QuestId, byte Index, ContentFinderConditionData Data)> GetAllQuestsWithQuestBattles()
-    {
-        return _questBattlesToContentFinderCondition.Select(x => (x.Key.QuestId, x.Key.Index, _contentFinderConditions[x.Value]));
-    }
+    public IEnumerable<(ElementId QuestId, byte Index, ContentFinderConditionData Data)> GetAllQuestsWithQuestBattles() => _questBattlesToContentFinderCondition.Select(x => (x.Key.QuestId, x.Key.Index, _contentFinderConditions[x.Value]));
 
     private static string FixName(string name, ClientLanguage language)
     {

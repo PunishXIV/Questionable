@@ -29,10 +29,7 @@ internal static class UnequipItem
 
     internal sealed record Task(uint ItemId) : ITask
     {
-        public override string ToString()
-        {
-            return $"Unequip({ItemId})";
-        }
+        public override string ToString() => $"Unequip({ItemId})";
     }
 
     internal sealed class DoUnequip
@@ -100,10 +97,7 @@ internal static class UnequipItem
             return false;
         }
 
-        public override bool ShouldInterruptOnDamage()
-        {
-            return true;
-        }
+        public override bool ShouldInterruptOnDamage() => true;
 
         protected override bool Start()
         {

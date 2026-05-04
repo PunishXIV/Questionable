@@ -69,25 +69,13 @@ internal static class JobExtensions
             or Job.PCT;
     }
 
-    public static bool DealsPhysicalDamage(this Job classJob)
-    {
-        return classJob.IsTank() || classJob.IsMelee() || classJob.IsPhysicalRanged();
-    }
+    public static bool DealsPhysicalDamage(this Job classJob) => classJob.IsTank() || classJob.IsMelee() || classJob.IsPhysicalRanged();
 
-    public static bool DealsMagicDamage(this Job classJob)
-    {
-        return classJob.IsHealer() || classJob.IsCaster();
-    }
+    public static bool DealsMagicDamage(this Job classJob) => classJob.IsHealer() || classJob.IsCaster();
 
-    public static bool IsCrafter(this Job classJob)
-    {
-        return classJob.IsDoh();
-    }
+    public static bool IsCrafter(this Job classJob) => classJob.IsDoh();
 
-    public static bool IsGatherer(this Job classJob)
-    {
-        return classJob.IsDol();
-    }
+    public static bool IsGatherer(this Job classJob) => classJob.IsDol();
 
     public static string ToFriendlyString(this Job classJob)
     {
