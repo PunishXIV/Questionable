@@ -8,29 +8,24 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\LLib\LLib.csproj" />
-      <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Pictomancy" Version="1.0.1" />
-      <PackageReference Include="System.Net.Http" Version="4.3.4" />
-      <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+        <PackageReference Include="ECommons" Version="3.2.0.16"/>
+        <PackageReference Include="Pictomancy" Version="1.0.3"/>
+        <PackageReference Include="System.Net.Http" Version="4.3.4"/>
+        <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Update="DalamudPackager" Version="15.0.0" />
+        <PackageReference Update="DalamudPackager" Version="15.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="world_locations.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="world_locations.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
-    <Import Project="..\LLib\LLib.targets" />
-    <Import Project="..\LLib\RenameZip.targets" />
-    <ItemGroup>
-      <PackageReference Update="ECommons" Version="3.2.0.9" />
-    </ItemGroup>
 </Project>

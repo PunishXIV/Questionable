@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-
 namespace Questionable.Controller.NavigationOverrides;
 
 internal interface IBlacklistedLocation

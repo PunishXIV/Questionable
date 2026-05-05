@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]

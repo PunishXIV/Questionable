@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using Json.Schema;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
@@ -41,28 +42,28 @@ public class GatheringSourceGenerator : ISourceGenerator
 
     private void GenerateGatheringSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
-        var gatheringSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());
-        var jsonSchemaFiles = Utils.RegisterSchemas(context);
+        JsonSchema gatheringSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());
+        List<AdditionalText> jsonSchemaFiles = Utils.RegisterSchemas(context);
 
         List<(ushort, GatheringRoot)> gatheringLocations = [];
-        foreach (var (id, node) in Utils.GetAdditionalFiles(context, jsonSchemaFiles, gatheringSchema, InvalidJson,
-                     ushort.Parse))
+        foreach ((ushort id, JsonNode node) in Utils.GetAdditionalFiles(context, jsonSchemaFiles, gatheringSchema, InvalidJson,
+            ushort.Parse))
         {
-            var gatheringLocation = node.Deserialize<GatheringRoot>()!;
+            GatheringRoot gatheringLocation = node.Deserialize<GatheringRoot>()!;
             gatheringLocations.Add((id, gatheringLocation));
         }
 
         if (gatheringLocations.Count == 0)
             return;
 
-        var partitionedLocations = gatheringLocations
+        List<IGrouping<string, (ushort, GatheringRoot)>> partitionedLocations = gatheringLocations
             .OrderBy(x => x.Item1)
             .GroupBy(x => $"LoadLocation{x.Item1 / 100}")
             .ToList();
 
-        var methods = Utils.CreateMethods("LoadLocations", partitionedLocations, CreateInitializer);
+        List<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadLocations", partitionedLocations, CreateInitializer);
 
-        var code =
+        CompilationUnitSyntax code =
             CompilationUnit()
                 .WithUsings(
                     List(
@@ -124,7 +125,7 @@ public class GatheringSourceGenerator : ISourceGenerator
     {
         List<StatementSyntax> statements = [];
 
-        foreach (var quest in quests)
+        foreach ((ushort QuestId, GatheringRoot Root) quest in quests)
         {
             statements.Add(
                 ExpressionStatement(
@@ -150,7 +151,7 @@ public class GatheringSourceGenerator : ISourceGenerator
     {
         try
         {
-            var emptyRoot = new GatheringRoot();
+            GatheringRoot emptyRoot = new();
             return ObjectCreationExpression(
                     IdentifierName(nameof(GatheringRoot)))
                 .WithInitializer(
@@ -169,7 +170,7 @@ public class GatheringSourceGenerator : ISourceGenerator
         }
         catch (Exception e)
         {
-            throw new Exception($"GatheringGen[{locationId}]: {e.Message}", e);
+            throw new($"GatheringGen[{locationId}]: {e.Message}", e);
         }
     }
 }

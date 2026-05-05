@@ -10,7 +10,7 @@ internal static class SkipConditionsExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this SkipConditions skipConditions)
     {
-        var emptySkip = new SkipConditions();
+        SkipConditions emptySkip = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(SkipConditions)))
             .WithInitializer(
@@ -31,7 +31,7 @@ internal static class SkipConditionsExtensions
 
     public static ExpressionSyntax ToExpressionSyntax(this SkipStepConditions skipStepConditions)
     {
-        var emptyStep = new SkipStepConditions();
+        SkipStepConditions emptyStep = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(SkipStepConditions)))
             .WithInitializer(
@@ -89,7 +89,7 @@ internal static class SkipConditionsExtensions
 
     public static ExpressionSyntax ToExpressionSyntax(this SkipItemConditions skipItemCondition)
     {
-        var emptyItem = new SkipItemConditions();
+        SkipItemConditions emptyItem = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(SkipItemConditions)))
             .WithInitializer(
@@ -104,7 +104,7 @@ internal static class SkipConditionsExtensions
 
     public static ExpressionSyntax ToExpressionSyntax(this NearPositionCondition nearPositionCondition)
     {
-        var emptyCondition = new NearPositionCondition();
+        NearPositionCondition emptyCondition = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(NearPositionCondition)))
             .WithInitializer(
@@ -125,7 +125,7 @@ internal static class SkipConditionsExtensions
 
     public static ExpressionSyntax ToExpressionSyntax(this SkipAetheryteCondition skipAetheryteCondition)
     {
-        var emptyAetheryte = new SkipAetheryteCondition();
+        SkipAetheryteCondition emptyAetheryte = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(SkipAetheryteCondition)))
             .WithInitializer(
@@ -155,13 +155,13 @@ internal static class SkipConditionsExtensions
                                     emptyAetheryte.RequiredQuestVariablesNotMet)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(skipAetheryteCondition.NearPosition), skipAetheryteCondition.NearPosition,
-                                emptyAetheryte.NearPosition)
+                                    emptyAetheryte.NearPosition)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(skipAetheryteCondition.NotNearPosition), skipAetheryteCondition.NotNearPosition,
                                     emptyAetheryte.NotNearPosition)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(skipAetheryteCondition.ExtraCondition), skipAetheryteCondition.ExtraCondition,
-                                emptyAetheryte.ExtraCondition)
+                                    emptyAetheryte.ExtraCondition)
                                 .AsSyntaxNodeOrToken()))));
     }
 }

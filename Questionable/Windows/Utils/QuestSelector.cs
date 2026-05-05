@@ -5,7 +5,6 @@ using Dalamud.Bindings.ImGui;
 using Questionable.Controller;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Windows.Utils;
 
 internal sealed class QuestSelector(QuestRegistry questRegistry)
@@ -31,8 +30,7 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
             IEnumerable<Quest> foundQuests;
             if (!string.IsNullOrEmpty(_searchString))
             {
-                bool DefaultPredicate(Quest x) =>
-                    x.Info.Name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase);
+                bool DefaultPredicate(Quest x) => x.Info.Name.Contains(_searchString, StringComparison.CurrentCultureIgnoreCase);
 
                 Func<Quest, bool> searchPredicate;
                 if (ElementId.TryFromString(_searchString, out ElementId? elementId))
@@ -45,11 +43,9 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
                     .Where(searchPredicate);
             }
             else
-            {
                 foundQuests = questRegistry.AllQuests.Where(x => DefaultPredicate?.Invoke(x) ?? true);
-            }
 
-            foreach (var quest in foundQuests)
+            foreach (Quest quest in foundQuests)
             {
                 if (SuggestionPredicate != null && !SuggestionPredicate.Invoke(quest))
                     continue;

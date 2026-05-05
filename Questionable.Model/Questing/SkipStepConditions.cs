@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using Questionable.Model.Common;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 public sealed class SkipStepConditions
@@ -54,9 +53,6 @@ public sealed class SkipStepConditions
                ExtraCondition != null;
     }
 
-    public override string ToString()
-    {
-        return
-            $"{nameof(Never)}: {Never}, {nameof(CompletionQuestVariablesFlags)}: {CompletionQuestVariablesFlags}, {nameof(Flying)}: {Flying}, {nameof(Chocobo)}: {Chocobo}, {nameof(Diving)}: {Diving}, {nameof(NotTargetable)}: {NotTargetable}, {nameof(InTerritory)}: {string.Join(" ", InTerritory)}, {nameof(NotInTerritory)}: {string.Join(" ", NotInTerritory)}, {nameof(Item)}: {Item}, {nameof(QuestsAccepted)}: {string.Join(" ", QuestsAccepted)}, {nameof(QuestsCompleted)}: {string.Join(" ", QuestsCompleted)}, {nameof(NotNamePlateIconId)}: {string.Join(" ", NotNamePlateIconId)}, {nameof(NearPosition)}: {NearPosition}, {nameof(ExtraCondition)}: {ExtraCondition}";
-    }
+    public override string ToString() =>
+        $"{nameof(Never)}: {Never}, {nameof(CompletionQuestVariablesFlags)}: {CompletionQuestVariablesFlags}, {nameof(Flying)}: {Flying}, {nameof(Chocobo)}: {Chocobo}, {nameof(Diving)}: {Diving}, {nameof(NotTargetable)}: {NotTargetable}, {nameof(InTerritory)}: {string.Join(" ", InTerritory)}, {nameof(NotInTerritory)}: {string.Join(" ", NotInTerritory)}, {nameof(Item)}: {Item}, {nameof(QuestsAccepted)}: {string.Join(" ", QuestsAccepted)}, {nameof(QuestsCompleted)}: {string.Join(" ", QuestsCompleted)}, {nameof(NotNamePlateIconId)}: {string.Join(" ", NotNamePlateIconId)}, {nameof(NearPosition)}: {NearPosition}, {nameof(ExtraCondition)}: {ExtraCondition}";
 }

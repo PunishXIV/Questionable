@@ -2,7 +2,6 @@
 using System.Text.Json.Serialization;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
-
 namespace Questionable.Model.Gathering;
 
 public sealed class GatheringRoot

@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(QuestWorkConfigConverter))]
@@ -19,11 +18,10 @@ public sealed class QuestWorkValue(byte? high, byte? low, EQuestWorkMode mode)
     {
         if (High != null && Low != null)
             return ((byte)(High << 4) + Low).ToString();
-        else if (High != null)
+        if (High != null)
             return High + "H";
-        else if (Low != null)
+        if (Low != null)
             return Low + "L";
-        else
-            return "-";
+        return "-";
     }
 }

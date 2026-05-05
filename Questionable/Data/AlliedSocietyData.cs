@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
 namespace Questionable.Data;
 
 [SuppressMessage("Performance", "CA1822")]
@@ -26,7 +25,7 @@ internal sealed class AlliedSocietyData
             { 296, new([1042302], EAetheryteLocation.ThavnairYedlihmad) }, //Arkadosa
             { 307, new([1044060, 1044072, 1044066], EAetheryteLocation.UltimaThuleBaseOmicron) }, //Omicron
             { 309, new([1044408, 1044403], EAetheryteLocation.MareLamentorumBestwaysBurrow) }, // rabbits
-            { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) },//pelu
+            { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
             { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }
         }.AsReadOnly();
@@ -58,7 +57,7 @@ internal sealed class AlliedSocietyData
                 >= 5199 and <= 5226 => EAlliedSociety.Pelupelu, //Dawn
                 >= 5261 and <= 5288 => EAlliedSociety.MamoolJa,
                 >= 5336 and <= 5363 => EAlliedSociety.YokHuy,
-                _ => EAlliedSociety.None,
+                var _ => EAlliedSociety.None
             };
         }
 

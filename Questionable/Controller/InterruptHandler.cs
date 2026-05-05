@@ -8,19 +8,15 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
-
 namespace Questionable.Controller;
 
 internal sealed unsafe class InterruptHandler : IDisposable
 {
-    private readonly Hook<ProcessActionEffect> _processActionEffectHook;
     private readonly IClientState _clientState;
-    private readonly IObjectTable _objectTable;
-    private readonly TerritoryData _territoryData;
     private readonly ILogger<InterruptHandler> _logger;
-
-    private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail);
+    private readonly IObjectTable _objectTable;
+    private readonly Hook<ProcessActionEffect> _processActionEffectHook;
+    private readonly TerritoryData _territoryData;
 
     public InterruptHandler(IGameInteropProvider gameInteropProvider, IClientState clientState,
         IObjectTable objectTable, TerritoryData territoryData, ILogger<InterruptHandler> logger)
@@ -33,6 +29,12 @@ internal sealed unsafe class InterruptHandler : IDisposable
             gameInteropProvider.HookFromAddress<ProcessActionEffect>(ActionEffectHandler.Addresses.Receive.Value,
                 HandleProcessActionEffect);
         _processActionEffectHook.Enable();
+    }
+
+    public void Dispose()
+    {
+        _processActionEffectHook.Disable();
+        _processActionEffectHook.Dispose();
     }
 
     public event EventHandler? Interrupted;
@@ -71,11 +73,8 @@ internal sealed unsafe class InterruptHandler : IDisposable
         }
     }
 
-    public void Dispose()
-    {
-        _processActionEffectHook.Disable();
-        _processActionEffectHook.Dispose();
-    }
+    private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
+        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail);
 
     [StructLayout(LayoutKind.Explicit)]
     private struct EffectEntry
@@ -154,6 +153,6 @@ internal sealed unsafe class InterruptHandler : IDisposable
         SetModelState = 72,
         SetHP = 73,
         PartialInvulnerable = 74,
-        Interrupt = 75,
+        Interrupt = 75
     }
 }

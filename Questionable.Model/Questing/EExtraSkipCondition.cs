@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(SkipConditionConverter))]
@@ -12,13 +11,13 @@ public enum EExtraSkipCondition
     RisingStonesSolar,
 
     /// <summary>
-    /// Location for ROG quests in Limsa Lominsa; located far underneath the actual lower decks.
+    ///     Location for ROG quests in Limsa Lominsa; located far underneath the actual lower decks.
     /// </summary>
     RoguesGuild,
     NotRoguesGuild,
 
     /// <summary>
-    /// Location for NIN quests in Eastern La Noscea; located far underneath the actual zone.
+    ///     Location for NIN quests in Eastern La Noscea; located far underneath the actual zone.
     /// </summary>
-    DockStorehouse,
+    DockStorehouse
 }

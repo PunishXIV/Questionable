@@ -5,7 +5,6 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Jump
@@ -33,7 +32,8 @@ internal static class Jump
         string? Comment { get; }
     }
 
-    internal sealed record SingleJumpTask(
+    internal sealed record SingleJumpTask
+    (
         uint? DataId,
         JumpDestination JumpDestination,
         string? Comment) : IJumpTask
@@ -41,11 +41,12 @@ internal static class Jump
         public override string ToString() => $"Jump({Comment})";
     }
 
-    internal abstract class JumpBase<T>(
+    internal abstract class JumpBase<T>
+    (
         MovementController movementController,
         IObjectTable objectTable,
         IFramework framework) : TaskExecutor<T>
-        where T : class, IJumpTask
+    where T : class, IJumpTask
     {
         protected override bool Start()
         {
@@ -82,12 +83,14 @@ internal static class Jump
         public override bool ShouldInterruptOnDamage() => true;
     }
 
-    internal sealed class DoSingleJump(
+    internal sealed class DoSingleJump
+    (
         MovementController movementController,
         IObjectTable objectTable,
         IFramework framework) : JumpBase<SingleJumpTask>(movementController, objectTable, framework);
 
-    internal sealed record RepeatedJumpTask(
+    internal sealed record RepeatedJumpTask
+    (
         uint? DataId,
         JumpDestination JumpDestination,
         string? Comment) : IJumpTask
@@ -95,7 +98,8 @@ internal static class Jump
         public override string ToString() => $"RepeatedJump({Comment})";
     }
 
-    internal sealed class DoRepeatedJumps(
+    internal sealed class DoRepeatedJumps
+    (
         MovementController movementController,
         IObjectTable objectTable,
         IFramework framework,
@@ -104,8 +108,8 @@ internal static class Jump
         : JumpBase<RepeatedJumpTask>(movementController, objectTable, framework)
     {
         private readonly IObjectTable _objectTable = objectTable;
-        private DateTime _continueAt = DateTime.MinValue;
         private int _attempts;
+        private DateTime _continueAt = DateTime.MinValue;
 
         protected override bool Start()
         {
@@ -119,10 +123,13 @@ internal static class Jump
                 return ETaskResult.StillRunning;
 
             float stopDistance = Task.JumpDestination.CalculateStopDistance();
-            if (_objectTable[0] == null) return ETaskResult.StillRunning;
+            if (_objectTable[0] == null)
+                return ETaskResult.StillRunning;
             if ((_objectTable[0]!.Position - Task.JumpDestination.Position).Length() <= stopDistance ||
                 _objectTable[0]?.Position.Y >= Task.JumpDestination.Position.Y - 0.5f)
+            {
                 return ETaskResult.TaskComplete;
+            }
 
             logger.LogTrace("Y-Heights for jumps: player={A}, target={B}", _objectTable[0]?.Position.Y,
                 Task.JumpDestination.Position.Y - 0.5f);

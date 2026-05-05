@@ -1,6 +1,4 @@
-﻿#region
-
-using System;
+﻿using System;
 using System.Data;
 using System.Linq;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -13,13 +11,11 @@ using WrathCombo.API.Enum;
 using WrathCombo.API.Extension;
 using WrathError = WrathCombo.API.Error;
 
-#endregion
-
 namespace Questionable.Controller.CombatModules;
 
 internal sealed class WrathComboModule : ICombatModule, IDisposable
 {
-    private const    string CallbackPrefix = "Questionable$Wrath";
+    private const string CallbackPrefix = "Questionable$Wrath";
     private readonly ICallGateProvider<int, string, object> _callback;
     private readonly Configuration _configuration;
 
@@ -31,7 +27,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
         Configuration configuration,
         IDalamudPluginInterface pluginInterface)
     {
-        _logger        = logger;
+        _logger = logger;
         _configuration = configuration;
 
         _callback =
@@ -54,7 +50,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             return true;
         }
         catch (WrathError.Exception e) when (e is WrathError.APIBehindException or
-                                                 WrathError.UninitializedException)
+            WrathError.UninitializedException)
         {
             _logger.LogWarning(e, "Problem with WrathCombo.API usage. " +
                                   "Please report to Questionable or Wrath team.");
@@ -161,18 +157,18 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                     false);
 
             if (!WrathResultExtensions.AllSuccessful(out string failed,
-                    ("HealerRotationMode", healerRotationMode),
-                    ("DPSRotationMode", targetingMode),
-                    ("InCombatOnly", combatOnly),
-                    ("IncludeNPCs", includeNPCs),
-                    ("OnlyAttackInCombat", targetCombatOnly),
-                    ("AutoRez", rez),
-                    ("AutoRezDPSJobs", rezAsDPS),
-                    ("AutoCleanse", cleanse),
-                    ("HealerAlwaysHardTarget", healerMagicTargeting),
-                    ("ManageKardia", kardia),
-                    ("DPSAoETargets", aoeTargetThreshold),
-                    ("AutoRezOutOfParty", rezNonParty)))
+                ("HealerRotationMode", healerRotationMode),
+                ("DPSRotationMode", targetingMode),
+                ("InCombatOnly", combatOnly),
+                ("IncludeNPCs", includeNPCs),
+                ("OnlyAttackInCombat", targetCombatOnly),
+                ("AutoRez", rez),
+                ("AutoRezDPSJobs", rezAsDPS),
+                ("AutoCleanse", cleanse),
+                ("HealerAlwaysHardTarget", healerMagicTargeting),
+                ("ManageKardia", kardia),
+                ("DPSAoETargets", aoeTargetThreshold),
+                ("AutoRezOutOfParty", rezNonParty)))
             {
                 _logger.LogError("Unable to configure Wrath Auto Rotation " +
                                  "settings: {Result}",
@@ -251,7 +247,7 @@ internal static class WrathResultExtensions
     (out string failedVariableNames,
         params (string name, SetResult result)[] results)
     {
-        var failed = results
+        string[] failed = results
             .Where(r => !r.result.IsSuccess())
             .Select(r => r.name)
             .ToArray();
@@ -260,8 +256,5 @@ internal static class WrathResultExtensions
         return failed.Length == 0;
     }
 
-    public static bool IsSuccess(this SetResult result)
-    {
-        return result is SetResult.Okay or SetResult.OkayWorking;
-    }
+    public static bool IsSuccess(this SetResult result) => result is SetResult.Okay or SetResult.OkayWorking;
 }

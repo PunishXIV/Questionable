@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
+using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Quest = Questionable.Model.Quest;
@@ -32,7 +32,8 @@ internal static class UnequipItem
         public override string ToString() => $"Unequip({ItemId})";
     }
 
-    internal sealed class DoUnequip(
+    internal sealed class DoUnequip
+    (
         IDataManager dataManager,
         ILogger<DoUnequip> logger) : TaskExecutor<Task>, IToastAware
     {
@@ -62,20 +63,9 @@ internal static class UnequipItem
         //];
 
         private int _attempts;
+        private DateTime _continueAt = DateTime.MaxValue;
         private Item? _item;
         private List<ushort> _targetSlots = null!;
-        private DateTime _continueAt = DateTime.MaxValue;
-
-        protected override bool Start()
-        {
-            _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
-                    throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
-
-            Unequip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return true;
-        }
 
         public override unsafe ETaskResult Update()
         {
@@ -88,7 +78,7 @@ internal static class UnequipItem
 
             foreach (ushort x in _targetSlots)
             {
-                var itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
+                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
                 if (itemSlot != null && itemSlot->ItemId != Task.ItemId)
                     return ETaskResult.TaskComplete;
             }
@@ -98,23 +88,45 @@ internal static class UnequipItem
             return ETaskResult.StillRunning;
         }
 
+        public bool OnErrorToast(SeString message)
+        {
+            string? insufficientArmoryChestSpace = DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text);
+            if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
+                _attempts = MaxAttempts;
+
+            return false;
+        }
+
+        public override bool ShouldInterruptOnDamage() => true;
+
+        protected override bool Start()
+        {
+            _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
+                    throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
+            _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
+
+            Unequip();
+            _continueAt = DateTime.Now.AddSeconds(1);
+            return true;
+        }
+
         private unsafe void Unequip()
         {
             ++_attempts;
             if (_attempts > MaxAttempts)
                 throw new TaskException("Unable to unequip gear.");
 
-            var inventoryManager = InventoryManager.Instance();
+            InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
                 return;
 
-            var equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
+            InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
             if (equippedContainer == null)
                 return;
 
             foreach (ushort slot in _targetSlots)
             {
-                var itemSlot = equippedContainer->GetInventorySlot(slot);
+                InventoryItem* itemSlot = equippedContainer->GetInventorySlot(slot);
 
                 if (itemSlot != null && itemSlot->ItemId != Task.ItemId)
                 {
@@ -141,19 +153,8 @@ internal static class UnequipItem
                 12 => [11, 12], // rings
                 13 => [0],
                 17 => [13], // soul crystal
-                _ => null
+                var _ => null
             };
         }
-
-        public bool OnErrorToast(SeString message)
-        {
-            string? insufficientArmoryChestSpace = dataManager.GetString<LogMessage>(709, x => x.Text);
-            if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
-                _attempts = MaxAttempts;
-
-            return false;
-        }
-
-        public override bool ShouldInterruptOnDamage() => true;
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
+using Questionable.Utils;
 namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp
@@ -23,7 +22,7 @@ internal static class QuestCleanUp
 
             // if you are on a allied society mount
             if (gameFunctions.GetMountId() is { } mountId &&
-                alliedSocietyData.Mounts.TryGetValue(mountId, out var mountConfiguration))
+                alliedSocietyData.Mounts.TryGetValue(mountId, out AlliedSocietyMountConfiguration? mountConfiguration))
             {
                 logger.LogInformation("We are on a known allied society mount with id = {MountId}", mountId);
 
@@ -37,8 +36,8 @@ internal static class QuestCleanUp
 
                 // it doesn't particularly matter if we teleport to the same aetheryte twice in the same quest step, as
                 // the second (normal) teleport instance should detect that we're within range and not do anything
-                var targetAetheryte = step.AetheryteShortcut ?? mountConfiguration.ClosestAetheryte;
-                var teleportTask = new AetheryteShortcut.Task(null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
+                EAetheryteLocation targetAetheryte = step.AetheryteShortcut ?? mountConfiguration.ClosestAetheryte;
+                AetheryteShortcut.Task teleportTask = new(null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
 
                 // turn-in step can never be done while mounted on an allied society mount
                 if (sequence.Sequence == 255)
@@ -55,7 +54,7 @@ internal static class QuestCleanUp
                 }
 
                 // have any of the previous sequences interacted with the issuer?
-                var previousSteps =
+                List<QuestStep> previousSteps =
                     quest.AllSequences()
                         .Where(x => x.Sequence > 0 // quest accept doesn't ever put us into a mount
                                     && x.Sequence < sequence.Sequence)
@@ -74,7 +73,7 @@ internal static class QuestCleanUp
     }
 
 
-    internal sealed class CloseGatheringAddonFactory(IGameGui gameGui) : ITaskFactory
+    internal sealed class CloseGatheringAddonFactory(IGameGuiAdapter gameGui) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -85,10 +84,7 @@ internal static class QuestCleanUp
                 yield return new CloseGatheringAddonTask("Gathering");
         }
 
-        private unsafe bool IsAddonOpen(string name)
-        {
-            return gameGui.TryGetAddonByName(name, out AtkUnitBase* addon) && addon->IsVisible;
-        }
+        private unsafe bool IsAddonOpen(string name) => gameGui.TryGetAddonByName(name, out AtkUnitBase* addon) && addon->IsVisible;
     }
 
     internal sealed record CloseGatheringAddonTask(string AddonName) : ITask
@@ -96,7 +92,7 @@ internal static class QuestCleanUp
         public override string ToString() => $"CloseAddon({AddonName})";
     }
 
-    internal sealed class DoCloseAddon(IGameGui gameGui) : TaskExecutor<CloseGatheringAddonTask>
+    internal sealed class DoCloseAddon(IGameGuiAdapter gameGui) : TaskExecutor<CloseGatheringAddonTask>
     {
         protected override unsafe bool Start()
         {

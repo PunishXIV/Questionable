@@ -1,27 +1,14 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
-using Dalamud.Interface.Utility;
-using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
-
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class ReportWarningComponent(Configuration configuration)
 {
     private readonly Configuration _configuration = configuration;
 
-    public void Draw()
-    {
-        DrawReportWarning();
-    }
+    public void Draw() => DrawReportWarning();
 
     private void DrawReportWarning()
     {
@@ -43,10 +30,9 @@ internal sealed class ReportWarningComponent(Configuration configuration)
             _configuration.General.DismissedReportWarning = true;
             _configuration.General.ReportsDisabled = true;
         }
+
         ImGui.SameLine();
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", ImGuiColors.ParsedGreen))
-        {
             _configuration.General.DismissedReportWarning = true;
-        }
     }
 }

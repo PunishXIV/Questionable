@@ -3,17 +3,17 @@ using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
 using Questionable.External;
-
 namespace Questionable.Controller.CombatModules;
 
-internal sealed class BossModModule(
+internal sealed class BossModModule
+(
     ILogger<BossModModule> logger,
     BossModIpc bossModIpc,
     Configuration configuration) : ICombatModule, IDisposable
 {
-    private readonly ILogger<BossModModule> _logger = logger;
     private readonly BossModIpc _bossModIpc = bossModIpc;
     private readonly Configuration _configuration = configuration;
+    private readonly ILogger<BossModModule> _logger = logger;
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {

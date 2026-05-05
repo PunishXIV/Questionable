@@ -11,19 +11,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.CombatModules;
 
 internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, ILogger<ItemUseModule> logger) : ICombatModule
 {
-    private readonly IServiceProvider _serviceProvider = serviceProvider;
     private readonly ICondition _condition = condition;
     private readonly ILogger<ItemUseModule> _logger = logger;
+    private readonly IServiceProvider _serviceProvider = serviceProvider;
+    private CombatController.CombatData? _combatData;
+    private DateTime _continueAt;
 
     private ICombatModule? _delegate;
-    private CombatController.CombatData? _combatData;
     private bool _isDoingRotation;
-    private DateTime _continueAt;
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
@@ -104,6 +103,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                         _logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
                         AgentInventoryContext.Instance()->UseItem(_combatData.CombatItemUse.ItemId);
                     }
+
                     _continueAt = DateTime.Now.AddSeconds(2);
                 }
                 else
@@ -123,10 +123,10 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             }
         }
         else if (_isDoingRotation)
-        {
             _delegate.Update(nextTarget);
-        }
     }
+
+    public bool CanAttack(IBattleNpc target) => _delegate!.CanAttack(target);
 
     private unsafe bool ShouldUseItem(IGameObject gameObject)
     {
@@ -148,6 +148,4 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
 
         return false;
     }
-
-    public bool CanAttack(IBattleNpc target) => _delegate!.CanAttack(target);
 }

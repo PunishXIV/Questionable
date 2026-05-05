@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class ExcelRefConverter : JsonConverter<ExcelRef>
 {
-    public override ExcelRef? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override ExcelRef? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) => reader.TokenType switch
     {
-        return reader.TokenType switch
-        {
-            JsonTokenType.String => ExcelRef.FromKey(reader.GetString()!),
-            JsonTokenType.Number => ExcelRef.FromRowId(reader.GetUInt32()),
-            _ => null
-        };
-    }
+        JsonTokenType.String => ExcelRef.FromKey(reader.GetString()!),
+        JsonTokenType.Number => ExcelRef.FromRowId(reader.GetUInt32()),
+        var _ => null
+    };
 
     public override void Write(Utf8JsonWriter writer, ExcelRef? value, JsonSerializerOptions options)
     {

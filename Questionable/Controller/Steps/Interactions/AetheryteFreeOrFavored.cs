@@ -5,7 +5,6 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetheryteFreeOrFavored
@@ -29,7 +28,8 @@ internal static class AetheryteFreeOrFavored
         public override string ToString() => $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
     }
 
-    internal sealed class DoRegister(
+    internal sealed class DoRegister
+    (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         ILogger<DoRegister> logger) : TaskExecutor<Register>

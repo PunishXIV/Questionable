@@ -3,5 +3,5 @@
 internal enum EIssueSeverity
 {
     None,
-    Error,
+    Error
 }

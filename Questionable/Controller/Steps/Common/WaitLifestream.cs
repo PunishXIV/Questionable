@@ -1,5 +1,4 @@
 ﻿using Questionable.External;
-
 namespace Questionable.Controller.Steps.Common;
 
 internal sealed class WaitLifestream
@@ -11,19 +10,17 @@ internal sealed class WaitLifestream
 
     internal sealed class Executor(LifestreamIpc lifestreamIpc) : TaskExecutor<Task>, IDebugStateProvider
     {
-        protected override bool Start() => true;
-
-        public override ETaskResult Update() =>
-            !lifestreamIpc.IsBusy ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        public override ETaskResult Update() => !lifestreamIpc.IsBusy ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
         public override bool ShouldInterruptOnDamage() => false;
 
         public string? GetDebugState()
         {
             if (lifestreamIpc.IsBusy)
-                return $"Lifestream: busy";
+                return "Lifestream: busy";
             else
                 return null;
         }
+        protected override bool Start() => true;
     }
 }

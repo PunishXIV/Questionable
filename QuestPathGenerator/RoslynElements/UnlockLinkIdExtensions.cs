@@ -7,13 +7,10 @@ namespace Questionable.QuestPathGenerator.RoslynElements;
 
 internal static class UnlockLinkIdExtension
 {
-    public static ExpressionSyntax ToExpressionSyntax(this UnlockLinkId unlockLinkId)
-    {
-        return ObjectCreationExpression(
-                IdentifierName(nameof(UnlockLinkId)))
-            .WithArgumentList(
-                ArgumentList(
-                    SingletonSeparatedList(
-                        Argument(LiteralValue(unlockLinkId.Value)))));
-    }
+    public static ExpressionSyntax ToExpressionSyntax(this UnlockLinkId unlockLinkId) => ObjectCreationExpression(
+            IdentifierName(nameof(UnlockLinkId)))
+        .WithArgumentList(
+            ArgumentList(
+                SingletonSeparatedList(
+                    Argument(LiteralValue(unlockLinkId.Value)))));
 }

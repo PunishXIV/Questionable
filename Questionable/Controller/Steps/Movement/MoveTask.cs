@@ -1,10 +1,10 @@
 using System.Globalization;
 using System.Numerics;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Movement;
 
-internal sealed record MoveTask(
+internal sealed record MoveTask
+(
     uint TerritoryId,
     Vector3 Destination,
     bool? Mount = null,

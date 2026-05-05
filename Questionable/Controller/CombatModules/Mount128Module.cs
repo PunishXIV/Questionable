@@ -1,11 +1,10 @@
 ﻿using Dalamud.Game.ClientState.Objects.Types;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.CombatModules;
 
 /// <summary>
-/// Commandeered Magitek Armor; used in 'Magiteknical Failure' quest.
+///     Commandeered Magitek Armor; used in 'Magiteknical Failure' quest.
 /// </summary>
 internal sealed class Mount128Module(GameFunctions gameFunctions) : ICombatModule
 {
@@ -24,7 +23,7 @@ internal sealed class Mount128Module(GameFunctions gameFunctions) : ICombatModul
     {
         foreach (EAction action in _actions)
         {
-            if (_gameFunctions.UseAction(gameObject, action, checkCanUse: false))
+            if (_gameFunctions.UseAction(gameObject, action, false))
                 return;
         }
     }

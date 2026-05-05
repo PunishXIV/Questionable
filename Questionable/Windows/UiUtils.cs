@@ -6,13 +6,12 @@ using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-
 namespace Questionable.Windows;
 
 internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface)
 {
-    private readonly QuestFunctions _questFunctions = questFunctions;
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
+    private readonly QuestFunctions _questFunctions = questFunctions;
 
     public (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
@@ -53,7 +52,9 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
 
         using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        {
             ImGui.TextColored(color, icon.ToIconString());
+        }
 
         bool hover = ImGui.IsItemHovered();
 

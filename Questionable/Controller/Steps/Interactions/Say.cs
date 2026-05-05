@@ -4,7 +4,6 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Say
@@ -29,8 +28,8 @@ internal static class Say
                     .GetString();
             ArgumentNullException.ThrowIfNull(excelString);
 
-            var unmount = new Mount.UnmountTask();
-            var task = new Task(excelString);
+            Mount.UnmountTask unmount = new();
+            Task task = new(excelString);
             return [unmount, task];
         }
     }

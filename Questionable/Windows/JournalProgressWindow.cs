@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Numerics;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin.Services;
-using LLib.ImGui;
 using Questionable.Controller;
+using Questionable.Windows.Common;
 using Questionable.Windows.JournalComponents;
-
 namespace Questionable.Windows;
 
 internal sealed class JournalProgressWindow : LWindow, IDisposable
 {
-    private readonly QuestJournalComponent _questJournalComponent;
     private readonly AlliedSocietyJournalComponent _alliedSocietyJournalComponent;
-    private readonly QuestRewardComponent _questRewardComponent;
-    private readonly GatheringJournalComponent _gatheringJournalComponent;
-    private readonly QuestRegistry _questRegistry;
     private readonly IClientState _clientState;
+    private readonly GatheringJournalComponent _gatheringJournalComponent;
+    private readonly QuestJournalComponent _questJournalComponent;
+    private readonly QuestRegistry _questRegistry;
+    private readonly QuestRewardComponent _questRewardComponent;
 
     public JournalProgressWindow(
         QuestJournalComponent questJournalComponent,
@@ -42,8 +40,17 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
 
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(200, 100)
+            MinimumSize = new(200, 100)
         };
+    }
+
+    public void Dispose()
+    {
+        _questRegistry.Reloaded -= OnQuestsReloaded;
+        _clientState.Logout -= _gatheringJournalComponent.ClearCounts;
+        _clientState.Logout -= _questJournalComponent.ClearCounts;
+        _clientState.Login -= _gatheringJournalComponent.RefreshCounts;
+        _clientState.Login -= _questJournalComponent.RefreshCounts;
     }
 
     private void OnQuestsReloaded(object? sender, EventArgs e)
@@ -62,7 +69,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
 
     public override void DrawContent()
     {
-        using var tabBar = ImRaii.TabBar("Journal");
+        using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("Journal");
         if (!tabBar)
             return;
 
@@ -70,14 +77,5 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         _alliedSocietyJournalComponent.DrawAlliedSocietyQuests();
         _questRewardComponent.DrawItemRewards();
         _gatheringJournalComponent.DrawGatheringItems();
-    }
-
-    public void Dispose()
-    {
-        _questRegistry.Reloaded -= OnQuestsReloaded;
-        _clientState.Logout -= _gatheringJournalComponent.ClearCounts;
-        _clientState.Logout -= _questJournalComponent.ClearCounts;
-        _clientState.Login -= _gatheringJournalComponent.RefreshCounts;
-        _clientState.Login -= _questJournalComponent.RefreshCounts;
     }
 }

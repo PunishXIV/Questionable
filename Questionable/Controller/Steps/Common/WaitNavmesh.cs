@@ -9,10 +9,7 @@ internal sealed class WaitNavmesh
 
     internal sealed class Executor(MovementController movementController) : TaskExecutor<Task>, IDebugStateProvider
     {
-        protected override bool Start() => true;
-
-        public override ETaskResult Update() =>
-            movementController.IsNavmeshReady ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        public override ETaskResult Update() => movementController.IsNavmeshReady ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
         public override bool ShouldInterruptOnDamage() => false;
 
@@ -23,5 +20,6 @@ internal sealed class WaitNavmesh
             else
                 return null;
         }
+        protected override bool Start() => true;
     }
 }

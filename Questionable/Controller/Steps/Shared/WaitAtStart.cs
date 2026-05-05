@@ -2,7 +2,6 @@
 using Questionable.Controller.Steps.Common;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class WaitAtStart

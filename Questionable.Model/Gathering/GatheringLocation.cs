@@ -2,7 +2,6 @@
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Gathering;
 
 public sealed class GatheringLocation
@@ -18,10 +17,7 @@ public sealed class GatheringLocation
     public float? MinimumDistance { get; set; }
     public float? MaximumDistance { get; set; }
 
-    public bool IsCone()
-    {
-        return MinimumAngle != null && MaximumAngle != null;
-    }
+    public bool IsCone() => MinimumAngle != null && MaximumAngle != null;
 
     public float CalculateMinimumDistance() => MinimumDistance ?? 1f;
     public float CalculateMaximumDistance() => MaximumDistance ?? 3f;

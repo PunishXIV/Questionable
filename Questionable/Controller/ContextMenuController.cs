@@ -1,37 +1,37 @@
-﻿using System;
+using System;
 using System.Linq;
 using Dalamud.Game.Gui.ContextMenu;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using LLib.GameData;
-using LLib.GameUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.GameStructs;
 using Questionable.Model;
+using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-
+using Questionable.Utils;
 namespace Questionable.Controller;
 
 internal sealed class ContextMenuController : IDisposable
 {
-    private readonly IContextMenu _contextMenu;
-    private readonly QuestController _questController;
-    private readonly GatheringPointRegistry _gatheringPointRegistry;
-    private readonly GatheringData _gatheringData;
-    private readonly QuestRegistry _questRegistry;
-    private readonly QuestData _questData;
-    private readonly GameFunctions _gameFunctions;
-    private readonly QuestFunctions _questFunctions;
-    private readonly IGameGui _gameGui;
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
+    private readonly IContextMenu _contextMenu;
+    private readonly GameFunctions _gameFunctions;
+    private readonly IGameGuiAdapter _gameGui;
+    private readonly GatheringData _gatheringData;
+    private readonly GatheringPointRegistry _gatheringPointRegistry;
     //private readonly IPlayerState _playerState;
     private readonly ILogger<ContextMenuController> _logger;
+    private readonly QuestController _questController;
+    private readonly QuestData _questData;
+    private readonly QuestFunctions _questFunctions;
+    private readonly QuestRegistry _questRegistry;
 
     public ContextMenuController(
         IContextMenu contextMenu,
@@ -42,7 +42,7 @@ internal sealed class ContextMenuController : IDisposable
         QuestData questData,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
-        IGameGui gameGui,
+        IGameGuiAdapter gameGui,
         IChatGui chatGui,
         IClientState clientState,
         IObjectTable objectTable,
@@ -65,6 +65,8 @@ internal sealed class ContextMenuController : IDisposable
         _contextMenu.OnMenuOpened += MenuOpened;
     }
 
+    public void Dispose() => _contextMenu.OnMenuOpened -= MenuOpened;
+
     private void MenuOpened(IMenuOpenedArgs args)
     {
         // no clue why this isn't the actual name, but here we are
@@ -86,8 +88,8 @@ internal sealed class ContextMenuController : IDisposable
 
         if (_gatheringData.TryGetCustomDeliveryNpc(itemId, out uint npcId))
         {
-            AddContextMenuEntry(args, itemId, npcId, EClassJob.Miner, "Mine");
-            AddContextMenuEntry(args, itemId, npcId, EClassJob.Botanist, "Harvest");
+            AddContextMenuEntry(args, itemId, npcId, Job.MIN, "Mine");
+            AddContextMenuEntry(args, itemId, npcId, Job.BTN, "Harvest");
         }
         else
             _logger.LogDebug("No custom delivery NPC found for item {ItemId}.", itemId);
@@ -101,7 +103,7 @@ internal sealed class ContextMenuController : IDisposable
 
 
         if (_gameGui.TryGetAddonByName("SatisfactionSupply", out AddonSatisfactionSupply* addon) &&
-            LAddon.IsAddonReady(&addon->AtkUnitBase) &&
+            AddonUtils.IsAddonReady(&addon->AtkUnitBase) &&
             addon->HoveredElementIndex is >= 0 and <= 2)
         {
             return agent->Items[addon->HoveredElementIndex].Id;
@@ -110,14 +112,14 @@ internal sealed class ContextMenuController : IDisposable
         return 0;
     }
 
-    private unsafe void AddContextMenuEntry(IMenuOpenedArgs args, uint itemId, uint npcId, EClassJob classJob,
+    private unsafe void AddContextMenuEntry(IMenuOpenedArgs args, uint itemId, uint npcId, Job classJob,
         string verb)
     {
-        EClassJob currentClassJob = (EClassJob)PlayerState.Instance()->CurrentClassJobId;
+        Job currentClassJob = (Job)PlayerState.Instance()->CurrentClassJobId;
         if (classJob != currentClassJob)
             return;
 
-        if (!_gatheringPointRegistry.TryGetGatheringPointId(itemId, classJob, out _))
+        if (!_gatheringPointRegistry.TryGetGatheringPointId(itemId, classJob, out GatheringPointId? _))
         {
             _logger.LogInformation("No gathering point found for {ClassJob}.", classJob);
             return;
@@ -128,7 +130,7 @@ internal sealed class ContextMenuController : IDisposable
         if (collectability == 0)
             return;
 
-        var agentSatisfactionSupply = AgentSatisfactionSupply.Instance();
+        AgentSatisfactionSupply* agentSatisfactionSupply = AgentSatisfactionSupply.Instance();
         if (agentSatisfactionSupply->IsAgentActive())
         {
             int maxTurnIns = agentSatisfactionSupply->NpcInfo.SatisfactionRank == 1 ? 3 : 6;
@@ -152,41 +154,41 @@ internal sealed class ContextMenuController : IDisposable
         if (!string.IsNullOrEmpty(lockedReasonn))
             name += $" ({lockedReasonn})";
 
-        args.AddMenuItem(new MenuItem
+        args.AddMenuItem(new()
         {
             Prefix = SeIconChar.Hyadelyn,
             PrefixColor = 52,
             Name = name,
             OnClicked = _ => StartGathering(npcId, itemId, quantityToGather, collectability, classJob),
-            IsEnabled = string.IsNullOrEmpty(lockedReasonn),
+            IsEnabled = string.IsNullOrEmpty(lockedReasonn)
         });
     }
 
     private void StartGathering(uint npcId, uint itemId, int quantity, ushort collectability,
-        EClassJob classJob)
+        Job classJob)
     {
-        var info = (SatisfactionSupplyInfo)_questData.GetAllByIssuerDataId(npcId)
+        SatisfactionSupplyInfo info = (SatisfactionSupplyInfo)_questData.GetAllByIssuerDataId(npcId)
             .Single(x => x is SatisfactionSupplyInfo);
         if (_questRegistry.TryGetQuest(info.QuestId, out Quest? quest))
         {
-            var sequence = quest.FindSequence(0)!;
+            QuestSequence sequence = quest.FindSequence(0)!;
 
-            var switchClassStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.SwitchClass);
+            QuestStep switchClassStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.SwitchClass);
             switchClassStep.TargetClass = classJob switch
             {
-                EClassJob.Miner => EExtendedClassJob.Miner,
-                EClassJob.Botanist => EExtendedClassJob.Botanist,
-                _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null),
+                Job.MIN => EExtendedClassJob.Miner,
+                Job.BTN => EExtendedClassJob.Botanist,
+                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
             };
 
-            var gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
+            QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
             gatherStep.ItemsToGather =
             [
-                new GatheredItem
+                new()
                 {
                     ItemId = itemId,
                     ItemCount = quantity,
-                    Collectability = collectability,
+                    Collectability = collectability
                 }
             ];
             _questController.SetGatheringQuest(quest);
@@ -194,10 +196,5 @@ internal sealed class ContextMenuController : IDisposable
         }
         else
             _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
-    }
-
-    public void Dispose()
-    {
-        _contextMenu.OnMenuOpened -= MenuOpened;
     }
 }

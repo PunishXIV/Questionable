@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Questionable.Model.Common.Converter;
 
 public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Values)
@@ -120,7 +119,7 @@ public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Val
         { EAetheryteLocation.HeritageFoundElectropeStrike, "Heritage Found - Electrope Strike" },
         { EAetheryteLocation.LivingMemoryLeynodeMnemo, "Living Memory - Leynode Mnemo" },
         { EAetheryteLocation.LivingMemoryLeynodePyro, "Living Memory - Leynode Pyro" },
-        { EAetheryteLocation.LivingMemoryLeynodeAero, "Living Memory - Leynode Aero" },
+        { EAetheryteLocation.LivingMemoryLeynodeAero, "Living Memory - Leynode Aero" }
     };
 
     public static bool IsLargeAetheryte(EAetheryteLocation aetheryte) => Values.ContainsKey(aetheryte);

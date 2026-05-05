@@ -4,15 +4,11 @@ using System.Linq;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Utils;
 
 internal static class QuestWorkUtils
 {
-    public static bool HasCompletionFlags(IList<QuestWorkValue?> completionQuestVariablesFlags)
-    {
-        return completionQuestVariablesFlags.Count == 6 && completionQuestVariablesFlags.Any(x => x != null && (x.High != 0 || x.Low != 0));
-    }
+    public static bool HasCompletionFlags(IList<QuestWorkValue?> completionQuestVariablesFlags) => completionQuestVariablesFlags.Count == 6 && completionQuestVariablesFlags.Any(x => x != null && (x.High != 0 || x.Low != 0));
 
     public static bool MatchesQuestWork(IList<QuestWorkValue?> completionQuestVariablesFlags, QuestProgressInfo questProgressInfo)
     {

@@ -8,7 +8,6 @@ using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Combat
@@ -24,13 +23,13 @@ internal static class Combat
 
             if (gameFunctions.GetMountId() != Mount128Module.MountId &&
                 gameFunctions.GetMountId() != Mount147Module.MountId)
+            {
                 yield return new Mount.UnmountTask();
+            }
 
             if (step.CombatDelaySecondsAtStart != null)
-            {
                 yield return new WaitAtStart.WaitDelay(TimeSpan.FromSeconds(step.CombatDelaySecondsAtStart.Value));
-            }
-            
+
             double delayAfter = 1.5f;
             switch (step.EnemySpawnType)
             {
@@ -48,8 +47,10 @@ internal static class Combat
                     if (step.GroundTarget == true)
                     {
                         if (step.DataId != null)
+                        {
                             yield return new UseItem.UseOnGround(quest.Id, step.DataId.Value, step.ItemId.Value,
                                 step.CompletionQuestVariablesFlags, true);
+                        }
                         else
                         {
                             ArgumentNullException.ThrowIfNull(step.Position);
@@ -138,7 +139,7 @@ internal static class Combat
             IList<ComplexCombatData> complexCombatData,
             CombatItemUse? combatItemUse)
         {
-            return new Task(new CombatController.CombatData
+            return new(new()
             {
                 ElementId = elementId,
                 Sequence = sequence,
@@ -146,12 +147,13 @@ internal static class Combat
                 SpawnType = enemySpawnType,
                 KillEnemyDataIds = killEnemyDataIds.ToList(),
                 ComplexCombatDatas = complexCombatData.ToList(),
-                CombatItemUse = combatItemUse,
+                CombatItemUse = combatItemUse
             }, completionQuestVariablesFlags, isLastStep);
         }
     }
 
-    internal sealed record Task(
+    internal sealed record Task
+    (
         CombatController.CombatData CombatData,
         IList<QuestWorkValue?> CompletionQuestVariableFlags,
         bool IsLastStep) : ITask
@@ -169,7 +171,8 @@ internal static class Combat
         }
     }
 
-    internal sealed class HandleCombat(
+    internal sealed class HandleCombat
+    (
         CombatController combatController,
         QuestFunctions questFunctions) : TaskExecutor<Task>
     {
@@ -187,7 +190,7 @@ internal static class Combat
             if (QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariableFlags) &&
                 Task.CombatData.ElementId is QuestId questId)
             {
-                var questWork = questFunctions.GetQuestProgressInfo(questId);
+                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(questId);
                 if (questWork == null)
                     return ETaskResult.StillRunning;
 

@@ -2,7 +2,6 @@
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Common;
 
 internal static class NextQuest
@@ -34,7 +33,8 @@ internal static class NextQuest
         public override string ToString() => $"SetNextQuest({NextQuestId})";
     }
 
-    internal sealed class NextQuestExecutor(
+    internal sealed class NextQuestExecutor
+    (
         QuestRegistry questRegistry,
         QuestController questController,
         QuestFunctions questFunctions,

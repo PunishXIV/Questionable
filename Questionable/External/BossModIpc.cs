@@ -8,31 +8,38 @@ using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
 using Questionable.Data;
 using Questionable.Model.Questing;
-
 namespace Questionable.External;
 
-internal sealed class BossModIpc(
+internal sealed class BossModIpc
+(
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     ICommandManager commandManager,
     TerritoryData territoryData)
 {
+    public enum EPreset
+    {
+        Overworld,
+        QuestBattle,
+        NormalMovement
+    }
+
     private const string PluginName = "BossMod";
 
     private static readonly ReadOnlyDictionary<EPreset, PresetDefinition> PresetDefinitions = new Dictionary<EPreset, PresetDefinition>
-        {
-            { EPreset.Overworld, new PresetDefinition("Questionable", "Overworld") },
-            { EPreset.QuestBattle, new PresetDefinition("Questionable - Quest Battles", "QuestBattle") },
-            { EPreset.NormalMovement, new PresetDefinition("Questionable - Normal Movement", "NormalMovement") },
-        }.AsReadOnly();
+    {
+        { EPreset.Overworld, new("Questionable", "Overworld") },
+        { EPreset.QuestBattle, new("Questionable - Quest Battles", "QuestBattle") },
+        { EPreset.NormalMovement, new("Questionable - Normal Movement", "NormalMovement") }
+    }.AsReadOnly();
+    private readonly ICallGateSubscriber<bool> _clearPreset = pluginInterface.GetIpcSubscriber<bool>($"{PluginName}.Presets.ClearActive");
+    private readonly ICommandManager _commandManager = commandManager;
 
     private readonly Configuration _configuration = configuration;
-    private readonly ICommandManager _commandManager = commandManager;
-    private readonly TerritoryData _territoryData = territoryData;
-    private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool, bool> _createPreset = pluginInterface.GetIpcSubscriber<string, bool, bool>($"{PluginName}.Presets.Create");
+    private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
-    private readonly ICallGateSubscriber<bool> _clearPreset = pluginInterface.GetIpcSubscriber<bool>($"{PluginName}.Presets.ClearActive");
+    private readonly TerritoryData _territoryData = territoryData;
 
     public bool IsSupported()
     {
@@ -48,17 +55,14 @@ internal sealed class BossModIpc(
 
     public void SetPreset(EPreset preset)
     {
-        var definition = PresetDefinitions[preset];
+        PresetDefinition definition = PresetDefinitions[preset];
         if (_getPreset.InvokeFunc(definition.Name) == null)
             _createPreset.InvokeFunc(definition.Content, true);
 
         _setPreset.InvokeFunc(definition.Name);
     }
 
-    public void ClearPreset()
-    {
-        _clearPreset.InvokeFunc();
-    }
+    public void ClearPreset() => _clearPreset.InvokeFunc();
 
     // TODO this should use your actual rotation plugin, not always vbm
     public void EnableAi(bool passive)
@@ -84,29 +88,17 @@ internal sealed class BossModIpc(
         if (!_configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod)
             return false;
 
-        if (questId.Value.Equals(5325)) // Valentiones 2026
-            return true;
-
         dutyOptions ??= new();
-        if (!_territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out var cfcData))
+        if (!_territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out TerritoryData.ContentFinderConditionData? cfcData))
             return false;
 
-        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData
-                .ContentFinderConditionId))
+        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
             return false;
 
-        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData
-                .ContentFinderConditionId))
+        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
             return true;
 
         return dutyOptions.Enabled;
-    }
-
-    public enum EPreset
-    {
-        Overworld,
-        QuestBattle,
-        NormalMovement,
     }
 
     private sealed class PresetDefinition(string name, string fileName)
@@ -120,7 +112,7 @@ internal sealed class BossModIpc(
                 typeof(BossModIpc).Assembly.GetManifestResourceStream(
                     $"Questionable.Controller.CombatModules.BossModPreset.{name}") ??
                 throw new InvalidOperationException($"Preset {name} was not found");
-            using var reader = new StreamReader(stream);
+            using StreamReader reader = new(stream);
             return reader.ReadToEnd();
         }
     }

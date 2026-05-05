@@ -29,7 +29,8 @@ internal static class AethernetShard
         public override string ToString() => $"AttuneAethernetShard({AetheryteLocation})";
     }
 
-    internal sealed class DoAttune(
+    internal sealed class DoAttune
+    (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         ILogger<DoAttune> logger) : TaskExecutor<Attune>
@@ -48,10 +49,12 @@ internal static class AethernetShard
             return false;
         }
 
-        public override ETaskResult Update() =>
-            aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
+        public override ETaskResult Update()
+        {
+            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
 
         public override bool ShouldInterruptOnDamage() => true;
     }

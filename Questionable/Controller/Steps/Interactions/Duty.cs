@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib.Gear;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
+using Questionable.Gear;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Duty
@@ -45,7 +44,8 @@ internal static class Duty
         }
     }
 
-    internal sealed record StartAutoDutyTask(
+    internal sealed record StartAutoDutyTask
+    (
         uint ContentFinderConditionId,
         AutoDutyIpc.DutyMode DutyMode)
         : ITask
@@ -53,7 +53,8 @@ internal static class Duty
         public override string ToString() => $"StartAutoDuty({ContentFinderConditionId}, {DutyMode})";
     }
 
-    internal sealed class StartAutoDutyExecutor(
+    internal sealed class StartAutoDutyExecutor
+    (
         GearStatsCalculator gearStatsCalculator,
         AutoDutyIpc autoDutyIpc,
         TerritoryData territoryData,
@@ -61,10 +62,24 @@ internal static class Duty
         IChatGui chatGui,
         SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppableTaskExecutor
     {
+        public override ETaskResult Update()
+        {
+            if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
+                out TerritoryData.ContentFinderConditionData? cfcData))
+                throw new TaskException("Failed to get territory ID for content finder condition");
+
+            return clientState.TerritoryType == cfcData.TerritoryId
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
+
+        public void StopNow() => autoDutyIpc.Stop();
+
+        public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start()
         {
             if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
-                    out var cfcData))
+                out TerritoryData.ContentFinderConditionData? cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             unsafe
@@ -73,11 +88,11 @@ internal static class Duty
                 if (inventoryManager == null)
                     throw new TaskException("Inventory unavailable");
 
-                var equippedItems = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
+                InventoryContainer* equippedItems = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
                 if (equippedItems == null)
                     throw new TaskException("Equipped items unavailable");
 
-                var currentItemLevel = gearStatsCalculator.CalculateAverageItemLevel(equippedItems);
+                short currentItemLevel = gearStatsCalculator.CalculateAverageItemLevel(equippedItems);
                 if (cfcData.RequiredItemLevel > currentItemLevel)
                 {
                     string errorText =
@@ -92,21 +107,6 @@ internal static class Duty
             autoDutyIpc.StartInstance(Task.ContentFinderConditionId, Task.DutyMode);
             return true;
         }
-
-        public override ETaskResult Update()
-        {
-            if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
-                    out var cfcData))
-                throw new TaskException("Failed to get territory ID for content finder condition");
-
-            return clientState.TerritoryType == cfcData.TerritoryId
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
-        }
-
-        public void StopNow() => autoDutyIpc.Stop();
-
-        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record WaitAutoDutyTask(uint ContentFinderConditionId) : ITask
@@ -114,17 +114,16 @@ internal static class Duty
         public override string ToString() => $"Wait(AutoDuty, left instance {ContentFinderConditionId})";
     }
 
-    internal sealed class WaitAutoDutyExecutor(
+    internal sealed class WaitAutoDutyExecutor
+    (
         AutoDutyIpc autoDutyIpc,
         TerritoryData territoryData,
         IClientState clientState) : TaskExecutor<WaitAutoDutyTask>, IStoppableTaskExecutor
     {
-        protected override bool Start() => true;
-
         public override ETaskResult Update()
         {
             if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId,
-                    out var cfcData))
+                out TerritoryData.ContentFinderConditionData? cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             return clientState.TerritoryType != cfcData.TerritoryId && autoDutyIpc.IsStopped()
@@ -135,6 +134,7 @@ internal static class Duty
         public void StopNow() => autoDutyIpc.Stop();
 
         public override bool ShouldInterruptOnDamage() => false;
+        protected override bool Start() => true;
     }
 
     internal sealed record OpenDutyFinderTask(uint ContentFinderConditionId) : ITask
@@ -142,7 +142,8 @@ internal static class Duty
         public override string ToString() => $"OpenDutyFinder({ContentFinderConditionId})";
     }
 
-    internal sealed class OpenDutyFinderExecutor(
+    internal sealed class OpenDutyFinderExecutor
+    (
         GameFunctions gameFunctions,
         ICondition condition) : TaskExecutor<OpenDutyFinderTask>
     {

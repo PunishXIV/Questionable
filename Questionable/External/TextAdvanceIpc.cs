@@ -4,19 +4,18 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using Questionable.Controller;
-
 namespace Questionable.External;
 
 internal sealed class TextAdvanceIpc : IDisposable
 {
-    private bool _isExternalControlActivated;
-    private readonly QuestController _questController;
     private readonly Configuration _configuration;
+    private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
+    private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
     private readonly IFramework _framework;
     private readonly ICallGateSubscriber<bool> _isInExternalControl;
-    private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
-    private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
     private readonly string _pluginName;
+    private readonly QuestController _questController;
+    private bool _isExternalControlActivated;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
         QuestController questController, Configuration configuration)
@@ -37,9 +36,7 @@ internal sealed class TextAdvanceIpc : IDisposable
     {
         _framework.Update -= OnUpdate;
         if (_isExternalControlActivated)
-        {
             _disableExternalControl.InvokeFunc(_pluginName);
-        }
     }
 
     private void OnUpdate(IFramework framework)
@@ -51,10 +48,8 @@ internal sealed class TextAdvanceIpc : IDisposable
             if (!_isInExternalControl.InvokeFunc())
             {
                 if (_enableExternalControl.InvokeFunc(
-                      _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
-                {
+                    _pluginName, CreateExternalTerritoryConfig(_configuration.General.DontSkipCutscenes)))
                     _isExternalControlActivated = true;
-                }
             }
         }
         else
@@ -62,28 +57,23 @@ internal sealed class TextAdvanceIpc : IDisposable
             if (_isExternalControlActivated)
             {
                 if (_disableExternalControl.InvokeFunc(_pluginName) || !_isInExternalControl.InvokeFunc())
-                {
                     _isExternalControlActivated = false;
-                }
             }
         }
     }
 
-    private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes)
+    private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes) => new()
     {
-        return new ExternalTerritoryConfig
-        {
-            EnableQuestAccept = true,
-            EnableQuestComplete = true,
-            EnableRewardPick = true,
-            EnableRequestHandin = true,
-            EnableCutsceneEsc = !dontSkipCutscenes,
-            EnableCutsceneSkipConfirm = !dontSkipCutscenes,
-            EnableTalkSkip = !dontSkipCutscenes,
-            EnableRequestFill = true,
-            EnableAutoInteract = false
-        };
-    }
+        EnableQuestAccept = true,
+        EnableQuestComplete = true,
+        EnableRewardPick = true,
+        EnableRequestHandin = true,
+        EnableCutsceneEsc = !dontSkipCutscenes,
+        EnableCutsceneSkipConfirm = !dontSkipCutscenes,
+        EnableTalkSkip = !dontSkipCutscenes,
+        EnableRequestFill = true,
+        EnableAutoInteract = false
+    };
 
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public sealed class ExternalTerritoryConfig

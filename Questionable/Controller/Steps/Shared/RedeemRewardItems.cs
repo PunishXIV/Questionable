@@ -7,7 +7,6 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
@@ -26,7 +25,7 @@ internal static class RedeemRewardItems
                 if (inventoryManager == null)
                     return tasks;
 
-                foreach (var itemReward in questData.RedeemableItems)
+                foreach (ItemReward itemReward in questData.RedeemableItems)
                 {
                     if (inventoryManager->GetInventoryItemCount(itemReward.ItemId) > 0 &&
                         !itemReward.IsUnlocked())
@@ -45,7 +44,8 @@ internal static class RedeemRewardItems
         public override string ToString() => $"TryRedeem({ItemReward.Name})";
     }
 
-    internal sealed class Executor(
+    internal sealed class Executor
+    (
         GameFunctions gameFunctions,
         ICondition condition) : TaskExecutor<Task>
     {

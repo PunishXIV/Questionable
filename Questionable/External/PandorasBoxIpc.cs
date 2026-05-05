@@ -8,7 +8,6 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
-
 namespace Questionable.External;
 
 internal sealed class PandorasBoxIpc : IDisposable
@@ -29,17 +28,17 @@ internal sealed class PandorasBoxIpc : IDisposable
         "Auto-interact with Gathering Nodes",
 
         // Other
-        "Pandora Quick Gather",
+        "Pandora Quick Gather"
     }.ToImmutableHashSet();
+    private readonly IClientState _clientState;
 
     private readonly IFramework _framework;
-    private readonly QuestController _questController;
-    private readonly TerritoryData _territoryData;
-    private readonly IClientState _clientState;
-    private readonly ILogger<PandorasBoxIpc> _logger;
 
     private readonly ICallGateSubscriber<string, bool?> _getFeatureEnabled;
+    private readonly ILogger<PandorasBoxIpc> _logger;
+    private readonly QuestController _questController;
     private readonly ICallGateSubscriber<string, bool, object?> _setFeatureEnabled;
+    private readonly TerritoryData _territoryData;
 
     private bool _loggedIpcError;
     private HashSet<string>? _pausedFeatures;
@@ -85,24 +84,20 @@ internal sealed class PandorasBoxIpc : IDisposable
         }
     }
 
+    public void Dispose()
+    {
+        _framework.Update -= OnUpdate;
+        RestoreConflictingFeatures();
+    }
+
     private void OnUpdate(IFramework framework)
     {
         bool hasActiveQuest = _questController.IsRunning ||
                               _questController.AutomationType != QuestController.EAutomationType.Manual;
         if (hasActiveQuest && !_territoryData.IsDutyInstance(_clientState.TerritoryType))
-        {
             DisableConflictingFeatures();
-        }
         else
-        {
             RestoreConflictingFeatures();
-        }
-    }
-
-    public void Dispose()
-    {
-        _framework.Update -= OnUpdate;
-        RestoreConflictingFeatures();
     }
 
     private void DisableConflictingFeatures()
@@ -112,7 +107,7 @@ internal sealed class PandorasBoxIpc : IDisposable
 
         _pausedFeatures = [];
 
-        foreach (var feature in ConflictingFeatures)
+        foreach (string feature in ConflictingFeatures)
         {
             try
             {
@@ -136,7 +131,7 @@ internal sealed class PandorasBoxIpc : IDisposable
         if (_pausedFeatures == null)
             return;
 
-        foreach (var feature in _pausedFeatures)
+        foreach (string feature in _pausedFeatures)
         {
             try
             {

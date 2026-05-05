@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class SkipConditionConverter() : EnumConverter<EExtraSkipCondition>(Values)
@@ -9,9 +8,9 @@ public sealed class SkipConditionConverter() : EnumConverter<EExtraSkipCondition
     {
         { EExtraSkipCondition.WakingSandsMainArea, "WakingSandsMainArea" },
         { EExtraSkipCondition.WakingSandsSolar, "WakingSandsSolar" },
-        { EExtraSkipCondition.RisingStonesSolar, "RisingStonesSolar"},
-        { EExtraSkipCondition.RoguesGuild, "RoguesGuild"},
-        { EExtraSkipCondition.NotRoguesGuild, "NotRoguesGuild"},
-        { EExtraSkipCondition.DockStorehouse, "DockStorehouse"},
+        { EExtraSkipCondition.RisingStonesSolar, "RisingStonesSolar" },
+        { EExtraSkipCondition.RoguesGuild, "RoguesGuild" },
+        { EExtraSkipCondition.NotRoguesGuild, "NotRoguesGuild" },
+        { EExtraSkipCondition.DockStorehouse, "DockStorehouse" }
     };
 }

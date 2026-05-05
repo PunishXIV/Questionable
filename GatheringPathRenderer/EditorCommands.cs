@@ -3,32 +3,31 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Game.Command;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.LayoutEngine;
+using FFXIVClientStructs.Interop;
+using FFXIVClientStructs.STD;
 using Lumina.Excel.Sheets;
 using Questionable.Model;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-
 namespace GatheringPathRenderer;
 
 internal sealed class EditorCommands : IDisposable
 {
-    private readonly RendererPlugin _plugin;
-    private readonly IDataManager _dataManager;
-    private readonly ICommandManager _commandManager;
-    private readonly ITargetManager _targetManager;
-    private readonly IClientState _clientState;
-    private readonly IObjectTable _objectTable;
     //private readonly Dalamud.Game.ClientState.Objects.SubKinds.IPlayerCharacter _playerState;
     private readonly IChatGui _chatGui;
-    private readonly IPluginLog _pluginLog;
+    private readonly IClientState _clientState;
+    private readonly ICommandManager _commandManager;
     private readonly Configuration _configuration;
+    private readonly IDataManager _dataManager;
+    private readonly IObjectTable _objectTable;
+    private readonly RendererPlugin _plugin;
+    private readonly IPluginLog _pluginLog;
+    private readonly ITargetManager _targetManager;
 
     public EditorCommands(RendererPlugin plugin, IDataManager dataManager, ICommandManager commandManager,
         ITargetManager targetManager, IClientState clientState, IObjectTable objectTable,
@@ -45,8 +44,10 @@ internal sealed class EditorCommands : IDisposable
         _pluginLog = pluginLog;
         _configuration = configuration;
 
-        _commandManager.AddHandler("/qg", new CommandInfo(ProcessCommand));
+        _commandManager.AddHandler("/qg", new(ProcessCommand));
     }
+
+    public void Dispose() => _commandManager.RemoveHandler("/qg");
 
     private void ProcessCommand(string command, string argument)
     {
@@ -74,40 +75,38 @@ internal sealed class EditorCommands : IDisposable
 
     private unsafe void AddAllMissing()
     {
-        var layout = LayoutWorld.Instance()->ActiveLayout;
-        if (layout == null || !layout->InstancesByType.TryGetValue(InstanceType.Gathering, out var mapPtr, false))
-        {
+        LayoutManager* layout = LayoutWorld.Instance()->ActiveLayout;
+        if (layout == null || !layout->InstancesByType.TryGetValue(InstanceType.Gathering, out Pointer<StdMap<ulong, Pointer<ILayoutInstance>>> mapPtr, false))
             return;
-        }
 
         foreach (ILayoutInstance* instance in mapPtr.Value->Values)
         {
-            var transform = instance->GetTransformImpl();
-            var position = transform->Translation;
+            Transform* transform = instance->GetTransformImpl();
+            Vector3 position = transform->Translation;
         }
     }
 
     private void CreateOrAddLocationToGroup(List<string> arguments)
     {
-        var target = _targetManager.Target;
+        IGameObject? target = _targetManager.Target;
         if (target == null || target.ObjectKind != ObjectKind.GatheringPoint)
-            throw new Exception("No valid target");
+            throw new("No valid target");
 
-        var gatheringPoint = _dataManager.GetExcelSheet<GatheringPoint>().GetRowOrDefault(target.BaseId) ?? throw new Exception("Invalid gathering point");
+        GatheringPoint gatheringPoint = _dataManager.GetExcelSheet<GatheringPoint>().GetRowOrDefault(target.BaseId) ?? throw new("Invalid gathering point");
         FileInfo targetFile;
         GatheringRoot root;
-        var locationsInTerritory = _plugin.GetLocationsInTerritory(_clientState.TerritoryType).ToList();
-        var location = locationsInTerritory.SingleOrDefault(x => x.Id == gatheringPoint.GatheringPointBase.RowId);
+        List<RendererPlugin.GatheringLocationContext> locationsInTerritory = _plugin.GetLocationsInTerritory(_clientState.TerritoryType).ToList();
+        RendererPlugin.GatheringLocationContext? location = locationsInTerritory.SingleOrDefault(x => x.Id == gatheringPoint.GatheringPointBase.RowId);
         if (location != null)
         {
             targetFile = location.File;
             root = location.Root;
 
             // if this is an existing node, ignore it
-            var existingNode = root.Groups.SelectMany(x => x.Nodes.Where(y => y.DataId == target.BaseId))
+            bool existingNode = root.Groups.SelectMany(x => x.Nodes.Where(y => y.DataId == target.BaseId))
                 .Any(x => x.Locations.Any(y => Vector3.Distance(y.Position, target.Position) < 0.1f));
             if (existingNode)
-                throw new Exception("Node already exists");
+                throw new("Node already exists");
 
             if (arguments.Contains("group"))
                 AddToNewGroup(root, target);
@@ -125,18 +124,18 @@ internal sealed class EditorCommands : IDisposable
 
     public void AddToNewGroup(GatheringRoot root, IGameObject target)
     {
-        root.Groups.Add(new GatheringNodeGroup
+        root.Groups.Add(new()
         {
             Nodes =
             [
-                new GatheringNode
+                new()
                 {
                     DataId = target.BaseId,
                     Locations =
                     [
-                        new GatheringLocation
+                        new()
                         {
-                            Position = target.Position,
+                            Position = target.Position
                         }
                     ]
                 }
@@ -148,13 +147,13 @@ internal sealed class EditorCommands : IDisposable
     public void AddToExistingGroup(GatheringRoot root, IGameObject target)
     {
         // find the same data id
-        var node = root.Groups.SelectMany(x => x.Nodes)
+        GatheringNode? node = root.Groups.SelectMany(x => x.Nodes)
             .SingleOrDefault(x => x.DataId == target.BaseId);
         if (node != null)
         {
-            node.Locations.Add(new GatheringLocation
+            node.Locations.Add(new()
             {
-                Position = target.Position,
+                Position = target.Position
             });
             _chatGui.Print($"Added location to existing node {target.BaseId}.", "qG");
         }
@@ -172,14 +171,14 @@ internal sealed class EditorCommands : IDisposable
                 .OrderBy(x => x.Distance)
                 .First();
 
-            closestGroup.Group.Nodes.Add(new GatheringNode
+            closestGroup.Group.Nodes.Add(new()
             {
                 DataId = target.BaseId,
                 Locations =
                 [
-                    new GatheringLocation
+                    new()
                     {
-                        Position = target.Position,
+                        Position = target.Position
                     }
                 ]
             });
@@ -194,7 +193,7 @@ internal sealed class EditorCommands : IDisposable
             ?.File.Directory;
         if (targetFolder == null)
         {
-            var territoryInfo = _dataManager.GetExcelSheet<TerritoryType>().GetRow(_clientState.TerritoryType);
+            TerritoryType territoryInfo = _dataManager.GetExcelSheet<TerritoryType>().GetRow(_clientState.TerritoryType);
             targetFolder = _plugin.PathsDirectory
                 .CreateSubdirectory(ExpansionData.ExpansionFolders[(EExpansionVersion)territoryInfo.ExVersion.RowId])
                 .CreateSubdirectory(territoryInfo.PlaceName.Value.Name.ToString());
@@ -204,29 +203,29 @@ internal sealed class EditorCommands : IDisposable
             new(
                 Path.Combine(targetFolder.FullName,
                     $"{gatheringPoint.GatheringPointBase.RowId}_{gatheringPoint.PlaceName.Value.Name}_{(PlayerState.Instance()->CurrentClassJobId == 16 ? "MIN" : "BTN")}.json"));
-        var root = new GatheringRoot
+        GatheringRoot root = new()
         {
             Author = [_configuration.AuthorName],
             Steps =
             [
-                new QuestStep
+                new()
                 {
                     TerritoryId = _clientState.TerritoryType,
-                    InteractionType = EInteractionType.None,
+                    InteractionType = EInteractionType.None
                 }
             ],
             Groups =
             [
-                new GatheringNodeGroup
+                new()
                 {
                     Nodes =
                     [
-                        new GatheringNode
+                        new()
                         {
                             DataId = target.BaseId,
                             Locations =
                             [
-                                new GatheringLocation
+                                new()
                                 {
                                     Position = target.Position
                                 }
@@ -237,10 +236,5 @@ internal sealed class EditorCommands : IDisposable
             ]
         };
         return (targetFile, root);
-    }
-
-    public void Dispose()
-    {
-        _commandManager.RemoveHandler("/qg");
     }
 }

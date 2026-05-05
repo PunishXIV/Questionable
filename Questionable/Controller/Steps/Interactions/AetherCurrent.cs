@@ -6,12 +6,12 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class AetherCurrent
 {
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         AetherCurrentData aetherCurrentData,
         IChatGui chatGui) : SimpleTaskFactory
     {
@@ -41,7 +41,8 @@ internal static class AetherCurrent
         public override string ToString() => $"AttuneAetherCurrent({AetherCurrentId})";
     }
 
-    internal sealed class DoAttune(
+    internal sealed class DoAttune
+    (
         GameFunctions gameFunctions,
         ILogger<DoAttune> logger) : TaskExecutor<Attune>
     {
@@ -63,10 +64,12 @@ internal static class AetherCurrent
             return false;
         }
 
-        public override ETaskResult Update() =>
-            gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId)
+        public override ETaskResult Update()
+        {
+            return gameFunctions.IsAetherCurrentUnlocked(Task.AetherCurrentId)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
 
         public override bool ShouldInterruptOnDamage() => true;
     }

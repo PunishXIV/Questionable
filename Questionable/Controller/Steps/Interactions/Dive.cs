@@ -1,30 +1,21 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Runtime.InteropServices;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
-using FFXIVClientStructs.FFXIV.Client.Graphics.Kernel;
-using FFXIVClientStructs.FFXIV.Client.System.Input;
-using FFXIVClientStructs.FFXIV.Client.System.String;
-using FFXIVClientStructs.FFXIV.Client.UI;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Dive
 {
-    private unsafe delegate byte DiveDelegate(void* control);
-    private static unsafe DiveDelegate DiveFunc = Marshal.GetDelegateForFunctionPointer<DiveDelegate>(Svc.SigScanner.ScanText("48 89 5C 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 48 8D 54 24"));
+    private static DiveDelegate DiveFunc = Marshal.GetDelegateForFunctionPointer<DiveDelegate>(Svc.SigScanner.ScanText("48 89 5C 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 48 8D 54 24"));
     public static unsafe void ExecuteDive() => DiveFunc(Control.Instance());
     private static unsafe void Dismount() => ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
+    private unsafe delegate byte DiveDelegate(void* control);
 
     internal sealed class Factory : SimpleTaskFactory
     {
@@ -39,7 +30,6 @@ internal static class Dive
 
     internal sealed class Task : ITask
     {
-
         public override string ToString() => "Dive";
     }
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing;
 
 public sealed class QuestRoot
@@ -11,7 +10,7 @@ public sealed class QuestRoot
     public List<string> Author { get; set; } = new();
 
     /// <summary>
-    /// This is only relevant for release builds.
+    ///     This is only relevant for release builds.
     /// </summary>
     public bool Disabled { get; set; }
 

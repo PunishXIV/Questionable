@@ -6,20 +6,17 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Utility;
-using Questionable.External;
-
 namespace Questionable.Windows.ConfigComponents;
 
-internal sealed class NotificationConfigComponent(
+internal sealed class NotificationConfigComponent
+(
     IDalamudPluginInterface pluginInterface,
-    Configuration configuration,
-    NotificationMasterIpc notificationMasterIpc) : ConfigComponent(pluginInterface, configuration)
+    Configuration configuration) : ConfigComponent(pluginInterface, configuration)
 {
-    private readonly NotificationMasterIpc _notificationMasterIpc = notificationMasterIpc;
 
     public override void DrawTab()
     {
-        using var tab = ImRaii.TabItem("Notifications###Notifications");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Notifications###Notifications");
         if (!tab)
             return;
 
@@ -34,25 +31,24 @@ internal sealed class NotificationConfigComponent(
         {
             using (ImRaii.PushIndent())
             {
-                var xivChatTypes = Enum.GetValues<XivChatType>()
+                XivChatType[] xivChatTypes = Enum.GetValues<XivChatType>()
                     .Where(x => x != XivChatType.StandardEmote)
                     .ToArray();
-                var selectedChatType = Array.IndexOf(xivChatTypes, Configuration.Notifications.ChatType);
+                int selectedChatType = Array.IndexOf(xivChatTypes, Configuration.Notifications.ChatType);
                 string[] chatTypeNames = xivChatTypes
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
                 if (ImGui.Combo("Chat channel", ref selectedChatType, chatTypeNames,
-                        chatTypeNames.Length))
+                    chatTypeNames.Length))
                 {
                     Configuration.Notifications.ChatType = xivChatTypes[selectedChatType];
                     Save();
                 }
 
                 ImGui.Separator();
-                ImGui.Text("NotificationMaster settings");
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker("Requires the plugin 'NotificationMaster' to be installed.");
-                using (ImRaii.Disabled(!_notificationMasterIpc.Enabled))
+                ImGui.Text("Desktop notifications");
+                ImGuiComponents.HelpMarker("Desktop tray and taskbar notifications are currently unavailable.");
+                using (ImRaii.Disabled())
                 {
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
                     if (ImGui.Checkbox("Show tray notification", ref showTrayMessage))

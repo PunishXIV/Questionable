@@ -1,69 +1,68 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using LLib.GameData;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
-
 namespace Questionable.Model;
 
 internal static class QuestInfoUtils
 {
-    private static readonly Dictionary<uint, IReadOnlyList<EClassJob>> CachedClassJobs = [];
+    private static readonly Dictionary<uint, IReadOnlyList<Job>> CachedClassJobs = [];
 
-    internal static IReadOnlyList<EClassJob> AsList(ClassJobCategory? optionalClassJobCategory)
+    internal static IReadOnlyList<Job> AsList(ClassJobCategory? optionalClassJobCategory)
     {
         if (optionalClassJobCategory == null)
-            return Enum.GetValues<EClassJob>();
+            return Enum.GetValues<Job>();
 
         ClassJobCategory classJobCategory = optionalClassJobCategory.Value;
-        if (CachedClassJobs.TryGetValue(classJobCategory.RowId, out IReadOnlyList<EClassJob>? classJobs))
+        if (CachedClassJobs.TryGetValue(classJobCategory.RowId, out IReadOnlyList<Job>? classJobs))
             return classJobs;
 
-        classJobs = new Dictionary<EClassJob, bool>
+        classJobs = new Dictionary<Job, bool>
             {
-                { EClassJob.Adventurer, classJobCategory.ADV },
-                { EClassJob.Gladiator, classJobCategory.GLA },
-                { EClassJob.Pugilist, classJobCategory.PGL },
-                { EClassJob.Marauder, classJobCategory.MRD },
-                { EClassJob.Lancer, classJobCategory.LNC },
-                { EClassJob.Archer, classJobCategory.ARC },
-                { EClassJob.Conjurer, classJobCategory.CNJ },
-                { EClassJob.Thaumaturge, classJobCategory.THM },
-                { EClassJob.Carpenter, classJobCategory.CRP },
-                { EClassJob.Blacksmith, classJobCategory.BSM },
-                { EClassJob.Armorer, classJobCategory.ARM },
-                { EClassJob.Goldsmith, classJobCategory.GSM },
-                { EClassJob.Leatherworker, classJobCategory.LTW },
-                { EClassJob.Weaver, classJobCategory.WVR },
-                { EClassJob.Alchemist, classJobCategory.ALC },
-                { EClassJob.Culinarian, classJobCategory.CUL },
-                { EClassJob.Miner, classJobCategory.MIN },
-                { EClassJob.Botanist, classJobCategory.BTN },
-                { EClassJob.Fisher, classJobCategory.FSH },
-                { EClassJob.Paladin, classJobCategory.PLD },
-                { EClassJob.Monk, classJobCategory.MNK },
-                { EClassJob.Warrior, classJobCategory.WAR },
-                { EClassJob.Dragoon, classJobCategory.DRG },
-                { EClassJob.Bard, classJobCategory.BRD },
-                { EClassJob.WhiteMage, classJobCategory.WHM },
-                { EClassJob.BlackMage, classJobCategory.BLM },
-                { EClassJob.Arcanist, classJobCategory.ACN },
-                { EClassJob.Summoner, classJobCategory.SMN },
-                { EClassJob.Scholar, classJobCategory.SCH },
-                { EClassJob.Rogue, classJobCategory.ROG },
-                { EClassJob.Ninja, classJobCategory.NIN },
-                { EClassJob.Machinist, classJobCategory.MCH },
-                { EClassJob.DarkKnight, classJobCategory.DRK },
-                { EClassJob.Astrologian, classJobCategory.AST },
-                { EClassJob.Samurai, classJobCategory.SAM },
-                { EClassJob.RedMage, classJobCategory.RDM },
-                { EClassJob.BlueMage, classJobCategory.BLU },
-                { EClassJob.Gunbreaker, classJobCategory.GNB },
-                { EClassJob.Dancer, classJobCategory.DNC },
-                { EClassJob.Reaper, classJobCategory.RPR },
-                { EClassJob.Sage, classJobCategory.SGE },
-                { EClassJob.Viper, classJobCategory.VPR },
-                { EClassJob.Pictomancer, classJobCategory.PCT }
+                { Job.ADV, classJobCategory.ADV },
+                { Job.GLA, classJobCategory.GLA },
+                { Job.PGL, classJobCategory.PGL },
+                { Job.MRD, classJobCategory.MRD },
+                { Job.LNC, classJobCategory.LNC },
+                { Job.ARC, classJobCategory.ARC },
+                { Job.CNJ, classJobCategory.CNJ },
+                { Job.THM, classJobCategory.THM },
+                { Job.CRP, classJobCategory.CRP },
+                { Job.BSM, classJobCategory.BSM },
+                { Job.ARM, classJobCategory.ARM },
+                { Job.GSM, classJobCategory.GSM },
+                { Job.LTW, classJobCategory.LTW },
+                { Job.WVR, classJobCategory.WVR },
+                { Job.ALC, classJobCategory.ALC },
+                { Job.CUL, classJobCategory.CUL },
+                { Job.MIN, classJobCategory.MIN },
+                { Job.BTN, classJobCategory.BTN },
+                { Job.FSH, classJobCategory.FSH },
+                { Job.PLD, classJobCategory.PLD },
+                { Job.MNK, classJobCategory.MNK },
+                { Job.WAR, classJobCategory.WAR },
+                { Job.DRG, classJobCategory.DRG },
+                { Job.BRD, classJobCategory.BRD },
+                { Job.WHM, classJobCategory.WHM },
+                { Job.BLM, classJobCategory.BLM },
+                { Job.ACN, classJobCategory.ACN },
+                { Job.SMN, classJobCategory.SMN },
+                { Job.SCH, classJobCategory.SCH },
+                { Job.ROG, classJobCategory.ROG },
+                { Job.NIN, classJobCategory.NIN },
+                { Job.MCH, classJobCategory.MCH },
+                { Job.DRK, classJobCategory.DRK },
+                { Job.AST, classJobCategory.AST },
+                { Job.SAM, classJobCategory.SAM },
+                { Job.RDM, classJobCategory.RDM },
+                { Job.BLU, classJobCategory.BLU },
+                { Job.GNB, classJobCategory.GNB },
+                { Job.DNC, classJobCategory.DNC },
+                { Job.RPR, classJobCategory.RPR },
+                { Job.SGE, classJobCategory.SGE },
+                { Job.VPR, classJobCategory.VPR },
+                { Job.PCT, classJobCategory.PCT }
             }
             .Where(y => y.Value)
             .Select(y => y.Key)

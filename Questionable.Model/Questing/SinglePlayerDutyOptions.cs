@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-
 namespace Questionable.Model.Questing;
 
 public sealed class SinglePlayerDutyOptions

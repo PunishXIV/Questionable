@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
@@ -8,30 +8,29 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
-
 namespace Questionable.External;
 
 internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogger<NavmeshIpc> logger)
 {
-    private readonly ILogger<NavmeshIpc> _logger = logger;
+    private readonly ICallGateSubscriber<float> _buildProgress = pluginInterface.GetIpcSubscriber<float>("vnavmesh.Nav.BuildProgress");
     private readonly ICallGateSubscriber<bool> _isNavReady = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Nav.IsReady");
+    private readonly ILogger<NavmeshIpc> _logger = logger;
     private readonly ICallGateSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>> _navPathfind =
-            pluginInterface.GetIpcSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>>(
-                "vnavmesh.Nav.PathfindCancelable");
-    private readonly ICallGateSubscriber<List<Vector3>, bool, object> _pathMoveTo = pluginInterface.GetIpcSubscriber<List<Vector3>, bool, object>("vnavmesh.Path.MoveTo");
-    private readonly ICallGateSubscriber<object> _pathStop = pluginInterface.GetIpcSubscriber<object>("vnavmesh.Path.Stop");
+        pluginInterface.GetIpcSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>>(
+            "vnavmesh.Nav.PathfindCancelable");
     private readonly ICallGateSubscriber<bool> _pathIsRunning = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning");
     private readonly ICallGateSubscriber<List<Vector3>> _pathListWaypoints = pluginInterface.GetIpcSubscriber<List<Vector3>>("vnavmesh.Path.ListWaypoints");
+    private readonly ICallGateSubscriber<List<Vector3>, bool, object> _pathMoveTo = pluginInterface.GetIpcSubscriber<List<Vector3>, bool, object>("vnavmesh.Path.MoveTo");
     private readonly ICallGateSubscriber<float, object> _pathSetTolerance = pluginInterface.GetIpcSubscriber<float, object>("vnavmesh.Path.SetTolerance");
+    private readonly ICallGateSubscriber<object> _pathStop = pluginInterface.GetIpcSubscriber<object>("vnavmesh.Path.Stop");
     private readonly ICallGateSubscriber<Vector3, bool, float, Vector3?> _queryPointOnFloor =
-            pluginInterface.GetIpcSubscriber<Vector3, bool, float, Vector3?>("vnavmesh.Query.Mesh.PointOnFloor");
-    private readonly ICallGateSubscriber<float> _buildProgress = pluginInterface.GetIpcSubscriber<float>("vnavmesh.Nav.BuildProgress");
-    private readonly ICallGateSubscriber<Vector3, bool, bool> _simpleMovePathfindAndMoveTo =
-            pluginInterface.GetIpcSubscriber<Vector3, bool, bool>("vnavmesh.SimpleMove.PathfindAndMoveTo");
+        pluginInterface.GetIpcSubscriber<Vector3, bool, float, Vector3?>("vnavmesh.Query.Mesh.PointOnFloor");
     private readonly ICallGateSubscriber<Vector3, bool, float, bool> _simpleMovePathfindAndMoveCloseTo =
-            pluginInterface.GetIpcSubscriber<Vector3, bool, float, bool>("vnavmesh.SimpleMove.PathfindAndMoveCloseTo");
+        pluginInterface.GetIpcSubscriber<Vector3, bool, float, bool>("vnavmesh.SimpleMove.PathfindAndMoveCloseTo");
+    private readonly ICallGateSubscriber<Vector3, bool, bool> _simpleMovePathfindAndMoveTo =
+        pluginInterface.GetIpcSubscriber<Vector3, bool, bool>("vnavmesh.SimpleMove.PathfindAndMoveTo");
     private readonly ICallGateSubscriber<bool> _simpleMovePathfindInProgress =
-            pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
+        pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
 
     public bool IsReady
     {
@@ -63,18 +62,6 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
     }
 
-    public void Stop()
-    {
-        try
-        {
-            _pathStop.InvokeAction();
-        }
-        catch (IpcError e)
-        {
-            _logger.LogWarning(e, "Could not stop navigating via navmesh");
-        }
-    }
-
     public bool IsSimpleMovePathfindInProgress
     {
         get
@@ -90,17 +77,27 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
     }
 
+    public void Stop()
+    {
+        try
+        {
+            _pathStop.InvokeAction();
+        }
+        catch (IpcError e)
+        {
+            _logger.LogWarning(e, "Could not stop navigating via navmesh");
+        }
+    }
+
     public Task<List<Vector3>> Pathfind(Vector3 localPlayerPosition, Vector3 targetPosition, bool fly,
         CancellationToken cancellationToken)
     {
         try
         {
-            var plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
+            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
                 x.InternalName == "vnavmesh" && x.IsLoaded);
-            if (plugin != null && plugin.Version < new System.Version(1,2,3,2))
-            {
-                throw new IpcValueNullError("vnavmesh", typeof(System.Version), 0);
-            }
+            if (plugin != null && plugin.Version < new Version(1, 2, 3, 2))
+                throw new IpcValueNullError("vnavmesh", typeof(Version), 0);
             _pathSetTolerance.InvokeAction(0.25f);
             return _navPathfind.InvokeFunc(localPlayerPosition, targetPosition, fly, cancellationToken);
         }
@@ -145,9 +142,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     public bool SimplePathfindAndMoveTo(Vector3 destination, bool fly)
     {
         if (!IsReady)
-        {
             return false;
-        }
         try
         {
             return _simpleMovePathfindAndMoveTo.InvokeFunc(destination, fly);
@@ -162,9 +157,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     public bool SimplePathfindAndMoveCloseTo(Vector3 destination, bool fly, float range)
     {
         if (!IsReady)
-        {
             return false;
-        }
         try
         {
             return _simpleMovePathfindAndMoveCloseTo.InvokeFunc(destination, fly, range);

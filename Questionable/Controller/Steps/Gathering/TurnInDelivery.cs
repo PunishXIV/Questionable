@@ -1,11 +1,10 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
+using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class TurnInDelivery
@@ -38,12 +37,12 @@ internal static class TurnInDelivery
             if (agentSatisfactionSupply == null || !agentSatisfactionSupply->IsAgentActive())
                 return _remainingAllowances == null ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
 
-            var addonId = agentSatisfactionSupply->GetAddonId();
+            uint addonId = agentSatisfactionSupply->GetAddonId();
             if (addonId == 0)
                 return _remainingAllowances == null ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
 
-            AtkUnitBase* addon = LAddon.GetAddonById(addonId);
-            if (addon == null || !LAddon.IsAddonReady(addon))
+            AtkUnitBase* addon = AddonUtils.GetAddonById(addonId);
+            if (addon == null || !AddonUtils.IsAddonReady(addon))
                 return ETaskResult.StillRunning;
 
             ushort remainingAllowances = agentSatisfactionSupply->NpcData.RemainingAllowances;
@@ -55,7 +54,7 @@ internal static class TurnInDelivery
             }
 
             if (InventoryManager.Instance()->GetInventoryItemCount(agentSatisfactionSupply->Items[1].Id,
-                    minCollectability: (short)agentSatisfactionSupply->Items[1].Collectability1) == 0)
+                minCollectability: (short)agentSatisfactionSupply->Items[1].Collectability1) == 0)
             {
                 logger.LogInformation("Inventory has no {ItemId}", agentSatisfactionSupply->Items[1].Id);
                 addon->FireCallbackInt(0);
@@ -71,7 +70,7 @@ internal static class TurnInDelivery
                 remainingAllowances);
             _remainingAllowances = remainingAllowances;
 
-            var pickGatheringItem = stackalloc AtkValue[]
+            AtkValue* pickGatheringItem = stackalloc AtkValue[]
             {
                 new() { Type = AtkValueType.Int, Int = 1 },
                 new() { Type = AtkValueType.Int, Int = 1 }

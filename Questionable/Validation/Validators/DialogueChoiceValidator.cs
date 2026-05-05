@@ -2,7 +2,6 @@
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Validation.Validators;
 
 internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : IQuestValidator
@@ -11,12 +10,12 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        foreach (var x in quest.AllSteps())
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) x in quest.AllSteps())
         {
             if (x.Step.DialogueChoices.Count == 0)
                 continue;
 
-            foreach (var dialogueChoice in x.Step.DialogueChoices)
+            foreach (DialogueChoice dialogueChoice in x.Step.DialogueChoices)
             {
                 ExcelRef? prompt = dialogueChoice.Prompt;
                 if (prompt != null)
@@ -46,14 +45,14 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
         {
             if (_excelFunctions.GetRawDialogueText(quest, excelSheet, excelRef.AsKey()) == null)
             {
-                return new ValidationIssue
+                return new()
                 {
                     ElementId = quest.Id,
                     Sequence = sequence.Sequence,
                     Step = stepId,
                     Type = EIssueType.InvalidExcelRef,
                     Severity = EIssueSeverity.Error,
-                    Description = $"{label} invalid: {excelSheet} → {excelRef.AsKey()}",
+                    Description = $"{label} invalid: {excelSheet} → {excelRef.AsKey()}"
                 };
             }
         }
@@ -61,14 +60,14 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
         {
             if (_excelFunctions.GetRawDialogueTextByRowId(excelSheet, excelRef.AsRowId()) == null)
             {
-                return new ValidationIssue
+                return new()
                 {
                     ElementId = quest.Id,
                     Sequence = sequence.Sequence,
                     Step = stepId,
                     Type = EIssueType.InvalidExcelRef,
                     Severity = EIssueSeverity.Error,
-                    Description = $"{label} invalid: {excelSheet} → {excelRef.AsRowId()}",
+                    Description = $"{label} invalid: {excelSheet} → {excelRef.AsRowId()}"
                 };
             }
         }

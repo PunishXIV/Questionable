@@ -2,7 +2,6 @@
 using System.Text.Json.Serialization;
 using Questionable.Model.Common;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 public sealed class SkipAetheryteCondition

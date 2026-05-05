@@ -10,7 +10,7 @@ internal static class GatheringLocationExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this GatheringLocation location)
     {
-        var emptyLocation = new GatheringLocation();
+        GatheringLocation emptyLocation = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(GatheringLocation)))
             .WithInitializer(

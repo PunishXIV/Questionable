@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameData;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.External;
 using Questionable.Functions;
+using Questionable.Model;
 using Questionable.Model.Questing;
-using static Questionable.Controller.GatheringController;
 using Mount = Questionable.Controller.Steps.Common.Mount;
 using Quest = Questionable.Model.Quest;
 
@@ -37,7 +37,8 @@ internal static class Craft
         }
     }
 
-    internal sealed record CraftTask(
+    internal sealed record CraftTask
+    (
         Quest Quest,
         uint ItemId,
         int ItemCount) : ITask
@@ -45,17 +46,18 @@ internal static class Craft
         public override string ToString() => $"Craft({ItemCount}x {ItemId})";
     }
 
-    internal sealed class DoCraft(
+    internal sealed class DoCraft
+    (
         IDataManager dataManager,
         QuestFunctions questFunctions,
         ArtisanIpc artisanIpc,
         ILogger<DoCraft> logger,
         QuestController questController) : TaskExecutor<CraftTask>
     {
-        private int _startingItemCount;
         private EItemQuality _itemQuality = EItemQuality.Any;
         private int _previousCount;
-        protected unsafe override bool Start()
+        private int _startingItemCount;
+        protected override unsafe bool Start()
         {
             // Get the item quality requirement from the quest step (NQ, HQ, or Any)
             _itemQuality = GetItemQuality();
@@ -71,23 +73,23 @@ internal static class Craft
             _previousCount = ownedCount;
 
             RecipeLookup? recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId) ??
-                throw new TaskException($"Item {Task.ItemId} is not craftable");
-            var questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
+                                         throw new TaskException($"Item {Task.ItemId} is not craftable");
+            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
-                              questWork.ClassJob :
-                              (EClassJob)PlayerState.Instance()->CurrentClassJobId
-                             ) switch
-            {
-                EClassJob.Carpenter => recipeLookup.Value.CRP.RowId,
-                EClassJob.Blacksmith => recipeLookup.Value.BSM.RowId,
-                EClassJob.Armorer => recipeLookup.Value.ARM.RowId,
-                EClassJob.Goldsmith => recipeLookup.Value.GSM.RowId,
-                EClassJob.Leatherworker => recipeLookup.Value.LTW.RowId,
-                EClassJob.Weaver => recipeLookup.Value.WVR.RowId,
-                EClassJob.Alchemist => recipeLookup.Value.ALC.RowId,
-                EClassJob.Culinarian => recipeLookup.Value.CUL.RowId,
-                _ => 0
-            };
+                    questWork.ClassJob :
+                    (Job)PlayerState.Instance()->CurrentClassJobId
+                ) switch
+                {
+                    Job.CRP => recipeLookup.Value.CRP.RowId,
+                    Job.BSM => recipeLookup.Value.BSM.RowId,
+                    Job.ARM => recipeLookup.Value.ARM.RowId,
+                    Job.GSM => recipeLookup.Value.GSM.RowId,
+                    Job.LTW => recipeLookup.Value.LTW.RowId,
+                    Job.WVR => recipeLookup.Value.WVR.RowId,
+                    Job.ALC => recipeLookup.Value.ALC.RowId,
+                    Job.CUL => recipeLookup.Value.CUL.RowId,
+                    var _ => 0
+                };
 
             if (recipeId == 0)
             {
@@ -149,6 +151,7 @@ internal static class Craft
                         return ETaskResult.TaskComplete;
                     }
                 }
+
                 return ETaskResult.TaskComplete;
             }
 
@@ -160,12 +163,11 @@ internal static class Craft
             // Retrieve ItemQuality from the current quest step, defaults to Any if not specified
             if (questController.CurrentQuest is { } currentQuest)
             {
-                var sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+                QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
                 if (sequence?.Steps.Count > currentQuest.Step)
-                {
                     return sequence.Steps[currentQuest.Step].ItemQuality;
-                }
             }
+
             return EItemQuality.Any;
         }
 
@@ -175,11 +177,11 @@ internal static class Craft
             InventoryManager* inventoryManager = InventoryManager.Instance();
             return _itemQuality switch
             {
-                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId, isHq: false, checkEquipped: false),
-                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId, isHq: true, checkEquipped: false),
-                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId, isHq: false, checkEquipped: false)
-                                    + inventoryManager->GetInventoryItemCount(Task.ItemId, isHq: true, checkEquipped: false),
-                _ => 0
+                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId, false, false),
+                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId, true, false),
+                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId, false, false)
+                                    + inventoryManager->GetInventoryItemCount(Task.ItemId, true, false),
+                var _ => 0
             };
         }
 

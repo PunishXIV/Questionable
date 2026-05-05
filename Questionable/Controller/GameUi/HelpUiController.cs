@@ -3,23 +3,22 @@ using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameUI;
 using Microsoft.Extensions.Logging;
-
+using Questionable.Utils;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class HelpUiController : IDisposable
 {
-    private readonly QuestController _questController;
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGui _gameGui;
     private readonly IFramework _framework;
+    private readonly IGameGuiAdapter _gameGui;
     private readonly ILogger<HelpUiController> _logger;
+    private readonly QuestController _questController;
 
     public HelpUiController(
         QuestController questController,
         IAddonLifecycle addonLifecycle,
-        IGameGui gameGui,
+        IGameGuiAdapter gameGui,
         IFramework framework,
         ILogger<HelpUiController> logger)
     {
@@ -37,6 +36,19 @@ internal sealed class HelpUiController : IDisposable
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
+    }
+
+
+    public void Dispose()
+    {
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpWindowPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContentsTutorial", ContentsTutorialPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "AkatsukiNote", UnendingCodexPostSetup);
+
+        _questController.AutomationTypeChanged -= CloseHelpWindowsWhenStartingQuests;
     }
 
     private unsafe void CloseHelpWindowsWhenStartingQuests(object sender, QuestController.EAutomationType e)
@@ -92,7 +104,7 @@ internal sealed class HelpUiController : IDisposable
     }
 
     /// <summary>
-    /// Opened e.g. the first time you open the duty finder window during Sastasha.
+    ///     Opened e.g. the first time you open the duty finder window during Sastasha.
     /// </summary>
     private unsafe void MultipleHelpWindowPostSetup(AddonEvent type, AddonArgs args)
     {
@@ -146,18 +158,5 @@ internal sealed class HelpUiController : IDisposable
     {
         _logger.LogInformation("Closing EventTutorial window");
         addon->FireCallbackInt(-1);
-    }
-
-
-    public void Dispose()
-    {
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpWindowPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContentsTutorial", ContentsTutorialPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "AkatsukiNote", UnendingCodexPostSetup);
-
-        _questController.AutomationTypeChanged -= CloseHelpWindowsWhenStartingQuests;
     }
 }

@@ -5,7 +5,6 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte
@@ -29,7 +28,8 @@ internal static class Aetheryte
         public override string ToString() => $"AttuneAetheryte({AetheryteLocation})";
     }
 
-    internal sealed class DoAttune(
+    internal sealed class DoAttune
+    (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         ILogger<DoAttune> logger) : TaskExecutor<Attune>
@@ -49,10 +49,12 @@ internal static class Aetheryte
             return false;
         }
 
-        public override ETaskResult Update() =>
-            aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
+        public override ETaskResult Update()
+        {
+            return aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
 
         public override bool ShouldInterruptOnDamage() => true;
     }

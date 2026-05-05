@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
@@ -17,31 +17,30 @@ using ECommons.MathHelpers;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Gathering;
-
 namespace GatheringPathRenderer.Windows;
 
 internal sealed class EditorWindow : Window
 {
-    private readonly RendererPlugin _plugin;
-    private readonly EditorCommands _editorCommands;
-    private readonly IDataManager _dataManager;
-    private readonly ICommandManager _commandManager;
-    private readonly ITargetManager _targetManager;
-    private readonly IClientState _clientState;
-    private readonly IObjectTable _objectTable;
 
     private readonly Dictionary<Guid, LocationOverride> _changes = [];
+    private readonly IClientState _clientState;
+    private readonly ICommandManager _commandManager;
+    private readonly IDataManager _dataManager;
+    private readonly EditorCommands _editorCommands;
+    private readonly IObjectTable _objectTable;
+    private readonly RendererPlugin _plugin;
+    private readonly ITargetManager _targetManager;
 
     private IGameObject? _target;
-    private int count;
-    private bool compact = false;
-    private bool unaddedVisible = true;
-    private bool sortByDistance = true;
-    private FilterClass filterClass = FilterClass.None;
-    private bool showAll = false;
 
     private (RendererPlugin.GatheringLocationContext Context, GatheringNode Node, GatheringLocation Location)?
         _targetLocation;
+    private bool compact;
+    private int count;
+    private FilterClass filterClass = FilterClass.None;
+    private bool showAll;
+    private bool sortByDistance = true;
+    private bool unaddedVisible = true;
 
     public EditorWindow(RendererPlugin plugin, EditorCommands editorCommands, IDataManager dataManager, ICommandManager commandManager,
         ITargetManager targetManager, IClientState clientState, IObjectTable objectTable, ConfigWindow configWindow)
@@ -58,13 +57,13 @@ internal sealed class EditorWindow : Window
 
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(-1, 100),
+            MinimumSize = new(-1, 100)
         };
 
-        TitleBarButtons.Add(new TitleBarButton
+        TitleBarButtons.Add(new()
         {
             Icon = FontAwesomeIcon.Cog,
-            IconOffset = new Vector2(1.5f, 1),
+            IconOffset = new(1.5f, 1),
             Click = _ => configWindow.IsOpen = true,
             Priority = int.MinValue,
             ShowTooltip = () =>
@@ -81,7 +80,7 @@ internal sealed class EditorWindow : Window
         AllowClickthrough = false;
     }
 
-    public unsafe override void Update()
+    public override unsafe void Update()
     {
         if (!_clientState.IsLoggedIn || _objectTable[0] == null)
         {
@@ -95,7 +94,7 @@ internal sealed class EditorWindow : Window
             unaddedVisible = true;
 
         _target = _targetManager.Target;
-        var gatheringLocations = _plugin.GetLocationsInTerritory(_clientState.TerritoryType);
+        IEnumerable<RendererPlugin.GatheringLocationContext> gatheringLocations = _plugin.GetLocationsInTerritory(_clientState.TerritoryType);
         var location = gatheringLocations.ToList().SelectMany(context =>
                 context.Root.Groups.SelectMany(group =>
                     group.Nodes.SelectMany(node => node.Locations
@@ -138,19 +137,16 @@ internal sealed class EditorWindow : Window
         _targetLocation = (location.Context, location.Node, location.Location);
     }
 
-    public unsafe override bool DrawConditions()
-    {
-        return (_objectTable[0] != null && PlayerState.Instance()->CurrentClassJobId.InRange(16, 18)) &&
-                _clientState.TerritoryType is not 0 && (_target != null || _targetLocation != null || unaddedVisible);
-    }
+    public override unsafe bool DrawConditions() => (_objectTable[0] != null && PlayerState.Instance()->CurrentClassJobId.InRange(16, 18)) &&
+                                                    _clientState.TerritoryType is not 0 && (_target != null || _targetLocation != null || unaddedVisible);
 
     public override void Draw()
     {
         if (_target != null && _targetLocation != null)
         {
-            var context = _targetLocation.Value.Context;
-            var node = _targetLocation.Value.Node;
-            var location = _targetLocation.Value.Location;
+            RendererPlugin.GatheringLocationContext context = _targetLocation.Value.Context;
+            GatheringNode node = _targetLocation.Value.Node;
+            GatheringLocation location = _targetLocation.Value.Location;
             ImGui.Text(context.File.Directory?.Name ?? string.Empty);
             ImGui.Indent();
             ImGui.Text(context.File.Name);
@@ -161,7 +157,7 @@ internal sealed class EditorWindow : Window
 
             if (!_changes.TryGetValue(location.InternalId, out LocationOverride? locationOverride))
             {
-                locationOverride = new LocationOverride();
+                locationOverride = new();
                 _changes[location.InternalId] = locationOverride;
             }
 
@@ -215,9 +211,7 @@ internal sealed class EditorWindow : Window
 
             ImGui.SameLine();
             if (ImGui.Button("Reset"))
-            {
-                _changes[location.InternalId] = new LocationOverride();
-            }
+                _changes[location.InternalId] = new();
 
             ImGui.EndDisabled();
 
@@ -228,7 +222,7 @@ internal sealed class EditorWindow : Window
             {
                 if (ImGui.Button("Add missing locations"))
                 {
-                    foreach (var missing in missingLocations)
+                    foreach (IGameObject missing in missingLocations)
                         _editorCommands.AddToExistingGroup(context.Root, missing);
 
                     _plugin.Save(context.File, context.Root);
@@ -237,16 +231,16 @@ internal sealed class EditorWindow : Window
         }
         else if (_target != null)
         {
-            var gatheringPoint = _dataManager.GetExcelSheet<GatheringPoint>().GetRowOrDefault(_target.BaseId);
+            GatheringPoint? gatheringPoint = _dataManager.GetExcelSheet<GatheringPoint>().GetRowOrDefault(_target.BaseId);
             if (gatheringPoint == null)
                 return;
 
-            var locationsInTerritory = _plugin.GetLocationsInTerritory(_clientState.TerritoryType).ToList();
-            var location = locationsInTerritory.SingleOrDefault(x => x.Id == gatheringPoint.Value.GatheringPointBase.RowId);
+            List<RendererPlugin.GatheringLocationContext> locationsInTerritory = _plugin.GetLocationsInTerritory(_clientState.TerritoryType).ToList();
+            RendererPlugin.GatheringLocationContext? location = locationsInTerritory.SingleOrDefault(x => x.Id == gatheringPoint.Value.GatheringPointBase.RowId);
             if (location != null)
             {
-                var targetFile = location.File;
-                var root = location.Root;
+                FileInfo targetFile = location.File;
+                GatheringRoot root = location.Root;
 
                 if (ImGui.Button("Add to closest group"))
                 {
@@ -268,7 +262,7 @@ internal sealed class EditorWindow : Window
             {
                 if (ImGui.Button($"Create location ({gatheringPoint.Value.GatheringPointBase.RowId})"))
                 {
-                    var (targetFile, root) = _editorCommands.CreateNewFile(gatheringPoint.Value, _target);
+                    (FileInfo targetFile, GatheringRoot root) = _editorCommands.CreateNewFile(gatheringPoint.Value, _target);
                     _plugin.Save(targetFile, root);
                 }
             }
@@ -282,13 +276,13 @@ internal sealed class EditorWindow : Window
 
     public void ListLocationsInCurrentTerritory()
     {
-        var a = _clientState.TerritoryType;
-        var gatheringPoints = _dataManager.GetExcelSheet<GatheringPoint>().Where(
+        uint a = _clientState.TerritoryType;
+        IEnumerable<GatheringPoint> gatheringPoints = _dataManager.GetExcelSheet<GatheringPoint>().Where(
             _point => _point.TerritoryType.RowId.Equals(_clientState.TerritoryType) &&
-            _point.GatheringPointBase.Value.GatheringType.RowId <= (uint)GatheringType.Harvesting
+                      _point.GatheringPointBase.Value.GatheringType.RowId <= (uint)GatheringType.Harvesting
         );
-        var loadedPoints = _plugin.GatheringLocations;
-        var shownNone = true;
+        List<RendererPlugin.GatheringLocationContext> loadedPoints = _plugin.GatheringLocations;
+        bool shownNone = true;
         if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop))
             _commandManager.ProcessCommand("/vnav stop");
         if (ImGui.IsItemHovered())
@@ -313,13 +307,11 @@ internal sealed class EditorWindow : Window
             ImGui.SetTooltip("sort by distance/class");
 
         ImGui.SameLine();
-        var filterClassIcon = FontAwesomeIcon.Notdef;
+        FontAwesomeIcon filterClassIcon = FontAwesomeIcon.Notdef;
         if (filterClass.Equals(FilterClass.Miner)) filterClassIcon = FontAwesomeIcon.HandRock;
         if (filterClass.Equals(FilterClass.Botanist)) filterClassIcon = FontAwesomeIcon.HandPaper;
         if (ImGuiComponents.IconButton(filterClassIcon))
-        {
             filterClass = (FilterClass)(((int)filterClass + 1) % Enum.GetValues(typeof(FilterClass)).Length);
-        }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("filter none/min/btn");
 
@@ -351,10 +343,10 @@ internal sealed class EditorWindow : Window
                 seen.Add(_point.PlaceName.Value.Name.ToMacroString());
             }
             char special = ' ';
-            if (_dataManager.GetExcelSheet<GatheringPointTransient>().TryGetRow(_point.RowId, out var gatheringPointTransient) &&
+            if (_dataManager.GetExcelSheet<GatheringPointTransient>().TryGetRow(_point.RowId, out GatheringPointTransient gatheringPointTransient) &&
                 (gatheringPointTransient.EphemeralStartTime != 65535 ||
-                gatheringPointTransient.EphemeralEndTime != 65535 ||
-                gatheringPointTransient.GatheringRarePopTimeTable.RowId != 0))
+                 gatheringPointTransient.EphemeralEndTime != 65535 ||
+                 gatheringPointTransient.GatheringRarePopTimeTable.RowId != 0))
             {
                 special = '*';
             }
@@ -367,10 +359,10 @@ internal sealed class EditorWindow : Window
             float distance = 0.0f;
             if (_plugin.GBRLocationData.TryGetValue(_point.RowId, out List<Vector3>? value))
             {
-                var gbr = value.FirstOrNull();
+                Vector3? gbr = value.FirstOrNull();
                 if (gbr != null)
                 {
-                    var scale = _point.TerritoryType.Value.Map.Value.SizeFactor;
+                    ushort scale = _point.TerritoryType.Value.Map.Value.SizeFactor;
                     coords = $"{gbr.Value.X} {gbr.Value.Y} {gbr.Value.Z}";
                     line += coords;
                     distance = (_objectTable[0]!.Position - gbr).Value.Length();
@@ -380,13 +372,9 @@ internal sealed class EditorWindow : Window
                         orange = true;
                     }
                     else if (distance < 500 && !_plugin.DistantRange || _plugin.DistantRange)
-                    {
                         line += $"  ({distance:F2})";
-                    }
                     else
-                    {
                         continue;
-                    }
                 }
             }
             output.Add(_point.RowId, new(line, coords, orange, distance, alreadyAdded));
@@ -394,8 +382,8 @@ internal sealed class EditorWindow : Window
         }
         if (!shownNone)
         {
-            var sorted = sortByDistance ? output.Values.OrderBy(t => t.Item4) : output.Values.OrderBy(t => t.Item1);
-            foreach (var (line, coords, orange, distance, alreadyAdded) in sorted)
+            IOrderedEnumerable<Tuple<string, string, bool, float, bool>> sorted = sortByDistance ? output.Values.OrderBy(t => t.Item4) : output.Values.OrderBy(t => t.Item1);
+            foreach ((string line, string coords, bool orange, float distance, bool alreadyAdded) in sorted)
             {
                 if (alreadyAdded)
                     ImGui.TextColored(ImGuiColors.DalamudGrey2, line);
@@ -404,9 +392,7 @@ internal sealed class EditorWindow : Window
                 else
                     ImGui.Text(line);
                 if (ImGui.IsItemClicked())
-                {
                     _commandManager.ProcessCommand($"/vnav flyto {coords}");
-                }
             }
         }
         else
@@ -416,7 +402,7 @@ internal sealed class EditorWindow : Window
         }
     }
 
-    enum GatheringType
+    private enum GatheringType
     {
         Mining,
         Quarrying,
@@ -426,7 +412,7 @@ internal sealed class EditorWindow : Window
         Spearfishing
     }
 
-    enum FilterClass
+    private enum FilterClass
     {
         None,
         Miner,
@@ -441,13 +427,7 @@ internal sealed class LocationOverride
     public float? MinimumDistance { get; set; }
     public float? MaximumDistance { get; set; }
 
-    public bool IsCone()
-    {
-        return MinimumAngle != null && MaximumAngle != null && MinimumAngle != MaximumAngle;
-    }
+    public bool IsCone() => MinimumAngle != null && MaximumAngle != null && MinimumAngle != MaximumAngle;
 
-    public bool NeedsSave()
-    {
-        return (MinimumAngle != null && MaximumAngle != null) || (MinimumDistance != null && MaximumDistance != null);
-    }
+    public bool NeedsSave() => (MinimumAngle != null && MaximumAngle != null) || (MinimumDistance != null && MaximumDistance != null);
 }

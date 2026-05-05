@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(EmoteConverter))]
@@ -272,6 +271,5 @@ public enum EEmote
     GridanianGulp = 301,
     UldahnGulp = 302,
     LominsanGulp = 303,
-    Pen = 307,
+    Pen = 307
 }
-

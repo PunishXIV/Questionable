@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class ElementIdListConverter : JsonConverter<List<ElementId>>
@@ -33,9 +32,7 @@ public sealed class ElementIdListConverter : JsonConverter<List<ElementId>>
     {
         writer.WriteStartArray();
         foreach (ElementId elementId in value)
-        {
             writer.WriteStringValue(elementId.ToString());
-        }
         writer.WriteEndArray();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class InteractionTypeConverter() : EnumConverter<EInteractionType>(Values)
@@ -38,6 +37,6 @@ public sealed class InteractionTypeConverter() : EnumConverter<EInteractionType>
         { EInteractionType.UnlockTaxiStand, "UnlockTaxiStand" },
         { EInteractionType.Instruction, "Instruction" },
         { EInteractionType.AcceptQuest, "AcceptQuest" },
-        { EInteractionType.CompleteQuest, "CompleteQuest" },
+        { EInteractionType.CompleteQuest, "CompleteQuest" }
     };
 }

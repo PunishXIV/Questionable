@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Globalization;
-
 namespace Questionable.Model.Questing;
 
 public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
 {
-    protected ElementId(ushort value)
-    {
-        Value = value;
-    }
+    protected ElementId(ushort value) => Value = value;
 
     public ushort Value { get; }
 
@@ -35,32 +31,23 @@ public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
         return Equals((ElementId)obj);
     }
 
-    public override int GetHashCode()
-    {
-        return Value.GetHashCode();
-    }
+    public override int GetHashCode() => Value.GetHashCode();
 
-    public static bool operator ==(ElementId? left, ElementId? right)
-    {
-        return Equals(left, right);
-    }
+    public static bool operator ==(ElementId? left, ElementId? right) => Equals(left, right);
 
-    public static bool operator !=(ElementId? left, ElementId? right)
-    {
-        return !Equals(left, right);
-    }
+    public static bool operator !=(ElementId? left, ElementId? right) => !Equals(left, right);
 
     public static ElementId FromString(string value)
     {
         if (value.StartsWith("S"))
             return new SatisfactionSupplyNpcId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("U"))
+        if (value.StartsWith("U"))
             return new UnlockLinkId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("N"))
+        if (value.StartsWith("N"))
             return new AethernetId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("C"))
+        if (value.StartsWith("C"))
             return new AetherCurrentId(ushort.Parse(value.Substring(1), CultureInfo.InvariantCulture));
-        else if (value.StartsWith("A"))
+        if (value.StartsWith("A"))
         {
             value = value.Substring(1);
             string[] parts = value.Split('x');
@@ -70,11 +57,9 @@ public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
                     byte.Parse(parts[0], CultureInfo.InvariantCulture),
                     byte.Parse(parts[1], CultureInfo.InvariantCulture));
             }
-            else
-                return new AlliedSocietyDailyId(byte.Parse(value, CultureInfo.InvariantCulture));
+            return new AlliedSocietyDailyId(byte.Parse(value, CultureInfo.InvariantCulture));
         }
-        else
-            return new QuestId(ushort.Parse(value, CultureInfo.InvariantCulture));
+        return new QuestId(ushort.Parse(value, CultureInfo.InvariantCulture));
     }
 
     public static bool TryFromString(string value, out ElementId? elementId)
@@ -98,42 +83,27 @@ public sealed class QuestId(ushort value) : ElementId(value)
 {
     public static QuestId FromRowId(uint rowId) => new((ushort)(rowId & 0xFFFF));
 
-    public override string ToString()
-    {
-        return Value.ToString(CultureInfo.InvariantCulture);
-    }
+    public override string ToString() => Value.ToString(CultureInfo.InvariantCulture);
 }
 
 public sealed class SatisfactionSupplyNpcId(ushort value) : ElementId(value)
 {
-    public override string ToString()
-    {
-        return "S" + Value.ToString(CultureInfo.InvariantCulture);
-    }
+    public override string ToString() => "S" + Value.ToString(CultureInfo.InvariantCulture);
 }
 
 public sealed class UnlockLinkId(ushort value) : ElementId(value)
 {
-    public override string ToString()
-    {
-        return "U" + Value.ToString(CultureInfo.InvariantCulture);
-    }
+    public override string ToString() => "U" + Value.ToString(CultureInfo.InvariantCulture);
 }
 
 public sealed class AethernetId(ushort value) : ElementId(value)
 {
-    public override string ToString()
-    {
-        return "N" + Value.ToString(CultureInfo.InvariantCulture);
-    }
+    public override string ToString() => "N" + Value.ToString(CultureInfo.InvariantCulture);
 }
 
 public sealed class AetherCurrentId(ushort value) : ElementId(value)
 {
-    public override string ToString()
-    {
-        return "C" + Value.ToString(CultureInfo.InvariantCulture);
-    }
+    public override string ToString() => "C" + Value.ToString(CultureInfo.InvariantCulture);
 }
 
 public sealed class AlliedSocietyDailyId(byte alliedSociety, byte rank = 0) : ElementId((ushort)(alliedSociety * 10 + rank))
@@ -141,8 +111,5 @@ public sealed class AlliedSocietyDailyId(byte alliedSociety, byte rank = 0) : El
     public byte AlliedSociety { get; } = alliedSociety;
     public byte Rank { get; } = rank;
 
-    public override string ToString()
-    {
-        return "A" + AlliedSociety + "x" + Rank;
-    }
+    public override string ToString() => "A" + AlliedSociety + "x" + Rank;
 }

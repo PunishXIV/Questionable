@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(ActionConverter))]
@@ -88,35 +87,32 @@ public enum EAction
     FieldMastery3 = 294,
 
     FSHCast = 289,
-    FSHQuit = 299,
+    FSHQuit = 299
 }
 
 public static class EActionExtensions
 {
-    public static bool RequiresMount(this EAction action)
-    {
-        return action
-            is EAction.FieryBreath
-            or EAction.BuffetSanuwa
-            or EAction.BuffetGriffin
-            or EAction.Trample
-            or EAction.Fumigate
-            or EAction.Roar
-            or EAction.Seed
-            or EAction.Inhale
-            or EAction.SiphonSnout
-            or EAction.PeculiarLight
-            or EAction.Cannonfire
-            or EAction.RedGulal
-            or EAction.YellowGulal
-            or EAction.BlueGulal
-            or EAction.ElectrixFlux
-            or EAction.HopStep
-            or EAction.BosomBrook
-            or EAction.Wasshoi
-            or EAction.ShroudedLuminescence
-            or EAction.BigSneeze
-            or EAction.TrickstersTreat
-            or EAction.TreatersTrick;
-    }
+    public static bool RequiresMount(this EAction action) => action
+        is EAction.FieryBreath
+        or EAction.BuffetSanuwa
+        or EAction.BuffetGriffin
+        or EAction.Trample
+        or EAction.Fumigate
+        or EAction.Roar
+        or EAction.Seed
+        or EAction.Inhale
+        or EAction.SiphonSnout
+        or EAction.PeculiarLight
+        or EAction.Cannonfire
+        or EAction.RedGulal
+        or EAction.YellowGulal
+        or EAction.BlueGulal
+        or EAction.ElectrixFlux
+        or EAction.HopStep
+        or EAction.BosomBrook
+        or EAction.Wasshoi
+        or EAction.ShroudedLuminescence
+        or EAction.BigSneeze
+        or EAction.TrickstersTreat
+        or EAction.TreatersTrick;
 }

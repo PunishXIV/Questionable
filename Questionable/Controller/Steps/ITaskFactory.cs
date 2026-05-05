@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps;
 
 internal interface ITaskFactory

@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 public sealed class DialogueChoice
@@ -20,12 +19,12 @@ public sealed class DialogueChoice
     public bool AnswerIsRegularExpression { get; set; }
 
     /// <summary>
-    /// If set, only applies when focusing the given target id.
+    ///     If set, only applies when focusing the given target id.
     /// </summary>
     public uint? DataId { get; set; }
 
     /// <summary>
-    /// Used for 'In from the Cold'.
+    ///     Used for 'In from the Cold'.
     /// </summary>
     public string? SpecialCondition { get; set; }
 }

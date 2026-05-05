@@ -3,7 +3,6 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class StatusOff
@@ -27,7 +26,8 @@ internal static class StatusOff
         public override string ToString() => $"StatusOff({Status})";
     }
 
-    internal sealed class DoStatusOff(
+    internal sealed class DoStatusOff
+    (
         GameFunctions gameFunctions)
         : AbstractDelayedTaskExecutor<Task>
     {
@@ -39,10 +39,7 @@ internal static class StatusOff
             return false;
         }
 
-        public override ETaskResult Update()
-        {
-            return gameFunctions.HasStatus(Task.Status) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
-        }
+        public override ETaskResult Update() => gameFunctions.HasStatus(Task.Status) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
 
         public override bool ShouldInterruptOnDamage() => false;
     }

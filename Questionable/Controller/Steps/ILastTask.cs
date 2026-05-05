@@ -1,5 +1,4 @@
 ﻿using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps;
 
 internal interface ILastTask : ITask

@@ -13,7 +13,6 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
@@ -41,8 +40,12 @@ internal static class AetheryteShortcut
         }
     }
 
-    /// <param name="ExpectedTerritoryId">If using an aethernet shortcut after, the aetheryte's territory-id and the step's territory-id can differ, we always use the aetheryte's territory-id.</param>
-    internal sealed record Task(
+    /// <param name="ExpectedTerritoryId">
+    ///     If using an aethernet shortcut after, the aetheryte's territory-id and the step's
+    ///     territory-id can differ, we always use the aetheryte's territory-id.
+    /// </param>
+    internal sealed record Task
+    (
         QuestStep? Step,
         ElementId? ElementId,
         EAetheryteLocation TargetAetheryte,
@@ -51,7 +54,8 @@ internal static class AetheryteShortcut
         public override string ToString() => $"UseAetheryte({TargetAetheryte})";
     }
 
-    internal sealed class UseAetheryteShortcut(
+    internal sealed class UseAetheryteShortcut
+    (
         ILogger<UseAetheryteShortcut> logger,
         AetheryteFunctions aetheryteFunctions,
         QuestFunctions questFunctions,
@@ -62,8 +66,8 @@ internal static class AetheryteShortcut
         AetheryteData aetheryteData,
         ExtraConditionUtils extraConditionUtils) : TaskExecutor<Task>
     {
-        private bool _teleported;
         private DateTime _continueAt;
+        private bool _teleported;
 
         protected override bool Start() => !ShouldSkipTeleport();
 
@@ -86,10 +90,10 @@ internal static class AetheryteShortcut
 
         private bool ShouldSkipTeleport()
         {
-            var territoryType = clientState.TerritoryType;
+            uint territoryType = clientState.TerritoryType;
             if (Task.Step != null)
             {
-                var skipConditions = Task.Step.SkipConditions?.AetheryteShortcutIf ?? new();
+                SkipAetheryteCondition skipConditions = Task.Step.SkipConditions?.AetheryteShortcutIf ?? new();
                 if (skipConditions is { Never: false })
                 {
                     if (skipConditions.InTerritory.Contains(territoryType))
@@ -189,9 +193,11 @@ internal static class AetheryteShortcut
                                 logger.LogInformation("Skipping aetheryte teleport, we're already there");
                                 return true;
                             }
+
                             logger.LogInformation("No step position, teleporting to aetheryte");
                             return false;
                         }
+
                         float distance_target = (pos - Task.Step.Position.Value).Length();
                         float distance_aetheryte_to_target = aetheryteData.CalculateDistance(Task.Step.Position.Value, territoryType, Task.TargetAetheryte);
                         if (distance_target < Task.Step.CalculateActualStopDistance())
@@ -207,6 +213,7 @@ internal static class AetheryteShortcut
                             distance_aethernet_from = aetheryteData.CalculateDistance(pos, territoryType, Task.Step.AethernetShortcut.From);
                             distance_aethernet_to = aetheryteData.CalculateDistance(Task.Step.Position.Value, territoryType, Task.Step.AethernetShortcut.To);
                         }
+
                         // if aetheryte route is further from the destination than just walking there, skip it
                         logger.LogDebug($"target direct: {distance_target}. target if tp: {30 + distance_aetheryte_to_target}" +
                                         (Task.Step.AethernetShortcut != null ? $", target if aethernet: {distance_aethernet_from + distance_aethernet_to + 30}" : ""));
@@ -269,7 +276,8 @@ internal static class AetheryteShortcut
         public override string ToString() => $"MoveAway({TargetAetheryte})";
     }
 
-    internal sealed class MoveAwayFromAetheryteExecutor(
+    internal sealed class MoveAwayFromAetheryteExecutor
+    (
         MoveExecutor moveExecutor,
         AetheryteData aetheryteData,
         IClientState clientState,
@@ -299,8 +307,8 @@ internal static class AetheryteShortcut
 
             Vector3 closestPoint = AetherytesToMoveFrom[Task.TargetAetheryte]
                 .MinBy(x => Vector3.Distance(x, playerPosition));
-            MoveTask task = new MoveTask(aetheryteData.TerritoryIds[Task.TargetAetheryte],
-                closestPoint, Mount: false, StopDistance: 0.25f, DisableNavmesh: true,
+            MoveTask task = new(aetheryteData.TerritoryIds[Task.TargetAetheryte],
+                closestPoint, false, 0.25f, DisableNavmesh: true,
                 InteractionType: EInteractionType.None, RestartNavigation: false);
             return moveExecutor.Start(task);
         }

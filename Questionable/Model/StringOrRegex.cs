@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Questionable.Functions;
-
 namespace Questionable.Model;
 
 internal sealed class StringOrRegex

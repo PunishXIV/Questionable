@@ -3,20 +3,20 @@ using System.Diagnostics.CodeAnalysis;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameData;
-using LLib.GameUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-
+using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class DoGatherCollectable
 {
-    internal sealed record Task(
+    internal sealed record Task
+    (
         GatheringController.GatheringRequest Request,
         GatheringNode Node,
         bool RevisitRequired) : ITask, IRevisitAware
@@ -25,16 +25,15 @@ internal static class DoGatherCollectable
 
         public void OnRevisit() => RevisitTriggered = true;
 
-        public override string ToString() =>
-            $"DoGatherCollectable({SeIconChar.Collectible.ToIconString()}/{Request.Collectability}){(RevisitRequired ? " if revist" : "")}";
+        public override string ToString() => $"DoGatherCollectable({SeIconChar.Collectible.ToIconString()}/{Request.Collectability}){(RevisitRequired ? " if revist" : "")}";
     }
 
-    internal sealed class GatherCollectableExecutor(
+    internal sealed class GatherCollectableExecutor
+    (
         GatheringController gatheringController,
         GameFunctions gameFunctions,
-
         IObjectTable objectTable,
-        IGameGui gameGui,
+        IGameGuiAdapter gameGui,
         ILogger<GatherCollectableExecutor> logger) : TaskExecutor<Task>
     {
         private Queue<EAction>? _actionQueue;
@@ -72,7 +71,7 @@ internal static class DoGatherCollectable
                 }
             }
 
-            if (gameFunctions.GetFreeInventorySlots() == 0)
+            if (GameFunctions.GetFreeInventorySlots() == 0)
                 throw new TaskException("Inventory full");
 
             NodeCondition? nodeCondition = GetNodeCondition();
@@ -98,7 +97,7 @@ internal static class DoGatherCollectable
                         EAction.ScrutinyMiner or EAction.ScrutinyBotanist => true,
                         EAction.ScourMiner or EAction.ScourBotanist or EAction.MeticulousMiner
                             or EAction.MeticulousBotanist => false,
-                        _ => null
+                        var _ => null
                     };
                     logger.LogInformation("Used action {Action} on node", nextAction);
                     _actionQueue.Dequeue();
@@ -112,13 +111,13 @@ internal static class DoGatherCollectable
                 _actionQueue = GetNextActions(nodeCondition);
                 if (_actionQueue != null)
                 {
-                    foreach (var action in _actionQueue)
+                    foreach (EAction action in _actionQueue)
                         logger.LogInformation("Next Actions {Action}", action);
                     return ETaskResult.StillRunning;
                 }
             }
 
-            _actionQueue = new Queue<EAction>();
+            _actionQueue = new();
             _actionQueue.Enqueue(PickAction(EAction.CollectMiner, EAction.CollectBotanist));
             return ETaskResult.StillRunning;
         }
@@ -127,15 +126,15 @@ internal static class DoGatherCollectable
         {
             if (gameGui.TryGetAddonByName("GatheringMasterpiece", out AtkUnitBase* atkUnitBase))
             {
-                var atkValues = atkUnitBase->AtkValues;
-                return new NodeCondition(
-                    CurrentCollectability: atkValues[13].UInt,
-                    MaxCollectability: atkValues[14].UInt,
-                    CurrentIntegrity: atkValues[62].UInt,
-                    MaxIntegrity: atkValues[63].UInt,
-                    ScrutinyActive: atkValues[54].Bool,
-                    CollectabilityFromScour: atkValues[48].UInt,
-                    CollectabilityFromMeticulous: atkValues[51].UInt
+                AtkValue* atkValues = atkUnitBase->AtkValues;
+                return new(
+                    atkValues[13].UInt,
+                    atkValues[14].UInt,
+                    atkValues[62].UInt,
+                    atkValues[63].UInt,
+                    atkValues[54].Bool,
+                    atkValues[48].UInt,
+                    atkValues[51].UInt
                 );
             }
 
@@ -200,7 +199,7 @@ internal static class DoGatherCollectable
 
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
-            if ((EClassJob?)PlayerState.Instance()->CurrentClassJobId == EClassJob.Miner)
+            if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
                 return minerAction;
             else
                 return botanistAction;
@@ -210,7 +209,8 @@ internal static class DoGatherCollectable
     }
 
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Local")]
-    private sealed record NodeCondition(
+    private sealed record NodeCondition
+    (
         uint CurrentCollectability,
         uint MaxCollectability,
         uint CurrentIntegrity,

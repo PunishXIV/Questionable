@@ -5,19 +5,19 @@ using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
-
 namespace Questionable.Controller.CombatModules;
 
-internal sealed class RotationSolverRebornModule(
+internal sealed class RotationSolverRebornModule
+(
     ILogger<RotationSolverRebornModule> logger,
     IDalamudPluginInterface pluginInterface,
     Configuration configuration) : ICombatModule, IDisposable
 {
-    private readonly ILogger<RotationSolverRebornModule> _logger = logger;
-    private readonly Configuration _configuration = configuration;
-    private readonly ICallGateSubscriber<string, object> _test = pluginInterface.GetIpcSubscriber<string, object>("RotationSolverReborn.Test");
     private readonly ICallGateSubscriber<StateCommandType, object> _changeOperationMode =
-            pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
+        pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
+    private readonly Configuration _configuration = configuration;
+    private readonly ILogger<RotationSolverRebornModule> _logger = logger;
+    private readonly ICallGateSubscriber<string, object> _test = pluginInterface.GetIpcSubscriber<string, object>("RotationSolverReborn.Test");
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
@@ -75,11 +75,11 @@ internal sealed class RotationSolverRebornModule(
     public void Dispose() => Stop();
 
     [PublicAPI]
-    enum StateCommandType : byte
+    private enum StateCommandType : byte
     {
         Off,
         Auto,
         TargetOnly,
-        Manual,
+        Manual
     }
 }

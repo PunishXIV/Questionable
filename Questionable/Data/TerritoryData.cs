@@ -9,17 +9,16 @@ using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
-
 namespace Questionable.Data;
 
 internal sealed class TerritoryData
 {
-    private readonly ImmutableDictionary<uint, string> _territoryNames;
-    private readonly ImmutableHashSet<uint> _territoriesWithMount;
+    private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
     private readonly ImmutableDictionary<uint, uint> _dutyTerritories;
     private readonly ImmutableDictionary<uint, string> _instanceNames;
-    private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
     private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattlesToContentFinderCondition;
+    private readonly ImmutableHashSet<uint> _territoriesWithMount;
+    private readonly ImmutableDictionary<uint, string> _territoryNames;
 
     public TerritoryData(IDataManager dataManager)
     {
@@ -29,7 +28,7 @@ internal sealed class TerritoryData
                 new
                 {
                     x.RowId,
-                    Name = x.PlaceName.ValueNullable?.Name.ToString() ?? x.PlaceNameZone.ValueNullable?.Name.ToString(),
+                    Name = x.PlaceName.ValueNullable?.Name.ToString() ?? x.PlaceNameZone.ValueNullable?.Name.ToString()
                 })
             .Where(x => !string.IsNullOrEmpty(x.Name))
             .ToImmutableDictionary(x => x.RowId, x => x.Name!);
@@ -75,17 +74,14 @@ internal sealed class TerritoryData
 
     public bool IsDutyInstance(uint territoryId) => _dutyTerritories.ContainsKey(territoryId);
 
-    public bool IsQuestBattleInstance(uint territoryId) =>
-        _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
+    public bool IsQuestBattleInstance(uint territoryId) => _dutyTerritories.TryGetValue(territoryId, out uint contentType) && contentType == 7;
 
     public string? GetInstanceName(ushort instanceId) => _instanceNames.GetValueOrDefault(instanceId);
 
-    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId) =>
-        _contentFinderConditions.GetValueOrDefault(cfcId);
+    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId) => _contentFinderConditions.GetValueOrDefault(cfcId);
 
     public bool TryGetContentFinderCondition(uint cfcId,
-        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData) =>
-        _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
+        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData) => _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
 
     public bool TryGetContentFinderConditionForSoloInstance(ElementId questId, byte index,
         [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)
@@ -99,10 +95,7 @@ internal sealed class TerritoryData
         }
     }
 
-    public IEnumerable<(ElementId QuestId, byte Index, ContentFinderConditionData Data)> GetAllQuestsWithQuestBattles()
-    {
-        return _questBattlesToContentFinderCondition.Select(x => (x.Key.QuestId, x.Key.Index, _contentFinderConditions[x.Value]));
-    }
+    public IEnumerable<(ElementId QuestId, byte Index, ContentFinderConditionData Data)> GetAllQuestsWithQuestBattles() => _questBattlesToContentFinderCondition.Select(x => (x.Key.QuestId, x.Key.Index, _contentFinderConditions[x.Value]));
 
     private static string FixName(string name, ClientLanguage language)
     {
@@ -133,7 +126,8 @@ internal sealed class TerritoryData
             return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).SoloDuty.RowId;
     }
 
-    public sealed record ContentFinderConditionData(
+    public sealed record ContentFinderConditionData
+    (
         uint ContentFinderConditionId,
         string Name,
         uint TerritoryId,

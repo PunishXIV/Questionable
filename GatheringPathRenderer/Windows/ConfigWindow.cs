@@ -1,13 +1,12 @@
 ﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
-
 namespace GatheringPathRenderer.Windows;
 
 internal sealed class ConfigWindow : Window
 {
-    private readonly IDalamudPluginInterface _pluginInterface;
     private readonly Configuration _configuration;
+    private readonly IDalamudPluginInterface _pluginInterface;
 
     public ConfigWindow(IDalamudPluginInterface pluginInterface, Configuration configuration)
         : base("Gathering Path Config", ImGuiWindowFlags.AlwaysAutoResize)

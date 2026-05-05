@@ -11,28 +11,22 @@ namespace Questionable.QuestPathGenerator.RoslynElements;
 
 internal static class QuestWorkValueExtensions
 {
-    public static ExpressionSyntax ToExpressionSyntax(this QuestWorkValue qwv)
-    {
-        return ObjectCreationExpression(
-                IdentifierName(nameof(QuestWorkValue)))
-            .WithArgumentList(
-                ArgumentList(
-                    SeparatedList<ArgumentSyntax>(
-                        new SyntaxNodeOrToken[]
-                        {
-                            Argument(LiteralValue(qwv.High)),
-                            Token(SyntaxKind.CommaToken),
-                            Argument(LiteralValue(qwv.Low)),
-                            Token(SyntaxKind.CommaToken),
-                            Argument(LiteralValue(qwv.Mode))
-                        })));
-    }
+    public static ExpressionSyntax ToExpressionSyntax(this QuestWorkValue qwv) => ObjectCreationExpression(
+            IdentifierName(nameof(QuestWorkValue)))
+        .WithArgumentList(
+            ArgumentList(
+                SeparatedList<ArgumentSyntax>(
+                    new SyntaxNodeOrToken[]
+                    {
+                        Argument(LiteralValue(qwv.High)),
+                        Token(SyntaxKind.CommaToken),
+                        Argument(LiteralValue(qwv.Low)),
+                        Token(SyntaxKind.CommaToken),
+                        Argument(LiteralValue(qwv.Mode))
+                    })));
 
-    public static ExpressionSyntax ToExpressionSyntax(this List<QuestWorkValue> list)
-    {
-        return CollectionExpression(
-            SeparatedList<CollectionElementSyntax>(
-                SyntaxNodeList(list.Select(x => ExpressionElement(
-                    LiteralValue(x)).AsSyntaxNodeOrToken()).ToArray())));
-    }
+    public static ExpressionSyntax ToExpressionSyntax(this List<QuestWorkValue> list) => CollectionExpression(
+        SeparatedList<CollectionElementSyntax>(
+            SyntaxNodeList(list.Select(x => ExpressionElement(
+                LiteralValue(x)).AsSyntaxNodeOrToken()).ToArray())));
 }

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class CreateGearset
@@ -26,7 +25,8 @@ internal static class CreateGearset
         public override string ToString() => "CreateGearset";
     }
 
-    internal sealed class CreateGearsetExecutor(
+    internal sealed class CreateGearsetExecutor
+    (
         IClientState clientState,
         ICondition condition,
         ILogger<CreateGearsetExecutor> logger) : AbstractDelayedTaskExecutor<Task>
@@ -41,7 +41,7 @@ internal static class CreateGearset
             }
 
             // Safety check: ensure gearset module is available
-            var gearsetModule = RaptureGearsetModule.Instance();
+            RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule == null)
             {
                 logger.LogWarning("Cannot create gearset: RaptureGearsetModule is not available");
@@ -60,7 +60,7 @@ internal static class CreateGearset
             // - Use the player's current job for the gearset
             // - Name it based on the current job (e.g., "Culinarian", "Paladin")
             // - Find the next available slot (0-99)
-            var gearsetId = gearsetModule->CreateGearset();
+            int gearsetId = gearsetModule->CreateGearset();
 
             if (gearsetId < 0)
             {

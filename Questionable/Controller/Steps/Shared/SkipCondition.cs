@@ -4,17 +4,16 @@ using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using LLib.GameData;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SkipCondition
@@ -23,7 +22,7 @@ internal static class SkipCondition
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            var skipConditions = step.SkipConditions?.StepIf;
+            SkipStepConditions? skipConditions = step.SkipConditions?.StepIf;
             if (skipConditions is { Never: true })
                 return null;
 
@@ -36,13 +35,16 @@ internal static class SkipCondition
                 step.RequiredCurrentJob.Count == 0 &&
                 step.RequiredQuestAcceptedJob.Count == 0 &&
                 !(step.InteractionType == EInteractionType.AttuneAetherCurrent && configuration.Advanced.SkipAetherCurrents))
+            {
                 return null;
+            }
 
             return new SkipTask(step, skipConditions ?? new(), quest.Id);
         }
     }
 
-    internal sealed record SkipTask(
+    internal sealed record SkipTask
+    (
         QuestStep Step,
         SkipStepConditions SkipConditions,
         ElementId ElementId) : ITask
@@ -50,7 +52,8 @@ internal static class SkipCondition
         public override string ToString() => "CheckSkip";
     }
 
-    internal sealed class CheckSkip(
+    internal sealed class CheckSkip
+    (
         ILogger<CheckSkip> logger,
         Configuration configuration,
         AetheryteFunctions aetheryteFunctions,
@@ -65,9 +68,9 @@ internal static class SkipCondition
     {
         protected override bool Start()
         {
-            var skipConditions = Task.SkipConditions;
-            var step = Task.Step;
-            var elementId = Task.ElementId;
+            SkipStepConditions skipConditions = Task.SkipConditions;
+            QuestStep step = Task.Step;
+            ElementId elementId = Task.ElementId;
 
             logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
 
@@ -261,13 +264,11 @@ internal static class SkipCondition
         {
             // Skip step if specified item is not in inventory (checks both NQ and HQ)
             if (step is { ItemId: null })
-            {
                 return false;
-            }
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false)
-                          + inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+            int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
+                            + inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
 
             if (itemCount == 0 && skipConditions.Item is { NotInInventory: true })
             {
@@ -379,12 +380,12 @@ internal static class SkipCondition
 
                 if (step is { RequiredQuestAcceptedJob.Count: > 0 })
                 {
-                    List<EClassJob> expectedJobs = step.RequiredQuestAcceptedJob
+                    List<Job> expectedJobs = step.RequiredQuestAcceptedJob
                         .SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
-                    EClassJob questJob = questWork.ClassJob;
+                    Job questJob = questWork.ClassJob;
                     logger.LogInformation("Checking quest job {QuestJob} against {ExpectedJobs}", questJob,
                         string.Join(",", expectedJobs));
-                    if (questJob != EClassJob.Adventurer && !expectedJobs.Contains(questJob))
+                    if (questJob != Job.ADV && !expectedJobs.Contains(questJob))
                     {
                         logger.LogInformation("Skipping step, as quest was accepted on a different job");
                         return true;
@@ -399,9 +400,9 @@ internal static class SkipCondition
         {
             if (step is { RequiredCurrentJob.Count: > 0 })
             {
-                List<EClassJob> expectedJobs =
+                List<Job> expectedJobs =
                     step.RequiredCurrentJob.SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
-                EClassJob currentJob = (EClassJob)PlayerState.Instance()->CurrentClassJobId;
+                Job currentJob = (Job)PlayerState.Instance()->CurrentClassJobId;
                 logger.LogInformation("Checking current job {CurrentJob} against {ExpectedJobs}", currentJob,
                     string.Join(",", expectedJobs));
                 if (!expectedJobs.Contains(currentJob))

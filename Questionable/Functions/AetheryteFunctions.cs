@@ -10,15 +10,18 @@ using Action = Lumina.Excel.Sheets.Action;
 
 namespace Questionable.Functions;
 
-internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider, ILogger<AetheryteFunctions> logger,
+internal sealed unsafe class AetheryteFunctions
+(
+    IServiceProvider serviceProvider,
+    ILogger<AetheryteFunctions> logger,
     IDataManager dataManager)
 {
     private const uint TeleportAction = 5;
     private const uint ReturnAction = 6;
+    private readonly IDataManager _dataManager = dataManager;
+    private readonly ILogger<AetheryteFunctions> _logger = logger;
 
     private readonly IServiceProvider _serviceProvider = serviceProvider;
-    private readonly ILogger<AetheryteFunctions> _logger = logger;
-    private readonly IDataManager _dataManager = dataManager;
 
     public DateTime ReturnRequestedAt { get; set; } = DateTime.MinValue;
 
@@ -26,7 +29,7 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
     {
         subIndex = 0;
 
-        var uiState = UIState.Instance();
+        UIState* uiState = UIState.Instance();
         return uiState != null && uiState->IsAetheryteUnlocked(aetheryteId);
     }
 
@@ -34,14 +37,16 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
     {
         if (aetheryteLocation.IsFirmamentAetheryte())
             return _serviceProvider.GetRequiredService<QuestFunctions>().IsQuestComplete(new QuestId(3672));
-        return IsAetheryteUnlocked((uint)aetheryteLocation, out _);
+        return IsAetheryteUnlocked((uint)aetheryteLocation, out byte _);
     }
 
     public bool CanTeleport(EAetheryteLocation aetheryteLocation)
     {
         if ((ushort)aetheryteLocation == PlayerState.Instance()->HomeAetheryteId &&
             ActionManager.Instance()->GetActionStatus(ActionType.Action, ReturnAction) == 0)
+        {
             return true;
+        }
 
         return ActionManager.Instance()->GetActionStatus(ActionType.Action, TeleportAction) == 0;
     }
@@ -58,7 +63,7 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
     public bool TeleportAetheryte(uint aetheryteId)
     {
         _logger.LogDebug("Attempting to teleport to aetheryte {AetheryteId}", aetheryteId);
-        if (IsAetheryteUnlocked(aetheryteId, out var subIndex))
+        if (IsAetheryteUnlocked(aetheryteId, out byte subIndex))
         {
             if (aetheryteId == PlayerState.Instance()->HomeAetheryteId &&
                 ActionManager.Instance()->GetActionStatus(ActionType.Action, ReturnAction) == 0)
@@ -82,12 +87,11 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
         return false;
     }
 
-    public bool TeleportAetheryte(EAetheryteLocation aetheryteLocation)
-        => TeleportAetheryte((uint)aetheryteLocation);
+    public bool TeleportAetheryte(EAetheryteLocation aetheryteLocation) => TeleportAetheryte((uint)aetheryteLocation);
 
     public bool IsFreeAetheryte(EAetheryteLocation aetheryteLocation)
     {
-        var playerState = PlayerState.Instance();
+        PlayerState* playerState = PlayerState.Instance();
         return playerState != null &&
                (playerState->FreeAetheryteId == (uint)aetheryteLocation ||
                 playerState->FreeAetherytePSPlus == (uint)aetheryteLocation);
@@ -95,7 +99,7 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
 
     public AetheryteRegistrationResult CanRegisterFreeOrFavoriteAetheryte(EAetheryteLocation aetheryteLocation)
     {
-        var playerState = PlayerState.Instance();
+        PlayerState* playerState = PlayerState.Instance();
         if (playerState == null)
             return AetheryteRegistrationResult.NotPossible;
 
@@ -119,7 +123,9 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
         // probably can't register a ps plus aetheryte on pc, so we don't check for that
         if (playerState->IsPlayerStateFlagSet(PlayerStateFlag.IsLoginSecurityToken) &&
             playerState->FreeAetheryteId == 0)
+        {
             return AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable;
+        }
 
         return freeFavoredSlotsAvailable
             ? AetheryteRegistrationResult.FavoredDestinationAvailable
@@ -128,12 +134,12 @@ internal sealed unsafe class AetheryteFunctions(IServiceProvider serviceProvider
 }
 
 /// <remarks>
-/// The whole free/favored aetheryte situation is primarily relevant for early ARR anyhow, since teleporting to
-/// each class quest the moment it becomes available might end up with the character running out of gil.
+///     The whole free/favored aetheryte situation is primarily relevant for early ARR anyhow, since teleporting to
+///     each class quest the moment it becomes available might end up with the character running out of gil.
 /// </remarks>
 public enum AetheryteRegistrationResult
 {
     NotPossible,
     SecurityTokenFreeDestinationAvailable,
-    FavoredDestinationAvailable,
+    FavoredDestinationAvailable
 }

@@ -4,7 +4,6 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Emote
@@ -18,21 +17,21 @@ internal static class Emote
             {
                 if (step.Emote == null)
                     return [];
+                else if (step.InteractionType != EInteractionType.Emote)
+                    return [];
             }
-            else if (step.InteractionType != EInteractionType.Emote)
-                return [];
 
             ArgumentNullException.ThrowIfNull(step.Emote);
 
-            var unmount = new Mount.UnmountTask();
+            Mount.UnmountTask unmount = new();
             if (step.DataId != null)
             {
-                var task = new UseOnObject(step.Emote.Value, step.DataId.Value);
+                UseOnObject task = new(step.Emote.Value, step.DataId.Value);
                 return [unmount, task];
             }
             else
             {
-                var task = new UseOnSelf(step.Emote.Value);
+                UseOnSelf task = new(step.Emote.Value);
                 return [unmount, task];
             }
         }

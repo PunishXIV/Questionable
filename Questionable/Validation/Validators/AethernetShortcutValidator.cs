@@ -4,7 +4,6 @@ using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-
 namespace Questionable.Validation.Validators;
 
 internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : IQuestValidator
@@ -28,7 +27,7 @@ internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : 
         ushort toGroup = _aetheryteData.AethernetGroups.GetValueOrDefault(aethernetShortcut.To);
         if (fromGroup != toGroup)
         {
-            return new ValidationIssue
+            return new()
             {
                 ElementId = elementId,
                 Sequence = (byte)sequenceNo,

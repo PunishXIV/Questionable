@@ -3,22 +3,22 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using LLib.GameData;
-using LLib.GameUI;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-
+using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class DoGather
 {
-    internal sealed record Task(
+    internal sealed record Task
+    (
         GatheringController.GatheringRequest Request,
         GatheringNode Node,
         bool RevisitRequired) : ITask, IRevisitAware
@@ -30,17 +30,18 @@ internal static class DoGather
         public override string ToString() => $"DoGather{(RevisitRequired ? " if revisit" : "")}";
     }
 
-    internal sealed class GatherExecutor(
+    internal sealed class GatherExecutor
+    (
         GatheringController gatheringController,
         GameFunctions gameFunctions,
-        IGameGui gameGui,
+        IGameGuiAdapter gameGui,
         ICondition condition,
         ILogger<GatherExecutor> logger) : TaskExecutor<Task>
     {
-        private bool _wasGathering;
-        private bool _usedLuck;
-        private SlotInfo? _slotToGather;
         private Queue<EAction>? _actionQueue;
+        private SlotInfo? _slotToGather;
+        private bool _usedLuck;
+        private bool _wasGathering;
 
         protected override bool Start() => true;
 
@@ -58,7 +59,7 @@ internal static class DoGather
                 return ETaskResult.TaskComplete;
             }
 
-            if (gameFunctions.GetFreeInventorySlots() == 0)
+            if (GameFunctions.GetFreeInventorySlots() == 0)
                 throw new TaskException("Inventory full");
 
             if (condition[ConditionFlag.Gathering])
@@ -71,21 +72,19 @@ internal static class DoGather
                 if (gameGui.TryGetAddonByName("Gathering", out AddonGathering* addonGathering))
                 {
                     if (gatheringController.HasRequestedItems())
-                    {
                         addonGathering->FireCallbackInt(-1);
-                    }
                     else
                     {
-                        var slots = ReadSlots(addonGathering);
+                        List<SlotInfo> slots = ReadSlots(addonGathering);
                         if (Task.Request.Collectability > 0)
                         {
-                            var slot = slots.Single(x => x.ItemId == Task.Request.ItemId);
+                            SlotInfo slot = slots.Single(x => x.ItemId == Task.Request.ItemId);
                             logger.LogDebug($"Collectible=true, clicking {slot.Index} {slot.ItemId}");
                             addonGathering->FireCallbackInt(slot.Index);
                         }
                         else
                         {
-                            NodeCondition nodeCondition = new NodeCondition(
+                            NodeCondition nodeCondition = new(
                                 addonGathering->AtkValues[109].UInt,
                                 addonGathering->AtkValues[110].UInt);
                             logger.LogDebug($"NodeCondition: {nodeCondition.CurrentIntegrity}/{nodeCondition.MaxIntegrity}");
@@ -104,13 +103,13 @@ internal static class DoGather
                             _actionQueue = GetNextActions(nodeCondition, slots);
                             if (_actionQueue == null)
                             {
-                                logger.LogDebug($"No actions returned by GetNextActions");
+                                logger.LogDebug("No actions returned by GetNextActions");
                                 addonGathering->FireCallbackInt(-1);
                                 return ETaskResult.TaskComplete;
                             }
                             else if (_actionQueue.Count == 0)
                             {
-                                var slot = _slotToGather ?? slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId) ?? slots.MinBy(x => x.ItemId);
+                                SlotInfo? slot = _slotToGather ?? slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId) ?? slots.MinBy(x => x.ItemId);
                                 if (slot?.ItemId is >= 2 and <= 19)
                                 {
                                     InventoryManager* inventoryManager = InventoryManager.Instance();
@@ -119,13 +118,9 @@ internal static class DoGather
                                 }
 
                                 if (slot != null)
-                                {
                                     addonGathering->FireCallbackInt(slot.Index);
-                                }
                                 else
-                                {
                                     addonGathering->FireCallbackInt(-1);
-                                }
                             }
                         }
                     }
@@ -162,7 +157,7 @@ internal static class DoGather
                 if (!atkQuantity->IsVisible() || !int.TryParse(atkQuantity->NodeText.ToString(), out int quantity))
                     quantity = 1;
 
-                var slot = new SlotInfo(i, itemId, gatheringChance, boonChance, quantity);
+                SlotInfo slot = new(i, itemId, gatheringChance, boonChance, quantity);
                 slots.Add(slot);
             }
 
@@ -182,101 +177,101 @@ internal static class DoGather
 
             //if (!gameFunctions.HasStatus(EStatus.GatheringRateUp))
             //{
-                // do we have an alternative item? only happens for 'evaluation' leve quests
-                if (Task.Request.AlternativeItemId != 0)
+            // do we have an alternative item? only happens for 'evaluation' leve quests
+            if (Task.Request.AlternativeItemId != 0)
+            {
+                SlotInfo alternativeSlot = slots.Single(x => x.ItemId == Task.Request.AlternativeItemId);
+
+                if (alternativeSlot.GatheringChance == 100)
                 {
-                    var alternativeSlot = slots.Single(x => x.ItemId == Task.Request.AlternativeItemId);
-
-                    if (alternativeSlot.GatheringChance == 100)
-                    {
-                        _slotToGather = alternativeSlot;
-                        return actions;
-                    }
-
-                    if (alternativeSlot.GatheringChance > 0)
-                    {
-                        if (alternativeSlot.GatheringChance >= 95 &&
-                            CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
-                        {
-                            _slotToGather = alternativeSlot;
-                            logger.LogDebug("GatheringChance != 100, >= 95, using SharpVision1/FieldMastery1");
-                            actions.Enqueue(PickAction(EAction.SharpVision1, EAction.FieldMastery1));
-                            return actions;
-                        }
-
-                        if (alternativeSlot.GatheringChance >= 85 &&
-                            CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
-                        {
-                            _slotToGather = alternativeSlot;
-                            logger.LogDebug("GatheringChance != 100, >= 85, using SharpVision2/FieldMastery2");
-                            actions.Enqueue(PickAction(EAction.SharpVision2, EAction.FieldMastery2));
-                            return actions;
-                        }
-
-                        if (alternativeSlot.GatheringChance >= 50 &&
-                            CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
-                        {
-                            _slotToGather = alternativeSlot;
-                            logger.LogDebug("GatheringChance != 100, >= 50, using SharpVision3/FieldMastery3");
-                            actions.Enqueue(PickAction(EAction.SharpVision3, EAction.FieldMastery3));
-                            return actions;
-                        }
-                    }
+                    _slotToGather = alternativeSlot;
+                    return actions;
                 }
 
-                SlotInfo? slot = slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId);
-                if (slot == null)
+                if (alternativeSlot.GatheringChance > 0)
                 {
-                    if (!_usedLuck &&
-                        nodeCondition.CurrentIntegrity == nodeCondition.MaxIntegrity &&
-                        CanUseAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer))
-                    {
-                        _usedLuck = true;
-                        logger.LogDebug("Using Luck");
-                        actions.Enqueue(PickAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer));
-                        return actions;
-                    }
-                    else if (_usedLuck)
-                    {
-                        // we still can't find the item, if this node has been hit at least once we just close it
-                        logger.LogDebug("Didn't find item after using Luck, moving on...");
-                        if (nodeCondition.CurrentIntegrity != nodeCondition.MaxIntegrity)
-                            return null;
-
-                        logger.LogDebug("Actually there's crystals, let's get those");
-                        // otherwise, there most likely is -any- other item available, probably a shard/crystal
-                        _slotToGather = slots.MinBy(x => x.ItemId);
-                        return actions;
-                    }
-                }
-
-                slot = slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId);
-                if (slot is { GatheringChance: > 0 and < 100 })
-                {
-                    if (slot.GatheringChance >= 95 &&
+                    if (alternativeSlot.GatheringChance >= 95 &&
                         CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
                     {
+                        _slotToGather = alternativeSlot;
                         logger.LogDebug("GatheringChance != 100, >= 95, using SharpVision1/FieldMastery1");
                         actions.Enqueue(PickAction(EAction.SharpVision1, EAction.FieldMastery1));
                         return actions;
                     }
 
-                    if (slot.GatheringChance >= 85 &&
+                    if (alternativeSlot.GatheringChance >= 85 &&
                         CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
                     {
-                        logger.LogDebug("GatheringChance != 100, >= 85, using SharpVision1/FieldMastery1");
+                        _slotToGather = alternativeSlot;
+                        logger.LogDebug("GatheringChance != 100, >= 85, using SharpVision2/FieldMastery2");
                         actions.Enqueue(PickAction(EAction.SharpVision2, EAction.FieldMastery2));
                         return actions;
                     }
 
-                    if (slot.GatheringChance >= 50 &&
+                    if (alternativeSlot.GatheringChance >= 50 &&
                         CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
                     {
-                        logger.LogDebug("GatheringChance != 100, >= 50, using SharpVision1/FieldMastery1");
+                        _slotToGather = alternativeSlot;
+                        logger.LogDebug("GatheringChance != 100, >= 50, using SharpVision3/FieldMastery3");
                         actions.Enqueue(PickAction(EAction.SharpVision3, EAction.FieldMastery3));
                         return actions;
                     }
                 }
+            }
+
+            SlotInfo? slot = slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId);
+            if (slot == null)
+            {
+                if (!_usedLuck &&
+                    nodeCondition.CurrentIntegrity == nodeCondition.MaxIntegrity &&
+                    CanUseAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer))
+                {
+                    _usedLuck = true;
+                    logger.LogDebug("Using Luck");
+                    actions.Enqueue(PickAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer));
+                    return actions;
+                }
+                else if (_usedLuck)
+                {
+                    // we still can't find the item, if this node has been hit at least once we just close it
+                    logger.LogDebug("Didn't find item after using Luck, moving on...");
+                    if (nodeCondition.CurrentIntegrity != nodeCondition.MaxIntegrity)
+                        return null;
+
+                    logger.LogDebug("Actually there's crystals, let's get those");
+                    // otherwise, there most likely is -any- other item available, probably a shard/crystal
+                    _slotToGather = slots.MinBy(x => x.ItemId);
+                    return actions;
+                }
+            }
+
+            slot = slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId);
+            if (slot is { GatheringChance: > 0 and < 100 })
+            {
+                if (slot.GatheringChance >= 95 &&
+                    CanUseAction(EAction.SharpVision1, EAction.FieldMastery1))
+                {
+                    logger.LogDebug("GatheringChance != 100, >= 95, using SharpVision1/FieldMastery1");
+                    actions.Enqueue(PickAction(EAction.SharpVision1, EAction.FieldMastery1));
+                    return actions;
+                }
+
+                if (slot.GatheringChance >= 85 &&
+                    CanUseAction(EAction.SharpVision2, EAction.FieldMastery2))
+                {
+                    logger.LogDebug("GatheringChance != 100, >= 85, using SharpVision1/FieldMastery1");
+                    actions.Enqueue(PickAction(EAction.SharpVision2, EAction.FieldMastery2));
+                    return actions;
+                }
+
+                if (slot.GatheringChance >= 50 &&
+                    CanUseAction(EAction.SharpVision3, EAction.FieldMastery3))
+                {
+                    logger.LogDebug("GatheringChance != 100, >= 50, using SharpVision1/FieldMastery1");
+                    actions.Enqueue(PickAction(EAction.SharpVision3, EAction.FieldMastery3));
+                    return actions;
+                }
+            }
             //}
 
             return actions;
@@ -284,7 +279,7 @@ internal static class DoGather
 
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
-            if ((EClassJob?)PlayerState.Instance()->CurrentClassJobId == EClassJob.Miner)
+            if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
                 return minerAction;
             else
                 return botanistAction;
@@ -303,7 +298,8 @@ internal static class DoGather
     private sealed record SlotInfo(int Index, uint ItemId, int GatheringChance, int BoonChance, int Quantity);
 
     [SuppressMessage("ReSharper", "NotAccessedPositionalProperty.Local")]
-    private sealed record NodeCondition(
+    private sealed record NodeCondition
+    (
         uint CurrentIntegrity,
         uint MaxIntegrity);
 }

@@ -5,12 +5,12 @@ using Questionable.Data;
 using Questionable.External;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Common;
 
 internal static class SendNotification
 {
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         AutomatonIpc automatonIpc,
         AutoDutyIpc autoDutyIpc,
         BossModIpc bossModIpc,
@@ -21,14 +21,14 @@ internal static class SendNotification
             return step.InteractionType switch
             {
                 EInteractionType.Snipe when !automatonIpc.IsAutoSnipeEnabled =>
-                    new Task(step.InteractionType, step.Comment),
+                    new(step.InteractionType, step.Comment),
                 EInteractionType.Duty when !autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) =>
-                    new Task(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
+                    new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
                         ? territoryData.GetContentFinderCondition(contentFinderConditionId)?.Name
                         : step.Comment),
                 EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions) =>
                     new Task(step.InteractionType, quest.Info.Name),
-                _ => null,
+                var _ => null
             };
         }
     }
@@ -38,8 +38,8 @@ internal static class SendNotification
         public override string ToString() => "SendNotification";
     }
 
-    internal sealed class Executor(
-        NotificationMasterIpc notificationMasterIpc,
+    internal sealed class Executor
+    (
         IChatGui chatGui,
         Configuration configuration) : TaskExecutor<Task>
     {
@@ -54,7 +54,7 @@ internal static class SendNotification
                 EInteractionType.SinglePlayerDuty => "Single player duty",
                 EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe =>
                     "Manual interaction required",
-                _ => $"{Task.InteractionType}",
+                var _ => $"{Task.InteractionType}"
             };
 
             if (!string.IsNullOrEmpty(Task.Comment))
@@ -62,7 +62,7 @@ internal static class SendNotification
 
             if (configuration.Notifications.ChatType != XivChatType.None)
             {
-                var message = configuration.Notifications.ChatType switch
+                XivChatEntry message = configuration.Notifications.ChatType switch
                 {
                     XivChatType.Say
                         or XivChatType.Shout
@@ -70,7 +70,7 @@ internal static class SendNotification
                         or XivChatType.TellIncoming
                         or XivChatType.Party
                         or XivChatType.Alliance
-                        or (>= XivChatType.Ls1 and <= XivChatType.Ls8)
+                        or >= XivChatType.Ls1 and <= XivChatType.Ls8
                         or XivChatType.FreeCompany
                         or XivChatType.NoviceNetwork
                         or XivChatType.Yell
@@ -79,28 +79,27 @@ internal static class SendNotification
                         or XivChatType.CrossLinkShell1
                         or XivChatType.NPCDialogue
                         or XivChatType.NPCDialogueAnnouncements
-                        or (>= XivChatType.CrossLinkShell2 and <= XivChatType.CrossLinkShell8)
-                        => new XivChatEntry
+                        or >= XivChatType.CrossLinkShell2 and <= XivChatType.CrossLinkShell8
+                        => new()
                         {
                             Message = text,
                             Type = configuration.Notifications.ChatType,
                             Name = new SeStringBuilder()
                                 .AddUiForeground(CommandHandler.MessageTag, CommandHandler.TagColor)
-                                .Build(),
+                                .Build()
                         },
-                    _ => new XivChatEntry
+                    var _ => new()
                     {
                         Message = new SeStringBuilder()
                             .AddUiForeground($"[{CommandHandler.MessageTag}] ", CommandHandler.TagColor)
                             .Append(text)
                             .Build(),
-                        Type = configuration.Notifications.ChatType,
+                        Type = configuration.Notifications.ChatType
                     }
                 };
                 chatGui.Print(message);
             }
 
-            notificationMasterIpc.Notify(text);
             return true;
         }
 

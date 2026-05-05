@@ -11,7 +11,7 @@ internal static class QuestStepExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this QuestStep step)
     {
-        var emptyStep = new QuestStep();
+        QuestStep emptyStep = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(QuestStep)))
             .WithArgumentList(
@@ -124,7 +124,7 @@ internal static class QuestStepExtensions
                                     emptyStep.DutyOptions)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.SinglePlayerDutyOptions), step.SinglePlayerDutyOptions,
-                                emptyStep.SinglePlayerDutyOptions)
+                                    emptyStep.SinglePlayerDutyOptions)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.SkipConditions), step.SkipConditions,
                                     emptyStep.SkipConditions)

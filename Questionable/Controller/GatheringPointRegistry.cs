@@ -1,29 +1,27 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 using System.Text.Json;
 using Dalamud.Plugin;
-using LLib.GameData;
+using ECommons.ExcelServices;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.GatheringPaths;
 using Questionable.Model;
 using Questionable.Model.Gathering;
-
 namespace Questionable.Controller;
 
 internal sealed class GatheringPointRegistry : IDisposable
 {
-    private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly QuestRegistry _questRegistry;
     private readonly GatheringData _gatheringData;
-    private readonly ILogger<QuestRegistry> _logger;
 
     private readonly Dictionary<GatheringPointId, GatheringRoot> _gatheringPoints = [];
+    private readonly ILogger<QuestRegistry> _logger;
+    private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QuestRegistry _questRegistry;
 
     public GatheringPointRegistry(IDalamudPluginInterface pluginInterface,
         QuestRegistry questRegistry,
@@ -38,6 +36,8 @@ internal sealed class GatheringPointRegistry : IDisposable
         _questRegistry.Reloaded += OnReloaded;
     }
 
+    public void Dispose() => _questRegistry.Reloaded -= OnReloaded;
+
     private void OnReloaded(object? sender, EventArgs e) => Reload();
 
     public void Reload()
@@ -49,7 +49,7 @@ internal sealed class GatheringPointRegistry : IDisposable
 
         try
         {
-            LoadFromDirectory(new DirectoryInfo(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "GatheringPoints")));
+            LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "GatheringPoints")));
         }
         catch (Exception e)
         {
@@ -66,7 +66,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         _logger.LogInformation("Loading gathering points from assembly");
 
         foreach ((ushort gatheringPointId, GatheringRoot gatheringRoot) in
-                 AssemblyGatheringLocationLoader.GetLocations())
+            AssemblyGatheringLocationLoader.GetLocations())
         {
             if (gatheringRoot.Steps.Count >= 1)
             {
@@ -80,12 +80,15 @@ internal sealed class GatheringPointRegistry : IDisposable
                             gatheringRoot.Steps[0].Fly = gatheringRoot.Steps[0].Fly ?? true;
                             break;
                         }
+
                         break;
                     }
+
                     break;
                 }
             }
-            _gatheringPoints[new GatheringPointId(gatheringPointId)] = gatheringRoot;
+
+            _gatheringPoints[new(gatheringPointId)] = gatheringRoot;
         }
 
         _logger.LogInformation("Loaded {Count} gathering points from assembly", _gatheringPoints.Count);
@@ -97,15 +100,16 @@ internal sealed class GatheringPointRegistry : IDisposable
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
         if (solutionDirectory != null)
         {
-            DirectoryInfo pathProjectDirectory =
-                new DirectoryInfo(Path.Combine(solutionDirectory.FullName, "GatheringPaths"));
+            DirectoryInfo pathProjectDirectory = new(Path.Combine(solutionDirectory.FullName, "GatheringPaths"));
             if (pathProjectDirectory.Exists)
             {
                 try
                 {
-                    foreach (var expansionFolder in ExpansionData.ExpansionFolders.Values)
+                    foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
+                    {
                         LoadFromDirectory(
-                            new DirectoryInfo(Path.Combine(pathProjectDirectory.FullName, expansionFolder)));
+                            new(Path.Combine(pathProjectDirectory.FullName, expansionFolder)));
+                    }
                 }
                 catch (Exception e)
                 {
@@ -123,7 +127,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         if (gatheringPointId == null)
             return;
 
-        var gatheringRoot = JsonSerializer.Deserialize<GatheringRoot>(stream)!;
+        GatheringRoot gatheringRoot = JsonSerializer.Deserialize<GatheringRoot>(stream)!;
         if (gatheringRoot.Steps.Count >= 1)
         {
             foreach (GatheringNodeGroup group in gatheringRoot.Groups)
@@ -136,11 +140,14 @@ internal sealed class GatheringPointRegistry : IDisposable
                         gatheringRoot.Steps[0].Fly = gatheringRoot.Steps[0].Fly ?? true;
                         break;
                     }
+
                     break;
                 }
+
                 break;
             }
         }
+
         _gatheringPoints[gatheringPointId] = gatheringRoot;
     }
 
@@ -156,7 +163,7 @@ internal sealed class GatheringPointRegistry : IDisposable
         {
             try
             {
-                using FileStream stream = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read);
+                using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
                 LoadGatheringPointFromStream(fileInfo.Name, stream);
             }
             catch (Exception e)
@@ -181,13 +188,12 @@ internal sealed class GatheringPointRegistry : IDisposable
         return GatheringPointId.FromString(parts[0]);
     }
 
-    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot)
-        => _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
+    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot) => _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
 
-    public bool TryGetGatheringPointId(uint itemId, EClassJob classJobId,
+    public bool TryGetGatheringPointId(uint itemId, Job classJobId,
         [NotNullWhen(true)] out GatheringPointId? gatheringPointId)
     {
-        if (classJobId == EClassJob.Miner)
+        if (classJobId == Job.MIN)
         {
             if (_gatheringData.TryGetMinerGatheringPointByItemId(itemId, out gatheringPointId))
                 return true;
@@ -198,7 +204,7 @@ internal sealed class GatheringPointRegistry : IDisposable
                 .FirstOrDefault(x => _gatheringData.MinerGatheringPoints.Contains(x));
             return gatheringPointId != null;
         }
-        else if (classJobId == EClassJob.Botanist)
+        else if (classJobId == Job.BTN)
         {
             if (_gatheringData.TryGetBotanistGatheringPointByItemId(itemId, out gatheringPointId))
                 return true;
@@ -214,10 +220,5 @@ internal sealed class GatheringPointRegistry : IDisposable
             gatheringPointId = null;
             return false;
         }
-    }
-
-    public void Dispose()
-    {
-        _questRegistry.Reloaded -= OnReloaded;
     }
 }

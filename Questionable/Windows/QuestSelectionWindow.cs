@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
@@ -12,40 +13,39 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
-using LLib.GameUI;
-using LLib.ImGui;
 using Questionable.Controller;
 using Questionable.Controller.GameUi;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Utils;
+using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
-
 namespace Questionable.Windows;
 
 internal sealed class QuestSelectionWindow : LWindow
 {
     private const string WindowId = "###QuestionableQuestSelection";
-    private readonly QuestData _questData;
-    private readonly IGameGui _gameGui;
     private readonly IChatGui _chatGui;
-    private readonly QuestFunctions _questFunctions;
-    private readonly QuestController _questController;
-    private readonly QuestRegistry _questRegistry;
-    private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly TerritoryData _territoryData;
     private readonly IClientState _clientState;
-    private readonly UiUtils _uiUtils;
+    private readonly IGameGuiAdapter _gameGui;
+    private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QuestController _questController;
+    private readonly QuestData _questData;
+    private readonly QuestFunctions _questFunctions;
+    private readonly QuestRegistry _questRegistry;
     private readonly QuestTooltipComponent _questTooltipComponent;
-
-    private List<IQuestInfo> _quests = [];
+    private readonly TerritoryData _territoryData;
+    private readonly UiUtils _uiUtils;
     private List<IQuestInfo> _offeredQuests = [];
     private bool _onlyAvailableQuests = true;
 
+    private List<IQuestInfo> _quests = [];
+
     public QuestSelectionWindow(
         QuestData questData,
-        IGameGui gameGui,
+        IGameGuiAdapter gameGui,
         IChatGui chatGui,
         QuestFunctions questFunctions,
         QuestController questController,
@@ -73,7 +73,7 @@ internal sealed class QuestSelectionWindow : LWindow
         SizeCondition = ImGuiCond.Once;
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new Vector2(500, 200),
+            MinimumSize = new(500, 200)
         };
     }
 
@@ -81,14 +81,14 @@ internal sealed class QuestSelectionWindow : LWindow
     {
         if (gameObject != null)
         {
-            var targetId = GameFunctions.GetBaseID(gameObject);
-            var targetName = gameObject.Name.ToString();
+            uint targetId = GameFunctions.GetBaseID(gameObject);
+            string targetName = gameObject.Name.ToString();
             WindowName = $"Quests starting with {targetName} [{targetId}]{WindowId}";
 
             _quests = _questData.GetAllByIssuerDataId(targetId);
-            if (_gameGui.TryGetAddonByName<AddonSelectIconString>("SelectIconString", out var addonSelectIconString))
+            if (_gameGui.TryGetAddonByName("SelectIconString", out AddonSelectIconString* addonSelectIconString))
             {
-                var answers = InteractionUiController.GetChoices(addonSelectIconString);
+                List<string?> answers = InteractionUiController.GetChoices(addonSelectIconString);
                 _offeredQuests = _quests
                     .Where(x => answers.Any(y => GameFunctions.GameStringEquals(x.Name, y)))
                     .ToList();
@@ -107,8 +107,8 @@ internal sealed class QuestSelectionWindow : LWindow
 
     public unsafe void OpenForCurrentZone()
     {
-        var territoryId = _clientState.TerritoryType;
-        var territoryName = _territoryData.GetNameAndId(territoryId);
+        uint territoryId = _clientState.TerritoryType;
+        string territoryName = _territoryData.GetNameAndId(territoryId);
         WindowName = $"Quests starting in {territoryName}{WindowId}";
 
         _quests = _questRegistry.AllQuests
@@ -116,7 +116,7 @@ internal sealed class QuestSelectionWindow : LWindow
             .Select(x => _questData.GetQuestInfo(x.Id))
             .ToList();
 
-        foreach (var unacceptedQuest in Map.Instance()->UnacceptedQuestMarkers)
+        foreach (MarkerInfo unacceptedQuest in Map.Instance()->UnacceptedQuestMarkers)
         {
             QuestId questId = QuestId.FromRowId(unacceptedQuest.ObjectiveId);
             if (_quests.All(q => q.QuestId != questId))
@@ -138,7 +138,7 @@ internal sealed class QuestSelectionWindow : LWindow
         if (_offeredQuests.Count != 0)
             ImGui.Checkbox("Only show quests currently offered", ref _onlyAvailableQuests);
 
-        using var table = ImRaii.Table("QuestSelection", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
+        using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
         {
             ImGui.Text("Not table");
@@ -146,17 +146,17 @@ internal sealed class QuestSelectionWindow : LWindow
         }
 
         float statusIconSize;
-        using (var _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
             statusIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X;
         }
 
         ImGui.PushFont(UiBuilder.IconFont);
-        var actionIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                             ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                             ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                             6 * ImGui.GetStyle().FramePadding.X +
-                             2 * ImGui.GetStyle().ItemSpacing.X;
+        float actionIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
+                               ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
+                               ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
+                               6 * ImGui.GetStyle().FramePadding.X +
+                               2 * ImGui.GetStyle().ItemSpacing.X;
         ImGui.PopFont();
 
         ImGui.TableSetupColumn("Id", ImGuiTableColumnFlags.WidthFixed, 50 * ImGui.GetIO().FontGlobalScale);
@@ -170,7 +170,7 @@ internal sealed class QuestSelectionWindow : LWindow
             ImGui.TableNextRow();
 
             string questId = quest.QuestId.ToString();
-            bool isKnownQuest = _questRegistry.TryGetQuest(quest.QuestId, out var knownQuest);
+            bool isKnownQuest = _questRegistry.TryGetQuest(quest.QuestId, out Quest? knownQuest);
 
             if (ImGui.TableNextColumn())
             {
@@ -181,8 +181,8 @@ internal sealed class QuestSelectionWindow : LWindow
             if (ImGui.TableNextColumn())
             {
                 ImGui.AlignTextToFramePadding();
-                var (color, icon, _) = _uiUtils.GetQuestStyle(quest.QuestId);
-                using (var _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                (Vector4 color, FontAwesomeIcon icon, string _) = _uiUtils.GetQuestStyle(quest.QuestId);
+                using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     if (isKnownQuest)
                         ImGui.TextColored(color, icon.ToIconString());
@@ -200,7 +200,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
                 if (knownQuest != null && knownQuest.Root.Disabled)
                 {
-                    using var _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push();
+                    using IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push();
                     ImGui.TextColored(ImGuiColors.DalamudOrange, FontAwesomeIcon.Ban.ToIconString());
                     ImGui.SameLine();
                 }
@@ -210,7 +210,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
             if (ImGui.TableNextColumn())
             {
-                using var id = ImRaii.PushId(questId);
+                using ImRaii.IdDisposable id = ImRaii.PushId(questId);
 
                 bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
                 if (ImGui.IsItemHovered())

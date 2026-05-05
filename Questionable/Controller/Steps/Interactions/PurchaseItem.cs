@@ -1,6 +1,6 @@
-﻿using Questionable.Model;
+﻿using System;
+using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class PurchaseItem
@@ -11,12 +11,11 @@ internal static class PurchaseItem
         {
             if (step.InteractionType != EInteractionType.PurchaseItem)
                 return null;
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 
     internal sealed class PurchaseRequest
     {
-
     }
 }

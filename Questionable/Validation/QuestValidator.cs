@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Validation;
 
 internal sealed class QuestValidator
 {
-    private readonly IReadOnlyList<IQuestValidator> _validators;
     private readonly ILogger<QuestValidator> _logger;
+    private readonly IReadOnlyList<IQuestValidator> _validators;
 
     private List<ValidationIssue> _validationIssues = [];
 
@@ -31,7 +30,7 @@ internal sealed class QuestValidator
 
     public void Reset()
     {
-        foreach (var validator in _validators)
+        foreach (IQuestValidator validator in _validators)
             validator.Reset();
         _validationIssues.Clear();
     }
@@ -46,13 +45,13 @@ internal sealed class QuestValidator
 
                 List<ValidationIssue> issues = [];
                 Dictionary<EAlliedSociety, int> disabledTribeQuests = [];
-                foreach (var quest in quests)
+                foreach (Quest quest in quests)
                 {
-                    foreach (var validator in _validators)
+                    foreach (IQuestValidator validator in _validators)
                     {
                         try
                         {
-                            foreach (var issue in validator.Validate(quest))
+                            foreach (ValidationIssue issue in validator.Validate(quest))
                             {
                                 /*
                                 var level = issue.Severity == EIssueSeverity.Error
@@ -71,14 +70,14 @@ internal sealed class QuestValidator
                                     issues.Add(issue);
                             }
                         }
-                        catch (System.ArgumentException e)
+                        catch (ArgumentException e)
                         {
                             _logger.LogError(e, $"Unable to validate {quest.Info.QuestId} {quest.Info.Name}");
                         }
                     }
                 }
 
-                var disabledQuests = issues
+                List<ElementId?> disabledQuests = issues
                     .Where(x => x.Type == EIssueType.QuestDisabled)
                     .Select(x => x.ElementId)
                     .ToList();
@@ -99,8 +98,7 @@ internal sealed class QuestValidator
         }, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
     }
 
-    public List<ValidationIssue> GetIssues(ElementId elementId) =>
-        _validationIssues.Where(x => x.ElementId == elementId).ToList();
+    public List<ValidationIssue> GetIssues(ElementId elementId) => _validationIssues.Where(x => x.ElementId == elementId).ToList();
 
     private static IEnumerable<ValidationIssue> DisabledTribesAsIssues(Dictionary<EAlliedSociety, int> disabledTribeQuests)
     {
@@ -114,7 +112,7 @@ internal sealed class QuestValidator
                 AlliedSociety = x.Key,
                 Type = EIssueType.QuestDisabled,
                 Severity = EIssueSeverity.None,
-                Description = $"{x.Value} disabled quest(s)",
+                Description = $"{x.Value} disabled quest(s)"
             });
     }
 }

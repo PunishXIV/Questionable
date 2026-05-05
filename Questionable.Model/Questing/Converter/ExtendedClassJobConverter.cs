@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing.Converter;
 
 internal sealed class ExtendedClassJobConverter() : EnumConverter<EExtendedClassJob>(Values)
@@ -57,6 +56,6 @@ internal sealed class ExtendedClassJobConverter() : EnumConverter<EExtendedClass
         { EExtendedClassJob.ConfiguredCombatJob, "ConfiguredCombatJob" },
         { EExtendedClassJob.QuestStartJob, "QuestStartJob" },
         { EExtendedClassJob.ConfiguredCraftingJob, "ConfiguredCraftingJob" },
-        { EExtendedClassJob.ConfiguredGatheringJob, "ConfiguredGatheringJob" },
+        { EExtendedClassJob.ConfiguredGatheringJob, "ConfiguredGatheringJob" }
     };
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
@@ -14,17 +15,16 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class StopConditionComponent : ConfigComponent
 {
+    private readonly IClientState _clientState;
     private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly QuestSelector _questSelector;
     private readonly QuestRegistry _questRegistry;
+    private readonly QuestSelector _questSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
-    private readonly IClientState _clientState;
     //private readonly IPlayerState _playerState;
 
     public StopConditionComponent(
@@ -58,7 +58,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
     public override void DrawTab()
     {
-        using var tab = ImRaii.TabItem("Stop###StopConditionns");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Stop###StopConditionns");
         if (!tab)
             return;
 
@@ -96,8 +96,8 @@ internal sealed class StopConditionComponent : ConfigComponent
                 // Show current level for reference
                 unsafe
                 {
-                    var playerState = PlayerState.Instance();
-                    var currentLevel = playerState->CurrentLevel;
+                    PlayerState* playerState = PlayerState.Instance();
+                    short currentLevel = playerState->CurrentLevel;
                     if (currentLevel > 0)
                     {
                         ImGui.SameLine();
@@ -143,9 +143,9 @@ internal sealed class StopConditionComponent : ConfigComponent
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
-                    var style = _uiUtils.GetQuestStyle(questId);
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
                     bool hovered;
-                    using (var _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                    using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                     {
                         ImGui.AlignTextToFramePadding();
                         ImGui.TextColored(style.Color, style.Icon.ToIconString());

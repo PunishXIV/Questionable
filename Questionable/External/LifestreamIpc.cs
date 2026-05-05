@@ -3,22 +3,21 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
-
 namespace Questionable.External;
 
 internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger)
 {
-    private readonly ILogger<LifestreamIpc> _logger = logger;
-    private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportByPlaceNameId =
-            pluginInterface.GetIpcSubscriber<uint, bool>("Lifestream.AethernetTeleportByPlaceNameId");
-    private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportById =
-            pluginInterface.GetIpcSubscriber<uint, bool>("Lifestream.AethernetTeleportById");
-    private readonly ICallGateSubscriber<bool> _aethernetTeleportToFirmament =
-            pluginInterface.GetIpcSubscriber<bool>("Lifestream.AethernetTeleportToFirmament");
-    private readonly ICallGateSubscriber<bool> _isBusy =
-            pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
     private readonly ICallGateSubscriber<string, bool> _aethernetTeleport =
-            pluginInterface.GetIpcSubscriber<string, bool>("Lifestream.AethernetTeleport");
+        pluginInterface.GetIpcSubscriber<string, bool>("Lifestream.AethernetTeleport");
+    private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportById =
+        pluginInterface.GetIpcSubscriber<uint, bool>("Lifestream.AethernetTeleportById");
+    private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportByPlaceNameId =
+        pluginInterface.GetIpcSubscriber<uint, bool>("Lifestream.AethernetTeleportByPlaceNameId");
+    private readonly ICallGateSubscriber<bool> _aethernetTeleportToFirmament =
+        pluginInterface.GetIpcSubscriber<bool>("Lifestream.AethernetTeleportToFirmament");
+    private readonly ICallGateSubscriber<bool> _isBusy =
+        pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
+    private readonly ILogger<LifestreamIpc> _logger = logger;
 
     public bool IsBusy => _isBusy.InvokeFunc();
 
@@ -43,7 +42,7 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
             EAetheryteLocation.FirmamentWesternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3646),
             EAetheryteLocation.FIrmamentEasternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3645),
             EAetheryteLocation.None => throw new ArgumentOutOfRangeException(nameof(aetheryteLocation)),
-            _ => _aethernetTeleportById.InvokeFunc((uint)aetheryteLocation),
+            var _ => _aethernetTeleportById.InvokeFunc((uint)aetheryteLocation)
         };
     }
 }

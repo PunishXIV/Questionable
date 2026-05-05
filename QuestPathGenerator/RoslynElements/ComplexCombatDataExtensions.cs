@@ -10,7 +10,7 @@ internal static class ComplexCombatDataExtensions
 {
     public static ExpressionSyntax ToExpressionSyntax(this ComplexCombatData complexCombatData)
     {
-        var emptyData = new ComplexCombatData();
+        ComplexCombatData emptyData = new();
         return ObjectCreationExpression(
                 IdentifierName(nameof(ComplexCombatData)))
             .WithInitializer(

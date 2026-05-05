@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using Questionable.Model.Questing.Converter;
-
 namespace Questionable.Model.Questing;
 
 [JsonConverter(typeof(StatusConverter))]
@@ -13,5 +12,5 @@ public enum EStatus : uint
     Eukrasia = 2606,
     Jog = 4209,
     Transfiguration = 2727,
-    Transparent = 416,
+    Transparent = 416
 }

@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
-
 namespace Questionable.Controller.NavigationOverrides;
 
-public sealed record BlacklistedPoint(
+public sealed record BlacklistedPoint
+(
     ushort TerritoryId,
     Vector3 Original,
     Vector3 Replacement,
@@ -15,6 +15,6 @@ public sealed record BlacklistedPoint(
         if (distance > CheckDistance)
             return null;
 
-        return new AlternateLocation(Replacement, RecalculateNavmesh);
+        return new(Replacement, RecalculateNavmesh);
     }
 }

@@ -4,7 +4,6 @@ using System.Numerics;
 using Questionable.Controller.Utils;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Validation.Validators;
 
 internal sealed class CompletionFlagsValidator : IQuestValidator
@@ -15,9 +14,9 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
         if (quest.Id.Value == 5149)
             yield break;
 
-        foreach (var sequence in quest.AllSequences())
+        foreach (QuestSequence sequence in quest.AllSequences())
         {
-            var mappedCompletionFlags = sequence.Steps
+            List<long> mappedCompletionFlags = sequence.Steps
                 .Select(x =>
                 {
                     if (QuestWorkUtils.HasCompletionFlags(x.CompletionQuestVariablesFlags))
@@ -41,13 +40,13 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
 
             for (int i = 0; i < sequence.Steps.Count; ++i)
             {
-                var flags = mappedCompletionFlags[i];
+                long flags = mappedCompletionFlags[i];
                 if (flags == 0)
                     continue;
 
                 if (mappedCompletionFlags.Count(x => x == flags) >= 2)
                 {
-                    yield return new ValidationIssue
+                    yield return new()
                     {
                         ElementId = quest.Id,
                         Sequence = sequence.Sequence,
@@ -55,7 +54,7 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                         Type = EIssueType.DuplicateCompletionFlags,
                         Severity = EIssueSeverity.Error,
                         Description =
-                            $"Duplicate completion flags: {string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags)}",
+                            $"Duplicate completion flags: {string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags)}"
                     };
                 }
             }

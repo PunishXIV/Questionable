@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons;
@@ -18,7 +17,6 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class SinglePlayerDuty
@@ -31,7 +29,8 @@ internal static class SinglePlayerDuty
         public const ushort Patisserie = 1298;
     }
 
-    internal sealed class Factory(
+    internal sealed class Factory
+    (
         BossModIpc bossModIpc,
         TerritoryData territoryData,
         IObjectTable objectTable,
@@ -55,6 +54,7 @@ internal static class SinglePlayerDuty
                 }
                 else if (!territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id, step.SinglePlayerDutyIndex, out cfcData))
                     throw new TaskException("Failed to get content finder condition for solo instance");
+
                 if (cfcData != null)
                 {
                     cfcId = cfcData.ContentFinderConditionId;
@@ -63,9 +63,7 @@ internal static class SinglePlayerDuty
 
                 yield return new Mount.UnmountTask();
                 if (tId == SpecialTerritories.Patisserie)
-                {
                     yield return new Commence(cfcId);
-                }
                 yield return new StartSinglePlayerDuty(cfcId);
                 yield return new WaitAtStart.WaitDelay(TimeSpan.FromSeconds(2)); // maybe a delay will work here too, needs investigation
                 if (tId == SpecialTerritories.Lahabrea)
@@ -95,7 +93,7 @@ internal static class SinglePlayerDuty
                             if (clientState.TerritoryType != SpecialTerritories.Naadam)
                                 return true;
 
-                            var pos = objectTable[0]?.Position ?? default;
+                            Vector3 pos = objectTable[0]?.Position ?? default;
                             return (new Vector3(352.01f, -1.45f, 288.59f) - pos).Length() < 10f;
                         },
                         "Wait(moving to Ovoo)");
@@ -103,13 +101,9 @@ internal static class SinglePlayerDuty
                     yield return new EnableAi();
                 }
                 else if (tId == SpecialTerritories.Patisserie)
-                {
                     yield return new SetPreset(BossModIpc.EPreset.NormalMovement);
-                }
                 else
-                {
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);
-                }
 
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();
@@ -117,10 +111,7 @@ internal static class SinglePlayerDuty
             }
         }
 
-        private unsafe bool DutyActionsAvailable()
-        {
-            return RaptureHotbarModule.Instance()->DutyActionsPresent;
-        }
+        private unsafe bool DutyActionsAvailable() => RaptureHotbarModule.Instance()->DutyActionsPresent;
     }
 
     internal sealed record StartSinglePlayerDuty(uint ContentFinderConditionId) : ITask
@@ -136,7 +127,7 @@ internal static class SinglePlayerDuty
 
         public override unsafe ETaskResult Update()
         {
-            var gameMain = GameMain.Instance();
+            GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
                 return ETaskResult.StillRunning;
 
@@ -161,7 +152,8 @@ internal static class SinglePlayerDuty
         public override string ToString() => $"BossMod.EnableAi({(Passive ? "Passive" : "AutoPull")})";
     }
 
-    internal sealed class EnableAiExecutor(
+    internal sealed class EnableAiExecutor
+    (
         BossModIpc bossModIpc) : TaskExecutor<EnableAi>
     {
         protected override bool Start()
@@ -180,7 +172,8 @@ internal static class SinglePlayerDuty
         public override string ToString() => $"BossMod.SetPreset({Enum.GetName(Preset)})";
     }
 
-    internal sealed class SetPresetExecutor(
+    internal sealed class SetPresetExecutor
+    (
         BossModIpc bossModIpc) : TaskExecutor<SetPreset>
     {
         protected override bool Start()
@@ -199,12 +192,19 @@ internal static class SinglePlayerDuty
         public override string ToString() => $"Wait(BossMod, left instance {ContentFinderConditionId})";
     }
 
-    internal sealed class WaitSinglePlayerDutyExecutor(
+    internal sealed class WaitSinglePlayerDutyExecutor
+    (
         BossModIpc bossModIpc,
         MovementController movementController)
         : TaskExecutor<WaitSinglePlayerDuty>, IStoppableTaskExecutor, IDebugStateProvider
     {
-        protected override bool Start() => true;
+        public string? GetDebugState()
+        {
+            if (!movementController.IsNavmeshReady)
+                return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
+            else
+                return null;
+        }
 
         public override unsafe ETaskResult Update()
         {
@@ -216,14 +216,7 @@ internal static class SinglePlayerDuty
         public void StopNow() => bossModIpc.DisableAi();
 
         public override bool ShouldInterruptOnDamage() => false;
-
-        public string? GetDebugState()
-        {
-            if (!movementController.IsNavmeshReady)
-                return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-            else
-                return null;
-        }
+        protected override bool Start() => true;
     }
 
     internal sealed record DisableAi : ITask
@@ -231,7 +224,8 @@ internal static class SinglePlayerDuty
         public override string ToString() => "BossMod.DisableAi";
     }
 
-    internal sealed class DisableAiExecutor(
+    internal sealed class DisableAiExecutor
+    (
         BossModIpc bossModIpc) : TaskExecutor<DisableAi>
     {
         protected override bool Start()
@@ -251,7 +245,8 @@ internal static class SinglePlayerDuty
         public override string ToString() => $"SetTarget({DataId})";
     }
 
-    internal sealed class SetTargetExecutor(
+    internal sealed class SetTargetExecutor
+    (
         ITargetManager targetManager,
         IObjectTable objectTable) : TaskExecutor<SetTarget>
     {
@@ -284,16 +279,15 @@ internal static class SinglePlayerDuty
         private DateTime _enteredAt = DateTime.MinValue;
         protected override bool Start() => true;
 
-        public unsafe override ETaskResult Update()
+        public override unsafe ETaskResult Update()
         {
-            if (GenericHelpers.TryGetAddonMaster<AddonMaster.ContentsFinderConfirm>(out var m) && m.IsAddonReady)
+            if (GenericHelpers.TryGetAddonMaster(out AddonMaster.ContentsFinderConfirm m) && m.IsAddonReady)
             {
-                if(EzThrottler.Throttle("Confirm", 2000))
-                {
+                if (EzThrottler.Throttle("Confirm", 2000))
                     m.Commence();
-                }
             }
-            var gameMain = GameMain.Instance();
+
+            GameMain* gameMain = GameMain.Instance();
             if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
                 return ETaskResult.StillRunning;
 

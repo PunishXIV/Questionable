@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using LLib.GameData;
+using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Data;
 using Questionable.Model.Questing;
-
 namespace Questionable.Model;
 
 internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, ClassJobUtils classJobUtils) : IQuestInfo
@@ -22,7 +21,7 @@ internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, C
     public uint? JournalGenre => null;
     public ushort SortKey => 0;
     public bool IsMainScenarioQuest => false;
-    public IReadOnlyList<EClassJob> ClassJobs { get; } = (EAlliedSociety)beastTribe.RowId switch
+    public IReadOnlyList<Job> ClassJobs { get; } = (EAlliedSociety)beastTribe.RowId switch
     {
         EAlliedSociety.Amaljaa or EAlliedSociety.Sylphs or EAlliedSociety.Kobolds or EAlliedSociety.Sahagin or
             EAlliedSociety.VanuVanu or EAlliedSociety.Vath or
@@ -32,7 +31,7 @@ internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, C
             EAlliedSociety.Pelupelu =>
             [
                 ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoW, null),
-                    ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoM, null)
+                ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoM, null)
             ],
         EAlliedSociety.Ixal or
             EAlliedSociety.Moogles or
@@ -49,10 +48,10 @@ internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, C
         EAlliedSociety.Namazu =>
         [
             ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoH, null),
-                ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoL, null)
+            ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoL, null)
         ],
 
-        _ => throw new ArgumentOutOfRangeException(nameof(beastTribe))
+        var _ => throw new ArgumentOutOfRangeException(nameof(beastTribe))
     };
     public EExpansionVersion Expansion { get; } = (EExpansionVersion)beastTribe.Expansion.RowId;
 }

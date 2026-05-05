@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation>(Values)
@@ -166,6 +165,6 @@ public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation
         { EAetheryteLocation.SolutionNineResolution, "[Solution Nine] Resolution" },
         { EAetheryteLocation.SolutionNineNexusArcade, "[Solution Nine] Nexus Arcade" },
         { EAetheryteLocation.SolutionNineResidentialSector, "[Solution Nine] Residential Sector" },
-        { EAetheryteLocation.SolutionNineScanningPortNine, "[Solution Nine] Scanning Port Nine (Heritage Found)" },
+        { EAetheryteLocation.SolutionNineScanningPortNine, "[Solution Nine] Scanning Port Nine (Heritage Found)" }
     };
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
 namespace Questionable.Model.Questing;
 
 public sealed class QuestSequence

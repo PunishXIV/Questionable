@@ -1,14 +1,13 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
-using ECommons.Configuration;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
+using FFXIVClientStructs.Interop;
+using Questionable.External;
 using Questionable.Model;
 using Questionable.Model.Questing;
-using System;
-using Questionable.External;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class EquipRecommended
@@ -56,12 +55,13 @@ internal static class EquipRecommended
             switch (config.General.GearsetUpdateSource)
             {
                 case Configuration.EGearsetUpdateSource.Vanilla:
-                    RecommendEquipModule.Instance()->SetupForClassJob((byte)PlayerState.Instance()->CurrentClassJobId);
+                    RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
                     RaptureGearsetModule.Instance()->UpdateGearset(RaptureGearsetModule.Instance()->CurrentGearsetIndex);
                     break;
             }
+
             return true;
         }
 
@@ -70,7 +70,7 @@ internal static class EquipRecommended
             switch (config.General.GearsetUpdateSource)
             {
                 case Configuration.EGearsetUpdateSource.Vanilla:
-                    var recommendedEquipModule = RecommendEquipModule.Instance();
+                    RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
                     if (recommendedEquipModule->IsUpdating)
                         return ETaskResult.StillRunning;
 
@@ -86,6 +86,7 @@ internal static class EquipRecommended
                         _checkedOrTriggeredEquipmentUpdate = true;
                         return ETaskResult.StillRunning;
                     }
+
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
                     if (stylist.IsBusy)
@@ -97,6 +98,7 @@ internal static class EquipRecommended
                         _continueAt = DateTime.Now.AddSeconds(1);
                         return ETaskResult.StillRunning;
                     }
+
                     break;
             }
 
@@ -105,21 +107,21 @@ internal static class EquipRecommended
 
         private bool IsAllRecommendeGearEquipped()
         {
-            var recommendedEquipModule = RecommendEquipModule.Instance();
+            RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
             InventoryManager* inventoryManager = InventoryManager.Instance();
             InventoryContainer* equippedItems =
                 inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
             bool isAllEquipped = true;
-            foreach (var recommendedItemPtr in recommendedEquipModule->RecommendedItems)
+            foreach (Pointer<InventoryItem> recommendedItemPtr in recommendedEquipModule->RecommendedItems)
             {
-                var recommendedItem = recommendedItemPtr.Value;
+                InventoryItem* recommendedItem = recommendedItemPtr.Value;
                 if (recommendedItem == null || recommendedItem->ItemId == 0)
                     continue;
 
                 bool isEquipped = false;
                 for (int i = 0; i < equippedItems->Size; ++i)
                 {
-                    var equippedItem = equippedItems->Items[i];
+                    InventoryItem equippedItem = equippedItems->Items[i];
                     if (equippedItem.ItemId != 0 && equippedItem.ItemId == recommendedItem->ItemId)
                     {
                         isEquipped = true;

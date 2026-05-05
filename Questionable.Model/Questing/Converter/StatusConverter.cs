@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model.Common.Converter;
-
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class StatusConverter() : EnumConverter<EStatus>(Values)
@@ -14,6 +13,6 @@ public sealed class StatusConverter() : EnumConverter<EStatus>(Values)
         { EStatus.Jog, "Jog" },
         { EStatus.Transparent, "Transparent" },
         { EStatus.Hidden, "Hidden" },
-        { EStatus.Transfiguration, "Transfiguration" },
+        { EStatus.Transfiguration, "Transfiguration" }
     };
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Questionable.Controller.Steps;
 
 internal interface ITaskExecutor
@@ -35,7 +34,7 @@ internal interface IDebugStateProvider : ITaskExecutor
 }
 
 internal abstract class TaskExecutor<T> : ITaskExecutor
-    where T : class, ITask
+where T : class, ITask
 {
     protected T Task { get; set; } = null!;
     public InteractionProgressContext? ProgressContext { get; set; }
@@ -54,8 +53,6 @@ internal abstract class TaskExecutor<T> : ITaskExecutor
 
     public Type GetTaskType() => typeof(T);
 
-    protected abstract bool Start();
-
     public bool Start(ITask task)
     {
         if (task is T t)
@@ -63,10 +60,13 @@ internal abstract class TaskExecutor<T> : ITaskExecutor
             Task = t;
             return Start();
         }
+
         throw new TaskException($"Unable to cast {task.GetType()} to {typeof(T)}");
     }
 
     public abstract ETaskResult Update();
 
     public abstract bool ShouldInterruptOnDamage();
+
+    protected abstract bool Start();
 }

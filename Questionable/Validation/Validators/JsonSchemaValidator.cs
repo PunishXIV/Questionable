@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json.Nodes;
 using Json.Schema;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;
-
 namespace Questionable.Validation.Validators;
 
 internal sealed class JsonSchemaValidator : IQuestValidator
@@ -17,19 +15,19 @@ internal sealed class JsonSchemaValidator : IQuestValidator
     public JsonSchemaValidator()
     {
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-aethernetshard.json"),
+            new("https://qstxiv.github.io/schema/common-aethernetshard.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAethernetShard).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-aetheryte.json"),
+            new("https://qstxiv.github.io/schema/common-aetheryte.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonAetheryte).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-classjob.json"),
+            new("https://qstxiv.github.io/schema/common-classjob.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonClassJob).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-completionflags.json"),
+            new("https://qstxiv.github.io/schema/common-completionflags.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonCompletionFlags).AsTask().Result);
         SchemaRegistry.Global.Register(
-            new Uri("https://qstxiv.github.io/schema/common-vector3.json"),
+            new("https://qstxiv.github.io/schema/common-vector3.json"),
             JsonSchema.FromStream(AssemblyModelLoader.CommonVector3).AsTask().Result);
     }
 
@@ -39,14 +37,14 @@ internal sealed class JsonSchemaValidator : IQuestValidator
 
         if (_questNodes.TryGetValue(quest.Id, out JsonNode? questNode))
         {
-            var evaluationResult = _questSchema.Evaluate(questNode, new EvaluationOptions
+            EvaluationResults evaluationResult = _questSchema.Evaluate(questNode, new()
             {
                 Culture = CultureInfo.InvariantCulture,
                 OutputFormat = OutputFormat.List
             });
             if (!evaluationResult.IsValid)
             {
-                yield return new ValidationIssue
+                yield return new()
                 {
                     ElementId = quest.Id,
                     Sequence = null,
@@ -59,7 +57,7 @@ internal sealed class JsonSchemaValidator : IQuestValidator
         }
     }
 
-    public void Enqueue(ElementId elementId, JsonNode questNode) => _questNodes[elementId] = questNode;
-
     public void Reset() => _questNodes.Clear();
+
+    public void Enqueue(ElementId elementId, JsonNode questNode) => _questNodes[elementId] = questNode;
 }

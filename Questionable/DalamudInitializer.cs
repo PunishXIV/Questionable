@@ -8,24 +8,23 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Windows;
-
 namespace Questionable;
 
 internal sealed class DalamudInitializer : IDisposable
 {
-    private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly IFramework _framework;
-    private readonly QuestController _questController;
-    private readonly MovementController _movementController;
-    private readonly WindowSystem _windowSystem;
-    private readonly OneTimeSetupWindow _oneTimeSetupWindow;
-    private readonly QuestWindow _questWindow;
-    private readonly ConfigWindow _configWindow;
-    private readonly IToastGui _toastGui;
     private readonly Configuration _configuration;
+    private readonly ConfigWindow _configWindow;
+    private readonly IFramework _framework;
     private readonly HighlightObject _highlightObject;
-    private readonly PartyWatchDog _partyWatchDog;
     private readonly ILogger<DalamudInitializer> _logger;
+    private readonly MovementController _movementController;
+    private readonly OneTimeSetupWindow _oneTimeSetupWindow;
+    private readonly PartyWatchDog _partyWatchDog;
+    private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QuestController _questController;
+    private readonly QuestWindow _questWindow;
+    private readonly IToastGui _toastGui;
+    private readonly WindowSystem _windowSystem;
 
     public DalamudInitializer(
         IDalamudPluginInterface pluginInterface,
@@ -79,8 +78,22 @@ internal sealed class DalamudInitializer : IDisposable
         _toastGui.QuestToast += OnQuestToast;
         if (_configuration.Advanced.StartMinimized)
             _questWindow.IsMinimized = true;
+
         if (_configuration.Advanced.ShowWindowOnStart)
             ToggleQuestWindow();
+    }
+
+    public void Dispose()
+    {
+        _toastGui.QuestToast -= OnQuestToast;
+        _toastGui.ErrorToast -= OnErrorToast;
+        _toastGui.Toast -= OnToast;
+        _framework.Update -= FrameworkUpdate;
+        _pluginInterface.UiBuilder.OpenConfigUi -= _configWindow.Toggle;
+        _pluginInterface.UiBuilder.OpenMainUi -= ToggleQuestWindow;
+        _pluginInterface.UiBuilder.Draw -= _windowSystem.Draw;
+
+        _windowSystem.RemoveAllWindows();
     }
 
     private void FrameworkUpdate(IFramework framework)
@@ -98,33 +111,21 @@ internal sealed class DalamudInitializer : IDisposable
         }
     }
 
-    private void OnToast(ref SeString message, ref ToastOptions options, ref bool isHandled)
-        => _logger.LogTrace("Normal Toast: {Message}", message);
+    private void OnToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _logger.LogTrace("Normal Toast: {Message}", message);
 
-    private void OnErrorToast(ref SeString message, ref bool isHandled)
-        => _logger.LogTrace("Error Toast: {Message}", message);
+    private void OnErrorToast(ref SeString message, ref bool isHandled) => _logger.LogTrace("Error Toast: {Message}", message);
 
-    private void OnQuestToast(ref SeString message, ref QuestToastOptions options, ref bool isHandled)
-        => _logger.LogTrace("Quest Toast: {Message}", message);
+    private void OnQuestToast(ref SeString message, ref QuestToastOptions options, ref bool isHandled) => _logger.LogTrace("Quest Toast: {Message}", message);
 
     private void ToggleQuestWindow()
     {
         if (_configuration.IsPluginSetupComplete())
+        {
             _questWindow.ToggleOrUncollapse();
+        }
         else
+        {
             _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
-    }
-
-    public void Dispose()
-    {
-        _toastGui.QuestToast -= OnQuestToast;
-        _toastGui.ErrorToast -= OnErrorToast;
-        _toastGui.Toast -= OnToast;
-        _framework.Update -= FrameworkUpdate;
-        _pluginInterface.UiBuilder.OpenConfigUi -= _configWindow.Toggle;
-        _pluginInterface.UiBuilder.OpenMainUi -= ToggleQuestWindow;
-        _pluginInterface.UiBuilder.Draw -= _windowSystem.Draw;
-
-        _windowSystem.RemoveAllWindows();
+        }
     }
 }

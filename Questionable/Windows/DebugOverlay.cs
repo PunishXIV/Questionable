@@ -11,22 +11,22 @@ using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.Functions;
+using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Windows;
 
 internal sealed class DebugOverlay : Window
 {
+    private readonly AetheryteData _aetheryteData;
+    private readonly IClientState _clientState;
+    private readonly CombatController _combatController;
+    private readonly ICondition _condition;
+    private readonly Configuration _configuration;
+    private readonly IGameGui _gameGui;
+    private readonly HighlightObject _highlightObject;
+    private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
-    private readonly IGameGui _gameGui;
-    private readonly IClientState _clientState;
-    private readonly ICondition _condition;
-    private readonly AetheryteData _aetheryteData;
-    private readonly IObjectTable _objectTable;
-    private readonly CombatController _combatController;
-    private readonly Configuration _configuration;
-    private readonly HighlightObject _highlightObject;
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
@@ -59,10 +59,7 @@ internal sealed class DebugOverlay : Window
 
     public override bool DrawConditions() => _configuration.Advanced.DebugOverlay || _configuration.Advanced.HighlightSelectedNpc;
 
-    public override void PreDraw()
-    {
-        Size = ImGui.GetIO().DisplaySize;
-    }
+    public override void PreDraw() => Size = ImGui.GetIO().DisplaySize;
 
     public override void Draw()
     {
@@ -87,11 +84,11 @@ internal sealed class DebugOverlay : Window
 
     private void DrawCurrentQuest()
     {
-        var currentQuest = _questController.CurrentQuest;
+        QuestController.QuestProgress? currentQuest = _questController.CurrentQuest;
         if (currentQuest == null)
             return;
 
-        var sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (sequence == null)
             return;
 
@@ -111,18 +108,16 @@ internal sealed class DebugOverlay : Window
 
     private void DrawHighlightedQuest()
     {
-        if (HighlightedQuest == null || !_questRegistry.TryGetQuest(HighlightedQuest, out var quest))
+        if (HighlightedQuest == null || !_questRegistry.TryGetQuest(HighlightedQuest, out Quest? quest))
             return;
 
-        foreach (var sequence in quest.Root.QuestSequence)
+        foreach (QuestSequence sequence in quest.Root.QuestSequence)
         {
             for (int i = 0; i < sequence.Steps.Count; ++i)
             {
                 QuestStep? step = sequence.FindStep(i);
                 if (step != null && TryGetPosition(step, out Vector3? position))
-                {
                     DrawStep($"{quest.Id} / {sequence.Sequence} / {i}", step, position.Value, 0xFFFFFFFF);
-                }
             }
         }
     }
@@ -152,7 +147,7 @@ internal sealed class DebugOverlay : Window
         if (!_combatController.IsRunning)
             return;
 
-        foreach (var x in _objectTable.Skip(1))
+        foreach (IGameObject x in _objectTable.Skip(1))
         {
             if (x is not IBattleNpc)
                 continue;
@@ -161,7 +156,7 @@ internal sealed class DebugOverlay : Window
             if (!visible)
                 continue;
 
-            var (priority, reason) = _combatController.GetKillPriority(x);
+            (int priority, string reason) = _combatController.GetKillPriority(x);
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
                 $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
         }

@@ -7,5 +7,5 @@ public enum EMovementType
     DebugWindow,
     Shortcut,
     Landing,
-    Combat,
+    Combat
 }

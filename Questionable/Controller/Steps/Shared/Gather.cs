@@ -5,8 +5,8 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using LLib.GameData;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -27,10 +27,8 @@ internal static class Gather
             if (step.InteractionType != EInteractionType.Gather)
                 yield break;
 
-            foreach (var itemToGather in step.ItemsToGather)
-            {
+            foreach (GatheredItem itemToGather in step.ItemsToGather)
                 yield return new DelayedGatheringTask(itemToGather, quest, sequence.Sequence, step);
-            }
         }
     }
 
@@ -39,7 +37,8 @@ internal static class Gather
         public override string ToString() => $"Gathering(pending for {GatheredItem.ItemId})";
     }
 
-    internal sealed class DelayedGatheringExecutor(
+    internal sealed class DelayedGatheringExecutor
+    (
         GatheringPointRegistry gatheringPointRegistry,
         TerritoryData territoryData,
         IClientState clientState,
@@ -47,19 +46,19 @@ internal static class Gather
         IServiceProvider serviceProvider,
         ILogger<DelayedGatheringExecutor> logger) : TaskExecutor<DelayedGatheringTask>, IExtraTaskCreator
     {
-        protected override bool Start() => true;
-
         public override ETaskResult Update() => ETaskResult.CreateNewTasks;
 
         public IEnumerable<ITask> CreateExtraTasks()
         {
-            EClassJob currentClassJob = (EClassJob)((IPlayerCharacter)objectTable[0]!).ClassJob.RowId;
+            Job currentClassJob = (Job)((IPlayerCharacter)objectTable[0]!).ClassJob.RowId;
             GatheringPointId? gatheringPointId;
             if (Task.Step.GatheringPoint is ushort gatheringPoint)
-                gatheringPointId = new GatheringPointId(gatheringPoint);
+                gatheringPointId = new(gatheringPoint);
             else if (!gatheringPointRegistry.TryGetGatheringPointId(Task.GatheredItem.ItemId, currentClassJob,
-                    out gatheringPointId))
+                out gatheringPointId))
+            {
                 throw new TaskException($"No gathering point found for item {Task.GatheredItem.ItemId}");
+            }
 
             if (!gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? gatheringRoot))
                 throw new TaskException($"No path found for gathering point {gatheringPointId.Value}");
@@ -67,30 +66,32 @@ internal static class Gather
             if (HasRequiredItems(Task.GatheredItem))
                 yield break;
 
-            if (currentClassJob == EClassJob.Miner)
+            if (currentClassJob == Job.MIN)
                 yield return new Action.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
-            else if (currentClassJob == EClassJob.Botanist)
+            else if (currentClassJob == Job.BTN)
                 yield return new Action.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
 
-            using (var _ = logger.BeginScope("Gathering(inner)"))
+            using (IDisposable? _ = logger.BeginScope("Gathering(inner)"))
             {
                 QuestSequence gatheringSequence = new()
                 {
                     Sequence = 0,
                     Steps = gatheringRoot.Steps
                 };
-                foreach (var gatheringStep in gatheringSequence.Steps)
+                foreach (QuestStep gatheringStep in gatheringSequence.Steps)
                 {
-                    foreach (var task in serviceProvider.GetRequiredService<TaskCreator>()
-                                 .CreateTasks(Task.Quest, Task.Sequence, gatheringSequence, gatheringStep))
+                    foreach (ITask task in serviceProvider.GetRequiredService<TaskCreator>()
+                        .CreateTasks(Task.Quest, Task.Sequence, gatheringSequence, gatheringStep))
+                    {
                         if (task is WaitAtEnd.NextStep)
                             yield return new SkipMarker();
                         else
                             yield return task;
+                    }
                 }
             }
 
-            var territoryId = gatheringRoot.Steps.Last().TerritoryId;
+            uint territoryId = gatheringRoot.Steps.Last().TerritoryId;
             yield return new WaitCondition.Task(() => clientState.TerritoryType == territoryId,
                 $"Wait(territory: {territoryData.GetNameAndId(territoryId)})");
 
@@ -100,6 +101,9 @@ internal static class Gather
             yield return new WaitAtEnd.WaitDelay();
         }
 
+        public override bool ShouldInterruptOnDamage() => false;
+        protected override bool Start() => true;
+
         private unsafe bool HasRequiredItems(GatheredItem itemToGather)
         {
             InventoryManager* inventoryManager = InventoryManager.Instance();
@@ -108,11 +112,10 @@ internal static class Gather
                        minCollectability: (short)itemToGather.Collectability) >=
                    itemToGather.ItemCount;
         }
-
-        public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record GatheringTask(
+    internal sealed record GatheringTask
+    (
         GatheringPointId GatheringPointId,
         GatheredItem GatheredItem) : ITask
     {
@@ -121,21 +124,16 @@ internal static class Gather
             if (GatheredItem.Collectability == 0)
                 return $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
             else
+            {
                 return
                     $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
+            }
         }
     }
 
     internal sealed class StartGathering(GatheringController gatheringController) : TaskExecutor<GatheringTask>,
         IToastAware
     {
-        protected override bool Start()
-        {
-            return gatheringController.Start(new GatheringController.GatheringRequest(Task.GatheringPointId,
-                Task.GatheredItem.ItemId, Task.GatheredItem.AlternativeItemId, Task.GatheredItem.ItemCount,
-                Task.GatheredItem.Collectability));
-        }
-
         public override ETaskResult Update()
         {
             if (gatheringController.Update() == GatheringController.EStatus.Complete)
@@ -153,10 +151,17 @@ internal static class Gather
 
         // we're on a gathering class, so combat doesn't make much sense (we also can't change classes in combat...)
         public override bool ShouldInterruptOnDamage() => false;
+        protected override bool Start()
+        {
+            return gatheringController.Start(new(Task.GatheringPointId,
+                Task.GatheredItem.ItemId, Task.GatheredItem.AlternativeItemId, Task.GatheredItem.ItemCount,
+                Task.GatheredItem.Collectability));
+        }
     }
 
     /// <summary>
-    /// A task that does nothing, but if we're skipping a step, this will be the task next in queue to be executed (instead of progressing to the next step) if gathering.
+    ///     A task that does nothing, but if we're skipping a step, this will be the task next in queue to be executed (instead
+    ///     of progressing to the next step) if gathering.
     /// </summary>
     internal sealed class SkipMarker : ITask
     {

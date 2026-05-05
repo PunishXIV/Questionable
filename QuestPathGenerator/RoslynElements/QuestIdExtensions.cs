@@ -7,13 +7,10 @@ namespace Questionable.QuestPathGenerator.RoslynElements;
 
 internal static class QuestIdExtensions
 {
-    public static ExpressionSyntax ToExpressionSyntax(this QuestId questId)
-    {
-        return ObjectCreationExpression(
-                IdentifierName(nameof(QuestId)))
-            .WithArgumentList(
-                ArgumentList(
-                    SingletonSeparatedList(
-                        Argument(LiteralValue(questId.Value)))));
-    }
+    public static ExpressionSyntax ToExpressionSyntax(this QuestId questId) => ObjectCreationExpression(
+            IdentifierName(nameof(QuestId)))
+        .WithArgumentList(
+            ArgumentList(
+                SingletonSeparatedList(
+                    Argument(LiteralValue(questId.Value)))));
 }

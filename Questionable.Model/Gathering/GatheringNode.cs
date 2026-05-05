@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-
 namespace Questionable.Model.Gathering;
 
 public sealed class GatheringNode

@@ -9,7 +9,6 @@ using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
-
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Action
@@ -23,7 +22,7 @@ internal static class Action
 
             ArgumentNullException.ThrowIfNull(step.Action);
 
-            var task = OnObject(step.DataId, quest, step.Action.Value, step.CompletionQuestVariablesFlags);
+            ITask task = OnObject(step.DataId, quest, step.Action.Value, step.CompletionQuestVariablesFlags);
             if (step.Action.Value.RequiresMount())
                 return [task];
             else
@@ -42,7 +41,8 @@ internal static class Action
         }
     }
 
-    internal sealed record UseOnObject(
+    internal sealed record UseOnObject
+    (
         uint? DataId,
         Quest? Quest,
         EAction Action,
@@ -52,13 +52,14 @@ internal static class Action
         public override string ToString() => $"Action({Action})";
     }
 
-    internal sealed class UseOnObjectExecutor(
+    internal sealed class UseOnObjectExecutor
+    (
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         ILogger<UseOnObject> logger) : TaskExecutor<UseOnObject>
     {
-        private bool _usedAction;
         private DateTime _continueAt = DateTime.MinValue;
+        private bool _usedAction;
 
         protected override bool Start()
         {
@@ -131,7 +132,7 @@ internal static class Action
                 Task.CompletionQuestVariablesFlags != null &&
                 QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariablesFlags))
             {
-                var questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
+                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
                 return questWork != null &&
                        QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork)
                     ? ETaskResult.TaskComplete
@@ -144,7 +145,8 @@ internal static class Action
         public override bool ShouldInterruptOnDamage() => true;
     }
 
-    internal sealed record UseMudraOnObject(
+    internal sealed record UseMudraOnObject
+    (
         uint DataId,
         EAction Action)
         : ITask
@@ -152,7 +154,8 @@ internal static class Action
         public override string ToString() => $"Mudra({Action})";
     }
 
-    internal sealed class UseMudraOnObjectExecutor(
+    internal sealed class UseMudraOnObjectExecutor
+    (
         GameFunctions gameFunctions,
         ILogger<UseMudraOnObject> logger) : TaskExecutor<UseMudraOnObject>
     {
@@ -161,7 +164,7 @@ internal static class Action
             {
                 { EAction.FumaShuriken, new() { { EAction.Ninjutsu, EAction.Ten } } },
                 { EAction.Raiton, new() { { EAction.Ninjutsu, EAction.Ten }, { EAction.FumaShuriken, EAction.Chi } } },
-                { EAction.Katon, new() {{ EAction.Ninjutsu, EAction.Chi }, { EAction.FumaShuriken, EAction.Ten } } }
+                { EAction.Katon, new() { { EAction.Ninjutsu, EAction.Chi }, { EAction.FumaShuriken, EAction.Ten } } }
             }.AsReadOnly();
 
         private DateTime _continueAt = DateTime.MinValue;
@@ -192,9 +195,9 @@ internal static class Action
                     : ETaskResult.StillRunning;
             }
 
-            if (Combos.TryGetValue(Task.Action, out var combo))
+            if (Combos.TryGetValue(Task.Action, out Dictionary<EAction, EAction>? combo))
             {
-                if (combo.TryGetValue(adjustedNinjutsuId, out var mudra))
+                if (combo.TryGetValue(adjustedNinjutsuId, out EAction mudra))
                 {
                     _continueAt = DateTime.Now.AddSeconds(0.25);
                     gameFunctions.UseAction(mudra);
@@ -229,10 +232,7 @@ internal static class Action
             return true;
         }
 
-        public override ETaskResult Update()
-        {
-            return gameFunctions.HasStatus(Task.Status) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
-        }
+        public override ETaskResult Update() => gameFunctions.HasStatus(Task.Status) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
         public override bool ShouldInterruptOnDamage() => false;
     }
