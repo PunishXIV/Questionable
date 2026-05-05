@@ -11,7 +11,10 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller;
+using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
@@ -25,6 +28,7 @@ internal sealed class PriorityWindow : LWindow
     private const string ClipboardPrefix = "qst:priority:";
     private const string LegacyClipboardPrefix = "qst:v1:";
     private const char ClipboardSeparator = ';';
+    private const string JobQuestsPresetName = "Job Quests";
     private readonly IChatGui _chatGui;
     private readonly IDalamudPluginInterface _pluginInterface;
 
@@ -35,11 +39,17 @@ internal sealed class PriorityWindow : LWindow
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
 
+    private readonly Configuration _configuration;
+    private readonly QuestData _questData;
     private ElementId? _draggedItem;
+    private string _presetName = string.Empty;
+    private string? _selectedPresetName;
+    private Dictionary<string, List<ElementId>>? _builtInPresets;
+    private Job? _lastKnownJob;
 
     public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, QuestRegistry questRegistry,
-        IDalamudPluginInterface pluginInterface)
+        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData)
         : base("Quest Priority###QuestionableQuestPriority")
     {
         _questController = questController;
@@ -50,6 +60,8 @@ internal sealed class PriorityWindow : LWindow
         _chatGui = chatGui;
         _questRegistry = questRegistry;
         _pluginInterface = pluginInterface;
+        _configuration = configuration;
+        _questData = questData;
 
         _questSelector.SuggestionPredicate = quest =>
             !quest.Info.IsMainScenarioQuest &&
@@ -67,8 +79,13 @@ internal sealed class PriorityWindow : LWindow
         };
     }
 
-    public override void DrawContent()
+    public override unsafe void DrawContent()
     {
+        Job currentJob = (Job)(PlayerState.Instance()->CurrentClassJobId);
+        if (_lastKnownJob != null && currentJob != _lastKnownJob && _selectedPresetName == JobQuestsPresetName)
+            LoadPreset(JobQuestsPresetName);
+        _lastKnownJob = currentJob;
+
         if (ImGui.CollapsingHeader("Explanation"))
         {
             ImGui.TextWrapped(
@@ -81,6 +98,8 @@ internal sealed class PriorityWindow : LWindow
             ImGui.TextWrapped(
                 "If you don't have any active MSQ quest and there is no Priority Quest added here, it will always try to pick up the next quest in the MSQ first.");
         }
+
+        DrawPresets();
 
         ImGui.Separator();
         ImGui.Spacing();
@@ -295,4 +314,172 @@ internal sealed class PriorityWindow : LWindow
     }
 
     private void ImportFromClipboard(List<ElementId> questElements) => _questController.ImportQuestPriority(questElements);
+
+    private void DrawPresets()
+    {
+        if (!ImGui.CollapsingHeader("Presets"))
+            return;
+
+        Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
+        Dictionary<string, List<string>> userPresets = _configuration.Priority.Presets;
+
+        string preview = _selectedPresetName ?? "Select a preset...";
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+        if (ImGui.BeginCombo("##PresetSelection", preview, ImGuiComboFlags.HeightLarge))
+        {
+        ImGui.TextDisabled("Built-in");
+            foreach (string name in builtInPresets.Keys)
+            {
+                if (ImGui.Selectable(name, _selectedPresetName == name))
+                {
+                    _selectedPresetName = name;
+                    LoadPreset(name);
+                }
+            }
+
+            if (userPresets.Count > 0)
+            {
+                ImGui.Separator();
+                ImGui.TextDisabled("Custom");
+                foreach (string name in userPresets.Keys)
+                {
+                    if (ImGui.Selectable(name, _selectedPresetName == name))
+                    {
+                        _selectedPresetName = name;
+                        LoadPreset(name);
+                    }
+                }
+            }
+
+            ImGui.EndCombo();
+        }
+
+        ImGui.Spacing();
+
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+        ImGui.InputTextWithHint("##PresetName", "Preset name...", ref _presetName, 128);
+
+        bool nameEmpty = string.IsNullOrWhiteSpace(_presetName);
+        bool nameIsBuiltIn = !nameEmpty && builtInPresets.ContainsKey(_presetName.Trim());
+        bool nameExists = !nameEmpty && userPresets.ContainsKey(_presetName.Trim());
+        bool noQuests = _questController.ManualPriorityQuests.Count == 0;
+
+        using (ImRaii.Disabled(nameEmpty || nameIsBuiltIn || noQuests || (nameExists && !ImGui.IsKeyDown(ImGuiKey.ModCtrl))))
+        {
+            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Save, "Save Preset"))
+            {
+                SavePreset(_presetName.Trim());
+                _presetName = string.Empty;
+            }
+        }
+
+        bool isUserPreset = _selectedPresetName != null && userPresets.ContainsKey(_selectedPresetName);
+        if (isUserPreset)
+        {
+            ImGui.SameLine();
+            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+            {
+                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Delete Preset"))
+                {
+                    userPresets.Remove(_selectedPresetName!);
+                    _selectedPresetName = null;
+                    SaveConfig();
+                }
+            }
+
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                ImGui.SetTooltip("Hold CTRL to enable this button.");
+        }
+
+        if (nameIsBuiltIn)
+            ImGui.TextColored(ImGuiColors.DalamudRed, "Cannot overwrite a built-in preset.");
+        else if (nameExists)
+            ImGui.TextColored(ImGuiColors.DalamudYellow, "Hold CTRL to overwrite existing preset.");
+    }
+
+    //TODO Add all jobs for all role quests
+    private Dictionary<string, List<ElementId>> GetOrCreateBuiltInPresets()
+    {
+        if (_builtInPresets != null)
+            return _builtInPresets;
+
+        _builtInPresets = new Dictionary<string, List<ElementId>>
+        {
+            [JobQuestsPresetName] = [],
+            ["ARR Hard Mode Primals"] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
+            ["Crystal Tower Raids"] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
+            ["Aether Currents: Heavensward"] = GetAetherCurrentQuests(397, 398, 399, 400, 401),
+            ["Aether Currents: Stormblood"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
+            ["Aether Currents: Shadowbringers"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
+            ["Aether Currents: Endwalker"] = GetAetherCurrentQuests(956, 957, 958, 959, 960, 961),
+            ["Aether Currents: Dawntrail"] = GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192),
+            ["Role Quests: Tank"] = _questData.GetRoleQuests(Job.PLD).Select(x => (ElementId)x.QuestId).ToList(),
+            ["Role Quests: Healer"] = _questData.GetRoleQuests(Job.WHM).Select(x => (ElementId)x.QuestId).ToList(),
+            ["Role Quests: Melee DPS"] = _questData.GetRoleQuests(Job.MNK).Select(x => (ElementId)x.QuestId).ToList(),
+            ["Role Quests: Physical Ranged"] = _questData.GetRoleQuests(Job.BRD).Select(x => (ElementId)x.QuestId).ToList(),
+            ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => (ElementId)x.QuestId).ToList(),
+        };
+
+        return _builtInPresets;
+    }
+
+    private static List<ElementId> GetAetherCurrentQuests(params uint[] territories)
+    {
+        return territories
+            .Where(QuestData.AetherCurrentQuestsByTerritory.ContainsKey)
+            .SelectMany(t => QuestData.AetherCurrentQuestsByTerritory[t])
+            .Cast<ElementId>()
+            .ToList();
+    }
+
+    private void LoadPreset(string name)
+    {
+        _questController.ClearQuestPriority();
+
+        if (name == JobQuestsPresetName)
+        {
+            _questController.ImportQuestPriority(GetCurrentJobQuests());
+            return;
+        }
+
+        Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
+        if (builtInPresets.TryGetValue(name, out List<ElementId>? questIds))
+        {
+            _questController.ImportQuestPriority(questIds);
+        }
+        else if (_configuration.Priority.Presets.TryGetValue(name, out List<string>? questIdStrings))
+        {
+            List<ElementId> ids = [];
+            foreach (string s in questIdStrings)
+            {
+                if (ElementId.TryFromString(s, out ElementId? id) && id != null)
+                    ids.Add(id);
+            }
+
+            _questController.ImportQuestPriority(ids);
+        }
+    }
+
+    private void SavePreset(string name)
+    {
+        List<string> questIds = _questController.ManualPriorityQuests
+            .Select(q => q.Id.ToString())
+            .ToList();
+        _configuration.Priority.Presets[name] = questIds;
+        _selectedPresetName = name;
+        SaveConfig();
+    }
+
+    private unsafe List<ElementId> GetCurrentJobQuests()
+    {
+        Job currentJob = (Job)(PlayerState.Instance()->CurrentClassJobId);
+        if (currentJob == Job.ADV)
+            return [];
+
+        return _questRegistry.GetKnownClassJobQuests(currentJob, includeRoleQuests: false)
+            .Select(x => (ElementId)x.QuestId)
+            .ToList();
+    }
+
+    private void SaveConfig() => _pluginInterface.SavePluginConfig(_configuration);
 }
