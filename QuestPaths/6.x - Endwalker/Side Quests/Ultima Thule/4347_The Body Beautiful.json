@@ -1,0 +1,106 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040882,
+          "Position": {
+            "X": 65.7187,
+            "Y": 270.086,
+            "Z": -448.959
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 65.7187,
+                  "Y": 270.086,
+                  "Z": -448.959
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 150
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 225.082,
+            "Y": 269.0,
+            "Z": -537.484
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 13327,
+              "RewardItemId": 2003255,
+              "RewardItemCount": 2
+            },
+            {
+              "DataId": 13328,
+              "RewardItemId": 2003255,
+              "RewardItemCount": 2
+            },
+            {
+              "DataId": 13329,
+              "RewardItemId": 2003255,
+              "RewardItemCount": 2
+            }
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040882,
+          "Position": {
+            "X": 65.7187,
+            "Y": 270.086,
+            "Z": -448.959
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 65.7187,
+                  "Y": 270.086,
+                  "Z": -448.959
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 150
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
