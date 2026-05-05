@@ -124,19 +124,19 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.277.6, )"
+          "Questionable.Model": "[15.278.0, )"
         }
       },
-      "notificationmasterapi": {
-        "type": "Project"
-      },
       "questionable.model": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "System.Text.Json": "[9.0.3, )"
+        }
       },
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.277.6, )"
+          "Questionable.Model": "[15.278.0, )"
         }
       }
     }
