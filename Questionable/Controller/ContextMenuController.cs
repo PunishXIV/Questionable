@@ -144,7 +144,7 @@ internal sealed class ContextMenuController : IDisposable
             lockedReasonn = $"{classJob} not unlocked";
         else if (quantityToGather == 0)
             lockedReasonn = "No allowances";
-        else if (quantityToGather > _gameFunctions.GetFreeInventorySlots())
+        else if (quantityToGather > GameFunctions.GetFreeInventorySlots())
             lockedReasonn = "Inventory full";
         else if (_gameFunctions.IsOccupied())
             lockedReasonn = "Can't be used while interacting";
