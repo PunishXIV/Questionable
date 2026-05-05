@@ -13,7 +13,10 @@
             "Z": 118.88306
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": ["[Ul'dah] Aetheryte Plaza","[Ul'dah] Alchemists' Guild"],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [130,131]}}
         }
       ]
     },

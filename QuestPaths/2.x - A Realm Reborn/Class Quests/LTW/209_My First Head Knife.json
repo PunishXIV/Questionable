@@ -9,19 +9,19 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 2416,
-          "TerritoryId": 131
+          "TerritoryId": 133
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 131
+          "TerritoryId": 133
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 131
+          "TerritoryId": 133
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 131
+          "TerritoryId": 133
         },
         {
           "DataId": 1000691,
@@ -33,18 +33,8 @@
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          "AethernetShortcut": ["[Gridania] Aetheryte Plaza","[Gridania] Leatherworkers' Guild & Shaded Bower"],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [132,133]}}
         }
       ]
     },

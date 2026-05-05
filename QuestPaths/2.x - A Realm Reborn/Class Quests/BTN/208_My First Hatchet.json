@@ -31,7 +31,10 @@
             "Z": -171.03839
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": ["[Gridania] Aetheryte Plaza","[Gridania] Botanists' Guild"],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [132,133]}}
         }
       ]
     },
