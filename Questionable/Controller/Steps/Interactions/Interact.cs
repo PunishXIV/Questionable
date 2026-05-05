@@ -50,19 +50,19 @@ internal static class Interact
             {
                 if (step.DataId == null)
                     yield break;
-                else if (step.InteractionType == EInteractionType.Snipe)
-                {
-                    if (!automatonIpc.IsAutoSnipeEnabled)
-                        yield break;
-                    else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
-                    {
-                        if (step.TaxiStandId == null)
-                            yield break;
-                        else if (step.InteractionType != EInteractionType.Interact)
-                            yield break;
-                    }
-                }
             }
+            else if (step.InteractionType == EInteractionType.Snipe)
+            {
+                if (!automatonIpc.IsAutoSnipeEnabled)
+                    yield break;
+            }
+            else if (step.InteractionType == EInteractionType.UnlockTaxiStand)
+            {
+                if (step.TaxiStandId == null)
+                    yield break;
+            }
+            else if (step.InteractionType != EInteractionType.Interact)
+                yield break;
 
             ArgumentNullException.ThrowIfNull(step.DataId);
 
