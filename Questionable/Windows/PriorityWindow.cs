@@ -30,22 +30,22 @@ internal sealed class PriorityWindow : LWindow
     private const char ClipboardSeparator = ';';
     private const string JobQuestsPresetName = "Job Quests";
     private readonly IChatGui _chatGui;
+
+    private readonly Configuration _configuration;
     private readonly IDalamudPluginInterface _pluginInterface;
 
     private readonly QuestController _questController;
+    private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestSelector _questSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
-
-    private readonly Configuration _configuration;
-    private readonly QuestData _questData;
+    private Dictionary<string, List<ElementId>>? _builtInPresets;
     private ElementId? _draggedItem;
+    private Job? _lastKnownJob;
     private string _presetName = string.Empty;
     private string? _selectedPresetName;
-    private Dictionary<string, List<ElementId>>? _builtInPresets;
-    private Job? _lastKnownJob;
 
     public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, QuestRegistry questRegistry,
@@ -327,7 +327,7 @@ internal sealed class PriorityWindow : LWindow
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
         if (ImGui.BeginCombo("##PresetSelection", preview, ImGuiComboFlags.HeightLarge))
         {
-        ImGui.TextDisabled("Built-in");
+            ImGui.TextDisabled("Built-in");
             foreach (string name in builtInPresets.Keys)
             {
                 if (ImGui.Selectable(name, _selectedPresetName == name))
@@ -403,7 +403,7 @@ internal sealed class PriorityWindow : LWindow
         if (_builtInPresets != null)
             return _builtInPresets;
 
-        _builtInPresets = new Dictionary<string, List<ElementId>>
+        _builtInPresets = new()
         {
             [JobQuestsPresetName] = [],
             ["ARR Hard Mode Primals"] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
@@ -413,11 +413,11 @@ internal sealed class PriorityWindow : LWindow
             ["Aether Currents: Shadowbringers"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
             ["Aether Currents: Endwalker"] = GetAetherCurrentQuests(956, 957, 958, 959, 960, 961),
             ["Aether Currents: Dawntrail"] = GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192),
-            ["Role Quests: Tank"] = _questData.GetRoleQuests(Job.PLD).Select(x => (ElementId)x.QuestId).ToList(),
-            ["Role Quests: Healer"] = _questData.GetRoleQuests(Job.WHM).Select(x => (ElementId)x.QuestId).ToList(),
-            ["Role Quests: Melee DPS"] = _questData.GetRoleQuests(Job.MNK).Select(x => (ElementId)x.QuestId).ToList(),
-            ["Role Quests: Physical Ranged"] = _questData.GetRoleQuests(Job.BRD).Select(x => (ElementId)x.QuestId).ToList(),
-            ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => (ElementId)x.QuestId).ToList(),
+            ["Role Quests: Tank"] = _questData.GetRoleQuests(Job.PLD).Select(x => x.QuestId).ToList(),
+            ["Role Quests: Healer"] = _questData.GetRoleQuests(Job.WHM).Select(x => x.QuestId).ToList(),
+            ["Role Quests: Melee DPS"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
+            ["Role Quests: Physical Ranged"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
+            ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList()
         };
 
         return _builtInPresets;
@@ -476,8 +476,8 @@ internal sealed class PriorityWindow : LWindow
         if (currentJob == Job.ADV)
             return [];
 
-        return _questRegistry.GetKnownClassJobQuests(currentJob, includeRoleQuests: false)
-            .Select(x => (ElementId)x.QuestId)
+        return _questRegistry.GetKnownClassJobQuests(currentJob, false)
+            .Select(x => x.QuestId)
             .ToList();
     }
 
