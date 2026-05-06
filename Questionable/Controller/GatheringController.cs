@@ -48,12 +48,7 @@ internal sealed unsafe class GatheringController
     }
 
     private readonly ICondition _condition = condition;
-    private readonly GameFunctions _gameFunctions = gameFunctions;
-    private readonly GatheringPointRegistry _gatheringPointRegistry = gatheringPointRegistry;
     private readonly ILogger<GatheringController> _logger = logger;
-    private readonly MovementController _movementController = movementController;
-    private readonly NavmeshIpc _navmeshIpc = navmeshIpc;
-    private readonly IObjectTable _objectTable = objectTable;
     private readonly Regex _revisitRegex = DataManagerAdapter.GetRegex<LogMessage>(dataManager, 5574, x => x.Text, pluginLog)
                                            ?? throw new InvalidDataException("No regex found for revisit message");
 
@@ -61,7 +56,7 @@ internal sealed unsafe class GatheringController
 
     public bool Start(GatheringRequest gatheringRequest)
     {
-        if (!_gatheringPointRegistry.TryGetGatheringPoint(gatheringRequest.GatheringPointId,
+        if (!gatheringPointRegistry.TryGetGatheringPoint(gatheringRequest.GatheringPointId,
             out GatheringRoot? gatheringRoot))
         {
             _logger.LogError("Unable to resolve gathering point, no path found for {ItemId} / point {PointId}",
@@ -96,7 +91,7 @@ internal sealed unsafe class GatheringController
             return EStatus.Complete;
         }
 
-        if (_movementController.IsPathfinding || _movementController.IsPathfinding)
+        if (movementController.IsPathfinding || movementController.IsPathfinding)
             return EStatus.Moving;
 
         if (HasRequestedItems() && !_condition[ConditionFlag.Gathering])
@@ -123,8 +118,8 @@ internal sealed unsafe class GatheringController
     public override void Dispose()
     {
         base.Dispose();
-        _movementController.Dispose();
-        _gatheringPointRegistry.Dispose();
+        movementController.Dispose();
+        gatheringPointRegistry.Dispose();
     }
 
     private void GoToNextNode()
@@ -140,10 +135,8 @@ internal sealed unsafe class GatheringController
             return;
 
         uint territoryId = _currentRequest.Root.Steps.Last().TerritoryId;
-        _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
-
         bool fly = currentNode.Fly.GetValueOrDefault(_currentRequest.Root.FlyBetweenNodes.GetValueOrDefault(true)) &&
-                   _gameFunctions.IsFlyingUnlocked(territoryId);
+                   gameFunctions.IsFlyingUnlocked(territoryId);
         if (currentNode.Locations.Count > 1)
         {
             Vector3 averagePosition = new()
@@ -153,12 +146,24 @@ internal sealed unsafe class GatheringController
                 Z = currentNode.Locations.Sum(x => x.Position.Z) / currentNode.Locations.Count
             };
 
-            Vector3? pointOnFloor = _navmeshIpc.GetPointOnFloor(averagePosition, true);
+            Vector3? pointOnFloor = navmeshIpc.GetPointOnFloor(averagePosition, true);
             if (pointOnFloor != null)
                 pointOnFloor = pointOnFloor.Value with { Y = pointOnFloor.Value.Y + (fly ? 3f : 0f) };
 
-            _taskQueue.Enqueue(new MoveTask(territoryId, pointOnFloor ?? averagePosition,
+            Vector3 moveTarget = pointOnFloor ?? averagePosition;
+            Vector3? playerPos = objectTable[0]?.Position;
+            if (playerPos == null || Vector3.Distance(playerPos.Value, moveTarget) > 50f)
+                _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
+
+            _taskQueue.Enqueue(new MoveTask(territoryId, moveTarget,
                 null, 50f, Fly: fly, IgnoreDistanceToObject: true, InteractionType: EInteractionType.WalkTo));
+        }
+        else
+        {
+            Vector3 targetPosition = currentNode.Locations.First().Position;
+            Vector3? playerPos = objectTable[0]?.Position;
+            if (playerPos == null || Vector3.Distance(playerPos.Value, targetPosition) > 50f)
+                _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
         }
 
         _taskQueue.Enqueue(new MoveToLandingLocation.Task(territoryId, fly, currentNode));
@@ -193,7 +198,7 @@ internal sealed unsafe class GatheringController
 
     public bool HasNodeDisappeared(GatheringNode node)
     {
-        return !_objectTable.Any(x =>
+        return !objectTable.Any(x =>
             x.ObjectKind == ObjectKind.GatheringPoint && x.IsTargetable && GameFunctions.GetBaseID(x) == node.DataId);
     }
 
@@ -208,7 +213,7 @@ internal sealed unsafe class GatheringController
             int currentIndex = (currentRequest.CurrentIndex + i) % currentRequest.Nodes.Count;
             GatheringNode currentNode = currentRequest.Nodes[currentIndex];
             List<IGameObject?> locationsAsObjects = currentNode.Locations.Select(x =>
-                    _objectTable.FirstOrDefault(y =>
+                    objectTable.FirstOrDefault(y =>
                         currentNode.DataId == GameFunctions.GetBaseID(y) && Vector3.Distance(x.Position, y.Position) < 0.1f))
                 //.OrderBy(x => _objectTable[0] is { } player && x != null ? Vector3.Distance(player.Position, x.Position) : 99999)
                 .ToList();
