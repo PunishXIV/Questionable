@@ -1,0 +1,96 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037627,
+          "Position": {
+            "X": 387.725,
+            "Y": 3.09947,
+            "Z": -223.319
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 330.904,
+            "Y": 52.6869,
+            "Z": 442.036
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1040852,
+          "Position": {
+            "X": 330.904,
+            "Y": 52.6869,
+            "Z": 442.036
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 510.947,
+            "Y": 75.4707,
+            "Z": 413.792
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1040853,
+          "Position": {
+            "X": 510.947,
+            "Y": 75.4707,
+            "Z": 413.792
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037627,
+          "Position": {
+            "X": 387.725,
+            "Y": 3.09947,
+            "Z": -223.319
+          },
+          "TerritoryId": 957,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+        }
+      ]
+    }
+  ]
+}
