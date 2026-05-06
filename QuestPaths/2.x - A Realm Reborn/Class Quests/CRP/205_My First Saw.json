@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": ["liza", "Gezah"],
+  "Author": ["liza", "Gezah", "vicyorus"],
   "Comment": "Crafted Item:\n 1x Maple Lumber,\nAutocraft requires:\n 3x Maple Log",
   "QuestSequence": [
     {
@@ -46,6 +46,33 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5380,
+          "ItemCount": 3,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
         {
           "InteractionType": "Craft",
           "TerritoryId": 132,
