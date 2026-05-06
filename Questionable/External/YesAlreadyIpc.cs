@@ -6,6 +6,7 @@ using ECommons.Reflection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
+#pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
 namespace Questionable.External;
 
 internal sealed class YesAlreadyIpc : IDisposable
@@ -77,7 +78,7 @@ internal sealed class YesAlreadyIpc : IDisposable
     {
         internal static bool IsReady(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
 
-        internal static Version? Version(string pluginName)
+        internal static Version Version(string pluginName)
         {
             Version _version;
             if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, false, true))

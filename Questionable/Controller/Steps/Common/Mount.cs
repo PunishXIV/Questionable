@@ -65,7 +65,7 @@ internal static class Mount
             {
                 Vector3 playerPosition = objectTable[0]?.Position ?? Vector3.Zero;
                 float distance = System.Numerics.Vector3.Distance(playerPosition, task.Position.GetValueOrDefault());
-                if (task.TerritoryId == clientState.TerritoryType && distance < 30f && !Conditions.Instance()->Diving)
+                if (task.TerritoryId == clientState.TerritoryType && distance < 50f && !Conditions.Instance()->Diving)
                 {
                     logger.Log(logLevel, "Not using mount, as we're close to the target");
                     return MountResult.DontMount;
