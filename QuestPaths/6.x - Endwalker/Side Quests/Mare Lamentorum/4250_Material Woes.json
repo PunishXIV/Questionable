@@ -1,0 +1,77 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037817,
+          "Position": {
+            "X": 123.583,
+            "Y": -137.438,
+            "Z": -525.536
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 172.04109,
+            "Y": 77.32776,
+            "Z": 5.062954
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 13362,
+              "NameId": 10458,
+              "RewardItemId": 2003371,
+              "RewardItemCount": 1
+            }
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037817,
+          "Position": {
+            "X": 123.583,
+            "Y": -137.438,
+            "Z": -525.536
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZE011_04250_Q1_000_000",
+              "Answer": "TEXT_AKTKZE011_04250_A1_000_001"
+            }
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041826,
+          "Position": {
+            "X": 38.7582,
+            "Y": -129.0,
+            "Z": -501.906
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041827,
+          "Position": {
+            "X": 300.744,
+            "Y": 71.8707,
+            "Z": 335.68
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 241.1552,
+            "Y": 66.47317,
+            "Z": 444.5359
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 13361,
+              "RewardItemId": 2003375,
+              "RewardItemCount": 1
+            }
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 52.5849,
+            "Y": 73.2411,
+            "Z": 3.48112
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1041828,
+          "Position": {
+            "X": 52.5849,
+            "Y": 73.2411,
+            "Z": 3.48112
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 5
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041826,
+          "Position": {
+            "X": 38.7582,
+            "Y": -129.0,
+            "Z": -501.906
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}

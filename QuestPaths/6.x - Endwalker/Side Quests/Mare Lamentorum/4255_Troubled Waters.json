@@ -1,0 +1,89 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037856,
+          "Position": {
+            "X": 292.886,
+            "Y": -144.0,
+            "Z": -537.865
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012601,
+          "Position": {
+            "X": 359.51782,
+            "Y": -161.08954,
+            "Z": -769.3752
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012602,
+          "Position": {
+            "X": 659.4186,
+            "Y": -161.42523,
+            "Z": -809.4758
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012603,
+          "Position": {
+            "X": 336.5376,
+            "Y": -161.45575,
+            "Z": -775.9365
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037856,
+          "Position": {
+            "X": 292.886,
+            "Y": -144.0,
+            "Z": -537.865
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}
