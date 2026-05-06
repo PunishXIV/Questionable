@@ -17,13 +17,6 @@
         <ProjectReference Include="..\QuestPathGenerator\QuestPathGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     </ItemGroup>
 
-    <Target Name="AddAnalyzerModelDependency" BeforeTargets="CoreCompile"
-            DependsOnTargets="ResolveProjectReferences">
-        <ItemGroup>
-            <Analyzer Include="..\Questionable.Model\bin\$(Platform)\$(Configuration)\netstandard2.0\Questionable.Model.dll" />
-        </ItemGroup>
-    </Target>
-
     <ItemGroup>
         <None Remove="gatheringlocation-v1.json" />
         <EmbeddedResource Include="gatheringlocation-v1.json">
