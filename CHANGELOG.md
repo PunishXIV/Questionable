@@ -2,5 +2,6 @@
   - Fix Emote/Interact -alydev, Kage
 - Priority Presets feature -Kage
   - Built-in presets -Kage, alydev
-- UT side quests -Saputello
+- Minimum distance of 50y required to mount (questing/gathering) -Kage
+- UT/Mare/Thavnair side quests -Saputello
 - update for Dalamud api15 (7.5) -croizat

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1040865,
+          "Position": {
+            "X": 45.7247,
+            "Y": -137.417,
+            "Z": -612.957
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040866,
+          "Position": {
+            "X": 528.369,
+            "Y": -167.865,
+            "Z": -711.319
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14052,
+            14051
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1040866,
+          "Position": {
+            "X": 528.369,
+            "Y": -167.865,
+            "Z": -711.319
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "CombatDelaySecondsAtStart": 8,
+          "KillEnemyDataIds": [
+            14052,
+            14051
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1040866,
+          "Position": {
+            "X": 528.369,
+            "Y": -167.865,
+            "Z": -711.319
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 5,
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1040865,
+          "Position": {
+            "X": 45.7247,
+            "Y": -137.417,
+            "Z": -612.957
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}
