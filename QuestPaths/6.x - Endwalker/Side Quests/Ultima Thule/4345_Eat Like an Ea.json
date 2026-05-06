@@ -1,0 +1,100 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038031,
+          "Position": {
+            "X": 43.7501,
+            "Y": 269.0,
+            "Z": -666.432
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 43.7501,
+                  "Y": 269.0,
+                  "Z": -666.432
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 150
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040878,
+          "Position": {
+            "X": 581.292,
+            "Y": 286.081,
+            "Z": -520.288
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14096
+          ],
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZJ009_04345_Q1_000_000",
+              "Answer": "TEXT_AKTKZJ009_04345_A1_000_001"
+            }
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038031,
+          "Position": {
+            "X": 43.7501,
+            "Y": 269.0,
+            "Z": -666.432
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 43.7501,
+                  "Y": 269.0,
+                  "Z": -666.432
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 150
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

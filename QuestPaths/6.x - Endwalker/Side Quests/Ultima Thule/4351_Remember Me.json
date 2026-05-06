@@ -1,0 +1,97 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038025,
+          "Position": {
+            "X": 191.516,
+            "Y": 268.914,
+            "Z": -689.174
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 191.516,
+                  "Y": 268.914,
+                  "Z": -689.174
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 150
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012333,
+          "Position": {
+            "X": -27.5487,
+            "Y": 272.379,
+            "Z": -437.276
+          },
+          "TerritoryId": 960,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            14045
+          ],
+          "CombatItemUse": {
+            "ItemId": 2003386,
+            "Condition": "Health%",
+            "Value": 50
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038025,
+          "Position": {
+            "X": 191.516,
+            "Y": 268.914,
+            "Z": -689.174
+          },
+          "TerritoryId": 960,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "StopDistance": 5,
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 191.516,
+                  "Y": 268.914,
+                  "Z": -689.174
+                },
+                "TerritoryId": 960,
+                "MaximumDistance": 150
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
