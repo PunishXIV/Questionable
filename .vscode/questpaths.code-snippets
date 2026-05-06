@@ -5,9 +5,7 @@
 		"body": [
 			"{",
 			"  \"\\$schema\": \"https://qstxiv.github.io/schema/quest-v1.json\",",
-			"  \"Author\": \"alydev\",",
-			"  \"Disabled\": true,",
-			"  \"Comment\": \"WIP\",",
+			"  \"Author\": \"\",",
 			"  \"QuestSequence\": [",
 			"    $0",
 			"  ]",
@@ -44,6 +42,6 @@
 	"LastChecked": {
 		"scope": "json",
 		"prefix": "LastChecked",
-		"body": "\"LastChecked\":{\"Username\": \"alydev\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},"
+		"body": "\"LastChecked\":{\"Username\": \"\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},"
 	}
 }
