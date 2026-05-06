@@ -1,5 +1,6 @@
 - Refactored QST to remove dependency on LLib -Kage, alydev, zbee
   - Fix Emote/Interact -alydev, Kage
 - Priority Presets feature -Kage
+  - Built-in presets -Kage, alydev
 - UT side quests -Saputello
 - update for Dalamud api15 (7.5) -croizat

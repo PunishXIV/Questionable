@@ -1,0 +1,90 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006433,
+          "Position": {
+            "X": 203.25745,
+            "Y": 309.07343,
+            "Z": -222.1973
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002152,
+          "Position": {
+            "X": 193.4386,
+            "Y": 358.1139,
+            "Z": -567.4983
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 2094,
+              "NameId": 637,
+              "MinimumKillCount": 1
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            {
+              "Low": 1
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2002152,
+          "Position": {
+            "X": 193.4386,
+            "Y": 358.1139,
+            "Z": -567.4983
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006433,
+          "Position": {
+            "X": 203.25745,
+            "Y": 309.07343,
+            "Z": -222.1973
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    }
+  ]
+}

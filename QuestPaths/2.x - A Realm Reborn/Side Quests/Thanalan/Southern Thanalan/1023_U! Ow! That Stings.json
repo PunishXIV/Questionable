@@ -1,7 +1,10 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "Thaksin",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-06"},
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,48 +26,44 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1006602,
+          "DataId": 1006607,
           "Position": {
-            "X": -321.06506,
-            "Y": 8.830055,
-            "Z": 436.94202
+            "X": -98.28339,
+            "Y": 45.811234,
+            "Z": 210.34558
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "InteractionType": "UseItem",
+          "ItemId": 2000780,
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
-          "DataId": 1006600,
+          "DataId": 1006608,
           "Position": {
-            "X": -283.5279,
-            "Y": 7.652629,
-            "Z": 423.14795
+            "X": -179.52246,
+            "Y": 39.999996,
+            "Z": 177.66077
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "InteractionType": "UseItem",
+          "ItemId": 2000780,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
-          "DataId": 1006599,
+          "DataId": 1006606,
           "Position": {
-            "X": -279.98785,
-            "Y": 15.013981,
-            "Z": 373.37292
+            "X": -171.92346,
+            "Y": 40,
+            "Z": 136.73608
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "DataId": 1006601,
-          "Position": {
-            "X": -293.53784,
-            "Y": 13.137939,
-            "Z": 354.63477
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "InteractionType": "UseItem",
+          "ItemId": 2000780,
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
     },

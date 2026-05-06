@@ -1,0 +1,69 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006617,
+          "Position": {
+            "X": 66.4251,
+            "Y": -3.1182418,
+            "Z": 50.53437
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -121.50578,
+            "Y": -27.151733,
+            "Z": 28.13903
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            765,
+            766,
+            767
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006617,
+          "Position": {
+            "X": 66.4251,
+            "Y": -3.1182418,
+            "Z": 50.53437
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "Land": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Western La Noscea - Aleport"
+        }
+      ]
+    }
+  ]
+}

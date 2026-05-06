@@ -1,0 +1,92 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006591,
+          "Position": {
+            "X": -129.2287,
+            "Y": 64.530396,
+            "Z": -215.86938
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1006593,
+          "Position": {
+            "X": -115.40399,
+            "Y": 64.51385,
+            "Z": -232.22711
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        },
+        {
+          "DataId": 1006590,
+          "Position": {
+            "X": -99.90088,
+            "Y": 62.55459,
+            "Z": -156.38977
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1006592,
+          "Position": {
+            "X": -81.92572,
+            "Y": 64.47281,
+            "Z": -245.31934
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

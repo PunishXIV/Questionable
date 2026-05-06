@@ -1103,10 +1103,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public bool AddQuestPriority(ElementId elementId)
     {
-        if (_questRegistry.TryGetQuest(elementId, out Quest? quest) &&
-            !ManualPriorityQuests.Contains(quest) &&
-            (_questFunctions.IsDailyAlliedSocietyQuest((QuestId)elementId) || !_questFunctions.IsQuestComplete(elementId))
-            )
+        if (_questRegistry.TryGetQuest(elementId, out Quest? quest) && !ManualPriorityQuests.Contains(quest))
         {
             ManualPriorityQuests.Add(quest);
         }

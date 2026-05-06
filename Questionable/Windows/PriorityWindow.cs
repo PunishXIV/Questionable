@@ -403,6 +403,10 @@ internal sealed class PriorityWindow : LWindow
         if (_builtInPresets != null)
             return _builtInPresets;
 
+        List<ElementId> gilList = ((ushort[])[
+            835, 903, 916, 918, 919, 920, 929, 928, 930, 931, 932, 945, 1010, 1011, 1015, 1017, 1019, 1553, 1021, 1023,
+            1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035
+        ]).FromNumericListOfQuests();
         _builtInPresets = new()
         {
             [JobQuestsPresetName] = [],
@@ -417,7 +421,8 @@ internal sealed class PriorityWindow : LWindow
             ["Role Quests: Healer"] = _questData.GetRoleQuests(Job.WHM).Select(x => x.QuestId).ToList(),
             ["Role Quests: Melee DPS"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             ["Role Quests: Physical Ranged"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
-            ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList()
+            ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
+            ["Gil (set TextAdvance to prefer Gil sacks)"] = gilList
         };
 
         return _builtInPresets;

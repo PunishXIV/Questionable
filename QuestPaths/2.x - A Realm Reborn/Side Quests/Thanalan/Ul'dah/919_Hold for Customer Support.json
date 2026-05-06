@@ -1,0 +1,55 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001679,
+          "Position": {
+            "X": 140.48975,
+            "Y": 4.0099983,
+            "Z": -59.80017
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                131,
+                132
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006438,
+          "Position": {
+            "X": -28.885437,
+            "Y": 6.9845014,
+            "Z": 480.2776
+          },
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+        }
+      ]
+    }
+  ]
+}

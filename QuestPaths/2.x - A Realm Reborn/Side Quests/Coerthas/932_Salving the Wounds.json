@@ -1,0 +1,68 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006456,
+          "Position": {
+            "X": -128.16058,
+            "Y": 304.1538,
+            "Z": -298.024
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 143,
+          "Position": {
+            "X": -252.91382,
+            "Y": 268.04108,
+            "Z": -74.52817
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 143,
+              "NameId": 2156,
+              "MinimumKillCount": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006456,
+          "Position": {
+            "X": -128.16058,
+            "Y": 304.1538,
+            "Z": -298.024
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    }
+  ]
+}

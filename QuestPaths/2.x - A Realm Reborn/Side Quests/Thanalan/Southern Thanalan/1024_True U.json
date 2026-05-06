@@ -1,22 +1,24 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": ["skiaz","alydev"],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-06"},
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1006614,
+          "DataId": 1004917,
           "Position": {
-            "X": 65.23441,
-            "Y": -3.118212,
-            "Z": 60.50025
+            "X": -358.6328,
+            "Y": 8.469424,
+            "Z": 422.4154
           },
-          "TerritoryId": 138,
+          "TerritoryId": 146,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
         }
       ]
     },
@@ -24,56 +26,48 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1006612,
           "Position": {
-            "X": -440.48288,
-            "Y": -40.517853,
-            "Z": -225.25006
+            "X": -344.8713,
+            "Y": 8.266994,
+            "Z": 421.46906
           },
-          "TerritoryId": 138,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "AfterItemUse",
-          "ItemId": 2000782,
-          "GroundTarget": true,
-          "KillEnemyDataIds": [
-            2101,
-            2098
-          ],
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
+          "DataId": 1006611,
           "Position": {
-            "X": -402.92905,
-            "Y": -38.11386,
-            "Z": -248.8578
+            "X": -344.8713,
+            "Y": 8.266994,
+            "Z": 421.46906
           },
-          "TerritoryId": 138,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "AfterItemUse",
-          "ItemId": 2000782,
-          "GroundTarget": true,
-          "KillEnemyDataIds": [
-            2101,
-            2098
-          ],
-          "Fly": true,
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
+          "DataId": 1006610,
           "Position": {
-            "X": -417.09912,
-            "Y": -28.395859,
-            "Z": -251.60617
+            "X": -344.8713,
+            "Y": 8.266994,
+            "Z": 421.46906
           },
-          "TerritoryId": 138,
-          "InteractionType": "Combat",
-          "EnemySpawnType": "AfterItemUse",
-          "ItemId": 2000782,
-          "GroundTarget": true,
-          "KillEnemyDataIds": [
-            2101,
-            2098
-          ]
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1006609,
+          "Position": {
+            "X": -344.8713,
+            "Y": 8.266994,
+            "Z": 421.46906
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
     },
@@ -81,15 +75,14 @@
       "Sequence": 2,
       "Steps": [
         {
-          "DataId": 1006614,
+          "DataId": 1004917,
           "Position": {
-            "X": 65.87317,
-            "Y": -3.1181886,
-            "Z": 61.41748
+            "X": -358.6328,
+            "Y": 8.469424,
+            "Z": 422.4154
           },
-          "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -156,11 +149,11 @@
           }
         },
         {
-          "DataId": 1007488,
+          "DataId": 1011618,
           "Position": {
-            "X": -1.2055054,
-            "Y": -2.0000095,
-            "Z": -28.000305
+            "X": 10.330261,
+            "Y": -3.0000017,
+            "Z": -54.8562
           },
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 16.373425,
+            "Y": 48.43678,
+            "Z": -370.89697
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2000776,
+          "GroundTarget": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "Position": {
+            "X": 71.26289,
+            "Y": 48.516964,
+            "Z": -409.8562
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2000776,
+          "GroundTarget": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "Position": {
+            "X": 88.29498,
+            "Y": 55.610077,
+            "Z": -480.93277
+          },
+          "TerritoryId": 180,
+          "InteractionType": "UseItem",
+          "ItemId": 2000776,
+          "GroundTarget": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+        }
+      ]
+    }
+  ]
+}

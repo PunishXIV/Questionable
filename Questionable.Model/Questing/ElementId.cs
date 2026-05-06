@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 namespace Questionable.Model.Questing;
 
 public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
@@ -112,4 +114,10 @@ public sealed class AlliedSocietyDailyId(byte alliedSociety, byte rank = 0) : El
     public byte Rank { get; } = rank;
 
     public override string ToString() => "A" + AlliedSociety + "x" + Rank;
+}
+
+public static class ElementIdExtensions
+{
+    public static List<ElementId> FromNumericListOfQuests(this IEnumerable<ushort> ids) =>
+        ids.Select(id => (ElementId)new QuestId(id)).ToList();
 }

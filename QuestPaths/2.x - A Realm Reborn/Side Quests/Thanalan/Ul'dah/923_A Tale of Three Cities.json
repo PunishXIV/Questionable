@@ -1,0 +1,56 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001679,
+          "Position": {
+            "X": 140.48975,
+            "Y": 4.0099983,
+            "Z": -59.80017
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                131,
+                132
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006436,
+          "Position": {
+            "X": 264.00778,
+            "Y": 312,
+            "Z": -253.13805
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+        }
+      ]
+    }
+  ]
+}
