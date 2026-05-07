@@ -1,0 +1,68 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041375,
+          "Position": {
+            "X": -58.352,
+            "Y": -31.5304,
+            "Z": -95.6814
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZI012_04327_Q1_000_000",
+              "Answer": "TEXT_AKTKZI012_04327_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041376,
+          "Position": {
+            "X": 406.774,
+            "Y": 166.193,
+            "Z": -474.853
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041375,
+          "Position": {
+            "X": -58.352,
+            "Y": -31.5304,
+            "Z": -95.6814
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

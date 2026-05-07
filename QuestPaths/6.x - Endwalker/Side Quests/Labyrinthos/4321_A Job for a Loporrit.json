@@ -1,0 +1,170 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041315,
+          "Position": {
+            "X": 32.7555,
+            "Y": -17.5304,
+            "Z": -118.944
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZI006_04321_Q1_000_000",
+              "Answer": "TEXT_AKTKZI006_04321_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041512,
+          "Position": {
+            "X": 93.4661,
+            "Y": -29.5304,
+            "Z": 7.7484
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -636.71326,
+            "Y": -19.150085,
+            "Z": -32.028687
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012497,
+          "Position": {
+            "X": -636.71326,
+            "Y": -19.150085,
+            "Z": -32.028687
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003310,
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -613.3059,
+            "Y": -19.150085,
+            "Z": -56.717834
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012495,
+          "Position": {
+            "X": -613.3059,
+            "Y": -19.150085,
+            "Z": -56.717834
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003310,
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -636.4386,
+            "Y": -19.150085,
+            "Z": -57.02301
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012496,
+          "Position": {
+            "X": -636.4386,
+            "Y": -19.150085,
+            "Z": -57.02301
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003310,
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1041512,
+          "Position": {
+            "X": 93.4661,
+            "Y": -29.5304,
+            "Z": 7.7484
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041315,
+          "Position": {
+            "X": 32.7555,
+            "Y": -17.5304,
+            "Z": -118.944
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}

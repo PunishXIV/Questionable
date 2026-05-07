@@ -1,0 +1,92 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037565,
+          "Position": {
+            "X": 27.7256,
+            "Y": -17.5304,
+            "Z": -91.5389
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 195.036,
+            "Y": -5.43588,
+            "Z": 623.371
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 195.036,
+            "Y": -5.43588,
+            "Z": 623.371
+          },
+          "TerritoryId": 956,
+          "InteractionType": "None",
+          "Land": true
+        },
+        {
+          "DataId": 2012778,
+          "Position": {
+            "X": 195.036,
+            "Y": -5.43588,
+            "Z": 623.371
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "CombatItemUse": {
+            "ItemId": 2003270,
+            "Condition": "Health%",
+            "Value": 50
+          },
+          "ComplexCombatData": [
+            {
+              "DataId": 14122,
+              "RewardItemId": 2003271,
+              "RewardItemCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037565,
+          "Position": {
+            "X": 27.7256,
+            "Y": -17.5304,
+            "Z": -91.5389
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041688,
+          "Position": {
+            "X": 285.831,
+            "Y": 86.5318,
+            "Z": -144.579
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041690,
+          "Position": {
+            "X": 464.334,
+            "Y": 66.1619,
+            "Z": -136.175
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZI103_04486_Q1_000_000",
+              "Answer": "TEXT_AKTKZI103_04486_A1_000_001"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041691,
+          "Position": {
+            "X": 455.931,
+            "Y": 81.1368,
+            "Z": 64.4963
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 449.507,
+            "Y": 81.4173,
+            "Z": 83.6619
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "ComplexCombatData": [
+            {
+              "DataId": 14068,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2003334,
+              "RewardItemCount": 1
+            }
+          ],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041691,
+          "Position": {
+            "X": 455.931,
+            "Y": 81.1368,
+            "Z": 64.4963
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}
