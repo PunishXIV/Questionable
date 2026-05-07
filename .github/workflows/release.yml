@@ -217,11 +217,21 @@ jobs:
           PUBLISHER_KEY: ${{ secrets.PUBLISHER_KEY }}
 
       - name: Github Releases To Discord
+        if: needs.detect-version-change.outputs.should-release == 'false'
         uses: cstuder/apprise-ga@master
         env:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:
           title: Questionable v${{ env.VERSION }}
+          message: ${{ steps.changelog.outputs.changelog }}
+
+      - name: Github testing releases To Discord
+        if: needs.detect-version-change.outputs.should-release == 'true'
+        uses: cstuder/apprise-ga@master
+        env:
+          APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
+        with:
+          title: Questionable v${{ env.VERSION }} (testing)
           message: ${{ steps.changelog.outputs.changelog }}
 
   # test-cn:
