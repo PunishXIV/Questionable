@@ -1,0 +1,121 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037527,
+          "Position": {
+            "X": 442.889,
+            "Y": 65.162,
+            "Z": -93.4299
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 735.042,
+            "Y": 170.636,
+            "Z": -414.633
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2011814,
+          "Position": {
+            "X": 735.042,
+            "Y": 170.636,
+            "Z": -414.633
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 837.705,
+            "Y": 171.405,
+            "Z": -477.745
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2011815,
+          "Position": {
+            "X": 837.705,
+            "Y": 171.405,
+            "Z": -477.745
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 843.608,
+            "Y": 177.07,
+            "Z": -386.455
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2011816,
+          "Position": {
+            "X": 843.608,
+            "Y": 177.07,
+            "Z": -386.455
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 1,
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037527,
+          "Position": {
+            "X": 442.889,
+            "Y": 65.162,
+            "Z": -93.4299
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

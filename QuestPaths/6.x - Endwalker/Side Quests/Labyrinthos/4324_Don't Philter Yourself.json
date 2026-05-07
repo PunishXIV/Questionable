@@ -1,0 +1,85 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041319,
+          "Position": {
+            "X": 7.04093,
+            "Y": -31.5304,
+            "Z": -94.1386
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041318,
+          "Position": {
+            "X": 32.6321,
+            "Y": -28.6056,
+            "Z": 642.285
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041318,
+          "Position": {
+            "X": 32.6321,
+            "Y": -28.6056,
+            "Z": 642.285
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003315,
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041319,
+          "Position": {
+            "X": 7.04093,
+            "Y": -31.5304,
+            "Z": -94.1386
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZI009_04324_Q1_000_000",
+              "Answer": "TEXT_AKTKZI009_04324_A1_000_002"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

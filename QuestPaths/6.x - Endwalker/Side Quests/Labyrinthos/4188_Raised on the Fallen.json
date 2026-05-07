@@ -1,0 +1,99 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 400.6186,
+            "Y": 170.17088,
+            "Z": -432.8058
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        },
+        {
+          "DataId": 1037506,
+          "Position": {
+            "X": 373.734,
+            "Y": 170.1,
+            "Z": -399.437
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 400.6186,
+            "Y": 170.17088,
+            "Z": -432.8058
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2011802,
+          "Position": {
+            "X": 269.985,
+            "Y": 185.517,
+            "Z": -696.331
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 2011803,
+          "Position": {
+            "X": 222.163,
+            "Y": 181.636,
+            "Z": -693.864
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 400.6186,
+            "Y": 170.17088,
+            "Z": -432.8058
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        },
+        {
+          "DataId": 1037506,
+          "Position": {
+            "X": 373.734,
+            "Y": 170.1,
+            "Z": -399.437
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

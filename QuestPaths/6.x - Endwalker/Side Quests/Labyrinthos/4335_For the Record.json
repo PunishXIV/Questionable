@@ -1,0 +1,112 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -681.62787,
+            "Y": -27.599773,
+            "Z": 302.4099
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1037591,
+          "Position": {
+            "X": -664.846,
+            "Y": -27.67,
+            "Z": 306.236
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2012503,
+          "Position": {
+            "X": -636.195,
+            "Y": -26.435,
+            "Z": 289.674
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZI020_04335_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 2012504,
+          "Position": {
+            "X": -647.852,
+            "Y": -25.7129,
+            "Z": 289.689
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZI020_04335_Q2_000_000",
+              "Yes": true
+            }
+          ]
+        },
+        {
+          "DataId": 2012505,
+          "Position": {
+            "X": -622.133,
+            "Y": -25.6558,
+            "Z": 310.248
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_AKTKZI020_04335_Q3_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037591,
+          "Position": {
+            "X": -664.846,
+            "Y": -27.67,
+            "Z": 306.236
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "Mount": false,
+          "Sprint": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1037606,
+          "Position": {
+            "X": -770.2592,
+            "Y": -17.530392,
+            "Z": 292.082
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -700.00946,
+            "Y": -23.281668,
+            "Z": 34.953636
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 13949,
+              "NameId": 10691,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2003326,
+              "RewardItemCount": 1
+            }
+          ],
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037606,
+          "Position": {
+            "X": -770.2592,
+            "Y": -17.530392,
+            "Z": 292.082
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}
