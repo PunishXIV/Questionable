@@ -1,8 +1,1 @@
-- Refactored QST to remove dependency on LLib -Kage, alydev, zbee
-  - Fix Emote/Interact -alydev, Kage
-- Priority Presets feature -Kage
-  - Built-in presets -Kage, alydev
-- Minimum distance of 50y required to mount (questing/gathering) -Kage
-- UT/Mare/Thavnair side quests -Saputello
-- 205 CRP buy mats -vicyorus
-- update for Dalamud api15 (7.5) -croizat
+- Testing: fix to being stalled by combat interrupt -Kage
