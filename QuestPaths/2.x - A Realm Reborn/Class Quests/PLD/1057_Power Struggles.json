@@ -46,7 +46,9 @@
           "KillEnemyDataIds": [
             383
           ],
-          "Fly": true
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "Fly": true,
+          "Comment": "The Level 50 mob Gatling may be nearby causing the AI to use AoE attacks and hit it"
         }
       ]
     },
