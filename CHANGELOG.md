@@ -3,6 +3,7 @@
 - Priority Presets feature -Kage
   - Built-in presets -Kage, alydev
 - Minimum distance of 50y required to mount (questing/gathering) -Kage
-- UT/Mare/Thavnair side quests -Saputello
+- UT/Mare/Thavnair/Labyrinthos side quests -Saputello
 - 205 CRP buy mats -vicyorus
+- Add aetheryte shortcut to Eastern Thanalan in Power Struggles quest -gadeleon
 - update for Dalamud api15 (7.5) -croizat
