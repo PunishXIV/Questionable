@@ -6,4 +6,5 @@
 - UT/Mare/Thavnair/Labyrinthos side quests -Saputello
 - 205 CRP buy mats -vicyorus
 - Add aetheryte shortcut to Eastern Thanalan in Power Struggles quest -gadeleon
+- remove catfish from parallel questing, minor pathfixes to 887, 2269 -Kiarra
 - update for Dalamud api15 (7.5) -croizat
