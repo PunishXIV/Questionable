@@ -1,0 +1,84 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-06"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039513,
+          "Position": {
+            "X": 416.064,
+            "Y": 166.3,
+            "Z": -486.388
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011808,
+          "Position": {
+            "X": 645.289,
+            "Y": 180.721,
+            "Z": -299.824
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003119,
+          "Fly": true
+        },
+        {
+          "DataId": 2011809,
+          "Position": {
+            "X": 529.503,
+            "Y": 176.475,
+            "Z": -502.861
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003119,
+          "Fly": true
+        },
+        {
+          "DataId": 2011810,
+          "Position": {
+            "X": 285.939,
+            "Y": 163.789,
+            "Z": -584.192
+          },
+          "TerritoryId": 956,
+          "InteractionType": "UseItem",
+          "ItemId": 2003119,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039513,
+          "Position": {
+            "X": 416.064,
+            "Y": 166.3,
+            "Z": -486.388
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

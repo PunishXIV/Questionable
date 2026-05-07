@@ -1,0 +1,139 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041682,
+          "Position": {
+            "X": 474.578,
+            "Y": 65.162,
+            "Z": -104.234
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041679,
+          "Position": {
+            "X": 297.493,
+            "Y": 72.0351,
+            "Z": -32.7492
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Emote",
+          "Emote": "pet",
+          "StopDistance": 5,
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041679,
+          "Position": {
+            "X": 297.493,
+            "Y": 72.0351,
+            "Z": -32.7492
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Emote",
+          "Emote": "pet",
+          "StopDistance": 5,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA104_04483_Q1_000_000",
+              "Answer": "TEXT_AKTKZA104_04483_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2012571,
+          "Position": {
+            "X": 724.117,
+            "Y": 113.327,
+            "Z": 8.59076
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012570,
+          "Position": {
+            "X": 821.5575,
+            "Y": 161.03755,
+            "Z": 101.16489
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 2012569,
+          "Position": {
+            "X": 870.114,
+            "Y": 163.849,
+            "Z": 167.273
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041680,
+          "Position": {
+            "X": 437.113,
+            "Y": 166.186,
+            "Z": -431.217
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_AKTKZA104_04483_Q2_000_000",
+              "Answer": "TEXT_AKTKZA104_04483_A2_000_002"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

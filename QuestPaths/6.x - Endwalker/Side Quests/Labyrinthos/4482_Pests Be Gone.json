@@ -1,0 +1,73 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041673,
+          "Position": {
+            "X": 475.469,
+            "Y": 65.162,
+            "Z": -105.612
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 45.54789,
+            "Y": 72.1013,
+            "Z": -403.74484
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 13393,
+              "NameId": 10673,
+              "MinimumKillCount": 1,
+              "RewardItemId": 2003332,
+              "RewardItemCount": 1
+            }
+          ],
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041673,
+          "Position": {
+            "X": 475.469,
+            "Y": 65.162,
+            "Z": -105.612
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    }
+  ]
+}

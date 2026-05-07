@@ -1,0 +1,93 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-07"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041316,
+          "Position": {
+            "X": 17.2274,
+            "Y": -17.5304,
+            "Z": -215.564
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -604.12726,
+            "Y": -16.640757,
+            "Z": 783.93506
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Labyrinthos - Aporia",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1041317,
+          "Position": {
+            "X": -602.478,
+            "Y": -16.6873,
+            "Z": 784.892
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Interact",
+          "Mount": false,
+          "SkipConditions": {
+            "StepIf": {
+              "Never": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1041317,
+          "Position": {
+            "X": -602.478,
+            "Y": -16.6873,
+            "Z": 784.892
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Emote",
+          "Emote": "soothe"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041316,
+          "Position": {
+            "X": 17.2274,
+            "Y": -17.5304,
+            "Z": -215.564
+          },
+          "TerritoryId": 956,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
