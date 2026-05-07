@@ -4,10 +4,4 @@
         <PathMap Condition="$(SolutionDir) != ''">$(SolutionDir)=X:\</PathMap>
         <Platforms>x64</Platforms>
     </PropertyGroup>
-
-
-    <ItemGroup>
-        <PackageReference Update="DalamudPackager" Version="15.0.0"/>
-    </ItemGroup>
-
 </Project>
