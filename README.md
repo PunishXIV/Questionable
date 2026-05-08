@@ -51,18 +51,28 @@
 
 <p> Questionable is a third-party plugin for <a href="https://goatcorp.github.io/" alt="XIVLauncher">XIVLauncher</a>.<br><br>
     It automates quest completion by navigating to objectives while also handling dialogue, interaction, and task fulfillment for eligible quests, streamlining all quest progression processes. <br><br>
-    This plugin was originated by <a href="https://github.com/carvelli" alt="Liza">Liza</a> and is maintained by:
+    This plugin was originated by <a href="https://github.com/carvelli" alt="Liza">Liza Carvelli</a> and is maintained by the team at [Puni.sh](https://puni.sh/), specifically:
     <ul>
     <li><a href="https://github.com/alydevs">alydev</a></li>
+    <li><a href="https://github.com/Kiarra14">Kiarra</a></li>
+    <li><a href="https://github.com/Kagekazu">Kage</a></li>
+    <li><a href="https://github.com/Jaksuhn">Jaksuhn</a></li>
     <li><a href="https://github.com/erdelf">erdelf</a></li>
-    <li><a href="https://github.com/nightmarexiv">Limiana</a></li>
-    <li><a href="https://github.com/CensoredFFXIV">Censored</a></li>
-    <li><a href="https://github.com/ClockwiseStarr">ClockwiseStarr</a></li>
-    <li><a href="https://github.com/MrGuffels">MrGuffels</a></li>
-    <li><a href="https://github.com/WigglyMuffin">WigglyMuffin</a></li>
-    <li><a href="https://github.com/v3rso">v3rso</a></li>
+    <li><a href="https://github.com/NightmareXIV">Limiana</a></li>
     </ul>
 </p>
+
+</section><br>
+
+<!-- Contributing -->
+<section id="contributing">
+
+# Contributing
+
+Contributions to the project are always welcome and much appreciated!<br><br>
+
+Please feel free to submit a [pull request](https://github.com/PunishXIV/Questionable/pulls) here on GitHub,
+or you can get in contact with us over on the [Puni.sh Discord](https://discord.gg/Zzrcc8kmvy) server inside the `#questionable-General` channel.
 
 </section><br>
 
@@ -193,16 +203,6 @@ This can be done through `/xlplugins` in the chat.
 </table>
 
 </section><br>
-
-<!-- Contributing -->
-<section id="contributing">
-
-# Contributing
-
-Contributions to the project are always welcome and much appreciated!<br><br>
-
-Please feel free to submit a [pull request](https://github.com/PunishXIV/Questionable/pulls) here on GitHub,
-or you can get in contact with us over on the [Discord](https://discord.gg/Zzrcc8kmvy) server inside the `#ffxiv-Questionable` channel.
 
 <!-- Punish Logo & Discord -->
 <div align="center">
