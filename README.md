@@ -51,7 +51,7 @@
 
 <p> Questionable is a third-party plugin for <a href="https://goatcorp.github.io/" alt="XIVLauncher">XIVLauncher</a>.<br><br>
     It automates quest completion by navigating to objectives while also handling dialogue, interaction, and task fulfillment for eligible quests, streamlining all quest progression processes. <br><br>
-    This plugin was originated by <a href="https://github.com/carvelli" alt="Liza">Liza Carvelli</a> and is maintained by the team at [Puni.sh](https://puni.sh/), specifically:
+    This plugin was originated by <a href="https://github.com/carvelli" alt="Liza">Liza Carvelli</a> and is maintained by the team at <a href="https://puni.sh/">Puni.sh</a>, specifically:
     <ul>
     <li><a href="https://github.com/alydevs">alydev</a></li>
     <li><a href="https://github.com/Kiarra14">Kiarra</a></li>
