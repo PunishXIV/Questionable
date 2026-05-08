@@ -1,160 +1,136 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Holy Rainbow Hat of Healing HQ // Autocraft requires: 3x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Mythrite Nugget",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Athenaeum Astrologicum"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012551,
-			"Position":
-			{
-				"X": -14.938599,
-				"Y": 15.965064,
-				"Z": -41.73346
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Athenaeum Astrologicum",
-			"[Ishgard] The Last Vigil"
-			]
-		},
-		{
-			"DataId": 1012550,
-			"Position":
-			{
-				"X": 4.409851,
-				"Y": 15.965048,
-				"Z": 11.520508
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Last Vigil",
-			"[Ishgard] Athenaeum Astrologicum"
-			]
-			
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1003818,
-			"Position":
-			{
-				"X": 157.36621,
-				"Y": 7.7920074,
-				"Z": 98.924194
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Weavers' Guild"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 131,
-			"ItemId": 10881,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Athenaeum Astrologicum"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Holy Rainbow Hat of Healing HQ // Autocraft requires: 3x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Mythrite Nugget",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                418,
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012551,
+          "Position": {
+            "X": -14.938599,
+            "Y": 15.965064,
+            "Z": -41.73346
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Last Vigil"
+          ]
+        },
+        {
+          "DataId": 1012550,
+          "Position": {
+            "X": 4.409851,
+            "Y": 15.965048,
+            "Z": 11.520508
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003818,
+          "Position": {
+            "X": 157.36621,
+            "Y": 7.7920074,
+            "Z": 98.924194
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 131,
+          "ItemId": 10881,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    }
+  ]
 }

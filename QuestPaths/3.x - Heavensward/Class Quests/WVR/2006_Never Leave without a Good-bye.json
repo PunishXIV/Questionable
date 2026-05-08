@@ -1,173 +1,149 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "!!Crafting requires Master Weaver III!! Crafted Item: 1x Chivalric Doublet of Healing // Autocraft requires: 3x Chimerical Felt, 1x Aurum Regis Nugget, 1x Hallowed Ramie Cloth, 1x Crawler Silk, 2x Grade 1 Mind Dissolvent, 2x Dawnborne Aethersand",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Athenaeum Astrologicum"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012552,
-			"Position":
-			{
-				"X": 37.00305,
-				"Y": 16.499306,
-				"Z": -27.634155
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Athenaeum Astrologicum",
-			"[Ishgard] The Last Vigil"
-			]
-		},
-		{
-			"DataId": 1012553,
-			"Position":
-			{
-				"X": -53.391357,
-				"Y": 11.965075,
-				"Z": 45.059814
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1003818,
-			"Position":
-			{
-				"X": 157.36621,
-				"Y": 7.7920074,
-				"Z": 98.924194
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Weavers' Guild"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 131,
-			"ItemId": 13001,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AllowHighQuality":true,
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Athenaeum Astrologicum"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 2005910,
-			"Position":
-			{
-				"X": 9.994568,
-				"Y": 1.2664795,
-				"Z": 109.453
-			},
-			"TerritoryId": 418,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Ishgard"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "!!Crafting requires Master Weaver III!! Crafted Item: 1x Chivalric Doublet of Healing // Autocraft requires: 3x Chimerical Felt, 1x Aurum Regis Nugget, 1x Hallowed Ramie Cloth, 1x Crawler Silk, 2x Grade 1 Mind Dissolvent, 2x Dawnborne Aethersand",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                418,
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012552,
+          "Position": {
+            "X": 37.00305,
+            "Y": 16.499306,
+            "Z": -27.634155
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Last Vigil"
+          ]
+        },
+        {
+          "DataId": 1012553,
+          "Position": {
+            "X": -53.391357,
+            "Y": 11.965075,
+            "Z": 45.059814
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003818,
+          "Position": {
+            "X": 157.36621,
+            "Y": 7.7920074,
+            "Z": 98.924194
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 131,
+          "ItemId": 13001,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AllowHighQuality": true,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2005910,
+          "Position": {
+            "X": 9.994568,
+            "Y": 1.2664795,
+            "Z": 109.453
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard"
+        }
+      ]
+    }
+  ]
 }

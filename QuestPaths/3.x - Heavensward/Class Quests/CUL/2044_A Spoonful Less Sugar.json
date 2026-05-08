@@ -172,6 +172,7 @@
           "TerritoryId": 128,
           "ItemId": 12842,
           "ItemCount": 1,
+          "ItemQuality": "HQ",
           "SkipConditions": {
             "StepIf": {
               "Item": {
