@@ -1,1 +1,2 @@
 - Maiden's Rhapsody seasonal quest -alydev
+- Testing: fix to being stalled by combat interrupt -Kage
