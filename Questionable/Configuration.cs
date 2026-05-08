@@ -79,7 +79,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool RunSoloInstancesWithBossMod { get; set; }
 
         [SuppressMessage("Performance", "CA1822", Justification = "Will be fixed when no longer WIP")]
-        public byte RetryDifficulty => 0;
+        public byte RetryDifficulty => 2;
 
         public HashSet<uint> WhitelistedSinglePlayerDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedSinglePlayerDutyCfcIds { get; set; } = [];

@@ -396,6 +396,35 @@ internal sealed partial class ActiveQuestComponent
             _gatheringController.Stop("UI stop");
         }
 
+        using (ImRaii.Disabled(!_questController.IsRunning))
+        {
+            ImGui.SameLine();
+
+            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopAfterCurrentQuest))
+            {
+                if (ImGuiComponents.IconButton(FontAwesomeIcon.FlagCheckered))
+                    _questController.StopAfterCurrentQuest = !_questController.StopAfterCurrentQuest;
+            }
+
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                ImGui.SetTooltip(_questController.StopAfterCurrentQuest
+                    ? "Cancel scheduled stop after current quest."
+                    : "Stop after the current quest completes.");
+
+            ImGui.SameLine();
+
+            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopAfterTeleport))
+            {
+                if (ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt))
+                    _questController.StopAfterTeleport = !_questController.StopAfterTeleport;
+            }
+
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                ImGui.SetTooltip(_questController.StopAfterTeleport
+                    ? "Cancel scheduled stop after teleport."
+                    : "Stop after the next teleport.");
+        }
+
         if (isMinimized)
         {
             ImGui.SameLine();
