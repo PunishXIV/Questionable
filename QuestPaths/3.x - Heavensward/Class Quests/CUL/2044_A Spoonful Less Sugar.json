@@ -105,79 +105,20 @@
         {
           "InteractionType": "Craft",
           "TerritoryId": 128,
-          "ItemId": 4849,
-          "ItemCount": 1,
+          "ItemsToCraft": [
+            { "ItemId": 4849, "ItemCount": 1 },
+            { "ItemId": 4848, "ItemCount": 1 },
+            { "ItemId": 4852, "ItemCount": 1 },
+            { "ItemId": 12881, "ItemCount": 1 },
+            { "ItemId": 12846, "ItemCount": 1 },
+            { "ItemId": 12842, "ItemCount": 1, "ItemQuality": "HQ" }
+          ],
           "SkipConditions": {
             "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4848,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4852,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12881,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12846,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12842,
-          "ItemCount": 1,
-          "ItemQuality": "HQ",
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
+              "HasItems": [
+                { "ItemId": 12846, "ItemCount": 1 },
+                { "ItemId": 12842, "ItemCount": 1 }
+              ]
             }
           }
         },

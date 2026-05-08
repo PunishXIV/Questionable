@@ -96,6 +96,7 @@ public sealed class QuestStep
     public List<List<QuestWorkValue>?> RequiredQuestVariables { get; set; } = new();
     public List<EExtendedClassJob> RequiredCurrentJob { get; set; } = [];
     public List<EExtendedClassJob> RequiredQuestAcceptedJob { get; set; } = [];
+    public List<CraftItem> ItemsToCraft { get; set; } = [];
     public List<GatheredItem> ItemsToGather { get; set; } = [];
     public ushort? GatheringPoint { get; set; }
     public List<QuestWorkValue?> CompletionQuestVariablesFlags { get; set; } = [];

@@ -16,6 +16,7 @@ public sealed class SkipStepConditions
     public List<uint> InTerritory { get; set; } = [];
     public List<uint> NotInTerritory { get; set; } = [];
     public SkipItemConditions? Item { get; set; }
+    public List<SkipHasItemCondition> HasItems { get; set; } = [];
 
     [JsonConverter(typeof(ElementIdListConverter))]
     public List<ElementId> QuestsAccepted { get; set; } = [];
@@ -43,6 +44,7 @@ public sealed class SkipStepConditions
                InTerritory.Count > 0 ||
                NotInTerritory.Count > 0 ||
                Item != null ||
+               HasItems.Count > 0 ||
                QuestsAccepted.Count > 0 ||
                QuestsCompleted.Count > 0 ||
                NotNamePlateIconId.Count > 0 ||

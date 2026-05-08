@@ -98,6 +98,9 @@ internal static class SkipCondition
             if (CheckItemCondition(step, skipConditions))
                 return true;
 
+            if (CheckHasItemsCondition(skipConditions))
+                return true;
+
             if (CheckAetheryteCondition(step, skipConditions))
                 return true;
 
@@ -280,6 +283,28 @@ internal static class SkipCondition
             {
                 logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
                     step.ItemId.Value);
+                return true;
+            }
+
+            return false;
+        }
+
+        private unsafe bool CheckHasItemsCondition(SkipStepConditions skipConditions)
+        {
+            if (skipConditions.HasItems.Count == 0)
+                return false;
+
+            InventoryManager* inventoryManager = InventoryManager.Instance();
+            bool allPresent = skipConditions.HasItems.All(x =>
+            {
+                int count = inventoryManager->GetInventoryItemCount(x.ItemId, false, false)
+                            + inventoryManager->GetInventoryItemCount(x.ItemId, true, false);
+                return count >= x.ItemCount;
+            });
+
+            if (allPresent)
+            {
+                logger.LogInformation("Skipping step, all required items are in inventory");
                 return true;
             }
 

@@ -378,169 +378,29 @@
         {
           "InteractionType": "Craft",
           "TerritoryId": 128,
-          "ItemId": 4859,
-          "ItemCount": 1,
+          "ItemsToCraft": [
+            { "ItemId": 4859, "ItemCount": 1 },
+            { "ItemId": 4647, "ItemCount": 1 },
+            { "ItemId": 4826, "ItemCount": 1 },
+            { "ItemId": 4678, "ItemCount": 1 },
+            { "ItemId": 4826, "ItemCount": 1 },
+            { "ItemId": 4847, "ItemCount": 1 },
+            { "ItemId": 4861, "ItemCount": 1 },
+            { "ItemId": 4852, "ItemCount": 1 },
+            { "ItemId": 4756, "ItemCount": 1 },
+            { "ItemId": 4715, "ItemCount": 1 },
+            { "ItemId": 4849, "ItemCount": 1 },
+            { "ItemId": 4848, "ItemCount": 1 },
+            { "ItemId": 4713, "ItemCount": 1 }
+          ],
           "SkipConditions": {
             "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4647,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4826,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4678,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4826,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4847,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4861,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4852,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4756,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4715,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4849,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4848,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4713,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
+              "HasItems": [
+                { "ItemId": 4859, "ItemCount": 1 },
+                { "ItemId": 4647, "ItemCount": 1 },
+                { "ItemId": 4678, "ItemCount": 1 },
+                { "ItemId": 4847, "ItemCount": 1 }
+              ]
             }
           }
         },

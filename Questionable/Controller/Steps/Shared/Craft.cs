@@ -27,13 +27,25 @@ internal static class Craft
             if (step.InteractionType != EInteractionType.Craft)
                 return [];
 
+            if (step.ItemsToCraft.Count > 0)
+                return CreateTasksFromList(quest, step);
+
             ArgumentNullException.ThrowIfNull(step.ItemId);
             ArgumentNullException.ThrowIfNull(step.ItemCount);
             return
             [
                 new Mount.UnmountTask(),
-                new CraftTask(quest, step.ItemId.Value, step.ItemCount.Value)
+                new CraftTask(quest, step.ItemId.Value, step.ItemCount.Value, step.ItemQuality)
             ];
+        }
+
+        private static List<ITask> CreateTasksFromList(Quest quest, QuestStep step)
+        {
+            List<ITask> tasks = [new Mount.UnmountTask()];
+            foreach (CraftItem item in step.ItemsToCraft)
+                tasks.Add(new CraftTask(quest, item.ItemId, item.ItemCount, item.ItemQuality));
+
+            return tasks;
         }
     }
 
@@ -41,7 +53,8 @@ internal static class Craft
     (
         Quest Quest,
         uint ItemId,
-        int ItemCount) : ITask
+        int ItemCount,
+        EItemQuality ItemQuality = EItemQuality.Any) : ITask
     {
         public override string ToString() => $"Craft({ItemCount}x {ItemId})";
     }
@@ -51,16 +64,12 @@ internal static class Craft
         IDataManager dataManager,
         QuestFunctions questFunctions,
         ArtisanIpc artisanIpc,
-        ILogger<DoCraft> logger,
-        QuestController questController) : TaskExecutor<CraftTask>
+        ILogger<DoCraft> logger) : TaskExecutor<CraftTask>
     {
-        private EItemQuality _itemQuality = EItemQuality.Any;
         private int _previousCount;
         private int _startingItemCount;
         protected override unsafe bool Start()
         {
-            // Get the item quality requirement from the quest step (NQ, HQ, or Any)
-            _itemQuality = GetItemQuality();
             int ownedCount = GetOwnedItemCount();
 
             if (ownedCount >= Task.ItemCount)
@@ -113,7 +122,7 @@ internal static class Craft
             int remainingItemCount = Task.ItemCount - _startingItemCount;
             logger.LogInformation(
                 "Starting craft for item {ItemId} with recipe {RecipeId} for {RemainingItemCount} items (quality: {Quality}, owned: {OwnedCount})",
-                Task.ItemId, recipeId, remainingItemCount, _itemQuality, _startingItemCount);
+                Task.ItemId, recipeId, remainingItemCount, Task.ItemQuality, _startingItemCount);
             if (!artisanIpc.CraftItem((ushort)recipeId, remainingItemCount))
                 throw new TaskException($"Failed to start Artisan craft for recipe {recipeId}");
 
@@ -129,7 +138,7 @@ internal static class Craft
             {
                 int craftedCount = currentCount - _startingItemCount;
                 logger.LogInformation("Craft progress: {Current}/{Target} items (crafted: {Crafted}, quality: {Quality})",
-                    currentCount, Task.ItemCount, craftedCount, _itemQuality);
+                    currentCount, Task.ItemCount, craftedCount, Task.ItemQuality);
                 _previousCount = currentCount;
             }
 
@@ -158,24 +167,11 @@ internal static class Craft
             return ETaskResult.StillRunning;
         }
 
-        private EItemQuality GetItemQuality()
-        {
-            // Retrieve ItemQuality from the current quest step, defaults to Any if not specified
-            if (questController.CurrentQuest is { } currentQuest)
-            {
-                QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
-                if (sequence?.Steps.Count > currentQuest.Step)
-                    return sequence.Steps[currentQuest.Step].ItemQuality;
-            }
-
-            return EItemQuality.Any;
-        }
-
         private unsafe int GetOwnedItemCount()
         {
             // Count items in inventory based on quality requirement: NQ, HQ, or both (Any)
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            return _itemQuality switch
+            return Task.ItemQuality switch
             {
                 EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId, false, false),
                 EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId, true, false),
