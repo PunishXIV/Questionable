@@ -1,0 +1,278 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-08"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1016143,
+          "Position": {
+            "X": 18.264954,
+            "Y": 40.215122,
+            "Z": 0.19836426
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                128,
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1016144,
+          "Position": {
+            "X": 505.7296,
+            "Y": 16.632269,
+            "Z": 454.1847
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 571.2622,
+            "Y": 8.72472,
+            "Z": 567.6286
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "FateEnemies",
+          "KillEnemyDataIds": [
+            382
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1016145,
+          "Position": {
+            "X": -4.867676,
+            "Y": 19.999998,
+            "Z": -16.250854
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": -506.03705,
+            "Y": 65.239525,
+            "Z": 73.21822
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "FateEnemies",
+          "KillEnemyDataIds": [
+            5273,
+            390,
+            21
+          ],
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1016146,
+          "Position": {
+            "X": 31.143677,
+            "Y": -8,
+            "Z": 96.87952
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "Position": {
+            "X": 70.51184,
+            "Y": 3.3320012,
+            "Z": 782.9861
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "FateEnemies",
+          "KillEnemyDataIds": [
+            5253
+          ],
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1016147,
+          "Position": {
+            "X": 24.002441,
+            "Y": 7.1999917,
+            "Z": -89.982544
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2006700,
+          "Position": {
+            "X": 266.1631,
+            "Y": -3.0671387,
+            "Z": 60.77661
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "DataId": 2006700,
+          "Position": {
+            "X": 266.1631,
+            "Y": -3.0671387,
+            "Z": 60.77661
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
+            5254,
+            5255
+          ],
+          "EnemySpawnType": "FateEnemies"
+        },
+        {
+          "$": "In case player doesn't deal enough damage to credit fate complete",
+          "DataId": 2006700,
+          "Position": {
+            "X": 266.1631,
+            "Y": -3.0671387,
+            "Z": 60.77661
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Interact",
+          "DelaySecondsAtStart": 10,
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+        },
+        {
+          "DataId": 2006700,
+          "Position": {
+            "X": 266.1631,
+            "Y": -3.0671387,
+            "Z": 60.77661
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
+            5254,
+            5255
+          ],
+          "EnemySpawnType": "FateEnemies"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1016145,
+          "Position": {
+            "X": -4.867676,
+            "Y": 19.999998,
+            "Z": -16.250854
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -0.6313374,
+            "Y": 20.000422,
+            "Z": 20.376741
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
+            "X": -7.600418,
+            "Y": 21.000898,
+            "Z": 26.702374
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 128
+        },
+        {
+          "DataId": 1016143,
+          "Position": {
+            "X": 18.264954,
+            "Y": 40.215122,
+            "Z": 0.19836426
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
