@@ -133,13 +133,13 @@ internal static class Interact
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
 
-//        public override bool WasInterrupted()         Adding this breaks Combat After Interaction steps
-//        {
-//            if (condition[ConditionFlag.InCombat])
-//                return true;
-//
-//            return base.WasInterrupted();
-//        }
+        public override bool WasInterrupted()         
+        {
+            if (condition[ConditionFlag.InCombat] && step.InteractionType != EInteractionType.Combat)
+                return true;
+
+            return base.WasInterrupted();
+        }
 
         public override ETaskResult Update()
         {
