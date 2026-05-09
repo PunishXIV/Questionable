@@ -25,6 +25,7 @@
       "Steps": [
         {
           "TerritoryId": 1189,
+          "Fly": true,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"

@@ -31,6 +31,7 @@
             "Z": 278.828
           },
           "TerritoryId": 152,
+          "Fly": true,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "InteractionType": "UseItem",
           "ItemId": 2001117

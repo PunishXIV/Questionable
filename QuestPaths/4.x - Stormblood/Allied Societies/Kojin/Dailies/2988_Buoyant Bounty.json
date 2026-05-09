@@ -27,6 +27,7 @@
       "Steps": [
         {
           "TerritoryId": 613,
+          "Fly": true,
           "InteractionType": "None",
           "AetheryteShortcut": "Ruby Sea - Onokoro"
         },

@@ -65,6 +65,7 @@
             "Z": 310.2312
           },
           "TerritoryId": 960,
+          "Fly": true,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
           "AetheryteShortcut": "Ultima Thule - Base Omicron",

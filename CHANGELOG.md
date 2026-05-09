@@ -1,2 +1,1 @@
-- Maiden's Rhapsody seasonal quest -alydev
-- Fix logic in Interact job switch -alydev
+- Fix society quests seq 1 not having Fly:true for recovery -alydev
