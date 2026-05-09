@@ -58,6 +58,7 @@
             "Z": 657.3739
           },
           "TerritoryId": 1187,
+          "Fly": true,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {

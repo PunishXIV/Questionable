@@ -31,6 +31,7 @@
             "Z": 644.4037
           },
           "TerritoryId": 957,
+          "Fly": true,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Thavnair - Yedlihmad",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]

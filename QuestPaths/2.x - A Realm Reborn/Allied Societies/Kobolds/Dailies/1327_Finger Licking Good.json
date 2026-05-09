@@ -30,6 +30,7 @@
             "Z": -312.28842
           },
           "TerritoryId": 180,
+          "Fly": true,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
