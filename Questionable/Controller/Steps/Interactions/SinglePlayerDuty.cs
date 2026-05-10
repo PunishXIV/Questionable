@@ -12,6 +12,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Controller;
 using Questionable.Controller.Steps;
+using Questionable.Controller.Utils;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
@@ -78,7 +79,9 @@ internal static class SinglePlayerDuty
                     tId = cfcData.TerritoryId;
                 }
 
-                byte sequenceBeforeEntering = questFunctions.GetQuestProgressInfo(quest.Id)?.Sequence ?? 0;
+                QuestProgressInfo? progressBeforeEntering = questFunctions.GetQuestProgressInfo(quest.Id);
+                byte sequenceBeforeEntering = progressBeforeEntering?.Sequence ?? 0;
+                IReadOnlyList<byte>? variablesBeforeEntering = progressBeforeEntering?.Variables.ToArray();
 
                 yield return new Mount.UnmountTask();
                 if (tId == SpecialTerritories.Patisserie)
@@ -127,7 +130,7 @@ internal static class SinglePlayerDuty
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();
                 yield return new CheckSinglePlayerDutyOutcome(
-                    quest, sequence, (byte)sequence.Sequence, step, sequenceBeforeEntering);
+                    quest, sequence, (byte)sequence.Sequence, step, sequenceBeforeEntering, variablesBeforeEntering);
             }
         }
 
@@ -330,7 +333,8 @@ internal static class SinglePlayerDuty
         QuestSequence QuestSequence,
         byte SequenceNumber,
         QuestStep QuestStep,
-        byte SequenceBeforeEntering) : ITask
+        byte SequenceBeforeEntering,
+        IReadOnlyList<byte>? VariablesBeforeEntering) : ITask
     {
         public override string ToString() => "CheckSinglePlayerDutyOutcome";
     }
@@ -360,9 +364,34 @@ internal static class SinglePlayerDuty
             QuestProgressInfo? progress = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             byte dutyIndex = Task.QuestStep.SinglePlayerDutyIndex;
 
-            if (progress == null || progress.Sequence > Task.SequenceBeforeEntering)
+            if (progress == null)
             {
-                pluginLog.Information($"[SinglePlayerDuty] Duty succeeded (sequence {Task.SequenceBeforeEntering} -> {progress?.Sequence.ToString() ?? "complete"})");
+                pluginLog.Information("[SinglePlayerDuty] Duty succeeded (quest completed)");
+                retryTracker.Reset(Task.Quest.Id, dutyIndex);
+                return ETaskResult.TaskComplete;
+            }
+
+            if (progress.Sequence > Task.SequenceBeforeEntering)
+            {
+                pluginLog.Information($"[SinglePlayerDuty] Duty succeeded (sequence {Task.SequenceBeforeEntering} -> {progress.Sequence})");
+                retryTracker.Reset(Task.Quest.Id, dutyIndex);
+                return ETaskResult.TaskComplete;
+            }
+
+            bool hasCompletionFlags = QuestWorkUtils.HasCompletionFlags(Task.QuestStep.CompletionQuestVariablesFlags);
+            if (hasCompletionFlags)
+            {
+                if (QuestWorkUtils.MatchesQuestWork(Task.QuestStep.CompletionQuestVariablesFlags, progress))
+                {
+                    pluginLog.Information("[SinglePlayerDuty] Duty succeeded (completion flags matched)");
+                    retryTracker.Reset(Task.Quest.Id, dutyIndex);
+                    return ETaskResult.TaskComplete;
+                }
+            }
+            else if (Task.VariablesBeforeEntering != null &&
+                     !progress.Variables.SequenceEqual(Task.VariablesBeforeEntering))
+            {
+                pluginLog.Information("[SinglePlayerDuty] Duty succeeded (quest variables changed)");
                 retryTracker.Reset(Task.Quest.Id, dutyIndex);
                 return ETaskResult.TaskComplete;
             }
