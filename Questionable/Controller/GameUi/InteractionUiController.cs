@@ -843,7 +843,7 @@ internal sealed class InteractionUiController : IDisposable
             AtkValue* selectChoice = stackalloc AtkValue[]
             {
                 new() { Type = AtkValueType.Int, Int = 0 },
-                new() { Type = AtkValueType.Int, Int = _configuration.SinglePlayerDuties.RetryDifficulty }
+                new() { Type = AtkValueType.Int, Int = (int)_configuration.SinglePlayerDuties.RetryDifficulty }
             };
             addonDifficultySelectYesNo->FireCallback(2, selectChoice);
         }

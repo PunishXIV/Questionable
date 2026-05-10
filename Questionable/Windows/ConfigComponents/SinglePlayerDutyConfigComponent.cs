@@ -256,23 +256,21 @@ internal sealed class SinglePlayerDutyConfigComponent
                 ImGui.TextUnformatted("Work in Progress:");
                 ImGui.BulletText("Will always use BossMod for combat (ignoring the configured combat module).");
                 ImGui.BulletText("Only a small subset of quest battles have been tested - most of which are in the MSQ.");
-                ImGui.BulletText("When retrying a failed battle, it will always start at 'Normal' difficulty.");
                 ImGui.BulletText("Please don't enable this option when using a BossMod fork (such as Reborn);\nwith the missing combat module configuration, it is unlikely to be compatible.");
             }
 
-#if false
             using (ImRaii.Disabled(!runSoloInstancesWithBossMod))
             {
                 ImGui.Spacing();
-                int retryDifficulty = Configuration.SinglePlayerDuties.RetryDifficulty;
-                if (ImGui.Combo("Difficulty when retrying a quest battle", ref retryDifficulty, _retryDifficulties,
-                        _retryDifficulties.Length))
+                int retryDifficulty = (int)Configuration.SinglePlayerDuties.RetryDifficulty;
+                if (ImGui.Combo("Difficulty when retrying a failed quest battle", ref retryDifficulty,
+                        _retryDifficulties, _retryDifficulties.Length))
                 {
-                    Configuration.SinglePlayerDuties.RetryDifficulty = (byte)retryDifficulty;
+                    Configuration.SinglePlayerDuties.RetryDifficulty = (EQuestBattleDifficulty)retryDifficulty;
                     Save();
                 }
+                ImGuiComponents.HelpMarker("Not all quest battles offer Easy or Very Easy difficulty.");
             }
-#endif
         }
 
         ImGui.Separator();

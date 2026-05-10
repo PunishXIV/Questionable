@@ -74,12 +74,18 @@ internal sealed class Configuration : IPluginConfiguration
         public Dictionary<string, bool> ExpansionHeaderStates { get; set; } = [];
     }
 
+    internal enum EQuestBattleDifficulty : byte
+    {
+        Normal = 0,
+        Easy = 1,
+        VeryEasy = 2,
+    }
+
     internal sealed class SinglePlayerDutyConfiguration
     {
         public bool RunSoloInstancesWithBossMod { get; set; }
 
-        [SuppressMessage("Performance", "CA1822", Justification = "Will be fixed when no longer WIP")]
-        public byte RetryDifficulty => 0;
+        public EQuestBattleDifficulty RetryDifficulty { get; set; } = EQuestBattleDifficulty.Normal;
 
         public HashSet<uint> WhitelistedSinglePlayerDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedSinglePlayerDutyCfcIds { get; set; } = [];
