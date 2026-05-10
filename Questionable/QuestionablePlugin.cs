@@ -241,6 +241,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             .AddTaskFactoryAndExecutor<TurnInDelivery.Task, TurnInDelivery.Factory,
                 TurnInDelivery.SatisfactionSupplyTurnIn>();
 
+        serviceCollection.AddSingleton<SinglePlayerDuty.RetryTracker>();
         serviceCollection.AddTaskFactory<SinglePlayerDuty.Factory>();
         serviceCollection
             .AddTaskExecutor<SinglePlayerDuty.StartSinglePlayerDuty, SinglePlayerDuty.StartSinglePlayerDutyExecutor>();
@@ -251,6 +252,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             .AddTaskExecutor<SinglePlayerDuty.WaitSinglePlayerDuty, SinglePlayerDuty.WaitSinglePlayerDutyExecutor>();
         serviceCollection.AddTaskExecutor<SinglePlayerDuty.DisableAi, SinglePlayerDuty.DisableAiExecutor>();
         serviceCollection.AddTaskExecutor<SinglePlayerDuty.SetTarget, SinglePlayerDuty.SetTargetExecutor>();
+        serviceCollection.AddTaskExecutor<SinglePlayerDuty.CheckSinglePlayerDutyOutcome, SinglePlayerDuty.CheckSinglePlayerDutyOutcomeExecutor>();
 
         serviceCollection.AddTaskExecutor<WaitCondition.Task, WaitCondition.WaitConditionExecutor>();
         serviceCollection.AddTaskExecutor<WaitNavmesh.Task, WaitNavmesh.Executor>();

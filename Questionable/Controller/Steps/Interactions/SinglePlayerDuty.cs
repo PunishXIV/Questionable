@@ -10,6 +10,8 @@ using ECommons.Throttlers;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
+using Questionable.Controller;
+using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
@@ -29,13 +31,29 @@ internal static class SinglePlayerDuty
         public const ushort Patisserie = 1298;
     }
 
+    internal sealed class RetryTracker
+    {
+        private readonly Dictionary<(ElementId, byte), int> _counts = [];
+
+        public int GetCount(ElementId questId, byte dutyIndex) =>
+            _counts.GetValueOrDefault((questId, dutyIndex));
+
+        public void Increment(ElementId questId, byte dutyIndex) =>
+            _counts[(questId, dutyIndex)] = GetCount(questId, dutyIndex) + 1;
+
+        public void Reset(ElementId questId, byte dutyIndex) =>
+            _counts.Remove((questId, dutyIndex));
+    }
+
     internal sealed class Factory
     (
         BossModIpc bossModIpc,
         TerritoryData territoryData,
         IObjectTable objectTable,
         ICondition condition,
-        IClientState clientState) : ITaskFactory
+        IClientState clientState,
+        QuestFunctions questFunctions,
+        RetryTracker retryTracker) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -60,6 +78,8 @@ internal static class SinglePlayerDuty
                     cfcId = cfcData.ContentFinderConditionId;
                     tId = cfcData.TerritoryId;
                 }
+
+                byte sequenceBeforeEntering = questFunctions.GetQuestProgressInfo(quest.Id)?.Sequence ?? 0;
 
                 yield return new Mount.UnmountTask();
                 if (tId == SpecialTerritories.Patisserie)
@@ -107,7 +127,8 @@ internal static class SinglePlayerDuty
 
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();
-                yield return new WaitAtEnd.WaitNextStepOrSequence();
+                yield return new CheckSinglePlayerDutyOutcome(
+                    quest, sequence, (byte)sequence.Sequence, step, sequenceBeforeEntering);
             }
         }
 
@@ -299,6 +320,65 @@ internal static class SinglePlayerDuty
             return DateTime.Now - _enteredAt >= TimeSpan.FromSeconds(2)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record CheckSinglePlayerDutyOutcome(
+        Quest Quest,
+        QuestSequence QuestSequence,
+        byte SequenceNumber,
+        QuestStep QuestStep,
+        byte SequenceBeforeEntering) : ITask
+    {
+        public override string ToString() => "CheckSinglePlayerDutyOutcome";
+    }
+
+    internal sealed class CheckSinglePlayerDutyOutcomeExecutor
+    (
+        QuestFunctions questFunctions,
+        QuestController questController,
+        TaskCreator taskCreator,
+        RetryTracker retryTracker,
+        Configuration configuration) : TaskExecutor<CheckSinglePlayerDutyOutcome>
+    {
+        private DateTime _checkAt = DateTime.MinValue;
+
+        protected override bool Start()
+        {
+            _checkAt = DateTime.Now.AddSeconds(2);
+            return true;
+        }
+
+        public override ETaskResult Update()
+        {
+            if (DateTime.Now < _checkAt)
+                return ETaskResult.StillRunning;
+
+            QuestProgressInfo? progress = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
+            byte dutyIndex = Task.QuestStep.SinglePlayerDutyIndex;
+
+            if (progress == null || progress.Sequence > Task.SequenceBeforeEntering)
+            {
+                retryTracker.Reset(Task.Quest.Id, dutyIndex);
+                return ETaskResult.TaskComplete;
+            }
+
+            int retriesUsed = retryTracker.GetCount(Task.Quest.Id, dutyIndex);
+            int maxRetries = configuration.SinglePlayerDuties.MaxRetries;
+
+            if (maxRetries == 0 || (maxRetries > 0 && retriesUsed >= maxRetries))
+            {
+                questController.TaskQueue.EnqueueAll([new WaitAtEnd.EndAutomation()]);
+                return ETaskResult.TaskComplete;
+            }
+
+            retryTracker.Increment(Task.Quest.Id, dutyIndex);
+            IReadOnlyList<ITask> retryTasks = taskCreator.CreateTasks(
+                Task.Quest, Task.SequenceNumber, Task.QuestSequence, Task.QuestStep);
+            questController.TaskQueue.EnqueueAll(retryTasks);
+            return ETaskResult.TaskComplete;
         }
 
         public override bool ShouldInterruptOnDamage() => false;
