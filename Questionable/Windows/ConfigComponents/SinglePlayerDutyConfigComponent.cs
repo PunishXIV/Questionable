@@ -270,6 +270,49 @@ internal sealed class SinglePlayerDutyConfigComponent
                     Save();
                 }
                 ImGuiComponents.HelpMarker("Not all quest battles offer Easy or Very Easy difficulty.");
+
+                ImGui.Spacing();
+
+                int maxRetries = Configuration.SinglePlayerDuties.MaxRetries;
+
+                bool doNotRetry = maxRetries == 0;
+                if (ImGui.Checkbox("Do not retry failed quest battles", ref doNotRetry) && doNotRetry)
+                {
+                    Configuration.SinglePlayerDuties.MaxRetries = 0;
+                    Save();
+                }
+
+                bool retryNTimes = maxRetries > 0;
+                if (ImGui.Checkbox("Retry##retryNTimes", ref retryNTimes))
+                {
+                    Configuration.SinglePlayerDuties.MaxRetries = retryNTimes ? 1 : 0;
+                    Save();
+                }
+                if (retryNTimes)
+                {
+                    ImGui.SameLine();
+                    ImGui.SetNextItemWidth(60f);
+                    int n = Math.Max(1, maxRetries);
+                    if (ImGui.InputInt("##retryCount", ref n, 1))
+                    {
+                        Configuration.SinglePlayerDuties.MaxRetries = Math.Max(1, n);
+                        Save();
+                    }
+                    ImGui.SameLine();
+                    ImGui.TextUnformatted("time(s)");
+                }
+
+                bool retryIndefinitely = maxRetries == -1;
+                if (ImGui.Checkbox("Retry indefinitely", ref retryIndefinitely))
+                {
+                    Configuration.SinglePlayerDuties.MaxRetries = retryIndefinitely ? -1 : 0;
+                    Save();
+                }
+                if (retryIndefinitely)
+                {
+                    ImGui.SameLine();
+                    ImGuiComponents.HelpMarker("Warning: Your gear may break if you retry endlessly!");
+                }
             }
         }
 

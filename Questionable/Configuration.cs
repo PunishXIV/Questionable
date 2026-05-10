@@ -87,6 +87,11 @@ internal sealed class Configuration : IPluginConfiguration
 
         public EQuestBattleDifficulty RetryDifficulty { get; set; } = EQuestBattleDifficulty.Normal;
 
+        /// <summary>
+        /// -1 = retry indefinitely, 0 = do not retry, positive = max retry count.
+        /// </summary>
+        public int MaxRetries { get; set; } = 0;
+
         public HashSet<uint> WhitelistedSinglePlayerDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedSinglePlayerDutyCfcIds { get; set; } = [];
         public Dictionary<string, bool> HeaderStates { get; set; } = [];
