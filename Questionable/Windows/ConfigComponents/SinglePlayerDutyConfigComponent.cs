@@ -46,9 +46,7 @@ internal sealed class SinglePlayerDutyConfigComponent
         (Job.BLM, "Magical Ranged Role Quests")
     ];
 
-#if false
     private readonly string[] _retryDifficulties = ["Normal", "Easy", "Very Easy"];
-#endif
 
     private readonly TerritoryData _territoryData = territoryData;
     private readonly QuestRegistry _questRegistry = questRegistry;
@@ -266,7 +264,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 if (ImGui.Combo("Difficulty when retrying a failed quest battle", ref retryDifficulty,
                         _retryDifficulties, _retryDifficulties.Length))
                 {
-                    Configuration.SinglePlayerDuties.RetryDifficulty = (EQuestBattleDifficulty)retryDifficulty;
+                    Configuration.SinglePlayerDuties.RetryDifficulty = (Configuration.EQuestBattleDifficulty)retryDifficulty;
                     Save();
                 }
                 ImGuiComponents.HelpMarker("Not all quest battles offer Easy or Very Easy difficulty.");

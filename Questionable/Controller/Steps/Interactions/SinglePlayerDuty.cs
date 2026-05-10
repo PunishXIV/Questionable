@@ -52,8 +52,7 @@ internal static class SinglePlayerDuty
         IObjectTable objectTable,
         ICondition condition,
         IClientState clientState,
-        QuestFunctions questFunctions,
-        RetryTracker retryTracker) : ITaskFactory
+        QuestFunctions questFunctions) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {

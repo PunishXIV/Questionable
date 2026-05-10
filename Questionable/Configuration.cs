@@ -90,7 +90,7 @@ internal sealed class Configuration : IPluginConfiguration
         /// <summary>
         /// -1 = retry indefinitely, 0 = do not retry, positive = max retry count.
         /// </summary>
-        public int MaxRetries { get; set; } = 0;
+        public int MaxRetries { get; set; }
 
         public HashSet<uint> WhitelistedSinglePlayerDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedSinglePlayerDutyCfcIds { get; set; } = [];
