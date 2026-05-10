@@ -3,4 +3,5 @@
 internal interface ITask
 {
     bool ShouldRedoOnInterrupt() => false;
+    bool IgnoreDeath => false;
 }

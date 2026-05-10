@@ -286,6 +286,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             {
                 // ignoring death in a dungeon if it is being run by AD
             }
+            else if ((_taskQueue.CurrentTaskExecutor?.CurrentTask.IgnoreDeath ?? false)
+                     || _taskQueue.RemainingTasks.Any(t => t.IgnoreDeath))
+            {
+                // a queued task has declared that death should not interrupt automation
+            }
             else if (!_taskQueue.AllTasksComplete)
                 StopAllDueToConditionFailed("HP = 0");
         }

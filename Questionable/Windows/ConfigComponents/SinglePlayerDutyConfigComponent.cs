@@ -289,7 +289,7 @@ internal sealed class SinglePlayerDutyConfigComponent
                 if (retryNTimes)
                 {
                     ImGui.SameLine();
-                    ImGui.SetNextItemWidth(60f);
+                    ImGui.SetNextItemWidth(240f);
                     int n = Math.Max(1, maxRetries);
                     if (ImGui.InputInt("##retryCount", ref n, 1))
                     {

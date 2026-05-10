@@ -209,6 +209,7 @@ internal static class SinglePlayerDuty
 
     internal sealed record WaitSinglePlayerDuty(uint ContentFinderConditionId) : ITask
     {
+        public bool IgnoreDeath => true;
         public override string ToString() => $"Wait(BossMod, left instance {ContentFinderConditionId})";
     }
 
@@ -340,7 +341,8 @@ internal static class SinglePlayerDuty
         QuestController questController,
         TaskCreator taskCreator,
         RetryTracker retryTracker,
-        Configuration configuration) : TaskExecutor<CheckSinglePlayerDutyOutcome>
+        Configuration configuration,
+        IPluginLog pluginLog) : TaskExecutor<CheckSinglePlayerDutyOutcome>
     {
         private DateTime _checkAt = DateTime.MinValue;
 
@@ -360,6 +362,7 @@ internal static class SinglePlayerDuty
 
             if (progress == null || progress.Sequence > Task.SequenceBeforeEntering)
             {
+                pluginLog.Information($"[SinglePlayerDuty] Duty succeeded (sequence {Task.SequenceBeforeEntering} -> {progress?.Sequence.ToString() ?? "complete"})");
                 retryTracker.Reset(Task.Quest.Id, dutyIndex);
                 return ETaskResult.TaskComplete;
             }
@@ -367,13 +370,17 @@ internal static class SinglePlayerDuty
             int retriesUsed = retryTracker.GetCount(Task.Quest.Id, dutyIndex);
             int maxRetries = configuration.SinglePlayerDuties.MaxRetries;
 
+            pluginLog.Information($"[SinglePlayerDuty] Duty failed (sequence unchanged at {Task.SequenceBeforeEntering}), retries used: {retriesUsed}, max: {maxRetries}");
+
             if (maxRetries == 0 || (maxRetries > 0 && retriesUsed >= maxRetries))
             {
+                pluginLog.Information("[SinglePlayerDuty] Retry limit reached or retries disabled, stopping automation");
                 questController.TaskQueue.EnqueueAll([new WaitAtEnd.EndAutomation()]);
                 return ETaskResult.TaskComplete;
             }
 
             retryTracker.Increment(Task.Quest.Id, dutyIndex);
+            pluginLog.Information($"[SinglePlayerDuty] Retrying duty (attempt {retriesUsed + 1})");
             IReadOnlyList<ITask> retryTasks = taskCreator.CreateTasks(
                 Task.Quest, Task.SequenceNumber, Task.QuestSequence, Task.QuestStep);
             questController.TaskQueue.EnqueueAll(retryTasks);
