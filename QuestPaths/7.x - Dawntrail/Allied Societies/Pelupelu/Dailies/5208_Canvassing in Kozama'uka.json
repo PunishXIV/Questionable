@@ -41,6 +41,7 @@
             "Z": -460.04425
           },
           "TerritoryId": 1188,
+          "Fly": true,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Kozama'uka - Ok'hanu",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]

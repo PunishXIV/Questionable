@@ -64,14 +64,15 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 58.39701,
-            "Y": -48.000008,
-            "Z": -172.36507
+            "Position": {
+            "X": 59.035336,
+            "Y": -48.000004,
+            "Z": -171.6619
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true
+          "Fly": true,
+          "Land": true
         },
         {
           "DataId": 1016803,

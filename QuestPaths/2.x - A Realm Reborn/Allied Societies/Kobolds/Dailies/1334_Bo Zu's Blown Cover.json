@@ -31,6 +31,7 @@
             "Z": -244.19019
           },
           "TerritoryId": 180,
+          "Fly": true,
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
