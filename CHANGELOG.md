@@ -1,1 +1,3 @@
-- Fix society quests seq 1 not having Fly:true for recovery -alydev
+- Allied society: better handling of parallel society quests -alydev
+- Windurst: use teleport mamook>jeuno in quests -alydev
+- Dailies checked -alydev
