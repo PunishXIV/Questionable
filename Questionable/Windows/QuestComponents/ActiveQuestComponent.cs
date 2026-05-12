@@ -348,7 +348,7 @@ internal sealed partial class ActiveQuestComponent
             if (currentQuest.Quest.Info.AlliedSociety != EAlliedSociety.None)
             {
                 ImGui.SameLine();
-                ImGui.Text($"/ {questWork.ClassJob}");
+                ImGui.Text($"/ {questWork.ClassJob} {currentQuest.Quest.Info.AlliedSociety.ToString()}");
             }
         }
         else if (currentQuest.Quest.Id is QuestId)

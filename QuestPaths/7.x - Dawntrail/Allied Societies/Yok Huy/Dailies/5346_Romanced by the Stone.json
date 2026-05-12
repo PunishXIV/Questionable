@@ -4,7 +4,7 @@
     "Kiarra",
     "alydev"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-15"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -50,31 +50,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "$": "Recovery",
-          "Position": {
-            "X": 493.2173,
-            "Y": 142.24991,
-            "Z": 783.0471
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1055796,
           "Position": {
             "X": -486.8086,
@@ -83,6 +58,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Emote",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "Fly": true,
           "Emote": "poke",
           "RequiredQuestVariables": [null,[
