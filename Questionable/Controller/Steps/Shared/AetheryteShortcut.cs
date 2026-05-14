@@ -22,8 +22,11 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            EAetheryteLocation? nearest = aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position ?? new());
             if (step.AetheryteShortcut == null)
                 yield break;
+            if (step.AetheryteShortcut != nearest)
+                yield return new WaitCondition.Task(() => true, $"Pause({step.AetheryteShortcut} != {nearest})");
 
             yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
                 aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);

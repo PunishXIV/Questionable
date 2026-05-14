@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Plugin.Services;
+using ECommons;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 namespace Questionable.Data;
@@ -306,6 +307,15 @@ internal sealed class AetheryteData
     public ReadOnlyDictionary<EAetheryteLocation, uint> TerritoryIds { get; }
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
     private IReadOnlyList<uint> TownTerritoryIds { get; }
+
+    public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3 position)
+    {
+        return TerritoryIds
+                .Where(item => item.Value == territoryId)
+                .Select(item => item.Key)
+                .OrderBy(key => CalculateDistance(position, territoryId, key))
+                .FirstOrNull();
+    }
 
     public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
     {
