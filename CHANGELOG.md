@@ -1,3 +1,3 @@
+- Better handling of aetheryte shortcuts -alydev
 - Allied society: better handling of parallel society quests -alydev
-- Windurst: use teleport mamook>jeuno in quests -alydev
 - Dailies checked -alydev

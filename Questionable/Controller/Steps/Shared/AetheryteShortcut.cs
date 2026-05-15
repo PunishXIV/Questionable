@@ -22,20 +22,34 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.AetheryteShortcut == null)
+            EAetheryteLocation? nearest = step.Position != null ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position.Value) : null;
+            EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
+            if (shortcut == null ||
+                // if rqv is set (don't automatically shortcut in case rqv isn't met)
+                //step.RequiredQuestVariables is { } ||
+                sequence.Steps.Any(step => (
+                    // if any step has action that requires mount
+                    step.Action is { } action && action.RequiresMount()) ||
+                    // if any step specifies the Mount variable (may be required or other override)
+                    step.Mount is { } _
+                    ))
                 yield break;
+            if (step.AetheryteShortcut != nearest)
+                yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} != {nearest})");
+            else
+                yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} == {nearest})");
 
-            yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
-                aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
+            yield return new Task(step, quest.Id, shortcut.Value,
+                aetheryteData.TerritoryIds[shortcut.Value]);
             yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
 
-            if (MoveAwayFromAetheryteExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
-                step.AethernetShortcut?.From != step.AetheryteShortcut.Value)
+            if (MoveAwayFromAetheryteExecutor.AppliesTo(shortcut.Value) &&
+                step.AethernetShortcut?.From != shortcut.Value)
             {
                 yield return new WaitCondition.Task(
-                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AetheryteShortcut.Value],
-                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AetheryteShortcut.Value])})");
-                yield return new MoveAwayFromAetheryte(step.AetheryteShortcut.Value);
+                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[shortcut.Value],
+                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[shortcut.Value])})");
+                yield return new MoveAwayFromAetheryte(shortcut.Value);
             }
         }
     }
