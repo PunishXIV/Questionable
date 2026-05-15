@@ -135,7 +135,7 @@ internal static class Interact
 
         public override ETaskResult Update()
         {
-            logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
+            //logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
@@ -143,7 +143,7 @@ internal static class Interact
             {
                 if (condition[ConditionFlag.Mounted])
                 {
-                    logger.LogDebug("Attempting unmount");
+                    //logger.LogDebug("Attempting unmount");
                     gameFunctions.Unmount();
                     _continueAt = DateTime.Now.AddSeconds(1);
                     return ETaskResult.StillRunning;
@@ -152,7 +152,7 @@ internal static class Interact
                     _needsUnmount = false;
             }
             else
-                logger.LogDebug("Does not need unmount");
+                //logger.LogDebug("Does not need unmount");
 
             if (Task.PickUpItemId is { } pickUpItemId)
             {
@@ -217,7 +217,7 @@ internal static class Interact
             }
 
             _reportedGameObjNull = false;
-            logger.LogDebug("gameObject != null");
+            //logger.LogDebug("gameObject != null");
 
             if (_needsFacing)
             {
@@ -289,8 +289,8 @@ internal static class Interact
                     return ETaskResult.StillRunning;
                 }
             }
-            else
-                logger.LogDebug("is not AcceptQuest");
+            //else
+            //    logger.LogDebug("is not AcceptQuest");
 
             if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
                 return ETaskResult.StillRunning;
