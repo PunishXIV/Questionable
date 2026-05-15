@@ -1,7 +1,4 @@
 - Better handling of aetheryte shortcuts -alydev
-  - bug fix -alydev
-    - another bug fix! -alydev
-      - but what if, i made another bug fix and disguised it as my own cooking -alydev
-        - ho ho ho, delightfully bugfixed, aly -alydev
+  - Skip aetheryte teleport if already in target zone and aethernet shortcut is specified (unnecessary) -alydev
 - Allied society: better handling of parallel society quests -alydev
 - Dailies checked -alydev

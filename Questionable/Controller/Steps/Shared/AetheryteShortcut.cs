@@ -238,6 +238,13 @@ internal static class AetheryteShortcut
                         }
                     }
                 }
+
+                if (!aetheryteData.TerritoryIds[Task.TargetAetheryte].Equals(territoryType) &&
+                    Task.Step.AethernetShortcut is { })
+                {
+                    logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
+                    return true;
+                }
             }
 
             logger.LogInformation("Not skipping aetheryte teleport");

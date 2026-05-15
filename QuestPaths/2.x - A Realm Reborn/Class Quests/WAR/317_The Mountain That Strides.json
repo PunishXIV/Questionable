@@ -163,6 +163,22 @@
       "Sequence": 7,
       "Steps": [
         {
+          "Position": {
+            "X": 550.8155,
+            "Y": 89.77024,
+            "Z": -69.45165
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
+        },
+        {
           "DataId": 1002112,
           "Position": {
             "X": 561.6693,
@@ -170,13 +186,7 @@
             "Z": -81.52899
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
