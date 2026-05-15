@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "Lumi", "Date": "2026-01-29"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -73,13 +73,25 @@
           },
           "StopDistance": 0.5,
           "TerritoryId": 612,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 482.93036,
+            "Y": 42,
+            "Z": 350.85095
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 612,
           "InteractionType": "Combat",
+          "Mount": true,
+          "Land": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             8593
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
