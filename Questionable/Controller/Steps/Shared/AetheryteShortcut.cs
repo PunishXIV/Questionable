@@ -26,7 +26,7 @@ internal static class AetheryteShortcut
             EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
             if (shortcut == null ||
                 step.Mount is { } ||
-                step.AethernetShortcut is { } ||
+                (step.AetheryteShortcut == null && step.AethernetShortcut is { }) ||
                 sequence.Steps.Any(step => (
                     step.Action is { } action && action.RequiresMount())
                     ))
