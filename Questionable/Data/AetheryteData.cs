@@ -311,7 +311,7 @@ internal sealed class AetheryteData
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3 position)
     {
         return TerritoryIds
-                .Where(item => item.Value == territoryId)
+                .Where(item => item.Value == territoryId && !item.Key.IsAethernetShard())
                 .Select(item => item.Key)
                 .OrderBy(key => CalculateDistance(position, territoryId, key))
                 .FirstOrNull();
@@ -323,6 +323,9 @@ internal sealed class AetheryteData
             return float.MaxValue;
 
         if (!Locations.TryGetValue(to, out Vector3 toPosition))
+            return float.MaxValue;
+
+        if (to.IsAethernetShard())
             return float.MaxValue;
 
         return (fromPosition - toPosition).Length();
