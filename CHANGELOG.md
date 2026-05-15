@@ -1,3 +1,4 @@
 - Better handling of aetheryte shortcuts -alydev
+  - bug fix -alydev
 - Allied society: better handling of parallel society quests -alydev
 - Dailies checked -alydev
