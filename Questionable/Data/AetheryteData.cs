@@ -5,6 +5,7 @@ using System.Numerics;
 using Dalamud.Plugin.Services;
 using ECommons;
 using Lumina.Excel.Sheets;
+using Questionable.Functions;
 using Questionable.Model.Common;
 namespace Questionable.Data;
 
@@ -311,7 +312,9 @@ internal sealed class AetheryteData
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3 position)
     {
         return TerritoryIds
-                .Where(item => item.Value == territoryId && !item.Key.IsAethernetShard())
+                .Where(item => item.Value == territoryId && 
+                               !item.Key.IsAethernetShard() &&
+                               AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
                 .Select(item => item.Key)
                 .OrderBy(key => CalculateDistance(position, territoryId, key))
                 .FirstOrNull();

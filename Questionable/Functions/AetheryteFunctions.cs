@@ -25,7 +25,7 @@ internal sealed unsafe class AetheryteFunctions
 
     public DateTime ReturnRequestedAt { get; set; } = DateTime.MinValue;
 
-    public bool IsAetheryteUnlocked(uint aetheryteId, out byte subIndex)
+    public static bool IsAetheryteUnlocked(uint aetheryteId, out byte subIndex)
     {
         subIndex = 0;
 
