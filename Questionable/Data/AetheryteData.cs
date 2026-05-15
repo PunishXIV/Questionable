@@ -325,9 +325,6 @@ internal sealed class AetheryteData
         if (!Locations.TryGetValue(to, out Vector3 toPosition))
             return float.MaxValue;
 
-        if (to.IsAethernetShard())
-            return float.MaxValue;
-
         return (fromPosition - toPosition).Length();
     }
 
