@@ -22,7 +22,7 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            EAetheryteLocation? nearest = aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position ?? new());
+            EAetheryteLocation? nearest = step.Position != null ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position.Value) : null;
             EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
             if (shortcut == null)
                 yield break;
