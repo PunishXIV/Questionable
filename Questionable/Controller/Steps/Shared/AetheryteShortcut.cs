@@ -24,7 +24,15 @@ internal static class AetheryteShortcut
         {
             EAetheryteLocation? nearest = step.Position != null ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position.Value) : null;
             EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
-            if (shortcut == null || sequence.Steps.Any(step => (step.Action is { } action && action.RequiresMount())))
+            if (shortcut == null ||
+                // if rqv is set (don't automatically shortcut in case rqv isn't met)
+                //step.RequiredQuestVariables is { } ||
+                sequence.Steps.Any(step => (
+                    // if any step has action that requires mount
+                    step.Action is { } action && action.RequiresMount()) ||
+                    // if any step specifies the Mount variable (may be required or other override)
+                    step.Mount is { } _
+                    ))
                 yield break;
             if (step.AetheryteShortcut != nearest)
                 yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} != {nearest})");
