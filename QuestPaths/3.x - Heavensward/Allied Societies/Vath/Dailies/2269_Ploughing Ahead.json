@@ -34,6 +34,7 @@
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
           "Fly": true,
+          "Land": true,
           "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
           "SkipConditions": {
             "StepIf": {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using Dalamud.Game.Text;
 using Dalamud.Memory;
 using Dalamud.Plugin.Services;
@@ -12,6 +13,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+using FFXIVClientStructs.FFXIV.Client.UI.Arrays;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
@@ -191,11 +193,11 @@ internal sealed unsafe class QuestFunctions
                 {
                     if (firstTrackedSequence == 255)
                     {
-                        foreach ((ElementId quest, byte sequence) in alliedQuestsForSameSociety)
+                        foreach ((ElementId questId, byte sequence) in alliedQuestsForSameSociety)
                         {
                             // only if the other quest isn't ready to be turned in
-                            if (sequence != 255)
-                                return new(quest, sequence, msqQuest.State);
+                            if (sequence != 255 || (_questRegistry.TryGetQuest(questId, out Quest? quest) && !IsReadyToCompleteQuest(quest)))
+                                return new(questId, sequence, msqQuest.State);
                         }
                     }
                     else if (!IsOnAlliedSocietyMount())
@@ -378,6 +380,18 @@ internal sealed unsafe class QuestFunctions
         return battleChara != null &&
                battleChara->Mount.MountId != 0 &&
                _alliedSocietyData.Mounts.ContainsKey(battleChara->Mount.MountId);
+    }
+
+    private bool IsReadyToCompleteQuest(Quest quest)
+    {
+        ToDoListStringArray* toDoListSA = ToDoListStringArray.Instance();
+        ToDoListNumberArray* toDoListNA = ToDoListNumberArray.Instance();
+        for (int i = 0; i < toDoListNA->QuestTypeIcon.Length; i++)
+        {
+            if (quest.Info.Name == Encoding.UTF8.GetString(toDoListSA->QuestTexts[i].AsSpan()))
+                return toDoListNA->QuestTypeIcon[i] == 71025; // green checkmark quest icon
+        }
+        return false;
     }
 
     private bool IsInteractSequence(ElementId questId, byte sequenceNo, uint[] dataIds)

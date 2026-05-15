@@ -7,6 +7,11 @@
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 128,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Culinarian"
+        },
+        {
           "DataId": 1012568,
           "Position": {
             "X": 69.71838,

@@ -133,14 +133,6 @@ internal static class Interact
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
 
-        public override bool WasInterrupted()
-        {
-            if (condition[ConditionFlag.InCombat])
-                return true;
-
-            return base.WasInterrupted();
-        }
-
         public override ETaskResult Update()
         {
             logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
@@ -247,9 +239,19 @@ internal static class Interact
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
                         acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
                     else if (acceptableJobs[0].IsCrafter())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
+                    {
+                        if (acceptableJobs.Contains(configuration.General.CraftingJob))
+                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
+                        else
+                            logger.LogInformation($"Crafting quest, but configured job {configuration.General.CraftingJob} is not valid for {Task.Quest.Id}, changing to {acceptableJobs[0]}");
+                    }
                     else if (acceptableJobs[0].IsGatherer())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                    {
+                        if (acceptableJobs.Contains(configuration.General.GatheringJob))
+                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                        else
+                            logger.LogInformation($"Gathering quest, but configured job {configuration.General.GatheringJob} is not valid for {Task.Quest.Id}, changing to {acceptableJobs[0]}");
+                    }
                     if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
                     {
                         if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())

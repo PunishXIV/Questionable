@@ -1,127 +1,108 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Holy Rainbow Gloves HQ // Autocraft requires: 2x Holy Rainbow Cloth, 1x Rainbow Thread",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Athenaeum Astrologicum"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012549,
-			"Position":
-			{
-				"X": -147.78369,
-				"Y": 14.998494,
-				"Z": -159.80774
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Athenaeum Astrologicum",
-			"[Ishgard] Saint Reymanaud's Cathedral"
-			],
-			"DialogueChoices":
-			[
-			{
-				"Prompt": "TEXT_CLSWVR530_02003_Q1_000_021",
-				"Answer": "TEXT_CLSWVR530_02003_A1_000_022",
-				"Type": "List"
-			}
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Saint Reymanaud's Cathedral",
-			"[Ishgard] Athenaeum Astrologicum"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 11966,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Holy Rainbow Gloves HQ // Autocraft requires: 2x Holy Rainbow Cloth, 1x Rainbow Thread",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                418,
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012549,
+          "Position": {
+            "X": -147.78369,
+            "Y": 14.998494,
+            "Z": -159.80774
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSWVR530_02003_Q1_000_021",
+              "Answer": "TEXT_CLSWVR530_02003_A1_000_022",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Saint Reymanaud's Cathedral",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 11966,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

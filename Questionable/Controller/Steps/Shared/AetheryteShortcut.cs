@@ -64,10 +64,12 @@ internal static class AetheryteShortcut
         IChatGui chatGui,
         ICondition condition,
         AetheryteData aetheryteData,
-        ExtraConditionUtils extraConditionUtils) : TaskExecutor<Task>
+        ExtraConditionUtils extraConditionUtils,
+        QuestRegistry questRegistry) : TaskExecutor<Task>
     {
         private DateTime _continueAt;
         private bool _teleported;
+        private bool _societyPause;
 
         protected override bool Start() => !ShouldSkipTeleport();
 
@@ -251,6 +253,13 @@ internal static class AetheryteShortcut
                 throw new TaskException("Aetheryte is not unlocked");
             }
 
+            if (!_societyPause && Task.ElementId != null && questRegistry.TryGetQuest(Task.ElementId, out Quest? quest) && quest.Info.AlliedSociety != EAlliedSociety.None)
+            {
+                _societyPause = true;
+                _continueAt = DateTime.Now.AddMilliseconds(250);
+                logger.LogDebug("Waiting for soc teleport recalc cooldown...");
+                return false;
+            }
             ProgressContext =
                 InteractionProgressContext.FromActionUseOrDefault(() =>
                     aetheryteFunctions.TeleportAetheryte(Task.TargetAetheryte));

@@ -1,4 +1,4 @@
-<Project Sdk="Dalamud.NET.Sdk/15.0.0">
+﻿<Project Sdk="Dalamud.NET.Sdk/15.0.0">
     <PropertyGroup>
         <Version>0.10</Version>
         <OutputPath>dist</OutputPath>
@@ -8,14 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj"/>
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ECommons" Version="3.2.0.16"/>
-        <PackageReference Include="Pictomancy" Version="1.0.3"/>
-        <PackageReference Include="System.Net.Http" Version="4.3.4"/>
-        <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1"/>
+        <PackageReference Include="ECommons" Version="3.2.0.16" />
+        <PackageReference Include="Pictomancy" Version="1.0.4" />
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     </ItemGroup>
     
     <ItemGroup>

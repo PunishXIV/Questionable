@@ -38,6 +38,18 @@
       "Sequence": 2,
       "Steps": [
         {
+          "DataId": 1054349,
+          "Position": {
+            "X": 730.03735,
+            "Y": -133.17451,
+            "Z": 542.2903
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "TargetTerritoryId": 1189
+        },
+        {
           "DataId": 1058902,
           "Position": {
             "X": -622.6444,
@@ -46,8 +58,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "Fly": true
         }
       ]
     },

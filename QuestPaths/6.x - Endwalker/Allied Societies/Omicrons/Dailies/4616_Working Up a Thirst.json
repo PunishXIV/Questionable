@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-15"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -70,6 +70,7 @@
             {"Low": 1}
             ],null,null
           ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "AetheryteShortcut": "Ultima Thule - Reah Tahra",
           "SkipConditions": {
             "AetheryteShortcutIf": {
@@ -88,11 +89,17 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
+          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 1}
             ],null,null
           ],
-          "Land": true,
+          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "RequiredQuestVariablesNotMet": true
+            }
+          },
           "Fly": true,
           "$": "It's the only pair that increases the significant element by 16"
         },

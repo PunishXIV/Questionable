@@ -57,6 +57,7 @@
             "Z": 298.8479
           },
           "TerritoryId": 817,
+          "Fly": true,
           "InteractionType": "UseItem",
           "ItemId": 2002977,
           "AetheryteShortcut": "Rak'tika - Slitherbough",

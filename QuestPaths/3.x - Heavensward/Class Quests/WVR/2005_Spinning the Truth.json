@@ -1,119 +1,101 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 3x Crawler Silk HQ // Autocraft requires: 6x Crawler Cocoon, 4x Silkworm Cocoon, 2x Effervescent Water",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Athenaeum Astrologicum"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012549,
-			"Position":
-			{
-				"X": -147.78369,
-				"Y": 14.998494,
-				"Z": -159.80774
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Athenaeum Astrologicum",
-			"[Ishgard] Saint Reymanaud's Cathedral"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Saint Reymanaud's Cathedral",
-			"[Ishgard] Athenaeum Astrologicum"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 12596,
-			"ItemCount": 3,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012548,
-			"Position":
-			{
-				"X": 86.1676,
-				"Y": -4.734931,
-				"Z": -30.47229
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 3x Crawler Silk HQ // Autocraft requires: 6x Crawler Cocoon, 4x Silkworm Cocoon, 2x Effervescent Water",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                418,
+                419
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012549,
+          "Position": {
+            "X": -147.78369,
+            "Y": 14.998494,
+            "Z": -159.80774
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Saint Reymanaud's Cathedral",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 12596,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012548,
+          "Position": {
+            "X": 86.1676,
+            "Y": -4.734931,
+            "Z": -30.47229
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

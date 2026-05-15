@@ -1,1 +1,3 @@
-- Testing: fix to being stalled by combat interrupt -Kage
+- Allied society: better handling of parallel society quests -alydev
+- Windurst: use teleport mamook>jeuno in quests -alydev
+- Dailies checked -alydev
