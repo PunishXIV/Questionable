@@ -23,22 +23,25 @@ internal static class AetheryteShortcut
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             EAetheryteLocation? nearest = aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position ?? new());
-            if (step.AetheryteShortcut == null)
+            EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
+            if (shortcut == null)
                 yield break;
             if (step.AetheryteShortcut != nearest)
-                yield return new WaitCondition.Task(() => true, $"Pause({step.AetheryteShortcut} != {nearest})");
+                yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} != {nearest})");
+            else
+                yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} == {nearest})");
 
-            yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
-                aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
+            yield return new Task(step, quest.Id, shortcut.Value,
+                aetheryteData.TerritoryIds[shortcut.Value]);
             yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
 
-            if (MoveAwayFromAetheryteExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
-                step.AethernetShortcut?.From != step.AetheryteShortcut.Value)
+            if (MoveAwayFromAetheryteExecutor.AppliesTo(shortcut.Value) &&
+                step.AethernetShortcut?.From != shortcut.Value)
             {
                 yield return new WaitCondition.Task(
-                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AetheryteShortcut.Value],
-                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AetheryteShortcut.Value])})");
-                yield return new MoveAwayFromAetheryte(step.AetheryteShortcut.Value);
+                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[shortcut.Value],
+                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[shortcut.Value])})");
+                yield return new MoveAwayFromAetheryte(shortcut.Value);
             }
         }
     }
