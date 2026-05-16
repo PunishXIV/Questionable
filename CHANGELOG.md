@@ -1,9 +1,2 @@
 - Better handling of aetheryte shortcuts -alydev
-  - bug fix -alydev
-    - another bug fix! -alydev
-  - but what if, i made another bug fix and disguised it as my own cooking -alydev
-    - ho ho ho, delightfully bugfixed, aly -alydev
-    - isometric bugfixing -alydev
-  - why are there bugs coming out of your oven aly -alydev
-    - oh that isn't bugs, it's fixes -alydev
-      - fixes from the fixed bugs we're having -alydev
+- Magic buttons feature -Kage
