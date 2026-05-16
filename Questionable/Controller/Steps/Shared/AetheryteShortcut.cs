@@ -32,9 +32,9 @@ internal static class AetheryteShortcut
                     ))
                 yield break;
             if (step.AetheryteShortcut != nearest)
-                yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} != {nearest})");
+                yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} != nearest:{nearest})");
             else
-                yield return new WaitCondition.Task(() => true, $"Note({step.AetheryteShortcut} == {nearest})");
+                yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} == nearest:{nearest})");
 
             yield return new Task(step, quest.Id, shortcut.Value,
                 aetheryteData.TerritoryIds[shortcut.Value]);
@@ -240,8 +240,10 @@ internal static class AetheryteShortcut
                 }
 
                 if (!aetheryteData.TerritoryIds[Task.TargetAetheryte].Equals(territoryType) &&
-                    Task.Step.AethernetShortcut is { })
+                    Task.Step.AethernetShortcut is { } aethernet &&
+                    aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType))
                 {
+                    logger.LogInformation($"{aetheryteData.TerritoryIds[Task.TargetAetheryte]}, {aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.To]}, {territoryType}");
                     logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
                     return true;
                 }
