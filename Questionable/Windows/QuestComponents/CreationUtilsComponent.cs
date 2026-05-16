@@ -23,6 +23,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 using Questionable.Windows.Utils;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
@@ -226,7 +227,8 @@ internal sealed class CreationUtilsComponent
         if (_objectTable[0] != null)
         {
             ImGui.Text(string.Create(CultureInfo.InvariantCulture,
-                $"Distance: {(target.Position - _objectTable[0]!.Position).Length():F2}"));
+                $"Distance: {(target.Position - _objectTable[0]!.Position).Length():F2}" +
+                $"({Math.Floor(target.Position.DistanceTo_XZ(_objectTable[0]!.Position))-1}y)"));
             ImGui.SameLine();
 
             float verticalDistance = target.Position.Y - _objectTable[0]!.Position.Y;
