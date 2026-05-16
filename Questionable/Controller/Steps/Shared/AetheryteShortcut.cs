@@ -18,7 +18,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
 {
-    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, IClientState clientState)
+    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, GameFunctions gameFunctions, IClientState clientState)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -28,7 +28,7 @@ internal static class AetheryteShortcut
             EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
             if (shortcut == null ||
                 step.Mount is { } ||
-                (step.AetheryteShortcut == null && step.AethernetShortcut is { }) ||
+                (step.AetheryteShortcut == null && (step.AethernetShortcut is { } || gameFunctions.GetMountId() is { })) ||
                 sequence.Steps.Any(step => (
                     step.Action is { } action && action.RequiresMount())
                     ))
