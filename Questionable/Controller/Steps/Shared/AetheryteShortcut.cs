@@ -13,6 +13,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
@@ -228,7 +229,9 @@ internal static class AetheryteShortcut
                         }
 
                         // if aetheryte route is further from the destination than just walking there, skip it
-                        logger.LogDebug($"target direct: {distance_target}. target if tp: {30 + distance_aetheryte_to_target}" +
+                        logger.LogDebug($"target direct: {distance_target}. target if tp: {30 + distance_aetheryte_to_target} " +
+                                        $"target direct XZ: {pos.DistanceTo_XZ(Task.Step.Position.Value)}. " +
+                                        $"target tp XZ: {Task.Step.Position.Value.DistanceTo_XZ(Task.TargetAetheryte.Position(aetheryteData))}" +
                                         (Task.Step.AethernetShortcut != null ? $", target if aethernet: {distance_aethernet_from + distance_aethernet_to + 30}" : ""));
                         if (distance_target < (30 + distance_aetheryte_to_target) ||
                             (Task.Step.AethernetShortcut != null && distance_target < (distance_aethernet_from + distance_aethernet_to + 30)))

@@ -1,8 +1,8 @@
 - Better handling of aetheryte shortcuts -alydev
   - bug fix -alydev
     - another bug fix! -alydev
-      - but what if, i made another bug fix and disguised it as my own cooking -alydev
-        - ho ho ho, delightfully bugfixed, aly -alydev
-          - isometric bugfixing -alydev
-- Allied society: better handling of parallel society quests -alydev
-- Dailies checked -alydev
+  - but what if, i made another bug fix and disguised it as my own cooking -alydev
+    - ho ho ho, delightfully bugfixed, aly -alydev
+    - isometric bugfixing -alydev
+  - why are there bugs coming out of your oven aly -alydev
+    - oh that isn't bugs, it's fixes -alydev

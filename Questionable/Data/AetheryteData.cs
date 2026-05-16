@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using Dalamud.Plugin.Services;
 using ECommons;
 using Lumina.Excel.Sheets;
@@ -15,7 +16,6 @@ internal sealed class AetheryteData
     {
         Dictionary<EAetheryteLocation, uint> territoryIds = [];
         Dictionary<EAetheryteLocation, ushort> aethernetGroups = [];
-
 
         void ConfigureAetheryte(EAetheryteLocation aetheryteLocation, uint territoryId,
             ushort aethernetGroup)
@@ -354,4 +354,10 @@ internal sealed class AetheryteData
     public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
 
     public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
+}
+
+internal static class AetheryteLocationExtensions
+{
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+	internal static Vector3 Position(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.Locations[aetheryteLocation];
 }
