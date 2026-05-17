@@ -413,16 +413,16 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopAfterTeleport))
+            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopBeforeTeleport))
             {
                 if (ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt))
-                    _questController.StopAfterTeleport = !_questController.StopAfterTeleport;
+                    _questController.StopBeforeTeleport = !_questController.StopBeforeTeleport;
             }
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip(_questController.StopAfterTeleport
-                    ? "Cancel scheduled stop after teleport."
-                    : "Stop after the next teleport.");
+                ImGui.SetTooltip(_questController.StopBeforeTeleport
+                    ? "Cancel scheduled stop before teleport."
+                    : "Stop before the next teleport.");
         }
 
         if (isMinimized)

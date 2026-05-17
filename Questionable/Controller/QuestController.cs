@@ -194,7 +194,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public List<Quest> ManualPriorityQuests { get; } = [];
 
     public bool StopAfterCurrentQuest { get; set; }
-    public bool StopAfterTeleport { get; set; }
+    public bool StopBeforeTeleport { get; set; }
 
     public string? DebugState { get; private set; }
 
@@ -768,7 +768,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public override void Stop(string label)
     {
         StopAfterCurrentQuest = false;
-        StopAfterTeleport = false;
+        StopBeforeTeleport = false;
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         if (IsRunning || AutomationType != EAutomationType.Manual)
@@ -879,6 +879,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (_gameFunctions.IsOccupied() && !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))
             return;
 
+        if (StopBeforeTeleport && _taskQueue.CurrentTaskExecutor == null && _taskQueue.TryPeek(out ITask? nextTask) && nextTask is AetheryteShortcut.Task)
+        {
+            _logger.LogInformation("Stopping before teleport as requested");
+            _chatGui.Print("Stopping before teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            _movementController.Stop();
+            Stop("Stop before teleport");
+            return;
+        }
+
         base.UpdateCurrentTask();
     }
 
@@ -887,13 +896,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (task is WaitAtEnd.WaitQuestCompleted)
             SimulatedQuest = null;
 
-        if (task is AetheryteShortcut.Task && StopAfterTeleport)
-        {
-            _logger.LogInformation("Stopping after teleport as requested");
-            _chatGui.Print("Stopping after teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
-            _movementController.Stop();
-            Stop("Stop after teleport");
-        }
     }
 
     protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);
