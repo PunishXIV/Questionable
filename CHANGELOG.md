@@ -1,2 +1,2 @@
 - Better handling of aetheryte shortcuts -alydev
-- Magic buttons feature -Kage
+- Stop After Quest button -Kage
