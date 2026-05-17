@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Questionable.Model.Common.Converter;
 namespace Questionable.Model.Common;
 
@@ -272,6 +273,154 @@ public enum EAetheryteLocation
 
 public static class EAetheryteLocationExtensions
 {
+    public static List<EAetheryteLocation> aethernetShards = [
+        EAetheryteLocation.GridaniaArcher,
+        EAetheryteLocation.GridaniaLeatherworker,
+        EAetheryteLocation.GridaniaLancer,
+        EAetheryteLocation.GridaniaConjurer,
+        EAetheryteLocation.GridaniaBotanist,
+        EAetheryteLocation.GridaniaAmphitheatre,
+        EAetheryteLocation.GridaniaBlueBadgerGate,
+        EAetheryteLocation.GridaniaYellowSerpentGate,
+        EAetheryteLocation.GridaniaWhiteWolfGate,
+        EAetheryteLocation.GridaniaAirship,
+
+        EAetheryteLocation.UldahAdventurers,
+        EAetheryteLocation.UldahThaumaturge,
+        EAetheryteLocation.UldahGladiator,
+        EAetheryteLocation.UldahMiner,
+        EAetheryteLocation.UldahAlchemist,
+        EAetheryteLocation.UldahWeaver,
+        EAetheryteLocation.UldahGoldsmith,
+        EAetheryteLocation.UldahChamberOfRule,
+        EAetheryteLocation.UldahAirship,
+        EAetheryteLocation.UldahGateOfTheSultana,
+        EAetheryteLocation.UldahGateOfNald,
+        EAetheryteLocation.UldahGateOfThal,
+        EAetheryteLocation.UldahSapphireAvenue,
+
+        EAetheryteLocation.LimsaAftcastle,
+        EAetheryteLocation.LimsaCulinarian,
+        EAetheryteLocation.LimsaArcanist,
+        EAetheryteLocation.LimsaFisher,
+        EAetheryteLocation.LimsaMarauder,
+        EAetheryteLocation.LimsaHawkersAlley,
+        EAetheryteLocation.LimsaZephyrGate,
+        EAetheryteLocation.LimsaTempestGate,
+        EAetheryteLocation.LimsaAirship,
+
+        EAetheryteLocation.GoldSaucerEntranceCardSquares,
+        EAetheryteLocation.GoldSaucerWonderSquareEast,
+        EAetheryteLocation.GoldSaucerWonderSquareWest,
+        EAetheryteLocation.GoldSaucerEventSquare,
+        EAetheryteLocation.GoldSaucerCactpotBoard,
+        EAetheryteLocation.GoldSaucerRoundSquare,
+        EAetheryteLocation.GoldSaucerChocoboSquare,
+        EAetheryteLocation.GoldSaucerMinionSquare,
+
+        EAetheryteLocation.IshgardForgottenKnight,
+        EAetheryteLocation.IshgardSkysteelManufactory,
+        EAetheryteLocation.IshgardBrume,
+        EAetheryteLocation.IshgardAthenaeumAstrologicum,
+        EAetheryteLocation.IshgardJeweledCrozier,
+        EAetheryteLocation.IshgardSaintReymanaudsCathedral,
+        EAetheryteLocation.IshgardTribunal,
+        EAetheryteLocation.IshgardLastVigil,
+        EAetheryteLocation.IshgardGatesOfJudgement,
+        EAetheryteLocation.IshgardFirmament,
+
+        EAetheryteLocation.FirmamentMendicantsCourt,
+        EAetheryteLocation.FirmamentMattock,
+        EAetheryteLocation.FirmamentNewNest,
+        EAetheryteLocation.FirmanentSaintRoellesDais,
+        EAetheryteLocation.FirmamentFeatherfall,
+        EAetheryteLocation.FirmamentHoarfrostHall,
+        EAetheryteLocation.FirmamentWesternRisensongQuarter,
+        EAetheryteLocation.FIrmamentEasternRisensongQuarter,
+
+        EAetheryteLocation.IdyllshireWest,
+        EAetheryteLocation.IdyllshirePrologueGate,
+        EAetheryteLocation.IdyllshireEpilogueGate,
+
+        EAetheryteLocation.RhalgrsReachWest,
+        EAetheryteLocation.RhalgrsReachNorthEast,
+        EAetheryteLocation.RhalgrsReachFringesGate,
+        EAetheryteLocation.RhalgrsReachPeaksGate,
+
+        EAetheryteLocation.KuganeShiokazeHostelry,
+        EAetheryteLocation.KuganePier1,
+        EAetheryteLocation.KuganeThavnairianConsulate,
+        EAetheryteLocation.KuganeMarkets,
+        EAetheryteLocation.KuganeBokairoInn,
+        EAetheryteLocation.KuganeRubyBazaar,
+        EAetheryteLocation.KuganeSekiseigumiBarracks,
+        EAetheryteLocation.KuganeRakuzaDistrict,
+        EAetheryteLocation.KuganeRubyPrice,
+        EAetheryteLocation.KuganeAirship,
+
+        EAetheryteLocation.DomanEnclaveNorthern,
+        EAetheryteLocation.DomanEnclaveSouthern,
+        EAetheryteLocation.DomanEnclaveOneRiver,
+        EAetheryteLocation.DomanEnclaveDocks,
+        EAetheryteLocation.DomanEnclaveGangos,
+
+        EAetheryteLocation.CrystariumMarkets,
+        EAetheryteLocation.CrystariumTemenosRookery,
+        EAetheryteLocation.CrystariumDossalGate,
+        EAetheryteLocation.CrystariumPendants,
+        EAetheryteLocation.CrystariumAmaroLaunch,
+        EAetheryteLocation.CrystariumCrystallineMean,
+        EAetheryteLocation.CrystariumCabinetOfCuriosity,
+        EAetheryteLocation.CrystariumTessellation,
+
+        EAetheryteLocation.EulmoreMainstay,
+        EAetheryteLocation.EulmoreNightsoilPots,
+        EAetheryteLocation.EulmoreGloryGate,
+        EAetheryteLocation.EulmoreSoutheastDerelict,
+        EAetheryteLocation.EulmorePathToGlory,
+
+        EAetheryteLocation.OldSharlayanStudium,
+        EAetheryteLocation.OldSharlayanBaldesionAnnex,
+        EAetheryteLocation.OldSharlayanRostra,
+        EAetheryteLocation.OldSharlayanLeveilleurEstate,
+        EAetheryteLocation.OldSharlayanJourneysEnd,
+        EAetheryteLocation.OldSharlayanScholarsHarbor,
+        EAetheryteLocation.OldSharlayanHallOfArtifice,
+
+        EAetheryteLocation.RadzAtHanMeghaduta,
+        EAetheryteLocation.RadzAtHanRuveydahFibers,
+        EAetheryteLocation.RadzAtHanAirship,
+        EAetheryteLocation.RadzAtHanAlzadaalsPeace,
+        EAetheryteLocation.RadzAtHanHallOfTheRadiantHost,
+        EAetheryteLocation.RadzAtHanMehrydesMeyhane,
+        EAetheryteLocation.RadzAtHanKama,
+        EAetheryteLocation.RadzAtHanHighCrucible,
+        EAetheryteLocation.RadzAtHanGateOfFirstSight,
+
+        EAetheryteLocation.TuliyollalDirigibleLanding,
+        EAetheryteLocation.TuliyollalTheResplendentQuarter,
+        EAetheryteLocation.TuliyollalTheForardCabins,
+        EAetheryteLocation.TuliyollalBaysideBevyMarketplace,
+        EAetheryteLocation.TuliyollalVollokShoonsa,
+        EAetheryteLocation.TuliyollalWachumeqimeqi,
+        EAetheryteLocation.TuliyollalBrightploomPost,
+        EAetheryteLocation.TuliyollalArchOfTheDawnUrqopacha,
+        EAetheryteLocation.TuliyollalArchOfTheDawnKozamauka,
+        EAetheryteLocation.TuliyollalIhuykatumu,
+        EAetheryteLocation.TuliyollalDirigibleLandingYakTel,
+        EAetheryteLocation.TuliyollalXakTuralSkygate,
+
+        EAetheryteLocation.SolutionNineInformationCenter,
+        EAetheryteLocation.SolutionNineTrueVue,
+        EAetheryteLocation.SolutionNineNeonStein,
+        EAetheryteLocation.SolutionNineTheArcadion,
+        EAetheryteLocation.SolutionNineResolution,
+        EAetheryteLocation.SolutionNineNexusArcade,
+        EAetheryteLocation.SolutionNineResidentialSector,
+        EAetheryteLocation.SolutionNineScanningPortNine,
+    ];
+    public static bool IsAethernetShard(this EAetheryteLocation aetheryteLocation) =>
+        aethernetShards.Contains(aetheryteLocation);
     public static bool IsFirmamentAetheryte(this EAetheryteLocation aetheryteLocation) =>
         aetheryteLocation is EAetheryteLocation.IshgardFirmament
             or EAetheryteLocation.FirmamentMendicantsCourt

@@ -193,6 +193,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public List<Quest> ManualPriorityQuests { get; } = [];
 
+    public bool StopAfterCurrentQuest { get; set; }
+    public bool StopAfterTeleport { get; set; }
+
     public string? DebugState { get; private set; }
 
     public bool IsQuestWindowOpen => IsQuestWindowOpenFunction?.Invoke() ?? true;
@@ -285,6 +288,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             else if (_taskQueue.CurrentTaskExecutor is Duty.WaitAutoDutyExecutor)
             {
                 // ignoring death in a dungeon if it is being run by AD
+            }
+            else if (_taskQueue.CurrentTaskExecutor is SinglePlayerDuty.WaitSinglePlayerDutyExecutor)
+            {
+                // ignoring death in a solo duty so it can be retried
             }
             else if (!_taskQueue.AllTasksComplete)
                 StopAllDueToConditionFailed("HP = 0");
@@ -533,6 +540,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         StartedQuest = null;
                         Stop($"Stopping point [{questId}] reached");
                     }
+                    else if (StopAfterCurrentQuest &&
+                             StartedQuest != null &&
+                             _questFunctions.IsQuestComplete(StartedQuest.Quest.Id))
+                    {
+                        ElementId questId = StartedQuest.Quest.Id;
+                        _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", questId);
+                        _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', stopping as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                        StartedQuest = null;
+                        Stop($"Stop after quest [{questId}]");
+                    }
                     else if (_questRegistry.TryGetQuest(currentQuestId, out Quest? quest))
                     {
                         _highlightObject.SetHighlight([]);
@@ -750,6 +767,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public override void Stop(string label)
     {
+        StopAfterCurrentQuest = false;
+        StopAfterTeleport = false;
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         if (IsRunning || AutomationType != EAutomationType.Manual)
@@ -867,6 +886,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         if (task is WaitAtEnd.WaitQuestCompleted)
             SimulatedQuest = null;
+
+        if (task is AetheryteShortcut.Task && StopAfterTeleport)
+        {
+            _logger.LogInformation("Stopping after teleport as requested");
+            _chatGui.Print("Stopping after teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            _movementController.Stop();
+            Stop("Stop after teleport");
+        }
     }
 
     protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);

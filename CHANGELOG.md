@@ -1,3 +1,2 @@
-- Allied society: better handling of parallel society quests -alydev
-- Windurst: use teleport mamook>jeuno in quests -alydev
-- Dailies checked -alydev
+- Better handling of aetheryte shortcuts -alydev
+- Magic buttons feature -Kage

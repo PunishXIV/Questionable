@@ -13,29 +13,42 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
 {
-    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, IClientState clientState)
+    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, GameFunctions gameFunctions, IClientState clientState)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.AetheryteShortcut == null)
+            yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1)); // ensure not still in duty etc
+            EAetheryteLocation? nearest = step.Position != null ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position.Value) : null;
+            EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
+            if (shortcut == null ||
+                step.Mount is { } ||
+                (step.AetheryteShortcut == null && (step.AethernetShortcut is { } || gameFunctions.GetMountId() is { })) ||
+                sequence.Steps.Any(step => (
+                    step.Action is { } action && action.RequiresMount())
+                    ))
                 yield break;
+            if (step.AetheryteShortcut != nearest)
+                yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} != nearest:{nearest})");
+            else
+                yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} == nearest:{nearest})");
 
-            yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
-                aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
+            yield return new Task(step, quest.Id, shortcut.Value,
+                aetheryteData.TerritoryIds[shortcut.Value]);
             yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
 
-            if (MoveAwayFromAetheryteExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
-                step.AethernetShortcut?.From != step.AetheryteShortcut.Value)
+            if (MoveAwayFromAetheryteExecutor.AppliesTo(shortcut.Value) &&
+                step.AethernetShortcut?.From != shortcut.Value)
             {
                 yield return new WaitCondition.Task(
-                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AetheryteShortcut.Value],
-                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AetheryteShortcut.Value])})");
-                yield return new MoveAwayFromAetheryte(step.AetheryteShortcut.Value);
+                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[shortcut.Value],
+                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[shortcut.Value])})");
+                yield return new MoveAwayFromAetheryte(shortcut.Value);
             }
         }
     }
@@ -217,7 +230,9 @@ internal static class AetheryteShortcut
                         }
 
                         // if aetheryte route is further from the destination than just walking there, skip it
-                        logger.LogDebug($"target direct: {distance_target}. target if tp: {30 + distance_aetheryte_to_target}" +
+                        logger.LogDebug($"target direct: {distance_target}. target if tp: {30 + distance_aetheryte_to_target} " +
+                                        $"target direct XZ: {pos.DistanceTo_XZ(Task.Step.Position.Value)}. " +
+                                        $"target tp XZ: {Task.Step.Position.Value.DistanceTo_XZ(Task.TargetAetheryte.Position(aetheryteData))}" +
                                         (Task.Step.AethernetShortcut != null ? $", target if aethernet: {distance_aethernet_from + distance_aethernet_to + 30}" : ""));
                         if (distance_target < (30 + distance_aetheryte_to_target) ||
                             (Task.Step.AethernetShortcut != null && distance_target < (distance_aethernet_from + distance_aethernet_to + 30)))
@@ -226,6 +241,15 @@ internal static class AetheryteShortcut
                             return true;
                         }
                     }
+                }
+
+                if (!aetheryteData.TerritoryIds[Task.TargetAetheryte].Equals(territoryType) &&
+                    Task.Step.AethernetShortcut is { } aethernet &&
+                    aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType))
+                {
+                    logger.LogInformation($"{aetheryteData.TerritoryIds[Task.TargetAetheryte]}, {aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.To]}, {territoryType}");
+                    logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
+                    return true;
                 }
             }
 

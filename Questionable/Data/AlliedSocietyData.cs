@@ -47,7 +47,7 @@ internal sealed class AlliedSocietyData
                 >= 2290 and <= 2319 => EAlliedSociety.Moogles,
                 >= 3042 and <= 3069 => EAlliedSociety.Ananta, //Storm 
                 >= 2979 and <= 3002 => EAlliedSociety.Kojin,
-                //>= 3103 and <= 3130 => EAlliedSociety.Namazu, catfish quests do parts during 255, creating significant back and forth
+                >= 3103 and <= 3130 => EAlliedSociety.Namazu,
                 >= 3902 and <= 3929 => EAlliedSociety.Dwarves, //SB
                 >= 3689 and <= 3716 => EAlliedSociety.Pixies,
                 >= 3806 and <= 3833 => EAlliedSociety.Qitari,
