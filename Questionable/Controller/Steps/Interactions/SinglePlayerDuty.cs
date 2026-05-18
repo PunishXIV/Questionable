@@ -10,6 +10,7 @@ using ECommons.Throttlers;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
+using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
@@ -107,7 +108,7 @@ internal static class SinglePlayerDuty
 
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();
-                yield return new WaitAtEnd.WaitNextStepOrSequence();
+                yield return new WaitForSinglePlayerDutyOutcome(cfcId, quest.Id, sequence.Sequence);
             }
         }
 
@@ -263,6 +264,86 @@ internal static class SinglePlayerDuty
 
             targetManager.Target = gameObject;
             return ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    /// <summary>
+    ///     Sits after <see cref="WaitSinglePlayerDuty"/> + <see cref="DisableAi"/>. Normally the controller's
+    ///     sequence-change watcher in UpdateCurrentQuest clears this task and moves on; if no quest progress
+    ///     happens within a grace period after leaving the instance, we assume the duty failed and ask the
+    ///     controller to re-run the current step.
+    /// </summary>
+    internal sealed record WaitForSinglePlayerDutyOutcome(
+        uint ContentFinderConditionId,
+        ElementId QuestId,
+        byte StartSequence) : ITask
+    {
+        public override string ToString() =>
+            $"WaitForSinglePlayerDutyOutcome({ContentFinderConditionId}, seq={StartSequence})";
+    }
+
+    internal sealed class WaitForSinglePlayerDutyOutcomeExecutor(
+        QuestFunctions questFunctions,
+        GameFunctions gameFunctions,
+        ICondition condition,
+        ILogger<WaitForSinglePlayerDutyOutcomeExecutor> logger)
+        : TaskExecutor<WaitForSinglePlayerDutyOutcome>, IDebugStateProvider
+    {
+        private static readonly TimeSpan GracePeriod = TimeSpan.FromSeconds(15);
+        private DateTime _readyAt = DateTime.MinValue;
+
+        protected override bool Start() => true;
+
+        public override unsafe ETaskResult Update()
+        {
+            // Reset the grace timer whenever the player is busy (cutscene, loading screen,
+            // animation lock, etc.) — the quest sequence won't update during these.
+            if (gameFunctions.IsOccupied() ||
+                condition[ConditionFlag.WatchingCutscene] ||
+                condition[ConditionFlag.WatchingCutscene78] ||
+                condition[ConditionFlag.BetweenAreas] ||
+                condition[ConditionFlag.BetweenAreas51])
+            {
+                _readyAt = DateTime.Now;
+                return ETaskResult.StillRunning;
+            }
+
+            // If somehow we're back inside the same instance (shouldn't happen — WaitSinglePlayerDuty
+            // already confirmed we exited), keep waiting.
+            if (GameMain.Instance()->CurrentContentFinderConditionId == Task.ContentFinderConditionId)
+            {
+                _readyAt = DateTime.Now;
+                return ETaskResult.StillRunning;
+            }
+
+            if (_readyAt == DateTime.MinValue)
+                _readyAt = DateTime.Now;
+
+            if (DateTime.Now - _readyAt < GracePeriod)
+                return ETaskResult.StillRunning;
+
+            // If the in-game quest sequence advanced (or the quest is gone), the duty succeeded —
+            // QuestController.UpdateCurrentQuest will clear us; just keep waiting.
+            QuestProgressInfo? progress = questFunctions.GetQuestProgressInfo(Task.QuestId);
+            if (progress == null || progress.Sequence != Task.StartSequence)
+                return ETaskResult.StillRunning;
+
+            logger.LogWarning(
+                "SinglePlayerDuty {Cfc} appears to have failed (no quest progress {Seconds}s after leaving instance) — retrying step",
+                Task.ContentFinderConditionId, GracePeriod.TotalSeconds);
+            return ETaskResult.RetryStep;
+        }
+
+        public string? GetDebugState()
+        {
+            if (_readyAt == DateTime.MinValue)
+                return "Waiting for player to be idle";
+            TimeSpan remaining = GracePeriod - (DateTime.Now - _readyAt);
+            return remaining > TimeSpan.Zero
+                ? $"Outcome check in {remaining.TotalSeconds:F0}s"
+                : "Outcome check pending";
         }
 
         public override bool ShouldInterruptOnDamage() => false;

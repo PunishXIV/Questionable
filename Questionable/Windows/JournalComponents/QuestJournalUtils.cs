@@ -64,6 +64,10 @@ internal sealed class QuestJournalUtils
             _configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
             _pluginInterface.SavePluginConfig(_configuration);
         }
+#if DEBUG
+        if (ImGui.MenuItem("Edit quest path"))
+            (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
+#endif
     }
 
     internal static void ShowFilterContextMenu(QuestJournalComponent journalUi)

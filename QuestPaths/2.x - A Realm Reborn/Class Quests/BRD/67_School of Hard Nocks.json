@@ -134,7 +134,7 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
             }
           }
         },
@@ -149,7 +149,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "Position": {
@@ -161,7 +161,7 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
             }
           }
         },
@@ -176,7 +176,7 @@
           "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "Position": {

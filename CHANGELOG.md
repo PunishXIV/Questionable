@@ -1,6 +1,3 @@
-- Bug fix: don't teleport if Transporting status -alydev
-- Aetheryte shortcut: wait until not occupied -alydev
-- Stop After Quest, Stop After Teleport button -Kage
-  - button changed to Stop Before Teleport -Kage
-- Buttons organised slightly -alydev
-- Paths checked -alydev
+- Aetheryte shortcut fix maybe
+- schema change: craft ItemId,ItemCount optional if artisan premade craft list present
+- check armory for purchased items, fixes lv5 hat purchase -alydev
