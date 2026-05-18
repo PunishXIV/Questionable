@@ -472,8 +472,7 @@ internal sealed partial class ActiveQuestComponent
             ImGui.SameLine();
             if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
             {
-                IQuestInfo info = currentQuest.Quest.Info;
-                (bool success, string filename) = QuestRegistry.OpenEditor(_questRegistry.AssemblyLocation, $"{info.QuestId}_{info.SimplifiedName}.json");
+                (bool success, string filename) = QuestRegistry.OpenEditor(currentQuest.Quest.Info);
                 _logger.LogDebug($"OpenEditor {success}: {filename}");
             }
         }

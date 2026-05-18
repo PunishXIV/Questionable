@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Keys;
 using Dalamud.Game.ClientState.Objects.SubKinds;
@@ -65,7 +66,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly MovementController _movementController;
     private readonly IObjectTable _objectTable;
 
-    private readonly object _progressLock = new();
+    private readonly Lock _progressLock = new();
     private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
@@ -558,7 +559,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 #if DEBUG
                         if (_configuration.Advanced.OpenEditor)
                         {
-                            (bool success, string msg) = _questRegistry.OpenEditor(StartedQuest.Quest.Info);
+                            (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
                             _logger.LogDebug($"OpenEditor {success}: {msg}");
                         }
 #endif

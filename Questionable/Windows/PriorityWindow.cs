@@ -218,7 +218,7 @@ internal sealed class PriorityWindow : LWindow
 
 #if DEBUG
                 if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
-                    (bool success, string filename) = QuestRegistry.OpenEditor(_questRegistry.AssemblyLocation, $"{quest.Info.QuestId}_{quest.Info.SimplifiedName}.json");
+                    (bool success, string filename) = QuestRegistry.OpenEditor(quest.Info);
                 ImGui.SameLine();
 #endif
 
