@@ -378,13 +378,12 @@ internal sealed partial class ActiveQuestComponent
                 _questController.Start("UI start");
             }
 
-            if (!isMinimized)
-            {
-                ImGui.SameLine();
+            ImGui.SameLine();
 
-                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.StepForward, "Step"))
-                    _questController.StartSingleStep("UI step");
-            }
+            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.StepForward, "Step"))
+                _questController.StartSingleStep("UI step");
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip("Execute next step and then stop.");
         }
 
         ImGui.SameLine();
@@ -395,6 +394,8 @@ internal sealed partial class ActiveQuestComponent
             _questController.Stop("UI stop");
             _gatheringController.Stop("UI stop");
         }
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip("Stop all actions now.");
 
         using (ImRaii.Disabled(!_questController.IsRunning))
         {
@@ -425,6 +426,7 @@ internal sealed partial class ActiveQuestComponent
                     : "Stop before the next teleport.");
         }
 
+#if DEBUG
         if (isMinimized)
         {
             ImGui.SameLine();
@@ -433,6 +435,7 @@ internal sealed partial class ActiveQuestComponent
         }
         else
         {
+#endif
             bool lastStep = currentStep ==
                             currentQuest.Quest.FindSequence(currentQuest.Sequence)?.Steps.LastOrDefault();
             bool colored = currentStep != null
@@ -473,8 +476,8 @@ internal sealed partial class ActiveQuestComponent
                 (bool success, string filename) = QuestRegistry.OpenEditor(_questRegistry.AssemblyLocation, $"{info.QuestId}_{info.SimplifiedName}.json");
                 _logger.LogDebug($"OpenEditor {success}: {filename}");
             }
-#endif
         }
+#endif
     }
 
     private void DrawSimulationControls()

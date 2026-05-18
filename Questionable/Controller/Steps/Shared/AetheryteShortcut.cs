@@ -72,6 +72,7 @@ internal static class AetheryteShortcut
         ILogger<UseAetheryteShortcut> logger,
         AetheryteFunctions aetheryteFunctions,
         QuestFunctions questFunctions,
+        GameFunctions gameFunctions,
         IClientState clientState,
         IObjectTable objectTable,
         IChatGui chatGui,
@@ -251,6 +252,12 @@ internal static class AetheryteShortcut
                     logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
                     return true;
                 }
+            }
+
+            if (gameFunctions.HasStatus(404) || gameFunctions.HasStatus(4376)) // Transporting
+            {
+                logger.LogInformation("Skipping aetheryte teleport, character is busy.");
+                return true;
             }
 
             logger.LogInformation("Not skipping aetheryte teleport");

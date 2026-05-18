@@ -1,2 +1,4 @@
-- Better handling of aetheryte shortcuts -alydev
-- Stop After Quest button -Kage
+- Bug fix: don't teleport if Transporting status -alydev
+- Stop After Quest, Stop After Teleport button -Kage
+  - button changed to Stop Before Teleport -Kage
+- Buttons organised slightly -alydev
