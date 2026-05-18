@@ -27,12 +27,10 @@ internal static class Craft
             if (step.InteractionType != EInteractionType.Craft)
                 return [];
 
-            ArgumentNullException.ThrowIfNull(step.ItemId);
-            ArgumentNullException.ThrowIfNull(step.ItemCount);
             return
             [
                 new Mount.UnmountTask(),
-                new CraftTask(quest, step.ItemId.Value, step.ItemCount.Value)
+                new CraftTask(quest, step.ItemId, step.ItemCount)
             ];
         }
     }
@@ -40,8 +38,8 @@ internal static class Craft
     internal sealed record CraftTask
     (
         Quest Quest,
-        uint ItemId,
-        int ItemCount) : ITask
+        uint? ItemId,
+        int? ItemCount) : ITask
     {
         public override string ToString() => $"Craft({ItemCount}x {ItemId})";
     }
@@ -59,6 +57,16 @@ internal static class Craft
         private int _startingItemCount;
         protected override unsafe bool Start()
         {
+            if (artisanIpc.CraftList(Task.Quest.Id))
+            {
+                logger.LogInformation("Craft list started");
+                return true;
+            }
+            if (!Task.ItemId.HasValue)
+                throw new ArgumentNullException(nameof(Task.ItemId));
+            if (!Task.ItemCount.HasValue)
+                throw new ArgumentNullException(nameof(Task.ItemCount));
+
             // Get the item quality requirement from the quest step (NQ, HQ, or Any)
             _itemQuality = GetItemQuality();
             int ownedCount = GetOwnedItemCount();
@@ -72,7 +80,7 @@ internal static class Craft
             _startingItemCount = ownedCount;
             _previousCount = ownedCount;
 
-            RecipeLookup? recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId) ??
+            RecipeLookup? recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId.Value) ??
                                          throw new TaskException($"Item {Task.ItemId} is not craftable");
             QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
@@ -110,7 +118,7 @@ internal static class Craft
             if (recipeId == 0)
                 throw new TaskException($"Unable to determine recipe for item {Task.ItemId}");
 
-            int remainingItemCount = Task.ItemCount - _startingItemCount;
+            int remainingItemCount = Task.ItemCount.Value - _startingItemCount;
             logger.LogInformation(
                 "Starting craft for item {ItemId} with recipe {RecipeId} for {RemainingItemCount} items (quality: {Quality}, owned: {OwnedCount})",
                 Task.ItemId, recipeId, remainingItemCount, _itemQuality, _startingItemCount);
@@ -122,6 +130,12 @@ internal static class Craft
 
         public override unsafe ETaskResult Update()
         {
+            if (!Task.ItemId.HasValue || !Task.ItemCount.HasValue)
+            {
+                if (artisanIpc.IsCrafting())
+                    return ETaskResult.StillRunning;
+                return CloseCraftingLog() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+            }
             int currentCount = GetOwnedItemCount();
 
             // Log only when item count changes
@@ -137,25 +151,30 @@ internal static class Craft
             if (currentCount >= Task.ItemCount && !artisanIpc.IsCrafting())
             {
                 logger.LogInformation("Item count reached ({Count}x {ItemId}), closing crafting window", Task.ItemCount, Task.ItemId);
-                AgentRecipeNote* agentRecipeNote = AgentRecipeNote.Instance();
-                if (agentRecipeNote != null && agentRecipeNote->IsAgentActive())
-                {
-                    uint addonId = agentRecipeNote->GetAddonId();
-                    if (addonId == 0)
-                        return ETaskResult.StillRunning;
-
-                    AtkUnitBase* addon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById((ushort)addonId);
-                    if (addon != null)
-                    {
-                        addon->FireCallbackInt(-1);
-                        return ETaskResult.TaskComplete;
-                    }
-                }
-
-                return ETaskResult.TaskComplete;
+                return CloseCraftingLog() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
             }
 
             return ETaskResult.StillRunning;
+        }
+
+        private static unsafe bool CloseCraftingLog()
+        {
+            AgentRecipeNote* agentRecipeNote = AgentRecipeNote.Instance();
+            if (agentRecipeNote != null && agentRecipeNote->IsAgentActive())
+            {
+                uint addonId = agentRecipeNote->GetAddonId();
+                if (addonId == 0)
+                    return false;
+
+                AtkUnitBase* addon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById((ushort)addonId);
+                if (addon != null)
+                {
+                    addon->FireCallbackInt(-1);
+                    return true;
+                }
+            }
+
+            return true;
         }
 
         private EItemQuality GetItemQuality()
@@ -173,14 +192,16 @@ internal static class Craft
 
         private unsafe int GetOwnedItemCount()
         {
+            if (!Task.ItemId.HasValue)
+                throw new ArgumentNullException(nameof(Task.ItemId));
             // Count items in inventory based on quality requirement: NQ, HQ, or both (Any)
             InventoryManager* inventoryManager = InventoryManager.Instance();
             return _itemQuality switch
             {
-                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId, false, false),
-                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId, true, false),
-                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId, false, false)
-                                    + inventoryManager->GetInventoryItemCount(Task.ItemId, true, false),
+                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, false, false),
+                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, true, false),
+                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, false, false)
+                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value, true, false),
                 var _ => 0
             };
         }

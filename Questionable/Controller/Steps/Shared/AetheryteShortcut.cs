@@ -103,13 +103,24 @@ internal static class AetheryteShortcut
                 {
                     EAetheryteLocation? nearest = Task.Step.Position != null ? aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, Task.Step.Position.Value) : null;
                     EAetheryteLocation? shortcut = Task.Step.AetheryteShortcut ?? nearest ?? null;
-                    if (shortcut == null ||
-                            Task.Step.Mount is { } ||
-                            Task.Step.AetheryteShortcut == null && (Task.Step.AethernetShortcut is { } || alliedSocietyData.IsAlliedSocietyMount(gameFunctions.GetMountId())) ||
-                            Task.Step.Action is { } action && action.RequiresMount())
+                    if (shortcut == null)
                     {
-                        logger.LogInformation($"Skipping aetheryte shortcut in nearest check. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
-                        return false;
+                        logger.LogInformation($"Skipping aetheryte shortcut, null result. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        return true;
+                    }
+                    if (Task.Step.Mount is { } mount)
+                    {
+                        logger.LogInformation($"Skipping aetheryte shortcut, Mount is set as {mount}. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        return true;
+                    }
+                    if (Task.Step.Action is { } action && action.RequiresMount())
+                    {
+                        logger.LogInformation($"Skipping aetheryte shortcut, step action requires mount. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        return true;
+                    }
+                    if (Task.Step.AethernetShortcut is { } aethernetShortcut && aetheryteData.TerritoryIds[aethernetShortcut.To] != clientState.TerritoryType)
+                    {
+                        logger.LogInformation($"Not skipping aetheryte shortcut, aethernet destination is diff territory. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
                     }
                     Task.targetAetheryte = shortcut.Value;
                     logger.LogInformation($"Aetheryte target has been changed to {Task.targetAetheryte}");
