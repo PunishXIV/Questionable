@@ -1,2 +1,2 @@
-- Moved aetheryte recalc into ShouldSkipTeleport
-- added AetheryteShortcut.Task to MoveTo
+- Aetheryte shortcut fix maybe
+- schema change: craft ItemId,ItemCount optional if artisan premade craft list present
