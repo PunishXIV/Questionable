@@ -281,8 +281,8 @@ internal sealed unsafe class GameFunctions
 
         BattleChara* battleChara = (BattleChara*)localPlayer.Address;
         StatusManager* statusManager = battleChara->GetStatusManager();
-        if (statusManager->HasStatus(1151) ||
-            statusManager->HasStatus(1945)) // hoofing it
+        if (HasStatus(1151) ||
+            HasStatus(1945)) // hoofing it
         {
             return true;
         }
@@ -294,20 +294,19 @@ internal sealed unsafe class GameFunctions
 
     private bool HasCharacterStatusPreventingMountOrSprint()
     {
-        IGameObject? localPlayer = _objectTable[0];
-        if (localPlayer == null)
-            return false;
-
-        BattleChara* battleChara = (BattleChara*)localPlayer.Address;
-        StatusManager* statusManager = battleChara->GetStatusManager();
-        return statusManager->HasStatus(565) ||
-               statusManager->HasStatus(404) ||
-               statusManager->HasStatus(416) ||
-               statusManager->HasStatus(2729) ||
-               statusManager->HasStatus(2730);
+        return HasStatus(565) ||
+               HasStatus(404) ||
+               HasStatus(416) ||
+               HasStatus(2729) ||
+               HasStatus(2730);
     }
 
     public bool HasStatus(EStatus statusId)
+    {
+        return HasStatus((uint)statusId);
+    }
+
+    public bool HasStatus(uint statusId)
     {
         IGameObject? localPlayer = _objectTable[0];
         if (localPlayer == null)
@@ -315,7 +314,7 @@ internal sealed unsafe class GameFunctions
 
         BattleChara* battleChara = (BattleChara*)localPlayer.Address;
         StatusManager* statusManager = battleChara->GetStatusManager();
-        return statusManager->HasStatus((uint)statusId);
+        return statusManager->HasStatus(statusId);
     }
 
     public static bool RemoveStatus(EStatus statusId) => StatusManager.ExecuteStatusOff((uint)statusId);

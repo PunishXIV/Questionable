@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
@@ -30,6 +31,12 @@ internal sealed class AlliedSocietyData
             { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }
         }.AsReadOnly();
 
+    public bool IsAlliedSocietyMount(ushort? mountId)
+    {
+        if (mountId is { } && Mounts.TryGetValue(mountId.Value, out AlliedSocietyMountConfiguration? mountConfig) && mountConfig is { })
+            return true;
+        return false;
+    }
     public EAlliedSociety GetCommonAlliedSocietyTurnIn(ElementId elementId)
     {
         if (elementId is QuestId questId)

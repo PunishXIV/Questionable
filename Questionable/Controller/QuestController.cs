@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Keys;
 using Dalamud.Game.ClientState.Objects.SubKinds;
@@ -65,7 +66,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly MovementController _movementController;
     private readonly IObjectTable _objectTable;
 
-    private readonly object _progressLock = new();
+    private readonly Lock _progressLock = new();
     private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
@@ -194,7 +195,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public List<Quest> ManualPriorityQuests { get; } = [];
 
     public bool StopAfterCurrentQuest { get; set; }
-    public bool StopAfterTeleport { get; set; }
+    public bool StopBeforeTeleport { get; set; }
 
     public string? DebugState { get; private set; }
 
@@ -558,7 +559,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 #if DEBUG
                         if (_configuration.Advanced.OpenEditor)
                         {
-                            (bool success, string msg) = _questRegistry.OpenEditor(StartedQuest.Quest.Info);
+                            (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
                             _logger.LogDebug($"OpenEditor {success}: {msg}");
                         }
 #endif
@@ -768,7 +769,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public override void Stop(string label)
     {
         StopAfterCurrentQuest = false;
-        StopAfterTeleport = false;
+        StopBeforeTeleport = false;
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         if (IsRunning || AutomationType != EAutomationType.Manual)
@@ -879,6 +880,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (_gameFunctions.IsOccupied() && !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))
             return;
 
+        if (StopBeforeTeleport && _taskQueue.CurrentTaskExecutor == null && _taskQueue.TryPeek(out ITask? nextTask) && nextTask is AetheryteShortcut.Task)
+        {
+            _logger.LogInformation("Stopping before teleport as requested");
+            _chatGui.Print("Stopping before teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            _movementController.Stop();
+            Stop("Stop before teleport");
+            return;
+        }
+
         base.UpdateCurrentTask();
     }
 
@@ -887,13 +897,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (task is WaitAtEnd.WaitQuestCompleted)
             SimulatedQuest = null;
 
-        if (task is AetheryteShortcut.Task && StopAfterTeleport)
-        {
-            _logger.LogInformation("Stopping after teleport as requested");
-            _chatGui.Print("Stopping after teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
-            _movementController.Stop();
-            Stop("Stop after teleport");
-        }
     }
 
     protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);

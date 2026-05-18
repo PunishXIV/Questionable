@@ -1,2 +1,2 @@
-- Better handling of aetheryte shortcuts -alydev
-- Magic buttons feature -Kage
+- Moved aetheryte recalc into ShouldSkipTeleport
+- added AetheryteShortcut.Task to MoveTo

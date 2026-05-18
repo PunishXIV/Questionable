@@ -9,6 +9,7 @@ using System.Text.Json.Nodes;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -284,19 +285,17 @@ internal sealed class QuestRegistry
         return false;
     }
 
-#if DEBUG
-    internal FileInfo AssemblyLocation => _pluginInterface.AssemblyLocation;
+    internal static FileInfo AssemblyLocation => Svc.PluginInterface.AssemblyLocation;
     public static string GetFilename(IQuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
-    public (bool, string) OpenEditor(IQuestInfo info)
+#if DEBUG
+    public static (bool, string) OpenEditor(IQuestInfo info)
     {
-        _logger.LogDebug("OpenEditor IQuestInfo");
-        return OpenEditor(AssemblyLocation, GetFilename(info));
+        return OpenEditor(GetFilename(info));
     }
     public (bool, string) OpenEditor(ushort questId)
     {
-        _logger.LogDebug("OpenEditor ushort");
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
-            return OpenEditor(AssemblyLocation, GetFilename(quest.Info));
+            return OpenEditor(GetFilename(quest.Info));
         return (false, $"could not get quest from {questId}");
     }
     public unsafe (bool, string) OpenEditor()
@@ -328,9 +327,9 @@ internal sealed class QuestRegistry
         return (false, "could not get tracked quest");
     }
 
-    public static (bool, string) OpenEditor(FileInfo assemblyLocation, string filename)
+    public static (bool, string) OpenEditor(string filename)
     {
-        DirectoryInfo? targetFolder = new(Path.Combine(assemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
+        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
         if (targetFolder == null)
             return (false, "couldn't find QuestPaths folder");
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
