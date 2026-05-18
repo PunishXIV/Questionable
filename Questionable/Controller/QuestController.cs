@@ -901,6 +901,19 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);
 
+    protected override void OnRetryStep()
+    {
+        if (CurrentQuest == null)
+        {
+            _logger.LogWarning("OnRetryStep: no current quest, cannot retry");
+            return;
+        }
+
+        _logger.LogInformation("Retrying current step for quest {QuestId} (sequence {Sequence}, step {Step})",
+            CurrentQuest.Quest.Id, CurrentQuest.Sequence, CurrentQuest.Step);
+        CheckNextTasks("RetryStep");
+    }
+
     public void Start(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"Q/{label}");
