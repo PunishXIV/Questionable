@@ -23,7 +23,9 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1)); // ensure not still in duty etc
+            yield return new WaitCondition.Task(
+                    () => !gameFunctions.IsOccupied(),
+                    $"Wait(occupied)");
             EAetheryteLocation? nearest = step.Position != null ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position.Value) : null;
             EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
             if (shortcut == null ||
@@ -35,8 +37,8 @@ internal static class AetheryteShortcut
                 yield break;
             if (step.AetheryteShortcut != nearest)
                 yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} != nearest:{nearest})");
-            else
-                yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} == nearest:{nearest})");
+            //else
+            //    yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} == nearest:{nearest})");
 
             yield return new Task(step, quest.Id, shortcut.Value,
                 aetheryteData.TerritoryIds[shortcut.Value]);
