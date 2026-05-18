@@ -23,7 +23,9 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1)); // ensure not still in duty etc
+            yield return new WaitCondition.Task(
+                    () => !gameFunctions.IsOccupied(),
+                    $"Wait(occupied)");
             EAetheryteLocation? nearest = step.Position != null ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position.Value) : null;
             EAetheryteLocation? shortcut = step.AetheryteShortcut ?? nearest ?? null;
             if (shortcut == null ||
@@ -35,8 +37,8 @@ internal static class AetheryteShortcut
                 yield break;
             if (step.AetheryteShortcut != nearest)
                 yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} != nearest:{nearest})");
-            else
-                yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} == nearest:{nearest})");
+            //else
+            //    yield return new WaitCondition.Task(() => true, $"Note(step:{step.AetheryteShortcut} == nearest:{nearest})");
 
             yield return new Task(step, quest.Id, shortcut.Value,
                 aetheryteData.TerritoryIds[shortcut.Value]);
@@ -72,6 +74,7 @@ internal static class AetheryteShortcut
         ILogger<UseAetheryteShortcut> logger,
         AetheryteFunctions aetheryteFunctions,
         QuestFunctions questFunctions,
+        GameFunctions gameFunctions,
         IClientState clientState,
         IObjectTable objectTable,
         IChatGui chatGui,
@@ -251,6 +254,12 @@ internal static class AetheryteShortcut
                     logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
                     return true;
                 }
+            }
+
+            if (gameFunctions.HasStatus(404) || gameFunctions.HasStatus(4376)) // Transporting
+            {
+                logger.LogInformation("Skipping aetheryte teleport, character is busy.");
+                return true;
             }
 
             logger.LogInformation("Not skipping aetheryte teleport");

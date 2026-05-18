@@ -139,16 +139,19 @@ internal static class WaitAtEnd
         private static NextStep Next(Quest quest, QuestSequence sequence) => new(quest.Id, sequence.Sequence);
     }
 
-    internal sealed record WaitDelay(TimeSpan Delay) : ITask
+    internal sealed record WaitDelay(TimeSpan Delay, string? Message) : ITask
     {
         public WaitDelay()
-            : this(TimeSpan.FromSeconds(1))
+            : this(TimeSpan.FromSeconds(1), null)
+        {
+        }
+        public WaitDelay(TimeSpan Delay) : this(Delay, null)
         {
         }
 
         public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString() => $"Wait(seconds: {Delay.TotalSeconds})";
+        public override string ToString() => $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")})";
     }
 
     internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
