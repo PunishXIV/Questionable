@@ -152,6 +152,15 @@ internal abstract class MiniTaskController<T> : IDisposable
                 OnNextStep(lastTask);
                 return;
 
+            case ETaskResult.RetryStep:
+                _logger.LogInformation("{Task} → {Result}, clearing queue and retrying current step",
+                    _taskQueue.CurrentTaskExecutor.CurrentTask, result);
+
+                _taskQueue.CurrentTaskExecutor = null;
+                _taskQueue.Reset();
+                OnRetryStep();
+                return;
+
             case ETaskResult.End:
                 _logger.LogInformation("{Task} → {Result}", _taskQueue.CurrentTaskExecutor.CurrentTask, result);
                 _taskQueue.CurrentTaskExecutor = null;
@@ -166,6 +175,11 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     protected virtual void OnNextStep(ILastTask task)
     {
+    }
+
+    protected virtual void OnRetryStep()
+    {
+        Stop("RetryStep not supported");
     }
 
     public abstract void Stop(string label);
