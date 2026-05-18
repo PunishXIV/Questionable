@@ -348,7 +348,7 @@ internal sealed class QuestRegistry
     {
         foreach (FileInfo file in root.GetFiles())
         {
-            if (file.Name == filename)
+            if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase))
                 return file;
         }
 
