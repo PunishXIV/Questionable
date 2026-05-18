@@ -110,7 +110,7 @@ public class RegularShopBase
     public unsafe int GetItemCount(uint itemId)
     {
         InventoryManager* inventoryManager = InventoryManager.Instance();
-        return inventoryManager->GetInventoryItemCount(itemId, checkEquipped: false, checkArmory: false);
+        return inventoryManager->GetInventoryItemCount(itemId, checkEquipped: false, checkArmory: true);
     }
 
     public int GetMaxItemsToPurchase()

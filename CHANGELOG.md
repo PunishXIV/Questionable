@@ -1,2 +1,3 @@
 - Aetheryte shortcut fix maybe
 - schema change: craft ItemId,ItemCount optional if artisan premade craft list present
+- check armory for purchased items, fixes lv5 hat purchase -alydev
