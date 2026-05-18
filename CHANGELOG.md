@@ -1,6 +1,2 @@
-- Bug fix: don't teleport if Transporting status -alydev
-- Aetheryte shortcut: wait until not occupied -alydev
-- Stop After Quest, Stop After Teleport button -Kage
-  - button changed to Stop Before Teleport -Kage
-- Buttons organised slightly -alydev
-- Paths checked -alydev
+- Moved aetheryte recalc into ShouldSkipTeleport
+- added AetheryteShortcut.Task to MoveTo

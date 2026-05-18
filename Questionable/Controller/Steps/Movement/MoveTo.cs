@@ -3,8 +3,10 @@ using System.Numerics;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Movement;
 
@@ -21,7 +23,7 @@ internal static class MoveTo
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.Position != null)
-                return CreateMoveTasks(step, step.Position.Value);
+                return CreateMoveTasks(quest, step, step.Position.Value);
             else if (step is { DataId: not null, StopDistance: not null })
                 return [new WaitForNearDataId(step.DataId.Value, step.StopDistance.Value)];
             else if (step is
@@ -31,15 +33,15 @@ internal static class MoveTo
                 Aetheryte: { } aetheryteLocation
             })
             {
-                return CreateMoveTasks(step, aetheryteData.Locations[aetheryteLocation]);
+                return CreateMoveTasks(quest, step, aetheryteData.Locations[aetheryteLocation]);
             }
             else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
-                return CreateMoveTasks(step, aetheryteData.Locations[aethernetShard]);
+                return CreateMoveTasks(quest, step, aetheryteData.Locations[aethernetShard]);
 
             return [];
         }
 
-        private IEnumerable<ITask> CreateMoveTasks(QuestStep step, Vector3 destination)
+        private IEnumerable<ITask> CreateMoveTasks(Quest quest, QuestStep step, Vector3 destination)
         {
             if (step.InteractionType == EInteractionType.Jump && step.JumpDestination != null &&
                 (objectTable[0]!.Position - step.JumpDestination.Position).Length() <=
@@ -49,20 +51,8 @@ internal static class MoveTo
                 yield break;
             }
 
-            //if (clientState.TerritoryType != step.TerritoryId &&
-            //    step.TargetTerritoryId == null &&
-            //    step.AetheryteShortcut == null &&
-            //    step.AethernetShard == null &&
-            //    step.InteractionType == EInteractionType.WalkTo ||
-            //    step.InteractionType == EInteractionType.AcceptQuest)
-            //{
-            //    var dest = territoryData.GetName(step.TerritoryId);
-            //    if (dest != null)
-            //    {
-            //        logger.LogInformation($"{clientState.TerritoryType} != {step.TerritoryId}, teleporting to vague string '{dest}'");
-            //        commandManager.ProcessCommand($"/li {dest}");
-            //    }
-            //}
+            if (clientState.TerritoryType != step.TerritoryId)
+                yield return new AetheryteShortcut.Task(step, quest.Id, EAetheryteLocation.None, step.TerritoryId);
             yield return new WaitCondition.Task(() => clientState.TerritoryType == step.TerritoryId,
                 $"Wait(territory: {territoryData.GetNameAndId(step.TerritoryId)})");
 
