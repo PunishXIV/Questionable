@@ -766,7 +766,7 @@ internal sealed class InteractionUiController : IDisposable
 
         if (_ticketRegex.IsMatch(actualPrompt))
         {
-            _logger.LogInformation($"Check UseTickets: {_configuration.General.UseTickets}");
+            _logger.LogInformation("Check UseTickets: {UseTickets}", _configuration.General.UseTickets);
             addonSelectYesno->AtkUnitBase.FireCallbackInt(_configuration.General.UseTickets ? 0 : 1);
             return true;
         }

@@ -472,7 +472,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
             {
                 (bool success, string filename) = QuestRegistry.OpenEditor(currentQuest.Quest.Info);
-                _logger.LogDebug($"OpenEditor {success}: {filename}");
+                _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
             }
         }
 #endif
