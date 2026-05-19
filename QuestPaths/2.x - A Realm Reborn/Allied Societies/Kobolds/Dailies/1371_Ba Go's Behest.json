@@ -33,6 +33,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "Fly": true
         }
       ]
@@ -59,7 +60,31 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [189, 2884],
+          "ComplexCombatData": [
+            {
+              "DataId": 189,
+              "NameId": 1836,
+              "MinimumKillCount": 2,
+              "CompletionQuestVariablesFlags": [null,null,{"Low": 2},null,null,null]
+            }
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 211.0084,
+            "Y": 24.147057,
+            "Z": -727.0756
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "CombatDelaySecondsAtStart": 1,
+          "KillEnemyDataIds": [2884],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -71,7 +96,26 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [2838, 2885]
+          "ComplexCombatData": [
+            {
+              "DataId": 2838,
+              "NameId": 2522,
+              "MinimumKillCount": 2,
+              "CompletionQuestVariablesFlags": [null,null,{"High": 2},null,null,null]
+            }
+          ]
+        },
+        {
+          "Position": {
+            "X": 289.82132,
+            "Y": 21.553608,
+            "Z": -703.0107
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "CombatDelaySecondsAtStart": 1,
+          "KillEnemyDataIds": [2885]
         }
       ]
     },

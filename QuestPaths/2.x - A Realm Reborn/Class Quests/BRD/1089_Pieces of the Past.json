@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -83,6 +84,44 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "Position": {
+            "X": -26.738379,
+            "Y": 33,
+            "Z": -495.80618
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Northern Thanalan - Camp Bluefog"
+            },
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Northern Thanalan - Camp Bluefog",
+              "InTerritory": [147,141]
+            }
+          }
+        },
+        {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "TerritoryId": 147,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Northern Thanalan - Camp Bluefog",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Northern Thanalan - Camp Bluefog"
+            }
+          }
+        },
+        {
+          "TerritoryId": 147,
+          "InteractionType": "AttuneAetheryte",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
+          "Aetheryte": "Northern Thanalan - Ceruleum Processing Plant",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Northern Thanalan - Ceruleum Processing Plant"}}
+        },
+        {
           "Position": {
             "X": -324.11298,
             "Y": 89.13572,
@@ -90,7 +129,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
           "Fly": true
         },
         {
