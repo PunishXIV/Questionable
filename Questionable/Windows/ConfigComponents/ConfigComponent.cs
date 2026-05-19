@@ -59,6 +59,51 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             Save();
         }
     }
+    //TODO make the search option show up. now u need to scroll up to make it appear 
+    /// <summary>
+    ///     Draws a searchable combo (BeginCombo + InputTextWithHint filter) for large option lists.
+    /// </summary>
+    protected void DrawSearchableCombo<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set,
+        ref string searchString)
+    {
+        if (values.Length == 0)
+            return;
+
+        int index = Array.IndexOf(values, get());
+        if (index == -1)
+        {
+            index = 0;
+            set(values[index]);
+            Save();
+        }
+
+        string preview = labels[index];
+        if (ImGui.BeginCombo(label, preview, ImGuiComboFlags.HeightLarge))
+        {
+            ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+            ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
+
+            for (int i = 0; i < labels.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(searchString) &&
+                    !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+                    continue;
+
+                bool isSelected = i == index;
+                if (ImGui.Selectable(labels[i], isSelected))
+                {
+                    set(values[i]);
+                    Save();
+                    searchString = string.Empty;
+                }
+
+                if (isSelected)
+                    ImGui.SetItemDefaultFocus();
+            }
+
+            ImGui.EndCombo();
+        }
+    }
 
     protected static string FormatLevel(int level, bool includePrefix = true)
     {
