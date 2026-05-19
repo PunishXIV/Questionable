@@ -1,3 +1,4 @@
+- Fix craft error -alydev
 - Fix aetheryte loop on Attune step -alydev
 - schema change: craft ItemId,ItemCount optional if artisan premade craft list present -alydev
 - check armory for purchased items, fixes lv5 hat purchase -alydev
