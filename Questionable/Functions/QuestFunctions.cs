@@ -435,11 +435,11 @@ internal sealed unsafe class QuestFunctions
                 if (!firstStep.IsTeleportableForPriorityQuests())
                     return new(x, "Can't teleport to start");
 
-                if (gil < EstimateTeleportCosts(quest))
+                if (gil < TeleportCosts(quest))
                 {
                     return new(x,
                         string.Create(CultureInfo.InvariantCulture,
-                            $"Not enough gil, estimated cost: {EstimateTeleportCosts(quest):N0}{SeIconChar.Gil.ToIconString()}"));
+                            $"Not enough gil, estimated cost: {TeleportCosts(quest):N0}{SeIconChar.Gil.ToIconString()}"));
                 }
 
                 EAetheryteLocation? firstLockedAetheryte = quest.AllSteps()
@@ -479,7 +479,7 @@ internal sealed unsafe class QuestFunctions
             .ToList();
     }
 
-    private int EstimateTeleportCosts(Quest quest)
+    private int TeleportCosts(Quest quest)
     {
         Telepo* telepo = Telepo.Instance();
         if (telepo == null)
