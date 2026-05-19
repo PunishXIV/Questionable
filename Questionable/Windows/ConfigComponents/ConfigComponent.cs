@@ -59,6 +59,61 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             Save();
         }
     }
+    /// <summary>
+    ///     Draws a searchable combo (BeginCombo + InputTextWithHint filter) for large option lists.
+    ///     The search box stays pinned at the top of the popup; only the option list scrolls.
+    /// </summary>
+    protected void DrawSearchableCombo<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set,
+        ref string searchString)
+    {
+        if (values.Length == 0)
+            return;
+
+        int index = Array.IndexOf(values, get());
+        if (index == -1)
+        {
+            index = 0;
+            set(values[index]);
+            Save();
+        }
+
+        string preview = labels[index];
+        if (ImGui.BeginCombo(label, preview, ImGuiComboFlags.HeightLarge))
+        {
+            ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+            if (ImGui.IsWindowAppearing())
+                ImGui.SetKeyboardFocusHere();
+            ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
+
+            // The option list lives in its own scrollable child so that SetItemDefaultFocus()
+            // scrolls the list rather than the whole popup — keeping the search box pinned on top.
+            using (var child = ImRaii.Child("##searchableComboList", ImGui.GetContentRegionAvail()))
+            {
+                if (child)
+                {
+                    for (int i = 0; i < labels.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(searchString) &&
+                            !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+                            continue;
+
+                        bool isSelected = i == index;
+                        if (ImGui.Selectable(labels[i], isSelected))
+                        {
+                            set(values[i]);
+                            Save();
+                            searchString = string.Empty;
+                        }
+
+                        if (isSelected)
+                            ImGui.SetItemDefaultFocus();
+                    }
+                }
+            }
+
+            ImGui.EndCombo();
+        }
+    }
 
     protected static string FormatLevel(int level, bool includePrefix = true)
     {

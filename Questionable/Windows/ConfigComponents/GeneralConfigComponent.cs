@@ -31,6 +31,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private readonly Lazy<(Job[] Ids, string[] Names)> _classJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
+    private string _mountSearchString = string.Empty;
 
     public GeneralConfigComponent(
         IDalamudPluginInterface pluginInterface,
@@ -77,12 +78,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         if (prependDefault)
         {
             Job[] ids = [DefaultClassJob.ClassJob, .. jobs];
-            string[] names = [DefaultClassJob.Name, .. jobs.Select(x => x.ToFriendlyString())];
+            string[] names = [DefaultClassJob.Name, .. jobs.Select(x => x.ToString())];
             return (ids, names);
         }
         else
         {
-            return ([.. jobs], [.. jobs.Select(x => x.ToFriendlyString())]);
+            return ([.. jobs], [.. jobs.Select(x => x.ToString())]);
         }
     }
 
@@ -101,9 +102,10 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         }
 
         (uint[] mountIds, string[] mountNames) = _mounts.Value;
-        DrawComboOption("Preferred Mount", mountIds, mountNames,
+        DrawSearchableCombo("Preferred Mount", mountIds, mountNames,
             () => Configuration.General.MountId,
-            v => Configuration.General.MountId = v);
+            v => Configuration.General.MountId = v,
+            ref _mountSearchString);
 
         int grandCompany = (int)Configuration.General.GrandCompany;
         if (ImGui.Combo("Preferred Grand Company", ref grandCompany, _grandCompanyNames,
