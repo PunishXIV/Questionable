@@ -59,9 +59,9 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             Save();
         }
     }
-    //TODO make the search option show up. now u need to scroll up to make it appear 
     /// <summary>
     ///     Draws a searchable combo (BeginCombo + InputTextWithHint filter) for large option lists.
+    ///     The search box stays pinned at the top of the popup; only the option list scrolls.
     /// </summary>
     protected void DrawSearchableCombo<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set,
         ref string searchString)
@@ -81,24 +81,34 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
         if (ImGui.BeginCombo(label, preview, ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+            if (ImGui.IsWindowAppearing())
+                ImGui.SetKeyboardFocusHere();
             ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
 
-            for (int i = 0; i < labels.Length; i++)
+            // The option list lives in its own scrollable child so that SetItemDefaultFocus()
+            // scrolls the list rather than the whole popup — keeping the search box pinned on top.
+            using (var child = ImRaii.Child("##searchableComboList", ImGui.GetContentRegionAvail()))
             {
-                if (!string.IsNullOrEmpty(searchString) &&
-                    !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
-                    continue;
-
-                bool isSelected = i == index;
-                if (ImGui.Selectable(labels[i], isSelected))
+                if (child)
                 {
-                    set(values[i]);
-                    Save();
-                    searchString = string.Empty;
-                }
+                    for (int i = 0; i < labels.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(searchString) &&
+                            !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+                            continue;
 
-                if (isSelected)
-                    ImGui.SetItemDefaultFocus();
+                        bool isSelected = i == index;
+                        if (ImGui.Selectable(labels[i], isSelected))
+                        {
+                            set(values[i]);
+                            Save();
+                            searchString = string.Empty;
+                        }
+
+                        if (isSelected)
+                            ImGui.SetItemDefaultFocus();
+                    }
+                }
             }
 
             ImGui.EndCombo();
