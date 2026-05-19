@@ -78,7 +78,11 @@
           "Fly": true,
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
           "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
+            },
             "StepIf": {
+              "InTerritory": [180],
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
             }
           }
@@ -94,6 +98,8 @@
           "TargetTerritoryId": 180,
           "SkipConditions": {
             "StepIf": {
+              "InTerritory": [180],
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
             }
           }
@@ -109,6 +115,7 @@
           "Fly": true,
           "SkipConditions": {
             "StepIf": {
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
             }
           }
@@ -119,6 +126,7 @@
           "Aetheryte": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
             "StepIf": {
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
             }
           }
