@@ -34,7 +34,8 @@
         {
           "TerritoryId": 147,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Northern Thanalan - Camp Bluefog"
+          "Aetheryte": "Northern Thanalan - Camp Bluefog",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Northern Thanalan - Camp Bluefog"}}
         },
         {
           "DataId": 1006638,
