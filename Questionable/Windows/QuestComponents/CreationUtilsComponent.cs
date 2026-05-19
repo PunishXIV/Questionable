@@ -251,9 +251,11 @@ internal sealed class CreationUtilsComponent
             if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Bullseye, "To Target"))
             {
                 _movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
-                    target.Position,
-                    _condition[ConditionFlag.Mounted] && _gameFunctions.IsFlyingUnlockedInCurrentZone(),
-                    true);
+                    target.Position, new()
+                    {
+                        Fly = _condition[ConditionFlag.Mounted] && _gameFunctions.IsFlyingUnlockedInCurrentZone(),
+                        Sprint = true,
+                    });
             }
         }
         else

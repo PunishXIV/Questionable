@@ -231,16 +231,15 @@ internal sealed class MovementController
     {
         Stop();
 
+        NavigationOptions options = new()
+        {
+            StopDistance = destination.StopDistance,
+            VerticalStopDistance = destination.VerticalStopDistance,
+        };
         if (destination.UseNavmesh)
-        {
-            NavigateTo(EMovementType.None, destination.DataId, destination.Position, false, false,
-                destination.StopDistance, destination.VerticalStopDistance);
-        }
+            NavigateTo(EMovementType.None, destination.DataId, destination.Position, options);
         else
-        {
-            NavigateTo(EMovementType.None, destination.DataId, [destination.Position], false, false,
-                destination.StopDistance, destination.VerticalStopDistance);
-        }
+            NavigateTo(EMovementType.None, destination.DataId, [destination.Position], options);
     }
 
     private bool IsOnFlightPath(Vector3 p)
@@ -250,8 +249,7 @@ internal sealed class MovementController
     }
 
     [MemberNotNull(nameof(Destination))]
-    private void PrepareNavigation(EMovementType type, uint? dataId, Vector3 to, bool fly, bool sprint,
-        float? stopDistance, float verticalStopDistance, bool land, bool useNavmesh)
+    private void PrepareNavigation(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options, bool useNavmesh)
     {
         ResetPathfinding();
 
@@ -261,19 +259,22 @@ internal sealed class MovementController
             chatFunctions.ExecuteCommand("/automove off");
         }
 
-        Destination = new(type, dataId, to, stopDistance ?? (QuestStep.DefaultStopDistance - 0.2f), fly,
-            sprint, verticalStopDistance, land, useNavmesh);
+        Destination = new(type, dataId, to,
+            options.StopDistance ?? (QuestStep.DefaultStopDistance - 0.2f),
+            options.Fly, options.Sprint,
+            options.VerticalStopDistance ?? DefaultVerticalInteractionDistance,
+            options.Land, useNavmesh);
         MovementStartedAt = DateTime.MaxValue;
     }
 
-    public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, bool fly, bool sprint,
-        float? stopDistance = null, float? verticalStopDistance = null, bool land = false)
+    public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options)
     {
-        fly |= condition[ConditionFlag.Diving];
-        if (fly && land)
+        bool fly = options.Fly || condition[ConditionFlag.Diving];
+        if (fly && options.Land)
             to = to with { Y = to.Y + 2.6f };
 
-        PrepareNavigation(type, dataId, to, fly, sprint, stopDistance, verticalStopDistance ?? DefaultVerticalInteractionDistance, land, true);
+        NavigationOptions effective = options with { Fly = fly };
+        PrepareNavigation(type, dataId, to, effective, useNavmesh: true);
         logger.LogInformation("Pathfinding to {Destination}", Destination);
 
         Destination.NavmeshCalculations++;
@@ -306,14 +307,14 @@ internal sealed class MovementController
             navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);
     }
 
-    public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, bool fly, bool sprint,
-        float? stopDistance, float? verticalStopDistance = null, bool land = false)
+    public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options)
     {
-        fly |= condition[ConditionFlag.Diving];
-        if (fly && land && to.Count > 0)
+        bool fly = options.Fly || condition[ConditionFlag.Diving];
+        if (fly && options.Land && to.Count > 0)
             to[^1] = to[^1] with { Y = to[^1].Y + 2.6f };
 
-        PrepareNavigation(type, dataId, to.Last(), fly, sprint, stopDistance, verticalStopDistance ?? DefaultVerticalInteractionDistance, land, false);
+        NavigationOptions effective = options with { Fly = fly };
+        PrepareNavigation(type, dataId, to.Last(), effective, useNavmesh: false);
 
         logger.LogInformation("Moving to {Destination}", Destination);
         navmeshIpc.MoveTo(to, fly);
@@ -466,6 +467,19 @@ internal sealed class MovementController
     {
         public long UpdatedAt { get; set; }
         public double Distance2DAtLastUpdate { get; set; }
+    }
+
+    /// <summary>
+    ///     Bundles the optional knobs to <see cref="NavigateTo(EMovementType, uint?, Vector3, NavigationOptions)"/>
+    ///     and its list-overload, replacing what used to be five trailing positional booleans/floats.
+    /// </summary>
+    public sealed record NavigationOptions
+    {
+        public bool Fly { get; init; }
+        public bool Sprint { get; init; }
+        public float? StopDistance { get; init; }
+        public float? VerticalStopDistance { get; init; }
+        public bool Land { get; init; }
     }
 
     public sealed class PathfindingFailedException : Exception

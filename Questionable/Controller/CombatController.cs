@@ -447,19 +447,22 @@ internal sealed class CombatController : IDisposable
                 useNavmesh = true;
             }
 
+            MovementController.NavigationOptions options = new()
+            {
+                StopDistance = maxDistance + hitboxOffset - 0.25f,
+                VerticalStopDistance = float.MaxValue,
+            };
             if (!useNavmesh)
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack", gameObject.Name,
                     GameFunctions.GetBaseID(gameObject));
-                _movementController.NavigateTo(EMovementType.Combat, null, [gameObject.Position], false, false,
-                    maxDistance + hitboxOffset - 0.25f, float.MaxValue);
+                _movementController.NavigateTo(EMovementType.Combat, null, [gameObject.Position], options);
             }
             else
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack (with navmesh)", gameObject.Name,
                     GameFunctions.GetBaseID(gameObject));
-                _movementController.NavigateTo(EMovementType.Combat, null, gameObject.Position, false, false,
-                    maxDistance + hitboxOffset - 0.25f, float.MaxValue);
+                _movementController.NavigateTo(EMovementType.Combat, null, gameObject.Position, options);
             }
         }
     }
