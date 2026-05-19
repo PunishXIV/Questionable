@@ -109,6 +109,8 @@
           "TargetTerritoryId": 140,
           "SkipConditions": {
             "StepIf": {
+              "InTerritory": [140],
+              "Item": {"NotInInventory": true},
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
             }
           }
