@@ -38,8 +38,14 @@
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "KillEnemyDataIds": [
-            2116
+          "ComplexCombatData": [
+            {
+              "DataId": 775,
+              "NameId": 1886
+            },
+            {
+              "DataId": 2116
+            }
           ],
           "Fly": true
         },
