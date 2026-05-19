@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -40,24 +41,28 @@
       "Sequence": 255,
       "Steps": [
         {
+          "DataId": 1000868,
           "Position": {
-            "X": 696.00323,
-            "Y": 80.20443,
-            "Z": -391.9752
+            "X": -192.00433,
+            "Y": 0.9999907,
+            "Z": 211.68835
           },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 137
-        },
-        {
-          "Position": {
-            "X": 378.54834,
-            "Y": 21.81276,
-            "Z": 478.4722
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "$": "Avoids the beach due to rocks, doesn't even look like a faster path"
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 137,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
+            }
+          }
         },
         {
           "TerritoryId": 137,

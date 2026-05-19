@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -87,6 +88,24 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "Disabled": true,
+          "Comment": "Pick up bard performance quest",
+          "DataId": 1003063,
+          "Position": {
+            "X": -37.979797,
+            "Y": 7.439375,
+            "Z": -139.60486
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3019,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ]
+        },
         {
           "DataId": 1006750,
           "Position": {
