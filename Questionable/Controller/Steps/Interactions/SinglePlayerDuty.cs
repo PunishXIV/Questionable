@@ -22,6 +22,29 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class SinglePlayerDuty
 {
+    internal const int MaxRetries = 5;
+
+    private static (ElementId QuestId, uint CfcId, byte Sequence)? _lastRetryKey;
+    private static int _retryCount;
+
+    private static int RecordRetry(ElementId questId, uint cfcId, byte sequence)
+    {
+        var key = (questId, cfcId, sequence);
+        if (_lastRetryKey != key)
+        {
+            _lastRetryKey = key;
+            _retryCount = 0;
+        }
+
+        return ++_retryCount;
+    }
+
+    private static void ClearRetryCount()
+    {
+        _lastRetryKey = null;
+        _retryCount = 0;
+    }
+
     internal static class SpecialTerritories
     {
         public const ushort Lahabrea = 1052;
@@ -288,6 +311,7 @@ internal static class SinglePlayerDuty
         QuestFunctions questFunctions,
         GameFunctions gameFunctions,
         ICondition condition,
+        IChatGui chatGui,
         ILogger<WaitForSinglePlayerDutyOutcomeExecutor> logger)
         : TaskExecutor<WaitForSinglePlayerDutyOutcome>, IDebugStateProvider
     {
@@ -330,9 +354,22 @@ internal static class SinglePlayerDuty
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;
 
+            int failures = RecordRetry(Task.QuestId, Task.ContentFinderConditionId, Task.StartSequence);
+            if (failures >= MaxRetries)
+            {
+                logger.LogError(
+                    "SinglePlayerDuty {Cfc} failed {Failures} times — stopping",
+                    Task.ContentFinderConditionId, failures);
+                chatGui.PrintError(
+                    $"You failed this instance {MaxRetries} times, Questionable is stopping. Please check it manually and report any issues to the instance.",
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+                ClearRetryCount();
+                return ETaskResult.End;
+            }
+
             logger.LogWarning(
-                "SinglePlayerDuty {Cfc} appears to have failed (no quest progress {Seconds}s after leaving instance) — retrying step",
-                Task.ContentFinderConditionId, GracePeriod.TotalSeconds);
+                "SinglePlayerDuty {Cfc} appears to have failed (attempt {Failures}/{Max}, no quest progress {Seconds}s after leaving instance) — retrying step",
+                Task.ContentFinderConditionId, failures, MaxRetries, GracePeriod.TotalSeconds);
             return ETaskResult.RetryStep;
         }
 
