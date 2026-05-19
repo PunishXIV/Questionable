@@ -43,7 +43,6 @@ internal sealed class CreationUtilsComponent
     PriorityWindow priorityWindow,
     IClientState clientState,
     IObjectTable objectTable,
-    //IPlayerState playerState,
     ITargetManager targetManager,
     ICondition condition,
     IGameGui gameGui,
@@ -66,7 +65,6 @@ internal sealed class CreationUtilsComponent
     private readonly QuestRegistry _questRegistry = questRegistry;
     private readonly QuestSelectionWindow _questSelectionWindow = questSelectionWindow;
     private readonly RedoUtil _redoUtil = new();
-    //private readonly IPlayerState _playerState;
     private readonly ITargetManager _targetManager = targetManager;
     private readonly TerritoryData _territoryData = territoryData;
 
@@ -286,7 +284,7 @@ internal sealed class CreationUtilsComponent
             _cameraFunctions.Face(target.Position);
             ulong result = TargetSystem.Instance()->InteractWithObject(
                 (GameObject*)target.Address, false);
-            _logger.LogInformation("XXXXX Interaction Result: {Result}", result);
+            _logger.LogInformation("Interaction Result: {Result}", result);
         }
 
         ImGui.EndDisabled();

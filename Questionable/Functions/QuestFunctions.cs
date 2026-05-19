@@ -38,7 +38,6 @@ internal sealed unsafe class QuestFunctions
     IDataManager dataManager,
     IClientState clientState,
     IObjectTable objectTable,
-    //IPlayerState playerState,
     IGameGuiAdapter gameGui,
     IChatGui chatGui,
     IAetheryteList aetheryteList)
@@ -52,7 +51,6 @@ internal sealed unsafe class QuestFunctions
     private readonly IClientState _clientState = clientState;
     private readonly Configuration _configuration = configuration;
     private readonly IDataManager _dataManager = dataManager;
-    //private readonly IPlayerState _playerState;
     private readonly IGameGuiAdapter _gameGui = gameGui;
     private readonly IObjectTable _objectTable = objectTable;
     private readonly QuestData _questData = questData;

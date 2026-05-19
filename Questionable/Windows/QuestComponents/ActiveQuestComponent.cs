@@ -34,7 +34,6 @@ internal sealed partial class ActiveQuestComponent
     IChatGui chatGui,
     ILogger<ActiveQuestComponent> logger)
 {
-    //private readonly IPlayerState _playerState;
     private readonly IChatGui _chatGui = chatGui;
     private readonly CombatController _combatController = combatController;
     private readonly ICommandManager _commandManager = commandManager;

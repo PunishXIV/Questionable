@@ -90,7 +90,6 @@ internal sealed class MovementController
                 logger.LogInformation("Pathfinding complete, got {Count} points", _pathfindTask.Result.Count);
                 if (_pathfindTask.Result.Count == 0)
                 {
-                    //_commandManager.ProcessCommand("/vnav rebuild");
                     ResetPathfinding();
                     throw new PathfindingFailedException();
                 }
@@ -193,18 +192,6 @@ internal sealed class MovementController
                     {
                         if (AetheryteConverter.IsLargeAetheryte((EAetheryteLocation)Destination.DataId))
                         {
-                            /*
-                            if ((EAetheryteLocation) Destination.DataId is EAetheryteLocation.OldSharlayan
-                                or EAetheryteLocation.UltimaThuleAbodeOfTheEa)
-                                Stop();
-
-                            // TODO verify the first part of this, is there any aetheryte like that?
-                            // TODO Unsure if this is per-aetheryte or what; because e.g. old sharlayan is at -1.53;
-                            //      but Elpis aetherytes fail at around -0.95
-                            if (localPlayerPosition.Y - gameObject.Position.Y < 2.95f &&
-                                    localPlayerPosition.Y - gameObject.Position.Y > -0.9f)
-                                Stop();
-                            */
                             Stop();
                         }
                         else
@@ -293,7 +280,15 @@ internal sealed class MovementController
         _cancellationTokenSource = new();
         _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
 
-        Vector3 startPosition = objectTable[0]!.Position;
+        Vector3? playerPosition = objectTable[0]?.Position;
+        if (playerPosition == null)
+        {
+            logger.LogWarning("Cannot pathfind: local player object not available");
+            ResetPathfinding();
+            return;
+        }
+
+        Vector3 startPosition = playerPosition.Value;
         if (fly && aetheryteData.CalculateDistance(startPosition, clientState.TerritoryType,
             EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead) < 11f)
         {
@@ -309,17 +304,6 @@ internal sealed class MovementController
 
         _pathfindTask =
             navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);
-        //      float range = stopDistance ?? 2.8f;
-        //      if (!_navmeshIpc.SimplePathfindAndMoveCloseTo(to, fly, range))
-        //      {
-        //          _logger.LogWarning("SimpleMove rejected pathfind request (already in progress), stopping first");
-        //          _navmeshIpc.Stop();
-        //          if (!_navmeshIpc.SimplePathfindAndMoveCloseTo(to, fly, range))
-        //          {
-        //              _logger.LogWarning("SimpleMove still rejected after stop");
-        //          }
-        //      }
-        //      MovementStartedAt = DateTime.Now;
     }
 
     public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, bool fly, bool sprint,

@@ -279,19 +279,20 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "unlock-links":
-                IReadOnlyList<uint> unlockedUnlockLinks = _gameFunctions.GetUnlockLinks();
-                if (unlockedUnlockLinks.Count >= 0)
+                IReadOnlyList<uint>? unlockedUnlockLinks = _gameFunctions.GetUnlockLinks();
+                if (unlockedUnlockLinks != null)
                 {
                     _chatGui.Print($"Saved {unlockedUnlockLinks.Count} unlock links to log.", MessageTag, TagColor);
 
                     List<uint> newUnlockLinks = unlockedUnlockLinks.Except(_previouslyUnlockedUnlockLinks).ToList();
                     if (_previouslyUnlockedUnlockLinks.Count > 0 && newUnlockLinks.Count > 0)
                         _chatGui.Print($"New unlock links: {string.Join(", ", newUnlockLinks)}", MessageTag, TagColor);
+
+                    _previouslyUnlockedUnlockLinks = unlockedUnlockLinks;
                 }
                 else
                     _chatGui.PrintError("Could not query unlock links.", MessageTag, TagColor);
 
-                _previouslyUnlockedUnlockLinks = unlockedUnlockLinks;
                 break;
 
             case "taxi":

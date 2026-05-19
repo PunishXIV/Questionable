@@ -57,7 +57,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly CombatController _combatController;
     private readonly ICondition _condition;
     private readonly Configuration _configuration;
-    //private readonly IPlayerState _playerState;
     private readonly GameFunctions _gameFunctions;
     private readonly GatheringController _gatheringController;
     private readonly HighlightObject _highlightObject;
@@ -99,7 +98,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public QuestController(
         IClientState clientState,
         IObjectTable objectTable,
-        //IPlayerState playerState,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         MovementController movementController,
@@ -124,7 +122,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         _clientState = clientState;
         _objectTable = objectTable;
-        //_playerState = playerState;
         _gameFunctions = gameFunctions;
         _questFunctions = questFunctions;
         _movementController = movementController;
@@ -353,7 +350,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return;
         }
 
-        if (_condition[ConditionFlag.InCombat] ||
+        Vector3? playerPosition = _objectTable[0]?.Position;
+        if (playerPosition == null ||
+            _condition[ConditionFlag.InCombat] ||
             _condition[ConditionFlag.Unconscious] ||
             _condition[ConditionFlag.BoundByDuty] ||
             _condition[ConditionFlag.InDeepDungeon] ||
@@ -372,7 +371,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return;
         }
 
-        Vector3 currentPosition = _objectTable[0]!.Position;
+        Vector3 currentPosition = playerPosition.Value;
         ElementId currentQuestId = CurrentQuest.Quest.Id;
         byte currentSequence = CurrentQuest.Sequence;
         int currentStep = CurrentQuest.Step;

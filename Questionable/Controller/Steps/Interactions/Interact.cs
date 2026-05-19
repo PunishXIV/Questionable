@@ -270,6 +270,8 @@ internal static class Interact
                             for (int i = 0; i < 100; ++i)
                             {
                                 RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
+                                if (gearset == null)
+                                    continue;
                                 if (acceptableJobs[0].Equals((Job)gearset->ClassJob))
                                 {
                                     gearsetModule->EquipGearset(gearset->Id);

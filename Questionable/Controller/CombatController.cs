@@ -258,11 +258,15 @@ internal sealed class CombatController : IDisposable
             }
         }
 
+        Vector3? playerPosition = _objectTable[0]?.Position;
+        if (playerPosition == null)
+            return null;
+
         return _objectTable.Select(x => new
             {
                 GameObject = x,
                 GetKillPriority(x).Priority,
-                Distance = Vector3.Distance(x.Position, _objectTable[0]!.Position)
+                Distance = Vector3.Distance(x.Position, playerPosition.Value)
             })
             .Where(x => x.Priority > 0)
             .OrderByDescending(x => x.Priority)
@@ -385,11 +389,18 @@ internal sealed class CombatController : IDisposable
                 _logger.LogInformation("Clearing target");
                 _targetManager.Target = null;
             }
+
+            return;
         }
-        else if (Vector3.Distance(_objectTable[0]!.Position, target.Position) > MaxTargetRange)
+
+        Vector3? playerPosition = _objectTable[0]?.Position;
+        if (playerPosition == null)
+            return;
+
+        float distance = Vector3.Distance(playerPosition.Value, target.Position);
+        if (distance > MaxTargetRange)
         {
-            _logger.LogInformation("Moving to target, distance: {Distance:N2}",
-                Vector3.Distance(_objectTable[0]!.Position, target.Position));
+            _logger.LogInformation("Moving to target, distance: {Distance:N2}", distance);
             MoveToTarget(target);
         }
         else

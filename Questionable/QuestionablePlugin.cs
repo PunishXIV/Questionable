@@ -47,7 +47,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         IDataManager dataManager,
         ISigScanner sigScanner,
         IObjectTable objectTable,
-        IPlayerState playerState,
         IPluginLog pluginLog,
         ICondition condition,
         IChatGui chatGui,
@@ -79,7 +78,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             serviceCollection.AddSingleton(dataManager);
             serviceCollection.AddSingleton(sigScanner);
             serviceCollection.AddSingleton(objectTable);
-            serviceCollection.AddSingleton(playerState);
             serviceCollection.AddSingleton(pluginLog);
             serviceCollection.AddSingleton(condition);
             serviceCollection.AddSingleton(chatGui);
