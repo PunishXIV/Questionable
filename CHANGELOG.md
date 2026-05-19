@@ -1,3 +1,4 @@
+- Makes it so solo instances stop retrying after failing 5 times. - Kage
 - Fix craft error -alydev
 - Fix aetheryte loop on Attune step -alydev
 - Fix BRD job quests not being done until almost the end of 2.0 -alydev
