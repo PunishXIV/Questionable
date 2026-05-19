@@ -85,9 +85,11 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
                 ImGui.SetKeyboardFocusHere();
             ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
 
-            // The option list lives in its own scrollable child so that SetItemDefaultFocus()
-            // scrolls the list rather than the whole popup — keeping the search box pinned on top.
-            using (var child = ImRaii.Child("##searchableComboList", ImGui.GetContentRegionAvail()))
+            // The option list lives in its own fixed-height scrollable child so the search box above
+            // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
+            int visibleRows = Math.Clamp(labels.Length, 1, 12);
+            var listSize = ImGui.GetContentRegionAvail() with { Y = ImGui.GetTextLineHeightWithSpacing() * visibleRows };
+            using (var child = ImRaii.Child("##searchableComboList", listSize))
             {
                 if (child)
                 {
