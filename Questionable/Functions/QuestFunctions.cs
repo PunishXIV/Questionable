@@ -354,7 +354,7 @@ internal sealed unsafe class QuestFunctions
         if (IsQuestComplete(currentQuest))
             return (new(currentQuest, 255, MainScenarioQuestState.Available), $"Quest {currentQuest.Value} complete");
         else if (!IsReadyToAcceptQuest(currentQuest))
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), $"Not readdy to accept quest {currentQuest.Value}");
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), $"Not ready to accept quest {currentQuest.Value}");
 
         short currentLevel = PlayerState.Instance()->CurrentLevel;
 

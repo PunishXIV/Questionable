@@ -7,9 +7,6 @@ using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Client.LayoutEngine;
-using FFXIVClientStructs.Interop;
-using FFXIVClientStructs.STD;
 using Lumina.Excel.Sheets;
 using Questionable.Model;
 using Questionable.Model.Gathering;
@@ -18,7 +15,6 @@ namespace GatheringPathRenderer;
 
 internal sealed class EditorCommands : IDisposable
 {
-    //private readonly Dalamud.Game.ClientState.Objects.SubKinds.IPlayerCharacter _playerState;
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
     private readonly ICommandManager _commandManager;
@@ -39,7 +35,6 @@ internal sealed class EditorCommands : IDisposable
         _targetManager = targetManager;
         _clientState = clientState;
         _objectTable = objectTable;
-        //_playerState = objectTable[0]!;
         _chatGui = chatGui;
         _pluginLog = pluginLog;
         _configuration = configuration;
@@ -62,27 +57,11 @@ internal sealed class EditorCommands : IDisposable
                 case "add":
                     CreateOrAddLocationToGroup(arguments);
                     break;
-                case "clobber":
-                    //AddAllMissing();
-                    break;
             }
         }
         catch (Exception e)
         {
             _chatGui.PrintError(e.ToString(), "qG");
-        }
-    }
-
-    private unsafe void AddAllMissing()
-    {
-        LayoutManager* layout = LayoutWorld.Instance()->ActiveLayout;
-        if (layout == null || !layout->InstancesByType.TryGetValue(InstanceType.Gathering, out Pointer<StdMap<ulong, Pointer<ILayoutInstance>>> mapPtr, false))
-            return;
-
-        foreach (ILayoutInstance* instance in mapPtr.Value->Values)
-        {
-            Transform* transform = instance->GetTransformImpl();
-            Vector3 position = transform->Translation;
         }
     }
 
