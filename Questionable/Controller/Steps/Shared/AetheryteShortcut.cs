@@ -228,8 +228,16 @@ internal static class AetheryteShortcut
                                 return true;
                             }
 
-                            logger.LogInformation("No step position, teleporting to aetheryte");
-                            return false;
+                            if (!Task.Step.InteractionType.Equals(EInteractionType.AttuneAetheryte))
+                            {
+                                logger.LogInformation("No step position, teleporting to aetheryte");
+                                return false;
+                            }
+                            else
+                            {
+                                logger.LogInformation("AttuneAetheryte, proceeding to destination");
+                                return true;
+                            }
                         }
 
                         float distance_target = (pos - Task.Step.Position.Value).Length();

@@ -1,3 +1,4 @@
-- Aetheryte shortcut fix maybe
-- schema change: craft ItemId,ItemCount optional if artisan premade craft list present
+- Fix aetheryte loop on Attune step -alydev
+- schema change: craft ItemId,ItemCount optional if artisan premade craft list present -alydev
 - check armory for purchased items, fixes lv5 hat purchase -alydev
+- Fix single player duty retry -Kage
