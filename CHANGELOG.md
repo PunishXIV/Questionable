@@ -1,5 +1,6 @@
 - Fix craft error -alydev
 - Fix aetheryte loop on Attune step -alydev
+- Fix BRD job quests not being done until almost the end of 2.0 -alydev
 - schema change: craft ItemId,ItemCount optional if artisan premade craft list present -alydev
 - check armory for purchased items, fixes lv5 hat purchase -alydev
 - Fix single player duty retry -Kage

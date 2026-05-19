@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "Comment": "Completes Dye and Glamour unlock quests",
   "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
@@ -51,7 +52,32 @@
           "TerritoryId": 128,
           "InteractionType": "UseItem",
           "ItemId": 30362,
-          "TargetTerritoryId": 140
+          "TargetTerritoryId": 140,
+          "SkipConditions": {"StepIf": {"InTerritory": [140,212],"Item": {"NotInInventory": true}}}
+        },
+        {
+          "DataId": 1004990,
+          "Position": {
+            "X": -441.6419,
+            "Y": 23.669865,
+            "Z": -358.9685
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 699,
+          "SkipConditions": {"StepIf": {"QuestsCompleted": [699]}}
+        },
+        {
+          "DataId": 1004990,
+          "Position": {
+            "X": -441.6419,
+            "Y": 23.669865,
+            "Z": -358.9685
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3017,
+          "SkipConditions": {"StepIf": {"QuestsCompleted": [3017]}}
         },
         {
           "Position": {
@@ -61,7 +87,8 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "$": "Avoid walking around Waking Sands table"
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
         },
         {
           "DataId": 2001711,
@@ -72,7 +99,8 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 212
+          "TargetTerritoryId": 212,
+          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
         }
       ]
     },

@@ -1,10 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {
-    "Username": "alydev",
-    "Date": "2026-05-08"
-  },
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -176,6 +173,15 @@
           "TerritoryId": 139,
           "InteractionType": "Interact",
           "Fly": true,
+          "DialogueChoices": [
+            {
+              "ExcelSheet": "Addon",
+              "Yes": true,
+              "Type": "YesNo",
+              "Prompt": 10125,
+              "PromptIsRegularExpression": true
+            }
+          ],
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         },
         {
@@ -188,13 +194,25 @@
           "TerritoryId": 139,
           "InteractionType": "Combat",
           "KillEnemyDataIds": [
-            5254,
+            5254
+          ],
+          "EnemySpawnType": "FateEnemies"
+        },
+        {
+          "DataId": 2006700,
+          "Position": {
+            "X": 266.1631,
+            "Y": -3.0671387,
+            "Z": 60.77661
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
             5255
           ],
           "EnemySpawnType": "FateEnemies"
         },
         {
-          "$": "In case player doesn't deal enough damage to credit fate complete",
           "DataId": 2006700,
           "Position": {
             "X": 266.1631,
@@ -203,8 +221,16 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 10,
           "Fly": true,
+          "DialogueChoices": [
+            {
+              "ExcelSheet": "Addon",
+              "Yes": true,
+              "Type": "YesNo",
+              "Prompt": 10125,
+              "PromptIsRegularExpression": true
+            }
+          ],
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         },
         {
@@ -217,7 +243,20 @@
           "TerritoryId": 139,
           "InteractionType": "Combat",
           "KillEnemyDataIds": [
-            5254,
+            5254
+          ],
+          "EnemySpawnType": "FateEnemies"
+        },
+        {
+          "DataId": 2006700,
+          "Position": {
+            "X": 266.1631,
+            "Y": -3.0671387,
+            "Z": 60.77661
+          },
+          "TerritoryId": 139,
+          "InteractionType": "Combat",
+          "KillEnemyDataIds": [
             5255
           ],
           "EnemySpawnType": "FateEnemies"

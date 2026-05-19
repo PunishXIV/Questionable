@@ -90,6 +90,23 @@
           "TaxiStandId": 1179662
         },
         {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "Position": {
+            "X": -26.738379,
+            "Y": 33,
+            "Z": -495.80618
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+        },
+        {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "TerritoryId": 147,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Northern Thanalan - Camp Bluefog"
+        },
+        {
           "Position": {
             "X": 454.0109,
             "Y": -17.999832,

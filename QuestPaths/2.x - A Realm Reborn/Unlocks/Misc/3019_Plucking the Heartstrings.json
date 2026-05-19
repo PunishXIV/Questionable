@@ -21,10 +21,6 @@
           ]
         }
       ]
-    },
-    {
-      "Sequence": 255,
-      "Steps": [{ "TerritoryId": 133, "InteractionType": "CompleteQuest" }]
     }
   ]
 }

@@ -30,7 +30,8 @@
           "TerritoryId": 130,
           "InteractionType": "UseItem",
           "ItemId": 30362,
-          "TargetTerritoryId": 140
+          "TargetTerritoryId": 140,
+          "SkipConditions": {"StepIf": {"InTerritory": [140],"Item": {"NotInInventory": true}}}
         },
         {
           "DataId": 1008639,
