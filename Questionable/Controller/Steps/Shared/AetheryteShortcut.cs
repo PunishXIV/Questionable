@@ -18,7 +18,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
 {
-    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, GameFunctions gameFunctions, IClientState clientState)
+    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, IClientState clientState)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -62,7 +62,6 @@ internal static class AetheryteShortcut
         AetheryteFunctions aetheryteFunctions,
         QuestFunctions questFunctions,
         GameFunctions gameFunctions,
-        AlliedSocietyData alliedSocietyData,
         IClientState clientState,
         IObjectTable objectTable,
         IChatGui chatGui,

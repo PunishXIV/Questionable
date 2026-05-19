@@ -55,8 +55,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         IKeyState keyState,
         IContextMenu contextMenu,
         IToastGui toastGui,
-        IGameInteropProvider gameInteropProvider,
-        IAetheryteList aetheryteList)
+        IGameInteropProvider gameInteropProvider)
     {
         ArgumentNullException.ThrowIfNull(pluginInterface);
         ArgumentNullException.ThrowIfNull(chatGui);
@@ -87,7 +86,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             serviceCollection.AddSingleton(contextMenu);
             serviceCollection.AddSingleton(toastGui);
             serviceCollection.AddSingleton(gameInteropProvider);
-            serviceCollection.AddSingleton(aetheryteList);
             serviceCollection.AddSingleton(new WindowSystem(nameof(Questionable)));
             serviceCollection.AddSingleton((Configuration?)pluginInterface.GetPluginConfig() ?? new Configuration());
 
