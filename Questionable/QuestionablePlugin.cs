@@ -279,6 +279,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<GatheringPointRegistry>();
         serviceCollection.AddSingleton<QuestRegistry>();
         serviceCollection.AddSingleton<QuestPriorityManager>();
+        serviceCollection.AddSingleton<QuestProgressTracker>();
         serviceCollection.AddSingleton<QuestController>();
         serviceCollection.AddSingleton<CombatController>();
         serviceCollection.AddSingleton<GatheringController>();
