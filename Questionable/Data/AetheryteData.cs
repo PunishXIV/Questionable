@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
@@ -29,11 +30,10 @@ internal sealed class AetheryteData
 
         foreach (Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {
-#if RELEASE
-            if (aetheryte.Invisible)
+            if (!Enum.IsDefined((EAetheryteLocation)aetheryte.RowId))
                 continue;
-#endif
-            if (aetheryte.Territory.RowId > 0)
+
+            if (aetheryte.Territory.RowId > 0 && aetheryte.AethernetName.RowId == 0)
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
 
             if (aetheryte.AethernetGroup > 0)

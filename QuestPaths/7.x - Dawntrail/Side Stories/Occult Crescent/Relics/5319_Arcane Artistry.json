@@ -14,6 +14,8 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": ["[Tuliyollal] Aetheryte Plaza","[Tuliyollal] Phantom Village"],
           "DialogueChoices": [
             {
               "Type": "List",
