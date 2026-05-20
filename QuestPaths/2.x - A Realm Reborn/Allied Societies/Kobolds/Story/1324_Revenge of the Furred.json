@@ -78,7 +78,6 @@
           "TerritoryId": 180,
           "InteractionType": "UseItem",
           "ItemId": 2001237,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {

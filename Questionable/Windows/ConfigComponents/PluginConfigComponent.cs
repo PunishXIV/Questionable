@@ -36,14 +36,16 @@ internal sealed class PluginConfigComponent
             your character to the next quest-related objective.
             """,
             new("https://github.com/awgil/ffxiv_navmesh/"),
-            new("https://puni.sh/api/repository/veyn")),
+            new("https://puni.sh/api/repository/veyn"),
+            "/vnav"),
         new("Lifestream",
             "Lifestream",
             """
             Used to travel to aethernet shards in cities.
             """,
             new("https://github.com/NightmareXIV/Lifestream"),
-            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json")),
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/lifestream"),
         new("TextAdvance",
             "TextAdvance",
             """
@@ -51,7 +53,8 @@ internal sealed class PluginConfigComponent
             and dialogue.
             """,
             new("https://github.com/NightmareXIV/TextAdvance"),
-            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"))
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/at c")
     ];
 
     private static readonly ReadOnlyDictionary<Configuration.ECombatModule, PluginInfo> CombatPlugins =
@@ -63,7 +66,8 @@ internal sealed class PluginConfigComponent
                     "BossMod",
                     string.Empty,
                     new("https://github.com/awgil/ffxiv_bossmod"),
-                    new("https://puni.sh/api/repository/veyn"))
+                    new("https://puni.sh/api/repository/veyn"),
+                    "/vbm")
             },
             {
                 Configuration.ECombatModule.WrathCombo,
@@ -71,7 +75,8 @@ internal sealed class PluginConfigComponent
                     "WrathCombo",
                     string.Empty,
                     new("https://github.com/PunishXIV/WrathCombo"),
-                    new("https://puni.sh/api/plugins"))
+                    new("https://puni.sh/api/plugins"),
+                    "/wrath")
             },
             {
                 Configuration.ECombatModule.RotationSolverReborn,
@@ -80,7 +85,8 @@ internal sealed class PluginConfigComponent
                     string.Empty,
                     new("https://github.com/FFXIV-CombatReborn/RotationSolverReborn"),
                     new(
-                        "https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json"))
+                        "https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json"),
+                    "/rsr")
             }
         }.AsReadOnly();
     private readonly CombatController _combatController = combatController;
@@ -210,6 +216,21 @@ internal sealed class PluginConfigComponent
         }
     }
 
+    private void AddConfigClickable(IExposedPlugin? installedPlugin, PluginInfo plugin)
+    {
+        if (installedPlugin != null && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
+        {
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.SetTooltip("Open Config");
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+            }
+            if (ImGui.IsItemClicked())
+                _commandManager.ProcessCommand(plugin.ConfigCommand);
+
+        }
+    }
+
     private bool DrawPlugin(PluginInfo plugin, float checklistPadding)
     {
         using (ImRaii.PushId("plugin_" + plugin.DisplayName))
@@ -220,9 +241,12 @@ internal sealed class PluginConfigComponent
             if (installedPlugin != null)
                 label += $" v{installedPlugin.Version}";
 
+            ImGui.BeginGroup();
             _uiUtils.ChecklistItem(label, isInstalled);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);
+            ImGui.EndGroup();
+            AddConfigClickable(installedPlugin, plugin);
             return isInstalled;
         }
     }
@@ -255,6 +279,7 @@ internal sealed class PluginConfigComponent
                 ImGui.AlignTextToFramePadding();
                 ImGui.TextColored(iconColor, icon.ToIconString());
             }
+            AddConfigClickable(installedPlugin, plugin);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);
             return isInstalled || _configuration.General.CombatModule != combatModule;
@@ -293,8 +318,13 @@ internal sealed class PluginConfigComponent
             {
                 if (!allDetailsOk && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
                 {
-                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Cog, "Open configuration"))
+                    ImRaii.ColorDisposable? color = null;
+                    if (!allDetailsOk)
+                        color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+                    if (ImGuiComponents.IconButton(FontAwesomeIcon.Cog))
                         _commandManager.ProcessCommand(plugin.ConfigCommand);
+                    if (color != null)
+                        color.Dispose();
                 }
             }
             else
