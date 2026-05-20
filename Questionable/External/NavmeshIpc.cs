@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
+using ECommons.DalamudServices;
 using Microsoft.Extensions.Logging;
 namespace Questionable.External;
 
@@ -31,6 +32,16 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         pluginInterface.GetIpcSubscriber<Vector3, bool, bool>("vnavmesh.SimpleMove.PathfindAndMoveTo");
     private readonly ICallGateSubscriber<bool> _simpleMovePathfindInProgress =
         pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
+
+    public bool IsInvalidVersion
+    {
+        get
+        {
+            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
+                x.InternalName == "vnavmesh" && x.IsLoaded);
+            return plugin != null && (plugin.Version < new Version(1, 2, 3, 2));
+        }
+    }
 
     public bool IsReady
     {
@@ -96,7 +107,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         {
             IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
                 x.InternalName == "vnavmesh" && x.IsLoaded);
-            if (plugin != null && plugin.Version < new Version(1, 2, 3, 2))
+            if (this.IsInvalidVersion)
                 throw new IpcValueNullError("vnavmesh", typeof(Version), 0);
             _pathSetTolerance.InvokeAction(0.25f);
             return _navPathfind.InvokeFunc(localPlayerPosition, targetPosition, fly, cancellationToken);
@@ -109,6 +120,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         catch (IpcValueNullError e)
         {
             _logger.LogWarning(e, "Unsupported version of vnavmesh");
+            Svc.Chat.PrintError("This version of vnavmesh is not supported by Questionable. Please use an updated version (awgil/ffxiv_navmesh >1.2.3.0)");
             return Task.FromException<List<Vector3>>(e);
         }
     }

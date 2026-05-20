@@ -7,6 +7,7 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
+using Questionable.External;
 using Questionable.Windows;
 namespace Questionable;
 
@@ -44,6 +45,7 @@ internal sealed class DalamudInitializer : IDisposable
         Configuration configuration,
         HighlightObject highlightObject,
         PartyWatchDog partyWatchDog,
+        NavmeshIpc navmeshIpc,
         ILogger<DalamudInitializer> logger)
     {
         _pluginInterface = pluginInterface;
@@ -81,6 +83,9 @@ internal sealed class DalamudInitializer : IDisposable
 
         if (_configuration.Advanced.ShowWindowOnStart)
             ToggleQuestWindow();
+
+        if (navmeshIpc.IsInvalidVersion)
+            _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
     }
 
     public void Dispose()

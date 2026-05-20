@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -242,6 +242,21 @@ internal sealed class PluginConfigComponent
                 label += $" v{installedPlugin.Version}";
 
             ImGui.BeginGroup();
+            if (installedPlugin != null &&
+                    installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (
+                    installedPlugin.Version < new Version(1, 2, 3, 2)))
+            {
+                isInstalled = false;
+                plugin = new(
+                    plugin.DisplayName,
+                    plugin.InternalName,
+                    "This version of vnavmesh is not supported by Questionable.\n" +
+                    "Please use an updated version (awgil/ffxiv_navmesh >1.2.3.2)\n" +
+                    "Questionable 不支持此版本的 vnavmesh。\n" +
+                    "请使用更新版本 (awgil/ffxiv_navmesh >1.2.3.2)",
+                    plugin.WebsiteUri,
+                    plugin.DalamudRepositoryUri);
+            }
             _uiUtils.ChecklistItem(label, isInstalled);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);
