@@ -45,7 +45,6 @@ internal sealed class DalamudInitializer : IDisposable
         Configuration configuration,
         HighlightObject highlightObject,
         PartyWatchDog partyWatchDog,
-        NavmeshIpc navmeshIpc,
         ILogger<DalamudInitializer> logger)
     {
         _pluginInterface = pluginInterface;
@@ -83,9 +82,6 @@ internal sealed class DalamudInitializer : IDisposable
 
         if (_configuration.Advanced.ShowWindowOnStart)
             ToggleQuestWindow();
-
-        if (navmeshIpc.IsInvalidVersion)
-            _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
     }
 
     public void Dispose()

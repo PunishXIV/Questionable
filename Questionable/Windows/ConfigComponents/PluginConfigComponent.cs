@@ -242,21 +242,15 @@ internal sealed class PluginConfigComponent
                 label += $" v{installedPlugin.Version}";
 
             ImGui.BeginGroup();
-            if (installedPlugin != null &&
-                    installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (
-                    installedPlugin.Version < new Version(1, 2, 3, 2)))
-            {
-                isInstalled = false;
+            if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (installedPlugin.Manifest.Author.Contains("AtmoOmen")))
                 plugin = new(
                     plugin.DisplayName,
                     plugin.InternalName,
-                    "This version of vnavmesh is not supported by Questionable.\n" +
-                    "Please use an updated version (awgil/ffxiv_navmesh >1.2.3.2)\n" +
-                    "Questionable 不支持此版本的 vnavmesh。\n" +
-                    "请使用更新版本 (awgil/ffxiv_navmesh >1.2.3.2)",
-                    plugin.WebsiteUri,
-                    plugin.DalamudRepositoryUri);
-            }
+                    plugin.Details,
+                    new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
+                    new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
+                    plugin.ConfigCommand
+                );
             _uiUtils.ChecklistItem(label, isInstalled);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);
