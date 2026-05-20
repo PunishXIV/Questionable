@@ -482,16 +482,22 @@ internal sealed unsafe class QuestFunctions
 
     private int TeleportCosts(Quest quest)
     {
+        List<EAetheryteLocation> teleportTargets = quest.AllSteps()
+            .Where(x => x.Step.AetheryteShortcut != null)
+            .Select(x => x.Step.AetheryteShortcut!.Value)
+            .ToList();
+        if (teleportTargets.Count == 0)
+            return 0;
+
         Telepo* telepo = Telepo.Instance();
         if (telepo == null)
             return 0;
 
         Dictionary<uint, uint> teleportCosts = [];
-        foreach (TeleportInfo info in *telepo->UpdateAetheryteList())
+        foreach (TeleportInfo info in telepo->TeleportList)
             teleportCosts.TryAdd(info.AetheryteId, info.GilCost);
 
-        return quest.AllSteps().Where(x => x.Step.AetheryteShortcut != null)
-            .Sum(x => (int)teleportCosts.GetValueOrDefault((uint)x.Step.AetheryteShortcut!.Value, 999u));
+        return teleportTargets.Sum(x => (int)teleportCosts.GetValueOrDefault((uint)x, 999u));
     }
 
     public List<ElementId> GetPriorityQuests(bool onlyClassAndRoleQuests = false)
