@@ -287,6 +287,11 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<CraftworksSupplyController>();
         serviceCollection.AddSingleton<CreditsController>();
         serviceCollection.AddSingleton<HelpUiController>();
+        serviceCollection.AddSingleton<DialogueReferenceResolver>();
+        serviceCollection.AddSingleton<TravelDestinationResolver>();
+        serviceCollection.AddSingleton<PointMenuHandler>();
+        serviceCollection.AddSingleton<HousingSelectBlockHandler>();
+        serviceCollection.AddSingleton<YesNoChoiceHandler>();
         serviceCollection.AddSingleton<InteractionUiController>();
 
         serviceCollection.AddSingleton<ICombatModule, Mount128Module>();
@@ -363,6 +368,9 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceProvider.GetRequiredService<CraftworksSupplyController>();
         serviceProvider.GetRequiredService<CreditsController>();
         serviceProvider.GetRequiredService<HelpUiController>();
+        serviceProvider.GetRequiredService<PointMenuHandler>();
+        serviceProvider.GetRequiredService<HousingSelectBlockHandler>();
+        serviceProvider.GetRequiredService<YesNoChoiceHandler>();
         serviceProvider.GetRequiredService<ShopController>();
         serviceProvider.GetRequiredService<QuestionableIpc>();
         serviceProvider.GetRequiredService<DalamudInitializer>();
