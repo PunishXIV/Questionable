@@ -37,7 +37,7 @@ internal sealed class QuestJournalUtils
         using (ImRaii.Disabled(quest == null))
         {
             if (ImGui.MenuItem("Add to Priority Quests") && quest != null)
-                _questController.AddQuestPriority(quest.Id);
+                _questController.PriorityManager.Add(quest.Id);
         }
 
         using (ImRaii.Disabled(!_questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
@@ -98,13 +98,13 @@ internal sealed class QuestJournalUtils
         if (ImGui.MenuItem("Add all to Priority Quests"))
         {
             foreach (IQuestInfo quest in quests)
-                _questController.AddQuestPriority(quest.QuestId);
+                _questController.PriorityManager.Add(quest.QuestId);
         }
 
         if (ImGui.MenuItem("Remove all from Priority Quests"))
         {
             foreach (IQuestInfo quest in quests)
-                _questController.RemoveQuestPriority(quest.QuestId);
+                _questController.PriorityManager.Remove(quest.QuestId);
         }
     }
 }

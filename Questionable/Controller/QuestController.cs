@@ -50,7 +50,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         Simulated
     }
 
-    private const char ClipboardSeparator = ';';
     private readonly AlliedSocietyQuestFunctions _alliedSocietyQuestFunctions;
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
@@ -70,6 +69,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
+    private readonly QuestPriorityManager _priorityManager;
     private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
@@ -108,6 +108,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
         QuestRegistry questRegistry,
+        QuestPriorityManager priorityManager,
         QuestData questData,
         IKeyState keyState,
         IChatGui chatGui,
@@ -131,6 +132,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _combatController = combatController;
         _gatheringController = gatheringController;
         _questRegistry = questRegistry;
+        _priorityManager = priorityManager;
         _questData = questData;
         _keyState = keyState;
         _chatGui = chatGui;
@@ -192,7 +194,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// </summary>
     public QuestProgress? PendingQuest { get; private set; }
 
-    public List<Quest> ManualPriorityQuests { get; } = [];
+    public QuestPriorityManager PriorityManager => _priorityManager;
 
     public bool StopAfterCurrentQuest { get; set; }
     public bool StopBeforeTeleport { get; set; }
@@ -496,7 +498,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             {
                 (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) = _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
                 (ElementId, byte)? priorityQuestOption =
-                    ManualPriorityQuests
+                    _priorityManager.Quests
                         .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
                         .Select(x => (x.Id, _questFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
@@ -1086,7 +1088,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (type != ECurrentQuestType.Normal || !currentQuest.Quest.Root.Interruptible || currentQuest.Sequence == 0)
             return false;
 
-        if (ManualPriorityQuests.Contains(currentQuest.Quest))
+        if (_priorityManager.Contains(currentQuest.Quest))
             return false;
 
         // "ifrit bleeds, we can kill it" isn't listed as priority quest, as we accept it during the MSQ 'Moving On'
@@ -1130,51 +1132,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
 
         return false;
-    }
-
-    public void ImportQuestPriority(List<ElementId> questElements)
-    {
-        foreach (ElementId elementId in questElements)
-        {
-            if (_questRegistry.TryGetQuest(elementId, out Quest? quest) && !ManualPriorityQuests.Contains(quest))
-                ManualPriorityQuests.Add(quest);
-        }
-    }
-    public string ExportQuestPriority() => string.Join(ClipboardSeparator, ManualPriorityQuests.Select(x => x.Id.ToString()));
-
-    public void ClearQuestPriority() => ManualPriorityQuests.Clear();
-
-    public bool AddQuestPriority(ElementId elementId)
-    {
-        if (_questRegistry.TryGetQuest(elementId, out Quest? quest) && !ManualPriorityQuests.Contains(quest))
-        {
-            ManualPriorityQuests.Add(quest);
-        }
-
-        return true;
-    }
-
-    public bool RemoveQuestPriority(ElementId elementId)
-    {
-        if (_questRegistry.TryGetQuest(elementId, out Quest? quest) && ManualPriorityQuests.Contains(quest))
-            ManualPriorityQuests.Remove(quest);
-        return true;
-    }
-
-    public bool InsertQuestPriority(int index, ElementId elementId)
-    {
-        try
-        {
-            if (_questRegistry.TryGetQuest(elementId, out Quest? quest) && !ManualPriorityQuests.Contains(quest))
-                ManualPriorityQuests.Insert(index, quest);
-            return true;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "Failed to insert quest in priority list");
-            _chatGui.PrintError("Failed to insert quest in priority list, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
-            return false;
-        }
     }
 
     public bool WasLastTaskUpdateWithin(TimeSpan timeSpan)
