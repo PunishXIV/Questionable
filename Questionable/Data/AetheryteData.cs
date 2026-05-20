@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using Dalamud.Plugin.Services;
 using ECommons;
+using ECommons.DalamudServices;
 using Lumina.Excel.Sheets;
 using Questionable.Functions;
 using Questionable.Model.Common;
@@ -28,6 +29,10 @@ internal sealed class AetheryteData
 
         foreach (Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {
+#if RELEASE
+            if (aetheryte.Invisible)
+                continue;
+#endif
             if (aetheryte.Territory.RowId > 0)
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
 
@@ -311,13 +316,14 @@ internal sealed class AetheryteData
 
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3 position)
     {
-        return TerritoryIds
+        var outp = TerritoryIds
                 .Where(item => item.Value == territoryId && 
                                !item.Key.IsAethernetShard() &&
                                AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
                 .Select(item => item.Key)
-                .OrderBy(key => CalculateDistance(position, territoryId, key))
-                .FirstOrNull();
+                .OrderBy(key => CalculateDistance(position, territoryId, key));
+        Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',',outp) : "no results")}");
+        return outp.FirstOrNull();
     }
 
     public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
