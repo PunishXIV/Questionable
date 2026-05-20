@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -242,6 +242,15 @@ internal sealed class PluginConfigComponent
                 label += $" v{installedPlugin.Version}";
 
             ImGui.BeginGroup();
+            if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (installedPlugin.Manifest.Author.Contains("AtmoOmen")))
+                plugin = new(
+                    plugin.DisplayName,
+                    plugin.InternalName,
+                    plugin.Details,
+                    new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
+                    new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
+                    plugin.ConfigCommand
+                );
             _uiUtils.ChecklistItem(label, isInstalled);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);

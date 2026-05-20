@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
+using ECommons.DalamudServices;
 using Microsoft.Extensions.Logging;
 namespace Questionable.External;
 
@@ -32,6 +33,16 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     private readonly ICallGateSubscriber<bool> _simpleMovePathfindInProgress =
         pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
 
+    public Version? Version
+    {
+        get
+        {
+            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
+                x.InternalName == "vnavmesh" && x.IsLoaded);
+            return plugin?.Version ?? null;
+        }
+    }
+
     public bool IsReady => IpcInvoke.SafeFunc(() => _isNavReady.InvokeFunc(), false);
 
     public bool IsPathRunning => IpcInvoke.SafeFunc(() => _pathIsRunning.InvokeFunc(), false);
@@ -40,28 +51,20 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         IpcInvoke.SafeFunc(() => _simpleMovePathfindInProgress.InvokeFunc(), false);
 
     public void Stop() =>
-        IpcInvoke.SafeAction(() => _pathStop.InvokeAction(), _logger, "Could not stop navigating via navmesh");
+        IpcInvoke.SafeAction(() => _pathStop.InvokeAction(), _logger,
+            "Could not stop navigating via navmesh {Version}", Version);
 
     public Task<List<Vector3>> Pathfind(Vector3 localPlayerPosition, Vector3 targetPosition, bool fly,
         CancellationToken cancellationToken)
     {
         try
         {
-            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
-                x.InternalName == "vnavmesh" && x.IsLoaded);
-            if (plugin != null && plugin.Version < new Version(1, 2, 3, 2))
-                throw new IpcValueNullError("vnavmesh", typeof(Version), 0);
             _pathSetTolerance.InvokeAction(0.25f);
             return _navPathfind.InvokeFunc(localPlayerPosition, targetPosition, fly, cancellationToken);
         }
         catch (IpcNotReadyError e)
         {
-            _logger.LogWarning(e, "Could not pathfind via navmesh");
-            return Task.FromException<List<Vector3>>(e);
-        }
-        catch (IpcValueNullError e)
-        {
-            _logger.LogWarning(e, "Unsupported version of vnavmesh");
+            _logger.LogWarning(e, "Could not pathfind via navmesh {Version}", Version);
             return Task.FromException<List<Vector3>>(e);
         }
     }
@@ -69,7 +72,8 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     public void MoveTo(List<Vector3> position, bool fly)
     {
         Stop();
-        IpcInvoke.SafeAction(() => _pathMoveTo.InvokeAction(position, fly), _logger, "Could not move via navmesh");
+        IpcInvoke.SafeAction(() => _pathMoveTo.InvokeAction(position, fly), _logger,
+            "Could not move via navmesh {Version}", Version);
     }
 
     public Vector3? GetPointOnFloor(Vector3 position, bool unlandable) =>
@@ -80,7 +84,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         if (!IsReady)
             return false;
         return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveTo.InvokeFunc(destination, fly), false,
-            _logger, "Could not SimplePathfindAndMoveTo");
+            _logger, "Could not SimplePathfindAndMoveTo {Version}", Version);
     }
 
     public bool SimplePathfindAndMoveCloseTo(Vector3 destination, bool fly, float range)
@@ -88,7 +92,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         if (!IsReady)
             return false;
         return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveCloseTo.InvokeFunc(destination, fly, range), false,
-            _logger, "Could not SimplePathfindAndMoveCloseTo");
+            _logger, "Could not SimplePathfindAndMoveCloseTo {Version}", Version);
     }
 
     public List<Vector3> GetWaypoints()
