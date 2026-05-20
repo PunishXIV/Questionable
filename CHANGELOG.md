@@ -1,4 +1,5 @@
 - Bug fix: teleporting destination -alydev
+  - for a third time -alydev
 - ~~Prevent usage of invalid vnav version with qst~~ -alydev
   - Support CN fork of vnav -alydev
 - Makes it so solo instances stop retrying after failing 5 times. - Kage

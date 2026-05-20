@@ -33,7 +33,7 @@ internal sealed class AetheryteData
             if (!Enum.IsDefined((EAetheryteLocation)aetheryte.RowId))
                 continue;
 
-            if (aetheryte.Territory.RowId > 0 && aetheryte.AethernetName.RowId == 0)
+            if (aetheryte.Territory.RowId > 0 && aetheryte.IsAetheryte)
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
 
             if (aetheryte.AethernetGroup > 0)
