@@ -245,9 +245,9 @@ internal sealed class QuestJournalComponent
         {
             ImGui.SameLine();
             using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(ImGuiColors.DalamudYellow, FontAwesomeIcon.Exclamation.ToIconString());
+                ImGui.TextColored(ImGuiColors.DalamudYellow, FontAwesomeIcon.ExclamationCircle.ToIconString());
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip("This quest is in the Priority Queue.");
+                ImGui.SetTooltip("This quest is in Priority Quests.");
         }
 
         ImGui.TableNextColumn();

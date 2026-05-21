@@ -7,6 +7,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
+using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller;
 using Questionable.Data;
@@ -24,6 +25,7 @@ internal sealed class AlliedSocietyJournalComponent
     QuestRegistry questRegistry,
     QuestJournalUtils questJournalUtils,
     QuestTooltipComponent questTooltipComponent,
+    IDalamudPluginInterface pluginInterface,
     UiUtils uiUtils)
 {
     private static readonly string[] RankNames =
@@ -37,6 +39,7 @@ internal sealed class AlliedSocietyJournalComponent
     private readonly QuestRegistry _questRegistry = questRegistry;
     private readonly QuestTooltipComponent _questTooltipComponent = questTooltipComponent;
     private readonly UiUtils _uiUtils = uiUtils;
+    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
 
     public void DrawAlliedSocietyQuests()
     {
@@ -162,5 +165,14 @@ internal sealed class AlliedSocietyJournalComponent
             _questController.AddQuestPriority(questInfo.QuestId);
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));
+
+        if (quest != null && _questController.ManualPriorityQuests.Contains(quest))
+        {
+            ImGui.SameLine();
+            using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                ImGui.TextColored(ImGuiColors.DalamudYellow, FontAwesomeIcon.ExclamationCircle.ToIconString());
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip("This quest is in Priority Quests.");
+        }
     }
 }

@@ -157,7 +157,7 @@ internal sealed class QuestInfo : IQuestInfo
                 0f,
                 WorldPositionToMapCoord(Z, Map.SizeFactor, Map.OffsetY)
         );
-        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory}, {Map}, {Game})";
+        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {Game})";
         private static float WorldPositionToMapCoord(float v, ushort scale, short offset)
             => 41f * ((MathF.Truncate(v) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
     }
