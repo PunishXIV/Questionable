@@ -137,6 +137,26 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             Save();
         }
 
+        string chocoboName = Configuration.General.ChocoboName;
+        if (ImGui.InputText("Chocobo name", ref chocoboName, 20))
+            Configuration.General.ChocoboName = chocoboName;
+
+        if (ImGui.IsItemDeactivatedAfterEdit())
+        {
+            if (string.IsNullOrWhiteSpace(Configuration.General.ChocoboName))
+                Configuration.General.ChocoboName = "Chicken";
+            Save();
+        }
+
+        if (ImGui.IsItemHovered())
+        {
+            using (ImRaii.Tooltip())
+            {
+                ImGui.Text("The name to give your chocobo during the \"My Little Chocobo\" quest.");
+                ImGui.Text("Defaults to \"Chicken\" if left blank.");
+            }
+        }
+
         ImGui.Separator();
         ImGui.Text("UI");
         using (ImRaii.PushIndent())

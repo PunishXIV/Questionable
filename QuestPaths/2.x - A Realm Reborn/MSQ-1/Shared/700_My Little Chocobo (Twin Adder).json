@@ -28,8 +28,9 @@
             "Z": -9.99469
           },
           "TerritoryId": 132,
-          "InteractionType": "Instruction",
-          "Comment": "Buy Serpent Chocobo Issuance"
+          "InteractionType": "PurchaseItem",
+          "ItemId": 6018,
+          "ItemCount": 1
         },
         {
           "DataId": 1000136,
