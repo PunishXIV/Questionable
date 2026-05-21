@@ -151,7 +151,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (_grandCompanyExchangeController.IsAwaitingYesNo)
         {
             _logger.LogInformation("Confirming Grand Company exchange purchase");
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            new AddonMaster.SelectYesno(addonSelectYesno).Yes();
             _grandCompanyExchangeController.IsAwaitingYesNo = false;
             return;
         }

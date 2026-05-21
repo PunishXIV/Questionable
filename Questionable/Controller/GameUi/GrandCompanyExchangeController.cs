@@ -5,7 +5,6 @@ using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 
@@ -17,18 +16,17 @@ namespace Questionable.Controller.GameUi;
 ///     longer need manual intervention.
 /// </summary>
 /// <remarks>
-///     Mirrors <see cref="ShopController" />, but the GC Exchange is a different addon/agent: it
-///     is driven through <c>AgentGrandCompanyExchange.ReceiveEvent</c> rather than
-///     <c>AddonMaster.Shop</c>. The controller acts only while a <see cref="EInteractionType.PurchaseItem" />
-///     step is current and the <c>GrandCompanyExchange</c> window is open. The purchase
-///     confirmation prompt is accepted by <see cref="YesNoChoiceHandler" /> via
-///     <see cref="IsAwaitingYesNo" />.
+///     Mirrors <see cref="ShopController" />, but the GC Exchange is driven through
+///     <c>AgentGrandCompanyExchange.ReceiveEvent</c>. The controller acts only while a
+///     <see cref="EInteractionType.PurchaseItem" /> step is current and the
+///     <c>GrandCompanyExchange</c> window is open. The purchase confirmation prompt is accepted by
+///     <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
 /// </remarks>
 internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 {
     private const string AddonName = "GrandCompanyExchange";
-    private const int MaxPurchaseAttempts = 5;
-    private static readonly TimeSpan YesNoTimeout = TimeSpan.FromSeconds(10);
+    private static readonly TimeSpan PurchaseTimeout = TimeSpan.FromSeconds(10);
+
     private const int MaterielTabValue0 = 2;
     private const int MaterielTabValue1 = 1;
 
@@ -42,25 +40,21 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly IGameGuiAdapter _gameGuiAdapter;
     private readonly IFramework _framework;
-    private readonly ILogger<GrandCompanyExchangeController> _logger;
 
     private EState _state = EState.Idle;
     private DateTime _continueAt = DateTime.MinValue;
-    private DateTime _yesNoDeadline = DateTime.MinValue;
-    private int _attempts;
+    private DateTime _purchaseDeadline = DateTime.MinValue;
 
     public GrandCompanyExchangeController(
         QuestController questController,
         IAddonLifecycle addonLifecycle,
         IGameGuiAdapter gameGuiAdapter,
-        IFramework framework,
-        ILogger<GrandCompanyExchangeController> logger)
+        IFramework framework)
     {
         _questController = questController;
         _addonLifecycle = addonLifecycle;
         _gameGuiAdapter = gameGuiAdapter;
         _framework = framework;
-        _logger = logger;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, AddonName, OnPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PreFinalize, AddonName, OnPreFinalize);
@@ -87,7 +81,6 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
         IsOpen = true;
         _state = EState.Idle;
         _continueAt = DateTime.MinValue;
-        _attempts = 0;
         IsAwaitingYesNo = false;
     }
 
@@ -100,7 +93,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     private void OnFrameworkUpdate(IFramework framework)
     {
-        if (!IsOpen || _state is EState.Done or EState.Aborted || !_questController.IsRunning)
+        if (!IsOpen || _state == EState.Done || !_questController.IsRunning)
             return;
 
         QuestStep? step = FindCurrentStep();
@@ -110,30 +103,20 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
         int desired = Math.Max(1, step.ItemCount.GetValueOrDefault(1));
         if (GetItemCount(itemId) >= desired)
         {
-            if (_state != EState.Done)
-            {
-                _logger.LogInformation("Chocobo issuance {ItemId} acquired; closing the exchange", itemId);
-                IsAwaitingYesNo = false;
-                _state = EState.Done;
-                CloseWindow();
-            }
-
+            IsAwaitingYesNo = false;
+            _state = EState.Done;
+            CloseWindow();
             return;
         }
 
-        // Wait for YesNoChoiceHandler to accept the purchase confirmation prompt.
-        if (_state == EState.AwaitingYesNo)
+        // After the purchase is triggered, wait for the issuance to arrive (caught by the
+        // inventory check above) or give up once the deadline passes.
+        if (_state == EState.Purchasing)
         {
-            if (!IsAwaitingYesNo)
+            if (DateTime.Now >= _purchaseDeadline)
             {
-                _state = EState.Idle;
-                _continueAt = DateTime.Now.AddSeconds(0.5);
-            }
-            else if (DateTime.Now >= _yesNoDeadline)
-            {
-                _logger.LogWarning("Timed out waiting for the purchase confirmation; retrying");
                 IsAwaitingYesNo = false;
-                _state = EState.Idle;
+                _state = EState.Done;
             }
 
             return;
@@ -149,28 +132,16 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
         switch (_state)
         {
             case EState.Idle:
-                if (_attempts >= MaxPurchaseAttempts)
-                {
-                    _logger.LogError(
-                        "Gave up buying chocobo issuance {ItemId} after {Attempts} attempts; please buy it manually",
-                        itemId, _attempts);
-                    _state = EState.Aborted;
-                    return;
-                }
-
-                _logger.LogInformation("Switching Grand Company Exchange to the Materiel tab");
                 ChangeToMateriel(agent);
                 _state = EState.TabSelected;
                 _continueAt = DateTime.Now.AddSeconds(0.5);
                 break;
 
             case EState.TabSelected:
-                ++_attempts;
-                _logger.LogInformation("Buying chocobo issuance {ItemId} (attempt {Attempt})", itemId, _attempts);
                 IsAwaitingYesNo = true;
                 BuyChocoboLicense(agent);
-                _state = EState.AwaitingYesNo;
-                _yesNoDeadline = DateTime.Now + YesNoTimeout;
+                _state = EState.Purchasing;
+                _purchaseDeadline = DateTime.Now + PurchaseTimeout;
                 break;
         }
     }
@@ -225,8 +196,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
     {
         Idle,
         TabSelected,
-        AwaitingYesNo,
+        Purchasing,
         Done,
-        Aborted
     }
 }
