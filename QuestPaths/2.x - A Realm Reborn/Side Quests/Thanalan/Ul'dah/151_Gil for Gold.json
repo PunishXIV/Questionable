@@ -1,0 +1,42 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001288,
+          "Position": {
+            "X": -151.59845,
+            "Y": 12,
+            "Z": 16.220276
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001289,
+          "Position": {
+            "X": -207.90424,
+            "Y": 18.5,
+            "Z": 70.7865
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

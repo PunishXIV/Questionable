@@ -1,8 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
-  "Comment": "WIP",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,7 +14,46 @@
             "Z": -143.14496
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1043778,
+          "Position": {
+            "X": -19.546814,
+            "Y": 30,
+            "Z": 18.509094
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] The Chamber of Rule"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1043778,
+          "Position": {
+            "X": -19.546814,
+            "Y": 30,
+            "Z": 18.509094
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
         }
       ]
     }
