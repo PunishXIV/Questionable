@@ -1,0 +1,191 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006215,
+          "Position": {
+            "X": -227.34424,
+            "Y": 26.16842,
+            "Z": -352.98694
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023365,
+          "Position": {
+            "X": -101.579346,
+            "Y": 36.97222,
+            "Z": -374.6853
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006215,
+          "Position": {
+            "X": -227.34424,
+            "Y": 26.16842,
+            "Z": -352.98694
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023368,
+          "Position": {
+            "X": -151.04907,
+            "Y": 26.307241,
+            "Z": -405.66113
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDZ992_02886_Q3_000_000",
+              "Answer": "TEXT_STMBDZ992_02886_A3_000_001",
+              "Type": "List"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        },
+        {
+          "DataId": 1023370,
+          "Position": {
+            "X": -171.52673,
+            "Y": 27.253004,
+            "Z": -434.7448
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDZ992_02886_Q5_000_000",
+              "Answer": "TEXT_STMBDZ992_02886_A5_000_001",
+              "Type": "List"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 8 }
+          ]
+        },
+        {
+          "DataId": 1023369,
+          "Position": {
+            "X": -99.01581,
+            "Y": 26.22153,
+            "Z": -351.67468
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDZ992_02886_Q4_000_000",
+              "Answer": "TEXT_STMBDZ992_02886_A4_000_001",
+              "Type": "List"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 1 }
+          ]
+        },
+        {
+          "DataId": 1023367,
+          "Position": {
+            "X": -104.84479,
+            "Y": 37.903877,
+            "Z": -343.34332
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDZ992_02886_Q2_000_000",
+              "Answer": "TEXT_STMBDZ992_02886_A2_000_001",
+              "Type": "List"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
+        },
+        {
+          "DataId": 1023366,
+          "Position": {
+            "X": -82.749695,
+            "Y": 37.76457,
+            "Z": -351.0338
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDZ992_02886_Q1_000_000",
+              "Answer": "TEXT_STMBDZ992_02886_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006215,
+          "Position": {
+            "X": -227.34424,
+            "Y": 26.16842,
+            "Z": -352.98694
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+        }
+      ]
+    }
+  ]
+}

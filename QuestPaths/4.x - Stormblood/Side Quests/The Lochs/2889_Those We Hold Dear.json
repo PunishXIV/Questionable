@@ -1,0 +1,55 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023396,
+          "Position": {
+            "X": 564.9957,
+            "Y": 70,
+            "Z": 573.35767
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023396,
+          "Position": {
+            "X": 564.9957,
+            "Y": 70,
+            "Z": 573.35767
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023400,
+          "Position": {
+            "X": 47.257202,
+            "Y": 26.6561,
+            "Z": -805.6001
+          },
+          "TerritoryId": 621,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
