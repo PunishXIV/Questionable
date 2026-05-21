@@ -54,9 +54,10 @@ internal static class Jump
             if ((objectTable[0]!.Position - Task.JumpDestination.Position).Length() <= stopDistance)
                 return false;
 
-            movementController.NavigateTo(EMovementType.Quest, Task.DataId, [Task.JumpDestination.Position], false,
-                false,
-                Task.JumpDestination.StopDistance ?? stopDistance);
+            movementController.NavigateTo(EMovementType.Quest, Task.DataId, [Task.JumpDestination.Position], new()
+            {
+                StopDistance = Task.JumpDestination.StopDistance ?? stopDistance,
+            });
             framework.RunOnTick(() =>
                 {
                     unsafe

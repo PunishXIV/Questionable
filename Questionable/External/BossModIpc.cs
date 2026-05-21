@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using Questionable.Data;
@@ -42,17 +41,7 @@ internal sealed class BossModIpc
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
     private readonly TerritoryData _territoryData = territoryData;
 
-    public bool IsSupported()
-    {
-        try
-        {
-            return _getPreset.HasFunction;
-        }
-        catch (IpcError)
-        {
-            return false;
-        }
-    }
+    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
 
     public void SetPreset(EPreset preset)
     {

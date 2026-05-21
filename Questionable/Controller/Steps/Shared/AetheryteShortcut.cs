@@ -104,25 +104,29 @@ internal static class AetheryteShortcut
                     EAetheryteLocation? shortcut = Task.Step.AetheryteShortcut ?? nearest ?? null;
                     if (shortcut == null)
                     {
-                        logger.LogInformation($"Skipping aetheryte shortcut, null result. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        logger.LogInformation("Skipping aetheryte shortcut, null result. step:{Step}, nearest:{Nearest}",
+                            Task.Step.AetheryteShortcut, nearest);
                         return true;
                     }
                     if (Task.Step.Mount is { } mount)
                     {
-                        logger.LogInformation($"Skipping aetheryte shortcut, Mount is set as {mount}. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        logger.LogInformation("Skipping aetheryte shortcut, Mount is set as {Mount}. step:{Step}, nearest:{Nearest}",
+                            mount, Task.Step.AetheryteShortcut, nearest);
                         return true;
                     }
                     if (Task.Step.Action is { } action && action.RequiresMount())
                     {
-                        logger.LogInformation($"Skipping aetheryte shortcut, step action requires mount. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        logger.LogInformation("Skipping aetheryte shortcut, step action requires mount. step:{Step}, nearest:{Nearest}",
+                            Task.Step.AetheryteShortcut, nearest);
                         return true;
                     }
                     if (Task.Step.AethernetShortcut is { } aethernetShortcut && aetheryteData.TerritoryIds[aethernetShortcut.To] != clientState.TerritoryType)
                     {
-                        logger.LogInformation($"Not skipping aetheryte shortcut, aethernet destination is diff territory. step:{Task.Step.AetheryteShortcut}, nearest:{nearest}");
+                        logger.LogInformation("Not skipping aetheryte shortcut, aethernet destination is diff territory. step:{Step}, nearest:{Nearest}",
+                            Task.Step.AetheryteShortcut, nearest);
                     }
                     Task.targetAetheryte = shortcut.Value;
-                    logger.LogInformation($"Aetheryte target has been changed to {Task.targetAetheryte}");
+                    logger.LogInformation("Aetheryte target has been changed to {TargetAetheryte}", Task.targetAetheryte);
                 }
                 else
                     Task.targetAetheryte = Task.TargetAetheryte;
@@ -257,10 +261,19 @@ internal static class AetheryteShortcut
                         uint teleportTimeDistance = 30;
 
                         // if aetheryte route is further from the destination than just walking there, skip it
-                        logger.LogDebug($"target direct: {distance_target}. target if tp: {teleportTimeDistance + distance_aetheryte_to_target} " +
-                                        $"target direct XZ: {pos.DistanceTo_XZ(Task.Step.Position.Value)}. " +
-                                        $"target tp XZ: {Task.Step.Position.Value.DistanceTo_XZ(Task.targetAetheryte.Position(aetheryteData))}" +
-                                        (Task.Step.AethernetShortcut != null ? $", target if aethernet: {distance_aethernet_from + distance_aethernet_to + teleportTimeDistance}" : ""));
+                        if (Task.Step.AethernetShortcut != null)
+                            logger.LogDebug(
+                                "target direct: {DirectDistance}. target if tp: {TpDistance} target direct XZ: {DirectXZ}. target tp XZ: {TpXZ}, target if aethernet: {AethernetDistance}",
+                                distance_target, teleportTimeDistance + distance_aetheryte_to_target,
+                                pos.DistanceTo_XZ(Task.Step.Position.Value),
+                                Task.Step.Position.Value.DistanceTo_XZ(Task.targetAetheryte.Position(aetheryteData)),
+                                distance_aethernet_from + distance_aethernet_to + teleportTimeDistance);
+                        else
+                            logger.LogDebug(
+                                "target direct: {DirectDistance}. target if tp: {TpDistance} target direct XZ: {DirectXZ}. target tp XZ: {TpXZ}",
+                                distance_target, teleportTimeDistance + distance_aetheryte_to_target,
+                                pos.DistanceTo_XZ(Task.Step.Position.Value),
+                                Task.Step.Position.Value.DistanceTo_XZ(Task.targetAetheryte.Position(aetheryteData)));
                         if (distance_target < (teleportTimeDistance + distance_aetheryte_to_target) ||
                             (Task.Step.AethernetShortcut != null && distance_target < (distance_aethernet_from + distance_aethernet_to + teleportTimeDistance)))
                         {
@@ -274,7 +287,10 @@ internal static class AetheryteShortcut
                     Task.Step.AethernetShortcut is { } aethernet &&
                     aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType))
                 {
-                    logger.LogInformation($"{aetheryteData.TerritoryIds[Task.targetAetheryte]}, {aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.To]}, {territoryType}");
+                    logger.LogInformation("{TargetTerritory}, {AethernetTerritory}, {CurrentTerritory}",
+                        aetheryteData.TerritoryIds[Task.targetAetheryte],
+                        aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.To],
+                        territoryType);
                     logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
                     return true;
                 }

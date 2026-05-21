@@ -258,11 +258,15 @@ internal sealed class CombatController : IDisposable
             }
         }
 
+        Vector3? playerPosition = _objectTable[0]?.Position;
+        if (playerPosition == null)
+            return null;
+
         return _objectTable.Select(x => new
             {
                 GameObject = x,
                 GetKillPriority(x).Priority,
-                Distance = Vector3.Distance(x.Position, _objectTable[0]!.Position)
+                Distance = Vector3.Distance(x.Position, playerPosition.Value)
             })
             .Where(x => x.Priority > 0)
             .OrderByDescending(x => x.Priority)
@@ -385,11 +389,18 @@ internal sealed class CombatController : IDisposable
                 _logger.LogInformation("Clearing target");
                 _targetManager.Target = null;
             }
+
+            return;
         }
-        else if (Vector3.Distance(_objectTable[0]!.Position, target.Position) > MaxTargetRange)
+
+        Vector3? playerPosition = _objectTable[0]?.Position;
+        if (playerPosition == null)
+            return;
+
+        float distance = Vector3.Distance(playerPosition.Value, target.Position);
+        if (distance > MaxTargetRange)
         {
-            _logger.LogInformation("Moving to target, distance: {Distance:N2}",
-                Vector3.Distance(_objectTable[0]!.Position, target.Position));
+            _logger.LogInformation("Moving to target, distance: {Distance:N2}", distance);
             MoveToTarget(target);
         }
         else
@@ -436,19 +447,22 @@ internal sealed class CombatController : IDisposable
                 useNavmesh = true;
             }
 
+            MovementController.NavigationOptions options = new()
+            {
+                StopDistance = maxDistance + hitboxOffset - 0.25f,
+                VerticalStopDistance = float.MaxValue,
+            };
             if (!useNavmesh)
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack", gameObject.Name,
                     GameFunctions.GetBaseID(gameObject));
-                _movementController.NavigateTo(EMovementType.Combat, null, [gameObject.Position], false, false,
-                    maxDistance + hitboxOffset - 0.25f, float.MaxValue);
+                _movementController.NavigateTo(EMovementType.Combat, null, [gameObject.Position], options);
             }
             else
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack (with navmesh)", gameObject.Name,
                     GameFunctions.GetBaseID(gameObject));
-                _movementController.NavigateTo(EMovementType.Combat, null, gameObject.Position, false, false,
-                    maxDistance + hitboxOffset - 0.25f, float.MaxValue);
+                _movementController.NavigateTo(EMovementType.Combat, null, gameObject.Position, options);
             }
         }
     }

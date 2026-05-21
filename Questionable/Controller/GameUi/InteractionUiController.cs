@@ -45,7 +45,6 @@ internal sealed class InteractionUiController : IDisposable
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly Regex _returnRegex;
-    //private readonly IPlayerState _playerState;
     private readonly ShopController _shopController;
     private readonly ITargetManager _targetManager;
     private readonly TerritoryData _territoryData;
@@ -87,7 +86,6 @@ internal sealed class InteractionUiController : IDisposable
         _gameGui = gameGui;
         _targetManager = targetManager;
         _clientState = clientState;
-        //_playerState = playerState;
         _shopController = shopController;
         _bossModIpc = bossModIpc;
         _configuration = configuration;
@@ -768,7 +766,7 @@ internal sealed class InteractionUiController : IDisposable
 
         if (_ticketRegex.IsMatch(actualPrompt))
         {
-            _logger.LogInformation($"Check UseTickets: {_configuration.General.UseTickets}");
+            _logger.LogInformation("Check UseTickets: {UseTickets}", _configuration.General.UseTickets);
             addonSelectYesno->AtkUnitBase.FireCallbackInt(_configuration.General.UseTickets ? 0 : 1);
             return true;
         }

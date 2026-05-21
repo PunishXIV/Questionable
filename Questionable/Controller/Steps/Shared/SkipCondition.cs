@@ -61,7 +61,6 @@ internal static class SkipCondition
         QuestFunctions questFunctions,
         IClientState clientState,
         IObjectTable objectTable,
-        //IPlayerState playerState,
         ICondition condition,
         ExtraConditionUtils extraConditionUtils,
         ClassJobUtils classJobUtils) : TaskExecutor<SkipTask>

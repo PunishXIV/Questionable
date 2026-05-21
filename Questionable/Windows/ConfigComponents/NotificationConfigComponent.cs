@@ -34,16 +34,12 @@ internal sealed class NotificationConfigComponent
                 XivChatType[] xivChatTypes = Enum.GetValues<XivChatType>()
                     .Where(x => x != XivChatType.StandardEmote)
                     .ToArray();
-                int selectedChatType = Array.IndexOf(xivChatTypes, Configuration.Notifications.ChatType);
                 string[] chatTypeNames = xivChatTypes
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
-                if (ImGui.Combo("Chat channel", ref selectedChatType, chatTypeNames,
-                    chatTypeNames.Length))
-                {
-                    Configuration.Notifications.ChatType = xivChatTypes[selectedChatType];
-                    Save();
-                }
+                DrawComboOption("Chat channel", xivChatTypes, chatTypeNames,
+                    () => Configuration.Notifications.ChatType,
+                    v => Configuration.Notifications.ChatType = v);
 
                 ImGui.Separator();
                 ImGui.Text("Desktop notifications");
