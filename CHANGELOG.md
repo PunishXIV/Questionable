@@ -1,1 +1,4 @@
+- Bug fix: teleporting destination -alydev
+- Dependencies tab sections can now be minimised -alydev
+- Click NoQuestPath journal progress entry to travel to issuer -alydev
 - Testing refactor -Kage, alydev

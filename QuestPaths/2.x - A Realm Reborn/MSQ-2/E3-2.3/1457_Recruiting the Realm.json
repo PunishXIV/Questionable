@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -126,9 +127,8 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle",
             "[Limsa Lominsa] Airship Landing"
           ]
         }

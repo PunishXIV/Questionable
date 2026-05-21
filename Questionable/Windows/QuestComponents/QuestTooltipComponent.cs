@@ -86,6 +86,8 @@ internal sealed class QuestTooltipComponent
         {
             ImGui.SameLine();
             ImGui.TextColored(ImGuiColors.DalamudRed, "NoQuestPath");
+            if (questInfo is QuestInfo questInfo1)
+                ImGui.Text($"{questInfo1.IssuerLocation.Territory.PlaceName.Value.Name}");
         }
 
         DrawQuestUnlocks(questInfo, 0, showItemRewards);

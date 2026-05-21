@@ -1,0 +1,68 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003897,
+          "Position": {
+            "X": -195.45282,
+            "Y": 18,
+            "Z": 60.53247
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 351,
+          "Position": {
+            "X": 410.26917,
+            "Y": 88.05961,
+            "Z": 163.59192
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [{ "DataId": 351, "MinimumKillCount": 5 }],
+          "AethernetShortcut": [
+            "[Ul'dah] Thaumaturges' Guild",
+            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003897,
+          "Position": {
+            "X": -195.45282,
+            "Y": 18,
+            "Z": 60.53247
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}
