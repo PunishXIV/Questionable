@@ -166,7 +166,7 @@ internal sealed class AlliedSocietyJournalComponent
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));
 
-        if (quest != null && _questController.ManualPriorityQuests.Contains(quest))
+        if (quest != null && _questController.PriorityManager.Contains(quest))
         {
             ImGui.SameLine();
             using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())

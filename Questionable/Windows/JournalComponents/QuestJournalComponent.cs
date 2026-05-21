@@ -247,7 +247,7 @@ internal sealed class QuestJournalComponent
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));
 
-        if (quest != null && _questController.ManualPriorityQuests.Contains(quest))
+        if (quest != null && _questController.PriorityManager.Contains(quest))
         {
             ImGui.SameLine();
             using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
