@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -113,12 +114,14 @@
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
           "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Outer La Noscea - Camp Overlook"
+          "Aetheryte": "Outer La Noscea - Camp Overlook",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
           "Position": {
