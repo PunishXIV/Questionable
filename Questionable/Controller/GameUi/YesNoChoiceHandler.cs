@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
+using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
@@ -35,6 +36,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly ITargetManager _targetManager;
     private readonly ShopController _shopController;
     private readonly GrandCompanyExchangeController _grandCompanyExchangeController;
+    private readonly ChocoboNamingController _chocoboNamingController;
     private readonly Configuration _configuration;
     private readonly DialogueReferenceResolver _dialogueReferenceResolver;
     private readonly TravelDestinationResolver _travelDestinationResolver;
@@ -56,6 +58,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         ITargetManager targetManager,
         ShopController shopController,
         GrandCompanyExchangeController grandCompanyExchangeController,
+        ChocoboNamingController chocoboNamingController,
         Configuration configuration,
         IDataManager dataManager,
         IPluginLog pluginLog,
@@ -73,6 +76,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _targetManager = targetManager;
         _shopController = shopController;
         _grandCompanyExchangeController = grandCompanyExchangeController;
+        _chocoboNamingController = chocoboNamingController;
         _configuration = configuration;
         _dialogueReferenceResolver = dialogueReferenceResolver;
         _travelDestinationResolver = travelDestinationResolver;
@@ -149,6 +153,14 @@ internal sealed class YesNoChoiceHandler : IDisposable
             _logger.LogInformation("Confirming Grand Company exchange purchase");
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
             _grandCompanyExchangeController.IsAwaitingYesNo = false;
+            return;
+        }
+
+        if (_chocoboNamingController.IsAwaitingYesNo)
+        {
+            _logger.LogInformation("Confirming chocobo name");
+            new AddonMaster.SelectYesno(addonSelectYesno).Yes();
+            _chocoboNamingController.IsAwaitingYesNo = false;
             return;
         }
 

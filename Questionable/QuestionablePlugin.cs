@@ -282,6 +282,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<ContextMenuController>();
         serviceCollection.AddSingleton<ShopController>();
         serviceCollection.AddSingleton<GrandCompanyExchangeController>();
+        serviceCollection.AddSingleton<ChocoboNamingController>();
         serviceCollection.AddSingleton<InterruptHandler>();
 
         serviceCollection.AddSingleton<HighlightObject>();
@@ -378,6 +379,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceProvider.GetRequiredService<DialogueChoiceHandler>();
         serviceProvider.GetRequiredService<ShopController>();
         serviceProvider.GetRequiredService<GrandCompanyExchangeController>();
+        serviceProvider.GetRequiredService<ChocoboNamingController>();
         serviceProvider.GetRequiredService<QuestionableIpc>();
         serviceProvider.GetRequiredService<DalamudInitializer>();
         serviceProvider.GetRequiredService<TextAdvanceIpc>();
