@@ -159,7 +159,7 @@ internal sealed class AlliedSocietyJournalComponent
         if (_uiUtils.ChecklistItem(checklistItem, color, icon))
             _questTooltipComponent.Draw(questInfo);
         if (addPending && (color.Equals(ImGuiColors.DalamudRed) || color.Equals(ImGuiColors.DPSRed)))
-            _questController.AddQuestPriority(questInfo.QuestId);
+            _questController.PriorityManager.Add(questInfo.QuestId);
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));
     }

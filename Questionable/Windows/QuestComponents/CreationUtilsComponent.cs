@@ -148,7 +148,7 @@ internal sealed class CreationUtilsComponent
 
                                         if (ImGui.IsItemClicked())
                                         {
-                                            _questController.AddQuestPriority(quest.Id);
+                                            _questController.PriorityManager.Add(quest.Id);
                                             if (!_priorityWindow.IsOpen)
                                                 _priorityWindow.ToggleOrUncollapse();
                                             _priorityWindow.BringToFront();
