@@ -34,6 +34,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly IClientState _clientState;
     private readonly ITargetManager _targetManager;
     private readonly ShopController _shopController;
+    private readonly GrandCompanyExchangeController _grandCompanyExchangeController;
     private readonly Configuration _configuration;
     private readonly DialogueReferenceResolver _dialogueReferenceResolver;
     private readonly TravelDestinationResolver _travelDestinationResolver;
@@ -54,6 +55,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         IClientState clientState,
         ITargetManager targetManager,
         ShopController shopController,
+        GrandCompanyExchangeController grandCompanyExchangeController,
         Configuration configuration,
         IDataManager dataManager,
         IPluginLog pluginLog,
@@ -70,6 +72,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _clientState = clientState;
         _targetManager = targetManager;
         _shopController = shopController;
+        _grandCompanyExchangeController = grandCompanyExchangeController;
         _configuration = configuration;
         _dialogueReferenceResolver = dialogueReferenceResolver;
         _travelDestinationResolver = travelDestinationResolver;
@@ -138,6 +141,14 @@ internal sealed class YesNoChoiceHandler : IDisposable
         {
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
             _shopController.IsAwaitingYesNo = false;
+            return;
+        }
+
+        if (_grandCompanyExchangeController.IsAwaitingYesNo)
+        {
+            _logger.LogInformation("Confirming Grand Company exchange purchase");
+            addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            _grandCompanyExchangeController.IsAwaitingYesNo = false;
             return;
         }
 
