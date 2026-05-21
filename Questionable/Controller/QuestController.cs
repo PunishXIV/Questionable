@@ -557,7 +557,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
                         StartedQuest = new(quest, currentSequence);
 #if DEBUG
-                        if (_configuration.Advanced.OpenEditor)
+                        if (_configuration.Advanced.OpenEditor && 
+                            (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 30))
                         {
                             (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
                             _logger.LogDebug($"OpenEditor {success}: {msg}");
