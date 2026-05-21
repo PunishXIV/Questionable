@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-19" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -32,7 +32,21 @@
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,
-          "SkipConditions": {"StepIf": {"InTerritory": [140,212],"Item": {"NotInInventory": true}}}
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "InTerritory": [212],
+              "Item": { "NotInInventory": true }
+            }
+          }
         },
         {
           "DataId": 1006361,
@@ -58,7 +72,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,16,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, 16, null]
         },
         {
           "DataId": 1006347,
@@ -69,7 +83,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,32,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, 32, null]
         },
         {
           "DataId": 1006346,
@@ -80,7 +94,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,64,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, 64, null]
         },
         {
           "DataId": 1006345,
@@ -91,7 +105,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,128,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, 128, null]
         }
       ]
     },
@@ -137,7 +151,14 @@
           "Mount": true,
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,64,null]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                64,
+                null
+              ]
             }
           }
         },
@@ -150,7 +171,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,64,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, 64, null]
         },
         {
           "DataId": 1006351,
@@ -161,7 +182,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
           "DataId": 1006350,
@@ -172,7 +193,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1006349,
@@ -183,7 +204,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,128,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, 128, null]
         }
       ]
     },

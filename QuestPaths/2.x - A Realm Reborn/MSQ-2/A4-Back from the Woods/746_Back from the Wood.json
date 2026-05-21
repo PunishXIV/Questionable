@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-19" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -32,7 +32,21 @@
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,
-          "SkipConditions": {"StepIf": {"InTerritory": [140,212],"Item": {"NotInInventory": true}}}
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "InTerritory": [212],
+              "Item": { "NotInInventory": true }
+            }
+          }
         },
         {
           "DataId": 1003785,

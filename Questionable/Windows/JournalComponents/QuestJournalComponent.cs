@@ -4,12 +4,16 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Validation;
@@ -25,7 +29,11 @@ internal sealed class QuestJournalComponent
     QuestTooltipComponent questTooltipComponent,
     IDalamudPluginInterface pluginInterface,
     QuestJournalUtils questJournalUtils,
-    QuestValidator questValidator)
+    QuestValidator questValidator,
+    MovementController movementController,
+    AetheryteFunctions aetheryteFunctions,
+    AetheryteData aetheryteData,
+    IGameGui gameGui)
 {
     private readonly Dictionary<JournalData.Category, JournalCounts> _categoryCounts = [];
     private readonly Dictionary<JournalData.Genre, JournalCounts> _genreCounts = [];
@@ -39,6 +47,10 @@ internal sealed class QuestJournalComponent
     private readonly QuestValidator _questValidator = questValidator;
     private readonly Dictionary<JournalData.Section, JournalCounts> _sectionCounts = [];
     private readonly UiUtils _uiUtils = uiUtils;
+    private readonly IGameGui _gameGui = gameGui;
+    private readonly MovementController _movementController = movementController;
+    private readonly AetheryteFunctions _aetheryteFunctions = aetheryteFunctions;
+    private readonly AetheryteData _aetheryteData = aetheryteData;
 
     private List<FilteredSection> _filteredSections = [];
 
@@ -204,9 +216,32 @@ internal sealed class QuestJournalComponent
         ImGui.TreeNodeEx(questDescription,
             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
 
-
         if (ImGui.IsItemHovered())
             _questTooltipComponent.Draw(questInfo);
+
+        if (quest == null && ImGui.IsItemClicked())
+        {
+            var location = questInfo.IssuerLocation;
+            Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
+            var mapLink = new MapLinkPayload(
+                location.Territory.RowId,
+                location.Map.RowId,
+                location.Game.X,
+                location.Game.Z
+            );
+            _gameGui.OpenMapWithMapLink(mapLink);
+            if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
+                _movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+                {
+                    Fly = true,
+                    Sprint = true,
+                    StopDistance = 20f,
+                    VerticalStopDistance = 5f,
+                });
+            else
+                if (_aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
+                    _aetheryteFunctions.TeleportAetheryte(aetheryte);
+        }
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));
 

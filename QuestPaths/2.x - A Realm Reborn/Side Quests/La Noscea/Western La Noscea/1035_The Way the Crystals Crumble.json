@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": ["skiaz","alydev"],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-06"},
+  "Author": ["skiaz", "alydev"],
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-06" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -34,12 +34,16 @@
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000782,
           "GroundTarget": true,
-          "KillEnemyDataIds": [
-            2101,
-            2098
-          ],
+          "KillEnemyDataIds": [2101, 2098],
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
         },
         {
           "Position": {
@@ -52,12 +56,16 @@
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000782,
           "GroundTarget": true,
-          "KillEnemyDataIds": [
-            2101,
-            2098
-          ],
+          "KillEnemyDataIds": [2101, 2098],
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
         },
         {
           "Position": {
@@ -70,10 +78,7 @@
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000782,
           "GroundTarget": true,
-          "KillEnemyDataIds": [
-            2101,
-            2098
-          ]
+          "KillEnemyDataIds": [2101, 2098]
         }
       ]
     },
@@ -101,7 +106,21 @@
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,
-          "SkipConditions": {"StepIf": {"InTerritory": [140,212],"Item": {"NotInInventory": true}}}
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "InTerritory": [212],
+              "Item": { "NotInInventory": true }
+            }
+          }
         },
         {
           "Position": {
@@ -112,7 +131,7 @@
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
-          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
+          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001711,
@@ -124,7 +143,7 @@
           "TerritoryId": 140,
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
-          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
+          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 1007488,

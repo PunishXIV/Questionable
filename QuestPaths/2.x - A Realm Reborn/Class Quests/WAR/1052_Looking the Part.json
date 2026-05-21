@@ -109,7 +109,15 @@
           "TargetTerritoryId": 140,
           "SkipConditions": {
             "StepIf": {
-              "InTerritory": [140],
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
               "Item": {"NotInInventory": true},
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
             }

@@ -18,4 +18,10 @@ internal static class Vector3Extensions
 		Vector3 difference = value1 - value2;
 		return MathF.Sqrt( difference.X * difference.X + difference.Z * difference.Z );
 	}
+    
+	[MethodImpl( MethodImplOptions.AggressiveInlining )]
+    internal static Vector3 AsVector3(this Lumina.Excel.Sheets.Level level)
+    {
+        return new(level.X, level.Y, level.Z);
+    }
 }

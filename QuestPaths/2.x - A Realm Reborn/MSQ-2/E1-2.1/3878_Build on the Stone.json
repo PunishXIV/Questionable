@@ -72,7 +72,8 @@
             "Z": -631.281
           },
           "InteractionType": "Interact",
-          "TargetTerritoryId": 351
+          "TargetTerritoryId": 351,
+          "SkipConditions": {"StepIf": {"InTerritory": [351]}}
         },
         {
           "DataId": 2002878,
