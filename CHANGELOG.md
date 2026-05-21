@@ -1,5 +1,5 @@
 - Bug fix: teleporting destination -alydev
-  - for a seventeenth time -alydev
+- Dependencies tab sections can now be minimised -alydev
 - ~~Prevent usage of invalid vnav version with qst~~ -alydev
   - Support CN fork of vnav -alydev
 - Makes it so solo instances stop retrying after failing 5 times. - Kage
