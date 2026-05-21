@@ -9,6 +9,7 @@ internal sealed class Quest
     {
         Assembly,
         ProjectDirectory,
+        DownloadedBundle,
         UserDirectory
     }
 
