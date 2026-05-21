@@ -91,7 +91,7 @@ internal sealed unsafe class GatheringController
             return EStatus.Complete;
         }
 
-        if (movementController.IsPathfinding || movementController.IsPathfinding)
+        if (movementController.IsPathfinding || movementController.IsPathRunning)
             return EStatus.Moving;
 
         if (HasRequestedItems() && !_condition[ConditionFlag.Gathering])
@@ -134,7 +134,14 @@ internal sealed unsafe class GatheringController
         if (currentNode == null)
             return;
 
-        uint territoryId = _currentRequest.Root.Steps.Last().TerritoryId;
+        if (_currentRequest.Root.Steps.Count == 0 || currentNode.Locations.Count == 0)
+        {
+            _logger.LogWarning("Gathering request has no steps or current node has no locations; aborting");
+            Stop("Empty gathering plan");
+            return;
+        }
+
+        uint territoryId = _currentRequest.Root.Steps[^1].TerritoryId;
         bool fly = currentNode.Fly.GetValueOrDefault(_currentRequest.Root.FlyBetweenNodes.GetValueOrDefault(true)) &&
                    gameFunctions.IsFlyingUnlocked(territoryId);
         if (currentNode.Locations.Count > 1)
@@ -160,7 +167,7 @@ internal sealed unsafe class GatheringController
         }
         else
         {
-            Vector3 targetPosition = currentNode.Locations.First().Position;
+            Vector3 targetPosition = currentNode.Locations[0].Position;
             Vector3? playerPos = objectTable[0]?.Position;
             if (playerPos == null || Vector3.Distance(playerPos.Value, targetPosition) > 50f)
                 _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));

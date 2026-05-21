@@ -43,21 +43,10 @@ internal sealed unsafe class GameFunctions
 {
     private readonly AbandonDutyDelegate _abandonDuty =
         Marshal.GetDelegateForFunctionPointer<AbandonDutyDelegate>(EventFramework.Addresses.LeaveCurrentContent.Value);
-    private readonly IClientState _clientState = clientState;
-    private readonly ICondition _condition = condition;
-    private readonly Configuration _configuration = configuration;
     private readonly ReadOnlyDictionary<uint, uint> _contentFinderConditionToContentId = dataManager.GetExcelSheet<ContentFinderCondition>()
         .Where(x => x.RowId > 0 && x.Content.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.Content.RowId)
         .AsReadOnly();
-    private readonly IDataManager _dataManager = dataManager;
-    private readonly IGameGuiAdapter _gameGui = gameGui;
-    private readonly HighlightObject _highlightObject = highlightObject;
-    private readonly ILogger<GameFunctions> _logger = logger;
-    private readonly IObjectTable _objectTable = objectTable;
-
-    private readonly QuestFunctions _questFunctions = questFunctions;
-    private readonly ITargetManager _targetManager = targetManager;
 
     private readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = dataManager.GetExcelSheet<TerritoryType>()
         .Where(x => x.RowId > 0)
@@ -67,10 +56,10 @@ internal sealed unsafe class GameFunctions
 
     public bool IsFlyingUnlocked(uint territoryId)
     {
-        if (_configuration.Advanced.NeverFly)
+        if (configuration.Advanced.NeverFly)
             return false;
 
-        if (_questFunctions.IsQuestAccepted(new(3304)) && _condition[ConditionFlag.Mounted])
+        if (questFunctions.IsQuestAccepted(new(3304)) && condition[ConditionFlag.Mounted])
         {
             // special quest amaro, not the normal one
             // TODO Check if this also applies to beast tribe mounts
@@ -86,14 +75,14 @@ internal sealed unsafe class GameFunctions
 
     public ushort? GetMountId()
     {
-        BattleChara* battleChara = (BattleChara*)(_objectTable[0]?.Address ?? 0);
+        BattleChara* battleChara = (BattleChara*)(objectTable[0]?.Address ?? 0);
         if (battleChara != null && battleChara->Mount.MountId != 0)
             return battleChara->Mount.MountId;
         else
             return null;
     }
 
-    public bool IsFlyingUnlockedInCurrentZone() => IsFlyingUnlocked(_clientState.TerritoryType);
+    public bool IsFlyingUnlockedInCurrentZone() => IsFlyingUnlocked(clientState.TerritoryType);
 
     public bool IsAetherCurrentUnlocked(uint aetherCurrentId)
     {
@@ -104,7 +93,7 @@ internal sealed unsafe class GameFunctions
 
     public IGameObject? FindObjectByDataId(uint dataId, ObjectKind? kind = null)
     {
-        foreach (IGameObject gameObject in _objectTable)
+        foreach (IGameObject gameObject in objectTable)
         {
             if (gameObject.ObjectKind is ObjectKind.Pc or ObjectKind.Companion or ObjectKind.Mount
                 or ObjectKind.Retainer or ObjectKind.HousingEventObject)
@@ -117,12 +106,12 @@ internal sealed unsafe class GameFunctions
 
             if (GetBaseID(gameObject) == dataId && (kind == null || kind.Value == gameObject.ObjectKind))
             {
-                _highlightObject.AddHighlight(GetBaseID(gameObject));
+                highlightObject.AddHighlight(GetBaseID(gameObject));
                 return gameObject;
             }
         }
 
-        _logger.LogWarning("Could not find GameObject with dataId {DataId}", dataId);
+        logger.LogWarning("Could not find GameObject with dataId {DataId}", dataId);
         return null;
     }
 
@@ -132,27 +121,27 @@ internal sealed unsafe class GameFunctions
         if (gameObject != null)
             return InteractWith(gameObject);
 
-        _logger.LogDebug("Game object is null");
+        logger.LogDebug("Game object is null");
         return false;
     }
 
     public bool InteractWith(IGameObject gameObject)
     {
-        _logger.LogInformation("Setting target with {DataId} to {ObjectId}", GetBaseID(gameObject), gameObject.EntityId);
-        _targetManager.Target = null;
-        _targetManager.Target = gameObject;
+        logger.LogInformation("Setting target with {DataId} to {ObjectId}", GetBaseID(gameObject), gameObject.EntityId);
+        targetManager.Target = null;
+        targetManager.Target = gameObject;
 
         if (gameObject.ObjectKind == ObjectKind.GatheringPoint)
         {
             TargetSystem.Instance()->OpenObjectInteraction((GameObject*)gameObject.Address);
-            _logger.LogInformation("Interact result: (none) for GatheringPoint");
+            logger.LogInformation("Interact result: (none) for GatheringPoint");
             return true;
         }
         else
         {
             long result = (long)TargetSystem.Instance()->InteractWithObject((GameObject*)gameObject.Address, false);
 
-            _logger.LogInformation("Interact result: {Result}", result);
+            logger.LogInformation("Interact result: {Result}", result);
             return result != 7 && result > 0;
         }
     }
@@ -160,7 +149,7 @@ internal sealed unsafe class GameFunctions
     public bool UseItem(uint itemId)
     {
         long result = AgentInventoryContext.Instance()->UseItem(itemId);
-        _logger.LogInformation("UseItem result: {Result}", result);
+        logger.LogInformation("UseItem result: {Result}", result);
 
         return result == 0;
     }
@@ -170,10 +159,10 @@ internal sealed unsafe class GameFunctions
         IGameObject? gameObject = FindObjectByDataId(dataId);
         if (gameObject != null)
         {
-            _targetManager.Target = gameObject;
+            targetManager.Target = gameObject;
             long result = AgentInventoryContext.Instance()->UseItem(itemId);
 
-            _logger.LogInformation("UseItem result on {DataId}: {Result}", dataId, result);
+            logger.LogInformation("UseItem result on {DataId}: {Result}", dataId, result);
             return result is 0 or 1;
         }
 
@@ -204,7 +193,7 @@ internal sealed unsafe class GameFunctions
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId) == 0)
         {
             bool result = ActionManager.Instance()->UseAction(actionType, actionId);
-            _logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
+            logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
                 actionId, result);
 
             return result;
@@ -219,20 +208,20 @@ internal sealed unsafe class GameFunctions
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
         if (actionType == ActionType.GeneralAction)
         {
-            _logger.LogWarning("Can not use general action {Action} on target {Target}", action, gameObject);
+            logger.LogWarning("Can not use general action {Action} on target {Target}", action, gameObject);
             return false;
         }
 
         actionId = ActionManager.Instance()->GetAdjustedActionId(actionId);
         if (checkCanUse && !ActionManager.CanUseActionOnTarget(actionId, (GameObject*)gameObject.Address))
         {
-            _logger.LogWarning("Can not use action {Action} (adjusted: {AdjustedActionId}) on target {Target}", action,
+            logger.LogWarning("Can not use action {Action} (adjusted: {AdjustedActionId}) on target {Target}", action,
                 actionId, gameObject);
             return false;
         }
 
-        Action actionRow = _dataManager.GetExcelSheet<Action>().GetRow(actionId);
-        _targetManager.Target = gameObject;
+        Action actionRow = dataManager.GetExcelSheet<Action>().GetRow(actionId);
+        targetManager.Target = gameObject;
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId, gameObject.GameObjectId) == 0)
         {
             bool result;
@@ -241,14 +230,14 @@ internal sealed unsafe class GameFunctions
                 Vector3 position = gameObject.Position;
                 result = ActionManager.Instance()->UseActionLocation(actionType, actionId,
                     location: &position);
-                _logger.LogInformation(
+                logger.LogInformation(
                     "UseAction {Action} (adjusted: {AdjustedActionId}) on target area {Target} result: {Result}",
                     action, actionId, gameObject, result);
             }
             else
             {
                 result = ActionManager.Instance()->UseAction(actionType, actionId, gameObject.GameObjectId);
-                _logger.LogInformation(
+                logger.LogInformation(
                     "UseAction {Action} (adjusted: {AdjustedActionId}) on target {Target} result: {Result}", action,
                     actionId, gameObject, result);
             }
@@ -267,7 +256,7 @@ internal sealed unsafe class GameFunctions
 
     public bool HasStatusPreventingMount()
     {
-        if (_condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
+        if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
             return true;
 
         // company chocobo is locked
@@ -275,7 +264,7 @@ internal sealed unsafe class GameFunctions
         if (playerState != null && !playerState->IsMountUnlocked(1))
             return true;
 
-        IGameObject? localPlayer = _objectTable[0];
+        IGameObject? localPlayer = objectTable[0];
         if (localPlayer == null)
             return false;
 
@@ -308,7 +297,7 @@ internal sealed unsafe class GameFunctions
 
     public bool HasStatus(uint statusId)
     {
-        IGameObject? localPlayer = _objectTable[0];
+        IGameObject? localPlayer = objectTable[0];
         if (localPlayer == null)
             return false;
 
@@ -321,19 +310,19 @@ internal sealed unsafe class GameFunctions
 
     public bool Mount()
     {
-        if (_condition[ConditionFlag.Mounted])
+        if (condition[ConditionFlag.Mounted])
             return true;
 
         PlayerState* playerState = PlayerState.Instance();
-        if (playerState != null && _configuration.General.MountId != 0 &&
-            playerState->IsMountUnlocked(_configuration.General.MountId))
+        if (playerState != null && configuration.General.MountId != 0 &&
+            playerState->IsMountUnlocked(configuration.General.MountId))
         {
-            if (ActionManager.Instance()->GetActionStatus(ActionType.Mount, _configuration.General.MountId) == 0)
+            if (ActionManager.Instance()->GetActionStatus(ActionType.Mount, configuration.General.MountId) == 0)
             {
-                _logger.LogDebug("Attempting to use preferred mount...");
-                if (ActionManager.Instance()->UseAction(ActionType.Mount, _configuration.General.MountId))
+                logger.LogDebug("Attempting to use preferred mount...");
+                if (ActionManager.Instance()->UseAction(ActionType.Mount, configuration.General.MountId))
                 {
-                    _logger.LogInformation("Using preferred mount");
+                    logger.LogInformation("Using preferred mount");
                     return true;
                 }
             }
@@ -342,10 +331,10 @@ internal sealed unsafe class GameFunctions
         {
             if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 9) == 0)
             {
-                _logger.LogDebug("Attempting to use mount roulette...");
+                logger.LogDebug("Attempting to use mount roulette...");
                 if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 9))
                 {
-                    _logger.LogInformation("Using mount roulette");
+                    logger.LogInformation("Using mount roulette");
                     return true;
                 }
             }
@@ -356,15 +345,15 @@ internal sealed unsafe class GameFunctions
 
     public bool Unmount()
     {
-        if (!_condition[ConditionFlag.Mounted])
+        if (!condition[ConditionFlag.Mounted])
             return true;
 
         if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 23) == 0)
         {
-            _logger.LogDebug("Attempting to unmount...");
+            logger.LogDebug("Attempting to unmount...");
             if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23))
             {
-                _logger.LogInformation("Unmounted");
+                logger.LogInformation("Unmounted");
                 return true;
             }
 
@@ -372,7 +361,7 @@ internal sealed unsafe class GameFunctions
         }
         else
         {
-            _logger.LogWarning("Can't unmount right now?");
+            logger.LogWarning("Can't unmount right now?");
             return false;
         }
     }
@@ -385,14 +374,14 @@ internal sealed unsafe class GameFunctions
                 AgentContentsFinder.Instance()->OpenRegularDuty(contentFinderConditionId);
             else
             {
-                _logger.LogError(
+                logger.LogError(
                     "Trying to access a locked duty (cf: {ContentFinderId}, content: {ContentId})",
                     contentFinderConditionId, contentId);
             }
         }
         else
         {
-            _logger.LogError("Could not find content for content finder condition (cf: {ContentFinderId})",
+            logger.LogError("Could not find content for content finder condition (cf: {ContentFinderId})",
                 contentFinderConditionId);
         }
     }
@@ -413,34 +402,34 @@ internal sealed unsafe class GameFunctions
 
     public bool IsOccupied()
     {
-        if (!_clientState.IsLoggedIn || _objectTable[0] == null)
+        if (!clientState.IsLoggedIn || objectTable[0] == null)
             return true;
 
         if (IsLoadingScreenVisible())
             return true;
 
-        if (_condition[ConditionFlag.Crafting])
+        if (condition[ConditionFlag.Crafting])
         {
             if (!AgentRecipeNote.Instance()->IsAgentActive())
                 return true;
 
-            if (!_condition[ConditionFlag.PreparingToCraft])
+            if (!condition[ConditionFlag.PreparingToCraft])
                 return true;
         }
 
-        if (_condition[ConditionFlag.Unconscious] &&
-            _condition[ConditionFlag.SufferingStatusAffliction63] &&
-            _clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
+        if (condition[ConditionFlag.Unconscious] &&
+            condition[ConditionFlag.SufferingStatusAffliction63] &&
+            clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
             return false; // needed to process the tasks
 
-        return _condition[ConditionFlag.Occupied] || _condition[ConditionFlag.Occupied30] ||
-               _condition[ConditionFlag.Occupied33] || _condition[ConditionFlag.Occupied38] ||
-               _condition[ConditionFlag.Occupied39] || _condition[ConditionFlag.OccupiedInEvent] ||
-               _condition[ConditionFlag.OccupiedInQuestEvent] || _condition[ConditionFlag.OccupiedInCutSceneEvent] ||
-               _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
-               _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
-               _condition[ConditionFlag.Jumping61] || _condition[ConditionFlag.ExecutingGatheringAction] ||
-               _condition[ConditionFlag.Jumping];
+        return condition[ConditionFlag.Occupied] || condition[ConditionFlag.Occupied30] ||
+               condition[ConditionFlag.Occupied33] || condition[ConditionFlag.Occupied38] ||
+               condition[ConditionFlag.Occupied39] || condition[ConditionFlag.OccupiedInEvent] ||
+               condition[ConditionFlag.OccupiedInQuestEvent] || condition[ConditionFlag.OccupiedInCutSceneEvent] ||
+               condition[ConditionFlag.Casting] || condition[ConditionFlag.MountOrOrnamentTransition] ||
+               condition[ConditionFlag.BetweenAreas] || condition[ConditionFlag.BetweenAreas51] ||
+               condition[ConditionFlag.Jumping61] || condition[ConditionFlag.ExecutingGatheringAction] ||
+               condition[ConditionFlag.Jumping];
     }
 
     public bool IsOccupiedWithCustomDeliveryNpc(Quest? currentQuest)
@@ -449,13 +438,13 @@ internal sealed unsafe class GameFunctions
         if (currentQuest is not { Info: SatisfactionSupplyInfo })
             return false;
 
-        if (_targetManager.Target == null || GetBaseID(_targetManager.Target) != currentQuest.Info.IssuerDataId)
+        if (targetManager.Target == null || GetBaseID(targetManager.Target) != currentQuest.Info.IssuerDataId)
             return false;
 
         if (!AgentSatisfactionSupply.Instance()->IsAgentActive())
             return false;
 
-        HashSet<ConditionFlag> flags = _condition.AsReadOnlySet().ToHashSet();
+        HashSet<ConditionFlag> flags = condition.AsReadOnlySet().ToHashSet();
         flags.Remove(ConditionFlag.InDutyQueue); // irrelevant
         return flags.Count == 2 &&
                flags.Contains(ConditionFlag.NormalConditions) &&
@@ -464,16 +453,16 @@ internal sealed unsafe class GameFunctions
 
     public bool IsLoadingScreenVisible()
     {
-        if (_gameGui.TryGetAddonByName("FadeMiddle", out AtkUnitBase* fade) && AddonUtils.IsAddonReady(fade) &&
+        if (gameGui.TryGetAddonByName("FadeMiddle", out AtkUnitBase* fade) && AddonUtils.IsAddonReady(fade) &&
             fade->IsVisible)
         {
             return true;
         }
 
-        if (_gameGui.TryGetAddonByName("FadeBack", out fade) && AddonUtils.IsAddonReady(fade) && fade->IsVisible)
+        if (gameGui.TryGetAddonByName("FadeBack", out fade) && AddonUtils.IsAddonReady(fade) && fade->IsVisible)
             return true;
 
-        if (_gameGui.TryGetAddonByName("NowLoading", out fade) && AddonUtils.IsAddonReady(fade) && fade->IsVisible)
+        if (gameGui.TryGetAddonByName("NowLoading", out fade) && AddonUtils.IsAddonReady(fade) && fade->IsVisible)
             return true;
 
         return false;
@@ -524,13 +513,13 @@ internal sealed unsafe class GameFunctions
     /// </summary>
     public void AbandonDuty() => _abandonDuty(false);
 
-    public IReadOnlyList<uint> GetUnlockLinks()
+    public IReadOnlyList<uint>? GetUnlockLinks()
     {
         UIState* uiState = UIState.Instance();
         if (uiState == null)
         {
-            _logger.LogError("Could not query unlock links");
-            return [];
+            logger.LogError("Could not query unlock links");
+            return null;
         }
 
         List<uint> unlockedUnlockLinks = [];
@@ -540,7 +529,7 @@ internal sealed unsafe class GameFunctions
                 unlockedUnlockLinks.Add((uint)index);
         }
 
-        _logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedUnlockLinks));
+        logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedUnlockLinks));
         return unlockedUnlockLinks;
     }
     private delegate void AbandonDutyDelegate(bool a1);

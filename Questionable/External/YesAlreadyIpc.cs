@@ -36,7 +36,7 @@ internal sealed class YesAlreadyIpc : IDisposable
         _clientState = clientState;
         _logger = logger;
         _wasEnabled = IsPluginEnabled();
-        _logger.LogInformation($"Enabled:{_wasEnabled}");
+        _logger.LogInformation("Enabled:{WasEnabled}", _wasEnabled);
 
         _framework.Update += OnUpdate;
     }

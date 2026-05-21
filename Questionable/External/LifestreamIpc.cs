@@ -19,11 +19,11 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
     private readonly ILogger<LifestreamIpc> _logger = logger;
 
-    public bool IsBusy => _isBusy.InvokeFunc();
+    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), false);
 
     public bool Teleport(string destination)
     {
-        _logger.LogInformation($"Teleporting to vague string '{destination}'");
+        _logger.LogInformation("Teleporting to vague string '{Destination}'", destination);
         return _aethernetTeleport.InvokeFunc(destination);
     }
 

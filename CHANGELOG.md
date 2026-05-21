@@ -3,3 +3,4 @@
 - Standardised 'Priority Quests' name -alydev
 - Click NoQuestPath journal progress entry to travel to issuer -alydev
 - Dependencies tab sections can now be minimised -alydev
+- Testing refactor -Kage, alydev

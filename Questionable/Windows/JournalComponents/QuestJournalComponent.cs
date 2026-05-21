@@ -233,7 +233,13 @@ internal sealed class QuestJournalComponent
             );
             _gameGui.OpenMapWithMapLink(mapLink);
             if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
-                _movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, true, true, 20f, 5f);
+                _movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+                {
+                    Fly = true,
+                    Sprint = true,
+                    StopDistance = 20f,
+                    VerticalStopDistance = 5f,
+                });
             else
                 if (_aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
                     _aetheryteFunctions.TeleportAetheryte(aetheryte);

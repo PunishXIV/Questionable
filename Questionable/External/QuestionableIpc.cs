@@ -178,7 +178,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool StartQuest(string questId, bool single)
     {
-        _logger.LogDebug($"StartQuest({questId},{single})");
+        _logger.LogDebug("StartQuest({QuestId},{Single})", questId, single);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
@@ -221,7 +221,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool IsQuestLocked(string questId)
     {
-        _logger.LogDebug($"IsQuestLocked({questId})");
+        _logger.LogDebug("IsQuestLocked({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? _))
         {
@@ -233,7 +233,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool IsQuestComplete(string questId)
     {
-        _logger.LogDebug($"IsQuestComplete({questId})");
+        _logger.LogDebug("IsQuestComplete({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
             return _questFunctions.IsQuestComplete(elementId);
         return false;
@@ -241,7 +241,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool IsReadyToAcceptQuest(string questId)
     {
-        _logger.LogDebug($"IsReadyToAcceptQuest({questId})");
+        _logger.LogDebug("IsReadyToAcceptQuest({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
             return _questFunctions.IsReadyToAcceptQuest(elementId);
         return false;
@@ -249,7 +249,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool IsQuestAccepted(string questId)
     {
-        _logger.LogDebug($"IsQuestAccepted({questId})");
+        _logger.LogDebug("IsQuestAccepted({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
             return _questFunctions.IsQuestAccepted(elementId);
         return false;
@@ -257,7 +257,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool IsQuestUnobtainable(string questId)
     {
-        _logger.LogDebug($"IsQuestUnobtainable({questId})");
+        _logger.LogDebug("IsQuestUnobtainable({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null)
             return _questFunctions.IsQuestUnobtainable(elementId);
         return false;
@@ -265,26 +265,26 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool ImportQuestPriority(string encodedQuestPriority)
     {
-        _logger.LogDebug($"ImportQuestPriority({encodedQuestPriority})");
+        _logger.LogDebug("ImportQuestPriority({EncodedQuestPriority})", encodedQuestPriority);
         List<ElementId> questElements = PriorityWindow.DecodeQuestPriority(encodedQuestPriority);
-        _questController.ImportQuestPriority(questElements);
+        _questController.PriorityManager.Import(questElements);
         return true;
     }
 
     private bool ClearQuestPriority()
     {
         _logger.LogDebug("ClearQuestPriority()");
-        _questController.ClearQuestPriority();
+        _questController.PriorityManager.Clear();
         return true;
     }
 
     private bool AddQuestPriority(string questId)
     {
-        _logger.LogDebug($"AddQuestPriority({questId})");
+        _logger.LogDebug("AddQuestPriority({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.IsKnownQuest(elementId))
         {
-            return _questController.AddQuestPriority(elementId);
+            return _questController.PriorityManager.Add(elementId);
         }
 
         return true;
@@ -292,11 +292,11 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool InsertQuestPriority(int index, string questId)
     {
-        _logger.LogDebug($"InsertQuestPriority({index},{questId})");
+        _logger.LogDebug("InsertQuestPriority({Index},{QuestId})", index, questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.IsKnownQuest(elementId))
         {
-            return _questController.InsertQuestPriority(index, elementId);
+            return _questController.PriorityManager.Insert(index, elementId);
         }
 
         return true;
@@ -306,13 +306,14 @@ internal sealed class QuestionableIpc : IDisposable
 
     private bool StartGatheringComplex(uint npcId, uint itemId, byte classJob = ((byte)Job.MIN), int quantity = 1, ushort collectability = 0)
     {
-        _logger.LogDebug($"StartGatheringComplex({npcId},{itemId},{classJob},{quantity},{collectability})");
+        _logger.LogDebug("StartGatheringComplex({NpcId},{ItemId},{ClassJob},{Quantity},{Collectability})",
+            npcId, itemId, classJob, quantity, collectability);
         return _questController.StartGathering(npcId, itemId, (Job)classJob, quantity, collectability);
     }
 
     private bool Stop(string label)
     {
-        _logger.LogDebug($"Stop({label})");
+        _logger.LogDebug("Stop({Label})", label);
         _questController.StopAllDueToConditionFailed($"IPC: {label}");
         return true;
     }

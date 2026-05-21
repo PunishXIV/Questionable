@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
@@ -34,6 +35,87 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
     public abstract void DrawTab();
 
     protected void Save() => _pluginInterface.SavePluginConfig(Configuration);
+
+    /// <summary>
+    ///     Draws an ImGui combo that maps a configuration value to/from an entry in <paramref name="values"/>.
+    ///     If the current value is not in <paramref name="values"/>, resets to <paramref name="values"/>[0] and saves.
+    /// </summary>
+    protected void DrawComboOption<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set)
+    {
+        if (values.Length == 0)
+            return;
+
+        int index = Array.IndexOf(values, get());
+        if (index == -1)
+        {
+            index = 0;
+            set(values[index]);
+            Save();
+        }
+
+        if (ImGui.Combo(label, ref index, labels, labels.Length))
+        {
+            set(values[index]);
+            Save();
+        }
+    }
+    /// <summary>
+    ///     Draws a searchable combo (BeginCombo + InputTextWithHint filter) for large option lists.
+    ///     The search box stays pinned at the top of the popup; only the option list scrolls.
+    /// </summary>
+    protected void DrawSearchableCombo<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set,
+        ref string searchString)
+    {
+        if (values.Length == 0)
+            return;
+
+        int index = Array.IndexOf(values, get());
+        if (index == -1)
+        {
+            index = 0;
+            set(values[index]);
+            Save();
+        }
+
+        string preview = labels[index];
+        if (ImGui.BeginCombo(label, preview, ImGuiComboFlags.HeightLarge))
+        {
+            ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+            if (ImGui.IsWindowAppearing())
+                ImGui.SetKeyboardFocusHere();
+            ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
+
+            // The option list lives in its own fixed-height scrollable child so the search box above
+            // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
+            int visibleRows = Math.Clamp(labels.Length, 1, 12);
+            var listSize = ImGui.GetContentRegionAvail() with { Y = ImGui.GetTextLineHeightWithSpacing() * visibleRows };
+            using (var child = ImRaii.Child("##searchableComboList", listSize))
+            {
+                if (child)
+                {
+                    for (int i = 0; i < labels.Length; i++)
+                    {
+                        if (!string.IsNullOrEmpty(searchString) &&
+                            !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+                            continue;
+
+                        bool isSelected = i == index;
+                        if (ImGui.Selectable(labels[i], isSelected))
+                        {
+                            set(values[i]);
+                            Save();
+                            searchString = string.Empty;
+                        }
+
+                        if (isSelected)
+                            ImGui.SetItemDefaultFocus();
+                    }
+                }
+            }
+
+            ImGui.EndCombo();
+        }
+    }
 
     protected static string FormatLevel(int level, bool includePrefix = true)
     {
