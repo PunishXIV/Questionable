@@ -4,6 +4,7 @@
     "JerryWester",
     "liza"
   ],
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -211,6 +212,19 @@
           "Mount": false,
           "Sprint": false,
           "CombatDelaySecondsAtStart": 3
+        },
+        {
+          "DataId": 2482,
+          "Position": {
+            "X": -285.59854,
+            "Y": 11.75,
+            "Z": -22.394428
+          },
+          "TerritoryId": 152,
+          "InteractionType": "WaitForNpcAtPosition",
+          "Mount": false,
+          "Sprint": false,
+          "NpcWaitDistance": 5
         },
         {
           "DataId": 2482,

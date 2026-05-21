@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-20" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -43,7 +44,20 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)"
+          "$": "Monument Tower (inside)",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -478.3551,
+                  "Y": 288.4877,
+                  "Z": 168.01697
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 100
+              }
+            }
+          }
         },
         {
           "Position": {
@@ -54,7 +68,20 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "$": "Monument Tower (outside)",
-          "DisableNavmesh": true
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -478.3551,
+                  "Y": 288.4877,
+                  "Z": 168.01697
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 100
+              }
+            }
+          }
         },
         {
           "DataId": 1006525,

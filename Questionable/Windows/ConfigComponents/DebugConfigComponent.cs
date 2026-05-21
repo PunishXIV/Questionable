@@ -51,15 +51,12 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
         {
             using (ImRaii.PushIndent())
             {
-                string[] highlightColorNames = Enum.GetNames<ObjectHighlightColor>();
-                ObjectHighlightColor[] highlightColorValues = Enum.GetValues<ObjectHighlightColor>();
-                int selectedHighlightColor = Array.IndexOf(highlightColorValues, Configuration.Advanced.HighlightColor);
                 ImGui.SetNextItemWidth(150f);
-                if (ImGui.Combo("Highlight Color", ref selectedHighlightColor, highlightColorNames, highlightColorNames.Length))
-                {
-                    Configuration.Advanced.HighlightColor = (ObjectHighlightColor)selectedHighlightColor;
-                    Save();
-                }
+                DrawComboOption("Highlight Color",
+                    Enum.GetValues<ObjectHighlightColor>(),
+                    Enum.GetNames<ObjectHighlightColor>(),
+                    () => Configuration.Advanced.HighlightColor,
+                    v => Configuration.Advanced.HighlightColor = v);
             }
         }
 

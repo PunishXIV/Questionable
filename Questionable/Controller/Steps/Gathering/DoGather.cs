@@ -79,7 +79,7 @@ internal static class DoGather
                         if (Task.Request.Collectability > 0)
                         {
                             SlotInfo slot = slots.Single(x => x.ItemId == Task.Request.ItemId);
-                            logger.LogDebug($"Collectible=true, clicking {slot.Index} {slot.ItemId}");
+                            logger.LogDebug("Collectible=true, clicking {Index} {ItemId}", slot.Index, slot.ItemId);
                             addonGathering->FireCallbackInt(slot.Index);
                         }
                         else
@@ -87,13 +87,13 @@ internal static class DoGather
                             NodeCondition nodeCondition = new(
                                 addonGathering->AtkValues[109].UInt,
                                 addonGathering->AtkValues[110].UInt);
-                            logger.LogDebug($"NodeCondition: {nodeCondition.CurrentIntegrity}/{nodeCondition.MaxIntegrity}");
+                            logger.LogDebug("NodeCondition: {CurrentIntegrity}/{MaxIntegrity}", nodeCondition.CurrentIntegrity, nodeCondition.MaxIntegrity);
 
                             if (_actionQueue != null && _actionQueue.TryPeek(out EAction nextAction))
                             {
                                 if (gameFunctions.UseAction(nextAction))
                                 {
-                                    logger.LogDebug($"Action: {nextAction}");
+                                    logger.LogDebug("Action: {NextAction}", nextAction);
                                     _actionQueue.Dequeue();
                                 }
 

@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using Questionable.Data;
 using Questionable.Model.Questing;
 namespace Questionable.External;
@@ -41,17 +41,7 @@ internal sealed class BossModIpc
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
     private readonly TerritoryData _territoryData = territoryData;
 
-    public bool IsSupported()
-    {
-        try
-        {
-            return _getPreset.HasFunction;
-        }
-        catch (IpcError)
-        {
-            return false;
-        }
-    }
+    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
 
     public void SetPreset(EPreset preset)
     {
@@ -70,6 +60,7 @@ internal sealed class BossModIpc
         //_commandManager.ProcessCommand("/vbmai on");
         _commandManager.ProcessCommand("/vbm cfg ZoneModuleConfig EnableQuestBattles true");
         _commandManager.ProcessCommand("/vbm cfg Autorotation ClearPresetOnCombatEnd false");
+        Svc.Log.Debug($"Enabling preset {(passive ? "Overworld" : "QuestBattle")}");
         SetPreset(passive ? EPreset.Overworld : EPreset.QuestBattle);
     }
 

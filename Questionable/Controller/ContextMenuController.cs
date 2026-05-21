@@ -26,7 +26,6 @@ internal sealed class ContextMenuController : IDisposable
     private readonly IGameGuiAdapter _gameGui;
     private readonly GatheringData _gatheringData;
     private readonly GatheringPointRegistry _gatheringPointRegistry;
-    //private readonly IPlayerState _playerState;
     private readonly ILogger<ContextMenuController> _logger;
     private readonly QuestController _questController;
     private readonly QuestData _questData;
@@ -59,7 +58,6 @@ internal sealed class ContextMenuController : IDisposable
         _gameGui = gameGui;
         _chatGui = chatGui;
         _clientState = clientState;
-        //_playerState = playerState;
         _logger = logger;
 
         _contextMenu.OnMenuOpened += MenuOpened;

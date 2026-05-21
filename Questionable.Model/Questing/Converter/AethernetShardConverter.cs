@@ -156,6 +156,7 @@ public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation
         { EAetheryteLocation.TuliyollalIhuykatumu, "[Tuliyollal] Ihuykatumu (Kozama'uka)" },
         { EAetheryteLocation.TuliyollalDirigibleLandingYakTel, "[Tuliyollal] Dirigible Landing (Yak T'el)" },
         { EAetheryteLocation.TuliyollalXakTuralSkygate, "[Tuliyollal] Xak Tural Skygate (Shaaloani)" },
+        { EAetheryteLocation.TuliyollalPhantomVillage, "[Tuliyollal] Phantom Village" },
 
         { EAetheryteLocation.SolutionNine, "[Solution Nine] Aetheryte Plaza" },
         { EAetheryteLocation.SolutionNineInformationCenter, "[Solution Nine] Information Center" },

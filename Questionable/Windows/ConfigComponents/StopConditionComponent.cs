@@ -25,7 +25,6 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestSelector _questSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
-    //private readonly IPlayerState _playerState;
 
     public StopConditionComponent(
         IDalamudPluginInterface pluginInterface,
@@ -35,7 +34,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         QuestTooltipComponent questTooltipComponent,
         UiUtils uiUtils,
         IClientState clientState,
-        //IPlayerState playerState,
         Configuration configuration)
         : base(pluginInterface, configuration)
     {
@@ -45,7 +43,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
         _clientState = clientState;
-        //_playerState = playerState;
 
         _questSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
         _questSelector.DefaultPredicate = quest => quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);

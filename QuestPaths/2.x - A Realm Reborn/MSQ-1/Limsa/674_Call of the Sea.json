@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "$": "This is the follow-up quest for both Lominsan Envoy & Gridanian Envoy (Ul'dahn Envoy has a quest with the same name, but different id)",
   "QuestSequence": [
     {

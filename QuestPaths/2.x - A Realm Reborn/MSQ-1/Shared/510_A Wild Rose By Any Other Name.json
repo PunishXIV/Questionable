@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-02-09"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -88,6 +88,23 @@
           "InteractionType": "UnlockTaxiStand",
           "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "TaxiStandId": 1179662
+        },
+        {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "Position": {
+            "X": -26.738379,
+            "Y": 33,
+            "Z": -495.80618
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+        },
+        {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "TerritoryId": 147,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Northern Thanalan - Camp Bluefog"
         },
         {
           "Position": {

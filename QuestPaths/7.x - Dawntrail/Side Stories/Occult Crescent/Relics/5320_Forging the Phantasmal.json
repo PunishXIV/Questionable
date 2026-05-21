@@ -13,7 +13,9 @@
             "Z": 13.38208
           },
           "TerritoryId": 1278,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": ["[Tuliyollal] Aetheryte Plaza","[Tuliyollal] Phantom Village"]
         }
       ]
     },

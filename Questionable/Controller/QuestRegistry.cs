@@ -348,7 +348,8 @@ internal sealed class QuestRegistry
     {
         foreach (FileInfo file in root.GetFiles())
         {
-            if (file.Name == filename)
+            if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) || // if filename match case insensitive
+                file.Name.StartsWith( filename[..(filename.IndexOf('_')+1)] )) // if ID at start of filename match
                 return file;
         }
 

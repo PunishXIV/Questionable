@@ -10,13 +10,7 @@
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                212
-              ]
-            }
-          }
+          "SkipConditions": {"StepIf": {"InTerritory": [140,212],"Item": {"NotInInventory": true}}}
         },
         {
           "Position": {
@@ -26,13 +20,8 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                212
-              ]
-            }
-          }
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
         },
         {
           "DataId": 2001711,
@@ -44,13 +33,7 @@
           "TerritoryId": 140,
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                212
-              ]
-            }
-          }
+          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
         },
         {
           "DataId": 1007533,

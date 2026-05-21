@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -78,28 +79,8 @@
     },
     {
       "Sequence": 4,
+      "Comment": "Unlocking some aetherytes",
       "Steps": [
-        {
-          "TerritoryId": 135,
-          "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Lower La Noscea - Moraby Drydocks",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            },
-            "StepIf": {
-              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
-        },
         {
           "TerritoryId": 134,
           "InteractionType": "AttuneAetheryte",
@@ -118,6 +99,45 @@
             },
             "StepIf": {
               "AetheryteUnlocked": "Middle La Noscea - Summerford Farms"
+            }
+          }
+        },
+        {
+          "DataId": 1003584,
+          "Position": {
+            "X": 317.43335,
+            "Y": -36.325005,
+            "Z": 352.86487
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "TargetTerritoryId": 135,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Lower La Noscea - Moraby Drydocks",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
             }
           }
         },
