@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-19" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -36,9 +37,7 @@
           "TerritoryId": 153,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            1888
-          ]
+          "KillEnemyDataIds": [1888]
         }
       ]
     },
@@ -60,15 +59,15 @@
     {
       "Sequence": 3,
       "Steps": [
-{
-  "Position": {
+        {
+          "Position": {
             "X": -219.94328,
             "Y": 21.050707,
             "Z": 343.71066
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo"
-},
+        },
         {
           "DataId": 1006279,
           "Position": {

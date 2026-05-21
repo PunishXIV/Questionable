@@ -6,6 +6,7 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using Questionable.Data;
 using Questionable.Model.Questing;
 namespace Questionable.External;
@@ -70,6 +71,7 @@ internal sealed class BossModIpc
         //_commandManager.ProcessCommand("/vbmai on");
         _commandManager.ProcessCommand("/vbm cfg ZoneModuleConfig EnableQuestBattles true");
         _commandManager.ProcessCommand("/vbm cfg Autorotation ClearPresetOnCombatEnd false");
+        Svc.Log.Debug($"Enabling preset {(passive ? "Overworld" : "QuestBattle")}");
         SetPreset(passive ? EPreset.Overworld : EPreset.QuestBattle);
     }
 

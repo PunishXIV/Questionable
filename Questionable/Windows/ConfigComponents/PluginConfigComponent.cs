@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -36,14 +36,16 @@ internal sealed class PluginConfigComponent
             your character to the next quest-related objective.
             """,
             new("https://github.com/awgil/ffxiv_navmesh/"),
-            new("https://puni.sh/api/repository/veyn")),
+            new("https://puni.sh/api/repository/veyn"),
+            "/vnav"),
         new("Lifestream",
             "Lifestream",
             """
             Used to travel to aethernet shards in cities.
             """,
             new("https://github.com/NightmareXIV/Lifestream"),
-            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json")),
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/lifestream"),
         new("TextAdvance",
             "TextAdvance",
             """
@@ -51,7 +53,8 @@ internal sealed class PluginConfigComponent
             and dialogue.
             """,
             new("https://github.com/NightmareXIV/TextAdvance"),
-            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"))
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/at c")
     ];
 
     private static readonly ReadOnlyDictionary<Configuration.ECombatModule, PluginInfo> CombatPlugins =
@@ -63,7 +66,8 @@ internal sealed class PluginConfigComponent
                     "BossMod",
                     string.Empty,
                     new("https://github.com/awgil/ffxiv_bossmod"),
-                    new("https://puni.sh/api/repository/veyn"))
+                    new("https://puni.sh/api/repository/veyn"),
+                    "/vbm")
             },
             {
                 Configuration.ECombatModule.WrathCombo,
@@ -71,7 +75,8 @@ internal sealed class PluginConfigComponent
                     "WrathCombo",
                     string.Empty,
                     new("https://github.com/PunishXIV/WrathCombo"),
-                    new("https://puni.sh/api/plugins"))
+                    new("https://puni.sh/api/plugins"),
+                    "/wrath")
             },
             {
                 Configuration.ECombatModule.RotationSolverReborn,
@@ -80,7 +85,8 @@ internal sealed class PluginConfigComponent
                     string.Empty,
                     new("https://github.com/FFXIV-CombatReborn/RotationSolverReborn"),
                     new(
-                        "https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json"))
+                        "https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json"),
+                    "/rsr")
             }
         }.AsReadOnly();
     private readonly CombatController _combatController = combatController;
@@ -127,7 +133,13 @@ internal sealed class PluginConfigComponent
             """,
             new("https://github.com/PunishXIV/Artisan"),
             new("https://puni.sh/api/plugins"),
-            "/artisan")
+            "/artisan"),
+        new("AutoDuty",
+            "AutoDuty",
+            "Automates duties",
+            new("https://github.com/erdelf/AutoDuty"),
+            new("https://puni.sh/api/repository/erdelf"),
+            "/ad")
     ];
     private readonly UiUtils _uiUtils = uiUtils;
 
@@ -161,52 +173,65 @@ internal sealed class PluginConfigComponent
                                ImGui.GetStyle().ItemSpacing.X;
         }
 
-        ImGui.Text("Questionable requires the following plugins to work:");
         allRequiredInstalled = true;
-        using (ImRaii.PushIndent())
-        {
-            foreach (PluginInfo plugin in RequiredPlugins)
-                allRequiredInstalled &= DrawPlugin(plugin, checklistPadding);
-        }
-
-        ImGui.Spacing();
-        ImGui.Separator();
-        ImGui.Spacing();
-
-        ImGui.Text("Questionable recommends Boss Mod (VBM) for rotation/combat automation.");
-
-        using (ImRaii.Disabled(_combatController.IsRunning))
+        ImGui.SetNextItemOpen(true, ImGuiCond.Once);
+        if (ImGui.CollapsingHeader("Required plugins:"))
         {
             using (ImRaii.PushIndent())
             {
-                if (ImGui.RadioButton("No rotation/combat plugin (combat must be done manually)",
-                    _configuration.General.CombatModule == Configuration.ECombatModule.None))
+                foreach (PluginInfo plugin in RequiredPlugins)
+                    allRequiredInstalled &= DrawPlugin(plugin, checklistPadding);
+            }
+        }
+
+        if (ImGui.CollapsingHeader("Rotation/Automation plugins: (Recommended: BossMod (VBM) )"))
+        {
+            using (ImRaii.Disabled(_combatController.IsRunning))
+            {
+                using (ImRaii.PushIndent())
                 {
-                    _configuration.General.CombatModule = Configuration.ECombatModule.None;
-                    _pluginInterface.SavePluginConfig(_configuration);
+                    if (ImGui.RadioButton("No rotation/combat plugin (combat must be done manually)",
+                        _configuration.General.CombatModule == Configuration.ECombatModule.None))
+                    {
+                        _configuration.General.CombatModule = Configuration.ECombatModule.None;
+                        _pluginInterface.SavePluginConfig(_configuration);
+                    }
+
+                    allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
+                    allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
                 }
 
-                allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
-                allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
-            }
-
-            ImGui.Text("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:");
-            using (ImRaii.PushIndent())
-            {
-                allRequiredInstalled &=
-                    DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
+                ImGui.Text("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:");
+                using (ImRaii.PushIndent())
+                {
+                    allRequiredInstalled &=
+                        DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
+                }
             }
         }
 
-        ImGui.Spacing();
-        ImGui.Separator();
-        ImGui.Spacing();
-
-        ImGui.Text("The following plugins are recommended, but not required:");
-        using (ImRaii.PushIndent())
+        if (ImGui.CollapsingHeader("Recommended/niche plugins:"))
         {
-            foreach (PluginInfo plugin in _recommendedPlugins)
-                DrawPlugin(plugin, checklistPadding);
+            using (ImRaii.PushIndent())
+            {
+                foreach (PluginInfo plugin in _recommendedPlugins)
+                    DrawPlugin(plugin, checklistPadding);
+            }
+        }
+    }
+
+    private void AddConfigClickable(IExposedPlugin? installedPlugin, PluginInfo plugin)
+    {
+        if (installedPlugin != null && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
+        {
+            if (ImGui.IsItemHovered())
+            {
+                ImGui.SetTooltip("Open Config");
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+            }
+            if (ImGui.IsItemClicked())
+                _commandManager.ProcessCommand(plugin.ConfigCommand);
+
         }
     }
 
@@ -220,9 +245,21 @@ internal sealed class PluginConfigComponent
             if (installedPlugin != null)
                 label += $" v{installedPlugin.Version}";
 
+            ImGui.BeginGroup();
+            if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (installedPlugin.Manifest.Author.Contains("AtmoOmen")))
+                plugin = new(
+                    plugin.DisplayName,
+                    plugin.InternalName,
+                    plugin.Details,
+                    new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
+                    new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
+                    plugin.ConfigCommand
+                );
             _uiUtils.ChecklistItem(label, isInstalled);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);
+            ImGui.EndGroup();
+            AddConfigClickable(installedPlugin, plugin);
             return isInstalled;
         }
     }
@@ -255,6 +292,7 @@ internal sealed class PluginConfigComponent
                 ImGui.AlignTextToFramePadding();
                 ImGui.TextColored(iconColor, icon.ToIconString());
             }
+            AddConfigClickable(installedPlugin, plugin);
 
             DrawPluginDetails(plugin, checklistPadding, isInstalled);
             return isInstalled || _configuration.General.CombatModule != combatModule;
@@ -293,8 +331,13 @@ internal sealed class PluginConfigComponent
             {
                 if (!allDetailsOk && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
                 {
-                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Cog, "Open configuration"))
+                    ImRaii.ColorDisposable? color = null;
+                    if (!allDetailsOk)
+                        color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+                    if (ImGuiComponents.IconButton(FontAwesomeIcon.Cog))
                         _commandManager.ProcessCommand(plugin.ConfigCommand);
+                    if (color != null)
+                        color.Dispose();
                 }
             }
             else

@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -50,7 +51,8 @@
           "TerritoryId": 128,
           "InteractionType": "UseItem",
           "ItemId": 30362,
-          "TargetTerritoryId": 140
+          "TargetTerritoryId": 140,
+          "SkipConditions": {"StepIf": {"InTerritory": [140,212],"Item": {"NotInInventory": true}}}
         },
         {
           "Position": {
@@ -60,7 +62,8 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "$": "Avoid walking around Waking Sands table"
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
         },
         {
           "DataId": 2001711,
@@ -71,7 +74,8 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 212
+          "TargetTerritoryId": 212,
+          "SkipConditions": {"StepIf": {"InTerritory": [212]}}
         },
         {
           "DataId": 2001715,

@@ -1,4 +1,5 @@
-﻿using Dalamud.Plugin;
+﻿using System;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using ECommons;
@@ -41,6 +42,11 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
         catch (IpcError e)
         {
             _logger.LogError(e, "Unable to craft items");
+            return false;
+        }
+        catch (Exception e)
+        {
+            _logger.LogInformation(e, "CraftList failed");
             return false;
         }
     }

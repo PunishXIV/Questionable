@@ -221,8 +221,8 @@ internal sealed class CreationUtilsComponent
             nameId = $"; n={character.NameId}";
 
         ImGui.Separator();
-        ImGui.Text(string.Create(CultureInfo.InvariantCulture,
-            $"Target: {target.Name}  ({target.ObjectKind}; {GameFunctions.GetBaseID(target)}{nameId})"));
+        ImGui.Text($"Target: {target.Name}");
+        ImGui.Text($"  ({target.ObjectKind}; {GameFunctions.GetBaseID(target)}{nameId})");
 
         if (_objectTable[0] != null)
         {

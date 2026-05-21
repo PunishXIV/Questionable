@@ -18,7 +18,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
 {
-    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, GameFunctions gameFunctions, IClientState clientState)
+    internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, IClientState clientState)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -62,7 +62,6 @@ internal static class AetheryteShortcut
         AetheryteFunctions aetheryteFunctions,
         QuestFunctions questFunctions,
         GameFunctions gameFunctions,
-        AlliedSocietyData alliedSocietyData,
         IClientState clientState,
         IObjectTable objectTable,
         IChatGui chatGui,
@@ -228,8 +227,16 @@ internal static class AetheryteShortcut
                                 return true;
                             }
 
-                            logger.LogInformation("No step position, teleporting to aetheryte");
-                            return false;
+                            if (!Task.Step.InteractionType.Equals(EInteractionType.AttuneAetheryte))
+                            {
+                                logger.LogInformation("No step position, teleporting to aetheryte");
+                                return false;
+                            }
+                            else
+                            {
+                                logger.LogInformation("AttuneAetheryte, proceeding to destination");
+                                return true;
+                            }
                         }
 
                         float distance_target = (pos - Task.Step.Position.Value).Length();

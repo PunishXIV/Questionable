@@ -16,6 +16,12 @@ internal enum ETaskResult
     /// </summary>
     CreateNewTasks,
 
+    /// <summary>
+    ///     The current step has effectively failed and should be re-run from scratch. The remaining task queue
+    ///     is cleared and the controller is asked to regenerate tasks for the current quest step.
+    /// </summary>
+    RetryStep,
+
     NextStep,
     End
 }

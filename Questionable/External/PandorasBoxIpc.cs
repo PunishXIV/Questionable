@@ -22,6 +22,7 @@ internal sealed class PandorasBoxIpc : IDisposable
         "Auto-Peleton",
         "Auto-Sprint in Sanctuaries",
         "Auto-select Turn-ins",
+        "Auto-Summon Chocobo",
         "Auto-Sync FATEs",
 
         // Targets

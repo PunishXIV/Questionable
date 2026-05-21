@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
+using ECommons.DalamudServices;
 using Microsoft.Extensions.Logging;
 namespace Questionable.External;
 
@@ -31,6 +32,16 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         pluginInterface.GetIpcSubscriber<Vector3, bool, bool>("vnavmesh.SimpleMove.PathfindAndMoveTo");
     private readonly ICallGateSubscriber<bool> _simpleMovePathfindInProgress =
         pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
+
+    public Version? Version
+    {
+        get
+        {
+            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
+                x.InternalName == "vnavmesh" && x.IsLoaded);
+            return plugin?.Version ?? null;
+        }
+    }
 
     public bool IsReady
     {
@@ -85,7 +96,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
         catch (IpcError e)
         {
-            _logger.LogWarning(e, "Could not stop navigating via navmesh");
+            _logger.LogWarning(e, $"Could not stop navigating via navmesh {Version}");
         }
     }
 
@@ -94,21 +105,12 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     {
         try
         {
-            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
-                x.InternalName == "vnavmesh" && x.IsLoaded);
-            if (plugin != null && plugin.Version < new Version(1, 2, 3, 2))
-                throw new IpcValueNullError("vnavmesh", typeof(Version), 0);
             _pathSetTolerance.InvokeAction(0.25f);
             return _navPathfind.InvokeFunc(localPlayerPosition, targetPosition, fly, cancellationToken);
         }
         catch (IpcNotReadyError e)
         {
-            _logger.LogWarning(e, "Could not pathfind via navmesh");
-            return Task.FromException<List<Vector3>>(e);
-        }
-        catch (IpcValueNullError e)
-        {
-            _logger.LogWarning(e, "Unsupported version of vnavmesh");
+            _logger.LogWarning(e, $"Could not pathfind via navmesh {Version}");
             return Task.FromException<List<Vector3>>(e);
         }
     }
@@ -123,7 +125,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
         catch (IpcError e)
         {
-            _logger.LogWarning(e, "Could not move via navmesh");
+            _logger.LogWarning(e, $"Could not move via navmesh {Version}");
         }
     }
 
@@ -149,7 +151,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
         catch (IpcError exception)
         {
-            _logger.LogWarning(exception, "Could not SimplePathfindAndMoveTo");
+            _logger.LogWarning(exception, $"Could not SimplePathfindAndMoveTo {Version}");
             return false;
         }
     }
@@ -164,7 +166,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
         catch (IpcError exception)
         {
-            _logger.LogWarning(exception, "Could not SimplePathfindAndMoveCloseTo");
+            _logger.LogWarning(exception, $"Could not SimplePathfindAndMoveCloseTo {Version}");
             return false;
         }
     }
