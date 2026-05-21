@@ -33,6 +33,7 @@ internal sealed class QuestJournalComponent
     MovementController movementController,
     AetheryteFunctions aetheryteFunctions,
     AetheryteData aetheryteData,
+    QuestController questController,
     IGameGui gameGui)
 {
     private readonly Dictionary<JournalData.Category, JournalCounts> _categoryCounts = [];
@@ -51,6 +52,7 @@ internal sealed class QuestJournalComponent
     private readonly MovementController _movementController = movementController;
     private readonly AetheryteFunctions _aetheryteFunctions = aetheryteFunctions;
     private readonly AetheryteData _aetheryteData = aetheryteData;
+    private readonly QuestController _questController = questController;
 
     private List<FilteredSection> _filteredSections = [];
 
@@ -238,6 +240,15 @@ internal sealed class QuestJournalComponent
         }
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));
+
+        if (quest != null && _questController.ManualPriorityQuests.Contains(quest))
+        {
+            ImGui.SameLine();
+            using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                ImGui.TextColored(ImGuiColors.DalamudYellow, FontAwesomeIcon.Exclamation.ToIconString());
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip("This quest is in the Priority Queue.");
+        }
 
         ImGui.TableNextColumn();
         float spacing;
