@@ -133,7 +133,13 @@ internal sealed class PluginConfigComponent
             """,
             new("https://github.com/PunishXIV/Artisan"),
             new("https://puni.sh/api/plugins"),
-            "/artisan")
+            "/artisan"),
+        new("AutoDuty",
+            "AutoDuty",
+            "Automates duties",
+            new("https://github.com/erdelf/AutoDuty"),
+            new("https://puni.sh/api/repository/erdelf"),
+            "/ad")
     ];
     private readonly UiUtils _uiUtils = uiUtils;
 
@@ -167,52 +173,50 @@ internal sealed class PluginConfigComponent
                                ImGui.GetStyle().ItemSpacing.X;
         }
 
-        ImGui.Text("Questionable requires the following plugins to work:");
         allRequiredInstalled = true;
-        using (ImRaii.PushIndent())
-        {
-            foreach (PluginInfo plugin in RequiredPlugins)
-                allRequiredInstalled &= DrawPlugin(plugin, checklistPadding);
-        }
-
-        ImGui.Spacing();
-        ImGui.Separator();
-        ImGui.Spacing();
-
-        ImGui.Text("Questionable recommends Boss Mod (VBM) for rotation/combat automation.");
-
-        using (ImRaii.Disabled(_combatController.IsRunning))
+        ImGui.SetNextItemOpen(true, ImGuiCond.Once);
+        if (ImGui.CollapsingHeader("Required plugins:"))
         {
             using (ImRaii.PushIndent())
             {
-                if (ImGui.RadioButton("No rotation/combat plugin (combat must be done manually)",
-                    _configuration.General.CombatModule == Configuration.ECombatModule.None))
+                foreach (PluginInfo plugin in RequiredPlugins)
+                    allRequiredInstalled &= DrawPlugin(plugin, checklistPadding);
+            }
+        }
+
+        if (ImGui.CollapsingHeader("Rotation/Automation plugins: (Recommended: BossMod (VBM) )"))
+        {
+            using (ImRaii.Disabled(_combatController.IsRunning))
+            {
+                using (ImRaii.PushIndent())
                 {
-                    _configuration.General.CombatModule = Configuration.ECombatModule.None;
-                    _pluginInterface.SavePluginConfig(_configuration);
+                    if (ImGui.RadioButton("No rotation/combat plugin (combat must be done manually)",
+                        _configuration.General.CombatModule == Configuration.ECombatModule.None))
+                    {
+                        _configuration.General.CombatModule = Configuration.ECombatModule.None;
+                        _pluginInterface.SavePluginConfig(_configuration);
+                    }
+
+                    allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
+                    allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
                 }
 
-                allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
-                allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
-            }
-
-            ImGui.Text("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:");
-            using (ImRaii.PushIndent())
-            {
-                allRequiredInstalled &=
-                    DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
+                ImGui.Text("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:");
+                using (ImRaii.PushIndent())
+                {
+                    allRequiredInstalled &=
+                        DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
+                }
             }
         }
 
-        ImGui.Spacing();
-        ImGui.Separator();
-        ImGui.Spacing();
-
-        ImGui.Text("The following plugins are recommended, but not required:");
-        using (ImRaii.PushIndent())
+        if (ImGui.CollapsingHeader("Recommended/niche plugins:"))
         {
-            foreach (PluginInfo plugin in _recommendedPlugins)
-                DrawPlugin(plugin, checklistPadding);
+            using (ImRaii.PushIndent())
+            {
+                foreach (PluginInfo plugin in _recommendedPlugins)
+                    DrawPlugin(plugin, checklistPadding);
+            }
         }
     }
 
