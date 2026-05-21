@@ -1,0 +1,129 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001291,
+          "Position": {
+            "X": -164.29395,
+            "Y": 14.005,
+            "Z": 41.94702
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001292,
+          "Position": {
+            "X": -124.55945,
+            "Y": 10,
+            "Z": 1.2054443
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -118.18667,
+            "Y": 9.563334,
+            "Z": 9.227681
+          },
+          "TerritoryId": 130,
+          "TargetTerritoryId": 131,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2000691,
+          "Position": {
+            "X": -85.67944,
+            "Y": 8.46875,
+            "Z": 18.539673
+          },
+          "TerritoryId": 131,
+          "InteractionType": "UseItem",
+          "ItemId": 2000137,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
+        },
+        {
+          "DataId": 2000692,
+          "Position": {
+            "X": -68.61987,
+            "Y": 8.438171,
+            "Z": 0.10675049
+          },
+          "TerritoryId": 131,
+          "InteractionType": "UseItem",
+          "ItemId": 2000137,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
+        },
+        {
+          "DataId": 2000693,
+          "Position": {
+            "X": -86.86963,
+            "Y": 8.651855,
+            "Z": -18.661804
+          },
+          "TerritoryId": 131,
+          "InteractionType": "UseItem",
+          "ItemId": 2000137,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003896,
+          "Position": {
+            "X": -96.17767,
+            "Y": 6.5999684,
+            "Z": 21.286316
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

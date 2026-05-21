@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Numerics;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
@@ -40,6 +42,7 @@ internal sealed class QuestInfo : IQuestInfo
         Name = $"{quest.Name}{suffix}";
         Level = quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
+        IssuerLocation = new(quest.IssuerLocation.Value);
         IsRepeatable = quest.IsRepeatable;
         PreviousQuests =
             new List<PreviousQuestInfo>
@@ -110,6 +113,7 @@ internal sealed class QuestInfo : IQuestInfo
     public string Name { get; }
     public ushort Level { get; }
     public uint IssuerDataId { get; }
+    public SheetLevel IssuerLocation { get; }
     public bool IsRepeatable { get; }
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; private set; }
     public EQuestJoin PreviousQuestJoin { get; }
@@ -138,5 +142,23 @@ internal sealed class QuestInfo : IQuestInfo
 
         QuestLockJoin = questJoin;
         QuestLocks = [.. QuestLocks, .. questId];
+    }
+
+    public readonly struct SheetLevel(Level level)
+    {
+        public readonly Vector3 Position = level.AsVector3();
+        public readonly float X => Position.X;
+        public readonly float Y => Position.Y;
+        public readonly float Z => Position.Z;
+        public readonly TerritoryType Territory => Svc.Data.GetExcelSheet<TerritoryType>().GetRow(level.Territory.RowId);
+        public readonly Map Map => Svc.Data.GetExcelSheet<Map>().GetRow(level.Map.RowId);
+        public readonly Vector3 Game => new(
+                WorldPositionToMapCoord(X, Map.SizeFactor, Map.OffsetX),
+                0f,
+                WorldPositionToMapCoord(Z, Map.SizeFactor, Map.OffsetY)
+        );
+        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory}, {Map}, {Game})";
+        private static float WorldPositionToMapCoord(float v, ushort scale, short offset)
+            => 41f * ((MathF.Truncate(v) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
     }
 }
