@@ -1018,6 +1018,7 @@ csharp_style_inlined_variable_declaration = true : suggestion
 csharp_style_deconstructed_variable_declaration = true : suggestion
 csharp_style_unused_value_assignment_preference = discard_variable : suggestion
 csharp_style_unused_value_expression_statement_preference = discard_variable : silent
+csharp_preserve_single_line_statements = true
 
 resharper_arrange_trailing_comma_in_multiline_lists_highlighting = none
 resharper_redundant_if_else_block_highlighting = none
@@ -1036,4 +1037,5 @@ dotnet_analyzer_diagnostic.category-Globalization.severity = none
 # CS8618: Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
 dotnet_diagnostic.CS8618.severity = none
 
-"csharp_preserve_single_line_statements = true"
+# CA1873: Avoid potentially expensive logging
+dotnet_diagnostic.CA1873.severity = none

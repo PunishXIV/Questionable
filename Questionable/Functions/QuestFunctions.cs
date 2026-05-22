@@ -451,8 +451,6 @@ internal sealed unsafe class QuestFunctions
                         {
                             if ((y.Step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked) != aetheryteShortcut)
                                 return aetheryteShortcut;
-                            // else _logger.LogTrace("Checking priority quest {QuestId}: aetheryte locked, but is listed as skippable", quest.Id);
-
                         }
 
                         if (y.Step.AethernetShortcut is { } aethernetShortcut)

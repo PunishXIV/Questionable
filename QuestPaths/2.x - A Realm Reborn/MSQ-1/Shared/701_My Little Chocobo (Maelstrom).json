@@ -34,8 +34,9 @@
             "Z": 76.67651
           },
           "TerritoryId": 128,
-          "InteractionType": "Instruction",
-          "Comment": "Buy Storm Chocobo Issuance in Materiel tab"
+          "InteractionType": "PurchaseItem",
+          "ItemId": 6017,
+          "ItemCount": 1
         },
         {
           "DataId": 1003597,

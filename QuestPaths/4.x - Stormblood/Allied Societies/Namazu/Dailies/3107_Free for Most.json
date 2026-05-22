@@ -52,6 +52,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
+          "StopDistance": 1,
           "RequiredQuestAcceptedJob": [
             "DoH"
           ]

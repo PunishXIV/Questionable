@@ -1,0 +1,55 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1007604,
+          "Position": {
+            "X": 57.114502,
+            "Y": 4.0970407,
+            "Z": 422.65967
+          },
+          "TerritoryId": 147,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006642,
+          "Position": {
+            "X": 49.088257,
+            "Y": 13.775579,
+            "Z": 232.56274
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007604,
+          "Position": {
+            "X": 57.114502,
+            "Y": 4.0970407,
+            "Z": 422.65967
+          },
+          "TerritoryId": 147,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+        }
+      ]
+    }
+  ]
+}

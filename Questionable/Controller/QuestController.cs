@@ -541,7 +541,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     {
                         if (msqState == MainScenarioQuestState.Unavailable)
                         {
-                            //_logger.LogWarning("MSQ information not available, doing nothing");
                             return;
                         }
                         else if (msqState == MainScenarioQuestState.LoadingScreen)
@@ -586,7 +585,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
                         StartedQuest = new(quest, currentSequence);
 #if DEBUG
-                        if (_configuration.Advanced.OpenEditor)
+                        if (_configuration.Advanced.OpenEditor && 
+                            (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 90)))
                         {
                             (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
                             _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
@@ -768,7 +768,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void ClearTasksInternal()
     {
-        //_logger.LogDebug("Clearing task (internally)");
         if (_taskQueue.CurrentTaskExecutor is IStoppableTaskExecutor stoppableTaskExecutor)
             stoppableTaskExecutor.StopNow();
 

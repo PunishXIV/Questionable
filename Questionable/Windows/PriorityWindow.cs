@@ -50,7 +50,7 @@ internal sealed class PriorityWindow : LWindow
     public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, QuestRegistry questRegistry,
         IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData)
-        : base("Quest Priority###QuestionableQuestPriority")
+        : base("Priority Quests###QuestionableQuestPriority")
     {
         _questController = questController;
         _questFunctions = questFunctions;
