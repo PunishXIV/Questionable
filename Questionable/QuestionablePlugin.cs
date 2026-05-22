@@ -21,6 +21,7 @@ using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
 using Questionable.Gear;
+using Questionable.PathData;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
@@ -274,6 +275,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<MovementOverrideController>();
         serviceCollection.AddSingleton<GatheringPointRegistry>();
         serviceCollection.AddSingleton<QuestRegistry>();
+        serviceCollection.AddSingleton<PathDataUpdater>();
         serviceCollection.AddSingleton<QuestPriorityManager>();
         serviceCollection.AddSingleton<QuestProgressTracker>();
         serviceCollection.AddSingleton<QuestController>();
@@ -365,6 +367,9 @@ public sealed class QuestionablePlugin : IDalamudPlugin
 
     private static void Initialize(IServiceProvider serviceProvider)
     {
+        // Resolve before the registry loads — its constructor discards a bundle left by an older
+        // plugin version, so the registry doesn't pick up a stale one.
+        PathDataUpdater pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
         serviceProvider.GetRequiredService<QuestRegistry>().Reload();
         serviceProvider.GetRequiredService<GatheringPointRegistry>().Reload();
         serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
@@ -384,5 +389,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceProvider.GetRequiredService<DalamudInitializer>();
         serviceProvider.GetRequiredService<TextAdvanceIpc>();
         serviceProvider.GetRequiredService<YesAlreadyIpc>();
+
+        pathDataUpdater.CheckForUpdates();
     }
 }

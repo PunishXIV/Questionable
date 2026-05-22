@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.PathData;
 using Questionable.QuestPaths;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
@@ -78,6 +80,7 @@ internal sealed class QuestRegistry
 
         LoadQuestsFromAssembly();
         LoadQuestsFromProjectDirectory();
+        LoadQuestsFromDownloadedBundle();
 
         try
         {
@@ -164,6 +167,67 @@ internal sealed class QuestRegistry
         }
     }
 
+    /// <summary>
+    ///     Loads quests from a downloaded path bundle (<c>{ConfigDirectory}/PathData/bundle.zip</c>)
+    ///     if one is present. Entries here override the compiled baseline but are themselves
+    ///     overridden by the hand-authored user directory. A single bad entry is skipped rather
+    ///     than aborting the rest of the bundle.
+    /// </summary>
+    private void LoadQuestsFromDownloadedBundle()
+    {
+        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        if (!File.Exists(bundlePath))
+            return;
+
+        try
+        {
+            using ZipArchive archive = ZipFile.OpenRead(bundlePath);
+            PathDataManifest? manifest = PathDataBundle.ReadManifest(archive);
+            if (manifest == null)
+            {
+                _logger.LogWarning("Downloaded path bundle has no manifest; ignoring it");
+                return;
+            }
+
+            // Gate A: never load a bundle that needs a newer plugin than this one.
+            if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
+            {
+                _logger.LogWarning(
+                    "Ignoring downloaded path bundle (data version {DataVersion}): it requires plugin data format {MinFormat}, this plugin supports {CurrentFormat}",
+                    manifest.DataVersion, manifest.MinPluginDataFormat, PathDataFormat.CurrentVersion);
+                return;
+            }
+
+            int loaded = 0, failed = 0;
+            foreach (ZipArchiveEntry entry in archive.Entries)
+            {
+                if (!entry.FullName.StartsWith(PathDataBundle.QuestPathPrefix, StringComparison.Ordinal) ||
+                    !entry.Name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                try
+                {
+                    using Stream stream = entry.Open();
+                    LoadQuestFromStream(entry.Name, stream, Quest.ESource.DownloadedBundle);
+                    ++loaded;
+                }
+                catch (Exception e)
+                {
+                    ++failed;
+                    _logger.LogWarning(e, "Failed to load quest '{Entry}' from downloaded bundle (skipped)",
+                        entry.FullName);
+                }
+            }
+
+            _logger.LogInformation("Loaded {Loaded} quests from downloaded path bundle (data version {DataVersion}){Failed}",
+                loaded, manifest.DataVersion, failed > 0 ? $", {failed} skipped" : string.Empty);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to load downloaded path bundle; falling back to the compiled baseline");
+        }
+    }
+
     private void LoadCfcIds()
     {
         foreach (Quest quest in _quests.Values)
@@ -193,7 +257,11 @@ internal sealed class QuestRegistry
         }
     }
 
-    private void ValidateQuests() => _questValidator.Validate(_quests.Values.Where(x => x.Source != Quest.ESource.Assembly).ToList());
+    // The compiled baseline and downloaded bundles are validated by CI before publication, so
+    // only the hand-authored user directory (and dev project directory) is validated at runtime.
+    private void ValidateQuests() => _questValidator.Validate(_quests.Values
+        .Where(x => x.Source is not (Quest.ESource.Assembly or Quest.ESource.DownloadedBundle))
+        .ToList());
 
     private void LoadQuestFromStream(string fileName, Stream stream, Quest.ESource source)
     {
@@ -204,7 +272,11 @@ internal sealed class QuestRegistry
             return;
 
         JsonNode questNode = JsonNode.Parse(stream)!;
-        _jsonSchemaValidator.Enqueue(questId, questNode);
+
+        // Downloaded bundles are trusted (CI-validated + checksum-verified); only runtime-loaded
+        // hand-authored data is schema-validated here.
+        if (source != Quest.ESource.DownloadedBundle)
+            _jsonSchemaValidator.Enqueue(questId, questNode);
 
         QuestRoot questRoot = questNode.Deserialize<QuestRoot>()!;
         IQuestInfo questInfo = _questData.GetQuestInfo(questId);

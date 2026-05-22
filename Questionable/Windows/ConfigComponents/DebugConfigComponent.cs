@@ -5,9 +5,10 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using Questionable.PathData;
 namespace Questionable.Windows.ConfigComponents;
 
-internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration) : ConfigComponent(pluginInterface, configuration)
+internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, PathDataUpdater pathDataUpdater) : ConfigComponent(pluginInterface, configuration)
 {
     public override void DrawTab()
     {
@@ -229,6 +230,33 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("When enabled, Questionable will open the path for the current quest in your default text editor.");
 #endif
+        }
+
+        ImGui.Separator();
+        ImGui.Text("Path data");
+        using (ImRaii.PushIndent())
+        {
+            bool autoUpdatePaths = Configuration.PathData.AutoUpdate;
+            if (ImGui.Checkbox("Automatically download quest/gathering path updates", ref autoUpdatePaths))
+            {
+                Configuration.PathData.AutoUpdate = autoUpdatePaths;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker("Downloads newer quest/gathering paths without needing a full plugin update.");
+
+            if (ImGui.Button("Check for path updates now"))
+                pathDataUpdater.CheckForUpdatesManually();
+
+            ImGui.SameLine();
+            ImGui.TextColored(ImGuiColors.DalamudGrey, pathDataUpdater.Status);
+
+            long installedVersion = Configuration.PathData.InstalledDataVersion;
+            ImGui.TextColored(ImGuiColors.DalamudGrey,
+                installedVersion == 0
+                    ? "Using the path data bundled with the plugin."
+                    : $"Downloaded path data version: {installedVersion}");
         }
     }
 }
