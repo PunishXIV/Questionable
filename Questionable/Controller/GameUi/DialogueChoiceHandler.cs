@@ -6,6 +6,7 @@ using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
+using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -144,12 +145,8 @@ internal sealed class DialogueChoiceHandler : IDisposable
         if (actualPrompt == null)
             return;
 
-        List<string?> answers = [];
-        for (ushort i = 7; i < addonSelectString->AtkUnitBase.AtkValuesCount; ++i)
-        {
-            if (addonSelectString->AtkUnitBase.AtkValues[i].Type == AtkValueType.String)
-                answers.Add(AtkValueAdapter.ReadString(addonSelectString->AtkUnitBase.AtkValues[i]));
-        }
+        AddonMaster.SelectString master = new(addonSelectString);
+        List<string?> answers = [.. master.Entries.Select(x => (string?)x.Text)];
 
         int? answer = HandleListChoice(actualPrompt, answers, checkAllSteps) ?? HandleInstanceListChoice(actualPrompt);
         if (answer != null)
@@ -240,13 +237,8 @@ internal sealed class DialogueChoiceHandler : IDisposable
 
     public static unsafe List<string?> GetChoices(AddonSelectIconString* addonSelectIconString)
     {
-        List<string?> answers = [];
-        for (ushort i = 0; i < addonSelectIconString->AtkUnitBase.AtkValues[5].Int; i++)
-        {
-            answers.Add(AtkValueAdapter.ReadString(addonSelectIconString->AtkValues[i * 3 + 7]));
-        }
-
-        return answers;
+        AddonMaster.SelectIconString master = new(addonSelectIconString);
+        return [.. master.Entries.Select(x => (string?)x.Text)];
     }
 
     private int? HandleListChoice(string? actualPrompt, List<string?> answers, bool checkAllSteps)
