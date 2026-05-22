@@ -5,3 +5,5 @@
 - Dependencies tab sections can now be minimised -alydev
 - Testing refactor -Kage, alydev
 - Add split pathing. so the plugin doesnt have to update anytime there is a path update - Kage
+- Add Death handling. Now it will retry 5 times before it needs manual intervention. - Kage
+- Fix list quests not selecting the correct response - Kage 
