@@ -122,7 +122,6 @@ internal sealed class GatheringPointRegistry : IDisposable
 
     private void LoadGatheringPointFromStream(string fileName, Stream stream)
     {
-        //_logger.LogTrace("Loading gathering point from '{FileName}'", fileName);
         GatheringPointId? gatheringPointId = ExtractGatheringPointIdFromName(fileName);
         if (gatheringPointId == null)
             return;

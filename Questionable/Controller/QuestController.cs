@@ -541,7 +541,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     {
                         if (msqState == MainScenarioQuestState.Unavailable)
                         {
-                            //_logger.LogWarning("MSQ information not available, doing nothing");
                             return;
                         }
                         else if (msqState == MainScenarioQuestState.LoadingScreen)
@@ -768,7 +767,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void ClearTasksInternal()
     {
-        //_logger.LogDebug("Clearing task (internally)");
         if (_taskQueue.CurrentTaskExecutor is IStoppableTaskExecutor stoppableTaskExecutor)
             stoppableTaskExecutor.StopNow();
 

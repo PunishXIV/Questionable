@@ -135,7 +135,6 @@ internal static class Interact
 
         public override ETaskResult Update()
         {
-            //logger.LogDebug($"Entered Update, _continueAt: {_continueAt}");
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
@@ -143,7 +142,6 @@ internal static class Interact
             {
                 if (condition[ConditionFlag.Mounted])
                 {
-                    //logger.LogDebug("Attempting unmount");
                     gameFunctions.Unmount();
                     _continueAt = DateTime.Now.AddSeconds(1);
                     return ETaskResult.StillRunning;
@@ -151,10 +149,7 @@ internal static class Interact
                 else
                     _needsUnmount = false;
             }
-            else
-                //logger.LogDebug("Does not need unmount");
-
-            if (Task.PickUpItemId is { } pickUpItemId)
+            else if (Task.PickUpItemId is { } pickUpItemId)
             {
                 logger.LogDebug("PickUpItemId {PickUpItemId}", pickUpItemId);
                 unsafe
@@ -178,7 +173,6 @@ internal static class Interact
                 return ETaskResult.TaskComplete;
             else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
             {
-                logger.LogDebug("Checking QW");
                 QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Quest.Id);
 
                 if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
@@ -186,7 +180,6 @@ internal static class Interact
             }
             else if (ProgressContext != null)
             {
-                logger.LogDebug("Entered ProgressContext");
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
                 else if (ProgressContext.WasSuccessful() ||
@@ -200,8 +193,6 @@ internal static class Interact
                     return ETaskResult.StillRunning;
                 }
             }
-            else
-                logger.LogDebug("Conditions block passed");
 
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
             //if (gameObject == null || !gameObject.IsTargetable || !HasAnyMarker(gameObject))
@@ -217,7 +208,6 @@ internal static class Interact
             }
 
             _reportedGameObjNull = false;
-            //logger.LogDebug("gameObject != null");
 
             if (_needsFacing)
             {
@@ -227,8 +217,6 @@ internal static class Interact
                 _needsFacing = false;
                 return ETaskResult.StillRunning;
             }
-            else
-                logger.LogDebug("Does not need facing");
 
             if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
             {
@@ -293,8 +281,6 @@ internal static class Interact
                     return ETaskResult.StillRunning;
                 }
             }
-            //else
-            //    logger.LogDebug("is not AcceptQuest");
 
             if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
                 return ETaskResult.StillRunning;
