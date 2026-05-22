@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
@@ -386,8 +387,14 @@ internal sealed unsafe class GameFunctions
         }
     }
 
+    // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration
+    // macros (icons, italics, ...) as literal "<icon(69)>"-style tokens. Strip those so addon
+    // text and excel text compare equal regardless of which reader produced them.
+    private static readonly Regex MacroLiteralRegex = new("<[^>]+>", RegexOptions.Compiled);
+
     /// <summary>
-    ///     Ensures characters like '-' are handled equally in both strings.
+    ///     Ensures characters like '-' are handled equally in both strings, and that decoration
+    ///     macros (icons, italics, ...) and surrounding whitespace do not affect equality.
     /// </summary>
     public static bool GameStringEquals(string? a, string? b)
     {
@@ -397,8 +404,14 @@ internal sealed unsafe class GameFunctions
         if (b == null)
             return false;
 
-        return a.ReplaceLineEndings().Replace('\u2013', '-') == b.ReplaceLineEndings().Replace('\u2013', '-');
+        return NormalizeGameString(a) == NormalizeGameString(b);
     }
+
+    private static string NormalizeGameString(string value) =>
+        MacroLiteralRegex.Replace(value, string.Empty)
+            .ReplaceLineEndings()
+            .Replace('\u2013', '-')
+            .Trim();
 
     public bool IsOccupied()
     {
