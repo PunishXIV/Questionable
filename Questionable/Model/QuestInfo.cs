@@ -40,6 +40,7 @@ internal sealed class QuestInfo : IQuestInfo
         };
 
         Name = $"{quest.Name}{suffix}";
+        BaseName = quest.Name.ToString();
         Level = quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
         IssuerLocation = new(quest.IssuerLocation.Value);
@@ -111,6 +112,7 @@ internal sealed class QuestInfo : IQuestInfo
 
     public ElementId QuestId { get; }
     public string Name { get; }
+    public string BaseName { get; }
     public ushort Level { get; }
     public uint IssuerDataId { get; }
     public SheetLevel IssuerLocation { get; }
@@ -157,7 +159,7 @@ internal sealed class QuestInfo : IQuestInfo
                 0f,
                 WorldPositionToMapCoord(Z, Map.SizeFactor, Map.OffsetY)
         );
-        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory}, {Map}, {Game})";
+        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {Game})";
         private static float WorldPositionToMapCoord(float v, ushort scale, short offset)
             => 41f * ((MathF.Truncate(v) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
     }

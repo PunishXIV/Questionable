@@ -1,4 +1,6 @@
-- Bug fix: teleporting destination -alydev
-- Dependencies tab sections can now be minimised -alydev
+- Icon in Journal Progress to show when quest is in Priority Quests -wah
+  - Priority Quests icon changed from Exclamation to ExclamationCircle -alydev
+- Standardised 'Priority Quests' name -alydev
 - Click NoQuestPath journal progress entry to travel to issuer -alydev
+- Dependencies tab sections can now be minimised -alydev
 - Testing refactor -Kage, alydev

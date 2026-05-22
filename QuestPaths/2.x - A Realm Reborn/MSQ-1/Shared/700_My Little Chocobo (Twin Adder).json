@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -21,15 +22,16 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1002394,
+          "DataId": 1002393,
           "Position": {
             "X": -69.5354,
             "Y": -0.50095016,
             "Z": -9.99469
           },
           "TerritoryId": 132,
-          "InteractionType": "Instruction",
-          "Comment": "Buy Serpent Chocobo Issuance"
+          "InteractionType": "PurchaseItem",
+          "ItemId": 6018,
+          "ItemCount": 1
         },
         {
           "DataId": 1000136,

@@ -35,6 +35,7 @@ internal sealed class Configuration : IPluginConfiguration
     {
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
         public uint MountId { get; set; } = 71;
+        public string ChocoboName { get; set; } = "Chicken";
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
         public Job CraftingJob { get; set; } = Job.CRP;

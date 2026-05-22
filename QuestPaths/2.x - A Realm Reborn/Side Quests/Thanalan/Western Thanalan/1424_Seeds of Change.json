@@ -1,0 +1,76 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-21" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "TerritoryId": 140,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "Item": { "NotInInventory": true }
+            }
+          }
+        },
+        {
+          "DataId": 1008758,
+          "Position": {
+            "X": -472.19043,
+            "Y": 23.008799,
+            "Z": -320.8515
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008760,
+          "Position": {
+            "X": -299.5194,
+            "Y": 18.413626,
+            "Z": -179.46143
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008758,
+          "Position": {
+            "X": -472.19043,
+            "Y": 23.008799,
+            "Z": -320.8515
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        }
+      ]
+    }
+  ]
+}

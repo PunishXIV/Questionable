@@ -52,12 +52,14 @@
         {
           "DataId": 1032663,
           "Position": {
-            "X": 793.97266,
-            "Y": -45.811764,
-            "Z": -188.03699
+            "X": 792.62604,
+            "Y": -45.80807,
+            "Z": -189.18097
           },
           "TerritoryId": 817,
+          "StopDistance": 1,
           "Fly": true,
+          "Land": true,
           "InteractionType": "Interact"
         }
       ]

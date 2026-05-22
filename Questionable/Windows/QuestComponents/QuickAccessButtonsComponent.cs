@@ -35,7 +35,7 @@ internal sealed class QuickAccessButtonsComponent
 
     public void Draw()
     {
-        DrawQuestPriorityButton();
+        DrawPriorityQuestsButton();
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
 
@@ -55,9 +55,9 @@ internal sealed class QuickAccessButtonsComponent
         }
     }
 
-    private void DrawQuestPriorityButton()
+    private void DrawPriorityQuestsButton()
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Exclamation, "Priority Quests"))
+        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, "Priority Quests"))
             _priorityWindow.ToggleOrUncollapse();
 
         if (ImGui.IsItemHovered())
