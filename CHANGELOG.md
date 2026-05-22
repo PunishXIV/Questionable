@@ -2,3 +2,4 @@
 - Dependencies tab sections can now be minimised -alydev
 - Click NoQuestPath journal progress entry to travel to issuer -alydev
 - Testing refactor -Kage, alydev
+- Add split pathing. so the plugin doesnt have to update anytime there is a path update - Kage
