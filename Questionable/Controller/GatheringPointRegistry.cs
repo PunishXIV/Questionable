@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text.Json;
 using Dalamud.Plugin;
@@ -12,6 +13,7 @@ using Questionable.Data;
 using Questionable.GatheringPaths;
 using Questionable.Model;
 using Questionable.Model.Gathering;
+using Questionable.PathData;
 namespace Questionable.Controller;
 
 internal sealed class GatheringPointRegistry : IDisposable
@@ -46,6 +48,7 @@ internal sealed class GatheringPointRegistry : IDisposable
 
         LoadGatheringPointsFromAssembly();
         LoadGatheringPointsFromProjectDirectory();
+        LoadGatheringPointsFromDownloadedBundle();
 
         try
         {
@@ -120,9 +123,60 @@ internal sealed class GatheringPointRegistry : IDisposable
         }
     }
 
+    /// <summary>
+    ///     Loads gathering points from a downloaded path bundle
+    ///     (<c>{ConfigDirectory}/PathData/bundle.zip</c>) if one is present. Entries here override
+    ///     the compiled baseline but are themselves overridden by the hand-authored user
+    ///     directory. A single bad entry is skipped rather than aborting the rest of the bundle.
+    /// </summary>
+    private void LoadGatheringPointsFromDownloadedBundle()
+    {
+        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        if (!File.Exists(bundlePath))
+            return;
+
+        try
+        {
+            using ZipArchive archive = ZipFile.OpenRead(bundlePath);
+            PathDataManifest? manifest = PathDataBundle.ReadManifest(archive);
+
+            // Gate A: skip a bundle missing its manifest or requiring a newer plugin.
+            // QuestRegistry already logs the detailed reason during its own load pass.
+            if (manifest == null || !manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
+                return;
+
+            int loaded = 0, failed = 0;
+            foreach (ZipArchiveEntry entry in archive.Entries)
+            {
+                if (!entry.FullName.StartsWith(PathDataBundle.GatheringPathPrefix, StringComparison.Ordinal) ||
+                    !entry.Name.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                try
+                {
+                    using Stream stream = entry.Open();
+                    LoadGatheringPointFromStream(entry.Name, stream);
+                    ++loaded;
+                }
+                catch (Exception e)
+                {
+                    ++failed;
+                    _logger.LogWarning(e, "Failed to load gathering point '{Entry}' from downloaded bundle (skipped)",
+                        entry.FullName);
+                }
+            }
+
+            _logger.LogInformation("Loaded {Loaded} gathering points from downloaded path bundle{Failed}",
+                loaded, failed > 0 ? $", {failed} skipped" : string.Empty);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Failed to load gathering points from downloaded path bundle");
+        }
+    }
+
     private void LoadGatheringPointFromStream(string fileName, Stream stream)
     {
-        //_logger.LogTrace("Loading gathering point from '{FileName}'", fileName);
         GatheringPointId? gatheringPointId = ExtractGatheringPointIdFromName(fileName);
         if (gatheringPointId == null)
             return;

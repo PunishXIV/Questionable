@@ -10,6 +10,7 @@ internal interface IQuestInfo
 {
     public ElementId QuestId { get; }
     public string Name { get; }
+    public string BaseName => Name;
     public uint IssuerDataId { get; }
     public bool IsRepeatable { get; }
     public ImmutableList<PreviousQuestInfo> PreviousQuests { get; }
@@ -22,7 +23,7 @@ internal interface IQuestInfo
     public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }
 
-    public string SimplifiedName => Name
+    public string SimplifiedName => BaseName
         .Replace(".", "", StringComparison.Ordinal)
         .Replace("*", "", StringComparison.Ordinal)
         .Replace("\"", "", StringComparison.Ordinal)

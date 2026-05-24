@@ -112,26 +112,18 @@ internal sealed class MoveExecutor
         if (!_gameFunctions.IsFlyingUnlocked(Task.TerritoryId))
             Task = Task with { Fly = false, Land = false };
 
+        MovementController.NavigationOptions options = new()
+        {
+            Fly = Task.Fly,
+            Sprint = Task.Sprint ?? _mountDuringMovement == null,
+            StopDistance = Task.StopDistance,
+            VerticalStopDistance = Task.IgnoreDistanceToObject ? float.MaxValue : null,
+            Land = Task.Land,
+        };
         if (!Task.DisableNavmesh)
-        {
-            _startAction = () =>
-                _movementController.NavigateTo(EMovementType.Quest, Task.DataId, _destination,
-                    Task.Fly,
-                    Task.Sprint ?? _mountDuringMovement == null,
-                    Task.StopDistance,
-                    Task.IgnoreDistanceToObject ? float.MaxValue : null,
-                    Task.Land);
-        }
+            _startAction = () => _movementController.NavigateTo(EMovementType.Quest, Task.DataId, _destination, options);
         else
-        {
-            _startAction = () =>
-                _movementController.NavigateTo(EMovementType.Quest, Task.DataId, [_destination],
-                    Task.Fly,
-                    Task.Sprint ?? _mountDuringMovement == null,
-                    Task.StopDistance,
-                    Task.IgnoreDistanceToObject ? float.MaxValue : null,
-                    Task.Land);
-        }
+            _startAction = () => _movementController.NavigateTo(EMovementType.Quest, Task.DataId, [_destination], options);
     }
 
     protected override bool Start()

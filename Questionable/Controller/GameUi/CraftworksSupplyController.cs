@@ -2,6 +2,7 @@
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Plugin.Services;
+using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Microsoft.Extensions.Logging;
@@ -56,30 +57,17 @@ internal sealed class CraftworksSupplyController : IDisposable
 
     private unsafe void InteractWithBankaCraftworksSupply(AtkUnitBase* addon)
     {
-        AtkValue* atkValues = addon->AtkValues;
-
-        uint completedCount = atkValues[7].UInt;
-        uint missingCount = 6 - completedCount;
-        for (int slot = 0; slot < missingCount; ++slot)
+        AddonMaster.BankaCraftworksSupply master = new(addon);
+        if (master.FirstUnfilledSlot is { } slot)
         {
-            if (atkValues[31 + slot].UInt != 0)
-                continue;
-
+            // TryHandOver opens the item-pick context menu, which ContextIconMenuPostReceiveEvent handles.
             _logger.LogInformation("Selecting an item for slot {Slot}", slot);
-            AtkValue* selectSlot = stackalloc AtkValue[]
-            {
-                new() { Type = AtkValueType.Int, Int = 2 },
-                new() { Type = AtkValueType.Int, Int = slot /* slot */ }
-            };
-            addon->FireCallback(2, selectSlot);
-            return;
+            master.TryHandOver(slot);
         }
-
-        // do turn-in if any item is provided
-        if (atkValues[31].UInt != 0)
+        else
         {
             _logger.LogInformation("Confirming turn-in");
-            addon->FireCallbackInt(0);
+            master.Deliver();
         }
     }
 

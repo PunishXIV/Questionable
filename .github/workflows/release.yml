@@ -3,6 +3,11 @@ name: Auto release on watched branch push
 on:
   push:
     branches: [ new-main, testing ]
+    # Path-only commits ship via publish-paths.yml as a separate data bundle and must not
+    # trigger a full plugin release. Mixed commits (code + paths) still release normally.
+    paths-ignore:
+      - 'QuestPaths/**'
+      - 'GatheringPaths/**'
   workflow_dispatch:
     inputs:
       force_release:

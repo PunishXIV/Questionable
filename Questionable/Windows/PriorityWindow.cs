@@ -66,9 +66,9 @@ internal sealed class PriorityWindow : LWindow
         _questSelector.SuggestionPredicate = quest =>
             !quest.Info.IsMainScenarioQuest &&
             !questFunctions.IsQuestUnobtainable(quest.Id) &&
-            questController.ManualPriorityQuests.All(x => x.Id != quest.Id);
+            questController.PriorityManager.Quests.All(x => x.Id != quest.Id);
         _questSelector.DefaultPredicate = quest => questFunctions.IsQuestAccepted(quest.Id);
-        _questSelector.QuestSelected = quest => _questController.ManualPriorityQuests.Add(quest);
+        _questSelector.QuestSelected = quest => _questController.PriorityManager.Add(quest);
 
         Size = new Vector2(400, 400);
         SizeCondition = ImGuiCond.Once;
@@ -113,17 +113,17 @@ internal sealed class PriorityWindow : LWindow
             ImportFromClipboard(clipboardItems);
         ImGui.EndDisabled();
         ImGui.SameLine();
-        ImGui.BeginDisabled(_questController.ManualPriorityQuests.Count == 0);
+        ImGui.BeginDisabled(_questController.PriorityManager.IsEmpty);
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
             ExportToClipboard();
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
-            _questController.ManualPriorityQuests.RemoveAll(q => _questFunctions.IsQuestComplete(q.Id));
+            _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete);
         ImGui.SameLine();
 
         using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
             if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
-                _questController.ClearQuestPriority();
+                _questController.PriorityManager.Clear();
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
@@ -134,7 +134,7 @@ internal sealed class PriorityWindow : LWindow
 
     private void DrawQuestList()
     {
-        List<Quest> priorityQuests = _questController.ManualPriorityQuests;
+        List<Quest> priorityQuests = [.. _questController.PriorityManager.Quests];
         Quest? itemToRemove = null;
         Quest? itemToAdd = null;
         int indexToAdd = 0;
@@ -251,13 +251,10 @@ internal sealed class PriorityWindow : LWindow
         }
 
         if (itemToRemove != null)
-            priorityQuests.Remove(itemToRemove);
+            _questController.PriorityManager.Remove(itemToRemove);
 
         if (itemToAdd != null)
-        {
-            priorityQuests.Remove(itemToAdd);
-            priorityQuests.Insert(indexToAdd, itemToAdd);
-        }
+            _questController.PriorityManager.Move(priorityQuests.IndexOf(itemToAdd), indexToAdd);
     }
 
     private static List<ElementId> ParseClipboardItems()
@@ -303,7 +300,7 @@ internal sealed class PriorityWindow : LWindow
     public string EncodeQuestPriority()
     {
         return ClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
-            string.Join(ClipboardSeparator, _questController.ManualPriorityQuests.Select(x => x.Id.ToString()))));
+            string.Join(ClipboardSeparator, _questController.PriorityManager.Quests.Select(x => x.Id.ToString()))));
     }
 
     private void ExportToClipboard()
@@ -313,7 +310,7 @@ internal sealed class PriorityWindow : LWindow
         _chatGui.Print("Copied quests to clipboard.", CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
-    private void ImportFromClipboard(List<ElementId> questElements) => _questController.ImportQuestPriority(questElements);
+    private void ImportFromClipboard(List<ElementId> questElements) => _questController.PriorityManager.Import(questElements);
 
     private void DrawPresets()
     {
@@ -362,7 +359,7 @@ internal sealed class PriorityWindow : LWindow
         bool nameEmpty = string.IsNullOrWhiteSpace(_presetName);
         bool nameIsBuiltIn = !nameEmpty && builtInPresets.ContainsKey(_presetName.Trim());
         bool nameExists = !nameEmpty && userPresets.ContainsKey(_presetName.Trim());
-        bool noQuests = _questController.ManualPriorityQuests.Count == 0;
+        bool noQuests = _questController.PriorityManager.IsEmpty;
 
         using (ImRaii.Disabled(nameEmpty || nameIsBuiltIn || noQuests || (nameExists && !ImGui.IsKeyDown(ImGuiKey.ModCtrl))))
         {
@@ -439,18 +436,18 @@ internal sealed class PriorityWindow : LWindow
 
     private void LoadPreset(string name)
     {
-        _questController.ClearQuestPriority();
+        _questController.PriorityManager.Clear();
 
         if (name == JobQuestsPresetName)
         {
-            _questController.ImportQuestPriority(GetCurrentJobQuests());
+            _questController.PriorityManager.Import(GetCurrentJobQuests());
             return;
         }
 
         Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
         if (builtInPresets.TryGetValue(name, out List<ElementId>? questIds))
         {
-            _questController.ImportQuestPriority(questIds);
+            _questController.PriorityManager.Import(questIds);
         }
         else if (_configuration.Priority.Presets.TryGetValue(name, out List<string>? questIdStrings))
         {
@@ -461,13 +458,13 @@ internal sealed class PriorityWindow : LWindow
                     ids.Add(id);
             }
 
-            _questController.ImportQuestPriority(ids);
+            _questController.PriorityManager.Import(ids);
         }
     }
 
     private void SavePreset(string name)
     {
-        List<string> questIds = _questController.ManualPriorityQuests
+        List<string> questIds = _questController.PriorityManager.Quests
             .Select(q => q.Id.ToString())
             .ToList();
         _configuration.Priority.Presets[name] = questIds;

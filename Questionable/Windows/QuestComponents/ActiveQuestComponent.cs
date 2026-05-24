@@ -34,7 +34,6 @@ internal sealed partial class ActiveQuestComponent
     IChatGui chatGui,
     ILogger<ActiveQuestComponent> logger)
 {
-    //private readonly IPlayerState _playerState;
     private readonly IChatGui _chatGui = chatGui;
     private readonly CombatController _combatController = combatController;
     private readonly ICommandManager _commandManager = commandManager;
@@ -473,7 +472,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
             {
                 (bool success, string filename) = QuestRegistry.OpenEditor(currentQuest.Quest.Info);
-                _logger.LogDebug($"OpenEditor {success}: {filename}");
+                _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
             }
         }
 #endif

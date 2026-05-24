@@ -36,7 +36,6 @@ internal static class Dive
     internal sealed class DoDive(ICondition condition)
         : AbstractDelayedTaskExecutor<Task>(TimeSpan.FromSeconds(5))
     {
-        //private readonly Queue<(uint Type, nint Key)> _keysToPress = [];
         private int _attempts;
 
         protected override bool StartInternal()
@@ -62,22 +61,6 @@ internal static class Dive
             return false;
         }
 
-        //public override unsafe ETaskResult Update()
-        //{
-        //    if (_keysToPress.TryDequeue(out var definition))
-        //    {
-        //        if (definition.Type == 0)
-        //            return ETaskResult.StillRunning;
-
-        //        logger.LogDebug("{Action} key {KeyCode:X2}",
-        //            definition.Type == NativeMethods.WM_KEYDOWN ? "Pressing" : "Releasing", definition.Key);
-        //        NativeMethods.SendMessage((nint)Device.Instance()->hWnd, definition.Type, definition.Key, nint.Zero);
-        //        return ETaskResult.StillRunning;
-        //    }
-
-        //    return base.Update();
-        //}
-
         public override bool ShouldInterruptOnDamage() => false;
 
         protected override ETaskResult UpdateInternal()
@@ -92,74 +75,5 @@ internal static class Dive
             _attempts++;
             return ETaskResult.StillRunning;
         }
-
-        //private unsafe void Descend()
-        //{
-        //    var keyName = Utf8String.FromString("MOVE_DESCENT");
-        //    var inputData = UIInputData.Instance();
-        //    Keybind* keybind = inputData->GetKeybind(InputId.MOVE_DESCENT);
-
-        //    if (keybind == null)
-        //        throw new TaskException("No keybind data found for diving");
-
-        //    if (keybind->KeySettings.Length == 0)
-        //        throw new TaskException("No keybind found for diving");
-
-        //    foreach (var bind in keybind->KeySettings)
-        //    {
-        //        logger.LogDebug("Dive keybind option: Key={Key}, Modifier={Modifier}", bind.Key, bind.KeyModifier);
-        //    }
-
-        //    List<List<nint>?> availableKeys = [GetKeysToPress(keybind->KeySettings[0].Key, keybind->KeySettings[0].KeyModifier)]; // Primary keybind
-
-        //    if (keybind->KeySettings.Length > 1)
-        //        availableKeys.Add(GetKeysToPress(keybind->KeySettings[1].Key, keybind->KeySettings[1].KeyModifier)); // Add secondary keybind if it exists
-
-        //    List<nint>? realKeys = availableKeys.Where(x => x != null).Select(x => x!).MinBy(x => x.Count);
-        //    if (realKeys == null || realKeys.Count == 0)
-        //        throw new TaskException("No useable keybind found for diving");
-
-        //    foreach (var key in realKeys)
-        //    {
-        //        _keysToPress.Enqueue((NativeMethods.WM_KEYDOWN, key));
-        //        _keysToPress.Enqueue((0, 0));
-        //        _keysToPress.Enqueue((0, 0));
-        //    }
-
-        //    for (int i = 0; i < 5; ++i)
-        //        _keysToPress.Enqueue((0, 0)); // do nothing
-
-        //    realKeys.Reverse();
-        //    foreach (var key in realKeys)
-        //        _keysToPress.Enqueue((NativeMethods.WM_KEYUP, key));
-        //}
     }
-
-    //private static List<nint>? GetKeysToPress(SeVirtualKey key, KeyModifierFlag modifier)
-    //{
-    //    List<nint> keys = [];
-    //    if (modifier.HasFlag(KeyModifierFlag.Ctrl))
-    //        keys.Add(0x11); // VK_CONTROL
-    //    if (modifier.HasFlag(KeyModifierFlag.Shift))
-    //        keys.Add(0x10); // VK_SHIFT
-    //    if (modifier.HasFlag(KeyModifierFlag.Alt))
-    //        keys.Add(0x12); // VK_MENU
-
-    //    nint mappedKey = (nint)key;
-    //    if (mappedKey == 0)
-    //        return null;
-
-    //    keys.Add(mappedKey);
-    //    return keys;
-    //}
-
-    //private static class NativeMethods
-    //{
-    //    public const uint WM_KEYUP = 0x101;
-    //    public const uint WM_KEYDOWN = 0x100;
-
-    //    [DllImport("user32.dll", CharSet = CharSet.Auto)]
-    //    [DefaultDllImportSearchPaths(DllImportSearchPath.System32)]
-    //    public static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, nint wParam, nint lParam);
-    //}
 }

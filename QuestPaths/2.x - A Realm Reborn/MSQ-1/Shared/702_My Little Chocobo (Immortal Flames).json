@@ -39,8 +39,9 @@
             "Z": -108.537415
           },
           "TerritoryId": 130,
-          "InteractionType": "Instruction",
-          "Comment": "Buy Flame Chocobo Issuance"
+          "InteractionType": "PurchaseItem",
+          "ItemId": 6019,
+          "ItemCount": 1
         },
         {
           "DataId": 1001978,

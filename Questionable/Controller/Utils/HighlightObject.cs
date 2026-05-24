@@ -70,7 +70,7 @@ internal sealed class HighlightObject : IDisposable
         {
             if (!_targetNpcDataId.Contains(Id))
             {
-                _logger.LogDebug($"Adding {Id} to highlight");
+                _logger.LogDebug("Adding {Id} to highlight", Id);
                 _targetNpcDataId = _targetNpcDataId.Append(Id).ToArray();
             }
         });
@@ -80,7 +80,7 @@ internal sealed class HighlightObject : IDisposable
     {
         _ = _framework.Run(() =>
         {
-            _logger.LogDebug($"Removing {Id} from highlight");
+            _logger.LogDebug("Removing {Id} from highlight", Id);
             _targetNpcDataId = _targetNpcDataId.Where(n => n != Id).ToArray();
         });
     }
@@ -94,7 +94,7 @@ internal sealed class HighlightObject : IDisposable
             ToggleHighlight(false);
             if (_targetNpcDataId.Length == 0 && Ids.Length == 0)
                 return;
-            _logger.LogDebug($"Setting highlight to {string.Join(',', Ids)}");
+            _logger.LogDebug("Setting highlight to {Ids}", string.Join(',', Ids));
             _targetNpcDataId = Ids;
             ToggleHighlight(true);
         });

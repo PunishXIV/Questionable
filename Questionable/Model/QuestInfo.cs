@@ -40,6 +40,7 @@ internal sealed class QuestInfo : IQuestInfo
         };
 
         Name = $"{quest.Name}{suffix}";
+        BaseName = quest.Name.ToString();
         Level = quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
         IssuerLocation = new(quest.IssuerLocation.Value);
@@ -111,6 +112,7 @@ internal sealed class QuestInfo : IQuestInfo
 
     public ElementId QuestId { get; }
     public string Name { get; }
+    public string BaseName { get; }
     public ushort Level { get; }
     public uint IssuerDataId { get; }
     public SheetLevel IssuerLocation { get; }

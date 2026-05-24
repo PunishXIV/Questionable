@@ -88,7 +88,7 @@ internal sealed class QuestSelectionWindow : LWindow
             _quests = _questData.GetAllByIssuerDataId(targetId);
             if (_gameGui.TryGetAddonByName("SelectIconString", out AddonSelectIconString* addonSelectIconString))
             {
-                List<string?> answers = InteractionUiController.GetChoices(addonSelectIconString);
+                List<string?> answers = DialogueChoiceHandler.GetChoices(addonSelectIconString);
                 _offeredQuests = _quests
                     .Where(x => answers.Any(y => GameFunctions.GameStringEquals(x.Name, y)))
                     .ToList();

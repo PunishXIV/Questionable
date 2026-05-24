@@ -1,0 +1,124 @@
+name: Publish path data bundle
+
+# Publishes the quest/gathering path data as a standalone, downloadable bundle whenever
+# path JSON changes. This is independent of the plugin release (release.yml) and does NOT
+# bump Directory.Build.targets or create a v{VERSION} tag.
+
+on:
+  push:
+    branches: [ new-main, testing ]
+    paths:
+      - 'QuestPaths/**'
+      - 'GatheringPaths/**'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write
+
+jobs:
+  publish-paths:
+    runs-on: ubuntu-latest
+    if: contains(fromJson(vars.RELEASE_USERNAMES), github.actor)
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine channel
+        id: channel
+        run: |
+          BRANCH=${GITHUB_REF#refs/heads/}
+          if [ "$BRANCH" = "new-main" ]; then
+            echo "channel=latest" >> $GITHUB_OUTPUT
+          else
+            echo "channel=testing" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Compute data version and format
+        id: meta
+        run: |
+          # dataVersion = commit timestamp: monotonic, deterministic, tied to the path change.
+          DATA_VERSION=$(git log -1 --format=%ct)
+          # minPluginDataFormat = the format version this path snapshot was authored against.
+          MIN_FORMAT=$(grep -oP 'CurrentVersion\s*=\s*\K[0-9]+' Questionable.Model/PathDataFormat.cs | head -1)
+          if [ -z "$DATA_VERSION" ] || [ -z "$MIN_FORMAT" ]; then
+            echo "Error: could not compute data version / plugin data format"
+            exit 1
+          fi
+          echo "data_version=$DATA_VERSION" >> $GITHUB_OUTPUT
+          echo "min_format=$MIN_FORMAT" >> $GITHUB_OUTPUT
+          echo "Data version: $DATA_VERSION, minimum plugin data format: $MIN_FORMAT"
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Validate quest JSON against the schema
+        run: dotnet test QuestPaths.JsonValidator/QuestPaths.JsonValidator.csproj -c Release
+
+      - name: Build bundle
+        id: bundle
+        run: |
+          mkdir -p out
+          GENERATED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          CHANNEL=${{ steps.channel.outputs.channel }}
+
+          # manifest.json stored INSIDE the bundle — used by the plugin at load time for the
+          # compatibility check; no url/sha needed since you already have the zip.
+          cat > manifest.json <<EOF
+          {
+            "schemaVersion": 1,
+            "dataVersion": ${{ steps.meta.outputs.data_version }},
+            "minPluginDataFormat": ${{ steps.meta.outputs.min_format }},
+            "maxPluginDataFormat": null,
+            "generatedAt": "$GENERATED_AT"
+          }
+          EOF
+
+          # Bundle = the expansion folders of both path projects + the manifest at the root.
+          zip -r -q -X out/paths.zip QuestPaths/?.x* GatheringPaths/?.x*
+          zip -q -X -j out/paths.zip manifest.json
+
+          SHA=$(sha256sum out/paths.zip | cut -d' ' -f1)
+          BUNDLE_URL="https://github.com/${{ github.repository }}/releases/download/paths-${CHANNEL}/paths.zip"
+
+          # Standalone manifest published next to the bundle — the updater fetches this first
+          # (cheap) to decide whether a newer, compatible bundle is available.
+          cat > out/manifest-${CHANNEL}.json <<EOF
+          {
+            "schemaVersion": 1,
+            "dataVersion": ${{ steps.meta.outputs.data_version }},
+            "minPluginDataFormat": ${{ steps.meta.outputs.min_format }},
+            "maxPluginDataFormat": null,
+            "bundleUrl": "$BUNDLE_URL",
+            "bundleSha256": "$SHA",
+            "generatedAt": "$GENERATED_AT"
+          }
+          EOF
+
+          echo "Bundle SHA-256: $SHA"
+          ls -la out/
+
+      - name: Publish path bundle release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: paths-${{ steps.channel.outputs.channel }}
+          name: "Path data (${{ steps.channel.outputs.channel }})"
+          body: |
+            Rolling quest/gathering path data bundle for the **${{ steps.channel.outputs.channel }}** channel.
+
+            - Data version: `${{ steps.meta.outputs.data_version }}`
+            - Minimum plugin data format: `${{ steps.meta.outputs.min_format }}`
+
+            Updated automatically when path data changes. This does not trigger a plugin release.
+          files: |
+            out/paths.zip
+            out/manifest-${{ steps.channel.outputs.channel }}.json
+          draft: false
+          prerelease: ${{ steps.channel.outputs.channel == 'testing' }}
+          make_latest: false

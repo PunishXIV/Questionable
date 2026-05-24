@@ -24,6 +24,7 @@ internal sealed class Configuration : IPluginConfiguration
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
+    public PathDataConfiguration PathData { get; } = new();
 
     public int Version { get; set; } = 1;
 
@@ -35,6 +36,7 @@ internal sealed class Configuration : IPluginConfiguration
     {
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
         public uint MountId { get; set; } = 71;
+        public string ChocoboName { get; set; } = "Chicken";
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
         public Job CraftingJob { get; set; } = Job.CRP;
@@ -122,6 +124,21 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class PriorityConfiguration
     {
         public Dictionary<string, List<string>> Presets { get; set; } = [];
+    }
+
+    internal sealed class PathDataConfiguration
+    {
+        /// <summary>Whether to automatically download newer quest/gathering path bundles.</summary>
+        public bool AutoUpdate { get; set; } = true;
+
+        /// <summary>Data version of the path bundle currently in <c>{ConfigDirectory}/PathData/</c>; 0 if none.</summary>
+        public long InstalledDataVersion { get; set; }
+
+        /// <summary>Plugin version that downloaded the current bundle; used to discard it after a plugin update.</summary>
+        public string? BundlePluginVersion { get; set; }
+
+        /// <summary>When the updater last checked for a newer bundle.</summary>
+        public DateTimeOffset? LastCheck { get; set; }
     }
 
     internal enum EGearsetUpdateSource
