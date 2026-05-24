@@ -1,10 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": [
-    "Censored",
-    "alydev"
-  ],
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-14"},
+  "Author": ["Censored", "alydev"],
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-24" },
   "Comment": "Requires manual intervention",
   "QuestSequence": [
     {
@@ -31,6 +28,28 @@
       "Steps": [
         {
           "Position": {
+            "X": 244.82239,
+            "Y": 222.01717,
+            "Z": 352.99496
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 249.7828,
+                  "Y": 222,
+                  "Z": 364.6475
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "Position": {
             "X": 320.39117,
             "Y": 255.37843,
             "Z": 129.43526
@@ -53,8 +72,13 @@
           "ItemId": 2001403,
           "Mount": false,
           "CompletionQuestVariablesFlags": [
-            {"High": 1},
-          null,null,null,null,null]
+            { "High": 1 },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 1006385,

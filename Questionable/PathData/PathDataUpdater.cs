@@ -45,7 +45,7 @@ internal sealed class PathDataUpdater : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _channel = pluginInterface.IsTesting ? "testing" : "latest";
+        _channel = (pluginInterface.IsTesting || pluginInterface.IsDev) ? "testing" : "latest";
         _pluginVersion = typeof(PathDataUpdater).Assembly.GetName().Version?.ToString() ?? "0";
 
         DiscardStaleBundle();
@@ -120,6 +120,7 @@ internal sealed class PathDataUpdater : IDisposable
         using HttpClient http = new() { Timeout = TimeSpan.FromSeconds(30) };
 
         string manifestUrl = $"{RepositoryUrl}/releases/download/paths-{_channel}/manifest-{_channel}.json";
+        _logger.LogDebug($"Requesting path updates from {manifestUrl}");
         PathDataManifest? manifest;
         try
         {

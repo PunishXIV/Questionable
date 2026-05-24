@@ -102,7 +102,7 @@ public enum EAetheryteLocation
     FirmamentFeatherfall = 2011386,
     FirmamentHoarfrostHall = 2011387,
     FirmamentWesternRisensongQuarter = 2011388,
-    FIrmamentEasternRisensongQuarter = 2011389,
+    FirmamentEasternRisensongQuarter = 2011389,
 
     Idyllshire = 75,
     IdyllshireWest = 90,
@@ -337,7 +337,7 @@ public static class EAetheryteLocationExtensions
         EAetheryteLocation.FirmamentFeatherfall,
         EAetheryteLocation.FirmamentHoarfrostHall,
         EAetheryteLocation.FirmamentWesternRisensongQuarter,
-        EAetheryteLocation.FIrmamentEasternRisensongQuarter,
+        EAetheryteLocation.FirmamentEasternRisensongQuarter,
 
         EAetheryteLocation.IdyllshireWest,
         EAetheryteLocation.IdyllshirePrologueGate,
@@ -432,5 +432,5 @@ public static class EAetheryteLocationExtensions
             or EAetheryteLocation.FirmamentFeatherfall
             or EAetheryteLocation.FirmamentHoarfrostHall
             or EAetheryteLocation.FirmamentWesternRisensongQuarter
-            or EAetheryteLocation.FIrmamentEasternRisensongQuarter;
+            or EAetheryteLocation.FirmamentEasternRisensongQuarter;
 }

@@ -79,8 +79,8 @@ internal sealed class QuestRegistry
         _lowPriorityContentFinderConditionQuests.Clear();
 
         LoadQuestsFromAssembly();
-        LoadQuestsFromProjectDirectory();
         LoadQuestsFromDownloadedBundle();
+        LoadQuestsFromProjectDirectory();
 
         try
         {
