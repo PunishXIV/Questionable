@@ -38,14 +38,18 @@ internal sealed class ChatFunctions
         Chat.ExecuteCommand(command);
     }
 
-    public void UseEmote(uint dataId, EEmote emote)
+    public bool UseEmote(uint dataId, EEmote emote)
     {
         IGameObject? gameObject = _gameFunctions.FindObjectByDataId(dataId);
         if (gameObject != null)
         {
             _targetManager.Target = gameObject;
             ExecuteCommand($"{_emoteCommands[emote]} motion");
+            return true;
         }
+
+        _logger.LogWarning("Could not find object with DataId {DataId} for emote {Emote}", dataId, emote);
+        return false;
     }
 
     public void UseEmote(EEmote emote) => ExecuteCommand($"{_emoteCommands[emote]} motion");
