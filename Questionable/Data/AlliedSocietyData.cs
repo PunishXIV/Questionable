@@ -45,7 +45,7 @@ internal sealed class AlliedSocietyData
             {
                 >= 1222 and <= 1251 => EAlliedSociety.Amaljaa, //ARR
                 //>= 1494 and <= 1523 => EAlliedSociety.Ixal, // Ixal also has 1566,1567,1568
-                //>= 1566 and <= 1568 => EAlliedSociety.Ixal,  Ixal quests seem designed to be done sequentially and dont craft til 255
+                //>= 1566 and <= 1568 => EAlliedSociety.Ixal, // Ixal quests seem designed to be done sequentially and dont craft til 255
                 >= 1325 and <= 1344 => EAlliedSociety.Kobolds, // Kobolds 1364-1373
                 >= 1364 and <= 1373 => EAlliedSociety.Kobolds,
                 >= 1257 and <= 1286 => EAlliedSociety.Sylphs,
@@ -73,7 +73,12 @@ internal sealed class AlliedSocietyData
 
     public void GetCommonAlliedSocietyNpcs(EAlliedSociety alliedSociety, out uint[] normalNpcs, out uint[] mountNpcs)
     {
-        if (alliedSociety == EAlliedSociety.VanuVanu)
+        if (alliedSociety == EAlliedSociety.Ixal)
+        {
+            normalNpcs = [1008945, 1009218, 1009217, 1009219, 1009220, 1009221];
+            mountNpcs = [];
+        }
+        else if (alliedSociety == EAlliedSociety.VanuVanu)
         {
             normalNpcs = [1016088, 1016091, 1016092];
             mountNpcs = [1016093];

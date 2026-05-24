@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-10"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-24" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -64,6 +64,28 @@
       "Sequence": 2,
       "Steps": [
         {
+          "Position": {
+            "X": 27.21798,
+            "Y": 29,
+            "Z": -797.2569
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 40.93994,
+                  "Y": 29,
+                  "Z": -798.3673
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
           "TerritoryId": 156,
           "InteractionType": "SwitchClass",
           "TargetClass": "ConfiguredCombatJob"
@@ -79,11 +101,9 @@
           "InteractionType": "Combat",
           "AetheryteShortcut": "Mor Dhona",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            725
-          ],
+          "KillEnemyDataIds": [725],
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "NotNearPosition": {
@@ -108,10 +128,8 @@
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            725
-          ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "KillEnemyDataIds": [725],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1009670,
@@ -123,9 +141,7 @@
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            725
-          ]
+          "KillEnemyDataIds": [725]
         }
       ]
     },
