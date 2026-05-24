@@ -76,7 +76,7 @@ internal static class EquipRecommended
 
                     if (!_checkedOrTriggeredEquipmentUpdate)
                     {
-                        if (!IsAllRecommendeGearEquipped())
+                    if (!IsAllRecommendedGearEquipped())
                         {
                             chatGui.Print("Equipping recommended gear.", CommandHandler.MessageTag, CommandHandler.TagColor);
                             recommendedEquipModule->EquipRecommendedGear();
@@ -105,13 +105,12 @@ internal static class EquipRecommended
             return DateTime.Now >= _continueAt ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
         }
 
-        private bool IsAllRecommendeGearEquipped()
+        private bool IsAllRecommendedGearEquipped()
         {
             RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
             InventoryManager* inventoryManager = InventoryManager.Instance();
             InventoryContainer* equippedItems =
                 inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
-            bool isAllEquipped = true;
             foreach (Pointer<InventoryItem> recommendedItemPtr in recommendedEquipModule->RecommendedItems)
             {
                 InventoryItem* recommendedItem = recommendedItemPtr.Value;
@@ -130,10 +129,10 @@ internal static class EquipRecommended
                 }
 
                 if (!isEquipped)
-                    isAllEquipped = false;
+                    return false;
             }
 
-            return isAllEquipped;
+            return true;
         }
 
         public override bool ShouldInterruptOnDamage() => true;
