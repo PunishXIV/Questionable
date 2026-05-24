@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-11"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -26,13 +26,36 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1000776,
           "Position": {
-            "X": 115.342896,
-            "Y": 287.02945,
-            "Z": 142.1377
+            "X": 244.82239,
+            "Y": 222.01717,
+            "Z": 352.99496
           },
           "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 249.7828,
+                  "Y": 222,
+                  "Z": 364.6475
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000776,
+          "Position": {
+            "X": 115.88527,
+            "Y": 286.80994,
+            "Z": 141.1587
+          },
+          "TerritoryId": 155,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Fly": true,

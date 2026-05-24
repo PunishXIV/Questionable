@@ -48,7 +48,7 @@ internal sealed class AetheryteData
         ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentFeatherfall, 886);
         ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentHoarfrostHall, 886);
         ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentWesternRisensongQuarter, 886);
-        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FIrmamentEasternRisensongQuarter, 886);
+        ConfigureAetheryteWithAutoGroup(EAetheryteLocation.FirmamentEasternRisensongQuarter, 886);
 
         TerritoryIds = territoryIds.AsReadOnly();
         AethernetGroups = aethernetGroups.AsReadOnly();
@@ -69,6 +69,9 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.GridaniaConjurer, new(-145.15906f, 4.9591064f, -11.7647705f) },
                 { EAetheryteLocation.GridaniaBotanist, new(-311.0857f, 7.94989f, -177.05048f) },
                 { EAetheryteLocation.GridaniaAmphitheatre, new(-73.92999f, 7.9804688f, -140.15417f) },
+                { EAetheryteLocation.GridaniaBlueBadgerGate, new(128.18979f, 24.80679f, -302.40552f) },
+                { EAetheryteLocation.GridaniaYellowSerpentGate, new(449.4375f, -1.7500881f, 198.6606f) },
+                { EAetheryteLocation.GridaniaWhiteWolfGate, new(-304.8956f, 63.448616f, -278.82092f) },
 
                 { EAetheryteLocation.CentralShroudBentbranchMeadows, new(13.076904f, 0.56451416f, 35.90442f) },
                 { EAetheryteLocation.EastShroudHawthorneHut, new(-186.54156f, 3.7994385f, 297.56616f) },
@@ -86,6 +89,9 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.UldahGoldsmith, new(-19.333252f, 14.602844f, 72.03784f) },
                 { EAetheryteLocation.UldahSapphireAvenue, new(131.9447f, 4.714966f, -29.800903f) },
                 { EAetheryteLocation.UldahChamberOfRule, new(6.6376343f, 30.655273f, -24.826477f) },
+                { EAetheryteLocation.UldahGateOfTheSultana, new(447.6007f, 93.934845f, 166.6396f) },
+                { EAetheryteLocation.UldahGateOfNald, new(-124.193f, 15.7974825f, 311.01138f) },
+                { EAetheryteLocation.UldahGateOfThal, new(37.892563f, 15.730891f, 576.57306f) },
 
                 { EAetheryteLocation.WesternThanalanHorizon, new(68.0094f, 48.203125f, -227.039f) },
                 { EAetheryteLocation.CentralThanalanBlackBrushStation, new(-16.159302f, 0.32037354f, -166.58276f) },
@@ -105,6 +111,8 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.LimsaFisher, new(-179.40033f, 4.8065186f, 182.97095f) },
                 { EAetheryteLocation.LimsaMarauder, new(-5.1728516f, 44.63257f, -218.06671f) },
                 { EAetheryteLocation.LimsaHawkersAlley, new(-213.61108f, 16.739136f, 51.80432f) },
+                { EAetheryteLocation.LimsaZephyrGate, new(-3.2144258f, 41.846645f, 146.13179f) },
+                { EAetheryteLocation.LimsaTempestGate, new(-25.634218f, 70.62885f, 102.7618f) },
 
                 { EAetheryteLocation.LowerLaNosceaMorabyDrydocks, new(156.11499f, 15.518433f, 673.21277f) },
                 { EAetheryteLocation.MiddleLaNosceaSummerfordFarms, new(227.98499f, 115.526f, -257.0382f) },
@@ -138,13 +146,18 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.IshgardSaintReymanaudsCathedral, new(-77.958374f, 10.60498f, -126.54315f) },
                 { EAetheryteLocation.IshgardTribunal, new(78.01941f, 11.001709f, -126.51257f) },
                 { EAetheryteLocation.IshgardLastVigil, new(0.015197754f, 16.525452f, -32.51703f) },
+                { EAetheryteLocation.IshgardGatesOfJudgement, new(-160.8786f, 304.1538f, -322.6239f) },
 
                 { EAetheryteLocation.Idyllshire, new(71.94617f, 211.26111f, -18.905945f) },
                 { EAetheryteLocation.IdyllshireWest, new(-75.48645f, 210.22351f, -21.347473f) },
+                { EAetheryteLocation.IdyllshirePrologueGate, new(-532.0464f, 152.57794f, -483.9748f) },
+                { EAetheryteLocation.IdyllshireEpilogueGate, new(-218.27411f, 104.45129f, -602.5139f) },
 
                 { EAetheryteLocation.RhalgrsReach, new(78.23291f, 1.9683228f, 97.45935f) },
                 { EAetheryteLocation.RhalgrsReachWest, new(-84.275635f, 0.503479f, 9.323181f) },
                 { EAetheryteLocation.RhalgrsReachNorthEast, new(101.24353f, 3.463745f, -115.46509f) },
+                { EAetheryteLocation.RhalgrsReachFringesGate, new(428.8543f, 61.426693f, -528.5814f) },
+                { EAetheryteLocation.RhalgrsReachPeaksGate, new(-642.2816f, 50.86753f, -788.3701f) },
 
                 { EAetheryteLocation.CoerthasWesternHighlandsFalconsNest, new(474.87585f, 217.94458f, 708.5221f) },
                 { EAetheryteLocation.SeaOfCloudsCampCloudtop, new(-615.7473f, -118.36426f, 546.5934f) },
@@ -164,6 +177,7 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.KuganeRubyBazaar, new(132.40247f, 12.954895f, 83.02429f) },
                 { EAetheryteLocation.KuganeSekiseigumiBarracks, new(119.09656f, 13.01593f, -92.881714f) },
                 { EAetheryteLocation.KuganeRakuzaDistrict, new(24.64331f, 7.003784f, -152.97174f) },
+                { EAetheryteLocation.KuganeRubyPrice, new(845.87714f, 5.9230084f, 847.246f) },
 
                 { EAetheryteLocation.FringesCastrumOriens, new(-629.11426f, 132.89075f, -509.14783f) },
                 { EAetheryteLocation.FringesPeeringStones, new(415.3047f, 117.357056f, 246.75354f) },
@@ -182,7 +196,9 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.DomanEnclave, new(42.648926f, 1.4190674f, -14.8776245f) },
                 { EAetheryteLocation.DomanEnclaveNorthern, new(8.987488f, 0.8086548f, -105.85187f) },
                 { EAetheryteLocation.DomanEnclaveSouthern, new(-61.57019f, 0.77819824f, 90.684326f) },
+                { EAetheryteLocation.DomanEnclaveOneRiver, new(-484.9777f, 1.2306242f, 537.07135f) },
                 { EAetheryteLocation.DomanEnclaveDocks, new(96.269165f, -3.4332886f, 81.01013f) },
+                { EAetheryteLocation.DomanEnclaveGangos, new(-44.91569f, 0.15412608f, -39.96296f) },
 
                 { EAetheryteLocation.Crystarium, new(-65.0188f, 4.5318604f, 0.015197754f) },
                 { EAetheryteLocation.CrystariumMarkets, new(-6.149414f, -7.736328f, 148.72961f) },
@@ -198,6 +214,7 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.EulmoreNightsoilPots, new(-54.093323f, -0.83929443f, 52.140015f) },
                 { EAetheryteLocation.EulmoreGloryGate, new(6.9122925f, 6.240906f, -56.351562f) },
                 { EAetheryteLocation.EulmoreSoutheastDerelict, new(71.82422f, -10.391418f, 65.32385f) },
+                { EAetheryteLocation.EulmorePathToGlory, new(172.761f, 56.75291f, 850.81177f) },
 
                 { EAetheryteLocation.LakelandFortJobb, new(753.7803f, 24.338135f, -28.82434f) },
                 { EAetheryteLocation.LakelandOstallImperative, new(-735.01184f, 53.391357f, -230.02979f) },
@@ -232,6 +249,7 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.RadzAtHanMehrydesMeyhane, new(-42.61847f, -0.015319824f, -197.61963f) },
                 { EAetheryteLocation.RadzAtHanKama, new(129.59485f, 26.993164f, 13.473633f) },
                 { EAetheryteLocation.RadzAtHanHighCrucible, new(57.90796f, -24.704407f, -210.6203f) },
+                { EAetheryteLocation.RadzAtHanGateOfFirstSight, new(519.9558f, 55.300484f, -625.0846f) },
 
                 { EAetheryteLocation.FirmamentMendicantsCourt, new(23.941406f, -16.006714f, 169.35986f) },
                 { EAetheryteLocation.FirmamentMattock, new(76.035645f, -18.509216f, 10.299805f) },
@@ -240,7 +258,7 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.FirmamentFeatherfall, new(-78.78235f, -0.015319824f, 75.97461f) },
                 { EAetheryteLocation.FirmamentHoarfrostHall, new(-132.55518f, 9.964111f, -14.66394f) },
                 { EAetheryteLocation.FirmamentWesternRisensongQuarter, new(-91.722046f, -0.015319824f, -115.19043f) },
-                { EAetheryteLocation.FIrmamentEasternRisensongQuarter, new(114.3053f, -20.004639f, -107.43884f) },
+                { EAetheryteLocation.FirmamentEasternRisensongQuarter, new(114.3053f, -20.004639f, -107.43884f) },
 
                 { EAetheryteLocation.LabyrinthosArcheion, new(443.5338f, 170.6416f, -476.18835f) },
                 { EAetheryteLocation.LabyrinthosSharlayanHamlet, new(8.377136f, -27.542603f, -46.67737f) },
@@ -267,6 +285,12 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.TuliyollalVollokShoonsa, new(-99.13794f, 100.72473f, -222.03406f) },
                 { EAetheryteLocation.TuliyollalWachumeqimeqi, new(166.27747f, -17.990417f, 38.742676f) },
                 { EAetheryteLocation.TuliyollalBrightploomPost, new(71.7937f, 47.074097f, -333.21124f) },
+                { EAetheryteLocation.TuliyollalArchOfTheDawnUrqopacha, new(652.351f, -119.97278f, -441.997f) },
+                { EAetheryteLocation.TuliyollalArchOfTheDawnKozamauka, new(-283.99908f, 12.959965f, -814.823f) },
+                { EAetheryteLocation.TuliyollalIhuykatumu, new(745.3904f, 114.61812f, 564.0963f) },
+                { EAetheryteLocation.TuliyollalDirigibleLandingYakTel, new(17.951399f, 8.205901f, -666.1844f) },
+                { EAetheryteLocation.TuliyollalXakTuralSkygate, new(284.959f, 15.999984f, 771.9063f) },
+                { EAetheryteLocation.TuliyollalPhantomVillage, new(43.22075f, 0.019997219f, -1.406158f) },
 
                 { EAetheryteLocation.SolutionNine, new(-0.015319824f, 8.987488f, -0.015319824f) },
                 { EAetheryteLocation.SolutionNineInformationCenter, new(-30.441833f, -6.0579224f, 209.3385f) },
@@ -276,6 +300,7 @@ internal sealed class AetheryteData
                 { EAetheryteLocation.SolutionNineResolution, new(-32.059265f, 38.04065f, -345.2354f) },
                 { EAetheryteLocation.SolutionNineNexusArcade, new(-160.05188f, -0.015319824f, 21.591492f) },
                 { EAetheryteLocation.SolutionNineResidentialSector, new(-378.13385f, 13.992493f, 136.49194f) },
+                { EAetheryteLocation.SolutionNineScanningPortNine, new(-293.969f, 45.884216f, -832.546f) },
 
                 { EAetheryteLocation.UrqopachaWachunpelo, new(332.96704f, -160.11298f, -416.22034f) },
                 { EAetheryteLocation.UrqopachaWorlarsEcho, new(465.62903f, 114.94617f, 634.9126f) },

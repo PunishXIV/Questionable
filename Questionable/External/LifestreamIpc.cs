@@ -40,7 +40,7 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
             EAetheryteLocation.FirmamentFeatherfall => _aethernetTeleportByPlaceNameId.InvokeFunc(3525),
             EAetheryteLocation.FirmamentHoarfrostHall => _aethernetTeleportByPlaceNameId.InvokeFunc(3528),
             EAetheryteLocation.FirmamentWesternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3646),
-            EAetheryteLocation.FIrmamentEasternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3645),
+            EAetheryteLocation.FirmamentEasternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3645),
             EAetheryteLocation.None => throw new ArgumentOutOfRangeException(nameof(aetheryteLocation)),
             var _ => _aethernetTeleportById.InvokeFunc((uint)aetheryteLocation)
         };

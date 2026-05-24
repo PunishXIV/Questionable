@@ -64,6 +64,28 @@
       "Sequence": 2,
       "Steps": [
         {
+          "Position": {
+            "X": 27.21798,
+            "Y": 29,
+            "Z": -797.2569
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 40.93994,
+                  "Y": 29,
+                  "Z": -798.3673
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
           "TerritoryId": 156,
           "InteractionType": "SwitchClass",
           "TargetClass": "Miner"

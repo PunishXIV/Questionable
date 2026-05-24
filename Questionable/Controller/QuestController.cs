@@ -982,7 +982,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (_gameFunctions.IsOccupied() && !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))
             return;
 
-        if (StopBeforeTeleport && _taskQueue.CurrentTaskExecutor == null && _taskQueue.TryPeek(out ITask? nextTask) && nextTask is AetheryteShortcut.Task)
+        if (StopBeforeTeleport &&
+            _taskQueue.CurrentTaskExecutor == null &&
+            _taskQueue.TryPeek(out ITask? nextTask) &&
+            nextTask is AetheryteShortcut.Task shortcut &&
+            !shortcut.ExpectedTerritoryId.Equals(_clientState.TerritoryType))
         {
             _logger.LogInformation("Stopping before teleport as requested");
             _chatGui.Print("Stopping before teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
