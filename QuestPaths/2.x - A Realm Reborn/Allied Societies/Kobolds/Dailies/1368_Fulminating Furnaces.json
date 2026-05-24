@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "vicyorus",
-  "LastChecked":{"Username": "alydev", "Date": "2026-01-07"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-24" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -41,14 +41,26 @@
       "Steps": [
         {
           "Position": {
-            "X": 127.826195,
-            "Y": 23.37386,
-            "Z": -719.1604
+            "X": 112.85902,
+            "Y": 23.394411,
+            "Z": -608.57007
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
-          "Comment": "Walk from here, gets stuck in ceilings if flying",
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -1.236023,
+                  "Y": 33.38838,
+                  "Z": -244.19019
+                },
+                "TerritoryId": 180,
+                "MaximumDistance": 200
+              }
+            }
+          }
         },
         {
           "Position": {
@@ -59,9 +71,7 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [
-            2834
-          ]
+          "KillEnemyDataIds": [2834]
         }
       ]
     },
@@ -78,12 +88,15 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            2707
-          ],
+          "KillEnemyDataIds": [2707],
           "CompletionQuestVariablesFlags": [
-            {"Low": 1},
-          null,null,null,null,null]
+            { "Low": 1 },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003707,
@@ -95,9 +108,7 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            2707
-          ]
+          "KillEnemyDataIds": [2707]
         }
       ]
     },
@@ -114,9 +125,7 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            2882
-          ]
+          "KillEnemyDataIds": [2882]
         }
       ]
     },
