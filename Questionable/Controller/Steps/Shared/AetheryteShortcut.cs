@@ -258,7 +258,7 @@ internal static class AetheryteShortcut
                             distance_aethernet_from = aetheryteData.CalculateDistance(pos, territoryType, Task.Step.AethernetShortcut.From);
                             distance_aethernet_to = aetheryteData.CalculateDistance(Task.Step.Position.Value, territoryType, Task.Step.AethernetShortcut.To);
                         }
-                        uint teleportTimeDistance = 30;
+                        uint teleportTimeDistance = 90;
 
                         // if aetheryte route is further from the destination than just walking there, skip it
                         if (Task.Step.AethernetShortcut != null)
