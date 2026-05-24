@@ -211,7 +211,9 @@ internal static class AetheryteShortcut
                     }
                 }
 
-                if (Task.ExpectedTerritoryId == territoryType)
+                if (Task.ExpectedTerritoryId == territoryType || 
+                    (Task.Step.AethernetShortcut is { } aethernet &&
+                    aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType)))
                 {
                     if (!skipConditions.Never)
                     {
@@ -251,48 +253,38 @@ internal static class AetheryteShortcut
                             return true;
                         }
 
-                        float distance_aethernet_from = 99999;
                         float distance_aethernet_to = 99999;
+                        uint teleportTimeDistance = 90;
                         if (Task.Step.AethernetShortcut != null)
                         {
-                            distance_aethernet_from = aetheryteData.CalculateDistance(pos, territoryType, Task.Step.AethernetShortcut.From);
                             distance_aethernet_to = aetheryteData.CalculateDistance(Task.Step.Position.Value, territoryType, Task.Step.AethernetShortcut.To);
-                        }
-                        uint teleportTimeDistance = 90;
-
-                        // if aetheryte route is further from the destination than just walking there, skip it
-                        if (Task.Step.AethernetShortcut != null)
+                            // if aetheryte route is further from the destination than just walking there, skip it
                             logger.LogDebug(
                                 "target direct: {DirectDistance}. target if tp: {TpDistance} target direct XZ: {DirectXZ}. target tp XZ: {TpXZ}, target if aethernet: {AethernetDistance}",
                                 distance_target, teleportTimeDistance + distance_aetheryte_to_target,
                                 pos.DistanceTo_XZ(Task.Step.Position.Value),
                                 Task.Step.Position.Value.DistanceTo_XZ(Task.targetAetheryte.Position(aetheryteData)),
-                                distance_aethernet_from + distance_aethernet_to + teleportTimeDistance);
+                                distance_aethernet_to + teleportTimeDistance);
+                            if (distance_target < (distance_aethernet_to + teleportTimeDistance))
+                            {
+                                logger.LogInformation("Skipping aethernet teleport, it's a shorter distance to walk there");
+                                return true;
+                            }
+                        }
                         else
+                        {
                             logger.LogDebug(
                                 "target direct: {DirectDistance}. target if tp: {TpDistance} target direct XZ: {DirectXZ}. target tp XZ: {TpXZ}",
                                 distance_target, teleportTimeDistance + distance_aetheryte_to_target,
                                 pos.DistanceTo_XZ(Task.Step.Position.Value),
                                 Task.Step.Position.Value.DistanceTo_XZ(Task.targetAetheryte.Position(aetheryteData)));
-                        if (distance_target < (teleportTimeDistance + distance_aetheryte_to_target) ||
-                            (Task.Step.AethernetShortcut != null && distance_target < (distance_aethernet_from + distance_aethernet_to + teleportTimeDistance)))
-                        {
-                            logger.LogInformation("Skipping aetheryte teleport, it's a shorter distance to walk there");
-                            return true;
+                            if (distance_target < (teleportTimeDistance + distance_aetheryte_to_target))
+                            {
+                                logger.LogInformation("Skipping aetheryte teleport, it's a shorter distance to walk there");
+                                return true;
+                            }
                         }
                     }
-                }
-
-                if (!aetheryteData.TerritoryIds[Task.targetAetheryte].Equals(territoryType) &&
-                    Task.Step.AethernetShortcut is { } aethernet &&
-                    aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType))
-                {
-                    logger.LogInformation("{TargetTerritory}, {AethernetTerritory}, {CurrentTerritory}",
-                        aetheryteData.TerritoryIds[Task.targetAetheryte],
-                        aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.To],
-                        territoryType);
-                    logger.LogInformation("Skipping aetheryte teleport, it's an aethernet shortcut and we're already there.");
-                    return true;
                 }
             }
 

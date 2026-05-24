@@ -74,7 +74,7 @@ public sealed class AethernetShardConverter() : EnumConverter<EAetheryteLocation
         { EAetheryteLocation.FirmamentFeatherfall, "[Firmament] Featherfall" },
         { EAetheryteLocation.FirmamentHoarfrostHall, "[Firmament] Hoarfrost Hall" },
         { EAetheryteLocation.FirmamentWesternRisensongQuarter, "[Firmament] Western Risensong Quarter" },
-        { EAetheryteLocation.FIrmamentEasternRisensongQuarter, "[Firmament] Eastern Risensong Quarter" },
+        { EAetheryteLocation.FirmamentEasternRisensongQuarter, "[Firmament] Eastern Risensong Quarter" },
 
         { EAetheryteLocation.Idyllshire, "[Idyllshire] Aetheryte Plaza" },
         { EAetheryteLocation.IdyllshireWest, "[Idyllshire] West Idyllshire" },
