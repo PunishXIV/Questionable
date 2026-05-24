@@ -8,3 +8,4 @@
   - Loading local paths after downloaded bundle paths -alydev
 - Add Death handling. Now it will retry 5 times before it needs manual intervention. - Kage
 - Fix list quests not selecting the correct response - Kage 
+- Fix Icon - Kage
