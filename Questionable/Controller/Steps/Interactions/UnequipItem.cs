@@ -135,12 +135,8 @@ internal static class UnequipItem
                 }
             }
 
-            //int result = inventoryManager->MoveItemSlot(sourceInventoryType, sourceSlot,
-            //    InventoryType.EquippedItems, targetSlot, true);
-            //logger.LogInformation("MoveItemSlot result: {Result}", result);
-            return;
-
-            throw new TaskException($"Could not unequip item {Task.ItemId}.");
+            // TODO: Implement actual unequip logic (MoveItemSlot to armory chest)
+            logger.LogWarning("Unequip not yet implemented for item {ItemId}", Task.ItemId);
         }
 
         private static List<ushort>? GetEquipSlot(Item? item)

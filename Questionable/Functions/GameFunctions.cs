@@ -269,8 +269,6 @@ internal sealed unsafe class GameFunctions
         if (localPlayer == null)
             return false;
 
-        BattleChara* battleChara = (BattleChara*)localPlayer.Address;
-        StatusManager* statusManager = battleChara->GetStatusManager();
         if (HasStatus(1151) ||
             HasStatus(1945)) // hoofing it
         {
@@ -511,13 +509,8 @@ internal sealed unsafe class GameFunctions
     {
         if (obj == null)
             return 0;
-        if (obj.GetType().GetProperty("BaseId") is { } baseIdProp)
-            return (uint)baseIdProp.GetValue(obj)!;
 
-        if (obj.GetType().GetProperty("DataId") is { } dataIdProp)
-            return (uint)dataIdProp.GetValue(obj)!;
-
-        return 0;
+        return obj.BaseId;
     }
 
     /// <summary>
