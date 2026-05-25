@@ -17,19 +17,18 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.AethernetTeleportToFirmament");
     private readonly ICallGateSubscriber<bool> _isBusy =
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
-    private readonly ILogger<LifestreamIpc> _logger = logger;
 
     public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), false);
 
     public bool Teleport(string destination)
     {
-        _logger.LogInformation("Teleporting to vague string '{Destination}'", destination);
+        logger.LogInformation("Teleporting to vague string '{Destination}'", destination);
         return _aethernetTeleport.InvokeFunc(destination);
     }
 
     public bool Teleport(EAetheryteLocation aetheryteLocation)
     {
-        _logger.LogInformation("Teleporting to '{Name}'", aetheryteLocation);
+        logger.LogInformation("Teleporting to '{Name}'", aetheryteLocation);
         return aetheryteLocation switch
         {
             EAetheryteLocation.IshgardFirmament => _aethernetTeleportToFirmament.InvokeFunc(),

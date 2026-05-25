@@ -38,7 +38,7 @@ internal sealed class BossModModule
     {
         try
         {
-            bossModIpc.ClearPreset();
+            bossModIpc.Cleanup();
             return true;
         }
         catch (IpcError e)

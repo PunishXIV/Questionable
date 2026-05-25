@@ -21,7 +21,7 @@ internal sealed class StylistIpc
 
     public static bool IsInstalled => IPCSubscriber_Common.IsInstalled("Stylist");
 
-    public bool IsBusy => IsInstalled ? _isBusy.InvokeFunc() : true;
+    public bool IsBusy => !IsInstalled || _isBusy.InvokeFunc();
 
     public void UpdateGearset()
     {

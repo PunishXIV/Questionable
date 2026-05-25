@@ -182,7 +182,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.EnableAi(Task.Passive);
+            bossModIpc.SetPreset(Task.Passive ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.QuestBattle);
             return true;
         }
 
@@ -237,7 +237,7 @@ internal static class SinglePlayerDuty
                 : ETaskResult.StillRunning;
         }
 
-        public void StopNow() => bossModIpc.DisableAi();
+        public void StopNow() => bossModIpc.Cleanup();
 
         public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start() => true;
@@ -254,7 +254,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.DisableAi();
+            bossModIpc.ClearPreset();
             return true;
         }
 
