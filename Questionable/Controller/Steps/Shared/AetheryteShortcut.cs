@@ -321,7 +321,7 @@ internal static class AetheryteShortcut
             if (!_societyPause && Task.ElementId != null && questRegistry.TryGetQuest(Task.ElementId, out Quest? quest) && quest.Info.AlliedSociety != EAlliedSociety.None)
             {
                 _societyPause = true;
-                _continueAt = DateTime.Now.AddMilliseconds(250);
+                _continueAt = DateTime.Now.AddMilliseconds(500);
                 logger.LogDebug("Waiting for soc teleport recalc cooldown...");
                 return false;
             }

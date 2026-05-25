@@ -1,4 +1,2 @@
-- Stylist not installed warning -alydev
-  - better logic -alydev
-- Fix emote step not always going through - Kage
-- various backend fixes - Kage
+- Revert change to 406 On to the Drydocks -alydev
+- Add missing amaljaa mount def -alydev
