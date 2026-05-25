@@ -1,6 +1,7 @@
 ﻿using System;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
@@ -52,6 +53,12 @@ internal static class EquipRecommended
             if (condition[ConditionFlag.InCombat])
                 return false;
 
+            if (!StylistIpc.IsInstalled)
+            {
+                chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                config.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
+                Svc.PluginInterface.SavePluginConfig(config);
+            }
             switch (config.General.GearsetUpdateSource)
             {
                 case Configuration.EGearsetUpdateSource.Vanilla:

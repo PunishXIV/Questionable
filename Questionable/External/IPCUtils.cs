@@ -8,7 +8,7 @@ internal interface IPCUtils
 {
     internal sealed class IPCSubscriber_Common
     {
-        internal static bool IsReady(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
+        internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
 
         internal static Version Version(string pluginName)
         {
