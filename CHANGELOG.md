@@ -1,3 +1,4 @@
 - Stylist not installed warning -alydev
+  - better logic -alydev
 - Fix emote step not always going through - Kage
 - various backend fixes - Kage
