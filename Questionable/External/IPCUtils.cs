@@ -2,8 +2,8 @@
 using ECommons.DalamudServices;
 using ECommons.EzIpcManager;
 using ECommons.Reflection;
-
 namespace Questionable.External;
+
 internal interface IPCUtils
 {
     internal sealed class IPCSubscriber_Common

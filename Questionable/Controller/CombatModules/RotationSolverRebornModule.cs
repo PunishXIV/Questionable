@@ -15,13 +15,11 @@ internal sealed class RotationSolverRebornModule
 {
     private readonly ICallGateSubscriber<StateCommandType, object> _changeOperationMode =
         pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
-    private readonly Configuration _configuration = configuration;
-    private readonly ILogger<RotationSolverRebornModule> _logger = logger;
     private readonly ICallGateSubscriber<string, object> _test = pluginInterface.GetIpcSubscriber<string, object>("RotationSolverReborn.Test");
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
-        if (_configuration.General.CombatModule != Configuration.ECombatModule.RotationSolverReborn)
+        if (configuration.General.CombatModule != Configuration.ECombatModule.RotationSolverReborn)
             return false;
 
         try
@@ -44,7 +42,7 @@ internal sealed class RotationSolverRebornModule
         }
         catch (IpcError e)
         {
-            _logger.LogWarning(e, "Could not start combat");
+            logger.LogWarning(e, "Could not start combat");
             return false;
         }
     }
@@ -61,7 +59,7 @@ internal sealed class RotationSolverRebornModule
         }
         catch (IpcError e)
         {
-            _logger.LogWarning(e, "Could not turn off combat");
+            logger.LogWarning(e, "Could not turn off combat");
             return false;
         }
     }
