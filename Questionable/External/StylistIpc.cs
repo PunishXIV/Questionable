@@ -2,6 +2,7 @@
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 internal sealed class StylistIpc
@@ -18,8 +19,9 @@ internal sealed class StylistIpc
         _isBusy = pluginInterface.GetIpcSubscriber<bool>("Stylist.IsBusy");
     }
 
-    public bool IsBusy =>
-        _isBusy.InvokeFunc();
+    public static bool IsInstalled => IPCSubscriber_Common.IsInstalled("Stylist");
+
+    public bool IsBusy => IsInstalled ? _isBusy.InvokeFunc() : true;
 
     public void UpdateGearset()
     {

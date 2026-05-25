@@ -6,11 +6,13 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.External;
 using Questionable.Model.Questing;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 
@@ -130,11 +132,20 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             () => Configuration.General.GatheringJob,
             v => Configuration.General.GatheringJob = v);
 
-        Configuration.EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
-        if (ImGuiEx.EnumCombo("Preferred Gear Upgrade Source", ref gearsetSource))
+        using (ImRaii.Disabled(!StylistIpc.IsInstalled))
         {
-            Configuration.General.GearsetUpdateSource = gearsetSource;
-            Save();
+            Configuration.EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
+            if (ImGuiEx.EnumCombo("Preferred Gear Upgrade Source", ref gearsetSource))
+            {
+                Configuration.General.GearsetUpdateSource = gearsetSource;
+                Save();
+            }
+            if (!StylistIpc.IsInstalled && gearsetSource is Configuration.EGearsetUpdateSource.Stylist)
+            {
+                Svc.Chat.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                Configuration.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
+                Save();
+            }
         }
 
         string chocoboName = Configuration.General.ChocoboName;

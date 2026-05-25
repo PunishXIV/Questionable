@@ -49,7 +49,7 @@ internal sealed class YesAlreadyIpc : IDisposable
 
     private void OnUpdate(IFramework framework)
     {
-        if (IPCSubscriber_Common.IsReady("YesAlready"))
+        if (IPCSubscriber_Common.IsInstalled("YesAlready"))
         {
             bool hasActiveQuest = (_questController.IsRunning ||
                                    _questController.AutomationType != QuestController.EAutomationType.Manual) &&

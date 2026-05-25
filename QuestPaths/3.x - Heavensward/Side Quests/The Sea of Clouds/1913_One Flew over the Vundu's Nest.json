@@ -7,11 +7,11 @@
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1011952,
+          "DataId": 1012069,
           "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
+            "X": -647.0283,
+            "Y": -51.05719,
+            "Z": -417.74628
           },
           "TerritoryId": 401,
           "InteractionType": "AcceptQuest",
@@ -40,11 +40,11 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1011952,
+          "DataId": 1012069,
           "Position": {
-            "X": -277.63788,
-            "Y": -184.59735,
-            "Z": 741.60376
+            "X": -647.0283,
+            "Y": -51.05719,
+            "Z": -417.74628
           },
           "TerritoryId": 401,
           "InteractionType": "CompleteQuest",
