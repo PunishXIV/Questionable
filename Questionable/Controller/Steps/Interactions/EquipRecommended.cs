@@ -53,7 +53,7 @@ internal static class EquipRecommended
             if (condition[ConditionFlag.InCombat])
                 return false;
 
-            if (!StylistIpc.IsInstalled)
+            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is Configuration.EGearsetUpdateSource.Stylist)
             {
                 chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
                 config.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
