@@ -1,10 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": [
-    "plogon_enjoyer",
-    "alydev"
-  ],
-  "LastChecked":{"Username": "alydev", "Date": "2026-02-07"},
+  "Author": ["plogon_enjoyer", "alydev"],
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-25" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -50,17 +47,89 @@
             "Z": -345.4249
           },
           "TerritoryId": 146,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 45.303955,
+                  "Y": 4,
+                  "Z": -345.11334
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 10
+              }
+            }
+          }
         },
         {
           "Position": {
-            "X": 36.289276,
-            "Y": 3.534612,
-            "Z": -336.17282
+            "X": 33.486458,
+            "Y": 3.4602835,
+            "Z": -302.47876
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 36.66458,
+                  "Y": 3.396969,
+                  "Z": -345.4249
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -14.683247,
+            "Y": -0.5704321,
+            "Z": -221.74307
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 33.486458,
+                  "Y": 3.4602835,
+                  "Z": -302.47876
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -23.071724,
+            "Y": -0.45480216,
+            "Z": -182.84273
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -14.683247,
+                  "Y": -0.5704321,
+                  "Z": -221.74307
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 10
+              }
+            }
+          }
         },
         {
           "DataId": 2003127,
@@ -72,10 +141,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "RequiredQuestVariables": [null,[
-              {"High": 1},{"High": 2},{"High": 3}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 1 }, { "High": 2 }, { "High": 3 }],
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003133,
@@ -87,10 +161,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,2],
-          "RequiredQuestVariables": [null,[
-              {"High": 4}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 2],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 4 }],
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003128,
@@ -102,10 +181,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
-          "RequiredQuestVariables": [null,[
-              {"High": 2},{"High": 5}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 2 }, { "High": 5 }],
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003132,
@@ -117,10 +201,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,4],
-          "RequiredQuestVariables": [null,[
-              {"High": 3},{"High": 5}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 4],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 3 }, { "High": 5 }],
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003129,
@@ -132,10 +221,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "RequiredQuestVariables": [null,[
-              {"High": 1},{"High": 3}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 1 }, { "High": 3 }],
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003130,
@@ -147,10 +241,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16],
-          "RequiredQuestVariables": [null,[
-              {"High": 1},{"High": 2},{"High": 4},{"High": 5}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 2 }, { "High": 4 }, { "High": 5 }],
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2003131,
@@ -162,10 +261,15 @@
           "TerritoryId": 146,
           "InteractionType": "Action",
           "Action": "Fiery Breath",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,8],
-          "RequiredQuestVariables": [null,[
-              {"High": 4}
-            ],null,null,null,null]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 8],
+          "RequiredQuestVariables": [
+            null,
+            [{ "High": 1 }, { "High": 4 }],
+            null,
+            null,
+            null,
+            null
+          ]
         }
       ]
     },
