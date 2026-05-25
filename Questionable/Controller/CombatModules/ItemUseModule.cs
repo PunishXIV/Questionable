@@ -15,9 +15,6 @@ namespace Questionable.Controller.CombatModules;
 
 internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, ILogger<ItemUseModule> logger) : ICombatModule
 {
-    private readonly ICondition _condition = condition;
-    private readonly ILogger<ItemUseModule> _logger = logger;
-    private readonly IServiceProvider _serviceProvider = serviceProvider;
     private CombatController.CombatData? _combatData;
     private DateTime _continueAt;
 
@@ -29,10 +26,10 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
         if (combatData.CombatItemUse == null)
             return false;
 
-        _delegate = _serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
+        _delegate = serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
             .Where(x => x is not ItemUseModule)
             .FirstOrDefault(x => x.CanHandleFight(combatData));
-        _logger.LogInformation("ItemUse delegate: {Delegate}", _delegate?.GetType().Name);
+        logger.LogInformation("ItemUse delegate: {Delegate}", _delegate?.GetType().Name);
         return _delegate != null;
     }
 
@@ -100,7 +97,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                     _delegate.Stop();
                     unsafe
                     {
-                        _logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
+                        logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
                         AgentInventoryContext.Instance()->UseItem(_combatData.CombatItemUse.ItemId);
                     }
 
@@ -109,7 +106,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                 else
                     _delegate.Update(nextTarget);
             }
-            else if (_condition[ConditionFlag.Casting])
+            else if (condition[ConditionFlag.Casting])
             {
                 // do nothing
                 DateTime alternativeContinueAt = DateTime.Now.AddSeconds(0.5);
