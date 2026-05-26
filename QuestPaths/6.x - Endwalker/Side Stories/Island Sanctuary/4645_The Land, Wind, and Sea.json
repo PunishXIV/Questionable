@@ -1,12 +1,12 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "LastChecked": { "Username": "ShermTank", "Date": "2026-05-26" },
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "$": "4523 → 1 - QW: 0 0    0 0    0 0",
           "DataId": 1044156,
           "Position": {
             "X": -276.3562,
@@ -20,10 +20,9 @@
       ]
     },
     {
-      "Sequence": 1,
+      "Sequence": 255,
       "Steps": [
         {
-          "$": "4523 → 1 - QW: 0 0    0 0    0 0",
           "DataId": 2013035,
           "Position": {
             "X": -389.85278,
@@ -32,15 +31,6 @@
           },
           "TerritoryId": 1055,
           "Mount": true,
-          "InteractionType": "Interact"
-        }
-      ]
-    },
-    {
-      "Sequence": 255,
-      "Steps": [
-        {
-          "TerritoryId": 1055,
           "InteractionType": "CompleteQuest"
         }
       ]
