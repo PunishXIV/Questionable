@@ -56,22 +56,27 @@ internal static class AbandonQuest
             {
                 throw new TaskException(logger.LogChatError(chatGui, "Cannot abandon quest", "Quest cannot be cancelled"));
             }
-
-            logger.LogInformation($"Blindly firing AbandonQuest for {Task.Quest.Id.Value}");
-            bool result = GameMain.ExecuteCommand(800, (int)Task.Quest.Id.Value);
-            logger.LogChat(chatGui, "Quest abandoned");
-            questController.PriorityManager.Remove(Task.Quest);
-            if (questController.PriorityManager.Contains(Task.Quest)) // this was occasionally returning false even if quest was in prio list
-                logger.LogChat(chatGui, "Priority Quests", $"{Task.Quest.Info.Name} removed");
-            questController.PriorityManager.Remove(Task.Quest); // so i moved the Remove call outside, as it returns either way
-            return result;
+            
+            AbandonQuestAction();
+            return true;
         }
 
         protected override ETaskResult UpdateInternal()
         {
             if (Task.Quest == null || !questFunctions.IsQuestAccepted(Task.Quest.Id))
+            {
+                logger.LogChat(chatGui, "Quest abandoned");
                 return ETaskResult.TaskComplete;
+            }
+            AbandonQuestAction();
             return ETaskResult.StillRunning;
+        }
+
+        public void AbandonQuestAction()
+        {
+            logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
+            GameMain.ExecuteCommand(800, (int)Task.Quest!.Id.Value);
+            questController.PriorityManager.Remove(Task.Quest);
         }
 
         public override bool ShouldInterruptOnDamage() => false;
