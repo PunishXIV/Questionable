@@ -460,7 +460,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_questController.StopBeforeTeleport
                     ? "Cancel scheduled stop before teleport."
-                    : "Stop before the next teleport.");
+                    : "Stop before the next aetheryte teleport or item use.");
         }
 
 #if DEBUG

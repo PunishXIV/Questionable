@@ -8,18 +8,6 @@
         "resolved": "6.0.4",
         "contentHash": "lkhqpF8Pu2Y7IiN7OntbsTtdbpR1syMsm2F3IgX6ootA4ffRqWL5jF7XipHuZQTdVuWG/gVAAcf8mjk8Tz0xPg=="
       },
-      "DalamudPackager": {
-        "type": "Direct",
-        "requested": "[15.0.0, )",
-        "resolved": "15.0.0",
-        "contentHash": "411vwC8/X8Z/sQ2TI6v3SvOn66xFPeOjFn3Zn+h0d3Ox2t1kFm66AhDvmx/qcMwVrR+Hidxj0dadpQ2dgyXMBQ=="
-      },
-      "DotNet.ReproducibleBuilds": {
-        "type": "Direct",
-        "requested": "[1.2.39, )",
-        "resolved": "1.2.39",
-        "contentHash": "fcFN01tDTIQqDuTwr1jUQK/geofiwjG5DycJQOnC72i1SsLAk1ELe+apBOuZ11UMQG8YKFZG1FgvjZPbqHyatg=="
-      },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
         "requested": "[17.13.0, )",
@@ -224,15 +212,11 @@
         }
       },
       "questionable.model": {
-        "type": "Project",
-        "dependencies": {
-          "DalamudPackager": "[15.0.0, )"
-        }
+        "type": "Project"
       },
       "questpathgenerator": {
         "type": "Project",
         "dependencies": {
-          "DalamudPackager": "[15.0.0, )",
           "Json.More.Net": "[2.1.2, )",
           "JsonPointer.Net": "[5.3.1, )",
           "JsonSchema.Net": "[7.4.0, )",

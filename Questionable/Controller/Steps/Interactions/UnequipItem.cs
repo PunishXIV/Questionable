@@ -139,7 +139,13 @@ internal static class UnequipItem
                 if (itemSlot == null || itemSlot->ItemId != Task.ItemId)
                     continue;
 
-                ushort targetSlot = FindFirstEmptySlot(armoryContainer);
+                if (!TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                {
+                    logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
+                        armoryType, Task.ItemId);
+                    throw new TaskException("Unable to unequip gear - armory chest is full.");
+                }
+
                 logger.LogInformation(
                     "Unequipping item from {SourceInventory}, {SourceSlot} to {TargetInventory}, {TargetSlot}",
                     InventoryType.EquippedItems, equippedSlot, armoryType, targetSlot);
@@ -151,16 +157,20 @@ internal static class UnequipItem
             }
         }
 
-        private static unsafe ushort FindFirstEmptySlot(InventoryContainer* container)
+        private static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
         {
-            for (ushort slot = 0; slot < container->Size; slot++)
+            for (ushort i = 0; i < container->Size; i++)
             {
-                InventoryItem* itemSlot = container->GetInventorySlot(slot);
+                InventoryItem* itemSlot = container->GetInventorySlot(i);
                 if (itemSlot == null || itemSlot->ItemId == 0)
-                    return slot;
+                {
+                    slot = i;
+                    return true;
+                }
             }
 
-            return 0;
+            slot = 0;
+            return false;
         }
 
         private static InventoryType? GetArmoryInventoryType(Item item) =>

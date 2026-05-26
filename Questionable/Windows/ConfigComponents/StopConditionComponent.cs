@@ -119,6 +119,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
             DrawQuestStopSection(
                 "Stop when completing any of the quests selected below:",
+                "Complete",
                 _completeQuestSelector,
                 Configuration.Stop.QuestsToStopAfter,
                 () => Configuration.Stop.QuestsToStopAfter.Clear());
@@ -127,79 +128,83 @@ internal sealed class StopConditionComponent : ConfigComponent
 
             DrawQuestStopSection(
                 "Stop when accepting any of the quests selected below:",
+                "Accept",
                 _acceptQuestSelector,
                 Configuration.Stop.QuestsToStopWhenAccepted,
                 () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
         }
     }
 
-    private void DrawQuestStopSection(string label, QuestSelector selector, List<ElementId> quests,
+    private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,
         Action clearAll)
     {
-        ImGui.Text(label);
-        selector.DrawSelection();
-
-        if (quests.Count > 0)
+        using (ImRaii.PushId(sectionId))
         {
-            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+            ImGui.Text(label);
+            selector.DrawSelection();
+
+            if (quests.Count > 0)
             {
-                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+                using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                 {
-                    clearAll();
-                    Save();
+                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+                    {
+                        clearAll();
+                        Save();
+                    }
                 }
+
+                if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                    ImGui.SetTooltip("Hold CTRL to enable this button.");
+
+                ImGui.Separator();
             }
 
-            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip("Hold CTRL to enable this button.");
-
-            ImGui.Separator();
-        }
-
-        Quest? itemToRemove = null;
-        for (int i = 0; i < quests.Count; i++)
-        {
-            ElementId questId = quests[i];
-
-            if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
-                continue;
-
-            using (ImRaii.PushId($"Quest{questId}"))
+            Quest? itemToRemove = null;
+            for (int i = 0; i < quests.Count; i++)
             {
-                (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
-                bool hovered;
-                using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                ElementId questId = quests[i];
+
+                if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
+                    continue;
+
+                using (ImRaii.PushId($"Quest{questId}"))
                 {
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
+                    bool hovered;
+                    using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                    {
+                        ImGui.AlignTextToFramePadding();
+                        ImGui.TextColored(style.Color, style.Icon.ToIconString());
+                        hovered = ImGui.IsItemHovered();
+                    }
+
+                    ImGui.SameLine();
                     ImGui.AlignTextToFramePadding();
-                    ImGui.TextColored(style.Color, style.Icon.ToIconString());
-                    hovered = ImGui.IsItemHovered();
+                    ImGui.Text(quest.Info.Name);
+                    hovered |= ImGui.IsItemHovered();
+
+                    if (hovered)
+                        _questTooltipComponent.Draw(quest.Info);
+
+                    using (ImRaii.PushFont(UiBuilder.IconFont))
+                    {
+                        ImGui.SameLine(ImGui.GetContentRegionAvail().X +
+                                       ImGui.GetStyle().WindowPadding.X -
+                                       ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
+                                       ImGui.GetStyle().FramePadding.X * 2);
+                    }
+
+                    if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                        itemToRemove = quest;
                 }
-
-                ImGui.SameLine();
-                ImGui.AlignTextToFramePadding();
-                ImGui.Text(quest.Info.Name);
-                hovered |= ImGui.IsItemHovered();
-
-                if (hovered)
-                    _questTooltipComponent.Draw(quest.Info);
-
-                using (ImRaii.PushFont(UiBuilder.IconFont))
-                {
-                    ImGui.SameLine(ImGui.GetContentRegionAvail().X +
-                                   ImGui.GetStyle().WindowPadding.X -
-                                   ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-                                   ImGui.GetStyle().FramePadding.X * 2);
-                }
-
-                if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
-                    itemToRemove = quest;
             }
-        }
 
-        if (itemToRemove != null)
-        {
-            quests.Remove(itemToRemove.Id);
-            Save();
+            if (itemToRemove != null)
+            {
+                quests.Remove(itemToRemove.Id);
+                Save();
+            }
         }
     }
 }

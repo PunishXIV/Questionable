@@ -1026,10 +1026,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (StopBeforeTeleport &&
             _taskQueue.CurrentTaskExecutor == null &&
             _taskQueue.TryPeek(out ITask? nextTask) &&
-            nextTask is AetheryteShortcut.Task shortcut &&
-            !shortcut.ExpectedTerritoryId.Equals(_clientState.TerritoryType))
+            TeleportTaskDetector.IsUpcomingTeleport(nextTask, _clientState.TerritoryType))
         {
-            _logger.LogInformation("Stopping before teleport as requested");
+            _logger.LogInformation("Stopping before teleport as requested (upcoming task: {Task})", nextTask);
             _chatGui.Print("Stopping before teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
             _movementController.Stop();
             Stop("Stop before teleport");
