@@ -63,7 +63,7 @@ internal sealed class AlliedSocietyQuestFunctions
         List<QuestId> result = [];
         foreach (NpcData npcData in _questsByAlliedSociety[alliedSociety])
         {
-            bool outranksAll = npcData.AllQuests.All(x => currentRank > x.AlliedSocietyRank);
+            bool outranksAll = npcData.AllQuests.All(x => currentRank > (byte)x.AlliedSocietyRank);
             (uint NpcDataId, byte seed, bool outranksAll, bool rankedUp) key = (NpcDataId: npcData.IssuerDataId, seed, outranksAll, rankedUp);
             bool rankChanged = _alliedSocietyLastSeenRank.ContainsKey(alliedSociety) && _alliedSocietyLastSeenRank[alliedSociety] != currentRank;
             if (rankChanged)
@@ -87,7 +87,7 @@ internal sealed class AlliedSocietyQuestFunctions
     private static List<QuestId> CalculateAvailableQuests(List<QuestInfo> allQuests, byte seed, bool outranksAll,
         byte currentRank, bool rankedUp)
     {
-        List<QuestInfo> eligible = [.. allQuests.Where(q => IsEligible(q, currentRank, rankedUp))];
+        List<QuestInfo> eligible = [.. allQuests.Where(q => IsEligible(q, (EAlliedSocietyRank)currentRank, rankedUp))];
         List<QuestInfo> available = [];
         if (eligible.Count == 0)
             return [];
@@ -128,7 +128,7 @@ internal sealed class AlliedSocietyQuestFunctions
         return available.Select(x => (QuestId)x.QuestId).ToList();
     }
 
-    private static bool IsEligible(QuestInfo questInfo, byte currentRank, bool rankedUp) => rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
+    private static bool IsEligible(QuestInfo questInfo, EAlliedSocietyRank currentRank, bool rankedUp) => rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
 
     private sealed class NpcData
     {

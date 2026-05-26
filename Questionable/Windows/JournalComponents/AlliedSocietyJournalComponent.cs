@@ -109,7 +109,7 @@ internal sealed class AlliedSocietyJournalComponent
             {
                 for (byte i = 1; i <= 8; ++i)
                 {
-                    List<IQuestInfo> questsByRank = quests.Where(quest => ((QuestInfo)quest).AlliedSocietyRank == i && !quest.QuestId.Value.Equals(1569)).ToList();
+                    List<IQuestInfo> questsByRank = quests.Where(quest => (byte)((QuestInfo)quest).AlliedSocietyRank == i && !quest.QuestId.Value.Equals(1569)).ToList();
                     if (questsByRank.Count == 0)
                         continue;
 

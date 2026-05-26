@@ -168,6 +168,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             UpdateGearset.UpdateGearsetExecutor>();
         serviceCollection.AddTaskExecutor<Mount.MountTask, Mount.MountExecutor>();
         serviceCollection.AddTaskExecutor<Mount.UnmountTask, Mount.UnmountExecutor>();
+        serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
 
         // task factories
         serviceCollection

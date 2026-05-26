@@ -118,6 +118,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipARealmRebornHardModePrimals { get; set; }
         public bool SkipCrystalTowerRaids { get; set; }
         public bool PreventQuestCompletion { get; set; }
+        public bool AbandonQuestBeforeCompletion { get; set; }
         public bool ShowWindowOnStart { get; set; }
         public bool StartMinimized { get; set; }
         public bool OpenEditor { get; set; }
