@@ -32,10 +32,24 @@ internal sealed class AlliedSocietyData
             { 23, new([1008327, 1005848, 1005860], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) } // amaljaa
         }.AsReadOnly();
 
-    public bool IsAlliedSocietyMount(ushort? mountId)
+    public bool IsAlliedSocietyMount(ushort? mountId) =>
+        mountId is { } id && Mounts.ContainsKey(id);
+
+    /// <summary>
+    ///     True while the current quest step should be performed on a tribe quest mount.
+    ///     Every other step dismounts so normal travel (mount roulette / flying) can be used.
+    /// </summary>
+    public bool ShouldRemainMountedForStep(QuestStep step, ushort mountId)
     {
-        if (mountId is { } && Mounts.TryGetValue(mountId.Value, out AlliedSocietyMountConfiguration? mountConfig) && mountConfig is { })
+        if (step.Action is { } action && action.RequiresMount())
             return true;
+
+        if (step.InteractionType == EInteractionType.Combat &&
+            (mountId == 147 || step.KillEnemyDataIds.Contains(8593)))
+        {
+            return true;
+        }
+
         return false;
     }
     public EAlliedSociety GetCommonAlliedSocietyTurnIn(ElementId elementId)
