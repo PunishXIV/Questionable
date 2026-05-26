@@ -63,6 +63,8 @@ internal static class Gather
             if (!gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? gatheringRoot))
                 throw new TaskException($"No path found for gathering point {gatheringPointId.Value}");
 
+            logger.LogDebug($"Locating and traveling to {gatheringPointId.Value}");
+
             if (HasRequiredItems(Task.GatheredItem))
                 yield break;
 
