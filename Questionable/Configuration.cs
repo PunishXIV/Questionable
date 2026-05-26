@@ -64,6 +64,9 @@ internal sealed class Configuration : IPluginConfiguration
         [JsonProperty(ItemConverterType = typeof(ElementIdNConverter))]
         public List<ElementId> QuestsToStopAfter { get; set; } = [];
 
+        [JsonProperty(ItemConverterType = typeof(ElementIdNConverter))]
+        public List<ElementId> QuestsToStopWhenAccepted { get; set; } = [];
+
         public bool LevelToStopAfter { get; set; }
         public int TargetLevel { get; set; } = 50;
     }

@@ -76,7 +76,10 @@
           "TerritoryId": 146,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
@@ -93,7 +96,8 @@
           "TerritoryId": 130,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Index": 1
+            "Index": 1,
+            "Enabled": true
           },
           "AetheryteShortcut": "Ul'dah"
         }

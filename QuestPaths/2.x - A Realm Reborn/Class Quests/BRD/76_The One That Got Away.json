@@ -1,7 +1,10 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-05-19"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -42,7 +45,10 @@
           "TerritoryId": 153,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
@@ -59,7 +65,8 @@
           "TerritoryId": 153,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Index": 1
+            "Index": 1,
+            "Enabled": true
           },
           "Fly": true
         }

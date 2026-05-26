@@ -64,7 +64,10 @@
             "[Gridania] Lancers' Guild",
             "[Gridania] White Wolf Gate (Central Shroud)"
           ],
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
@@ -81,7 +84,8 @@
           "TerritoryId": 154,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Index": 1
+            "Index": 1,
+            "Enabled": true
           },
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "Fly": true

@@ -119,6 +119,9 @@
             "AethernetShortcutIf": {
               "InSameTerritory": true
             }
+          },
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
           }
         }
       ]

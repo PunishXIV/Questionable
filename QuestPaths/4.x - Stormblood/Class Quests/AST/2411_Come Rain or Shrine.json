@@ -72,7 +72,14 @@
           "AetheryteShortcut": "Kugane",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [1,null,null,null,null,64]
+              "CompletionQuestVariablesFlags": [
+                1,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
             }
           }
         },
@@ -89,7 +96,14 @@
           "AetheryteShortcut": "Kugane",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [2,null,null,null,null,null]
+              "CompletionQuestVariablesFlags": [
+                2,
+                null,
+                null,
+                null,
+                null,
+                null
+              ]
             }
           }
         },
@@ -170,6 +184,9 @@
             "AetheryteShortcutIf": {
               "InSameTerritory": true
             }
+          },
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
           }
         }
       ]

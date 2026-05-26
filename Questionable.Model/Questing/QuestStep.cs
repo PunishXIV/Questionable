@@ -103,7 +103,6 @@ public sealed class QuestStep
     public List<uint> PointMenuChoices { get; set; } = [];
     public PurchaseMenu? PurchaseMenu { get; set; }
 
-    // TODO: Not implemented
     [JsonConverter(typeof(ElementIdConverter))]
     public ElementId? PickUpQuestId { get; set; }
 

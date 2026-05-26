@@ -231,6 +231,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddTaskExecutor<UseItem.UseOnObject, UseItem.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<UseItem.UseOnSelf, UseItem.UseOnSelfExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<EquipItem.Task, EquipItem.Factory, EquipItem.DoEquip>();
+        serviceCollection.AddTaskFactoryAndExecutor<UnequipItem.Task, UnequipItem.Factory, UnequipItem.DoUnequip>();
         serviceCollection
             .AddTaskFactoryAndExecutor<EquipRecommended.EquipTask, EquipRecommended.Factory,
                 EquipRecommended.DoEquipRecommended>();

@@ -12,7 +12,6 @@ using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;
 
-// WIP
 internal static class UnequipItem
 {
     internal sealed class Factory : SimpleTaskFactory
@@ -39,28 +38,20 @@ internal static class UnequipItem
     {
         private const int MaxAttempts = 3;
 
-        //private static readonly IReadOnlyList<InventoryType> SourceInventoryTypes =
-        //[
-        //    InventoryType.ArmoryMainHand,
-        //    InventoryType.ArmoryOffHand,
-        //    InventoryType.ArmoryHead,
-        //    InventoryType.ArmoryBody,
-        //    InventoryType.ArmoryHands,
-        //    InventoryType.ArmoryLegs,
-        //    InventoryType.ArmoryFeets,
-
-        //    InventoryType.ArmoryEar,
-        //    InventoryType.ArmoryNeck,
-        //    InventoryType.ArmoryWrist,
-        //    InventoryType.ArmoryRings,
-
-        //    InventoryType.ArmorySoulCrystal,
-
-        //    InventoryType.Inventory1,
-        //    InventoryType.Inventory2,
-        //    InventoryType.Inventory3,
-        //    InventoryType.Inventory4,
-        //];
+        private static readonly InventoryType[] ArmoryInventoryTypes =
+        [
+            InventoryType.ArmoryMainHand,
+            InventoryType.ArmoryOffHand,
+            InventoryType.ArmoryHead,
+            InventoryType.ArmoryBody,
+            InventoryType.ArmoryHands,
+            InventoryType.ArmoryLegs,
+            InventoryType.ArmoryFeets,
+            InventoryType.ArmoryEar,
+            InventoryType.ArmoryNeck,
+            InventoryType.ArmoryWrist,
+            InventoryType.ArmoryRings,
+        ];
 
         private int _attempts;
         private DateTime _continueAt = DateTime.MaxValue;
@@ -76,12 +67,8 @@ internal static class UnequipItem
             if (inventoryManager == null)
                 return ETaskResult.StillRunning;
 
-            foreach (ushort x in _targetSlots)
-            {
-                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
-                if (itemSlot != null && itemSlot->ItemId != Task.ItemId)
-                    return ETaskResult.TaskComplete;
-            }
+            if (!IsItemEquipped(inventoryManager))
+                return ETaskResult.TaskComplete;
 
             Unequip();
             _continueAt = DateTime.Now.AddSeconds(1);
@@ -105,9 +92,24 @@ internal static class UnequipItem
                     throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
             _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
 
+            if (GetArmoryInventoryType(_item.Value) == null)
+                throw new InvalidOperationException("Item has no armory destination");
+
             Unequip();
             _continueAt = DateTime.Now.AddSeconds(1);
             return true;
+        }
+
+        private unsafe bool IsItemEquipped(InventoryManager* inventoryManager)
+        {
+            foreach (ushort slot in _targetSlots)
+            {
+                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, slot);
+                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
+                    return true;
+            }
+
+            return false;
         }
 
         private unsafe void Unequip()
@@ -120,24 +122,66 @@ internal static class UnequipItem
             if (inventoryManager == null)
                 return;
 
-            InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
-            if (equippedContainer == null)
+            if (!IsItemEquipped(inventoryManager))
+            {
+                logger.LogInformation("Already unequipped {Item}, skipping step", _item?.Name.ToString());
+                return;
+            }
+
+            InventoryType armoryType = GetArmoryInventoryType(_item!.Value)!.Value;
+            InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
+            if (armoryContainer == null)
                 return;
 
-            foreach (ushort slot in _targetSlots)
+            foreach (ushort equippedSlot in _targetSlots)
             {
-                InventoryItem* itemSlot = equippedContainer->GetInventorySlot(slot);
+                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, equippedSlot);
+                if (itemSlot == null || itemSlot->ItemId != Task.ItemId)
+                    continue;
 
-                if (itemSlot != null && itemSlot->ItemId != Task.ItemId)
+                if (!TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
                 {
-                    logger.LogInformation("Already unequipped {Item}, skipping step", _item?.Name.ToString());
-                    return;
+                    logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
+                        armoryType, Task.ItemId);
+                    throw new TaskException("Unable to unequip gear - armory chest is full.");
+                }
+
+                logger.LogInformation(
+                    "Unequipping item from {SourceInventory}, {SourceSlot} to {TargetInventory}, {TargetSlot}",
+                    InventoryType.EquippedItems, equippedSlot, armoryType, targetSlot);
+
+                int result = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, equippedSlot,
+                    armoryType, targetSlot, true);
+                logger.LogInformation("MoveItemSlot result: {Result}", result);
+                return;
+            }
+        }
+
+        private static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
+        {
+            for (ushort i = 0; i < container->Size; i++)
+            {
+                InventoryItem* itemSlot = container->GetInventorySlot(i);
+                if (itemSlot == null || itemSlot->ItemId == 0)
+                {
+                    slot = i;
+                    return true;
                 }
             }
 
-            // TODO: Implement actual unequip logic (MoveItemSlot to armory chest)
-            logger.LogWarning("Unequip not yet implemented for item {ItemId}", Task.ItemId);
+            slot = 0;
+            return false;
         }
+
+        private static InventoryType? GetArmoryInventoryType(Item item) =>
+            item.EquipSlotCategory.RowId switch
+            {
+                >= 1 and <= 11 => ArmoryInventoryTypes[item.EquipSlotCategory.RowId - 1],
+                12 => InventoryType.ArmoryRings,
+                13 => InventoryType.ArmoryMainHand,
+                17 => InventoryType.ArmorySoulCrystal,
+                _ => null
+            };
 
         private static List<ushort>? GetEquipSlot(Item? item)
         {

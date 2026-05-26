@@ -50,7 +50,10 @@
             "Z": -760.1587
           },
           "TerritoryId": 620,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
