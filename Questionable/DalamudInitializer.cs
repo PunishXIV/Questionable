@@ -77,6 +77,7 @@ internal sealed class DalamudInitializer : IDisposable
         _toastGui.Toast += OnToast;
         _toastGui.ErrorToast += OnErrorToast;
         _toastGui.QuestToast += OnQuestToast;
+        _configuration.Advanced.AbandonQuestBeforeCompletion = false;
         if (_configuration.Advanced.StartMinimized)
             _questWindow.IsMinimized = true;
 

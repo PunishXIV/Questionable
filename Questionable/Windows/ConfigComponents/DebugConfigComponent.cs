@@ -208,7 +208,8 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                         }
 
                         ImGui.SameLine();
-                        ImGuiComponents.HelpMarker("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step.");
+                        ImGuiComponents.HelpMarker("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step. " +
+                            "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
                     }
                 }
                 else if (abandonQuestBeforeCompletion)

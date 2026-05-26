@@ -1,7 +1,8 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-15"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-26"},
+  "Interruptible": false,
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,6 +16,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
+          "StopDistance": 1,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true
         }
@@ -198,8 +200,10 @@
           },
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
+          "StopDistance": 1,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {"AetheryteShortcutIf": {"Never": true}}
         }
       ]
     }

@@ -1,3 +1,4 @@
 - Config option to automatically abandon a quest when Prevent Quest Completion is toggled on -alydev
+  - Option is automatically disabled when plugin is loaded to avoid confusion -alydev
 - Settings>Advanced tab now has collapsing headers to mitigate the huge list of options i've added there -alydev
 - Add society rep check to the logic for whether a Story quest is locked or unlocked -alydev
