@@ -24,7 +24,9 @@ internal sealed class QuestPriorityManager(
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
 
-    public bool Contains(Quest quest) => _quests.Contains(quest);
+    public bool Contains(Quest quest) => _quests.Any(q => q.Id == quest.Id);
+
+    public bool Contains(ElementId elementId) => _quests.Any(q => q.Id == elementId);
 
     public bool Add(Quest quest)
     {

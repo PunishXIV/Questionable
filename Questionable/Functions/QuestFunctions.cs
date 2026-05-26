@@ -17,6 +17,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Arrays;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Common;
@@ -363,8 +364,7 @@ internal sealed unsafe class QuestFunctions
     {
         BattleChara* battleChara = (BattleChara*)(objectTable[0]?.Address ?? 0);
         return battleChara != null &&
-               battleChara->Mount.MountId != 0 &&
-               alliedSocietyData.Mounts.ContainsKey(battleChara->Mount.MountId);
+               alliedSocietyData.IsAlliedSocietyMount(battleChara->Mount.MountId);
     }
 
     private bool IsReadyToCompleteQuest(Quest quest)
@@ -377,6 +377,90 @@ internal sealed unsafe class QuestFunctions
                 return toDoListNA->QuestTypeIcon[i] == 71025; // green checkmark quest icon
         }
         return false;
+    }
+
+    private bool HasIncompleteAlliedSocietyDailyObjectives(Quest quest, byte sequence) =>
+        sequence < 255 || !IsReadyToCompleteQuest(quest);
+
+    public bool IsAlliedSocietyDailyReadyToTurnIn(Quest quest) =>
+        GetQuestProgressInfo(quest.Id)?.Sequence == 255 && IsReadyToCompleteQuest(quest);
+
+    /// <summary>
+    ///     Accepted allied-society dailies for batch objectives and turn-in. Uses the priority list by default;
+    ///     if every daily available today is already accepted (manual pickup), includes all of them.
+    /// </summary>
+    public List<(Quest Quest, byte Sequence)> GetActiveAlliedSocietyBatch(IReadOnlyList<Quest> priorityQuests,
+        EAlliedSociety society)
+    {
+        List<(Quest Quest, byte Sequence)> priorityBatch = GetAcceptedAlliedSocietyDailies(priorityQuests, society);
+
+        List<QuestId> availableToday = alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(society);
+        if (availableToday.Count >= 2 && availableToday.All(id => IsQuestAccepted(id)))
+        {
+            List<(Quest Quest, byte Sequence)> fullBatch =
+                GetAcceptedAlliedSocietyDailiesByIds(availableToday, priorityQuests, society);
+            if (fullBatch.Count >= 2)
+                return fullBatch;
+        }
+
+        return priorityBatch;
+    }
+
+    /// <summary>
+    ///     True while any accepted allied-society daily in the batch still has objectives to finish.
+    /// </summary>
+    public bool ShouldDeferAlliedSocietyTurnIn(Quest quest, IReadOnlyList<Quest> priorityQuests)
+    {
+        if (!AlliedSocietyBatch.SupportsBatch(quest) ||
+            !IsAlliedSocietyBatchCoordinationActive(priorityQuests, quest.Info.AlliedSociety))
+        {
+            return false;
+        }
+
+        List<(Quest Quest, byte Sequence)> batch = GetActiveAlliedSocietyBatch(priorityQuests, quest.Info.AlliedSociety);
+        return batch.Count >= 2 &&
+               batch.Any(x => HasIncompleteAlliedSocietyDailyObjectives(x.Quest, x.Sequence));
+    }
+
+    private (ElementId QuestId, byte Sequence)? GetActiveAlliedSocietyBatchQuestToRun(
+        IReadOnlyList<Quest> priorityQuests)
+    {
+        foreach (EAlliedSociety society in GetAlliedSocietyBatchCoordinationSocieties(priorityQuests))
+        {
+            List<(Quest Quest, byte Sequence)> batch = GetActiveAlliedSocietyBatch(priorityQuests, society);
+            if (batch.Count < 2)
+                continue;
+
+            foreach ((Quest batchQuest, byte batchSequence) in batch)
+            {
+                if (HasIncompleteAlliedSocietyDailyObjectives(batchQuest, batchSequence))
+                    return (batchQuest.Id, batchSequence);
+            }
+
+            return (batch[0].Quest.Id, 255);
+        }
+
+        return null;
+    }
+
+    private IEnumerable<EAlliedSociety> GetAlliedSocietyBatchCoordinationSocieties(
+        IReadOnlyList<Quest> priorityQuests)
+    {
+        HashSet<EAlliedSociety> societies = priorityQuests
+            .Where(AlliedSocietyBatch.SupportsBatch)
+            .Select(q => q.Info.AlliedSociety)
+            .ToHashSet();
+
+        foreach (EAlliedSociety society in Enum.GetValues<EAlliedSociety>())
+        {
+            if (society is EAlliedSociety.None or EAlliedSociety.Ixal)
+                continue;
+
+            if (IsManuallyAcceptedFullAlliedSocietyBatch(society))
+                societies.Add(society);
+        }
+
+        return societies;
     }
 
     private bool IsInteractSequence(ElementId questId, byte sequenceNo, uint[] dataIds)
@@ -404,6 +488,106 @@ internal sealed unsafe class QuestFunctions
         else
             return null;
     }
+
+    /// <summary>
+    ///     Picks which priority-list quest to run. For allied-society dailies (except Ixal), finishes
+    ///     objectives on every accepted quest in the batch before turning any in.
+    /// </summary>
+    public (ElementId QuestId, byte Sequence)? GetPriorityQuestToRun(IReadOnlyList<Quest> priorityQuests)
+    {
+        foreach (Quest quest in priorityQuests)
+        {
+            if (IsReadyToAcceptQuest(quest.Id))
+                return (quest.Id, 0);
+        }
+
+        (ElementId QuestId, byte Sequence)? batchQuest = GetActiveAlliedSocietyBatchQuestToRun(priorityQuests);
+        if (batchQuest != null)
+            return batchQuest;
+
+        foreach (Quest quest in priorityQuests)
+        {
+            if (!IsQuestAccepted(quest.Id))
+                continue;
+
+            byte sequence = GetQuestProgressInfo(quest.Id)?.Sequence ?? 0;
+            return (quest.Id, sequence);
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    ///     Batch objectives and turn-in: active when the tribe is on the priority list, or every daily
+    ///     available today was accepted manually.
+    /// </summary>
+    public bool IsAlliedSocietyBatchCoordinationActive(IReadOnlyList<Quest> priorityQuests, EAlliedSociety society) =>
+        IsAlliedSocietyBatchModeActive(priorityQuests, society) ||
+        IsManuallyAcceptedFullAlliedSocietyBatch(society);
+
+    /// <summary>
+    ///     Batch accept only: requires at least one daily from the tribe on the priority list.
+    /// </summary>
+    public static bool IsAlliedSocietyBatchModeActive(IReadOnlyList<Quest> priorityQuests, EAlliedSociety society) =>
+        priorityQuests.Any(q => AlliedSocietyBatch.SupportsBatch(q) && q.Info.AlliedSociety == society);
+
+    private bool IsManuallyAcceptedFullAlliedSocietyBatch(EAlliedSociety society)
+    {
+        List<QuestId> availableToday = alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(society);
+        return availableToday.Count >= 2 && availableToday.All(id => IsQuestAccepted(id));
+    }
+
+    public List<(Quest Quest, byte Sequence)> GetAcceptedAlliedSocietyDailies(IReadOnlyList<Quest> priorityQuests,
+        EAlliedSociety society)
+    {
+        List<(Quest Quest, byte Sequence)> batch = [];
+        foreach (Quest quest in priorityQuests)
+        {
+            if (!AlliedSocietyBatch.SupportsBatch(quest) || quest.Info.AlliedSociety != society || !IsQuestAccepted(quest.Id))
+                continue;
+
+            batch.Add((quest, GetQuestProgressInfo(quest.Id)?.Sequence ?? 0));
+        }
+
+        return batch;
+    }
+
+    private List<(Quest Quest, byte Sequence)> GetAcceptedAlliedSocietyDailiesByIds(
+        IEnumerable<QuestId> questIds,
+        IReadOnlyList<Quest> priorityQuests,
+        EAlliedSociety society)
+    {
+        List<(Quest Quest, byte Sequence)> batch = [];
+        foreach (QuestId questId in questIds)
+        {
+            if (!IsQuestAccepted(questId) || !questRegistry.TryGetQuest(questId, out Quest? quest))
+                continue;
+
+            if (!AlliedSocietyBatch.SupportsBatch(quest) || quest.Info.AlliedSociety != society)
+                continue;
+
+            batch.Add((quest, GetQuestProgressInfo(questId)?.Sequence ?? 0));
+        }
+
+        return OrderAlliedSocietyBatch(batch, priorityQuests);
+    }
+
+    private static List<(Quest Quest, byte Sequence)> OrderAlliedSocietyBatch(
+        List<(Quest Quest, byte Sequence)> batch,
+        IReadOnlyList<Quest> priorityQuests) =>
+        batch
+            .OrderBy(x =>
+            {
+                for (int i = 0; i < priorityQuests.Count; ++i)
+                {
+                    if (priorityQuests[i].Id == x.Quest.Id)
+                        return i;
+                }
+
+                return int.MaxValue;
+            })
+            .ThenBy(x => x.Quest.Id.Value)
+            .ToList();
 
     public List<PriorityQuestInfo> GetNextPriorityQuestsThatCanBeAccepted()
     {
