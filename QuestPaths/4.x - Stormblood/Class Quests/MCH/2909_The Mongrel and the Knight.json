@@ -73,7 +73,10 @@
           "AethernetShortcut": [
             "[Ishgard] Skysteel Manufactory",
             "[Ishgard] Aetheryte Plaza"
-          ]
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

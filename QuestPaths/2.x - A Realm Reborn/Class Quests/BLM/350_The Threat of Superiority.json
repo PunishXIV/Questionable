@@ -33,9 +33,9 @@
         {
           "DataId": 1001711,
           "Position": {
-              "X": -241.62665,
-              "Y": 18.8,
-              "Z": 83.32947
+            "X": -241.62665,
+            "Y": 18.8,
+            "Z": 83.32947
           },
           "TerritoryId": 130,
           "InteractionType": "Interact"
@@ -43,42 +43,42 @@
       ]
     },
     {
-        "Sequence": 2,
-        "Steps": [
-          {
-            "DataId": 1002301,
-            "Position": {
-                "X": -178.2102,
-                "Y": 18,
-                "Z": 61.41748
-            },
-            "TerritoryId": 130,
-            "InteractionType": "Emote",
-            "Emote": "cry"
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002301,
+          "Position": {
+            "X": -178.2102,
+            "Y": 18,
+            "Z": 61.41748
           },
-          {
-            "DataId": 1002300,
-            "Position": {
-                "X": -176.9284,
-                "Y": 18,
-                "Z": 62.363525
-            },
-            "TerritoryId": 130,
-            "InteractionType": "Emote",
-            "Emote": "cry"
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "cry"
+        },
+        {
+          "DataId": 1002300,
+          "Position": {
+            "X": -176.9284,
+            "Y": 18,
+            "Z": 62.363525
           },
-          {
-            "DataId": 1002302,
-            "Position": {
-                "X": -176.71478,
-                "Y": 18,
-                "Z": 64.34729
-            },
-            "TerritoryId": 130,
-            "InteractionType": "Emote",
-            "Emote": "cry"
-          }
-        ]
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "cry"
+        },
+        {
+          "DataId": 1002302,
+          "Position": {
+            "X": -176.71478,
+            "Y": 18,
+            "Z": 64.34729
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Emote",
+          "Emote": "cry"
+        }
+      ]
     },
     {
       "Sequence": 3,
@@ -86,9 +86,9 @@
         {
           "DataId": 1001711,
           "Position": {
-              "X": -241.62665,
-              "Y": 18.8,
-              "Z": 83.32947
+            "X": -241.62665,
+            "Y": 18.8,
+            "Z": 83.32947
           },
           "TerritoryId": 130,
           "InteractionType": "Interact"
@@ -101,14 +101,14 @@
         {
           "DataId": 2001470,
           "Position": {
-              "X": -24.887512,
-              "Y": -25.345276,
-              "Z": 321.94995
+            "X": -24.887512,
+            "Y": -25.345276,
+            "Z": 321.94995
           },
           "TerritoryId": 145,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.3.2.4",
             "Notes": [
               "vbm doesn't move to the enemies automatically",

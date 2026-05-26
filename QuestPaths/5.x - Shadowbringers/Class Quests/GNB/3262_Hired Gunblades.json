@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "QuestSequence": [
@@ -105,7 +105,14 @@
             "[Gridania] Lancers' Guild",
             "[Gridania] Mih Khetto's Amphitheatre"
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
         },
         {
           "DataId": 1000286,
@@ -116,7 +123,14 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
         },
         {
           "DataId": 1003063,
@@ -127,7 +141,14 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
         }
       ]
     },
@@ -161,7 +182,10 @@
           "AethernetShortcut": [
             "[Gridania] Mih Khetto's Amphitheatre",
             "[Gridania] Lancers' Guild"
-          ]
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

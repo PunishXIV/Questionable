@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
   "QuestSequence": [
@@ -8,9 +8,9 @@
         {
           "DataId": 1001709,
           "Position": {
-              "X": -240.4975,
-              "Y": 18.7,
-              "Z": 85.58777
+            "X": -240.4975,
+            "Y": 18.7,
+            "Z": 85.58777
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
@@ -36,9 +36,9 @@
         {
           "DataId": 1001708,
           "Position": {
-              "X": -250.3548,
-              "Y": 18,
-              "Z": 80.88806
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
           },
           "TerritoryId": 130,
           "InteractionType": "Interact"
@@ -51,9 +51,9 @@
         {
           "DataId": 1002309,
           "Position": {
-              "X": -374.28857,
-              "Y": -57.079987,
-              "Z": 144.12134
+            "X": -374.28857,
+            "Y": -57.079987,
+            "Z": 144.12134
           },
           "TerritoryId": 145,
           "InteractionType": "Interact",
@@ -70,9 +70,9 @@
         {
           "DataId": 1002308,
           "Position": {
-              "X": -386.7094,
-              "Y": -59.300003,
-              "Z": 166.39954
+            "X": -386.7094,
+            "Y": -59.300003,
+            "Z": 166.39954
           },
           "TerritoryId": 145,
           "InteractionType": "Interact"
@@ -80,9 +80,9 @@
         {
           "DataId": 1002307,
           "Position": {
-              "X": -396.65833,
-              "Y": -48.15,
-              "Z": 99.68713
+            "X": -396.65833,
+            "Y": -48.15,
+            "Z": 99.68713
           },
           "TerritoryId": 145,
           "InteractionType": "Interact"
@@ -95,9 +95,9 @@
         {
           "DataId": 1001708,
           "Position": {
-              "X": -250.3548,
-              "Y": 18,
-              "Z": 80.88806
+            "X": -250.3548,
+            "Y": 18,
+            "Z": 80.88806
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
@@ -123,9 +123,9 @@
         {
           "DataId": 1001709,
           "Position": {
-              "X": -240.4975,
-              "Y": 18.7,
-              "Z": 85.58777
+            "X": -240.4975,
+            "Y": 18.7,
+            "Z": 85.58777
           },
           "TerritoryId": 130,
           "InteractionType": "Interact"
@@ -137,9 +137,9 @@
       "Steps": [
         {
           "Position": {
-              "X": 222.64497,
-              "Y": 5.099169,
-              "Z": -265.77835
+            "X": 222.64497,
+            "Y": 5.099169,
+            "Z": -265.77835
           },
           "TerritoryId": 145,
           "Fly": true,
@@ -157,12 +157,15 @@
         {
           "DataId": 1002310,
           "Position": {
-              "X": 184.89343,
-              "Y": 3.1809213,
-              "Z": -338.64355
+            "X": 184.89343,
+            "Y": 3.1809213,
+            "Z": -338.64355
           },
           "TerritoryId": 145,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

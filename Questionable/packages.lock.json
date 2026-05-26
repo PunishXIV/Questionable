@@ -124,19 +124,21 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.278.0, )"
+          "DalamudPackager": "[15.0.0, )",
+          "Questionable.Model": "[15.286.0.5, )"
         }
       },
       "questionable.model": {
         "type": "Project",
         "dependencies": {
-          "System.Text.Json": "[9.0.3, )"
+          "DalamudPackager": "[15.0.0, )"
         }
       },
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.278.0, )"
+          "DalamudPackager": "[15.0.0, )",
+          "Questionable.Model": "[15.286.0.5, )"
         }
       }
     }

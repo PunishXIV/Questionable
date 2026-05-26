@@ -111,7 +111,10 @@
           "AethernetShortcut": [
             "[Ul'dah] Gladiators' Guild",
             "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

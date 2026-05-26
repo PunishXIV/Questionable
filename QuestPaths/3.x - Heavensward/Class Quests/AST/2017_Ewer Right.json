@@ -119,7 +119,10 @@
           "StopDistance": 5,
           "AetheryteShortcut": "Mor Dhona",
           "Fly": true,
-          "Comment": "Solo duty here!"
+          "Comment": "Solo duty here!",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

@@ -1,6 +1,5 @@
-- BossMod presets — We now only turn off our own presets ("Questionable" and "Questionable – Quest Battles"). - Kage
-- Removed an old, outdated BossMod helper - Kage
-- Always switch off BossMod's old AI mode (/vbmai off) - Kage
-- YesAlready now gets turned back on properly - Kage
-- Stopping mid-cutscene during a solo duty cleans up properly - Kage
-- Unmount instead of teleport to clear soc mount -alydev
+- Stop after accepting a quest — configure per quest in the journal or toggle it from the active quest panel - Kage
+- Job quest battles enabled by default for SCH, AST, PLD, BRD, DRG, MNK, DRK, MCH, GNB, DNC, and BLM - Kage
+- Stop before teleport now only triggers for aetheryte teleports and item uses, not aethernet shortcuts or zone warps - Kage
+- Unequip item steps work again, including when the armory chest is full - Kage
+- Fixed stop-conditions config where the on-complete and on-accept quest lists could interfere with each other - Kage

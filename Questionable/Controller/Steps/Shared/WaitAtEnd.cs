@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using Questionable.Controller;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
 using Questionable.Data;
@@ -229,15 +230,18 @@ internal static class WaitAtEnd
         public override string ToString() => $"WaitQuestAccepted({ElementId})";
     }
 
-    internal sealed class WaitQuestAcceptedExecutor(QuestFunctions questFunctions) : TaskExecutor<WaitQuestAccepted>
+    internal sealed class WaitQuestAcceptedExecutor(QuestFunctions questFunctions, QuestController questController)
+        : TaskExecutor<WaitQuestAccepted>
     {
         protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
-            return questFunctions.IsQuestAccepted(Task.ElementId)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (!questFunctions.IsQuestAccepted(Task.ElementId))
+                return ETaskResult.StillRunning;
+
+            questController.TryStopOnQuestAccepted(Task.ElementId);
+            return ETaskResult.TaskComplete;
         }
 
         public override bool ShouldInterruptOnDamage() => false;

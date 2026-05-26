@@ -36,7 +36,10 @@
           "TerritoryId": 147,
           "InteractionType": "SinglePlayerDuty",
           "Fly": true,
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

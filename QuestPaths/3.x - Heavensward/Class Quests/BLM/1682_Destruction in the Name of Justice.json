@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "QuestSequence": [
@@ -99,7 +99,14 @@
           },
           "TerritoryId": 397,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
         },
         {
           "DataId": 1013062,
@@ -110,7 +117,14 @@
           },
           "TerritoryId": 397,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
         },
         {
           "DataId": 1013063,
@@ -121,7 +135,14 @@
           },
           "TerritoryId": 397,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
         }
       ]
     },
@@ -144,7 +165,10 @@
               "Prompt": "TEXT_JOBBLM580_01682_Q1_000_000",
               "Answer": "TEXT_JOBBLM580_01682_A1_000_001"
             }
-          ]
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

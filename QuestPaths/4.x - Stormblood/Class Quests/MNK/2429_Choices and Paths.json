@@ -111,7 +111,10 @@
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
           "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

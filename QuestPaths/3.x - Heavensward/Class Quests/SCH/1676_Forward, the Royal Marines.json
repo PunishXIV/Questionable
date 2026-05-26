@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "QuestSequence": [
@@ -79,7 +79,10 @@
           },
           "TerritoryId": 139,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
@@ -104,7 +107,14 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
         },
         {
           "DataId": 1013147,
@@ -115,7 +125,14 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
         },
         {
           "DataId": 1013148,
@@ -126,7 +143,14 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
         },
         {
           "DataId": 1013198,
@@ -137,7 +161,14 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            16
+          ]
         }
       ]
     },

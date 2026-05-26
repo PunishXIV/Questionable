@@ -1,7 +1,10 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked":{"Username": "alydev", "Date": "2026-02-09"},
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-02-09"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -112,7 +115,14 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
         },
         {
           "DataId": 2001435,
@@ -123,7 +133,14 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
         }
       ]
     },
@@ -170,8 +187,10 @@
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "Notes": ["Move up the ramp to the bridge, stay by Mylla, ignore Leavold"],
+            "Enabled": true,
+            "Notes": [
+              "Move up the ramp to the bridge, stay by Mylla, ignore Leavold"
+            ],
             "TestedBossModVersion": "0.4.21.1"
           }
         }
