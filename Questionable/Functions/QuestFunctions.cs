@@ -660,10 +660,7 @@ internal sealed unsafe class QuestFunctions
             if (questInfo.IsRepeatable)
                 return !IsDailyAlliedSocietyQuestAndAvailableToday(questId);
             else
-            {
-                EAlliedSocietyRank currentRank = (EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)questInfo.AlliedSociety);
-                return currentRank == 0 || currentRank <= questInfo.AlliedSocietyRank;
-            }
+                return !IsAlliedSocietyStoryQuestAvailable(questId);
 
         if (questInfo.IsMoogleDeliveryQuest)
         {
@@ -708,6 +705,15 @@ internal sealed unsafe class QuestFunctions
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         return alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(questInfo.AlliedSociety).Contains(questId);
+    }
+
+    public bool IsAlliedSocietyStoryQuestAvailable(QuestId questId)
+    {
+        QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
+        EAlliedSocietyRank currentRank = (EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)questInfo.AlliedSociety);
+        var currentRep = PlayerState.Instance()->GetBeastTribeCurrentReputation((byte)questInfo.AlliedSociety);
+        var neededRep = PlayerState.Instance()->GetBeastTribeNeededReputation((byte)questInfo.AlliedSociety);
+        return currentRank >= questInfo.AlliedSocietyRank || currentRep == neededRep;
     }
 
     public bool IsQuestUnobtainable(ElementId elementId, ElementId? extraCompletedQuest = null)

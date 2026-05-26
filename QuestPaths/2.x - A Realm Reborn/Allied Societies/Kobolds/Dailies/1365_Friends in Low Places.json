@@ -26,6 +26,16 @@
       "Steps": [
         {
           "Position": {
+            "X": 110.641846,
+            "Y": 28.264153,
+            "Z": -598.6636
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
             "X": 161.17926,
             "Y": 21.418877,
             "Z": -703.57477
@@ -54,8 +64,7 @@
               "NameId": 2518,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
