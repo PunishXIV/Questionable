@@ -76,7 +76,7 @@ internal static class AbandonQuest
         {
             logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
             GameMain.ExecuteCommand(800, (int)Task.Quest!.Id.Value);
-            questController.PriorityManager.Remove(Task.Quest);
+            questController.PriorityManager.Remove(Task.Quest.Id);
         }
 
         public override bool ShouldInterruptOnDamage() => false;

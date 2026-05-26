@@ -2,15 +2,15 @@
   "version": 1,
   "dependencies": {
     "net10.0-windows7.0": {
-      "DalamudPackager": {
+      "System.Text.Json": {
         "type": "Transitive",
-        "resolved": "15.0.0",
-        "contentHash": "411vwC8/X8Z/sQ2TI6v3SvOn66xFPeOjFn3Zn+h0d3Ox2t1kFm66AhDvmx/qcMwVrR+Hidxj0dadpQ2dgyXMBQ=="
+        "resolved": "9.0.3",
+        "contentHash": "r2JRkLjsYrq5Dpo7+y3Wa73OfirZPdVhxiTJWwZ+oJM7FOAe0LkM3GlH+pgkNRdd1G1kwUbmRCdmh4uoaWwu1g=="
       },
       "questionable.model": {
         "type": "Project",
         "dependencies": {
-          "DalamudPackager": "[15.0.0, )"
+          "System.Text.Json": "[9.0.3, )"
         }
       }
     }
