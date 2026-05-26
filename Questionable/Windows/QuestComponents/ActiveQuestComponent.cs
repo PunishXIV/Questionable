@@ -425,11 +425,9 @@ internal sealed partial class ActiveQuestComponent
         {
             ImGui.SameLine();
 
-            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopAfterCurrentQuest))
-            {
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.FlagCheckered))
-                    _questController.StopAfterCurrentQuest = !_questController.StopAfterCurrentQuest;
-            }
+            if (ImGuiComponents.IconButton(FontAwesomeIcon.FlagCheckered,
+                    _questController.StopAfterCurrentQuest ? ImGuiColors.DalamudOrange : null))
+                _questController.StopAfterCurrentQuest = !_questController.StopAfterCurrentQuest;
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_questController.StopAfterCurrentQuest
@@ -438,11 +436,9 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopAfterAcceptingCurrentQuest))
-            {
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.Play))
-                    _questController.StopAfterAcceptingCurrentQuest = !_questController.StopAfterAcceptingCurrentQuest;
-            }
+            if (ImGuiComponents.IconButton(FontAwesomeIcon.Play,
+                    _questController.StopAfterAcceptingCurrentQuest ? ImGuiColors.DalamudOrange : null))
+                _questController.StopAfterAcceptingCurrentQuest = !_questController.StopAfterAcceptingCurrentQuest;
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_questController.StopAfterAcceptingCurrentQuest
@@ -451,11 +447,9 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange, _questController.StopBeforeTeleport))
-            {
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt))
-                    _questController.StopBeforeTeleport = !_questController.StopBeforeTeleport;
-            }
+            if (ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt,
+                    _questController.StopBeforeTeleport ? ImGuiColors.DalamudOrange : null))
+                _questController.StopBeforeTeleport = !_questController.StopBeforeTeleport;
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_questController.StopBeforeTeleport

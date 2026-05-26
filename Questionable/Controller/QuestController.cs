@@ -502,6 +502,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 {
                     StartedQuest = PendingQuest;
                     PendingQuest = null;
+                    TryStopOnQuestAccepted(StartedQuest.Quest.Id);
+                    if (AutomationType == EAutomationType.Manual)
+                        return;
                     CheckNextTasks("Pending quest accepted");
                 }
             }
@@ -517,8 +520,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
                 if (!canUseNextQuest)
                 {
-                    _logger.LogInformation("Next quest {QuestId} accepted or completed",
-                        NextQuest.Quest.Id);
+                    ElementId nextQuestId = NextQuest.Quest.Id;
+                    _logger.LogInformation("Next quest {QuestId} accepted or completed", nextQuestId);
 
                     if (AutomationType == EAutomationType.SingleQuestA)
                     {
@@ -528,6 +531,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
                     _logger.LogDebug("Started: {StartedQuest}", StartedQuest?.Quest.Id);
                     NextQuest = null;
+                    TryStopOnQuestAccepted(nextQuestId);
+                    if (AutomationType == EAutomationType.Manual)
+                        return;
                 }
             }
 
@@ -618,6 +624,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     {
                         _highlightObject.SetHighlight([]);
                         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
+
+                        TryStopOnQuestAccepted(quest.Id);
+                        if (AutomationType == EAutomationType.Manual)
+                            return;
+
                         StartedQuest = new(quest, currentSequence);
 #if DEBUG
                         if (_configuration.Advanced.OpenEditor && 
@@ -822,10 +833,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return;
 
         bool configStop = _configuration.Stop.Enabled &&
-                          _configuration.Stop.QuestsToStopWhenAccepted.Contains(questId);
+                          _configuration.Stop.QuestsToStopWhenAccepted.Any(x => x == questId);
         bool sessionStop = StopAfterAcceptingCurrentQuest &&
-                           StartedQuest != null &&
-                           StartedQuest.Quest.Id == questId;
+                           (StartedQuest == null || StartedQuest.Quest.Id == questId);
 
         if (!configStop && !sessionStop)
             return;
