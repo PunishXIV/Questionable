@@ -1,10 +1,10 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-15"},
   "Author": [
     "skiaz",
     "alydev"
   ],
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -26,110 +26,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 82.300514,
-            "Y": 27.434578,
-            "Z": -334.66284
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 82.300514,
-                  "Y": 27.434578,
-                  "Z": -334.66284
-                },
-                "TerritoryId": 146,
-                "MaximumDistance": 32
-              }
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 52.157562,
-            "Y": 58.146656,
-            "Z": -123.75839
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 52.157562,
-                  "Y": 58.146656,
-                  "Z": -123.75839
-                },
-                "TerritoryId": 146,
-                "MaximumDistance": 220
-              }
-            }
-          },
-          "RequiredQuestVariables": [[
-              0
-            ],null,null,null,null,null]
-        },
-        {
-          "Position": {
-            "X": 128.78984,
-            "Y": 55.80173,
-            "Z": -56.721222
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 128.78984,
-                  "Y": 55.80173,
-                  "Z": -56.721222
-                },
-                "TerritoryId": 146,
-                "MaximumDistance": 105
-              }
-            }
-          },
-          "RequiredQuestVariables": [[
-              0
-            ],null,null,null,null,null]
-        },
-        {
-          "Position": {
-            "X": 315.71594,
-            "Y": 29.292376,
-            "Z": -35.018597
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "DisableNavmesh": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 315.71594,
-                  "Y": 29.292376,
-                  "Z": -35.018597
-                },
-                "TerritoryId": 146,
-                "MaximumDistance": 192
-              }
-            }
-          },
-          "RequiredQuestVariables": [[
-              0
-            ],null,null,null,null,null]
-        },
         {
           "DataId": 2003024,
           "Position": {

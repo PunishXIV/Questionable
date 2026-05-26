@@ -2,6 +2,7 @@
 using System.Linq;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Microsoft.Extensions.Logging;
+using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Functions;
@@ -47,10 +48,11 @@ internal static class QuestCleanUp
                 }
 
                 // if the quest uses no mount actions, that's not a mount quest
-                if (!quest.AllSteps().Any(x => (x.Step.Action is { } action && action.RequiresMount()) || (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593))))
+                if (!quest.AllSteps().Any(x => (x.Step.Action is { } action && action.RequiresMount()) ||
+                    (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593))))
                 {
-                    logger.LogInformation("Quest doesn't use any mount actions, teleporting to {Aetheryte}", mountConfiguration.ClosestAetheryte);
-                    return teleportTask;
+                    logger.LogInformation("Quest doesn't use any mount actions, unmounting");
+                    return new Mount.UnmountTask();
                 }
 
                 // have any of the previous sequences interacted with the issuer?

@@ -29,7 +29,7 @@ internal sealed class AlliedSocietyData
             { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
             { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
-            { 23, new([1008327, 1005848], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) } // amaljaa
+            { 23, new([1008327, 1005848, 1005860], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) } // amaljaa
         }.AsReadOnly();
 
     public bool IsAlliedSocietyMount(ushort? mountId)
