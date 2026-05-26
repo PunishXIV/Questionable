@@ -28,6 +28,7 @@ internal static class AbandonQuest
         IChatGui chatGui,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
+        QuestController questController,
         ILogger<AbandonQuestExecutor> logger) : AbstractDelayedTaskExecutor<Task>
     {
         protected override unsafe bool StartInternal()
@@ -58,7 +59,11 @@ internal static class AbandonQuest
 
             logger.LogInformation($"Blindly firing AbandonQuest for {Task.Quest.Id.Value}");
             bool result = GameMain.ExecuteCommand(800, (int)Task.Quest.Id.Value);
-            var _ = logger.LogChat(chatGui, "Quest abandoned");
+            logger.LogChat(chatGui, "Quest abandoned");
+            questController.PriorityManager.Remove(Task.Quest);
+            if (questController.PriorityManager.Contains(Task.Quest)) // this was occasionally returning false even if quest was in prio list
+                logger.LogChat(chatGui, "Priority Quests", $"{Task.Quest.Info.Name} removed");
+            questController.PriorityManager.Remove(Task.Quest); // so i moved the Remove call outside, as it returns either way
             return result;
         }
 
