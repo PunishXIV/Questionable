@@ -72,6 +72,7 @@ internal sealed class QuestInfo : IQuestInfo
         SortKey = genreAndSortKey.Item2 ?? quest.SortKey;
 
         IsMainScenarioQuest = quest.JournalGenre.ValueNullable?.Icon == 61412;
+        CanCancel = quest.CanCancel;
         CompletesInstantly = quest.TodoParams[0].ToDoCompleteSeq == 0;
         PreviousInstanceContent = quest.InstanceContent.Select(x => (ushort)x.RowId).Where(x => x != 0).ToList();
         PreviousInstanceContentJoin = (EQuestJoin)quest.InstanceContentJoin;
@@ -122,6 +123,7 @@ internal sealed class QuestInfo : IQuestInfo
     public uint? JournalGenre { get; set; }
     public ushort SortKey { get; set; }
     public bool IsMainScenarioQuest { get; }
+    public bool CanCancel { get; }
     public EAlliedSociety AlliedSociety { get; }
     public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }

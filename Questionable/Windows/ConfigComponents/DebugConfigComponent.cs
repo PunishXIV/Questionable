@@ -189,6 +189,27 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
             ImGui.SameLine();
             ImGuiComponents.HelpMarker("When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step.");
 
+            bool abandonQuestBeforeCompletion = Configuration.Advanced.AbandonQuestBeforeCompletion;
+            if (preventQuestCompletion)
+            {
+                using (ImRaii.PushIndent())
+                {
+                    if (ImGui.Checkbox("Abandon quest before completion", ref abandonQuestBeforeCompletion))
+                    {
+                        Configuration.Advanced.AbandonQuestBeforeCompletion = abandonQuestBeforeCompletion;
+                        Save();
+                    }
+
+                    ImGui.SameLine();
+                    ImGuiComponents.HelpMarker("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step.");
+                }
+            }
+            else if (abandonQuestBeforeCompletion)
+            {
+                Configuration.Advanced.AbandonQuestBeforeCompletion = false;
+                Save();
+            }
+
             bool namazuPreferCraft = Configuration.Advanced.NamazuPreferCraft;
             if (ImGui.Checkbox("Namazu: prefer Crafting job over Gatherer", ref namazuPreferCraft))
             {
