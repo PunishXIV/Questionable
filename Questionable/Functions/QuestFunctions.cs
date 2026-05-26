@@ -656,8 +656,14 @@ internal sealed unsafe class QuestFunctions
         if (questInfo.GrandCompany != GrandCompany.None && questInfo.GrandCompany != GetGrandCompany())
             return true;
 
-        if (questInfo.AlliedSociety != EAlliedSociety.None && questInfo.IsRepeatable)
-            return !IsDailyAlliedSocietyQuestAndAvailableToday(questId);
+        if (questInfo.AlliedSociety != EAlliedSociety.None)
+            if (questInfo.IsRepeatable)
+                return !IsDailyAlliedSocietyQuestAndAvailableToday(questId);
+            else
+            {
+                EAlliedSocietyRank currentRank = (EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)questInfo.AlliedSociety);
+                return currentRank == 0 || currentRank <= questInfo.AlliedSocietyRank;
+            }
 
         if (questInfo.IsMoogleDeliveryQuest)
         {

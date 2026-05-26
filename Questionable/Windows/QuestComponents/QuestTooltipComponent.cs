@@ -78,9 +78,6 @@ internal sealed class QuestTooltipComponent
 
             if (quest.Root.LastChecked.Date != null)
                 ImGui.Text($"Last checked: {quest.Root.LastChecked.Date} by {quest.Root.LastChecked.Username}");
-
-            if (questInfo.AlliedSociety != EAlliedSociety.None)
-                ImGui.Text($"Society: {questInfo.AlliedSociety}");
         }
         else
         {
@@ -89,6 +86,12 @@ internal sealed class QuestTooltipComponent
             if (questInfo is QuestInfo questInfo1)
                 ImGui.Text($"{questInfo1.IssuerLocation.Territory.PlaceName.Value.Name}");
         }
+
+        if (questInfo.AlliedSociety != EAlliedSociety.None)
+            ImGui.Text($"Society: {questInfo.AlliedSociety}");
+
+        if (questInfo is QuestInfo qInfo && qInfo.AlliedSocietyRank != EAlliedSocietyRank.None)
+            ImGui.Text($"Rank: {qInfo.AlliedSocietyRank}{(!qInfo.IsRepeatable ? " (maxed)" : "")}");
 
         DrawQuestUnlocks(questInfo, 0, showItemRewards);
     }
