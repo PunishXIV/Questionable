@@ -2,6 +2,18 @@
   "version": 1,
   "dependencies": {
     ".NETStandard,Version=v2.0": {
+      "DalamudPackager": {
+        "type": "Direct",
+        "requested": "[15.0.0, )",
+        "resolved": "15.0.0",
+        "contentHash": "411vwC8/X8Z/sQ2TI6v3SvOn66xFPeOjFn3Zn+h0d3Ox2t1kFm66AhDvmx/qcMwVrR+Hidxj0dadpQ2dgyXMBQ=="
+      },
+      "DotNet.ReproducibleBuilds": {
+        "type": "Direct",
+        "requested": "[1.2.39, )",
+        "resolved": "1.2.39",
+        "contentHash": "fcFN01tDTIQqDuTwr1jUQK/geofiwjG5DycJQOnC72i1SsLAk1ELe+apBOuZ11UMQG8YKFZG1FgvjZPbqHyatg=="
+      },
       "Json.More.Net": {
         "type": "Direct",
         "requested": "[2.1.2, )",
@@ -265,6 +277,7 @@
       "questionable.model": {
         "type": "Project",
         "dependencies": {
+          "DalamudPackager": "[15.0.0, )",
           "System.Text.Json": "[9.0.3, )"
         }
       }
