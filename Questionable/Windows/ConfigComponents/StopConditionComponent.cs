@@ -22,7 +22,8 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly IClientState _clientState;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestRegistry _questRegistry;
-    private readonly QuestSelector _questSelector;
+    private readonly QuestSelector _acceptQuestSelector;
+    private readonly QuestSelector _completeQuestSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
 
@@ -38,17 +39,28 @@ internal sealed class StopConditionComponent : ConfigComponent
         : base(pluginInterface, configuration)
     {
         _pluginInterface = pluginInterface;
-        _questSelector = questSelector;
         _questRegistry = questRegistry;
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
         _clientState = clientState;
 
-        _questSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
-        _questSelector.DefaultPredicate = quest => quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);
-        _questSelector.QuestSelected = quest =>
+        _completeQuestSelector = questSelector;
+        _completeQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
+        _completeQuestSelector.DefaultPredicate = quest =>
+            quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);
+        _completeQuestSelector.QuestSelected = quest =>
         {
             configuration.Stop.QuestsToStopAfter.Add(quest.Id);
+            Save();
+        };
+
+        _acceptQuestSelector = new QuestSelector(questRegistry);
+        _acceptQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopWhenAccepted.All(x => x != quest.Id);
+        _acceptQuestSelector.DefaultPredicate = quest =>
+            quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id);
+        _acceptQuestSelector.QuestSelected = quest =>
+        {
+            configuration.Stop.QuestsToStopWhenAccepted.Add(quest.Id);
             Save();
         };
     }
@@ -105,76 +117,89 @@ internal sealed class StopConditionComponent : ConfigComponent
 
             ImGui.Separator();
 
-            // Quest completion stop condition section
-            ImGui.Text("Stop when completing any of the quests selected below:");
+            DrawQuestStopSection(
+                "Stop when completing any of the quests selected below:",
+                _completeQuestSelector,
+                Configuration.Stop.QuestsToStopAfter,
+                () => Configuration.Stop.QuestsToStopAfter.Clear());
 
-            _questSelector.DrawSelection();
+            ImGui.Separator();
 
-            List<ElementId> questsToStopAfter = Configuration.Stop.QuestsToStopAfter;
+            DrawQuestStopSection(
+                "Stop when accepting any of the quests selected below:",
+                _acceptQuestSelector,
+                Configuration.Stop.QuestsToStopWhenAccepted,
+                () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
+        }
+    }
 
-            // 'Clear All' button if there are quests to clear for fast removal
-            if (questsToStopAfter.Count > 0)
+    private void DrawQuestStopSection(string label, QuestSelector selector, List<ElementId> quests,
+        Action clearAll)
+    {
+        ImGui.Text(label);
+        selector.DrawSelection();
+
+        if (quests.Count > 0)
+        {
+            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             {
-                using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
                 {
-                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
-                    {
-                        Configuration.Stop.QuestsToStopAfter.Clear();
-                        Save();
-                    }
+                    clearAll();
+                    Save();
                 }
-
-                if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                    ImGui.SetTooltip("Hold CTRL to enable this button.");
-
-                ImGui.Separator();
             }
 
-            Quest? itemToRemove = null;
-            for (int i = 0; i < questsToStopAfter.Count; i++)
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                ImGui.SetTooltip("Hold CTRL to enable this button.");
+
+            ImGui.Separator();
+        }
+
+        Quest? itemToRemove = null;
+        for (int i = 0; i < quests.Count; i++)
+        {
+            ElementId questId = quests[i];
+
+            if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
+                continue;
+
+            using (ImRaii.PushId($"Quest{questId}"))
             {
-                ElementId questId = questsToStopAfter[i];
-
-                if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
-                    continue;
-
-                using (ImRaii.PushId($"Quest{questId}"))
+                (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
+                bool hovered;
+                using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
-                    bool hovered;
-                    using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                    {
-                        ImGui.AlignTextToFramePadding();
-                        ImGui.TextColored(style.Color, style.Icon.ToIconString());
-                        hovered = ImGui.IsItemHovered();
-                    }
-
-                    ImGui.SameLine();
                     ImGui.AlignTextToFramePadding();
-                    ImGui.Text(quest.Info.Name);
-                    hovered |= ImGui.IsItemHovered();
-
-                    if (hovered)
-                        _questTooltipComponent.Draw(quest.Info);
-
-                    using (ImRaii.PushFont(UiBuilder.IconFont))
-                    {
-                        ImGui.SameLine(ImGui.GetContentRegionAvail().X +
-                                       ImGui.GetStyle().WindowPadding.X -
-                                       ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-                                       ImGui.GetStyle().FramePadding.X * 2);
-                    }
-
-                    if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
-                        itemToRemove = quest;
+                    ImGui.TextColored(style.Color, style.Icon.ToIconString());
+                    hovered = ImGui.IsItemHovered();
                 }
-            }
 
-            if (itemToRemove != null)
-            {
-                Configuration.Stop.QuestsToStopAfter.Remove(itemToRemove.Id);
-                Save();
+                ImGui.SameLine();
+                ImGui.AlignTextToFramePadding();
+                ImGui.Text(quest.Info.Name);
+                hovered |= ImGui.IsItemHovered();
+
+                if (hovered)
+                    _questTooltipComponent.Draw(quest.Info);
+
+                using (ImRaii.PushFont(UiBuilder.IconFont))
+                {
+                    ImGui.SameLine(ImGui.GetContentRegionAvail().X +
+                                   ImGui.GetStyle().WindowPadding.X -
+                                   ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
+                                   ImGui.GetStyle().FramePadding.X * 2);
+                }
+
+                if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                    itemToRemove = quest;
             }
+        }
+
+        if (itemToRemove != null)
+        {
+            quests.Remove(itemToRemove.Id);
+            Save();
         }
     }
 }

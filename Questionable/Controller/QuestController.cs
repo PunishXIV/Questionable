@@ -252,6 +252,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public QuestPriorityManager PriorityManager => _priorityManager;
 
     public bool StopAfterCurrentQuest { get; set; }
+    public bool StopAfterAcceptingCurrentQuest { get; set; }
     public bool StopBeforeTeleport { get; set; }
 
     public string? DebugState { get; private set; }
@@ -811,9 +812,49 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _gatheringController.Stop("ClearTasksInternal");
     }
 
+    /// <summary>
+    ///     Stops automation when a quest is accepted, if configured or requested via
+    ///     <see cref="StopAfterAcceptingCurrentQuest"/>.
+    /// </summary>
+    public void TryStopOnQuestAccepted(ElementId questId)
+    {
+        if (AutomationType == EAutomationType.Manual)
+            return;
+
+        bool configStop = _configuration.Stop.Enabled &&
+                          _configuration.Stop.QuestsToStopWhenAccepted.Contains(questId);
+        bool sessionStop = StopAfterAcceptingCurrentQuest &&
+                           StartedQuest != null &&
+                           StartedQuest.Quest.Id == questId;
+
+        if (!configStop && !sessionStop)
+            return;
+
+        if (_questRegistry.TryGetQuest(questId, out Quest? quest))
+        {
+            _logger.LogInformation("Reached accept stopping point (quest: {QuestId})", questId);
+            if (configStop)
+            {
+                _chatGui.Print(
+                    $"Accepted quest '{quest.Info.Name}', which is configured as a stopping point.",
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            }
+            else
+            {
+                _chatGui.Print(
+                    $"Accepted quest '{quest.Info.Name}', stopping as requested.",
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            }
+        }
+
+        StartedQuest = null;
+        Stop(configStop ? $"Accept stopping point [{questId}] reached" : $"Stop after accept [{questId}]");
+    }
+
     public override void Stop(string label)
     {
         StopAfterCurrentQuest = false;
+        StopAfterAcceptingCurrentQuest = false;
         StopBeforeTeleport = false;
         _handlingDeath = false;
         _deathStreakKey = null;
