@@ -626,8 +626,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
 
                         TryStopOnQuestAccepted(quest.Id);
-                        if (AutomationType == EAutomationType.Manual)
-                            return;
 
                         StartedQuest = new(quest, currentSequence);
 #if DEBUG
@@ -638,6 +636,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                             _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
                         }
 #endif
+
+                        if (AutomationType == EAutomationType.Manual)
+                            return;
 
                         unsafe
                         {

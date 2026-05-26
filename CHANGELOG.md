@@ -1,2 +1,1 @@
-- Fix stop on quest accept - Kage
-- Fix highlighting for when enabled. - Kage
+- Fix quests not being detected - Kage
