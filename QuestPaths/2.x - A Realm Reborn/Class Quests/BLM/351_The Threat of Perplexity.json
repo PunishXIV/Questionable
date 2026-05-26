@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
   "Comment": "TODO Fix pathing if flying is locked",
@@ -137,7 +137,7 @@
           "Fly": true,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.3.2.4",
             "Notes": [
               "Duty somewhat expects you to put the boss to sleep, vbm doesn't and lets the friendly NPC die"

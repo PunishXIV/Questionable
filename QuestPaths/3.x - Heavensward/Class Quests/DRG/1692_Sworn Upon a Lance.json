@@ -74,7 +74,10 @@
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "Land": true,
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

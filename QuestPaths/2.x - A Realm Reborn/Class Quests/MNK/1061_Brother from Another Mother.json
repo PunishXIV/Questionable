@@ -68,7 +68,10 @@
           },
           "TerritoryId": 141,
           "InteractionType": "SinglePlayerDuty",
-          "ItemId": 2000951
+          "ItemId": 2000951,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

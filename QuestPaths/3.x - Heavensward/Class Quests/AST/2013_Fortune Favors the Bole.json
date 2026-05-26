@@ -47,6 +47,9 @@
             "AetheryteShortcutIf": {
               "InSameTerritory": true
             }
+          },
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
           }
         }
       ]

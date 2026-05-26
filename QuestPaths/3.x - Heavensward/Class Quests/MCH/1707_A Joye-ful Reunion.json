@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "QuestSequence": [
@@ -93,7 +93,10 @@
           "TerritoryId": 397,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

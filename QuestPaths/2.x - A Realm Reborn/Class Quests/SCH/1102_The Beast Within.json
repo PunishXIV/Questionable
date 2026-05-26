@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "QuestSequence": [
@@ -43,7 +43,10 @@
           "TerritoryId": 139,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
@@ -60,7 +63,14 @@
           "StopDistance": 5,
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
         },
         {
           "DataId": 1007846,
@@ -72,7 +82,14 @@
           "StopDistance": 5,
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
         },
         {
           "DataId": 1007847,
@@ -83,7 +100,14 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
         }
       ]
     },
