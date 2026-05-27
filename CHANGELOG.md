@@ -1,4 +1,5 @@
 - Troubleshooting button -alydev
   - Click the 🤝 button at the bottom of Questionable's main window to copy information to your clipboard, then paste into discord and describe your issue. Thank you for helping us help you help us all. -alydev
+- Fix quest priority auto removal -alydev
 - Mount dailies — Dismount tribe quest mount after objectives; fly back on your normal mount. - Kage
 - Fixes — Active quest detection, batch accept/turn-in reliability, dialogue selection, Yok Huy accept step. - Kage

@@ -4,7 +4,7 @@
     "liza",
     "alydev"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-12"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -35,6 +35,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
+          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "ItemId": 2001154,
@@ -56,6 +57,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
+          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -76,6 +78,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
+          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -96,6 +99,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
+          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -130,12 +134,13 @@
         {
           "DataId": 2003040,
           "Position": {
-            "X": 326.77185,
-            "Y": -18.112549,
-            "Z": -235.95032
+            "X": 327.74716,
+            "Y": -17.943928,
+            "Z": -236.26328
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
+          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
           "RequiredQuestVariables": [null,null,null,null,[
@@ -150,12 +155,13 @@
         {
           "DataId": 2003494,
           "Position": {
-            "X": 319.44763,
-            "Y": -17.227417,
-            "Z": -200.88507
+            "X": 319.92645,
+            "Y": -17.230139,
+            "Z": -201.3079
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
+          "StopDistance": 1,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001154,
           "RequiredQuestVariables": [null,null,null,null,[
