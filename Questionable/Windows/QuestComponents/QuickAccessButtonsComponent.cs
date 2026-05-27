@@ -14,11 +14,13 @@ using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using Newtonsoft.Json;
 using Questionable.Controller;
+using Questionable.Functions;
 using static Questionable.Utils.CompressUtils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuickAccessButtonsComponent
 (
+    QuestController questController,
     QuestRegistry questRegistry,
     QuestValidationWindow questValidationWindow,
     JournalProgressWindow journalProgressWindow,
@@ -27,6 +29,7 @@ internal sealed class QuickAccessButtonsComponent
     ICommandManager commandManager,
     IDalamudPluginInterface pluginInterface)
 {
+    private readonly QuestController _questController = questController;
     private readonly ICommandManager _commandManager = commandManager;
     private readonly Configuration _configuration = configuration;
     private readonly JournalProgressWindow _journalProgressWindow = journalProgressWindow;
@@ -53,7 +56,7 @@ internal sealed class QuickAccessButtonsComponent
         }
 
         ImGui.SameLine();
-        DrawTroubleshootingButton();
+        DrawTroubleshootingButton(_questController.CurrentQuest);
 
         if (_questRegistry.ValidationIssueCount > 0)
         {
@@ -119,7 +122,7 @@ internal sealed class QuickAccessButtonsComponent
             ImGui.SetTooltip("Sponsor QST development");
     }
 
-    private static void DrawTroubleshootingButton()
+    private static void DrawTroubleshootingButton(QuestController.QuestProgress questProgress)
     {
         bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.Handshake);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
@@ -138,7 +141,9 @@ internal sealed class QuickAccessButtonsComponent
                 dalamudTroubleshooting = $@"{{""Error"": {JsonConvert.SerializeObject(e.ToString())}}}";
             }
             string qstConfig = JsonConvert.SerializeObject(Svc.PluginInterface.GetPluginConfig(), Formatting.Indented);
-            string output = $@"{{""Dalamud"": {dalamudTroubleshooting}, ""Questionable"": {qstConfig}}}";
+            string progress = JsonConvert.SerializeObject(questProgress.ToString());
+            string questWork = JsonConvert.SerializeObject(QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id));
+            string output = $@"{{""Dalamud"": {dalamudTroubleshooting}, ""Questionable"": {qstConfig}, ""QuestProgress"": {progress}, ""QuestWork"": {questWork}}}";
             if (leftClicked)
                 ImGui.SetClipboardText(Compress(output));
             else if (rightClicked)

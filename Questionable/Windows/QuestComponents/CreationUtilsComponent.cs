@@ -298,7 +298,7 @@ internal sealed class CreationUtilsComponent
         string qw;
         if (q.CurrentQuest is QuestId)
         {
-            QuestProgressInfo? progressInfo = _questFunctions.GetQuestProgressInfo(q.CurrentQuest);
+            QuestProgressInfo? progressInfo = QuestFunctions.GetQuestProgressInfo(q.CurrentQuest);
             qw = progressInfo != null ? progressInfo.ToString() : "QW: -";
         }
         else

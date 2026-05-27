@@ -350,7 +350,7 @@ internal static class SinglePlayerDuty
 
             // If the in-game quest sequence advanced (or the quest is gone), the duty succeeded —
             // QuestController.UpdateCurrentQuest will clear us; just keep waiting.
-            QuestProgressInfo? progress = questFunctions.GetQuestProgressInfo(Task.QuestId);
+            QuestProgressInfo? progress = QuestFunctions.GetQuestProgressInfo(Task.QuestId);
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;
 

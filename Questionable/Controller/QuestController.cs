@@ -568,7 +568,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 (ElementId, byte)? priorityQuestOption =
                     _priorityManager.Quests
                         .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
-                        .Select(x => (x.Id, _questFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
+                        .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
                 if (priorityQuestOption is { Item1: not null } priorityQuest)
                 {
@@ -803,7 +803,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void TryAbandonQuest(QuestId questId)
     {
-        if (_questFunctions.GetQuestProgressInfo(questId) == null)
+        if (QuestFunctions.GetQuestProgressInfo(questId) == null)
         {
             _logger.LogWarning("AbandonQuest failed: quest {QuestId} is not active", questId);
             return;
@@ -1372,6 +1372,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             Quest = quest;
             SetSequence(sequence, step);
         }
+        public override string ToString() => $"{Quest.Id}_{Quest.Info.Name} / {Sequence} / {Step}";
         public Quest Quest { get; }
         public byte Sequence { get; private set; }
         public int Step { get; private set; }

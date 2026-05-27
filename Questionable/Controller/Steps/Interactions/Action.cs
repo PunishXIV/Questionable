@@ -132,7 +132,7 @@ internal static class Action
                 Task.CompletionQuestVariablesFlags != null &&
                 QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariablesFlags))
             {
-                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
+                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
                 return questWork != null &&
                        QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork)
                     ? ETaskResult.TaskComplete

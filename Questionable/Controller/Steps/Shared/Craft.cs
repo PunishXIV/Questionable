@@ -82,7 +82,7 @@ internal static class Craft
 
             RecipeLookup? recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId.Value) ??
                                          throw new TaskException($"Item {Task.ItemId} is not craftable");
-            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
+            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
             uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
                     questWork.ClassJob :
                     (Job)PlayerState.Instance()->CurrentClassJobId

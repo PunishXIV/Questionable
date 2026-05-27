@@ -161,7 +161,7 @@ internal static class UseItem
         {
             if (QuestId is QuestId realQuestId && QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags))
             {
-                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(realQuestId);
+                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
                     QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
                     return ETaskResult.TaskComplete;

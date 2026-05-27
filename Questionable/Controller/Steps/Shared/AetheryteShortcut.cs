@@ -169,7 +169,7 @@ internal static class AetheryteShortcut
 
                     if (Task.ElementId != null)
                     {
-                        QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.ElementId);
+                        QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.ElementId);
                         if (skipConditions.RequiredQuestVariablesNotMet &&
                             questWork != null &&
                             !QuestWorkUtils.MatchesRequiredQuestWorkConfig(Task.Step.RequiredQuestVariables, questWork,
