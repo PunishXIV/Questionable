@@ -122,7 +122,7 @@ internal sealed class QuickAccessButtonsComponent
 
     private static void DrawTroubleshootingButton()
     {
-        bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.HandsHelping);
+        bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.Handshake);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy uncompressed troubleshooting info to clipboard");
