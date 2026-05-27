@@ -190,7 +190,7 @@ internal static class Combat
             if (QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariableFlags) &&
                 Task.CombatData.ElementId is QuestId questId)
             {
-                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(questId);
+                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(questId);
                 if (questWork == null)
                     return ETaskResult.StillRunning;
 

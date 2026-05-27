@@ -192,7 +192,7 @@ internal static class WaitAtEnd
 
         public override ETaskResult Update()
         {
-            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest);
+            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest);
             return questWork != null &&
                    QuestWorkUtils.MatchesQuestWork(Task.Step.CompletionQuestVariablesFlags, questWork)
                 ? ETaskResult.TaskComplete

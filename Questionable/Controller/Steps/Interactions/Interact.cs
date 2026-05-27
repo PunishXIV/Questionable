@@ -178,7 +178,7 @@ internal static class Interact
                 return ETaskResult.TaskComplete;
             else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
             {
-                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Quest.Id);
+                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Quest.Id);
 
                 if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
                     return ETaskResult.TaskComplete;

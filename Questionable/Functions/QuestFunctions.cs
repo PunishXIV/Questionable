@@ -394,7 +394,7 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    public QuestProgressInfo? GetQuestProgressInfo(ElementId elementId)
+    public static QuestProgressInfo? GetQuestProgressInfo(ElementId elementId)
     {
         if (elementId is QuestId questId)
         {
