@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.IO.Compression;
 using System.Numerics;
+using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -10,6 +13,8 @@ using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
+using Newtonsoft.Json;
 using Questionable.Controller;
 namespace Questionable.Windows.QuestComponents;
 
@@ -47,6 +52,9 @@ internal sealed class QuickAccessButtonsComponent
             ImGui.SameLine();
             DrawSponsorButton();
         }
+
+        ImGui.SameLine();
+        DrawTroubleshootingButton();
 
         if (_questRegistry.ValidationIssueCount > 0)
         {
@@ -110,6 +118,36 @@ internal sealed class QuickAccessButtonsComponent
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Sponsor QST development");
+    }
+
+    private static void DrawTroubleshootingButton()
+    {
+        bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.Handshake);
+        bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy uncompressed troubleshooting info to clipboard");
+        if (leftClicked || rightClicked)
+        {
+            // Dalamud troubleshooting json is written after plugin manager changes
+            string dalamudTroubleshooting = "";
+            try
+            {
+                dalamudTroubleshooting = File.ReadAllText(Path.Join(Svc.PluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"));
+            }
+            catch (Exception e)
+            {
+                dalamudTroubleshooting = $@"{{""Error"": {JsonConvert.SerializeObject(e.ToString())}}}";
+            }
+            string qstConfig = JsonConvert.SerializeObject(Svc.PluginInterface.GetPluginConfig(), Formatting.Indented);
+            string output = $@"{{""Dalamud"": {dalamudTroubleshooting}, ""Questionable"": {qstConfig}}}";
+            if (leftClicked)
+                ImGui.SetClipboardText(Compress(output));
+            else if (rightClicked)
+                ImGui.SetClipboardText(output);
+            Svc.Chat.Print("Troubleshooting information has been copied to clipboard. " +
+                "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information.",
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+        }
     }
 
     private void DrawValidationIssuesButton()
@@ -178,5 +216,56 @@ internal sealed class QuickAccessButtonsComponent
 
         if (button)
             _questValidationWindow.ToggleOrUncollapse();
+    }
+
+    // https://stackoverflow.com/questions/25134897/gzip-compression-and-decompression-in-c-sharp
+    public static string Decompress(string input)
+    {
+        byte[] compressed = Convert.FromBase64String(input);
+        byte[] decompressed = Decompress(compressed);
+        string output = Encoding.UTF8.GetString(decompressed);
+        Svc.Log.Debug($"decompressed {input.Length} to {output.Length}");
+        return output;
+    }
+
+    public static string Compress(string input)
+    {
+        byte[] encoded = Encoding.UTF8.GetBytes(input);
+        byte[] compressed = Compress(encoded);
+        string output = Convert.ToBase64String(compressed);
+        Svc.Log.Debug($"compressed {input.Length} to {output.Length}");
+        return output;
+    }
+
+    public static byte[] Decompress(byte[] input)
+    {
+        using (var source = new MemoryStream(input))
+        {
+            using (var result = new MemoryStream())
+            {
+                using (var Decompress = new GZipStream(source, CompressionMode.Decompress))
+                {
+                    Decompress.CopyTo(result);
+                }
+
+                return result.ToArray();
+            }
+        }
+    }
+
+    public static byte[] Compress(byte[] input)
+    {
+        using (var source = new MemoryStream(input))
+        {
+            using (var result = new MemoryStream())
+            {
+                using (var Compress = new GZipStream(result, CompressionMode.Compress))
+                {
+                    source.CopyTo(Compress);
+                }
+
+                return result.ToArray();
+            }
+        }
     }
 }
