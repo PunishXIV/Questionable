@@ -565,14 +565,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             else
             {
                 (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) = _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
-                if (!HasPendingAlliedSocietyBatchAcceptTasks())
+                (ElementId, byte)? priorityQuestOption =
+                    _priorityManager.Quests
+                        .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
+                        .Select(x => (x.Id, _questFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
+                        .FirstOrDefault();
+                if (priorityQuestOption is { Item1: not null } priorityQuest)
                 {
-                    (ElementId QuestId, byte Sequence)? priorityQuest = _questFunctions.GetPriorityQuestToRun(_priorityManager.Quests);
-                    if (priorityQuest != null)
-                    {
-                        currentQuestId = priorityQuest.Value.QuestId;
-                        currentSequence = priorityQuest.Value.Sequence;
-                    }
+                    currentQuestId = priorityQuest.Item1;
+                    currentSequence = priorityQuest.Item2;
                 }
 
                 if (currentQuestId == null || currentQuestId.Value == 0)
@@ -637,9 +638,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 #endif
 
                         if (AutomationType == EAutomationType.Manual)
-                            return;
-
-                        if (HasPendingAlliedSocietyBatchAcceptTasks())
                             return;
 
                         unsafe
@@ -709,15 +707,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
             if (questToRun.Sequence != currentSequence)
             {
-                if (HasPendingAlliedSocietyBatchTasks())
-                    return;
-
-                if (currentSequence == 255 &&
-                    _questFunctions.ShouldDeferAlliedSocietyTurnIn(questToRun.Quest, _priorityManager.Quests))
-                {
-                    return;
-                }
-
                 _highlightObject.SetHighlight([]);
                 questToRun.SetSequence(currentSequence);
                 CheckNextTasks(
@@ -934,41 +923,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
         else
             Stop(label);
-    }
-
-    /// <summary>
-    ///     True while sibling allied-society accept tasks are still queued. Prevents advancing to
-    ///     sequence 1 after the first daily is accepted, which would otherwise clear the queue.
-    /// </summary>
-    private bool HasPendingAlliedSocietyBatchAcceptTasks() => HasPendingAlliedSocietyBatchInteractTasks(isComplete: false);
-
-    /// <summary>
-    ///     True while sibling allied-society turn-in tasks are still queued.
-    /// </summary>
-    private bool HasPendingAlliedSocietyBatchCompleteTasks() => HasPendingAlliedSocietyBatchInteractTasks(isComplete: true);
-
-    private bool HasPendingAlliedSocietyBatchTasks() =>
-        HasPendingAlliedSocietyBatchAcceptTasks() || HasPendingAlliedSocietyBatchCompleteTasks();
-
-    private bool HasPendingAlliedSocietyBatchInteractTasks(bool isComplete)
-    {
-        if (CurrentQuest == null)
-            return false;
-
-        ElementId currentQuestId = CurrentQuest.Quest.Id;
-        EInteractionType interactionType = isComplete ? EInteractionType.CompleteQuest : EInteractionType.AcceptQuest;
-        IEnumerable<ITask> pending = _taskQueue.CurrentTaskExecutor?.CurrentTask is { } current
-            ? [current, .._taskQueue.RemainingTasks]
-            : _taskQueue.RemainingTasks;
-
-        return pending.Any(task => task switch
-        {
-            Interact.Task { InteractionType: var type, Quest: { } quest } when type == interactionType =>
-                quest.Id != currentQuestId,
-            WaitAtEnd.WaitQuestAccepted accept when !isComplete => accept.ElementId != currentQuestId,
-            WaitAtEnd.WaitQuestCompleted complete when isComplete => complete.ElementId != currentQuestId,
-            _ => false
-        });
     }
 
     /// <summary>
@@ -1243,39 +1197,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return false;
         }
     }
-
-    /// <summary>
-    ///     Returns the quest being accepted or turned in when the current task is an AcceptQuest or
-    ///     CompleteQuest interact, including allied-society batch tasks for quests other than
-    ///     <see cref="StartedQuest"/>.
-    /// </summary>
-    public bool TryGetActiveInteractQuest([NotNullWhen(true)] out Quest? quest, [NotNullWhen(true)] out QuestStep? step)
-    {
-        if (_taskQueue.CurrentTaskExecutor?.CurrentTask is Interact.Task
-            {
-                InteractionType: EInteractionType.AcceptQuest or EInteractionType.CompleteQuest,
-                Quest: { } activeQuest
-            } task)
-        {
-            byte sequence = task.InteractionType == EInteractionType.AcceptQuest ? (byte)0 : (byte)255;
-            step = activeQuest.FindSequence(sequence)?.Steps
-                .FirstOrDefault(s => s.InteractionType == task.InteractionType);
-            if (step != null)
-            {
-                quest = activeQuest;
-                return true;
-            }
-        }
-
-        quest = null;
-        step = null;
-        return false;
-    }
-
-    public bool TryGetActiveInteractAcceptQuest([NotNullWhen(true)] out Quest? quest,
-        [NotNullWhen(true)] out QuestStep? acceptStep) =>
-        TryGetActiveInteractQuest(out quest, out acceptStep) &&
-        _taskQueue.CurrentTaskExecutor?.CurrentTask is Interact.Task { InteractionType: EInteractionType.AcceptQuest };
 
     public void Skip(ElementId elementId, byte currentQuestSequence)
     {
