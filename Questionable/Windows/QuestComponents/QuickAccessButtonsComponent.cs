@@ -2,9 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.IO.Compression;
 using System.Numerics;
-using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -16,6 +14,7 @@ using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using Newtonsoft.Json;
 using Questionable.Controller;
+using static Questionable.Utils.CompressUtils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuickAccessButtonsComponent
@@ -216,56 +215,5 @@ internal sealed class QuickAccessButtonsComponent
 
         if (button)
             _questValidationWindow.ToggleOrUncollapse();
-    }
-
-    // https://stackoverflow.com/questions/25134897/gzip-compression-and-decompression-in-c-sharp
-    public static string Decompress(string input)
-    {
-        byte[] compressed = Convert.FromBase64String(input);
-        byte[] decompressed = Decompress(compressed);
-        string output = Encoding.UTF8.GetString(decompressed);
-        Svc.Log.Debug($"decompressed {input.Length} to {output.Length}");
-        return output;
-    }
-
-    public static string Compress(string input)
-    {
-        byte[] encoded = Encoding.UTF8.GetBytes(input);
-        byte[] compressed = Compress(encoded);
-        string output = Convert.ToBase64String(compressed);
-        Svc.Log.Debug($"compressed {input.Length} to {output.Length}");
-        return output;
-    }
-
-    public static byte[] Decompress(byte[] input)
-    {
-        using (var source = new MemoryStream(input))
-        {
-            using (var result = new MemoryStream())
-            {
-                using (var Decompress = new GZipStream(source, CompressionMode.Decompress))
-                {
-                    Decompress.CopyTo(result);
-                }
-
-                return result.ToArray();
-            }
-        }
-    }
-
-    public static byte[] Compress(byte[] input)
-    {
-        using (var source = new MemoryStream(input))
-        {
-            using (var result = new MemoryStream())
-            {
-                using (var Compress = new GZipStream(result, CompressionMode.Compress))
-                {
-                    source.CopyTo(Compress);
-                }
-
-                return result.ToArray();
-            }
-        }
     }
 }

@@ -192,19 +192,8 @@ internal sealed class DialogueChoiceHandler : IDisposable
         // this is 'Daily Quests' for tribal quests, but not set for normal selections
         string? title = AtkValueAdapter.ReadString(addonSelectIconString->AtkValues[0]);
 
-        if (_questController.TryGetActiveInteractQuest(out Quest? interactQuest, out _) &&
-            (actualPrompt == null || title != null))
-        {
-            _logger.LogInformation("Checking if active interact quest {Name} is on the list",
-                interactQuest.Info.Name);
-            if (CheckQuestSelection(addonSelectIconString, interactQuest, answers))
-                return;
-        }
-
-        bool batchInteractInProgress = _questController.TryGetActiveInteractQuest(out _, out _);
-
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
-        if (!batchInteractInProgress && currentQuest != null && (actualPrompt == null || title != null))
+        if (currentQuest != null && (actualPrompt == null || title != null))
         {
             _logger.LogInformation("Checking if current quest {Name} is on the list", currentQuest.Quest.Info.Name);
             if (CheckQuestSelection(addonSelectIconString, currentQuest.Quest, answers))
@@ -222,7 +211,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
         }
 
         QuestController.QuestProgress? nextQuest = _questController.NextQuest;
-        if (!batchInteractInProgress && nextQuest != null && (actualPrompt == null || title != null))
+        if (nextQuest != null && (actualPrompt == null || title != null))
         {
             _logger.LogInformation("Checking if next quest {Name} is on the list", nextQuest.Quest.Info.Name);
             if (CheckQuestSelection(addonSelectIconString, nextQuest.Quest, answers))
@@ -256,17 +245,10 @@ internal sealed class DialogueChoiceHandler : IDisposable
     {
         List<DialogueChoiceInfo> dialogueChoices = [];
 
-        if (_questController.TryGetActiveInteractQuest(out Quest? interactQuest,
-                out QuestStep? interactStep))
-        {
-            dialogueChoices.AddRange(interactStep.DialogueChoices
-                .Select(x => new DialogueChoiceInfo(interactQuest, x)));
-        }
-
         QuestController.QuestProgress? currentQuest = _questController.SimulatedQuest ??
                                                       _questController.GatheringQuest ??
                                                       _questController.StartedQuest;
-        if (currentQuest != null && interactQuest == null)
+        if (currentQuest != null)
         {
             Quest quest = currentQuest.Quest;
             bool isTaxiStandUnlock = false;

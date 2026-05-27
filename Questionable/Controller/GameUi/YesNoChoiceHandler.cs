@@ -164,12 +164,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return;
         }
 
-        if (_questController.TryGetActiveInteractQuest(out Quest? interactQuest,
-                out QuestStep? interactStep) &&
-            HandleDefaultYesNo(addonSelectYesno, interactQuest, interactStep,
-                interactStep.DialogueChoices, actualPrompt))
-            return;
-
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
         if (currentQuest != null && CheckQuestYesNo(addonSelectYesno, currentQuest, actualPrompt, checkAllSteps))
             return;
