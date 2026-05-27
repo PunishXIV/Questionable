@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-22"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,9 +9,9 @@
         {
           "DataId": 1024217,
           "Position": {
-            "X": 392.8357,
+            "X": 391.94043,
             "Y": -119.58932,
-            "Z": -234.9542
+            "Z": -235.04329
           },
           "TerritoryId": 613,
           "InteractionType": "AcceptQuest",
@@ -45,24 +45,26 @@
         {
           "DataId": 1024305,
           "Position": {
-            "X": 30.71643,
-            "Y": 1.1855971,
-            "Z": -529.778
+            "X": 29.895784,
+            "Y": 1.117759,
+            "Z": -531.01373
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
+          "StopDistance": 1,
           "RequiredQuestVariables": [null, null, [33, 34], null, null, null],
           "Fly": true
         },
         {
           "DataId": 1024303,
           "Position": {
-            "X": 43.503418,
-            "Y": 3.6636734,
-            "Z": -619.379
+            "X": 44.44892,
+            "Y": 3.6636732,
+            "Z": -619.0603
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
+          "StopDistance": 1,
           "RequiredQuestVariables": [null, null, [17, 35], null, null, null],
           "Fly": true
         },
@@ -86,9 +88,9 @@
         {
           "DataId": 1024217,
           "Position": {
-            "X": 392.8357,
+            "X": 391.94043,
             "Y": -119.58932,
-            "Z": -234.9542
+            "Z": -235.04329
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
