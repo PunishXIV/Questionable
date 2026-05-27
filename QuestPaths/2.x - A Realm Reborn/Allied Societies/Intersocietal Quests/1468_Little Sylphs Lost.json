@@ -1,0 +1,75 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-27" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000193,
+          "Position": {
+            "X": -56.77887,
+            "Y": -1.7171853,
+            "Z": 7.888855
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005565,
+          "Position": {
+            "X": 22.47644,
+            "Y": -6.2105103,
+            "Z": 252.552
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004254,
+          "Position": {
+            "X": 261.02942,
+            "Y": -9.022816,
+            "Z": -75.88508
+          },
+          "TerritoryId": 152,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005565,
+          "Position": {
+            "X": 22.47644,
+            "Y": -6.2105103,
+            "Z": 252.552
+          },
+          "TerritoryId": 152,
+          "InteractionType": "CompleteQuest",
+          "StopDistance": 1,
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

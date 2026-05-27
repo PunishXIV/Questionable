@@ -1,0 +1,121 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-27" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005931,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 16.159302,
+            "Z": -171.49622
+          },
+          "TerritoryId": 180,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "StopDistance": 1,
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL050_01471_Q1_000_000",
+              "Answer": "TEXT_BANALL050_01471_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006325,
+          "Position": {
+            "X": -141.55798,
+            "Y": 64.59769,
+            "Z": -212.26831
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2004257,
+          "Position": {
+            "X": -113.603455,
+            "Y": 67.39905,
+            "Z": -240.74164
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009199,
+          "Position": {
+            "X": 149.43152,
+            "Y": -18.140081,
+            "Z": 99.22937
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL050_01471_Q2_000_000",
+              "Answer": "TEXT_BANALL050_01471_A2_000_002",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2004261,
+          "Position": {
+            "X": 322.1942,
+            "Y": -6.363098,
+            "Z": 18.295532
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009204,
+          "Position": {
+            "X": 151.93408,
+            "Y": -18.41914,
+            "Z": 100.72473
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

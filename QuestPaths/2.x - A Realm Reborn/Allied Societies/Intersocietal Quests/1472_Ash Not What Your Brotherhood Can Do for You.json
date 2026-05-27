@@ -1,0 +1,95 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-27" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1009204,
+          "Position": {
+            "X": 151.93408,
+            "Y": -18.41914,
+            "Z": 100.72473
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009230,
+          "Position": {
+            "X": -12.832886,
+            "Y": 82.99996,
+            "Z": -11.703674
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1004339,
+          "Position": {
+            "X": -25.986206,
+            "Y": 81.799995,
+            "Z": -31.99823
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 130
+        },
+        {
+          "DataId": 1009159,
+          "Position": {
+            "X": 3.8604736,
+            "Y": 4.099893,
+            "Z": -132.73828
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 114.23337,
+            "Y": 15.204611,
+            "Z": -362.13324
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.6062,
+            "Y": 16.402647,
+            "Z": -362.11188
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
