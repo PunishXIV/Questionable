@@ -32,24 +32,10 @@ internal sealed class AlliedSocietyData
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
         }.AsReadOnly();
 
-    public bool IsAlliedSocietyMount(ushort? mountId) =>
-        mountId is { } id && Mounts.ContainsKey(id);
-
-    /// <summary>
-    ///     True while the current quest step should be performed on a tribe quest mount.
-    ///     Every other step dismounts so normal travel (mount roulette / flying) can be used.
-    /// </summary>
-    public bool ShouldRemainMountedForStep(QuestStep step, ushort mountId)
+    public bool IsAlliedSocietyMount(ushort? mountId)
     {
-        if (step.Action is { } action && action.RequiresMount())
+        if (mountId is { } && Mounts.TryGetValue(mountId.Value, out AlliedSocietyMountConfiguration? mountConfig) && mountConfig is { })
             return true;
-
-        if (step.InteractionType == EInteractionType.Combat &&
-            (mountId == 147 || step.KillEnemyDataIds.Contains(8593)))
-        {
-            return true;
-        }
-
         return false;
     }
     public EAlliedSociety GetCommonAlliedSocietyTurnIn(ElementId elementId)
