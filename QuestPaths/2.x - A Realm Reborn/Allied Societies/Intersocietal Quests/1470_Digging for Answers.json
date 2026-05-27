@@ -1,0 +1,199 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-27" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005937,
+          "Position": {
+            "X": -238.02551,
+            "Y": -40.828262,
+            "Z": 68.28406
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2004280,
+          "Position": {
+            "X": 298.2986,
+            "Y": -40.425003,
+            "Z": 381.89737
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "StopDistance": 1,
+          "Fly": true,
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL040_01470_Q1_000_000",
+              "Answer": "TEXT_BANALL040_01470_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003550,
+          "Position": {
+            "X": 76.85962,
+            "Y": 39.99632,
+            "Z": 78.99597
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005931,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 16.159302,
+            "Z": -171.49622
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "StopDistance": 1,
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL040_01470_Q2_000_000",
+              "Answer": "TEXT_BANALL040_01470_A2_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009157,
+          "Position": {
+            "X": 213.24475,
+            "Y": 61.81511,
+            "Z": -226.24554
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        },
+        {
+          "DataId": 1009156,
+          "Position": {
+            "X": 226.5821,
+            "Y": 58.539246,
+            "Z": -250.29495
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
+        },
+        {
+          "DataId": 1009155,
+          "Position": {
+            "X": 166.1663,
+            "Y": 66.04383,
+            "Z": -269.93848
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1009299,
+          "Position": {
+            "X": 190.99707,
+            "Y": 59.856262,
+            "Z": -147.448
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005931,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 16.159302,
+            "Z": -171.49622
+          },
+          "TerritoryId": 180,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "StopDistance": 1,
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

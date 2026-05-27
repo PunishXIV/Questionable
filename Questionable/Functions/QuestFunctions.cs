@@ -713,7 +713,7 @@ internal sealed unsafe class QuestFunctions
         EAlliedSocietyRank currentRank = (EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)questInfo.AlliedSociety);
         var currentRep = PlayerState.Instance()->GetBeastTribeCurrentReputation((byte)questInfo.AlliedSociety);
         var neededRep = PlayerState.Instance()->GetBeastTribeNeededReputation((byte)questInfo.AlliedSociety);
-        return currentRank >= questInfo.AlliedSocietyRank || currentRep == neededRep;
+        return currentRank > questInfo.AlliedSocietyRank || currentRep >= neededRep;
     }
 
     public bool IsQuestUnobtainable(ElementId elementId, ElementId? extraCompletedQuest = null)

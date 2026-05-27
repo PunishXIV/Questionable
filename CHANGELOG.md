@@ -3,3 +3,4 @@
 - Fix quest priority auto removal -alydev
   - Fix index error -alydev
 - Add current quest state to troubleshoot message -alydev
+- ARR intersocietal quests -alydev

@@ -1,0 +1,173 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-27" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005565,
+          "Position": {
+            "X": 22.47644,
+            "Y": -6.2105103,
+            "Z": 252.552
+          },
+          "TerritoryId": 152,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 1,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1009197,
+          "Position": {
+            "X": -3.4332886,
+            "Y": 39.51757,
+            "Z": 11.459534
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009154,
+          "Position": {
+            "X": -239.70398,
+            "Y": 5.9999995,
+            "Z": 175.9823
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005937,
+          "Position": {
+            "X": -238.02551,
+            "Y": -40.828262,
+            "Z": 68.28406
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005946,
+          "Position": {
+            "X": -239.27673,
+            "Y": -42.130188,
+            "Z": 15.213196
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_BANALL030_01469_Q1_000_000",
+              "Yes": true
+            }
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -822.65967,
+                  "Y": -40.05493,
+                  "Z": 666.5292
+                },
+                "TerritoryId": 138,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2004255,
+          "Position": {
+            "X": -822.65967,
+            "Y": -40.05493,
+            "Z": 666.5292
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "StopDistance": 4,
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [3120, 3121],
+          "CompletionQuestVariablesFlags": [
+            { "Low": 2 },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2004255,
+          "Position": {
+            "X": -822.65967,
+            "Y": -40.05493,
+            "Z": 666.5292
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "StopDistance": 4
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008802,
+          "Position": {
+            "X": -814.84705,
+            "Y": -42.154568,
+            "Z": 694.3312
+          },
+          "TerritoryId": 138,
+          "TargetTerritoryId": 138,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1005937,
+          "Position": {
+            "X": -238.02551,
+            "Y": -40.828262,
+            "Z": 68.28406
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
