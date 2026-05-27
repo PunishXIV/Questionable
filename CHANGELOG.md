@@ -4,3 +4,4 @@
   - Fix index error -alydev
 - Add current quest state to troubleshoot message -alydev
 - ARR intersocietal quests -alydev
+- Fix some solo duties targetting. - Kage
