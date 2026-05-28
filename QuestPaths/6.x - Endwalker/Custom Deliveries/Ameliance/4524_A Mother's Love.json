@@ -1,0 +1,115 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042241,
+          "Position": {
+            "X": 222.85791,
+            "Y": 24.942732,
+            "Z": -197.77222
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1042429,
+          "Position": {
+            "X": -273.76215,
+            "Y": 19.877302,
+            "Z": -68.49774
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Optional TODO - add a step to re-accompany NPC if separated? [i.e. this can happen if a DC happens]",
+          "DataId": 1042429,
+          "Position": {
+            "X": -304.39255,
+            "Y": 20.037498,
+            "Z": -99.11489
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "$": "Optional TODO - add a step to re-accompany NPC if separated? [i.e. this can happen if a DC happens]",
+          "DataId": 1042426,
+          "Position": {
+            "X": -297.29156,
+            "Y": 21.648558,
+            "Z": -152.05621
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "$": "Optional TODO - add a step to re-accompany NPC if separated? [i.e. this can happen if a DC happens]",
+          "DataId": 1042429,
+          "Position": {
+            "X": -272.96262,
+            "Y": 19.003881,
+            "Z": 21.079714
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042428,
+          "Position": {
+            "X": 222.85791,
+            "Y": 24.942732,
+            "Z": -197.71118
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ]
+        }
+      ]
+    }
+  ]
+}
