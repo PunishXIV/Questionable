@@ -4,6 +4,7 @@ using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -11,9 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 namespace Questionable.Controller.CombatModules;
 
-internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, ILogger<ItemUseModule> logger) : ICombatModule
+internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, MovementController movementController, ILogger<ItemUseModule> logger) : ICombatModule
 {
     private CombatController.CombatData? _combatData;
     private DateTime _continueAt;
@@ -78,6 +80,13 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             _combatData.ComplexCombatDatas.Any(x => x.DataId == GameFunctions.GetBaseID(nextTarget) &&
                                                     (x.NameId == null || (nextTarget is ICharacter character && x.NameId == character.NameId))))
         {
+            if (nextTarget.Position.DistanceTo_XZ(Svc.Objects[0]!.Position) > 3f)
+            {
+                logger.LogInformation("Too far from target, moving closer");
+                movementController.NavigateTo(Model.EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new(){ StopDistance = 3f });
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return;
+            }
             if (_isDoingRotation)
             {
                 unsafe

@@ -26,6 +26,7 @@ internal static class AbandonQuest
         IObjectTable objectTable,
         ICondition condition,
         IChatGui chatGui,
+        Configuration configuration,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         QuestController questController,
@@ -76,7 +77,8 @@ internal static class AbandonQuest
         {
             logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
             GameMain.ExecuteCommand(800, (int)Task.Quest!.Id.Value);
-            questController.PriorityManager.Remove(Task.Quest.Id);
+            if (configuration.Advanced.RemoveFromPriorityWhenAbandoned)
+                questController.PriorityManager.Remove(Task.Quest.Id);
         }
 
         public override bool ShouldInterruptOnDamage() => false;

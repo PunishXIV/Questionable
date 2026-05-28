@@ -44,6 +44,7 @@ internal sealed class AlliedSocietyJournalComponent
 
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
         bool abandonQuestBeforeCompletion = configuration.Advanced.AbandonQuestBeforeCompletion;
+        bool removeFromPriorityWhenAbandoned = configuration.Advanced.RemoveFromPriorityWhenAbandoned;
         if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop, preventQuestCompletion ? ImGuiColors.DalamudOrange : null))
         {
             configuration.Advanced.PreventQuestCompletion = !preventQuestCompletion;
@@ -54,13 +55,29 @@ internal sealed class AlliedSocietyJournalComponent
         if (preventQuestCompletion)
         {
             ImGui.SameLine();
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Trash, abandonQuestBeforeCompletion ? ImGuiColors.DalamudOrange : null))
+            if (ImGuiComponents.IconButton(FontAwesomeIcon.Ban, abandonQuestBeforeCompletion ? ImGuiColors.DalamudOrange : null))
             {
                 configuration.Advanced.AbandonQuestBeforeCompletion = !abandonQuestBeforeCompletion;
                 pluginInterface.SavePluginConfig(configuration);
             }
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip("Abandon quest before completion");
+            if (abandonQuestBeforeCompletion)
+            {
+                ImGui.SameLine();
+                if (ImGuiComponents.IconButton(FontAwesomeIcon.Trash, removeFromPriorityWhenAbandoned ? ImGuiColors.DalamudOrange : null))
+                {
+                    configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeFromPriorityWhenAbandoned;
+                    pluginInterface.SavePluginConfig(configuration);
+                }
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip("Remove from priority when abandoned");
+            }
+            else if (removeFromPriorityWhenAbandoned)
+            {
+                configuration.Advanced.RemoveFromPriorityWhenAbandoned = false;
+                pluginInterface.SavePluginConfig(configuration);
+            }
         }
         else if (abandonQuestBeforeCompletion)
         {
