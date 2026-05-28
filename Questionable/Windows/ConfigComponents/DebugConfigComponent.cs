@@ -197,6 +197,7 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                 ImGuiComponents.HelpMarker("When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step.");
 
                 bool abandonQuestBeforeCompletion = Configuration.Advanced.AbandonQuestBeforeCompletion;
+                bool removeFromPriorityWhenAbandoned = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;
                 if (preventQuestCompletion)
                 {
                     using (ImRaii.PushIndent())
@@ -211,10 +212,31 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                         ImGuiComponents.HelpMarker("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step. " +
                             "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
                     }
+                    if (abandonQuestBeforeCompletion)
+                    {
+                        using (ImRaii.PushIndent(2))
+                        {
+                            if (ImGui.Checkbox("Remove from priority when abandoned", ref removeFromPriorityWhenAbandoned))
+                            {
+                                Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeFromPriorityWhenAbandoned;
+                                Save();
+                            }
+
+                            ImGui.SameLine();
+                            ImGuiComponents.HelpMarker("When enabled, Questionable will also remove a quest from the priority queue when it is abandoned. " +
+                                "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
+                        }
+                    }
+                    else if (removeFromPriorityWhenAbandoned)
+                    {
+                        Configuration.Advanced.RemoveFromPriorityWhenAbandoned = false;
+                        Save();
+                    }
                 }
-                else if (abandonQuestBeforeCompletion)
+                else if (abandonQuestBeforeCompletion || removeFromPriorityWhenAbandoned)
                 {
                     Configuration.Advanced.AbandonQuestBeforeCompletion = false;
+                    Configuration.Advanced.RemoveFromPriorityWhenAbandoned = false;
                     Save();
                 }
 
