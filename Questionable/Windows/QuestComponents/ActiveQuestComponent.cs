@@ -457,7 +457,6 @@ internal sealed partial class ActiveQuestComponent
                     : "Stop before the next aetheryte teleport or item use.");
         }
 
-#if DEBUG
         if (isMinimized)
         {
             ImGui.SameLine();
@@ -466,7 +465,6 @@ internal sealed partial class ActiveQuestComponent
         }
         else
         {
-#endif
             bool lastStep = currentStep ==
                             currentQuest.Quest.FindSequence(currentQuest.Sequence)?.Steps.LastOrDefault();
             bool colored = currentStep != null
