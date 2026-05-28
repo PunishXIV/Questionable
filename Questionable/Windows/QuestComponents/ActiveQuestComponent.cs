@@ -504,8 +504,8 @@ internal sealed partial class ActiveQuestComponent
                 (bool success, string filename) = QuestRegistry.OpenEditor(currentQuest.Quest.Info);
                 _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
             }
-        }
 #endif
+        }
     }
 
     private void DrawSimulationControls()
