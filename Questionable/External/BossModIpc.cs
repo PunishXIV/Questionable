@@ -38,6 +38,8 @@ internal sealed class BossModIpc
     private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
 
+    private bool _soloDutyZoneConfigured;
+
     public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
 
     public void SetPreset(EPreset preset)
@@ -48,6 +50,12 @@ internal sealed class BossModIpc
 
         commandManager.ProcessCommand("/vbmai off");
         _setPreset.InvokeFunc(definition.Name);
+    }
+
+    public void SetPresetForSoloDuty(EPreset preset)
+    {
+        ConfigureZoneForQuestBattle(true);
+        SetPreset(preset);
     }
 
     public void ClearPreset()
@@ -66,10 +74,38 @@ internal sealed class BossModIpc
         }
     }
 
+    public void DisableSoloDutyPreset()
+    {
+        ReleaseSoloDutyZone();
+        ClearPreset();
+    }
+
     public void Cleanup()
     {
         commandManager.ProcessCommand("/vbmai off");
+        ReleaseSoloDutyZone();
         ClearPreset();
+    }
+
+    private void ConfigureZoneForQuestBattle(bool enable)
+    {
+        commandManager.ProcessCommand(enable
+            ? "/vbm cfg ZoneModuleConfig EnableQuestBattles true"
+            : "/vbm cfg ZoneModuleConfig EnableQuestBattles false");
+        if (enable)
+        {
+            commandManager.ProcessCommand("/vbm cfg Autorotation ClearPresetOnCombatEnd false");
+            _soloDutyZoneConfigured = true;
+        }
+    }
+
+    private void ReleaseSoloDutyZone()
+    {
+        if (!_soloDutyZoneConfigured)
+            return;
+
+        commandManager.ProcessCommand("/vbm cfg ZoneModuleConfig EnableQuestBattles false");
+        _soloDutyZoneConfigured = false;
     }
 
     public bool IsConfiguredToRunSoloInstance(ElementId questId, SinglePlayerDutyOptions? dutyOptions)

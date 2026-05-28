@@ -6,3 +6,4 @@
 - Advanced tab: (prevent quest completion > abandon quest before completion > remove from prio quests) config chain -alydev
 ## Bug fixes
 - Item use after combat: now paths to within interact range -alydev
+- Fix some solo duties targetting. - Kage

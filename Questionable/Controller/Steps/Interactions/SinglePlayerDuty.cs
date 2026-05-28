@@ -182,7 +182,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.SetPreset(Task.Passive ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.QuestBattle);
+            bossModIpc.SetPresetForSoloDuty(Task.Passive ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.QuestBattle);
             return true;
         }
 
@@ -202,7 +202,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.SetPreset(Task.Preset);
+            bossModIpc.SetPresetForSoloDuty(Task.Preset);
             return true;
         }
 
@@ -254,7 +254,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.ClearPreset();
+            bossModIpc.DisableSoloDutyPreset();
             return true;
         }
 
