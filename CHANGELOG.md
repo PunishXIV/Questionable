@@ -3,3 +3,4 @@
 - Feature: Make It Rain 2026 event -alydev
 - Feature: Adjust text and icon for `Stop After Next Quest` button - Kage
 - Bug: Refactor and code style -alydev
+- Bug: Skip aether current quest pickup if flying already unlocked (story skip) -alydev
