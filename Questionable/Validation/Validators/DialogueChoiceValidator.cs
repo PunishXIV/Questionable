@@ -10,17 +10,17 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) x in quest.AllSteps())
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in quest.AllSteps())
         {
-            if (x.Step.DialogueChoices.Count == 0)
+            if (Step.DialogueChoices.Count == 0)
                 continue;
 
-            foreach (DialogueChoice dialogueChoice in x.Step.DialogueChoices)
+            foreach (DialogueChoice dialogueChoice in Step.DialogueChoices)
             {
                 ExcelRef? prompt = dialogueChoice.Prompt;
                 if (prompt != null)
                 {
-                    ValidationIssue? promptIssue = Validate(quest, x.Sequence, x.StepId, dialogueChoice.ExcelSheet,
+                    ValidationIssue? promptIssue = Validate(quest, Sequence, StepId, dialogueChoice.ExcelSheet,
                         prompt, "Prompt");
                     if (promptIssue != null)
                         yield return promptIssue;
@@ -29,7 +29,7 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
                 ExcelRef? answer = dialogueChoice.Answer;
                 if (answer != null)
                 {
-                    ValidationIssue? answerIssue = Validate(quest, x.Sequence, x.StepId, dialogueChoice.ExcelSheet,
+                    ValidationIssue? answerIssue = Validate(quest, Sequence, StepId, dialogueChoice.ExcelSheet,
                         answer, "Answer");
                     if (answerIssue != null)
                         yield return answerIssue;

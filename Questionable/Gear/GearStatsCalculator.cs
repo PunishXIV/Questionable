@@ -72,7 +72,7 @@ public sealed class GearStatsCalculator
         _equipSlotCategoryPct = baseParamSheet
             .SelectMany(x => Enumerable.Range(0, x.EquipSlotCategoryPct.Count)
                 .Select(y => ((EBaseParam)x.RowId, y, x.EquipSlotCategoryPct[y])))
-            .ToDictionary(x => (x.Item1, x.Item2), x => x.Item3);
+            .ToDictionary(x => (x.Item1, x.y), x => x.Item3);
 
         _materiaStats = materiaSheet.Where(x => x.RowId > 0 && x.BaseParam.RowId > 0)
             .ToDictionary(x => x.RowId,
@@ -121,10 +121,10 @@ public sealed class GearStatsCalculator
             }
         }
 
-        foreach ((uint MateriaId, byte Grade) materia in materias)
+        foreach ((uint MateriaId, byte Grade) in materias)
         {
-            if (_materiaStats.TryGetValue(materia.MateriaId, out MateriaInfo? materiaStat))
-                AddMateriaStat(item, result, materiaStat, materia.Grade);
+            if (_materiaStats.TryGetValue(MateriaId, out MateriaInfo? materiaStat))
+                AddMateriaStat(item, result, materiaStat, Grade);
         }
 
         return new(result, 0);

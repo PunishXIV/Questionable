@@ -7,7 +7,6 @@ using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing.Converter;
 namespace Questionable.Model.Questing;
 
-[SuppressMessage("ReSharper", "CollectionNeverUpdated.Global")]
 public sealed class QuestStep
 {
     public const float DefaultStopDistance = 3f;

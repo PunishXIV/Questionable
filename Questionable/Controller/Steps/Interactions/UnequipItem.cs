@@ -20,8 +20,9 @@ internal static class UnequipItem
         {
             if (step.InteractionType != EInteractionType.UnequipItem)
                 return null;
+            if (!step.ItemId.HasValue)
+                throw new ArgumentNullException(nameof(step.ItemId));
 
-            ArgumentNullException.ThrowIfNull(step.ItemId);
             return new Task(step.ItemId.Value);
         }
     }

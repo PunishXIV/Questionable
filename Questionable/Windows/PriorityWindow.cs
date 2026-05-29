@@ -149,12 +149,12 @@ internal sealed class PriorityWindow : LWindow
             Quest quest = priorityQuests[i];
             using (ImRaii.PushId($"Quest{quest.Id}"))
             {
-                (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(quest.Id);
+                (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(quest.Id);
                 bool hovered;
                 using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     ImGui.AlignTextToFramePadding();
-                    ImGui.TextColored(style.Color, style.Icon.ToIconString());
+                    ImGui.TextColored(Color, Icon.ToIconString());
                     hovered = ImGui.IsItemHovered();
                 }
 

@@ -122,8 +122,9 @@ internal sealed class QuickAccessButtonsComponent
             ImGui.SetTooltip("Sponsor QST development");
     }
 
-    private static void DrawTroubleshootingButton(QuestController.QuestProgress questProgress)
+    private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
     {
+        static string errorMsg(string msg) => $@"{{""Error"": {JsonConvert.SerializeObject(msg)}}}";
         bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.Handshake);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
@@ -131,18 +132,18 @@ internal sealed class QuickAccessButtonsComponent
         if (leftClicked || rightClicked)
         {
             // Dalamud troubleshooting json is written after plugin manager changes
-            string dalamudTroubleshooting = "";
+            string dalamudTroubleshooting;
             try
             {
                 dalamudTroubleshooting = File.ReadAllText(Path.Join(Svc.PluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"));
             }
             catch (Exception e)
             {
-                dalamudTroubleshooting = $@"{{""Error"": {JsonConvert.SerializeObject(e.ToString())}}}";
+                dalamudTroubleshooting = errorMsg(e.ToString());
             }
             string qstConfig = JsonConvert.SerializeObject(Svc.PluginInterface.GetPluginConfig(), Formatting.Indented);
-            string progress = JsonConvert.SerializeObject(questProgress.ToString());
-            string questWork = JsonConvert.SerializeObject(QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id));
+            string progress = questProgress != null ? JsonConvert.SerializeObject(questProgress.ToString()) : errorMsg("questProgress is null");
+            string questWork = questProgress != null ? JsonConvert.SerializeObject(QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)) : errorMsg("questProgress is null");
             string output = $@"{{""Dalamud"": {dalamudTroubleshooting}, ""Questionable"": {qstConfig}, ""QuestProgress"": {progress}, ""QuestWork"": {questWork}}}";
             if (leftClicked)
                 ImGui.SetClipboardText(Compress(output));

@@ -8,6 +8,7 @@ internal sealed class AutomatonIpc
 {
     private readonly ICallGateSubscriber<string, bool> _isTweakEnabled;
     private readonly ILogger<AutomatonIpc> _logger;
+    private bool _loggedIpcError;
 
     public AutomatonIpc(IDalamudPluginInterface pluginInterface, ILogger<AutomatonIpc> logger)
     {
@@ -26,9 +27,9 @@ internal sealed class AutomatonIpc
             }
             catch (IpcError e)
             {
-                if (!field)
+                if (!_loggedIpcError)
                 {
-                    field = true;
+                    _loggedIpcError = true;
                     _logger.LogWarning(e, "Could not query automaton for tweak status, probably not installed");
                 }
 

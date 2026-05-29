@@ -54,14 +54,16 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         };
 
-        _acceptQuestSelector = new QuestSelector(questRegistry);
-        _acceptQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopWhenAccepted.All(x => x != quest.Id);
-        _acceptQuestSelector.DefaultPredicate = quest =>
-            quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id);
-        _acceptQuestSelector.QuestSelected = quest =>
+        _acceptQuestSelector = new QuestSelector(questRegistry)
         {
-            configuration.Stop.QuestsToStopWhenAccepted.Add(quest.Id);
-            Save();
+            SuggestionPredicate = quest => configuration.Stop.QuestsToStopWhenAccepted.All(x => x != quest.Id),
+            DefaultPredicate = quest =>
+                    quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id),
+            QuestSelected = quest =>
+                {
+                    configuration.Stop.QuestsToStopWhenAccepted.Add(quest.Id);
+                    Save();
+                }
         };
     }
 
@@ -170,12 +172,12 @@ internal sealed class StopConditionComponent : ConfigComponent
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(questId);
                     bool hovered;
                     using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                     {
                         ImGui.AlignTextToFramePadding();
-                        ImGui.TextColored(style.Color, style.Icon.ToIconString());
+                        ImGui.TextColored(Color, Icon.ToIconString());
                         hovered = ImGui.IsItemHovered();
                     }
 

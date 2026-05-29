@@ -311,7 +311,7 @@ internal sealed class EditorWindow : Window
         if (filterClass.Equals(FilterClass.Miner)) filterClassIcon = FontAwesomeIcon.HandRock;
         if (filterClass.Equals(FilterClass.Botanist)) filterClassIcon = FontAwesomeIcon.HandPaper;
         if (ImGuiComponents.IconButton(filterClassIcon))
-            filterClass = (FilterClass)(((int)filterClass + 1) % Enum.GetValues(typeof(FilterClass)).Length);
+            filterClass = (FilterClass)(((int)filterClass + 1) % Enum.GetValues<FilterClass>().Length);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("filter none/min/btn");
 

@@ -14,16 +14,16 @@ internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
             .ToList();
         if (singlePlayerInstances.DistinctBy(x => x.SinglePlayerDutyIndex).Count() < singlePlayerInstances.Count)
         {
-            foreach ((QuestSequence Sequence, int StepId, byte SinglePlayerDutyIndex) singlePlayerInstance in singlePlayerInstances)
+            foreach ((QuestSequence Sequence, int StepId, byte SinglePlayerDutyIndex) in singlePlayerInstances)
             {
                 yield return new()
                 {
                     ElementId = quest.Id,
-                    Sequence = singlePlayerInstance.Sequence.Sequence,
-                    Step = singlePlayerInstance.StepId,
+                    Sequence = Sequence.Sequence,
+                    Step = StepId,
                     Type = EIssueType.DuplicateSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = $"Duplicate singleplayer duty index: {singlePlayerInstance.SinglePlayerDutyIndex}"
+                    Description = $"Duplicate singleplayer duty index: {SinglePlayerDutyIndex}"
                 };
             }
         }

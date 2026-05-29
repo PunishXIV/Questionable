@@ -13,8 +13,9 @@ internal static class StatusOff
         {
             if (step.InteractionType != EInteractionType.StatusOff)
                 return null;
+            if (!step.Status.HasValue)
+                throw new ArgumentNullException(nameof(step.Status));
 
-            ArgumentNullException.ThrowIfNull(step.Status);
             return new Task(step.Status.Value);
         }
     }
