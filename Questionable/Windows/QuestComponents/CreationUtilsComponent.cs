@@ -94,13 +94,14 @@ internal sealed class CreationUtilsComponent
             {
                 if (_configuration.Advanced.ShowNewGamePlus)
                 {
-                    uint qid = (uint)(q.CurrentQuest?.Value ?? 0) + 65536;
+                    uint qid = q.CurrentQuest?.Value ?? 0;
                     if (simQ != null)
-                        qid = (uint)simQ.Id.Value + 65536;
-                    Tuple<ReadOnlySeString, int> chapter = _redoUtil.GetChapter(qid);
+                        qid = simQ.Id.Value;
+
+                    RedoIndex chapter = _redoUtil.GetChapter(qid);
                     string isSim = simQ != null ? " (sim)" : "";
-                    if (!chapter.Item1.IsEmpty)
-                        ImGui.Text($"NG+{isSim}: {chapter.Item1} (#{chapter.Item2 + 1})");
+                    if (chapter.Index != -1)
+                        ImGui.Text($"NG+{isSim}: {chapter}");
                 }
 
                 if (_configuration.Advanced.ShowDailies || _configuration.Advanced.ShowTracked)

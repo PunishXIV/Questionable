@@ -441,7 +441,7 @@ internal sealed unsafe partial class GameFunctions
                condition[ConditionFlag.Casting] || condition[ConditionFlag.MountOrOrnamentTransition] ||
                condition[ConditionFlag.BetweenAreas] || condition[ConditionFlag.BetweenAreas51] ||
                condition[ConditionFlag.Jumping61] || condition[ConditionFlag.ExecutingGatheringAction] ||
-               condition[ConditionFlag.Jumping];
+               condition[ConditionFlag.Jumping] || condition[ConditionFlag.Mounting71];
     }
 
     public bool IsOccupiedWithCustomDeliveryNpc(Quest? currentQuest)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
@@ -16,7 +17,7 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Duty
 {
-    internal sealed class Factory(AutoDutyIpc autoDutyIpc) : ITaskFactory
+    internal sealed class Factory(AutoDutyIpc autoDutyIpc, TerritoryData territoryData, Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -25,22 +26,30 @@ internal static class Duty
 
             ArgumentNullException.ThrowIfNull(step.DutyOptions);
 
-            if (autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions))
-            {
-                yield return new StartAutoDutyTask(step.DutyOptions.ContentFinderConditionId,
-                    quest.Id is QuestId { Value: >= 357 and <= 360 }
-                        ? AutoDutyIpc.DutyMode.UnsyncRegular
-                        : AutoDutyIpc.DutyMode.Support);
-                yield return new WaitAutoDutyTask(step.DutyOptions.ContentFinderConditionId);
-
-                if (!QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
-                    yield return new WaitAtEnd.WaitNextStepOrSequence();
-            }
-            else
+            if (!autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions))
             {
                 if (!step.DutyOptions.LowPriority)
                     yield return new OpenDutyFinderTask(step.DutyOptions.ContentFinderConditionId);
+                yield break;
             }
+            AutoDutyIpc.DutyMode dutyMode = quest.Id is QuestId { Value: >= 357 and <= 360 }
+                                            ? AutoDutyIpc.DutyMode.UnsyncRegular
+                                            : AutoDutyIpc.DutyMode.Support;
+            if (configuration.Duties.RunUnsynced)
+            {
+                unsafe
+                {
+                    if (territoryData.TryGetContentFinderCondition(step.DutyOptions.ContentFinderConditionId,
+                                                                   out TerritoryData.ContentFinderConditionData? cfcData) &&
+                            PlayerState.Instance()->CurrentLevel - 15 >= cfcData.ClassJobLevelSync)
+                        dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
+                }
+            }
+            yield return new StartAutoDutyTask(step.DutyOptions.ContentFinderConditionId, dutyMode);
+            yield return new WaitAutoDutyTask(step.DutyOptions.ContentFinderConditionId);
+
+            if (!QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
+                yield return new WaitAtEnd.WaitNextStepOrSequence();
         }
     }
 
@@ -58,6 +67,7 @@ internal static class Duty
         GearStatsCalculator gearStatsCalculator,
         AutoDutyIpc autoDutyIpc,
         TerritoryData territoryData,
+        Configuration configuration,
         IClientState clientState,
         IChatGui chatGui,
         SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppableTaskExecutor
@@ -82,6 +92,7 @@ internal static class Duty
                 out TerritoryData.ContentFinderConditionData? cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
+            AutoDutyIpc.DutyMode dutyMode = Task.DutyMode;
             unsafe
             {
                 InventoryManager* inventoryManager = InventoryManager.Instance();
@@ -101,6 +112,10 @@ internal static class Duty
                         chatGui.PrintError(errorText, CommandHandler.MessageTag, CommandHandler.TagColor);
 
                     return false;
+                }
+                if (configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel-100 >= cfcData.RequiredItemLevel)
+                {
+                    dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
             }
 

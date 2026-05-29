@@ -1,11 +1,79 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-20" },
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "InTerritory": [212],
+              "Item": { "NotInInventory": true }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -492.96475,
+            "Y": 20.999884,
+            "Z": -380.82272
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "$": "Avoid walking around Waking Sands table",
+          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
+        },
+        {
+          "DataId": 2001711,
+          "Position": {
+            "X": -480.9181,
+            "Y": 18.00103,
+            "Z": -386.862
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212,
+          "SkipConditions": { "StepIf": { "InTerritory": [212] } }
+        },
+        {
+          "DataId": 2001715,
+          "Position": {
+            "X": 23.23944,
+            "Y": 2.090454,
+            "Z": -0.015319824
+          },
+          "TerritoryId": 212,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 39.29187,
+                  "Y": 1.2148079,
+                  "Z": 0.8086548
+                },
+                "TerritoryId": 212,
+                "MaximumDistance": 15
+              }
+            }
+          }
+        },
         {
           "DataId": 1006693,
           "Position": {
@@ -58,7 +126,7 @@
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "$": "0 0  0 0  0 0 -> 17 0  0 0  0 128",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1007534,
@@ -70,7 +138,7 @@
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "$": "17 0  0 0  0 128 -> 33 16  0 0  0 192",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1007531,
@@ -83,7 +151,7 @@
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "$": "33 16  0 0  0 192 -> 49 17  0 0  0 224",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1007530,
@@ -96,7 +164,7 @@
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "$": "49 17  0 0  0 224 -> 65 17  16 0  0 240",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
           "DataId": 1007478,
@@ -107,7 +175,7 @@
           },
           "TerritoryId": 212,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
         }
       ]
     },
@@ -118,7 +186,7 @@
           "DataId": 1007722,
           "Position": {
             "X": 2.4871826,
-            "Y": 5.1752613E-07,
+            "Y": 5.1752613e-7,
             "Z": 4.5929565
           },
           "TerritoryId": 212,

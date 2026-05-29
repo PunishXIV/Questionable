@@ -1,4 +1,5 @@
-## Features
-- Adjust text and icon for `Stop After Next Quest` button - Kage
-## Bug fixes
-- Refactor and code style -alydev
+- Feature: Run duties unsync if (current level - 15) > duty sync level, or if (current ilvl - 100) > duty minimum ilvl -alydev
+- Feature: Journal Progress now shows New Game+ chapter headings -alydev
+- Feature: Make It Rain 2026 event -alydev
+- Feature: Adjust text and icon for `Stop After Next Quest` button - Kage
+- Bug: Refactor and code style -alydev

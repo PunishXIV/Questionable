@@ -1,0 +1,146 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-29" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1056358,
+          "Position": {
+            "X": -87.44946,
+            "Y": 4,
+            "Z": -103.44098
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1056359,
+          "Position": {
+            "X": -13.809448,
+            "Y": 14.00001,
+            "Z": -10.940796
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1056359,
+          "Position": {
+            "X": -13.809448,
+            "Y": 14.00001,
+            "Z": -10.940796
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1056373,
+          "Position": {
+            "X": 125.10864,
+            "Y": 4.100009,
+            "Z": -32.303406
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESGSX001_05443_Q2_000_000",
+              "Answer": "TEXT_FESGSX001_05443_A2_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1056377,
+          "Position": {
+            "X": 128.58777,
+            "Y": 7.992012,
+            "Z": 75.791504
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESGSX001_05443_Q3_000_000",
+              "Answer": "TEXT_FESGSX001_05443_A3_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1056381,
+          "Position": {
+            "X": -14.816589,
+            "Y": 14.04987,
+            "Z": 55.191895
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1056385,
+          "Position": {
+            "X": -13.626343,
+            "Y": 14.000009,
+            "Z": -12.40564
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1056390,
+          "Position": {
+            "X": -53.391357,
+            "Y": -1.706183e-6,
+            "Z": 102.67798
+          },
+          "TerritoryId": 144,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

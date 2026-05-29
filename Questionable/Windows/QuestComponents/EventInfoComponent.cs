@@ -31,7 +31,7 @@ internal sealed class EventInfoComponent
     private readonly List<EventQuest> _eventQuests =
     [
         new("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
-        new("A Maiden's Rhapsody", [new QuestId(2206)], AtDailyReset(new(2026,5,25))) // May 25, 2026 at 3pm (GMT)
+        new("Make It Rain 2026", [new QuestId(5443)], AtDailyReset(new(2026,6,24))) // May 25, 2026 at 3pm (GMT)
         //new("Valentione's Day 2026", [new QuestId(5325)], AtDailyReset(new(2026, 2, 16))) // January 15, 2026 at 6:59 a.m. (PST) 
     ];
     private readonly QuestController _questController = questController;
