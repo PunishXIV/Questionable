@@ -228,7 +228,7 @@ jobs:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:
           title: Questionable v${{ env.VERSION }}
-          message: ${{ steps.changelog.outputs.changelog }}
+          message: "{% raw %}${{ steps.changelog.outputs.changelog }}{% endraw %}"
 
       - name: Github testing releases To Discord
         if: needs.detect-version-change.outputs.testing == 'true'
@@ -237,7 +237,7 @@ jobs:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:
           title: Questionable v${{ env.VERSION }} (testing)
-          message: ${{ steps.changelog.outputs.changelog }}
+          message: "{% raw %}${{ steps.changelog.outputs.changelog }}{% endraw %}"
 
   # test-cn:
   #   needs: detect-version-change

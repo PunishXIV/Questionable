@@ -139,7 +139,15 @@ internal sealed class PluginConfigComponent
             "Automates duties",
             new("https://github.com/erdelf/AutoDuty"),
             new("https://puni.sh/api/repository/erdelf"),
-            "/ad")
+            "/ad"),
+        new("Stylist",
+            "Stylist",
+            """
+            Gear manager
+            """,
+            new("https://github.com/NightmareXIV/Stylist"),
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/stylist c")
     ];
     private readonly UiUtils _uiUtils = uiUtils;
 
@@ -336,8 +344,7 @@ internal sealed class PluginConfigComponent
                         color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
                     if (ImGuiComponents.IconButton(FontAwesomeIcon.Cog))
                         _commandManager.ProcessCommand(plugin.ConfigCommand);
-                    if (color != null)
-                        color.Dispose();
+                    color?.Dispose();
                 }
             }
             else

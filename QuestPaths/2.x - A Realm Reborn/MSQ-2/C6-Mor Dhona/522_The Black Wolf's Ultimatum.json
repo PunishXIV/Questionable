@@ -38,7 +38,8 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "Never": true
+              "InSameTerritory": true,
+              "InTerritory": [131]
             }
           }
         }

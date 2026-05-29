@@ -29,7 +29,7 @@ using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Functions;
 
-internal sealed unsafe class GameFunctions
+internal sealed unsafe partial class GameFunctions
 (
     QuestFunctions questFunctions,
     IDataManager dataManager,
@@ -269,8 +269,6 @@ internal sealed unsafe class GameFunctions
         if (localPlayer == null)
             return false;
 
-        BattleChara* battleChara = (BattleChara*)localPlayer.Address;
-        StatusManager* statusManager = battleChara->GetStatusManager();
         if (HasStatus(1151) ||
             HasStatus(1945)) // hoofing it
         {
@@ -390,7 +388,8 @@ internal sealed unsafe class GameFunctions
     // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration
     // macros (icons, italics, ...) as literal "<icon(69)>"-style tokens. Strip those so addon
     // text and excel text compare equal regardless of which reader produced them.
-    private static readonly Regex MacroLiteralRegex = new("<[^>]+>", RegexOptions.Compiled);
+    [GeneratedRegex("<[^>]+>", RegexOptions.Compiled)]
+    private static partial Regex MacroLiteralRegex();
 
     /// <summary>
     ///     Ensures characters like '-' are handled equally in both strings, and that decoration
@@ -408,7 +407,7 @@ internal sealed unsafe class GameFunctions
     }
 
     private static string NormalizeGameString(string value) =>
-        MacroLiteralRegex.Replace(value, string.Empty)
+        MacroLiteralRegex().Replace(value, string.Empty)
             .ReplaceLineEndings()
             .Replace('\u2013', '-')
             .Trim();
@@ -511,13 +510,8 @@ internal sealed unsafe class GameFunctions
     {
         if (obj == null)
             return 0;
-        if (obj.GetType().GetProperty("BaseId") is { } baseIdProp)
-            return (uint)baseIdProp.GetValue(obj)!;
 
-        if (obj.GetType().GetProperty("DataId") is { } dataIdProp)
-            return (uint)dataIdProp.GetValue(obj)!;
-
-        return 0;
+        return obj.BaseId;
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
@@ -10,11 +11,16 @@ using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
+using Newtonsoft.Json;
 using Questionable.Controller;
+using Questionable.Functions;
+using static Questionable.Utils.CompressUtils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuickAccessButtonsComponent
 (
+    QuestController questController,
     QuestRegistry questRegistry,
     QuestValidationWindow questValidationWindow,
     JournalProgressWindow journalProgressWindow,
@@ -23,6 +29,7 @@ internal sealed class QuickAccessButtonsComponent
     ICommandManager commandManager,
     IDalamudPluginInterface pluginInterface)
 {
+    private readonly QuestController _questController = questController;
     private readonly ICommandManager _commandManager = commandManager;
     private readonly Configuration _configuration = configuration;
     private readonly JournalProgressWindow _journalProgressWindow = journalProgressWindow;
@@ -47,6 +54,9 @@ internal sealed class QuickAccessButtonsComponent
             ImGui.SameLine();
             DrawSponsorButton();
         }
+
+        ImGui.SameLine();
+        DrawTroubleshootingButton(_questController.CurrentQuest);
 
         if (_questRegistry.ValidationIssueCount > 0)
         {
@@ -110,6 +120,39 @@ internal sealed class QuickAccessButtonsComponent
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Sponsor QST development");
+    }
+
+    private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
+    {
+        static string errorMsg(string msg) => $@"{{""Error"": {JsonConvert.SerializeObject(msg)}}}";
+        bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.Handshake);
+        bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy uncompressed troubleshooting info to clipboard");
+        if (leftClicked || rightClicked)
+        {
+            // Dalamud troubleshooting json is written after plugin manager changes
+            string dalamudTroubleshooting;
+            try
+            {
+                dalamudTroubleshooting = File.ReadAllText(Path.Join(Svc.PluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"));
+            }
+            catch (Exception e)
+            {
+                dalamudTroubleshooting = errorMsg(e.ToString());
+            }
+            string qstConfig = JsonConvert.SerializeObject(Svc.PluginInterface.GetPluginConfig(), Formatting.Indented);
+            string progress = questProgress != null ? JsonConvert.SerializeObject(questProgress.ToString()) : errorMsg("questProgress is null");
+            string questWork = questProgress != null ? JsonConvert.SerializeObject(QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)) : errorMsg("questProgress is null");
+            string output = $@"{{""Dalamud"": {dalamudTroubleshooting}, ""Questionable"": {qstConfig}, ""QuestProgress"": {progress}, ""QuestWork"": {questWork}}}";
+            if (leftClicked)
+                ImGui.SetClipboardText(Compress(output));
+            else if (rightClicked)
+                ImGui.SetClipboardText(output);
+            Svc.Chat.Print("Troubleshooting information has been copied to clipboard. " +
+                "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information.",
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+        }
     }
 
     private void DrawValidationIssuesButton()

@@ -53,15 +53,21 @@ internal sealed class QuestJournalUtils
         }
 
         bool openInQuestMap = _commandManager.Commands.ContainsKey("/questinfo");
-        using (ImRaii.Disabled(!(questInfo.QuestId is QuestId) || !openInQuestMap))
+        using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
         {
             if (ImGui.MenuItem("View in Quest Map"))
                 _commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
         }
 
-        if (ImGui.MenuItem("Add to Stop condition"))
+        if (ImGui.MenuItem("Add to Stop condition (on complete)"))
         {
             _configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
+            _pluginInterface.SavePluginConfig(_configuration);
+        }
+
+        if (ImGui.MenuItem("Add to Stop condition (on accept)"))
+        {
+            _configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
             _pluginInterface.SavePluginConfig(_configuration);
         }
 #if DEBUG

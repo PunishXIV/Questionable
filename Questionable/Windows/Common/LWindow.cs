@@ -3,16 +3,10 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Windowing;
 namespace Questionable.Windows.Common;
 
-[SuppressMessage("ReSharper", "SuspiciousTypeConversion.Global")]
-public abstract class LWindow : Window
+public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiWindowFlags.None, bool forceMainWindow = false) : Window(windowName, flags, forceMainWindow)
 {
     private bool _initializedConfig;
     private bool _wasCollapsedLastFrame;
-
-    protected LWindow(string windowName, ImGuiWindowFlags flags = ImGuiWindowFlags.None, bool forceMainWindow = false)
-        : base(windowName, flags, forceMainWindow)
-    {
-    }
 
     protected bool ClickedHeaderLastFrame { get; private set; }
     protected bool ClickedHeaderCurrentFrame { get; private set; }

@@ -1,10 +1,4 @@
-- Icon in Journal Progress to show when quest is in Priority Quests -wah
-  - Priority Quests icon changed from Exclamation to ExclamationCircle -alydev
-- Standardised 'Priority Quests' name -alydev
-- Click NoQuestPath journal progress entry to travel to issuer -alydev
-- Dependencies tab sections can now be minimised -alydev
-- Testing refactor -Kage, alydev
-- Add split pathing. so the plugin doesnt have to update anytime there is a path update - Kage
-  - Loading local paths after downloaded bundle paths -alydev
-- Add Death handling. Now it will retry 5 times before it needs manual intervention. - Kage
-- Fix list quests not selecting the correct response - Kage 
+## Features
+- Adjust text and icon for `Stop After Next Quest` button - Kage
+## Bug fixes
+- Refactor and code style -alydev

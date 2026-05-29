@@ -2,8 +2,8 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "LastChecked": {
-    "Username": "Kiarra",
-    "Date": "2026-03-12"
+    "Username": "ShermTank",
+    "Date": "2026-05-27"
   },
   "QuestSequence": [
     {
@@ -38,7 +38,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
           "AethernetShortcut": [
             "[Old Sharlayan] Scholar's Harbor",
             "[Old Sharlayan] Journey's End"

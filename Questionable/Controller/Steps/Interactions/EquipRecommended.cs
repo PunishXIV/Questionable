@@ -1,6 +1,7 @@
 ﻿using System;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
@@ -52,6 +53,12 @@ internal static class EquipRecommended
             if (condition[ConditionFlag.InCombat])
                 return false;
 
+            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is Configuration.EGearsetUpdateSource.Stylist)
+            {
+                chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                config.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
+                Svc.PluginInterface.SavePluginConfig(config);
+            }
             switch (config.General.GearsetUpdateSource)
             {
                 case Configuration.EGearsetUpdateSource.Vanilla:
@@ -76,7 +83,7 @@ internal static class EquipRecommended
 
                     if (!_checkedOrTriggeredEquipmentUpdate)
                     {
-                        if (!IsAllRecommendeGearEquipped())
+                    if (!IsAllRecommendedGearEquipped())
                         {
                             chatGui.Print("Equipping recommended gear.", CommandHandler.MessageTag, CommandHandler.TagColor);
                             recommendedEquipModule->EquipRecommendedGear();
@@ -105,13 +112,12 @@ internal static class EquipRecommended
             return DateTime.Now >= _continueAt ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
         }
 
-        private bool IsAllRecommendeGearEquipped()
+        private bool IsAllRecommendedGearEquipped()
         {
             RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
             InventoryManager* inventoryManager = InventoryManager.Instance();
             InventoryContainer* equippedItems =
                 inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
-            bool isAllEquipped = true;
             foreach (Pointer<InventoryItem> recommendedItemPtr in recommendedEquipModule->RecommendedItems)
             {
                 InventoryItem* recommendedItem = recommendedItemPtr.Value;
@@ -130,10 +136,10 @@ internal static class EquipRecommended
                 }
 
                 if (!isEquipped)
-                    isAllEquipped = false;
+                    return false;
             }
 
-            return isAllEquipped;
+            return true;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

@@ -56,7 +56,10 @@
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
-          "Mount": false
+          "Mount": false,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-12"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -86,13 +86,19 @@
             "Z": -436.60645
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "RequiredQuestAcceptedJob": [
+            "DoH"
+          ]
         },
         {
           "TerritoryId": 622,
           "InteractionType": "Craft",
           "ItemId": 22737,
-          "ItemCount": 1
+          "ItemCount": 1,
+          "RequiredQuestAcceptedJob": [
+            "DoH"
+          ]
         },
         {
           "TerritoryId": 622,

@@ -63,7 +63,10 @@
           "AethernetShortcut": [
             "[Rhalgr's Reach] Aetheryte Plaza",
             "[Rhalgr's Reach] Fringes Gate"
-          ]
+          ],
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },
@@ -83,7 +86,14 @@
           "StopDistance": 7,
           "TerritoryId": 620,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            128
+          ]
         },
         {
           "DataId": 1022538,
@@ -95,7 +105,14 @@
           "StopDistance": 7,
           "TerritoryId": 620,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            32
+          ]
         },
         {
           "DataId": 1022392,
@@ -107,7 +124,14 @@
           "StopDistance": 7,
           "TerritoryId": 620,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            64
+          ]
         }
       ]
     },

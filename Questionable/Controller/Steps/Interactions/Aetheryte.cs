@@ -15,8 +15,8 @@ internal static class Aetheryte
         {
             if (step.InteractionType != EInteractionType.AttuneAetheryte)
                 return null;
-
-            ArgumentNullException.ThrowIfNull(step.Aetheryte);
+            if (!step.Aetheryte.HasValue)
+                throw new ArgumentNullException(nameof(step.Aetheryte));
 
             return new Attune(step.Aetheryte.Value);
         }

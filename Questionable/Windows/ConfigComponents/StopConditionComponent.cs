@@ -22,7 +22,8 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly IClientState _clientState;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestRegistry _questRegistry;
-    private readonly QuestSelector _questSelector;
+    private readonly QuestSelector _acceptQuestSelector;
+    private readonly QuestSelector _completeQuestSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
 
@@ -38,18 +39,31 @@ internal sealed class StopConditionComponent : ConfigComponent
         : base(pluginInterface, configuration)
     {
         _pluginInterface = pluginInterface;
-        _questSelector = questSelector;
         _questRegistry = questRegistry;
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
         _clientState = clientState;
 
-        _questSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
-        _questSelector.DefaultPredicate = quest => quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);
-        _questSelector.QuestSelected = quest =>
+        _completeQuestSelector = questSelector;
+        _completeQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
+        _completeQuestSelector.DefaultPredicate = quest =>
+            quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);
+        _completeQuestSelector.QuestSelected = quest =>
         {
             configuration.Stop.QuestsToStopAfter.Add(quest.Id);
             Save();
+        };
+
+        _acceptQuestSelector = new QuestSelector(questRegistry)
+        {
+            SuggestionPredicate = quest => configuration.Stop.QuestsToStopWhenAccepted.All(x => x != quest.Id),
+            DefaultPredicate = quest =>
+                    quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id),
+            QuestSelected = quest =>
+                {
+                    configuration.Stop.QuestsToStopWhenAccepted.Add(quest.Id);
+                    Save();
+                }
         };
     }
 
@@ -105,21 +119,39 @@ internal sealed class StopConditionComponent : ConfigComponent
 
             ImGui.Separator();
 
-            // Quest completion stop condition section
-            ImGui.Text("Stop when completing any of the quests selected below:");
+            DrawQuestStopSection(
+                "Stop when completing any of the quests selected below:",
+                "Complete",
+                _completeQuestSelector,
+                Configuration.Stop.QuestsToStopAfter,
+                () => Configuration.Stop.QuestsToStopAfter.Clear());
 
-            _questSelector.DrawSelection();
+            ImGui.Separator();
 
-            List<ElementId> questsToStopAfter = Configuration.Stop.QuestsToStopAfter;
+            DrawQuestStopSection(
+                "Stop when accepting any of the quests selected below:",
+                "Accept",
+                _acceptQuestSelector,
+                Configuration.Stop.QuestsToStopWhenAccepted,
+                () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
+        }
+    }
 
-            // 'Clear All' button if there are quests to clear for fast removal
-            if (questsToStopAfter.Count > 0)
+    private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,
+        Action clearAll)
+    {
+        using (ImRaii.PushId(sectionId))
+        {
+            ImGui.Text(label);
+            selector.DrawSelection();
+
+            if (quests.Count > 0)
             {
                 using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                 {
                     if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
                     {
-                        Configuration.Stop.QuestsToStopAfter.Clear();
+                        clearAll();
                         Save();
                     }
                 }
@@ -131,21 +163,21 @@ internal sealed class StopConditionComponent : ConfigComponent
             }
 
             Quest? itemToRemove = null;
-            for (int i = 0; i < questsToStopAfter.Count; i++)
+            for (int i = 0; i < quests.Count; i++)
             {
-                ElementId questId = questsToStopAfter[i];
+                ElementId questId = quests[i];
 
                 if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
                     continue;
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(questId);
                     bool hovered;
                     using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                     {
                         ImGui.AlignTextToFramePadding();
-                        ImGui.TextColored(style.Color, style.Icon.ToIconString());
+                        ImGui.TextColored(Color, Icon.ToIconString());
                         hovered = ImGui.IsItemHovered();
                     }
 
@@ -172,7 +204,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
             if (itemToRemove != null)
             {
-                Configuration.Stop.QuestsToStopAfter.Remove(itemToRemove.Id);
+                quests.Remove(itemToRemove.Id);
                 Save();
             }
         }

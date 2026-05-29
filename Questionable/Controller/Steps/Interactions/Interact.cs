@@ -13,6 +13,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
+using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
@@ -30,9 +31,14 @@ internal static class Interact
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
                 or EInteractionType.SinglePlayerDuty)
             {
-                // 'PreventQuestCompletion' config check
                 if (step.InteractionType is EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion)
-                    yield break;
+                    if (configuration.Advanced.AbandonQuestBeforeCompletion)
+                    {
+                        yield return new AbandonQuest.Task(quest);
+                        yield break;
+                    }
+                    else
+                        yield break;
 
                 if (step.Emote != null)
                     yield break;
@@ -63,8 +69,8 @@ internal static class Interact
             }
             else if (step.InteractionType != EInteractionType.Interact)
                 yield break;
-
-            ArgumentNullException.ThrowIfNull(step.DataId);
+            if (!step.DataId.HasValue)
+                throw new ArgumentNullException(nameof(step.DataId));
 
             // if we're fast enough, it is possible to get the smalltalk prompt
             if (sequence.Sequence == 0 && sequence.Steps.IndexOf(step) == 0)
@@ -109,7 +115,6 @@ internal static class Interact
     internal sealed class DoInteract
     (
         GameFunctions gameFunctions,
-        QuestFunctions questFunctions,
         CameraFunctions cameraFunctions,
         Configuration configuration,
         ICondition condition,
@@ -173,7 +178,7 @@ internal static class Interact
                 return ETaskResult.TaskComplete;
             else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
             {
-                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Quest.Id);
+                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Quest.Id);
 
                 if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
                     return ETaskResult.TaskComplete;

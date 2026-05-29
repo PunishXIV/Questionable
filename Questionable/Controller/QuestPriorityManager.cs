@@ -24,7 +24,9 @@ internal sealed class QuestPriorityManager(
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
 
-    public bool Contains(Quest quest) => _quests.Contains(quest);
+    public bool Contains(Quest quest) => _quests.Any(q => q.Id == quest.Id);
+
+    public bool Contains(ElementId elementId) => _quests.Any(q => q.Id == elementId);
 
     public bool Add(Quest quest)
     {
@@ -60,14 +62,18 @@ internal sealed class QuestPriorityManager(
         }
     }
 
-    public bool Remove(Quest quest) => _quests.Remove(quest);
+    public void Remove(Quest quest) => Remove(quest.Id);
 
-    public bool Remove(ElementId elementId)
+    public void Remove(ElementId elementId)
     {
-        if (questRegistry.TryGetQuest(elementId, out Quest? quest))
-            _quests.Remove(quest);
-
-        return true;
+        try
+        {
+            _quests.RemoveAt(_quests.FindIndex(q => q.Id != elementId) - 1);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            _quests.Clear();
+        }
     }
 
     /// <summary>Moves the quest at <paramref name="oldIndex"/> to <paramref name="newIndex"/> (used by drag-drop).</summary>

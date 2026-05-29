@@ -252,6 +252,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public QuestPriorityManager PriorityManager => _priorityManager;
 
     public bool StopAfterCurrentQuest { get; set; }
+    public bool StopAfterAcceptingNextQuest { get; set; }
     public bool StopBeforeTeleport { get; set; }
 
     public string? DebugState { get; private set; }
@@ -501,6 +502,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 {
                     StartedQuest = PendingQuest;
                     PendingQuest = null;
+                    TryStopOnQuestAccepted(StartedQuest.Quest.Id);
+                    if (AutomationType == EAutomationType.Manual)
+                        return;
                     CheckNextTasks("Pending quest accepted");
                 }
             }
@@ -516,8 +520,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
                 if (!canUseNextQuest)
                 {
-                    _logger.LogInformation("Next quest {QuestId} accepted or completed",
-                        NextQuest.Quest.Id);
+                    ElementId nextQuestId = NextQuest.Quest.Id;
+                    _logger.LogInformation("Next quest {QuestId} accepted or completed", nextQuestId);
 
                     if (AutomationType == EAutomationType.SingleQuestA)
                     {
@@ -527,6 +531,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
                     _logger.LogDebug("Started: {StartedQuest}", StartedQuest?.Quest.Id);
                     NextQuest = null;
+                    TryStopOnQuestAccepted(nextQuestId);
+                    if (AutomationType == EAutomationType.Manual)
+                        return;
                 }
             }
 
@@ -561,7 +568,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 (ElementId, byte)? priorityQuestOption =
                     _priorityManager.Quests
                         .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
-                        .Select(x => (x.Id, _questFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
+                        .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
                 if (priorityQuestOption is { Item1: not null } priorityQuest)
                 {
@@ -617,6 +624,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     {
                         _highlightObject.SetHighlight([]);
                         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
+
+                        TryStopOnQuestAccepted(quest.Id);
+
                         StartedQuest = new(quest, currentSequence);
 #if DEBUG
                         if (_configuration.Advanced.OpenEditor && 
@@ -626,6 +636,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                             _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
                         }
 #endif
+
+                        if (AutomationType == EAutomationType.Manual)
+                            return;
 
                         unsafe
                         {
@@ -790,7 +803,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void TryAbandonQuest(QuestId questId)
     {
-        if (_questFunctions.GetQuestProgressInfo(questId) == null)
+        if (QuestFunctions.GetQuestProgressInfo(questId) == null)
         {
             _logger.LogWarning("AbandonQuest failed: quest {QuestId} is not active", questId);
             return;
@@ -811,9 +824,48 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _gatheringController.Stop("ClearTasksInternal");
     }
 
+    /// <summary>
+    ///     Stops automation when a quest is accepted, if configured or requested via
+    ///     <see cref="StopAfterAcceptingNextQuest"/>.
+    /// </summary>
+    public void TryStopOnQuestAccepted(ElementId questId)
+    {
+        if (AutomationType == EAutomationType.Manual)
+            return;
+
+        bool configStop = _configuration.Stop.Enabled &&
+                          _configuration.Stop.QuestsToStopWhenAccepted.Any(x => x == questId);
+        bool sessionStop = StopAfterAcceptingNextQuest &&
+                           (StartedQuest == null || StartedQuest.Quest.Id == questId);
+
+        if (!configStop && !sessionStop)
+            return;
+
+        if (_questRegistry.TryGetQuest(questId, out Quest? quest))
+        {
+            _logger.LogInformation("Reached accept stopping point (quest: {QuestId})", questId);
+            if (configStop)
+            {
+                _chatGui.Print(
+                    $"Accepted quest '{quest.Info.Name}', which is configured as a stopping point.",
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            }
+            else
+            {
+                _chatGui.Print(
+                    $"Accepted quest '{quest.Info.Name}', stopping as requested.",
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            }
+        }
+
+        StartedQuest = null;
+        Stop(configStop ? $"Accept stopping point [{questId}] reached" : $"Stop after accept [{questId}]");
+    }
+
     public override void Stop(string label)
     {
         StopAfterCurrentQuest = false;
+        StopAfterAcceptingNextQuest = false;
         StopBeforeTeleport = false;
         _handlingDeath = false;
         _deathStreakKey = null;
@@ -985,10 +1037,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (StopBeforeTeleport &&
             _taskQueue.CurrentTaskExecutor == null &&
             _taskQueue.TryPeek(out ITask? nextTask) &&
-            nextTask is AetheryteShortcut.Task shortcut &&
-            !shortcut.ExpectedTerritoryId.Equals(_clientState.TerritoryType))
+            TeleportTaskDetector.IsUpcomingTeleport(nextTask, _clientState.TerritoryType))
         {
-            _logger.LogInformation("Stopping before teleport as requested");
+            _logger.LogInformation("Stopping before teleport as requested (upcoming task: {Task})", nextTask);
             _chatGui.Print("Stopping before teleport as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
             _movementController.Stop();
             Stop("Stop before teleport");
@@ -1321,6 +1372,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             Quest = quest;
             SetSequence(sequence, step);
         }
+        public override string ToString() => $"{Quest.Id}_{Quest.Info.Name} / {Sequence} / {Step}";
         public Quest Quest { get; }
         public byte Sequence { get; private set; }
         public int Step { get; private set; }

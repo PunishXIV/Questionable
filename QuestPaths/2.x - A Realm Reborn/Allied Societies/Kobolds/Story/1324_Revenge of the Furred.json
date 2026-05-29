@@ -69,6 +69,16 @@
       "Sequence": 4,
       "Steps": [
         {
+          "Position": {
+            "X": 112.36146,
+            "Y": 23.326199,
+            "Z": -607.64655
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
           "DataId": 2003723,
           "Position": {
             "X": 87.08313,
@@ -78,7 +88,7 @@
           "TerritoryId": 180,
           "InteractionType": "UseItem",
           "ItemId": 2001237,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 2003724,
@@ -90,7 +100,7 @@
           "TerritoryId": 180,
           "InteractionType": "UseItem",
           "ItemId": 2001237,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2003725,
@@ -133,7 +143,7 @@
           "TerritoryId": 180,
           "InteractionType": "UseItem",
           "ItemId": 2001237,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2003728,
@@ -145,7 +155,7 @@
           "TerritoryId": 180,
           "InteractionType": "UseItem",
           "ItemId": 2001237,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2003726,

@@ -13,20 +13,19 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
     private readonly ICallGateSubscriber<bool> _getEnduranceStatus = pluginInterface.GetIpcSubscriber<bool>("Artisan.GetEnduranceStatus");
     private readonly ICallGateSubscriber<bool> _isListRunning = pluginInterface.GetIpcSubscriber<bool>("Artisan.IsListRunning");
     private readonly ICallGateSubscriber<int, object> _startListById = pluginInterface.GetIpcSubscriber<int, object>("Artisan.StartListById");
-    private readonly ILogger<ArtisanIpc> _logger = logger;
 
     public bool CraftItem(ushort recipeId, int quantity)
     {
         try
         {
-            _logger.LogInformation("Attempting to craft {Quantity} items with recipe {RecipeId} with Artisan", quantity,
+            logger.LogInformation("Attempting to craft {Quantity} items with recipe {RecipeId} with Artisan", quantity,
                 recipeId);
             _craftItem.InvokeAction(recipeId, quantity);
             return true;
         }
         catch (IpcError e)
         {
-            _logger.LogError(e, "Unable to craft items");
+            logger.LogError(e, "Unable to craft items");
             return false;
         }
     }
@@ -35,26 +34,23 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
     {
         try
         {
-            _logger.LogInformation("Attempting to craft list {ListId} with Artisan", listId);
+            logger.LogInformation("Attempting to craft list {ListId} with Artisan", listId);
             _startListById.InvokeAction(listId);
             return true;
         }
         catch (IpcError e)
         {
-            _logger.LogError(e, "Unable to craft items");
+            logger.LogError(e, "Unable to craft items");
             return false;
         }
         catch (Exception e)
         {
-            _logger.LogInformation(e, "CraftList failed");
+            logger.LogInformation(e, "CraftList failed");
             return false;
         }
     }
 
-    public bool CraftList(ElementId questId)
-    {
-        return CraftList(questId.Value.ToInt() + 65536);
-    }
+    public bool CraftList(ElementId questId) => CraftList(questId.Value.ToInt() + 65536);
 
     public bool IsCrafting()
     {
@@ -64,7 +60,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
         catch (IpcError e)
         {
-            _logger.LogError(e, "Unable to check for Artisanstatus");
+            logger.LogError(e, "Unable to check for Artisanstatus");
             return false;
         }
     }

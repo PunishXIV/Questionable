@@ -7,7 +7,6 @@ using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing.Converter;
 namespace Questionable.Model.Questing;
 
-[SuppressMessage("ReSharper", "CollectionNeverUpdated.Global")]
 public sealed class QuestStep
 {
     public const float DefaultStopDistance = 3f;
@@ -103,7 +102,6 @@ public sealed class QuestStep
     public List<uint> PointMenuChoices { get; set; } = [];
     public PurchaseMenu? PurchaseMenu { get; set; }
 
-    // TODO: Not implemented
     [JsonConverter(typeof(ElementIdConverter))]
     public ElementId? PickUpQuestId { get; set; }
 

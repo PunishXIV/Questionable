@@ -1,6 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
@@ -8,7 +10,6 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps;
 using WrathCombo.API;
 using WrathCombo.API.Enum;
-using WrathCombo.API.Extension;
 using WrathError = WrathCombo.API.Error;
 
 namespace Questionable.Controller.CombatModules;
@@ -234,9 +235,10 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     private void Callback(int reason, string additionalInfo)
     {
         CancellationReason realReason = (CancellationReason)reason;
+        string description = (typeof(CancellationReason).GetField(realReason.ToString())?.GetCustomAttribute<DescriptionAttribute>())?.Description ?? string.Empty;
         _logger.LogWarning("WrathCombo IPC Lease Cancelled: {ReasonDescription} " +
                            "({Reason}; for: {Info})",
-            realReason.Description, realReason.ToString(), additionalInfo);
+            description, realReason.ToString(), additionalInfo);
         _lease = null;
     }
 }

@@ -64,7 +64,10 @@
           "TerritoryId": 137,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
+          "Fly": true,
+          "SinglePlayerDutyOptions": {
+            "Enabled": true
+          }
         }
       ]
     },

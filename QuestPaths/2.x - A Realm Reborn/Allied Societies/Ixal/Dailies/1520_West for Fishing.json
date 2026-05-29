@@ -1,11 +1,9 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "Disabled": true,
   "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
-  "LastChecked": {
-    "Username": "alydev",
-    "Date": "2025-11-06"
-  },
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
   "QuestSequence": [
     {
       "Sequence": 0,

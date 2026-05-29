@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using Questionable.Controller;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
 using Questionable.Data;
@@ -66,8 +67,10 @@ internal static class WaitAtEnd
                     return [Next(quest, sequence)];
 
                 case EInteractionType.WaitForObjectAtPosition:
-                    ArgumentNullException.ThrowIfNull(step.DataId);
-                    ArgumentNullException.ThrowIfNull(step.Position);
+                    if (!step.DataId.HasValue)
+                        throw new ArgumentNullException(nameof(step.DataId));
+                    if (!step.Position.HasValue)
+                        throw new ArgumentNullException(nameof(step.Position));
 
                     return
                     [
@@ -184,14 +187,14 @@ internal static class WaitAtEnd
         public override string ToString() => $"Wait(QW: {string.Join(", ", Step.CompletionQuestVariablesFlags.Select(x => x?.ToString() ?? "-"))})";
     }
 
-    internal sealed class WaitForCompletionFlagsExecutor(QuestFunctions questFunctions)
+    internal sealed class WaitForCompletionFlagsExecutor()
         : TaskExecutor<WaitForCompletionFlags>
     {
         protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
-            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest);
+            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest);
             return questWork != null &&
                    QuestWorkUtils.MatchesQuestWork(Task.Step.CompletionQuestVariablesFlags, questWork)
                 ? ETaskResult.TaskComplete
@@ -229,15 +232,18 @@ internal static class WaitAtEnd
         public override string ToString() => $"WaitQuestAccepted({ElementId})";
     }
 
-    internal sealed class WaitQuestAcceptedExecutor(QuestFunctions questFunctions) : TaskExecutor<WaitQuestAccepted>
+    internal sealed class WaitQuestAcceptedExecutor(QuestFunctions questFunctions, QuestController questController)
+        : TaskExecutor<WaitQuestAccepted>
     {
         protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
-            return questFunctions.IsQuestAccepted(Task.ElementId)
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (!questFunctions.IsQuestAccepted(Task.ElementId))
+                return ETaskResult.StillRunning;
+
+            questController.TryStopOnQuestAccepted(Task.ElementId);
+            return ETaskResult.TaskComplete;
         }
 
         public override bool ShouldInterruptOnDamage() => false;

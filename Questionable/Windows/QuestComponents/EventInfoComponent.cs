@@ -28,7 +28,6 @@ internal sealed class EventInfoComponent
     Configuration configuration)
 {
     private readonly Configuration _configuration = configuration;
-    [SuppressMessage("ReSharper", "CollectionNeverUpdated.Local")]
     private readonly List<EventQuest> _eventQuests =
     [
         new("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
@@ -45,7 +44,6 @@ internal sealed class EventInfoComponent
 
     public bool ShouldDraw => _configuration.General.ShowIncompleteSeasonalEvents && _eventQuests.Any(IsIncomplete);
 
-    [SuppressMessage("ReSharper", "UnusedMember.Local")]
     private static DateTime AtDailyReset(DateOnly date) => new(date, new(14, 59), DateTimeKind.Utc);
 
     public void Draw()
@@ -108,8 +106,8 @@ internal sealed class EventInfoComponent
                 {
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX());
 
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) style = _uiUtils.GetQuestStyle(questId);
-                    if (_uiUtils.ChecklistItem(questName, style.Color, style.Icon, ImGui.GetStyle().FramePadding.X))
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(questId);
+                    if (_uiUtils.ChecklistItem(questName, Color, Icon, ImGui.GetStyle().FramePadding.X))
                         _questTooltipComponent.Draw(_questData.GetQuestInfo(questId));
                 }
             }

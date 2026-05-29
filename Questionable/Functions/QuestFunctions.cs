@@ -394,7 +394,7 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    public QuestProgressInfo? GetQuestProgressInfo(ElementId elementId)
+    public static QuestProgressInfo? GetQuestProgressInfo(ElementId elementId)
     {
         if (elementId is QuestId questId)
         {
@@ -628,7 +628,6 @@ internal sealed unsafe class QuestFunctions
             throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
-    [SuppressMessage("Performance", "CA1822")]
     public bool IsQuestComplete(QuestId questId) => QuestManager.IsQuestComplete(questId.Value);
 
     public bool IsQuestComplete(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
@@ -656,8 +655,11 @@ internal sealed unsafe class QuestFunctions
         if (questInfo.GrandCompany != GrandCompany.None && questInfo.GrandCompany != GetGrandCompany())
             return true;
 
-        if (questInfo.AlliedSociety != EAlliedSociety.None && questInfo.IsRepeatable)
-            return !IsDailyAlliedSocietyQuestAndAvailableToday(questId);
+        if (questInfo.AlliedSociety != EAlliedSociety.None)
+            if (questInfo.IsRepeatable)
+                return !IsDailyAlliedSocietyQuestAndAvailableToday(questId);
+            else
+                return !IsAlliedSocietyStoryQuestAvailable(questId);
 
         if (questInfo.IsMoogleDeliveryQuest)
         {
@@ -702,6 +704,15 @@ internal sealed unsafe class QuestFunctions
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         return alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(questInfo.AlliedSociety).Contains(questId);
+    }
+
+    public bool IsAlliedSocietyStoryQuestAvailable(QuestId questId)
+    {
+        QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
+        EAlliedSocietyRank currentRank = (EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)questInfo.AlliedSociety);
+        var currentRep = PlayerState.Instance()->GetBeastTribeCurrentReputation((byte)questInfo.AlliedSociety);
+        var neededRep = PlayerState.Instance()->GetBeastTribeNeededReputation((byte)questInfo.AlliedSociety);
+        return currentRank > questInfo.AlliedSocietyRank || currentRep >= neededRep;
     }
 
     public bool IsQuestUnobtainable(ElementId elementId, ElementId? extraCompletedQuest = null)
@@ -799,7 +810,7 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    public bool IsQuestRemoved(ElementId elementId)
+    public static bool IsQuestRemoved(ElementId elementId)
     {
         if (elementId is QuestId questId)
             return IsQuestRemoved(questId);
@@ -807,8 +818,7 @@ internal sealed unsafe class QuestFunctions
             return false;
     }
 
-    [SuppressMessage("Performance", "CA1822")]
-    private bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
+    private static bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
 
     private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
     {

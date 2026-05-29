@@ -64,6 +64,9 @@ internal sealed class Configuration : IPluginConfiguration
         [JsonProperty(ItemConverterType = typeof(ElementIdNConverter))]
         public List<ElementId> QuestsToStopAfter { get; set; } = [];
 
+        [JsonProperty(ItemConverterType = typeof(ElementIdNConverter))]
+        public List<ElementId> QuestsToStopWhenAccepted { get; set; } = [];
+
         public bool LevelToStopAfter { get; set; }
         public int TargetLevel { get; set; } = 50;
     }
@@ -115,6 +118,8 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipARealmRebornHardModePrimals { get; set; }
         public bool SkipCrystalTowerRaids { get; set; }
         public bool PreventQuestCompletion { get; set; }
+        public bool AbandonQuestBeforeCompletion { get; set; }
+        public bool RemoveFromPriorityWhenAbandoned { get; set; }
         public bool ShowWindowOnStart { get; set; }
         public bool StartMinimized { get; set; }
         public bool OpenEditor { get; set; }

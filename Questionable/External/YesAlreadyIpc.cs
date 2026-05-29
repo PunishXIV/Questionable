@@ -1,8 +1,6 @@
 ﻿using System;
 using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
 using ECommons.EzIpcManager;
-using ECommons.Reflection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
@@ -44,12 +42,18 @@ internal sealed class YesAlreadyIpc : IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
+        if (IPCSubscriber_Common.IsInstalled("YesAlready") && _wasEnabled && !IsPluginEnabled())
+        {
+            _logger.LogDebug("Re-enabling YesAlready on dispose");
+            SetPluginEnabled(true);
+        }
+
         IPCSubscriber_Common.DisposeAll(_disposalTokens);
     }
 
     private void OnUpdate(IFramework framework)
     {
-        if (IPCSubscriber_Common.IsReady("YesAlready"))
+        if (IPCSubscriber_Common.IsInstalled("YesAlready"))
         {
             bool hasActiveQuest = (_questController.IsRunning ||
                                    _questController.AutomationType != QuestController.EAutomationType.Manual) &&

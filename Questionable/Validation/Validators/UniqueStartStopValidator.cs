@@ -15,15 +15,15 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
             FindQuestStepsWithInteractionType(quest, [EInteractionType.AcceptQuest])
                 .Where(x => x.Step.PickUpQuestId == null)
                 .ToList();
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) accept in questAccepts)
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in questAccepts)
         {
-            if (accept.Sequence.Sequence != 0 || accept.StepId != quest.FindSequence(0)!.Steps.Count - 1)
+            if (Sequence.Sequence != 0 || StepId != quest.FindSequence(0)!.Steps.Count - 1)
             {
                 yield return new()
                 {
                     ElementId = quest.Id,
-                    Sequence = accept.Sequence.Sequence,
-                    Step = accept.StepId,
+                    Sequence = Sequence.Sequence,
+                    Step = StepId,
                     Type = EIssueType.UnexpectedAcceptQuestStep,
                     Severity = EIssueSeverity.Error,
                     Description = "Unexpected AcceptQuest step"
@@ -48,15 +48,15 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
             FindQuestStepsWithInteractionType(quest, [EInteractionType.CompleteQuest])
                 .Where(x => x.Step.TurnInQuestId == null)
                 .ToList();
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) complete in questCompletes)
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in questCompletes)
         {
-            if (complete.Sequence.Sequence != 255 || complete.StepId != quest.FindSequence(255)!.Steps.Count - 1)
+            if (Sequence.Sequence != 255 || StepId != quest.FindSequence(255)!.Steps.Count - 1)
             {
                 yield return new()
                 {
                     ElementId = quest.Id,
-                    Sequence = complete.Sequence.Sequence,
-                    Step = complete.StepId,
+                    Sequence = Sequence.Sequence,
+                    Step = StepId,
                     Type = EIssueType.UnexpectedCompleteQuestStep,
                     Severity = EIssueSeverity.Error,
                     Description = "Unexpected CompleteQuest step"

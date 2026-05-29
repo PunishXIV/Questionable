@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -77,6 +78,18 @@
     {
       "Sequence": 4,
       "Steps": [
+        {
+          "DataId": 1029758,
+          "Position": {
+            "X": -594.81195,
+            "Y": 5.3112187,
+            "Z": 41.45874
+          },
+          "StopDistance": 7,
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "$": "Refresh status"
+        },
         {
           "DataId": 2009913,
           "Position": {

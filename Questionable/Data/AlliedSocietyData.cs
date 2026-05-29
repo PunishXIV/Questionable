@@ -13,13 +13,15 @@ internal sealed class AlliedSocietyData
     public ReadOnlyDictionary<ushort, AlliedSocietyMountConfiguration> Mounts { get; } =
         new Dictionary<ushort, AlliedSocietyMountConfiguration>
         {
+            { 23, new([1008327, 1005848, 1005860, 1005581], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) }, // amaljaa
+            { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
             { 66, new([1016093, 1016087], EAetheryteLocation.SeaOfCloudsOkZundu) }, //vanu
             { 79, new([1017031, 1016837, 1016838], EAetheryteLocation.DravanianForelandsAnyxTrine) }, //vath
             { 88, new([1017470, 1017432], EAetheryteLocation.ChurningMistsZenith) }, //moogle
             { 89, new([1017322], EAetheryteLocation.ChurningMistsZenith) }, //moogle
+            { 137, new([1024218], EAetheryteLocation.RubySeaTamamizu) }, //Kojin  
             { 147, new([1024777, 1024912], EAetheryteLocation.FringesPeeringStones) }, //ananta
             { 165, new([1025610], EAetheryteLocation.AzimSteppeDhoroIloh) }, //namazu
-            { 137, new([1024218], EAetheryteLocation.RubySeaTamamizu) }, //Kojin  
             { 210, new([1031811], EAetheryteLocation.IlMhegLydhaLran) }, //Pixie
             { 221, new([1032663], EAetheryteLocation.RaktikaFanow) }, //Qitari Done
             { 227, new([1033715], EAetheryteLocation.LakelandOstallImperative) }, //Dwarf
@@ -28,7 +30,6 @@ internal sealed class AlliedSocietyData
             { 309, new([1044408, 1044403], EAetheryteLocation.MareLamentorumBestwaysBurrow) }, // rabbits
             { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
-            { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }
         }.AsReadOnly();
 
     public bool IsAlliedSocietyMount(ushort? mountId)

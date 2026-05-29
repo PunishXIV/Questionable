@@ -20,8 +20,8 @@ internal static class Emote
             }
             else if (step.InteractionType != EInteractionType.Emote)
                 return [];
-
-            ArgumentNullException.ThrowIfNull(step.Emote);
+            if (!step.Emote.HasValue)
+                throw new ArgumentNullException(nameof(step.Emote));
 
             Mount.UnmountTask unmount = new();
             if (step.DataId != null)
@@ -45,10 +45,20 @@ internal static class Emote
     internal sealed class UseOnObjectExecutor(ChatFunctions chatFunctions)
         : AbstractDelayedTaskExecutor<UseOnObject>
     {
+        private bool _emoteFired;
+
         protected override bool StartInternal()
         {
-            chatFunctions.UseEmote(Task.DataId, Task.Emote);
+            _emoteFired = chatFunctions.UseEmote(Task.DataId, Task.Emote);
             return true;
+        }
+
+        protected override ETaskResult UpdateInternal()
+        {
+            if (!_emoteFired)
+                return ETaskResult.RetryStep;
+
+            return ETaskResult.TaskComplete;
         }
 
         public override bool ShouldInterruptOnDamage() => true;

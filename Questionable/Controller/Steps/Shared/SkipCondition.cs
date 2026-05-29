@@ -349,7 +349,7 @@ internal static class SkipCondition
 
         private bool CheckQuestWorkConditions(ElementId elementId, QuestStep step)
         {
-            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(elementId);
+            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(elementId);
             if (questWork != null)
             {
                 if (QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&

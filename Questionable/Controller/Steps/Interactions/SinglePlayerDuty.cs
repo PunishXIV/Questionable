@@ -182,7 +182,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.EnableAi(Task.Passive);
+            bossModIpc.SetPresetForSoloDuty(Task.Passive ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.QuestBattle);
             return true;
         }
 
@@ -202,7 +202,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.SetPreset(Task.Preset);
+            bossModIpc.SetPresetForSoloDuty(Task.Preset);
             return true;
         }
 
@@ -237,7 +237,7 @@ internal static class SinglePlayerDuty
                 : ETaskResult.StillRunning;
         }
 
-        public void StopNow() => bossModIpc.DisableAi();
+        public void StopNow() => bossModIpc.Cleanup();
 
         public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start() => true;
@@ -254,7 +254,7 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.DisableAi();
+            bossModIpc.DisableSoloDutyPreset();
             return true;
         }
 
@@ -308,7 +308,6 @@ internal static class SinglePlayerDuty
     }
 
     internal sealed class WaitForSinglePlayerDutyOutcomeExecutor(
-        QuestFunctions questFunctions,
         GameFunctions gameFunctions,
         ICondition condition,
         IChatGui chatGui,
@@ -350,7 +349,7 @@ internal static class SinglePlayerDuty
 
             // If the in-game quest sequence advanced (or the quest is gone), the duty succeeded —
             // QuestController.UpdateCurrentQuest will clear us; just keep waiting.
-            QuestProgressInfo? progress = questFunctions.GetQuestProgressInfo(Task.QuestId);
+            QuestProgressInfo? progress = QuestFunctions.GetQuestProgressInfo(Task.QuestId);
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;
 

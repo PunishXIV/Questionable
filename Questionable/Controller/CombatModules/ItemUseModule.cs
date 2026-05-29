@@ -4,6 +4,7 @@ using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -11,13 +12,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 namespace Questionable.Controller.CombatModules;
 
-internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, ILogger<ItemUseModule> logger) : ICombatModule
+internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, MovementController movementController, ILogger<ItemUseModule> logger) : ICombatModule
 {
-    private readonly ICondition _condition = condition;
-    private readonly ILogger<ItemUseModule> _logger = logger;
-    private readonly IServiceProvider _serviceProvider = serviceProvider;
     private CombatController.CombatData? _combatData;
     private DateTime _continueAt;
 
@@ -29,10 +28,10 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
         if (combatData.CombatItemUse == null)
             return false;
 
-        _delegate = _serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
+        _delegate = serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
             .Where(x => x is not ItemUseModule)
             .FirstOrDefault(x => x.CanHandleFight(combatData));
-        _logger.LogInformation("ItemUse delegate: {Delegate}", _delegate?.GetType().Name);
+        logger.LogInformation("ItemUse delegate: {Delegate}", _delegate?.GetType().Name);
         return _delegate != null;
     }
 
@@ -81,6 +80,13 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             _combatData.ComplexCombatDatas.Any(x => x.DataId == GameFunctions.GetBaseID(nextTarget) &&
                                                     (x.NameId == null || (nextTarget is ICharacter character && x.NameId == character.NameId))))
         {
+            if (nextTarget.Position.DistanceTo_XZ(Svc.Objects[0]!.Position) > 3f)
+            {
+                logger.LogInformation("Too far from target, moving closer");
+                movementController.NavigateTo(Model.EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new(){ StopDistance = 3f });
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return;
+            }
             if (_isDoingRotation)
             {
                 unsafe
@@ -100,7 +106,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                     _delegate.Stop();
                     unsafe
                     {
-                        _logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
+                        logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
                         AgentInventoryContext.Instance()->UseItem(_combatData.CombatItemUse.ItemId);
                     }
 
@@ -109,7 +115,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                 else
                     _delegate.Update(nextTarget);
             }
-            else if (_condition[ConditionFlag.Casting])
+            else if (condition[ConditionFlag.Casting])
             {
                 // do nothing
                 DateTime alternativeContinueAt = DateTime.Now.AddSeconds(0.5);

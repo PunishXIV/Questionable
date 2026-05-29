@@ -21,8 +21,9 @@ internal static class EquipItem
         {
             if (step.InteractionType != EInteractionType.EquipItem)
                 return null;
+            if (!step.ItemId.HasValue)
+                throw new ArgumentNullException(nameof(step.ItemId));
 
-            ArgumentNullException.ThrowIfNull(step.ItemId);
             return new Task(step.ItemId.Value);
         }
     }

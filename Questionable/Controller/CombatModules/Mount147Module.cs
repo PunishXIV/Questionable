@@ -11,9 +11,7 @@ internal sealed class Mount147Module(GameFunctions gameFunctions) : ICombatModul
     public const ushort MountId = 147;
     private readonly EAction[] _actions = [EAction.Trample];
 
-    private readonly GameFunctions _gameFunctions = gameFunctions;
-
-    public bool CanHandleFight(CombatController.CombatData combatData) => _gameFunctions.GetMountId() == MountId;
+    public bool CanHandleFight(CombatController.CombatData combatData) => gameFunctions.GetMountId() == MountId;
 
     public bool Start(CombatController.CombatData combatData) => true;
 
@@ -23,7 +21,7 @@ internal sealed class Mount147Module(GameFunctions gameFunctions) : ICombatModul
     {
         foreach (EAction action in _actions)
         {
-            if (_gameFunctions.UseAction(gameObject, action, false))
+            if (gameFunctions.UseAction(gameObject, action, false))
                 return;
         }
     }

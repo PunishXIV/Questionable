@@ -16,8 +16,8 @@ internal static class AethernetShard
         {
             if (step.InteractionType != EInteractionType.AttuneAethernetShard)
                 return null;
-
-            ArgumentNullException.ThrowIfNull(step.AethernetShard);
+            if (!step.AethernetShard.HasValue)
+                throw new ArgumentNullException(nameof(step.AethernetShard));
 
             return new Attune(step.AethernetShard.Value);
         }

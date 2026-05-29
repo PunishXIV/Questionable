@@ -87,14 +87,15 @@ internal sealed class MovementController
         {
             if (_pathfindTask.IsCompletedSuccessfully)
             {
-                logger.LogInformation("Pathfinding complete, got {Count} points", _pathfindTask.Result.Count);
-                if (_pathfindTask.Result.Count == 0)
+                List<Vector3> pathfindResult = _pathfindTask.Result;
+                logger.LogInformation("Pathfinding complete, got {Count} points", pathfindResult.Count);
+                if (pathfindResult.Count == 0)
                 {
                     ResetPathfinding();
                     throw new PathfindingFailedException();
                 }
 
-                List<Vector3> navPoints = _pathfindTask.Result.Skip(1).ToList();
+                List<Vector3> navPoints = pathfindResult.Skip(1).ToList();
                 Vector3 start = objectTable[0]?.Position ?? navPoints[0];
                 if (Destination.IsFlying && !condition[ConditionFlag.InFlight] && condition[ConditionFlag.Mounted])
                 {
@@ -129,7 +130,7 @@ internal sealed class MovementController
                 navPoints = Destination.PartialRoute.Concat(navPoints).ToList();
                 logger.LogInformation("Navigating via route: [{Route}]",
                     string.Join(" → ",
-                        _pathfindTask.Result.Select(x => x.ToString("G", CultureInfo.InvariantCulture))));
+                        pathfindResult.Select(x => x.ToString("G", CultureInfo.InvariantCulture))));
 
                 navmeshIpc.MoveTo(navPoints, Destination.IsFlying);
                 MovementStartedAt = DateTime.Now;

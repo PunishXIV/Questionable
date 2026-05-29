@@ -87,9 +87,9 @@ internal sealed unsafe class InterruptHandler : IDisposable
         [FieldOffset(5)] public byte Flags;
         [FieldOffset(6)] public ushort Value;
 
-        public byte AttackType => (byte)(Param1 & 0xF);
+        public readonly byte AttackType => (byte)(Param1 & 0xF);
 
-        public override string ToString()
+        public override readonly string ToString()
         {
             return
                 $"Type: {Type}, p0: {Param0:D3}, p1: {Param1:D3}, p2: {Param2:D3} 0x{Param2:X2} '{Convert.ToString(Param2, 2).PadLeft(8, '0')}', mult: {Mult:D3}, flags: {Flags:D3} | {Convert.ToString(Flags, 2).PadLeft(8, '0')}, value: {Value:D6} ATTACK TYPE: {AttackType}";

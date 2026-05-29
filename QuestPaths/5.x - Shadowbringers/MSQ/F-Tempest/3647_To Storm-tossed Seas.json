@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -122,6 +123,16 @@
           "InteractionType": "Interact",
           "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "Position": {
+            "X": -621.1358,
+            "Y": -29.51201,
+            "Z": 744.7277
+          },
+          "TerritoryId": 813,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true
         },
         {
           "DataId": 2010137,

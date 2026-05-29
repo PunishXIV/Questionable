@@ -15,6 +15,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "AcceptQuest",
+          "StopDistance": 1,
           "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "Fly": true
         }
@@ -141,6 +142,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "CompleteQuest",
+          "StopDistance": 1,
           "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "Fly": true
         }

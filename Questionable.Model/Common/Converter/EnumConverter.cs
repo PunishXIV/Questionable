@@ -26,10 +26,7 @@ where T : Enum
         if (reader.TokenType != JsonTokenType.String)
             throw new JsonException();
 
-        string? str = reader.GetString();
-        if (str == null)
-            throw new JsonException();
-
+        string? str = reader.GetString() ?? throw new JsonException();
         return _stringToEnum.TryGetValue(str, out T? value) ? value : throw new JsonException();
     }
 

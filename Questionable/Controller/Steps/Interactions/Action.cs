@@ -19,8 +19,8 @@ internal static class Action
         {
             if (step.InteractionType != EInteractionType.Action)
                 return [];
-
-            ArgumentNullException.ThrowIfNull(step.Action);
+            if (!step.Action.HasValue)
+                throw new ArgumentNullException(nameof(step.Action));
 
             ITask task = OnObject(step.DataId, quest, step.Action.Value, step.CompletionQuestVariablesFlags);
             if (step.Action.Value.RequiresMount())
@@ -33,7 +33,9 @@ internal static class Action
         {
             if (action is EAction.FumaShuriken or EAction.Katon or EAction.Raiton)
             {
-                ArgumentNullException.ThrowIfNull(dataId);
+                if (!dataId.HasValue)
+                    throw new ArgumentNullException(nameof(dataId));
+
                 return new UseMudraOnObject(dataId.Value, action);
             }
             else
@@ -55,7 +57,6 @@ internal static class Action
     internal sealed class UseOnObjectExecutor
     (
         GameFunctions gameFunctions,
-        QuestFunctions questFunctions,
         ILogger<UseOnObject> logger) : TaskExecutor<UseOnObject>
     {
         private DateTime _continueAt = DateTime.MinValue;
@@ -132,7 +133,7 @@ internal static class Action
                 Task.CompletionQuestVariablesFlags != null &&
                 QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariablesFlags))
             {
-                QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
+                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
                 return questWork != null &&
                        QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork)
                     ? ETaskResult.TaskComplete

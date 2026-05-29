@@ -1,0 +1,295 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-27" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 114.23337,
+            "Y": 15.204611,
+            "Z": -362.13324
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "StopDistance": 10,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.6062,
+            "Y": 16.402647,
+            "Z": -362.11188
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005552,
+          "Position": {
+            "X": 85.618286,
+            "Y": 15.28719,
+            "Z": -355.70312
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1009192,
+          "Position": {
+            "X": 39.902344,
+            "Y": 4,
+            "Z": -131.79224
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1009166,
+          "Position": {
+            "X": 129.38123,
+            "Y": 4.100004,
+            "Z": 29.404175
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1001353,
+          "Position": {
+            "X": 21.072632,
+            "Y": 7.45,
+            "Z": -78.78235
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1009169,
+          "Position": {
+            "X": -147.17328,
+            "Y": 4.1,
+            "Z": -99.90088
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        },
+        {
+          "DataId": 1009170,
+          "Position": {
+            "X": -88.7923,
+            "Y": 5.0016875,
+            "Z": -77.317505
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1009168,
+          "Position": {
+            "X": -111.03992,
+            "Y": 41.50016,
+            "Z": 126.3905
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ]
+        },
+        {
+          "DataId": 1009167,
+          "Position": {
+            "X": -10.452454,
+            "Y": 82.999825,
+            "Z": -3.6469727
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Alchemists' Guild",
+            "[Ul'dah] Airship Landing"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1004339,
+          "Position": {
+            "X": -25.986206,
+            "Y": 81.799995,
+            "Z": -31.99823
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 131,
+          "SkipConditions": { "StepIf": { "InTerritory": [131] } }
+        },
+        {
+          "DataId": 1009166,
+          "Position": {
+            "X": 129.38123,
+            "Y": 4.100004,
+            "Z": 29.404175
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] The Chamber of Rule",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1009170,
+          "Position": {
+            "X": -88.7923,
+            "Y": 5.0016875,
+            "Z": -77.317505
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1009194,
+          "Position": {
+            "X": -354.32974,
+            "Y": -10.187086,
+            "Z": -215.30026
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL070_01473_Q1_000_000",
+              "Answer": "TEXT_BANALL070_01473_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "Position": {
+            "X": -328.26944,
+            "Y": -11.400001,
+            "Z": -244.28267
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [2852, 3119]
+        },
+        {
+          "DataId": 2004283,
+          "Position": {
+            "X": -323.506,
+            "Y": -9.724042,
+            "Z": -248.4465
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UseItem",
+          "ItemId": 2001319
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1009195,
+          "Position": {
+            "X": -340.19995,
+            "Y": -12.024094,
+            "Z": -246.93683
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1009166,
+          "Position": {
+            "X": 129.38123,
+            "Y": 4.100004,
+            "Z": 29.404175
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    }
+  ]
+}
