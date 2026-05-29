@@ -20,6 +20,7 @@ using Questionable.Model;
 using Questionable.Validation;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
+using static FFXIVClientStructs.FFXIV.Client.LayoutEngine.LayoutManager;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalComponent
@@ -214,6 +215,9 @@ internal sealed class QuestJournalComponent
                 else
                     lastChecked = $"{since / 7}w";
             }
+            RedoIndex redoIndex = _redoUtil.GetChapter(quest.Id.Value);
+            if (redoIndex.Index == 0)
+                questDescription = $"{questDescription}   ({redoIndex.Name})";
 
             if ((quest.Root.Comment ?? "").Contains("FATE"))
                 fate = true;
