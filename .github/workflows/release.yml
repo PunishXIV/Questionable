@@ -223,21 +223,21 @@ jobs:
 
       - name: Github Releases To Discord
         if: needs.detect-version-change.outputs.testing == 'false'
-        uses: cstuder/apprise-ga@master
+        uses: alydevs/apprise-ga@master
         env:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:
           title: Questionable v${{ env.VERSION }}
-          message: "{% raw %}${{ steps.changelog.outputs.changelog }}{% endraw %}"
+          message: ${{ steps.changelog.outputs.changelog }}
 
       - name: Github testing releases To Discord
         if: needs.detect-version-change.outputs.testing == 'true'
-        uses: cstuder/apprise-ga@master
+        uses: alydevs/apprise-ga@master
         env:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:
           title: Questionable v${{ env.VERSION }} (testing)
-          message: "{% raw %}${{ steps.changelog.outputs.changelog }}{% endraw %}"
+          message: ${{ steps.changelog.outputs.changelog }}
 
   # test-cn:
   #   needs: detect-version-change
