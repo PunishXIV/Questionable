@@ -131,11 +131,12 @@ internal sealed class TerritoryData
         uint ContentFinderConditionId,
         string Name,
         uint TerritoryId,
-        ushort RequiredItemLevel)
+        ushort RequiredItemLevel,
+        byte ClassJobLevelSync)
     {
         public ContentFinderConditionData(ContentFinderCondition condition, ClientLanguage clientLanguage)
             : this(condition.RowId, FixName(condition.Name.ToDalamudString().ToString(), clientLanguage),
-                condition.TerritoryType.RowId, condition.ItemLevelRequired)
+                condition.TerritoryType.RowId, condition.ItemLevelRequired, condition.ClassJobLevelSync)
         {
         }
     }
