@@ -19,6 +19,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Validation;
 using Questionable.Windows.QuestComponents;
+using Questionable.Windows.Utils;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalComponent
@@ -54,6 +55,7 @@ internal sealed class QuestJournalComponent
     private readonly AetheryteFunctions _aetheryteFunctions = aetheryteFunctions;
     private readonly AetheryteData _aetheryteData = aetheryteData;
     private readonly QuestController _questController = questController;
+    private readonly RedoUtil _redoUtil = new();
 
     private List<FilteredSection> _filteredSections = [];
 
@@ -166,7 +168,15 @@ internal sealed class QuestJournalComponent
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
 
-        bool open = ImGui.TreeNodeEx(filter.Genre.Name, ImGuiTreeNodeFlags.SpanFullWidth);
+        string genreName = filter.Genre.Name;
+        if (_questRegistry.TryGetQuest(filter.Quests.First().QuestId, out Quest? q))
+        {
+            RedoIndex redoIndex = _redoUtil.GetChapter(q.Id.Value);
+            if (redoIndex.Index != -1)
+                genreName = $"{filter.Genre.Name} ({redoIndex.Name})";
+        }
+
+        bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
 
         _questJournalUtils.ShowQuestGroupContextMenu($"DrawGenre{filter.Genre.Id}", filter.Quests);
 
@@ -242,7 +252,7 @@ internal sealed class QuestJournalComponent
                 });
             else
                 if (_aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
-                    _aetheryteFunctions.TeleportAetheryte(aetheryte);
+                _aetheryteFunctions.TeleportAetheryte(aetheryte);
         }
 
         _questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));

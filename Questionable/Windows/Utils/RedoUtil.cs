@@ -9,25 +9,16 @@ namespace Questionable.Windows.Utils;
 
 internal sealed class RedoUtil
 {
-    public Dictionary<uint, List<uint>> Dict;
+    private readonly Dictionary<uint, List<uint>> Dict;
+    private Stopwatch Last { get; set; }
 
     public RedoUtil()
     {
         Dict = [];
         Last = Generate();
     }
-    public Stopwatch Last { get; private set; }
 
-    public Tuple<ReadOnlySeString, int> GetChapter(uint questId)
-    {
-        KeyValuePair<uint, List<uint>> result = Dict.FirstOrDefault(entry => entry.Value.Contains(questId));
-        if (result.Value == null)
-            return new((ReadOnlySeString)"", -1);
-        int index = result.Value.IndexOf(questId);
-        return new(GenericHelpers.GetSheet<QuestRedoChapterUI>().GetRow(result.Key).ChapterName, index);
-    }
-
-    public Stopwatch Generate()
+    private Stopwatch Generate()
     {
         Stopwatch watch = Stopwatch.StartNew();
         foreach (QuestRedo chapter in GenericHelpers.GetSheet<QuestRedo>())
@@ -46,4 +37,25 @@ internal sealed class RedoUtil
         watch.Stop();
         return watch;
     }
+    public RedoIndex GetChapter(uint questId)
+    {
+        if (questId < 65536)
+            questId += 65536;
+        KeyValuePair<uint, List<uint>> result = Dict.FirstOrDefault(entry => entry.Value.Contains(questId));
+        if (result.Value == null)
+            return new((ReadOnlySeString)"", -1);
+        ReadOnlySeString name = GenericHelpers.GetSheet<QuestRedoChapterUI>().GetRow(result.Key).ChapterName;
+        int index = result.Value.IndexOf(questId);
+        if (name.ByteLength == 0)
+            return new((ReadOnlySeString)"", -1);
+        return new(name, index);
+    }
+}
+
+internal sealed record RedoIndex(ReadOnlySeString Name, int Index)
+{
+    public ReadOnlySeString Name = Name;
+    public int Index = Index;
+
+    public override string ToString() => $"{Name} (#{Index + 1})";
 }

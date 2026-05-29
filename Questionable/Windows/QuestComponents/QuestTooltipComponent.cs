@@ -10,6 +10,7 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Windows.Utils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuestTooltipComponent
@@ -27,6 +28,7 @@ internal sealed class QuestTooltipComponent
     private readonly QuestRegistry _questRegistry = questRegistry;
     private readonly TerritoryData _territoryData = territoryData;
     private readonly UiUtils _uiUtils = uiUtils;
+    private readonly RedoUtil _redoUtil = new();
 
     public void Draw(IQuestInfo questInfo)
     {
@@ -75,6 +77,10 @@ internal sealed class QuestTooltipComponent
 
             if (quest.Root.Comment != null)
                 ImGui.Text($"Comment: {quest.Root.Comment.Split('\n', 2)[0]}");
+
+            RedoIndex redoIndex = _redoUtil.GetChapter(quest.Id.Value);
+            if (redoIndex.Index != -1)
+                ImGui.Text($"NG+: {redoIndex}");
 
             if (quest.Root.LastChecked.Date != null)
                 ImGui.Text($"Last checked: {quest.Root.LastChecked.Date} by {quest.Root.LastChecked.Username}");

@@ -4,7 +4,7 @@
     "JerryWester",
     "liza"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-20"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -221,6 +221,7 @@
             "Z": -22.394428
           },
           "TerritoryId": 152,
+          "StopDistance": 1,
           "InteractionType": "WaitForNpcAtPosition",
           "Mount": false,
           "Sprint": false,
