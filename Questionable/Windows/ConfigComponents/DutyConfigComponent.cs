@@ -79,6 +79,22 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGuiComponents.HelpMarker(
             "The combat module used for this is configured by AutoDuty, ignoring whichever selection you've made in Questionable's \"General\" configuration.");
 
+        using (ImRaii.Disabled(!runInstancedContentWithAutoDuty))
+        {
+            bool runUnsynced = Configuration.Duties.RunUnsynced;
+            if (ImGui.Checkbox("Run content unsynced where safe", ref runUnsynced))
+            {
+                Configuration.Duties.RunUnsynced = runUnsynced;
+                Save();
+            }
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                "If the level of your current job is greater than 15 levels above a duty's sync level, or if your average item level is greater than 100 over " +
+                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.");
+            ImGui.SameLine();
+            ImGui.TextColored(ImGuiColors.DalamudRed, "Experimental feature");
+        }
+
         ImGui.Separator();
 
         using (ImRaii.Disabled(!runInstancedContentWithAutoDuty))
