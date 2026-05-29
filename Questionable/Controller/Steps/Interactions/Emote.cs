@@ -20,8 +20,8 @@ internal static class Emote
             }
             else if (step.InteractionType != EInteractionType.Emote)
                 return [];
-
-            ArgumentNullException.ThrowIfNull(step.Emote);
+            if (!step.Emote.HasValue)
+                throw new ArgumentNullException(nameof(step.Emote));
 
             Mount.UnmountTask unmount = new();
             if (step.DataId != null)

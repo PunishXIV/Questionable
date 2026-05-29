@@ -1705,7 +1705,7 @@
                   },
                   "TestedBossModVersion": {
                     "type": "string",
-                    "pattern": "^0\\.\\d+\\.\\d+\\.\\d+$"
+                    "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"
                   },
                   "$": {
                     "type": "string"

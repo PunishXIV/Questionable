@@ -15,8 +15,8 @@ internal static class AetheryteFreeOrFavored
         {
             if (step.InteractionType != EInteractionType.RegisterFreeOrFavoredAetheryte)
                 return null;
-
-            ArgumentNullException.ThrowIfNull(step.Aetheryte);
+            if (!step.Aetheryte.HasValue)
+                throw new ArgumentNullException(nameof(step.Aetheryte));
 
             return new Register(step.Aetheryte.Value);
         }

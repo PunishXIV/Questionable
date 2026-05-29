@@ -53,7 +53,7 @@ internal sealed class QuestJournalUtils
         }
 
         bool openInQuestMap = _commandManager.Commands.ContainsKey("/questinfo");
-        using (ImRaii.Disabled(!(questInfo.QuestId is QuestId) || !openInQuestMap))
+        using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
         {
             if (ImGui.MenuItem("View in Quest Map"))
                 _commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");

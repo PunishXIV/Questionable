@@ -8,13 +8,13 @@ internal sealed class NextQuestValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) invalidNextQuest in quest.AllSteps().Where(x => x.Step.NextQuestId == quest.Id))
+        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in quest.AllSteps().Where(x => x.Step.NextQuestId == quest.Id))
         {
             yield return new()
             {
                 ElementId = quest.Id,
-                Sequence = invalidNextQuest.Sequence.Sequence,
-                Step = invalidNextQuest.StepId,
+                Sequence = Sequence.Sequence,
+                Step = StepId,
                 Type = EIssueType.InvalidNextQuestId,
                 Severity = EIssueSeverity.Error,
                 Description = "Next quest should not reference itself"

@@ -252,7 +252,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             {
                 foreach ((uint cfcId, uint _, string _) in cfcNames)
                 {
-                    if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
+                    if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? _))
                         Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
                 }
             }

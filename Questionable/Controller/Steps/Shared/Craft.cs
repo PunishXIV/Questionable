@@ -9,6 +9,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
+using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
@@ -47,7 +48,6 @@ internal static class Craft
     internal sealed class DoCraft
     (
         IDataManager dataManager,
-        QuestFunctions questFunctions,
         ArtisanIpc artisanIpc,
         ILogger<DoCraft> logger,
         QuestController questController) : TaskExecutor<CraftTask>

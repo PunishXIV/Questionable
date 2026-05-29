@@ -68,8 +68,7 @@ internal sealed class GatheringPointRegistry : IDisposable
     {
         _logger.LogInformation("Loading gathering points from assembly");
 
-        foreach ((ushort gatheringPointId, GatheringRoot gatheringRoot) in
-            AssemblyGatheringLocationLoader.GetLocations())
+        foreach ((ushort gatheringPointId, GatheringRoot gatheringRoot) in AssemblyGatheringLocationLoader.Locations)
         {
             if (gatheringRoot.Steps.Count >= 1)
             {

@@ -67,8 +67,10 @@ internal static class WaitAtEnd
                     return [Next(quest, sequence)];
 
                 case EInteractionType.WaitForObjectAtPosition:
-                    ArgumentNullException.ThrowIfNull(step.DataId);
-                    ArgumentNullException.ThrowIfNull(step.Position);
+                    if (!step.DataId.HasValue)
+                        throw new ArgumentNullException(nameof(step.DataId));
+                    if (!step.Position.HasValue)
+                        throw new ArgumentNullException(nameof(step.Position));
 
                     return
                     [
@@ -185,7 +187,7 @@ internal static class WaitAtEnd
         public override string ToString() => $"Wait(QW: {string.Join(", ", Step.CompletionQuestVariablesFlags.Select(x => x?.ToString() ?? "-"))})";
     }
 
-    internal sealed class WaitForCompletionFlagsExecutor(QuestFunctions questFunctions)
+    internal sealed class WaitForCompletionFlagsExecutor()
         : TaskExecutor<WaitForCompletionFlags>
     {
         protected override bool Start() => true;

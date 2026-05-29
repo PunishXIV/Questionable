@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using ECommons.DalamudServices;
@@ -12,10 +13,10 @@ namespace Questionable.Utils;
 /// <summary>
 /// Adapted from Henchman by Knightmore
 /// </summary>
-#pragma warning disable CA5394 // insecure randomness
+[SuppressMessage("Security", "CA5394:Do not use insecure randomness")]
 internal static class NameGenerator
 {
-	private static readonly Random Rand = new Random();
+	private static readonly Random Rand = new();
 
 	private static readonly string[] Prefix = new string[35]
 	{
@@ -154,7 +155,7 @@ internal static class NameGenerator
 		return lastName;
 	}
 
-	private static string GeneratePrefixMiddle(int min, int max)
+    private static string GeneratePrefixMiddle(int min, int max)
 	{
 		int middleAmount = Rand.Next(min, max);
 		string name = Prefix[Rand.Next(Prefix.Length)];
@@ -165,4 +166,3 @@ internal static class NameGenerator
 		return name;
 	}
 }
-#pragma warning restore CA5394

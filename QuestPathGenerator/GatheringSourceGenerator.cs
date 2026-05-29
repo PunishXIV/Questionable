@@ -125,7 +125,7 @@ public class GatheringSourceGenerator : ISourceGenerator
     {
         List<StatementSyntax> statements = [];
 
-        foreach ((ushort QuestId, GatheringRoot Root) quest in quests)
+        foreach ((ushort QuestId, GatheringRoot Root) in quests)
         {
             statements.Add(
                 ExpressionStatement(
@@ -138,9 +138,9 @@ public class GatheringSourceGenerator : ISourceGenerator
                                     {
                                         Argument(
                                             LiteralExpression(SyntaxKind.NumericLiteralExpression,
-                                                Literal(quest.QuestId))),
+                                                Literal(QuestId))),
                                         Token(SyntaxKind.CommaToken),
-                                        Argument(CreateGatheringRootExpression(quest.QuestId, quest.Root))
+                                        Argument(CreateGatheringRootExpression(QuestId, Root))
                                     })))));
         }
 

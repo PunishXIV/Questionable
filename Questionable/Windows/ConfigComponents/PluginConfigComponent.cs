@@ -344,8 +344,7 @@ internal sealed class PluginConfigComponent
                         color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
                     if (ImGuiComponents.IconButton(FontAwesomeIcon.Cog))
                         _commandManager.ProcessCommand(plugin.ConfigCommand);
-                    if (color != null)
-                        color.Dispose();
+                    color?.Dispose();
                 }
             }
             else

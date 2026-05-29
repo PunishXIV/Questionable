@@ -61,9 +61,9 @@
       },
       "WrathCombo.API": {
         "type": "Direct",
-        "requested": "[0.5.4, )",
-        "resolved": "0.5.4",
-        "contentHash": "L9aHWAqc/rT+jmn+bdgnocWWncZmb8+15kLEcbrIGg6i6W+EuDnghYhe6PIJuiuqa1Bs6J9wvRjz5hblwP628w=="
+        "requested": "[0.5.5, )",
+        "resolved": "0.5.5",
+        "contentHash": "mvUBFTUQt35b52MeyuPXPk+3udCAmZ+cLV5mv9Y67FQP78UT+qtpEMdAGYxEynj7+hcPGL4fGk2GB2L6eRle5Q=="
       },
       "Humanizer.Core": {
         "type": "Transitive",
@@ -124,7 +124,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.286.0.7, )"
+          "Questionable.Model": "[15.288.0.2, )"
         }
       },
       "questionable.model": {
@@ -136,7 +136,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.286.0.7, )"
+          "Questionable.Model": "[15.288.0.2, )"
         }
       }
     }

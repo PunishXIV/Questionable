@@ -41,15 +41,14 @@ public static class DataManagerExtensions
         if (text == null)
             return null;
 
-        Regex regex = text.ToRegex();
+        Regex regex = text.Value.ToRegex();
         pluginLog?.Verbose($"{typeof(T).Name}.{rowId} => /{regex}/");
         return regex;
     }
 
-    public static Regex ToRegex(this ReadOnlySeString? text)
+    public static Regex ToRegex(this ReadOnlySeString text)
     {
-        ArgumentNullException.ThrowIfNull(text);
-        return new(string.Join("", text.Value.Select(payload =>
+        return new(string.Join("", text.Select(payload =>
         {
             if (payload.Type == ReadOnlySePayloadType.Text)
                 return Regex.Escape(payload.ToString());
@@ -85,7 +84,7 @@ public interface IQuestDialogueText
     public ReadOnlySeString Value { get; }
 }
 
-[SuppressMessage("Performance", "CA1815")]
+[SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "Unused operations")]
 [Sheet("QuestDialogueText")]
 public readonly struct QuestDialogueText(ExcelPage page, uint offset, uint row) : IQuestDialogueText, IExcelRow<QuestDialogueText>
 {

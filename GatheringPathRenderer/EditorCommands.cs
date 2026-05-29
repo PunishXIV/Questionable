@@ -143,8 +143,8 @@ internal sealed class EditorCommands : IDisposable
                 .Select(group => new
                 {
                     Group = group,
-                    Distance = group.Nodes.Min(x =>
-                        x.Locations.Min(y =>
+                    Distance = group.Nodes.Min<GatheringNode, float>(x =>
+                        x.Locations.Min<GatheringLocation, float>(y =>
                             Vector3.Distance(_objectTable[0]!.Position, y.Position)))
                 })
                 .OrderBy(x => x.Distance)

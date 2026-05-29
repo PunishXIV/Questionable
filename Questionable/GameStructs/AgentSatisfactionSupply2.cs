@@ -14,7 +14,7 @@ internal struct AgentSatisfactionSupply2
     [FieldOffset(0x70)] public ushort CurrentSatisfaction;
     [FieldOffset(0x72)] public ushort MaxSatisfaction;
 
-    public int CalculateTurnInsToNextRank(int maxTurnIns)
+    public readonly int CalculateTurnInsToNextRank(int maxTurnIns)
     {
         if (MaxSatisfaction == 0)
             return maxTurnIns;

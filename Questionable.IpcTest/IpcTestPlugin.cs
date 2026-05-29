@@ -41,7 +41,7 @@ public sealed class IpcTestPlugin : IDalamudPlugin
                 .AddText(" - Pos: ")
                 .AddUiForeground(stepData?.Position?.ToString("G", CultureInfo.InvariantCulture) ?? "?", 61)
                 .AddText(" - Territory: ")
-                .AddUiForeground(stepData?.TerritoryId.ToString() ?? "?", 61)
+                .AddUiForeground(stepData?.TerritoryId.ToString(CultureInfo.InvariantCulture) ?? "?", 61)
                 .Build());
         }
         else if (arguments == "events")
@@ -57,8 +57,6 @@ public sealed class IpcTestPlugin : IDalamudPlugin
             _chatGui.PrintError("Unknown subcommand");
     }
 
-    [SuppressMessage("ReSharper", "ClassNeverInstantiated.Local")]
-    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Local")]
     // ReSharper disable once InconsistentNaming
     private sealed class IpcStepData
     {

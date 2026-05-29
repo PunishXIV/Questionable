@@ -17,7 +17,7 @@ internal sealed unsafe class CameraFunctions : IDisposable
 
     private readonly bool IgnoreUserInput = true; // if true - override even if user tries to change camera orientation, otherwise override only if user does nothing
     [Signature("48 8B C4 53 48 81 EC ?? ?? ?? ?? 44 0F 29 50 ??")]
-    private Hook<RMICameraDelegate> _rmiCameraHook = null!;
+    private readonly Hook<RMICameraDelegate> _rmiCameraHook = null!;
     private float DesiredAltitude;
     private float DesiredAzimuth;
 

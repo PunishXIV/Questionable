@@ -628,7 +628,6 @@ internal sealed unsafe class QuestFunctions
             throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
-    [SuppressMessage("Performance", "CA1822")]
     public bool IsQuestComplete(QuestId questId) => QuestManager.IsQuestComplete(questId.Value);
 
     public bool IsQuestComplete(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
@@ -811,7 +810,7 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    public bool IsQuestRemoved(ElementId elementId)
+    public static bool IsQuestRemoved(ElementId elementId)
     {
         if (elementId is QuestId questId)
             return IsQuestRemoved(questId);
@@ -819,8 +818,7 @@ internal sealed unsafe class QuestFunctions
             return false;
     }
 
-    [SuppressMessage("Performance", "CA1822")]
-    private bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
+    private static bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
 
     private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
     {
