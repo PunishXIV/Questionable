@@ -114,7 +114,7 @@ internal sealed class QuestRegistry
     {
         _logger.LogInformation("Loading quests from assembly");
 
-        foreach ((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.GetQuests())
+        foreach ((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.Quests)
         {
             try
             {

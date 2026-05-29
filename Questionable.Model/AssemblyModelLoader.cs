@@ -3,14 +3,14 @@ namespace Questionable.Model;
 
 public static class AssemblyModelLoader
 {
-    public static Stream CommonAetheryte =>
+    public static Stream CommonAetheryteStream =>
         typeof(AssemblyModelLoader).Assembly.GetManifestResourceStream("Questionable.Model.CommonAetheryte")!;
-    public static Stream CommonAethernetShard =>
+    public static Stream CommonAethernetShardStream =>
         typeof(AssemblyModelLoader).Assembly.GetManifestResourceStream("Questionable.Model.CommonAethernetShard")!;
-    public static Stream CommonClassJob =>
+    public static Stream CommonClassJobStream =>
         typeof(AssemblyModelLoader).Assembly.GetManifestResourceStream("Questionable.Model.CommonClassJob")!;
-    public static Stream CommonCompletionFlags =>
+    public static Stream CommonCompletionFlagsStream =>
         typeof(AssemblyModelLoader).Assembly.GetManifestResourceStream("Questionable.Model.CommonCompletionFlags")!;
-    public static Stream CommonVector3 =>
+    public static Stream CommonVector3Stream =>
         typeof(AssemblyModelLoader).Assembly.GetManifestResourceStream("Questionable.Model.CommonVector3")!;
 }

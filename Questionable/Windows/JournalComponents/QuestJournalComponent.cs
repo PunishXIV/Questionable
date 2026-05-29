@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
@@ -187,13 +188,12 @@ internal sealed class QuestJournalComponent
 
     private void DrawQuest(QuestInfo questInfo)
     {
-        Quest? quest;
         bool fate = false;
         //bool repeatable = false;
         string lastChecked = "";
         string lastCheckedLong = "";
         string questDescription = $"{questInfo.Name} ({questInfo.QuestId})";
-        if (_questRegistry.TryGetQuest(questInfo.QuestId, out quest))
+        if (_questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest))
         {
             if (quest.Root.LastChecked.Date != null)
             {
@@ -270,7 +270,7 @@ internal sealed class QuestJournalComponent
         if (quest != null)
             reason = (quest.Root.Comment ?? defaultReason).Split('\n', 2)[0];
 
-        if (_questFunctions.IsQuestRemoved(questInfo.QuestId))
+        if (QuestFunctions.IsQuestRemoved(questInfo.QuestId))
         {
             if (_uiUtils.ChecklistItem(lastChecked, ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus))
                 ImGui.SetTooltip("This quest is not available.");
@@ -401,8 +401,8 @@ internal sealed class QuestJournalComponent
             int available = genre.Quests.Count(x =>
                 _questRegistry.TryGetQuest(x.QuestId, out Quest? quest) &&
                 !quest.Root.Disabled &&
-                !_questFunctions.IsQuestRemoved(x.QuestId));
-            int total = genre.Quests.Count(x => !_questFunctions.IsQuestRemoved(x.QuestId));
+                !QuestFunctions.IsQuestRemoved(x.QuestId));
+            int total = genre.Quests.Count(x => !QuestFunctions.IsQuestRemoved(x.QuestId));
             int obtainable = genre.Quests.Count(x => !_questFunctions.IsQuestUnobtainable(x.QuestId));
             int completed = genre.Quests.Count(x => _questFunctions.IsQuestComplete(x.QuestId));
             _genreCounts[genre] = new(available, total, obtainable, completed);
@@ -435,6 +435,7 @@ internal sealed class QuestJournalComponent
         }
     }
 
+    [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Required by LogoutDelegate signature")]
     internal void ClearCounts(int type, int code)
     {
         foreach (KeyValuePair<JournalData.Genre, JournalCounts> genreCount in _genreCounts.ToList())

@@ -30,9 +30,9 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         }
 
         if (isRegex)
-            return new(seString.ToRegex());
+            return new(seString.Value.ToRegex());
         else
-            return new(seString?.WithCertainMacroCodeReplacements());
+            return new(seString.Value.WithCertainMacroCodeReplacements());
     }
 
     public ReadOnlySeString? GetRawDialogueText(Quest? currentQuest, string? excelSheetName, string key)
@@ -68,7 +68,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
     {
         ReadOnlySeString? seString = GetRawDialogueTextByRowId(excelSheet, rowId);
         if (isRegex)
-            return new(seString.ToRegex());
+            return new(seString?.ToRegex());
         else
             return new(seString?.ToDalamudString().ToString());
     }

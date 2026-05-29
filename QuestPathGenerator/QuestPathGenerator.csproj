@@ -17,20 +17,20 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Json.More.Net" Version="2.1.2" GeneratePathProperty="true"/>
-        <PackageReference Include="JsonPointer.Net" Version="5.3.1" GeneratePathProperty="true"/>
-        <PackageReference Include="JsonSchema.Net" Version="7.4.0" GeneratePathProperty="true"/>
+        <PackageReference Include="Json.More.Net" Version="2.1.2" GeneratePathProperty="true" />
+        <PackageReference Include="JsonPointer.Net" Version="5.3.1" GeneratePathProperty="true" />
+        <PackageReference Include="JsonSchema.Net" Version="7.4.0" GeneratePathProperty="true" />
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2"/>
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.9.2"/>
-        <PackageReference Include="System.Text.Json" Version="9.0.8" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.9.2" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.9.2" />
+        <PackageReference Include="System.Text.Json" Version="9.0.8" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj"/>
+        <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
     </ItemGroup>
 
     <PropertyGroup>
@@ -39,10 +39,10 @@
 
     <Target Name="GetDependencyTargetPaths" AfterTargets="ResolvePackageDependenciesForBuild">
         <ItemGroup>
-            <TargetPathWithTargetPlatformMoniker Include="..\Questionable.Model\$(OutputPath)\*.dll" IncludeRuntimeDependency="false"/>
-            <TargetPathWithTargetPlatformMoniker Include="$(PkgJson_More_Net)\lib\netstandard2.0\Json.More.dll" IncludeRuntimeDependency="false"/>
-            <TargetPathWithTargetPlatformMoniker Include="$(PkgJsonPointer_Net)\lib\netstandard2.0\JsonPointer.Net.dll" IncludeRuntimeDependency="false"/>
-            <TargetPathWithTargetPlatformMoniker Include="$(PkgJsonSchema_Net)\lib\netstandard2.0\JsonSchema.Net.dll" IncludeRuntimeDependency="false"/>
+            <TargetPathWithTargetPlatformMoniker Include="..\Questionable.Model\$(OutputPath)\*.dll" IncludeRuntimeDependency="false" />
+            <TargetPathWithTargetPlatformMoniker Include="$(PkgJson_More_Net)\lib\netstandard2.0\Json.More.dll" IncludeRuntimeDependency="false" />
+            <TargetPathWithTargetPlatformMoniker Include="$(PkgJsonPointer_Net)\lib\netstandard2.0\JsonPointer.Net.dll" IncludeRuntimeDependency="false" />
+            <TargetPathWithTargetPlatformMoniker Include="$(PkgJsonSchema_Net)\lib\netstandard2.0\JsonSchema.Net.dll" IncludeRuntimeDependency="false" />
         </ItemGroup>
     </Target>
 </Project>

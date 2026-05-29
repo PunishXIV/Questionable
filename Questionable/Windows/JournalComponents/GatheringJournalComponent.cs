@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using Dalamud.Bindings.ImGui;
@@ -22,7 +23,7 @@ internal sealed class GatheringJournalComponent
 {
     private readonly List<ushort> _gatheredItems = [];
     private readonly GatheringController _gatheringController;
-    private readonly Dictionary<int, string> _gatheringItems;
+    private readonly Dictionary<uint, string> _gatheringItems;
     private readonly GatheringPointRegistry _gatheringPointRegistry;
     private readonly List<ExpansionPoints> _gatheringPointsByExpansion;
     private readonly ILogger<GatheringJournalComponent> _logger;
@@ -73,7 +74,7 @@ internal sealed class GatheringJournalComponent
             .Where(x => x.RowId != 0 && x.GatheringItemLevel.RowId != 0)
             .Select(x => new
             {
-                GatheringItemId = (int)x.RowId,
+                GatheringItemId = x.RowId,
                 Name = itemSheet.GetRowOrDefault(x.Item.RowId)?.Name.ToString()
             })
             .Where(x => !string.IsNullOrEmpty(x.Name))
@@ -361,10 +362,10 @@ internal sealed class GatheringJournalComponent
     internal void RefreshCounts()
     {
         _gatheredItems.Clear();
-        foreach (ushort key in _gatheringItems.Keys)
+        foreach (uint key in _gatheringItems.Keys)
         {
             if (IsGatheringItemGathered(key))
-                _gatheredItems.Add(key);
+                _gatheredItems.Add((ushort)key);
         }
 
         foreach (ExpansionPoints expansion in _gatheringPointsByExpansion)
@@ -389,7 +390,8 @@ internal sealed class GatheringJournalComponent
             expansion.CompletedPoints = expansion.PointsByTerritories.Sum(x => x.CompletedPoints);
         }
     }
-
+    
+    [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Required by LogoutDelegate signature")]
     public void ClearCounts(int type, int code)
     {
         foreach (ExpansionPoints expansion in _gatheringPointsByExpansion)

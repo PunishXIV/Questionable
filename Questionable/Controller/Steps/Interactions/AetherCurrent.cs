@@ -19,9 +19,10 @@ internal static class AetherCurrent
         {
             if (step.InteractionType != EInteractionType.AttuneAetherCurrent)
                 return null;
-
-            ArgumentNullException.ThrowIfNull(step.DataId);
-            ArgumentNullException.ThrowIfNull(step.AetherCurrentId);
+            if (!step.DataId.HasValue)
+                throw new ArgumentNullException(nameof(step.DataId));
+            if (!step.AetherCurrentId.HasValue)
+                throw new ArgumentNullException(nameof(step.AetherCurrentId));
 
             if (!aetherCurrentData.IsValidAetherCurrent(step.TerritoryId, step.AetherCurrentId.Value))
             {

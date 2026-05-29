@@ -4,31 +4,29 @@ using System.Globalization;
 using System.Linq;
 namespace Questionable.Model.Questing;
 
-public abstract class ElementId : IComparable<ElementId>, IEquatable<ElementId>
+public abstract class ElementId(ushort value) : IComparable<ElementId>, IEquatable<ElementId>
 {
-    protected ElementId(ushort value) => Value = value;
-
-    public ushort Value { get; }
+    public ushort Value { get; } = value;
 
     public int CompareTo(ElementId? other)
     {
         if (ReferenceEquals(this, other)) return 0;
-        if (ReferenceEquals(null, other)) return 1;
+        if (other is null) return 1;
         return Value.CompareTo(other.Value);
     }
 
     public bool Equals(ElementId? other)
     {
-        if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;
+        if (other is null) return false;
         if (other.GetType() != GetType()) return false;
         return Value == other.Value;
     }
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
+        if (obj is null) return false;
         if (obj.GetType() != GetType()) return false;
         return Equals((ElementId)obj);
     }

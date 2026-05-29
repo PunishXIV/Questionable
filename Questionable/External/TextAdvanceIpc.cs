@@ -75,10 +75,8 @@ internal sealed class TextAdvanceIpc : IDisposable
         EnableAutoInteract = false
     };
 
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    public sealed class ExternalTerritoryConfig
+    private sealed class ExternalTerritoryConfig
     {
-#pragma warning disable CS0414 // Field is assigned but its value is never used
         public bool? EnableQuestAccept;
         public bool? EnableQuestComplete;
         public bool? EnableRewardPick;
@@ -88,6 +86,5 @@ internal sealed class TextAdvanceIpc : IDisposable
         public bool? EnableTalkSkip;
         public bool? EnableRequestFill;
         public bool? EnableAutoInteract;
-#pragma warning restore CS0414 // Field is assigned but its value is never used
     }
 }

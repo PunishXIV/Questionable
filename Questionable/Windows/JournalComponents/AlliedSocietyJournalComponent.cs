@@ -25,7 +25,9 @@ internal sealed class AlliedSocietyJournalComponent
     QuestRegistry questRegistry,
     QuestJournalUtils questJournalUtils,
     QuestTooltipComponent questTooltipComponent,
+#if DEBUG
     Configuration configuration,
+#endif
     IDalamudPluginInterface pluginInterface,
     UiUtils uiUtils)
 {
@@ -164,10 +166,9 @@ internal sealed class AlliedSocietyJournalComponent
     private void DrawQuest(QuestInfo questInfo, bool addPending = false)
     {
         (Vector4 color, FontAwesomeIcon icon, string tooltipText) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        Quest? quest;
         bool fate = false;
         string lastChecked = "";
-        if (!questRegistry.TryGetQuest(questInfo.QuestId, out quest))
+        if (!questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest))
             color = ImGuiColors.DalamudGrey;
         else
         {

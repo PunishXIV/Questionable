@@ -13,6 +13,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
+using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
@@ -68,8 +69,8 @@ internal static class Interact
             }
             else if (step.InteractionType != EInteractionType.Interact)
                 yield break;
-
-            ArgumentNullException.ThrowIfNull(step.DataId);
+            if (!step.DataId.HasValue)
+                throw new ArgumentNullException(nameof(step.DataId));
 
             // if we're fast enough, it is possible to get the smalltalk prompt
             if (sequence.Sequence == 0 && sequence.Steps.IndexOf(step) == 0)
@@ -114,7 +115,6 @@ internal static class Interact
     internal sealed class DoInteract
     (
         GameFunctions gameFunctions,
-        QuestFunctions questFunctions,
         CameraFunctions cameraFunctions,
         Configuration configuration,
         ICondition condition,

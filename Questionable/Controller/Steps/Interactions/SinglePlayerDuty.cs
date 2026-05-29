@@ -308,7 +308,6 @@ internal static class SinglePlayerDuty
     }
 
     internal sealed class WaitForSinglePlayerDutyOutcomeExecutor(
-        QuestFunctions questFunctions,
         GameFunctions gameFunctions,
         ICondition condition,
         IChatGui chatGui,

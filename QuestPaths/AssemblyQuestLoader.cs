@@ -11,22 +11,25 @@ public static partial class AssemblyQuestLoader
 {
     private static Dictionary<ElementId, QuestRoot>? _quests;
 
-    public static IReadOnlyDictionary<ElementId, QuestRoot> GetQuests()
+    [SuppressMessage("Style", "IDE0074:Use compound assignment")]
+    public static IReadOnlyDictionary<ElementId, QuestRoot> Quests
     {
-        if (_quests == null)
+        get
         {
-            _quests = [];
+            if (_quests == null)
+            {
+                _quests = [];
 #if RELEASE
-            LoadQuests();
+                LoadQuests();
 #endif
-        }
+            }
 
-        return _quests ?? throw new InvalidOperationException("quest data is not initialized");
+            return _quests ?? throw new InvalidOperationException("quest data is not initialized");
+        }
     }
 
-    public static Stream QuestSchema =>
+    public static Stream QuestSchemaStream =>
         typeof(AssemblyQuestLoader).Assembly.GetManifestResourceStream("Questionable.QuestPaths.QuestSchema")!;
 
-    [SuppressMessage("ReSharper", "UnusedMember.Local")]
     private static void AddQuest(ElementId questId, QuestRoot root) => _quests![questId] = root;
 }
