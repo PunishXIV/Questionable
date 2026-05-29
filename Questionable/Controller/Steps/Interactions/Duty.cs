@@ -26,12 +26,6 @@ internal static class Duty
 
             ArgumentNullException.ThrowIfNull(step.DutyOptions);
 
-            if (!autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions))
-            {
-                if (!step.DutyOptions.LowPriority)
-                    yield return new OpenDutyFinderTask(step.DutyOptions.ContentFinderConditionId);
-                yield break;
-            }
             AutoDutyIpc.DutyMode dutyMode = quest.Id is QuestId { Value: >= 357 and <= 360 }
                                             ? AutoDutyIpc.DutyMode.UnsyncRegular
                                             : AutoDutyIpc.DutyMode.Support;
@@ -44,6 +38,14 @@ internal static class Duty
                             PlayerState.Instance()->CurrentLevel - 15 >= cfcData.ClassJobLevelSync)
                         dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
+            }
+
+            if (!autoDutyIpc.HasPath(step.DutyOptions.ContentFinderConditionId) ||
+               (!autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) && dutyMode is AutoDutyIpc.DutyMode.Support))
+            {
+                if (!step.DutyOptions.LowPriority)
+                    yield return new OpenDutyFinderTask(step.DutyOptions.ContentFinderConditionId);
+                yield break;
             }
             yield return new StartAutoDutyTask(step.DutyOptions.ContentFinderConditionId, dutyMode);
             yield return new WaitAutoDutyTask(step.DutyOptions.ContentFinderConditionId);

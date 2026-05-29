@@ -101,6 +101,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
+          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
