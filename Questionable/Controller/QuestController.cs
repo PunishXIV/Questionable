@@ -252,7 +252,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public QuestPriorityManager PriorityManager => _priorityManager;
 
     public bool StopAfterCurrentQuest { get; set; }
-    public bool StopAfterAcceptingCurrentQuest { get; set; }
+    public bool StopAfterAcceptingNextQuest { get; set; }
     public bool StopBeforeTeleport { get; set; }
 
     public string? DebugState { get; private set; }
@@ -826,7 +826,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     /// <summary>
     ///     Stops automation when a quest is accepted, if configured or requested via
-    ///     <see cref="StopAfterAcceptingCurrentQuest"/>.
+    ///     <see cref="StopAfterAcceptingNextQuest"/>.
     /// </summary>
     public void TryStopOnQuestAccepted(ElementId questId)
     {
@@ -835,7 +835,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
         bool configStop = _configuration.Stop.Enabled &&
                           _configuration.Stop.QuestsToStopWhenAccepted.Any(x => x == questId);
-        bool sessionStop = StopAfterAcceptingCurrentQuest &&
+        bool sessionStop = StopAfterAcceptingNextQuest &&
                            (StartedQuest == null || StartedQuest.Quest.Id == questId);
 
         if (!configStop && !sessionStop)
@@ -865,7 +865,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public override void Stop(string label)
     {
         StopAfterCurrentQuest = false;
-        StopAfterAcceptingCurrentQuest = false;
+        StopAfterAcceptingNextQuest = false;
         StopBeforeTeleport = false;
         _handlingDeath = false;
         _deathStreakKey = null;

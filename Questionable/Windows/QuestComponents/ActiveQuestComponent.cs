@@ -436,14 +436,14 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Play,
-                    _questController.StopAfterAcceptingCurrentQuest ? ImGuiColors.DalamudOrange : null))
-                _questController.StopAfterAcceptingCurrentQuest = !_questController.StopAfterAcceptingCurrentQuest;
+            if (ImGuiComponents.IconButton(FontAwesomeIcon.Check,
+                    _questController.StopAfterAcceptingNextQuest ? ImGuiColors.DalamudOrange : null))
+                _questController.StopAfterAcceptingNextQuest = !_questController.StopAfterAcceptingNextQuest;
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip(_questController.StopAfterAcceptingCurrentQuest
-                    ? "Cancel scheduled stop after accepting current quest."
-                    : "Stop after the current quest is accepted.");
+                ImGui.SetTooltip(_questController.StopAfterAcceptingNextQuest
+                    ? "Cancel scheduled stop after accepting the next quest."
+                    : "Stop after accepting the next quest.");
 
             ImGui.SameLine();
 
