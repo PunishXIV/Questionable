@@ -75,8 +75,15 @@ internal static class LogQuestCompletion
         if (File.Exists(LogPath))
         {
             using FileStream readStream = new(LogPath, FileMode.Open, FileAccess.Read);
-            JsonNode? root = JsonNode.Parse(readStream);
-            data = root.Deserialize<List<QuestCompletion>>() ?? data;
+            try
+            {
+                JsonNode? root = JsonNode.Parse(readStream);
+                data = root.Deserialize<List<QuestCompletion>>() ?? data;
+            }
+            catch (JsonException e)
+            {
+                Svc.Log.Info(e, "Could not parse QuestCompletions json, returning empty data");
+            }
         }
         return data;
     }
