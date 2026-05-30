@@ -10,3 +10,6 @@
   - The date that a character executed a CompleteQuest step (as yyyy-MM-dd)
 - Upcoming: A service where you can submit this information to the team
 - Feature: Error message if pathfinding fails -alydev
+- Bug: Stop after current quest completes potential fix - Kage
+- Bug: Unsyc option overriding main option fix - Kage
+- Bug: Stop Before Teleport potential fix - Kage
