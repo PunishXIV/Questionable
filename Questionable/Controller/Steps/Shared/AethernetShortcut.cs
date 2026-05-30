@@ -198,9 +198,8 @@ internal static class AethernetShortcut
             float distance = Task.From switch
             {
                 var _ when Task.From.IsFirmamentAetheryte() => 4.4f,
-                EAetheryteLocation.UldahChamberOfRule => 5f,
                 var _ when AetheryteConverter.IsLargeAetheryte(Task.From) => 10.9f,
-                var _ => 6.9f
+                var _ => 5f
             };
 
             bool goldSaucerAethernetShard = aetheryteData.IsGoldSaucerAetheryte(Task.From) &&

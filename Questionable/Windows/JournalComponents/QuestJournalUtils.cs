@@ -73,6 +73,8 @@ internal sealed class QuestJournalUtils
 #if DEBUG
         if (ImGui.MenuItem("Edit quest path"))
             (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
+        if (ImGui.MenuItem("Sim quest"))
+            _questController.SimulateQuest(questInfo, 0, 0);
 #endif
     }
 

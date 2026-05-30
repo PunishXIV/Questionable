@@ -100,8 +100,6 @@ internal sealed class AlliedSocietyJournalComponent
             List<IQuestInfo> quests = alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
                 .Select(x => questData.GetQuestInfo(x))
                 .ToList();
-            //if (quests.Count == 0)
-            //    continue;
 
             string label = $"{alliedSociety}###AlliedSociety{(int)alliedSociety}";
             bool isOpen;
@@ -109,23 +107,24 @@ internal sealed class AlliedSocietyJournalComponent
             using (ImRaii.Disabled(quests.Count == 0))
             {
 #if DEBUG
-                if (quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // Ixal "Deliverance"
-                        !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) ||
-                        (quest.Root.Disabled && !(quest.Root.Comment ?? "").Contains("FATE")) ||
-                        (
-                            (quest.Root.LastChecked.Date != null && quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90) ||
-                            (quest.Root.LastChecked.Date == null && !(quest.Root.Comment ?? "").Contains("FATE"))
-                        )
-                    )))
+// If, of the quests in this category, any quest...
+if (quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // is not the Ixal delivery quest "Deliverance", and
+        !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) || // is not a valid quest in the registry, or
+        (quest.Root.Disabled && quest.Root.Comment == null) || // is disabled without a comment explaining why, or
+        (quest.Root.LastChecked.Date != null && (quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90 || // has not been reported checked in more than 90 days, or
+                                                 (quest.Root.Comment ?? "").Contains("FATE")) // is a FATE quest where we don't care that much
+        )
+    )
+))
                 {
-                    using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange))
+                    using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange)) // highlight the category orange
                     {
                         isOpen = ImGui.CollapsingHeader(label);
                     }
                 }
                 else
 #endif
-                if (quests.Any(x => !questFunctions.IsQuestComplete(x.QuestId)))
+                if (quests.Any(x => !questFunctions.IsQuestComplete(x.QuestId))) // if the character has not completed a quest in this category
                 {
                     using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudYellow))
                     {
