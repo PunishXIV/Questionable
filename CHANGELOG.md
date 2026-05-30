@@ -9,3 +9,4 @@
   - Quest ID and name
   - The date that a character executed a CompleteQuest step (as yyyy-MM-dd)
 - Upcoming: A service where you can submit this information to the team
+- Feature: Error message if pathfinding fails -alydev
