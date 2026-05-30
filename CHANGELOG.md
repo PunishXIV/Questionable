@@ -1,2 +1,3 @@
-- Bug: Reduce default aethernet stop distance -alydev
-- Bug: Priority list item removal now works -alydev
+- Bug: Stop after current quest completes potential fix - Kage
+- Bug: Unsyc option overriding main option fix - Kage
+- Bug: Stop Before Teleport potential fix - Kage
