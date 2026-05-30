@@ -1,1 +1,2 @@
+- Bug: Reduce default aethernet stop distance -alydev
 - Bug: Priority list item removal now works -alydev

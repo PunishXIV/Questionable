@@ -2,7 +2,8 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Disabled": true,
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-26"},
+  "Comment": "Quest requires manual intervention due to\nno support for automatic fishing (yet?)\nBuy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -69,13 +70,13 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "Comment": "Fish for 1x Saint Carp using Moth Pupa",
+          "Comment": "Fish for 1x Saint Carp (!!) using Moth Pupa",
           "Fly": true
         },
         {
           "TerritoryId": 155,
           "InteractionType": "Action",
-          "Comment": "Fish for 1x Saint Carp using Moth Pupa",
+          "Comment": "Fish for 1x Saint Carp (!!) using Moth Pupa",
           "Action": "FSHCast"
         },
         {
