@@ -66,14 +66,10 @@ internal sealed class QuestPriorityManager(
 
     public void Remove(ElementId elementId)
     {
-        try
-        {
-            _quests.RemoveAt(_quests.FindIndex(q => q.Id != elementId) - 1);
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            _quests.Clear();
-        }
+        int index = _quests.FindIndex(q => q.Id == elementId);
+        if (index != -1)
+            logger.LogDebug($"Removing {index}: {_quests[index].Info.Name}");
+        _quests.RemoveAt(_quests.FindIndex(q => q.Id == elementId));
     }
 
     /// <summary>Moves the quest at <paramref name="oldIndex"/> to <paramref name="newIndex"/> (used by drag-drop).</summary>
