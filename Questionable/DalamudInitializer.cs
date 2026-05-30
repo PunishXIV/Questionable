@@ -113,7 +113,7 @@ internal sealed class DalamudInitializer : IDisposable
         }
         catch (MovementController.PathfindingFailedException)
         {
-            _chatGui.PrintError("vnavmesh was not able to find a path! Please report this to Questionable developers.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop("Pathfinding failed");
         }
     }
