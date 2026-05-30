@@ -169,6 +169,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddTaskExecutor<Mount.MountTask, Mount.MountExecutor>();
         serviceCollection.AddTaskExecutor<Mount.UnmountTask, Mount.UnmountExecutor>();
         serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
+        serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
 
         // task factories
         serviceCollection

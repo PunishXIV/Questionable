@@ -39,8 +39,9 @@ internal static class Duty
                         dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
             }
-
-            if (!autoDutyIpc.HasPath(step.DutyOptions.ContentFinderConditionId) ||
+            
+            if (!configuration.Duties.RunInstancedContentWithAutoDuty ||
+                !autoDutyIpc.HasPath(step.DutyOptions.ContentFinderConditionId) ||
                (!autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) && dutyMode is AutoDutyIpc.DutyMode.Support))
             {
                 if (!step.DutyOptions.LowPriority)

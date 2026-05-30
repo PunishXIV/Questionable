@@ -67,6 +67,7 @@ internal static class AetheryteShortcut
         IChatGui chatGui,
         ICondition condition,
         AetheryteData aetheryteData,
+        TerritoryData territoryData,
         ExtraConditionUtils extraConditionUtils,
         QuestRegistry questRegistry) : TaskExecutor<Task>
     {
@@ -100,12 +101,17 @@ internal static class AetheryteShortcut
             {
                 if (Task.TargetAetheryte is EAetheryteLocation.None)
                 {
-                    EAetheryteLocation? nearest = Task.Step.Position != null ? aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, Task.Step.Position.Value) : null;
+                    EAetheryteLocation? nearest = Task.Step.Position != null ? aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, Task.Step.Position) : null;
+                    // EAetheryteLocation? nearest = aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, Task.Step.Position);
                     EAetheryteLocation? shortcut = Task.Step.AetheryteShortcut ?? nearest ?? null;
                     if (shortcut == null)
                     {
                         logger.LogInformation("Skipping aetheryte shortcut, null result. step:{Step}, nearest:{Nearest}",
                             Task.Step.AetheryteShortcut, nearest);
+                        if (Task.Step.AethernetShortcut is not { })
+                            chatGui.PrintError("Questionable could not automatically find an unlocked aetheryte destination in " +
+                                $"{territoryData.GetNameAndId(Task.Step.TerritoryId)}, waiting until you manually navigate there.",
+                                CommandHandler.MessageTag, CommandHandler.TagColor);
                         return true;
                     }
                     if (Task.Step.Mount is { } mount)
@@ -314,7 +320,7 @@ internal static class AetheryteShortcut
 
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.targetAetheryte))
             {
-                chatGui.PrintError($"Aetheryte {Task.targetAetheryte} is not unlocked.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                //chatGui.PrintError($"Aetheryte {Task.targetAetheryte} is not unlocked.", CommandHandler.MessageTag, CommandHandler.TagColor);
                 throw new TaskException("Aetheryte is not unlocked");
             }
 
@@ -335,7 +341,7 @@ internal static class AetheryteShortcut
             }
             else
             {
-                chatGui.Print("Unable to teleport to aetheryte.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                //chatGui.Print("Unable to teleport to aetheryte.", CommandHandler.MessageTag, CommandHandler.TagColor);
                 throw new TaskException("Unable to teleport to aetheryte");
             }
         }

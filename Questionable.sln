@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionable.IpcTest", "Que
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestPaths.JsonValidator", "QuestPaths.JsonValidator\QuestPaths.JsonValidator.csproj", "{2521F2BA-9647-4851-92E1-F56280D1663C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionable.Tests", "Questionable.Tests\Questionable.Tests.csproj", "{CFB271AE-8557-6098-8158-9687CC3566C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -69,6 +71,10 @@ Global
 		{2521F2BA-9647-4851-92E1-F56280D1663C}.Debug|x64.Build.0 = Debug|x64
 		{2521F2BA-9647-4851-92E1-F56280D1663C}.Release|x64.ActiveCfg = Release|x64
 		{2521F2BA-9647-4851-92E1-F56280D1663C}.Release|x64.Build.0 = Release|x64
+		{CFB271AE-8557-6098-8158-9687CC3566C8}.Debug|x64.ActiveCfg = Debug|x64
+		{CFB271AE-8557-6098-8158-9687CC3566C8}.Debug|x64.Build.0 = Debug|x64
+		{CFB271AE-8557-6098-8158-9687CC3566C8}.Release|x64.ActiveCfg = Release|x64
+		{CFB271AE-8557-6098-8158-9687CC3566C8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
