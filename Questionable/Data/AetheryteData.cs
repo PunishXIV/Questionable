@@ -339,14 +339,14 @@ internal sealed class AetheryteData
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
     private IReadOnlyList<uint> TownTerritoryIds { get; }
 
-    public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3 position)
+    public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3? position)
     {
         var outp = TerritoryIds
                 .Where(item => item.Value == territoryId && 
                                !item.Key.IsAethernetShard() &&
                                AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
                 .Select(item => item.Key)
-                .OrderBy(key => CalculateDistance(position, territoryId, key));
+                .OrderBy(key => CalculateDistance(position ?? new(), territoryId, key));
         Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',',outp) : "no results")}");
         return outp.FirstOrNull();
     }

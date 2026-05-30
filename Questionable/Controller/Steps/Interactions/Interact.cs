@@ -31,14 +31,16 @@ internal static class Interact
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
                 or EInteractionType.SinglePlayerDuty)
             {
-                if (step.InteractionType is EInteractionType.CompleteQuest && configuration.Advanced.PreventQuestCompletion)
-                    if (configuration.Advanced.AbandonQuestBeforeCompletion)
+                if (step.InteractionType is EInteractionType.CompleteQuest)
+                {
+                    yield return new LogQuestCompletion.Task(quest);
+                    if (configuration.Advanced.PreventQuestCompletion)
                     {
-                        yield return new AbandonQuest.Task(quest);
+                        if (configuration.Advanced.AbandonQuestBeforeCompletion)
+                            yield return new AbandonQuest.Task(quest);
                         yield break;
                     }
-                    else
-                        yield break;
+                }
 
                 if (step.Emote != null)
                     yield break;

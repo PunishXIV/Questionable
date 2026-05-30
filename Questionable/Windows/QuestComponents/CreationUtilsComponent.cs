@@ -273,7 +273,7 @@ internal sealed class CreationUtilsComponent
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Show all Quests starting with your current target.");
         if (showQuests)
-            _questSelectionWindow.OpenForTarget(_targetManager.Target);
+            _questSelectionWindow.OpenForTarget(target);
 
         ImGui.EndDisabled();
 

@@ -99,7 +99,7 @@ internal abstract class MiniTaskController<T> : IDisposable
             _logger.LogError(e, "Failed to update task {TaskName}",
                 _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
             _chatGui.PrintError(
-                $"Failed to update task '{_taskQueue.CurrentTaskExecutor.CurrentTask}', please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                $"Could not complete '{_taskQueue.CurrentTaskExecutor.CurrentTask}': {e.Message}. Please check /xllog for more details.", CommandHandler.MessageTag, CommandHandler.TagColor);
             Stop("Task failed to update");
             return;
         }
