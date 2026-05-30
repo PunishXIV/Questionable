@@ -1,6 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": ["JerryWester","Kiarra"],
+  "Author": ["JerryWester", "Kiarra"],
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -38,6 +38,16 @@
               "Answer": "TEXT_STMBDY001_02632_A1_000_051"
             }
           ]
+        },
+        {
+          "Position": {
+            "X": 21.086666,
+            "Y": -197.73204,
+            "Z": -153.08989
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
         },
         {
           "Position": {
