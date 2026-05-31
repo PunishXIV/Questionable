@@ -201,9 +201,9 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 }
                 
                 _quickAccessButtonsComponent.Draw();
-                _remainingTasksComponent.Draw();
                 ImGui.Separator();
                 _creationUtilsComponent.Draw();
+                _remainingTasksComponent.Draw();
             }
         }
         catch (Exception e)
