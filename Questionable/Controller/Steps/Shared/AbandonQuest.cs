@@ -3,6 +3,7 @@ using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
+using ECommons.Throttlers;
 using Questionable.Functions;
 using Questionable.Model;
 
@@ -65,7 +66,7 @@ internal static class AbandonQuest
                 chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest?.Info.Name}" : "")}");
                 return ETaskResult.TaskComplete;
             }
-            AbandonQuestAction();
+            if (EzThrottler.Throttle("AbandonQuest")) AbandonQuestAction();
             return ETaskResult.StillRunning;
         }
 

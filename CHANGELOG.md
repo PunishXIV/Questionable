@@ -1,15 +1,2 @@
-- Feature: Quest Completions are logged to a local file -alydev
-- Feature change: the Troubleshooting 🤝 output is now much smaller (and not compressed as an unreadable string). It contains:
-  - List of plugins loaded by Dalamud (names and versions of repo-installed plugins only)
-  - Questionable version number and whether you are using a debug build
-  - Questionable configuration
-  - How many completed quests are logged (number only)
-  - What quest you are currently on, and the QuestWork information related to it (progress data)
-- Feature: Right clicking the button copies the list of completed quests to the clipboard. This contains:
-  - Quest ID and name
-  - The date that a character executed a CompleteQuest step (as yyyy-MM-dd)
-- Upcoming: A service where you can submit this information to the team
-- Feature: Error message if pathfinding fails -alydev
-- Bug: Stop after current quest completes potential fix - Kage
-- Bug: Unsyc option overriding main option fix - Kage
-- Bug: Stop Before Teleport potential fix - Kage
+- Feature: Buttons and sections in the QST window have been rearranged, hopefully they're clearer now. Please provide feedback in Discord -alydev
+- Change: Sponsor button has been moved to the window header if enabled -alydev
