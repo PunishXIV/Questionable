@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -49,7 +50,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         IFramework framework,
         InteractionUiController interactionUiController,
         ConfigWindow configWindow)
-        : base($"Questionable v{PluginVersion.ToString(4)}###Questionable",
+        : base($"QST v{PluginVersion.ToString(4)}###Questionable",
             ImGuiWindowFlags.AlwaysAutoResize)
     {
         _pluginInterface = pluginInterface;
@@ -103,6 +104,21 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 ImGui.EndTooltip();
             }
         });
+
+        if (!_configuration.General.HideSponsorButton)
+            TitleBarButtons.Add(new()
+            {
+                Icon = FontAwesomeIcon.Heart,
+                IconOffset = new(1.5f, 1),
+                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
+                Priority = int.MinValue,
+                ShowTooltip = () =>
+                {
+                    ImGui.BeginTooltip();
+                    ImGui.Text("Sponsor QST development");
+                    ImGui.EndTooltip();
+                }
+            });
 
         _activeQuestComponent.Reload += OnReload;
         _quickAccessButtonsComponent.Reload += OnReload;
@@ -183,12 +199,11 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                     _eventInfoComponent.Draw();
                     ImGui.Separator();
                 }
-
-                _creationUtilsComponent.Draw();
-                ImGui.Separator();
-
+                
                 _quickAccessButtonsComponent.Draw();
                 _remainingTasksComponent.Draw();
+                ImGui.Separator();
+                _creationUtilsComponent.Draw();
             }
         }
         catch (Exception e)

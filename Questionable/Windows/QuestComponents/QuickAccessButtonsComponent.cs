@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -48,18 +47,12 @@ internal sealed class QuickAccessButtonsComponent
     {
         DrawPriorityQuestsButton();
         ImGui.SameLine();
-        DrawRebuildNavmeshButton();
+        DrawJournalProgressButton();
 
         DrawReloadDataButton();
         ImGui.SameLine();
-        DrawJournalProgressButton();
-        if (!_configuration.General.HideSponsorButton)
-        {
-            ImGui.SameLine();
-            DrawSponsorButton();
-        }
+        DrawRebuildNavmeshButton();
 
-        ImGui.SameLine();
         DrawTroubleshootingButton(_questController.CurrentQuest);
 
         if (_questRegistry.ValidationIssueCount > 0)
@@ -104,31 +97,16 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawJournalProgressButton()
     {
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.BookBookmark))
+        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
             _journalProgressWindow.IsOpenAndUncollapsed = true;
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Journal Progress");
     }
 
-    private static void DrawSponsorButton()
-    {
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Heart, null, null, ImGuiColors.DalamudRed))
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = "https://github.com/sponsors/alydevs",
-                UseShellExecute = true
-            });
-        }
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Sponsor QST development");
-    }
-
     private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
     {
-        bool leftClicked = ImGuiComponents.IconButton(FontAwesomeIcon.Handshake);
+        bool leftClicked = ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Handshake, "Stuck?");
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard");
