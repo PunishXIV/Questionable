@@ -540,7 +540,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             // Stop checks run before the NextQuest/priority cascade — otherwise a
             // queued NextQuest (e.g. an MSQ chain or priority list pick) is started
             // before the user's "stop after this quest" toggle is ever consulted.
-            if (StartedQuest != null && _questFunctions.IsQuestComplete(StartedQuest.Quest.Id))
+            // This checks for both IsQuestComplete and !IsQuestAccepted because
+            // repeatable quests (and new game+ questing) returns true for Complete,
+            // but the quest may still be active. This prevents the stop condition
+            // being tripped early.
+            if (StartedQuest != null && _questFunctions.IsQuestComplete(StartedQuest.Quest.Id) && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
             {
                 if (_configuration.Stop.Enabled &&
                     _configuration.Stop.QuestsToStopAfter.Contains(StartedQuest.Quest.Id))
@@ -787,36 +791,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         using IDisposable? scope = _logger.BeginScope("IncStepCt");
         if (shouldContinue && AutomationType != EAutomationType.Manual)
             ExecuteNextStep();
-    }
-
-    internal void AbandonQuest(QuestId questId) => TryAbandonQuest(questId);
-
-    internal void AbandonQuest(string questId)
-    {
-        if (ushort.TryParse(questId, CultureInfo.InvariantCulture, out ushort parsedQuestId))
-            TryAbandonQuest(new QuestId(parsedQuestId));
-        else
-            _logger.LogWarning("AbandonQuest failed: could not parse quest ID {Input}", questId);
-    }
-
-    internal void AbandonQuest()
-    {
-        if (CurrentQuest?.Quest.Id is QuestId currentQuestId)
-            TryAbandonQuest(currentQuestId);
-        else
-            _logger.LogWarning("AbandonQuest failed: no current quest");
-    }
-
-    private void TryAbandonQuest(QuestId questId)
-    {
-        if (QuestFunctions.GetQuestProgressInfo(questId) == null)
-        {
-            _logger.LogWarning("AbandonQuest failed: quest {QuestId} is not active", questId);
-            return;
-        }
-
-        _logger.LogInformation("AbandonQuest: {QuestId}", questId);
-        GameMain.ExecuteCommand(900, questId.Value);
     }
 
     private void ClearTasksInternal()
