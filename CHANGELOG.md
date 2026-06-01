@@ -1,3 +1,2 @@
+- Feature: Add New Game+ tab to journal progress -alydev
 - Feature: Buttons and sections in the QST window have been rearranged, hopefully they're clearer now. Please provide feedback in Discord -alydev
-- Change: Sponsor button has been moved to the window header if enabled -alydev
-- Bug: "Stop after current quest" was borked on tribe quests/ng+, fixed -alydev

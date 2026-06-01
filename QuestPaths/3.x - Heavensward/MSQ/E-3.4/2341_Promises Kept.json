@@ -14,7 +14,10 @@
           },
           "StopDistance": 7,
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Last Vigil"],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [418,419]}}
         }
       ]
     },

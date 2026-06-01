@@ -28,18 +28,9 @@ internal sealed class QuickAccessButtonsComponent
     QuestValidationWindow questValidationWindow,
     JournalProgressWindow journalProgressWindow,
     PriorityWindow priorityWindow,
-    Configuration configuration,
     ICommandManager commandManager,
     IDalamudPluginInterface pluginInterface)
 {
-    private readonly QuestController _questController = questController;
-    private readonly ICommandManager _commandManager = commandManager;
-    private readonly Configuration _configuration = configuration;
-    private readonly JournalProgressWindow _journalProgressWindow = journalProgressWindow;
-    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
-    private readonly PriorityWindow _priorityWindow = priorityWindow;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestValidationWindow _questValidationWindow = questValidationWindow;
 
     public event EventHandler? Reload;
 
@@ -53,9 +44,9 @@ internal sealed class QuickAccessButtonsComponent
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
 
-        DrawTroubleshootingButton(_questController.CurrentQuest);
+        DrawTroubleshootingButton(questController.CurrentQuest);
 
-        if (_questRegistry.ValidationIssueCount > 0)
+        if (questRegistry.ValidationIssueCount > 0)
         {
             ImGui.SameLine();
             DrawValidationIssuesButton();
@@ -65,7 +56,7 @@ internal sealed class QuickAccessButtonsComponent
     private void DrawPriorityQuestsButton()
     {
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, "Priority Quests"))
-            _priorityWindow.ToggleOrUncollapse();
+            priorityWindow.ToggleOrUncollapse();
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Configure priority quests which will be done as soon as possible.");
@@ -73,11 +64,11 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawRebuildNavmeshButton()
     {
-        bool isNavmeshAvailable = _commandManager.Commands.ContainsKey("/vnav");
+        bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vnav");
         using (ImRaii.Disabled(!isNavmeshAvailable || !ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
             if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.GlobeEurope, "Rebuild Navmesh"))
-                _commandManager.ProcessCommand("/vnav rebuild");
+                commandManager.ProcessCommand("/vnav rebuild");
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
@@ -98,7 +89,7 @@ internal sealed class QuickAccessButtonsComponent
     private void DrawJournalProgressButton()
     {
         if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
-            _journalProgressWindow.IsOpenAndUncollapsed = true;
+            journalProgressWindow.IsOpenAndUncollapsed = true;
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Journal Progress");
@@ -176,8 +167,8 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawValidationIssuesButton()
     {
-        int errorCount = _questRegistry.ValidationErrorCount;
-        int infoCount = _questRegistry.ValidationIssueCount - _questRegistry.ValidationErrorCount;
+        int errorCount = questRegistry.ValidationErrorCount;
+        int infoCount = questRegistry.ValidationIssueCount - questRegistry.ValidationErrorCount;
         if (errorCount == 0 && infoCount == 0)
             return;
 
@@ -187,7 +178,7 @@ internal sealed class QuickAccessButtonsComponent
         FontAwesomeIcon icon1 = FontAwesomeIcon.ExclamationTriangle;
         FontAwesomeIcon icon2 = FontAwesomeIcon.InfoCircle;
         Vector2 iconSize1, iconSize2;
-        using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
             iconSize1 = errorCount > 0 ? ImGui.CalcTextSize(icon1.ToIconString()) : Vector2.Zero;
             iconSize2 = infoCount > 0 ? ImGui.CalcTextSize(icon2.ToIconString()) : Vector2.Zero;
@@ -213,7 +204,7 @@ internal sealed class QuickAccessButtonsComponent
             cursor.Y + ImGui.GetStyle().FramePadding.Y);
         if (errorCount > 0)
         {
-            using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+            using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
             {
                 dl.AddText(position, ImGui.GetColorU32(ImGuiColors.DalamudRed), icon1.ToIconString());
             }
@@ -227,7 +218,7 @@ internal sealed class QuickAccessButtonsComponent
 
         if (infoCount > 0)
         {
-            using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+            using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
             {
                 dl.AddText(position, ImGui.GetColorU32(ImGuiColors.ParsedBlue), icon2.ToIconString());
             }
@@ -239,6 +230,6 @@ internal sealed class QuickAccessButtonsComponent
         }
 
         if (button)
-            _questValidationWindow.ToggleOrUncollapse();
+            questValidationWindow.ToggleOrUncollapse();
     }
 }

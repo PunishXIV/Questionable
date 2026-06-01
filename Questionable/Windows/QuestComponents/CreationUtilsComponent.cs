@@ -41,6 +41,7 @@ internal sealed class CreationUtilsComponent
     QuestData questData,
     QuestSelectionWindow questSelectionWindow,
     PriorityWindow priorityWindow,
+    RedoUtil redoUtil,
     IClientState clientState,
     IObjectTable objectTable,
     ITargetManager targetManager,
@@ -49,67 +50,49 @@ internal sealed class CreationUtilsComponent
     Configuration configuration,
     ILogger<CreationUtilsComponent> logger)
 {
-    private readonly CameraFunctions _cameraFunctions = cameraFunctions;
-    private readonly IClientState _clientState = clientState;
-    private readonly ICondition _condition = condition;
-    private readonly Configuration _configuration = configuration;
-    private readonly GameFunctions _gameFunctions = gameFunctions;
-    private readonly IGameGui _gameGui = gameGui;
-    private readonly ILogger<CreationUtilsComponent> _logger = logger;
-    private readonly MovementController _movementController = movementController;
-    private readonly IObjectTable _objectTable = objectTable;
-    private readonly PriorityWindow _priorityWindow = priorityWindow;
-    private readonly QuestController _questController = questController;
-    private readonly QuestData _questData = questData;
-    private readonly QuestFunctions _questFunctions = questFunctions;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestSelectionWindow _questSelectionWindow = questSelectionWindow;
-    private readonly RedoUtil _redoUtil = new();
-    private readonly ITargetManager _targetManager = targetManager;
-    private readonly TerritoryData _territoryData = territoryData;
 
     public void Draw()
     {
-        if (_objectTable[0] == null)
+        if (objectTable[0] == null)
             return;
 
-        string territoryName = _territoryData.GetNameAndId(_clientState.TerritoryType);
+        string territoryName = territoryData.GetNameAndId(clientState.TerritoryType);
         ImGui.Text(territoryName);
 
-        if (_gameFunctions.IsFlyingUnlockedInCurrentZone())
+        if (gameFunctions.IsFlyingUnlockedInCurrentZone())
         {
             ImGui.SameLine();
             ImGui.Text(SeIconChar.BotanistSprout.ToIconString());
         }
 
-        if (_configuration.Advanced.AdditionalStatusInformation)
+        if (configuration.Advanced.AdditionalStatusInformation)
         {
             ImGui.Separator();
-            QuestReference q = _questFunctions.GetCurrentQuest();
+            QuestReference q = questFunctions.GetCurrentQuest();
             ImGui.Text($"QST prio: {q.CurrentQuest} → {q.Sequence}");
-            Quest? simQ = _questController.SimulatedQuest?.Quest;
+            Quest? simQ = questController.SimulatedQuest?.Quest;
             if (simQ != null)
-                ImGui.Text($"Sim: {simQ.Id} → {_questController.SimulatedQuest?.Sequence}");
+                ImGui.Text($"Sim: {simQ.Id} → {questController.SimulatedQuest?.Sequence}");
             unsafe
             {
-                if (_configuration.Advanced.ShowNewGamePlus)
+                if (configuration.Advanced.ShowNewGamePlus)
                 {
                     uint qid = q.CurrentQuest?.Value ?? 0;
                     if (simQ != null)
                         qid = simQ.Id.Value;
 
-                    RedoIndex chapter = _redoUtil.GetChapter(qid);
+                    RedoIndex chapter = redoUtil.GetChapter(qid);
                     string isSim = simQ != null ? " (sim)" : "";
                     if (chapter.Index != -1)
                         ImGui.Text($"NG+{isSim}: {chapter}");
                 }
 
-                if (_configuration.Advanced.ShowDailies || _configuration.Advanced.ShowTracked)
+                if (configuration.Advanced.ShowDailies || configuration.Advanced.ShowTracked)
                 {
                     QuestManager* questManager = QuestManager.Instance();
                     if (questManager != null)
                     {
-                        if (_configuration.Advanced.ShowTracked)
+                        if (configuration.Advanced.ShowTracked)
                         {
                             for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
                             {
@@ -134,7 +117,7 @@ internal sealed class CreationUtilsComponent
                             }
                         }
 
-                        if (_configuration.Advanced.ShowDailies)
+                        if (configuration.Advanced.ShowDailies)
                         {
                             for (int i = 0; i < questManager->DailyQuests.Length; ++i)
                             {
@@ -142,17 +125,17 @@ internal sealed class CreationUtilsComponent
                                 if (dailyQuest.QuestId != 0 && !dailyQuest.IsCompleted)
                                 {
                                     ImGui.Text($"Daily Quest {i}: {dailyQuest.QuestId}, C:{dailyQuest.IsCompleted}");
-                                    if (_questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out Quest? quest))
+                                    if (questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out Quest? quest))
                                     {
                                         if (ImGui.IsItemHovered())
                                             ImGui.SetTooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
 
                                         if (ImGui.IsItemClicked())
                                         {
-                                            _questController.PriorityManager.Add(quest.Id);
-                                            if (!_priorityWindow.IsOpen)
-                                                _priorityWindow.ToggleOrUncollapse();
-                                            _priorityWindow.BringToFront();
+                                            questController.PriorityManager.Add(quest.Id);
+                                            if (!priorityWindow.IsOpen)
+                                                priorityWindow.ToggleOrUncollapse();
+                                            priorityWindow.BringToFront();
                                         }
                                     }
                                 }
@@ -161,7 +144,7 @@ internal sealed class CreationUtilsComponent
                     }
                 }
 
-                if (_configuration.Advanced.ShowDirector)
+                if (configuration.Advanced.ShowDirector)
                 {
                     Director* director = UIState.Instance()->DirectorTodo.Director;
                     if (director != null)
@@ -180,24 +163,24 @@ internal sealed class CreationUtilsComponent
                     }
                 }
 
-                if (_configuration.Advanced.ShowActionManager)
+                if (configuration.Advanced.ShowActionManager)
                 {
                     ImGui.Separator();
                     ActionManager* actionManager = ActionManager.Instance();
                     ImGui.Text(
                         $"A1: {actionManager->CastActionId} ({actionManager->LastUsedActionSequence} → {actionManager->LastHandledActionSequence})");
                     ImGui.Text($"A2: {actionManager->CastTimeElapsed} / {actionManager->CastTimeTotal}");
-                    ImGui.Text($"PC: {_questController.TaskQueue.CurrentTaskExecutor?.ProgressContext}");
+                    ImGui.Text($"PC: {questController.TaskQueue.CurrentTaskExecutor?.ProgressContext}");
                 }
             }
         }
 
-        if (_targetManager.Target != null)
+        if (targetManager.Target != null)
         {
-            DrawTargetDetails(_targetManager.Target);
-            DrawInteractionButtons(_targetManager.Target);
+            DrawTargetDetails(targetManager.Target);
+            DrawInteractionButtons(targetManager.Target);
             ImGui.SameLine();
-            DrawCopyButton(_targetManager.Target);
+            DrawCopyButton(targetManager.Target);
         }
         else
         {
@@ -205,7 +188,7 @@ internal sealed class CreationUtilsComponent
             DrawCopyButton();
         }
 
-        ulong hoveredItemId = _gameGui.HoveredItem;
+        ulong hoveredItemId = gameGui.HoveredItem;
         if (hoveredItemId != 0)
         {
             ImGui.Separator();
@@ -223,14 +206,14 @@ internal sealed class CreationUtilsComponent
         ImGui.Text($"Target: {target.Name}");
         ImGui.Text($"  ({target.ObjectKind}; {GameFunctions.GetBaseID(target)}{nameId})");
 
-        if (_objectTable[0] != null)
+        if (objectTable[0] != null)
         {
             ImGui.Text(string.Create(CultureInfo.InvariantCulture,
-                $"Distance: {(target.Position - _objectTable[0]!.Position).Length():F2}" +
-                $"({Math.Floor(target.Position.DistanceTo_XZ(_objectTable[0]!.Position))-1}y)"));
+                $"Distance: {(target.Position - objectTable[0]!.Position).Length():F2}" +
+                $"({Math.Floor(target.Position.DistanceTo_XZ(objectTable[0]!.Position))-1}y)"));
             ImGui.SameLine();
 
-            float verticalDistance = target.Position.Y - _objectTable[0]!.Position.Y;
+            float verticalDistance = target.Position.Y - objectTable[0]!.Position.Y;
             string verticalDistanceText = string.Create(CultureInfo.InvariantCulture, $"Y: {verticalDistance:F2}");
             if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
                 ImGui.TextColored(ImGuiColors.DalamudOrange, verticalDistanceText);
@@ -246,15 +229,15 @@ internal sealed class CreationUtilsComponent
 
     private unsafe void DrawInteractionButtons(IGameObject target)
     {
-        ImGui.BeginDisabled(!_movementController.IsNavmeshReady || _gameFunctions.IsOccupied());
-        if (!_movementController.IsPathfinding)
+        ImGui.BeginDisabled(!movementController.IsNavmeshReady || gameFunctions.IsOccupied());
+        if (!movementController.IsPathfinding)
         {
             if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Bullseye, "To Target"))
             {
-                _movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
+                movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
                     target.Position, new()
                     {
-                        Fly = _condition[ConditionFlag.Mounted] && _gameFunctions.IsFlyingUnlockedInCurrentZone(),
+                        Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedInCurrentZone(),
                         Sprint = true,
                     });
             }
@@ -262,32 +245,32 @@ internal sealed class CreationUtilsComponent
         else
         {
             if (ImGui.Button("Cancel pathfinding"))
-                _movementController.ResetPathfinding();
+                movementController.ResetPathfinding();
         }
 
         ImGui.EndDisabled();
 
         ImGui.SameLine();
-        ImGui.BeginDisabled(!_questData.IsIssuerOfAnyQuest(GameFunctions.GetBaseID(target)));
+        ImGui.BeginDisabled(!questData.IsIssuerOfAnyQuest(GameFunctions.GetBaseID(target)));
         bool showQuests = ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Show all Quests starting with your current target.");
         if (showQuests)
-            _questSelectionWindow.OpenForTarget(target);
+            questSelectionWindow.OpenForTarget(target);
 
         ImGui.EndDisabled();
 
-        ImGui.BeginDisabled(_gameFunctions.IsOccupied());
+        ImGui.BeginDisabled(gameFunctions.IsOccupied());
         ImGui.SameLine();
         bool interact = ImGuiComponents.IconButton(FontAwesomeIcon.MousePointer);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Interact with your current target.");
         if (interact)
         {
-            _cameraFunctions.Face(target.Position);
+            cameraFunctions.Face(target.Position);
             ulong result = TargetSystem.Instance()->InteractWithObject(
                 (GameObject*)target.Address, false);
-            _logger.LogInformation("Interaction Result: {Result}", result);
+            logger.LogInformation("Interaction Result: {Result}", result);
         }
 
         ImGui.EndDisabled();
@@ -295,7 +278,7 @@ internal sealed class CreationUtilsComponent
 
     private string GetCurrentQuestInfoAsString()
     {
-        QuestReference q = _questFunctions.GetCurrentQuest();
+        QuestReference q = questFunctions.GetCurrentQuest();
         string qw;
         if (q.CurrentQuest is QuestId)
         {
@@ -347,7 +330,7 @@ internal sealed class CreationUtilsComponent
                                                      "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
                                                      "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
                                                    },
-                                                   "TerritoryId": {{_clientState.TerritoryType}},
+                                                   "TerritoryId": {{clientState.TerritoryType}},
                                                    "InteractionType": "{{interactionType}}"
                                          """);
             }
@@ -370,7 +353,7 @@ internal sealed class CreationUtilsComponent
 
     private void DrawCopyButton()
     {
-        if (_objectTable[0] == null)
+        if (objectTable[0] == null)
             return;
 
         bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
@@ -384,17 +367,17 @@ internal sealed class CreationUtilsComponent
         {
             ImGui.SetClipboardText($$"""
                                      "Position": {
-                                                 "X": {{_objectTable[0]!.Position.X.ToString(CultureInfo.InvariantCulture)}},
-                                                 "Y": {{_objectTable[0]!.Position.Y.ToString(CultureInfo.InvariantCulture)}},
-                                                 "Z": {{_objectTable[0]!.Position.Z.ToString(CultureInfo.InvariantCulture)}}
+                                                 "X": {{objectTable[0]!.Position.X.ToString(CultureInfo.InvariantCulture)}},
+                                                 "Y": {{objectTable[0]!.Position.Y.ToString(CultureInfo.InvariantCulture)}},
+                                                 "Z": {{objectTable[0]!.Position.Z.ToString(CultureInfo.InvariantCulture)}}
                                                },
-                                               "TerritoryId": {{_clientState.TerritoryType}},
+                                               "TerritoryId": {{clientState.TerritoryType}},
                                                "InteractionType": ""
                                      """);
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
         {
-            Vector3 position = _objectTable[0]!.Position;
+            Vector3 position = objectTable[0]!.Position;
             ImGui.SetClipboardText(string.Create(CultureInfo.InvariantCulture,
                 $"new({position.X}f, {position.Y}f, {position.Z}f)"));
         }

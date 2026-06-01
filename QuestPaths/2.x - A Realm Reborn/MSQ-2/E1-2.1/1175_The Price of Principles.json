@@ -63,15 +63,7 @@
           "TargetTerritoryId": 212,
           "SkipConditions": {
             "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.29187,
-                  "Y": 1.2148079,
-                  "Z": 0.8086548
-                },
-                "TerritoryId": 212,
-                "MaximumDistance": 15
-              }
+              "ExtraCondition": "WakingSandsSolar"
             }
           }
         },
