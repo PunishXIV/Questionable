@@ -6,6 +6,7 @@ using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
+using ECommons.ImGuiMethods;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
@@ -40,6 +41,9 @@ internal sealed class DialogueChoiceHandler : IDisposable
     private readonly ExcelFunctions _excelFunctions;
     private readonly DialogueReferenceResolver _dialogueReferenceResolver;
     private readonly TravelDestinationResolver _travelDestinationResolver;
+    private readonly Configuration _configuration;
+    private readonly IChatGui _chatGui;
+    private readonly IToastGui _toastGui;
     private readonly ILogger<DialogueChoiceHandler> _logger;
 
     public DialogueChoiceHandler(
@@ -54,6 +58,9 @@ internal sealed class DialogueChoiceHandler : IDisposable
         IClientState clientState,
         ITargetManager targetManager,
         ExcelFunctions excelFunctions,
+        Configuration configuration,
+        IChatGui chatGui,
+        IToastGui toastGui,
         DialogueReferenceResolver dialogueReferenceResolver,
         TravelDestinationResolver travelDestinationResolver,
         ILogger<DialogueChoiceHandler> logger)
@@ -69,6 +76,9 @@ internal sealed class DialogueChoiceHandler : IDisposable
         _clientState = clientState;
         _targetManager = targetManager;
         _excelFunctions = excelFunctions;
+        _configuration = configuration;
+        _chatGui = chatGui;
+        _toastGui = toastGui;
         _dialogueReferenceResolver = dialogueReferenceResolver;
         _travelDestinationResolver = travelDestinationResolver;
         _logger = logger;
@@ -152,7 +162,8 @@ internal sealed class DialogueChoiceHandler : IDisposable
         if (answer != null)
         {
             _logger.LogInformation("Using choice {Choice} for list prompt '{Prompt}'", answer, actualPrompt);
-            addonSelectString->AtkUnitBase.FireCallbackInt(answer.Value);
+            if (!_configuration.General.DontSkipCutscenes)
+                addonSelectString->AtkUnitBase.FireCallbackInt(answer.Value);
         }
     }
 
@@ -170,7 +181,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
         }
 
         int? answer = HandleListChoice(actualPrompt, answers, checkAllSteps);
-        if (answer != null)
+        if (answer != null && !_configuration.General.DontSkipCutscenes)
             addonCutSceneSelectString->AtkUnitBase.FireCallbackInt(answer.Value);
     }
 
@@ -185,7 +196,8 @@ internal sealed class DialogueChoiceHandler : IDisposable
         if (answer != null)
         {
             _logger.LogInformation("Using choice {Choice} for list prompt '{Prompt}'", answer, actualPrompt);
-            addonSelectIconString->AtkUnitBase.FireCallbackInt(answer.Value);
+            if (!_configuration.General.DontSkipCutscenes)
+                addonSelectIconString->AtkUnitBase.FireCallbackInt(answer.Value);
             return;
         }
 
@@ -467,6 +479,10 @@ internal sealed class DialogueChoiceHandler : IDisposable
                     answers[i], excelAnswer);
                 if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
                 {
+                    string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answers[i]}'";
+                    if (_configuration.General.DontSkipCutscenes)
+                        _toastGui.ShowQuest(notif);
+                    _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
                     _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",
                         i, answers[i], actualPrompt);
 
