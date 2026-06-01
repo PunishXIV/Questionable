@@ -69,7 +69,7 @@ internal sealed class RedoComponent
                     {
                         ImGui.TableNextRow();
                         ImGui.TableNextColumn();
-                        ImGui.TreeNodeEx($"!Future Quest ({(ushort)q.RowId})",
+                        ImGui.TreeNodeEx($"!Future/Unknown Quest ({(ushort)q.RowId})",
                             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
                         using (ImRaii.PushFont(UiBuilder.MonoFont))
                         {
