@@ -1,4 +1,1 @@
-- Feature: Dialogue choices will now log to chat which option is selected -alydev
-  - Feature: When "don't skip cutscenes or dialogue" is enabled this will show, as a toast message over the cutscene, which option is scripted to be picked in Questionable, but will leave the option picking to the user. -alydev
-- Feature: Add New Game+ tab to journal progress -alydev
-- Feature: Buttons and sections in the QST window have been rearranged, hopefully they're clearer now. Please provide feedback in Discord -alydev
+- Feature: QST will now delete and recreate its Bossmod presets automatically the first time combat is run on each load. This will fix issues caused by extremely old presets that have never been overwritten, i.e a longstanding issue i've had with vbm targeting that is entirely because i haven't cleared my bossmod config for many months -alydev

@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -111,7 +112,6 @@
             "Y": 127.336426,
             "Z": 468.0094
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }

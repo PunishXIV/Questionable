@@ -11,6 +11,7 @@ internal sealed class BossModModule
     BossModIpc bossModIpc,
     Configuration configuration) : ICombatModule, IDisposable
 {
+    private bool _justLoaded = true;
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
@@ -24,7 +25,12 @@ internal sealed class BossModModule
     {
         try
         {
-            bossModIpc.SetPreset(BossModIpc.EPreset.Overworld);
+            if (_justLoaded)
+            {
+                bossModIpc.AddAllPresets(delete:true);
+                _justLoaded = false;
+            }
+            bossModIpc.SetActivePreset(BossModIpc.EPreset.Overworld);
             return true;
         }
         catch (IpcError e)
