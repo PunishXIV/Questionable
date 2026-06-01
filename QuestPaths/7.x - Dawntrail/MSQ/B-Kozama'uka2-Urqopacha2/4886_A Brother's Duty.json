@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -105,7 +106,8 @@
           },
           "StopDistance": 50,
           "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -117,7 +119,8 @@
           "StopDistance": 60,
           "TerritoryId": 1188,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1
+          "NpcWaitDistance": 1,
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -128,7 +131,8 @@
           },
           "StopDistance": 50,
           "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -140,7 +144,8 @@
           "StopDistance": 60,
           "TerritoryId": 1188,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1
+          "NpcWaitDistance": 1,
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -152,7 +157,8 @@
           "StopDistance": 50,
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "NpcWaitDistance": 1
+          "NpcWaitDistance": 1,
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -164,7 +170,8 @@
           "StopDistance": 60,
           "TerritoryId": 1188,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1
+          "NpcWaitDistance": 1,
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -175,7 +182,8 @@
           },
           "StopDistance": 50,
           "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Mount": false
         },
         {
           "DataId": 1046654,
@@ -282,7 +290,8 @@
           "StopDistance": 60,
           "TerritoryId": 1188,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 1
+          "NpcWaitDistance": 1,
+          "Mount": false
         },
         {
           "Position": {
@@ -291,7 +300,8 @@
             "Z": 777.90155
           },
           "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Mount": false
         },
         {
           "DataId": 2013614,
@@ -301,7 +311,8 @@
             "Z": 778.6526
           },
           "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Mount": false
         }
       ]
     },

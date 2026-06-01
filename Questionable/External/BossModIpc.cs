@@ -37,17 +37,37 @@ internal sealed class BossModIpc
     private readonly ICallGateSubscriber<string?> _getActivePreset = pluginInterface.GetIpcSubscriber<string?>($"{PluginName}.Presets.GetActive");
     private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
+    private readonly ICallGateSubscriber<string, bool> _deletePreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.Delete");
 
     private bool _soloDutyZoneConfigured;
 
     public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
 
-    public void SetPreset(EPreset preset)
+    public PresetDefinition AddPreset(EPreset preset) => AddPreset(PresetDefinitions[preset]);
+    public PresetDefinition AddPreset(PresetDefinition definition)
     {
-        PresetDefinition definition = PresetDefinitions[preset];
         if (_getPreset.InvokeFunc(definition.Name) == null)
             _createPreset.InvokeFunc(definition.Content, true);
+        return definition;
+    }
 
+    public void AddAllPresets(bool delete = false)
+    {
+        foreach (PresetDefinition definition in PresetDefinitions.Values)
+        {
+            if (delete)
+                DeletePreset(definition);
+            AddPreset(definition);
+        }
+    }
+
+    public bool DeletePreset(EPreset preset) => DeletePreset(PresetDefinitions[preset]);
+
+    public bool DeletePreset(PresetDefinition definition) => _deletePreset.InvokeFunc(definition.Name);
+
+    public void SetActivePreset(EPreset preset)
+    {
+        PresetDefinition definition = AddPreset(preset);
         commandManager.ProcessCommand("/vbmai off");
         _setPreset.InvokeFunc(definition.Name);
     }
@@ -55,10 +75,15 @@ internal sealed class BossModIpc
     public void SetPresetForSoloDuty(EPreset preset)
     {
         ConfigureZoneForQuestBattle(true);
-        SetPreset(preset);
+        SetActivePreset(preset);
     }
 
-    public void ClearPreset()
+    public void LoadPresets()
+    {
+        ClearActivePresets();
+    }
+
+    public void ClearActivePresets()
     {
         string? activePreset = _getActivePreset.InvokeFunc();
         if (activePreset == null)
@@ -77,14 +102,14 @@ internal sealed class BossModIpc
     public void DisableSoloDutyPreset()
     {
         ReleaseSoloDutyZone();
-        ClearPreset();
+        ClearActivePresets();
     }
 
     public void Cleanup()
     {
         commandManager.ProcessCommand("/vbmai off");
         ReleaseSoloDutyZone();
-        ClearPreset();
+        ClearActivePresets();
     }
 
     private void ConfigureZoneForQuestBattle(bool enable)
@@ -129,12 +154,12 @@ internal sealed class BossModIpc
         return dutyOptions.Enabled;
     }
 
-    private sealed class PresetDefinition(string name, string fileName)
+    public sealed class PresetDefinition(string name, string fileName)
     {
         public string Name { get; } = name;
         public string Content { get; } = LoadPreset(fileName);
 
-        private static string LoadPreset(string name)
+        public static string LoadPreset(string name)
         {
             Stream stream =
                 typeof(BossModIpc).Assembly.GetManifestResourceStream(
