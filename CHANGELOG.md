@@ -1,1 +1,2 @@
-- Feature: QST will now delete and recreate its Bossmod presets automatically the first time combat is run on each load. This will fix issues caused by extremely old presets that have never been overwritten, i.e a longstanding issue i've had with vbm targeting that is entirely because i haven't cleared my bossmod config for many months -alydev
+- Testing feature: Per-character profiles -alydev
+- Implemented: Saving/loading profile overlays with full backwards compatibility -alydev
