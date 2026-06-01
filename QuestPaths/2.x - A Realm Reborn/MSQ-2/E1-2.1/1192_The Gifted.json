@@ -199,6 +199,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
+          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
@@ -223,7 +224,12 @@
           },
           "TerritoryId": 212,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 212
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "WakingSandsSolar"
+            }
+          }
         },
         {
           "DataId": 1006693,

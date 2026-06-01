@@ -1,15 +1,11 @@
 ﻿using System.Globalization;
-using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
-using ECommons;
-using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps.Common;
+using ECommons.Throttlers;
 using Questionable.Functions;
 using Questionable.Model;
-using Questionable.Utils;
 
 namespace Questionable.Controller.Steps.Shared;
 internal static class AbandonQuest
@@ -30,14 +26,14 @@ internal static class AbandonQuest
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         QuestController questController,
-        ILogger<AbandonQuestExecutor> logger) : AbstractDelayedTaskExecutor<Task>
+        ILogger<AbandonQuestExecutor> logger) : TaskExecutor<Task>
     {
-        protected override unsafe bool StartInternal()
+        protected override bool Start()
         {
             // Safety check: ensure player is logged in
             if (objectTable[0] == null || !clientState.IsLoggedIn || Task.Quest == null)
             {
-                throw new TaskException(logger.LogChatError(chatGui, "Cannot abandon quest", "Player is not logged in or quest is null"));
+                throw new TaskException("Player is not logged in or quest is null");
             }
 
             if (condition[ConditionFlag.InCombat] ||
@@ -50,26 +46,27 @@ internal static class AbandonQuest
                 condition[ConditionFlag.BetweenAreas51] ||
                 gameFunctions.IsOccupied())
             {
-                throw new TaskException(logger.LogChatError(chatGui, "Cannot abandon quest", "Player is busy"));
+                throw new TaskException("Player is busy");
             }
 
             if (!((QuestInfo)Task.Quest.Info).CanCancel)
             {
-                throw new TaskException(logger.LogChatError(chatGui, "Cannot abandon quest", "Quest cannot be cancelled"));
+                throw new TaskException("Quest cannot be cancelled");
             }
             
             AbandonQuestAction();
             return true;
         }
 
-        protected override ETaskResult UpdateInternal()
+        public override ETaskResult Update()
         {
             if (Task.Quest == null || !questFunctions.IsQuestAccepted(Task.Quest.Id))
             {
-                logger.LogChat(chatGui, "Quest abandoned");
+                logger.LogInformation("Quest abandoned");
+                chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest?.Info.Name}" : "")}");
                 return ETaskResult.TaskComplete;
             }
-            AbandonQuestAction();
+            if (EzThrottler.Throttle("AbandonQuest")) AbandonQuestAction();
             return ETaskResult.StillRunning;
         }
 

@@ -537,6 +537,37 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 }
             }
 
+            // Stop checks run before the NextQuest/priority cascade — otherwise a
+            // queued NextQuest (e.g. an MSQ chain or priority list pick) is started
+            // before the user's "stop after this quest" toggle is ever consulted.
+            // This checks for both IsQuestComplete and !IsQuestAccepted because
+            // repeatable quests (and new game+ questing) returns true for Complete,
+            // but the quest may still be active. This prevents the stop condition
+            // being tripped early.
+            if (StartedQuest != null && _questFunctions.IsQuestComplete(StartedQuest.Quest.Id) && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
+            {
+                if (_configuration.Stop.Enabled &&
+                    _configuration.Stop.QuestsToStopAfter.Contains(StartedQuest.Quest.Id))
+                {
+                    ElementId questId = StartedQuest.Quest.Id;
+                    _logger.LogInformation("Reached stopping point (quest: {QuestId})", questId);
+                    _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', which is configured as a stopping point.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                    StartedQuest = null;
+                    Stop($"Stopping point [{questId}] reached");
+                    return;
+                }
+
+                if (StopAfterCurrentQuest)
+                {
+                    ElementId questId = StartedQuest.Quest.Id;
+                    _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", questId);
+                    _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', stopping as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                    StartedQuest = null;
+                    Stop($"Stop after quest [{questId}]");
+                    return;
+                }
+            }
+
             QuestProgress? questToRun;
             byte currentSequence;
             if (SimulatedQuest != null)
@@ -599,28 +630,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 }
                 else if (StartedQuest == null || StartedQuest.Quest.Id != currentQuestId)
                 {
-                    if (_configuration.Stop.Enabled &&
-                        StartedQuest != null &&
-                        _configuration.Stop.QuestsToStopAfter.Contains(StartedQuest.Quest.Id) &&
-                        _questFunctions.IsQuestComplete(StartedQuest.Quest.Id))
-                    {
-                        ElementId questId = StartedQuest.Quest.Id;
-                        _logger.LogInformation("Reached stopping point (quest: {QuestId})", questId);
-                        _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', which is configured as a stopping point.", CommandHandler.MessageTag, CommandHandler.TagColor);
-                        StartedQuest = null;
-                        Stop($"Stopping point [{questId}] reached");
-                    }
-                    else if (StopAfterCurrentQuest &&
-                             StartedQuest != null &&
-                             _questFunctions.IsQuestComplete(StartedQuest.Quest.Id))
-                    {
-                        ElementId questId = StartedQuest.Quest.Id;
-                        _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", questId);
-                        _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', stopping as requested.", CommandHandler.MessageTag, CommandHandler.TagColor);
-                        StartedQuest = null;
-                        Stop($"Stop after quest [{questId}]");
-                    }
-                    else if (_questRegistry.TryGetQuest(currentQuestId, out Quest? quest))
+                    if (_questRegistry.TryGetQuest(currentQuestId, out Quest? quest))
                     {
                         _highlightObject.SetHighlight([]);
                         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
@@ -781,36 +791,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         using IDisposable? scope = _logger.BeginScope("IncStepCt");
         if (shouldContinue && AutomationType != EAutomationType.Manual)
             ExecuteNextStep();
-    }
-
-    internal void AbandonQuest(QuestId questId) => TryAbandonQuest(questId);
-
-    internal void AbandonQuest(string questId)
-    {
-        if (ushort.TryParse(questId, CultureInfo.InvariantCulture, out ushort parsedQuestId))
-            TryAbandonQuest(new QuestId(parsedQuestId));
-        else
-            _logger.LogWarning("AbandonQuest failed: could not parse quest ID {Input}", questId);
-    }
-
-    internal void AbandonQuest()
-    {
-        if (CurrentQuest?.Quest.Id is QuestId currentQuestId)
-            TryAbandonQuest(currentQuestId);
-        else
-            _logger.LogWarning("AbandonQuest failed: no current quest");
-    }
-
-    private void TryAbandonQuest(QuestId questId)
-    {
-        if (QuestFunctions.GetQuestProgressInfo(questId) == null)
-        {
-            _logger.LogWarning("AbandonQuest failed: quest {QuestId} is not active", questId);
-            return;
-        }
-
-        _logger.LogInformation("AbandonQuest: {QuestId}", questId);
-        GameMain.ExecuteCommand(900, questId.Value);
     }
 
     private void ClearTasksInternal()

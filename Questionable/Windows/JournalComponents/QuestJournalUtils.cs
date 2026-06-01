@@ -73,6 +73,8 @@ internal sealed class QuestJournalUtils
 #if DEBUG
         if (ImGui.MenuItem("Edit quest path"))
             (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
+        if (ImGui.MenuItem("Sim quest"))
+            _questController.SimulateQuest(questInfo, 0, 0);
 #endif
     }
 
@@ -112,5 +114,9 @@ internal sealed class QuestJournalUtils
             foreach (IQuestInfo quest in quests)
                 _questController.PriorityManager.Remove(quest.QuestId);
         }
+
+        if (ImGui.MenuItem("Sim first quest"))
+            if (quests.Count >= 1)
+                _questController.SimulateQuest(quests[0], 0, 0);
     }
 }

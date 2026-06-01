@@ -223,7 +223,7 @@ jobs:
 
       - name: Github Releases To Discord
         if: needs.detect-version-change.outputs.testing == 'false'
-        uses: alydevs/apprise-ga@v1
+        uses: cstuder/apprise-ga@master
         env:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:
@@ -232,7 +232,7 @@ jobs:
 
       - name: Github testing releases To Discord
         if: needs.detect-version-change.outputs.testing == 'true'
-        uses: alydevs/apprise-ga@v1
+        uses: cstuder/apprise-ga@master
         env:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/v${{ env.VERSION }}"
         with:

@@ -6,6 +6,7 @@ using Dalamud.Game.Text;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
@@ -13,25 +14,179 @@ namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
 {
+    #region Serialised data
+    // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
+    public const int PluginConfigVersion = 2;
     public int PluginSetupCompleteVersion { get; set; }
-    public GeneralConfiguration General { get; } = new();
-    public StopConfiguration Stop { get; } = new();
-    public DutyConfiguration Duties { get; } = new();
-    public SinglePlayerDutyConfiguration SinglePlayerDuties { get; } = new();
-    public NotificationConfiguration Notifications { get; } = new();
-    public AdvancedConfiguration Advanced { get; } = new();
+    // Persisted base sections
+    [JsonProperty(nameof(General))] private GeneralConfiguration _general { get; } = new();
+    [JsonProperty(nameof(Stop))] private StopConfiguration _stop { get; } = new();
+    [JsonProperty(nameof(Duties))] private DutyConfiguration _duties { get; } = new();
+    [JsonProperty(nameof(SinglePlayerDuties))] private SinglePlayerDutyConfiguration _singlePlayerDuties { get; } = new();
+    [JsonProperty(nameof(Notifications))] private NotificationConfiguration _notifications { get; } = new();
+    [JsonProperty(nameof(Advanced))] private AdvancedConfiguration _advanced { get; } = new();
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
-
-    public int Version { get; set; } = 1;
+    public int Version { get; set; } = PluginConfigVersion;
+    // --- Persisted profile data ---
+    /// <summary>
+    /// Named profiles. Each profile is a sparse patch — only fields that differ from
+    /// the base configuration are stored. Sections and fields absent from the patch
+    /// fall through to the base values transparently.
+    /// </summary>
+    public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
+    
+    /// <summary>
+    /// Maps a character's PlayerState.ContentId to a named profile in
+    /// <see cref="Profiles"/>. Characters with no entry use the base configuration.
+    /// </summary>
+    public Dictionary<string, string> CharacterProfiles { get; set; } = [];
+    #endregion
 
     internal bool IsPluginSetupComplete() => PluginSetupCompleteVersion == PluginSetupVersion;
-
     internal void MarkPluginSetupComplete() => PluginSetupCompleteVersion = PluginSetupVersion;
 
+    // Public configuration surface; falls through to the base configuration when no profile is active
+    [JsonIgnore] public GeneralConfiguration General => _activeProfileGeneral ?? _general;
+    [JsonIgnore] public StopConfiguration Stop => _activeProfileStop ?? _stop;
+    [JsonIgnore] public DutyConfiguration Duties => _activeProfileDuties ?? _duties;
+    [JsonIgnore] public SinglePlayerDutyConfiguration SinglePlayerDuties => _activeProfileSinglePlayerDuties ?? _singlePlayerDuties;
+    [JsonIgnore] public NotificationConfiguration Notifications => _activeProfileNotifications ?? _notifications;
+    [JsonIgnore] public AdvancedConfiguration Advanced => _activeProfileAdvanced ?? _advanced;
+
+    /// <summary>
+    /// Returns the base (non-profiled) instance of a section for use in the
+    /// config UI when editing base values.
+    /// </summary>
+    internal GeneralConfiguration BaseGeneral => _general;
+    internal StopConfiguration BaseStop => _stop;
+    internal DutyConfiguration BaseDuties => _duties;
+    internal SinglePlayerDutyConfiguration BaseSinglePlayerDuties => _singlePlayerDuties;
+    internal NotificationConfiguration BaseNotifications => _notifications;
+    internal AdvancedConfiguration BaseAdvanced => _advanced;
+
+    #region Character Profiles
+    // Runtime-only merged section code (never serialised)
+    [JsonIgnore] private GeneralConfiguration? _activeProfileGeneral;
+    [JsonIgnore] private StopConfiguration? _activeProfileStop;
+    [JsonIgnore] private DutyConfiguration? _activeProfileDuties;
+    [JsonIgnore] private SinglePlayerDutyConfiguration? _activeProfileSinglePlayerDuties;
+    [JsonIgnore] private NotificationConfiguration? _activeProfileNotifications;
+    [JsonIgnore] private AdvancedConfiguration? _activeProfileAdvanced;
+
+    /// <summary>
+    /// Activates the profile associated with the given character content ID, merging
+    /// it over the base configuration. Pass null or an unmapped ID to revert to base.
+    /// </summary>
+    internal void ActivateForCharacter(string contentId)
+    {
+        if (!CharacterProfiles.TryGetValue(contentId, out var profileName) ||
+            !Profiles.TryGetValue(profileName, out var patches))
+        {
+            ClearActiveProfile();
+            return;
+        }
+
+        ApplyPatches(profileName, patches);
+    }
+
+    /// <summary>
+    /// Activates a named profile directly, regardless of current character.
+    /// Useful for preview/testing in the config UI.
+    /// </summary>
+    internal void ActivateProfile(string profileName)
+    {
+        if (!Profiles.TryGetValue(profileName, out var patches))
+        {
+            ClearActiveProfile();
+            return;
+        }
+
+        ApplyPatches(profileName, patches);
+    }
+
+    /// <summary>
+    /// Reverts to the base configuration (no profile active).
+    /// </summary>
+    internal void ClearActiveProfile()
+    {
+        ActiveProfileName = null;
+        _activeProfileGeneral = null;
+        _activeProfileStop = null;
+        _activeProfileDuties = null;
+        _activeProfileSinglePlayerDuties = null;
+        _activeProfileNotifications = null;
+        _activeProfileAdvanced = null;
+    }
+
+    /// <summary>
+    /// Returns the name of the currently active profile, or null if using base config.
+    /// </summary>
+    [JsonIgnore] internal string? ActiveProfileName { get; private set; }
+
+    private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
+    {
+        ActiveProfileName = profileName;
+        _activeProfileGeneral            = MergeSection(_general,            patches, "General");
+        _activeProfileStop               = MergeSection(_stop,               patches, "Stop");
+        _activeProfileDuties             = MergeSection(_duties,             patches, "Duties");
+        _activeProfileSinglePlayerDuties = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
+        _activeProfileNotifications      = MergeSection(_notifications,      patches, "Notifications");
+        _activeProfileAdvanced           = MergeSection(_advanced,           patches, "Advanced");
+    }
+
+    /// <summary>
+    /// Serialises <paramref name="base"/> to a JObject, merges the patch for
+    /// <paramref name="sectionKey"/> on top, and deserialises the result.
+    /// Returns null (fall-through to base) if the section is absent from the patch.
+    /// </summary>
+    private static T? MergeSection<T>(T @base, Dictionary<string, JObject> patches, string sectionKey)
+        where T : class
+    {
+        if (!patches.TryGetValue(sectionKey, out var patch))
+            return null;
+ 
+        var merged = JObject.FromObject(@base);
+        merged.Merge(patch, new JsonMergeSettings
+        {
+            MergeArrayHandling = MergeArrayHandling.Replace,
+            MergeNullValueHandling = MergeNullValueHandling.Merge,
+        });
+        return merged.ToObject<T>();
+    }
+
+    /// <summary>
+    /// Creates a new empty (no-op) profile with the given name.
+    /// </summary>
+    internal void CreateProfile(string profileName)
+    {
+        Profiles.TryAdd(profileName, []);
+    }
+
+    /// <summary>
+    /// Removes a profile and any character bindings that reference it.
+    /// </summary>
+    internal void DeleteProfile(string profileName)
+    {
+        Profiles.Remove(profileName);
+
+        // Clean up any character bindings pointing at the deleted profile
+        var toRemove = new List<string>();
+        foreach (var (charId, name) in CharacterProfiles)
+            if (name == profileName)
+                toRemove.Add(charId);
+        foreach (var charId in toRemove)
+            CharacterProfiles.Remove(charId);
+
+        if (ActiveProfileName == profileName)
+            ClearActiveProfile();
+    }
+    #endregion
+
+    #region Variables
     internal sealed class GeneralConfiguration
     {
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
@@ -146,6 +301,7 @@ internal sealed class Configuration : IPluginConfiguration
         /// <summary>When the updater last checked for a newer bundle.</summary>
         public DateTimeOffset? LastCheck { get; set; }
     }
+    #endregion
 
     internal enum EGearsetUpdateSource
     {

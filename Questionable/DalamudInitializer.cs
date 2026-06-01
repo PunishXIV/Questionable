@@ -24,6 +24,7 @@ internal sealed class DalamudInitializer : IDisposable
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestController _questController;
     private readonly QuestWindow _questWindow;
+    private readonly IChatGui _chatGui;
     private readonly IToastGui _toastGui;
     private readonly WindowSystem _windowSystem;
 
@@ -41,6 +42,7 @@ internal sealed class DalamudInitializer : IDisposable
         QuestValidationWindow questValidationWindow,
         JournalProgressWindow journalProgressWindow,
         PriorityWindow priorityWindow,
+        IChatGui chatGui,
         IToastGui toastGui,
         Configuration configuration,
         HighlightObject highlightObject,
@@ -55,6 +57,7 @@ internal sealed class DalamudInitializer : IDisposable
         _oneTimeSetupWindow = oneTimeSetupWindow;
         _questWindow = questWindow;
         _configWindow = configWindow;
+        _chatGui = chatGui;
         _toastGui = toastGui;
         _configuration = configuration;
         _highlightObject = highlightObject;
@@ -110,6 +113,7 @@ internal sealed class DalamudInitializer : IDisposable
         }
         catch (MovementController.PathfindingFailedException)
         {
+            _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop("Pathfinding failed");
         }
     }

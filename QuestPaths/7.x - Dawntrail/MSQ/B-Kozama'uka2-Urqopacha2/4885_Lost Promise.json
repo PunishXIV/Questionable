@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "Comment": "Requires manual intervention on Koana following",
-  "$": "https://discord.com/channels/1001823907193552978/1408201462722596945/1449480724347359315",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
   "QuestSequence": [
     {
       "Sequence": 0,

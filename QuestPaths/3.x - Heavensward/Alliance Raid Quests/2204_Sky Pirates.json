@@ -13,7 +13,10 @@
             "Z": -27.420471
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] Athenaeum Astrologicum"],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [418,419]}}
         }
       ]
     },

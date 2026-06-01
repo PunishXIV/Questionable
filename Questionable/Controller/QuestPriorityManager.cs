@@ -66,13 +66,13 @@ internal sealed class QuestPriorityManager(
 
     public void Remove(ElementId elementId)
     {
-        try
+        int index = _quests.FindIndex(q => q.Id == elementId);
+        if (index != -1)
         {
-            _quests.RemoveAt(_quests.FindIndex(q => q.Id != elementId) - 1);
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            _quests.Clear();
+            if (index >= _quests.Count)
+                index = 0;
+            logger.LogDebug($"Removing {index}: {_quests[index].Info.Name}");
+            _quests.RemoveAt(index);
         }
     }
 

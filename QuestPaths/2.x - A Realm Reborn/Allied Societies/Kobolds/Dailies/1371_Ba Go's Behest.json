@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2026-01-15"},
+  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
   "Comment": "May need manual intervention",
   "QuestSequence": [
     {
@@ -83,9 +83,25 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [189,2884],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 211.0084,
+            "Y": 24.147057,
+            "Z": -727.0756
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "CombatDelaySecondsAtStart": 1,
-          "KillEnemyDataIds": [2884],
+          "KillEnemyDataIds": [189,2884],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -114,9 +130,20 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [2838,2885]
+        },
+        {
+          "Position": {
+            "X": 289.82132,
+            "Y": 21.553608,
+            "Z": -703.0107
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "CombatDelaySecondsAtStart": 1,
-          "KillEnemyDataIds": [2885]
+          "KillEnemyDataIds": [2838,2885]
         }
       ]
     },
