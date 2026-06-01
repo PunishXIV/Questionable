@@ -114,5 +114,9 @@ internal sealed class QuestJournalUtils
             foreach (IQuestInfo quest in quests)
                 _questController.PriorityManager.Remove(quest.QuestId);
         }
+
+        if (ImGui.MenuItem("Sim first quest"))
+            if (quests.Count >= 1)
+                _questController.SimulateQuest(quests[0], 0, 0);
     }
 }

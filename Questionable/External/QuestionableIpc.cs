@@ -75,6 +75,7 @@ internal sealed class QuestionableIpc : IDisposable
         QuestRegistry questRegistry,
         QuestFunctions questFunctions,
         PriorityWindow priorityWindow,
+        RedoUtil redoUtil,
         ILogger<QuestionableIpc> logger,
         IDalamudPluginInterface pluginInterface)
     {
@@ -143,7 +144,7 @@ internal sealed class QuestionableIpc : IDisposable
         _stop = pluginInterface.GetIpcProvider<string, bool>(IpcStop);
         _stop.RegisterFunc(Stop);
 
-        _redoUtil = new();
+        _redoUtil = redoUtil;
 
         _redoLookup = pluginInterface.GetIpcProvider<uint, string>(IpcRedoLookup);
         _redoLookup.RegisterFunc(RedoLookup);

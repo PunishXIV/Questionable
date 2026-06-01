@@ -316,6 +316,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
     {
         serviceCollection.AddSingleton<UiUtils>();
         serviceCollection.AddTransient<QuestSelector>();
+        serviceCollection.AddTransient<RedoUtil>();
 
         serviceCollection.AddSingleton<ActiveQuestComponent>();
         serviceCollection.AddSingleton<ARealmRebornComponent>();
@@ -331,6 +332,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<QuestRewardComponent>();
         serviceCollection.AddSingleton<GatheringJournalComponent>();
         serviceCollection.AddSingleton<AlliedSocietyJournalComponent>();
+        serviceCollection.AddSingleton<RedoComponent>();
 
         serviceCollection.AddSingleton<OneTimeSetupWindow>();
         serviceCollection.AddSingleton<QuestWindow>();

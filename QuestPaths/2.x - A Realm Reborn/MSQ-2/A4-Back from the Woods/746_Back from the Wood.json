@@ -66,13 +66,18 @@
         {
           "DataId": 2001711,
           "Position": {
-            "X": -480.91858,
-            "Y": 17.990356,
+            "X": -480.9181,
+            "Y": 18.00103,
             "Z": -386.862
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 212
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [212]
+            }
+          }
         }
       ]
     },
@@ -88,7 +93,12 @@
           },
           "TerritoryId": 212,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 212
+          "TargetTerritoryId": 212,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "WakingSandsSolar"
+            }
+          }
         },
         {
           "DataId": 1006688,
