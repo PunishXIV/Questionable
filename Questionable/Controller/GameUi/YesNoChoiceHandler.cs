@@ -38,6 +38,8 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly GrandCompanyExchangeController _grandCompanyExchangeController;
     private readonly ChocoboNamingController _chocoboNamingController;
     private readonly Configuration _configuration;
+    private readonly IChatGui _chatGui;
+    private readonly IToastGui _toastGui;
     private readonly DialogueReferenceResolver _dialogueReferenceResolver;
     private readonly TravelDestinationResolver _travelDestinationResolver;
     private readonly ILogger<YesNoChoiceHandler> _logger;
@@ -60,6 +62,8 @@ internal sealed class YesNoChoiceHandler : IDisposable
         GrandCompanyExchangeController grandCompanyExchangeController,
         ChocoboNamingController chocoboNamingController,
         Configuration configuration,
+        IChatGui chatGui,
+        IToastGui toastGui,
         IDataManager dataManager,
         IPluginLog pluginLog,
         DialogueReferenceResolver dialogueReferenceResolver,
@@ -78,6 +82,8 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _grandCompanyExchangeController = grandCompanyExchangeController;
         _chocoboNamingController = chocoboNamingController;
         _configuration = configuration;
+        _chatGui = chatGui;
+        _toastGui = toastGui;
         _dialogueReferenceResolver = dialogueReferenceResolver;
         _travelDestinationResolver = travelDestinationResolver;
         _logger = logger;
@@ -268,8 +274,13 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 continue;
             }
 
+            string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
+            if (_configuration.General.DontSkipCutscenes)
+                _toastGui.ShowQuest(notif);
+            _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(dialogueChoice.Yes ? 0 : 1);
+            if (!_configuration.General.DontSkipCutscenes)
+                addonSelectYesno->AtkUnitBase.FireCallbackInt(dialogueChoice.Yes ? 0 : 1);
             return true;
         }
 
