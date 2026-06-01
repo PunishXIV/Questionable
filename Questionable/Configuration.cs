@@ -17,6 +17,7 @@ internal sealed class Configuration : IPluginConfiguration
     #region Serialised data
     // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
+    public const int PluginConfigVersion = 2;
     public int PluginSetupCompleteVersion { get; set; }
     // Persisted base sections
     [JsonProperty(nameof(General))] private GeneralConfiguration _general { get; } = new();
@@ -29,7 +30,7 @@ internal sealed class Configuration : IPluginConfiguration
     public WindowConfig ConfigWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
-    public int Version { get; set; } = 1;
+    public int Version { get; set; } = PluginConfigVersion;
     // --- Persisted profile data ---
     /// <summary>
     /// Named profiles. Each profile is a sparse patch — only fields that differ from
