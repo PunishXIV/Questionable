@@ -10,6 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
+using System.Xml.Linq;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -190,8 +191,10 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     public static Dictionary<uint, List<Vector3>> LoadGBRPosData(string directoryName)
     {
-        string path = Path.Combine(directoryName, "world_locations.json");
-        using FileStream stream = new(path, FileMode.Open, FileAccess.Read);
+        Stream stream =
+                typeof(RendererPlugin).Assembly.GetManifestResourceStream(
+                    "GatheringPathRenderer.GBRWorldLocations") ??
+                throw new InvalidOperationException($"world_locations.json was not found");
         JsonNode? root = JsonNode.Parse(stream);
         Dictionary<uint, List<Vector3>> result = new();
 

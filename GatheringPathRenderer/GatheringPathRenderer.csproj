@@ -19,9 +19,9 @@
     </ItemGroup>
     
     <ItemGroup>
-        <None Update="world_locations.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        <EmbeddedResource Include="world_locations.json">
+            <LogicalName>GatheringPathRenderer.GBRWorldLocations</LogicalName>
+        </EmbeddedResource>
     </ItemGroup>
 
 </Project>
