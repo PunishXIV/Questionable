@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Dalamud.Configuration;
 using Dalamud.Game.Text;
+using ECommons.DalamudServices;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
@@ -38,7 +39,7 @@ internal sealed class Configuration : IPluginConfiguration
     /// fall through to the base values transparently.
     /// </summary>
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
-    
+
     /// <summary>
     /// Maps a character's PlayerState.ContentId to a named profile in
     /// <see cref="Profiles"/>. Characters with no entry use the base configuration.
@@ -130,12 +131,12 @@ internal sealed class Configuration : IPluginConfiguration
     private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
     {
         ActiveProfileName = profileName;
-        _activeProfileGeneral            = MergeSection(_general,            patches, "General");
-        _activeProfileStop               = MergeSection(_stop,               patches, "Stop");
-        _activeProfileDuties             = MergeSection(_duties,             patches, "Duties");
+        _activeProfileGeneral = MergeSection(_general, patches, "General");
+        _activeProfileStop = MergeSection(_stop, patches, "Stop");
+        _activeProfileDuties = MergeSection(_duties, patches, "Duties");
         _activeProfileSinglePlayerDuties = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
-        _activeProfileNotifications      = MergeSection(_notifications,      patches, "Notifications");
-        _activeProfileAdvanced           = MergeSection(_advanced,           patches, "Advanced");
+        _activeProfileNotifications = MergeSection(_notifications, patches, "Notifications");
+        _activeProfileAdvanced = MergeSection(_advanced, patches, "Advanced");
     }
 
     /// <summary>
@@ -148,7 +149,7 @@ internal sealed class Configuration : IPluginConfiguration
     {
         if (!patches.TryGetValue(sectionKey, out var patch))
             return null;
- 
+
         var merged = JObject.FromObject(@base);
         merged.Merge(patch, new JsonMergeSettings
         {
@@ -203,6 +204,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipLowPriorityDuties { get; set; }
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool DontSkipCutscenes { get; set; }
+        public bool DontShowAnswerSuggestions { get; set; }
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
         public bool UseTickets { get; set; }
@@ -316,16 +318,24 @@ internal sealed class Configuration : IPluginConfiguration
         WrathCombo,
         RotationSolverReborn
     }
+}
 
-    public sealed class ElementIdNConverter : JsonConverter<ElementId>
+public sealed class ElementIdNConverter : JsonConverter<ElementId>
+{
+    public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
+
+    public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
+        bool hasExistingValue, JsonSerializer serializer)
     {
-        public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
+        string? value = reader.Value?.ToString();
+        return value != null ? ElementId.FromString(value) : null;
+    }
+}
 
-        public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
-            bool hasExistingValue, JsonSerializer serializer)
-        {
-            string? value = reader.Value?.ToString();
-            return value != null ? ElementId.FromString(value) : null;
-        }
+internal static class ConfigurationExtensions
+{
+    internal static void Save(this Configuration configuration)
+    {
+        Svc.PluginInterface.SavePluginConfig(configuration);
     }
 }

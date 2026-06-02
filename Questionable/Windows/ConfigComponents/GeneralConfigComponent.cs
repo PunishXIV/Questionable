@@ -247,13 +247,25 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (configureTextAdvance)
             {
+                bool dontSkipCutscenes = Configuration.General.DontSkipCutscenes;
                 using (ImRaii.PushIndent())
                 {
-                    bool dontSkipCutscenes = Configuration.General.DontSkipCutscenes;
                     if (ImGui.Checkbox("but don't skip cutscenes or dialogue", ref dontSkipCutscenes))
                     {
                         Configuration.General.DontSkipCutscenes = dontSkipCutscenes;
                         Save();
+                    }
+                }
+                if (dontSkipCutscenes)
+                {
+                    using (ImRaii.PushIndent(2))
+                    {
+                        bool dontShowAnswerSuggestions = Configuration.General.DontShowAnswerSuggestions;
+                        if (ImGui.Checkbox("and don't show which answer we would have picked for you", ref dontShowAnswerSuggestions))
+                        {
+                            Configuration.General.DontShowAnswerSuggestions = dontShowAnswerSuggestions;
+                            Save();
+                        }
                     }
                 }
             }

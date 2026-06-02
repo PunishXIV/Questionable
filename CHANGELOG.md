@@ -1,2 +1,3 @@
-- Testing feature: Per-character profiles -alydev
-- Implemented: Saving/loading profile overlays with full backwards compatibility -alydev
+- Feature: Config option to hide quest dialogue answer suggestions if "don't skip cutscenes" is on -alydev
+- Bug: Limit attempts to abandon quest if config option is enabled -alydev
+- Testing: Configuration change to support future per-character profile support; your config is backed up and should not be lost, but please let me know if there is any problem -alydev

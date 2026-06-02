@@ -28,6 +28,7 @@ internal static class AbandonQuest
         QuestController questController,
         ILogger<AbandonQuestExecutor> logger) : TaskExecutor<Task>
     {
+        private uint attempts;
         protected override bool Start()
         {
             // Safety check: ensure player is logged in
@@ -72,8 +73,15 @@ internal static class AbandonQuest
 
         public void AbandonQuestAction()
         {
+            if (attempts >= 5)
+            {
+                configuration.Advanced.AbandonQuestBeforeCompletion = false;
+                configuration.Save();
+                throw new TaskException("AbandonQuest failed, disabling config option and stopping automatic questing.");
+            }
             logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
             GameMain.ExecuteCommand(800, (int)Task.Quest!.Id.Value);
+            attempts += 1;
             if (configuration.Advanced.RemoveFromPriorityWhenAbandoned)
                 questController.PriorityManager.Remove(Task.Quest.Id);
         }
