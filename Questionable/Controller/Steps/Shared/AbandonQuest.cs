@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using ECommons.Throttlers;
 using Questionable.Functions;
 using Questionable.Model;
+using Questionable.Data;
 
 namespace Questionable.Controller.Steps.Shared;
 internal static class AbandonQuest
@@ -80,7 +81,7 @@ internal static class AbandonQuest
                 throw new TaskException("AbandonQuest failed, disabling config option and stopping automatic questing.");
             }
             logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
-            GameMain.ExecuteCommand(800, (int)Task.Quest!.Id.Value);
+            GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)Task.Quest!.Id.Value);
             attempts += 1;
             if (configuration.Advanced.RemoveFromPriorityWhenAbandoned)
                 questController.PriorityManager.Remove(Task.Quest.Id);
