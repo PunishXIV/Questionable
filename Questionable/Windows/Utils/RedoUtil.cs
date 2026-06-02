@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Dalamud.Memory;
 using ECommons;
-using Sheets = Lumina.Excel.Sheets;
+using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+using FFXIVClientStructs.FFXIV.Component.GUI;
+using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
+using Questionable.Data;
+using Questionable.Utils;
+using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Windows.Utils;
 
-internal sealed class RedoUtil
+internal unsafe sealed class RedoUtil
 {
     internal readonly Dictionary<Sheets.QuestRedoChapter, RedoCache> RedoData = [];
+    internal readonly AgentInterface* QuestRedoHud;
+    private readonly IGameGuiAdapter _gameGui;
 
-    public RedoUtil()
+    public RedoUtil(IGameGuiAdapter gameGui)
     {
+        _gameGui = gameGui;
+        QuestRedoHud = AgentModule.Instance()->GetAgentByInternalId(AgentId.QuestRedoHud);
         RedoData = [];
         Generate();
     }
@@ -63,6 +74,34 @@ internal sealed class RedoUtil
                 return new((ReadOnlySeString)"", -1);
         }
         return new(name, index);
+    }
+
+    internal static void SendRedoCommand(QuestRedoChapterUI chapter) => SendRedoCommand((int)chapter.RowId);
+
+    internal static void SendRedoCommand(int chapterIndex)
+    {
+        GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex);
+    }
+
+    internal bool IsRedoActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive();
+
+    internal QuestRedoChapterUI? GetActiveRedoChapter()
+    {
+        if (IsRedoActive() && _gameGui.TryGetAddonByName<AtkUnitBase>("QuestRedoHud", out AtkUnitBase* addon) &&
+                    addon->AtkValuesCount == 4 &&
+                    // 0 seems to be active,
+                    // 1 seems to be paused,
+                    // 2 is unknown, but it happens e.g. before the quest 'Alzadaal's Legacy'
+                    // 3 seems to be having /ng+ open while active,
+                    // 4 seems to be when (a) suspending the chapter, or (b) having turned in a quest
+                    addon->AtkValues[0].UInt is 0 or 2 or 3 or 4)
+        {
+            // redoHud+44 is chapter
+            // redoHud+46 is quest
+            ushort chapter = MemoryHelper.Read<ushort>((nint)QuestRedoHud + 44);
+            return RedoData.Where(kvp => kvp.Key.RowId == chapter).Select(kvp => kvp.Value.ChapterUi).FirstOrDefault();
+        }
+        return null;
     }
 }
 

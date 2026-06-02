@@ -1,1 +1,2 @@
-- 7.51 cosmic main quest -alydev
+- Feature: Start/Stop New Game+ chapters from Journal Progress tab -alydev
+  - Suspended chapter progress will (probably) not be saved, please keep that in mind.
