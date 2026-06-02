@@ -1,0 +1,76 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-06-02" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058166,
+          "Position": {
+            "X": 16.128723,
+            "Y": -10.00001,
+            "Z": 58.79297
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1048431,
+          "Position": {
+            "X": 88.48706,
+            "Y": -14,
+            "Z": 56.687256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGSF201_05460_Q0_000_000",
+              "Answer": "TEXT_KINGSF201_05460_A0_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2015254,
+          "Position": {
+            "X": 83.68304,
+            "Y": -3.740592,
+            "Z": 30.85402
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048431,
+          "Position": {
+            "X": 88.48706,
+            "Y": -14,
+            "Z": 56.687256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
