@@ -105,7 +105,7 @@
           },
           "Comment": "Click the 7 arrows other than Namingway",
           "TerritoryId": 1310,
-          "InteractionType": "Interact",
+          "InteractionType": "Instruction",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_KINGWK302_05449_Q2_100_000",
@@ -124,6 +124,12 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "TerritoryId": 1310,
+          "InteractionType": "Action",
+          "Action": "Duty Action I",
+          "$": "Stellar Return"
+        },
         {
           "DataId": 1053349,
           "Position": {
