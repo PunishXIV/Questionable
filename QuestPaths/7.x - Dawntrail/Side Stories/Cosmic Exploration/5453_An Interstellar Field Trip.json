@@ -1,0 +1,87 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": { "Username": "alydev", "Date": "2026-06-02" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053370,
+          "Position": {
+            "X": -198.16895,
+            "Y": 0.50000536,
+            "Z": 105.05835
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1053366,
+          "Position": {
+            "X": -220.05042,
+            "Y": 0.3000009,
+            "Z": -3.4332886
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGWZ304_05453_Q1_000_000",
+              "Answer": "TEXT_KINGWZ304_05453_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1053369,
+          "Position": {
+            "X": 37.308228,
+            "Y": -192.11151,
+            "Z": -793.42334
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGWZ304_05453_Q2_000_000",
+              "Answer": "TEXT_KINGWZ304_05453_A2_000_002",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1310,
+          "InteractionType": "Action",
+          "Action": "Duty Action I",
+          "$": "Stellar Return"
+        },
+        {
+          "DataId": 1053370,
+          "Position": {
+            "X": -198.16895,
+            "Y": 0.50000536,
+            "Z": 105.05835
+          },
+          "TerritoryId": 1310,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
