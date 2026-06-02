@@ -26,14 +26,8 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 843.4621,
-            "Y": 5.923009,
-            "Z": 845.776
-          },
           "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "StopDistance": 5,
+          "InteractionType": "None",
           "AetheryteShortcut": "Kugane",
           "AethernetShortcut": [
             "[Kugane] Aetheryte Plaza",

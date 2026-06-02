@@ -6,7 +6,7 @@
 			"{",
 			"  \"\\$schema\": \"https://qstxiv.github.io/schema/quest-v1.json\",",
 			"  \"Author\": \"${0:alydev}\",",
-			"  \"LastChecked\":{\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},",
+			"  \"LastChecked\": {\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},",
 			"  \"QuestSequence\": [",
 			"    $1",
 			"  ]",
@@ -43,6 +43,6 @@
 	"LastChecked": {
 		"scope": "json",
 		"prefix": "LastChecked",
-		"body": "\"LastChecked\":{\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},"
+		"body": "\"LastChecked\": {\"Username\": \"${0:alydev}\", \"Date\": \"${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}\"},"
 	}
 }
