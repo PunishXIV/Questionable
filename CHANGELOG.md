@@ -1,1 +1,3 @@
-- Feature: QST will now delete and recreate its Bossmod presets automatically the first time combat is run on each load. This will fix issues caused by extremely old presets that have never been overwritten, i.e a longstanding issue i've had with vbm targeting that is entirely because i haven't cleared my bossmod config for many months -alydev
+- Feature: Config option to hide quest dialogue answer suggestions if "don't skip cutscenes" is on -alydev
+- Bug: Limit attempts to abandon quest if config option is enabled -alydev
+- Testing: Configuration change to support future per-character profile support; your config is backed up and should not be lost, but please let me know if there is any problem -alydev

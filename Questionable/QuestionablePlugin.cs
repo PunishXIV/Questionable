@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Dalamud.Extensions.MicrosoftLogging;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -88,7 +89,15 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             serviceCollection.AddSingleton(toastGui);
             serviceCollection.AddSingleton(gameInteropProvider);
             serviceCollection.AddSingleton(new WindowSystem(nameof(Questionable)));
-            serviceCollection.AddSingleton((Configuration?)pluginInterface.GetPluginConfig() ?? new Configuration());
+
+            var savedConfig = (Configuration?)pluginInterface.GetPluginConfig();
+            if (savedConfig != null && savedConfig?.Version != Configuration.PluginConfigVersion)
+            {
+                // Backup config when version changes
+                pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName,".json.bak"), true);
+                savedConfig?.Version = Configuration.PluginConfigVersion;
+            }
+            serviceCollection.AddSingleton(savedConfig ?? new Configuration());
 
             AddBasicFunctionsAndData(serviceCollection);
             AddTaskFactories(serviceCollection);

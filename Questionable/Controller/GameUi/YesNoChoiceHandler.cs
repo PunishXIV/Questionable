@@ -275,7 +275,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             }
 
             string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
-            if (_configuration.General.DontSkipCutscenes)
+            if (_configuration.General.DontSkipCutscenes && !_configuration.General.DontShowAnswerSuggestions)
                 _toastGui.ShowQuest(notif);
             _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
