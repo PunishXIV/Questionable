@@ -6,7 +6,6 @@ using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -18,6 +17,7 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
@@ -109,20 +109,20 @@ internal sealed class PriorityWindow : LWindow
 
         List<ElementId> clipboardItems = ParseClipboardItems();
         ImGui.BeginDisabled(clipboardItems.Count == 0);
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Download, "Import from Clipboard"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, "Import from Clipboard"))
             ImportFromClipboard(clipboardItems);
         ImGui.EndDisabled();
         ImGui.SameLine();
         ImGui.BeginDisabled(_questController.PriorityManager.IsEmpty);
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
             ExportToClipboard();
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
             _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete);
         ImGui.SameLine();
 
         using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
                 _questController.PriorityManager.Clear();
         }
 
@@ -187,11 +187,11 @@ internal sealed class PriorityWindow : LWindow
 
                     if (_draggedItem == quest.Id)
                     {
-                        ImGuiComponents.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown,
+                        ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown,
                             ImGui.ColorConvertU32ToFloat4(ImGui.GetColorU32(ImGuiCol.ButtonActive)));
                     }
                     else
-                        ImGuiComponents.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
+                        ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
 
                     if (_draggedItem == null && ImGui.IsItemActive() && ImGui.IsMouseDragging(ImGuiMouseButton.Left))
                         _draggedItem = quest.Id;
@@ -217,12 +217,12 @@ internal sealed class PriorityWindow : LWindow
                 }
 
 #if DEBUG
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest.Info);
                 ImGui.SameLine();
 #endif
 
-                if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
                     itemToRemove = quest;
             }
 
@@ -363,7 +363,7 @@ internal sealed class PriorityWindow : LWindow
 
         using (ImRaii.Disabled(nameEmpty || nameIsBuiltIn || noQuests || (nameExists && !ImGui.IsKeyDown(ImGuiKey.ModCtrl))))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Save, "Save Preset"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, "Save Preset"))
             {
                 SavePreset(_presetName.Trim());
                 _presetName = string.Empty;
@@ -376,7 +376,7 @@ internal sealed class PriorityWindow : LWindow
             ImGui.SameLine();
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             {
-                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Delete Preset"))
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, "Delete Preset"))
                 {
                     userPresets.Remove(_selectedPresetName!);
                     _selectedPresetName = null;

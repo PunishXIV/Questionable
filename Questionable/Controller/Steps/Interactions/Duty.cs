@@ -39,7 +39,7 @@ internal static class Duty
                         dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
             }
-            
+
             if (!configuration.Duties.RunInstancedContentWithAutoDuty ||
                 !autoDutyIpc.HasPath(step.DutyOptions.ContentFinderConditionId) ||
                (!autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) && dutyMode is AutoDutyIpc.DutyMode.Support))
@@ -116,7 +116,7 @@ internal static class Duty
 
                     return false;
                 }
-                if (configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel-100 >= cfcData.RequiredItemLevel)
+                if (configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel - 100 >= cfcData.RequiredItemLevel)
                 {
                     dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }

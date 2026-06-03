@@ -263,11 +263,11 @@ internal sealed class CombatController : IDisposable
             return null;
 
         return _objectTable.Select(x => new
-            {
-                GameObject = x,
-                GetKillPriority(x).Priority,
-                Distance = Vector3.Distance(x.Position, playerPosition.Value)
-            })
+        {
+            GameObject = x,
+            GetKillPriority(x).Priority,
+            Distance = Vector3.Distance(x.Position, playerPosition.Value)
+        })
             .Where(x => x.Priority > 0)
             .OrderByDescending(x => x.Priority)
             .ThenBy(x => x.Distance)

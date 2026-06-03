@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
-using System.Text.Json.Serialization.Metadata;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
@@ -16,6 +12,7 @@ using Questionable.Model;
 using Questionable.Utils;
 
 namespace Questionable.Controller.Steps.Shared;
+
 internal static class LogQuestCompletion
 {
     private readonly static string LogPath = Path.Combine(Svc.PluginInterface.ConfigDirectory.FullName, "QuestCompletionLog.json");

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 namespace Questionable.Model;
 
 [UsedImplicitly(ImplicitUseTargetFlags.Members)]

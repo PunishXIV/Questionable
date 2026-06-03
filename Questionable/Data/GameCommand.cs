@@ -5,7 +5,8 @@
 /// </summary>
 // https://github.com/AtmoOmen/OmenTools/blob/main/Infos/ExecuteCommandFlag.cs
 // https://github.com/Jaksuhn/clib/blob/main/Enums/CommandFlag.cs
-public enum GameCommand {
+public enum GameCommand
+{
     None = 0,
     /// <summary>
     /// Draw or sheathe weapon

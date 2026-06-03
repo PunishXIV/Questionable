@@ -6,7 +6,6 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -77,11 +76,11 @@ internal sealed class QuestSelectionWindow : LWindow
         };
     }
 
-    public unsafe void OpenForTarget(IGameObject? gameObject)
+    public unsafe void OpenForTarget(IGameObject? gameObject, uint targetId)
     {
         if (gameObject != null)
         {
-            uint targetId = GameFunctions.GetBaseID(gameObject);
+            targetId = GameFunctions.GetBaseID(gameObject);
             string targetName = gameObject.Name.ToString();
             WindowName = $"Quests starting with {targetName} [{targetId}]{WindowId}";
 
@@ -212,7 +211,7 @@ internal sealed class QuestSelectionWindow : LWindow
             {
                 using ImRaii.IdDisposable id = ImRaii.PushId(questId);
 
-                bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
+                bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip("Copy as file name");
                 if (copy)
@@ -228,7 +227,7 @@ internal sealed class QuestSelectionWindow : LWindow
                 {
                     ImGui.BeginDisabled(_questController.NextQuest != null || _questController.SimulatedQuest != null);
 
-                    bool startNextQuest = ImGuiComponents.IconButton(FontAwesomeIcon.Play);
+                    bool startNextQuest = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip("Start as next quest");
                     if (startNextQuest)
@@ -239,7 +238,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
                     ImGui.SameLine();
 
-                    bool setNextQuest = ImGuiComponents.IconButton(FontAwesomeIcon.AngleDoubleRight);
+                    bool setNextQuest = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleRight);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip("Set as next quest");
                     if (setNextQuest)

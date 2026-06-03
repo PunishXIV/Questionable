@@ -1,3 +1,1 @@
-- Feature: Start/Stop New Game+ chapters from Journal Progress tab -alydev
-  - Suspended chapter progress will (probably) not be saved, please keep that in mind.
-- Bug: Fixed numbering on realm reborn 1 quests based on citystate -alydev
+- Bug: Fixed bug where some icon buttons stopped working, because dalamud's IconButton component breaks if duplicate icons are used -alydev

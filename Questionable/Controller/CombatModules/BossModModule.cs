@@ -27,7 +27,7 @@ internal sealed class BossModModule
         {
             if (_justLoaded)
             {
-                bossModIpc.AddAllPresets(delete:true);
+                bossModIpc.AddAllPresets(delete: true);
                 _justLoaded = false;
             }
             bossModIpc.SetActivePreset(BossModIpc.EPreset.Overworld);

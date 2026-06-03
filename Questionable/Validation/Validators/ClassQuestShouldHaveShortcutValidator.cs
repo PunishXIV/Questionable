@@ -31,7 +31,8 @@ internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator
             yield break;
 
         bool isTeleportable = false;
-        quest.FindSequence(0)?.Steps.ForEach(step => {
+        quest.FindSequence(0)?.Steps.ForEach(step =>
+        {
             if (step == null || step.IsTeleportableForPriorityQuests())
                 isTeleportable = true;
         });

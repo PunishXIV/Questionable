@@ -9,7 +9,6 @@ using System.Text.Json.Nodes;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
@@ -55,7 +54,7 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawPriorityQuestsButton()
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, "Priority Quests"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, "Priority Quests"))
             priorityWindow.ToggleOrUncollapse();
 
         if (ImGui.IsItemHovered())
@@ -67,7 +66,7 @@ internal sealed class QuickAccessButtonsComponent
         bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vnav");
         using (ImRaii.Disabled(!isNavmeshAvailable || !ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.GlobeEurope, "Rebuild Navmesh"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.GlobeEurope, "Rebuild Navmesh"))
                 commandManager.ProcessCommand("/vnav rebuild");
         }
 
@@ -82,13 +81,13 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawReloadDataButton()
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.RedoAlt, "Reload Data"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.RedoAlt, "Reload Data"))
             Reload?.Invoke(this, EventArgs.Empty);
     }
 
     private void DrawJournalProgressButton()
     {
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
             journalProgressWindow.IsOpenAndUncollapsed = true;
 
         if (ImGui.IsItemHovered())
@@ -97,7 +96,7 @@ internal sealed class QuickAccessButtonsComponent
 
     private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
     {
-        bool leftClicked = ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Handshake, "Stuck?");
+        bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, "Stuck?");
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard");
@@ -114,7 +113,7 @@ internal sealed class QuickAccessButtonsComponent
             else
             {
                 // Dalamud troubleshooting json is written after plugin manager changes; we can't access the data from dalamud directly
-                SortedDictionary<string,string>? plugins = [];
+                SortedDictionary<string, string>? plugins = [];
                 try
                 {
                     JsonNode? dalTrouble = JsonNode.Parse(
@@ -136,7 +135,7 @@ internal sealed class QuickAccessButtonsComponent
                             node => node!["AssemblyVersion"]!.GetValue<string>() ?? "unknown"
                         ) ?? []);
                 }
-                catch (Exception) {}
+                catch (Exception) { }
                 Dictionary<string, object?> troubleshooting = new(){
                     { "LoadedPlugins", plugins },
                     { "QST", new Dictionary<string,string>(){

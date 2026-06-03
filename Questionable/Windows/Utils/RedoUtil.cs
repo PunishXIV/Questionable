@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Dalamud.Memory;
@@ -115,9 +114,9 @@ internal sealed record RedoIndex(QuestRedoChapterUI Chapter, int Index)
         if (Chapter.RowId.Equals(1)) // ARR part 1
         {
             // handling for citystate starts numbering
-            if (index.InRange(22,43)) // gridania
+            if (index.InRange(22, 43)) // gridania
                 index -= 21;
-            if (index.InRange(43,65)) // uldah
+            if (index.InRange(43, 65)) // uldah
                 index -= 42;
             if (index == 65) // call of the sea limsa/gridania
                 index = 22;

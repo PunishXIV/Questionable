@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
@@ -278,7 +276,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void Reload()
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             _logger.LogInformation("Reload, resetting curent quest progress");
 
@@ -387,7 +385,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStepValue }
             && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(QuestAcceptStalledTimeoutSeconds))
         {
-            lock(_progressLock)
+            lock (_progressLock)
             {
                 _logger.LogWarning("Quest accept apparently didn't work out, resetting progress");
                 CurrentQuest.SetStep(0);
@@ -480,7 +478,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private void UpdateCurrentQuest()
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             DebugState = null;
 
@@ -755,7 +753,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void IncreaseStepCount(ElementId? questId, int? sequence, bool shouldContinue = false)
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             (QuestSequence? seq, QuestStep? step, bool _) = GetNextStep();
             if (CurrentQuest == null || seq == null || step == null)
@@ -1180,7 +1178,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void Skip(ElementId elementId, byte currentQuestSequence)
     {
-        lock(_progressLock)
+        lock (_progressLock)
         {
             if (_taskQueue.CurrentTaskExecutor?.CurrentTask is ISkippableTask)
                 _taskQueue.CurrentTaskExecutor = null;

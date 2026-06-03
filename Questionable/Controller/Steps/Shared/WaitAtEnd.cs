@@ -5,7 +5,6 @@ using System.Linq;
 using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
-using Questionable.Controller;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
 using Questionable.Data;
@@ -13,6 +12,7 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Windows.Utils;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class WaitAtEnd
@@ -24,7 +24,8 @@ internal static class WaitAtEnd
         ICondition condition,
         TerritoryData territoryData,
         AutoDutyIpc autoDutyIpc,
-        BossModIpc bossModIpc)
+        BossModIpc bossModIpc,
+        RedoUtil redoUtil)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -118,7 +119,11 @@ internal static class WaitAtEnd
                         WaitQuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
                         WaitDelay delay = new();
                         if (step.PickUpQuestId != null)
+                        {
+                            if (redoUtil.IsRedoActive()) // Can't accept other quests during NG+
+                                return [delay, Next(quest, sequence)];
                             return [accept, delay, Next(quest, sequence)];
+                        }
                         else
                             return [accept, delay];
                     }

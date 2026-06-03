@@ -1,7 +1,7 @@
 ﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
+using Questionable.Utils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class ReportWarningComponent(Configuration configuration)
@@ -25,14 +25,14 @@ internal sealed class ReportWarningComponent(Configuration configuration)
         ImGui.TextWrapped("This feature will never send any information to the bug report service unless you click " +
                           "the ! button highlighted in red below. If you would like to opt out of seeing this button, click the " +
                           "orange \"Opt Out\" button below. Otherwise, click the green \"Dismiss\" button to hide this warning.");
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Opt Out", ImGuiColors.DalamudOrange))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Opt Out", ImGuiColors.DalamudOrange))
         {
             _configuration.General.DismissedReportWarning = true;
             _configuration.General.ReportsDisabled = true;
         }
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", ImGuiColors.ParsedGreen))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationTriangle, "Dismiss", ImGuiColors.ParsedGreen))
             _configuration.General.DismissedReportWarning = true;
     }
 }

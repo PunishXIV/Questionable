@@ -199,7 +199,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                     _eventInfoComponent.Draw();
                     ImGui.Separator();
                 }
-                
+
                 _quickAccessButtonsComponent.Draw();
                 ImGui.Separator();
                 _creationUtilsComponent.Draw();

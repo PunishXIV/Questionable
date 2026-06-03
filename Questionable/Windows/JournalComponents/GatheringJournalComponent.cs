@@ -390,7 +390,7 @@ internal sealed class GatheringJournalComponent
             expansion.CompletedPoints = expansion.PointsByTerritories.Sum(x => x.CompletedPoints);
         }
     }
-    
+
     [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Required by LogoutDelegate signature")]
     public void ClearCounts(int type, int code)
     {

@@ -7,7 +7,6 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -17,6 +16,7 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed partial class ActiveQuestComponent
@@ -110,7 +110,7 @@ internal sealed partial class ActiveQuestComponent
             if (!isMinimized)
                 ImGui.TextColored(ImGuiColors.DalamudGrey, $"{_questRegistry.Count} quests loaded");
 
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop))
             {
                 _movementController.Stop();
                 _questController.Stop("Manual (no active quest)");
@@ -118,7 +118,7 @@ internal sealed partial class ActiveQuestComponent
             }
 
             ImGui.SameLine();
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.SortAmountDown))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.SortAmountDown))
                 _priorityWindow.ToggleOrUncollapse();
         }
 
@@ -127,7 +127,7 @@ internal sealed partial class ActiveQuestComponent
         {
             Vector4? reportButtonColor = _configuration.General.DismissedReportWarning ? null : ImGuiColors.DalamudRed;
             ImGui.SameLine();
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.ExclamationCircle, reportButtonColor))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle, reportButtonColor))
             {
                 // TODO report
             }
@@ -393,7 +393,7 @@ internal sealed partial class ActiveQuestComponent
     {
         using (ImRaii.Disabled(_questController.IsRunning))
         {
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Play))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play))
             {
                 // if we haven't accepted this quest, mark it as next quest so that we can optionally use aetherytes to travel
                 if (questProgressInfo == null)
@@ -404,7 +404,7 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.StepForward, "Step"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.StepForward, "Step"))
                 _questController.StartSingleStep("UI step");
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip("Execute next step and then stop.");
@@ -412,7 +412,7 @@ internal sealed partial class ActiveQuestComponent
 
         ImGui.SameLine();
 
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop))
         {
             _movementController.Stop();
             _questController.Stop("UI stop");
@@ -425,7 +425,7 @@ internal sealed partial class ActiveQuestComponent
         {
             ImGui.SameLine();
 
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.FlagCheckered,
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FlagCheckered,
                     _questController.StopAfterCurrentQuest ? ImGuiColors.DalamudOrange : null))
                 _questController.StopAfterCurrentQuest = !_questController.StopAfterCurrentQuest;
 
@@ -436,7 +436,7 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Check,
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Check,
                     _questController.StopAfterAcceptingNextQuest ? ImGuiColors.DalamudOrange : null))
                 _questController.StopAfterAcceptingNextQuest = !_questController.StopAfterAcceptingNextQuest;
 
@@ -447,7 +447,7 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
 
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt,
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapMarkerAlt,
                     _questController.StopBeforeTeleport ? ImGuiColors.DalamudOrange : null))
                 _questController.StopBeforeTeleport = !_questController.StopBeforeTeleport;
 
@@ -460,7 +460,7 @@ internal sealed partial class ActiveQuestComponent
         if (isMinimized)
         {
             ImGui.SameLine();
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.RedoAlt))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.RedoAlt))
                 Reload?.Invoke(this, EventArgs.Empty);
         }
         else
@@ -476,7 +476,7 @@ internal sealed partial class ActiveQuestComponent
             {
                 using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.ParsedGreen, colored))
                 {
-                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.ArrowCircleRight, "Skip"))
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ArrowCircleRight, "Skip"))
                     {
                         _movementController.Stop();
                         _questController.Skip(currentQuest.Quest.Id, currentQuest.Sequence);
@@ -490,7 +490,7 @@ internal sealed partial class ActiveQuestComponent
             if (_commandManager.Commands.ContainsKey("/questinfo"))
             {
                 ImGui.SameLine();
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.Atlas))
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Atlas))
                     _commandManager.ProcessCommand($"/questinfo {currentQuest.Quest.Id}");
 
                 if (ImGui.IsItemHovered())
@@ -499,7 +499,7 @@ internal sealed partial class ActiveQuestComponent
 
 #if DEBUG
             ImGui.SameLine();
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Edit))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
             {
                 (bool success, string filename) = QuestRegistry.OpenEditor(currentQuest.Quest.Info);
                 _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
@@ -520,7 +520,7 @@ internal sealed partial class ActiveQuestComponent
         ImGui.Text($"Sequence: {simulatedQuest.Sequence}");
 
         ImGui.BeginDisabled(simulatedQuest.Sequence == 0);
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Minus))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
         {
             _movementController.Stop();
             _questController.Stop("Sim-");
@@ -537,7 +537,7 @@ internal sealed partial class ActiveQuestComponent
 
         ImGui.SameLine();
         ImGui.BeginDisabled(simulatedQuest.Sequence >= 255);
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Plus))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
         {
             _movementController.Stop();
             _questController.Stop("Sim+");
@@ -560,7 +560,7 @@ internal sealed partial class ActiveQuestComponent
             ImGui.Text($"Step: {simulatedQuest.Step} / {simulatedSequence.Steps.Count - 1}");
 
             ImGui.BeginDisabled(simulatedQuest.Step == 0);
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Minus))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
             {
                 _movementController.Stop();
                 _questController.Stop("SimStep-");
@@ -573,7 +573,7 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
             ImGui.BeginDisabled(simulatedQuest.Step >= simulatedSequence.Steps.Count);
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Plus))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
             {
                 _movementController.Stop();
                 _questController.Stop("SimStep+");
