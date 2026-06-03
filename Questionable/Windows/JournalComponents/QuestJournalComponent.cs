@@ -160,7 +160,7 @@ internal sealed class QuestJournalComponent
         {
             RedoIndex redoIndex = redoUtil.GetChapter(q.Id.Value);
             if (redoIndex.Index != -1)
-                genreName = $"{filter.Genre.Name} ({redoIndex.Name})";
+                genreName = $"{filter.Genre.Name} ({redoIndex.Chapter.ChapterName})";
         }
 
         bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
@@ -203,7 +203,7 @@ internal sealed class QuestJournalComponent
             }
             RedoIndex redoIndex = redoUtil.GetChapter(quest.Id.Value);
             if (redoIndex.Index == 0)
-                questDescription = $"{questDescription}   ({redoIndex.Name})";
+                questDescription = $"{questDescription}   ({redoIndex.Chapter.ChapterName})";
 
             if ((quest.Root.Comment ?? "").Contains("FATE"))
                 fate = true;

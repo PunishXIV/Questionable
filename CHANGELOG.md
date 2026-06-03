@@ -1,2 +1,3 @@
 - Feature: Start/Stop New Game+ chapters from Journal Progress tab -alydev
   - Suspended chapter progress will (probably) not be saved, please keep that in mind.
+- Bug: Fixed numbering on realm reborn 1 quests based on citystate -alydev

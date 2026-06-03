@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using Dalamud.Memory;
 using ECommons;
+using ECommons.MathHelpers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
@@ -16,7 +17,7 @@ namespace Questionable.Windows.Utils;
 
 internal unsafe sealed class RedoUtil
 {
-    internal readonly Dictionary<Sheets.QuestRedoChapter, RedoCache> RedoData = [];
+    internal readonly Dictionary<Sheets.QuestRedoChapterUI, RedoCache> RedoData = [];
     internal readonly AgentInterface* QuestRedoHud;
     private readonly IGameGuiAdapter _gameGui;
 
@@ -36,44 +37,36 @@ internal unsafe sealed class RedoUtil
         {
             if (redo.Chapter.RowId == 0)
                 continue;
-            if (!RedoData.TryGetValue(redo.Chapter.Value, out RedoCache? cache))
-                cache = new(chapterUi.GetRow(redo.Chapter.RowId), new());
+            var chapter = chapterUi.GetRow(redo.Chapter.RowId);
+            if (!RedoData.TryGetValue(chapter, out RedoCache? cache))
+                cache = new(chapter, new());
             foreach (Sheets.QuestRedo.QuestRedoParamStruct quest in redo.QuestRedoParam)
             {
                 if (quest.Quest.RowId != 0)
                     cache.Quests.Add(quest.Quest.Value);
             }
-            RedoData[redo.Chapter.Value] = cache;
+            RedoData[chapter] = cache;
         }
 
         watch.Stop();
         return watch;
     }
 
-    /// <summary>
-    /// Given a quest ID, returns a RedoIndex object containing either a valid chapter name and index of the quest
-    /// within that chapter, or an empty ReadOnlySeString and the index -1. Failure: Index.Equals(-1)
-    /// </summary>
-    /// <param name="questId"></param>
-    /// <returns></returns>
     public RedoIndex GetChapter(uint questId)
     {
         ReadOnlySeString name = (ReadOnlySeString)"";
         int index = -1;
         if (questId < 65536)
             questId += 65536;
-        KeyValuePair<Sheets.QuestRedoChapter, RedoCache> result = RedoData.FirstOrDefault(entry => entry.Value.Quests.Any(q => q.RowId == questId));
-        if (result.Value != null)
+        (QuestRedoChapterUI key, RedoCache value) = RedoData.FirstOrDefault(entry => entry.Value.Quests.Any(q => q.RowId == questId));
+        if (value != null)
         {
-            if (result.Value.ChapterUi != null)
-            {
-                name = result.Value.ChapterUi.Value.ChapterName;
-                index = result.Value.Quests.FindIndex(q => q.RowId == questId);
-            }
+            name = value.ChapterUi.ChapterName;
+            index = value.Quests.FindIndex(q => q.RowId == questId);
             if (name.ByteLength == 0 || index == -1)
-                return new((ReadOnlySeString)"", -1);
+                return new(value.ChapterUi, -1);
         }
-        return new(name, index);
+        return new(key, index);
     }
 
     internal static void SendRedoCommand(QuestRedoChapterUI chapter) => SendRedoCommand((int)chapter.RowId);
@@ -105,16 +98,32 @@ internal unsafe sealed class RedoUtil
     }
 }
 
-internal sealed record RedoCache(Sheets.QuestRedoChapterUI? ChapterUi, List<Sheets.Quest> Quests)
+internal sealed record RedoCache(Sheets.QuestRedoChapterUI ChapterUi, List<Sheets.Quest> Quests)
 {
-    public Sheets.QuestRedoChapterUI? ChapterUi = ChapterUi;
+    public Sheets.QuestRedoChapterUI ChapterUi = ChapterUi;
     public List<Sheets.Quest> Quests = Quests;
 }
 
-internal sealed record RedoIndex(ReadOnlySeString Name, int Index)
+internal sealed record RedoIndex(QuestRedoChapterUI Chapter, int Index)
 {
-    public ReadOnlySeString Name = Name;
+    public QuestRedoChapterUI Chapter = Chapter;
     public int Index = Index;
 
-    public override string ToString() => $"{Name} (#{Index + 1})";
+    public override string ToString()
+    {
+        int index = Index + 1;
+        if (Chapter.RowId.Equals(1)) // ARR part 1
+        {
+            // handling for citystate starts numbering
+            if (index.InRange(22,43)) // gridania
+                index -= 21;
+            if (index.InRange(43,65)) // uldah
+                index -= 42;
+            if (index == 65) // call of the sea limsa/gridania
+                index = 22;
+            if (index == 66) // call of the sea uldah
+                index = 23;
+        }
+        return $"{Chapter.ChapterName} (#{index})";
+    }
 }
