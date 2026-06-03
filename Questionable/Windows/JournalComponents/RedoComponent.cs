@@ -45,15 +45,15 @@ internal sealed class RedoComponent
         ImGui.TableSetupColumn("Supported", ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
         ImGui.TableSetupColumn("Completed", ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
         ImGui.TableHeadersRow();
-        foreach ((QuestRedoChapter chapter, RedoCache redoCache) in redoUtil.RedoData)
+        foreach ((QuestRedoChapterUI chapter, RedoCache redoCache) in redoUtil.RedoData)
         {
             if (redoCache.Quests.Count == 0)
                 continue;
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            var chapterName = redoCache.ChapterUi?.ChapterName.ToString() ?? "";
+            var chapterName = redoCache.ChapterUi.ChapterName.ToString() ?? "";
             chapterName = chapterName.Length > 0 ? chapterName : $"???";
-            string? categoryName = redoCache.ChapterUi?.UITab.Value.Text.ToString();
+            string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
             bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
 
@@ -124,8 +124,8 @@ internal sealed class RedoComponent
 #if DEBUG
         using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
         {
-            if (ImGui.MenuItem("Start NG+ here") && redoCache.ChapterUi != null)
-                RedoUtil.SendRedoCommand(redoCache.ChapterUi.Value);
+            if (ImGui.MenuItem("Start NG+ here") && redoCache.ChapterUi.RowId != 0)
+                RedoUtil.SendRedoCommand(redoCache.ChapterUi);
         }
 #endif
     }
