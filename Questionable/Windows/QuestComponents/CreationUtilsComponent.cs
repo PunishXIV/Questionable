@@ -7,7 +7,7 @@ using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
+using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -15,7 +15,6 @@ using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
@@ -210,7 +209,7 @@ internal sealed class CreationUtilsComponent
         {
             ImGui.Text(string.Create(CultureInfo.InvariantCulture,
                 $"Distance: {(target.Position - objectTable[0]!.Position).Length():F2}" +
-                $"({Math.Floor(target.Position.DistanceTo_XZ(objectTable[0]!.Position))-1}y)"));
+                $"({Math.Floor(target.Position.DistanceTo_XZ(objectTable[0]!.Position)) - 1}y)"));
             ImGui.SameLine();
 
             float verticalDistance = target.Position.Y - objectTable[0]!.Position.Y;
@@ -229,51 +228,56 @@ internal sealed class CreationUtilsComponent
 
     private unsafe void DrawInteractionButtons(IGameObject target)
     {
-        ImGui.BeginDisabled(!movementController.IsNavmeshReady || gameFunctions.IsOccupied());
-        if (!movementController.IsPathfinding)
+        using (ImRaii.Disabled(!movementController.IsNavmeshReady || gameFunctions.IsOccupied()))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Bullseye, "To Target"))
+            if (!movementController.IsPathfinding)
             {
-                movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
-                    target.Position, new()
-                    {
-                        Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedInCurrentZone(),
-                        Sprint = true,
-                    });
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, "To Target"))
+                {
+                    movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
+                        target.Position, new()
+                        {
+                            Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedInCurrentZone(),
+                            Sprint = true,
+                        });
+                }
+            }
+            else
+            {
+                if (ImGui.Button("Cancel pathfinding"))
+                    movementController.ResetPathfinding();
             }
         }
-        else
-        {
-            if (ImGui.Button("Cancel pathfinding"))
-                movementController.ResetPathfinding();
-        }
-
-        ImGui.EndDisabled();
 
         ImGui.SameLine();
-        ImGui.BeginDisabled(!questData.IsIssuerOfAnyQuest(GameFunctions.GetBaseID(target)));
-        bool showQuests = ImGuiComponents.IconButton(FontAwesomeIcon.MapMarkerAlt);
+        uint targetId = GameFunctions.GetBaseID(target);
+        //logger.LogDebug($"Current target: {target.Name} {targetId}");
+        using (ImRaii.Disabled(!questData.IsIssuerOfAnyQuest(targetId)))
+        {
+            bool showQuests = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapMarkerAlt);
+            if (showQuests)
+            {
+                logger.LogDebug($"Opening questselectionwindow for {target.Name} {targetId}");
+                questSelectionWindow.OpenForTarget(target, targetId);
+            }
+        }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Show all Quests starting with your current target.");
-        if (showQuests)
-            questSelectionWindow.OpenForTarget(target);
 
-        ImGui.EndDisabled();
-
-        ImGui.BeginDisabled(gameFunctions.IsOccupied());
         ImGui.SameLine();
-        bool interact = ImGuiComponents.IconButton(FontAwesomeIcon.MousePointer);
+        using (ImRaii.Disabled(gameFunctions.IsOccupied()))
+        {
+            bool interact = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MousePointer);
+            if (interact)
+            {
+                cameraFunctions.Face(target.Position);
+                ulong result = TargetSystem.Instance()->InteractWithObject(
+                    (GameObject*)target.Address, false);
+                logger.LogInformation("Interaction Result: {Result}", result);
+            }
+        }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Interact with your current target.");
-        if (interact)
-        {
-            cameraFunctions.Face(target.Position);
-            ulong result = TargetSystem.Instance()->InteractWithObject(
-                (GameObject*)target.Address, false);
-            logger.LogInformation("Interaction Result: {Result}", result);
-        }
-
-        ImGui.EndDisabled();
     }
 
     private string GetCurrentQuestInfoAsString()
@@ -294,7 +298,7 @@ internal sealed class CreationUtilsComponent
     private unsafe void DrawCopyButton(IGameObject target)
     {
         GameObject* gameObject = (GameObject*)target.Address;
-        bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
+        bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {
             ImGui.SetTooltip(
@@ -356,7 +360,7 @@ internal sealed class CreationUtilsComponent
         if (objectTable[0] == null)
             return;
 
-        bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
+        bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {
             ImGui.SetTooltip(

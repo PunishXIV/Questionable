@@ -217,7 +217,7 @@ internal static class AetheryteShortcut
                     }
                 }
 
-                if (Task.ExpectedTerritoryId == territoryType || 
+                if (Task.ExpectedTerritoryId == territoryType ||
                     (Task.Step.AethernetShortcut is { } aethernet &&
                     aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType)))
                 {

@@ -18,19 +18,25 @@ using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Windows.Utils;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Interact
 {
-    internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration) : ITaskFactory
+    internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
                 or EInteractionType.SinglePlayerDuty)
             {
+                if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
+                {
+                    // Can't accept other quests during NG+
+                    yield break;
+                }
                 if (step.InteractionType is EInteractionType.CompleteQuest)
                 {
                     yield return new LogQuestCompletion.Task(quest);

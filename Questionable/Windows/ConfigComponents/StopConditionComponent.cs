@@ -4,7 +4,6 @@ using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -13,6 +12,7 @@ using Questionable.Controller;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
 namespace Questionable.Windows.ConfigComponents;
@@ -149,7 +149,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             {
                 using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                 {
-                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
                     {
                         clearAll();
                         Save();
@@ -197,7 +197,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                                        ImGui.GetStyle().FramePadding.X * 2);
                     }
 
-                    if (ImGuiComponents.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
+                    if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
                         itemToRemove = quest;
                 }
             }

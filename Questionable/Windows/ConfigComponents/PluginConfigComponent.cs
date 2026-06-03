@@ -15,6 +15,7 @@ using Dalamud.Utility;
 using ECommons.ImGuiMethods;
 using Questionable.Controller;
 using Questionable.External;
+using Questionable.Utils;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class PluginConfigComponent
@@ -342,20 +343,20 @@ internal sealed class PluginConfigComponent
                     ImRaii.ColorDisposable? color = null;
                     if (!allDetailsOk)
                         color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
-                    if (ImGuiComponents.IconButton(FontAwesomeIcon.Cog))
+                    if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Cog))
                         _commandManager.ProcessCommand(plugin.ConfigCommand);
                     color?.Dispose();
                 }
             }
             else
             {
-                if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Globe, "Open Website"))
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Globe, "Open Website"))
                     Util.OpenLink(plugin.WebsiteUri.ToString());
 
                 ImGui.SameLine();
                 if (plugin.DalamudRepositoryUri != null)
                 {
-                    if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Code, "Open Repository"))
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Code, "Open Repository"))
                         Util.OpenLink(plugin.DalamudRepositoryUri.ToString());
                 }
                 else

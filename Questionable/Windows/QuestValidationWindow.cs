@@ -3,7 +3,6 @@ using System.Globalization;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -11,6 +10,7 @@ using FFXIVClientStructs.FFXIV.Common.Math;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
+using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Windows.Common;
 namespace Questionable.Windows;
@@ -66,7 +66,7 @@ internal sealed class QuestValidationWindow : LWindow
                 if (validationIssue.ElementId != null)
                 {
                     IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
-                    bool copy = ImGuiComponents.IconButton(FontAwesomeIcon.Copy);
+                    bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip("Copy as file name");
                     if (copy)
@@ -76,7 +76,7 @@ internal sealed class QuestValidationWindow : LWindow
                     }
 
                     ImGui.SameLine();
-                    bool sim = ImGuiComponents.IconButton(FontAwesomeIcon.Play, new(16));
+                    bool sim = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play, new Vector2(16));
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip("Simulate quest");
                     if (sim)

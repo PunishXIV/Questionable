@@ -5,7 +5,6 @@ using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -14,6 +13,7 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Windows.QuestComponents;
+using Questionable.Utils;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class AlliedSocietyJournalComponent
@@ -38,7 +38,7 @@ internal sealed class AlliedSocietyJournalComponent
             return;
         bool addPending = false;
 #if DEBUG
-        if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Plus, "Add"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, "Add"))
             addPending = true;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Add unchecked quests (from expanded categories) to prio");
@@ -47,7 +47,7 @@ internal sealed class AlliedSocietyJournalComponent
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
         bool abandonQuestBeforeCompletion = configuration.Advanced.AbandonQuestBeforeCompletion;
         bool removeFromPriorityWhenAbandoned = configuration.Advanced.RemoveFromPriorityWhenAbandoned;
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop, preventQuestCompletion ? ImGuiColors.DalamudOrange : null))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop, preventQuestCompletion ? ImGuiColors.DalamudOrange : null))
         {
             configuration.Advanced.PreventQuestCompletion = !preventQuestCompletion;
             pluginInterface.SavePluginConfig(configuration);
@@ -57,7 +57,7 @@ internal sealed class AlliedSocietyJournalComponent
         if (preventQuestCompletion)
         {
             ImGui.SameLine();
-            if (ImGuiComponents.IconButton(FontAwesomeIcon.Ban, abandonQuestBeforeCompletion ? ImGuiColors.DalamudOrange : null))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban, abandonQuestBeforeCompletion ? ImGuiColors.DalamudOrange : null))
             {
                 configuration.Advanced.AbandonQuestBeforeCompletion = !abandonQuestBeforeCompletion;
                 pluginInterface.SavePluginConfig(configuration);
@@ -67,7 +67,7 @@ internal sealed class AlliedSocietyJournalComponent
             if (abandonQuestBeforeCompletion)
             {
                 ImGui.SameLine();
-                if (ImGuiComponents.IconButton(FontAwesomeIcon.Trash, removeFromPriorityWhenAbandoned ? ImGuiColors.DalamudOrange : null))
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Trash, removeFromPriorityWhenAbandoned ? ImGuiColors.DalamudOrange : null))
                 {
                     configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeFromPriorityWhenAbandoned;
                     pluginInterface.SavePluginConfig(configuration);

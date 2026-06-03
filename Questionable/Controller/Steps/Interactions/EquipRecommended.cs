@@ -83,7 +83,7 @@ internal static class EquipRecommended
 
                     if (!_checkedOrTriggeredEquipmentUpdate)
                     {
-                    if (!IsAllRecommendedGearEquipped())
+                        if (!IsAllRecommendedGearEquipped())
                         {
                             chatGui.Print("Equipping recommended gear.", CommandHandler.MessageTag, CommandHandler.TagColor);
                             recommendedEquipModule->EquipRecommendedGear();

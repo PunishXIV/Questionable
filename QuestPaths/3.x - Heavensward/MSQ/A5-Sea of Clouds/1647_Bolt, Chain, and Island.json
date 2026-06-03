@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -116,6 +117,7 @@
         }
       ]
     },
+    {"Sequence": 5},
     {
       "Sequence": 255,
       "Steps": [

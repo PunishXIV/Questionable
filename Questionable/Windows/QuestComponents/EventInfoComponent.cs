@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Humanizer;
 using Humanizer.Localisation;
@@ -15,6 +13,7 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class EventInfoComponent
@@ -86,7 +85,7 @@ internal sealed class EventInfoComponent
                 if (startableQuests.Contains(questId) &&
                     _questRegistry.TryGetQuest(questId, out Quest? quest))
                 {
-                    if (ImGuiComponents.IconButton(FontAwesomeIcon.Play))
+                    if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play))
                     {
                         _questController.SetNextQuest(quest);
                         _questController.Start("SeasonalEventSelection");

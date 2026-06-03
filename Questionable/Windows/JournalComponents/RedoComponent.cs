@@ -2,13 +2,13 @@
 using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 using Questionable.Windows.Utils;
 namespace Questionable.Windows.JournalComponents;
 
@@ -28,7 +28,7 @@ internal sealed class RedoComponent
 
         using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
         {
-            if (ImGuiComponents.IconButtonWithText(FontAwesomeIcon.Ban, "Stop NG+"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, "Stop NG+"))
                 RedoUtil.SendRedoCommand(0);
         }
         ImGui.SameLine();

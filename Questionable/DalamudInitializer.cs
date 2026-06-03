@@ -7,7 +7,6 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
-using Questionable.External;
 using Questionable.Windows;
 namespace Questionable;
 

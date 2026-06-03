@@ -14,13 +14,11 @@ using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using Questionable.Controller;
 using Questionable.Data;
-using Questionable.External;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Validation;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
-using static FFXIVClientStructs.FFXIV.Client.LayoutEngine.LayoutManager;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalComponent
@@ -242,7 +240,7 @@ internal sealed class QuestJournalComponent
                 });
             else
                 if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
-                aetheryteFunctions.TeleportAetheryte(aetheryte);
+                    aetheryteFunctions.TeleportAetheryte(aetheryte);
         }
 
         questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));

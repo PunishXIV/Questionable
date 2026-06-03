@@ -6,7 +6,6 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using JetBrains.Annotations;
-using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Functions;

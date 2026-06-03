@@ -342,12 +342,12 @@ internal sealed class AetheryteData
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3? position)
     {
         var outp = TerritoryIds
-                .Where(item => item.Value == territoryId && 
+                .Where(item => item.Value == territoryId &&
                                !item.Key.IsAethernetShard() &&
                                AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
                 .Select(item => item.Key)
                 .OrderBy(key => CalculateDistance(position ?? new(), territoryId, key));
-        Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',',outp) : "no results")}");
+        Svc.Log.Debug($"NearestAetheryteTo: {(outp.Any() ? string.Join(',', outp) : "no results")}");
         return outp.FirstOrNull();
     }
 
@@ -389,6 +389,6 @@ internal sealed class AetheryteData
 
 internal static class AetheryteLocationExtensions
 {
-    [MethodImpl( MethodImplOptions.AggressiveInlining )]
-	internal static Vector3 Position(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.Locations[aetheryteLocation];
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal static Vector3 Position(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.Locations[aetheryteLocation];
 }

@@ -283,25 +283,25 @@ internal sealed class EditorWindow : Window
         );
         List<RendererPlugin.GatheringLocationContext> loadedPoints = _plugin.GatheringLocations;
         bool shownNone = true;
-        if (ImGuiComponents.IconButton(FontAwesomeIcon.Stop))
+        if (ImGuiComponents.IconButton("gprStopBtn", FontAwesomeIcon.Stop))
             _commandManager.ProcessCommand("/vnav stop");
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("vnav stop");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(compact ? FontAwesomeIcon.Expand : FontAwesomeIcon.Compress))
+        if (ImGuiComponents.IconButton("gprCompactBtn", compact ? FontAwesomeIcon.Expand : FontAwesomeIcon.Compress))
             compact = !compact;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("compact");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(_plugin.DistantRange ? FontAwesomeIcon.Binoculars : FontAwesomeIcon.Eye))
+        if (ImGuiComponents.IconButton("gprRangeBtn", _plugin.DistantRange ? FontAwesomeIcon.Binoculars : FontAwesomeIcon.Eye))
             _plugin.DistantRange = !_plugin.DistantRange;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("distant");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(sortByDistance ? FontAwesomeIcon.SortNumericUp : FontAwesomeIcon.SortAlphaDown))
+        if (ImGuiComponents.IconButton("gprSortDistanceBtn", sortByDistance ? FontAwesomeIcon.SortNumericUp : FontAwesomeIcon.SortAlphaDown))
             sortByDistance = !sortByDistance;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("sort by distance/class");
@@ -310,13 +310,13 @@ internal sealed class EditorWindow : Window
         FontAwesomeIcon filterClassIcon = FontAwesomeIcon.Notdef;
         if (filterClass.Equals(FilterClass.Miner)) filterClassIcon = FontAwesomeIcon.HandRock;
         if (filterClass.Equals(FilterClass.Botanist)) filterClassIcon = FontAwesomeIcon.HandPaper;
-        if (ImGuiComponents.IconButton(filterClassIcon))
+        if (ImGuiComponents.IconButton("gprFilterClassBtn", filterClassIcon))
             filterClass = (FilterClass)(((int)filterClass + 1) % Enum.GetValues<FilterClass>().Length);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("filter none/min/btn");
 
         ImGui.SameLine();
-        if (ImGuiComponents.IconButton(showAll ? FontAwesomeIcon.Eye : FontAwesomeIcon.EyeSlash))
+        if (ImGuiComponents.IconButton("gprShowAllBtn", showAll ? FontAwesomeIcon.Eye : FontAwesomeIcon.EyeSlash))
             showAll = !showAll;
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("show nodes inc added");

@@ -36,7 +36,7 @@ internal sealed class AlliedSocietyQuestFunctions
             foreach ((uint issuerDataId, List<QuestInfo> quests) in questsByIssuer)
             {
                 NpcData npcData = new()
-                    { IssuerDataId = issuerDataId, AllQuests = quests };
+                { IssuerDataId = issuerDataId, AllQuests = quests };
                 if (_questsByAlliedSociety.TryGetValue(alliedSociety, out List<NpcData>? existingNpcs))
                     existingNpcs.Add(npcData);
                 else
