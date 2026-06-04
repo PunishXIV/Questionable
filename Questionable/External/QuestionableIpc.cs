@@ -322,14 +322,14 @@ internal sealed class QuestionableIpc : IDisposable
     {
         if (questId >= 131072)
             return "";
-        return _redoUtil.GetChapter(questId).Chapter.ToString() ?? "???";
+        return _redoUtil.GetChapter((ushort)questId).Chapter.ToString() ?? "???";
     }
 
     private Tuple<string, int> RedoLookupIndex(uint questId)
     {
         if (questId >= 131072)
             return new("", -1);
-        RedoIndex outp = _redoUtil.GetChapter(questId);
+        RedoIndex outp = _redoUtil.GetChapter((ushort)questId);
         return new(outp.Chapter.ToString() ?? "???", outp.Index);
     }
 

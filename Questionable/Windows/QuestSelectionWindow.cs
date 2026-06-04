@@ -220,6 +220,11 @@ internal sealed class QuestSelectionWindow : LWindow
                     CopyToClipboard(quest, false);
 
                 ImGui.SameLine();
+#if DEBUG
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
+                    (bool success, string filename) = QuestRegistry.OpenEditor(quest);
+                ImGui.SameLine();
+#endif
 
                 if (knownQuest != null &&
                     knownQuest.FindSequence(0)?.LastStep()?.InteractionType is EInteractionType.AcceptQuest &&

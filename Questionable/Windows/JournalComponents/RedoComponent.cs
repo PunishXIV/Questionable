@@ -4,6 +4,7 @@ using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
@@ -34,6 +35,10 @@ internal sealed class RedoComponent
                 RedoUtil.SendRedoCommand(0);
         }
         ImGui.SameLine();
+        ImGuiComponents.HelpMarker("Quests marked with orange need to be reported as working\n" +
+                                   "or not via the LastChecked system. Ask Aly for more details!",
+                                   FontAwesomeIcon.InfoCircle, ImGuiColors.DalamudOrange);
+        ImGui.SameLine();
         ImGui.Text("Active:");
         ImGui.SameLine();
         redoUtil.TryGetActiveRedoChapter(out var questRedoChapter);
@@ -58,16 +63,28 @@ internal sealed class RedoComponent
             string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
 
+            var checkQuests = redoCache.Quests.Select(q => {
+                questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Model.Quest? quest);
+                if (quest != null && (quest.Root.LastChecked.Date == null || 
+                        (quest.Root.LastChecked.Date != null &&
+                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90
+                        )))
+                    return quest;
+                return null;
+            }).Where(q => q != null).ToArray();
             ImRaii.ColorDisposable? disposable = null;
-#if DEBUG
-            if (redoCache.Quests.Any(q => questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Questionable.Model.Quest? quest) &&
-                                            (quest.Root.LastChecked.Date == null || 
-                                                (quest.Root.LastChecked.Date != null && quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90)
-                                            )))
+            if (checkQuests.Length > 0)
                 disposable = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
-#endif
             bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
             disposable?.Dispose();
+            if (checkQuests.Length > 0 && checkQuests[0] != null && ImGui.IsItemHovered())
+            {
+                using var _ = ImRaii.Tooltip();
+                var index = redoUtil.GetChapter(checkQuests[0]!.Id.Value);
+                ImGui.Text($"Unchecked: #{index.SimplifiedIndex}{(checkQuests.Length > 1 ? "+" : "")} ({checkQuests.Length}/{redoCache.Quests.Count})");
+                using var __ = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+                ImGui.Text(string.Join('\n', checkQuests.Select(q => $"{q?.Info.SimplifiedName} ({q?.Id})")));
+            }
 
             ShowQuestGroupContextMenu($"DrawRedoChapter{chapter.RowId}",
                 redoCache.Quests.Select(q =>

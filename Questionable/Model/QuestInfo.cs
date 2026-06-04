@@ -32,7 +32,7 @@ internal sealed class QuestInfo : IQuestInfo
             569 => " (Pugilist)",
             570 => " (Thaumaturge)",
             673 => " (Ul'dah)",
-            674 => " (Limsa/Gridania)",
+            674 => " (Limsa-Gridania)",
             1432 => " (Gridania)",
             1433 => " (Limsa)",
             1434 => " (Ul'dah)",
@@ -40,7 +40,7 @@ internal sealed class QuestInfo : IQuestInfo
         };
 
         Name = $"{quest.Name}{suffix}";
-        BaseName = quest.Name.ToString();
+        BaseName = Name;
         Level = quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
         IssuerLocation = new(quest.IssuerLocation.Value);
