@@ -1,8 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
   "Comment": "Completes Dye and Glamour unlock quests",
-  "LastChecked": { "Username": "alydev", "Date": "2026-05-19" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-05"},
   "QuestSequence": [
     {
       "Sequence": 0,

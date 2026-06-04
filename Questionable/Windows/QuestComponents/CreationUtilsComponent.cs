@@ -80,7 +80,7 @@ internal sealed class CreationUtilsComponent
                     if (simQ != null)
                         qid = simQ.Id.Value;
 
-                    RedoIndex chapter = redoUtil.GetChapter(qid);
+                    RedoIndex chapter = redoUtil.GetChapter((ushort)qid);
                     string isSim = simQ != null ? " (sim)" : "";
                     if (chapter.Index != -1)
                         ImGui.Text($"NG+{isSim}: {chapter}");

@@ -49,9 +49,10 @@ internal static class LogQuestCompletion
             logger.LogInformation($"Logging quest completion: {Task.Quest?.Id.Value}");
             string path = Path.Combine(pluginInterface.ConfigDirectory.FullName, "QuestCompletionLog.json");
             List<QuestCompletion> data = ReadQuestCompletions();
+            QuestInfo? info = (QuestInfo?)Task.Quest?.Info;
             data.Add(new()
             {
-                Quest = $"{Task.Quest?.Id}_{Task.Quest?.Info.SimplifiedName}",
+                Quest = $"{Task.Quest?.Id}_{info?.Name}",
                 LastChecked = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             });
             WriteQuestCompletions(data);

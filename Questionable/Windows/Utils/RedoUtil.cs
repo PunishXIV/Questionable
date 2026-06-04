@@ -51,17 +51,15 @@ internal unsafe sealed class RedoUtil
         return watch;
     }
 
-    public RedoIndex GetChapter(uint questId)
+    public RedoIndex GetChapter(ushort questId)
     {
         ReadOnlySeString name = (ReadOnlySeString)"";
         int index = -1;
-        if (questId < 65536)
-            questId += 65536;
-        (QuestRedoChapterUI key, RedoCache value) = RedoData.FirstOrDefault(entry => entry.Value.Quests.Any(q => q.RowId == questId));
+        (QuestRedoChapterUI key, RedoCache value) = RedoData.FirstOrDefault(entry => entry.Value.Quests.Any(q => (ushort)q.RowId == questId));
         if (value != null)
         {
             name = value.ChapterUi.ChapterName;
-            index = value.Quests.FindIndex(q => q.RowId == questId);
+            index = value.Quests.FindIndex(q => (ushort)q.RowId == questId);
             if (name.ByteLength == 0 || index == -1)
                 return new(value.ChapterUi, -1);
         }
@@ -109,22 +107,29 @@ internal sealed record RedoIndex(QuestRedoChapterUI Chapter, int Index)
 {
     public QuestRedoChapterUI Chapter = Chapter;
     public int Index = Index;
+    public int SimplifiedIndex
+    {
+        get
+        {
+            int index = Index + 1;
+            if (Chapter.RowId.Equals(1)) // ARR part 1
+            {
+                // handling for citystate starts numbering
+                if (index.InRange(22, 43)) // gridania
+                    index -= 21;
+                if (index.InRange(43, 65)) // uldah
+                    index -= 42;
+                if (index == 65) // call of the sea limsa/gridania
+                    index = 22;
+                if (index == 66) // call of the sea uldah
+                    index = 23;
+            }
+            return index;
+        }
+    }
 
     public override string ToString()
     {
-        int index = Index + 1;
-        if (Chapter.RowId.Equals(1)) // ARR part 1
-        {
-            // handling for citystate starts numbering
-            if (index.InRange(22, 43)) // gridania
-                index -= 21;
-            if (index.InRange(43, 65)) // uldah
-                index -= 42;
-            if (index == 65) // call of the sea limsa/gridania
-                index = 22;
-            if (index == 66) // call of the sea uldah
-                index = 23;
-        }
-        return $"{Chapter.ChapterName} (#{index})";
+        return $"{Chapter.ChapterName} (#{SimplifiedIndex})";
     }
 }

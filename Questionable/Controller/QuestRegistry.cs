@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Plugin;
@@ -22,6 +24,7 @@ using Questionable.PathData;
 using Questionable.QuestPaths;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
+using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
 internal sealed class QuestRegistry
@@ -358,24 +361,123 @@ internal sealed class QuestRegistry
     }
 
     internal static FileInfo AssemblyLocation => Svc.PluginInterface.AssemblyLocation;
-    public static string GetFilename(IQuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
+    public static string GetFilename(IQuestInfo info) => GetFilename((QuestInfo)info);
+    public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.Name}.json";
 #if DEBUG
-    public static (bool, string) CreatePath(IQuestInfo info)
+    public const string TEMPLATE = $$"""
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "QuestSequence": [
     {
-        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
-        if (targetFolder == null)
-            return (false, "couldn't find QuestPaths folder");
-        // TODO move quest paths to directories matching JournalCategory/JournalGenre so paths can be created automatically
-        return (false, "Not implemented");
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": <<issuerId>>,
+          "Position": {
+            "X": <<issuerX>>,
+            "Y": <<issuerY>>,
+            "Z": <<issuerZ>>
+          },
+          "TerritoryId": <<issuerTerritory>>,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": <<issuerId>>,
+          "Position": {
+            "X": <<issuerX>>,
+            "Y": <<issuerY>>,
+            "Z": <<issuerZ>>
+          },
+          "TerritoryId": <<issuerTerritory>>,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
     }
-    public static (bool, string) OpenEditor(IQuestInfo info)
+  ]
+}
+""";
+    public static string? GetFullPath(IQuestInfo info) => GetFullPath((QuestInfo)info);
+    public static string? GetFullPath(QuestInfo info)
     {
-        return OpenEditor(GetFilename(info));
+        var filename = GetFilename(info);
+        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
+        if (targetFolder == null)
+            return null;
+        if (info.JournalGenre == null || info.JournalGenre == uint.MaxValue)
+            return Path.Combine(targetFolder.FullName, "Unsorted", filename);
+        var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
+        var path = $"{genre.Name}";
+        Svc.Log.Debug($"Genre: {genre.Name}");
+        if (genre.JournalCategory.ValueNullable != null)
+        {
+            var category = genre.JournalCategory.Value;
+            Svc.Log.Debug($"Category: {category.Name}");
+            if (category.Name != genre.Name)
+                path = Path.Combine($"{category.Name}", path);
+            if (category.JournalSection.ValueNullable != null)
+            {
+                var section = category.JournalSection.Value;
+                Svc.Log.Debug($"Section: {section.Name}");
+                if (section.Name != category.Name)
+                {
+                    var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
+                    path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
+                }
+            }
+        }
+        if (path == null || path.Length == 0)
+            return Path.Combine(targetFolder.FullName, "Unsorted", filename);
+        return Path.Combine(targetFolder.FullName, path, filename);
+    }
+    public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
+    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, bool dryrun = false)
+    {
+        var path = GetFullPath(info);
+        if (path == null)
+            return (false, null, "No directory path returned");
+        if (!dryrun)
+        {
+            var dirName = Path.GetDirectoryName(path);
+            if (dirName == null)
+                return (false, null, "GetDirectoryName failed");
+            Directory.CreateDirectory(dirName);
+        }
+        FileInfo file = new(path);
+        FileStream? stream = null;
+        if (!dryrun)
+            if (!file.Exists)
+                stream = file.Create();
+        stream ??= file.OpenRead();
+        if (stream.Length > 0)
+            return (true, file, "Path already exists");
+        stream.Dispose();
+        if (!dryrun)
+        {
+            using FileStream writeStream = file.OpenWrite();
+            string output = TEMPLATE.Replace("<<issuerId>>", $"{info.IssuerDataId}")
+                                    .Replace("<<issuerTerritory>>", $"{info.IssuerLocation.Territory.RowId}")
+                                    .Replace("<<issuerX>>", $"{info.IssuerLocation.Position.X.ToString(CultureInfo.InvariantCulture)}")
+                                    .Replace("<<issuerY>>", $"{info.IssuerLocation.Position.Y.ToString(CultureInfo.InvariantCulture)}")
+                                    .Replace("<<issuerZ>>", $"{info.IssuerLocation.Position.Z.ToString(CultureInfo.InvariantCulture)}");
+            writeStream.Write(Encoding.UTF8.GetBytes(output));
+        }
+        return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
+    }
+    public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
+    public static (bool, string) OpenEditor(QuestInfo info)
+    {
+        return OpenEditor(GetFilename(info), info);
     }
     public (bool, string) OpenEditor(ushort questId)
     {
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
-            return OpenEditor(GetFilename(quest.Info));
+            return OpenEditor(GetFilename(quest.Info), (QuestInfo)quest.Info);
         return (false, $"could not get quest from {questId}");
     }
     public unsafe (bool, string) OpenEditor()
@@ -407,17 +509,24 @@ internal sealed class QuestRegistry
         return (false, "could not get tracked quest");
     }
 
-    public static (bool, string) OpenEditor(string filename)
+    public static (bool, string) OpenEditor(string filename, QuestInfo info)
     {
-        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
+        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
         if (targetFolder == null)
             return (false, "couldn't find QuestPaths folder");
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
         if (file == null)
-            return (false, $"couldn't find {filename}");
+        {
+            (bool success, FileInfo? path, string message) = CreatePath(info);
+            Svc.Log.Debug($"CreatePath: {success}, {path}, {message}");
+            if (success && path != null)
+                file = path;
+            else
+                return (false, $"couldn't find {filename}");
+        }
         Process.Start(new ProcessStartInfo
         {
-            FileName = filename,
+            FileName = file.FullName,
             WorkingDirectory = file.DirectoryName,
             UseShellExecute = true
         });
@@ -429,7 +538,7 @@ internal sealed class QuestRegistry
         foreach (FileInfo file in root.GetFiles())
         {
             if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) || // if filename match case insensitive
-                file.Name.StartsWith( filename[..(filename.IndexOf('_')+1)] )) // if ID at start of filename match
+                file.Name.StartsWith(filename[..(filename.IndexOf('_') + 1)])) // if ID at start of filename match
                 return file;
         }
 
