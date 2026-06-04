@@ -4,7 +4,7 @@
     "liza",
     "JerryWester"
   ],
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -31,11 +31,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
           "TerritoryId": 132,
           "InteractionType": "UseItem",
           "ItemId": 6001,
@@ -55,6 +50,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"
