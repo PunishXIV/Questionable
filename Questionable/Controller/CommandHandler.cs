@@ -232,10 +232,11 @@ internal sealed class CommandHandler : IDisposable
                 ImGui.SetClipboardText(lowOutp);
                 _chatGui.Print(lowOutp);
                 break;
-
+#if DEBUG
             case "gen":
                 _questRegistry.OpenEditor();
                 break;
+#endif
 
             //case "abandon-quest":
             //    if (parts.Length > 1)
