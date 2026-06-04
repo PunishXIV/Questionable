@@ -233,6 +233,10 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print(lowOutp);
                 break;
 
+            case "gen":
+                _questRegistry.OpenEditor();
+                break;
+
             //case "abandon-quest":
             //    if (parts.Length > 1)
             //        _questController.AbandonQuest(parts[1]);

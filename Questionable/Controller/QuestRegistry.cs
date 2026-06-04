@@ -381,23 +381,29 @@ internal sealed class QuestRegistry
                         info.IssuerDataId,
                         info.IssuerLocation.Position,
                         info.IssuerLocation.Territory.RowId
-                    ) { }
+                    ) {
+                        Fly = true,
+                        StopDistance = 2
+                    }
                 ]
         };
         List<QuestSequence> sequences = [seq0];
-        for (var i = 0; i < info.NumSequences; i++)
+        for (var i = 0; i <= info.NumSequences; i++)
         {
-            SheetLevel? level = info.ToDoLocations.Count >= i ? info.ToDoLocations[i] : null;
+            SheetLevel? level = i <= info.ToDoLocations.Count ? info.ToDoLocations[i] : null;
             sequences.Add(new QuestSequence
             {
                 Sequence = (byte)(i + 1),
                 Steps = [
                     new QuestStep(
-                        level?.Object != null ? EInteractionType.Interact : EInteractionType.WalkTo,
-                        level?.Object.RowId,
-                        level?.Position,
+                        level?.Object != null && level?.Object.RowId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
+                        level?.Object.RowId != 0 ? level?.Object.RowId : null,
+                        level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
                         level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
-                    )
+                    ) {
+                        Fly = true,
+                        StopDistance = 2
+                    }
                 ]
             });
         }
@@ -410,7 +416,10 @@ internal sealed class QuestRegistry
                         info.ToDoLocations.Last().Object.RowId,
                         info.ToDoLocations.Last().Position,
                         info.ToDoLocations.Last().Territory.RowId
-                    ) { }
+                    ) {
+                        Fly = true,
+                        StopDistance = 2
+                    }
                 ]
         };
         sequences.Add(seq255);
@@ -506,7 +515,7 @@ internal sealed class QuestRegistry
     {
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
             return OpenEditor(GetFilename(quest.Info), (QuestInfo)quest.Info);
-        return (false, $"could not get quest from {questId}");
+        return OpenEditor(_questData.GetQuestInfo(new QuestId(questId)));
     }
     public unsafe (bool, string) OpenEditor()
     {
