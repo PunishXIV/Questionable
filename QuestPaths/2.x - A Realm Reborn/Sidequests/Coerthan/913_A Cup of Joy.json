@@ -1,0 +1,51 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006427,
+          "Position": {
+            "X": 281.072,
+            "Y": 319.084,
+            "Z": -235.787
+          },
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006428,
+          "Position": {
+            "X": 245.434,
+            "Y": 302,
+            "Z": -253.816
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006427,
+          "Position": {
+            "X": 281.072,
+            "Y": 319.084,
+            "Z": -235.787
+          },
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

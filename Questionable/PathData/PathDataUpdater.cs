@@ -45,7 +45,7 @@ internal sealed class PathDataUpdater : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _channel = (pluginInterface.IsTesting || pluginInterface.IsDev) ? "testing" : "latest";
+        _channel = pluginInterface.IsTesting ? "testing" : "latest";
         _pluginVersion = typeof(PathDataUpdater).Assembly.GetName().Version?.ToString() ?? "0";
 
         DiscardStaleBundle();

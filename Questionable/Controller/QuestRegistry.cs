@@ -6,7 +6,6 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Plugin;
@@ -22,8 +21,10 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.PathData;
 using Questionable.QuestPaths;
+using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
+using static Questionable.Model.QuestInfo;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
@@ -87,7 +88,7 @@ internal sealed class QuestRegistry
 
         try
         {
-            LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
+            var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
                 Quest.ESource.UserDirectory);
         }
         catch (Exception e)
@@ -151,13 +152,15 @@ internal sealed class QuestRegistry
             {
                 try
                 {
+                    uint count = 0;
                     foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
                     {
-                        LoadFromDirectory(
+                        count += LoadFromDirectory(
                             new(Path.Combine(pathProjectDirectory.FullName, expansionFolder)),
                             Quest.ESource.ProjectDirectory,
                             LogLevel.Trace);
                     }
+                    _logger.LogInformation("Loaded {Count} quests from project directory", count);
                 }
                 catch (Exception e)
                 {
@@ -293,16 +296,17 @@ internal sealed class QuestRegistry
         _quests[quest.Id] = quest;
     }
 
-    private void LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,
+    private uint LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,
         LogLevel logLevel = LogLevel.Information)
     {
+        uint count = 0;
         if (!directory.Exists)
         {
             _logger.LogInformation("Not loading quests from {DirectoryName} (doesn't exist)", directory);
-            return;
+            return count;
         }
 
-        if (source == Quest.ESource.UserDirectory)
+        if (source == Quest.ESource.UserDirectory || source == Quest.ESource.ProjectDirectory)
             _logger.Log(logLevel, "Loading quests from {DirectoryName}", directory);
         foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
         {
@@ -310,6 +314,7 @@ internal sealed class QuestRegistry
             {
                 using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
                 LoadQuestFromStream(fileInfo.Name, stream, source);
+                count += 1;
             }
             catch (Exception e)
             {
@@ -318,7 +323,8 @@ internal sealed class QuestRegistry
         }
 
         foreach (DirectoryInfo childDirectory in directory.GetDirectories())
-            LoadFromDirectory(childDirectory, source, logLevel);
+            count += LoadFromDirectory(childDirectory, source, logLevel);
+        return count;
     }
 
     private static ElementId? ExtractQuestIdFromName(string resourceName)
@@ -362,46 +368,58 @@ internal sealed class QuestRegistry
 
     internal static FileInfo AssemblyLocation => Svc.PluginInterface.AssemblyLocation;
     public static string GetFilename(IQuestInfo info) => GetFilename((QuestInfo)info);
-    public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.Name}.json";
+    public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
 #if DEBUG
-    public const string TEMPLATE = $$"""
-{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "Anonymous",
-  "QuestSequence": [
+    public static QuestRoot CreateQuestRoot(QuestInfo info)
     {
-      "Sequence": 0,
-      "Steps": [
+        QuestSequence seq0 = new QuestSequence
         {
-          "DataId": <<issuerId>>,
-          "Position": {
-            "X": <<issuerX>>,
-            "Y": <<issuerY>>,
-            "Z": <<issuerZ>>
-          },
-          "TerritoryId": <<issuerTerritory>>,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
-    },
-    {
-      "Sequence": 255,
-      "Steps": [
+            Sequence = 0,
+            Steps = [
+                    new QuestStep(
+                        EInteractionType.AcceptQuest,
+                        info.IssuerDataId,
+                        info.IssuerLocation.Position,
+                        info.IssuerLocation.Territory.RowId
+                    ) { }
+                ]
+        };
+        QuestSequence seq255 = new QuestSequence
         {
-          "DataId": <<issuerId>>,
-          "Position": {
-            "X": <<issuerX>>,
-            "Y": <<issuerY>>,
-            "Z": <<issuerZ>>
-          },
-          "TerritoryId": <<issuerTerritory>>,
-          "InteractionType": "CompleteQuest"
+            Sequence = 255,
+            Steps = [
+                    new QuestStep(
+                        EInteractionType.CompleteQuest,
+                        info.IssuerDataId,
+                        info.IssuerLocation.Position,
+                        info.IssuerLocation.Territory.RowId
+                    ) { }
+                ]
+        };
+        List<QuestSequence> sequences = [seq0];
+        for (var i = 0; i < info.NumSequences; i++)
+        {
+            SheetLevel? level = info.ToDoLocations.Count >= i ? info.ToDoLocations[i] : null;
+            sequences.Add(new QuestSequence
+            {
+                Sequence = (byte)(i + 1),
+                Steps = [
+                    new QuestStep(
+                        level?.Object != null ? EInteractionType.Interact : EInteractionType.WalkTo,
+                        level?.Object.RowId,
+                        level?.Position,
+                        level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
+                    )
+                ]
+            });
         }
-      ]
+        sequences.Add(seq255);
+        return new QuestRoot()
+        {
+            Author = ["Anonymous"],
+            QuestSequence = sequences
+        };
     }
-  ]
-}
-""";
     public static string? GetFullPath(IQuestInfo info) => GetFullPath((QuestInfo)info);
     public static string? GetFullPath(QuestInfo info)
     {
@@ -459,13 +477,23 @@ internal sealed class QuestRegistry
         stream.Dispose();
         if (!dryrun)
         {
+            JsonObject? jsonNode = (JsonObject)JsonSerializer.SerializeToNode(CreateQuestRoot(info), JsonOptions.Default)!;
+            JsonObject newNode = new()
+            {
+                {
+                    "$schema",
+                    "https://qstxiv.github.io/schema/quest-v1.json"
+                }
+            };
+            foreach ((string key, JsonNode? value) in jsonNode)
+                newNode.Add(key, value?.DeepClone());
             using FileStream writeStream = file.OpenWrite();
-            string output = TEMPLATE.Replace("<<issuerId>>", $"{info.IssuerDataId}")
-                                    .Replace("<<issuerTerritory>>", $"{info.IssuerLocation.Territory.RowId}")
-                                    .Replace("<<issuerX>>", $"{info.IssuerLocation.Position.X.ToString(CultureInfo.InvariantCulture)}")
-                                    .Replace("<<issuerY>>", $"{info.IssuerLocation.Position.Y.ToString(CultureInfo.InvariantCulture)}")
-                                    .Replace("<<issuerZ>>", $"{info.IssuerLocation.Position.Z.ToString(CultureInfo.InvariantCulture)}");
-            writeStream.Write(Encoding.UTF8.GetBytes(output));
+            using Utf8JsonWriter writer = new(writeStream, new()
+            {
+                Encoder = JsonOptions.Default.Encoder,
+                Indented = JsonOptions.Default.WriteIndented
+            });
+            newNode.WriteTo(writer, JsonOptions.Default);
         }
         return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
     }
