@@ -108,28 +108,29 @@ internal sealed class PriorityWindow : LWindow
         DrawQuestList();
 
         List<ElementId> clipboardItems = ParseClipboardItems();
-        ImGui.BeginDisabled(clipboardItems.Count == 0);
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, "Import from Clipboard"))
-            ImportFromClipboard(clipboardItems);
-        ImGui.EndDisabled();
-        ImGui.SameLine();
-        ImGui.BeginDisabled(_questController.PriorityManager.IsEmpty);
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
-            ExportToClipboard();
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
-            _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete);
-        ImGui.SameLine();
-
-        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+        using (ImRaii.Disabled(clipboardItems.Count == 0))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
-                _questController.PriorityManager.Clear();
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, "Import from Clipboard"))
+                ImportFromClipboard(clipboardItems);
         }
+        ImGui.SameLine();
+        using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, "Export to Clipboard"))
+                ExportToClipboard();
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, "Remove finished Quests"))
+                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete);
+            ImGui.SameLine();
 
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip("Hold CTRL to enable this button.");
+            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+            {
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+                    _questController.PriorityManager.Clear();
+            }
 
-        ImGui.EndDisabled();
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                ImGui.SetTooltip("Hold CTRL to enable this button.");
+        }
     }
 
     private void DrawQuestList()

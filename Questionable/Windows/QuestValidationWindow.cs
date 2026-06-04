@@ -52,7 +52,7 @@ internal sealed class QuestValidationWindow : LWindow
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 200);
         ImGui.TableSetupColumn("Seq", ImGuiTableColumnFlags.WidthFixed, 30);
         ImGui.TableSetupColumn("Step", ImGuiTableColumnFlags.WidthFixed, 30);
-        ImGui.TableSetupColumn("Issue", ImGuiTableColumnFlags.None, 200);
+        ImGui.TableSetupColumn("Issue", ImGuiTableColumnFlags.WidthStretch, 1.0f);
         ImGui.TableHeadersRow();
 
         foreach (ValidationIssue validationIssue in _questValidator.Issues)

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Utility.Raii;
 using Questionable.Controller;
 namespace Questionable.Windows.QuestComponents;
 
@@ -14,10 +15,11 @@ internal sealed class RemainingTasksComponent(QuestController questController, G
         if (gatheringTasks.Count > 0)
         {
             ImGui.Separator();
-            ImGui.BeginDisabled();
-            foreach (string task in gatheringTasks)
-                ImGui.TextUnformatted($"G: {task}");
-            ImGui.EndDisabled();
+            using (ImRaii.Disabled())
+            {
+                foreach (string task in gatheringTasks)
+                    ImGui.TextUnformatted($"G: {task}");
+            }
         }
         else
         {
@@ -25,10 +27,11 @@ internal sealed class RemainingTasksComponent(QuestController questController, G
             if (remainingTasks.Count > 0)
             {
                 ImGui.Separator();
-                ImGui.BeginDisabled();
-                foreach (string task in remainingTasks)
-                    ImGui.TextUnformatted(task);
-                ImGui.EndDisabled();
+                using (ImRaii.Disabled())
+                {
+                    foreach (string task in remainingTasks)
+                        ImGui.TextUnformatted(task);
+                }
             }
         }
     }
