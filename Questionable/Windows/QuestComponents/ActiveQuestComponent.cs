@@ -519,38 +519,38 @@ internal sealed partial class ActiveQuestComponent
         ImGui.TextColored(ImGuiColors.DalamudRed, "Quest sim active (experimental)");
         ImGui.Text($"Sequence: {simulatedQuest.Sequence}");
 
-        ImGui.BeginDisabled(simulatedQuest.Sequence == 0);
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
+        using (ImRaii.Disabled(simulatedQuest.Sequence == 0))
         {
-            _movementController.Stop();
-            _questController.Stop("Sim-");
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
+            {
+                _movementController.Stop();
+                _questController.Stop("Sim-");
 
-            byte oldSequence = simulatedQuest.Sequence;
-            byte newSequence = simulatedQuest.Quest.Root.QuestSequence
-                .Select(x => x.Sequence)
-                .LastOrDefault(x => x < oldSequence, byte.MinValue);
+                byte oldSequence = simulatedQuest.Sequence;
+                byte newSequence = simulatedQuest.Quest.Root.QuestSequence
+                    .Select(x => x.Sequence)
+                    .LastOrDefault(x => x < oldSequence, byte.MinValue);
 
-            _questController.SimulatedQuest.SetSequence(newSequence);
+                _questController.SimulatedQuest.SetSequence(newSequence);
+            }
         }
-
-        ImGui.EndDisabled();
 
         ImGui.SameLine();
-        ImGui.BeginDisabled(simulatedQuest.Sequence >= 255);
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
+        using (ImRaii.Disabled(simulatedQuest.Sequence >= 255))
         {
-            _movementController.Stop();
-            _questController.Stop("Sim+");
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
+            {
+                _movementController.Stop();
+                _questController.Stop("Sim+");
 
-            byte oldSequence = simulatedQuest.Sequence;
-            byte newSequence = simulatedQuest.Quest.Root.QuestSequence
-                .Select(x => x.Sequence)
-                .FirstOrDefault(x => x > oldSequence, byte.MaxValue);
+                byte oldSequence = simulatedQuest.Sequence;
+                byte newSequence = simulatedQuest.Quest.Root.QuestSequence
+                    .Select(x => x.Sequence)
+                    .FirstOrDefault(x => x > oldSequence, byte.MaxValue);
 
-            simulatedQuest.SetSequence(newSequence);
+                simulatedQuest.SetSequence(newSequence);
+            }
         }
-
-        ImGui.EndDisabled();
 
         QuestSequence? simulatedSequence = simulatedQuest.Quest.FindSequence(simulatedQuest.Sequence);
         if (simulatedSequence != null)
@@ -559,32 +559,32 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.Text($"Step: {simulatedQuest.Step} / {simulatedSequence.Steps.Count - 1}");
 
-            ImGui.BeginDisabled(simulatedQuest.Step == 0);
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
+            using (ImRaii.Disabled(simulatedQuest.Step == 0))
             {
-                _movementController.Stop();
-                _questController.Stop("SimStep-");
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Minus))
+                {
+                    _movementController.Stop();
+                    _questController.Stop("SimStep-");
 
-                simulatedQuest.SetStep(Math.Min(simulatedQuest.Step - 1,
-                    simulatedSequence.Steps.Count - 1));
+                    simulatedQuest.SetStep(Math.Min(simulatedQuest.Step - 1,
+                        simulatedSequence.Steps.Count - 1));
+                }
             }
-
-            ImGui.EndDisabled();
 
             ImGui.SameLine();
-            ImGui.BeginDisabled(simulatedQuest.Step >= simulatedSequence.Steps.Count);
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
+            using (ImRaii.Disabled(simulatedQuest.Step >= simulatedSequence.Steps.Count))
             {
-                _movementController.Stop();
-                _questController.Stop("SimStep+");
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
+                {
+                    _movementController.Stop();
+                    _questController.Stop("SimStep+");
 
-                simulatedQuest.SetStep(
-                    simulatedQuest.Step == simulatedSequence.Steps.Count - 1
-                        ? 255
-                        : (simulatedQuest.Step + 1));
+                    simulatedQuest.SetStep(
+                        simulatedQuest.Step == simulatedSequence.Steps.Count - 1
+                            ? 255
+                            : (simulatedQuest.Step + 1));
+                }
             }
-
-            ImGui.EndDisabled();
 
             if (ImGui.Button("Skip current task"))
                 _questController.SkipSimulatedTask();
