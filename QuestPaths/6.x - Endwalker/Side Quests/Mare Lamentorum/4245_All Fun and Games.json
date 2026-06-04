@@ -1,0 +1,78 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Disabled": true,
+  "Comment": "Cutscene event in seq 2 unsupported",
+  "LastChecked": { "Username": "alydev", "Date": "2026-06-04" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1041797,
+          "Position": {
+            "X": -39.68878,
+            "Y": -132.94643,
+            "Z": -543.23645
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1041798,
+          "Position": {
+            "X": -500.41965,
+            "Y": -154.95404,
+            "Z": -610.3151
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2012595,
+          "Position": {
+            "X": -499.38205,
+            "Y": -154.95538,
+            "Z": -608.69763
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKZE006_04245_Q1_000_000",
+              "Answer": "TEXT_AKTKZE006_04245_A1_000_003",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1041797,
+          "Position": {
+            "X": -39.68878,
+            "Y": -132.94643,
+            "Z": -543.23645
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

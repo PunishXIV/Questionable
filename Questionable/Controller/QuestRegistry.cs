@@ -360,6 +360,14 @@ internal sealed class QuestRegistry
     internal static FileInfo AssemblyLocation => Svc.PluginInterface.AssemblyLocation;
     public static string GetFilename(IQuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
 #if DEBUG
+    public static (bool, string) CreatePath(IQuestInfo info)
+    {
+        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
+        if (targetFolder == null)
+            return (false, "couldn't find QuestPaths folder");
+        // TODO move quest paths to directories matching JournalCategory/JournalGenre so paths can be created automatically
+        return (false, "Not implemented");
+    }
     public static (bool, string) OpenEditor(IQuestInfo info)
     {
         return OpenEditor(GetFilename(info));

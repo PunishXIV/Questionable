@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -21,9 +22,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
+              "InTerritory": [419]
             }
           }
         }
@@ -32,6 +31,19 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "TerritoryId": 419,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [419] },
+            "StepIf": { "InTerritory": [419] }
+          }
+        },
         {
           "DataId": 1012263,
           "Position": {

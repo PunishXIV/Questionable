@@ -1,20 +1,25 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "JerryWester",
+  "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1012138,
+          "DataId": 1012220,
           "Position": {
-            "X": 19.272095,
-            "Y": 38.43,
-            "Z": 15.854065
+            "X": 151.93408,
+            "Y": -14.528959,
+            "Z": 16.189758
           },
-          "TerritoryId": 463,
-          "InteractionType": "AcceptQuest"
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
         }
       ]
     },
@@ -22,14 +27,13 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1012422,
+          "DataId": 1012222,
           "Position": {
-            "X": -475.79156,
-            "Y": 137.42972,
-            "Z": 701.4724
+            "X": 202.38037,
+            "Y": -5.3999662,
+            "Z": -58.9151
           },
-          "StopDistance": 7,
-          "TerritoryId": 399,
+          "TerritoryId": 419,
           "InteractionType": "Interact"
         }
       ]
@@ -38,19 +42,17 @@
       "Sequence": 2,
       "Steps": [
         {
-          "DataId": 1012380,
+          "DataId": 1014578,
           "Position": {
-            "X": 124.46777,
-            "Y": 24.458836,
-            "Z": 0.47296143
+            "X": -148.02783,
+            "Y": 16.999998,
+            "Z": -48.844177
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] Skysteel Manufactory"
           ]
         }
       ]
@@ -59,16 +61,16 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1013163,
+          "DataId": 1012220,
           "Position": {
-            "X": 167.0404,
-            "Y": -14.313367,
-            "Z": 51.285522
+            "X": 151.93408,
+            "Y": -14.528959,
+            "Z": 16.189758
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] Skysteel Manufactory",
             "[Ishgard] Athenaeum Astrologicum"
           ]
         }
