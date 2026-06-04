@@ -153,7 +153,9 @@
             "Z": 351.61353
           },
           "TerritoryId": 135,
-          "InteractionType": "SinglePlayerDuty"
+          "InteractionType": "SinglePlayerDuty",
+          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

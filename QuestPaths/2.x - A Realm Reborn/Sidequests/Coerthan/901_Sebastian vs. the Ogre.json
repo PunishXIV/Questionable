@@ -1,19 +1,18 @@
-﻿{
+{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-05"},
+  "Author": "Anonymous",
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1001426,
+          "DataId": 1006401,
           "Position": {
-            "X": 123.33862,
-            "Y": 30.999996,
-            "Z": -384.9394
+            "X": 257.808,
+            "Y": 303.159,
+            "Z": -204.396
           },
-          "TerritoryId": 141,
+          "TerritoryId": 155,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -22,13 +21,13 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1001426,
+          "DataId": 1006401,
           "Position": {
-            "X": 123.33862,
-            "Y": 30.999996,
-            "Z": -384.9394
+            "X": 257.808,
+            "Y": 303.159,
+            "Z": -204.396
           },
-          "TerritoryId": 141,
+          "TerritoryId": 155,
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -197,6 +197,8 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
+          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "Fly": true
         }
