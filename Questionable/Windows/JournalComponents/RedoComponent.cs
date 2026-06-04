@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
@@ -55,7 +57,17 @@ internal sealed class RedoComponent
             chapterName = chapterName.Length > 0 ? chapterName : $"???";
             string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
+
+            ImRaii.ColorDisposable? disposable = null;
+#if DEBUG
+            if (redoCache.Quests.Any(q => questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Questionable.Model.Quest? quest) &&
+                                            (quest.Root.LastChecked.Date == null || 
+                                                (quest.Root.LastChecked.Date != null && quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90)
+                                            )))
+                disposable = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+#endif
             bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
+            disposable?.Dispose();
 
             ShowQuestGroupContextMenu($"DrawRedoChapter{chapter.RowId}",
                 redoCache.Quests.Select(q =>

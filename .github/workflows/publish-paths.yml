@@ -127,7 +127,7 @@ jobs:
         if: steps.channel.outputs.channel == 'latest'
         uses: cstuder/apprise-ga@master
         env:
-          APPRISE_URL: "${{ secrets.APPRISE_URL }}"
+          APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/paths-${{ steps.channel.outputs.channel }}"
         with:
           title: Questionable Paths v${{ steps.meta.outputs.data_version }}
           message: New path data bundle has been released. This will be automatically downloaded by the plugin, or you can click "Check for path updates now" in Settings>Advanced.

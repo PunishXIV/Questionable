@@ -1,2 +1,3 @@
 - Bug: Inline quest pickups were broken by NG+ fixes.
   - This mainly affects aether current quests, but it also broke things like unlocking the other Gridania gate, unlocking side features like glamour or materia, things like that. If you're experiencing issues, you may need to do those quests manually on characters that were leveled over the past two days. -alydev
+- Feature: Add lastchecked support to journal prog NG+ -alydev
