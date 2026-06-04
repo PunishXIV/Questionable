@@ -1,19 +1,19 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "JerryWester",
+  "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1012138,
+          "DataId": 1014704,
           "Position": {
-            "X": 19.272095,
-            "Y": 38.43,
-            "Z": 15.854065
+            "X": -37.43042,
+            "Y": 5.474268,
+            "Z": 37.55237
           },
-          "TerritoryId": 463,
+          "TerritoryId": 418,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -22,14 +22,13 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1012422,
+          "DataId": 1014705,
           "Position": {
-            "X": -475.79156,
-            "Y": 137.42972,
-            "Z": 701.4724
+            "X": -84.18408,
+            "Y": 15.23318,
+            "Z": -43.533997
           },
-          "StopDistance": 7,
-          "TerritoryId": 399,
+          "TerritoryId": 418,
           "InteractionType": "Interact"
         }
       ]
@@ -38,18 +37,16 @@
       "Sequence": 2,
       "Steps": [
         {
-          "DataId": 1012380,
+          "DataId": 1014706,
           "Position": {
-            "X": 124.46777,
-            "Y": 24.458836,
-            "Z": 0.47296143
+            "X": 58.6709,
+            "Y": 24.07172,
+            "Z": -16.281433
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory",
             "[Ishgard] The Forgotten Knight"
           ]
         }
@@ -59,17 +56,17 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1013163,
+          "DataId": 1012213,
           "Position": {
-            "X": 167.0404,
-            "Y": -14.313367,
-            "Z": 51.285522
+            "X": -166.39972,
+            "Y": 14.95313,
+            "Z": -175.7077
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
             "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Athenaeum Astrologicum"
+            "[Ishgard] Saint Reymanaud's Cathedral"
           ]
         }
       ]

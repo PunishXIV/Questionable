@@ -53,11 +53,12 @@
 				{
 					"DataId": 1011233,
 					"Position": {
-						"X": 518.9136,
-						"Y": 217.95152,
-						"Z": 769.9243
-					},
-					"TerritoryId": 397,
+            "X": 517.557,
+            "Y": 217.95152,
+            "Z": 770.0725
+          },
+          "TerritoryId": 397,
+          "StopDistance": 1,
 					"InteractionType": "Interact",
 					"Fly": true,
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 128],

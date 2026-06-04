@@ -103,7 +103,8 @@ internal sealed unsafe class QuestFunctions
             {
                 chatGui.Print("This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n" +
                                "This should have happened as part of the quest \"Close To Home\" if starting in Gridania, or \"The Ul'dahn/Lominsan Envoy\" for the other cities.\n" +
-                               "Please unlock the aethernet shards, or complete the current quest sequence manually before continuing.");
+                               "Please unlock the aethernet shards, or complete the current quest sequence manually before continuing.",
+                               CommandHandler.MessageTag, CommandHandler.TagColor);
             }
 
             QuestId broadeningHorizons = new(802);

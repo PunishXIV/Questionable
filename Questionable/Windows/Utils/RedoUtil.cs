@@ -75,11 +75,11 @@ internal unsafe sealed class RedoUtil
         GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex);
     }
 
-    internal bool IsRedoActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive();
+    internal bool IsRedoActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive() && TryGetActiveRedoChapter(out var _) == true;
 
-    internal QuestRedoChapterUI? GetActiveRedoChapter()
+    internal bool TryGetActiveRedoChapter(out QuestRedoChapterUI? questRedoChapter)
     {
-        if (IsRedoActive() && _gameGui.TryGetAddonByName<AtkUnitBase>("QuestRedoHud", out AtkUnitBase* addon) &&
+        if (_gameGui.TryGetAddonByName<AtkUnitBase>("QuestRedoHud", out AtkUnitBase* addon) &&
                     addon->AtkValuesCount == 4 &&
                     // 0 seems to be active,
                     // 1 seems to be paused,
@@ -91,9 +91,11 @@ internal unsafe sealed class RedoUtil
             // redoHud+44 is chapter
             // redoHud+46 is quest
             ushort chapter = MemoryHelper.Read<ushort>((nint)QuestRedoHud + 44);
-            return RedoData.Where(kvp => kvp.Key.RowId == chapter).Select(kvp => kvp.Value.ChapterUi).FirstOrDefault();
+            questRedoChapter = RedoData.Where(kvp => kvp.Key.RowId == chapter).Select(kvp => kvp.Value.ChapterUi).FirstOrDefault();
+            return true;
         }
-        return null;
+        questRedoChapter = null;
+        return false;
     }
 }
 

@@ -160,7 +160,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
         ImGui.TableSetupColumn("Id", ImGuiTableColumnFlags.WidthFixed, 50 * ImGui.GetIO().FontGlobalScale);
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, statusIconSize);
-        ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.None, 200);
+        ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthStretch, 1.0f);
         ImGui.TableSetupColumn("Actions", ImGuiTableColumnFlags.WidthFixed, actionIconSize);
         ImGui.TableHeadersRow();
 

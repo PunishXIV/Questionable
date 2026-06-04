@@ -34,8 +34,8 @@ internal sealed class RedoComponent
         ImGui.SameLine();
         ImGui.Text("Active:");
         ImGui.SameLine();
-        if (redoUtil.IsRedoActive())
-            ImGui.Text(redoUtil.GetActiveRedoChapter()?.ChapterName.ToString() ?? "None");
+        redoUtil.TryGetActiveRedoChapter(out var questRedoChapter);
+        ImGui.Text(questRedoChapter?.ChapterName.ToString() ?? "None");
 
         using ImRaii.TableDisposable table = ImRaii.Table("RedoTable", 3, ImGuiTableFlags.NoSavedSettings);
         if (!table)
@@ -62,7 +62,7 @@ internal sealed class RedoComponent
                 {
                     questData.TryGetQuestInfo(new QuestId((ushort)q.RowId), out IQuestInfo? qInfo);
                     return qInfo;
-                }).OfType<IQuestInfo>().ToList(), redoCache);
+                }).OfType<IQuestInfo>().ToList(), redoCache, categoryName.StartsWith("???") || chapterName.StartsWith("???"));
 
             using (ImRaii.PushFont(UiBuilder.MonoFont))
             {
@@ -97,7 +97,7 @@ internal sealed class RedoComponent
         }
     }
 
-    public void ShowQuestGroupContextMenu(string note, List<IQuestInfo> quests, RedoCache redoCache)
+    public void ShowQuestGroupContextMenu(string note, List<IQuestInfo> quests, RedoCache redoCache, bool startDisabled)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
             ImGui.OpenPopup($"##QuestGroupPopup{note}");
@@ -122,10 +122,13 @@ internal sealed class RedoComponent
             if (quests.Count >= 1)
                 questController.SimulateQuest(quests[0], 0, 0);
 #if DEBUG
-        using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
+        if (!startDisabled)
         {
-            if (ImGui.MenuItem("Start NG+ here") && redoCache.ChapterUi.RowId != 0)
-                RedoUtil.SendRedoCommand(redoCache.ChapterUi);
+            using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
+            {
+                if (ImGui.MenuItem("Start NG+ here") && redoCache.ChapterUi.RowId != 0)
+                    RedoUtil.SendRedoCommand(redoCache.ChapterUi);
+            }
         }
 #endif
     }
