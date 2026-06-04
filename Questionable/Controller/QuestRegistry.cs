@@ -372,24 +372,12 @@ internal sealed class QuestRegistry
 #if DEBUG
     public static QuestRoot CreateQuestRoot(QuestInfo info)
     {
-        QuestSequence seq0 = new QuestSequence
+        QuestSequence seq0 = new()
         {
             Sequence = 0,
             Steps = [
                     new QuestStep(
                         EInteractionType.AcceptQuest,
-                        info.IssuerDataId,
-                        info.IssuerLocation.Position,
-                        info.IssuerLocation.Territory.RowId
-                    ) { }
-                ]
-        };
-        QuestSequence seq255 = new QuestSequence
-        {
-            Sequence = 255,
-            Steps = [
-                    new QuestStep(
-                        EInteractionType.CompleteQuest,
                         info.IssuerDataId,
                         info.IssuerLocation.Position,
                         info.IssuerLocation.Territory.RowId
@@ -413,6 +401,18 @@ internal sealed class QuestRegistry
                 ]
             });
         }
+        QuestSequence seq255 = new()
+        {
+            Sequence = 255,
+            Steps = [
+                    new QuestStep(
+                        EInteractionType.CompleteQuest,
+                        info.ToDoLocations.Last().Object.RowId,
+                        info.ToDoLocations.Last().Position,
+                        info.ToDoLocations.Last().Territory.RowId
+                    ) { }
+                ]
+        };
         sequences.Add(seq255);
         return new QuestRoot()
         {
