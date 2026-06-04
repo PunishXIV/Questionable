@@ -36,11 +36,11 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1006427,
+          "DataId": 1006429,
           "Position": {
-            "X": 281.072,
-            "Y": 319.084,
-            "Z": -235.787
+            "X": 196.105,
+            "Y": 303.1,
+            "Z": -285.073
           },
           "TerritoryId": 155,
           "InteractionType": "CompleteQuest"
