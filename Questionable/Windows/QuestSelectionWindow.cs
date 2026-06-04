@@ -154,8 +154,9 @@ internal sealed class QuestSelectionWindow : LWindow
         float actionIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
                                ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
                                ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                               6 * ImGui.GetStyle().FramePadding.X +
-                               2 * ImGui.GetStyle().ItemSpacing.X;
+                               ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
+                               8 * ImGui.GetStyle().FramePadding.X +
+                               3 * ImGui.GetStyle().ItemSpacing.X;
         ImGui.PopFont();
 
         ImGui.TableSetupColumn("Id", ImGuiTableColumnFlags.WidthFixed, 50 * ImGui.GetIO().FontGlobalScale);

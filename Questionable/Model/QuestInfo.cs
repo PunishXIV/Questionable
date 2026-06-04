@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using System.Numerics;
+using Dalamud.Game.Text;
 using ECommons.DalamudServices;
 using ECommons.ExcelServices;
+using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 using Questionable.Utils;
@@ -73,6 +75,8 @@ internal sealed class QuestInfo : IQuestInfo
 
         IsMainScenarioQuest = quest.JournalGenre.ValueNullable?.Icon == 61412;
         CanCancel = quest.CanCancel;
+        NumSequences = quest.TodoParams[0].ToDoCompleteSeq;
+        ToDoLocations = quest.TodoParams.SelectMany(param => param.ToDoLocation).Where(rowRef => rowRef.RowId != 0).Select(rowRef => new SheetLevel(rowRef.Value)).ToList();
         CompletesInstantly = quest.TodoParams[0].ToDoCompleteSeq == 0;
         PreviousInstanceContent = quest.InstanceContent.Select(x => (ushort)x.RowId).Where(x => x != 0).ToList();
         PreviousInstanceContentJoin = (EQuestJoin)quest.InstanceContentJoin;
@@ -100,6 +104,8 @@ internal sealed class QuestInfo : IQuestInfo
     public EQuestJoin QuestLockJoin { get; private set; }
     public List<ushort> PreviousInstanceContent { get; }
     public EQuestJoin PreviousInstanceContentJoin { get; }
+    public byte NumSequences { get; }
+    public List<SheetLevel> ToDoLocations { get; }
     public bool CompletesInstantly { get; }
     public GrandCompany GrandCompany { get; }
     public byte AlliedSocietyQuestGroup { get; }
@@ -127,6 +133,18 @@ internal sealed class QuestInfo : IQuestInfo
     public EAlliedSociety AlliedSociety { get; }
     public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }
+    public string SimplifiedName => BaseName
+        .Replace(".", "", StringComparison.Ordinal)
+        .Replace("*", "", StringComparison.Ordinal)
+        .Replace("\"", "", StringComparison.Ordinal)
+        .Replace("/", "", StringComparison.Ordinal)
+        .Replace("\\", "", StringComparison.Ordinal)
+        .Replace("<", "", StringComparison.Ordinal)
+        .Replace(">", "", StringComparison.Ordinal)
+        .Replace("|", "", StringComparison.Ordinal)
+        .Replace(":", "", StringComparison.Ordinal)
+        .Replace("?", "", StringComparison.Ordinal)
+        .TrimStart(SeIconChar.QuestSync.ToIconChar(), SeIconChar.QuestRepeatable.ToIconChar(), ' ');
 
     private static QuestId ReplaceOldQuestIds(QuestId questId)
     {
@@ -151,6 +169,7 @@ internal sealed class QuestInfo : IQuestInfo
     public readonly struct SheetLevel(Level level)
     {
         public readonly Vector3 Position = level.AsVector3();
+        public readonly RowRef Object => level.Object;
         public readonly float X => Position.X;
         public readonly float Y => Position.Y;
         public readonly float Z => Position.Z;
