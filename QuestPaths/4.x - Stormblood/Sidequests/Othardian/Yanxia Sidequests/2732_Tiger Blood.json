@@ -1,0 +1,58 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019259,
+          "Position": {
+            "X": 405.487,
+            "Y": 67.4575,
+            "Z": -61.5127
+          },
+          "StopDistance": 2,
+          "TerritoryId": 614,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 780.1987,
+            "Y": 100.14141,
+            "Z": -248.58551
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [6680],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019259,
+          "Position": {
+            "X": 405.487,
+            "Y": 67.4575,
+            "Z": -61.5127
+          },
+          "StopDistance": 2,
+          "TerritoryId": 614,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

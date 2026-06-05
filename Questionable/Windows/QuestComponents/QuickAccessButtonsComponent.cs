@@ -108,7 +108,9 @@ internal sealed class QuickAccessButtonsComponent
             {
                 output = JsonSerializer.Serialize(questCompletions, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print("List of completed quests has been copied to clipboard.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                Svc.Chat.Print("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
+                        "'/qst clearlog' to reset the log.\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
+                        CommandHandler.MessageTag, CommandHandler.TagColor);
             }
             else
             {

@@ -10,6 +10,7 @@ using ECommons.DalamudServices;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Utils;
+using static Questionable.Controller.Steps.Shared.LogQuestCompletion;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -52,7 +53,7 @@ internal static class LogQuestCompletion
             QuestInfo? info = (QuestInfo?)Task.Quest?.Info;
             data.Add(new()
             {
-                Quest = $"{Task.Quest?.Id}_{info?.Name}",
+                Quest = $"{info?.QuestId}_{info?.SimplifiedName}",
                 LastChecked = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             });
             WriteQuestCompletions(data);
@@ -96,6 +97,17 @@ internal static class LogQuestCompletion
             Indented = JsonOptions.Default.WriteIndented
         });
         node.WriteTo(writer, JsonOptions.Default);
+    }
 
+    internal static void ClearQuestCompletions()
+    { 
+        JsonNode? node = JsonSerializer.SerializeToNode(new List<QuestCompletion>(), JsonOptions.Default)!;
+        using FileStream writeStream = File.Create(LogPath);
+        using Utf8JsonWriter writer = new(writeStream, new()
+        {
+            Encoder = JsonOptions.Default.Encoder,
+            Indented = JsonOptions.Default.WriteIndented
+        });
+        node.WriteTo(writer, JsonOptions.Default);
     }
 }
