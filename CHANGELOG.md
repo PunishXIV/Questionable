@@ -1,1 +1,2 @@
 - Better pathfinding for warring triad unlocks
+- landing fixes for 3673
