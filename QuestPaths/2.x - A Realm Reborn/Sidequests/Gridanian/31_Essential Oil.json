@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-05"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000705,
+          "Position": {
+            "X": -243.152,
+            "Y": -4.00016,
+            "Z": -7.91948
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 111.66177,
+            "Y": 16.16937,
+            "Z": -267.19836
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [49],
+          "AethernetShortcut": [
+            "[Gridania] Conjurers' Guild",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000705,
+          "Position": {
+            "X": -243.152,
+            "Y": -4.00016,
+            "Z": -7.91948
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
