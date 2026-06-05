@@ -10,6 +10,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Windows;
@@ -153,6 +154,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print("/qst priority - toggles the Priority window", MessageTag, TagColor);
                 _chatGui.Print("/qst mountid - prints information about your current mount", MessageTag, TagColor);
                 _chatGui.Print("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)", MessageTag, TagColor);
+                _chatGui.Print("/qst clearlog - clears QuestCompletionLog.json", MessageTag, TagColor);
                 break;
 
             case "c":
@@ -240,6 +242,10 @@ internal sealed class CommandHandler : IDisposable
                 _questRegistry.OpenEditor();
                 break;
 #endif
+            case "clearlog":
+                LogQuestCompletion.ClearQuestCompletions();
+                _chatGui.PrintError("Completions log has been cleared");
+                break;
 
             //case "abandon-quest":
             //    if (parts.Length > 1)
