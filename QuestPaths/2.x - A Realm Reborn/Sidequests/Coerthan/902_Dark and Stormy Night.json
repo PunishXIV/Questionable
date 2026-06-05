@@ -1,0 +1,150 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006402,
+          "Position": {
+            "X": 242.366,
+            "Y": 325.315,
+            "Z": -151.474
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 242.50893,
+            "Y": 324.0274,
+            "Z": -162.07333
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 242.42769,
+              "Y": 302.1477,
+              "Z": -174.5057
+            }
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 242.50893,
+                  "Y": 324.0274,
+                  "Z": -162.07333
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2002130,
+          "Position": {
+            "X": 240.16174,
+            "Y": 301.9912,
+            "Z": -184.83258
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UseItem",
+          "ItemId": 2000706,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"Low": 8}]
+        },
+        {
+          "DataId": 2002126,
+          "Position": {
+            "X": 218.55493,
+            "Y": 302.6322,
+            "Z": -161.91351
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UseItem",
+          "ItemId": 2000706,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 8}]
+        },
+        {
+          "DataId": 2002127,
+          "Position": {
+            "X": 185.56494,
+            "Y": 302.4795,
+            "Z": -167.95612
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UseItem",
+          "ItemId": 2000706,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 4}]
+        },
+        {
+          "DataId": 2002128,
+          "Position": {
+            "X": 215.53369,
+            "Y": 311.97058,
+            "Z": -227.28314
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UseItem",
+          "ItemId": 2000706,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 2}]
+        },
+        {
+          "DataId": 2002129,
+          "Position": {
+            "X": 232.56274,
+            "Y": 311.97058,
+            "Z": -226.79486
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UseItem",
+          "ItemId": 2000706
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 205.777,
+            "Y": 327.771,
+            "Z": -194.394
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006402,
+          "Position": {
+            "X": 242.366,
+            "Y": 325.315,
+            "Z": -151.474
+          },
+          "StopDistance": 2,
+          "TerritoryId": 155,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
