@@ -103,10 +103,10 @@ internal sealed class QuestSelectionWindow : LWindow
 
         IsOpenAndUncollapsed = _quests.Count > 0;
     }
-
-    public unsafe void OpenForCurrentZone()
+    
+    public void OpenForCurrentZone() => OpenForZone(_clientState.TerritoryType);
+    public unsafe void OpenForZone(uint territoryId)
     {
-        uint territoryId = _clientState.TerritoryType;
         string territoryName = _territoryData.GetNameAndId(territoryId);
         WindowName = $"Quests starting in {territoryName}{WindowId}";
 

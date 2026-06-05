@@ -29,6 +29,7 @@ internal sealed class EventInfoComponent
     private readonly Configuration _configuration = configuration;
     private readonly List<EventQuest> _eventQuests =
     [
+        // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
         new("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
         new("Make It Rain 2026", [new QuestId(5443)], AtDailyReset(new(2026,6,24))) // May 25, 2026 at 3pm (GMT)
         //new("Valentione's Day 2026", [new QuestId(5325)], AtDailyReset(new(2026, 2, 16))) // January 15, 2026 at 6:59 a.m. (PST) 
@@ -82,6 +83,13 @@ internal sealed class EventInfoComponent
             using (ImRaii.PushId($"##EventQuestSelection{questId}"))
             {
                 string questName = _questData.GetQuestInfo(questId).Name;
+
+                bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip("Add to priority quests");
+                if (priority)
+                    _questController.PriorityManager.Add(questId);
+                ImGui.SameLine();
                 if (startableQuests.Contains(questId) &&
                     _questRegistry.TryGetQuest(questId, out Quest? quest))
                 {
@@ -92,14 +100,6 @@ internal sealed class EventInfoComponent
                     }
 
                     bool hovered = ImGui.IsItemHovered();
-
-                    ImGui.SameLine();
-
-                    bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip("Add to priority quests");
-                    if (priority)
-                        _questController.PriorityManager.Add(quest);
 
                     ImGui.SameLine();
                     ImGui.AlignTextToFramePadding();

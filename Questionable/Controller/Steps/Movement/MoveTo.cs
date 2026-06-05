@@ -52,9 +52,20 @@ internal static class MoveTo
             }
 
             if (clientState.TerritoryType != step.TerritoryId)
+            {
                 yield return new AetheryteShortcut.Task(step, quest.Id, EAetheryteLocation.None, step.TerritoryId);
-            yield return new WaitCondition.Task(() => clientState.TerritoryType == step.TerritoryId,
-                $"Wait(territory: {territoryData.GetNameAndId(step.TerritoryId)})");
+                if (step.AethernetShortcut is { })
+                {
+                    var fromTerritory = aetheryteData.TerritoryIds[step.AethernetShortcut.From];
+                    var toTerritory = aetheryteData.TerritoryIds[step.AethernetShortcut.To];
+                    yield return new WaitCondition.Task(() => clientState.TerritoryType == fromTerritory || clientState.TerritoryType == toTerritory,
+                    $"Wait(territori: {territoryData.GetNameAndId(fromTerritory)}|{territoryData.GetNameAndId(toTerritory)})");
+                    yield return new Shared.AethernetShortcut.Task(step.AethernetShortcut.From, step.AethernetShortcut.To);
+                }
+            }
+            else
+                yield return new WaitCondition.Task(() => clientState.TerritoryType == step.TerritoryId,
+                    $"Wait(territoro: {territoryData.GetNameAndId(step.TerritoryId)})");
 
             if (!step.DisableNavmesh)
                 yield return new WaitNavmesh.Task();

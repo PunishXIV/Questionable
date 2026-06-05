@@ -148,6 +148,9 @@ internal sealed class QuestData
         // workaround because the game doesn't require completion of the CT questline through normal means
         AddPreviousQuest(new(425), new(495));
 
+        // white wolf gate
+        AddPreviousQuest(new(803), new(802));
+
         // "In order to undertake this quest" [...]
         const int mountaintopDiplomacy = 1619;
         const int inscrutableTastes = 2095;
@@ -217,6 +220,7 @@ internal sealed class QuestData
         AddPreviousQuest(new(4966), new(inscrutableTastes));
         AddPreviousQuest(new(5000), new(4908));
         AddPreviousQuest(new(5001), new(4912));
+        AddPreviousQuest(new(5443), new(434));
 
         // "In order to proceed with this quest" [...]
         /* my little chocobo
