@@ -239,7 +239,8 @@ internal static class AetheryteShortcut
                                 return true;
                             }
 
-                            if (!Task.Step.InteractionType.Equals(EInteractionType.AttuneAetheryte))
+                            if (!Task.Step.InteractionType.Equals(EInteractionType.AttuneAetheryte) &&
+                                Task.Step.TerritoryId != clientState.TerritoryType)
                             {
                                 logger.LogInformation("No step position, teleporting to aetheryte");
                                 return false;

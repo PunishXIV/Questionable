@@ -94,6 +94,14 @@ internal sealed class EventInfoComponent
                     bool hovered = ImGui.IsItemHovered();
 
                     ImGui.SameLine();
+
+                    bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip("Add to priority quests");
+                    if (priority)
+                        _questController.PriorityManager.Add(quest);
+
+                    ImGui.SameLine();
                     ImGui.AlignTextToFramePadding();
                     ImGui.Text(questName);
                     hovered |= ImGui.IsItemHovered();

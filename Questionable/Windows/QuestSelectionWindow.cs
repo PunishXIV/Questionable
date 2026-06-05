@@ -151,12 +151,10 @@ internal sealed class QuestSelectionWindow : LWindow
         }
 
         ImGui.PushFont(UiBuilder.IconFont);
-        float actionIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                               ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                               ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                               ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X +
-                               8 * ImGui.GetStyle().FramePadding.X +
-                               3 * ImGui.GetStyle().ItemSpacing.X;
+        uint buttonCount = 5;
+        float actionIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X * buttonCount +
+                               ImGui.GetStyle().FramePadding.X * buttonCount*2 +
+                               ImGui.GetStyle().ItemSpacing.X * buttonCount;
         ImGui.PopFont();
 
         ImGui.TableSetupColumn("Id", ImGuiTableColumnFlags.WidthFixed, 50 * ImGui.GetIO().FontGlobalScale);
@@ -210,7 +208,16 @@ internal sealed class QuestSelectionWindow : LWindow
 
             if (ImGui.TableNextColumn())
             {
+                // If button is added/removed, update buttonCount
+
                 using ImRaii.IdDisposable id = ImRaii.PushId(questId);
+
+                bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip("Add to priority quests");
+                if (priority)
+                    _questController.PriorityManager.Add(quest.QuestId);
+                ImGui.SameLine();
 
                 bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
                 if (ImGui.IsItemHovered())
@@ -219,7 +226,6 @@ internal sealed class QuestSelectionWindow : LWindow
                     CopyToClipboard(quest, true);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
                     CopyToClipboard(quest, false);
-
                 ImGui.SameLine();
 #if DEBUG
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
@@ -241,7 +247,6 @@ internal sealed class QuestSelectionWindow : LWindow
                             _questController.SetNextQuest(knownQuest);
                             _questController.Start("QuestSelectionWindow");
                         }
-
                         ImGui.SameLine();
 
                         bool setNextQuest = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleRight);

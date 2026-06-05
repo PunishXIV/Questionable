@@ -507,10 +507,7 @@ internal sealed class QuestRegistry
         return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
     }
     public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
-    public static (bool, string) OpenEditor(QuestInfo info)
-    {
-        return OpenEditor(GetFilename(info), info);
-    }
+    public static (bool, string) OpenEditor(QuestInfo info) => OpenEditor(GetFilename(info), info);
     public (bool, string) OpenEditor(ushort questId)
     {
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
