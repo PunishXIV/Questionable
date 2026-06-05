@@ -62,6 +62,27 @@
       "Sequence": 1,
       "Steps": [
         {
+          "Position": {
+            "X": -523.8519,
+            "Y": 22.025784,
+            "Z": -512.0333
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -231.93713,
+            "Y": 303.47726,
+            "Z": -311.9725
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
           "DataId": 1016631,
           "Position": {
             "X": 209.12476,
@@ -70,7 +91,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azys Lla - Helix",
           "Fly": true
         }
       ]

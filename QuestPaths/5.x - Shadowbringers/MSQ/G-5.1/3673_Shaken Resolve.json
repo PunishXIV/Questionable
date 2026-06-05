@@ -61,6 +61,16 @@
           "Mount": true
         },
         {
+          "Position": {
+            "X": 51.626358,
+            "Y": 50,
+            "Z": -774.2433
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
           "DataId": 1018433,
           "Position": {
             "X": 50.766724,
