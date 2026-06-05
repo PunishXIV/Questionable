@@ -1,1 +1,1 @@
-- Bug: fix 522 stuck in airship landing -alydev
+- Better pathfinding for warring triad unlocks
