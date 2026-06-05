@@ -63,13 +63,59 @@
       "Steps": [
         {
           "Position": {
+            "X": -523.8519,
+            "Y": 22.025784,
+            "Z": -512.0333
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Azys Lla - Helix",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 152.26978,
+                  "Y": 245.1,
+                  "Z": -6.2714844
+                },
+                "TerritoryId": 402,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -231.93713,
+            "Y": 303.47726,
+            "Z": -311.9725
+          },
+          "TerritoryId": 402,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 152.26978,
+                  "Y": 245.1,
+                  "Z": -6.2714844
+                },
+                "TerritoryId": 402,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "Position": {
             "X": 212.05304,
             "Y": 256.37265,
             "Z": 0.08028713
           },
           "TerritoryId": 402,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Azys Lla - Helix",
           "Fly": true,
           "SkipConditions": {
             "StepIf": {
@@ -93,8 +139,7 @@
             "Z": -6.2714844
           },
           "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }
