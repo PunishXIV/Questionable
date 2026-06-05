@@ -1,0 +1,129 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000162,
+          "Position": {
+            "X": -77.9494,
+            "Y": -3.70067,
+            "Z": 53.1166
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000161,
+          "Position": {
+            "X": -77.7697,
+            "Y": -3.28353,
+            "Z": 38.2862
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "Emote",
+          "Emote": "bow",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000162,
+          "Position": {
+            "X": -77.9494,
+            "Y": -3.70067,
+            "Z": 53.1166
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1000161,
+          "Position": {
+            "X": -77.7697,
+            "Y": -3.28353,
+            "Z": 38.2862
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "Emote",
+          "Emote": "joy",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1000162,
+          "Position": {
+            "X": -77.9494,
+            "Y": -3.70067,
+            "Z": 53.1166
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1000161,
+          "Position": {
+            "X": -77.7697,
+            "Y": -3.28353,
+            "Z": 38.2862
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "Emote",
+          "Emote": "dance",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000162,
+          "Position": {
+            "X": -77.9494,
+            "Y": -3.70067,
+            "Z": 53.1166
+          },
+          "StopDistance": 2,
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

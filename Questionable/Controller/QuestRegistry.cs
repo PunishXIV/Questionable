@@ -388,9 +388,12 @@ internal sealed class QuestRegistry
                 ]
         };
         List<QuestSequence> sequences = [seq0];
+        Svc.Log.Debug($"NumSequences: {info.NumSequences}");
         for (var i = 0; i <= info.NumSequences; i++)
         {
-            SheetLevel? level = i <= info.ToDoLocations.Count ? info.ToDoLocations[i] : null;
+            SheetLevel? level = i < info.ToDoLocations.Count ? info.ToDoLocations[i] : null;
+            if (level?.Position == null || i == 255)
+                continue;
             sequences.Add(new QuestSequence
             {
                 Sequence = (byte)(i + 1),
@@ -507,10 +510,7 @@ internal sealed class QuestRegistry
         return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
     }
     public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
-    public static (bool, string) OpenEditor(QuestInfo info)
-    {
-        return OpenEditor(GetFilename(info), info);
-    }
+    public static (bool, string) OpenEditor(QuestInfo info) => OpenEditor(GetFilename(info), info);
     public (bool, string) OpenEditor(ushort questId)
     {
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
@@ -548,7 +548,7 @@ internal sealed class QuestRegistry
 
     public static (bool, string) OpenEditor(string filename, QuestInfo info)
     {
-        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
+        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
         if (targetFolder == null)
             return (false, "couldn't find QuestPaths folder");
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);

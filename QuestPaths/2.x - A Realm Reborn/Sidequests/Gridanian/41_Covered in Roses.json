@@ -1,0 +1,110 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000300,
+          "Position": {
+            "X": -175.555,
+            "Y": 11.0323,
+            "Z": -159.808
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2000026,
+          "Position": {
+            "X": -184.89362,
+            "Y": 12.008789,
+            "Z": -160.72333
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2000027,
+          "Position": {
+            "X": -191.24133,
+            "Y": 12.802246,
+            "Z": -159.68573
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2000028,
+          "Position": {
+            "X": -204.91345,
+            "Y": 11.673096,
+            "Z": -156.69495
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2000029,
+          "Position": {
+            "X": -209.82684,
+            "Y": 10.879639,
+            "Z": -158.09875
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2000030,
+          "Position": {
+            "X": -218.43292,
+            "Y": 8.132996,
+            "Z": -167.2237
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 2000031,
+          "Position": {
+            "X": -219.16534,
+            "Y": 7.461609,
+            "Z": -171.03839
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000300,
+          "Position": {
+            "X": -175.555,
+            "Y": 11.0323,
+            "Z": -159.808
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

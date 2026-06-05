@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000786,
+          "Position": {
+            "X": -140.124,
+            "Y": 6.65111,
+            "Z": -114.305
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000705,
+          "Position": {
+            "X": -243.152,
+            "Y": -4.00016,
+            "Z": -7.91948
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2000070,
+          "Position": {
+            "X": -262.645,
+            "Y": -4.64235,
+            "Z": -30.6554
+          },
+          "TerritoryId": 133,
+          "InteractionType": "UseItem",
+          "ItemId": 2000101
+        },
+        {
+          "DataId": 2000071,
+          "Position": {
+            "X": -256.0312,
+            "Y": -4.654114,
+            "Z": -14.602905
+          },
+          "TerritoryId": 133,
+          "InteractionType": "UseItem",
+          "ItemId": 2000101
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000705,
+          "Position": {
+            "X": -243.152,
+            "Y": -4.00016,
+            "Z": -7.91948
+          },
+          "StopDistance": 2,
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

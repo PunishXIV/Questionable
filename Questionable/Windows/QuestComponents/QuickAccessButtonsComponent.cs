@@ -88,7 +88,7 @@ internal sealed class QuickAccessButtonsComponent
     private void DrawJournalProgressButton()
     {
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
-            journalProgressWindow.IsOpenAndUncollapsed = true;
+            journalProgressWindow.ToggleOrUncollapse();
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip("Journal Progress");

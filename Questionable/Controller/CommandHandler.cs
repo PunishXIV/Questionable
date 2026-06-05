@@ -192,7 +192,10 @@ internal sealed class CommandHandler : IDisposable
 
             case "z":
             case "zone":
-                _questSelectionWindow.OpenForCurrentZone();
+                if (parts.Length < 2)
+                    _questSelectionWindow.OpenForCurrentZone();
+                else
+                    _questSelectionWindow.OpenForZone(uint.Parse(parts.Skip(1).First(), CultureInfo.InvariantCulture));
                 break;
 
             case "j":
