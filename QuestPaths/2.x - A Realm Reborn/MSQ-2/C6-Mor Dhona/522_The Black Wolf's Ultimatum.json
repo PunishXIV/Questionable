@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": { "Username": "alydev", "Date": "2026-05-20" },
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,6 +24,41 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1004434,
+          "Position": {
+            "X": -27.17633,
+            "Y": 83.19999,
+            "Z": 2.304016
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 130,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -43.289856,
+                  "Y": 84,
+                  "Z": 2.8533936
+                },
+                "TerritoryId": 130,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1004339,
+          "Position": {
+            "X": -25.986206,
+            "Y": 81.799995,
+            "Z": -31.99823
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 131
+        },
+        {
           "DataId": 1001821,
           "Position": {
             "X": -24.124573,
@@ -30,13 +66,7 @@
             "Z": 85.31323
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {"AetheryteShortcutIf": {"Never": true}}
+          "InteractionType": "Interact"
         }
       ]
     },
