@@ -53,6 +53,7 @@
     },
     {
       "Sequence": 2,
+      "$": "Starting point after ARR skip",
       "Steps": [
         {
           "DataId": 2004781,
@@ -63,7 +64,8 @@
           },
           "TerritoryId": 395,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 155
+          "TargetTerritoryId": 155,
+          "SkipConditions": {"StepIf": {"NotInTerritory": [395]}}
         },
         {
           "Position": {
@@ -73,6 +75,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Fly": true
         },
         {
