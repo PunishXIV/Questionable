@@ -1,4 +1,5 @@
 - Notice: qst will now use an aethernet shortcut as a hint for where to teleport to for the automatic teleporting thing. I've tested it a bit, but it probably still has issues, please let me know how that goes. -alydev
+- Bug: "An Ill-conceived Venture" requires the character to have unlocked retainers
 - Feature: add preset to complete all post-ARR feature/duty unlocks
 - Feature: quest tooltips now show what instance/action a quest unlocks
 - Feature: Notify user if flying is disabled when path fails

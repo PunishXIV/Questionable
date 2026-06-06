@@ -673,6 +673,14 @@ internal sealed unsafe class QuestFunctions
                 return true;
         }
 
+        // "an ill-conceived venture" requires to have retainers unlocked
+        if ((new ushort[]{ 1432,1433,1434 }).Contains(questId.Value))
+        {
+            var retainerManager = RetainerManager.Instance();
+            if (retainerManager->MaxRetainerEntitlement == 0)
+                return true;
+        }
+
         return !HasCompletedPreviousQuests(questInfo, extraCompletedQuest) || !HasCompletedPreviousInstances(questInfo);
     }
 
