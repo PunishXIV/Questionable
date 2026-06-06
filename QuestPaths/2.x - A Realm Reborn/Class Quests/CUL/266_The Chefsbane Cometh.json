@@ -123,6 +123,7 @@
           "TerritoryId": 128,
           "ItemId": 4857,
           "ItemCount": 1,
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Culinarians' Guild"],
           "SkipConditions": {
             "StepIf": {
               "Item": {
