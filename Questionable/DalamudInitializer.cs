@@ -112,7 +112,10 @@ internal sealed class DalamudInitializer : IDisposable
         }
         catch (MovementController.PathfindingFailedException)
         {
-            _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
+            if (_configuration.Advanced.NeverFly)
+                _chatGui.PrintError("vnavmesh was not able to find a path. This may be due to the 'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this to run fine.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            else
+                _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop("Pathfinding failed");
         }
     }
