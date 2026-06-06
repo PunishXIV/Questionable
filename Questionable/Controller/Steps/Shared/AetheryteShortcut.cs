@@ -103,10 +103,11 @@ internal static class AetheryteShortcut
                 if (Task.TargetAetheryte is EAetheryteLocation.None)
                 {
                     EAetheryteLocation? nearest = Task.Step.Position != null ? aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, Task.Step.Position) : null;
-                    EAetheryteLocation? backupNearest = Task.Step.Position != null && Task.Step.AethernetShortcut is { } ?
-                                                            aetheryteData.NearestAetheryteTo(aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.From], Task.Step.Position) : null;
+                    nearest ??= Task.Step.Position != null && Task.Step.AethernetShortcut is { } ?
+                                    aetheryteData.NearestAetheryteTo(aetheryteData.TerritoryIds[Task.Step.AethernetShortcut.From], Task.Step.Position) : null;
+                    nearest ??= aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, null);
                     //EAetheryteLocation? nearest = aetheryteData.NearestAetheryteTo(Task.Step.TerritoryId, Task.Step.Position);
-                    EAetheryteLocation? shortcut = Task.Step.AetheryteShortcut ?? nearest ?? backupNearest ?? null;
+                    EAetheryteLocation? shortcut = Task.Step.AetheryteShortcut ?? nearest ?? null;
                     if (shortcut == null)
                     {
                         logger.LogInformation("Skipping aetheryte shortcut, null result. step:{Step}, nearest:{Nearest}",
