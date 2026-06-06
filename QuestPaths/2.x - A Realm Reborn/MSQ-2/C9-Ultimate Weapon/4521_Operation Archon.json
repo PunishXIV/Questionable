@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": { "Username": "alydev", "Date": "2026-05-20" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -102,7 +102,8 @@
           "TargetTerritoryId": 212,
           "SkipConditions": {
             "StepIf": {
-              "InTerritory": [140]
+              "ExtraCondition": "WakingSandsMainArea",
+              "NotInTerritory": [212]
             }
           }
         },
@@ -118,7 +119,7 @@
           "TargetTerritoryId": 140,
           "SkipConditions": {
             "StepIf": {
-              "InTerritory": [140]
+              "NotInTerritory": [212]
             }
           }
         },
