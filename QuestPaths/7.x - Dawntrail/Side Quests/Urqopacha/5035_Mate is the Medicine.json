@@ -29,7 +29,8 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true
+          "Fly": true,
+          "Land": true
         }
       ]
     },
