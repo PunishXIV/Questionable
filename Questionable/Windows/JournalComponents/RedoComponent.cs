@@ -81,7 +81,7 @@ internal sealed class RedoComponent
             {
                 using var _ = ImRaii.Tooltip();
                 var index = redoUtil.GetChapter(checkQuests[0]!.Id.Value);
-                ImGui.Text($"Unchecked: #{index.SimplifiedIndex}{(checkQuests.Length > 1 ? "+" : "")} ({checkQuests.Length}/{redoCache.Quests.Count})");
+                ImGui.Text($"({chapter.RowId}) Unchecked: #{index.SimplifiedIndex}{(checkQuests.Length > 1 ? "+" : "")} ({checkQuests.Length}/{redoCache.Quests.Count})");
                 using var __ = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
                 ImGui.Text(string.Join('\n', checkQuests.Select(q => $"{q?.Info.SimplifiedName} ({q?.Id})")));
             }
