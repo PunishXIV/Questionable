@@ -405,6 +405,41 @@ internal sealed class PriorityWindow : LWindow
             835, 903, 916, 918, 919, 920, 929, 928, 930, 931, 932, 945, 1010, 1011, 1015, 1017, 1019, 1553, 1021, 1023,
             1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035
         ]).FromNumericListOfQuests();
+        List<ElementId> postARRUnlocks = ((ushort[])[
+            // don't add DoH/DoL unlocks to this
+            // Features
+            160, 1463, // materia
+            699, 3017, // dyes, glams
+            1210, // aesthetician
+            1211, // treasure maps
+            1431, // challenge log
+            1432, 1433, 1434, // retainers
+            1212, 1213, 1214, // housing districts
+            1563, 1564, 1565, // hunts
+            4644, // island sanc visit
+            3759, // new game+
+            5187, // free fantasia
+            // Duties
+            94, // sastacha hard
+            697, 1410, // halatali
+            764, 96, // qarn
+            870, 431, // wanderer's palace
+            921, // cutter's cry
+            1128, 1129, 1130, // dzemael gc
+            1131, 1132, 1133, // aurum gc
+            1135, // amdapor (requires aurum)
+            430, // amdapor hard
+            1208, 1209, // pharos sirius
+            1215, // haukke hard
+            1216, // copperbell hard
+            1389, // lost city of amdapor
+            1411, // brayflox hard
+            1524, // tamtara hard
+            1525, // stone vigil hard
+            1526, // hullbreaker isle
+            2248, // hullbreaker hard
+            1556, // palace of the dead
+        ]).FromNumericListOfQuests();
         _builtInPresets = new()
         {
             [JobQuestsPresetName] = [],
@@ -420,7 +455,8 @@ internal sealed class PriorityWindow : LWindow
             ["Role Quests: Melee DPS"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             ["Role Quests: Physical Ranged"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
             ["Role Quests: Caster"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
-            ["Gil (set TextAdvance to prefer Gil sacks)"] = gilList
+            ["Gil (set TextAdvance to prefer Gil sacks)"] = gilList,
+            ["Post-ARR unlocks"] = postARRUnlocks,
         };
 
         return _builtInPresets;
