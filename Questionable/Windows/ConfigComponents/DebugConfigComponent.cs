@@ -21,6 +21,13 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
 
         ImGui.Separator();
 
+        bool neverFly = Configuration.Advanced.NeverFly;
+        if (ImGui.Checkbox("Disable flying (even if unlocked for the zone)", ref neverFly))
+        {
+            Configuration.Advanced.NeverFly = neverFly;
+            Save();
+        }
+
         if (ImGui.CollapsingHeader("Information"))
         {
             using (ImRaii.PushIndent())
@@ -63,13 +70,6 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                             () => Configuration.Advanced.HighlightColor,
                             v => Configuration.Advanced.HighlightColor = v);
                     }
-                }
-
-                bool neverFly = Configuration.Advanced.NeverFly;
-                if (ImGui.Checkbox("Disable flying (even if unlocked for the zone)", ref neverFly))
-                {
-                    Configuration.Advanced.NeverFly = neverFly;
-                    Save();
                 }
 
                 bool additionalStatusInformation = Configuration.Advanced.AdditionalStatusInformation;
