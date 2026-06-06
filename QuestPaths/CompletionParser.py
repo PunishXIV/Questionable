@@ -11,6 +11,7 @@ import json
 import shutil
 import sys
 from pathlib import Path
+from datetime import datetime
 
 
 def find_quest_file(quest_id: str, search_dir: Path) -> tuple[Path | None, bool]:
@@ -70,7 +71,11 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
     LastChecked = '"LastChecked": {"Username": "%s", "Date": "%s"},\n  ' % (username, last_checked)
     
     if '"LastChecked":' in data:
-        before = data.split('"LastChecked":')[0]
+        before, date = data.split('"LastChecked":',1)
+        date = date.split('"Date":',1)[1].split('"',1)[1].split('"',1)[0]
+        if date == last_checked or datetime.strptime(date,"%Y-%m-%d") > datetime.strptime(last_checked,"%Y-%m-%d"):
+            print(f"[WARN] {date} >= {last_checked}, skipping: '{quest_id}'", file=sys.stderr)
+            return True
     else:
         before = data.split('"QuestSequence":')[0]
     after = data.split('"QuestSequence":')[1]
@@ -119,9 +124,7 @@ def main():
     )
     parser.add_argument(
         "-s", "--dry-run",
-        default=False,
-        metavar="SIMULATE",
-        dest="dry_run",
+        action="store_true",
         help="If set, no changes will occur."
     )
     args = parser.parse_args()
@@ -136,6 +139,9 @@ def main():
     if args.username == "Anonymous" and args.input.stem != "QuestCompletionLog":
         args.username = args.input.stem
         print(f"[INFO] No username supplied; using '{args.username}' (derived from input filename).")
+
+    if args.dry_run:
+        print(f"[INFO] Dry run enabled", file=sys.stderr)
 
     if not args.directory.is_dir():
         print(f"[ERROR] Search directory not found: {args.directory}", file=sys.stderr)
@@ -161,8 +167,9 @@ def main():
     if ok < total:
         sys.exit(1)
     elif ok == total and ok != 0:
-        with args.input.open("w", encoding="utf-8-sig") as f:
-            f.write("[]")
+        if not args.dry_run:
+            with args.input.open("w", encoding="utf-8-sig") as f:
+                f.write("[]")
 
 
 if __name__ == "__main__":

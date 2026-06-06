@@ -11,6 +11,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows.Utils;
+using static ECommons.Automation.Chat;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuestTooltipComponent
@@ -218,6 +219,32 @@ internal sealed class QuestTooltipComponent
                 ImGui.Text("Item Rewards:");
                 foreach (ItemReward reward in actualQuestInfo.ItemRewards)
                     ImGui.BulletText(reward.Name);
+            }
+
+            bool unlocksText = false;
+            if (showItemRewards && actualQuestInfo.InstanceContentUnlock != 0)
+            {
+                ImGui.Separator();
+                if (!unlocksText)
+                {
+                    ImGui.Text("Unlocks:");
+                    unlocksText = true;
+                }
+                string instanceName = territoryData.GetInstanceName(actualQuestInfo.InstanceContentUnlock) ?? "?";
+                (Vector4 iconColor, FontAwesomeIcon icon) = UiUtils.GetInstanceStyle(actualQuestInfo.InstanceContentUnlock);
+                uiUtils.ChecklistItem(instanceName, iconColor, icon);
+            }
+
+            if (showItemRewards && actualQuestInfo.ActionUnlock.Count > 0)
+            {
+                ImGui.Separator();
+                if (!unlocksText)
+                {
+                    ImGui.Text("Unlocks:");
+                    unlocksText = true;
+                }
+                foreach (string reward in actualQuestInfo.ActionUnlock)
+                    ImGui.BulletText(reward);
             }
         }
 

@@ -18,15 +18,50 @@
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InSameTerritory": true
+            }
+          }
         }
-       }
-      }
-     ]
+      ]
     },
     {
       "Sequence": 1,
       "Steps": [
-          {
+        {
+          "Comment": "Clearing normal unlock quest",
+          "TerritoryId": 128,
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "Item": { "NotInInventory": true },
+              "QuestsCompleted": [1014]
+            }
+          }
+        },
+        {
+          "Comment": "Clearing normal unlock quest",
+          "DataId": 1005021,
+          "Position": {
+            "X": -472.49567,
+            "Y": 23.008797,
+            "Z": -355.00116
+          },
+          "TerritoryId": 140,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1014,
+          "SkipConditions": { "StepIf": { "QuestsCompleted": [1014] } }
+        },
+        {
           "Position": {
             "X": 123.6,
             "Y": 31.6,
@@ -40,15 +75,11 @@
             "AetheryteShortcutIf": {
               "AetheryteLocked": "Mor Dhona",
               "InSameTerritory": true,
-              "InTerritory": [
-                155
-              ]
+              "InTerritory": [155]
             },
             "StepIf": {
               "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [
-                155
-              ]
+              "InTerritory": [155]
             }
           }
         },
@@ -64,9 +95,7 @@
           "SkipConditions": {
             "StepIf": {
               "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [
-                155
-              ]
+              "InTerritory": [155]
             }
           }
         },
