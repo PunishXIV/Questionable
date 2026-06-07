@@ -126,7 +126,6 @@ internal static class Interact
         CameraFunctions cameraFunctions,
         Configuration configuration,
         ICondition condition,
-        IChatGui chatGui,
         IObjectTable objectTable,
         ILogger<DoInteract> logger)
         : TaskExecutor<Task>, IConditionChangeAware
@@ -285,7 +284,7 @@ internal static class Interact
 
                         if (!changed)
                         {
-                            chatGui.PrintError($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
+                            throw new Exception($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
                                                "but you do not have a valid job configured in QST Settings.");
                         }
                     }

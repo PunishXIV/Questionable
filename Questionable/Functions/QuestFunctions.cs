@@ -41,6 +41,7 @@ internal sealed unsafe class QuestFunctions
     IChatGui chatGui)
 {
     internal static readonly int[] questsThatUseWhiteWolfGate = [439, 1080, 3870, 33];
+    internal Dictionary<ushort, HashSet<IQuestInfo>> prereqCache = [];
 
     public QuestReference GetCurrentQuest(bool allowNewMsq = true)
     {

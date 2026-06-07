@@ -1,9 +1,11 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Controller;
 using Questionable.Data;
@@ -33,7 +35,14 @@ internal sealed class QuestTooltipComponent
 
     public void DrawInner(IQuestInfo questInfo, bool showItemRewards)
     {
-        ImGui.Text($"{SeIconChar.LevelEn.ToIconString()}{questInfo.Level}");
+        unsafe
+        {
+            string lvlString = $"{SeIconChar.LevelEn.ToIconString()}{questInfo.Level}";
+            if (PlayerState.Instance()->CurrentLevel < questInfo.Level)
+                ImGui.TextColored(ImGuiColors.DalamudRed, lvlString);
+            else
+                ImGui.Text(lvlString);
+        }
         ImGui.SameLine();
 
         (Vector4 color, FontAwesomeIcon _, string tooltipText) = uiUtils.GetQuestStyle(questInfo.QuestId);
@@ -99,9 +108,45 @@ internal sealed class QuestTooltipComponent
         DrawQuestUnlocks(questInfo, 0, showItemRewards);
     }
 
+    private void PopulatePrereqCache(ushort topLevelId, IQuestInfo questInfo, int depth = 0)
+    {
+        if (depth >= 20) return;
+        if (depth != 0 && questInfo.IsMainScenarioQuest) return;
+
+        foreach (PreviousQuestInfo q in questInfo.PreviousQuests)
+        {
+            if (!questData.TryGetQuestInfo(q.QuestId, out IQuestInfo? qInfo)) continue;
+
+            // Populate the top-level entry (full tree)
+            questFunctions.prereqCache[topLevelId].Add(qInfo);
+
+            // Recursively ensure this node's own subtree is also fully cached
+            if (!questFunctions.prereqCache.ContainsKey(qInfo.QuestId.Value))
+            {
+                questFunctions.prereqCache[qInfo.QuestId.Value] = [];
+                PopulatePrereqCache(qInfo.QuestId.Value, qInfo, 0); // full depth for subtree
+            }
+
+            if (qInfo is QuestInfo qstInfo)
+                PopulatePrereqCache(topLevelId, qstInfo, depth + 1);
+        }
+    }
+
+    private readonly HashSet<IQuestInfo> _shownAlready = [];
+    private IQuestInfo _currentTopLevel;
     private void DrawQuestUnlocks(IQuestInfo questInfo, int counter, bool showItemRewards)
     {
-        if (counter >= 10)
+        if (counter == 0)
+        {
+            _shownAlready.Clear();
+            _currentTopLevel = questInfo;
+            if (!questFunctions.prereqCache.ContainsKey(_currentTopLevel.QuestId.Value))
+            {
+                questFunctions.prereqCache[_currentTopLevel.QuestId.Value] = [];
+                PopulatePrereqCache(_currentTopLevel.QuestId.Value, _currentTopLevel);
+            }
+        }
+        if (counter >= 20)
             return;
 
         if (counter != 0 && questInfo.IsMainScenarioQuest)
@@ -115,25 +160,30 @@ internal sealed class QuestTooltipComponent
             if (counter == 0)
                 ImGui.Separator();
 
-            if (questInfo.PreviousQuests.Count > 1)
+            if (questInfo.PreviousQuests.Count > 1 && counter < 10)
             {
-                if (questInfo.PreviousQuestJoin == EQuestJoin.All)
+                if (questInfo.PreviousQuestJoin == EQuestJoin.All && questInfo.PreviousQuests.Count > 2)
                     ImGui.Text("Requires all:");
                 else if (questInfo.PreviousQuestJoin == EQuestJoin.AtLeastOne)
-                    ImGui.Text("Requires one:");
+                    ImGui.Text("Requires:");
             }
 
             foreach (PreviousQuestInfo q in questInfo.PreviousQuests)
             {
                 if (questData.TryGetQuestInfo(q.QuestId, out IQuestInfo? qInfo))
                 {
+                    questFunctions.prereqCache[_currentTopLevel.QuestId.Value].Add(qInfo);
                     (Vector4 iconColor, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(q.QuestId);
                     if (!questRegistry.IsKnownQuest(qInfo.QuestId))
                         iconColor = ImGuiColors.DalamudGrey;
 
-                    uiUtils.ChecklistItem(
-                        FormatQuestUnlockName(qInfo,
-                            questFunctions.IsQuestComplete(q.QuestId) ? byte.MinValue : q.Sequence), iconColor, icon);
+                    if (!_shownAlready.Contains(qInfo))
+                    {
+                        uiUtils.ChecklistItem(
+                            FormatQuestUnlockName(qInfo,
+                                questFunctions.IsQuestComplete(q.QuestId) ? byte.MinValue : q.Sequence), iconColor, icon);
+                        _shownAlready.Add(qInfo);
+                    }
 
                     if (qInfo is QuestInfo qstInfo && (counter <= 2 || icon != FontAwesomeIcon.Check))
                         DrawQuestUnlocks(qstInfo, counter + 1, false);

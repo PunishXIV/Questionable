@@ -219,7 +219,7 @@ internal sealed class QuestJournalComponent
         if (ImGui.IsItemHovered())
             questTooltipComponent.Draw(questInfo);
 
-        if (quest == null && ImGui.IsItemClicked())
+        if (ImGui.IsItemClicked())
         {
             var location = questInfo.IssuerLocation;
             Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
