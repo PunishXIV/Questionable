@@ -717,11 +717,14 @@ internal sealed unsafe class QuestFunctions
     public bool IsAlliedSocietyStoryQuestAvailable(QuestId questId)
     {
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
-        EAlliedSocietyRank currentRank = (EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)questInfo.AlliedSociety);
-        var currentRep = PlayerState.Instance()->GetBeastTribeCurrentReputation((byte)questInfo.AlliedSociety);
-        var neededRep = PlayerState.Instance()->GetBeastTribeNeededReputation((byte)questInfo.AlliedSociety);
+        (EAlliedSocietyRank currentRank, ushort currentRep, ushort neededRep) = GetAlliedSocietyRankAndRep(questInfo.AlliedSociety);
         return currentRank > questInfo.AlliedSocietyRank || currentRep >= neededRep;
     }
+
+    public (EAlliedSocietyRank, ushort, ushort) GetAlliedSocietyRankAndRep(EAlliedSociety alliedSociety) =>
+        ((EAlliedSocietyRank)PlayerState.Instance()->GetBeastTribeRank((byte)alliedSociety),
+        PlayerState.Instance()->GetBeastTribeCurrentReputation((byte)alliedSociety),
+        PlayerState.Instance()->GetBeastTribeNeededReputation((byte)alliedSociety));
 
     public bool IsQuestUnobtainable(ElementId elementId, ElementId? extraCompletedQuest = null)
     {

@@ -107,8 +107,10 @@ internal sealed class AlliedSocietyJournalComponent
             List<IQuestInfo> quests = alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
                 .Select(x => questData.GetQuestInfo(x))
                 .ToList();
+            (EAlliedSocietyRank rank, ushort currentRep, ushort neededRep) = questFunctions.GetAlliedSocietyRankAndRep(alliedSociety);
 
-            string label = $"{alliedSociety}###AlliedSociety{(int)alliedSociety}";
+            string rep = neededRep != 0 ? $"({rank} {currentRep}/{neededRep}) " : "";
+            string label = $"{rep}{alliedSociety}###AlliedSociety{(int)alliedSociety}";
             bool isOpen;
 
             using (ImRaii.Disabled(quests.Count == 0))
@@ -162,18 +164,18 @@ internal sealed class AlliedSocietyJournalComponent
                     ImGui.Text($"{(EAlliedSocietyRank)i}");
                     questJournalUtils.ShowQuestGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}/{(EAlliedSocietyRank)i}", questsByRank);
                     foreach (IQuestInfo quest in questsByRank)
-                        DrawQuest((QuestInfo)quest, addPending);
+                        DrawQuest((QuestInfo)quest, addPending, neededRep != 0);
                 }
             }
             else
             {
                 foreach (IQuestInfo quest in quests)
-                    DrawQuest((QuestInfo)quest, addPending);
+                    DrawQuest((QuestInfo)quest, addPending, neededRep != 0);
             }
         }
     }
 
-    private void DrawQuest(QuestInfo questInfo, bool addPending = false)
+    private void DrawQuest(QuestInfo questInfo, bool addPending = false, bool showRepValue = false)
     {
         (Vector4 color, FontAwesomeIcon icon, string tooltipText) = uiUtils.GetQuestStyle(questInfo.QuestId);
         bool fate = false;
@@ -200,6 +202,8 @@ internal sealed class AlliedSocietyJournalComponent
         string checklistItem = $"{questInfo.Name} ({tooltipText}) {lastChecked}";
         if (fate)
             checklistItem = "(FATE) " + checklistItem;
+        if (showRepValue)
+            checklistItem = $"[+{questInfo.SocietyRepValue}] " + checklistItem;
         if (uiUtils.ChecklistItem(checklistItem, color, icon))
             questTooltipComponent.Draw(questInfo);
         if (addPending && (color.Equals(ImGuiColors.DalamudRed) || color.Equals(ImGuiColors.DPSRed)))
