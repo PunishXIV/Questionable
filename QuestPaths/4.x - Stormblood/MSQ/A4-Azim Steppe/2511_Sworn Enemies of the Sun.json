@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -53,6 +54,30 @@
           "PickUpQuestId": 2782
         },
         {
+          "DataId": 1019424,
+          "Position": {
+            "X": 66.056274,
+            "Y": 114.904976,
+            "Z": -8.377258
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 622,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 63.70642,
+                  "Y": 114.90497,
+                  "Z": 72.55664
+                },
+                "TerritoryId": 622,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        },
+        {
           "Position": {
             "X": -136.6883,
             "Y": 15.660965,
@@ -78,12 +103,15 @@
           "TerritoryId": 622,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            7563
-          ],
+          "KillEnemyDataIds": [7563],
           "CompletionQuestVariablesFlags": [
-            {"Low": 3},
-          null,null,null,null,null]
+            { "Low": 3 },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 1021608,
