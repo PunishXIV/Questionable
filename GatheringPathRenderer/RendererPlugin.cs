@@ -63,7 +63,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         ConfigWindow configWindow = new(pluginInterface, configuration);
         _editorWindow = new(this, _editorCommands, dataManager, commandManager, targetManager, clientState, objectTable,
                 configWindow)
-            { IsOpen = true };
+        { IsOpen = true };
         _windowSystem.AddWindow(configWindow);
         _windowSystem.AddWindow(_editorWindow);
 
@@ -81,8 +81,8 @@ public sealed class RendererPlugin : IDalamudPlugin
         PctService.Initialize(pluginInterface);
         LoadGatheringLocationsFromDirectory();
 
-        _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;
         _pluginInterface.UiBuilder.Draw += Draw;
+        _pluginInterface.UiBuilder.Draw += _windowSystem.Draw;
         _clientState.ClassJobChanged += ClassJobChanged;
     }
 
@@ -123,6 +123,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         _clientState.ClassJobChanged -= ClassJobChanged;
         _pluginInterface.UiBuilder.Draw -= Draw;
         _pluginInterface.UiBuilder.Draw -= _windowSystem.Draw;
+        _windowSystem.RemoveAllWindows();
 
         PctService.Dispose();
 
