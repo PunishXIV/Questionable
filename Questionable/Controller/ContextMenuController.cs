@@ -134,6 +134,9 @@ internal sealed class ContextMenuController : IDisposable
             quantityToGather = Math.Min(agentSatisfactionSupply->NpcData.RemainingAllowances,
                 ((AgentSatisfactionSupply2*)agentSatisfactionSupply)->CalculateTurnInsToNextRank(maxTurnIns));
         }
+        #if DEBUG
+        quantityToGather = 1;
+        #endif
 
         string lockedReasonn = string.Empty;
 #if !DEBUG

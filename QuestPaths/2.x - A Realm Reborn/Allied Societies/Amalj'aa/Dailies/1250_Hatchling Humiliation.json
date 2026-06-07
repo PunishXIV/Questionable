@@ -1,10 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-14"},
-  "Disabled": true,
-  "Comment": "Doesn't work, investigating",
-  "$": "might need some extra checks in UseItem to target the right instance of 740",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -43,19 +40,10 @@
               "NameId": 2305
             }
           ],
-          "RequiredQuestVariables": [null,null,null,null,[
-              {"Low": 3},{"Low": 4}
-          ],null]
-        },
-        {
-          "Position": {
-            "X": 211.10852,
-            "Y": 8.010925,
-            "Z": 92.454346
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "ItemId": 2001196,
           "RequiredQuestVariables": [null,null,null,null,[
               {"Low": 3},{"Low": 4}
           ],null],
@@ -78,22 +66,12 @@
               "NameId": 2305
             }
           ],
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
+          },
           "RequiredQuestVariables": [null,null,null,null,[
               {"Low": 2},{"Low": 3}
-          ],null]
-        },
-        {
-          "DataId": 740,
-          "Position": {
-            "X": 396.35315,
-            "Y": 13.224139,
-            "Z": -104.44806
-          },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "ItemId": 2001196,
-          "RequiredQuestVariables": [null,null,null,null,[
-              {"Low": 2}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
@@ -114,23 +92,12 @@
               "NameId": 2305
             }
           ],
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
+          },
           "RequiredQuestVariables": [null,null,null,null,[
               {"Low": 3},
-              {"Low": 4},
-              {"Low": 5}
-            ],null]
-        },
-        {
-          "DataId": 740,
-          "Position": {
-            "X": 446.95203,
-            "Y": 18.57019,
-            "Z": -83.81781
-          },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "ItemId": 2001196,
-          "RequiredQuestVariables": [null,null,null,null,[
               {"Low": 4},
               {"Low": 5}
             ],null],
@@ -153,22 +120,10 @@
               "NameId": 2305
             }
           ],
-          "RequiredQuestVariables": [null,null,null,null,[
-              {"Low": 2},
-              {"Low": 4},
-              {"Low": 5}
-            ],null]
-        },
-        {
-          "DataId": 740,
-          "Position": {
-            "X": 477.1953,
-            "Y": 9.353699,
-            "Z": -138.3841
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "ItemId": 2001196,
           "RequiredQuestVariables": [null,null,null,null,[
               {"Low": 2},
               {"Low": 4},
@@ -193,20 +148,10 @@
               "NameId": 2305
             }
           ],
-          "RequiredQuestVariables": [null,null,null,null,[
-              {"Low": 2}
-            ],null]
-        },
-        {
-          "DataId": 740,
-          "Position": {
-            "X": 610.3456,
-            "Y": 5.4473877,
-            "Z": -79.30121
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
           },
-          "TerritoryId": 146,
-          "InteractionType": "UseItem",
-          "ItemId": 2001196,
           "RequiredQuestVariables": [null,null,null,null,[
               {"Low": 2}
             ],null]
