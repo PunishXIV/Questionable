@@ -1,1 +1,3 @@
+- Feature: "Add all to priority quests" button supporting all of a quest's prerequisite quests -alydev
+- Feature: show tribe rank and rep in journal progress -alydev
 - Feature: support gathering for new custom delivery npc -alydev

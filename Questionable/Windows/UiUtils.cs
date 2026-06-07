@@ -1,37 +1,40 @@
-﻿using System.Numerics;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Functions;
+using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Windows;
 
 internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface)
 {
-    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
-    private readonly QuestFunctions _questFunctions = questFunctions;
-
     public (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
-        if (_questFunctions.IsQuestAccepted(elementId))
+        if (questFunctions.IsQuestAccepted(elementId))
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.PersonWalkingArrowRight, "Active");
-        else if (elementId is QuestId questId && _questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+        else if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
         {
-            if (!_questFunctions.IsReadyToAcceptQuest(questId))
+            if (!questFunctions.IsReadyToAcceptQuest(questId))
                 return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, "Complete");
-            else if (_questFunctions.IsQuestComplete(questId))
+            else if (questFunctions.IsQuestComplete(questId))
                 return (ImGuiColors.ParsedBlue, FontAwesomeIcon.Running, "Available");
             else
                 return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available");
         }
-        else if (_questFunctions.IsQuestAcceptedOrComplete(elementId))
+        else if (questFunctions.IsQuestAcceptedOrComplete(elementId))
             return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, "Complete");
-        else if (_questFunctions.IsQuestUnobtainable(elementId))
+        else if (questFunctions.IsQuestUnobtainable(elementId))
             return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, "Unobtainable");
-        else if (_questFunctions.IsQuestLocked(elementId))
+        else if (questFunctions.IsQuestLocked(elementId) ||
+                 questFunctions.prereqCache.TryGetValue(elementId.Value, out HashSet<IQuestInfo>? value) && value.Any(q => questFunctions.IsQuestLocked(q.QuestId)))
             return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, "Locked");
+        else if (value == null)
+            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available?");
         else
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available");
     }
@@ -51,7 +54,7 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
         if (extraPadding > 0)
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
 
-        using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
             ImGui.TextColored(color, icon.ToIconString());
         }

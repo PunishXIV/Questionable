@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
@@ -9,6 +10,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
+using Questionable.Windows.QuestComponents;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalUtils
@@ -19,14 +21,17 @@ internal sealed class QuestJournalUtils
     Configuration configuration,
     IDalamudPluginInterface pluginInterface)
 {
-    private readonly ICommandManager _commandManager = commandManager;
-    private readonly Configuration _configuration = configuration;
-    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
-    private readonly QuestController _questController = questController;
-    private readonly QuestFunctions _questFunctions = questFunctions;
-
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {
+        List<IQuestInfo> prereqs = [];
+        if (questFunctions.prereqCache.TryGetValue(questInfo.QuestId.Value, out HashSet<IQuestInfo>? value))
+            prereqs = value.Where(q => !questFunctions.IsQuestComplete(q.QuestId)).ToList();
+        prereqs.Sort(Comparer<IQuestInfo>.Create((x, y) =>
+        {
+            var xCount = questFunctions.prereqCache.TryGetValue(x.QuestId.Value, out var xList) ? xList.Count : 0;
+            var yCount = questFunctions.prereqCache.TryGetValue(y.QuestId.Value, out var yList) ? yList.Count : 0;
+            return xCount.CompareTo(yCount);
+        }));
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
             ImGui.OpenPopup($"##QuestPopup{questInfo.QuestId}");
 
@@ -37,44 +42,53 @@ internal sealed class QuestJournalUtils
         using (ImRaii.Disabled(quest == null))
         {
             if (ImGui.MenuItem("Add to Priority Quests") && quest != null)
-                _questController.PriorityManager.Add(quest.Id);
+                questController.PriorityManager.Add(quest.Id);
+        }
+        using (ImRaii.Disabled(prereqs.Count == 0 || quest == null))
+        {
+            if (ImGui.MenuItem("Add all to Priority Quests") && quest != null)
+            {
+                foreach (var qInfo in prereqs)
+                    questController.PriorityManager.Add(qInfo.QuestId);
+                questController.PriorityManager.Add(quest.Id);
+            }
         }
 
-        using (ImRaii.Disabled(!_questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
+        using (ImRaii.Disabled(!questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
         {
             if (ImGui.MenuItem("Start as next quest"))
             {
-                _questController.SetNextQuest(quest);
-                _questController.Start(label);
+                questController.SetNextQuest(quest);
+                questController.Start(label);
             }
 
             if (ImGui.MenuItem("Set as next quest"))
-                _questController.SetNextQuest(quest);
+                questController.SetNextQuest(quest);
         }
 
-        bool openInQuestMap = _commandManager.Commands.ContainsKey("/questinfo");
+        bool openInQuestMap = commandManager.Commands.ContainsKey("/questinfo");
         using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
         {
             if (ImGui.MenuItem("View in Quest Map"))
-                _commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
+                commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
         }
 
         if (ImGui.MenuItem("Add to Stop condition (on complete)"))
         {
-            _configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
-            _pluginInterface.SavePluginConfig(_configuration);
+            configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
+            pluginInterface.SavePluginConfig(configuration);
         }
 
         if (ImGui.MenuItem("Add to Stop condition (on accept)"))
         {
-            _configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
-            _pluginInterface.SavePluginConfig(_configuration);
+            configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
+            pluginInterface.SavePluginConfig(configuration);
         }
 #if DEBUG
         if (ImGui.MenuItem("Edit quest path"))
             (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
         if (ImGui.MenuItem("Sim quest"))
-            _questController.SimulateQuest(questInfo, 0, 0);
+            questController.SimulateQuest(questInfo, 0, 0);
 #endif
     }
 
@@ -106,17 +120,17 @@ internal sealed class QuestJournalUtils
         if (ImGui.MenuItem("Add all to Priority Quests"))
         {
             foreach (IQuestInfo quest in quests)
-                _questController.PriorityManager.Add(quest.QuestId);
+                questController.PriorityManager.Add(quest.QuestId);
         }
 
         if (ImGui.MenuItem("Remove all from Priority Quests"))
         {
             foreach (IQuestInfo quest in quests)
-                _questController.PriorityManager.Remove(quest.QuestId);
+                questController.PriorityManager.Remove(quest.QuestId);
         }
 
         if (ImGui.MenuItem("Sim first quest"))
             if (quests.Count >= 1)
-                _questController.SimulateQuest(quests[0], 0, 0);
+                questController.SimulateQuest(quests[0], 0, 0);
     }
 }

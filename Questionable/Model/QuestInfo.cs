@@ -86,6 +86,7 @@ internal sealed class QuestInfo : IQuestInfo
         AlliedSociety = (EAlliedSociety)quest.BeastTribe.RowId;
         AlliedSocietyQuestGroup = quest.DailyQuestPool;
         AlliedSocietyRank = (EAlliedSocietyRank)quest.BeastReputationRank.RowId;
+        SocietyRepValue = quest.ReputationReward;
         ClassJobs = QuestInfoUtils.AsList(quest.ClassJobCategory0.ValueNullable!);
         IsSeasonalEvent = quest.Festival.RowId != 0;
         NewGamePlusChapter = newGamePlusChapter;
@@ -114,6 +115,7 @@ internal sealed class QuestInfo : IQuestInfo
     public GrandCompany GrandCompany { get; }
     public byte AlliedSocietyQuestGroup { get; }
     public EAlliedSocietyRank AlliedSocietyRank { get; }
+    public ushort SocietyRepValue { get; }
     public bool IsSeasonalEvent { get; }
     public uint NewGamePlusChapter { get; }
     public byte StartingCity { get; set; }
