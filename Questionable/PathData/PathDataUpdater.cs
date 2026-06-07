@@ -31,6 +31,7 @@ internal sealed class PathDataUpdater : IDisposable
     private readonly string _channel;
     private readonly string _pluginVersion;
     private int _running;
+    internal bool WaitingForPluginUpdate;
 
     public PathDataUpdater(
         IDalamudPluginInterface pluginInterface,
@@ -147,6 +148,7 @@ internal sealed class PathDataUpdater : IDisposable
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");
             Status = "Update the plugin for newer path data";
+            WaitingForPluginUpdate = true;
             Save();
             return;
         }

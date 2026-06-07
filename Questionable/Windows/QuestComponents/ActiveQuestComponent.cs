@@ -16,6 +16,7 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.PathData;
 using Questionable.Utils;
 namespace Questionable.Windows.QuestComponents;
 
@@ -32,6 +33,7 @@ internal sealed partial class ActiveQuestComponent
     PriorityWindow priorityWindow,
     UiUtils uiUtils,
     IChatGui chatGui,
+    PathDataUpdater pathDataUpdater,
     ILogger<ActiveQuestComponent> logger)
 {
     private readonly IChatGui _chatGui = chatGui;
@@ -57,6 +59,15 @@ internal sealed partial class ActiveQuestComponent
         (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? currentQuestDetails = _questController.CurrentQuestDetails;
         QuestController.QuestProgress? currentQuest = currentQuestDetails?.Progress;
         QuestController.ECurrentQuestType? currentQuestType = currentQuestDetails?.Type;
+        if (pathDataUpdater.WaitingForPluginUpdate)
+        {
+            using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+            ImGui.Text("New version available!");
+            if (ImGui.IsItemHovered())
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+            if (ImGui.IsItemClicked())
+                _commandManager.ProcessCommand("/xlplugins");
+        }
         if (currentQuest != null)
         {
             DrawQuestNames(currentQuest, currentQuestType);

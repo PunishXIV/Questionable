@@ -1,2 +1,3 @@
+- Feature: Add plugin update notice -alydev
 - Feature: Allied Society Journal Progress has more functions -alydev
 - Bug: Add safeguards for NG+ functions -alydev
