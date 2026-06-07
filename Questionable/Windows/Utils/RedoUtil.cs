@@ -66,11 +66,27 @@ internal unsafe sealed class RedoUtil
         return new(key, index);
     }
 
-    internal static void SendRedoCommand(QuestRedoChapterUI chapter) => SendRedoCommand((int)chapter.RowId);
 
-    internal static void SendRedoCommand(int chapterIndex)
+    /// <summary>
+    /// if NG+ is already active, this silently overwrites the chapter index to 0 so NG+ is turned off.
+    /// users of this function then need to run it again to send the right value.
+    /// this is intended behaviour. do not change this. -alydev
+    /// </summary>
+    /// <param name="chapterIndex"></param>
+    /// <param name="redoChapter"></param>
+    /// <param name="questRedoChapter"></param>
+    internal void SendRedoCommand(int? chapterIndex = null, RedoChapter? redoChapter = null, QuestRedoChapterUI? questRedoChapter = null)
     {
-        GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex);
+        if (chapterIndex == null)
+        {
+            if (redoChapter != null)
+                chapterIndex = (int)redoChapter;
+            else if (questRedoChapter != null)
+                chapterIndex = (int)questRedoChapter.Value.RowId;
+        }
+        if (IsRedoActive())
+            chapterIndex = 0;
+        GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex ?? 0);
     }
 
     internal bool IsRedoActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive() && TryGetActiveRedoChapter(out var _) == true;
