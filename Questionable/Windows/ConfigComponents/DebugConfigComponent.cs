@@ -198,47 +198,24 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
 
                 bool abandonQuestBeforeCompletion = Configuration.Advanced.AbandonQuestBeforeCompletion;
                 bool removeFromPriorityWhenAbandoned = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;
-                if (preventQuestCompletion)
+                if (ImGui.Checkbox("Abandon quest before completion", ref abandonQuestBeforeCompletion))
                 {
-                    using (ImRaii.PushIndent())
-                    {
-                        if (ImGui.Checkbox("Abandon quest before completion", ref abandonQuestBeforeCompletion))
-                        {
-                            Configuration.Advanced.AbandonQuestBeforeCompletion = abandonQuestBeforeCompletion;
-                            Save();
-                        }
-
-                        ImGui.SameLine();
-                        ImGuiComponents.HelpMarker("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step. " +
-                            "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
-                    }
-                    if (abandonQuestBeforeCompletion)
-                    {
-                        using (ImRaii.PushIndent(2))
-                        {
-                            if (ImGui.Checkbox("Remove from priority when abandoned", ref removeFromPriorityWhenAbandoned))
-                            {
-                                Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeFromPriorityWhenAbandoned;
-                                Save();
-                            }
-
-                            ImGui.SameLine();
-                            ImGuiComponents.HelpMarker("When enabled, Questionable will also remove a quest from the priority queue when it is abandoned. " +
-                                "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
-                        }
-                    }
-                    else if (removeFromPriorityWhenAbandoned)
-                    {
-                        Configuration.Advanced.RemoveFromPriorityWhenAbandoned = false;
-                        Save();
-                    }
-                }
-                else if (abandonQuestBeforeCompletion || removeFromPriorityWhenAbandoned)
-                {
-                    Configuration.Advanced.AbandonQuestBeforeCompletion = false;
-                    Configuration.Advanced.RemoveFromPriorityWhenAbandoned = false;
+                    Configuration.Advanced.AbandonQuestBeforeCompletion = abandonQuestBeforeCompletion;
                     Save();
                 }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step. " +
+                    "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
+                if (ImGui.Checkbox("Remove from priority when abandoned", ref removeFromPriorityWhenAbandoned))
+                {
+                    Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeFromPriorityWhenAbandoned;
+                    Save();
+                }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker("When enabled, Questionable will also remove a quest from the priority queue when it is abandoned. " +
+                    "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed.");
 
                 bool namazuPreferCraft = Configuration.Advanced.NamazuPreferCraft;
                 if (ImGui.Checkbox("Namazu: prefer Crafting job over Gatherer", ref namazuPreferCraft))

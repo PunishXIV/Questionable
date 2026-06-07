@@ -6,6 +6,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
+using ECommons.Throttlers;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
@@ -29,10 +30,10 @@ internal sealed class RedoComponent
         if (!tab)
             return;
 
-        using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
+        using (ImRaii.Disabled(EzThrottler.Throttle("stopredo") || !redoUtil.IsRedoActive()))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, "Stop NG+"))
-                RedoUtil.SendRedoCommand(0);
+                redoUtil.SendRedoCommand(redoChapter:RedoChapter.Off);
         }
         ImGui.SameLine();
         ImGuiComponents.HelpMarker("Quests marked with orange need to be reported as working\n" +
@@ -63,9 +64,10 @@ internal sealed class RedoComponent
             string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
 
-            var checkQuests = redoCache.Quests.Select(q => {
+            var checkQuests = redoCache.Quests.Select(q =>
+            {
                 questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Model.Quest? quest);
-                if (quest != null && (quest.Root.LastChecked.Date == null || 
+                if (quest != null && (quest.Root.LastChecked.Date == null ||
                         (quest.Root.LastChecked.Date != null &&
                          quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90
                         )))
@@ -150,16 +152,26 @@ internal sealed class RedoComponent
         if (ImGui.MenuItem("Sim first quest"))
             if (quests.Count >= 1)
                 questController.SimulateQuest(quests[0], 0, 0);
+
 #if DEBUG
         if (!startDisabled)
         {
-            using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
+            bool redoActive = redoUtil.IsRedoActive();
+            using (ImRaii.Disabled(redoActive))
             {
                 if (ImGui.MenuItem("Start NG+ here") && redoCache.ChapterUi.RowId != 0)
-                    RedoUtil.SendRedoCommand(redoCache.ChapterUi);
+                {
+                    if (redoActive) // safeguard
+                        redoUtil.SendRedoCommand(redoChapter:RedoChapter.Off);
+                    else
+                        redoUtil.SendRedoCommand(questRedoChapter:redoCache.ChapterUi);
+                }
             }
+            if (redoActive && ImGui.MenuItem("Stop NG+"))
+                redoUtil.SendRedoCommand(redoChapter:RedoChapter.Off);
         }
 #endif
+
     }
 
 }
