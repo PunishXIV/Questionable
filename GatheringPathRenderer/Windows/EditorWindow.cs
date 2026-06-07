@@ -68,9 +68,7 @@ internal sealed class EditorWindow : Window
             Priority = int.MinValue,
             ShowTooltip = () =>
             {
-                ImGui.BeginTooltip();
-                ImGui.Text("Open Configuration");
-                ImGui.EndTooltip();
+                ImGui.SetTooltip("Open Configuration");
             }
         });
 
