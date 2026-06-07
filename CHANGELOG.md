@@ -1,11 +1,2 @@
-- Notice: the current logic for qst's automatic teleporting check is:
-  - if a quest step has a position recorded and no aetheryte destination set, it will check for the nearest unlocked aetheryte to that position
-  - if this check returns no results, it will check if there is an aethernet shortcut set up and teleport to the nearest aetheryte to that shard.
-  - otherwise, it will expand the search to any aetherytes in the same zone
-  - if all these checks fail, qst will show an error and wait for you to navigate to the zone manually.
-- Bug: "An Ill-conceived Venture" requires the character to have unlocked retainers
-- Feature: add preset to complete all post-ARR feature/duty unlocks
-- Feature: quest tooltips now show what instance/action a quest unlocks
-- Feature: Notify user if flying is disabled when path fails
-- Feature: moved checkbox to disable flying to a more prominent position so it's easier to disable
-- Feature: show button to list all quests for current zone if no target
+- Feature: Allied Society Journal Progress has more functions -alydev
+- Bug: Add safeguards for NG+ functions -alydev
