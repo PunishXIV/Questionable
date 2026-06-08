@@ -1,2 +1,3 @@
+- Feature: add warning to priority preset select
 - Feature: add "Display Name" config for future quest path editing feature/data auto submission opt-in -alydev
 - Paths: added a whole bunch of sidequests in HW -alydev
