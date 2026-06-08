@@ -352,6 +352,9 @@ internal sealed class PriorityWindow : LWindow
             ImGui.EndCombo();
         }
 
+        ImGui.TextColoredWrapped(ImGuiColors.DalamudRed, "Selecting a preset will override your current priority list and activate the preset. " +
+            "You can save your current list as a preset by entering a name below and selecting Save.");
+
         ImGui.Spacing();
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
