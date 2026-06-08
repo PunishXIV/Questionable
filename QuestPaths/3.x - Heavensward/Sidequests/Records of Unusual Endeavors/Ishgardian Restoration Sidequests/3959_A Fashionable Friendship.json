@@ -1,0 +1,143 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 418,
+          "TargetTerritoryId": 886,
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ],
+          "SkipConditions": { "StepIf": { "InTerritory": [886] } }
+        },
+        {
+          "DataId": 1032813,
+          "Position": {
+            "X": 117.809,
+            "Y": -40,
+            "Z": 130.976
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The New Nest"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -56.893898,
+            "Y": 0,
+            "Z": 58.802048
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -44.121605,
+              "Y": -20.000002,
+              "Z": 47.033604
+            },
+            "TerritoryId": 886
+          },
+          "AethernetShortcut": [
+            "[Firmament] The New Nest",
+            "[Firmament] Featherfall"
+          ]
+        },
+        {
+          "DataId": 1034092,
+          "Position": {
+            "X": -43.1744,
+            "Y": -20,
+            "Z": 36.6063
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1034095,
+          "Position": {
+            "X": 26.847,
+            "Y": -20,
+            "Z": 88.9727
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKHZ103_03959_Q1_000_000",
+              "Answer": "TEXT_LUCKHZ103_03959_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1034096,
+          "Position": {
+            "X": 148.21082,
+            "Y": -38.5,
+            "Z": 136.98022
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Firmament] The Mendicant's Court","[Firmament] The New Nest"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -56.893898,
+            "Y": 0,
+            "Z": 58.802048
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -44.121605,
+              "Y": -20.000002,
+              "Z": 47.033604
+            },
+            "TerritoryId": 886
+          },
+          "AethernetShortcut": [
+            "[Firmament] The New Nest",
+            "[Firmament] Featherfall"
+          ]
+        },
+        {
+          "DataId": 1034094,
+          "Position": {
+            "X": -41.4959,
+            "Y": -20,
+            "Z": 35.6603
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4003
+        }
+      ]
+    }
+  ]
+}

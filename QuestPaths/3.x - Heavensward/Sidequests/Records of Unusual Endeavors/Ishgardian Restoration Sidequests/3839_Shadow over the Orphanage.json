@@ -1,0 +1,116 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 418,
+          "TargetTerritoryId": 886,
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] Firmament"],
+          "SkipConditions": {"StepIf": {"InTerritory": [886]}}
+        },
+        {
+          "DataId": 1032802,
+          "Position": {
+            "X": 139.473,
+            "Y": -50,
+            "Z": 108.118
+          },
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] The New Nest"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1032803,
+          "Position": {
+            "X": 195.48328,
+            "Y": -50.000004,
+            "Z": 66.300415
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
+        },
+        {
+          "DataId": 1032806,
+          "Position": {
+            "X": 191.97375,
+            "Y": -40.000004,
+            "Z": 3.982544
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        },
+        {
+          "DataId": 1032805,
+          "Position": {
+            "X": 37.857544,
+            "Y": -16,
+            "Z": 146.89856
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1032807,
+          "Position": {
+            "X": 150.1029,
+            "Y": -38.5,
+            "Z": 136.43079
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "DialogueChoices": [{"Prompt": "TEXT_LUCKHZ101_03839_Q1_000_000","Answer": "TEXT_LUCKHZ101_03839_A1_000_002","Type": "List"}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032802,
+          "Position": {
+            "X": 139.473,
+            "Y": -50,
+            "Z": 108.118
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 3840
+        }
+      ]
+    }
+  ]
+}

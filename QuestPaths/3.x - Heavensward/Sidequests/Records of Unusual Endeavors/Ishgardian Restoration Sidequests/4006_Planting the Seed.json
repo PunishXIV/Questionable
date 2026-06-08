@@ -1,0 +1,90 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 418,
+          "TargetTerritoryId": 886,
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] Firmament"],
+          "SkipConditions": {"StepIf": {"InTerritory": [886]}}
+        },
+        {
+          "DataId": 2011341,
+          "Position": {
+            "X": 14.1741,
+            "Y": -19,
+            "Z": -45.6443
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Firmament] The Mendicant's Court","[Firmament] The Mattock"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035583,
+          "Position": {
+            "X": -31.937195,
+            "Y": -8.500006,
+            "Z": -94.56018
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Firmament] The Mattock","[Firmament] Western Risensong Quarter"]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1035584,
+          "Position": {
+            "X": -66.867,
+            "Y": 10,
+            "Z": -165.176
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1035585,
+          "Position": {
+            "X": 6.6986694,
+            "Y": 1.5968697E-06,
+            "Z": -141.43585
+          },
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035583,
+          "Position": {
+            "X": -31.926,
+            "Y": -8.5,
+            "Z": -94.533
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
