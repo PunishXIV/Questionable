@@ -451,7 +451,7 @@ internal sealed class CommandHandler : IDisposable
 
     private void PrintMountId()
     {
-        ushort? mountId = _gameFunctions.GetMountId();
+        ushort? mountId = GameFunctions.GetMountId();
         if (mountId != null)
         {
             Mount? row = _dataManager.GetExcelSheet<Mount>().GetRowOrDefault(mountId.Value);

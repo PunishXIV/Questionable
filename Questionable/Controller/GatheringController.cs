@@ -29,7 +29,6 @@ internal sealed unsafe class GatheringController
 (
     MovementController movementController,
     GatheringPointRegistry gatheringPointRegistry,
-    GameFunctions gameFunctions,
     NavmeshIpc navmeshIpc,
     IObjectTable objectTable,
     IChatGui chatGui,
@@ -143,7 +142,7 @@ internal sealed unsafe class GatheringController
 
         uint territoryId = _currentRequest.Root.Steps[^1].TerritoryId;
         bool fly = currentNode.Fly.GetValueOrDefault(_currentRequest.Root.FlyBetweenNodes.GetValueOrDefault(true)) &&
-                   gameFunctions.IsFlyingUnlocked(territoryId);
+                   GameFunctions.IsFlyingUnlocked(territoryId);
         if (currentNode.Locations.Count > 1)
         {
             Vector3 averagePosition = new()

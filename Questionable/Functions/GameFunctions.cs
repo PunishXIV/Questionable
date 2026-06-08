@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
@@ -31,7 +32,6 @@ namespace Questionable.Functions;
 
 internal sealed unsafe partial class GameFunctions
 (
-    QuestFunctions questFunctions,
     IDataManager dataManager,
     IObjectTable objectTable,
     ITargetManager targetManager,
@@ -44,23 +44,23 @@ internal sealed unsafe partial class GameFunctions
 {
     private readonly AbandonDutyDelegate _abandonDuty =
         Marshal.GetDelegateForFunctionPointer<AbandonDutyDelegate>(EventFramework.Addresses.LeaveCurrentContent.Value);
-    private readonly ReadOnlyDictionary<uint, uint> _contentFinderConditionToContentId = dataManager.GetExcelSheet<ContentFinderCondition>()
+    private readonly ReadOnlyDictionary<uint, uint> _contentFinderConditionToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
         .Where(x => x.RowId > 0 && x.Content.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.Content.RowId)
         .AsReadOnly();
 
-    private readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = dataManager.GetExcelSheet<TerritoryType>()
+    private static readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = Svc.Data.GetExcelSheet<TerritoryType>()
         .Where(x => x.RowId > 0)
         .Where(x => x.AetherCurrentCompFlgSet.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
         .AsReadOnly();
 
-    public bool IsFlyingUnlocked(uint territoryId)
+    public static bool IsFlyingUnlocked(uint territoryId)
     {
-        if (configuration.Advanced.NeverFly)
+        if (Configuration.Instance().Advanced.NeverFly)
             return false;
 
-        if (questFunctions.IsQuestAccepted(new(3304)) && condition[ConditionFlag.Mounted])
+        if (QuestFunctions.IsQuestAccepted(new(3304)) && Svc.Condition[ConditionFlag.Mounted])
         {
             // special quest amaro, not the normal one
             // TODO Check if this also applies to beast tribe mounts
@@ -74,9 +74,9 @@ internal sealed unsafe partial class GameFunctions
                playerState->IsAetherCurrentZoneComplete(aetherCurrentCompFlgSet);
     }
 
-    public ushort? GetMountId()
+    public static ushort? GetMountId()
     {
-        BattleChara* battleChara = (BattleChara*)(objectTable[0]?.Address ?? 0);
+        BattleChara* battleChara = (BattleChara*)(Svc.Objects[0]?.Address ?? 0);
         if (battleChara != null && battleChara->Mount.MountId != 0)
             return battleChara->Mount.MountId;
         else

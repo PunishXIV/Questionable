@@ -14,7 +14,7 @@ namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp
 {
-    internal sealed class CheckAlliedSocietyMount(GameFunctions gameFunctions, AetheryteData aetheryteData, AlliedSocietyData alliedSocietyData, ILogger<CheckAlliedSocietyMount> logger) : SimpleTaskFactory
+    internal sealed class CheckAlliedSocietyMount(AetheryteData aetheryteData, AlliedSocietyData alliedSocietyData, ILogger<CheckAlliedSocietyMount> logger) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -22,7 +22,7 @@ internal static class QuestCleanUp
                 return null;
 
             // if you are on a allied society mount
-            if (gameFunctions.GetMountId() is { } mountId &&
+            if (GameFunctions.GetMountId() is { } mountId &&
                 alliedSocietyData.Mounts.TryGetValue(mountId, out AlliedSocietyMountConfiguration? mountConfiguration))
             {
                 logger.LogInformation("We are on a known allied society mount with id = {MountId}", mountId);

@@ -17,6 +17,7 @@ using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
+using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.PathData;
@@ -40,6 +41,7 @@ internal sealed class QuestRegistry
     private readonly QuestData _questData;
     private readonly Dictionary<ElementId, Quest> _quests = [];
     private readonly QuestValidator _questValidator;
+    private readonly Configuration _configuration;
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
@@ -51,6 +53,7 @@ internal sealed class QuestRegistry
         JsonSchemaValidator jsonSchemaValidator,
         ILogger<QuestRegistry> logger,
         TerritoryData territoryData,
+        Configuration configuration,
         IDataManager dataManager,
         IChatGui chatGui)
     {
@@ -62,6 +65,7 @@ internal sealed class QuestRegistry
         _territoryData = territoryData;
         _chatGui = chatGui;
         _dataManager = dataManager;
+        _configuration = configuration;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
     }
 
@@ -382,8 +386,7 @@ internal sealed class QuestRegistry
                         info.IssuerLocation.Position,
                         info.IssuerLocation.Territory.RowId
                     ) {
-                        Fly = true,
-                        StopDistance = 2
+                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
                     }
                 ]
         };
@@ -404,8 +407,7 @@ internal sealed class QuestRegistry
                         level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
                         level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
                     ) {
-                        Fly = true,
-                        StopDistance = 2
+                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
                     }
                 ]
             });
@@ -420,15 +422,18 @@ internal sealed class QuestRegistry
                         info.ToDoLocations.Last().Position,
                         info.ToDoLocations.Last().Territory.RowId
                     ) {
-                        Fly = true,
-                        StopDistance = 2
+                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
                     }
                 ]
         };
         sequences.Add(seq255);
+        var name = "Anonymous";
+        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
+        if (pluginConfig is Configuration config)
+            name = config.General.DisplayName;
         return new QuestRoot()
         {
-            Author = ["Anonymous"],
+            Author = [name],
             QuestSequence = sequences
         };
     }

@@ -11,7 +11,7 @@ internal sealed class Mount128Module(GameFunctions gameFunctions) : ICombatModul
     public const ushort MountId = 128;
     private readonly EAction[] _actions = [EAction.MagitekThunder, EAction.MagitekPulse];
 
-    public bool CanHandleFight(CombatController.CombatData combatData) => gameFunctions.GetMountId() == MountId;
+    public bool CanHandleFight(CombatController.CombatData combatData) => GameFunctions.GetMountId() == MountId;
 
     public bool Start(CombatController.CombatData combatData) => true;
 

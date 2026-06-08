@@ -168,6 +168,26 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
         }
 
+        string displayName = Configuration.General.DisplayName;
+        if (ImGui.InputText("Display name", ref displayName, 20))
+            Configuration.General.DisplayName = displayName;
+
+        if (ImGui.IsItemDeactivatedAfterEdit())
+        {
+            if (string.IsNullOrWhiteSpace(Configuration.General.DisplayName))
+                Configuration.General.DisplayName = "Anonymous";
+            Save();
+        }
+
+        if (ImGui.IsItemHovered())
+        {
+            using (ImRaii.Tooltip())
+            {
+                ImGui.Text("The name associated with submissions to help with QST's development.");
+                ImGui.Text("Defaults to \"Anonymous\" if left blank.");
+            }
+        }
+
         ImGui.Separator();
         ImGui.Text("UI");
         using (ImRaii.PushIndent())

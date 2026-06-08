@@ -15,6 +15,13 @@ namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
 {
+    internal static Configuration Instance()
+    {
+        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
+        if (pluginConfig is Configuration config)
+            return config;
+        throw new Exception("Could not get plugin config");
+    }
     #region Serialised data
     // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
@@ -212,6 +219,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool DismissedReportWarning { get; set; }
         public bool ReportsDisabled { get; set; }
         public string ReportMessage { get; set; } = "";
+        public string DisplayName { get; set; } = "Anonymous";
     }
 
     internal sealed class StopConfiguration

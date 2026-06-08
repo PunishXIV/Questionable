@@ -1,12 +1,15 @@
 ﻿using System;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
+using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
+using Questionable.Utils;
 namespace Questionable.External;
 
 internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger)
 {
+#pragma warning disable CA1823 // Avoid unused private fields
     private readonly ICallGateSubscriber<string, bool> _aethernetTeleport =
         pluginInterface.GetIpcSubscriber<string, bool>("Lifestream.AethernetTeleport");
     private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportById =
@@ -17,6 +20,7 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.AethernetTeleportToFirmament");
     private readonly ICallGateSubscriber<bool> _isBusy =
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
+#pragma warning restore CA1823 // Avoid unused private fields
 
     public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), false);
 

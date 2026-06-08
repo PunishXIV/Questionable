@@ -11,7 +11,7 @@ internal sealed class Mount147Module(GameFunctions gameFunctions) : ICombatModul
     public const ushort MountId = 147;
     private readonly EAction[] _actions = [EAction.Trample];
 
-    public bool CanHandleFight(CombatController.CombatData combatData) => gameFunctions.GetMountId() == MountId;
+    public bool CanHandleFight(CombatController.CombatData combatData) => GameFunctions.GetMountId() == MountId;
 
     public bool Start(CombatController.CombatData combatData) => true;
 
