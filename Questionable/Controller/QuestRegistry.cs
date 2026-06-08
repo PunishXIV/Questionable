@@ -407,7 +407,7 @@ internal sealed class QuestRegistry
                         level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
                         level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
                     ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
+                        Fly = GameFunctions.IsFlyingUnlocked(level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId) ? true : null
                     }
                 ]
             });
@@ -422,7 +422,7 @@ internal sealed class QuestRegistry
                         info.ToDoLocations.Last().Position,
                         info.ToDoLocations.Last().Territory.RowId
                     ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
+                        Fly = GameFunctions.IsFlyingUnlocked(info.ToDoLocations.Last().Territory.RowId) ? true : null
                     }
                 ]
         };

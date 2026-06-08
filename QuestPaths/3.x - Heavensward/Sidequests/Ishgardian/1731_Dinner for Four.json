@@ -1,0 +1,98 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012217,
+          "Position": {
+            "X": 25.9272,
+            "Y": 15.8651,
+            "Z": 19.4218
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1011220,
+          "Position": {
+            "X": -18.112549,
+            "Y": 16.009666,
+            "Z": -5.6000977
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1011221,
+          "Position": {
+            "X": 147.9972,
+            "Y": 0.86429155,
+            "Z": -93.43103
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Last Vigil",
+            "[Ishgard] Athenaeum Astrologicum"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1011218,
+          "Position": {
+            "X": -155.41315,
+            "Y": -0.13493061,
+            "Z": -81.31531
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Athenaeum Astrologicum",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012217,
+          "Position": {
+            "X": 25.9272,
+            "Y": 15.8651,
+            "Z": 19.4218
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Last Vigil"
+          ]
+        }
+      ]
+    }
+  ]
+}

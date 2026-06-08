@@ -1,0 +1,73 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1014448,
+          "Position": {
+            "X": 16.9524,
+            "Y": 16.0097,
+            "Z": -10.6446
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Last Vigil"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013712,
+          "Position": {
+            "X": 344.906,
+            "Y": 0.359481,
+            "Z": 555.371
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012077,
+          "Position": {
+            "X": 379.91397,
+            "Y": -69.42943,
+            "Z": 695.07056
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013712,
+          "Position": {
+            "X": 344.906,
+            "Y": 0.359481,
+            "Z": 555.371
+          },
+          "TerritoryId": 400,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 1973
+        }
+      ]
+    }
+  ]
+}
