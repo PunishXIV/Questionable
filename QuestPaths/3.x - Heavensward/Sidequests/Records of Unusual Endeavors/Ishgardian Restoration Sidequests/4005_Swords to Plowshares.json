@@ -1,0 +1,102 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 418,
+          "TargetTerritoryId": 886,
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] Firmament"],
+          "SkipConditions": {"StepIf": {"InTerritory": [886]}}
+        },
+        {
+          "DataId": 1035301,
+          "Position": {
+            "X": 51.319,
+            "Y": 1.5,
+            "Z": -141.186
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] Eastern Risensong Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011303,
+          "Position": {
+            "X": 56.0769,
+            "Y": -20.0046,
+            "Z": -69.2303
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "UseItem",
+          "ItemId": 2003050
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011304,
+          "Position": {
+            "X": 58.5158,
+            "Y": -20.0046,
+            "Z": 47.9411
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "UseItem",
+          "ItemId": 2003050
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011305,
+          "Position": {
+            "X": -95.32312,
+            "Y": -0.015319824,
+            "Z": 0.07623291
+          },
+          "TerritoryId": 886,
+          "AethernetShortcut": ["[Firmament] The Mattock","[Firmament] Hoarfrost Hall"],
+          "InteractionType": "UseItem",
+          "ItemId": 2003050
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035301,
+          "Position": {
+            "X": 51.319,
+            "Y": 1.5,
+            "Z": -141.186
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Firmament] Hoarfrost Hall","[Firmament] Eastern Risensong Quarter"]
+        }
+      ]
+    }
+  ]
+}

@@ -131,14 +131,14 @@ internal static class SkipCondition
         private bool CheckFlyingCondition(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.Flying == ELockedSkipCondition.Unlocked &&
-                gameFunctions.IsFlyingUnlocked(step.TerritoryId))
+                GameFunctions.IsFlyingUnlocked(step.TerritoryId))
             {
                 logger.LogInformation("Skipping step, as flying is unlocked");
                 return true;
             }
 
             if (skipConditions.Flying == ELockedSkipCondition.Locked &&
-                !gameFunctions.IsFlyingUnlocked(step.TerritoryId))
+                !GameFunctions.IsFlyingUnlocked(step.TerritoryId))
             {
                 logger.LogInformation("Skipping step, as flying is locked");
                 return true;
@@ -453,7 +453,7 @@ internal static class SkipCondition
 
                 if ((configuration.Advanced.SkipAetherCurrents &&
                     QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId)) ||
-                    gameFunctions.IsFlyingUnlocked(step.TerritoryId)) // story skip apparently makes 1748 impossible to complete -alydev
+                    GameFunctions.IsFlyingUnlocked(step.TerritoryId)) // story skip apparently makes 1748 impossible to complete -alydev
                 {
                     logger.LogInformation("Skipping step, as aether current quests should be skipped");
                     return true;

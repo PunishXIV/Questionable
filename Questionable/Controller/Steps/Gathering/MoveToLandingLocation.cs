@@ -27,7 +27,6 @@ internal static class MoveToLandingLocation
     internal sealed class MoveToLandingLocationExecutor
     (
         MoveExecutor moveExecutor,
-        GameFunctions gameFunctions,
         IObjectTable objectTable,
         ILogger<MoveToLandingLocationExecutor> logger) : TaskExecutor<Task>, IToastAware
     {
@@ -56,7 +55,7 @@ internal static class MoveToLandingLocation
             logger.LogInformation("Preliminary landing location: {Location}, with degrees = {Degrees}, range = {Range}",
                 target.ToString("G", CultureInfo.InvariantCulture), degrees, range);
 
-            bool fly = Task.FlyBetweenNodes && gameFunctions.IsFlyingUnlocked(Task.TerritoryId);
+            bool fly = Task.FlyBetweenNodes && GameFunctions.IsFlyingUnlocked(Task.TerritoryId);
             _moveTask = new MoveTask(Task.TerritoryId, target, null, 0.25f,
                 Task.GatheringNode.DataId, Fly: fly, IgnoreDistanceToObject: true,
                 InteractionType: EInteractionType.Gather);

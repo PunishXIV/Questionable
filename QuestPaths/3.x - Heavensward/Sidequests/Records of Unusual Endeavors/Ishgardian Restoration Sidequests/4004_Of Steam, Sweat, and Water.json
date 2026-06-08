@@ -1,0 +1,82 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-08"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 418,
+          "TargetTerritoryId": 886,
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] Firmament"],
+          "SkipConditions": {"StepIf": {"InTerritory": [886]}}
+        },
+        {
+          "DataId": 1035295,
+          "Position": {
+            "X": 130.027,
+            "Y": -20.0001,
+            "Z": -122.107
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Firmament] The Mendicant's Court",
+            "[Firmament] Eastern Risensong Quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1035296,
+          "Position": {
+            "X": 114.098,
+            "Y": -18.8,
+            "Z": -184.665
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1035297,
+          "Position": {
+            "X": 128.338,
+            "Y": -18.8,
+            "Z": -190.649
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1035297,
+          "Position": {
+            "X": 128.338,
+            "Y": -18.8,
+            "Z": -190.649
+          },
+          "StopDistance": 2,
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

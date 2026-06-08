@@ -357,8 +357,14 @@ internal sealed class CreationUtilsComponent
                                                      "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
                                                    },
                                                    "TerritoryId": {{clientState.TerritoryType}},
+                                         """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 
+                                       $$"""
+                                                   "InteractionType": "{{interactionType}}",
+                                                   "Fly": true
+                                         """ :
+                                       $$"""
                                                    "InteractionType": "{{interactionType}}"
-                                         """);
+                                         """));
             }
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
@@ -398,8 +404,14 @@ internal sealed class CreationUtilsComponent
                                                  "Z": {{objectTable[0]!.Position.Z.ToString(CultureInfo.InvariantCulture)}}
                                                },
                                                "TerritoryId": {{clientState.TerritoryType}},
+                                     """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 
+                                   $$"""
+                                               "InteractionType": "",
+                                               "Fly": true
+                                     """ :
+                                   $$"""
                                                "InteractionType": ""
-                                     """);
+                                     """));
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
         {

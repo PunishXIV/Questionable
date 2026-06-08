@@ -595,6 +595,7 @@ internal sealed unsafe class QuestFunctions
 
     public bool IsQuestAcceptedOrComplete(ElementId elementId) => IsQuestComplete(elementId) || IsQuestAccepted(elementId);
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static")]
     public bool IsQuestAccepted(ElementId elementId)
     {
         if (elementId is QuestId questId)
@@ -609,7 +610,7 @@ internal sealed unsafe class QuestFunctions
             throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
-    public bool IsQuestAccepted(QuestId questId)
+    public static bool IsQuestAccepted(QuestId questId)
     {
         QuestManager* questManager = QuestManager.Instance();
         return questManager->IsQuestAccepted(questId.Value);

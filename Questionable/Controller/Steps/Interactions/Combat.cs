@@ -12,7 +12,7 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Combat
 {
-    internal sealed class Factory(GameFunctions gameFunctions) : ITaskFactory
+    internal sealed class Factory() : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -21,8 +21,8 @@ internal static class Combat
             if (!step.EnemySpawnType.HasValue)
                 throw new ArgumentNullException(nameof(step.EnemySpawnType));
 
-            if (gameFunctions.GetMountId() != Mount128Module.MountId &&
-                gameFunctions.GetMountId() != Mount147Module.MountId)
+            if (GameFunctions.GetMountId() != Mount128Module.MountId &&
+                GameFunctions.GetMountId() != Mount147Module.MountId)
             {
                 yield return new Mount.UnmountTask();
             }
