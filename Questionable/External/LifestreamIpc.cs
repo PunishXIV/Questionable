@@ -1,10 +1,8 @@
 ﻿using System;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Model.Common;
-using Questionable.Utils;
 namespace Questionable.External;
 
 internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger)

@@ -229,11 +229,11 @@ internal sealed class QuestJournalComponent
                 location.Game.X,
                 location.Game.Z
             );
-            gameGui.OpenMapWithMapLink(mapLink);
+            bool openedMap = gameGui.OpenMapWithMapLink(mapLink);
             if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
                 movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
                 {
-                    Fly = true,
+                    Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId) ? true : false,
                     Sprint = true,
                     StopDistance = 20f,
                     VerticalStopDistance = 5f,
