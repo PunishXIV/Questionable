@@ -15,6 +15,7 @@ using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class StopConditionComponent : ConfigComponent
@@ -69,12 +70,12 @@ internal sealed class StopConditionComponent : ConfigComponent
 
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Stop###StopConditionns");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Stop") + "###StopConditionns");
         if (!tab)
             return;
 
         bool enabled = Configuration.Stop.Enabled;
-        if (ImGui.Checkbox("Stop Questionable when any of the conditions below are met", ref enabled))
+        if (ImGui.Checkbox(_L("Stop Questionable when any of the conditions below are met"), ref enabled))
         {
             Configuration.Stop.Enabled = enabled;
             Save();
@@ -85,10 +86,10 @@ internal sealed class StopConditionComponent : ConfigComponent
         using (ImRaii.Disabled(!enabled))
         {
             // Level stop condition section
-            ImGui.Text("Stop when character level reaches:");
+            ImGui.Text(_L("Stop when character level reaches:"));
 
             bool levelToStopAfter = Configuration.Stop.LevelToStopAfter;
-            if (ImGui.Checkbox("Enable level stop condition", ref levelToStopAfter))
+            if (ImGui.Checkbox(_L("Enable level stop condition"), ref levelToStopAfter))
             {
                 Configuration.Stop.LevelToStopAfter = levelToStopAfter;
                 Save();
@@ -98,7 +99,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             {
                 int targetLevel = Configuration.Stop.TargetLevel;
                 ImGui.SetNextItemWidth(100);
-                if (ImGui.InputInt("Stop at level", ref targetLevel, 1, 5))
+                if (ImGui.InputInt(_L("Stop at level"), ref targetLevel, 1, 5))
                 {
                     Configuration.Stop.TargetLevel = Math.Max(1, Math.Min(100, targetLevel));
                     Save();
@@ -112,7 +113,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                     if (currentLevel > 0)
                     {
                         ImGui.SameLine();
-                        ImGui.TextDisabled($"(Current: {currentLevel})");
+                        ImGui.TextDisabled(_LF("(Current: {0})",currentLevel));
                     }
                 }
             }
@@ -120,7 +121,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             ImGui.Separator();
 
             DrawQuestStopSection(
-                "Stop when completing any of the quests selected below:",
+                _L("Stop when completing any of the quests selected below:"),
                 "Complete",
                 _completeQuestSelector,
                 Configuration.Stop.QuestsToStopAfter,
@@ -129,7 +130,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             ImGui.Separator();
 
             DrawQuestStopSection(
-                "Stop when accepting any of the quests selected below:",
+                _L("Stop when accepting any of the quests selected below:"),
                 "Accept",
                 _acceptQuestSelector,
                 Configuration.Stop.QuestsToStopWhenAccepted,
@@ -149,7 +150,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             {
                 using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
                 {
-                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, "Clear All"))
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
                     {
                         clearAll();
                         Save();
@@ -157,7 +158,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                 }
 
                 if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                    ImGui.SetTooltip("Hold CTRL to enable this button.");
+                    ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
 
                 ImGui.Separator();
             }

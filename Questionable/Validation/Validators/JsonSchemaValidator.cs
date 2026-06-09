@@ -5,6 +5,7 @@ using Json.Schema;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class JsonSchemaValidator : IQuestValidator
@@ -51,7 +52,7 @@ internal sealed class JsonSchemaValidator : IQuestValidator
                     Step = null,
                     Type = EIssueType.InvalidJsonSchema,
                     Severity = EIssueSeverity.Error,
-                    Description = "JSON Validation failed"
+                    Description = _L("JSON Validation failed")
                 };
             }
         }

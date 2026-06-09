@@ -1,13 +1,20 @@
 ﻿using System;
+using System.Globalization;
+using System.IO;
+using System.Xml.Linq;
 using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
+using I18N.DotNet;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Windows;
+using static I18N.DotNet.GlobalLocalizer;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable;
 
 internal sealed class DalamudInitializer : IDisposable
@@ -62,6 +69,7 @@ internal sealed class DalamudInitializer : IDisposable
         _highlightObject = highlightObject;
         _partyWatchDog = partyWatchDog;
         _logger = logger;
+        SetupI18N(_configuration.General.Language);
 
         _windowSystem.AddWindow(oneTimeSetupWindow);
         _windowSystem.AddWindow(questWindow);
@@ -113,10 +121,13 @@ internal sealed class DalamudInitializer : IDisposable
         catch (MovementController.PathfindingFailedException)
         {
             if (_configuration.Advanced.NeverFly)
-                _chatGui.PrintError("vnavmesh was not able to find a path. This may be due to the 'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this to run fine.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                _chatGui.PrintError(_L("vnavmesh was not able to find a path. This may be due to the " +
+                    "'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this " +
+                    "to run fine."), CommandHandler.MessageTag, CommandHandler.TagColor);
             else
-                _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
-            _questController.Stop("Pathfinding failed");
+                _chatGui.PrintError(_LF("vnavmesh was not able to find a path! Please report this to " +
+                    "Questionable developers. {0}", _questController.CurrentQuest?.ToString() ?? ""), CommandHandler.MessageTag, CommandHandler.TagColor);
+            _questController.Stop(_L("Pathfinding failed"));
         }
     }
 
@@ -136,5 +147,15 @@ internal sealed class DalamudInitializer : IDisposable
         {
             _oneTimeSetupWindow.IsOpenAndUncollapsed = true;
         }
+    }
+
+    internal static void SetupI18N(CultureInfo culture) => GlobalLocalizer.Localizer.Load( culture );
+    internal static void SetupI18N(string language)
+    {
+        CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo( language );
+        GlobalLocalizer.Localizer.LoadXML(
+            Path.Combine(Svc.PluginInterface.AssemblyLocation.Directory?.FullName ??
+                new FileInfo(typeof(DalamudInitializer).Assembly.Location).DirectoryName ?? "","Resources","I18N.xml"),
+            CultureInfo.CurrentUICulture );
     }
 }

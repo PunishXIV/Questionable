@@ -32,6 +32,7 @@ using Questionable.Windows.JournalComponents;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
 using WrathCombo.API;
+using static Questionable.Utils.LocalizeShortcut;
 using Action = Questionable.Controller.Steps.Interactions.Action;
 using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
@@ -113,7 +114,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         }
         catch (Exception)
         {
-            chatGui.PrintError("Unable to load plugin, check /xllog for details", "Questionable");
+            chatGui.PrintError(_L("Unable to load plugin, check /xllog for details"), _L("Questionable"));
             throw;
         }
     }

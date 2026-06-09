@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
@@ -23,7 +24,7 @@ internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
                     Step = StepId,
                     Type = EIssueType.DuplicateSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = $"Duplicate singleplayer duty index: {SinglePlayerDutyIndex}"
+                    Description = _LF("Duplicate singleplayer duty index: {0}",SinglePlayerDutyIndex)
                 };
             }
         }

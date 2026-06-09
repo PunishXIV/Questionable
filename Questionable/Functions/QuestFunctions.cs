@@ -23,6 +23,7 @@ using Questionable.Model.Questing;
 using Questionable.Utils;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using Quest = Questionable.Model.Quest;
+using static Questionable.Utils.LocalizeShortcut;
 
 namespace Questionable.Functions;
 
@@ -102,9 +103,9 @@ internal sealed unsafe class QuestFunctions
             // quests that use white wolf gate, finish 'broadening horizons' to unlock it
             if (!aetheryteFunctions.IsAetheryteUnlocked(EAetheryteLocation.GridaniaBlueBadgerGate))
             {
-                chatGui.Print("This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n" +
+                chatGui.Print(_L("This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n" +
                                "This should have happened as part of the quest \"Close To Home\" if starting in Gridania, or \"The Ul'dahn/Lominsan Envoy\" for the other cities.\n" +
-                               "Please unlock the aethernet shards, or complete the current quest sequence manually before continuing.",
+                               "Please unlock the aethernet shards, or complete the current quest sequence manually before continuing."),
                                CommandHandler.MessageTag, CommandHandler.TagColor);
             }
 
@@ -279,17 +280,17 @@ internal sealed unsafe class QuestFunctions
 
         AgentScenarioTree* scenarioTree = AgentScenarioTree.Instance();
         if (scenarioTree == null)
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "No Scenario Tree");
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("No Scenario Tree"));
 
         if (scenarioTree->Data == null)
-            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), "Scenario Tree Data is null");
+            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Scenario Tree Data is null"));
 
         QuestId currentQuest = new(scenarioTree->Data->MainScenarioQuestIds[0]);
         string extraData = $"sq: {currentQuest}";
         if (currentQuest.Value == 0)
         {
             if (IsMainScenarioQuestComplete())
-                return (QuestReference.NoQuest(MainScenarioQuestState.Complete), "Main Scenario is complete");
+                return (QuestReference.NoQuest(MainScenarioQuestState.Complete), _L("Main Scenario is complete"));
 
             // fallback lookup; find a quest which isn't completed but where all prequisites are met
             // excluding branching quests
@@ -299,7 +300,7 @@ internal sealed unsafe class QuestFunctions
                 .Where(q => IsReadyToAcceptQuest(q.QuestId, true))
                 .ToList();
             if (potentialQuests.Count == 0)
-                return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "No potential quests found");
+                return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("No potential quests found"));
             else if (potentialQuests.Count > 1)
             {
                 // for all of these (except the GC quests), questionable normally auto-picks the next quest based on the
@@ -323,7 +324,7 @@ internal sealed unsafe class QuestFunctions
 
                 if (potentialQuests.Count != 1)
                 {
-                    return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "Multiple potential quests found: " +
+                    return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("Multiple potential quests found:") + " " +
                                                                                         string.Join(", ", potentialQuests.Select(x => x.QuestId.Value)));
                 }
             }
@@ -334,27 +335,27 @@ internal sealed unsafe class QuestFunctions
         // if the MSQ is hidden, we generally ignore it
         QuestManager* questManager = QuestManager.Instance();
         if (IsQuestAccepted(currentQuest) && questManager->GetQuestById(currentQuest.Value)->IsHidden)
-            return (QuestReference.NoQuest(MainScenarioQuestState.Available), "Quest accepted but hidden");
+            return (QuestReference.NoQuest(MainScenarioQuestState.Available), ("Quest accepted but hidden"));
 
         // it can sometimes happen (although this isn't reliably reproducible) that the quest returned here
         // is one you've just completed. We return 255 as sequence here, since that is the end of said quest;
         // but this is just really hoping that this breaks nothing.
         if (IsQuestComplete(currentQuest))
-            return (new(currentQuest, 255, MainScenarioQuestState.Available), $"Quest {currentQuest.Value} complete");
+            return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete",currentQuest.Value));
         else if (!IsReadyToAcceptQuest(currentQuest))
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), $"Not ready to accept quest {currentQuest.Value}");
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}",currentQuest.Value));
 
         short currentLevel = PlayerState.Instance()->CurrentLevel;
 
         // are we in a loading screen?
         if (objectTable[0] == null)
-            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), "In loading screen");
+            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("In loading screen"));
 
         // if we're not at a high enough level to continue, we also ignore it
         if (questRegistry.TryGetQuest(currentQuest, out Quest? quest)
             && quest.Info.Level > currentLevel)
         {
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "Low level");
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("Low level"));
         }
 
         return (new(currentQuest, QuestManager.GetQuestSequence(currentQuest.Value), MainScenarioQuestState.Available), extraData);
@@ -420,28 +421,27 @@ internal sealed unsafe class QuestFunctions
             .Select(x =>
             {
                 if (!questRegistry.TryGetQuest(x, out Quest? quest))
-                    return new(x, "Unknown quest");
+                    return new(x, _L("Unknown quest"));
 
                 QuestStep? firstStep = quest.FindSequence(0)?.FindStep(0);
                 if (firstStep == null)
-                    return new(x, "No sequence 0 with steps");
+                    return new(x, _L("No sequence 0 with steps"));
 
                 // all priority quests assume we're able to teleport to the beginning (and for e.g. class quests, the end)
                 // ideally without having to wait 15m for Return.
                 // TODO This should be tweaked for level 1-5 class quests so that all of them can be done without teleport unlocked; the latest we unlock teleport is level 10 for Gridania characters
                 //      That probably means that (a) level 1-5 class quests should be doable without any teleports at all, and (b) the return point after being interrupted should be in the main city
                 if (!aetheryteFunctions.IsTeleportUnlocked())
-                    return new(x, "Teleport not unlocked");
+                    return new(x, _L("Teleport not unlocked"));
 
                 if (!firstStep.IsTeleportableForPriorityQuests())
-                    return new(x, "Can't teleport to start");
+                    return new(x, _L("Can't teleport to start"));
 
                 int teleportCosts = TeleportCosts(quest);
                 if (gil < teleportCosts)
                 {
                     return new(x,
-                        string.Create(CultureInfo.InvariantCulture,
-                            $"Not enough gil, estimated cost: {teleportCosts:N0}{SeIconChar.Gil.ToIconString()}"));
+                        _LF("Not enough gil, estimated cost: {0:N0}{1}",teleportCosts,SeIconChar.Gil.ToIconString()));
                 }
 
                 EAetheryteLocation? firstLockedAetheryte = quest.AllSteps()
@@ -471,7 +471,7 @@ internal sealed unsafe class QuestFunctions
                     // if quest requires white wolf gate, and unlock quest is available, don't report locked
                     if (firstLockedAetheryte == EAetheryteLocation.GridaniaWhiteWolfGate && IsReadyToAcceptQuest(new QuestId(802)))
                         return new(x);
-                    return new(x, $"Aetheryte locked: {firstLockedAetheryte}");
+                    return new(x, _LF("Aetheryte locked: {0}",firstLockedAetheryte));
                 }
 
                 return new PriorityQuestInfo(x);

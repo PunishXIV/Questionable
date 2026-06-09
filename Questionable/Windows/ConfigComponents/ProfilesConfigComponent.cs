@@ -1,5 +1,6 @@
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class ProfilesConfigComponent
@@ -10,7 +11,7 @@ internal sealed class ProfilesConfigComponent
 
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Profiles###Profiles");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Profiles") + "###Profiles");
         if (!tab)
             return;
     }

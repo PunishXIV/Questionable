@@ -18,6 +18,7 @@ using Questionable.Controller;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Utils;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuickAccessButtonsComponent
@@ -54,11 +55,11 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawPriorityQuestsButton()
     {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, "Priority Quests"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, _L("Priority Quests")))
             priorityWindow.ToggleOrUncollapse();
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Configure priority quests which will be done as soon as possible.");
+            ImGui.SetTooltip(_L("Configure priority quests which will be done as soon as possible."));
     }
 
     private void DrawRebuildNavmeshButton()
@@ -66,40 +67,40 @@ internal sealed class QuickAccessButtonsComponent
         bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vnav");
         using (ImRaii.Disabled(!isNavmeshAvailable || !ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.GlobeEurope, "Rebuild Navmesh"))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.GlobeEurope, _L("Rebuild Navmesh")))
                 commandManager.ProcessCommand("/vnav rebuild");
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
             if (!isNavmeshAvailable)
-                ImGui.SetTooltip("vnavmesh is not available.\nPlease install it first.");
+                ImGui.SetTooltip(_L("vnavmesh is not available.\nPlease install it first."));
             else
-                ImGui.SetTooltip("Hold CTRL to enable this button.\nRebuilding the navmesh will take some time.");
+                ImGui.SetTooltip(_L("Hold CTRL to enable this button.\nRebuilding the navmesh will take some time."));
         }
     }
 
     private void DrawReloadDataButton()
     {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.RedoAlt, "Reload Data"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.RedoAlt, _L("Reload Data")))
             Reload?.Invoke(this, EventArgs.Empty);
     }
 
     private void DrawJournalProgressButton()
     {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.BookBookmark, "Journal Progress"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.BookBookmark, _L("Journal Progress")))
             journalProgressWindow.ToggleOrUncollapse();
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Journal Progress");
+            ImGui.SetTooltip(_L("Journal Progress"));
     }
 
     private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
     {
-        bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, "Stuck?");
+        bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, _L("Stuck?"));
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard");
+            ImGui.SetTooltip(_L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"));
         if (leftClicked || rightClicked)
         {
             string output = "";
@@ -108,8 +109,8 @@ internal sealed class QuickAccessButtonsComponent
             {
                 output = JsonSerializer.Serialize(questCompletions, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
-                        "'/qst clearlog' to reset the log.\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
+                Svc.Chat.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
+                        "'/qst clearlog' to reset the log.") + "\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
                         CommandHandler.MessageTag, CommandHandler.TagColor);
             }
             else
@@ -159,8 +160,8 @@ internal sealed class QuickAccessButtonsComponent
                 };
                 output = JsonSerializer.Serialize(troubleshooting, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print("Troubleshooting information has been copied to clipboard. " +
-                    "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information.",
+                Svc.Chat.Print(_L("Troubleshooting information has been copied to clipboard. " +
+                    "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
         }

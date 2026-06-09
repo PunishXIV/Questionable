@@ -11,6 +11,7 @@ using Questionable.Controller.GameUi;
 using Questionable.Data;
 using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
@@ -100,7 +101,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             ShowTooltip = () =>
             {
                 ImGui.BeginTooltip();
-                ImGui.Text("Open Configuration");
+                ImGui.Text(_L("Open Configuration"));
                 ImGui.EndTooltip();
             }
         });
@@ -115,7 +116,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 ShowTooltip = () =>
                 {
                     ImGui.BeginTooltip();
-                    ImGui.Text("Sponsor QST development");
+                    ImGui.Text(_L("Sponsor QST development"));
                     ImGui.EndTooltip();
                 }
             });
@@ -173,8 +174,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             string notice = "";
             if (notice.Length != 0)
             {
-                ImGui.TextColored(ImGuiColors.DPSRed, "Notice");
-                ImGui.TextWrapped(notice);
+                ImGui.TextColored(ImGuiColors.DPSRed, _L("Notice"));
+                ImGui.TextWrapped(_L(notice));
                 ImGui.Separator();
             }
 

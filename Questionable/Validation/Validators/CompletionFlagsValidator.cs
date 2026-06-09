@@ -4,6 +4,7 @@ using System.Numerics;
 using Questionable.Controller.Utils;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class CompletionFlagsValidator : IQuestValidator
@@ -54,7 +55,7 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                         Type = EIssueType.DuplicateCompletionFlags,
                         Severity = EIssueSeverity.Error,
                         Description =
-                            $"Duplicate completion flags: {string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags)}"
+                            _LF("Duplicate completion flags: {0}",string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags))
                     };
                 }
             }

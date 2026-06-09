@@ -2,6 +2,7 @@
 using System.Linq;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class NextQuestValidator : IQuestValidator
@@ -17,7 +18,7 @@ internal sealed class NextQuestValidator : IQuestValidator
                 Step = StepId,
                 Type = EIssueType.InvalidNextQuestId,
                 Severity = EIssueSeverity.Error,
-                Description = "Next quest should not reference itself"
+                Description = _L("Next quest should not reference itself")
             };
         }
     }

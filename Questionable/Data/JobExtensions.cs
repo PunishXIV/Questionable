@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using ECommons.ExcelServices;
+using static Questionable.Utils.LocalizeShortcut;
 
 namespace Questionable.Data;
 
@@ -83,11 +84,11 @@ internal static class JobExtensions
     {
         return classJob switch
         {
-            Job.WHM => "White Mage",
-            Job.BLM => "Black Mage",
-            Job.DRK => "Dark Knight",
-            Job.RDM => "Red Mage",
-            Job.BLU => "Blue Mage",
+            Job.WHM => _L("White Mage"),
+            Job.BLM => _L("Black Mage"),
+            Job.DRK => _L("Dark Knight"),
+            Job.RDM => _L("Red Mage"),
+            Job.BLU => _L("Blue Mage"),
             var _ => classJob.ToString()
         };
     }

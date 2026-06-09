@@ -13,6 +13,7 @@ using Questionable.Model;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Windows.Common;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class QuestValidationWindow : LWindow
@@ -24,7 +25,7 @@ internal sealed class QuestValidationWindow : LWindow
 
     public QuestValidationWindow(QuestValidator questValidator, QuestData questData,
         QuestController questController, IDalamudPluginInterface pluginInterface)
-        : base("Quest Validation###QuestionableValidator")
+        : base(_L("Quest Validation") + "###QuestionableValidator")
     {
         _questValidator = questValidator;
         _questData = questData;
@@ -48,11 +49,11 @@ internal sealed class QuestValidationWindow : LWindow
             return;
         }
 
-        ImGui.TableSetupColumn("Quest", ImGuiTableColumnFlags.WidthFixed, 50);
+        ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthFixed, 50);
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 200);
-        ImGui.TableSetupColumn("Seq", ImGuiTableColumnFlags.WidthFixed, 30);
-        ImGui.TableSetupColumn("Step", ImGuiTableColumnFlags.WidthFixed, 30);
-        ImGui.TableSetupColumn("Issue", ImGuiTableColumnFlags.WidthStretch, 1.0f);
+        ImGui.TableSetupColumn(_L("Seq"), ImGuiTableColumnFlags.WidthFixed, 30);
+        ImGui.TableSetupColumn(_L("Step"), ImGuiTableColumnFlags.WidthFixed, 30);
+        ImGui.TableSetupColumn(_L("Issue"), ImGuiTableColumnFlags.WidthStretch, 1.0f);
         ImGui.TableHeadersRow();
 
         foreach (ValidationIssue validationIssue in _questValidator.Issues)
@@ -68,7 +69,7 @@ internal sealed class QuestValidationWindow : LWindow
                     IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
                     bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip("Copy as file name");
+                        ImGui.SetTooltip(_L("Copy as file name"));
                     if (copy)
                     {
                         string fileName = $"{quest.QuestId}_{quest.SimplifiedName}.json";
@@ -78,7 +79,7 @@ internal sealed class QuestValidationWindow : LWindow
                     ImGui.SameLine();
                     bool sim = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play, new Vector2(16));
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip("Simulate quest");
+                        ImGui.SetTooltip(_L("Simulate quest"));
                     if (sim)
                         _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
                 }

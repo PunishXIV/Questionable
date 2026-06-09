@@ -15,6 +15,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Utils;
 using Questionable.Windows.QuestComponents;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class AlliedSocietyJournalComponent
@@ -34,15 +35,15 @@ internal sealed class AlliedSocietyJournalComponent
     uint _incomplete;
     public void DrawAlliedSocietyQuests()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Allied Societies");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Allied Societies"));
         if (!tab)
             return;
         bool addPending = false;
 
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, "Add"))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, _L("Add")))
             addPending = true;
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Add unchecked quests (from expanded categories) to prio");
+            ImGui.SetTooltip(_L("Add unchecked quests (from expanded categories) to prio"));
         ImGui.SameLine();
 
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
@@ -54,7 +55,7 @@ internal sealed class AlliedSocietyJournalComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Prevent quest completion");
+            ImGui.SetTooltip(_L("Prevent quest completion"));
 
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban, abandonQuestBeforeCompletion ? ImGuiColors.DalamudOrange : null))
@@ -63,7 +64,7 @@ internal sealed class AlliedSocietyJournalComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Abandon quest before completion");
+            ImGui.SetTooltip(_L("Abandon quest before completion"));
 
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Trash, removeFromPriorityWhenAbandoned ? ImGuiColors.DalamudOrange : null))
@@ -72,31 +73,31 @@ internal sealed class AlliedSocietyJournalComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip("Remove from priority when abandoned");
+            ImGui.SetTooltip(_L("Remove from priority when abandoned"));
 
         ImGui.SameLine();
 
         unsafe
         {
             uint allowances = QuestManager.Instance()->GetBeastTribeAllowance();
-            ImGui.Text($"Allowances: {allowances}/12");
+            ImGui.Text(_LF("Allowances: {0}/12", allowances));
         }
 
         if (_incomplete > 0)
         {
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker("Quests marked with yellow have not been completed once yet on this character.",
+            ImGuiComponents.HelpMarker(_LF("Quests marked with yellow have not been completed once yet on this character."),
                                        FontAwesomeIcon.InfoCircle, ImGuiColors.DalamudYellow);
         }
 
         if (_unchecked > 0)
         {
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker("Quests marked with orange need to be reported as working\n" +
-                                       "or not via the LastChecked system. Ask Aly for more details!",
+            ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working\n" +
+                                       "or not via the LastChecked system. Ask Aly for more details!"),
                                        FontAwesomeIcon.InfoCircle, ImGuiColors.DalamudOrange);
             ImGui.SameLine();
-            ImGui.Text($"Unchecked: {_unchecked}");
+            ImGui.Text(_LF("Unchecked: {0}", _unchecked));
         }
 
         _unchecked = 0;
@@ -217,7 +218,7 @@ internal sealed class AlliedSocietyJournalComponent
             using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 ImGui.TextColored(ImGuiColors.DalamudYellow, FontAwesomeIcon.ExclamationCircle.ToIconString());
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip("This quest is in Priority Quests.");
+                ImGui.SetTooltip(_L("This quest is in Priority Quests."));
         }
     }
 }

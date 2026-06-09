@@ -19,6 +19,7 @@ using Questionable.Controller.Utils;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 using BattleNpcSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind;
 
 namespace Questionable.Controller;
@@ -80,12 +81,12 @@ internal sealed class CombatController : IDisposable
     public void Dispose()
     {
         _clientState.TerritoryChanged -= TerritoryChanged;
-        Stop("Dispose");
+        Stop(_L("Dispose"));
     }
 
     public bool Start(CombatData combatData)
     {
-        Stop("Starting combat");
+        Stop(_L("Starting combat"));
 
         ICombatModule? combatModule = _combatModules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
@@ -286,7 +287,7 @@ internal sealed class CombatController : IDisposable
         {
             // stuff trying to kill us
             if (gameObject.TargetObjectId == _objectTable[0]?.GameObjectId)
-                return (rawPriority.Value + 150, reason + "/Targeted");
+                return (rawPriority.Value + 150, reason + "/" + _L("Targeted"));
 
             // stuff on our enmity list that's not necessarily targeting us
             Hater haters = UIState.Instance()->Hater;
@@ -294,7 +295,7 @@ internal sealed class CombatController : IDisposable
             {
                 HaterInfo hater = haters.Haters[i];
                 if (hater.EntityId == gameObject.GameObjectId)
-                    return (rawPriority.Value + 125, reason + "/Enmity");
+                    return (rawPriority.Value + 125, reason + "/" + _L("Enmity"));
             }
         }
 
@@ -304,25 +305,25 @@ internal sealed class CombatController : IDisposable
     private unsafe (int? Priority, string Reason) GetRawKillPriority(IGameObject gameObject)
     {
         if (_currentFight == null)
-            return (null, "Not Fighting");
+            return (null, _L("Not Fighting"));
 
         if (gameObject is IBattleNpc battleNpc)
         {
             if (!_currentFight.Module.CanAttack(battleNpc))
-                return (null, "Can't attack");
+                return (null, _L("Can't attack"));
 
             if (battleNpc.IsDead)
-                return (null, "Dead");
+                return (null, _L("Dead"));
 
             if (!battleNpc.IsTargetable)
-                return (null, "Untargetable");
+                return (null, _L("Untargetable"));
 
             List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
             GameObject* gameObjectStruct = (GameObject*)gameObject.Address;
             if (gameObjectStruct->FateId != 0 &&
                 gameObject.TargetObjectId != _objectTable[0]?.GameObjectId &&
                 _currentFight.Data.SpawnType != EEnemySpawnType.FateEnemies)
-                return (null, "FATE mob");
+                return (null, _L("FATE mob"));
 
             Vector3 ownPosition = _objectTable[0]?.Position ?? Vector3.Zero;
             bool expectQuestMarker;
@@ -369,15 +370,15 @@ internal sealed class CombatController : IDisposable
             {
                 // npc that starts a fate or does turn-ins; not sure why they're marked as hostile
                 if (gameObjectStruct->NamePlateIconId is 60093 or 60732)
-                    return (null, "FATE NPC");
+                    return (null, _L("FATE NPC"));
 
-                return (0, "Not part of quest");
+                return (0, _L("Not part of quest"));
             }
 
-            return (null, "Wrong BattleNpcKind");
+            return (null, _L("Wrong BattleNpcKind"));
         }
         else
-            return (null, "Not BattleNpc");
+            return (null, _L("Not BattleNpc"));
     }
 
     private void SetTarget(IGameObject? target)
@@ -518,7 +519,7 @@ internal sealed class CombatController : IDisposable
         _wasInCombat = false;
     }
 
-    private void TerritoryChanged(uint territoryId) => Stop("TerritoryChanged");
+    private void TerritoryChanged(uint territoryId) => Stop(_L("TerritoryChanged"));
 
     private sealed class CurrentFight
     {

@@ -14,6 +14,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class EventInfoComponent
@@ -30,9 +31,8 @@ internal sealed class EventInfoComponent
     private readonly List<EventQuest> _eventQuests =
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
-        new("Limited Time Items", [new UnlockLinkId(568)], DateTime.MaxValue),
-        new("Make It Rain 2026", [new QuestId(5443)], AtDailyReset(new(2026,6,24))) // May 25, 2026 at 3pm (GMT)
-        //new("Valentione's Day 2026", [new QuestId(5325)], AtDailyReset(new(2026, 2, 16))) // January 15, 2026 at 6:59 a.m. (PST) 
+        new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
+        new(_L("Make It Rain 2026"), [new QuestId(5443)], AtDailyReset(new(2026,6,24))) // May 25, 2026 at 3pm (GMT)
     ];
     private readonly QuestController _questController = questController;
 
@@ -86,7 +86,7 @@ internal sealed class EventInfoComponent
 
                 bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip("Add to priority quests");
+                    ImGui.SetTooltip(_L("Add to priority quests"));
                 if (priority)
                     _questController.PriorityManager.Add(questId);
                 ImGui.SameLine();
@@ -96,7 +96,7 @@ internal sealed class EventInfoComponent
                     if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play))
                     {
                         _questController.SetNextQuest(quest);
-                        _questController.Start("SeasonalEventSelection");
+                        _questController.Start(_L("SeasonalEventSelection"));
                     }
 
                     bool hovered = ImGui.IsItemHovered();

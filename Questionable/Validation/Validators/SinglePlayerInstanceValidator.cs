@@ -3,6 +3,7 @@ using System.Linq;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData) : IQuestValidator
@@ -31,7 +32,7 @@ internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData)
                     Step = null,
                     Type = EIssueType.UnusedSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = $"Single player instance {index} not used"
+                    Description = _LF("Single player instance {0} not used",index)
                 };
             }
         }
