@@ -1,1682 +1,1682 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <I18N>
   <Entry>
-    <!-- Found in: Questionable\Configuration.cs -->
+    <!-- Found in: Configuration.cs -->
     <Key>Could not get plugin config</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\DalamudInitializer.cs -->
+    <!-- Found in: DalamudInitializer.cs -->
     <Key>Pathfinding failed</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\QuestionablePlugin.cs -->
+    <!-- Found in: QuestionablePlugin.cs -->
     <Key>Unable to load plugin, check /xllog for details</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\QuestionablePlugin.cs -->
+    <!-- Found in: QuestionablePlugin.cs -->
     <Key>Questionable</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Dispose</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Starting combat</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Targeted</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Enmity</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Not Fighting</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Can't attack</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Dead</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Untargetable</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>FATE mob</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>FATE NPC</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Not part of quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Wrong BattleNpcKind</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>Not BattleNpc</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CombatController.cs -->
+    <!-- Found in: Controller\CombatController.cs -->
     <Key>TerritoryChanged</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Opens the Questing window</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst help - displays simplified commands</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst help-all - displays all available commands</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst config - opens the configuration window</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst start - starts doing quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst stop - stops doing quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Available commands:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst - toggles the Questing window</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst reload - reload all quest data</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst do &lt;questId&gt; - highlights the specified quest in the debug overlay (requires debug overlay to be enabled)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst do - clears the highlighted quest in the debug overlay (requires debug overlay to be enabled)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst next &lt;questId&gt; - sets the next quest to do (or clears it if no questId is specified)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst sim &lt;questId&gt; [sequence] [step] - simulates the specified quest (or clears it if no questId is specified)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst which - shows all quests starting with your selected target</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst journal - toggles the Journal Progress window</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst priority - toggles the Priority window</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst mountid - prints information about your current mount</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst clearlog - clears QuestCompletionLog.json</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Start command</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Stop command</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Completions log has been cleared</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Unknown subcommand {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Saved {0} unlock links to log.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>New unlock links: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Could not query unlock links.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Locked taxi stands:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Active festivals: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Please complete the one-time setup first.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>You don't have the debug overlay enabled.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Set highlighted quest to {0} ({1}).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Unknown quest {0}.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Cleared highlighted quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Quest {0} is locked.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Set next quest to {0} ({1}).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Cleared next quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Simulating quest {0} ({1}).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Cleared simulated quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>Mount ID: {0}, Name: {1}, Obtainable: {2}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Controller\CommandHandler.cs -->
+    <!-- Found in: Controller\CommandHandler.cs -->
     <Key>You are not mounted.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JobExtensions.cs -->
+    <!-- Found in: Data\JobExtensions.cs -->
     <Key>White Mage</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JobExtensions.cs -->
+    <!-- Found in: Data\JobExtensions.cs -->
     <Key>Black Mage</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JobExtensions.cs -->
+    <!-- Found in: Data\JobExtensions.cs -->
     <Key>Dark Knight</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JobExtensions.cs -->
+    <!-- Found in: Data\JobExtensions.cs -->
     <Key>Red Mage</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JobExtensions.cs -->
+    <!-- Found in: Data\JobExtensions.cs -->
     <Key>Blue Mage</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JournalData.cs -->
+    <!-- Found in: Data\JournalData.cs -->
     <Key>Starting in Limsa Lominsa</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JournalData.cs -->
+    <!-- Found in: Data\JournalData.cs -->
     <Key>Starting in Gridania</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\JournalData.cs -->
+    <!-- Found in: Data\JournalData.cs -->
     <Key>Starting in Ul'dah</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\QuestData.cs -->
+    <!-- Found in: Data\QuestData.cs -->
     <Key>Patch 7.2 Fantasia</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Data\QuestData.cs -->
+    <!-- Found in: Data\QuestData.cs -->
     <Key>Patch 7.3 Fantasia</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\External\AutoDutyIpc.cs -->
+    <!-- Found in: External\AutoDutyIpc.cs -->
     <Key>Unknown ContentFinderConditionId {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\External\AutoDutyIpc.cs -->
+    <!-- Found in: External\AutoDutyIpc.cs -->
     <Key>Unable to run content with AutoDuty: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\External\AutoDutyIpc.cs -->
+    <!-- Found in: External\AutoDutyIpc.cs -->
     <Key>Unable to stop AutoDuty: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\External\BossModIpc.cs -->
+    <!-- Found in: External\BossModIpc.cs -->
     <Key>Preset {0} was not found</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>No Scenario Tree</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Scenario Tree Data is null</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Main Scenario is complete</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>No potential quests found</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Multiple potential quests found:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Quest {0} complete</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Not ready to accept quest {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>In loading screen</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Low level</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Unknown quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>No sequence 0 with steps</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Teleport not unlocked</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Can't teleport to start</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Not enough gil, estimated cost: {0:N0}{1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Functions\QuestFunctions.cs -->
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Aetheryte locked: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\QuestValidator.cs -->
+    <!-- Found in: Validation\QuestValidator.cs -->
     <Key>{0} disabled quest(s)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\AethernetShortcutValidator.cs -->
+    <!-- Found in: Validation\Validators\AethernetShortcutValidator.cs -->
     <Key>Invalid aethernet shortcut: {0} to {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\BasicSequenceValidator.cs -->
+    <!-- Found in: Validation\Validators\BasicSequenceValidator.cs -->
     <Key>Missing quest start</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\BasicSequenceValidator.cs -->
+    <!-- Found in: Validation\Validators\BasicSequenceValidator.cs -->
     <Key>Instant quest should not have any sequences after the start</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\BasicSequenceValidator.cs -->
+    <!-- Found in: Validation\Validators\BasicSequenceValidator.cs -->
     <Key>Missing sequence</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\BasicSequenceValidator.cs -->
+    <!-- Found in: Validation\Validators\BasicSequenceValidator.cs -->
     <Key>Duplicate sequence</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\ClassQuestShouldHaveShortcutValidator.cs -->
+    <!-- Found in: Validation\Validators\ClassQuestShouldHaveShortcutValidator.cs -->
     <Key>Class quest should have an aetheryte shortcut to be done automatically</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\CompletionFlagsValidator.cs -->
+    <!-- Found in: Validation\Validators\CompletionFlagsValidator.cs -->
     <Key>Duplicate completion flags: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\DialogueChoiceValidator.cs -->
+    <!-- Found in: Validation\Validators\DialogueChoiceValidator.cs -->
     <Key>{0} invalid: {1} → {2}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\JsonSchemaValidator.cs -->
+    <!-- Found in: Validation\Validators\JsonSchemaValidator.cs -->
     <Key>JSON Validation failed</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\NextQuestValidator.cs -->
+    <!-- Found in: Validation\Validators\NextQuestValidator.cs -->
     <Key>Next quest should not reference itself</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\QuestDisabledValidator.cs -->
+    <!-- Found in: Validation\Validators\QuestDisabledValidator.cs -->
     <Key>Quest is disabled</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\SayValidator.cs -->
+    <!-- Found in: Validation\Validators\SayValidator.cs -->
     <Key>Invalid chat message: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\SinglePlayerInstanceValidator.cs -->
+    <!-- Found in: Validation\Validators\SinglePlayerInstanceValidator.cs -->
     <Key>Single player instance {0} not used</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\UniqueSinglePlayerInstanceValidator.cs -->
+    <!-- Found in: Validation\Validators\UniqueSinglePlayerInstanceValidator.cs -->
     <Key>Duplicate singleplayer duty index: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\UniqueStartStopValidator.cs -->
+    <!-- Found in: Validation\Validators\UniqueStartStopValidator.cs -->
     <Key>Unexpected AcceptQuest step</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\UniqueStartStopValidator.cs -->
+    <!-- Found in: Validation\Validators\UniqueStartStopValidator.cs -->
     <Key>No AcceptQuest step</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\UniqueStartStopValidator.cs -->
+    <!-- Found in: Validation\Validators\UniqueStartStopValidator.cs -->
     <Key>Unexpected CompleteQuest step</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Validation\Validators\UniqueStartStopValidator.cs -->
+    <!-- Found in: Validation\Validators\UniqueStartStopValidator.cs -->
     <Key>No CompleteQuest step</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigWindow.cs -->
+    <!-- Found in: Windows\ConfigWindow.cs -->
     <Key>Config - Questionable</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\DebugOverlay.cs -->
+    <!-- Found in: Windows\DebugOverlay.cs -->
     <Key>Questionable Debug Overlay</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalProgressWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\JournalProgressWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Journal Progress</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\OneTimeSetupWindow.cs -->
+    <!-- Found in: Windows\OneTimeSetupWindow.cs -->
     <Key>Questionable Setup</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\OneTimeSetupWindow.cs -->
+    <!-- Found in: Windows\OneTimeSetupWindow.cs -->
     <Key>Finish Setup</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\OneTimeSetupWindow.cs -->
+    <!-- Found in: Windows\OneTimeSetupWindow.cs -->
     <Key>Missing required plugins</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\OneTimeSetupWindow.cs -->
+    <!-- Found in: Windows\OneTimeSetupWindow.cs -->
     <Key>Close window &amp; don't enable Questionable</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Job Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Priority Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Explanation</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Questionable will generally try to do:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Priority quests added below, in order</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>'Priority' quests: class quests, ARR primals, ARR raids</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Supported quests in your 'To-Do list'\n(quests from your Quest Journal that are always on-screen)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>MSQ quest (if available, unless it is marked as 'ignored'\nin your Journal)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Quests to do first:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Import from Clipboard</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Export to Clipboard</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Remove finished Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Clear All</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Hold CTRL to enable this button.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Copied quests to clipboard.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Presets</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Select a preset...</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Built-in</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Custom</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Preset name...</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Save Preset</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Delete Preset</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Cannot overwrite a built-in preset.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Hold CTRL to overwrite existing preset.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>ARR Hard Mode Primals</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\ARealmRebornComponent.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\ARealmRebornComponent.cs -->
     <Key>Crystal Tower Raids</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Heavensward</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Stormblood</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Shadowbringers</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Endwalker</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Dawntrail</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Tank</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Healer</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Melee DPS</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Physical Ranged</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Caster</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Gil (set TextAdvance to prefer Gil sacks)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Post-ARR unlocks</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <Key>Quest Selection</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <Key>Quests starting with {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <Key>Quests starting in {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <Key>Only show quests currently offered</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <Key>Id</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\GatheringJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\GatheringJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Name</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <Key>Actions</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\EventInfoComponent.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>Add to priority quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Copy as file name</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Start as next quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Set as next quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestSelectionWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Copied '{0}' to clipboard</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Quest Validation</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Seq</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Step</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Issue</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Simulate quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestWindow.cs -->
+    <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Open Configuration</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestWindow.cs -->
+    <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Sponsor QST development</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestWindow.cs -->
+    <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Notice</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\UiUtils.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
     <Key>Active</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\UiUtils.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
     <Key>Complete</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\UiUtils.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
     <Key>Available</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\UiUtils.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
     <Key>Unobtainable</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\UiUtils.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
     <Key>Locked</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\UiUtils.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
     <Key>Available(?)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\ConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\ConfigComponent.cs -->
     <Key>Enabled (Default)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\ConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\ConfigComponent.cs -->
     <Key>Enabled</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\ConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\ConfigComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Disabled</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\ConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\ConfigComponent.cs -->
     <Key>Disabled (Default)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\ConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\ConfigComponent.cs -->
     <Key>While testing, the following issues have been found:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Enabling any option here may cause unexpected behavior. Use at your own risk.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Disable flying (even if unlocked for the zone)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Information</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Enable debug overlay</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Enable combat data overlay</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Highlight NPCs related to the current quest sequence</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Draw additional status information</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Show Tracked Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Show Accepted/Complete Daily Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Show Director info</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Show Action Manager</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Show NG+ Chapter</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>AutoDuty Settings</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Use Pre-Loop/Loop/Post-Loop settings</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Quest/Interaction Skips</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Don't pick up aether currents/aether current quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>If not done during the MSQ by Questionable, you have to manually pick up any missed aether currents/quests. You can set Questionable to run all pending aether current quests using the Priority Quests preset system.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Don't pick up class/job/role quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Class and job skills for A Realm Reborn, Heavensward and (for the Lv70 skills) Stormblood are locked behind quests. Not recommended if you plan on queueing for instances with duty finder/party finder.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Don't pick up ARR hard mode primal quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Hard mode Ifrit/Garuda/Titan are required for the Patch 2.5 quest 'Good Intentions' and to start Heavensward.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Don't pick up Crystal Tower quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Prevent quest completion</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Abandon quest before completion</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Remove from priority when abandoned</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Namazu: prefer Crafting job over Gatherer</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Namazu tribe quests can be done as either DoH or DoL, this lets you set that preference.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Show window on start</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>When enabled, Questionable's progress window will show when the plugin is loaded.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Start minimized</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>When enabled, Questionable's progress window will be in its minimized state when loaded.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Path data</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Automatically download quest/gathering path updates</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Downloads newer quest/gathering paths without needing a full plugin update.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Check for path updates now</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Using the path data bundled with the plugin.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Downloaded path data version: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\ARealmRebornComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ARealmRebornComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>?</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Duties</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Run instanced content with AutoDuty and BossMod</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>The combat module used for this is configured by AutoDuty, ignoring whichever selection you've made in Questionable's "General" configuration.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Run content unsynced where safe</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Experimental feature</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Questionable includes a default list of duties that work if AutoDuty and BossMod are installed.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>The included list of duties can change with each update, and is based on the following spreadsheet:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Open AutoDuty spreadsheet</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>You can override the settings for each individual dungeon/trial:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Options</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>TerritoryId: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>ContentFinderConditionId: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>This duty is not supported by AutoDuty</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Enable All</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>Enable all of the duties, use at your own risk.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Export to clipboard</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\DutyConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Reset to default</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Mount Roulette</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Auto (highest level/item level)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>None (manually pick quest)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Maelstrom</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Twin Adder</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Immortal Flames</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>General</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Combat Module</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Mount</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Grand Company</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Combat Job</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Crafting Job</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Gathering Job</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Gear Upgrade Source</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chocobo name</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chicken</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>The name to give your chocobo during the "My Little Chocobo" quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Defaults to "Chicken" if left blank.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Display name</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Anonymous</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>The name associated with submissions to help with QST's development.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Defaults to "Anonymous" if left blank.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>UI</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide quest window in all instanced duties</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Use ESC to cancel questing/movement</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Show details for incomplete seasonal events</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide Sponsor button</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Questing</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Automatically configure TextAdvance with the recommended settings</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>but don't skip cutscenes or dialogue</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>and don't show which answer we would have picked for you</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Unlock certain optional dungeons and raids (instead of waiting for completion)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Questionable automatically picks up some optional quests (e.g. for aether currents, or the ARR alliance raids).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>If this setting is enabled, Questionable will continue with other quests, instead of waiting for manual completion of the duty.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>This affects the following dungeons and raids:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Use aetheryte tickets where available</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Ideally this should be set in the in-game Teleport settings, but is provided here for convenience.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Notifications</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Enable notifications when manual interaction is required</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Chat channel</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Desktop notifications</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Desktop tray and taskbar notifications are currently unavailable.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Show tray notification</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Flash taskbar icon</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>vnavmesh handles the navigation within a zone, moving\r\nyour character to the next quest-related objective.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Used to travel to aethernet shards in cities.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automatically accepts and turns in quests, skips cutscenes\r\nand dialogue.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automaton is a collection of automation-related tweaks.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>'Sniper no sniping' enabled</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automatically completes sniping tasks introduced in Stormblood</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Pandora's Box is a collection of tweaks.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>'Auto Active Time Maneuver' enabled</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automatically completes active time maneuvers in\r\nsingle player instances, trials and raids"</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automates crafting</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automates duties</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Gear manager</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Dependencies</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>All required plugins are installed.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Required plugins are missing, Questionable will not work properly.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Required plugins:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Rotation/Automation plugins: (Recommended: BossMod (VBM) )</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>No rotation/combat plugin (combat must be done manually)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>The following rotation/combat plugin(s) are provided for compatibility and testing purposes:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Recommended/niche plugins:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Open Config</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Open Website</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Open Repository</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Available on official Dalamud Repository</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\ProfilesConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\ProfilesConfigComponent.cs -->
     <Key>Profiles</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Tank Role Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Healer Role Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Melee Role Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Physical Ranged Role Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Magical Ranged Role Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key> ({0})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key> (Part {0})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key> (Melee/Phys. Ranged)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>{0} ※ {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Quest Battles</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Run quest battles with BossMod</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Work in Progress:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Will always use BossMod for combat (ignoring the configured combat module).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Only a small subset of quest battles have been tested - most of which are in the MSQ.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>When retrying a failed battle, it will always start at 'Very Easy' difficulty.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Please don't enable this option when using a BossMod fork (such as Reborn);\nwith the missing combat module configuration, it is unlikely to be compatible.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Questionable includes a default list of quest battles that work if BossMod is installed.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>The included list of quest battles can change with each update.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>You can override the settings for each individual quest battle:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Main Scenario Quests ({0}/{1})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Limsa Lominsa</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Gridania</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Ul'dah</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Uldah</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Class/Job Quests ({0}/{1})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Role Quests ({0}/{1})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>General Role Quests ({0}/{1})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Other Quests ({0}/{1})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Questionable doesn't include support for this quest yet.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>Enable all of the quest battles, use at your own risk.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Stop</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Stop Questionable when any of the conditions below are met</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Stop when character level reaches:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Enable level stop condition</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Stop at level</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>(Current: {0})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Stop when completing any of the quests selected below:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Stop when accepting any of the quests selected below:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Allied Societies</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Add</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Add unchecked quests (from expanded categories) to prio</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Allowances: {0}/12</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Quests marked with yellow have not been completed once yet on this character.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Unchecked: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest is in Priority Quests.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\GatheringJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\GatheringJournalComponent.cs -->
     <Key>Gathering Points</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\GatheringJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\GatheringJournalComponent.cs -->
     <Key>Search areas, gathering points and items</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\GatheringJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\GatheringJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Supported</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\GatheringJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\GatheringJournalComponent.cs -->
     <Key>Collected</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\GatheringJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\GatheringJournalComponent.cs -->
     <Key>No area, gathering point or item matches your search text.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>The list below contains all quests that appear in your journal.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>'Supported' lists quests that Questionable can do for you</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>'Completed' lists quests your current character has completed.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Not all quests can be completed even if they're listed as available, e.g. starting city quest chains.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>The text in the Supported column indicates the last time a quest path was reported to work perfectly.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Quests can be added to Priority Quests, either individually or by group, with the right click menu.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Search quests and categories</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Completed</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>No quest or category matches your search.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Last checked: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>&lt;no reason specified&gt;</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest is not available.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest requires completing a FATE.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest could not be loaded.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest had validation issues.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest is supported.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Comment: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest is not yet supported.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>Reason: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add to Priority Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Add all to Priority Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>View in Quest Map</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add to Stop condition (on complete)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add to Stop condition (on accept)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Show only Available Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Hide Quests Without Path</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Remove all from Priority Quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestJournalUtils.cs -->
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Sim first quest</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Item Rewards</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Show rewards from seasonal event quests</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Only untradeable items are listed (e.g. the Wind-up Airship can be sold on the market board).</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Mounts</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Minions</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Orchestrion Rolls</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Triple Triad Cards</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Fashion Accessories</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\QuestRewardComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Obtained from: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>New Game+</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Active:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>???</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>({0}) Unchecked: #{1}{2} ({3}/{4})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\JournalComponents\RedoComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>!Future/Unknown Quest ({0})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>New version available!</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>In Combat</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>No active quest</Key>
     <Value lang="en">No active quest</Value>
     <Value lang="en-au">Crikey, no quests??</Value>
@@ -1696,387 +1696,387 @@
     <Value lang="de">Keine aktive Quest</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>{0} quests loaded</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Manual (no active quest)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Simulated Quest: </Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>{0} ({1}) / {2} / {3}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Gathering: </Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is loaded from your 'pluginConfigs\\Questionable\\Quests' directory.\nThis gets loaded even if Questionable ships with a newer/different version of the quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Quest: </Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop Conditions:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop at level {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>(Current: {0} - Reached!)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop after completing any of these quests:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop after accepting any of these quests:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Certain priority quest (e.g. class quests) may be started/completed by\nthe plugin prior to continuing, usually at a teleport step.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Available priority quests:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>(none)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Unavailable priority quests:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Next Quest: </Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>(Next quest in story line not accepted)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>(Not accepted)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>UI start</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>UI step</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Execute next step and then stop.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>UI stop</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop all actions now.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Cancel scheduled stop after current quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop after the current quest completes.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Cancel scheduled stop after accepting the next quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop after accepting the next quest.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Cancel scheduled stop before teleport.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stop before the next aetheryte teleport or item use.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Skip</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Skip the current step of the quest path.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Show information about '{0}' in Quest Map plugin.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Quest sim active (experimental)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Sequence: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Step: {0} / {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Skip current task</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Clear sim</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\ARealmRebornComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ARealmRebornComponent.cs -->
     <Key>Hard Mode Primals</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>QST prio: {0} → {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Sim: {0} → {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>NG+{0}: {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Tracked Quest {0}: {1}, {2}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Tracked Quest: {0} → {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Daily Quest {0}: {1}, C:{2}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Director: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Seq: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Ico: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Hovered Item: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Target: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>  ({0}; {1}{2})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Distance: {0:F2} ({1}y)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Y: {0:F2}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>To Target</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Cancel pathfinding</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Show all Quests starting with your current target.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Show all (currently visible) Quests starting in this zone.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Interact with your current target.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Left click: Copy your position as JSON.\nRight click: Copy your position as C# code.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\EventInfoComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>Limited Time Items</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\EventInfoComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>Make It Rain 2026</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\EventInfoComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>SeasonalEventSelection</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Event</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Repeatable</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Instant</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Author: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Authors: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>NG+: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Last checked: {0} by {1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>NoQuestPath</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Society: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Rank: {0}{1}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Requires all:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Requires:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Unknown Quest ({0})</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Requires Carrier Level {}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Blocked by (if all completed):</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Blocked by (if at least completed):</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Blocked by (if completed):</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Requires one:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>None</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Grand Company: {0}</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Item Rewards:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Unlocks:</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Configure priority quests which will be done as soon as possible.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Rebuild Navmesh</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>vnavmesh is not available.\nPlease install it first.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Hold CTRL to enable this button.\nRebuilding the navmesh will take some time.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Reload Data</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Stuck?</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\Utils\QuestSelector.cs -->
+    <!-- Found in: Windows\Utils\QuestSelector.cs -->
     <Key>Add Quest...</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\Utils\QuestSelector.cs -->
+    <!-- Found in: Windows\Utils\QuestSelector.cs -->
     <Key>Filter...</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>English</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Language</Key>
     <Value lang="en">Language</Value>
     <Value lang="en-au">Lingo</Value>
@@ -2096,63 +2096,63 @@
     <Value lang="de">Sprache</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>English (Australian)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Spanish</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>French</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chinese (Simplified)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chinese (Traditional)</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>German</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Afrikaans</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Arabic</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Albanian</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Basque</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Belarusian</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Bulgarian</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Catalan</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Croatian</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Questionable\Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Czech</Key>
   </Entry>
 </I18N>
