@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Model;
 using Questionable.Model.Gathering;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class GatheringJournalComponent
@@ -147,12 +148,12 @@ internal sealed class GatheringJournalComponent
 
     public void DrawGatheringItems()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Gathering Points");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Gathering Points"));
         if (!tab)
             return;
 
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        if (ImGui.InputTextWithHint(string.Empty, "Search areas, gathering points and items", ref _searchText, 256))
+        if (ImGui.InputTextWithHint(string.Empty, _L("Search areas, gathering points and items"), ref _searchText, 256))
             UpdateFilter();
 
         if (_filteredExpansions.Count > 0)
@@ -161,16 +162,16 @@ internal sealed class GatheringJournalComponent
             if (!table)
                 return;
 
-            ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.NoHide);
-            ImGui.TableSetupColumn("Supported", ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-            ImGui.TableSetupColumn("Collected", ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
+            ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
+            ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
+            ImGui.TableSetupColumn(_L("Collected"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
             ImGui.TableHeadersRow();
 
             foreach (FilteredExpansion expansion in _filteredExpansions)
                 DrawExpansion(expansion);
         }
         else
-            ImGui.Text("No area, gathering point or item matches your search text.");
+            ImGui.Text(_L("No area, gathering point or item matches your search text."));
     }
 
     private void DrawExpansion(FilteredExpansion expansion)

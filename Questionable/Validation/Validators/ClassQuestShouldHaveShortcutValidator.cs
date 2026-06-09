@@ -3,6 +3,7 @@ using ECommons.ExcelServices;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator
@@ -46,7 +47,7 @@ internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator
             Step = 0,
             Type = EIssueType.ClassQuestWithoutAetheryteShortcut,
             Severity = EIssueSeverity.Error,
-            Description = "Class quest should have an aetheryte shortcut to be done automatically"
+            Description = _L("Class quest should have an aetheryte shortcut to be done automatically")
         };
     }
 }

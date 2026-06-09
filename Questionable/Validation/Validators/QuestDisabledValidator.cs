@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Questionable.Model;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class QuestDisabledValidator : IQuestValidator
@@ -15,7 +16,7 @@ internal sealed class QuestDisabledValidator : IQuestValidator
                 Step = null,
                 Type = EIssueType.QuestDisabled,
                 Severity = EIssueSeverity.None,
-                Description = "Quest is disabled"
+                Description = _L("Quest is disabled")
             };
         }
     }

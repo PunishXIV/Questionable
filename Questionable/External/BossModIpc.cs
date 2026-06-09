@@ -7,6 +7,7 @@ using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using Questionable.Data;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.External;
 
 internal sealed class BossModIpc
@@ -164,7 +165,7 @@ internal sealed class BossModIpc
             Stream stream =
                 typeof(BossModIpc).Assembly.GetManifestResourceStream(
                     $"Questionable.Controller.CombatModules.BossModPreset.{name}") ??
-                throw new InvalidOperationException($"Preset {name} was not found");
+                throw new InvalidOperationException(_LF("Preset {0} was not found",name));
             using StreamReader reader = new(stream);
             return reader.ReadToEnd();
         }

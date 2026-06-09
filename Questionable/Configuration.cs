@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
+using static Questionable.Utils.LocalizeShortcut;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
 
@@ -20,7 +21,7 @@ internal sealed class Configuration : IPluginConfiguration
         var pluginConfig = Svc.PluginInterface.GetPluginConfig();
         if (pluginConfig is Configuration config)
             return config;
-        throw new Exception("Could not get plugin config");
+        throw new Exception(_L("Could not get plugin config"));
     }
     #region Serialised data
     // Variables that are not affected by profile switches

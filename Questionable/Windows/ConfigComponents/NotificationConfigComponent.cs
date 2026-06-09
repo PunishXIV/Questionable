@@ -6,6 +6,7 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Utility;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class NotificationConfigComponent
@@ -16,12 +17,12 @@ internal sealed class NotificationConfigComponent
 
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Notifications###Notifications");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Notifications") + "###Notifications");
         if (!tab)
             return;
 
         bool enabled = Configuration.Notifications.Enabled;
-        if (ImGui.Checkbox("Enable notifications when manual interaction is required", ref enabled))
+        if (ImGui.Checkbox(_L("Enable notifications when manual interaction is required"), ref enabled))
         {
             Configuration.Notifications.Enabled = enabled;
             Save();
@@ -37,24 +38,24 @@ internal sealed class NotificationConfigComponent
                 string[] chatTypeNames = xivChatTypes
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
-                DrawComboOption("Chat channel", xivChatTypes, chatTypeNames,
+                DrawComboOption(_L("Chat channel"), xivChatTypes, chatTypeNames,
                     () => Configuration.Notifications.ChatType,
                     v => Configuration.Notifications.ChatType = v);
 
                 ImGui.Separator();
-                ImGui.Text("Desktop notifications");
-                ImGuiComponents.HelpMarker("Desktop tray and taskbar notifications are currently unavailable.");
+                ImGui.Text(_L("Desktop notifications"));
+                ImGuiComponents.HelpMarker(_L("Desktop tray and taskbar notifications are currently unavailable."));
                 using (ImRaii.Disabled())
                 {
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
-                    if (ImGui.Checkbox("Show tray notification", ref showTrayMessage))
+                    if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))
                     {
                         Configuration.Notifications.ShowTrayMessage = showTrayMessage;
                         Save();
                     }
 
                     bool flashTaskbar = Configuration.Notifications.FlashTaskbar;
-                    if (ImGui.Checkbox("Flash taskbar icon", ref flashTaskbar))
+                    if (ImGui.Checkbox(_L("Flash taskbar icon"), ref flashTaskbar))
                     {
                         Configuration.Notifications.FlashTaskbar = flashTaskbar;
                         Save();

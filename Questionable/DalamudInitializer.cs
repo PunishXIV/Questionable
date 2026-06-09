@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Windows;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable;
 
 internal sealed class DalamudInitializer : IDisposable
@@ -113,10 +114,13 @@ internal sealed class DalamudInitializer : IDisposable
         catch (MovementController.PathfindingFailedException)
         {
             if (_configuration.Advanced.NeverFly)
-                _chatGui.PrintError("vnavmesh was not able to find a path. This may be due to the 'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this to run fine.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                _chatGui.PrintError(_L("vnavmesh was not able to find a path. This may be due to the " +
+                    "'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this " +
+                    "to run fine."), CommandHandler.MessageTag, CommandHandler.TagColor);
             else
-                _chatGui.PrintError($"vnavmesh was not able to find a path! Please report this to Questionable developers. {_questController.CurrentQuest}", CommandHandler.MessageTag, CommandHandler.TagColor);
-            _questController.Stop("Pathfinding failed");
+                _chatGui.PrintError(_LF("vnavmesh was not able to find a path! Please report this to " +
+                    "Questionable developers. {0}", _questController.CurrentQuest?.ToString() ?? ""), CommandHandler.MessageTag, CommandHandler.TagColor);
+            _questController.Stop(_L("Pathfinding failed"));
         }
     }
 

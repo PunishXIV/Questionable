@@ -13,6 +13,7 @@ using Questionable.Utils;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
+using static Questionable.Utils.LocalizeShortcut;
 
 namespace Questionable.Model;
 

@@ -5,6 +5,7 @@ using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Windows.Common;
 using Questionable.Windows.JournalComponents;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class JournalProgressWindow : LWindow, IDisposable
@@ -25,7 +26,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         RedoComponent redoComponent,
         QuestRegistry questRegistry,
         IClientState clientState)
-        : base("Journal Progress###QuestionableJournalProgress")
+        : base(_L("Journal Progress") + "###QuestionableJournalProgress")
     {
         _questJournalComponent = questJournalComponent;
         _alliedSocietyJournalComponent = alliedSocietyJournalComponent;

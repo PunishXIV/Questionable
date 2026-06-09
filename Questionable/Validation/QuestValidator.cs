@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation;
 
 internal sealed class QuestValidator
@@ -112,7 +113,7 @@ internal sealed class QuestValidator
                 AlliedSociety = x.Key,
                 Type = EIssueType.QuestDisabled,
                 Severity = EIssueSeverity.None,
-                Description = $"{x.Value} disabled quest(s)"
+                Description = _LF("{0} disabled quest(s)",x.Value)
             });
     }
 }

@@ -9,6 +9,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface)
@@ -16,27 +17,27 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
     public (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
         if (questFunctions.IsQuestAccepted(elementId))
-            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.PersonWalkingArrowRight, "Active");
+            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));
         else if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
         {
             if (!questFunctions.IsReadyToAcceptQuest(questId))
-                return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, "Complete");
+                return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, _L("Complete"));
             else if (questFunctions.IsQuestComplete(questId))
-                return (ImGuiColors.ParsedBlue, FontAwesomeIcon.Running, "Available");
+                return (ImGuiColors.ParsedBlue, FontAwesomeIcon.Running, _L("Available"));
             else
-                return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available");
+                return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, _L("Available"));
         }
         else if (questFunctions.IsQuestAcceptedOrComplete(elementId))
-            return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, "Complete");
+            return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, _L("Complete"));
         else if (questFunctions.IsQuestUnobtainable(elementId))
-            return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, "Unobtainable");
+            return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, _L("Unobtainable"));
         else if (questFunctions.IsQuestLocked(elementId) ||
                  questFunctions.prereqCache.TryGetValue(elementId.Value, out HashSet<IQuestInfo>? value) && value.Any(q => questFunctions.IsQuestLocked(q.QuestId)))
-            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, "Locked");
+            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, _L("Locked"));
         else if (value == null)
-            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available?");
+            return (ImGuiColors.TankBlue, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
         else
-            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, "Available");
+            return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, _L("Available"));
     }
 
     public static (Vector4 color, FontAwesomeIcon icon) GetInstanceStyle(ushort instanceId)
