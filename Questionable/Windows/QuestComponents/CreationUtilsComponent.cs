@@ -72,7 +72,7 @@ internal sealed class CreationUtilsComponent
             ImGui.Text(_LF("QST prio: {0} → {1}", q.CurrentQuest?.ToString() ?? "", q.Sequence));
             Quest? simQ = questController.SimulatedQuest?.Quest;
             if (simQ != null)
-                ImGui.Text(_LF("Sim: {0} → {1}", simQ.Id, questController.SimulatedQuest?.Sequence.ToString() ?? ""));
+                ImGui.Text(_LF("Sim: {0} → {1}", simQ.Id, questController.SimulatedQuest?.Sequence.ToString(CultureInfo.InvariantCulture) ?? ""));
             unsafe
             {
                 if (configuration.Advanced.ShowNewGamePlus)

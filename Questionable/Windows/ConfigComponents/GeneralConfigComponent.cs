@@ -36,6 +36,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
     private string _mountSearchString = string.Empty;
+    private string _langSearchString = string.Empty;
 
     public GeneralConfigComponent(
         IDalamudPluginInterface pluginInterface,
@@ -96,7 +97,34 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("General") + "###General");
         if (!tab)
             return;
-
+        Dictionary<string, string> languages = new(){
+            { "en",    _L("English") },
+            { "en-au", _L("English (Australian)") },
+            { "es",    _L("Spanish") },
+            { "fr",    _L("French") },
+            { "zh-cn", _L("Chinese (Simplified)") },
+            { "zh-tw", _L("Chinese (Traditional)") },
+            { "de",    _L("German") },
+            { "af",    _L("Afrikaans") },
+            { "ar",    _L("Arabic") },
+            { "sq",    _L("Albanian") },
+            { "eu",    _L("Basque") },
+            { "be",    _L("Belarusian") },
+            { "bg",    _L("Bulgarian") },
+            { "ca",    _L("Catalan") },
+            { "hr",    _L("Croatian") },
+            { "cs",    _L("Czech") },
+        };
+        string language = Configuration.General.Language;
+        if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Language"), languages.Keys.ToArray(), languages.Values.ToArray(),
+            Configuration.General.Language, ref _langSearchString, ref language))
+        {
+            var was = Configuration.General.Language;
+            Configuration.General.Language = language;
+            Save();
+            if (was != Configuration.General.Language)
+                DalamudInitializer.SetupI18N(Configuration.General.Language);
+        }
 
         Configuration.ECombatModule combatModule = Configuration.General.CombatModule;
         if (ImGuiEx.EnumCombo(_L("Preferred Combat Module"), ref combatModule))

@@ -41,6 +41,10 @@
         <EmbeddedResource Include="Controller\CombatModules\BossModPreset_QuestBattle.json">
             <LogicalName>Questionable.Controller.CombatModules.BossModPreset.QuestBattle</LogicalName>
         </EmbeddedResource>
+        <EmbeddedResource Include="Resources\I18N.xml">
+            <LogicalName>Resources.I18N.xml</LogicalName>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>

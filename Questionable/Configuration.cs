@@ -221,6 +221,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ReportsDisabled { get; set; }
         public string ReportMessage { get; set; } = "";
         public string DisplayName { get; set; } = "Anonymous";
+        public string Language { get; set; } = "en";
     }
 
     internal sealed class StopConfiguration
