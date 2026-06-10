@@ -124,7 +124,7 @@ internal sealed class PluginConfigComponent
                 new(_L("'Auto Active Time Maneuver' enabled"),
                     _L("""
                     Automatically completes active time maneuvers in
-                    single player instances, trials and raids"
+                    single player instances, trials and raids
                     """),
                     () => pandorasBoxIpc.IsAutoActiveTimeManeuverEnabled)
             ]),
