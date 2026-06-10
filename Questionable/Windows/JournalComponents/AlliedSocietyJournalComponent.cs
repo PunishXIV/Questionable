@@ -128,7 +128,6 @@ internal sealed class AlliedSocietyJournalComponent
                 {
                     using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange)) // highlight the category orange
                     {
-                        ImGui.SetNextItemOpen(true, ImGuiCond.Always);
                         isOpen = ImGui.CollapsingHeader(label);
                     }
                     _unchecked += 1;
@@ -137,14 +136,11 @@ internal sealed class AlliedSocietyJournalComponent
                 {
                     using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudYellow))
                     {
-                        //ImGui.SetNextItemOpen(true, ImGuiCond.Always);
                         isOpen = ImGui.CollapsingHeader(label);
                     }
                 }
                 else
                 {
-                    if (_unchecked > 0 || _incomplete > 0)
-                        ImGui.SetNextItemOpen(false, ImGuiCond.Always);
                     isOpen = ImGui.CollapsingHeader(label);
                 }
             }

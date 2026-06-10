@@ -1,5 +1,3 @@
 - Feature: Japanese translation -fuuga
-- Bug: allied society journal component section was stuck open for incomplete quests -alydev
-  - the section being stuck open for orange/unchecked quests is intentional. please submit a completion log showing that it's been checked by someone, and it'll be closed in the next update \o/ -alydev
 - Feature: Language selection -alydev
   - See discord for more details https://discord.com/channels/1001823907193552978/1408201462722596945/1513807639312728167
