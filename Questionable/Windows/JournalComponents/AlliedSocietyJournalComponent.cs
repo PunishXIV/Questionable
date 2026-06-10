@@ -137,7 +137,7 @@ internal sealed class AlliedSocietyJournalComponent
                 {
                     using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudYellow))
                     {
-                        ImGui.SetNextItemOpen(true, ImGuiCond.Always);
+                        //ImGui.SetNextItemOpen(true, ImGuiCond.Always);
                         isOpen = ImGui.CollapsingHeader(label);
                     }
                 }
