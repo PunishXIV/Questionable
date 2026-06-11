@@ -40,6 +40,7 @@ internal static class SendNotification
 
     internal sealed class Executor
     (
+        NotificationMasterIpc notificationMasterIpc,
         IChatGui chatGui,
         Configuration configuration) : TaskExecutor<Task>
     {
@@ -99,7 +100,7 @@ internal static class SendNotification
                 };
                 chatGui.Print(message);
             }
-
+            notificationMasterIpc.Notify(text);
             return true;
         }
 

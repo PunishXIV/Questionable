@@ -149,6 +149,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<ArtisanIpc>();
         serviceCollection.AddSingleton<QuestionableIpc>();
         serviceCollection.AddSingleton<TextAdvanceIpc>();
+        serviceCollection.AddSingleton<NotificationMasterIpc>();
         serviceCollection.AddSingleton<AutomatonIpc>();
         serviceCollection.AddSingleton<AutoDutyIpc>();
         serviceCollection.AddSingleton<BossModIpc>();
