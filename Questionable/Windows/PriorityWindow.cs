@@ -173,17 +173,13 @@ internal sealed class PriorityWindow : LWindow
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
-                        int _pad = 4;
-#if DEBUG
-                        _pad += 4;
-#endif
+                        int _pad = 8;
+
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.ArrowsUpDown.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-#if DEBUG
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
-#endif
                                        ImGui.GetStyle().FramePadding.X * _pad -
                                        ImGui.GetStyle().ItemSpacing.X);
                     }
@@ -205,25 +201,19 @@ internal sealed class PriorityWindow : LWindow
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
-                        int _pad = 2;
-#if DEBUG
-                        _pad += 4;
-#endif
+                        int _pad = 6;
+
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-#if DEBUG
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
-#endif
                                        ImGui.GetStyle().FramePadding.X * _pad);
                     }
                 }
 
-#if DEBUG
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest.Info);
                 ImGui.SameLine();
-#endif
 
                 if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
                     itemToRemove = quest;

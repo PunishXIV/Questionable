@@ -117,6 +117,26 @@ internal sealed partial class ActiveQuestComponent
             }
 
             DrawSimulationControls();
+
+            ImGui.SameLine();
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
+            {
+                (bool success, string filename) = currentQuest != null ? QuestRegistry.OpenEditor(currentQuest.Quest.Info) : _questRegistry.OpenEditor();
+                _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
+            }
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip("Open this quest path in your default .json text editor");
+            if (_configuration.Advanced.Debug)
+            {
+                ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban) && currentQuest != null)
+                {
+                    GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)currentQuest.Quest.Id.Value);
+                    _logger.LogDebug("AbandonQuest fired");
+                }
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip("Ask the game to abandon this quest");
+            }
         }
         else
         {
@@ -135,21 +155,6 @@ internal sealed partial class ActiveQuestComponent
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.SortAmountDown))
                 _priorityWindow.ToggleOrUncollapse();
         }
-
-#if DEBUG
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
-        {
-            (bool success, string filename) = currentQuest != null ? QuestRegistry.OpenEditor(currentQuest.Quest.Info) : _questRegistry.OpenEditor();
-            _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
-        }
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban) && currentQuest != null)
-        {
-            GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)currentQuest.Quest.Id.Value);
-            _logger.LogDebug("AbandonQuest fired");
-        }
-#endif
 
 #if REPORTING
         if (!_configuration.General.ReportsDisabled)

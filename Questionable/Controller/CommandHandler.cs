@@ -238,14 +238,18 @@ internal sealed class CommandHandler : IDisposable
                 ImGui.SetClipboardText(lowOutp);
                 _chatGui.Print(lowOutp);
                 break;
-#if DEBUG
+
             case "gen":
                 _questRegistry.OpenEditor();
                 break;
-#endif
+
             case "clearlog":
                 LogQuestCompletion.ClearQuestCompletions();
                 _chatGui.PrintError(_L("Completions log has been cleared"));
+                break;
+
+            case "debugmode":
+                _configuration.Advanced.Debug = !_configuration.Advanced.Debug;
                 break;
 
             //case "abandon-quest":

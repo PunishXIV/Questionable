@@ -248,7 +248,6 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("When enabled, Questionable's progress window will be in its minimized state when loaded."));
 
-#if DEBUG
                 bool openEditor = Configuration.Advanced.OpenEditor;
                 if (ImGui.Checkbox(_L("Open editor when starting quest"), ref openEditor))
                 {
@@ -257,8 +256,7 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
                 }
 
                 ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("When enabled, Questionable will open the path for the current quest in your default text editor."));
-#endif
+                ImGuiComponents.HelpMarker(_L("On starting a quest, Questionable will open the path for it in your default text editor."));
             }
         }
 
