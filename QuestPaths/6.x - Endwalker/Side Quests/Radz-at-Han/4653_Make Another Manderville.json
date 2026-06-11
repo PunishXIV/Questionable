@@ -26,6 +26,7 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Disabled": true,
           "DataId": 1043892,
           "Position": {
             "X": 48.325317,
