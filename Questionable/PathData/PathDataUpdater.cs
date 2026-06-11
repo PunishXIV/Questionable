@@ -52,8 +52,20 @@ internal sealed class PathDataUpdater : IDisposable
         DiscardStaleBundle();
     }
 
+    public DateTime StatusLastChanged { get; private set; } = DateTime.Now;
+    private string _status = "Idle";
     /// <summary>Human-readable status for the config UI.</summary>
-    public string Status { get; private set; } = "Idle";
+    public string Status {
+        get
+        {
+            return _status;
+        }
+        private set
+        {
+            _status = value;
+            StatusLastChanged = DateTime.Now;
+        }
+    }
 
     public void Dispose()
     {

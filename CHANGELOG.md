@@ -1,4 +1,5 @@
 - Feature: Re-enable NotificationMaster -alydev
+- Feature: show Path Bundle update status over "No active quest" message for 30 seconds -alydev
 - Feature: Open Editor feature -alydev
   - This currently opens the quest path JSON in your default text editor, or generates a new quest path JSON for the current quest. A GUI quest editor will be included Soon :tm:
 - Feature: Much shorter load times and download size due to Path Data Bundle feature, all credit to Kage, I only switched off the machine that crunches that into a ridiculously inefficient format -alydev

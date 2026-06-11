@@ -1348,7 +1348,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             Quest = quest;
             SetSequence(sequence, step);
         }
-        public override string ToString() => $"{Quest.Id}_{Quest.Info.Name} / {Sequence} / {Step}";
+        public override string ToString() => $"{Quest.Id}_{Quest.Info.SimplifiedName} / {Sequence} / {Step}";
         public Quest Quest { get; }
         public byte Sequence { get; private set; }
         public int Step { get; private set; }

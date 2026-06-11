@@ -140,7 +140,10 @@ internal sealed partial class ActiveQuestComponent
         }
         else
         {
-            ImGui.Text(_L("No active quest"));
+            if (pathDataUpdater.Status != _L("Idle") && (DateTime.Now - pathDataUpdater.StatusLastChanged).TotalSeconds < 30 )
+                ImGui.Text(pathDataUpdater.Status);
+            else
+                ImGui.Text(_L("No active quest"));
             if (!isMinimized)
                 ImGui.TextColored(ImGuiColors.DalamudGrey, _LF("{0} quests loaded", _questRegistry.Count));
 
