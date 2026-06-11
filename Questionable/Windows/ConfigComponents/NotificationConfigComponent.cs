@@ -6,13 +6,15 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Utility;
+using Questionable.External;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class NotificationConfigComponent
 (
     IDalamudPluginInterface pluginInterface,
-    Configuration configuration) : ConfigComponent(pluginInterface, configuration)
+    Configuration configuration,
+    NotificationMasterIpc notificationMasterIpc) : ConfigComponent(pluginInterface, configuration)
 {
 
     public override void DrawTab()
@@ -43,9 +45,10 @@ internal sealed class NotificationConfigComponent
                     v => Configuration.Notifications.ChatType = v);
 
                 ImGui.Separator();
-                ImGui.Text(_L("Desktop notifications"));
-                ImGuiComponents.HelpMarker(_L("Desktop tray and taskbar notifications are currently unavailable."));
-                using (ImRaii.Disabled())
+                ImGui.Text("NotificationMaster settings");
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker("Requires the plugin 'NotificationMaster' to be installed.");
+                using (ImRaii.Disabled(!notificationMasterIpc.Enabled))
                 {
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
                     if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))

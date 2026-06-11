@@ -59,6 +59,12 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8"
         }
       },
+      "NotificationMasterAPI": {
+        "type": "Direct",
+        "requested": "[1.0.0.1, )",
+        "resolved": "1.0.0.1",
+        "contentHash": "ta+lQtxQzHkqPC3doDn3ud8MvtwNnTgTIeXqfqu92G4lAy+/UJZ6iEefFH4MRZmX8Z99nUmUJZ4zcRvVMABzjQ=="
+      },
       "System.Text.Json": {
         "type": "Direct",
         "requested": "[9.0.3, )",
@@ -130,7 +136,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.297.0.8, )"
+          "Questionable.Model": "[15.300.0, )"
         }
       },
       "questionable.model": {
@@ -139,7 +145,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.297.0.8, )"
+          "Questionable.Model": "[15.300.0, )"
         }
       }
     }
