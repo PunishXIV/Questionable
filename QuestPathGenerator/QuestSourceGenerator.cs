@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -45,6 +46,7 @@ public class QuestSourceGenerator : ISourceGenerator
             GenerateQuestSource(context, questSchema);
     }
 
+    [Conditional("ASSEMBLY")]
     private void GenerateQuestSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
         JsonSchema questSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());

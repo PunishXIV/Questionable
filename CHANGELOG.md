@@ -1,3 +1,4 @@
+- Feature: Much shorter load times and download size due to Path Data Bundle feature, all credit to Kage, I only switched off the machine that crunches that into a ridiculously inefficient format -alydev
 - Feature: Japanese translation -fuuga
 - Feature: Language selection -alydev
   - See discord for more details https://discord.com/channels/1001823907193552978/1408201462722596945/1513807639312728167

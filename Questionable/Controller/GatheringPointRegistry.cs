@@ -45,10 +45,11 @@ internal sealed class GatheringPointRegistry : IDisposable
     public void Reload()
     {
         _gatheringPoints.Clear();
-
-        LoadGatheringPointsFromAssembly();
+        
+        if (!LoadGatheringPointsFromDownloadedBundle())
+            //LoadGatheringPointsFromAssembly();
+            _logger.LogWarning("Bundled gathering points were not loaded, we have no gathering points!");
         LoadGatheringPointsFromProjectDirectory();
-        LoadGatheringPointsFromDownloadedBundle();
 
         try
         {
@@ -128,11 +129,11 @@ internal sealed class GatheringPointRegistry : IDisposable
     ///     the compiled baseline but are themselves overridden by the hand-authored user
     ///     directory. A single bad entry is skipped rather than aborting the rest of the bundle.
     /// </summary>
-    private void LoadGatheringPointsFromDownloadedBundle()
+    private bool LoadGatheringPointsFromDownloadedBundle()
     {
         string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
         if (!File.Exists(bundlePath))
-            return;
+            return false;
 
         try
         {
@@ -142,7 +143,7 @@ internal sealed class GatheringPointRegistry : IDisposable
             // Gate A: skip a bundle missing its manifest or requiring a newer plugin.
             // QuestRegistry already logs the detailed reason during its own load pass.
             if (manifest == null || !manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
-                return;
+                return false;
 
             int loaded = 0, failed = 0;
             foreach (ZipArchiveEntry entry in archive.Entries)
@@ -171,7 +172,9 @@ internal sealed class GatheringPointRegistry : IDisposable
         catch (Exception e)
         {
             _logger.LogError(e, "Failed to load gathering points from downloaded path bundle");
+            return false;
         }
+        return true;
     }
 
     private void LoadGatheringPointFromStream(string fileName, Stream stream)

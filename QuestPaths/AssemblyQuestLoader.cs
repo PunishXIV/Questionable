@@ -20,7 +20,7 @@ public static partial class AssemblyQuestLoader
             {
                 _quests = [];
 #if RELEASE
-                LoadQuests();
+                //LoadQuests();
 #endif
             }
 

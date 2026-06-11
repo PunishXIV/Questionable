@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
@@ -39,7 +40,8 @@ public class GatheringSourceGenerator : ISourceGenerator
         if (gatheringSchema != null)
             GenerateGatheringSource(context, gatheringSchema);
     }
-
+    
+    [Conditional("ASSEMBLY")]
     private void GenerateGatheringSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
         JsonSchema gatheringSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());

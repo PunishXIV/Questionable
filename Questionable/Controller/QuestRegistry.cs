@@ -86,8 +86,9 @@ internal sealed class QuestRegistry
         _contentFinderConditionIds.Clear();
         _lowPriorityContentFinderConditionQuests.Clear();
 
-        LoadQuestsFromAssembly();
-        LoadQuestsFromDownloadedBundle();
+        if (!LoadQuestsFromDownloadedBundle())
+            //LoadQuestsFromAssembly();
+            _logger.LogWarning("Bundled quests were not loaded, we have no quests!");
         LoadQuestsFromProjectDirectory();
 
         try
@@ -183,11 +184,11 @@ internal sealed class QuestRegistry
     ///     overridden by the hand-authored user directory. A single bad entry is skipped rather
     ///     than aborting the rest of the bundle.
     /// </summary>
-    private void LoadQuestsFromDownloadedBundle()
+    private bool LoadQuestsFromDownloadedBundle()
     {
         string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
         if (!File.Exists(bundlePath))
-            return;
+            return false;
 
         try
         {
@@ -196,7 +197,7 @@ internal sealed class QuestRegistry
             if (manifest == null)
             {
                 _logger.LogWarning("Downloaded path bundle has no manifest; ignoring it");
-                return;
+                return false;
             }
 
             // Gate A: never load a bundle that needs a newer plugin than this one.
@@ -205,7 +206,7 @@ internal sealed class QuestRegistry
                 _logger.LogWarning(
                     "Ignoring downloaded path bundle (data version {DataVersion}): it requires plugin data format {MinFormat}, this plugin supports {CurrentFormat}",
                     manifest.DataVersion, manifest.MinPluginDataFormat, PathDataFormat.CurrentVersion);
-                return;
+                return false;
             }
 
             int loaded = 0, failed = 0;
@@ -235,7 +236,9 @@ internal sealed class QuestRegistry
         catch (Exception e)
         {
             _logger.LogError(e, "Failed to load downloaded path bundle; falling back to the compiled baseline");
+            return false;
         }
+        return true;
     }
 
     private void LoadCfcIds()
