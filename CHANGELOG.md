@@ -1,3 +1,4 @@
+- Feature: add About tab from Punish shared library -alydev
 - Feature: Re-enable NotificationMaster -alydev
 - Feature: show Path Bundle update status over "No active quest" message for 30 seconds -alydev
 - Feature: Open Editor feature -alydev

@@ -65,6 +65,15 @@
         "resolved": "1.0.0.1",
         "contentHash": "ta+lQtxQzHkqPC3doDn3ud8MvtwNnTgTIeXqfqu92G4lAy+/UJZ6iEefFH4MRZmX8Z99nUmUJZ4zcRvVMABzjQ=="
       },
+      "PunishLib": {
+        "type": "Direct",
+        "requested": "[2.0.0.1, )",
+        "resolved": "2.0.0.1",
+        "contentHash": "1wr+HPnJAywcO82+4/FyPW9m/cAzpE5L8gz+TFe2+gHpbDUJRuw3Od+JQNNzkcw3WDi73Z8fXW2n8n2Tjjvv2A==",
+        "dependencies": {
+          "ECommons": "3.2.0.11"
+        }
+      },
       "System.Text.Json": {
         "type": "Direct",
         "requested": "[9.0.3, )",
@@ -136,7 +145,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.300.0, )"
+          "Questionable.Model": "[15.300.0.1, )"
         }
       },
       "questionable.model": {
@@ -145,7 +154,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.300.0, )"
+          "Questionable.Model": "[15.300.0.1, )"
         }
       }
     }
