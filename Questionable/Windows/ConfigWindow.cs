@@ -3,6 +3,7 @@ using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Questionable.Windows.Common;
 using Questionable.Windows.ConfigComponents;
+using PunishLib.ImGuiMethods;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
@@ -45,5 +46,11 @@ internal sealed class ConfigWindow
         _stopConditionComponent.DrawTab();
         _notificationConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
+        using (ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs"))
+        {
+            if (!tab)
+                return;
+            AboutTab.Draw("Questionable");
+        }
     }
 }

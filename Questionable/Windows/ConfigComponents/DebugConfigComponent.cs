@@ -13,7 +13,7 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
 {
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem("Advanced###Debug");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Advanced") + "###Debug");
         if (!tab)
             return;
 
