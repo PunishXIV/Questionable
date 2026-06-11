@@ -31,6 +31,7 @@ internal sealed class ContextMenuController : IDisposable
     private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
+    private readonly Configuration _configuration;
 
     public ContextMenuController(
         IContextMenu contextMenu,
@@ -41,6 +42,7 @@ internal sealed class ContextMenuController : IDisposable
         QuestData questData,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
+        Configuration configuration,
         IGameGuiAdapter gameGui,
         IChatGui chatGui,
         IClientState clientState,
@@ -54,6 +56,7 @@ internal sealed class ContextMenuController : IDisposable
         _questData = questData;
         _gameFunctions = gameFunctions;
         _questFunctions = questFunctions;
+        _configuration = configuration;
         _gameGui = gameGui;
         _chatGui = chatGui;
         _clientState = clientState;
@@ -134,21 +137,21 @@ internal sealed class ContextMenuController : IDisposable
             quantityToGather = Math.Min(agentSatisfactionSupply->NpcData.RemainingAllowances,
                 ((AgentSatisfactionSupply2*)agentSatisfactionSupply)->CalculateTurnInsToNextRank(maxTurnIns));
         }
-        #if DEBUG
-        quantityToGather = 1;
-        #endif
+        if (_configuration.Advanced.Debug)
+            quantityToGather = 1;
 
         string lockedReasonn = string.Empty;
-#if !DEBUG
-        if (!_questFunctions.IsClassJobUnlocked(classJob))
-            lockedReasonn = $"{classJob} not unlocked";
-        else if (quantityToGather == 0)
-            lockedReasonn = "No allowances";
-        else if (quantityToGather > GameFunctions.GetFreeInventorySlots())
-            lockedReasonn = "Inventory full";
-        else if (_gameFunctions.IsOccupied())
-            lockedReasonn = "Can't be used while interacting";
-#endif
+        if (!_configuration.Advanced.Debug)
+        {
+            if (!_questFunctions.IsClassJobUnlocked(classJob))
+                lockedReasonn = $"{classJob} not unlocked";
+            else if (quantityToGather == 0)
+                lockedReasonn = "No allowances";
+            else if (quantityToGather > GameFunctions.GetFreeInventorySlots())
+                lockedReasonn = "Inventory full";
+            else if (_gameFunctions.IsOccupied())
+                lockedReasonn = "Can't be used while interacting";
+        }
 
         string name = $"{verb} with Questionable";
         if (!string.IsNullOrEmpty(lockedReasonn))

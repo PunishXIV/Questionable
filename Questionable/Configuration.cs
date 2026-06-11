@@ -292,6 +292,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool StartMinimized { get; set; }
         public bool OpenEditor { get; set; }
         public bool NamazuPreferCraft { get; set; }
+        public bool Debug { get; set; }
     }
 
     internal sealed class PriorityConfiguration

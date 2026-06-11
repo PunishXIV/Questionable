@@ -85,12 +85,10 @@ internal sealed class QuestJournalUtils
             configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
             pluginInterface.SavePluginConfig(configuration);
         }
-#if DEBUG
         if (ImGui.MenuItem(_L("Edit quest path")))
             (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
         if (ImGui.MenuItem(_L("Sim quest")))
             questController.SimulateQuest(questInfo, 0, 0);
-#endif
     }
 
     internal static void ShowFilterContextMenu(QuestJournalComponent journalUi)

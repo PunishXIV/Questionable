@@ -376,7 +376,6 @@ internal sealed class QuestRegistry
     internal static FileInfo AssemblyLocation => Svc.PluginInterface.AssemblyLocation;
     public static string GetFilename(IQuestInfo info) => GetFilename((QuestInfo)info);
     public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
-#if DEBUG
     public static QuestRoot CreateQuestRoot(QuestInfo info)
     {
         QuestSequence seq0 = new()
@@ -440,10 +439,19 @@ internal sealed class QuestRegistry
             QuestSequence = sequences
         };
     }
+    public static string GetQuestPathsDirectory()
+    {
+#if DEBUG
+        return Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths");
+#else
+        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+#endif
+    }
     public static string? GetFullPath(IQuestInfo info) => GetFullPath((QuestInfo)info);
     public static string? GetFullPath(QuestInfo info)
     {
         var filename = GetFilename(info);
+#if DEBUG
         DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
         if (targetFolder == null)
             return null;
@@ -472,9 +480,12 @@ internal sealed class QuestRegistry
         if (path == null || path.Length == 0)
             return Path.Combine(targetFolder.FullName, "Unsorted", filename);
         return Path.Combine(targetFolder.FullName, path, filename);
+#else
+        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests", filename);
+#endif
     }
     public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
-    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, bool dryrun = false)
+    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryrun = false)
     {
         var path = GetFullPath(info);
         if (path == null)
@@ -497,16 +508,25 @@ internal sealed class QuestRegistry
         stream.Dispose();
         if (!dryrun)
         {
-            JsonObject? jsonNode = (JsonObject)JsonSerializer.SerializeToNode(CreateQuestRoot(info), JsonOptions.Default)!;
-            JsonObject newNode = new()
+            JsonObject? jsonNode;
+            JsonObject newNode;
+            if (quest == null)
             {
+                jsonNode = (JsonObject)JsonSerializer.SerializeToNode(CreateQuestRoot(info), JsonOptions.Default)!;
+                newNode = new()
                 {
-                    "$schema",
-                    "https://qstxiv.github.io/schema/quest-v1.json"
-                }
-            };
-            foreach ((string key, JsonNode? value) in jsonNode)
-                newNode.Add(key, value?.DeepClone());
+                    {
+                        "$schema",
+                        "https://qstxiv.github.io/schema/quest-v1.json"
+                    }
+                };
+                foreach ((string key, JsonNode? value) in jsonNode)
+                    newNode.Add(key, value?.DeepClone());
+            }
+            else
+            {
+                newNode = (JsonObject)JsonSerializer.SerializeToNode(quest.Root, JsonOptions.Default)!;
+            }
             using FileStream writeStream = file.OpenWrite();
             using Utf8JsonWriter writer = new(writeStream, new()
             {
@@ -522,7 +542,7 @@ internal sealed class QuestRegistry
     public (bool, string) OpenEditor(ushort questId)
     {
         if (TryGetQuest(new QuestId(questId), out Quest? quest))
-            return OpenEditor(GetFilename(quest.Info), (QuestInfo)quest.Info);
+            return OpenEditor(GetFilename(quest.Info), (QuestInfo)quest.Info, quest);
         return OpenEditor(_questData.GetQuestInfo(new QuestId(questId)));
     }
     public unsafe (bool, string) OpenEditor()
@@ -554,15 +574,17 @@ internal sealed class QuestRegistry
         return (false, "could not get tracked quest");
     }
 
-    public static (bool, string) OpenEditor(string filename, QuestInfo info)
+    public static (bool, string) OpenEditor(string filename, QuestInfo info, Quest? quest = null)
     {
-        DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths"));
+        var parentDirectory = GetQuestPathsDirectory();
+        Directory.CreateDirectory(parentDirectory);
+        DirectoryInfo? targetFolder = new(parentDirectory);
         if (targetFolder == null)
             return (false, "couldn't find QuestPaths folder");
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
         if (file == null)
         {
-            (bool success, FileInfo? path, string message) = CreatePath(info);
+            (bool success, FileInfo? path, string message) = CreatePath(info, quest);
             Svc.Log.Debug($"CreatePath: {success}, {path}, {message}");
             if (success && path != null)
                 file = path;
@@ -595,5 +617,4 @@ internal sealed class QuestRegistry
 
         return null;
     }
-#endif
 }

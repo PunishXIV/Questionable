@@ -139,17 +139,13 @@ internal sealed class QuickAccessButtonsComponent
                         ) ?? []);
                 }
                 catch (Exception) { }
+                var config = Svc.PluginInterface.GetPluginConfig();
+                Configuration configCast = config != null ? (Configuration)config : new();
                 Dictionary<string, object?> troubleshooting = new(){
                     { "LoadedPlugins", plugins },
                     { "QST", new Dictionary<string,string>(){
                         { "Version", CommandHandler.MessageTag },
-                        { "Debug", 
-                        #if DEBUG
-                        "true"
-                        #else
-                        "false"
-                        #endif
-                        }
+                        { "Debug", configCast.Advanced.Debug.ToString() ?? "false" }
                     } },
                     { "Configuration", Svc.PluginInterface.GetPluginConfig() },
                     { "CompletedQuests", questCompletions.Count },
