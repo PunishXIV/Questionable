@@ -577,8 +577,7 @@ internal sealed class QuestRegistry
     public static (bool, string) OpenEditor(string filename, QuestInfo info, Quest? quest = null)
     {
         var parentDirectory = GetQuestPathsDirectory();
-        Directory.CreateDirectory(parentDirectory);
-        DirectoryInfo? targetFolder = new(parentDirectory);
+        DirectoryInfo? targetFolder = Directory.CreateDirectory(parentDirectory);
         if (targetFolder == null)
             return (false, "couldn't find QuestPaths folder");
         FileInfo? file = FindFilenameInDirectory(targetFolder, filename);
@@ -598,6 +597,18 @@ internal sealed class QuestRegistry
             UseShellExecute = true
         });
         return (true, file.FullName);
+    }
+
+    public static void OpenFolder()
+    {
+        var parentDirectory = GetQuestPathsDirectory();
+        Directory.CreateDirectory(parentDirectory);
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = parentDirectory,
+            UseShellExecute = true,
+            Verb = "open"
+        });
     }
 
     public static FileInfo? FindFilenameInDirectory(DirectoryInfo root, string filename)
