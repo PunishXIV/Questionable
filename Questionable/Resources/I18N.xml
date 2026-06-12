@@ -1453,12 +1453,10 @@
     <Value lang="ja-jp">チャットチャンネル</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Desktop notifications</Key>
     <Value lang="ja-jp">デスクトップ通知</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Desktop tray and taskbar notifications are currently unavailable.</Key>
     <Value lang="ja-jp">デスクトップトレイおよびタスクバー通知は現在利用できません。</Value>
   </Entry>
@@ -1513,7 +1511,6 @@
     <Value lang="ja-jp">'アクティブタイムマニューバー自動化'が有効</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automatically completes active time maneuvers in\r\nsingle player instances, trials and raids"</Key>
     <Value lang="ja-jp">シングルプレイヤーインスタンス、討滅戦、レイドのアクティブタイムマニューバーを自動完了します。</Value>
   </Entry>
@@ -2678,5 +2675,49 @@
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Japanese</Key>
     <Value lang="ja-jp">日本語</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigWindow.cs -->
+    <Key>About</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Advanced</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Open editor when starting quest</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>On starting a quest, Questionable will open the path for it in your default text editor.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Automatically completes active time maneuvers in\r\nsingle player instances, trials and raids</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Sends a configurable out-of-game notification if a quest\r\nrequires manual actions.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Edit quest path</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Sim quest</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>Start NG+ here</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>Stop NG+</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Idle</Key>
   </Entry>
 </I18N>

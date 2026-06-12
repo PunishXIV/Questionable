@@ -71,7 +71,7 @@ internal sealed class RedoComponent
                 questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Model.Quest? quest);
                 if (quest != null && (quest.Root.LastChecked.Date == null ||
                         (quest.Root.LastChecked.Date != null &&
-                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 90
+                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 30
                         )))
                     return quest;
                 return null;
