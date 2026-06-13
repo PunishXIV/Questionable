@@ -2720,4 +2720,8 @@
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Idle</Key>
   </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Click to reload quest path data from server</Key>
+  </Entry>
 </I18N>
