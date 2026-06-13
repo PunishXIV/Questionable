@@ -156,7 +156,16 @@ internal sealed partial class ActiveQuestComponent
             else
                 ImGui.Text(_L("No active quest"));
             if (!isMinimized)
-                ImGui.TextColored(ImGuiColors.DalamudGrey, _LF("{0} quests loaded", _questRegistry.Count));
+            {
+                var color = ImGuiColors.DalamudGrey;
+                if (_questRegistry.Count < 500)
+                    color = ImGuiColors.DalamudRed;
+                ImGui.TextColored(color, _LF("{0} quests loaded", _questRegistry.Count));
+                if (ImGui.IsItemClicked())
+                    pathDataUpdater.CheckForUpdatesManually();
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Click to reload quest path data from server"));
+            }
 
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop))
             {
