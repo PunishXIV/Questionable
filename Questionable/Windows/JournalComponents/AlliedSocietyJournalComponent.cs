@@ -186,13 +186,13 @@ internal sealed class AlliedSocietyJournalComponent
             {
                 lastChecked = $"({quest.Root.LastChecked.Date})";
                 if (quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 30)
-                    color = ImGuiColors.DalamudRed;
+                    color = ImGuiColors.DalamudOrange;
             }
             else
-                color = ImGuiColors.DPSRed;
+                color = ImGuiColors.ParsedOrange;
             if (quest.Root.Disabled && (quest.Root.Comment ?? "").Contains("FATE"))
             {
-                color = ImGuiColors.DalamudOrange;
+                color = ImGuiColors.DalamudRed;
                 fate = true;
             }
         }
@@ -204,7 +204,7 @@ internal sealed class AlliedSocietyJournalComponent
             checklistItem = $"[+{questInfo.SocietyRepValue}] " + checklistItem;
         if (uiUtils.ChecklistItem(checklistItem, color, icon))
             questTooltipComponent.Draw(questInfo);
-        if (addPending && (color.Equals(ImGuiColors.DalamudRed) || color.Equals(ImGuiColors.DPSRed)))
+        if (addPending && (color.Equals(ImGuiColors.DalamudOrange) || color.Equals(ImGuiColors.ParsedOrange)))
             questController.PriorityManager.Add(questInfo.QuestId);
 
         questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));

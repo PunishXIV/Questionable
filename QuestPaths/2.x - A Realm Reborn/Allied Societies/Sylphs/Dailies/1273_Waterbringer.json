@@ -254,7 +254,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
+          "StopDistance": 0.25,
           "Fly": true,
           "Land": true
         },
@@ -278,7 +278,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
+          "StopDistance": 0.25,
           "Fly": true,
           "Land": true
         },
@@ -302,7 +302,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
+          "StopDistance": 0.25,
           "Fly": true,
           "Land": true
         },
