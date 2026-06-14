@@ -6,6 +6,15 @@
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Chocobo Square"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [388]}}
+        },
+        {
           "DataId": 1011030,
           "Position": {
             "X": 7.522644,

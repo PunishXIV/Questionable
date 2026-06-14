@@ -8,11 +8,12 @@
         {
           "DataId": 1006331,
           "Position": {
-            "X": -144.15204,
-            "Y": 64.989944,
-            "Z": -209.88788
+            "X": -145.56262,
+            "Y": 64.85822,
+            "Z": -209.15851
           },
           "TerritoryId": 180,
+          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
           "Fly": true
         }
@@ -49,11 +50,12 @@
         {
           "DataId": 1006331,
           "Position": {
-            "X": -144.15204,
-            "Y": 64.989944,
-            "Z": -209.88788
+            "X": -145.56262,
+            "Y": 64.85822,
+            "Z": -209.15851
           },
           "TerritoryId": 180,
+          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
           "Fly": true
         }
