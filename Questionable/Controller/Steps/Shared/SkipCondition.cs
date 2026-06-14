@@ -115,7 +115,7 @@ internal static class SkipCondition
             if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
                 extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
             {
-                logger.LogInformation("Skipping step, extra condition {} matches", skipConditions.ExtraCondition);
+                logger.LogInformation("Skipping step, extra condition {ExtraCondition} matches", skipConditions.ExtraCondition);
                 return true;
             }
 

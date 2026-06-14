@@ -2965,9 +2965,9 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
-    <Key>Requires Carrier Level {}</Key>
-    <Value lang="zh-cn">需要邮递员等级 {}</Value>
-    <Value lang="ja-jp">キャリアレベル {} 必要</Value>
+    <Key>Requires Carrier Level {0}</Key>
+    <Value lang="zh-cn">需要邮递员等级 {0}</Value>
+    <Value lang="ja-jp">キャリアレベル {0} 必要</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->

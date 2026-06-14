@@ -1,3 +1,4 @@
+- Bug: incorrect parameter on delivery moogle translation string, thank you diNZy -alydev
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation -ShadyWhite
   - Japanese translation -fuuga
