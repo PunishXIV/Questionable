@@ -98,19 +98,15 @@ internal sealed class CommandHandler : IDisposable
                 _L("/qst start - starts doing quests"),
                 _L("/qst stop - stops doing quests"))
         });
-#if DEBUG
         _commandManager.AddHandler("/qst@", new(ProcessDebugCommand)
         {
             ShowInHelp = false
         });
-#endif
     }
 
     public void Dispose()
     {
-#if DEBUG
         _commandManager.RemoveHandler("/qst@");
-#endif
         _commandManager.RemoveHandler("/qst");
         _clientState.Logout -= OnLogout;
     }
@@ -248,7 +244,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.PrintError(_L("Completions log has been cleared"));
                 break;
 
-            case "debugmode":
+            case "@debugmode":
                 _configuration.Advanced.Debug = !_configuration.Advanced.Debug;
                 break;
 
@@ -264,7 +260,7 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             default:
-                _chatGui.PrintError(_LF("Unknown subcommand {0}",parts[0]), MessageTag, TagColor);
+                _chatGui.PrintError(_LF("Unknown subcommand {0}", parts[0]), MessageTag, TagColor);
                 break;
         }
     }
@@ -301,11 +297,11 @@ internal sealed class CommandHandler : IDisposable
                 IReadOnlyList<uint>? unlockedUnlockLinks = _gameFunctions.GetUnlockLinks();
                 if (unlockedUnlockLinks != null)
                 {
-                    _chatGui.Print(_LF("Saved {0} unlock links to log.",unlockedUnlockLinks.Count), MessageTag, TagColor);
+                    _chatGui.Print(_LF("Saved {0} unlock links to log.", unlockedUnlockLinks.Count), MessageTag, TagColor);
 
                     List<uint> newUnlockLinks = unlockedUnlockLinks.Except(_previouslyUnlockedUnlockLinks).ToList();
                     if (_previouslyUnlockedUnlockLinks.Count > 0 && newUnlockLinks.Count > 0)
-                        _chatGui.Print(_LF("New unlock links: {0}",string.Join(", ", newUnlockLinks)), MessageTag, TagColor);
+                        _chatGui.Print(_LF("New unlock links: {0}", string.Join(", ", newUnlockLinks)), MessageTag, TagColor);
 
                     _previouslyUnlockedUnlockLinks = unlockedUnlockLinks;
                 }
@@ -351,7 +347,7 @@ internal sealed class CommandHandler : IDisposable
                         activeFestivals.Add($"{festival.Id}({festival.Phase})");
                     }
 
-                    _chatGui.Print(_LF("Active festivals: {0}",string.Join(", ", activeFestivals)), MessageTag, TagColor);
+                    _chatGui.Print(_LF("Active festivals: {0}", string.Join(", ", activeFestivals)), MessageTag, TagColor);
                 }
 
                 break;
@@ -385,10 +381,10 @@ internal sealed class CommandHandler : IDisposable
             if (_questRegistry.TryGetQuest(questId, out Quest? quest))
             {
                 _debugOverlay.HighlightedQuest = quest.Id;
-                _chatGui.Print(_LF("Set highlighted quest to {0} ({1}).",questId,quest.Info.Name), MessageTag, TagColor);
+                _chatGui.Print(_LF("Set highlighted quest to {0} ({1}).", questId, quest.Info.Name), MessageTag, TagColor);
             }
             else
-                _chatGui.PrintError(_LF("Unknown quest {0}.",questId), MessageTag, TagColor);
+                _chatGui.PrintError(_LF("Unknown quest {0}.", questId), MessageTag, TagColor);
         }
         else
         {
@@ -402,14 +398,14 @@ internal sealed class CommandHandler : IDisposable
         if (arguments.Length >= 1 && ElementId.TryFromString(arguments[0], out ElementId? questId) && questId != null)
         {
             if (_questFunctions.IsQuestLocked(questId))
-                _chatGui.PrintError(_LF("Quest {0} is locked.",questId), MessageTag, TagColor);
+                _chatGui.PrintError(_LF("Quest {0} is locked.", questId), MessageTag, TagColor);
             else if (_questRegistry.TryGetQuest(questId, out Quest? quest))
             {
                 _questController.SetNextQuest(quest);
-                _chatGui.Print(_LF("Set next quest to {0} ({1}).",questId,quest.Info.Name), MessageTag, TagColor);
+                _chatGui.Print(_LF("Set next quest to {0} ({1}).", questId, quest.Info.Name), MessageTag, TagColor);
             }
             else
-                _chatGui.PrintError(_LF("Unknown quest {0}.",questId), MessageTag, TagColor);
+                _chatGui.PrintError(_LF("Unknown quest {0}.", questId), MessageTag, TagColor);
         }
         else
         {
@@ -442,10 +438,10 @@ internal sealed class CommandHandler : IDisposable
                 }
 
                 _questController.SimulateQuest(quest, sequenceId, stepId);
-                _chatGui.Print(_LF("Simulating quest {0} ({1}).",questId,quest.Info.Name), MessageTag, TagColor);
+                _chatGui.Print(_LF("Simulating quest {0} ({1}).", questId, quest.Info.Name), MessageTag, TagColor);
             }
             else
-                _chatGui.PrintError(_LF("Unknown quest {0}.",questId), MessageTag, TagColor);
+                _chatGui.PrintError(_LF("Unknown quest {0}.", questId), MessageTag, TagColor);
         }
         else
         {
@@ -461,7 +457,7 @@ internal sealed class CommandHandler : IDisposable
         {
             Mount? row = _dataManager.GetExcelSheet<Mount>().GetRowOrDefault(mountId.Value);
             _chatGui.Print(
-                _LF("Mount ID: {0}, Name: {1}, Obtainable: {2}",mountId,row?.Singular.ToString() ?? "",(row?.Order == -1 ? "No" : "Yes")),
+                _LF("Mount ID: {0}, Name: {1}, Obtainable: {2}", mountId, row?.Singular.ToString() ?? "", (row?.Order == -1 ? "No" : "Yes")),
                 MessageTag, TagColor);
         }
         else

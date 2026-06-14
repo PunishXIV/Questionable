@@ -93,7 +93,14 @@
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                64
+              ]
             }
           }
         },
@@ -107,7 +114,7 @@
           "TerritoryId": 180,
           "InteractionType": "Interact",
           "IgnoreDistanceToObject": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "Position": {
@@ -120,7 +127,14 @@
           "Fly": true,
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                128
+              ]
             }
           }
         },
@@ -133,7 +147,26 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
+        },
+        {
+          "Position": {
+            "X": -295.46515,
+            "Y": 70.620026,
+            "Z": -271.55838
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Jump",
+          "StopDistance": 0.25,
+          "JumpDestination": {
+            "Position": {
+              "X": -304.04395,
+              "Y": 65.77775,
+              "Z": -264.9213
+            },
+            "TerritoryId": 180
+          },
+          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
           "Position": {
@@ -146,7 +179,14 @@
           "Fly": true,
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                16
+              ]
             }
           }
         },
@@ -159,7 +199,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
           "Position": {
@@ -172,7 +212,14 @@
           "Fly": true,
           "SkipConditions": {
             "StepIf": {
-              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
             }
           }
         },
@@ -185,7 +232,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         }
       ]
     },

@@ -361,6 +361,7 @@ internal sealed class CreationUtilsComponent
                                                      "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
                                                    },
                                                    "TerritoryId": {{clientState.TerritoryType}},
+
                                          """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 
                                        $$"""
                                                    "InteractionType": "{{interactionType}}",
@@ -408,6 +409,7 @@ internal sealed class CreationUtilsComponent
                                                  "Z": {{objectTable[0]!.Position.Z.ToString(CultureInfo.InvariantCulture)}}
                                                },
                                                "TerritoryId": {{clientState.TerritoryType}},
+
                                      """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 
                                    $$"""
                                                "InteractionType": "",
