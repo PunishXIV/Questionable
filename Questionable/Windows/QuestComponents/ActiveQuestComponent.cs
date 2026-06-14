@@ -162,7 +162,10 @@ internal sealed partial class ActiveQuestComponent
                     color = ImGuiColors.DalamudRed;
                 ImGui.TextColored(color, _LF("{0} quests loaded", _questRegistry.Count));
                 if (ImGui.IsItemClicked())
+                {
+                    _configuration.PathData.InstalledDataVersion = 0;
                     pathDataUpdater.CheckForUpdatesManually();
+                }
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Click to reload quest path data from server"));
             }

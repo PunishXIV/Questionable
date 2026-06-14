@@ -1,4 +1,5 @@
 - Feature: click "xx quests loaded" to check for updates to quest data from server -alydev
+- Bug: Reload single player duty cache if path data changes
 - Feature: Open Editor feature -alydev
   - This currently opens the quest path JSON in your default text editor, or generates a new quest path JSON for the current quest. A GUI quest editor will be included Soon :tm:
   - The Edit button now has a tooltip showing how it works. If quests stop working, right click this button and delete all quest paths in that folder first to see if that fixes it.

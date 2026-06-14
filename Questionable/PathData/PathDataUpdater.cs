@@ -167,9 +167,17 @@ internal sealed class PathDataUpdater : IDisposable
 
         if (manifest.DataVersion <= _configuration.PathData.InstalledDataVersion)
         {
-            Status = "Path data is up to date";
-            Save();
-            return;
+            if (_questRegistry.Count >= 500)
+            {
+                Status = "Path data is up to date";
+                Save();
+                return;
+            }
+            else
+            {
+                Status = "Path data from previous run missing, downloading path data...";
+                Save();
+            }
         }
 
         if (string.IsNullOrEmpty(manifest.BundleUrl))
