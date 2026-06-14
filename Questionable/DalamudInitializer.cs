@@ -94,8 +94,6 @@ internal sealed class DalamudInitializer : IDisposable
 
         if (_configuration.Advanced.ShowWindowOnStart)
             ToggleQuestWindow();
-
-        _configuration.Advanced.Debug = false;
     }
 
     public void Dispose()

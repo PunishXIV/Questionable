@@ -1,4 +1,4 @@
-- Bug: incorrect parameter on delivery moogle translation string, thank you diNZy -alydev
+- Bug: fix 1098 jump over gap -alydev
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation -ShadyWhite
   - Japanese translation -fuuga
