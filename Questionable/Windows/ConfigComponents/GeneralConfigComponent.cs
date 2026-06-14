@@ -98,8 +98,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         if (!tab)
             return;
         Dictionary<string, string> languages = new(){
-            { "en",    _L("English") + " (100%)" },
-            { "ja-jp", _L("Japanese") + " (100%)" },
+            { "en",    _L("English") },
+            { "ja-jp", _L("Japanese") },
+            { "zh-cn", _L("Chinese (Simplified)") },
             { "af",    _L("Afrikaans") + " (WIP)" },
             { "ar",    _L("Arabic") + " (WIP)" },
             { "sq",    _L("Albanian") + " (WIP)" },
@@ -107,7 +108,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             { "be",    _L("Belarusian") + " (WIP)" },
             { "bg",    _L("Bulgarian") + " (WIP)" },
             { "ca",    _L("Catalan") + " (WIP)" },
-            { "zh-cn", _L("Chinese (Simplified)") + " (WIP)" },
             { "zh-tw", _L("Chinese (Traditional)") + " (WIP)" },
             { "hr",    _L("Croatian") + " (WIP)" },
             { "cs",    _L("Czech") + " (WIP)" },
