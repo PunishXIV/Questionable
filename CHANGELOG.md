@@ -1,5 +1,5 @@
 - Feature: Language selection -alydev
-  - Chinese (Simplified) translation -ShadyWhite
+  - Chinese (Simplified) translation + -ShadyWhite
   - Japanese translation + + -fuuga
   - See discord for more details https://discord.com/channels/1001823907193552978/1408201462722596945/1513807639312728167
 - Feature: Open Editor feature -alydev
