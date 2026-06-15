@@ -3197,61 +3197,73 @@
   <Entry>
     <!-- Found in: Windows\ConfigWindow.cs -->
     <Key>About</Key>
+    <Value lang="ja-jp">概要</Value>
     <Value lang="zh-cn">关于</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Advanced</Key>
+    <Value lang="ja-jp">詳細設定</Value>
     <Value lang="zh-cn">高级</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Open editor when starting quest</Key>
+    <Value lang="ja-jp">クエスト開始時にエディタを開く</Value>
     <Value lang="zh-cn">开始任务时打开编辑器</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>On starting a quest, Questionable will open the path for it in your default text editor.</Key>
+    <Value lang="ja-jp">クエスト開始時に、Questionableはそのパスをデフォルトのテキストエディタで開きます。</Value>
     <Value lang="zh-cn">开始任务时，Questionable 将在默认文本编辑器中打开该任务的路径。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automatically completes active time maneuvers in\r\nsingle player instances, trials and raids</Key>
+    <Value lang="ja-jp">シングルプレイヤーインスタンス、討滅戦、レイドのアクティブタイムマニューバーを自動完了します。</Value>
     <Value lang="zh-cn">在单人副本、讨伐战及团队副本中自动完成动态演练</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Sends a configurable out-of-game notification if a quest\r\nrequires manual actions.</Key>
+    <Value lang="ja-jp">クエストで手動操作が必要な場合、設定可能なゲーム外通知を送信します。</Value>
     <Value lang="zh-cn">当任务需要手动操作时，发送可配置的桌面通知。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Edit quest path</Key>
+    <Value lang="ja-jp">クエストパスを編集</Value>
     <Value lang="zh-cn">编辑任务路径</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Sim quest</Key>
+    <Value lang="ja-jp">クエストをシミュレート</Value>
     <Value lang="zh-cn">模拟任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Start NG+ here</Key>
+    <Value lang="ja-jp">ここからNG+を開始</Value>
     <Value lang="zh-cn">在此处开始NG+</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Stop NG+</Key>
+    <Value lang="ja-jp">NG+を停止</Value>
     <Value lang="zh-cn">停止 NG+</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Idle</Key>
+    <Value lang="ja-jp">待機中</Value>
     <Value lang="zh-cn">空闲</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Click to reload quest path data from server</Key>
+    <Value lang="ja-jp">クリックしてサーバーからクエストパスデータを再読み込み</Value>
     <Value lang="zh-cn">点击此处从服务器重新加载任务路径数据</Value>
   </Entry>
 </I18N>
