@@ -3270,41 +3270,51 @@
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Checking for path updates…</Key>
+    <Value lang="ja-jp">パスの更新を確認中…</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Update check failed</Key>
+    <Value lang="ja-jp">更新確認に失敗しました</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Update the plugin for newer path data</Key>
+    <Value lang="ja-jp">新しいパスデータを利用するにはプラグインを更新してください</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Path data is up to date</Key>
+    <Value lang="ja-jp">パスデータは最新です</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Path data from previous run missing, downloading path data...</Key>
+    <Value lang="ja-jp">前回実行時のパスデータが見つからないため、パスデータをダウンロード中…</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Downloading path data…</Key>
+    <Value lang="ja-jp">パスデータをダウンロード中…</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Download failed</Key>
+    <Value lang="ja-jp">ダウンロードに失敗しました</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Download failed (checksum mismatch)</Key>
+    <Value lang="ja-jp">ダウンロードに失敗しました（チェックサム不一致）</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Install failed</Key>
+    <Value lang="ja-jp">インストールに失敗しました</Value>
   </Entry>
   <Entry>
     <!-- Found in: PathData\PathDataUpdater.cs -->
     <Key>Updated to data version {0}</Key>
+    <Value lang="ja-jp">データバージョン {0} に更新しました</Value>
   </Entry>
 </I18N>

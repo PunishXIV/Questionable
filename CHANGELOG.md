@@ -1,6 +1,6 @@
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation -ShadyWhite
-  - Japanese translation -fuuga
+  - Japanese translation + + -fuuga
   - See discord for more details https://discord.com/channels/1001823907193552978/1408201462722596945/1513807639312728167
 - Feature: Open Editor feature -alydev
   - This currently opens the quest path JSON in your default text editor, or generates a new quest path JSON for the current quest. A GUI quest editor will be included Soon :tm:
