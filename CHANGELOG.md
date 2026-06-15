@@ -1,4 +1,4 @@
-- Bug: fix 1098 jump over gap -alydev
+- Bug: retry path data bundle download if failed -alydev
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation -ShadyWhite
   - Japanese translation -fuuga
