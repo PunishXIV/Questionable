@@ -1,0 +1,336 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Iskierka",
+  "LastChecked": { "Username": "Iskierka", "Date": "2026-06-16" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Cave navigation; use next step's position/data if unnecessary",
+          "Position": {
+            "X": 107.37293,
+            "Y": 14.995779,
+            "Z": -361.19995
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.606,
+            "Y": 16.3853,
+            "Z": -362.085
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Cave navigation",
+          "Position": {
+            "X": 107.37293,
+            "Y": 14.995779,
+            "Z": -361.19995
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": false
+        },
+        {
+          "DataId": 1006217,
+          "Position": {
+            "X": -181.047,
+            "Y": 28.1858,
+            "Z": -402.018
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1005587,
+          "Position": {
+            "X": -74.1436,
+            "Y": -1.66333,
+            "Z": -88.8533
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1005587,
+          "Position": {
+            "X": -74.1436,
+            "Y": -1.66333,
+            "Z": -88.8533
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "CombatDelaySecondsAtStart": 3,
+          "KillEnemyDataIds": [2461, 2462]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1005587,
+          "Position": {
+            "X": -74.1436,
+            "Y": -1.66333,
+            "Z": -88.8533
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1006217,
+          "Position": {
+            "X": -181.047,
+            "Y": 28.1858,
+            "Z": -402.018
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "$": "Cave navigation",
+          "Position": {
+            "X": 107.37293,
+            "Y": 14.995779,
+            "Z": -361.19995
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.606,
+            "Y": 16.3853,
+            "Z": -362.085
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "$": "Cave navigation",
+          "Position": {
+            "X": 107.37293,
+            "Y": 14.995779,
+            "Z": -361.19995
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": false,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 107.37293,
+                  "Y": 14.995779,
+                  "Z": -361.19995
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 30
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2002971,
+          "Position": {
+            "X": -206.5614,
+            "Y": 5.9662476,
+            "Z": 116.92981
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "StopDistance": 1,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [739]
+        },
+        {
+          "DataId": 2002970,
+          "Position": {
+            "X": -62.302612,
+            "Y": -1.7548828,
+            "Z": 18.539673
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "StopDistance": 1,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [739]
+        },
+        {
+          "DataId": 2002968,
+          "Position": {
+            "X": -41.397766,
+            "Y": 9.933594,
+            "Z": 62.974
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "StopDistance": 1,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [739]
+        },
+        {
+          "DataId": 2002969,
+          "Position": {
+            "X": -23.544739,
+            "Y": 8.407715,
+            "Z": 146.16614
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "StopDistance": 1,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [739]
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2002972,
+          "Position": {
+            "X": 51.68225,
+            "Y": 19.21106,
+            "Z": 30.380737
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001136
+        },
+        {
+          "DataId": 2002973,
+          "Position": {
+            "X": 225.63513,
+            "Y": 8.132996,
+            "Z": 10.879639
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001136
+        },
+        {
+          "DataId": 2002975,
+          "Position": {
+            "X": 269.6726,
+            "Y": 11.276367,
+            "Z": -6.088379
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001136
+        },
+        {
+          "DataId": 2002974,
+          "Position": {
+            "X": 173.24783,
+            "Y": 8.134119,
+            "Z": 144.8258
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2002974,
+          "Position": {
+            "X": 149.00427,
+            "Y": 7.7667847,
+            "Z": 158.73962
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001136
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Cave navigation",
+          "Position": {
+            "X": 107.37293,
+            "Y": 14.995779,
+            "Z": -361.19995
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1005553,
+          "Position": {
+            "X": 122.606,
+            "Y": 16.3853,
+            "Z": -362.085
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "Fly": false
+        }
+      ]
+    }
+  ]
+}
