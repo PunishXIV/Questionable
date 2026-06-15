@@ -56,7 +56,8 @@ internal sealed class PathDataUpdater : IDisposable
     public DateTime StatusLastChanged { get; private set; } = DateTime.Now;
     private string _status = _L("Idle");
     /// <summary>Human-readable status for the config UI.</summary>
-    public string Status {
+    public string Status
+    {
         get
         {
             return _status;
@@ -128,7 +129,17 @@ internal sealed class PathDataUpdater : IDisposable
         _configuration.PathData.BundlePluginVersion = null;
     }
 
-    private async Task CheckForUpdatesAsync()
+    private async Task RetryAfterDelay(int retryCount = 1)
+    {
+        await Task.Delay(1000 * retryCount).ConfigureAwait(false);
+        _configuration.PathData.InstalledDataVersion = 0;
+        _configuration.PathData.BundlePluginVersion = null;
+        Save();
+        retryCount *= 2;
+        await CheckForUpdatesAsync(retryCount).ConfigureAwait(false);
+    }
+
+    private async Task CheckForUpdatesAsync(int retryCount = 1)
     {
         Status = _L("Checking for path updates…");
         using HttpClient http = new() { Timeout = TimeSpan.FromSeconds(30) };
@@ -143,14 +154,17 @@ internal sealed class PathDataUpdater : IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogWarning(e, "Failed to fetch the path data manifest");
-            Status = _L("Update check failed");
+            _logger.LogWarning(e, "Failed to fetch the path data manifest; retrying");
+            Status = _L("Update check failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
         if (manifest == null)
         {
-            Status = _L("Update check failed");
+            _logger.LogWarning("manifest was null; retrying");
+            Status = _L("Update check failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -183,9 +197,9 @@ internal sealed class PathDataUpdater : IDisposable
 
         if (string.IsNullOrEmpty(manifest.BundleUrl))
         {
-            _logger.LogWarning("Path data manifest has no bundle URL");
-            Status = _L("Update check failed");
-            Save();
+            _logger.LogWarning("Path data manifest has no bundle URL; retrying");
+            Status = _L("Update check failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -197,9 +211,9 @@ internal sealed class PathDataUpdater : IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogWarning(e, "Failed to download the path data bundle");
-            Status = _L("Download failed");
-            Save();
+            _logger.LogWarning(e, "Failed to download the path data bundle; retrying");
+            Status = _L("Download failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -208,9 +222,9 @@ internal sealed class PathDataUpdater : IDisposable
             string actualSha = Convert.ToHexString(SHA256.HashData(zipBytes));
             if (!string.Equals(actualSha, manifest.BundleSha256, StringComparison.OrdinalIgnoreCase))
             {
-                _logger.LogError("Path data bundle checksum mismatch; discarding the download");
-                Status = _L("Download failed (checksum mismatch)");
-                Save();
+                _logger.LogWarning("Path data bundle checksum mismatch; retrying");
+                Status = _L("Download failed (checksum mismatch)") + $" ({retryCount})";
+                await RetryAfterDelay(retryCount).ConfigureAwait(false);
                 return;
             }
         }
@@ -226,9 +240,9 @@ internal sealed class PathDataUpdater : IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to install the downloaded path data bundle");
-            Status = _L("Install failed");
-            Save();
+            _logger.LogWarning(e, "Failed to install the downloaded path data bundle; retrying");
+            Status = _L("Install failed") + $" ({retryCount})";
+            await RetryAfterDelay(retryCount).ConfigureAwait(false);
             return;
         }
 
