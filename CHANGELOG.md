@@ -1,4 +1,3 @@
-- Bug: retry path data bundle download if failed -alydev
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation -ShadyWhite
   - Japanese translation -fuuga

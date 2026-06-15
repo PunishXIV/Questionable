@@ -3255,6 +3255,7 @@
     <Value lang="zh-cn">停止 NG+</Value>
   </Entry>
   <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Idle</Key>
     <Value lang="ja-jp">待機中</Value>
@@ -3265,5 +3266,45 @@
     <Key>Click to reload quest path data from server</Key>
     <Value lang="ja-jp">クリックしてサーバーからクエストパスデータを再読み込み</Value>
     <Value lang="zh-cn">点击此处从服务器重新加载任务路径数据</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Checking for path updates…</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Update check failed</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Update the plugin for newer path data</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Path data is up to date</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Path data from previous run missing, downloading path data...</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Downloading path data…</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Download failed</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Download failed (checksum mismatch)</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Install failed</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: PathData\PathDataUpdater.cs -->
+    <Key>Updated to data version {0}</Key>
   </Entry>
 </I18N>
