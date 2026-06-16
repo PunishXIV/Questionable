@@ -7,6 +7,16 @@
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 478,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [399, 463, 478]}}
+        },
+        {
           "DataId": 2005336,
           "Position": {
             "X": -488.79227,
@@ -16,10 +26,6 @@
           "TerritoryId": 399,
           "InteractionType": "Interact",
           "TargetTerritoryId": 463,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "Fly": true,
           "Land": true
         },

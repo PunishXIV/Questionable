@@ -14,7 +14,8 @@
             "Z": -209.76581
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
         }
       ]
     },

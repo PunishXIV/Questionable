@@ -15,22 +15,10 @@
           "TerritoryId": 399,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
           "AethernetShortcut": [
             "[Idyllshire] Aetheryte Plaza",
             "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true,
-              "InTerritory": [
-                399
-              ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
