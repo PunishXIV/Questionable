@@ -60,7 +60,9 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 182,
-            "Enabled": false,
+            "Enabled": true,
+            "TestedAutoDutyVersion": "0.0.0.319",
+            "TestedBossModVersion": "7.5.1.5",
             "Notes": [
               "(after boss 1) the drawbridges being up will lead you to die from the spikes",
               "(after boss 1) the lift isn't working properly"

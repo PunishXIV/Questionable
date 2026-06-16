@@ -100,13 +100,9 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 171,
-            "Enabled": false,
-            "Notes": [
-              "(boss 1) Doesn't knock all moogles out of the rez area",
-              "(boss 3) Stack goal zone isn't properly removed from NPC, so the character will stack even for spread markers + slide into AOEs during ice"
-            ],
-            "TestedAutoDutyVersion": "0.0.0.227",
-            "TestedBossModVersion": "0.3.0.5"
+            "Enabled": true,
+            "TestedAutoDutyVersion": "0.0.0.319",
+            "TestedBossModVersion": "7.5.1.5"
           }
         }
       ]

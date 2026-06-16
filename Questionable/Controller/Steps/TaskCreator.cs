@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Plugin.Services;
-using ECommons.MathHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Interactions;
@@ -31,7 +30,7 @@ internal sealed class TaskCreator
     {
         List<ITask> newTasks;
 
-        if (!configuration.Advanced.Debug && quest.Root.Disabled && sequenceNumber.InRange(1, 2))
+        if (!configuration.Advanced.Debug && quest.Root.Disabled && sequenceNumber.Equals(1))
         {
             var reason = (quest.Root.Comment ?? "<no reason specified>").Split('\n', 2)[0];
             _chatGui.PrintError($"The quest '{quest.Info.Name}' has been marked as Disabled for the following reason: {reason}",
@@ -44,7 +43,9 @@ internal sealed class TaskCreator
 
         if (sequence == null)
         {
-            if (!quest.Root.Disabled)
+            if (!quest.Root.Disabled &&
+                quest.FindSequence((byte)(sequenceNumber - 1)) is { } prevSequence &&
+                !prevSequence.Steps.Any(_step => _step is { InteractionType: EInteractionType.Duty or EInteractionType.SinglePlayerDuty }))
             {
                 _chatGui.PrintError(
                     $"Path for quest '{quest.Info.Name}' ({quest.Id}) does not contain sequence {sequenceNumber}, please report this: https://github.com/PunishXIV/Questionable/discussions/20",
