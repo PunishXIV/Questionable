@@ -470,9 +470,12 @@ internal sealed class DialogueChoiceHandler : IDisposable
                 continue;
             }
 
+            if (excelAnswer?.GetString() is string answer && answer.Contains(@"\<click>"))
+                excelAnswer = new(answer.Replace(@"\<click>", "<click>"));
+
             for (int i = 0; i < answers.Count; ++i)
             {
-                _logger.LogTrace("Checking if {ActualAnswer} == {ExpectedAnswer}",
+                _logger.LogDebug("Checking if {ActualAnswer} == {ExpectedAnswer}",
                     answers[i], excelAnswer);
                 if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
                 {

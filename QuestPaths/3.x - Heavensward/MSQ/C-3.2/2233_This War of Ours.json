@@ -7,6 +7,23 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.79227,
+            "Y": 138.93335,
+            "Z": 741.0543
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "Fly": true,
+          "Land": true
+        },
+        {
           "DataId": 1016560,
           "Position": {
             "X": 21.133728,

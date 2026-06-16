@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Utils.CacheUtils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation;
 
@@ -26,8 +27,9 @@ internal sealed class QuestValidator
     }
 
     public IReadOnlyList<ValidationIssue> Issues => _validationIssues;
+    private CachedValue<int> _errorCount = new(ttlSeconds: 1);
     public int IssueCount => _validationIssues.Count;
-    public int ErrorCount => _validationIssues.Count(x => x.Severity == EIssueSeverity.Error);
+    public int ErrorCount => _errorCount.Get(() => _validationIssues.Count(x => x.Severity == EIssueSeverity.Error));
 
     public void Reset()
     {
