@@ -1,7 +1,7 @@
 - Bug fix: If path expects ground movement, attempt to land and then get a path on the ground (resolves "vnavmesh was not able to find a path") -alydev
 
 - Also check out: Language selection -alydev
-  - Chinese (Simplified) translation + -ShadyWhite
+  - Chinese (Simplified) translation + + -ShadyWhite
   - Japanese translation + + -fuuga
   - See discord for more details https://discord.com/channels/1001823907193552978/1408201462722596945/1513807639312728167
 - Also check out: Open Editor feature -alydev
