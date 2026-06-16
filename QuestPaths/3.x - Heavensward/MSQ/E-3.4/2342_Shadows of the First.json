@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -60,11 +60,9 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 182,
-            "Enabled": false,
-            "Notes": [
-              "(after boss 1) the drawbridges being up will lead you to die from the spikes",
-              "(after boss 1) the lift isn't working properly"
-            ]
+            "Enabled": true,
+            "TestedAutoDutyVersion": "0.0.0.319",
+            "TestedBossModVersion": "7.5.1.5"
           }
         }
       ]

@@ -1,5 +1,5 @@
-- Bug: in fixing a beast tribe thing, i broke dialogue selection from a list. sorry about that. should be better now. -alydev
-- Bug: qst was tanking your framerate. sorry about that. should be better now. -alydev
+- Feature: enabled a bunch of MSQ duties for Duty Support -alydev
+- Feature: maybe better handling of "path does not contain sequence" -alydev
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation + -ShadyWhite
   - Japanese translation + + -fuuga

@@ -71,12 +71,10 @@
         {
           "TerritoryId": 1056,
           "InteractionType": "Duty",
+          "Comment": "Please report in discord whether this duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "DutyOptions": {
             "ContentFinderConditionId": 869,
-            "Enabled": false,
-            "Notes": [
-              "No VBM module"
-            ]
+            "Enabled": true
           }
         }
       ]
