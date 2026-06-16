@@ -1,3 +1,4 @@
+- Bug: qst was tanking your framerate. sorry about that. should be better now. -alydev
 - Feature: Language selection -alydev
   - Chinese (Simplified) translation + -ShadyWhite
   - Japanese translation + + -fuuga
