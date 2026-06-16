@@ -35,7 +35,7 @@ internal static class Duty
                 {
                     if (territoryData.TryGetContentFinderCondition(step.DutyOptions.ContentFinderConditionId,
                                                                    out TerritoryData.ContentFinderConditionData? cfcData) &&
-                            PlayerState.Instance()->CurrentLevel - 15 >= cfcData.ClassJobLevelSync)
+                            PlayerState.Instance()->CurrentLevel - 20 >= cfcData.ClassJobLevelSync)
                         dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
             }
@@ -116,7 +116,7 @@ internal static class Duty
 
                     return false;
                 }
-                if (configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel - 100 >= cfcData.RequiredItemLevel)
+                if (configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel)
                 {
                     dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -117,49 +117,9 @@
         },
         {
           "Position": {
-            "X": 111.7023,
-            "Y": 28.568699,
-            "Z": -611.7063
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 84.102905,
-            "Y": 28.170393,
-            "Z": -716.35504
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 161.06644,
-            "Y": 26.61216,
-            "Z": -712.6371
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 176.3917,
-            "Y": 29.076319,
-            "Z": -652.8805
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 143.06934,
-            "Y": 23.642702,
-            "Z": -656.43506
+            "X": 112.334114,
+            "Y": 23.533241,
+            "Z": -610.1577
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
