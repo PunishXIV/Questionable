@@ -59,5 +59,12 @@ internal sealed class LandExecutor(IObjectTable objectTable, ICondition conditio
         return false;
     }
 
+    internal static unsafe bool TryLanding()
+    {
+        if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 23) != 0)
+            return false;
+        return ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
+    }
+
     public override bool ShouldInterruptOnDamage() => false;
 }

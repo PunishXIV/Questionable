@@ -1,4 +1,4 @@
-- Bug fix: Duty unsync threshold changed to 20 levels/200 ilvl
+- Bug fix: If path expects ground movement, attempt to land and then get a path on the ground (resolves "vnavmesh was not able to find a path") -alydev
 
 - Also check out: Language selection -alydev
   - Chinese (Simplified) translation + -ShadyWhite

@@ -3327,4 +3327,8 @@
     <Value lang="ja-jp">データバージョン {0} に更新しました</Value>
     <Value lang="zh-cn">已更新到路径数据版本 {0}</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: Controller\MovementController.cs -->
+    <Key>vnavmesh was not able to find a path. Attempting to land, then trying again.</Key>
+  </Entry>
 </I18N>
