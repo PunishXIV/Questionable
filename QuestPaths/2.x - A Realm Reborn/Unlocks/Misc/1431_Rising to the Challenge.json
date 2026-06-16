@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-03"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-06-03" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,7 +14,11 @@
             "Z": -13.260071
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     },
