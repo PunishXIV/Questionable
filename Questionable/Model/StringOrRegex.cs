@@ -30,13 +30,7 @@ internal sealed class StringOrRegex
             return GameFunctions.GameStringEquals(_stringValue, other);
     }
 
-    public string? GetString()
-    {
-        if (_stringValue == null)
-            throw new InvalidOperationException();
-
-        return _stringValue;
-    }
+    public string? GetString() => _stringValue;
 
     public override string? ToString() => _regex?.ToString() ?? _stringValue;
 }
