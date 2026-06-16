@@ -3330,5 +3330,6 @@
   <Entry>
     <!-- Found in: Controller\MovementController.cs -->
     <Key>vnavmesh was not able to find a path. Attempting to land, then trying again.</Key>
+    <Value lang="zh-cn">vnavmesh 无法找到路径。准备着陆后重试尝试。</Value>
   </Entry>
 </I18N>
