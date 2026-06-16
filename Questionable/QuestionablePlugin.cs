@@ -103,7 +103,9 @@ public sealed class QuestionablePlugin : IDalamudPlugin
                 pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), true);
                 savedConfig?.Version = Configuration.PluginConfigVersion;
             }
-            serviceCollection.AddSingleton(savedConfig ?? new Configuration());
+            var configuration = savedConfig ?? new Configuration();
+            serviceCollection.AddSingleton(configuration);
+            Questionable.Utils.LocalizeShortcut.Initialize(configuration);
 
             AddBasicFunctionsAndData(serviceCollection);
             AddTaskFactories(serviceCollection);
