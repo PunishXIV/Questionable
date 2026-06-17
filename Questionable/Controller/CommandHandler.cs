@@ -16,6 +16,8 @@ using Questionable.Model.Questing;
 using Questionable.Windows;
 using Quest = Questionable.Model.Quest;
 using static Questionable.Utils.LocalizeShortcut;
+using Questionable.Data;
+using Questionable.Model;
 
 namespace Questionable.Controller;
 
@@ -42,6 +44,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestSelectionWindow _questSelectionWindow;
     private readonly QuestValidationWindow _questValidationWindow;
     private readonly QuestWindow _questWindow;
+    private readonly QuestData _questData;
     private readonly ITargetManager _targetManager;
 
     private IReadOnlyList<uint> _previouslyUnlockedUnlockLinks = [];
@@ -65,7 +68,8 @@ internal sealed class CommandHandler : IDisposable
         GameFunctions gameFunctions,
         IDataManager dataManager,
         IClientState clientState,
-        Configuration configuration)
+        Configuration configuration,
+        QuestData questData)
     {
         _commandManager = commandManager;
         _chatGui = chatGui;
@@ -86,6 +90,7 @@ internal sealed class CommandHandler : IDisposable
         _dataManager = dataManager;
         _clientState = clientState;
         _configuration = configuration;
+        _questData = questData;
 
         _clientState.Logout += OnLogout;
         _commandManager.AddHandler("/qst", new(ProcessCommand)
@@ -246,6 +251,19 @@ internal sealed class CommandHandler : IDisposable
 
             case "@debugmode":
                 _configuration.Advanced.Debug = !_configuration.Advanced.Debug;
+                break;
+
+            case "rewards":
+                ushort id = 2772;
+                if (parts.Length > 1)
+                    id = ushort.Parse(parts[1], CultureInfo.InvariantCulture);
+                if (_questData.TryGetQuestInfo(new QuestId(id), out var qInfo) &&
+                    qInfo is QuestInfo questInfo &&
+                    questInfo.ItemRewards.Concat(questInfo.TripleTriadCardRewards).Select(x => x.ToString()) is var rewards &&
+                    rewards.ToArray().Length != 0)
+                    _chatGui.Print($"{string.Join(',', rewards)}", MessageTag, TagColor);
+                else
+                    _chatGui.Print("no results", MessageTag, TagColor);
                 break;
 
             //case "abandon-quest":
