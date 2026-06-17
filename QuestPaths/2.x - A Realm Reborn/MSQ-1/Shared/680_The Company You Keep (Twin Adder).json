@@ -14,6 +14,7 @@
             "Z": 3.463745
           },
           "TerritoryId": 212,
+          "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {

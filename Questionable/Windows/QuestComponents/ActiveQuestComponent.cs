@@ -526,7 +526,8 @@ internal sealed partial class ActiveQuestComponent
                     ? _L("Cancel scheduled stop after accepting the next quest.")
                     : _L("Stop after accepting the next quest."));
 
-            ImGui.SameLine();
+            if (!isMinimized)
+                ImGui.SameLine();
 
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapMarkerAlt,
                     _questController.StopBeforeTeleport ? ImGuiColors.DalamudOrange : null))

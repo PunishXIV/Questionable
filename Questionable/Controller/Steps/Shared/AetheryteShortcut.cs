@@ -28,6 +28,8 @@ internal static class AetheryteShortcut
             {
                 if (step.TerritoryId == 212 && !sequence.Steps.Any(step => step.TerritoryId == 140)) // Waking Sands
                 {
+                    if (clientState.TerritoryType == 212)
+                        yield break;
                     yield return new Task(step, quest.Id, EAetheryteLocation.WesternThanalanHorizon, 140);
                     yield return new MoveTask(
                         TerritoryId: 140,
@@ -47,6 +49,8 @@ internal static class AetheryteShortcut
                 }
                 if (step.TerritoryId == 351 && !sequence.Steps.Any(step => step.TerritoryId == 156)) // Rising Stones
                 {
+                    if (clientState.TerritoryType == 351)
+                        yield break;
                     yield return new Task(step, quest.Id, EAetheryteLocation.MorDhona, 156);
                     yield return new MoveTask(
                         TerritoryId: 156,
@@ -156,7 +160,7 @@ internal static class AetheryteShortcut
                     {
                         logger.LogInformation("Skipping aetheryte shortcut, null result. step:{Step}, nearest:{Nearest}",
                             Task.Step.AetheryteShortcut, nearest);
-                        if (Task.Step.AethernetShortcut is not { })
+                        if (Task.Step.AethernetShortcut is not { } && clientState.TerritoryType != Task.Step.TerritoryId)
                             chatGui.PrintError("Questionable could not automatically find an unlocked aetheryte destination in " +
                                 $"{territoryData.GetNameAndId(Task.Step.TerritoryId)}, waiting until you manually navigate there.",
                                 CommandHandler.MessageTag, CommandHandler.TagColor);

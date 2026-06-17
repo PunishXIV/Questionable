@@ -6,7 +6,9 @@ using System.Text;
 using Dalamud.Game.Text;
 using Dalamud.Memory;
 using Dalamud.Plugin.Services;
+using ECommons;
 using ECommons.ExcelServices;
+using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
@@ -14,17 +16,19 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Client.UI.Arrays;
 using FFXIVClientStructs.FFXIV.Component.GUI;
+using Lumina;
 using Lumina.Excel.Sheets;
+using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
+using static Questionable.Utils.CacheUtils;
+using static Questionable.Utils.LocalizeShortcut;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using Quest = Questionable.Model.Quest;
-using static Questionable.Utils.LocalizeShortcut;
-using static Questionable.Utils.CacheUtils;
 
 namespace Questionable.Functions;
 
@@ -40,7 +44,8 @@ internal sealed unsafe class QuestFunctions
     IClientState clientState,
     IObjectTable objectTable,
     IGameGuiAdapter gameGui,
-    IChatGui chatGui)
+    IChatGui chatGui,
+    ILogger<QuestFunctions> logger)
 {
     internal static readonly int[] questsThatUseWhiteWolfGate = [439, 1080, 3870, 33];
     internal Dictionary<ushort, HashSet<IQuestInfo>> prereqCache = [];
@@ -653,18 +658,17 @@ internal sealed unsafe class QuestFunctions
 
     private bool IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
     {
-        if (IsQuestUnobtainable(questId, extraCompletedQuest))
-            return true;
+        Dictionary<string,bool> lockedReason = [];
+        lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
-        if (questInfo.GrandCompany != GrandCompany.None && questInfo.GrandCompany != GetGrandCompany())
-            return true;
+        lockedReason.Add("Grand company mismatch", questInfo.GrandCompany != GrandCompany.None && questInfo.GrandCompany != GetGrandCompany());
 
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
-                return !IsDailyAlliedSocietyQuestAndAvailableToday(questId);
+                lockedReason.Add("Daily society quest is not available today", !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
             else
-                return !IsAlliedSocietyStoryQuestAvailable(questId);
+                lockedReason.Add("Society story quest is not available", !IsAlliedSocietyStoryQuestAvailable(questId));
 
         if (questInfo.IsMoogleDeliveryQuest)
         {
@@ -674,19 +678,21 @@ internal sealed unsafe class QuestFunctions
                 extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
                 currentDeliveryLevel++;
 
-            if (questInfo.MoogleDeliveryLevel > currentDeliveryLevel)
-                return true;
+            lockedReason.Add("Moogle quest delivery level is too low", questInfo.MoogleDeliveryLevel > currentDeliveryLevel);
         }
 
         // "an ill-conceived venture" requires to have retainers unlocked
         if ((new ushort[]{ 1432,1433,1434 }).Contains(questId.Value))
         {
             var retainerManager = RetainerManager.Instance();
-            if (retainerManager->MaxRetainerEntitlement == 0)
-                return true;
+            lockedReason.Add("Retainers are not unlocked", retainerManager->MaxRetainerEntitlement == 0);
         }
 
-        return !HasCompletedPreviousQuests(questInfo, extraCompletedQuest) || !HasCompletedPreviousInstances(questInfo);
+        lockedReason.Add("Prev quests not completed", !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
+        lockedReason.Add("Prev instances not completed", !HasCompletedPreviousInstances(questInfo));
+        if (lockedReason.Values.Any(x => x) && EzThrottler.Throttle("QuestLockedThrottle", 5000))
+            logger.LogDebug($"{questId}: " + string.Join(',', lockedReason.Select(kvp => !kvp.Value)));
+        return lockedReason.Values.Any(x => x);
     }
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)

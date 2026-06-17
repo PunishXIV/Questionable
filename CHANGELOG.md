@@ -1,3 +1,2 @@
-- Bug fix: "pathfinding completed, 0 points" loop fixed -alydev
-- Feature: added validator to find quests that cause ^ so they can be fixed -alydev
-  - applied some fixes based on the new validator -alydev
+- Bug fix: waking sands/rising stones dialogue/unnecessary teleporting fixed -alydev
+- Debug logging reason for quest:Locked (only first result; filter journal progress to match one locked quest at a time) -alydev

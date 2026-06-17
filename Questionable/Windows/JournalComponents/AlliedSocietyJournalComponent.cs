@@ -120,10 +120,10 @@ internal sealed class AlliedSocietyJournalComponent
                 if (quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // is not the Ixal delivery quest "Deliverance", and
                         !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) || // is not a valid quest in the registry, or
                         (quest.Root.Disabled && quest.Root.Comment == null) || // is disabled without a comment explaining why, or
-                        (quest.Root.LastChecked.Date != null && (
-                            quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 30 || // has not been reported checked in more than 30 days, or
-                            (quest.Root.Comment ?? "").Contains("FATE") // is a FATE quest where we don't care that much
-                        ) )
+                        (quest.Root.LastChecked.Date != null &&
+                            quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 30 && // has not been reported checked in more than 30 days, or
+                            !(quest.Root.Comment ?? "").Contains("FATE") // is not a FATE quest, we don't care that much
+                        )
                     )
                 ))
                 {
