@@ -7,6 +7,22 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1000423,
+          "Position": {
+            "X": 232.04382,
+            "Y": 1.999974,
+            "Z": 45.578613
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 204,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [204]}}
+        },
+        {
           "DataId": 1003061,
           "Position": {
             "X": -0.015319824,

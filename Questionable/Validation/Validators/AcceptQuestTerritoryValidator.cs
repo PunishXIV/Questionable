@@ -39,6 +39,9 @@ internal sealed class AcceptQuestTerritoryValidator(IAetheryteTerritoryProvider 
             if (step.AetheryteShortcut != null || step.AethernetShortcut != null)
                 continue;
 
+            if (sequence0.Steps.Any(x => x.TargetTerritoryId == step.TerritoryId))
+                continue;
+
             if (CharacterStartingTerritories.Contains(step.TerritoryId))
                 continue;
 

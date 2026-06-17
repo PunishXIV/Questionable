@@ -7,6 +7,21 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1004005,
+          "Position": {
+            "X": -123.88806,
+            "Y": 40,
+            "Z": 95.384155
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 210,
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Alchemists' Guild"
+          ]
+        },
+        {
           "DataId": 1004002,
           "Position": {
             "X": 1.0527954,
