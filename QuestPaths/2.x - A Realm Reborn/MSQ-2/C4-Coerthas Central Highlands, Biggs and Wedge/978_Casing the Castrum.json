@@ -15,6 +15,7 @@
           },
           "StopDistance": 7,
           "TerritoryId": 212,
+          "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
         }
       ]
