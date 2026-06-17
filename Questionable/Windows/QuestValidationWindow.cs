@@ -49,7 +49,7 @@ internal sealed class QuestValidationWindow : LWindow
             return;
         }
 
-        ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthFixed, 50);
+        ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthFixed, 125);
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 200);
         ImGui.TableSetupColumn(_L("Seq"), ImGuiTableColumnFlags.WidthFixed, 30);
         ImGui.TableSetupColumn(_L("Step"), ImGuiTableColumnFlags.WidthFixed, 30);
@@ -66,8 +66,9 @@ internal sealed class QuestValidationWindow : LWindow
 
                 if (validationIssue.ElementId != null)
                 {
+                    ImGui.SameLine();
                     IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
-                    bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
+                    bool copy = ImGuiComponentsLocal.IconButton($"###ValidationWindowCopy{quest.QuestId.Value}", FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip(_L("Copy as file name"));
                     if (copy)
@@ -77,11 +78,18 @@ internal sealed class QuestValidationWindow : LWindow
                     }
 
                     ImGui.SameLine();
-                    bool sim = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play, new Vector2(16));
+                    bool sim = ImGuiComponentsLocal.IconButton($"###ValidationWindowSim{quest.QuestId.Value}", FontAwesomeIcon.Play);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip(_L("Simulate quest"));
                     if (sim)
                         _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
+
+                    ImGui.SameLine();
+                    bool edit = ImGuiComponentsLocal.IconButton($"###ValidationWindowEdit{quest.QuestId.Value}", FontAwesomeIcon.Edit);
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(_L("Edit quest"));
+                    if (edit)
+                        QuestRegistry.OpenEditor(quest);
                 }
             }
 

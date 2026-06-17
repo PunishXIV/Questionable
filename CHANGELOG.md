@@ -1,1 +1,2 @@
-- Bug fix: Journal Progress > Item Rewards > Triple Triad/Orchestrion Rolls is now slightly less broken than it was before. It's still not very helpful, and the information shown for Triple Triad cards at least is very misleading, this whole tab needs a rework. But at least now it's not just empty. -alydev
+- Bug fix: "pathfinding completed, 0 points" loop fixed -alydev
+- Feature: added validator to find quests that cause ^ so they can be fixed -alydev

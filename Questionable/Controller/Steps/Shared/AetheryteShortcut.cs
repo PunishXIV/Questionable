@@ -6,6 +6,7 @@ using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Utils;
 using Questionable.Data;
@@ -24,19 +25,62 @@ internal static class AetheryteShortcut
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AetheryteShortcut == null)
-                yield break;
-
-            yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
-                aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
-            yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
-
-            if (MoveAwayFromAetheryteExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
-                step.AethernetShortcut?.From != step.AetheryteShortcut.Value)
             {
-                yield return new WaitCondition.Task(
-                    () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AetheryteShortcut.Value],
-                    $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AetheryteShortcut.Value])})");
-                yield return new MoveAwayFromAetheryte(step.AetheryteShortcut.Value);
+                if (step.TerritoryId == 212 && !sequence.Steps.Any(step => step.TerritoryId == 140)) // Waking Sands
+                {
+                    yield return new Task(step, quest.Id, EAetheryteLocation.WesternThanalanHorizon, 140);
+                    yield return new MoveTask(
+                        TerritoryId: 140,
+                        Destination: new(-492.96475f, 20.999884f, -380.82272f),
+                        Fly: true);
+                    yield return new MoveTask(
+                        TerritoryId: 140,
+                        Destination: new(-480.9181f, 18.00103f, -386.862f));
+                    yield return new Interact.Task(2001711, quest, EInteractionType.Interact);
+                    if (ExtraConditionUtils.MatchesExtraCondition(EExtraSkipCondition.WakingSandsSolar, step.Position ?? new(), step.TerritoryId))
+                    {
+                        yield return new MoveTask(
+                            TerritoryId: 212,
+                            Destination: new(23.23944f, 2.090454f, -0.015319824f));
+                        yield return new Interact.Task(2001715, quest, EInteractionType.Interact);
+                    }
+                }
+                if (step.TerritoryId == 351 && !sequence.Steps.Any(step => step.TerritoryId == 156)) // Rising Stones
+                {
+                    yield return new Task(step, quest.Id, EAetheryteLocation.MorDhona, 156);
+                    yield return new MoveTask(
+                        TerritoryId: 156,
+                        Destination: new(21.133728f, 22.323914f, -631.281f),
+                        Mount: true);
+                    yield return new Interact.Task(2002881, quest, EInteractionType.Interact);
+                    if (ExtraConditionUtils.MatchesExtraCondition(EExtraSkipCondition.RisingStonesSolar, step.Position ?? new(), step.TerritoryId))
+                    {
+                        yield return new MoveTask(
+                         TerritoryId: 351,
+                         Destination: new(-0.015319824f, -1.0223389f, -26.779602f));
+                        yield return new Interact.Task(2002878, quest, EInteractionType.Interact);
+                    }
+                }
+                else
+                {
+                    yield break;
+                }
+                yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
+            }
+            else
+            {
+                yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
+                    aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
+                yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
+
+                if (MoveAwayFromAetheryteExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
+                    step.AethernetShortcut?.From != step.AetheryteShortcut.Value)
+                {
+                    yield return new WaitCondition.Task(
+                        () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AetheryteShortcut.Value],
+                        $"Wait(territory: {territoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AetheryteShortcut.Value])})");
+                    yield return new MoveAwayFromAetheryte(step.AetheryteShortcut.Value);
+                }
             }
         }
     }
