@@ -1,0 +1,100 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-17"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019387,
+          "Position": {
+            "X": 525.71,
+            "Y": 40.4257,
+            "Z": -494.481
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023402,
+          "Position": {
+            "X": 441.062,
+            "Y": -16.046766,
+            "Z": 405.20325
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Reunion"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "should eventually avoid doing enough damage to actually capture the target",
+          "Position": {
+            "X": 421.68283,
+            "Y": -15.7144985,
+            "Z": 436.9947
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "StopDistance": 60,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 6632,
+              "MinimumKillCount": 2
+            }
+          ],
+          "CombatItemUse": {
+            "Condition": "Health%",
+            "Value": 60,
+            "ItemId": 2002370
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023402,
+          "Position": {
+            "X": 441.062,
+            "Y": -16.046766,
+            "Z": 405.20325
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019387,
+          "Position": {
+            "X": 525.71,
+            "Y": 40.4257,
+            "Z": -494.481
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
