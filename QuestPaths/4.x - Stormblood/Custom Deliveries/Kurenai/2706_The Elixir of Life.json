@@ -111,6 +111,32 @@
       "Sequence": 4,
       "Steps": [
         {
+          "Position": {
+            "X": 198.4342,
+            "Y": -162.28119,
+            "Z": 115.91883
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "$": "Exile, outside",
+          "RestartNavigationIfCancelled": false,
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Diving": false,
+              "NotNearPosition": {
+                "Position": {
+                  "X": 209.37341,
+                  "Y": -162.3906,
+                  "Z": 153.15836
+                },
+                "TerritoryId": 613,
+                "MaximumDistance": 200
+              }
+            }
+          }
+        },
+        {
           "DataId": 2008809,
           "Position": {
             "X": 163.43933,
@@ -121,9 +147,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002332,
-          "KillEnemyDataIds": [
-            7824
-          ],
+          "KillEnemyDataIds": [7824],
           "Fly": true
         }
       ]
