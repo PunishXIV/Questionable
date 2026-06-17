@@ -45,6 +45,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestValidationWindow _questValidationWindow;
     private readonly QuestWindow _questWindow;
     private readonly QuestData _questData;
+    private readonly TerritoryData _territoryData;
     private readonly ITargetManager _targetManager;
 
     private IReadOnlyList<uint> _previouslyUnlockedUnlockLinks = [];
@@ -69,7 +70,8 @@ internal sealed class CommandHandler : IDisposable
         IDataManager dataManager,
         IClientState clientState,
         Configuration configuration,
-        QuestData questData)
+        QuestData questData,
+        TerritoryData territoryData)
     {
         _commandManager = commandManager;
         _chatGui = chatGui;
@@ -91,6 +93,7 @@ internal sealed class CommandHandler : IDisposable
         _clientState = clientState;
         _configuration = configuration;
         _questData = questData;
+        _territoryData = territoryData;
 
         _clientState.Logout += OnLogout;
         _commandManager.AddHandler("/qst", new(ProcessCommand)
@@ -254,16 +257,23 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "rewards":
-                ushort id = 2772;
+                ushort rewardsId = 2772;
                 if (parts.Length > 1)
-                    id = ushort.Parse(parts[1], CultureInfo.InvariantCulture);
-                if (_questData.TryGetQuestInfo(new QuestId(id), out var qInfo) &&
+                    rewardsId = ushort.Parse(parts[1], CultureInfo.InvariantCulture);
+                if (_questData.TryGetQuestInfo(new QuestId(rewardsId), out var qInfo) &&
                     qInfo is QuestInfo questInfo &&
                     questInfo.ItemRewards.Concat(questInfo.TripleTriadCardRewards).Select(x => x.ToString()) is var rewards &&
                     rewards.ToArray().Length != 0)
                     _chatGui.Print($"{string.Join(',', rewards)}", MessageTag, TagColor);
                 else
                     _chatGui.Print("no results", MessageTag, TagColor);
+                break;
+
+            case "tname":
+                if (parts.Length == 1)
+                    break;
+                var tnameId = uint.Parse(parts[1], CultureInfo.InvariantCulture);
+                _chatGui.Print($"{_territoryData.GetNameAndId(tnameId)}");
                 break;
 
             //case "abandon-quest":

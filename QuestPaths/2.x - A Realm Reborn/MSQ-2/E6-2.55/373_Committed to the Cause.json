@@ -7,6 +7,21 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1009973,
+          "Position": {
+            "X": 264.91187,
+            "Y": 302.26236,
+            "Z": -223.71259
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "TargetTerritoryId": 395,
+          "SkipConditions": {
+            "StepIf": { "InTerritory": [395] }
+          }
+        },
+        {
           "DataId": 1010953,
           "Position": {
             "X": -2.7924194,

@@ -132,11 +132,7 @@ internal sealed partial class ActiveQuestComponent
                 _logger.LogDebug("OpenFolder executed");
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Clicking this button writes the quest path to a file and opens it in your default\n" +
-                                    "text editor. After making a change, click Reload Data below. To revert to the\n" +
-                                    "official version, delete the file and click Reload Data again.\n" +
-                                    "Left click: Open this quest in your default .json text editor\n" +
-                                    "Right click: Open Quests folder"));
+                ImGui.SetTooltip(QuestRegistry.OpenEditorDescription);
             if (_configuration.Advanced.Debug)
             {
                 ImGui.SameLine();

@@ -3332,4 +3332,8 @@
     <Key>vnavmesh was not able to find a path. Attempting to land, then trying again.</Key>
     <Value lang="zh-cn">vnavmesh 无法找到路径。准备着陆后重试尝试。</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: Validation\Validators\AcceptQuestTerritoryValidator.cs -->
+    <Key>AcceptQuest territory {0} has no aetheryte and no teleport shortcut is set</Key>
+  </Entry>
 </I18N>

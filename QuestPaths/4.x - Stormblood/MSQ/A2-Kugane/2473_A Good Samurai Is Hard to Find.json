@@ -7,6 +7,21 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1019070,
+          "Position": {
+            "X": 151.20166,
+            "Y": 14.7757225,
+            "Z": 95.78088
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 639,
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Bazaar"
+          ]
+        },
+        {
           "DataId": 1020465,
           "Position": {
             "X": 1.5411377,

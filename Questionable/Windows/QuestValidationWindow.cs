@@ -87,7 +87,7 @@ internal sealed class QuestValidationWindow : LWindow
                     ImGui.SameLine();
                     bool edit = ImGuiComponentsLocal.IconButton($"###ValidationWindowEdit{quest.QuestId.Value}", FontAwesomeIcon.Edit);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Edit quest"));
+                        ImGui.SetTooltip(QuestRegistry.OpenEditorDescription);
                     if (edit)
                         QuestRegistry.OpenEditor(quest);
                 }

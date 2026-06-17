@@ -1,2 +1,3 @@
 - Bug fix: "pathfinding completed, 0 points" loop fixed -alydev
 - Feature: added validator to find quests that cause ^ so they can be fixed -alydev
+  - applied some fixes based on the new validator -alydev
