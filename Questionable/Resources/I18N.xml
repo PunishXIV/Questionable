@@ -3335,5 +3335,6 @@
   <Entry>
     <!-- Found in: Validation\Validators\AcceptQuestTerritoryValidator.cs -->
     <Key>AcceptQuest territory {0} has no aetheryte and no teleport shortcut is set</Key>
+    <Value lang="zh-cn">AcceptQuest 区域 {0} 没有以太之光，且未设置传送捷径</Value>
   </Entry>
 </I18N>
