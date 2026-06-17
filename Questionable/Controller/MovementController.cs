@@ -125,6 +125,7 @@ internal sealed class MovementController
                         LandExecutor.TryLanding();
                         return;
                     }
+                    Stop();
                     throw new PathfindingFailedException("Pathfinding complete, got 0 points");
                 }
 
