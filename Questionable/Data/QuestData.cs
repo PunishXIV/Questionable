@@ -289,7 +289,7 @@ internal sealed class QuestData
             .FirstOrDefault() ?? new QuestId(0);
         RedeemableItems = quests.Where(x => x is QuestInfo)
             .Cast<QuestInfo>()
-            .SelectMany(x => x.ItemRewards)
+            .SelectMany(x => x.ItemRewards.Union(x.TripleTriadCardRewards))
             .ToImmutableHashSet();
     }
 
@@ -317,7 +317,7 @@ internal sealed class QuestData
     }
 
     public IQuestInfo GetQuestInfo(ElementId elementId) => _quests[elementId] ?? throw new ArgumentOutOfRangeException(nameof(elementId));
-
+    
     public bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo) => _quests.TryGetValue(elementId, out questInfo);
 
     public List<IQuestInfo> GetAllByIssuerDataId(uint targetId)

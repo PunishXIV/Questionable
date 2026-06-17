@@ -20,11 +20,6 @@ internal sealed class QuestRewardComponent
     QuestTooltipComponent questTooltipComponent,
     UiUtils uiUtils)
 {
-    private readonly QuestData _questData = questData;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestTooltipComponent _questTooltipComponent = questTooltipComponent;
-    private readonly UiUtils _uiUtils = uiUtils;
-
     private bool _showEventRewards;
 
     public void DrawItemRewards()
@@ -51,10 +46,14 @@ internal sealed class QuestRewardComponent
         if (!ImGui.CollapsingHeader($"{label}###Reward{type}"))
             return;
 
-        foreach (ItemReward item in _questData.RedeemableItems.Where(x => x.Type == type)
-            .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase))
+        var results = questData.RedeemableItems.Where(x => x.Type == type)
+            .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
+        if (results.Count == 0)
+            ImGui.Text("No results");
+
+        foreach (ItemReward item in results)
         {
-            if (_questData.TryGetQuestInfo(item.ElementId, out IQuestInfo? questInfo))
+            if (questData.TryGetQuestInfo(item.ElementId, out IQuestInfo? questInfo))
             {
                 bool isEventQuest = questInfo is QuestInfo { IsSeasonalEvent: true };
                 if (!_showEventRewards && isEventQuest)
@@ -65,19 +64,20 @@ internal sealed class QuestRewardComponent
                     name += $" {SeIconChar.Clock.ToIconString()}";
 
                 bool complete = item.IsUnlocked();
-                Vector4 color = !_questRegistry.IsKnownQuest(item.ElementId)
+                Vector4 color = !questRegistry.IsKnownQuest(item.ElementId)
                     ? ImGuiColors.DalamudGrey
                     : complete
                         ? ImGuiColors.ParsedGreen
                         : ImGuiColors.DalamudRed;
                 FontAwesomeIcon icon = complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-                if (_uiUtils.ChecklistItem(name, color, icon))
+                if (uiUtils.ChecklistItem(name, color, icon))
                 {
                     using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-                    ImGui.Text(_LF("Obtained from: {0}", questInfo.Name));
+                    if (item.Type is not EItemRewardType.TripleTriadCard)
+                        ImGui.Text(_LF("Obtained from: {0}", questInfo.Name));
                     using (ImRaii.PushIndent())
                     {
-                        _questTooltipComponent.DrawInner(questInfo, false);
+                        questTooltipComponent.DrawInner(questInfo, false);
                     }
                 }
             }

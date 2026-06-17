@@ -42,15 +42,17 @@ public abstract record ItemReward(ItemRewardDetails Item)
 
             if (action.RowId is 20086)
                 return new FashionAccessoryReward(new(item, elementId), item.ItemAction.Value.Data[0]);
-        }
-        else if (item.AdditionalData.GetValueOrDefault<Orchestrion>() is { } orchestrionRoll)
-            return new OrchestrionRollReward(new(item, elementId), orchestrionRoll.RowId);
-        else if (item.AdditionalData.GetValueOrDefault<TripleTriadCard>() is { } tripleTriadCard)
-            return new TripleTriadCardReward(new(item, elementId), (ushort)tripleTriadCard.RowId);
 
+            if (action.RowId is 25183)
+                return new OrchestrionRollReward(new(item, elementId), item.AdditionalData.RowId);
+
+            if (action.RowId is 3357)
+                return new TripleTriadCardReward(new(item, elementId), (ushort)item.AdditionalData.RowId);
+        }
         return null;
     }
     public abstract bool IsUnlocked();
+    public override string ToString() => $"{nameof(Type)}: {Name}";
 }
 
 public sealed record MountReward(ItemRewardDetails Item, uint MountId)
