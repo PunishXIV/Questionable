@@ -47,7 +47,15 @@
         },
         {
           "TerritoryId": 131,
+          "InteractionType": "CreateGearset"
+        },
+        {
+          "TerritoryId": 131,
           "InteractionType": "EquipRecommended"
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1046337,
