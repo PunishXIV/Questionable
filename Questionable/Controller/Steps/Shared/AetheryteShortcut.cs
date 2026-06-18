@@ -19,6 +19,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
 {
+    public static HashSet<uint> Territories = [212,351,128,131,133,419];
     internal sealed class Factory(AetheryteData aetheryteData, TerritoryData territoryData, IClientState clientState)
         : ITaskFactory
     {
@@ -26,7 +27,7 @@ internal static class AetheryteShortcut
         {
             if (step.AetheryteShortcut == null)
             {
-                if (step.TerritoryId == 212 && !sequence.Steps.Any(step => step.TerritoryId == 140)) // Waking Sands
+                if (step.TerritoryId == 212 && !sequence.Steps.Any(x => x.TerritoryId == 140)) // Waking Sands
                 {
                     if (clientState.TerritoryType == 212)
                         yield break;
@@ -47,7 +48,7 @@ internal static class AetheryteShortcut
                         yield return new Interact.Task(2001715, quest, EInteractionType.Interact);
                     }
                 }
-                if (step.TerritoryId == 351 && !sequence.Steps.Any(step => step.TerritoryId == 156)) // Rising Stones
+                else if (step.TerritoryId == 351 && !sequence.Steps.Any(step => step.TerritoryId == 156)) // Rising Stones
                 {
                     if (clientState.TerritoryType == 351)
                         yield break;
@@ -64,6 +65,34 @@ internal static class AetheryteShortcut
                          Destination: new(-0.015319824f, -1.0223389f, -26.779602f));
                         yield return new Interact.Task(2002878, quest, EInteractionType.Interact);
                     }
+                }
+                else if (step.TerritoryId == 128 && !sequence.Steps.Any(step => step.TerritoryId == 129)) // Limsa
+                {
+                    if (clientState.TerritoryType == 128)
+                        yield break;
+                    yield return new Task(step, quest.Id, EAetheryteLocation.Limsa, 129);
+                    yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaAftcastle);
+                }
+                else if (step.TerritoryId == 133 && !sequence.Steps.Any(step => step.TerritoryId == 132)) // Gridania
+                {
+                    if (clientState.TerritoryType == 133)
+                        yield break;
+                    yield return new Task(step, quest.Id, EAetheryteLocation.Gridania, 132);
+                    yield return new AethernetShortcut.Task(EAetheryteLocation.Gridania, EAetheryteLocation.GridaniaAmphitheatre);
+                }
+                else if (step.TerritoryId == 131 && !sequence.Steps.Any(step => step.TerritoryId == 130)) // Uldah
+                {
+                    if (clientState.TerritoryType == 131)
+                        yield break;
+                    yield return new Task(step, quest.Id, EAetheryteLocation.Uldah, 130);
+                    yield return new AethernetShortcut.Task(EAetheryteLocation.Uldah, EAetheryteLocation.UldahGoldsmith);
+                }
+                else if (step.TerritoryId == 419 && !sequence.Steps.Any(step => step.TerritoryId == 418)) // Ishgard
+                {
+                    if (clientState.TerritoryType == 419)
+                        yield break;
+                    yield return new Task(step, quest.Id, EAetheryteLocation.Ishgard, 418);
+                    yield return new AethernetShortcut.Task(EAetheryteLocation.Ishgard, EAetheryteLocation.IshgardLastVigil);
                 }
                 else
                 {

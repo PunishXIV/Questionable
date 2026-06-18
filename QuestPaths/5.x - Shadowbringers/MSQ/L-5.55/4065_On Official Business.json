@@ -67,6 +67,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
+          "TargetTerritoryId": 205,
           "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",

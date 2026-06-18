@@ -25,6 +25,7 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcStartQuest = "Questionable.StartQuest";
     private const string IpcStartSingleQuest = "Questionable.StartSingleQuest";
     private const string IpcIsQuestLocked = "Questionable.IsQuestLocked";
+    private const string IpcIsQuestLockedReason = "Questionable.IsQuestLockedReason";
     private const string IpcIsQuestComplete = "Questionable.IsQuestComplete";
     private const string IpcIsReadyToAcceptQuest = "Questionable.IsReadyToAcceptQuest";
     private const string IpcIsQuestAccepted = "Questionable.IsQuestAccepted";
@@ -50,6 +51,7 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ICallGateProvider<string, bool> _isQuestAccepted;
     private readonly ICallGateProvider<string, bool> _isQuestComplete;
     private readonly ICallGateProvider<string, bool> _isQuestLocked;
+    private readonly ICallGateProvider<string, (bool, string)> _isQuestLockedReason;
     private readonly ICallGateProvider<string, bool> _isQuestUnobtainable;
     private readonly ICallGateProvider<string, bool> _isReadyToAcceptQuest;
 
@@ -106,6 +108,9 @@ internal sealed class QuestionableIpc : IDisposable
 
         _isQuestLocked = pluginInterface.GetIpcProvider<string, bool>(IpcIsQuestLocked);
         _isQuestLocked.RegisterFunc(IsQuestLocked);
+
+        _isQuestLockedReason = pluginInterface.GetIpcProvider<string, (bool, string)>(IpcIsQuestLockedReason);
+        _isQuestLockedReason.RegisterFunc(IsQuestLockedReason);
 
         _isQuestComplete = pluginInterface.GetIpcProvider<string, bool>(IpcIsQuestComplete);
         _isQuestComplete.RegisterFunc(IsQuestComplete);
@@ -225,10 +230,24 @@ internal sealed class QuestionableIpc : IDisposable
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? _))
         {
-            return _questFunctions.IsQuestLocked(elementId);
+            (var isLocked, string[]? _) = _questFunctions.IsQuestLocked(elementId);
+            return isLocked;
         }
 
         return true;
+    }
+
+    private (bool,string) IsQuestLockedReason(string questId)
+    {
+        _logger.LogDebug("IsQuestLockedReason({QuestId})", questId);
+        if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
+            _questRegistry.TryGetQuest(elementId, out Quest? _))
+        {
+            (var isLocked, string[]? reasons) = _questFunctions.IsQuestLocked(elementId);
+            return (isLocked, reasons != null ? string.Join(',',reasons) : "");
+        }
+
+        return (true, "");
     }
 
     private bool IsQuestComplete(string questId)

@@ -30,6 +30,7 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Limsa Lominsa",
+          "TargetTerritoryId": 198,
           "DialogueChoices": [
             {
               "Type": "YesNo",

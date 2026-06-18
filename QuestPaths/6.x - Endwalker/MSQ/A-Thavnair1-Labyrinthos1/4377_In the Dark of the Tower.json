@@ -6,6 +6,21 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987,
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        },
+        {
           "DataId": 1040291,
           "Position": {
             "X": -1.9379272,

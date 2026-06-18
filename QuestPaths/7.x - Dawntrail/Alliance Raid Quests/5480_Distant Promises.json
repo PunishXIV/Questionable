@@ -7,6 +7,44 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1054349,
+          "Position": {
+            "X": 730.03735,
+            "Y": -133.17451,
+            "Z": 542.2903
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "TargetTerritoryId": 1189,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1265
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2014450,
+          "Position": {
+            "X": -528.37415,
+            "Y": -152.20874,
+            "Z": 671.13745
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1265,
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                1265
+              ]
+            }
+          }
+        },
+        {
           "DataId": 1058898,
           "Position": {
             "X": -2.8534546,

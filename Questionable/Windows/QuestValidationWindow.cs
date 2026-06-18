@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text.Json;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
@@ -42,6 +43,9 @@ internal sealed class QuestValidationWindow : LWindow
 
     public override void DrawContent()
     {
+        if (ImGuiComponentsLocal.IconButton("###QuestValidationCopy", FontAwesomeIcon.Copy))
+            ImGui.SetClipboardText(JsonSerializer.Serialize(_questValidator.Issues, JsonOptions.Default));
+
         using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 5, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
         {
