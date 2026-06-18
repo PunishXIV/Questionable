@@ -1,0 +1,46 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/gatheringlocation-v1.json",
+  "Author": "alydev",
+  "Steps": [
+    {
+      "TerritoryId": 1190,
+      "InteractionType": "None"
+    }
+  ],
+  "Groups": [
+    {
+      "Nodes": [
+        {
+          "DataId": 35459,
+          "Locations": [
+            {
+              "Position": {
+                "X": 95.32828,
+                "Y": -3.70045,
+                "Z": 273.1772
+              }
+            },
+            {
+              "Position": {
+                "X": 112.1677,
+                "Y": -5.103148,
+                "Z": 280.3892
+              },
+              "MinimumAngle": -315,
+              "MaximumAngle": -255,
+              "MinimumDistance": 1.9,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": 105.685,
+                "Y": -3.981957,
+                "Z": 286.0493
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
