@@ -586,9 +586,6 @@ internal sealed unsafe class QuestFunctions
                 return false;
         }
 
-        if (IsQuestLocked(questId) is (bool isLocked, var _))
-            return !isLocked;
-
         if (!ignoreLevel)
         {
             // if we're not at a high enough level to continue, we also ignore it
@@ -596,6 +593,9 @@ internal sealed unsafe class QuestFunctions
             if (currentLevel != 0 && quest != null && quest.Info.Level > currentLevel)
                 return false;
         }
+
+        if (IsQuestLocked(questId) is (bool isLocked, var _))
+            return !isLocked;
 
         return true;
     }
