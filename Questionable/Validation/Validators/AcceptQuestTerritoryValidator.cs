@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Model;
 using Questionable.Model.Questing;
@@ -17,7 +18,7 @@ internal sealed class AcceptQuestTerritoryValidator(IAetheryteTerritoryProvider 
     private static readonly HashSet<uint> CharacterStartingTerritories = [181, 182, 183];
 
     /// <summary>These territories are handled by custom code in <see cref="Questionable.Controller.Steps.Shared.AetheryteShortcut.CreateAllTasks"/></summary>
-    private static readonly HashSet<uint> AetheryteShortcutTerritories = [212, 351];
+    private static readonly HashSet<uint> AetheryteShortcutTerritories = AetheryteShortcut.Territories;
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {

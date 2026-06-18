@@ -1,7 +1,10 @@
-﻿namespace Questionable.Validation;
+﻿using Questionable.Model.Common.Converter;
 
-internal enum EIssueSeverity
+namespace Questionable.Validation;
+
+public enum EIssueSeverity
 {
     None,
     Error
 }
+public sealed class IssueSeverityConverter() : EnumConverter<EIssueSeverity>();

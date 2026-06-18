@@ -6,6 +6,59 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1019043,
+          "Position": {
+            "X": -43.656128,
+            "Y": 15.000004,
+            "Z": 46.52478
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 628,
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [736],
+              "NearPosition": {
+                "Position": {
+                  "X": -59.098206,
+                  "Y": 79.05602,
+                  "Z": 45.303955
+                },
+                "TerritoryId": 628,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1024156,
+          "Position": {
+            "X": -59.098206,
+            "Y": 79.05602,
+            "Z": 45.303955
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 735,
+          "SkipConditions": { "StepIf": { "InTerritory": [735, 736] } }
+        },
+        {
+          "DataId": 2009042,
+          "Position": {
+            "X": 34.073364,
+            "Y": 1.6021729,
+            "Z": -1.7853394
+          },
+          "TerritoryId": 735,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 736,
+          "SkipConditions": { "StepIf": { "InTerritory": [736] } }
+        },
+        {
           "DataId": 1024142,
           "Position": {
             "X": -15.365906,
@@ -43,7 +96,7 @@
           "DataId": 1024146,
           "Position": {
             "X": -11.001831,
-            "Y": -3.094841E-06,
+            "Y": -3.094841e-6,
             "Z": -6.8513794
           },
           "TerritoryId": 735,

@@ -6,10 +6,25 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2011936,
+          "Position": {
+            "X": -108.56799,
+            "Y": 5.0201416,
+            "Z": 4.5318604
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 987,
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Baldesion Annex"
+          ]
+        },
+        {
           "DataId": 1038670,
           "Position": {
             "X": -2.609314,
-            "Y": 1.9073486E-06,
+            "Y": 1.9073486e-6,
             "Z": 0.16778564
           },
           "StopDistance": 5,
@@ -33,9 +48,7 @@
           "TargetTerritoryId": 962,
           "SkipConditions": {
             "StepIf": {
-              "NotInTerritory": [
-                987
-              ]
+              "NotInTerritory": [987]
             }
           }
         },
@@ -79,7 +92,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -99,7 +112,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -118,7 +131,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -16,6 +16,7 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
 {
     public (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
+        HashSet<IQuestInfo>? prereqValue = null;
         if (questFunctions.IsQuestAccepted(elementId))
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));
         else if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
@@ -31,10 +32,11 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
             return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, _L("Complete"));
         else if (questFunctions.IsQuestUnobtainable(elementId))
             return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, _L("Unobtainable"));
-        else if (questFunctions.IsQuestLocked(elementId) ||
-                 questFunctions.prereqCache.TryGetValue(elementId.Value, out HashSet<IQuestInfo>? value) && value.Any(q => questFunctions.IsQuestLocked(q.QuestId)))
+        else if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, var _) && isLocked &&
+                questFunctions.prereqCache.TryGetValue(elementId.Value, out prereqValue) &&
+                prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked && !reasons.Contains("Unobtainable")))
             return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, _L("Locked"));
-        else if (value == null)
+        else if (prereqValue == null)
             return (ImGuiColors.TankBlue, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
         else
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, _L("Available"));

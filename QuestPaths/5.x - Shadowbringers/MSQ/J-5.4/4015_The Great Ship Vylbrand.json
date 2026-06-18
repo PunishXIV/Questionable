@@ -6,6 +6,19 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "TargetTerritoryId": 198,
+          "SkipConditions": {"StepIf": {"InTerritory": [198]}}
+        },
+        {
           "DataId": 1002694,
           "Position": {
             "X": -0.045776367,

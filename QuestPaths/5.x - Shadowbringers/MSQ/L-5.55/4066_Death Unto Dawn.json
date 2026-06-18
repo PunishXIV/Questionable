@@ -6,6 +6,23 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1000460,
+          "Position": {
+            "X": -159.41101,
+            "Y": 4.054107,
+            "Z": -4.1047363
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 205,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [205]}}
+        },
+        {
           "DataId": 1003027,
           "Position": {
             "X": 4.8981323,

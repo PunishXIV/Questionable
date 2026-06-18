@@ -1,4 +1,7 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
+using Questionable.Model.Common;
+using Questionable.Model.Common.Converter;
 namespace Questionable.Model;
 
 [UsedImplicitly(ImplicitUseTargetFlags.Members)]
@@ -26,3 +29,4 @@ public enum EAlliedSociety : byte
     MamoolJa = 19,
     YokHuy = 20
 }
+public sealed class AlliedSocietyConverter() : EnumConverter<EAlliedSociety>();

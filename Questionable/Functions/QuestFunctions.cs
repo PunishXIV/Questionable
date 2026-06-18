@@ -44,8 +44,7 @@ internal sealed unsafe class QuestFunctions
     IClientState clientState,
     IObjectTable objectTable,
     IGameGuiAdapter gameGui,
-    IChatGui chatGui,
-    ILogger<QuestFunctions> logger)
+    IChatGui chatGui)
 {
     internal static readonly int[] questsThatUseWhiteWolfGate = [439, 1080, 3870, 33];
     internal Dictionary<ushort, HashSet<IQuestInfo>> prereqCache = [];
@@ -587,8 +586,8 @@ internal sealed unsafe class QuestFunctions
                 return false;
         }
 
-        if (IsQuestLocked(questId))
-            return false;
+        if (IsQuestLocked(questId) is (bool isLocked, var _))
+            return !isLocked;
 
         if (!ignoreLevel)
         {
@@ -642,21 +641,21 @@ internal sealed unsafe class QuestFunctions
 
     public bool IsQuestComplete(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
 
-    public bool IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
+    public (bool,string[]?) IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
     {
         if (elementId is QuestId questId)
             return IsQuestLocked(questId, extraCompletedQuest);
         else if (elementId is SatisfactionSupplyNpcId satisfactionSupplyNpcId)
-            return IsQuestLocked(satisfactionSupplyNpcId);
+            return (IsQuestLocked(satisfactionSupplyNpcId),null);
         else if (elementId is AlliedSocietyDailyId alliedSocietyDailyId)
-            return IsQuestLocked(alliedSocietyDailyId);
+            return (IsQuestLocked(alliedSocietyDailyId),null);
         else if (elementId is UnlockLinkId unlockLinkId)
-            return IsQuestLocked(unlockLinkId);
+            return (IsQuestLocked(unlockLinkId),null);
         else
             throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
-    private bool IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
+    private (bool,string[]) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
     {
         Dictionary<string,bool> lockedReason = [];
         lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
@@ -691,9 +690,7 @@ internal sealed unsafe class QuestFunctions
 
         lockedReason.Add("Prev quests not completed", !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
         lockedReason.Add("Prev instances not completed", !HasCompletedPreviousInstances(questInfo));
-        if (lockedReason.Values.Any(x => x) && EzThrottler.Throttle("QuestLockedThrottle", 5000) && configuration.Advanced.Debug)
-            logger.LogDebug($"IsQuestLocked<{questId}>: " + string.Join(',', lockedReason.Where(kvp => kvp.Value).Select(kvp => kvp.Key)));
-        return lockedReason.Values.Any(x => x);
+        return (lockedReason.Values.Any(x => x),lockedReason.Keys.ToArray());
     }
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
@@ -845,8 +842,6 @@ internal sealed unsafe class QuestFunctions
 
     private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
     {
-        //if (EzThrottler.Throttle("HasCompletedPreviousQuests", 5000))
-        //    logger.LogDebug($"HasCompletedPreviousQuests<{questInfo.QuestId}>: " + string.Join(',', questInfo.PreviousQuests));
         if (questInfo.PreviousQuests.Count == 0)
             return true;
 
@@ -875,19 +870,14 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    private bool HasCompletedPreviousInstances(QuestInfo questInfo)
+    private static bool HasCompletedPreviousInstances(QuestInfo questInfo)
     {
         if (questInfo.PreviousInstanceContent.Count == 0)
         {
-            //if (EzThrottler.Throttle("HasCompletedPreviousInstances", 5000))
-            //    logger.LogDebug($"HasCompletedPreviousInstances<{questInfo.QuestId}>: count=0");
             return true;
         }
 
         int completedInstances = questInfo.PreviousInstanceContent.Count(x => UIState.IsInstanceContentCompleted(x));
-        //string joinType = nameof(questInfo.PreviousInstanceContentJoin);
-        //if (EzThrottler.Throttle("HasCompletedPreviousInstances", 5000))
-        //    logger.LogDebug($"HasCompletedPreviousInstances<{questInfo.QuestId}>: joinType={joinType} completedInstances={completedInstances} instances={string.Join(',', questInfo.PreviousInstanceContent)}");
 
         if (questInfo.PreviousInstanceContentJoin == EQuestJoin.All &&
             questInfo.PreviousInstanceContent.Count == completedInstances)

@@ -1,4 +1,8 @@
-- Bug fix: waking sands/rising stones dialogue/unnecessary teleporting fixed -alydev
-- Debug logging reason for quest:Locked (only first result; filter journal progress to match one locked quest at a time) -alydev
-  - fixed formatting -alydev
-  - fixed it actually fixing something -alydev
+- Bug fix: Locked quests are not super reliable at the moment because of the prerequisite tree check. This might help with that
+- Feature: Automatic recovery for quests that lead to the below aetheryte-less territories, in cases where they don't already have recovery steps written:
+  - Waking Sands
+  - Rising Stones
+  - Old Gridania
+  - Limsa Upper
+  - Uldah Thal
+  - Pillars
