@@ -12,11 +12,19 @@ where T : Enum
     private readonly ReadOnlyDictionary<T, string> _enumToString;
     private readonly ReadOnlyDictionary<string, T> _stringToEnum;
 
-    protected EnumConverter(IReadOnlyDictionary<T, string> values)
+    public EnumConverter(IReadOnlyDictionary<T, string>? values = null)
     {
-        _enumToString = values is IDictionary<T, string> dict
-            ? new(dict)
-            : new ReadOnlyDictionary<T, string>(values.ToDictionary(x => x.Key, x => x.Value));
+        if (values == null)
+        {
+            var names = Enum.GetValues(typeof(T)).Cast<T>().ToDictionary(x => x, x => x.ToString());
+            _enumToString = new ReadOnlyDictionary<T, string>(names);
+        }
+        else
+        {
+            _enumToString = values is IDictionary<T, string> dict
+                ? new(dict)
+                : new ReadOnlyDictionary<T, string>(values.ToDictionary(x => x.Key, x => x.Value));
+        }
         _stringToEnum = new(_enumToString.ToDictionary(x => x.Value, x => x.Key));
     }
 
