@@ -1,3 +1,4 @@
 - Bug fix: waking sands/rising stones dialogue/unnecessary teleporting fixed -alydev
 - Debug logging reason for quest:Locked (only first result; filter journal progress to match one locked quest at a time) -alydev
   - fixed formatting -alydev
+  - fixed it actually fixing something -alydev

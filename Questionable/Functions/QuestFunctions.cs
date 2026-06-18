@@ -691,8 +691,8 @@ internal sealed unsafe class QuestFunctions
 
         lockedReason.Add("Prev quests not completed", !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
         lockedReason.Add("Prev instances not completed", !HasCompletedPreviousInstances(questInfo));
-        if (lockedReason.Values.Any(x => x) && EzThrottler.Throttle("QuestLockedThrottle", 5000))
-            logger.LogDebug($"IsQuestLocked<{questId}>: " + string.Join(',', lockedReason.Where(kvp => !kvp.Value).Select(kvp => kvp.Key)));
+        if (lockedReason.Values.Any(x => x) && EzThrottler.Throttle("QuestLockedThrottle", 5000) && configuration.Advanced.Debug)
+            logger.LogDebug($"IsQuestLocked<{questId}>: " + string.Join(',', lockedReason.Where(kvp => kvp.Value).Select(kvp => kvp.Key)));
         return lockedReason.Values.Any(x => x);
     }
 
@@ -845,6 +845,8 @@ internal sealed unsafe class QuestFunctions
 
     private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
     {
+        //if (EzThrottler.Throttle("HasCompletedPreviousQuests", 5000))
+        //    logger.LogDebug($"HasCompletedPreviousQuests<{questInfo.QuestId}>: " + string.Join(',', questInfo.PreviousQuests));
         if (questInfo.PreviousQuests.Count == 0)
             return true;
 
@@ -873,12 +875,20 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    private static bool HasCompletedPreviousInstances(QuestInfo questInfo)
+    private bool HasCompletedPreviousInstances(QuestInfo questInfo)
     {
         if (questInfo.PreviousInstanceContent.Count == 0)
+        {
+            //if (EzThrottler.Throttle("HasCompletedPreviousInstances", 5000))
+            //    logger.LogDebug($"HasCompletedPreviousInstances<{questInfo.QuestId}>: count=0");
             return true;
+        }
 
         int completedInstances = questInfo.PreviousInstanceContent.Count(x => UIState.IsInstanceContentCompleted(x));
+        //string joinType = nameof(questInfo.PreviousInstanceContentJoin);
+        //if (EzThrottler.Throttle("HasCompletedPreviousInstances", 5000))
+        //    logger.LogDebug($"HasCompletedPreviousInstances<{questInfo.QuestId}>: joinType={joinType} completedInstances={completedInstances} instances={string.Join(',', questInfo.PreviousInstanceContent)}");
+
         if (questInfo.PreviousInstanceContentJoin == EQuestJoin.All &&
             questInfo.PreviousInstanceContent.Count == completedInstances)
             return true;
