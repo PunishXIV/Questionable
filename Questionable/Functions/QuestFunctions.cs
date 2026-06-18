@@ -662,7 +662,8 @@ internal sealed unsafe class QuestFunctions
         lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
-        lockedReason.Add("Grand company mismatch", questInfo.GrandCompany != GrandCompany.None && questInfo.GrandCompany != GetGrandCompany());
+        if (questInfo.GrandCompany != GrandCompany.None)
+            lockedReason.Add("Grand company mismatch", questInfo.GrandCompany != GetGrandCompany());
 
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
@@ -691,7 +692,7 @@ internal sealed unsafe class QuestFunctions
         lockedReason.Add("Prev quests not completed", !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
         lockedReason.Add("Prev instances not completed", !HasCompletedPreviousInstances(questInfo));
         if (lockedReason.Values.Any(x => x) && EzThrottler.Throttle("QuestLockedThrottle", 5000))
-            logger.LogDebug($"{questId}: " + string.Join(',', lockedReason.Select(kvp => !kvp.Value)));
+            logger.LogDebug($"IsQuestLocked<{questId}>: " + string.Join(',', lockedReason.Where(kvp => !kvp.Value).Select(kvp => kvp.Key)));
         return lockedReason.Values.Any(x => x);
     }
 
