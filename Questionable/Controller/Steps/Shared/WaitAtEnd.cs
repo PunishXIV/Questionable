@@ -19,10 +19,8 @@ internal static class WaitAtEnd
 {
     internal sealed class Factory
     (
-        IClientState clientState,
         IObjectTable objectTable,
         ICondition condition,
-        TerritoryData territoryData,
         AutoDutyIpc autoDutyIpc,
         BossModIpc bossModIpc,
         RedoUtil redoUtil)
@@ -86,9 +84,7 @@ internal static class WaitAtEnd
                     if (step.TerritoryId != step.TargetTerritoryId)
                     {
                         // interaction moves to a different territory
-                        waitInteraction = new WaitCondition.Task(
-                            () => clientState.TerritoryType == step.TargetTerritoryId,
-                            $"Wait(tp to territory: {territoryData.GetNameAndId(step.TargetTerritoryId.Value)})");
+                        waitInteraction = new WaitForTerritory(step.TargetTerritoryId.Value);
                     }
                     else
                     {
@@ -264,6 +260,27 @@ internal static class WaitAtEnd
         protected override bool Start() => true;
 
         public override ETaskResult Update() => questFunctions.IsQuestComplete(Task.ElementId) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record WaitForTerritory
+    (
+        ushort TerritoryId) : ITask
+    {
+        public override string ToString() => $"WaitForTerritory({TerritoryId})";
+    }
+
+    internal sealed class WaitForTerritoryExecutor(IClientState clientState) : TaskExecutor<WaitForTerritory>
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update()
+        {
+            return clientState.TerritoryType == Task.TerritoryId
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
 
         public override bool ShouldInterruptOnDamage() => false;
     }

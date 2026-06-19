@@ -17,7 +17,6 @@ internal static class MoveTo
         IClientState clientState,
         IObjectTable objectTable,
         AetheryteData aetheryteData,
-        TerritoryData territoryData,
         ILogger<Factory> logger) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -59,13 +58,13 @@ internal static class MoveTo
                     var fromTerritory = aetheryteData.TerritoryIds[step.AethernetShortcut.From];
                     var toTerritory = aetheryteData.TerritoryIds[step.AethernetShortcut.To];
                     yield return new WaitCondition.Task(() => clientState.TerritoryType == fromTerritory || clientState.TerritoryType == toTerritory,
-                    $"Wait(territori: {territoryData.GetNameAndId(fromTerritory)}|{territoryData.GetNameAndId(toTerritory)})");
+                    $"Wait(territori: {TerritoryData.GetNameAndId(fromTerritory)}|{TerritoryData.GetNameAndId(toTerritory)})");
                     yield return new Shared.AethernetShortcut.Task(step.AethernetShortcut.From, step.AethernetShortcut.To);
                 }
             }
             else
                 yield return new WaitCondition.Task(() => clientState.TerritoryType == step.TerritoryId,
-                    $"Wait(territoro: {territoryData.GetNameAndId(step.TerritoryId)})");
+                    $"Wait(territoro: {TerritoryData.GetNameAndId(step.TerritoryId)})");
 
             if (!step.DisableNavmesh)
                 yield return new WaitNavmesh.Task();

@@ -25,7 +25,6 @@ internal static class UseItem
     internal sealed class Factory
     (
         IClientState clientState,
-        TerritoryData territoryData,
         ILogger<Factory> logger)
         : ITaskFactory
     {
@@ -59,7 +58,7 @@ internal static class UseItem
                 [
                     task,
                     new WaitCondition.Task(() => clientState.TerritoryType == 140,
-                        $"Wait(territory: {territoryData.GetNameAndId(140)})"),
+                        $"Wait(territory: {TerritoryData.GetNameAndId(140)})"),
                     new Mount.MountTask(140,
                         nextPosition != null ? Mount.EMountIf.AwayFromPosition : Mount.EMountIf.Always,
                         nextPosition),

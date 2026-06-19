@@ -273,7 +273,7 @@ internal sealed class CommandHandler : IDisposable
                 if (parts.Length == 1)
                     break;
                 var tnameId = uint.Parse(parts[1], CultureInfo.InvariantCulture);
-                _chatGui.Print($"{_territoryData.GetNameAndId(tnameId)}");
+                _chatGui.Print($"{TerritoryData.GetNameAndId(tnameId)}");
                 break;
 
             //case "abandon-quest":

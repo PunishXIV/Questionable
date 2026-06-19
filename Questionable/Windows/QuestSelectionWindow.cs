@@ -109,7 +109,7 @@ internal sealed class QuestSelectionWindow : LWindow
     public void OpenForCurrentZone() => OpenForZone(_clientState.TerritoryType);
     public unsafe void OpenForZone(uint territoryId)
     {
-        string territoryName = _territoryData.GetNameAndId(territoryId);
+        string territoryName = TerritoryData.GetNameAndId(territoryId);
         WindowName = _LF("Quests starting in {0}", territoryName) + $"{WindowId}";
 
         _quests = _questRegistry.AllQuests

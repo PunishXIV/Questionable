@@ -6,3 +6,4 @@ bin/
 !**/.vscode/*.code-snippets
 !.vscode/settings.json
 *.user
+.pi/

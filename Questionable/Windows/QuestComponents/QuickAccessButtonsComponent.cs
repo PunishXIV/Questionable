@@ -7,16 +7,18 @@ using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
 using Questionable.Controller;
 using Questionable.Controller.Steps.Shared;
+using Questionable.Data;
 using Questionable.Functions;
+using Questionable.Model.Questing;
 using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
@@ -29,6 +31,9 @@ internal sealed class QuickAccessButtonsComponent
     JournalProgressWindow journalProgressWindow,
     PriorityWindow priorityWindow,
     ICommandManager commandManager,
+    IObjectTable objectTable,
+    IClientState clientState,
+    IChatGui chatGui,
     IDalamudPluginInterface pluginInterface)
 {
 
@@ -46,15 +51,13 @@ internal sealed class QuickAccessButtonsComponent
 
         DrawTroubleshootingButton(questController.CurrentQuest, questController.IsRunning);
 
-        if (questRegistry.ValidationIssueCount > 0)
-        {
-            ImGui.SameLine();
-            DrawValidationIssuesButton();
-        }
+        ImGui.SameLine();
+        DrawValidationIssuesButton();
     }
 
     private void DrawPriorityQuestsButton()
     {
+        using var _ = ImRaii.Disabled(objectTable[0] == null);
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, _L("Priority Quests")))
             priorityWindow.ToggleOrUncollapse();
 
@@ -95,8 +98,9 @@ internal sealed class QuickAccessButtonsComponent
             ImGui.SetTooltip(_L("Journal Progress"));
     }
 
-    private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress, bool isRunning)
+    private void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress, bool isRunning)
     {
+        using var _ = ImRaii.Disabled(objectTable[0] == null);
         bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, _L("Stuck?"), isRunning ? ImGuiColors.DalamudOrange : null);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
@@ -109,7 +113,7 @@ internal sealed class QuickAccessButtonsComponent
             {
                 output = JsonSerializer.Serialize(questCompletions, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
+                chatGui.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
                         "'/qst clearlog' to reset the log.") + "\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
                         CommandHandler.MessageTag, CommandHandler.TagColor);
             }
@@ -120,7 +124,7 @@ internal sealed class QuickAccessButtonsComponent
                 try
                 {
                     JsonNode? dalTrouble = JsonNode.Parse(
-                            File.ReadAllText(Path.Join(Svc.PluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"))
+                            File.ReadAllText(Path.Join(pluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"))
                         );
                     var pluginNames = dalTrouble?["PluginStates"]
                         .Deserialize<SortedDictionary<string, string>>()
@@ -139,7 +143,8 @@ internal sealed class QuickAccessButtonsComponent
                         ) ?? []);
                 }
                 catch (Exception) { }
-                Configuration? config = (Configuration?)Svc.PluginInterface.GetPluginConfig();
+                Configuration? config = (Configuration?)pluginInterface.GetPluginConfig();
+                IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
                 Dictionary<string, object?> troubleshooting = new(){
                     { "LoadedPlugins", plugins },
                     { "QST", new Dictionary<string,string>(){
@@ -152,16 +157,16 @@ internal sealed class QuickAccessButtonsComponent
                         { "ToString", questProgress?.ToString() },
                         { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" }
                     }},
-                    { "Character", new Dictionary<string,object?>{
-                        { "ClassJob", Svc.PlayerState.ClassJob },
-                        { "Level", Svc.PlayerState.Level },
-                        { "Position", Svc.Objects[0]?.Position },
-                        { "Territory", Svc.ClientState.TerritoryType }
+                    { "Character", new Dictionary<string,object>{
+                        { "ClassJob", (EExtendedClassJob?)player.ClassJob.RowId },
+                        { "Level", player.Level },
+                        { "Position", player.Position.ToInternalString() },
+                        { "Territory", TerritoryData.GetNameAndId(clientState.TerritoryType) }
                     }},
                 };
                 output = JsonSerializer.Serialize(troubleshooting, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
-                Svc.Chat.Print(_L("Troubleshooting information has been copied to clipboard. " +
+                chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
                     "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
@@ -172,10 +177,8 @@ internal sealed class QuickAccessButtonsComponent
     {
         int errorCount = questRegistry.ValidationErrorCount;
         int infoCount = questRegistry.ValidationIssueCount - questRegistry.ValidationErrorCount;
-        if (errorCount == 0 && infoCount == 0)
-            return;
 
-        int partsToRender = errorCount == 0 || infoCount == 0 ? 1 : 2;
+        int partsToRender = errorCount == 0 ? 1 : 2;
         using ImRaii.IdDisposable id = ImRaii.PushId("validationissues");
 
         FontAwesomeIcon icon1 = FontAwesomeIcon.ExclamationTriangle;
@@ -184,13 +187,13 @@ internal sealed class QuickAccessButtonsComponent
         using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
             iconSize1 = errorCount > 0 ? ImGui.CalcTextSize(icon1.ToIconString()) : Vector2.Zero;
-            iconSize2 = infoCount > 0 ? ImGui.CalcTextSize(icon2.ToIconString()) : Vector2.Zero;
+            iconSize2 = infoCount >= 0 ? ImGui.CalcTextSize(icon2.ToIconString()) : Vector2.Zero;
         }
 
         string text1 = errorCount > 0 ? errorCount.ToString(CultureInfo.InvariantCulture) : string.Empty;
-        string text2 = infoCount > 0 ? infoCount.ToString(CultureInfo.InvariantCulture) : string.Empty;
+        string text2 = infoCount > 0 ? infoCount.ToString(CultureInfo.InvariantCulture) : "...";
         Vector2 textSize1 = errorCount > 0 ? ImGui.CalcTextSize(text1) : Vector2.Zero;
-        Vector2 textSize2 = infoCount > 0 ? ImGui.CalcTextSize(text2) : Vector2.Zero;
+        Vector2 textSize2 = infoCount >= 0 ? ImGui.CalcTextSize(text2) : Vector2.Zero;
         ImDrawListPtr dl = ImGui.GetWindowDrawList();
         Vector2 cursor = ImGui.GetCursorScreenPos();
 
@@ -219,7 +222,7 @@ internal sealed class QuickAccessButtonsComponent
             position = position with { X = position.X + textSize1.X + 2 * iconPadding };
         }
 
-        if (infoCount > 0)
+        if (infoCount >= 0)
         {
             using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
             {
