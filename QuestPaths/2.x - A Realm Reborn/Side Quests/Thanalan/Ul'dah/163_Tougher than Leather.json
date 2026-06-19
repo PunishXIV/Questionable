@@ -2,6 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-06-09"},
+  "Comment": "This quest is completed in MSQ to ensure\nenough XP to clear lv10",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -43,6 +44,22 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Position": {
+            "X": -118.17538,
+            "Y": 18.35357,
+            "Z": 341.3039
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                141
+              ]
+            }
+          }
+        },
+        {
           "DataId": 1003898,
           "Position": {
             "X": -109.91083,
@@ -50,8 +67,7 @@
             "Z": -73.80792
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }
