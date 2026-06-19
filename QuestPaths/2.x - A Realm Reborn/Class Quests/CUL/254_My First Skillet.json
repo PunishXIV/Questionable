@@ -1,11 +1,29 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-06-18"},
   "Comment": "Crafted Item:\n 1x Maple Syrup\nWill buy from Jossy",
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "InteractionType": "EquipItem",
+          "ItemId": 2493,
+          "TerritoryId": 128
+        },
+        {
+          "InteractionType": "CreateGearset",
+          "TerritoryId": 128
+        },
+        {
+          "InteractionType": "EquipRecommended",
+          "TerritoryId": 128
+        },
+        {
+          "InteractionType": "UpdateGearset",
+          "TerritoryId": 128
+        },
         {
           "DataId": 1000947,
           "Position": {

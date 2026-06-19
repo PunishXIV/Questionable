@@ -48,6 +48,10 @@
           }
         },
         {
+          "TerritoryId": 971,
+          "InteractionType": "CreateGearset"
+        },
+        {
           "Position": {
             "X": 0.13146536,
             "Y": 0.01480782,
@@ -67,6 +71,10 @@
         {
           "TerritoryId": 971,
           "InteractionType": "EquipRecommended"
+        },
+        {
+          "TerritoryId": 971,
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1037014,
