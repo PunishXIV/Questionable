@@ -51,8 +51,11 @@ internal sealed class QuickAccessButtonsComponent
 
         DrawTroubleshootingButton(questController.CurrentQuest, questController.IsRunning);
 
-        ImGui.SameLine();
-        DrawValidationIssuesButton();
+        if (pluginInterface.IsDev)
+        {
+            ImGui.SameLine();
+            DrawValidationIssuesButton();
+        }
     }
 
     private void DrawPriorityQuestsButton()

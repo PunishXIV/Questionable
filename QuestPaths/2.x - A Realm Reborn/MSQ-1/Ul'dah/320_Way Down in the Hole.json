@@ -1,7 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-05"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-06-05" },
+  "Interruptible": false,
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -46,7 +47,7 @@
           "StopDistance": 2,
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1002948,
@@ -58,7 +59,7 @@
           "StopDistance": 7,
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1002950,
@@ -70,7 +71,7 @@
           "StopDistance": 7,
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1002951,
@@ -82,7 +83,7 @@
           "StopDistance": 7,
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         }
       ]
     },
@@ -161,6 +162,19 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Comment": "Taking sidequest to ensure we have\nenough XP for lv10",
+          "DataId": 1003898,
+          "Position": {
+            "X": -109.91083,
+            "Y": 4.500089,
+            "Z": -73.80792
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "PickUpQuestId": 163
+        },
+        {
           "DataId": 1001353,
           "Position": {
             "X": 21.072632,
@@ -169,7 +183,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"

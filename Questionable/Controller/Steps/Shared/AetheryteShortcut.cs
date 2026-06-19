@@ -95,28 +95,28 @@ internal static class AetheryteShortcut
                     }
                 }
                 else if (step.TerritoryId == 128 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 129) &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 129 || step.AethernetShortcut is not { }) &&
                     clientState.TerritoryType != 128) // Limsa
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Limsa, 129);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaAftcastle);
                 }
                 else if (step.TerritoryId == 133 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 132) &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 132 || step.AethernetShortcut is not { }) &&
                     clientState.TerritoryType != 133) // Gridania
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Gridania, 132);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Gridania, EAetheryteLocation.GridaniaAmphitheatre);
                 }
                 else if (step.TerritoryId == 131 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 130) &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 130 || step.AethernetShortcut is not { }) &&
                     clientState.TerritoryType != 131) // Uldah
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Uldah, 130);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Uldah, EAetheryteLocation.UldahGoldsmith);
                 }
                 else if (step.TerritoryId == 419 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 418) &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 418 || step.AethernetShortcut is not { }) &&
                     clientState.TerritoryType != 419) // Ishgard
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Ishgard, 418);

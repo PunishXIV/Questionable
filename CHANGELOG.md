@@ -1,1 +1,1 @@
-- Feature: look i promise i'm good at this kind of thing i just have a headache today, which makes the fun cool stuff i did yesterday much less impressive to try to fix -alydev
+- Bug fix: teleporting in citystates was busted, it is no longer busted -alydev
