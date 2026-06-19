@@ -14,6 +14,14 @@
           },
           "TerritoryId": 759,
           "InteractionType": "Interact",
+          "AetheryteShortcut": "Doman Enclave",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDC108_03029_EVENTAREA_WARP_000_011",
+              "Yes": true
+            }
+          ],
           "TargetTerritoryId": 744
         },
         {
