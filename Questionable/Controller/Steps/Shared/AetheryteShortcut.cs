@@ -19,84 +19,108 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut
 {
-    public static HashSet<uint> Territories = [212,351,128,131,133,419];
-    internal sealed class Factory(AetheryteData aetheryteData, IClientState clientState)
+    public static HashSet<uint> Territories = [212, 351, 128, 131, 133, 419];
+    internal sealed class Factory(AetheryteData aetheryteData, IClientState clientState, IObjectTable objectTable)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AetheryteShortcut == null)
             {
-                if (step.TerritoryId == 212 && !sequence.Steps.Any(x => x.TerritoryId == 140)) // Waking Sands
+                bool matchesCondition(EExtraSkipCondition condition, Vector3 position) =>
+                    ExtraConditionUtils.MatchesExtraCondition(condition, position, step.TerritoryId);
+                if (step.TerritoryId == 212) // Waking Sands
                 {
-                    if (clientState.TerritoryType == 212)
-                        yield break;
-                    yield return new Task(step, quest.Id, EAetheryteLocation.WesternThanalanHorizon, 140);
-                    yield return new MoveTask(
-                        TerritoryId: 140,
-                        Destination: new(-492.96475f, 20.999884f, -380.82272f),
-                        Fly: true);
-                    yield return new MoveTask(
-                        TerritoryId: 140,
-                        Destination: new(-480.9181f, 18.00103f, -386.862f));
-                    yield return new Interact.Task(2001711, quest, EInteractionType.Interact);
-                    if (ExtraConditionUtils.MatchesExtraCondition(EExtraSkipCondition.WakingSandsSolar, step.Position ?? new(), step.TerritoryId))
+                    bool inTerritory = clientState.TerritoryType == 212;
+                    if (!inTerritory)
+                    {
+                        yield return new Task(step, quest.Id, EAetheryteLocation.WesternThanalanHorizon, 140);
+                        yield return new MoveTask(
+                            TerritoryId: 140,
+                            Destination: new(-492.96475f, 20.999884f, -380.82272f),
+                            Fly: true);
+                        yield return new MoveTask(
+                            TerritoryId: 140,
+                            Destination: new(-480.9181f, 18.00103f, -386.862f));
+                        yield return new Interact.Task(2001711, quest, EInteractionType.Interact);
+                    }
+                    // if target position is in the solar, and we're either not in the territory yet or are not in the solar, interact to enter
+                    if (step.Position != null && matchesCondition(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
+                        (!inTerritory || objectTable[0] != null && !matchesCondition(EExtraSkipCondition.WakingSandsSolar, objectTable[0]!.Position)))
                     {
                         yield return new MoveTask(
                             TerritoryId: 212,
                             Destination: new(23.23944f, 2.090454f, -0.015319824f));
                         yield return new Interact.Task(2001715, quest, EInteractionType.Interact);
                     }
+                    // if target is *not* in Solar and we are there, interact to leave
+                    if (step.Position != null && !matchesCondition(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
+                        inTerritory && objectTable[0] != null && matchesCondition(EExtraSkipCondition.WakingSandsSolar, objectTable[0]!.Position))
+                    {
+                        yield return new MoveTask(
+                            TerritoryId: 212,
+                            Destination: new(25.497803f, 2.090454f, -0.015319824f));
+                        yield return new Interact.Task(2001717, quest, EInteractionType.Interact);
+                    }
                 }
-                else if (step.TerritoryId == 351 && !sequence.Steps.Any(step => step.TerritoryId == 156)) // Rising Stones
+                else if (step.TerritoryId == 351) // Rising Stones
                 {
-                    if (clientState.TerritoryType == 351)
-                        yield break;
-                    yield return new Task(step, quest.Id, EAetheryteLocation.MorDhona, 156);
-                    yield return new MoveTask(
-                        TerritoryId: 156,
-                        Destination: new(21.133728f, 22.323914f, -631.281f),
-                        Mount: true);
-                    yield return new Interact.Task(2002881, quest, EInteractionType.Interact);
-                    if (ExtraConditionUtils.MatchesExtraCondition(EExtraSkipCondition.RisingStonesSolar, step.Position ?? new(), step.TerritoryId))
+                    bool inTerritory = clientState.TerritoryType == 351;
+                    if (!inTerritory)
+                    {
+                        yield return new Task(step, quest.Id, EAetheryteLocation.MorDhona, 156);
+                        yield return new MoveTask(
+                            TerritoryId: 156,
+                            Destination: new(21.133728f, 22.323914f, -631.281f),
+                            Mount: true);
+                        yield return new Interact.Task(2002881, quest, EInteractionType.Interact);
+                    }
+                    // if target is in Solar and we are not currently there, interact to get there
+                    if (step.Position != null && matchesCondition(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
+                        (!inTerritory || objectTable[0] != null && !matchesCondition(EExtraSkipCondition.RisingStonesSolar, objectTable[0]!.Position)))
                     {
                         yield return new MoveTask(
                          TerritoryId: 351,
                          Destination: new(-0.015319824f, -1.0223389f, -26.779602f));
                         yield return new Interact.Task(2002878, quest, EInteractionType.Interact);
                     }
+                    // if target is *not* in Solar and we are there, interact to leave
+                    if (step.Position != null && !matchesCondition(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
+                        inTerritory && objectTable[0] != null && matchesCondition(EExtraSkipCondition.RisingStonesSolar, objectTable[0]!.Position))
+                    {
+                        yield return new MoveTask(
+                            TerritoryId: 351,
+                            Destination: new(-0.015319824f, -1.0223389f, -29.251587f));
+                        yield return new Interact.Task(2002880, quest, EInteractionType.Interact);
+                    }
                 }
-                else if (step.TerritoryId == 128 && !sequence.Steps.Any(step => step.TerritoryId == 129)) // Limsa
+                else if (step.TerritoryId == 128 &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 129) &&
+                    clientState.TerritoryType != 128) // Limsa
                 {
-                    if (clientState.TerritoryType == 128)
-                        yield break;
                     yield return new Task(step, quest.Id, EAetheryteLocation.Limsa, 129);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaAftcastle);
                 }
-                else if (step.TerritoryId == 133 && !sequence.Steps.Any(step => step.TerritoryId == 132)) // Gridania
+                else if (step.TerritoryId == 133 &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 132) &&
+                    clientState.TerritoryType != 133) // Gridania
                 {
-                    if (clientState.TerritoryType == 133)
-                        yield break;
                     yield return new Task(step, quest.Id, EAetheryteLocation.Gridania, 132);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Gridania, EAetheryteLocation.GridaniaAmphitheatre);
                 }
-                else if (step.TerritoryId == 131 && !sequence.Steps.Any(step => step.TerritoryId == 130)) // Uldah
+                else if (step.TerritoryId == 131 &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 130) &&
+                    clientState.TerritoryType != 131) // Uldah
                 {
-                    if (clientState.TerritoryType == 131)
-                        yield break;
                     yield return new Task(step, quest.Id, EAetheryteLocation.Uldah, 130);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Uldah, EAetheryteLocation.UldahGoldsmith);
                 }
-                else if (step.TerritoryId == 419 && !sequence.Steps.Any(step => step.TerritoryId == 418)) // Ishgard
+                else if (step.TerritoryId == 419 &&
+                    !sequence.Steps.Any(step => step.TerritoryId == 418) &&
+                    clientState.TerritoryType != 419) // Ishgard
                 {
-                    if (clientState.TerritoryType == 419)
-                        yield break;
                     yield return new Task(step, quest.Id, EAetheryteLocation.Ishgard, 418);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Ishgard, EAetheryteLocation.IshgardLastVigil);
-                }
-                else
-                {
-                    yield break;
                 }
                 yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
             }

@@ -1,5 +1,1 @@
-- Feature: Skip aetheryte shortcut if in target territory -alydev
-
-- Feature: "Stuck?" button is now more visible when QST is running -alydev
-- Feature: Troubleshooting info now includes player job/level/position/territory(location)
-  - Bug fix: i broke the button, but it's working again now
+- Feature: look i promise i'm good at this kind of thing i just have a headache today, which makes the fun cool stuff i did yesterday much less impressive to try to fix -alydev

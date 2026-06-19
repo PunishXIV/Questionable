@@ -67,6 +67,7 @@
             "Z": -631.281
           },
           "InteractionType": "Interact",
+          "Disabled": true,
           "TargetTerritoryId": 351
         },
         {
