@@ -1,7 +1,8 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["liza", "Gezah", "vicyorus"],
-  "Comment": "Crafted Item:\n 1x Maple Lumber,\nAutocraft requires:\n 3x Maple Log",
+  "LastChecked":{"Username": "ShermTank", "Date": "2026-06-19"},
+  "Comment": "Crafted Item:\n 1x Maple Lumber,\nAutocraft requires:\n 3x Maple Log\nWill buy materials from Ferreol",
   "QuestSequence": [
     {
       "Sequence": 0,
