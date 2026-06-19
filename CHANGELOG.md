@@ -1,1 +1,1 @@
-- Bug fix: teleporting in citystates was busted, it is no longer busted -alydev
+- Bug fix: qst is now less insistant on attuning to all gridania shards -alydev

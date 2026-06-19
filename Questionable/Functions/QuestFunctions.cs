@@ -108,10 +108,11 @@ internal sealed unsafe class QuestFunctions
             // quests that use white wolf gate, finish 'broadening horizons' to unlock it
             if (!aetheryteFunctions.IsAetheryteUnlocked(EAetheryteLocation.GridaniaBlueBadgerGate))
             {
-                chatGui.Print(_L("This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n" +
+                chatGui.PrintError(_L("This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n" +
                                "This should have happened as part of the quest \"Close To Home\" if starting in Gridania, or \"The Ul'dahn/Lominsan Envoy\" for the other cities.\n" +
                                "Please unlock the aethernet shards, or complete the current quest sequence manually before continuing."),
                                CommandHandler.MessageTag, CommandHandler.TagColor);
+                throw new RequiredTeleportLockedException("Required aethernet shard not unlocked");
             }
 
             QuestId broadeningHorizons = new(802);
@@ -926,4 +927,19 @@ public enum MainScenarioQuestState
 internal sealed record PriorityQuestInfo(ElementId QuestId, string? UnavailableReason = null)
 {
     public bool IsAvailable => UnavailableReason == null;
+}
+
+public class RequiredTeleportLockedException : Exception
+{
+    public RequiredTeleportLockedException()
+    {
+    }
+
+    public RequiredTeleportLockedException(string message, Exception innerException) : base(message, innerException)
+    {
+    }
+
+    public RequiredTeleportLockedException(string message) : base(message)
+    {
+    }
 }
