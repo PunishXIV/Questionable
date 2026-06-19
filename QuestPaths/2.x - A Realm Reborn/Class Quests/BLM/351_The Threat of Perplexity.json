@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
   "Comment": "TODO Fix pathing if flying is locked",
+  "LastChecked": {"Username": "Shorkolate", "Date": "2026-06-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
