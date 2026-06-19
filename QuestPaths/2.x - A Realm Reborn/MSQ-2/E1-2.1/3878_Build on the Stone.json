@@ -73,6 +73,7 @@
             "Z": -631.281
           },
           "InteractionType": "Interact",
+          "Disabled": true,
           "TargetTerritoryId": 351,
           "SkipConditions": {"StepIf": {"InTerritory": [351]}}
         },
