@@ -44,7 +44,7 @@ internal sealed class QuickAccessButtonsComponent
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
 
-        DrawTroubleshootingButton(questController.CurrentQuest);
+        DrawTroubleshootingButton(questController.CurrentQuest, questController.IsRunning);
 
         if (questRegistry.ValidationIssueCount > 0)
         {
@@ -95,9 +95,9 @@ internal sealed class QuickAccessButtonsComponent
             ImGui.SetTooltip(_L("Journal Progress"));
     }
 
-    private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress)
+    private static void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress, bool isRunning)
     {
-        bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, _L("Stuck?"));
+        bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, _L("Stuck?"), isRunning ? ImGuiColors.DalamudOrange : null);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"));
@@ -139,19 +139,24 @@ internal sealed class QuickAccessButtonsComponent
                         ) ?? []);
                 }
                 catch (Exception) { }
-                var config = Svc.PluginInterface.GetPluginConfig();
-                Configuration configCast = config != null ? (Configuration)config : new();
+                Configuration? config = (Configuration?)Svc.PluginInterface.GetPluginConfig();
                 Dictionary<string, object?> troubleshooting = new(){
                     { "LoadedPlugins", plugins },
                     { "QST", new Dictionary<string,string>(){
                         { "Version", CommandHandler.MessageTag },
-                        { "Debug", configCast.Advanced.Debug.ToString() ?? "false" }
+                        { "Debug", config?.Advanced.Debug.ToString() ?? "false" }
                     } },
-                    { "Configuration", Svc.PluginInterface.GetPluginConfig() },
+                    { "Configuration", config },
                     { "CompletedQuests", questCompletions.Count },
                     { "QuestProgress", new Dictionary<string,object?>(){
                         { "ToString", questProgress?.ToString() },
-                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id) : "Error: questProgress is null" }
+                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" }
+                    }},
+                    { "Character", new Dictionary<string,object?>{
+                        { "ClassJob", Svc.PlayerState.ClassJob },
+                        { "Level", Svc.PlayerState.Level },
+                        { "Position", Svc.Objects[0]?.Position },
+                        { "Territory", Svc.ClientState.TerritoryType }
                     }},
                 };
                 output = JsonSerializer.Serialize(troubleshooting, JsonOptions.Default);

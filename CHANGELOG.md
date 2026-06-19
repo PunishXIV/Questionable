@@ -1,9 +1,2 @@
-- Bug fix: fixed class quests being attempted too early
-- Bug fix: Locked quests are not super reliable at the moment because of the prerequisite tree check. This might help with that
-- Feature: Automatic recovery for quests that lead to the below aetheryte-less territories, in cases where they don't already have recovery steps written:
-  - Waking Sands
-  - Rising Stones
-  - Old Gridania
-  - Limsa Upper
-  - Uldah Thal
-  - Pillars
+- Feature: "Stuck?" button is now more visible when QST is running -alydev
+- Feature: Troubleshooting info now includes player job/level/position/territory(location)
