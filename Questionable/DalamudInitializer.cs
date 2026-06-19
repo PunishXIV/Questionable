@@ -12,6 +12,7 @@ using I18N.DotNet;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
+using Questionable.Functions;
 using Questionable.Windows;
 using static I18N.DotNet.GlobalLocalizer;
 using static Questionable.Utils.LocalizeShortcut;
@@ -151,13 +152,13 @@ internal sealed class DalamudInitializer : IDisposable
         }
     }
 
-    internal static void SetupI18N(CultureInfo culture) => GlobalLocalizer.Localizer.Load( culture );
+    internal static void SetupI18N(CultureInfo culture) => GlobalLocalizer.Localizer.Load(culture);
     internal static void SetupI18N(string language)
     {
-        CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo( language );
+        CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(language);
         GlobalLocalizer.Localizer.LoadXML(
             Path.Combine(Svc.PluginInterface.AssemblyLocation.Directory?.FullName ??
-                new FileInfo(typeof(DalamudInitializer).Assembly.Location).DirectoryName ?? "","Resources","I18N.xml"),
-            CultureInfo.CurrentUICulture );
+                new FileInfo(typeof(DalamudInitializer).Assembly.Location).DirectoryName ?? "", "Resources", "I18N.xml"),
+            CultureInfo.CurrentUICulture);
     }
 }
