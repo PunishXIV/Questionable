@@ -80,7 +80,8 @@
           "StopDistance": 4,
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "SinglePlayerDutyOptions": {
-            "Enabled": true
+            "Enabled": false,
+            "Notes": ["no bossmod module yet"]
           }
         }
       ]
