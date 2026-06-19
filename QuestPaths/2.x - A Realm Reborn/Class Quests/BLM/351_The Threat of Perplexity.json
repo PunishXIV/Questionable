@@ -134,10 +134,9 @@
               "X": 94.09375,
               "Y": 21.432512,
               "Z": 48.76599
-            },
-            "StopDistance": 0
+            }
           },
-          "StopDistance": 0,
+          "StopDistance": 1,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -203,10 +202,9 @@
               "X": 94.09375,
               "Y": 21.432512,
               "Z": 48.76599
-            },
-            "StopDistance": 0
+            }
           },
-          "StopDistance": 0,
+          "StopDistance": 1,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
