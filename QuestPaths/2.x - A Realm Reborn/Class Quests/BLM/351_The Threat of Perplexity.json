@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "pot0to",
-  "Comment": "TODO Fix pathing if flying is locked",
-  "LastChecked": {"Username": "Shorkolate", "Date": "2026-06-04"},
+  "Author": ["pot0to","ShermTank"],
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-06-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -112,6 +111,36 @@
       "Sequence": 4,
       "Steps": [
         {
+          "$": "Need this extra step to path around the rock, otherwise it gets stuck",
+          "Position": {
+            "X": 103.20799,
+            "Y": 17.536886,
+            "Z": 38.734856
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
+        },
+        {
+          "Position": {
+            "X": 100.875496,
+            "Y": 17.536884,
+            "Z": 45.384903
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 94.09375,
+              "Y": 21.432512,
+              "Z": 48.76599
+            },
+            "StopDistance": 0
+          },
+          "StopDistance": 0,
+          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
+        },
+        {
           "DataId": 1002305,
           "Position": {
             "X": 14.419739,
@@ -150,6 +179,36 @@
     {
       "Sequence": 6,
       "Steps": [
+        {
+          "$": "Need this extra step to path around the rock, otherwise it gets stuck",
+          "Position": {
+            "X": 103.20799,
+            "Y": 17.536886,
+            "Z": 38.734856
+          },
+          "TerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
+        },
+        {
+          "Position": {
+            "X": 100.875496,
+            "Y": 17.536884,
+            "Z": 45.384903
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 94.09375,
+              "Y": 21.432512,
+              "Z": 48.76599
+            },
+            "StopDistance": 0
+          },
+          "StopDistance": 0,
+          "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
+        },
         {
           "DataId": 1002305,
           "Position": {
