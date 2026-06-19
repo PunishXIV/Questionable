@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-09"},
-  "Comment": "This quest is completed in MSQ to ensure\nenough XP to clear lv10",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
