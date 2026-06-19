@@ -101,6 +101,25 @@ internal sealed class TaskCreator
                         newTasks.Count);
                 }
             }
+
+            WaitAtEnd.WaitForTerritory? waitForTerritory = newTasks
+                .Where(y => y is WaitAtEnd.WaitForTerritory)
+                .Cast<WaitAtEnd.WaitForTerritory>()
+                .FirstOrDefault();
+            if (waitForTerritory != null &&
+                _clientState.TerritoryType == waitForTerritory.TerritoryId &&
+                waitForTerritory is not { TerritoryId: 212 or 351 })
+            {
+                // if we're at the territory we're meant to be in, (unless it's waking sands or rising stones), can probably move to the next step
+                int index = newTasks.IndexOf(waitForTerritory);
+                _logger.LogWarning(
+                        "Skipping {SkippedTaskCount} out of {TotalCount} tasks, we are already in TargetTerritoryId:{TerritoryId}",
+                        index + 1, newTasks.Count, waitForTerritory.TerritoryId);
+                newTasks.RemoveRange(0, index + 1);
+                _logger.LogInformation("Next actual task: {NextTask}, total tasks left: {RemainingTaskCount}",
+                    newTasks.FirstOrDefault(),
+                    newTasks.Count);
+            }
         }
 
         if (newTasks.Count == 0)

@@ -20,8 +20,11 @@ internal sealed class TerritoryData
     private readonly ImmutableHashSet<uint> _territoriesWithMount;
     private readonly ImmutableDictionary<uint, string> _territoryNames;
 
+    private static TerritoryData _instance;
+
     public TerritoryData(IDataManager dataManager)
     {
+        _instance = this;
         _territoryNames = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0)
             .Select(x =>
@@ -61,7 +64,8 @@ internal sealed class TerritoryData
 
     public string? GetName(uint territoryId) => _territoryNames.GetValueOrDefault(territoryId);
 
-    public string GetNameAndId(uint territoryId)
+    public static string GetNameAndId(uint territoryId) => _instance.GetNameAndIdImpl(territoryId);
+    private string GetNameAndIdImpl(uint territoryId)
     {
         string? territoryName = GetName(territoryId);
         if (territoryName != null)
