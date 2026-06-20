@@ -34,7 +34,7 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
             return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, _L("Unobtainable"));
         else if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, var _) && isLocked &&
                 questFunctions.prereqCache.TryGetValue(elementId.Value, out prereqValue) &&
-                prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked && !reasons.Contains("Unobtainable")))
+                prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked))
             return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, _L("Locked"));
         else if (prereqValue == null)
             return (ImGuiColors.TankBlue, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
