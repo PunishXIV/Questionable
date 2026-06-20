@@ -1,1 +1,2 @@
 - Bug fix: quests of a higher level than your current level show as locked now, this probably makes more sense -alydev
+  - imagine if a function named for doing just one thing only did one thing, and had no side effects for changing it. that would be nice. -alydev

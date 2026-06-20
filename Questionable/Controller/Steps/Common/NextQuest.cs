@@ -42,6 +42,7 @@ internal static class NextQuest
     {
         protected override bool Start()
         {
+            var isUnobtainable = questFunctions.IsQuestUnobtainable(Task.NextQuestId, Task.CurrentQuestId);
             (var isLocked, string[]? reasons) = questFunctions.IsQuestLocked(Task.NextQuestId, Task.CurrentQuestId);
             if (questController.AutomationType is QuestController.EAutomationType.SingleQuestA or QuestController.EAutomationType.SingleQuestB)
             {
@@ -52,6 +53,11 @@ internal static class NextQuest
             {
                 logger.LogInformation("Can't set next quest to {QuestId}, quest is locked. {Reasons}", Task.NextQuestId,
                     (reasons != null ? string.Join(',',reasons) : ""));
+                questController.SetNextQuest(null);
+            }
+            else if (isUnobtainable)
+            {
+                logger.LogInformation("Can't set next quest to {QuestId}, quest is unobtainable.", Task.NextQuestId);
                 questController.SetNextQuest(null);
             }
             else if (questRegistry.TryGetQuest(Task.NextQuestId, out Quest? quest))
