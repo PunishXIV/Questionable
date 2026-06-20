@@ -1,1 +1,1 @@
-- Bug fix: qst is now less insistant on attuning to all gridania shards -alydev
+- Bug fix: quests of a higher level than your current level show as locked now, this probably makes more sense -alydev

@@ -658,13 +658,15 @@ internal sealed unsafe class QuestFunctions
 
     private (bool,string[]) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
     {
+        PlayerState* playerState = PlayerState.Instance();
         Dictionary<string,bool> lockedReason = [];
-        lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
+        //lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         if (questInfo.GrandCompany != GrandCompany.None)
             lockedReason.Add("Grand company mismatch", questInfo.GrandCompany != GetGrandCompany());
-
+            
+        lockedReason.Add("Underleveled", playerState->CurrentLevel < questInfo.Level);
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
                 lockedReason.Add("Daily society quest is not available today", !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
@@ -673,7 +675,7 @@ internal sealed unsafe class QuestFunctions
 
         if (questInfo.IsMoogleDeliveryQuest)
         {
-            byte currentDeliveryLevel = PlayerState.Instance()->DeliveryLevel;
+            byte currentDeliveryLevel = playerState->DeliveryLevel;
             if (extraCompletedQuest != null &&
                 questData.TryGetQuestInfo(extraCompletedQuest, out IQuestInfo? extraQuestInfo) &&
                 extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
