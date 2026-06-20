@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -160,6 +161,10 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "TerritoryId": 478,
+          "InteractionType": "EquipRecommended"
+        },
         {
           "TerritoryId": 478,
           "InteractionType": "Gather",

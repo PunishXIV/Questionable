@@ -55,10 +55,10 @@ internal sealed class EditorWindow : Window
         _clientState = clientState;
         _objectTable = objectTable;
 
-        SizeConstraints = new WindowSizeConstraints
-        {
-            MinimumSize = new(-1, 100)
-        };
+        //SizeConstraints = new WindowSizeConstraints
+        //{
+        //    MinimumSize = new(-1, 100)
+        //};
 
         TitleBarButtons.Add(new()
         {

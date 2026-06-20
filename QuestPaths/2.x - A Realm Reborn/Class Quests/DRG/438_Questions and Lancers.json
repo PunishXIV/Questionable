@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -208,14 +209,23 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         }
       ]
     },
     {
       "Sequence": 8,
       "Steps": [
+        {
+          "Position": {
+            "X": -32.55554,
+            "Y": -40.683945,
+            "Z": 196.98996
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
+        },
         {
           "Position": {
             "X": -39.98818,
@@ -259,6 +269,17 @@
       "Sequence": 10,
       "Steps": [
         {
+          "Position": {
+            "X": -32.55554,
+            "Y": -40.683945,
+            "Z": 196.98996
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
+        },
+        {
           "DataId": 1002815,
           "Position": {
             "X": -27.328918,
@@ -266,8 +287,7 @@
             "Z": 173.05249
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

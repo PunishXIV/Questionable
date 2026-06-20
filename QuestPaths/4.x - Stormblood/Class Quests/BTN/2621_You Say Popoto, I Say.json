@@ -1,0 +1,119 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021349,
+          "Position": {
+            "X": -43.9205,
+            "Y": 209.236,
+            "Z": -90.7667
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] West Idyllshire"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021350,
+          "Position": {
+            "X": 7.248047,
+            "Y": -0.280928,
+            "Z": 6.301941
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000815,
+          "Position": {
+            "X": -233.936,
+            "Y": 6.6888,
+            "Z": -171.038
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021352,
+          "Position": {
+            "X": -445.3346,
+            "Y": 52.700176,
+            "Z": 31.753906
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        { "TerritoryId": 612, "InteractionType": "EquipRecommended" },
+        {
+          "TerritoryId": 612,
+          "InteractionType": "Gather",
+          "ItemsToGather": [{ "ItemId": 17945, "ItemCount": 20 }]
+        },
+        {
+          "DataId": 1021352,
+          "Position": {
+            "X": -445.3346,
+            "Y": 52.700176,
+            "Z": 31.753906
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021349,
+          "Position": {
+            "X": -43.9205,
+            "Y": 209.236,
+            "Z": -90.7667
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] West Idyllshire"
+          ],
+          "NextQuestId": 2622
+        }
+      ]
+    }
+  ]
+}

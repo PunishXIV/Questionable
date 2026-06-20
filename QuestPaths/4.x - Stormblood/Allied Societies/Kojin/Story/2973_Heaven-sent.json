@@ -1,0 +1,106 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1024221,
+          "Position": {
+            "X": -729.609,
+            "Y": 0.280521,
+            "Z": -404.94
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 613,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] The Ruby Price"
+          ],
+          "Fly": true
+        },
+        {
+          "DataId": 1024222,
+          "Position": {
+            "X": 314.1068,
+            "Y": 0.75118595,
+            "Z": 466.88025
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANKJN001_02973_Q1_000_000",
+              "Answer": "TEXT_BANKJN001_02973_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1024226,
+          "Position": {
+            "X": 117.29602,
+            "Y": 1.7402059,
+            "Z": 561.24194
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [8247, 8248, 8249],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1024226,
+          "Position": {
+            "X": 117.29602,
+            "Y": 1.7402059,
+            "Z": 561.24194
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1024230,
+          "Position": {
+            "X": 652.124,
+            "Y": 3.24488,
+            "Z": -59.0052
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
