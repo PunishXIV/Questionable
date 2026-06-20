@@ -68,6 +68,33 @@
           "Locations": [
             {
               "Position": {
+                "X": -23.46954,
+                "Y": 4.442793,
+                "Z": -678.0224
+              },
+              "MinimumAngle": -90,
+              "MaximumAngle": -30
+            },
+            {
+              "Position": {
+                "X": -19.16145,
+                "Y": 4.969817,
+                "Z": -680.9098
+              },
+              "MinimumAngle": 0,
+              "MaximumAngle": 20,
+              "MinimumDistance": 1.8,
+              "MaximumDistance": 3
+            },
+            {
+              "Position": {
+                "X": -59.00735,
+                "Y": 9.011474,
+                "Z": -688.1377
+              }
+            },
+            {
+              "Position": {
                 "X": -59.00735,
                 "Y": 9.011474,
                 "Z": -688.1377

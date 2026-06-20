@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-15"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -67,7 +67,7 @@
       "Sequence": 3,
       "Steps": [
         {
-          "TerritoryId": 419,
+          "TerritoryId": 401,
           "InteractionType": "EquipRecommended"
         },
         {
@@ -115,7 +115,8 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard"
+          "AetheryteShortcut": "Ishgard",
+          "NextQuestId": 2052
         }
       ]
     }

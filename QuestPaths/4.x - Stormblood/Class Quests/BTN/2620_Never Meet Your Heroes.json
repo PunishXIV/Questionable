@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,9 +9,9 @@
         {
           "DataId": 1000815,
           "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
+            "X": -233.936,
+            "Y": 6.6888,
+            "Z": -171.038
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
@@ -19,15 +19,41 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021349,
+          "Position": {
+            "X": -43.9205,
+            "Y": 209.236,
+            "Z": -90.7667
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] West Idyllshire"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021349,
+          "Position": {
+            "X": -43.9205,
+            "Y": 209.236,
+            "Z": -90.7667
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -35,27 +61,19 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1000815,
+          "DataId": 1021349,
           "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
+            "X": -43.9205,
+            "Y": 209.236,
+            "Z": -90.7667
           },
-          "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
+          "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] West Idyllshire"
+          ],
+          "NextQuestId": 2621
         }
       ]
     }
