@@ -1,7 +1,8 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
-  "Comment": "Crafted Item:\n 1x Bronze Ingot\nAutocraft requires:\n 2x Copper Ore,\n 1x Tin Ore",
+  "LastChecked":{"Username": "ShermTank", "Date": "2026-06-19"},
+  "Comment": "Crafted Item:\n 1x Bronze Ingot\nAutocraft requires:\n 2x Copper Ore,\n 1x Tin Ore\nWill buy materials from Soemrwyb",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -51,6 +52,52 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "DataId": 1000999,
+          "Position": {
+            "X": -29.465149,
+            "Y": 42.49955,
+            "Z": 197.92468
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262173
+          },
+          "ItemId": 5106,
+          "ItemCount": 2,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000999,
+          "Position": {
+            "X": -29.465149,
+            "Y": 42.49955,
+            "Z": 197.92468
+          },
+          "TerritoryId": 128,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262173
+          },
+          "ItemId": 5107,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "InteractionType": "Craft",
           "TerritoryId": 128,

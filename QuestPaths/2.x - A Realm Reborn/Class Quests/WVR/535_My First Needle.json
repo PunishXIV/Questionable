@@ -1,7 +1,8 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
-  "Comment": "Crafted Item:\n 1x Hempen Yarn\nAutocraft requires:\n 2x Moko Grass",
+  "LastChecked":{"Username": "ShermTank", "Date": "2026-06-19"},
+  "Comment": "Crafted Item:\n 1x Hempen Yarn\nAutocraft requires:\n 2x Moko Grass\nWill purchase materials from Gigima",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -51,6 +52,29 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "DataId": 1003912,
+          "Position": {
+            "X": 134.75244,
+            "Y": 8.041996,
+            "Z": 96.11658
+          },
+          "TerritoryId": 131,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262175
+          },
+          "ItemId": 5341,
+          "ItemCount": 2,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "InteractionType": "Craft",
           "TerritoryId": 131,

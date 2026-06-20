@@ -1,7 +1,8 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
-  "Comment": "Crafted Item:\n 1x Copper Ingot\nAutocraft requires:\n 3x Copper Ore",
+  "LastChecked":{"Username": "ShermTank", "Date": "2026-06-19"},
+  "Comment": "Crafted Item:\n 1x Copper Ingot\nAutocraft requires:\n 3x Copper Ore\nWill buy materials from Aistan",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -51,6 +52,29 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "DataId": 1004419,
+          "Position": {
+            "X": -33.585205,
+            "Y": 13.599848,
+            "Z": 96.42175
+          },
+          "TerritoryId": 131,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262176
+          },
+          "ItemId": 5106,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "InteractionType": "Craft",
           "TerritoryId": 131,
