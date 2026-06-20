@@ -595,6 +595,9 @@ internal sealed unsafe class QuestFunctions
                 return false;
         }
 
+        if (IsQuestUnobtainable(questId))
+            return false;
+
         if (IsQuestLocked(questId) is (bool isLocked, var _))
             return !isLocked;
 
