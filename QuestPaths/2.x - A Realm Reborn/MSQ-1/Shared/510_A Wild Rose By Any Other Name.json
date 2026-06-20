@@ -23,6 +23,7 @@
                 "MaximumDistance": 300
               },
               "InTerritory": [212],
+              "ExtraCondition": "WakingSandsSolar",
               "Item": { "NotInInventory": true }
             }
           }
@@ -39,7 +40,8 @@
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": {
             "StepIf": {
-              "InTerritory": [212]
+              "InTerritory": [212],
+              "ExtraCondition": "WakingSandsSolar"
             }
           }
         },
@@ -55,7 +57,8 @@
           "TargetTerritoryId": 212,
           "SkipConditions": {
             "StepIf": {
-              "InTerritory": [212]
+              "InTerritory": [212],
+              "ExtraCondition": "WakingSandsSolar"
             }
           }
         },

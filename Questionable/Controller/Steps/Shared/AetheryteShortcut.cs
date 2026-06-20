@@ -95,29 +95,33 @@ internal static class AetheryteShortcut
                     }
                 }
                 else if (step.TerritoryId == 128 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 129 || step.AethernetShortcut is not { }) &&
-                    clientState.TerritoryType != 128) // Limsa
+                    !sequence.Steps.Any(step => step.TerritoryId == 129) &&
+                    clientState.TerritoryType != 128 &&
+                    step.AethernetShortcut == null) // Limsa
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Limsa, 129);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaAftcastle);
                 }
                 else if (step.TerritoryId == 133 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 132 || step.AethernetShortcut is not { }) &&
-                    clientState.TerritoryType != 133) // Gridania
+                    !sequence.Steps.Any(step => step.TerritoryId == 132) &&
+                    clientState.TerritoryType != 133 &&
+                    step.AethernetShortcut == null) // Gridania
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Gridania, 132);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Gridania, EAetheryteLocation.GridaniaAmphitheatre);
                 }
                 else if (step.TerritoryId == 131 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 130 || step.AethernetShortcut is not { }) &&
-                    clientState.TerritoryType != 131) // Uldah
+                    !sequence.Steps.Any(step => step.TerritoryId == 130) &&
+                    clientState.TerritoryType != 131 &&
+                    step.AethernetShortcut == null) // Uldah
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Uldah, 130);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Uldah, EAetheryteLocation.UldahGoldsmith);
                 }
                 else if (step.TerritoryId == 419 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 418 || step.AethernetShortcut is not { }) &&
-                    clientState.TerritoryType != 419) // Ishgard
+                    !sequence.Steps.Any(step => step.TerritoryId == 418) &&
+                    clientState.TerritoryType != 419 &&
+                    step.AethernetShortcut == null) // Ishgard
                 {
                     yield return new Task(step, quest.Id, EAetheryteLocation.Ishgard, 418);
                     yield return new AethernetShortcut.Task(EAetheryteLocation.Ishgard, EAetheryteLocation.IshgardLastVigil);
@@ -293,7 +297,6 @@ internal static class AetheryteShortcut
                             return true;
                         }
                     }
-
 
                     if (skipConditions.NearPosition is { } nearPosition &&
                         clientState.TerritoryType == nearPosition.TerritoryId)
