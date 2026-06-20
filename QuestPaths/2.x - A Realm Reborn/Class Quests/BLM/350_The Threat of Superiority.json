@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
-  "LastChecked": {"Username": "Shorkolate", "Date": "2026-06-04"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -112,8 +112,7 @@
             "Enabled": true,
             "TestedBossModVersion": "0.3.2.4",
             "Notes": [
-              "vbm doesn't move to the enemies automatically",
-              "vbm doesn't interact with the urn"
+              "vbm takes a while to move to the enemies, but it does fight as well as interact -alydev"
             ]
           },
           "Fly": true,
