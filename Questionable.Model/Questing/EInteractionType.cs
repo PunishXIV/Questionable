@@ -42,5 +42,6 @@ public enum EInteractionType
     Instruction,
 
     AcceptQuest,
-    CompleteQuest
+    CompleteQuest,
+    Fish,
 }

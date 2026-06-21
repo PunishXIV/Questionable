@@ -173,7 +173,8 @@
             "Instruction",
             "AcceptQuest",
             "CompleteQuest",
-            "InitiateLeve"
+            "InitiateLeve",
+            "Fish"
           ]
         },
         "Disabled": {
@@ -1879,6 +1880,47 @@
               "GatheringPoint": {
                 "type": "number",
                 "description": "The GatheringPoint row ID of the node to target for this quest"
+              }
+            },
+            "required": [
+              "ItemsToGather"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Fish"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ItemsToGather": {
+                "type": "array",
+                "description": "Unlike crafting steps, which will always craft a single item id regardless of class, this allows for gathering different items depending on whether you've picked the quest up as miner or botanist",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ItemId": {
+                      "type": "number"
+                    },
+                    "ItemCount": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "Collectability": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000
+                    }
+                  },
+                  "required": [
+                    "ItemId",
+                    "ItemCount"
+                  ]
+                }
               }
             },
             "required": [
