@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 from datetime import datetime
 
+skipped = 0
 
 def find_quest_file(quest_id: str, search_dir: Path) -> tuple[Path | None, bool]:
     """
@@ -35,11 +36,12 @@ def find_quest_file(quest_id: str, search_dir: Path) -> tuple[Path | None, bool]
     return None, False
 
 
-def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: str | None, dry_run: bool = False) -> bool:
+def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: str | None, dry_run: bool = False, verbose: bool = False) -> bool:
     """
     Process a single quest completion entry.
     Returns True on success, False on failure.
     """
+    global skipped
     quest_id = entry.get("Quest")
     last_checked = entry.get("LastChecked")
 
@@ -74,7 +76,9 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
         before, date = data.split('"LastChecked":',1)
         date = date.split('"Date":',1)[1].split('"',1)[1].split('"',1)[0]
         if date == last_checked or datetime.strptime(date,"%Y-%m-%d") > datetime.strptime(last_checked,"%Y-%m-%d"):
-            print(f"[WARN] {date} >= {last_checked}, skipping: '{quest_id}'", file=sys.stderr)
+            if verbose:
+                print(f"[WARN] {date} >= {last_checked}, skipping: '{quest_id}'", file=sys.stderr)
+            skipped += 1
             return True
     else:
         before = data.split('"QuestSequence":')[0]
@@ -89,7 +93,8 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
             print(f"[ERROR] Could not write '{path}': {e}", file=sys.stderr)
             return False
 
-    print(f"[OK] Updated '{path}' with Username:'{username}' Date:'{last_checked}'" + (" (sim)" if dry_run else ""))
+    if verbose:
+        print(f"[OK] Updated '{path}' with Username:'{username}' Date:'{last_checked}'" + (" (sim)" if dry_run else ""))
     return True
 
 
@@ -127,6 +132,11 @@ def main():
         action="store_true",
         help="If set, no changes will occur."
     )
+    parser.add_argument(
+        "-v", "--verbose",
+        action="store_true",
+        help="Prints successful entries as well"
+    )
     args = parser.parse_args()
 
     if not args.input.is_file():
@@ -159,11 +169,11 @@ def main():
         sys.exit(1)
 
     ok = sum(
-        process_entry(entry, args.directory, args.username, args.backup_suffix, args.dry_run)
+        process_entry(entry, args.directory, args.username, args.backup_suffix, args.dry_run, args.verbose)
         for entry in entries
     )
     total = len(entries)
-    print(f"\nDone: {ok}/{total} entries updated.")
+    print(f"\nDone: {ok}/{total} entries updated." + (f" ({skipped} skipped)" if skipped != 0 else ""))
     if ok < total:
         sys.exit(1)
     elif ok == total and ok != 0:

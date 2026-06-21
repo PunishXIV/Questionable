@@ -1,7 +1,8 @@
-{
+﻿{
 	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
 	"Author": "goatzone",
-	"QuestSequence": [
+	"LastChecked": {"Username": "goopy_brain", "Date": "2026-06-19"},
+  "QuestSequence": [
 		{
 			"Sequence": 0,
 			"Steps": [
