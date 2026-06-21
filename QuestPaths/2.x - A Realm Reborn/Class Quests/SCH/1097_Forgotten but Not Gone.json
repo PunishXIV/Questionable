@@ -1,26 +1,11 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Shorkolate", "Date": "2026-06-07"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "Position": {
-            "X": -335.8204,
-            "Y": 12.899764,
-            "Z": 4.017052
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
-        },
         {
           "DataId": 1000895,
           "Position": {
@@ -29,7 +14,12 @@
             "Z": 1.3884888
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
         }
       ]
     },
