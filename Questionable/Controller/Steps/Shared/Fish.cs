@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
 using Questionable.External;
+using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 
@@ -35,7 +36,7 @@ internal static class Fish
     public override string ToString() => $"Fish({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
   }
 
-  internal sealed class DoFish(AutoHookIpc autoHookIpc, ICommandManager commandManager, ILogger<DoFish> logger) : TaskExecutor<FishTask>
+  internal sealed class DoFish(AutoHookIpc autoHookIpc, ICommandManager commandManager, GameFunctions gameFunctions, ILogger<DoFish> logger) : TaskExecutor<FishTask>
   {
     private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
 
@@ -76,7 +77,7 @@ internal static class Fish
       commandManager.ProcessCommand($"/ahpreset {Task.Quest.Id}");
 
       // Start fishing via command
-      // Native command: GameMain.ExecuteCommand((int)GameCommand.Fish, 0);
+      // Native command: gameFunctions.UseAction(EAction.FSHCast);
       logger.LogInformation("Starting fishing via command");
       commandManager.ProcessCommand("/ahstart");
 
@@ -90,6 +91,8 @@ internal static class Fish
         // Disabled: Using IPC to add and set the preset didn't work.
         // // Clean up anonymous preset
         // autoHookIpc.DeleteAllAnonymousPresets();
+
+        gameFunctions.UseAction(EAction.FSHQuit);
 
         // Respect player's current settings. Set plugin to the state it was in at the start.
         autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
