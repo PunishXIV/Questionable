@@ -1,0 +1,16 @@
+{
+  "Steps": [
+    {
+      "DataId": 1000656,
+      "Position": {
+        "X": 401.09537,
+        "Y": -5.9241953,
+        "Z": -103.80447
+      },
+      "TerritoryId": 154,
+      "StopDistance": 1,
+      "InteractionType": "Interact",
+      "Fly": true
+    }
+  ]
+}
