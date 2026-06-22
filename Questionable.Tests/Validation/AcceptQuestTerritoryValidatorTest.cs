@@ -17,11 +17,11 @@ public sealed class AcceptQuestTerritoryValidatorTest
     private const uint LimsaTerritory = 129;
     private const uint GridaniaTerritory = 132;
 
-    // A territory that has no aetheryte (so an AcceptQuest there must rely on a shortcut)
-    private const uint NoAetheryteTerritory = 419;
+    // The Dravanian Hinterlands, a territory that has no aetheryte (so an AcceptQuest there must rely on a shortcut)
+    private const uint NoAetheryteTerritory = 399;
 
     // Some territories have no aetheryte, but must have custom recovery steps leading up to an AcceptQuest step.
-    public static TheoryData<uint,uint> RecoveryTerritoryData = new()
+    public static TheoryData<uint, uint> RecoveryTerritoryData = new()
     {
         { 212, 140 }, // Waking Sands acceptquest must have Western Thanalan recovery
         { 351, 156 }  // Rising stones must have mor dhona recovery
@@ -30,7 +30,7 @@ public sealed class AcceptQuestTerritoryValidatorTest
     // These territories are used for Coming to x/Close to Home; the player is auto-placed
     // there at quest start, so an AcceptQuest step here never needs an Aether(yte|net)Shortcut.
     public static TheoryData<uint> CharacterStartingTerritoryData => new() { 181, 182, 183 };
-    
+
     private readonly AcceptQuestTerritoryValidator _validator;
 
     public AcceptQuestTerritoryValidatorTest()
@@ -50,13 +50,13 @@ public sealed class AcceptQuestTerritoryValidatorTest
         {
             Id = id,
             Source = Quest.ESource.Assembly,
-            Root = new QuestRoot { QuestSequence = [..sequences] },
+            Root = new QuestRoot { QuestSequence = [.. sequences] },
             Info = info,
         };
     }
 
     private static QuestSequence Seq(byte sequence, params QuestStep[] steps) =>
-        new() { Sequence = sequence, Steps = [..steps] };
+        new() { Sequence = sequence, Steps = [.. steps] };
 
     private static QuestStep InteractStep(uint territoryId,
         EAetheryteLocation? aetheryteShortcut = null,
