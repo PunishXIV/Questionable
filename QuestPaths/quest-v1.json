@@ -107,6 +107,11 @@
           "description": "The data id of the NPC/Object/Aetheryte/Aether Current",
           "exclusiveMinimum": 0
         },
+        "MacroId": {
+          "type": "integer",
+          "description": "The ID of the macro to insert",
+          "exclusiveMinimum": 0
+        },
         "Position": {
           "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
         },
@@ -174,7 +179,8 @@
             "AcceptQuest",
             "CompleteQuest",
             "InitiateLeve",
-            "Fish"
+            "Fish",
+            "Macro"
           ]
         },
         "Disabled": {
@@ -1994,6 +2000,20 @@
             },
             "required": [
               "TargetClass"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Macro"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "MacroId"
             ]
           }
         }

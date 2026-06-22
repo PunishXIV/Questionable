@@ -83,6 +83,7 @@
             },
             "StepIf": {
               "InTerritory": [180],
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook",
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
             }
           }
