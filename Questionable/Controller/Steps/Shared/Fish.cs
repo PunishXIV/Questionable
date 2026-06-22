@@ -67,20 +67,9 @@ internal static class Fish
         return false;
       }
 
-      // Disabled: Using IPC to add and set the preset didn't work.
-      // Players must now import the required preset into AutoHook manually.
-      // Preset name is the quest ID.
-      // TODO: A Class Quests folder preset will be made available from the AutoHook Wiki.
-      // // Using an anonymouse preset allows us to easily remove it later.
-      // autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
-
-      // Workaround: Select preset via slash command instead of using IPC
-      // AutoHookIpc doesn't tell us if the preset was set successfully, only if the command was found and dispatched.
-      // We can see a chat message in game. I don't know if it's possible to check for "Preset not found" or "Preset set to: {presetName}"
-      // IPC command: autoHookIpc.SetPreset(Task.Quest.Id.ToString());
-      // Select preset via command instead of using IPC
-      logger.LogInformation("Selecting preset {Preset} via command", Task.Quest.Id);
-      commandManager.ProcessCommand($"/ahpreset {Task.Quest.Id}");
+      // Using an anonymouse preset allows us to easily remove it later.
+      logger.LogInformation("Creating and selecting anonymous AutoHook preset for quest {QuestId}", Task.Quest.Id);
+      autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
 
       // Start fishing via command
       // Native command: gameFunctions.UseAction(EAction.FSHCast);
@@ -94,11 +83,10 @@ internal static class Fish
     {
       if (HasRequestedItems())
       {
-        // Disabled: Using IPC to add and set the preset didn't work.
-        // // Clean up anonymous preset
-        // autoHookIpc.DeleteAllAnonymousPresets();
-
         gameFunctions.UseAction(EAction.FSHQuit);
+
+        // Clean up anonymous preset
+        autoHookIpc.DeleteAllAnonymousPresets();
 
         // Respect player's current settings. Set plugin to the state it was in at the start.
         autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
@@ -113,8 +101,8 @@ internal static class Fish
     public override bool ShouldInterruptOnDamage() => false;
 
     // Shamelessly stolen from Gather.cs
-    // Should this be moved to a shared class?
-    // Should we try to integrate fishing more closely with gathering? I think they are distinct enough due to the other gathering jobs relying on GatheringPoints. Making them optional for just fishing would be a pain.
+    // ?: Should this be moved to a shared class?
+    // ?: Should we try to integrate fishing more closely with gathering? I think they are distinct enough due to the other gathering jobs relying on GatheringPoints. Making them optional for just fishing would be a pain.
     public unsafe bool HasRequestedItems()
     {
       InventoryManager* inventoryManager = InventoryManager.Instance();
