@@ -42,6 +42,12 @@ internal static class Fish
 
     protected override bool Start()
     {
+      if (HasRequestedItems())
+      {
+        logger.LogInformation($"Already have {Task.GatheredItem.ItemCount}x {Task.GatheredItem.ItemId} in inventory", Task.GatheredItem.ItemCount, Task.GatheredItem.ItemId);
+        return false;
+      }
+
       if (!_wasAutoHookEnabled)
       {
         // AutoHook is required for this task to work. Enable it if it's not already enabled.
