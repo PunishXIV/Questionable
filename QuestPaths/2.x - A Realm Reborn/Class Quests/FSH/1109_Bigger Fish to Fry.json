@@ -34,11 +34,12 @@
       "Sequence": 255,
       "Steps": [
         {
+          "$": "This first move is necessary to ensure the player is facing toward the water when we begin fishing.",
           "Comment": "Move to fishing spot",
           "Position": {
-            "X": -187.38275,
-            "Y": 3.9999497,
-            "Z": 184.70198
+            "X": -183.85957,
+            "Y": 4,
+            "Z": 181.72098
           },
           "TerritoryId": 129,
           "InteractionType": "WalkTo",
@@ -54,6 +55,16 @@
               ]
             }
           }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "Position": {
+            "X": -187.38275,
+            "Y": 3.9999497,
+            "Z": 184.70198
+          },
+          "TerritoryId": 129,
+          "InteractionType": "WalkTo"
         },
         {
           "Comment": "Switch to Fisher job",
