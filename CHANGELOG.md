@@ -1,2 +1,2 @@
-- Feature: ng+ tab buttons
-- paths
+- Feature: Run Command After Stop feature (experimental) -alydev
+- Feature: Make it clearer if quests are being overridden by a local file -alydev
