@@ -118,23 +118,23 @@ internal sealed partial class ActiveQuestComponent
 
             DrawSimulationControls();
 
-            ImGui.SameLine();
-            bool editButtonLeft = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit);
-            bool editButtonRight = ImGui.IsItemClicked(ImGuiMouseButton.Right);
-            if (editButtonLeft)
-            {
-                (bool success, string filename) = currentQuest != null ? QuestRegistry.OpenEditor(currentQuest.Quest.Info) : _questRegistry.OpenEditor();
-                _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
-            }
-            else if (editButtonRight)
-            {
-                QuestRegistry.OpenFolder();
-                _logger.LogDebug("OpenFolder executed");
-            }
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(QuestRegistry.OpenEditorDescription);
             if (_configuration.Advanced.Debug)
             {
+                ImGui.SameLine();
+                bool editButtonLeft = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit);
+                bool editButtonRight = ImGui.IsItemClicked(ImGuiMouseButton.Right);
+                if (editButtonLeft)
+                {
+                    (bool success, string filename) = currentQuest != null ? QuestRegistry.OpenEditor(currentQuest.Quest.Info) : _questRegistry.OpenEditor();
+                    _logger.LogDebug("OpenEditor {Success}: {Filename}", success, filename);
+                }
+                else if (editButtonRight)
+                {
+                    QuestRegistry.OpenFolder();
+                    _logger.LogDebug("OpenFolder executed");
+                }
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(QuestRegistry.OpenEditorDescription);
                 ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban) && currentQuest != null)
                 {

@@ -94,21 +94,23 @@ internal sealed class QuestRegistry
             //LoadQuestsFromAssembly();
             _logger.LogWarning("Bundled quests were not loaded, we have no quests!");
         if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
-        #if DEBUG
+#if DEBUG
         || true
-        #endif
+#endif
         )
+        {
             LoadQuestsFromProjectDirectory();
 
-        try
-        {
-            var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
-                Quest.ESource.UserDirectory);
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e,
-                "Failed to load all quests from user directory (some may have been successfully loaded)");
+            try
+            {
+                var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
+                    Quest.ESource.UserDirectory);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e,
+                    "Failed to load all quests from user directory (some may have been successfully loaded)");
+            }
         }
 
         LoadCfcIds();

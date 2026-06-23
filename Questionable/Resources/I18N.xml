@@ -1404,6 +1404,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Experimental feature</Key>
     <Value lang="ja-jp">実験的機能</Value>
     <Value lang="zh-cn">实验性功能</Value>
@@ -2468,7 +2469,6 @@
     <Value lang="zh-cn">({0}) 未勾选：#{1}{2} ({3}/{4})</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>!Future/Unknown Quest ({0})</Key>
     <Value lang="ja-jp">!将来的/不明なクエスト ({0})</Value>
     <Value lang="zh-cn">!未来/未知任务 ({0})</Value>
@@ -2538,7 +2538,6 @@
     <Value lang="zh-cn">采集中：</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is loaded from your 'pluginConfigs\\Questionable\\Quests' directory.\nThis gets loaded even if Questionable ships with a newer/different version of the quest.</Key>
     <Value lang="ja-jp">このクエストはあなたの 'pluginConfigs\\Questionable\\Quests' ディレクトリから読み込まれています。\nQuestionableにより新しい/別バージョンのクエストが同梱されていても、こちらが読み込まれます。</Value>
     <Value lang="zh-cn">此任务从你的"pluginConfigs\\Questionable\\Quests"目录加载。\n即使 Questionable 内置了更新或不同的任务版本，该文件仍会优先加载。</Value>
@@ -3336,5 +3335,25 @@
     <!-- Found in: Validation\Validators\AcceptQuestTerritoryValidator.cs -->
     <Key>AcceptQuest territory {0} has no aetheryte and no teleport shortcut is set</Key>
     <Value lang="zh-cn">AcceptQuest 区域 {0} 没有以太之光，且未设置传送捷径</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
+    <Key>Run command when Questionable finishes automatic questing</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
+    <Key>Command</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>Hide chapters that have been completely checked</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>Expand all categories for this session</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>{0} ({1})</Key>
   </Entry>
 </I18N>
