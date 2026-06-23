@@ -225,14 +225,16 @@ internal sealed partial class ActiveQuestComponent
                 if (startedQuest.Quest.Source == Quest.ESource.UserDirectory)
                 {
                     ImGui.PushFont(UiBuilder.IconFont);
-                    ImGui.TextColored(ImGuiColors.DalamudOrange, FontAwesomeIcon.FilePen.ToIconString());
+                    ImGui.TextColored(ImGuiColors.DalamudRed, FontAwesomeIcon.FilePen.ToIconString());
                     ImGui.PopFont();
                     ImGui.SameLine(0);
 
                     if (ImGui.IsItemHovered())
                     {
                         ImGui.SetTooltip(
-                            _L("This quest is loaded from your 'pluginConfigs\\Questionable\\Quests' directory.\nThis gets loaded even if Questionable ships with a newer/different version of the quest."));
+                            _L("This quest is loaded from your Quests folder, probably because you (accidentally) clicked the Edit button below.\n" +
+                                "This gets loaded even if Questionable ships with a newer/different version of the quest.\n" +
+                                "If you experience issues, please right click the Edit button, delete the file for this quest, and click Reload Data."));
                     }
                 }
 

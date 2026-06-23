@@ -103,6 +103,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
+    private readonly ICommandManager _commandManager;
     private EAutomationType _automationType;
     private DateTime _lastAutoRefresh = DateTime.MinValue;
 
@@ -163,6 +164,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         InterruptHandler interruptHandler,
         IDataManager dataManager,
         IGameGuiAdapter gameGui,
+        ICommandManager commandManager,
         SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
         AlliedSocietyQuestFunctions alliedSocietyQuestFunctions)
         : base(chatGui, condition, serviceProvider, interruptHandler, dataManager, logger)
@@ -189,6 +191,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _alliedSocietyQuestFunctions = alliedSocietyQuestFunctions;
         _logger = logger;
         _highlightObject = highlightObject;
+        _commandManager = commandManager;
 
         _condition.ConditionChange += OnConditionChange;
         _toastGui.Toast += OnNormalToast;
@@ -636,7 +639,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         TryStopOnQuestAccepted(quest.Id);
 
                         StartedQuest = new(quest, currentSequence);
-                        if (_configuration.Advanced.Debug && _configuration.Advanced.OpenEditor && 
+                        if (_configuration.Advanced.Debug && _configuration.Advanced.OpenEditor &&
                             (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 30)))
                         {
                             (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
@@ -851,6 +854,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (IsRunning || AutomationType != EAutomationType.Manual)
         {
             ClearTasksInternal();
+            if (_configuration.Stop is { RunCommandAfterStop: true } stop)
+            {
+                if (stop.CommandAfterStop.StartsWith('/'))
+                    _commandManager.ProcessCommand(stop.CommandAfterStop);
+            }
             _logger.LogInformation("Stopping automatic questing");
             AutomationType = EAutomationType.Manual;
             NextQuest = null;
