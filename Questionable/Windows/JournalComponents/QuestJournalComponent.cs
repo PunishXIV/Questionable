@@ -308,13 +308,13 @@ internal sealed class QuestJournalComponent
         uiUtils.ChecklistItem(text, color, icon);
     }
 
-    private static void DrawCount(int count, int total)
+    internal static void DrawCount(int count, int total)
     {
         string len = 9999.ToString(CultureInfo.CurrentCulture);
         ImGui.PushFont(UiBuilder.MonoFont);
 
         if (total == 0)
-            ImGui.TextColored(ImGuiColors.DalamudGrey, $"{"-".PadLeft(len.Length)} / {"-".PadLeft(len.Length)}");
+            ImGui.TextColored(ImGuiColors.DalamudGrey, $"{" ".PadLeft(len.Length)} - {" ".PadLeft(len.Length)}");
         else
         {
             string text =
