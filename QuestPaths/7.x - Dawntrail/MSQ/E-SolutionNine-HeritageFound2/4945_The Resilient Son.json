@@ -68,10 +68,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 995,
-            "Enabled": true,
-            "Notes": [
-              "No VBM module"
-            ]
+            "Enabled": true
           }
         }
       ]

@@ -1,1 +1,2 @@
-- Bug fix: avoid overriding aethernet shortcuts if they're set -alydev
+- Feature: ng+ tab buttons
+- paths
