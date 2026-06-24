@@ -1,0 +1,45 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1042647,
+          "Position": {
+            "X": 225.686,
+            "Y": 24.9427,
+            "Z": -204.978
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Old Sharlayan",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [962] },
+            "AethernetShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1042772,
+          "Position": {
+            "X": 232.349,
+            "Y": 24.9422,
+            "Z": -187.12
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
