@@ -3339,21 +3339,31 @@
   <Entry>
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Run command when Questionable finishes automatic questing</Key>
+    <Value lang="ja-jp">Questionableの自動クエストが完了した際にコマンドを実行</Value>
+    <Value lang="zh-cn">Questionable 自动任务完成后执行命令</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Command</Key>
+    <Value lang="ja-jp">コマンド</Value>
+    <Value lang="zh-cn">命令</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Hide chapters that have been completely checked</Key>
+    <Value lang="ja-jp">確認済みのチャプターを非表示</Value>
+    <Value lang="zh-cn">隐藏已完全勾选的章节</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Expand all categories for this session</Key>
+    <Value lang="ja-jp">このセッション中は全てのカテゴリを展開</Value>
+    <Value lang="zh-cn">本次会话展开所有分类</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>{0} ({1})</Key>
+    <Value lang="ja-jp">{0} ({1})</Value>
+    <Value lang="zh-cn">{0} ({1})</Value>
   </Entry>
 </I18N>
