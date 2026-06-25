@@ -1,0 +1,107 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1005532,
+          "Position": {
+            "X": 47.3898,
+            "Y": 4.1,
+            "Z": -148.441
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1005533,
+          "Position": {
+            "X": -146.106,
+            "Y": 14.005,
+            "Z": 56.1548
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESDXQ001_01288_CHOICE1Q1_100_015",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -159.34824,
+            "Y": -30.519045,
+            "Z": 97.82834
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FateEnemies",
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "KillEnemyDataIds": [2220, 2221],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -159.34824,
+            "Y": -30.519045,
+            "Z": 97.82834
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FateEnemies",
+          "KillEnemyDataIds": [2220, 2221],
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1005533,
+          "Position": {
+            "X": -146.106,
+            "Y": 14.005,
+            "Z": 56.1548
+          },
+          "TerritoryId": 130,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}
