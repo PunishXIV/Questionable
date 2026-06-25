@@ -1,0 +1,63 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "$": "Unlocks Specialist crafters",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Need to be on a crafter class for this quest",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCraftingJob",
+          "TerritoryId": 156
+        },
+        {
+          "DataId": 1013395,
+          "Position": {
+            "X": 45.632,
+            "Y": 31.1797,
+            "Z": -732.891
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012179,
+          "Position": {
+            "X": 173.835,
+            "Y": -12.5461,
+            "Z": -25.3606
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Athenaeum Astrologicum"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418,419]
+            },
+            "AethernetShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

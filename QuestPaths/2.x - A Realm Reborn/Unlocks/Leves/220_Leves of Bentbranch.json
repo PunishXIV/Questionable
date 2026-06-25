@@ -1,0 +1,83 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "!!! Requires manual acceptance and running of Trial Leve !!!",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 132
+        },
+        {
+          "DataId": 1000101,
+          "Position": {
+            "X": 25.04,
+            "Y": -8.01103,
+            "Z": 108.11
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Accept Trial Leve",
+          "$": "Leve: Too Close to Home",
+          "DataId": 1000105,
+          "Position": {
+            "X": 55.005,
+            "Y": -6.00002,
+            "Z": 40.8088
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -135.631,
+            "Y": 0.64121413,
+            "Z": -110.114
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Instruction",
+          "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000105,
+          "Position": {
+            "X": 55.005,
+            "Y": -6.00002,
+            "Z": 40.8088
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
