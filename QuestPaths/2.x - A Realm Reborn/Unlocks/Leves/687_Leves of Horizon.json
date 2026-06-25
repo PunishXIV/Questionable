@@ -1,0 +1,88 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "Comment": "!!! Requires manual acceptance and running of Trial Leve !!!",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 130
+        },
+        {
+          "DataId": 1001794,
+          "Position": {
+            "X": 42.0224,
+            "Y": 8.00998,
+            "Z": -107.562
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [130] },
+            "AethernetShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Accept Trial Leve",
+          "$": "Leve: What Peistes Crave",
+          "DataId": 1001796,
+          "Position": {
+            "X": 85.1833,
+            "Y": 46.0034,
+            "Z": -245.824
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western Thanalan - Horizon",
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -146.04796,
+            "Y": 15.468151,
+            "Z": -259.95544
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Instruction",
+          "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001796,
+          "Position": {
+            "X": 85.1833,
+            "Y": 46.0034,
+            "Z": -245.824
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
