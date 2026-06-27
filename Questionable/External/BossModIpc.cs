@@ -39,8 +39,11 @@ internal sealed class BossModIpc
     private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
     private readonly ICallGateSubscriber<string, bool> _deletePreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.Delete");
+    private readonly ICallGateSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>> _configuration =
+        pluginInterface.GetIpcSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>>($"{PluginName}.Configuration");
 
     private bool _soloDutyZoneConfigured;
+    private bool _enableQuestBattlesOverridden;
 
     public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
 
@@ -75,7 +78,7 @@ internal sealed class BossModIpc
 
     public void SetPresetForSoloDuty(EPreset preset)
     {
-        ConfigureZoneForQuestBattle(true);
+        ConfigureZoneForQuestBattle();
         SetActivePreset(preset);
     }
 
@@ -113,26 +116,51 @@ internal sealed class BossModIpc
         ClearActivePresets();
     }
 
-    private void ConfigureZoneForQuestBattle(bool enable)
+    private void ConfigureZoneForQuestBattle()
     {
-        commandManager.ProcessCommand(enable
-            ? "/vbm cfg ZoneModuleConfig EnableQuestBattles true"
-            : "/vbm cfg ZoneModuleConfig EnableQuestBattles false");
-        if (enable)
+        if (!_soloDutyZoneConfigured)
         {
             commandManager.ProcessCommand("/vbm cfg Autorotation ClearPresetOnCombatEnd false");
             _soloDutyZoneConfigured = true;
         }
+
+        bool? enableQuestBattles = TryGetEnableQuestBattles();
+        if (enableQuestBattles is not true)
+            SetEnableQuestBattles(true);
+        _enableQuestBattlesOverridden = enableQuestBattles == false;
     }
 
     private void ReleaseSoloDutyZone()
     {
-        if (!_soloDutyZoneConfigured)
-            return;
+        if (_enableQuestBattlesOverridden)
+        {
+            SetEnableQuestBattles(false);
+            _enableQuestBattlesOverridden = false;
+        }
 
-        commandManager.ProcessCommand("/vbm cfg ZoneModuleConfig EnableQuestBattles false");
         _soloDutyZoneConfigured = false;
     }
+
+    private bool? TryGetEnableQuestBattles()
+    {
+        if (!_configuration.HasFunction)
+            return null;
+
+        return IpcInvoke.SafeFunc(() =>
+        {
+            IReadOnlyList<string> result = _configuration.InvokeFunc(
+                ["cfg", "ZoneModuleConfig", "EnableQuestBattles"], false);
+            if (result.Count == 0)
+                return (bool?)null;
+
+            return bool.TryParse(result[0], out bool value) ? value : null;
+        }, null);
+    }
+
+    private void SetEnableQuestBattles(bool enabled) =>
+        commandManager.ProcessCommand(enabled
+            ? "/vbm cfg ZoneModuleConfig EnableQuestBattles true"
+            : "/vbm cfg ZoneModuleConfig EnableQuestBattles false");
 
     public bool IsConfiguredToRunSoloInstance(ElementId questId, SinglePlayerDutyOptions? dutyOptions)
     {
