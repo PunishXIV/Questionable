@@ -1,0 +1,203 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1056837,
+          "Position": {
+            "X": 363.332,
+            "Y": 204.139,
+            "Z": 397.851
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1056838,
+          "Position": {
+            "X": 303.374,
+            "Y": 205.667,
+            "Z": 358.069
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1056841,
+          "Position": {
+            "X": 64.5304,
+            "Y": 118.373,
+            "Z": -766.781
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1056843,
+          "Position": {
+            "X": 108.4458,
+            "Y": 118.15579,
+            "Z": -713.8933
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 4
+            }
+          ]
+        },
+        {
+          "DataId": 1056844,
+          "Position": {
+            "X": 121.50757,
+            "Y": 118.15579,
+            "Z": -700.0076
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 2
+            }
+          ]
+        },
+        {
+          "DataId": 1056842,
+          "Position": {
+            "X": 151.6289,
+            "Y": 118.1753,
+            "Z": -716.0602
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1056845,
+          "Position": {
+            "X": 165.20935,
+            "Y": 118.15579,
+            "Z": -723.93384
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1056847,
+          "Position": {
+            "X": -276.44775,
+            "Y": 257.52652,
+            "Z": 725.21545
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1056848,
+          "Position": {
+            "X": 144.94531,
+            "Y": 118.22037,
+            "Z": -687.0985
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Peaks - Ala Gannha"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2015411,
+          "Position": {
+            "X": 295.0183,
+            "Y": 126.6934,
+            "Z": -481.1837
+          },
+          "TerritoryId": 620,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 959,
+          "DataId": 175,
+          "InteractionType": "Interact",
+          "Comment": "Click Travel to Auxesia",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+        },
+        {
+          "DataId": 1056850,
+          "Position": {
+            "X": 361.899,
+            "Y": 204.139,
+            "Z": 398.779
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
