@@ -1,9 +1,8 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
-  "Comment": "Quest requires manual intervention due to\nno support for automatic fishing (yet?)\nBuy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-30"},
+  "Comment": "99 Moth Pupa will be bought from vendor at\nNorth Shroud 28.1, 28.1",
+  "LastChecked": { "Username": "alydev", "Date": "2026-05-30" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -33,6 +32,31 @@
           "TerritoryId": 154
         },
         {
+          "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+          "DataId": 1000718,
+          "Position": {
+            "X": 332.23462,
+            "Y": -5.5506706,
+            "Z": 332.47876
+          },
+          "TerritoryId": 154,
+          "Fly": true,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2586,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
           "Position": {
             "X": -369.33804,
             "Y": -4.500569,
@@ -40,7 +64,7 @@
           },
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
-          "Comment": "Fish for 1x Saint Carp using Moth Pupa",
+          "Comment": "Move to next zone",
           "Fly": true,
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "SkipConditions": {
@@ -70,25 +94,15 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "Comment": "Fish for 1x Saint Carp (!!) using Moth Pupa",
+          "Comment": "Move to fishing spot",
           "Fly": true
         },
         {
+          "$": "QW: (-) (1H1L) (-) (-) (-) (-)",
           "TerritoryId": 155,
-          "InteractionType": "Action",
+          "InteractionType": "Fish",
           "Comment": "Fish for 1x Saint Carp (!!) using Moth Pupa",
-          "Action": "FSHCast"
-        },
-        {
-          "Position": {
-            "X": -55.165855,
-            "Y": 199.67697,
-            "Z": 470.63123
-          },
-          "TerritoryId": 155,
-          "Comment": "Fish for 1x Saint Carp using Moth Pupa",
-          "InteractionType": "WaitForManualProgress",
-          "Mount": false
+          "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 1}, null, null, null, null]
         }
       ]
     },
@@ -96,17 +110,20 @@
       "Sequence": 2,
       "Steps": [
         {
+          "Comment": "Stop fishing",
           "TerritoryId": 155,
           "InteractionType": "Action",
           "Action": "FSHQuit"
         },
         {
+          "Comment": "Switch back to quest class",
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob",
           "TerritoryId": 155,
           "DelaySecondsAtStart": 1
         },
         {
+          "Comment": "Move to quest NPC",
           "Position": {
             "X": 244.82239,
             "Y": 222.01717,
@@ -118,6 +135,7 @@
           "Land": true
         },
         {
+          "Comment": "Give materials to quest NPC",
           "DataId": 1009219,
           "Position": {
             "X": 251.11768,
@@ -133,6 +151,7 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Comment": "Craft 2x HQ Cockpit Exterior Component",
           "TerritoryId": 155,
           "InteractionType": "Craft",
           "ItemId": 8100,
@@ -140,6 +159,7 @@
           "ItemQuality": "HQ"
         },
         {
+          "Comment": "Complete quest",
           "DataId": 1009213,
           "Position": {
             "X": 162.01082,
