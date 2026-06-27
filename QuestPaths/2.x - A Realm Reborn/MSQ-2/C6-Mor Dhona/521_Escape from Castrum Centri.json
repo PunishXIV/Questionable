@@ -158,11 +158,7 @@
           "TerritoryId": 335,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "(outside) Doesn't use obstacle maps or vnav to move to the shield generators, gets stuck on the big crates"
-            ]
+            "Enabled": true
           }
         }
       ]

@@ -9,6 +9,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Quest = Questionable.Model.Quest;
+using Mount = Questionable.Controller.Steps.Common.Mount;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
@@ -81,7 +82,7 @@ internal static class RedeemRewardItems
             }
         }
 
-        return tasks;
+        return tasks.Count != 0 ? [new Mount.UnmountTask(), ..tasks] : tasks;
     }
 
     internal sealed record Task(ItemReward ItemReward) : ITask
