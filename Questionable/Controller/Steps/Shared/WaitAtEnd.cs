@@ -23,7 +23,9 @@ internal static class WaitAtEnd
         ICondition condition,
         AutoDutyIpc autoDutyIpc,
         BossModIpc bossModIpc,
-        RedoUtil redoUtil)
+        RedoUtil redoUtil,
+        QuestData questData,
+        IDataManager dataManager)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -128,10 +130,10 @@ internal static class WaitAtEnd
                     {
                         WaitQuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
                         WaitDelay delay = new();
+                        List<ITask> tasks = [complete, delay, ..RedeemRewardItems.CreateRedeemTasks(questData, dataManager)];
                         if (step.TurnInQuestId != null)
-                            return [complete, delay, Next(quest, sequence)];
-                        else
-                            return [complete, delay];
+                            tasks.Add(Next(quest, sequence));
+                        return tasks;
                     }
 
                 case EInteractionType.Interact:
