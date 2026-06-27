@@ -1,5 +1,7 @@
+using NSubstitute;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
+using Questionable.External;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
@@ -8,7 +10,14 @@ namespace Questionable.Tests.Steps;
 
 public sealed class FishTests
 {
-  private readonly Fish.Factory _factory = new();
+  private readonly IAutoHookIpc _autoHookIpc = Substitute.For<IAutoHookIpc>();
+  private readonly Fish.Factory _factory;
+
+  public FishTests()
+  {
+    _autoHookIpc.IsAvailable().Returns(true);
+    _factory = new Fish.Factory(_autoHookIpc);
+  }
 
   // --- helpers ---
 
@@ -29,6 +38,18 @@ public sealed class FishTests
       new() { ItemId = itemId, ItemCount = itemCount, Collectability = collectability };
 
   // --- CreateAllTasks ---
+
+  [Fact]
+  public void FishStep_WhenAutoHookUnavailable_CreatesNoTasks()
+  {
+    _autoHookIpc.IsAvailable().Returns(false);
+    var item = Item(4874, 3);
+    var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
+
+    var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
+
+    Assert.Empty(tasks);
+  }
 
   [Fact]
   public void NonFishStep_CreatesNoTasks()

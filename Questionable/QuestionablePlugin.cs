@@ -155,7 +155,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<NavmeshIpc>();
         serviceCollection.AddSingleton<LifestreamIpc>();
         serviceCollection.AddSingleton<ArtisanIpc>();
-        serviceCollection.AddSingleton<AutoHookIpc>();
+        serviceCollection.AddSingleton<IAutoHookIpc, AutoHookIpc>();
         serviceCollection.AddSingleton<QuestionableIpc>();
         serviceCollection.AddSingleton<TextAdvanceIpc>();
         serviceCollection.AddSingleton<NotificationMasterIpc>();

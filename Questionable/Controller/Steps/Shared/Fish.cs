@@ -3,6 +3,7 @@ using System.Linq;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
+using Questionable.Controller;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
 using Questionable.Data;
@@ -15,11 +16,14 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class Fish
 {
-  internal sealed class Factory : ITaskFactory
+  internal sealed class Factory(IAutoHookIpc autoHookIpc) : ITaskFactory
   {
     public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
     {
       if (step.InteractionType != EInteractionType.Fish)
+        yield break;
+
+      if (!autoHookIpc.IsAvailable())
         yield break;
 
       yield return new Mount.UnmountTask();
@@ -47,9 +51,11 @@ internal static class Fish
   }
 
   internal sealed class DoFish(
-      AutoHookIpc autoHookIpc,
+      IAutoHookIpc autoHookIpc,
       ICommandManager commandManager,
       GameFunctions gameFunctions,
+      IChatGui chatGui,
+      SendNotification.Executor sendNotificationExecutor,
       ILogger<DoFish> logger) : TaskExecutor<FishTask>, IStoppableTaskExecutor
   {
     private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
@@ -76,9 +82,12 @@ internal static class Fish
         var canEnableAutoHook = autoHookIpc.SetPluginEnabled(true);
         if (!canEnableAutoHook)
         {
-          // ?: If we can't enable AutoHook, how do we send a "manual intervention" notification to the player?
-          logger.LogWarning("Failed to enable AutoHook");
-          throw new TaskException("Failed to enable AutoHook");
+          const string errorText =
+              "AutoHook is required for fishing but could not be enabled. Please install or enable AutoHook.";
+          logger.LogWarning("{ErrorText}", errorText);
+          if (!sendNotificationExecutor.Start(new SendNotification.Task(EInteractionType.Fish, errorText)))
+            chatGui.PrintError(errorText, CommandHandler.MessageTag, CommandHandler.TagColor);
+          throw new TaskException(errorText);
         }
       }
 

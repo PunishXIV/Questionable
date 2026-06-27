@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
 namespace Questionable.External;
 
-internal sealed class AutoHookIpc
+internal sealed class AutoHookIpc : IAutoHookIpc
 {
   private readonly ILogger<AutoHookIpc> _logger;
 
@@ -40,6 +40,19 @@ internal sealed class AutoHookIpc
     _logger = logger;
     EzIPC.Init(this, "AutoHook", SafeWrapper.IPCException);
   }
+
+  /// <summary>
+  /// Whether the AutoHook plugin is installed and IPC is reachable.
+  /// Unlike <see cref="IsPluginEnabled"/>, this returns true when the plugin is installed but disabled.
+  /// </summary>
+  public bool IsAvailable() =>
+      IpcInvoke.SafeFunc(() =>
+      {
+        // Probe IPC only: IsPluginEnabled() would return false for an installed-but-disabled plugin,
+        // which DoFish handles by enabling AutoHook. We only need to know whether IPC succeeded.
+        _isPluginEnabled();
+        return true;
+      }, false, _logger, "AutoHook plugin is not available");
 
   /// <summary>
   /// Gets the AutoHook plugin state.
