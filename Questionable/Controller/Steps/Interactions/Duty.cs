@@ -26,10 +26,11 @@ internal static class Duty
 
             ArgumentNullException.ThrowIfNull(step.DutyOptions);
 
-            AutoDutyIpc.DutyMode dutyMode = quest.Id is QuestId { Value: >= 357 and <= 360 }
-                                            ? AutoDutyIpc.DutyMode.UnsyncRegular
-                                            : AutoDutyIpc.DutyMode.Support;
-            if (configuration.Duties.RunUnsynced)
+            bool allowUnsync = step.DutyOptions.CanUnsync is not false;
+            AutoDutyIpc.DutyMode dutyMode = AutoDutyIpc.DutyMode.Support;
+            if (allowUnsync && quest.Id is QuestId { Value: >= 357 and <= 360 })
+                dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
+            else if (allowUnsync && configuration.Duties.RunUnsynced)
             {
                 unsafe
                 {
@@ -48,7 +49,7 @@ internal static class Duty
                     yield return new OpenDutyFinderTask(step.DutyOptions.ContentFinderConditionId);
                 yield break;
             }
-            yield return new StartAutoDutyTask(step.DutyOptions.ContentFinderConditionId, dutyMode);
+            yield return new StartAutoDutyTask(step.DutyOptions.ContentFinderConditionId, dutyMode, allowUnsync);
             yield return new WaitAutoDutyTask(step.DutyOptions.ContentFinderConditionId);
 
             if (!QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
@@ -59,7 +60,8 @@ internal static class Duty
     internal sealed record StartAutoDutyTask
     (
         uint ContentFinderConditionId,
-        AutoDutyIpc.DutyMode DutyMode)
+        AutoDutyIpc.DutyMode DutyMode,
+        bool AllowUnsync = true)
         : ITask
     {
         public override string ToString() => $"StartAutoDuty({ContentFinderConditionId}, {DutyMode})";
@@ -116,13 +118,13 @@ internal static class Duty
 
                     return false;
                 }
-                if (configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel)
+                if (Task.AllowUnsync && configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel)
                 {
                     dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
             }
 
-            autoDutyIpc.StartInstance(Task.ContentFinderConditionId, Task.DutyMode);
+            autoDutyIpc.StartInstance(Task.ContentFinderConditionId, dutyMode);
             return true;
         }
     }
