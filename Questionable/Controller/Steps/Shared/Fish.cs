@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Plugin.Services;
@@ -153,7 +152,6 @@ internal static class Fish
       gameFunctions.UseAction(EAction.FSHQuit);
 
       // Clean up anonymous preset
-      // ?: This may delete other auto-generated presets. Is there a better way to make sure we're only deleting the one we created? Should we just leave it to prevent accidentally deleting others?
       autoHookIpc.DeleteAllAnonymousPresets();
 
       // Respect player's current settings. Set plugin to the state it was in at the start.
@@ -163,8 +161,6 @@ internal static class Fish
     }
   }
 
-  // Shamelessly stolen from Gather.cs
-  // ?: Should this be moved to a shared class?
   public static unsafe bool HasRequestedItem(GatheredItem? item)
   {
     if (item == null)
