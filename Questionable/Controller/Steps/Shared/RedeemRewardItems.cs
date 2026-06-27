@@ -96,35 +96,65 @@ internal static class RedeemRewardItems
         ICondition condition) : TaskExecutor<Task>
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
+
+        // Don't block the queue forever if we never reach a usable state (e.g. stuck in combat).
+        private static readonly TimeSpan GiveUpAfter = TimeSpan.FromSeconds(30);
+
+        private DateTime _giveUpAt;
         private DateTime _continueAt;
+        private bool _usedItem;
 
         protected override bool Start()
         {
-            if (condition[ConditionFlag.Mounted])
-                return false;
-
+            // A coffer needs a free inventory slot. If there's none we can't open it, so skip.
             if (Task.ItemReward.Type is EItemRewardType.Coffer && GameFunctions.GetFreeInventorySlots() < 1)
                 return false;
 
-            TimeSpan castTime = Task.ItemReward.CastTime;
-            if (castTime < MinimumCastTime)
-                castTime = MinimumCastTime;
-
-            _continueAt = DateTime.Now
-                .Add(castTime)
-                .AddSeconds(3);
-            return gameFunctions.UseItem(Task.ItemReward.ItemId);
+            _giveUpAt = DateTime.Now.Add(GiveUpAfter);
+            return true;
         }
 
         public override ETaskResult Update()
         {
-            if (Task.ItemReward.Type is EItemRewardType.Coffer && GameFunctions.GetFreeInventorySlots() < 1)
+            if (!_usedItem)
+            {
+                if (DateTime.Now > _giveUpAt)
+                    return ETaskResult.TaskComplete;
+
+                // Wait until the character can actually use an item (not mounted, in combat,
+                // casting, animation-locked, between areas, ...) before trying to redeem.
+                if (!IsReadyToUseItem())
+                    return ETaskResult.StillRunning;
+
+                if (!gameFunctions.UseItem(Task.ItemReward.ItemId))
+                    return ETaskResult.StillRunning;
+
+                TimeSpan castTime = Task.ItemReward.CastTime;
+                if (castTime < MinimumCastTime)
+                    castTime = MinimumCastTime;
+
+                _usedItem = true;
+                _continueAt = DateTime.Now
+                    .Add(castTime)
+                    .AddSeconds(3);
                 return ETaskResult.StillRunning;
+            }
 
             if (condition[ConditionFlag.Casting])
                 return ETaskResult.StillRunning;
 
             return DateTime.Now <= _continueAt ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
+        }
+
+        private bool IsReadyToUseItem()
+        {
+            if (condition[ConditionFlag.Mounted])
+                return false;
+
+            if (condition[ConditionFlag.InCombat])
+                return false;
+
+            return !gameFunctions.IsOccupied();
         }
 
         public override bool ShouldInterruptOnDamage() => true;
