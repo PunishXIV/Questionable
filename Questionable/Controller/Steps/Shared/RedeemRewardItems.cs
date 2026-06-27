@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -83,7 +82,7 @@ internal static class RedeemRewardItems
             }
         }
 
-        return tasks.Count != 0 ? tasks.Prepend(new Mount.UnmountTask()).ToList() : tasks;
+        return tasks.Count != 0 ? [new Mount.UnmountTask(), ..tasks] : tasks;
     }
 
     internal sealed record Task(ItemReward ItemReward) : ITask
