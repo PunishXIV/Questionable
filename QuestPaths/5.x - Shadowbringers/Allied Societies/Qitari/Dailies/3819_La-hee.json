@@ -7,40 +7,15 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 788.3238,
-            "Y": -45.827454,
-            "Z": -217.43317
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 787.0145,
-                  "Y": -45.82774,
-                  "Z": -218.555
-                },
-                "TerritoryId": 817,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1032643,
           "Position": {
-            "X": 787.0145,
-            "Y": -45.82774,
-            "Z": -218.555
+            "X": 788.5046,
+            "Y": -45.827076,
+            "Z": -216.96419
           },
           "TerritoryId": 817,
           "InteractionType": "AcceptQuest",
+          "StopDistance": 1,
           "AetheryteShortcut":"Rak'tika - Fanow",
           "Fly": true
         }
@@ -69,41 +44,15 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 788.3238,
-            "Y": -45.827454,
-            "Z": -217.43317
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 787.0145,
-                  "Y": -45.82774,
-                  "Z": -218.555
-                },
-                "TerritoryId": 817,
-                "MaximumDistance": 30
-              }
-            }
-          }
-        },
-        {
           "DataId": 1032643,
           "Position": {
-            "X": 787.0145,
-            "Y": -45.82774,
-            "Z": -218.555
+            "X": 788.5046,
+            "Y": -45.827076,
+            "Z": -216.96419
           },
-          "StopDistance": 7,
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
+          "StopDistance": 1,
           "AetheryteShortcut":"Rak'tika - Fanow",
           "Fly": true
         }

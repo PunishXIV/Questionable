@@ -1661,6 +1661,11 @@
                     "type": "boolean",
                     "description": "Indicates that this dungeon is included in the 'Skip certain optional dungeons and raids' option"
                   },
+                  "CanUnsync": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "When false, Questionable will not run this duty unsynced even if 'Run content unsynced where safe' is enabled"
+                  },
                   "$": {
                     "type": "string"
                   }

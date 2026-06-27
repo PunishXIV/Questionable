@@ -1,0 +1,180 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058167,
+          "Position": {
+            "X": 88.4894,
+            "Y": -14,
+            "Z": 56.6943
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058521,
+          "Position": {
+            "X": 350.145,
+            "Y": 50.75,
+            "Z": 202.991
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGSF202_05461_Q1_000_000",
+              "Answer": "TEXT_KINGSF202_05461_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2015255,
+          "Position": {
+            "X": 350.841,
+            "Y": 50.75,
+            "Z": 201.006
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058532,
+          "Position": {
+            "X": -115.373535,
+            "Y": 1.8801382e-5,
+            "Z": -25.711487
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Nexus Arcade"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
+        },
+        {
+          "DataId": 1058530,
+          "Position": {
+            "X": -381.67395,
+            "Y": 14.029999,
+            "Z": 123.33862
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Nexus Arcade",
+            "[Solution Nine] Residential Sector"
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
+        },
+        {
+          "DataId": 1058531,
+          "Position": {
+            "X": -365.59094,
+            "Y": 14.030003,
+            "Z": 143.8468
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1058519,
+          "Position": {
+            "X": 350.41006,
+            "Y": 50.75,
+            "Z": 201.337
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Residential Sector",
+            "[Solution Nine] Neon Stein"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1058519,
+          "Position": {
+            "X": 350.41006,
+            "Y": 50.75,
+            "Z": 201.337
+          },
+          "StopDistance": 1,
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGSF202_05461_Q3_000_000",
+              "Answer": "TEXT_KINGSF202_05461_A3_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058167,
+          "Position": {
+            "X": 88.4894,
+            "Y": -14,
+            "Z": 56.6943
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

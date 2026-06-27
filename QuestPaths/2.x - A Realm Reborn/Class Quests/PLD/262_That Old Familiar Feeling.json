@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
+  "Author": ["Cacahuetes","ShermTank"],
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-06-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -35,6 +35,141 @@
       "Sequence": 1,
       "Steps": [
         {
+          "$": "Aethernet - Gladiator to Central Thanalan",
+          "TerritoryId": 131,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
+              "InTerritory": [
+                141,
+                130
+              ]
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
+              "InTerritory": [
+                141,
+                130
+              ]
+            }
+          }
+        },
+        {
+          "$": "Aethernet - Ul'dah to Central Thanalan (if you left ul'dah after this step)",
+          "TerritoryId": 130,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
+              "InTerritory": [
+                141,
+                131
+              ]
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
+              "InTerritory": [
+                141,
+                131
+              ]
+            }
+          }
+        },
+        {
+          "$": "Unlock Central Thanalan Taxi Stand",
+          "DataId": 1001607,
+          "Position": {
+            "X": -2.7314453,
+            "Y": -2.055717,
+            "Z": -158.52606
+          },
+          "TerritoryId": 141,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179662,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
+            }
+          }
+        },
+        {
+          "$": "Attune to Central Thanalan Aetheryte",
+          "TerritoryId": 141,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
+            }
+          }
+        },
+        {
+          "$": "Walk To Eastern Thanalan. Should teleport to Black Brush and skip preceding steps if Black Brush unlocked",
+          "Position": {
+            "X": 454.0109,
+            "Y": -17.999832,
+            "Z": -183.1808
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 145,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone",
+              "InTerritory": [
+                145,
+                141
+              ]
+            },
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone",
+              "InTerritory": [
+                130
+              ]
+            }
+          }
+        },
+        {
+          "$": "Unlock Camp Drybone Taxi",
+          "DataId": 1003935,
+          "Position": {
+            "X": -423.2395,
+            "Y": -39.060455,
+            "Z": 112.2301
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179663,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone"
+            }
+          }
+        },
+        {
+          "$": "Attune to Camp Drybone Aetheryte",
+          "TerritoryId": 145,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Eastern Thanalan - Camp Drybone",
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone"
+            }
+          }
+        },
+        {
+          "$": "All preceding steps should be skipped if you have Black Brush and Camp Drybone aetherytes unlocked",
           "DataId": 1004224,
           "Position": {
             "X": -220.93542,
@@ -43,11 +178,15 @@
           },
           "TerritoryId": 145,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1244
-          ]
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
         }
       ]
     },

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -74,6 +75,29 @@ internal sealed class StopConditionComponent : ConfigComponent
         if (!tab)
             return;
 
+        bool runCommand = Configuration.Stop.RunCommandAfterStop;
+        if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
+        {
+            Configuration.Stop.RunCommandAfterStop = runCommand;
+            Save();
+        }
+        ImGui.SameLine();
+        ImGui.TextColored(ImGuiColors.DalamudRed, _L("Experimental feature"));
+        string command = Configuration.Stop.CommandAfterStop;
+        if (ImGui.InputText(_L("Command"), ref command, 128))
+        {
+            Configuration.Stop.CommandAfterStop = command;
+            Save();
+        }
+        if (ImGui.IsItemDeactivatedAfterEdit())
+        {
+            if (string.IsNullOrWhiteSpace(Configuration.Stop.CommandAfterStop))
+                Configuration.Stop.CommandAfterStop = "/li auto";
+            Save();
+        }
+
+        ImGui.Separator();
+
         bool enabled = Configuration.Stop.Enabled;
         if (ImGui.Checkbox(_L("Stop Questionable when any of the conditions below are met"), ref enabled))
         {
@@ -113,7 +137,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                     if (currentLevel > 0)
                     {
                         ImGui.SameLine();
-                        ImGui.TextDisabled(_LF("(Current: {0})",currentLevel));
+                        ImGui.TextDisabled(_LF("(Current: {0})", currentLevel));
                     }
                 }
             }

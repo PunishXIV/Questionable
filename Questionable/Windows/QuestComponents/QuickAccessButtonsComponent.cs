@@ -156,9 +156,10 @@ internal sealed class QuickAccessButtonsComponent
                     } },
                     { "Configuration", config },
                     { "CompletedQuests", questCompletions.Count },
-                    { "QuestProgress", new Dictionary<string,object?>(){
+                    { "Quest", new Dictionary<string,object?>(){
                         { "ToString", questProgress?.ToString() },
-                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" }
+                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" },
+                        { "Source", questProgress?.Quest.Source }
                     }},
                     { "Character", new Dictionary<string,object>{
                         { "ClassJob", (EExtendedClassJob?)player.ClassJob.RowId },

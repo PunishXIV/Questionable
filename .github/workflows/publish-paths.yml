@@ -123,6 +123,41 @@ jobs:
           prerelease: ${{ steps.channel.outputs.channel == 'testing' }}
           make_latest: false
 
+      - name: Collect changed path files
+        id: changes
+        run: |
+          # List files changed in this push that live under QuestPaths/ or GatheringPaths/.
+          # For a normal push, github.event.before points at the previous tip; for the first
+          # push to a branch (or workflow_dispatch) it can be all-zeros, so fall back to HEAD~1.
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE=$(git rev-parse HEAD~1 2>/dev/null || echo "")
+          fi
+
+          if [ -n "$BEFORE" ]; then
+            FILES=$(git diff --name-only "$BEFORE" HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+          else
+            FILES=$(git diff-tree --no-commit-id --name-only -r HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+          fi
+
+          # Cap the list so the Discord message stays under the 2000-char limit.
+          MAX=25
+          TOTAL=$(printf '%s\n' "$FILES" | sed '/^$/d' | wc -l)
+          BULLETS=$(printf '%s\n' "$FILES" | sed '/^$/d' | head -n $MAX | sed 's|.*/||; s|^|- |')
+          if [ "$TOTAL" -gt "$MAX" ]; then
+            REMAINING=$((TOTAL - MAX))
+            BULLETS="${BULLETS}"$'\n'"- …and ${REMAINING} more"
+          fi
+
+          {
+            echo "files<<CHANGED_EOF"
+            echo "$BULLETS"
+            echo "CHANGED_EOF"
+          } >> $GITHUB_OUTPUT
+
+          echo "Changed path files ($TOTAL):"
+          echo "$BULLETS"
+
       - name: Github Releases To Discord
         if: steps.channel.outputs.channel == 'latest'
         uses: cstuder/apprise-ga@master
@@ -130,4 +165,8 @@ jobs:
           APPRISE_URL: "${{ secrets.APPRISE_URL }}&url=https://github.com/PunishXIV/Questionable/releases/tag/paths-${{ steps.channel.outputs.channel }}"
         with:
           title: Questionable Paths v${{ steps.meta.outputs.data_version }}
-          message: New path data bundle has been released. This will be automatically downloaded by the plugin, or you can click "Check for path updates now" in Settings>Advanced.
+          message: |
+            New path data bundle has been released. This will be automatically downloaded by the plugin, or you can click "Check for path updates now" in Settings>Advanced.
+
+            Changed files:
+            ${{ steps.changes.outputs.files }}

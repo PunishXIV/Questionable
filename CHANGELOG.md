@@ -1,1 +1,3 @@
-- Bug fix: avoid overriding aethernet shortcuts if they're set -alydev
+- Feature: We can now exclude duties from the "run content unsynced" option if they cannot be done unsync -Kage, alydev
+- Feature: QST now opens coffers and redeems items automatically. Please report any issues. -Kage, alydev
+  - condition check -Kage

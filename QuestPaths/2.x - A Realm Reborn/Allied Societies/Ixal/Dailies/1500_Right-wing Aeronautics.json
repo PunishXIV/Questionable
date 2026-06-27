@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-06-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -26,12 +26,13 @@
         {
           "DataId": 2004478,
           "Position": {
-            "X": -108.293274,
-            "Y": -7.2786255,
-            "Z": -51.377197
+            "X": -110.37935,
+            "Y": -8.690763,
+            "Z": -51.6336
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
+          "StopDistance": 1,
           "Fly": true,
           "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,2]
@@ -39,9 +40,9 @@
         {
           "DataId": 2004475,
           "Position": {
-            "X": -91.44739,
-            "Y": -5.2644043,
-            "Z": -100.93848
+            "X": -91.82432,
+            "Y": -6.6463394,
+            "Z": -100.43537
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
@@ -50,9 +51,9 @@
         {
           "DataId": 2004476,
           "Position": {
-            "X": -123.91852,
-            "Y": -7.736328,
-            "Z": -118.24219
+            "X": -123.877426,
+            "Y": -9.0575075,
+            "Z": -117.67875
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
