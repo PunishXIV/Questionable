@@ -1,16 +1,32 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
+using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using Lumina.Excel.Sheets;
 using Questionable.PathData;
+using Questionable.Utils;
+using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
-internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration, PathDataUpdater pathDataUpdater) : ConfigComponent(pluginInterface, configuration)
+internal sealed class DebugConfigComponent
+(
+    IDalamudPluginInterface pluginInterface,
+    Configuration configuration,
+    PathDataUpdater pathDataUpdater,
+    IDataManager dataManager) : ConfigComponent(pluginInterface, configuration)
 {
+    private readonly ItemBlacklistSelector _itemBlacklistSelector = new(dataManager);
+    private uint? _itemToRemove;
+
     public override void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Advanced") + "###Debug");
@@ -140,6 +156,89 @@ internal sealed class DebugConfigComponent(IDalamudPluginInterface pluginInterfa
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC)."));
+        }
+
+        ImGui.Separator();
+
+        if (ImGui.CollapsingHeader(_L("Reward item redemption")))
+        {
+            using (ImRaii.PushIndent())
+            {
+                bool autoRedeemRewardItems = Configuration.Advanced.AutoRedeemRewardItems;
+                if (ImGui.Checkbox(_L("Automatically open redeemable items (coffers, minions, emotes, etc.)"),
+                        ref autoRedeemRewardItems))
+                {
+                    Configuration.Advanced.AutoRedeemRewardItems = autoRedeemRewardItems;
+                    Save();
+                }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L(
+                    "After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself."));
+
+                using (ImRaii.Disabled(!autoRedeemRewardItems))
+                {
+                    using (ImRaii.PushIndent())
+                    {
+                        ImGui.TextWrapped(_L(
+                            "Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed."));
+
+                        HashSet<uint> blacklist = Configuration.Advanced.AutoRedeemItemBlacklist;
+                        _itemBlacklistSelector.ItemSelected = itemId =>
+                        {
+                            if (blacklist.Add(itemId))
+                                Save();
+                        };
+                        _itemBlacklistSelector.DrawSelection(blacklist);
+
+                        if (blacklist.Count > 0)
+                        {
+                            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+                            {
+                                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
+                                {
+                                    blacklist.Clear();
+                                    Save();
+                                }
+                            }
+
+                            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                                ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+
+                            ImGui.Separator();
+                        }
+
+                        foreach (uint itemId in blacklist.OrderBy(x => x))
+                        {
+                            using (ImRaii.PushId($"BlacklistItem{itemId}"))
+                            {
+                                string name = dataManager.GetExcelSheet<Item>()?.GetRowOrDefault(itemId)?.Name.ToString()
+                                              ?? itemId.ToString(CultureInfo.InvariantCulture);
+                                ImGui.AlignTextToFramePadding();
+                                ImGui.Text($"{name} ({itemId})");
+
+                                using (ImRaii.PushFont(UiBuilder.IconFont))
+                                {
+                                    ImGui.SameLine(ImGui.GetContentRegionAvail().X +
+                                                   ImGui.GetStyle().WindowPadding.X -
+                                                   ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
+                                                   ImGui.GetStyle().FramePadding.X * 2);
+                                }
+
+                                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
+                                    _itemToRemove = itemId;
+                            }
+                        }
+
+                        if (_itemToRemove is uint removeId)
+                        {
+                            blacklist.Remove(removeId);
+                            _itemToRemove = null;
+                            Save();
+                        }
+                    }
+                }
+            }
         }
 
         ImGui.Separator();
