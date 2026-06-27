@@ -1910,7 +1910,7 @@
             "properties": {
               "ItemsToGather": {
                 "type": "array",
-                "description": "Unlike crafting steps, which will always craft a single item id regardless of class, this allows for gathering different items depending on whether you've picked the quest up as miner or botanist",
+                "description": "The items to gather from the fishing spot.",
                 "items": {
                   "type": "object",
                   "properties": {
@@ -1934,9 +1934,17 @@
                 }
               }
             },
-            "required": [
-              "ItemsToGather"
-            ]
+            "if": {
+              "required": [
+                "CompletionQuestVariablesFlags"
+              ]
+            },
+            "then": {},
+            "else": {
+              "required": [
+                "ItemsToGather"
+              ]
+            }
           }
         },
         {

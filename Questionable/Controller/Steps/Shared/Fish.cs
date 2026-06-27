@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.External;
 using Questionable.Functions;
@@ -19,32 +21,53 @@ internal static class Fish
     public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
     {
       if (step.InteractionType != EInteractionType.Fish)
-        return [];
+        yield break;
 
-      return [
-        new Mount.UnmountTask(),
-        .. step.ItemsToGather.Select(x => new FishTask(quest, x))
-      ];
+      yield return new Mount.UnmountTask();
+
+      // Ensure we have at least one fish task. Quests that need key items (e.g. And Thanks for All the Fish) do not have itemIds and so will have no requested items.
+      yield return new FishTask(quest, step.ItemsToGather.FirstOrDefault(), step.CompletionQuestVariablesFlags);
+
+      // Create additional fish tasks for any additional items.
+      foreach (GatheredItem item in step.ItemsToGather.Skip(1))
+        yield return new FishTask(quest, item, step.CompletionQuestVariablesFlags);
     }
   }
 
   internal sealed record FishTask
   (
       Quest Quest,
-      GatheredItem GatheredItem) : ITask
+      GatheredItem? GatheredItem,
+      IList<QuestWorkValue?> CompletionQuestVariablesFlags) : ITask
   {
-    public override string ToString() => $"Fish({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
+    public bool HasCompletionQuestVariablesFlags { get; } =
+        QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
+
+    public override string ToString() =>
+        $"Fish{(HasCompletionQuestVariablesFlags ? "*" : "")}{(GatheredItem != null ? $"({GatheredItem.ItemCount}x {GatheredItem.ItemId})" : "")}";
   }
 
-  internal sealed class DoFish(AutoHookIpc autoHookIpc, ICommandManager commandManager, GameFunctions gameFunctions, ILogger<DoFish> logger) : TaskExecutor<FishTask>
+  internal sealed class DoFish(
+      AutoHookIpc autoHookIpc,
+      ICommandManager commandManager,
+      GameFunctions gameFunctions,
+      ILogger<DoFish> logger) : TaskExecutor<FishTask>, IStoppableTaskExecutor
   {
     private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
+    private bool _started;
+    private bool _cleanupDone;
 
     protected override bool Start()
     {
-      if (HasRequestedItems())
+      if (HasRequestedItem(Task.GatheredItem))
       {
-        logger.LogInformation($"Already have {Task.GatheredItem.ItemCount}x {Task.GatheredItem.ItemId} in inventory", Task.GatheredItem.ItemCount, Task.GatheredItem.ItemId);
+        logger.LogInformation($"Already have {Task.GatheredItem!.ItemCount}x {Task.GatheredItem.ItemId} in inventory", Task.GatheredItem.ItemCount, Task.GatheredItem.ItemId);
+        return false;
+      }
+
+      if (HasMatchingCompletionQuestWork())
+      {
+        logger.LogInformation("Quest variables already match, skipping fish task.");
         return false;
       }
 
@@ -55,16 +78,17 @@ internal static class Fish
         if (!canEnableAutoHook)
         {
           // ?: If we can't enable AutoHook, how do we send a "manual intervention" notification to the player?
-          return false;
+          logger.LogWarning("Failed to enable AutoHook");
+          throw new TaskException("Failed to enable AutoHook");
         }
       }
 
-      logger.LogInformation("Starting fish task for quest {QuestId}. ItemId: {ItemId}, ItemCount: {ItemCount}", Task.Quest.Id, Task.GatheredItem.ItemId, Task.GatheredItem.ItemCount);
+      logger.LogDebug("Starting fish task for quest {QuestId}.", Task.Quest.Id);
 
       if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
       {
-        logger.LogInformation("No fishing preset found for quest {QuestId}", Task.Quest.Id);
-        return false;
+        logger.LogWarning("No fishing preset found for quest {QuestId}", Task.Quest.Id);
+        throw new TaskException($"No fishing preset found for quest {Task.Quest.Id}");
       }
 
       // Using an anonymouse preset allows us to easily remove it later.
@@ -73,44 +97,84 @@ internal static class Fish
 
       // Start fishing via command
       // Native command: gameFunctions.UseAction(EAction.FSHCast);
-      logger.LogInformation("Starting fishing via command");
+      logger.LogDebug("Starting fishing");
       commandManager.ProcessCommand("/ahstart");
 
+      _started = true;
       return true;
     }
 
     public override ETaskResult Update()
     {
-      if (HasRequestedItems())
+      if (HasRequestedItem(Task.GatheredItem))
       {
-        gameFunctions.UseAction(EAction.FSHQuit);
+        logger.LogDebug("Requested item collected. Completing task.");
+        Cleanup();
+        return ETaskResult.TaskComplete;
+      }
 
-        // Clean up anonymous preset
-        autoHookIpc.DeleteAllAnonymousPresets();
-
-        // Respect player's current settings. Set plugin to the state it was in at the start.
-        autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
-
+      if (HasMatchingCompletionQuestWork())
+      {
+        logger.LogDebug("Quest variables match. Completing task.");
+        Cleanup();
         return ETaskResult.TaskComplete;
       }
 
       return ETaskResult.StillRunning;
     }
 
+    public void StopNow()
+    {
+      if (_started)
+        Cleanup();
+    }
+
     // we're on a gathering class, so combat doesn't make much sense (we also can't change classes in combat...)
     public override bool ShouldInterruptOnDamage() => false;
 
-    // Shamelessly stolen from Gather.cs
-    // ?: Should this be moved to a shared class?
-    // ?: Should we try to integrate fishing more closely with gathering? I think they are distinct enough due to the other gathering jobs relying on GatheringPoints. Making them optional for just fishing would be a pain.
-    public unsafe bool HasRequestedItems()
+    private bool HasMatchingCompletionQuestWork()
     {
-      InventoryManager* inventoryManager = InventoryManager.Instance();
-      if (inventoryManager == null)
+      if (!Task.HasCompletionQuestVariablesFlags)
         return false;
 
-      return inventoryManager->GetInventoryItemCount(Task.GatheredItem.ItemId,
-          minCollectability: (short)Task.GatheredItem.Collectability) >= Task.GatheredItem.ItemCount;
+      QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
+      return questWork != null &&
+             QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork);
     }
+
+    private void Cleanup()
+    {
+      if (_cleanupDone)
+        return;
+
+      logger.LogDebug("Cleaning up fish task.");
+
+      // Make sure we're not fishing anymore.
+      gameFunctions.UseAction(EAction.FSHQuit);
+
+      // Clean up anonymous preset
+      // ?: This may delete other auto-generated presets. Is there a better way to make sure we're only deleting the one we created? Should we just leave it to prevent accidentally deleting others?
+      autoHookIpc.DeleteAllAnonymousPresets();
+
+      // Respect player's current settings. Set plugin to the state it was in at the start.
+      autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
+
+      _cleanupDone = true;
+    }
+  }
+
+  // Shamelessly stolen from Gather.cs
+  // ?: Should this be moved to a shared class?
+  public static unsafe bool HasRequestedItem(GatheredItem? item)
+  {
+    if (item == null)
+      return false;
+
+    InventoryManager* inventoryManager = InventoryManager.Instance();
+    if (inventoryManager == null)
+      return false;
+
+    return inventoryManager->GetInventoryItemCount(item.ItemId,
+        minCollectability: (short)item.Collectability) >= item.ItemCount;
   }
 }
