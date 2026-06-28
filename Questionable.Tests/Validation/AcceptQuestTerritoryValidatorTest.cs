@@ -21,6 +21,7 @@ public sealed class AcceptQuestTerritoryValidatorTest
     private const uint NoAetheryteTerritory = 399;
 
     // Some territories have no aetheryte, but must have custom recovery steps leading up to an AcceptQuest step.
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "MemberData must reference a public member")]
     public static TheoryData<uint, uint> RecoveryTerritoryData = new()
     {
         { 212, 140 }, // Waking Sands acceptquest must have Western Thanalan recovery

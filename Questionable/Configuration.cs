@@ -295,6 +295,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool OpenEditor { get; set; }
         public bool NamazuPreferCraft { get; set; }
         public bool Debug { get; set; }
+        public bool DebugLocalisation { get; set; }
     }
 
     internal sealed class PriorityConfiguration
