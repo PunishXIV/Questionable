@@ -86,6 +86,7 @@
       "Steps": [
         {
           "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Position": {
             "X": 176.34221,
             "Y": -1.1806471,
@@ -93,7 +94,14 @@
           },
           "TerritoryId": 146,
           "Fly": true,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                146
+              ]
+            }
+          }
         },
         {
           "Comment": "Fish for 1x Desert Catfish",
