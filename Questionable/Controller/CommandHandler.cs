@@ -254,6 +254,7 @@ internal sealed class CommandHandler : IDisposable
 
             case "@debugmode":
                 _configuration.Advanced.Debug = !_configuration.Advanced.Debug;
+                _configuration.Save();
                 break;
 
             case "rewards":
@@ -378,6 +379,12 @@ internal sealed class CommandHandler : IDisposable
                     _chatGui.Print(_LF("Active festivals: {0}", string.Join(", ", activeFestivals)), MessageTag, TagColor);
                 }
 
+                break;
+
+            case "loc":
+                _configuration.Advanced.DebugLocalisation = !_configuration.Advanced.DebugLocalisation;
+                _configuration.Save();
+                _chatGui.Print(_L("This setting takes effect after the plugin is reloaded."));
                 break;
         }
     }
