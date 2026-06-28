@@ -60,7 +60,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
           "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "KillEnemyDataIds": [2220, 2221],
+          "KillEnemyDataIds": [2220, 2221, 2222],
           "Fly": true,
           "Land": true
         }
@@ -78,7 +78,7 @@
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "KillEnemyDataIds": [2220, 2221],
+          "KillEnemyDataIds": [2220, 2221, 2222],
           "Fly": true,
           "Land": true
         }
