@@ -34,6 +34,40 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Comment": "Buy 99 Pill Bug from vendor at\nLimsa Lominsa Lower Decks 6.3, 12.0",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2587,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
           "$": "This first move is necessary to ensure the player is facing toward the water when we begin fishing.",
           "Comment": "Move to fishing spot",
           "Position": {
@@ -45,7 +79,7 @@
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Hawkers' Alley",
             "[Limsa Lominsa] Fishermen's Guild"
           ],
           "SkipConditions": {
