@@ -214,6 +214,41 @@
       "Sequence": 9,
       "Steps": [
         {
+          "$": "Walk to Outer La Noscea if you haven't unlocked the aetheryte",
+          "Position": {
+            "X": 285.82883,
+            "Y": 42.26685,
+            "Z": -203.32939
+          },
+          "TerritoryId": 139,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 180,
+          "Fly": true,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [180],
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [139,180]
+            }
+          }
+        },
+        {
+          "$": "Attune to Camp Overlook if you haven't unlocked the aetheryte",
+          "TerritoryId": 180,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Outer La Noscea - Camp Overlook",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [180],
+              "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
+            }
+          }
+        },
+        {
           "DataId": 1010574,
           "Position": {
             "X": -76.98181,
@@ -224,7 +259,6 @@
           "InteractionType": "Combat",
           "KillEnemyDataIds": [3572],
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
             "AetheryteShortcutIf": { "InSameTerritory": true }
           }
