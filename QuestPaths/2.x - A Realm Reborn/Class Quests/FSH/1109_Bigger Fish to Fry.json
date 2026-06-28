@@ -101,12 +101,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "Comment": "Switch to Fisher job",
-          "TerritoryId": 129,
-          "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher"
-        },
-        {
           "Comment": "Fish for 3x Harbor Herring",
           "TerritoryId": 129,
           "InteractionType": "Fish",

@@ -126,12 +126,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "Comment": "Switch to Fisher job",
-          "TerritoryId": 135,
-          "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher"
-        },
-        {
           "Comment": "Fish for 5x Navigator's Dagger",
           "TerritoryId": 135,
           "InteractionType": "Fish",

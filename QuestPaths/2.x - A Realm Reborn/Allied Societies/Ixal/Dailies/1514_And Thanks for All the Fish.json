@@ -27,11 +27,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher",
-          "TerritoryId": 154
-        },
-        {
           "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
           "DataId": 1000718,
           "Position": {

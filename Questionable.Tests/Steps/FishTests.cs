@@ -1,3 +1,4 @@
+using ECommons.ExcelServices;
 using NSubstitute;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
@@ -63,17 +64,18 @@ public sealed class FishTests
   }
 
   [Fact]
-  public void FishStep_WithSingleItem_CreatesUnmountAndFishTask()
+  public void FishStep_WithSingleItem_CreatesUnmountSwitchAndFishTask()
   {
     var item = Item(4874, 3);
     var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
 
     var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-    Assert.Equal(2, tasks.Count);
+    Assert.Equal(3, tasks.Count);
     Assert.IsType<Mount.UnmountTask>(tasks[0]);
+    Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
 
-    var fishTask = Assert.IsType<Fish.FishTask>(tasks[1]);
+    var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
     Assert.Same(quest, fishTask.Quest);
     Assert.Same(item, fishTask.GatheredItem);
     Assert.False(fishTask.HasCompletionQuestVariablesFlags);
@@ -92,10 +94,11 @@ public sealed class FishTests
 
     var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-    Assert.Equal(4, tasks.Count);
+    Assert.Equal(5, tasks.Count);
     Assert.IsType<Mount.UnmountTask>(tasks[0]);
+    Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
 
-    var fishTasks = tasks.Skip(1).Cast<Fish.FishTask>().ToList();
+    var fishTasks = tasks.Skip(2).Cast<Fish.FishTask>().ToList();
     Assert.Equal(3, fishTasks.Count);
     Assert.Same(firstItem, fishTasks[0].GatheredItem);
     Assert.Same(secondItem, fishTasks[1].GatheredItem);
@@ -114,10 +117,11 @@ public sealed class FishTests
 
     var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-    Assert.Equal(2, tasks.Count);
+    Assert.Equal(3, tasks.Count);
     Assert.IsType<Mount.UnmountTask>(tasks[0]);
+    Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
 
-    var fishTask = Assert.IsType<Fish.FishTask>(tasks[1]);
+    var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
     Assert.Same(quest, fishTask.Quest);
     Assert.Null(fishTask.GatheredItem);
     Assert.True(fishTask.HasCompletionQuestVariablesFlags);
