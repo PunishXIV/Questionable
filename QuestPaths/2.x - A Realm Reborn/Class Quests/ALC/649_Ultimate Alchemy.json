@@ -36,7 +36,7 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
+          "TerritoryId": 131,
           "ItemId": 4607,
           "ItemCount": 1,
           "SkipConditions": {
@@ -49,7 +49,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
+          "TerritoryId": 131,
           "ItemId": 4608,
           "ItemCount": 1,
           "SkipConditions": {
@@ -62,7 +62,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
+          "TerritoryId": 131,
           "ItemId": 4606,
           "ItemCount": 1,
           "SkipConditions": {
