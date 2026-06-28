@@ -1,1 +1,1 @@
-- Feature: Change to debug mode text view -alydev
+- Bug fix: don't show negative date differences on lastchecked -alydev
