@@ -1,0 +1,180 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Speak with Chuchuroon",
+          "DataId": 1003516,
+          "Position": {
+            "X": -185.837,
+            "Y": 4,
+            "Z": 169.625
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Speak with Sisipu",
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Speak with Wawalago",
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.10797,
+            "Y": 4.0709944,
+            "Z": 202.71606
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2591,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "Position": {
+            "X": 172.00658,
+            "Y": 14.095907,
+            "Z": 683.26416
+          },
+          "TerritoryId": 135,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Switch to Fisher job",
+          "TerritoryId": 135,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Fisher"
+        },
+        {
+          "Comment": "Fish for 5x Navigator's Dagger",
+          "TerritoryId": 135,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 4882,
+              "ItemCount": 5
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver Navigator's Daggers to Chuchuroon",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "DataId": 1003516,
+          "Position": {
+            "X": -185.837,
+            "Y": 4,
+            "Z": 169.625
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1112
+        }
+      ]
+    }
+  ]
+}
