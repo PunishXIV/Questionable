@@ -397,7 +397,7 @@ internal static class AetheryteShortcut
                 }
             }
 
-            if (gameFunctions.HasStatus(404) || gameFunctions.HasStatus(4376)) // Transporting
+            if (gameFunctions.HasCharacterStatusPreventingMountOrSprint()) // Transporting
             {
                 logger.LogInformation("Skipping aetheryte teleport, character is busy.");
                 return true;
