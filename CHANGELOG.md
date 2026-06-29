@@ -1,1 +1,1 @@
-- Bug fix: don't show negative date differences on lastchecked -alydev
+- Bug fix: ignore incorrect TerritoryId when calculating AetheryteShortcut if we're doing a UseItem -alydev
