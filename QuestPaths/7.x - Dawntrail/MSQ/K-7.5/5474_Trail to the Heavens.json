@@ -30,7 +30,6 @@
           "TerritoryId": 156,
           "InteractionType": "Interact",
           "TargetTerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InTerritory": [
