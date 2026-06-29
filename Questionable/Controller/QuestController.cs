@@ -1050,8 +1050,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return;
         }
 
-        _logger.LogInformation("Retrying current step for quest {QuestId} (sequence {Sequence}, step {Step})",
-            CurrentQuest.Quest.Id, CurrentQuest.Sequence, CurrentQuest.Step);
+        _logger.LogInformation("Retrying current step [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
         CheckNextTasks("RetryStep");
     }
 
@@ -1143,7 +1143,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to create tasks");
+            _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
             _chatGui.PrintError("Failed to start next task sequence, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
             Stop("Tasks failed to create");
         }
