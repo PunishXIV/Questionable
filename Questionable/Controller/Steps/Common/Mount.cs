@@ -45,19 +45,24 @@ internal static class Mount
         public unsafe MountResult EvaluateMountState(MountTask task, bool dryRun, ref DateTime retryAt)
         {
             if (condition[ConditionFlag.Mounted])
+            {
+                logger.LogDebug("Returning 'DontMount'");
                 return MountResult.DontMount;
+            }
 
-            LogLevel logLevel = dryRun ? LogLevel.None : LogLevel.Information;
+            LogLevel logLevel = dryRun ? LogLevel.Trace : LogLevel.Information;
 
             if (!territoryData.CanUseMount(task.TerritoryId))
             {
                 logger.Log(logLevel, "Can't use mount in current territory {Id}", task.TerritoryId);
+                logger.LogDebug("Returning 'DontMount'");
                 return MountResult.DontMount;
             }
 
             if (gameFunctions.HasStatusPreventingMount())
             {
                 logger.Log(logLevel, "Can't mount due to status preventing sprint or mount");
+                logger.LogDebug("Returning 'DontMount'");
                 return MountResult.DontMount;
             }
 
@@ -68,6 +73,7 @@ internal static class Mount
                 if (task.TerritoryId == clientState.TerritoryType && distance < 50f && !Conditions.Instance()->Diving)
                 {
                     logger.Log(logLevel, "Not using mount, as we're close to the target");
+                    logger.LogDebug("Returning 'DontMount'");
                     return MountResult.DontMount;
                 }
 
@@ -82,10 +88,14 @@ internal static class Mount
             {
                 if (dryRun)
                     retryAt = DateTime.Now.AddSeconds(0.5);
+                logger.LogDebug("Returning 'Mount'");
                 return MountResult.Mount;
             }
             else
+            {
+                logger.LogDebug("Returning 'WhenOutOfCombat'");
                 return MountResult.WhenOutOfCombat;
+            }
         }
     }
 
