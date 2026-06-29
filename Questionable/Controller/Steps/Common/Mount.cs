@@ -50,7 +50,7 @@ internal static class Mount
                 return MountResult.DontMount;
             }
 
-            LogLevel logLevel = dryRun ? LogLevel.Trace : LogLevel.Information;
+            LogLevel logLevel = dryRun ? LogLevel.Debug : LogLevel.Information;
 
             if (!territoryData.CanUseMount(task.TerritoryId))
             {
