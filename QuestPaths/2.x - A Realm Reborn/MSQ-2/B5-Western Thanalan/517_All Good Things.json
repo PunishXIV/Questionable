@@ -49,7 +49,7 @@
       "Sequence": 2,
       "Steps": [
         {
-          "TerritoryId": 128,
+          "TerritoryId": 1,
           "InteractionType": "UseItem",
           "ItemId": 30362,
           "TargetTerritoryId": 140,

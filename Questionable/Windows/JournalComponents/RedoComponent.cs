@@ -29,8 +29,7 @@ internal sealed class RedoComponent
     Configuration configuration)
 {
     private bool _hideDone;
-    private bool _expandAll;
-    private Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
+    private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
     public void DrawRedoChapters()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
@@ -52,14 +51,6 @@ internal sealed class RedoComponent
             }
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip(_L("Hide chapters that have been completely checked"));
-            ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(!_expandAll ? FontAwesomeIcon.ChevronRight : FontAwesomeIcon.ChevronDown,
-                !_expandAll ? ImGuiColors.DalamudOrange : null))
-            {
-                _expandAll = !_expandAll;
-            }
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Expand all categories for this session"));
         }
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working\n" +
@@ -105,7 +96,6 @@ internal sealed class RedoComponent
             ImRaii.ColorDisposable? disposable = null;
             if (checkQuests.Length > 0)
                 disposable = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
-            ImGui.SetNextItemOpen(_expandAll);
             bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
             disposable?.Dispose();
             if (checkQuests.Length > 0 && checkQuests[0] != null && ImGui.IsItemHovered())

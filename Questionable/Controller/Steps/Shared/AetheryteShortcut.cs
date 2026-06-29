@@ -25,10 +25,13 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.AetheryteShortcut == null && step.InteractionType != EInteractionType.UseItem)
+            if (step.AetheryteShortcut == null)
             {
+                if (step.TerritoryId == 1) // unused territory ID, used to disable auto teleports as a gross hack
+                    yield break;
                 bool matchesCondition(EExtraSkipCondition condition, Vector3 position) =>
                     ExtraConditionUtils.MatchesExtraCondition(condition, position, step.TerritoryId);
+                // Scion quest hubs
                 if (step.TerritoryId == 212) // Waking Sands
                 {
                     bool inTerritory = clientState.TerritoryType == 212;
@@ -94,37 +97,25 @@ internal static class AetheryteShortcut
                         yield return new Interact.Task(2002880, quest, EInteractionType.Interact);
                     }
                 }
-                else if (step.TerritoryId == 128 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 129) &&
-                    clientState.TerritoryType != 128 &&
-                    step.AethernetShortcut == null) // Limsa
+
+                // Citystates
+                else if (Territories.Skip(2).Take(4).Contains(step.TerritoryId))
                 {
-                    yield return new Task(step, quest.Id, EAetheryteLocation.Limsa, 129);
-                    yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaAftcastle);
-                }
-                else if (step.TerritoryId == 133 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 132) &&
-                    clientState.TerritoryType != 133 &&
-                    step.AethernetShortcut == null) // Gridania
-                {
-                    yield return new Task(step, quest.Id, EAetheryteLocation.Gridania, 132);
-                    yield return new AethernetShortcut.Task(EAetheryteLocation.Gridania, EAetheryteLocation.GridaniaAmphitheatre);
-                }
-                else if (step.TerritoryId == 131 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 130) &&
-                    clientState.TerritoryType != 131 &&
-                    step.AethernetShortcut == null) // Uldah
-                {
-                    yield return new Task(step, quest.Id, EAetheryteLocation.Uldah, 130);
-                    yield return new AethernetShortcut.Task(EAetheryteLocation.Uldah, EAetheryteLocation.UldahGoldsmith);
-                }
-                else if (step.TerritoryId == 419 &&
-                    !sequence.Steps.Any(step => step.TerritoryId == 418) &&
-                    clientState.TerritoryType != 419 &&
-                    step.AethernetShortcut == null) // Ishgard
-                {
-                    yield return new Task(step, quest.Id, EAetheryteLocation.Ishgard, 418);
-                    yield return new AethernetShortcut.Task(EAetheryteLocation.Ishgard, EAetheryteLocation.IshgardLastVigil);
+                    EAetheryteLocation? tp = aetheryteData.NearestAetheryteTo(step.TerritoryId + 1, new());
+                    EAetheryteLocation? anD = new List<EAetheryteLocation?>() {
+                        EAetheryteLocation.LimsaAftcastle,
+                        EAetheryteLocation.GridaniaAmphitheatre,
+                        EAetheryteLocation.UldahGoldsmith,
+                        EAetheryteLocation.IshgardLastVigil
+                    }.First(location => location?.Territory(aetheryteData) == step.TerritoryId) ?? null;
+                    if (tp is { } teleportDest && anD is { } aethernetDest &&
+                        !sequence.Steps.Any(step => step.TerritoryId == step.TerritoryId + 1) &&
+                        clientState.TerritoryType != step.TerritoryId &&
+                        step.AethernetShortcut == null)
+                    {
+                        yield return new Task(step, quest.Id, teleportDest, step.TerritoryId + 1);
+                        yield return new AethernetShortcut.Task(teleportDest, aethernetDest);
+                    }
                 }
                 yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
             }

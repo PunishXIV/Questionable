@@ -1,1 +1,2 @@
-- Bug fix: ignore incorrect TerritoryId when calculating AetheryteShortcut if we're doing a UseItem -alydev
+- Bug fix for the bug fix: Better logic for using vesper bay ticket
+  - fix bug affecting all UseItem calls, sorry -alydev
