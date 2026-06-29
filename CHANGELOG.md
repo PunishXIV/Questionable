@@ -1,4 +1,5 @@
 - More debug info for Mount -alydev
   - and slightly more again -alydev
+    - a Stand can have a little debug info, as a treat
 - Bug fix for the bug fix: Better logic for using vesper bay ticket
   - fix bug affecting all UseItem calls, sorry -alydev

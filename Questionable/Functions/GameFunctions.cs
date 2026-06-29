@@ -258,12 +258,18 @@ internal sealed unsafe partial class GameFunctions
     public bool HasStatusPreventingMount()
     {
         if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
+        {
+            logger.LogDebug("Swimming && !IsFlyingUnlockedInCurrentZone");
             return true;
+        }
 
         // company chocobo is locked
         PlayerState* playerState = PlayerState.Instance();
         if (playerState != null && !playerState->IsMountUnlocked(1))
+        {
+            logger.LogDebug("!playerState->IsMountUnlocked(1)");
             return true;
+        }
 
         IGameObject? localPlayer = objectTable[0];
         if (localPlayer == null)
@@ -272,21 +278,28 @@ internal sealed unsafe partial class GameFunctions
         if (HasStatus(1151) ||
             HasStatus(1945)) // hoofing it
         {
+            logger.LogDebug("hoofing it");
             return true;
         }
 
-        return HasCharacterStatusPreventingMountOrSprint();
+        if (HasCharacterStatusPreventingMountOrSprint())
+        {
+            logger.LogDebug("HasCharacterStatusPreventingMountOrSprint");
+            return true;
+        }
+        return false;
     }
 
     public bool HasStatusPreventingSprint() => HasCharacterStatusPreventingMountOrSprint();
 
-    private bool HasCharacterStatusPreventingMountOrSprint()
+    internal bool HasCharacterStatusPreventingMountOrSprint()
     {
-        return HasStatus(565) ||
-               HasStatus(404) ||
-               HasStatus(416) ||
-               HasStatus(2729) ||
-               HasStatus(2730);
+        return HasStatus(565) || // Transfiguration
+               HasStatus(416) || // Transparent
+               HasStatus(404) || // Transporting
+               HasStatus(4376) || // Transporting
+               HasStatus(2729) || // Incorporeal
+               HasStatus(2730); // Endwalker
     }
 
     public bool HasStatus(EStatus statusId)
