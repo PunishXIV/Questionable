@@ -25,7 +25,7 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.AetheryteShortcut == null)
+            if (step.AetheryteShortcut == null && step.InteractionType != EInteractionType.UseItem)
             {
                 bool matchesCondition(EExtraSkipCondition condition, Vector3 position) =>
                     ExtraConditionUtils.MatchesExtraCondition(condition, position, step.TerritoryId);

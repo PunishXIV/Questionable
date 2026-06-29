@@ -195,9 +195,9 @@ internal sealed class QuestJournalComponent
             {
                 lastCheckedLong = "\n" + _LF("Last checked: {0}", quest.Root.LastChecked);
                 int since = (int)quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays;
-                if (since < 7)
+                if (since >= 0 && since < 7)
                     lastChecked = $"{since}d";
-                else
+                else if (since >= 7)
                     lastChecked = $"{since / 7}w";
             }
             RedoIndex redoIndex = redoUtil.GetChapter(quest.Id.Value);
