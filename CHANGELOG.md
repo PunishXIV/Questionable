@@ -1,1 +1,3 @@
-- Feature: Change to debug mode text view -alydev
+- Bug fix: Mount check fixed -alydev
+- Bug fix for the bug fix: Better logic for using vesper bay ticket
+  - fix bug affecting all UseItem calls, sorry -alydev

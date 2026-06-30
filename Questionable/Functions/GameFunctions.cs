@@ -26,6 +26,7 @@ using Action = Lumina.Excel.Sheets.Action;
 using BattleChara = FFXIVClientStructs.FFXIV.Client.Game.Character.BattleChara;
 using ContentFinderCondition = Lumina.Excel.Sheets.ContentFinderCondition;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
+using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Functions;
@@ -39,6 +40,7 @@ internal sealed unsafe partial class GameFunctions
     IClientState clientState,
     IGameGuiAdapter gameGui,
     Configuration configuration,
+    QuestFunctions questFunctions,
     ILogger<GameFunctions> logger,
     HighlightObject highlightObject)
 {
@@ -255,15 +257,40 @@ internal sealed unsafe partial class GameFunctions
         return gameObject != null && (gameObject.Position - position).Length() < distance;
     }
 
+    public bool IsMountingUnlocked()
+    {
+        if (questFunctions.GetGrandCompany() is { } gc &&
+            gc is GrandCompany.TwinAdder)
+            return questFunctions.IsQuestComplete(new QuestId(700));
+        if (gc is GrandCompany.Maelstrom)
+            return questFunctions.IsQuestComplete(new QuestId(701));
+        if (gc is GrandCompany.ImmortalFlames)
+            return questFunctions.IsQuestComplete(new QuestId(702));
+        return false;
+    }
+
     public bool HasStatusPreventingMount()
     {
         if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
+        {
+            logger.LogDebug("Swimming && !IsFlyingUnlockedInCurrentZone");
             return true;
+        }
 
         // company chocobo is locked
-        PlayerState* playerState = PlayerState.Instance();
-        if (playerState != null && !playerState->IsMountUnlocked(1))
+        // - company chocobo whistle may not have been used, this does not necessarily mean mounting is not possible -alydev
+        //PlayerState* playerState = PlayerState.Instance();
+        //if (playerState != null && !playerState->IsMountUnlocked(1))
+        //{
+        //    logger.LogDebug("!playerState->IsMountUnlocked(1)");
+        //    return true;
+        //}
+
+        if (!IsMountingUnlocked())
+        {
+            logger.LogDebug("!IsMountingUnlocked");
             return true;
+        }
 
         IGameObject? localPlayer = objectTable[0];
         if (localPlayer == null)
@@ -272,21 +299,28 @@ internal sealed unsafe partial class GameFunctions
         if (HasStatus(1151) ||
             HasStatus(1945)) // hoofing it
         {
+            logger.LogDebug("hoofing it");
             return true;
         }
 
-        return HasCharacterStatusPreventingMountOrSprint();
+        if (HasCharacterStatusPreventingMountOrSprint())
+        {
+            logger.LogDebug("HasCharacterStatusPreventingMountOrSprint");
+            return true;
+        }
+        return false;
     }
 
     public bool HasStatusPreventingSprint() => HasCharacterStatusPreventingMountOrSprint();
 
-    private bool HasCharacterStatusPreventingMountOrSprint()
+    internal bool HasCharacterStatusPreventingMountOrSprint()
     {
-        return HasStatus(565) ||
-               HasStatus(404) ||
-               HasStatus(416) ||
-               HasStatus(2729) ||
-               HasStatus(2730);
+        return HasStatus(565) || // Transfiguration
+               HasStatus(416) || // Transparent
+               HasStatus(404) || // Transporting
+               HasStatus(4376) || // Transporting
+               HasStatus(2729) || // Incorporeal
+               HasStatus(2730); // Endwalker
     }
 
     public bool HasStatus(EStatus statusId)

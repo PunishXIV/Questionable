@@ -98,13 +98,21 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             serviceCollection.AddSingleton(new WindowSystem(nameof(Questionable)));
 
             var savedConfig = (Configuration?)pluginInterface.GetPluginConfig();
-            if (savedConfig != null && savedConfig?.Version != Configuration.PluginConfigVersion)
+            if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
             {
                 // Backup config when version changes
                 pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), true);
-                savedConfig?.Version = Configuration.PluginConfigVersion;
+                savedConfig.Version = Configuration.PluginConfigVersion;
             }
+
             var configuration = savedConfig ?? new Configuration();
+            if (!configuration.AutoRedeemOffResetApplied)
+            {
+                configuration.ApplyAutoRedeemRewardItemsInitialReset();
+                configuration.AutoRedeemOffResetApplied = true;
+                pluginInterface.SavePluginConfig(configuration);
+            }
+
             serviceCollection.AddSingleton(configuration);
             Questionable.Utils.LocalizeShortcut.Initialize(configuration);
 

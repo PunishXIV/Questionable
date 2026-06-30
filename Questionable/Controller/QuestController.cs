@@ -555,6 +555,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', which is configured as a stopping point.", CommandHandler.MessageTag, CommandHandler.TagColor);
                     StartedQuest = null;
                     Stop($"Stopping point [{questId}] reached");
+                    _configuration.Stop.QuestsToStopAfter.Remove(questId);
                     return;
                 }
 
@@ -1050,14 +1051,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return;
         }
 
-        _logger.LogInformation("Retrying current step for quest {QuestId} (sequence {Sequence}, step {Step})",
-            CurrentQuest.Quest.Id, CurrentQuest.Sequence, CurrentQuest.Step);
+        _logger.LogInformation("Retrying current step [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
         CheckNextTasks("RetryStep");
     }
 
     public void Start(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"Q/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.Automatic;
         ExecuteNextStep();
     }
@@ -1065,6 +1067,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public void StartGatheringQuest(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"GQ/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.GatheringOnly;
         ExecuteNextStep();
     }
@@ -1072,6 +1075,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public void StartSingleQuest(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"SQ/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.SingleQuestA;
         ExecuteNextStep();
     }
@@ -1079,6 +1083,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public void StartSingleStep(string label)
     {
         using IDisposable? scope = _logger.BeginScope($"SS/{label}");
+        RedeemRewardItems.ResetAttemptedItems();
         AutomationType = EAutomationType.Manual;
         ExecuteNextStep();
     }
@@ -1139,7 +1144,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to create tasks");
+            _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
             _chatGui.PrintError("Failed to start next task sequence, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
             Stop("Tasks failed to create");
         }
