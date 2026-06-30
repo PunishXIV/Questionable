@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
+using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -54,6 +55,7 @@ internal static class Fish
   internal sealed class DoFish(
       IAutoHookIpc autoHookIpc,
       ICommandManager commandManager,
+      ICondition condition,
       GameFunctions gameFunctions,
       IChatGui chatGui,
       SendNotification.Executor sendNotificationExecutor,
@@ -129,6 +131,12 @@ internal static class Fish
         return ETaskResult.TaskComplete;
       }
 
+      if (EzThrottler.Throttle("FishStart") && !condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Fishing])
+      {
+        logger.LogDebug("We don't seem to be fishing. Trying again.");
+        Start();
+        return ETaskResult.StillRunning;
+      }
       return ETaskResult.StillRunning;
     }
 
