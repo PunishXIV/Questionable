@@ -1,0 +1,153 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "Comment": "This fish prefers Blizzard or Snow weather.\nBest chances between 08:00-14:00 ET",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Speak with Sybell",
+          "DataId": 1003629,
+          "Position": {
+            "X": -171.89,
+            "Y": 4,
+            "Z": 175.33
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2605,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Speak with Firminnant at Whitebrim Front",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "DataId": 1006804,
+          "Position": {
+            "X": -387.618,
+            "Y": 208.528,
+            "Z": -257.508
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Move to fishing spot",
+          "Position": {
+            "X": -378.0664,
+            "Y": 197.74948,
+            "Z": -324.8373
+          },
+          "TerritoryId": 155,
+          "Fly": true,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 5x Cloud Cutter\nThis fish prefers Blizzard or Snow weather.\nAutohook will attempt to use Fish Eyes (Lv 57) if it is unlocked\nBest chances between 08:00-14:00 ET",
+          "TerritoryId": 155,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 5040,
+              "ItemCount": 5
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver Cloud Cutters to Sisipu",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          },
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1118
+        }
+      ]
+    }
+  ]
+}

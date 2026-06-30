@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.Json.Nodes;
+using System.Text.RegularExpressions;
 using Json.Schema;
 using Questionable.Model;
 using Questionable.QuestPaths;
@@ -43,6 +44,25 @@ public sealed class ValidJsonFilesTest
         });
 
         if (!evaluationResult.IsValid)
-            Assert.Fail($"Quest '{quest.ManifestName}' validation failed");
+        {
+            IEnumerable<string> failures = evaluationResult.Details
+                .Where(detail => detail is { IsValid: false, HasErrors: true })
+                // A failing 'if' condition inside an allOf branch is expected (the branch simply doesn't apply),
+                // so only report assertion failures that aren't part of an 'if' probe.
+                .Where(detail => !detail.EvaluationPath.ToString().Contains("/if/"))
+                .SelectMany(detail => detail.Errors!.Select(error =>
+                    $"  instance '{detail.InstanceLocation}' (schema '{detail.EvaluationPath}'): {error.Key} - {Unescape(error.Value)}"));
+
+            Assert.Fail($"Quest '{quest.ManifestName}' validation failed:{Environment.NewLine}"
+                        + string.Join(Environment.NewLine, failures));
+        }
     }
+
+    /// <summary>
+    /// Decodes <c>\uXXXX</c> escapes that System.Text.Json's default HTML-safe encoder produces
+    /// (e.g. <c>"</c> as <c>\u0022</c>, <c>'</c> as <c>\u0027</c>) so error messages render readably.
+    /// </summary>
+    private static string Unescape(string value) =>
+        Regex.Replace(value, @"\\u([0-9a-fA-F]{4})",
+            match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
 }

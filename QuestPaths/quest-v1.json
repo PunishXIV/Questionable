@@ -179,6 +179,7 @@
             "AcceptQuest",
             "CompleteQuest",
             "InitiateLeve",
+            "Fish",
             "Macro"
           ]
         },
@@ -1895,6 +1896,55 @@
             "required": [
               "ItemsToGather"
             ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "InteractionType": {
+                "const": "Fish"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "ItemsToGather": {
+                "type": "array",
+                "description": "The items to gather from the fishing spot.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ItemId": {
+                      "type": "number"
+                    },
+                    "ItemCount": {
+                      "type": "number",
+                      "exclusiveMinimum": 0
+                    },
+                    "Collectability": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1000
+                    }
+                  },
+                  "required": [
+                    "ItemId",
+                    "ItemCount"
+                  ]
+                }
+              }
+            },
+            "if": {
+              "required": [
+                "CompletionQuestVariablesFlags"
+              ]
+            },
+            "then": {},
+            "else": {
+              "required": [
+                "ItemsToGather"
+              ]
+            }
           }
         },
         {
