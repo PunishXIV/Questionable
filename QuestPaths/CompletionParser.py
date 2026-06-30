@@ -143,12 +143,14 @@ def main():
         print(f"[ERROR] Input file not found: {args.input}", file=sys.stderr)
         sys.exit(1)
 
+    delete = False
     # If the user didn't explicitly supply a username, derive one from the
     # input filename — unless it's the default log name, in which case keep
     # "Anonymous" so generic runs don't accidentally stamp a log filename.
     if args.username == "Anonymous" and args.input.stem != "QuestCompletionLog":
         args.username = args.input.stem
         print(f"[INFO] No username supplied; using '{args.username}' (derived from input filename).")
+        delete = True
 
     if args.dry_run:
         print(f"[INFO] Dry run enabled", file=sys.stderr)
@@ -178,8 +180,11 @@ def main():
         sys.exit(1)
     elif ok == total and ok != 0:
         if not args.dry_run:
-            with args.input.open("w", encoding="utf-8-sig") as f:
-                f.write("[]")
+            if delete:
+                args.input.unlink()
+            else:
+                with args.input.open("w", encoding="utf-8-sig") as f:
+                    f.write("[]")
 
 
 if __name__ == "__main__":

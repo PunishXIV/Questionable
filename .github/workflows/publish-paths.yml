@@ -146,7 +146,7 @@ jobs:
 
           # Cap the list so the Discord message stays under the 2000-char limit.
           MAX=5
-          TOTAL=$(printf '%s\n' "$FILES" | sed '/^$/d' | wc -l)
+          TOTAL=$(printf '%s\n' "$NUMSTAT" | sed '/^$/d' | wc -l)
           BULLETS=$(printf '%s\n' "$FILES" | sed '/^$/d' | head -n $MAX | sed 's|.*/||; s|^|- |')
           if [ "$TOTAL" -gt "$MAX" ]; then
             REMAINING=$((TOTAL - MAX))
