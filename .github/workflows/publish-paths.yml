@@ -142,7 +142,7 @@ jobs:
 
           # Drop files whose diff is exactly one line added and one line removed — these are
           # almost always automated "last checked" date bumps and not interesting changes.
-          FILES=$(printf '%s\n' "$NUMSTAT" | awk '$1 != "1"|| $2 != "1" { print $3 }')
+          FILES=$(printf '%s\n' "$NUMSTAT" | awk '$1 != "1"|| $2 != "1" { $1=$2=""; print substr($0,3) }')
 
           # Cap the list so the Discord message stays under the 2000-char limit.
           MAX=5
