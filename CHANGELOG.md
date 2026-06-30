@@ -1,2 +1,3 @@
 - Bug fix: Mount was broken -alydev
+- Bug fix: retry SwitchJob if failed -alydev
 - Feature: AutoHook support -raitono

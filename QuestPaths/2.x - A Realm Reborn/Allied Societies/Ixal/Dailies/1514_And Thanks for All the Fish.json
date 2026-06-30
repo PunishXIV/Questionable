@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "99 Moth Pupa will be bought from vendor at\nNorth Shroud 28.1, 28.1",
-  "LastChecked": { "Username": "alydev", "Date": "2026-05-30" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -94,9 +94,20 @@
         },
         {
           "$": "QW: (-) (1H1L) (-) (-) (-) (-)",
+          "Position": {
+            "X": -55.165855,
+            "Y": 199.67697,
+            "Z": 470.63123
+          },
           "TerritoryId": 155,
           "InteractionType": "Fish",
           "Comment": "Fish for 1x Saint Carp (!!) using Moth Pupa",
+          "ItemsToGather": [
+            {
+              "ItemId": 2001398,
+              "ItemCount": 1
+            }
+          ],
           "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 1}, null, null, null, null]
         }
       ]
@@ -104,12 +115,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Comment": "Stop fishing",
-          "TerritoryId": 155,
-          "InteractionType": "Action",
-          "Action": "FSHQuit"
-        },
         {
           "Comment": "Switch back to quest class",
           "InteractionType": "SwitchClass",
