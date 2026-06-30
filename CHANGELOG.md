@@ -1,1 +1,2 @@
+- Bug fix: Mount was broken -alydev
 - Feature: AutoHook support -raitono
