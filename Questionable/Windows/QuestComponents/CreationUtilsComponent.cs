@@ -354,7 +354,11 @@ internal sealed class CreationUtilsComponent
                 };
                 ImGui.SetClipboardText($$"""
                                          "DataId": {{GameFunctions.GetBaseID(target)}},
-                                                   "Position": {{target.Position.ToJsonString()}},
+                                                   "Position": {
+                                                     "X": {{target.Position.X.ToString(CultureInfo.InvariantCulture)}},
+                                                     "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
+                                                     "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
+                                                   }
                                                    "TerritoryId": {{clientState.TerritoryType}},
 
                                          """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 

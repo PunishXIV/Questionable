@@ -31,11 +31,7 @@ internal static class Vector3Extensions
     internal static string ToJsonString(this Vector3 vector)
     {
         return $$"""
-                 {
-                   "X": {{vector.X.ToString(CultureInfo.InvariantCulture)}},
-                   "Y": {{vector.Y.ToString(CultureInfo.InvariantCulture)}},
-                   "Z": {{vector.Z.ToString(CultureInfo.InvariantCulture)}}
-                 }
+                 { "X": {{vector.X.ToString(CultureInfo.InvariantCulture)}}, "Y": {{vector.Y.ToString(CultureInfo.InvariantCulture)}}, "Z": {{vector.Z.ToString(CultureInfo.InvariantCulture)}} }
                  """;
     }
 }
