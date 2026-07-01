@@ -1,2 +1,3 @@
 - Paths: CUL questline finished -alydev
 - Feature: minor change to NG+ journal component -alydev
+- Bug fix: Citystate auto teleport -alydev
