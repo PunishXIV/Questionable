@@ -1,0 +1,136 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "Comment": "This fish prefers Heat Waves weather",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2604,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 1004962,
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Position": {
+            "X": -300.191,
+            "Y": 7.30289,
+            "Z": 410.941
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "Position": {
+            "X": 176.34221,
+            "Y": -1.1806471,
+            "Z": 736.2771
+          },
+          "TerritoryId": 146,
+          "Fly": true,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                146
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Fish for 1x Desert Catfish",
+          "TerritoryId": 146,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 5033,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "DataId": 1003628,
+          "Position": {
+            "X": -184.75,
+            "Y": 4,
+            "Z": 169.295
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1116
+        }
+      ]
+    }
+  ]
+}

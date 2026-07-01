@@ -14,6 +14,14 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
 {
+    // Items we've already tried this run, keyed by item id -> stack size at the time we used it.
+    // Kept in memory only (not persisted, not user-visible): if an item is still present with the same
+    // quantity we attempted, we skip it instead of retrying forever (coffers always report as locked).
+    // A changed quantity (e.g. a freshly obtained coffer of the same type) lets it be tried again.
+    private static readonly Dictionary<uint, int> AttemptedItems = [];
+
+    internal static void ResetAttemptedItems() => AttemptedItems.Clear();
+
     internal sealed class Factory(QuestData questData, IDataManager dataManager) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -27,8 +35,13 @@ internal static class RedeemRewardItems
 
     internal static List<ITask> CreateRedeemTasks(QuestData questData, IDataManager dataManager)
     {
+        Configuration configuration = Configuration.Instance();
+        if (!configuration.Advanced.AutoRedeemRewardItems)
+            return [];
+
         List<ITask> tasks = [];
         HashSet<uint> seenItemIds = [];
+        HashSet<uint> blacklist = configuration.Advanced.AutoRedeemItemBlacklist;
         unsafe
         {
             InventoryManager* inventoryManager = InventoryManager.Instance();
@@ -40,9 +53,18 @@ internal static class RedeemRewardItems
                 if (!seenItemIds.Add(itemReward.ItemId))
                     return;
 
-                if (inventoryManager->GetInventoryItemCount(itemReward.ItemId) > 0 &&
-                    !itemReward.IsUnlocked())
-                    tasks.Add(new Task(itemReward));
+                if (blacklist.Contains(itemReward.ItemId))
+                    return;
+
+                int count = inventoryManager->GetInventoryItemCount(itemReward.ItemId);
+                if (count <= 0 || itemReward.IsUnlocked())
+                    return;
+
+                // Already tried this exact stack once - don't loop on it.
+                if (AttemptedItems.TryGetValue(itemReward.ItemId, out int attemptedCount) && attemptedCount == count)
+                    return;
+
+                tasks.Add(new Task(itemReward));
             }
 
             foreach (ItemReward itemReward in questData.RedeemableItems)
@@ -97,12 +119,14 @@ internal static class RedeemRewardItems
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 
-        // Don't block the queue forever if we never reach a usable state (e.g. stuck in combat).
+        // Don't block the queue forever if we never reach a usable state (e.g. stuck in combat)
+        // or if the item never actually gets consumed.
         private static readonly TimeSpan GiveUpAfter = TimeSpan.FromSeconds(30);
 
         private DateTime _giveUpAt;
         private DateTime _continueAt;
         private bool _usedItem;
+        private int _itemCountBeforeUse;
 
         protected override bool Start()
         {
@@ -114,11 +138,17 @@ internal static class RedeemRewardItems
             return true;
         }
 
-        public override ETaskResult Update()
+        public override unsafe ETaskResult Update()
         {
+            InventoryManager* inventoryManager = InventoryManager.Instance();
+            if (inventoryManager == null)
+                return ETaskResult.TaskComplete;
+
+            bool timedOut = DateTime.Now > _giveUpAt;
+
             if (!_usedItem)
             {
-                if (DateTime.Now > _giveUpAt)
+                if (timedOut)
                     return ETaskResult.TaskComplete;
 
                 // Wait until the character can actually use an item (not mounted, in combat,
@@ -126,8 +156,17 @@ internal static class RedeemRewardItems
                 if (!IsReadyToUseItem())
                     return ETaskResult.StillRunning;
 
+                _itemCountBeforeUse = inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId);
+
+                // Already gone (e.g. consumed elsewhere) - nothing to do.
+                if (_itemCountBeforeUse == 0)
+                    return ETaskResult.TaskComplete;
+
                 if (!gameFunctions.UseItem(Task.ItemReward.ItemId))
                     return ETaskResult.StillRunning;
+
+                // Record the stack we just acted on so we don't retry this exact stack forever.
+                AttemptedItems[Task.ItemReward.ItemId] = _itemCountBeforeUse;
 
                 TimeSpan castTime = Task.ItemReward.CastTime;
                 if (castTime < MinimumCastTime)
@@ -143,7 +182,19 @@ internal static class RedeemRewardItems
             if (condition[ConditionFlag.Casting])
                 return ETaskResult.StillRunning;
 
-            return DateTime.Now <= _continueAt ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
+            if (DateTime.Now <= _continueAt)
+                return ETaskResult.StillRunning;
+
+            // UseItem() can report success without actually consuming the item (e.g. a transient
+            // "cannot use right now"). If the count didn't drop, try again until it does or we give up,
+            // so we don't silently skip items in a multi-reward batch.
+            if (inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) >= _itemCountBeforeUse && !timedOut)
+            {
+                _usedItem = false;
+                return ETaskResult.StillRunning;
+            }
+
+            return ETaskResult.TaskComplete;
         }
 
         private bool IsReadyToUseItem()

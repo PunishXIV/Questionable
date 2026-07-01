@@ -1,3 +1,3 @@
-- Feature: We can now exclude duties from the "run content unsynced" option if they cannot be done unsync -Kage, alydev
-- Feature: QST now opens coffers and redeems items automatically. Please report any issues. -Kage, alydev
-  - condition check -Kage
+- Bug fix: Mount was broken -alydev
+- Bug fix: retry SwitchJob if failed -alydev
+- Feature: AutoHook support -raitono

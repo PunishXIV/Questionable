@@ -40,6 +40,13 @@ internal sealed class Configuration : IPluginConfiguration
     public PriorityConfiguration Priority { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
+
+    /// <summary>
+    /// One-time flag: the release that defaulted auto-redeem off forces it off once on first load,
+    /// then never touches <see cref="AdvancedConfiguration.AutoRedeemRewardItems"/> again.
+    /// </summary>
+    public bool AutoRedeemOffResetApplied { get; set; }
+
     // --- Persisted profile data ---
     /// <summary>
     /// Named profiles. Each profile is a sparse patch — only fields that differ from
@@ -295,6 +302,24 @@ internal sealed class Configuration : IPluginConfiguration
         public bool OpenEditor { get; set; }
         public bool NamazuPreferCraft { get; set; }
         public bool Debug { get; set; }
+        public bool DebugLocalisation { get; set; }
+        public bool AutoRedeemRewardItems { get; set; }
+        public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];
+    }
+
+    internal void ApplyAutoRedeemRewardItemsInitialReset()
+    {
+        _advanced.AutoRedeemRewardItems = false;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (!profile.TryGetValue(nameof(Advanced), out JObject? advancedPatch))
+                continue;
+
+            advancedPatch.Remove(nameof(AdvancedConfiguration.AutoRedeemRewardItems));
+            if (!advancedPatch.HasValues)
+                profile.Remove(nameof(Advanced));
+        }
     }
 
     internal sealed class PriorityConfiguration

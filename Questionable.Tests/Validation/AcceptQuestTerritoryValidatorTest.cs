@@ -9,6 +9,8 @@ using Questionable.Validation;
 using Questionable.Validation.Validators;
 using Xunit;
 
+using static Questionable.Tests.TestData.QuestTestData;
+
 namespace Questionable.Tests.Validation;
 
 public sealed class AcceptQuestTerritoryValidatorTest
@@ -21,6 +23,7 @@ public sealed class AcceptQuestTerritoryValidatorTest
     private const uint NoAetheryteTerritory = 399;
 
     // Some territories have no aetheryte, but must have custom recovery steps leading up to an AcceptQuest step.
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "MemberData must reference a public member")]
     public static TheoryData<uint, uint> RecoveryTerritoryData = new()
     {
         { 212, 140 }, // Waking Sands acceptquest must have Western Thanalan recovery
@@ -41,22 +44,6 @@ public sealed class AcceptQuestTerritoryValidatorTest
     }
 
     // --- helpers ---
-
-    private static Quest CreateQuest(ElementId id, params QuestSequence[] sequences)
-    {
-        var info = Substitute.For<IQuestInfo>();
-        info.QuestId.Returns(id);
-        return new Quest
-        {
-            Id = id,
-            Source = Quest.ESource.Assembly,
-            Root = new QuestRoot { QuestSequence = [.. sequences] },
-            Info = info,
-        };
-    }
-
-    private static QuestSequence Seq(byte sequence, params QuestStep[] steps) =>
-        new() { Sequence = sequence, Steps = [.. steps] };
 
     private static QuestStep InteractStep(uint territoryId,
         EAetheryteLocation? aetheryteShortcut = null,

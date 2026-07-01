@@ -9,7 +9,7 @@ internal static class LocalizeShortcut
 
     internal static void Initialize(Configuration configuration)
     {
-        _debug = configuration.Advanced.Debug;
+        _debug = configuration.Advanced.Debug && configuration.Advanced.DebugLocalisation;
     }
 
     internal static string _L(I18N.DotNet.PlainString input)

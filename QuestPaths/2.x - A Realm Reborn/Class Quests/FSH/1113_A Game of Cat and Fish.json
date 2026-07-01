@@ -1,0 +1,117 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2586,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Position": {
+            "X": -33.696224,
+            "Y": -39.771423,
+            "Z": 205.31651
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "Position": {
+            "X": -35.700325,
+            "Y": -39.77358,
+            "Z": 204.75912
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 1x Shadow Catfish",
+          "TerritoryId": 154,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 4963,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver Shadow Catfish to Sisipu",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1114
+        }
+      ]
+    }
+  ]
+}

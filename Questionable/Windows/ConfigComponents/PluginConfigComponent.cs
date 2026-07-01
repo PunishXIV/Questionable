@@ -136,6 +136,15 @@ internal sealed class PluginConfigComponent
             new("https://github.com/PunishXIV/Artisan"),
             new("https://puni.sh/api/plugins"),
             "/artisan"),
+        
+        new("AutoHook",
+            "AutoHook",
+            _L("""
+            Automates fishing
+            """),
+            new("https://github.com/PunishXIV/AutoHook"),
+            new("https://puni.sh/api/plugins"),
+            "/autohook"),
         new("NotificationMaster",
             "NotificationMaster",
             _L("""

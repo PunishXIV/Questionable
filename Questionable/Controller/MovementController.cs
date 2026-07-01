@@ -25,6 +25,7 @@ using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
+using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Controller;
 
@@ -162,9 +163,9 @@ internal sealed class MovementController
                 }
 
                 navPoints = Destination.PartialRoute.Concat(navPoints).ToList();
-                logger.LogInformation("Navigating via route: [{Route}]",
-                    string.Join(" → ",
-                        pathfindResult.Select(x => x.ToString("G", CultureInfo.InvariantCulture))));
+                logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
+                    navPoints.First().DistanceTo_XZ(navPoints.Last()),
+                    string.Join(" → ", pathfindResult.Select(x => x.ToString("G", CultureInfo.InvariantCulture))));
 
                 navmeshIpc.MoveTo(navPoints, Destination.IsFlying);
                 MovementStartedAt = DateTime.Now;

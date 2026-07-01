@@ -30,6 +30,7 @@ public sealed class InteractionTypeConverter() : EnumConverter<EInteractionType>
         { EInteractionType.Dive, "Dive" },
         { EInteractionType.Craft, "Craft" },
         { EInteractionType.Gather, "Gather" },
+        { EInteractionType.Fish, "Fish" },
         { EInteractionType.Snipe, "Snipe" },
         { EInteractionType.CreateGearset, "CreateGearset" },
         { EInteractionType.UpdateGearset, "UpdateGearset" },

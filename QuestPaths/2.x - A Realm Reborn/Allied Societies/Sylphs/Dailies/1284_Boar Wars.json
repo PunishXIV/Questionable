@@ -1,8 +1,9 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
