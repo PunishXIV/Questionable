@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
-  "Comment": "Quest requires manual intervention\ndue to no support for automatic fishing (yet?)\nBuy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+  "Comment": "99 Moth Pupa will be bought from vendor at\nNorth Shroud 28.1, 28.1",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-27"},
   "QuestSequence": [
     {
@@ -27,6 +26,31 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+          "DataId": 1000718,
+          "Position": {
+            "X": 332.23462,
+            "Y": -5.5506706,
+            "Z": 332.47876
+          },
+          "TerritoryId": 154,
+          "Fly": true,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2586,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "Position": {
             "X": 28.032156,
@@ -79,11 +103,6 @@
           }
         },
         {
-          "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher",
-          "TerritoryId": 156
-        },
-        {
           "Position": {
             "X": 28.032156,
             "Y": 29,
@@ -120,19 +139,14 @@
           "AetheryteShortcut": "Mor Dhona"
         },
         {
-          "TerritoryId": 156,
-          "InteractionType": "Action",
-          "Action": "FSHCast"
-        },
-        {
           "Position": {
             "X": -339.81332,
             "Y": -17.148407,
             "Z": -458.06146
           },
           "TerritoryId": 156,
-          "InteractionType": "WaitForManualProgress",
-          "Mount": false,
+          "InteractionType": "Fish",
+          "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 2}, null, null, null, null],
           "Comment": "Fish for 2x Tangle Skipper (!!) using Moth Pupa"
         }
       ]
