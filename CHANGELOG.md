@@ -1,3 +1,3 @@
-- Bug fix: Mount was broken -alydev
-- Bug fix: retry SwitchJob if failed -alydev
-- Feature: AutoHook support -raitono
+- Paths: CUL questline finished -alydev
+- Feature: minor change to NG+ journal component -alydev
+- Bug fix: Citystate auto teleport -alydev

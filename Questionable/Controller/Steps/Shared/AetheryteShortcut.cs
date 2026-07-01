@@ -99,21 +99,22 @@ internal static class AetheryteShortcut
                 }
 
                 // Citystates
+                // e.g if territory is 128,
                 else if (Territories.Skip(2).Take(4).Contains(step.TerritoryId))
                 {
-                    EAetheryteLocation? tp = aetheryteData.NearestAetheryteTo(step.TerritoryId + 1, new());
+                    EAetheryteLocation? tp = aetheryteData.NearestAetheryteTo(step.TerritoryId - 1, new());
                     EAetheryteLocation? anD = new List<EAetheryteLocation?>() {
                         EAetheryteLocation.LimsaAftcastle,
-                        EAetheryteLocation.GridaniaAmphitheatre,
                         EAetheryteLocation.UldahGoldsmith,
+                        EAetheryteLocation.GridaniaAmphitheatre,
                         EAetheryteLocation.IshgardLastVigil
                     }.First(location => location?.Territory(aetheryteData) == step.TerritoryId) ?? null;
                     if (tp is { } teleportDest && anD is { } aethernetDest &&
-                        !sequence.Steps.Any(step => step.TerritoryId == step.TerritoryId + 1) &&
+                        !sequence.Steps.Any(step => step.TerritoryId == step.TerritoryId - 1) &&
                         clientState.TerritoryType != step.TerritoryId &&
                         step.AethernetShortcut == null)
                     {
-                        yield return new Task(step, quest.Id, teleportDest, step.TerritoryId + 1);
+                        yield return new Task(step, quest.Id, teleportDest, step.TerritoryId - 1);
                         yield return new AethernetShortcut.Task(teleportDest, aethernetDest);
                     }
                 }

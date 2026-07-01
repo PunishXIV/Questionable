@@ -1,10 +1,35 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "Position": {
+            "X": 25.685099,
+            "Y": 50.999966,
+            "Z": -805.48645
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 30.655273,
+                  "Y": 50.999966,
+                  "Z": -822.07983
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
         {
           "DataId": 1020144,
           "Position": {
@@ -35,19 +60,10 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
         }
       ]
     },
@@ -88,6 +104,30 @@
     {
       "Sequence": 4,
       "Steps": [
+        {
+          "Position": {
+            "X": 25.685099,
+            "Y": 50.999966,
+            "Z": -805.48645
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 30.655273,
+                  "Y": 50.999966,
+                  "Z": -822.07983
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
         {
           "DataId": 1020144,
           "Position": {
