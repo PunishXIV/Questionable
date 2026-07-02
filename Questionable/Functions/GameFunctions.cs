@@ -259,14 +259,8 @@ internal sealed unsafe partial class GameFunctions
 
     public bool IsMountingUnlocked()
     {
-        if (questFunctions.GetGrandCompany() is { } gc &&
-            gc is GrandCompany.TwinAdder)
-            return questFunctions.IsQuestComplete(new QuestId(700));
-        if (gc is GrandCompany.Maelstrom)
-            return questFunctions.IsQuestComplete(new QuestId(701));
-        if (gc is GrandCompany.ImmortalFlames)
-            return questFunctions.IsQuestComplete(new QuestId(702));
-        return false;
+        List<ushort> quests = [700, 701, 702];
+        return quests.Any(q => questFunctions.IsQuestComplete(new QuestId(q)));
     }
 
     public bool HasStatusPreventingMount()

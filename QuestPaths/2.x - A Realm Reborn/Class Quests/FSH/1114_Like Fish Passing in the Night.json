@@ -1,0 +1,175 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "Comment": "Timed fish: Only available 18:00-06:00 ET",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Speak with Tocktix",
+          "DataId": 1003628,
+          "Position": {
+            "X": -184.75,
+            "Y": 4,
+            "Z": 169.295
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Speak with Wawalago",
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2596,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Position": {
+            "X": 564.22797,
+            "Y": 17.553452,
+            "Z": 409.66574
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "Position": {
+            "X": 567.9441,
+            "Y": 17.553452,
+            "Z": 409.69577
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 10x Fullmoon Sardine\nTimed fish: Only available 18:00-06:00 ET",
+          "TerritoryId": 137,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 4898,
+              "ItemCount": 10
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver Fullmoon Sardines to Tocktix",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "DataId": 1003628,
+          "Position": {
+            "X": -184.75,
+            "Y": 4,
+            "Z": 169.295
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1115
+        }
+      ]
+    }
+  ]
+}

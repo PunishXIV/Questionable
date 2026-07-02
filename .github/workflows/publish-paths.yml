@@ -135,14 +135,18 @@ jobs:
           fi
 
           if [ -n "$BEFORE" ]; then
-            FILES=$(git diff --name-only "$BEFORE" HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+            NUMSTAT=$(git diff --numstat "$BEFORE" HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
           else
-            FILES=$(git diff-tree --no-commit-id --name-only -r HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+            NUMSTAT=$(git diff-tree --no-commit-id --numstat -r HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
           fi
+
+          # Drop files whose diff is exactly one line added and one line removed — these are
+          # almost always automated "last checked" date bumps and not interesting changes.
+          FILES=$(printf '%s\n' "$NUMSTAT" | awk '$1 != "1"|| $2 != "1" { $1=$2=""; print substr($0,3) }')
 
           # Cap the list so the Discord message stays under the 2000-char limit.
           MAX=5
-          TOTAL=$(printf '%s\n' "$FILES" | sed '/^$/d' | wc -l)
+          TOTAL=$(printf '%s\n' "$NUMSTAT" | sed '/^$/d' | wc -l)
           BULLETS=$(printf '%s\n' "$FILES" | sed '/^$/d' | head -n $MAX | sed 's|.*/||; s|^|- |')
           if [ "$TOTAL" -gt "$MAX" ]; then
             REMAINING=$((TOTAL - MAX))

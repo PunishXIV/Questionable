@@ -1,3 +1,3 @@
-- Bug fix: Mount check fixed -alydev
-- Bug fix for the bug fix: Better logic for using vesper bay ticket
-  - fix bug affecting all UseItem calls, sorry -alydev
+- Paths: CUL questline finished -alydev
+- Feature: minor change to NG+ journal component -alydev
+- Bug fix: Citystate auto teleport -alydev

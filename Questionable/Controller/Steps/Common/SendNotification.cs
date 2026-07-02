@@ -13,6 +13,7 @@ internal static class SendNotification
     (
         AutomatonIpc automatonIpc,
         AutoDutyIpc autoDutyIpc,
+        IAutoHookIpc autoHookIpc,
         BossModIpc bossModIpc,
         TerritoryData territoryData) : SimpleTaskFactory
     {
@@ -28,6 +29,8 @@ internal static class SendNotification
                         : step.Comment),
                 EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions) =>
                     new Task(step.InteractionType, quest.Info.Name),
+                EInteractionType.Fish when !autoHookIpc.IsAvailable() =>
+                    new(step.InteractionType, step.Comment ?? "AutoHook plugin is required for automatic fishing"),
                 var _ => null
             };
         }
@@ -53,7 +56,8 @@ internal static class SendNotification
             {
                 EInteractionType.Duty => "Duty",
                 EInteractionType.SinglePlayerDuty => "Single player duty",
-                EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe =>
+                EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe
+                    or EInteractionType.Fish =>
                     "Manual interaction required",
                 var _ => $"{Task.InteractionType}"
             };

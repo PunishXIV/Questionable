@@ -1,0 +1,182 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Speak with Sybell",
+          "DataId": 1003629,
+          "Position": {
+            "X": -171.89,
+            "Y": 4,
+            "Z": 175.33
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Speak with Chuchuroon",
+          "DataId": 1003516,
+          "Position": {
+            "X": -185.837,
+            "Y": 4,
+            "Z": 169.625
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Speak with Wawalago",
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.10797,
+            "Y": 4.0709944,
+            "Z": 202.71606
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1003254,
+          "Position": {
+            "X": -246.52553,
+            "Y": 16.2,
+            "Z": 39.870853
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2587,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Hawkers' Alley"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Position": {
+            "X": 559.52716,
+            "Y": 15.584612,
+            "Z": 102.16865
+          },
+          "TerritoryId": 137,
+          "Fly": true,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 1x Mazlaya Marlin",
+          "TerritoryId": 137,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 4917,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver a Mazlaya Marlin to Sisipu",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          },
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2085
+        }
+      ]
+    }
+  ]
+}

@@ -65,7 +65,8 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         ArgumentNullException.ThrowIfNull(chatGui);
         ECommonsMain.Init(pluginInterface, this, Module.DalamudReflector);
         WrathIPCWrapper.Init(pluginInterface, WrathError.IPCNotReady | WrathError.Unexpected);
-        PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin() {
+        PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
+        {
             Developer = "alydev",
             Sponsor = "https://github.com/sponsors/alydevs"
         });
@@ -162,6 +163,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<NavmeshIpc>();
         serviceCollection.AddSingleton<LifestreamIpc>();
         serviceCollection.AddSingleton<ArtisanIpc>();
+        serviceCollection.AddSingleton<IAutoHookIpc, AutoHookIpc>();
         serviceCollection.AddSingleton<QuestionableIpc>();
         serviceCollection.AddSingleton<TextAdvanceIpc>();
         serviceCollection.AddSingleton<NotificationMasterIpc>();
@@ -263,6 +265,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             .AddTaskFactoryAndExecutor<EquipRecommended.EquipTask, EquipRecommended.Factory,
                 EquipRecommended.DoEquipRecommended>();
         serviceCollection.AddTaskFactoryAndExecutor<Craft.CraftTask, Craft.Factory, Craft.DoCraft>();
+        serviceCollection.AddTaskFactoryAndExecutor<Fish.FishTask, Fish.Factory, Fish.DoFish>();
         serviceCollection
             .AddTaskFactoryAndExecutor<TurnInDelivery.Task, TurnInDelivery.Factory,
                 TurnInDelivery.SatisfactionSupplyTurnIn>();

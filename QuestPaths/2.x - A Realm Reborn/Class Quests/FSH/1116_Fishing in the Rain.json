@@ -1,0 +1,146 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "Comment": "This fish is only available during Rain or Snow weather.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Speak with Sybell",
+          "DataId": 1003629,
+          "Position": {
+            "X": -171.89,
+            "Y": 4,
+            "Z": 175.33
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1000218,
+          "Position": {
+            "X": 162.30566,
+            "Y": 15.699917,
+            "Z": -60.756577
+          },
+          "TerritoryId": 133,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2601,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                132,
+                133
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "AetheryteShortcut": "Gridania",
+          "Position": {
+            "X": 83.91077,
+            "Y": -8.111642,
+            "Z": 123.51372
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                132
+              ]
+            }
+          }
+        },
+        {
+          "Comment": "Move to fishing spot",
+          "Position": {
+            "X": 82.39691,
+            "Y": -8.09201,
+            "Z": 125.62314
+          },
+          "TerritoryId": 132,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 5x Raincaller\nThis fish is only available during Rain or Snow weather.\nAutohook will attempt to use Fish Eyes (Lv 57) if it is unlocked\nWill only autocast if either Fish Eyes is on or in the right weather",
+          "TerritoryId": 132,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 4905,
+              "ItemCount": 5
+            }
+          ]
+        },
+        {
+          "Comment": "Deliver Raincallers to Sybell",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "DataId": 1003629,
+          "Position": {
+            "X": -171.89,
+            "Y": 4,
+            "Z": 175.33
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 1117
+        }
+      ]
+    }
+  ]
+}

@@ -141,11 +141,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "TerritoryId": 156,
-          "InteractionType": "Action",
-          "Action": "FSHQuit"
-        },
-        {
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob",
           "TerritoryId": 156,
