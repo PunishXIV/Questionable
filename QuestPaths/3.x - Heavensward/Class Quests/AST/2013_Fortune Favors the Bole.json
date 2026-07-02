@@ -1,11 +1,39 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-18"},
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-06-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 153,
+          "InteractionType": "EquipItem",
+          "ItemId": 10524,
+          "AetheryteShortcut": "South Shroud - Quarrymill",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            },
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        },
+        {
+          "TerritoryId": 153,
+          "InteractionType": "CreateGearset"
+        },
+        {
+          "TerritoryId": 153,
+          "InteractionType": "EquipRecommended"
+        },
+        {
+          "TerritoryId": 153,
+          "InteractionType": "UpdateGearset"
+        },
         {
           "DataId": 1014981,
           "Position": {
@@ -16,16 +44,7 @@
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest",
           "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true,
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "Fly": true
         }
       ]
     },
