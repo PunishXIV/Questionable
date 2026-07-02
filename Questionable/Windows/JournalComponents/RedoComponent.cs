@@ -136,29 +136,34 @@ internal sealed class RedoComponent
                 int _total = 0;
                 foreach (var q in redoCache.Quests)
                 {
-                    if (questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Model.Quest? quest))
+                    var qid = new QuestId((ushort)q.RowId);
+                    questData.TryGetQuestInfo(qid, out IQuestInfo? qInfo);
+                    if (qInfo != null)
+                        questJournalComponent.DrawQuest(qInfo);
+                    if (questRegistry.TryGetQuest(qid, out Model.Quest? quest))
                     {
                         _supported += 1;
-                        questJournalComponent.DrawQuest(quest.Info);
                         if (questFunctions.IsQuestComplete(quest.Id))
                             _completed += 1;
                     }
-                    else
-                    {
-                        ImGui.TableNextRow();
-                        ImGui.TableNextColumn();
-                        ImGui.TreeNodeEx(_LF("{0} ({1})", q.Name, (ushort)q.RowId),
-                            ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
+                    //else
+                    //{
+                    //    ImGui.TableNextRow();
+                    //    ImGui.TableNextColumn();
+                    //    ImGui.TreeNodeEx(_LF("{0} ({1})", q.Name, (ushort)q.RowId),
+                    //        ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
 
-                        ImGui.TableNextColumn();
-                        QuestJournalComponent.DrawCount(0, 0);
-                        ImGui.TableNextColumn();
-                        QuestJournalComponent.DrawCount(0, 0);
-                    }
-                    _total += 1;
+                    //    ImGui.TableNextColumn();
+                    //    QuestJournalComponent.DrawCount(0, 0);
+                    //    ImGui.TableNextColumn();
+                    //    (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(qid);
+                    //    uiUtils.ChecklistItem(text, color, icon);
+                    //}
+                    if (qInfo != null && !questFunctions.IsQuestUnobtainable(qid))
+                        _total += 1;
                 }
                 if (!_redoCount.TryGetValue(chapter, out var _result) || _result.Supported != _supported || _result.Completed != _completed)
-                    _redoCount[chapter] = (_supported, _completed, _total);
+                    _redoCount[chapter] = (_supported > _total ? _total : _supported, _completed, _total);
                 ImGui.TreePop();
             }
         }

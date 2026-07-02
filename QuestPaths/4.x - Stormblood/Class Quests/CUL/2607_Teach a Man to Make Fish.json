@@ -1,0 +1,268 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-02"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 25.685099,
+            "Y": 50.999966,
+            "Z": -805.48645
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 30.655273,
+                  "Y": 50.999966,
+                  "Z": -822.07983
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.6553,
+            "Y": 51,
+            "Z": -822.049
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSCUL680_02607_Q1_000_007",
+              "Yes": true,
+              "Type": "YesNo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018982,
+          "Position": {
+            "X": -83.08539,
+            "Y": 18.04998,
+            "Z": -191.14978
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Bokairo Inn"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 324.734,
+            "Y": -118.16611,
+            "Z": -310.65613
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "RestartNavigationIfCancelled": false
+        },
+        {
+          "DataId": 1020157,
+          "Position": {
+            "X": 300.2212,
+            "Y": -117.29614,
+            "Z": -378.25592
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020158,
+          "Position": {
+            "X": -88.456604,
+            "Y": 18.04998,
+            "Z": -187.48767
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Bokairo Inn"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 25.685099,
+            "Y": 50.999966,
+            "Z": -805.48645
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 30.655273,
+                  "Y": 50.999966,
+                  "Z": -822.07983
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 156,
+          "ItemId": 17938,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020144,
+          "Position": {
+            "X": 30.655273,
+            "Y": 50.999966,
+            "Z": -822.07983
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1020160,
+          "Position": {
+            "X": 49.761436,
+            "Y": 50,
+            "Z": -779.12256
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1020159,
+          "Position": {
+            "X": 49.761436,
+            "Y": 50,
+            "Z": -779.12256
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 25.685099,
+            "Y": 50.999966,
+            "Z": -805.48645
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 30.655273,
+                  "Y": 50.999966,
+                  "Z": -822.07983
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020161,
+          "Position": {
+            "X": 33.98181,
+            "Y": 50.99997,
+            "Z": -823.0869
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
