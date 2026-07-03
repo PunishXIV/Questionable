@@ -47,7 +47,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "RequiredQuestVariables": [null,[
-            {"Low": 1}, {"Low": 3}, {"Low": 5}, {"Low": 6}, {"Low": 7}, {"Low": 8}
+            {"Low": 1}, {"Low": 3}, {"Low": 5}, {"Low": 6}, {"Low": 7}, {"Low": 8}, {"Low": 10}
           ],null,null,null,null]
         },
         {
@@ -89,7 +89,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "RequiredQuestVariables": [null, [
-            {"Low": 4}, {"Low": 3}
+            {"Low": 3}, {"Low": 4}, {"Low": 10}
           ], null, null, null, null]
         },
         {
@@ -103,7 +103,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "RequiredQuestVariables": [null, [
-            {"Low": 6}, {"Low": 7}, {"Low": 8}
+            {"Low": 6}, {"Low": 7}, {"Low": 8}, {"Low": 10}
           ], null, null, null, null]
         },
         {

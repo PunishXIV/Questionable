@@ -161,7 +161,9 @@
           "TerritoryId": 620,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true
+            "Enabled": true,
+            "TestedBossModVersion": "7.5.1.17",
+            "Notes": ["Manual targeting required","Final shield must be manually targeted with Soul Eater"]
           }
         }
       ]
