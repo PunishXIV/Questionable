@@ -186,18 +186,13 @@ internal sealed class MovementController
 
         if (serviceProvider.GetRequiredService<QuestController>().IsQuestingStopped)
         {
-            if (EzThrottler.Throttle("qstwouldhavejumpedin", 1000))
-                logger.LogInformation("Questionable would have jumped in here to do something, but decided against it.");
+            if (EzThrottler.Throttle("qstwouldhavejumpedin", 5000))
+                logger.LogDebug("Questionable would have jumped in here to do something, but decided against it.");
             return;
         }
 
         if (IsPathRunning && Destination != null)
         {
-            if (EzThrottler.Throttle("waypointlog", 1000) && Destination.LastWaypoint != null)
-                logger.LogDebug($"{Environment.TickCount64} / " +
-                $"{Destination.LastWaypoint.UpdatedAt} / " +
-                $"{Environment.TickCount64 - Destination.LastWaypoint.UpdatedAt} / " +
-                $"{Destination.LastWaypoint.Distance2DAtLastUpdate}");
             if (gameFunctions.IsLoadingScreenVisible())
             {
                 logger.LogInformation("Stopping movement, loading screen visible");
