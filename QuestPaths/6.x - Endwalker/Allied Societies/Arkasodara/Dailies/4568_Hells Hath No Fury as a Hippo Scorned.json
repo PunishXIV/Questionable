@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-15"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,6 +23,20 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "DataId": 2012892,
+          "Position": {
+            "X": -118.776886,
+            "Y": 40.000015,
+            "Z": 339.64056
+          },
+          "TerritoryId": 957,
+          "Fly": true,
+          "Land": true,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "AetheryteShortcut": "Thavnair - Yedlihmad"
+        },
         {
           "DataId": 2012892,
           "Position": {
