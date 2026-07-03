@@ -97,7 +97,6 @@ public sealed class RendererPlugin : IDalamudPlugin
     {
         get
         {
-#if DEBUG
             DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
             if (solutionDirectory != null)
             {
@@ -108,13 +107,6 @@ public sealed class RendererPlugin : IDalamudPlugin
             }
 
             throw new($"Unable to resolve project path ({_pluginInterface.AssemblyLocation.Directory})");
-#else
-            var allPluginsDirectory =
-                _pluginInterface.ConfigFile.Directory ?? throw new Exception("Unknown directory for plugin configs");
-            return allPluginsDirectory
-                .CreateSubdirectory("Questionable")
-                .CreateSubdirectory("GatheringPaths");
-#endif
         }
     }
 
@@ -141,17 +133,11 @@ public sealed class RendererPlugin : IDalamudPlugin
 
         try
         {
-#if DEBUG
             foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
                 LoadFromDirectory(
                     new(Path.Combine(PathsDirectory.FullName, expansionFolder)));
             _pluginLog.Information(
                 $"Loaded {GatheringLocations.Count} gathering root locations from project directory");
-#else
-            LoadFromDirectory(PathsDirectory);
-            _pluginLog.Information(
-                $"Loaded {GatheringLocations.Count} gathering root locations from {PathsDirectory.FullName} directory");
-#endif
         }
         catch (Exception e)
         {

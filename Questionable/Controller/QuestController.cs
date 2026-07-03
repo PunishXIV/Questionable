@@ -275,7 +275,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
     }
 
-    public bool IsQuestingActive
+    public bool IsQuestingStopped
     {
         get
         {
@@ -334,7 +334,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             }
         }
 
-        if (IsQuestingActive)
+        if (IsQuestingStopped)
             return;
 
         UpdateCurrentQuest();
