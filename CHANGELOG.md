@@ -1,3 +1,1 @@
-- Paths: CUL questline finished -alydev
-- Feature: minor change to NG+ journal component -alydev
-- Bug fix: Citystate auto teleport -alydev
+- Bug fix: check correct condition for fish task retry -alydev
