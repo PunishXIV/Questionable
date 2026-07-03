@@ -131,7 +131,7 @@ internal static class Fish
         return ETaskResult.TaskComplete;
       }
 
-      if (EzThrottler.Throttle("FishStart") && !condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Fishing])
+      if (EzThrottler.Throttle("FishStart", 1000) && !condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Gathering])
       {
         logger.LogDebug("We don't seem to be fishing. Trying again.");
         Start();
