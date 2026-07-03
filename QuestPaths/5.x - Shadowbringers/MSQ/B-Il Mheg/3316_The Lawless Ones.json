@@ -145,9 +145,9 @@
       "Steps": [
         {
           "Position": {
-            "X": 519.60034,
-            "Y": 110.94924,
-            "Z": -171.57602
+            "X": 515.41943,
+            "Y": 109.21057,
+            "Z": -173.5137
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
@@ -166,9 +166,31 @@
         },
         {
           "Position": {
-            "X": 524.02466,
-            "Y": 117.10437,
-            "Z": -161.2614
+            "X": 523.48444,
+            "Y": 113.16365,
+            "Z": -169.21333
+          },
+          "TerritoryId": 816,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                32
+              ]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 524.98083,
+            "Y": 117.055916,
+            "Z": -160.94905
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",

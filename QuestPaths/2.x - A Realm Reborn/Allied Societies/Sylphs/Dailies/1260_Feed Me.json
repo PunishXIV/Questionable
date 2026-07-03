@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2026-05-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -27,9 +27,9 @@
         {
           "DataId": 2003228,
           "Position": {
-            "X": 286.2439,
-            "Y": -4.5319824,
-            "Z": 57.114502
+            "X": 288.59283,
+            "Y": -4.4592824,
+            "Z": 57.610603
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
@@ -46,9 +46,9 @@
         {
           "DataId": 2003221,
           "Position": {
-            "X": 254.19995,
-            "Y": -6.363098,
-            "Z": 41.428223
+            "X": 256.3269,
+            "Y": -5.7952166,
+            "Z": 43.259277
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
@@ -64,9 +64,9 @@
         {
           "DataId": 2003222,
           "Position": {
-            "X": 253.52856,
-            "Y": -5.5390625,
-            "Z": 22.262878
+            "X": 254.23917,
+            "Y": -5.777315,
+            "Z": 21.215954
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
@@ -82,9 +82,9 @@
         {
           "DataId": 2003223,
           "Position": {
-            "X": 288.74634,
-            "Y": -5.2339478,
-            "Z": 37.03357
+            "X": 290.5347,
+            "Y": -5.1788187,
+            "Z": 36.936516
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
@@ -136,9 +136,9 @@
         {
           "DataId": 2003225,
           "Position": {
-            "X": 313.3745,
-            "Y": -6.7597656,
-            "Z": 17.715698
+            "X": 312.5934,
+            "Y": -6.8550234,
+            "Z": 16.215866
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
