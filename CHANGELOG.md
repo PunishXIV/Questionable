@@ -1,1 +1,1 @@
-- Bug fix: check correct condition for fish task retry -alydev
+- Bug fix: qst was jumping in when vnav did unrelated things sometimes. fixed that maybe -alydev

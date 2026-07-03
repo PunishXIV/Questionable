@@ -15,6 +15,7 @@ using Dalamud.Plugin.Services;
 using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.NavigationOverrides;
 using Questionable.Controller.Steps.Movement;
@@ -41,6 +42,7 @@ internal sealed class MovementController
     AetheryteData aetheryteData,
     ICommandManager commandManager,
     IChatGui chatGui,
+    IServiceProvider serviceProvider,
     ILogger<MovementController> logger) : IDisposable
 {
     public const float DefaultVerticalInteractionDistance = 1.95f;
@@ -181,6 +183,9 @@ internal sealed class MovementController
                 throw new PathfindingFailedException(error);
             }
         }
+
+        if (!serviceProvider.GetRequiredService<QuestController>().IsQuestingActive)
+            return;
 
         if (IsPathRunning && Destination != null)
         {
