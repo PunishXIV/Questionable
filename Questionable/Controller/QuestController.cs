@@ -275,6 +275,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
     }
 
+    public bool IsQuestingActive
+    {
+        get
+        {
+            return AutomationType == EAutomationType.Manual && !IsRunning && !IsQuestWindowOpen;
+        }
+    }
+
     public event AutomationTypeChangedEventHandler? AutomationTypeChanged;
 
     public void Reload()
@@ -326,7 +334,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             }
         }
 
-        if (AutomationType == EAutomationType.Manual && !IsRunning && !IsQuestWindowOpen)
+        if (IsQuestingActive)
             return;
 
         UpdateCurrentQuest();
