@@ -47,6 +47,16 @@
             "Z": -425.28424
           },
           "TerritoryId": 398,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2006201,
+          "Position": {
+            "X": -480.30823,
+            "Y": -5.996826,
+            "Z": -425.28424
+          },
+          "TerritoryId": 398,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818074
         },
