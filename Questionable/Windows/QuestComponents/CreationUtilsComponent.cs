@@ -358,10 +358,10 @@ internal sealed class CreationUtilsComponent
                                                      "X": {{target.Position.X.ToString(CultureInfo.InvariantCulture)}},
                                                      "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
                                                      "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
-                                                   }
+                                                   },
                                                    "TerritoryId": {{clientState.TerritoryType}},
 
-                                         """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 
+                                         """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
                                        $$"""
                                                    "InteractionType": "{{interactionType}}",
                                                    "Fly": true
@@ -409,7 +409,7 @@ internal sealed class CreationUtilsComponent
                                                },
                                                "TerritoryId": {{clientState.TerritoryType}},
 
-                                     """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ? 
+                                     """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
                                    $$"""
                                                "InteractionType": "",
                                                "Fly": true
