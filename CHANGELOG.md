@@ -1,2 +1,1 @@
-- Bug fix: qst was jumping in when vnav did unrelated things sometimes. fixed that maybe -alydev
-  - Bug fix: ok i broke it but now it's working better -alydev
+- Bug fix: "copy position" had error, fixed -raitono
