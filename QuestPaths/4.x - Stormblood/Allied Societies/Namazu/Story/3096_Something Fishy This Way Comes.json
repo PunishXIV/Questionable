@@ -82,6 +82,25 @@
       "Sequence": 4,
       "Steps": [
         {
+          "Position": {
+            "X": -627.83246,
+            "Y": 40.01948,
+            "Z": 100.20593
+          },
+          "TerritoryId": 622,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "AetheryteLocked": "Azim Steppe - Dhoro Iloh"
+            },
+            "StepIf": {
+              "AetheryteLocked": "Azim Steppe - Dhoro Iloh"
+            }
+          }
+        },
+        {
           "DataId": 1025697,
           "Position": {
             "X": -627.83246,
@@ -91,7 +110,7 @@
           "TerritoryId": 622,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
           "DialogueChoices": [
             {
               "Type": "YesNo",
