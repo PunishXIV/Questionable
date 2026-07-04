@@ -1,7 +1,10 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-27"},
+  "LastChecked": {
+    "Username": "Iskierka",
+    "Date": "2026-06-27"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -109,7 +112,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "Fly": true,
           "AetheryteShortcut": "Azim Steppe - Dawn Throne",
           "DialogueChoices": [
             {
@@ -118,6 +120,22 @@
               "Yes": true
             }
           ]
+        },
+        {
+          "DataId": 128,
+          "Position": {
+            "X": -750.19824,
+            "Y": 128.82487,
+            "Z": 117.04963
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "Azim Steppe - Dhoro Iloh"
+            }
+          }
         }
       ]
     },
