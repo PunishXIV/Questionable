@@ -693,6 +693,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Priority Quests</Key>
     <Value lang="ja-jp">優先クエスト</Value>
@@ -763,6 +764,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Clear All</Key>
     <Value lang="ja-jp">すべてクリア</Value>
@@ -770,6 +772,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
@@ -1012,6 +1015,7 @@
   <Entry>
     <!-- Found in: Windows\QuestValidationWindow.cs -->
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Quest</Key>
     <Value lang="ja-jp">クエスト</Value>
     <Value lang="zh-cn">任务</Value>
@@ -1336,6 +1340,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Path data</Key>
     <Value lang="ja-jp">パスデータ</Value>
     <Value lang="zh-cn">路径数据</Value>
@@ -2089,6 +2094,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Stop</Key>
     <Value lang="ja-jp">停止</Value>
     <Value lang="zh-cn">停止</Value>
@@ -2873,7 +2879,6 @@
     <Value lang="zh-cn">限时道具</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>Make It Rain 2026</Key>
     <Value lang="ja-jp">ゴールドソーサーフェスティバル 2026</Value>
     <Value lang="zh-cn">金碟嘉年华2026</Value>
@@ -3355,15 +3360,106 @@
     <Value lang="zh-cn">隐藏已完全勾选的章节</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Expand all categories for this session</Key>
     <Value lang="ja-jp">このセッション中は全てのカテゴリを展開</Value>
     <Value lang="zh-cn">本次会话展开所有分类</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>{0} ({1})</Key>
     <Value lang="ja-jp">{0} ({1})</Value>
     <Value lang="zh-cn">{0} ({1})</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\CommandHandler.cs -->
+    <Key>This setting takes effect after the plugin is reloaded.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>GC</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Level</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Daily unavailable</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Society rep</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Carrier level</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Retainers</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <!-- Found in: Windows\UiUtils.cs -->
+    <Key>Prev quest</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Prev instance</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <Key>Unlock all jobs</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Reward item redemption</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Automatically open redeemable items (coffers, minions, emotes, etc.)</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <Key>This now does not include Trials, which are likely to have extra complexity or mechanics making them infeasible to complete as an Unrestricted Party.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <Key>ContentType: {0}</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Automates fishing</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Locate quest issuer</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
+    <Key>Dragon Quest X 2026</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
+    <Key>Add item...</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
+    <Key>Search by name or item ID...</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
+    <Key>Type an item name or ID to search.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
+    <Key>Showing first {0} matches — refine your search.</Key>
   </Entry>
 </I18N>
