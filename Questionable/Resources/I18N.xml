@@ -2879,9 +2879,9 @@
     <Value lang="zh-cn">限时道具</Value>
   </Entry>
   <Entry>
-    <Key>Make It Rain 2026</Key>
-    <Value lang="ja-jp">ゴールドソーサーフェスティバル 2026</Value>
-    <Value lang="zh-cn">金碟嘉年华2026</Value>
+    <Key>Make It Rain</Key>
+    <Value lang="ja-jp">ゴールドソーサーフェスティバル</Value>
+    <Value lang="zh-cn">金碟嘉年华</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
@@ -3372,6 +3372,7 @@
   <Entry>
     <!-- Found in: Controller\CommandHandler.cs -->
     <Key>This setting takes effect after the plugin is reloaded.</Key>
+    <Value lang="ja-jp">この設定はプラグインを再読み込みした後に有効になります。</Value>
     <Value lang="zh-cn">此设置将在插件重新加载后生效。</Value>
   </Entry>
   <Entry>
@@ -3382,107 +3383,128 @@
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Level</Key>
+    <Value lang="ja-jp">レベル</Value>
     <Value lang="zh-cn">等级</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Daily unavailable</Key>
+    <Value lang="ja-jp">デイリー受注不可</Value>
     <Value lang="zh-cn">每日任务不可用</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Society rep</Key>
+    <Value lang="ja-jp">部族評判</Value>
     <Value lang="zh-cn">友好部族友好度</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Carrier level</Key>
+    <Value lang="ja-jp">配達士レベル</Value>
     <Value lang="zh-cn">邮递员等级</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Retainers</Key>
+    <Value lang="ja-jp">リテイナー</Value>
     <Value lang="zh-cn">雇员</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <!-- Found in: Windows\UiUtils.cs -->
     <Key>Prev quest</Key>
+    <Value lang="ja-jp">前提クエスト</Value>
     <Value lang="zh-cn">前置任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Prev instance</Key>
+    <Value lang="ja-jp">前提インスタンス</Value>
     <Value lang="zh-cn">前置副本</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Unlock all jobs</Key>
+    <Value lang="ja-jp">すべてのジョブを解放</Value>
     <Value lang="zh-cn">解锁全部职业</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Reward item redemption</Key>
+    <Value lang="ja-jp">報酬アイテムの開封</Value>
     <Value lang="zh-cn">使用奖励道具</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Automatically open redeemable items (coffers, minions, emotes, etc.)</Key>
+    <Value lang="ja-jp">開封可能なアイテム（宝箱、ミニオン、エモートなど）を自動的に開く</Value>
     <Value lang="zh-cn">自动使用可兑换道具 (宝箱、宠物、情感动作等)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself.</Key>
+    <Value lang="ja-jp">クエスト終了後（または受注前）に、Questionableはインベントリ内のマウント・ミニオン・オーケストリオン譜・エモートなどの報酬アイテムを使用します。自分で開封したい場合は無効にしてください。</Value>
     <Value lang="zh-cn">在提交任务 (或接受任务前), Questionable 会自动使用背包中可解锁坐骑、宠物、管弦乐琴乐谱、情感动作等奖励的道具。如果你希望自己手动开启，请禁用此选项。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed.</Key>
+    <Value lang="ja-jp">このリストに登録したアイテムは自動開封されません。リテイナーの宝箱、GCの特別支給コンテナなど、開封したくないアイテムを追加してください。</Value>
     <Value lang="zh-cn">此列表中的道具不会被自动使用。可添加雇员的宝箱、军队宝箱或其他你想保留的道具。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>This now does not include Trials, which are likely to have extra complexity or mechanics making them infeasible to complete as an Unrestricted Party.</Key>
+    <Value lang="ja-jp">現在、討滅戦は対象外です。シンク解除パーティでの攻略が困難な複雑なギミックを含む場合があるためです。</Value>
     <Value lang="zh-cn">此选项现不再包含讨伐歼灭战, 因其可能存在额外机制或复杂度, 导致在解除限制下难以完成。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
     <Key>ContentType: {0}</Key>
+    <Value lang="ja-jp">コンテンツタイプ: {0}</Value>
     <Value lang="zh-cn">ContentType: {0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Automates fishing</Key>
+    <Value lang="ja-jp">釣りを自動化</Value>
     <Value lang="zh-cn">自动钓鱼</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Locate quest issuer</Key>
+    <Value lang="ja-jp">クエスト発行者の場所を表示</Value>
     <Value lang="zh-cn">定位任务发布者</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
-    <Key>Dragon Quest X 2026</Key>
-    <Value lang="zh-cn">勇者斗恶龙X 2026</Value>
+    <Key>Dragon Quest X</Key>
+    <Value lang="ja-jp">ドラゴンクエストX</Value>
+    <Value lang="zh-cn">勇者斗恶龙X</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
     <Key>Add item...</Key>
+    <Value lang="ja-jp">アイテムを追加...</Value>
     <Value lang="zh-cn">添加道具...</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
     <Key>Search by name or item ID...</Key>
+    <Value lang="ja-jp">名前またはアイテムIDで検索...</Value>
     <Value lang="zh-cn">按名称或道具 ID 搜索...</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
     <Key>Type an item name or ID to search.</Key>
+    <Value lang="ja-jp">アイテム名またはIDを入力して検索してください。</Value>
     <Value lang="zh-cn">输入道具名称或 ID 进行搜索。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\Utils\ItemBlacklistSelector.cs -->
     <Key>Showing first {0} matches — refine your search.</Key>
+    <Value lang="ja-jp">最初の {0} 件を表示中 — 検索を絞り込んでください。</Value>
     <Value lang="zh-cn">仅显示前 {0} 条结果 — 请缩小搜索范围。</Value>
   </Entry>
 </I18N>

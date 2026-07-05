@@ -1,1 +1,1 @@
-- Change: Please be advised that QST will no longer run Trials as unsynced automatically using the "Run content unsynced where safe" feature -alydev
+- Feature: Updated ja-jp and zh-cn translations -fuuga, ShadyWhite
