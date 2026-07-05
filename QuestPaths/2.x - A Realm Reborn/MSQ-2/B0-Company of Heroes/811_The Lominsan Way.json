@@ -65,6 +65,18 @@
           }
         },
         {
+          "$": "Costa del Sol Taxi",
+          "DataId": 1002718,
+          "Position": {
+            "X": 423.72778,
+            "Y": 18.523344,
+            "Z": 448.56934
+          },
+          "TerritoryId": 137,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179677
+        },
+        {
           "TerritoryId": 137,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Eastern La Noscea - Costa Del Sol"

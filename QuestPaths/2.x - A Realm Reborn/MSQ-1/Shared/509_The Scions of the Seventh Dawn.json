@@ -52,6 +52,18 @@
           "DisableNavmesh": true
         },
         {
+          "$": "Unlock Vesper Bay taxi",
+          "DataId": 1004036,
+          "Position": {
+            "X": -415.7931,
+            "Y": 23.11398,
+            "Z": -335.71375
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179660
+        },
+        {
           "DataId": 1004603,
           "Position": {
             "X": -489.8299,

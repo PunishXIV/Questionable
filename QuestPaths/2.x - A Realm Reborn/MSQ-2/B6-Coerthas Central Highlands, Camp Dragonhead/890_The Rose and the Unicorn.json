@@ -51,6 +51,18 @@
           "Aetheryte": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
+          "$": "Camp Dragonhead taxi",
+          "DataId": 1006802,
+          "Position": {
+            "X": 195.81897,
+            "Y": 302.34818,
+            "Z": -167.86456
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179680
+        },
+        {
           "DataId": 1006384,
           "Position": {
             "X": 263.5996,

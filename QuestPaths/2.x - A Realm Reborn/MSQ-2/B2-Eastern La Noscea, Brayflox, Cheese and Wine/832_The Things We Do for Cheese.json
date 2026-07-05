@@ -60,6 +60,18 @@
           "Aetheryte": "Eastern La Noscea - Wineport"
         },
         {
+          "$": "Wineport taxi",
+          "DataId": 1002717,
+          "Position": {
+            "X": 12.924377,
+            "Y": 69.64043,
+            "Z": 21.316772
+          },
+          "TerritoryId": 137,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179673
+        },
+        {
           "Position": {
             "X": -272.5533,
             "Y": 59.7689,

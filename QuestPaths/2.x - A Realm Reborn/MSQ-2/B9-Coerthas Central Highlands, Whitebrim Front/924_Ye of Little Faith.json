@@ -28,6 +28,18 @@
       "Sequence": 1,
       "Steps": [
         {
+          "$": "Unlock Whitebrim taxi",
+          "DataId": 1006803,
+          "Position": {
+            "X": -473.89948,
+            "Y": 211,
+            "Z": -221.78992
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179681
+        },
+        {
           "DataId": 1006441,
           "Position": {
             "X": -414.45032,
