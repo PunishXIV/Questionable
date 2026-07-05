@@ -667,14 +667,14 @@ internal sealed unsafe class QuestFunctions
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         if (questInfo.GrandCompany != GrandCompany.None)
-            lockedReason.Add("Grand company mismatch", questInfo.GrandCompany != GetGrandCompany());
+            lockedReason.Add(_L("GC"), questInfo.GrandCompany != GetGrandCompany());
             
-        lockedReason.Add("Underleveled", playerState->CurrentLevel < questInfo.Level);
+        lockedReason.Add(_L("Level"), playerState->CurrentLevel < questInfo.Level);
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
-                lockedReason.Add("Daily society quest is not available today", !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
+                lockedReason.Add(_L("Daily unavailable"), !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
             else
-                lockedReason.Add("Society story quest is not available", !IsAlliedSocietyStoryQuestAvailable(questId));
+                lockedReason.Add(_L("Society rep"), !IsAlliedSocietyStoryQuestAvailable(questId));
 
         if (questInfo.IsMoogleDeliveryQuest)
         {
@@ -684,18 +684,18 @@ internal sealed unsafe class QuestFunctions
                 extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
                 currentDeliveryLevel++;
 
-            lockedReason.Add("Moogle quest delivery level is too low", questInfo.MoogleDeliveryLevel > currentDeliveryLevel);
+            lockedReason.Add(_L("Carrier level"), questInfo.MoogleDeliveryLevel > currentDeliveryLevel);
         }
 
         // "an ill-conceived venture" requires to have retainers unlocked
         if ((new ushort[]{ 1432,1433,1434 }).Contains(questId.Value))
         {
             var retainerManager = RetainerManager.Instance();
-            lockedReason.Add("Retainers are not unlocked", retainerManager->MaxRetainerEntitlement == 0);
+            lockedReason.Add(_L("Retainers"), retainerManager->MaxRetainerEntitlement == 0);
         }
 
-        lockedReason.Add("Prev quests not completed", !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
-        lockedReason.Add("Prev instances not completed", !HasCompletedPreviousInstances(questInfo));
+        lockedReason.Add(_L("Prev quest"), !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
+        lockedReason.Add(_L("Prev instance"), !HasCompletedPreviousInstances(questInfo));
         return (lockedReason.Values.Any(x => x),lockedReason.Keys.ToArray());
     }
 

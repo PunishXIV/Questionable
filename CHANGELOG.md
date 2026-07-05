@@ -1,1 +1,5 @@
-- Bug fix: "copy position" had error, fixed -raitono
+- Feature: Right-click menu looks better
+  - menu option to open Console Games Wiki page for given quest
+- Feature: Quest Locked reason shown in tooltip
+- Feature: Priority Quests has right-click menu for quests now
+- Feature: Priority preset for unlocking all jobs

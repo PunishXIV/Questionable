@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
+using ECommons.DalamudServices;
 using Questionable.Controller;
+using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
-using Questionable.Windows.QuestComponents;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
 
@@ -20,7 +24,11 @@ internal sealed class QuestJournalUtils
     QuestFunctions questFunctions,
     ICommandManager commandManager,
     Configuration configuration,
-    IDalamudPluginInterface pluginInterface)
+    IDalamudPluginInterface pluginInterface,
+    AetheryteData aetheryteData,
+    AetheryteFunctions aetheryteFunctions,
+    MovementController movementController,
+    IGameGui gameGui)
 {
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {
@@ -40,55 +48,110 @@ internal sealed class QuestJournalUtils
         if (!popup)
             return;
 
-        using (ImRaii.Disabled(quest == null))
+        if (label != nameof(PriorityWindow))
         {
-            if (ImGui.MenuItem(_L("Add to Priority Quests")) && quest != null)
-                questController.PriorityManager.Add(quest.Id);
-        }
-        using (ImRaii.Disabled(prereqs.Count == 0 || quest == null))
-        {
-            if (ImGui.MenuItem(_L("Add all to Priority Quests")) && quest != null)
+            using (ImRaii.Disabled(true))
             {
-                foreach (var qInfo in prereqs)
-                    questController.PriorityManager.Add(qInfo.QuestId);
-                questController.PriorityManager.Add(quest.Id);
+                var _ = ImGui.MenuItem(_L("Priority Quests"));
+            }
+
+            using (ImRaii.PushIndent())
+            {
+                using (ImRaii.Disabled(quest == null))
+                {
+                    if (ImGui.MenuItem(_L("Add to Priority Quests")) && quest != null)
+                        questController.PriorityManager.Add(quest.Id);
+                }
+                using (ImRaii.Disabled(prereqs.Count == 0 || quest == null))
+                {
+                    if (ImGui.MenuItem(_L("Add all to Priority Quests")) && quest != null)
+                    {
+                        foreach (var qInfo in prereqs)
+                            questController.PriorityManager.Add(qInfo.QuestId);
+                        questController.PriorityManager.Add(quest.Id);
+                    }
+                }
             }
         }
 
-        using (ImRaii.Disabled(!questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
+        using (ImRaii.Disabled(true))
         {
-            if (ImGui.MenuItem(_L("Start as next quest")))
+            var _ = ImGui.MenuItem(_L("Quest"));
+        }
+
+        using (ImRaii.PushIndent())
+        {
+            using (ImRaii.Disabled(!questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
             {
-                questController.SetNextQuest(quest);
-                questController.Start(label);
+                if (ImGui.MenuItem(_L("Start as next quest")))
+                {
+                    questController.SetNextQuest(quest);
+                    questController.Start(label);
+                }
+
+                if (ImGui.MenuItem(_L("Set as next quest")))
+                    questController.SetNextQuest(quest);
             }
 
-            if (ImGui.MenuItem(_L("Set as next quest")))
-                questController.SetNextQuest(quest);
+            if (ImGui.MenuItem(_L("Locate quest issuer")))
+            {
+                MoveToQuestLocation(questInfo, teleport:false);
+            }
+
+            bool openInQuestMap = commandManager.Commands.ContainsKey("/questinfo");
+            using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
+            {
+                if (ImGui.MenuItem(_L("View in Quest Map")))
+                    commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
+            }
+            using (ImRaii.Disabled(questInfo.QuestId is not QuestId))
+            {
+                if (ImGui.MenuItem("View on Console Games Wiki"))
+                {
+                    var query = string.Join('&', new Dictionary<string, string>()
+                        {
+                            {"search", questInfo.SimplifiedName},
+                            {"title", "Special:Search"},
+                            {"go", "Go"}
+                        }.Select(q => $"{q.Key}={q.Value}"));
+                    var uri = new UriBuilder("https", "ffxiv.consolegameswiki.com", 443, "mediawiki/index.php", $"?{query}");
+                    Process.Start(new ProcessStartInfo { FileName = uri.ToString(), UseShellExecute = true });
+                }
+            }
         }
 
-        bool openInQuestMap = commandManager.Commands.ContainsKey("/questinfo");
-        using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
+        using (ImRaii.Disabled(true))
         {
-            if (ImGui.MenuItem(_L("View in Quest Map")))
-                commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
+            var _ = ImGui.MenuItem(_L("Stop"));
         }
 
-        if (ImGui.MenuItem(_L("Add to Stop condition (on complete)")))
+        using (ImRaii.PushIndent())
         {
-            configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
-            pluginInterface.SavePluginConfig(configuration);
+            if (ImGui.MenuItem(_L("Add to Stop condition (on complete)")))
+            {
+                configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
+                pluginInterface.SavePluginConfig(configuration);
+            }
+
+            if (ImGui.MenuItem(_L("Add to Stop condition (on accept)")))
+            {
+                configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
+                pluginInterface.SavePluginConfig(configuration);
+            }
         }
 
-        if (ImGui.MenuItem(_L("Add to Stop condition (on accept)")))
+        using (ImRaii.Disabled(true))
         {
-            configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
-            pluginInterface.SavePluginConfig(configuration);
+            var _ = ImGui.MenuItem(_L("Path data"));
         }
-        if (ImGui.MenuItem(_L("Edit quest path")))
-            (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
-        if (ImGui.MenuItem(_L("Sim quest")))
-            questController.SimulateQuest(questInfo, 0, 0);
+
+        using (ImRaii.PushIndent())
+        {
+            if (ImGui.MenuItem(_L("Edit quest path")))
+                (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
+            if (ImGui.MenuItem(_L("Sim quest")))
+                questController.SimulateQuest(questInfo, 0, 0);
+        }
     }
 
     internal static void ShowFilterContextMenu(QuestJournalComponent journalUi)
@@ -131,5 +194,31 @@ internal sealed class QuestJournalUtils
         if (ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
                 questController.SimulateQuest(quests[0], 0, 0);
+    }
+
+    public void MoveToQuestLocation(IQuestInfo questInfo, bool teleport = true)
+    {
+            var location = ((QuestInfo)questInfo).IssuerLocation;
+            Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
+            var mapLink = new MapLinkPayload(
+                location.Territory.RowId,
+                location.Map.RowId,
+                location.Game.X,
+                location.Game.Z
+            );
+            var _ = gameGui.OpenMapWithMapLink(mapLink);
+            if (!teleport)
+                return;
+            if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
+                movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+                {
+                    Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId),
+                    Sprint = true,
+                    StopDistance = 20f,
+                    VerticalStopDistance = 5f,
+                });
+            else
+                if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
+                    aetheryteFunctions.TeleportAetheryte(aetheryte);
     }
 }
