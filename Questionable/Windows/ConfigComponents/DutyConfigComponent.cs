@@ -53,14 +53,14 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 CfcId = x.RowId,
                 Name = territoryData.GetContentFinderCondition(x.RowId)?.Name ?? _L("?"),
                 TerritoryId = x.TerritoryType.RowId,
-                ContentType = x.ContentType.RowId,
+                ContentType = (EContentType)x.ContentType.RowId,
                 Level = x.ClassJobLevelRequired,
                 x.SortKey
             })
             .GroupBy(x => x.Expansion)
             .ToDictionary(x => x.Key,
                 x => x
-                    .Select(y => new DutyInfo(y.CfcId, y.TerritoryId, $"{FormatLevel(y.Level)} {y.Name}"))
+                    .Select(y => new DutyInfo(y.CfcId, y.TerritoryId, $"{FormatLevel(y.Level)} {y.Name}", y.ContentType))
                     .ToList());
     }
 
@@ -92,7 +92,8 @@ internal sealed class DutyConfigComponent : ConfigComponent
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("If the level of your current job is greater than 15 levels above a duty's sync level, or if your average item level is greater than 100 over " +
-                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party."));
+                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.") +
+                _L("This now does not include Trials, which are likely to have extra complexity or mechanics making them infeasible to complete as an Unrestricted Party."));
             ImGui.SameLine();
             ImGui.TextColored(ImGuiColors.DalamudRed, _L("Experimental feature"));
         }
@@ -161,7 +162,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
                     if (_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
                     {
-                        foreach ((uint cfcId, uint territoryId, string name) in cfcNames)
+                        foreach ((uint cfcId, uint territoryId, string name, EContentType contentType) in cfcNames)
                         {
                             if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
                             {
@@ -188,6 +189,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                                         ImGui.Separator();
                                         ImGui.BulletText(_LF("TerritoryId: {0}", territoryId));
                                         ImGui.BulletText(_LF("ContentFinderConditionId: {0}", cfcId));
+                                        ImGui.BulletText(_LF("ContentType: {0}", contentType.ToString()));
                                     }
 
                                     if (runInstancedContentWithAutoDuty && !_autoDutyIpc.HasPath(cfcId))
@@ -239,7 +241,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         int enabledCount = 0;
         int totalCount = 0;
 
-        foreach ((uint cfcId, uint _, string _) in cfcNames)
+        foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
         {
             if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
             {
@@ -268,7 +270,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
             foreach (List<DutyInfo> cfcNames in _contentFinderConditionNames.Values)
             {
-                foreach ((uint cfcId, uint _, string _) in cfcNames)
+                foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
                 {
                     if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? _))
                         Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
@@ -348,5 +350,5 @@ internal sealed class DutyConfigComponent : ConfigComponent
             ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
     }
 
-    private sealed record DutyInfo(uint CfcId, uint TerritoryId, string Name);
+    private sealed record DutyInfo(uint CfcId, uint TerritoryId, string Name, EContentType ContentType);
 }

@@ -118,7 +118,11 @@ internal static class Duty
 
                     return false;
                 }
-                if (Task.AllowUnsync && configuration.Duties.RunUnsynced && Task.DutyMode is AutoDutyIpc.DutyMode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel)
+                if (Task.AllowUnsync &&
+                    configuration.Duties.RunUnsynced &&
+                    Task.DutyMode is AutoDutyIpc.DutyMode.Support &&
+                    currentItemLevel - 200 >= cfcData.RequiredItemLevel &&
+                    !cfcData.ContentType.Equals(EContentType.Trials))
                 {
                     dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
                 }
