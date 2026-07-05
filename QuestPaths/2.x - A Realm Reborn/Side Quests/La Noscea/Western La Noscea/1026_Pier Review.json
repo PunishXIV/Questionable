@@ -1,7 +1,6 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "alydev",
-  "Disabled": true,
+  "Author": "Iskierka",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,14 +8,168 @@
         {
           "DataId": 1006614,
           "Position": {
-            "X": 65.23441,
-            "Y": -3.118212,
-            "Z": 60.50025
+            "X": 65.9025,
+            "Y": -3.12513,
+            "Z": 61.447
           },
           "TerritoryId": 138,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 255.32901,
+            "Y": -5.240835,
+            "Z": 205.59256
+          },
+          "TerritoryId": 138,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1006618,
+          "Position": {
+            "X": 254.476,
+            "Y": -4.38092,
+            "Z": 204.497
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006621,
+          "Position": {
+            "X": 322.957,
+            "Y": -40.4517,
+            "Z": 379.446
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2002452,
+          "Position": {
+            "X": 298.1765,
+            "Y": -36.42328,
+            "Z": 342.03088
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+		  "DataId": 2002453,
+          "Position": {
+            "X": 322.6825,
+            "Y": -40.45172,
+            "Z": 368.73413
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2002452,
+          "Position": {
+            "X": 298.1765,
+            "Y": -36.42328,
+            "Z": 342.03088
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2002672,
+          "Position": {
+            "X": 322.65198,
+            "Y": -40.45172,
+            "Z": 370.16858
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 2002452,
+          "Position": {
+            "X": 298.1765,
+            "Y": -36.42328,
+            "Z": 342.03088
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 2002673,
+          "Position": {
+            "X": 322.59094,
+            "Y": -40.45172,
+            "Z": 371.57227
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1006621,
+          "Position": {
+            "X": 322.95715,
+            "Y": -40.425003,
+            "Z": 379.44604
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },
@@ -26,9 +179,9 @@
         {
           "DataId": 1006618,
           "Position": {
-            "X": 255.60406,
-            "Y": -5.241379,
-            "Z": 205.78496
+            "X": 254.476,
+            "Y": -4.38092,
+            "Z": 204.497
           },
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
