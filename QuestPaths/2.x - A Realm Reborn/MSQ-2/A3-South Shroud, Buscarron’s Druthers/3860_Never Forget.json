@@ -27,6 +27,18 @@
           "TerritoryId": 153
         },
         {
+          "$": "Unlock Quarrymill taxi",
+          "DataId": 1002982,
+          "Position": {
+            "X": 172.47266,
+            "Y": 8.362776,
+            "Z": -47.470886
+          },
+          "TerritoryId": 153,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179653
+        },
+        {
           "DataId": 1003272,
           "Position": {
             "X": -262.92822,

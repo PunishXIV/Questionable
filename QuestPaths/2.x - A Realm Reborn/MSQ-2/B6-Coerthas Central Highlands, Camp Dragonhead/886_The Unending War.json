@@ -22,6 +22,18 @@
       "Sequence": 1,
       "Steps": [
         {
+          "$": "Unlock Observatory taxi",
+          "DataId": 1006801,
+          "Position": {
+            "X": 231.25049,
+            "Y": 222.18736,
+            "Z": 316.57886
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179679
+        },
+        {
           "TerritoryId": 155,
           "InteractionType": "EquipRecommended"
         },

@@ -56,6 +56,18 @@
           "Aetheryte": "Upper La Noscea - Camp Bronze Lake"
         },
         {
+          "$": "Camp Bronze Lake Taxi",
+          "DataId": 1002716,
+          "Position": {
+            "X": 413.35156,
+            "Y": 4.109605,
+            "Z": 88.7312
+          },
+          "TerritoryId": 139,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179674
+        },
+        {
           "DataId": 2002084,
           "Position": {
             "X": 437.27783,

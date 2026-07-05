@@ -22,6 +22,18 @@
       "Sequence": 1,
       "Steps": [
         {
+          "$": "Golden Bazaar taxi",
+          "DataId": 1004692,
+          "Position": {
+            "X": -532.1279,
+            "Y": -0.1014974,
+            "Z": -199.84741
+          },
+          "TerritoryId": 145,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179667
+        },
+        {
           "DataId": 1003976,
           "Position": {
             "X": -549.0349,

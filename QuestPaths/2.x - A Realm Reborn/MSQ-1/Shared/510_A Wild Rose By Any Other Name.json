@@ -175,6 +175,19 @@
         },
         {
           "Comment": "Detour to unlock Northern Thanalan for job quests",
+          "$": "Camp Bluefog taxi",
+          "DataId": 1004152,
+          "Position": {
+            "X": 54.947754,
+            "Y": 4,
+            "Z": 443.22876
+          },
+          "TerritoryId": 147,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179666
+        },
+        {
+          "Comment": "Detour to unlock Northern Thanalan for job quests",
           "TerritoryId": 147,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Northern Thanalan - Camp Bluefog"
