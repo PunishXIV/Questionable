@@ -382,7 +382,9 @@
                   "type": "boolean"
                 },
                 "InSameTerritory": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "deprecated": true,
+                  "description": "No longer evaluated for aetheryte shortcuts; proximity/distance checks are used instead. Kept for backward compatibility with existing quest files."
                 },
                 "InTerritory": {
                   "type": "array",
