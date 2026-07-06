@@ -94,17 +94,21 @@ internal static class Fish
         }
       }
 
-      logger.LogDebug("Starting fish task for quest {QuestId}.", Task.Quest.Id);
-
-      if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
+      // Only create and select the anonymous preset if we haven't started yet. This prevents us from creating multiple presets.
+      if (!_started)
       {
-        logger.LogWarning("No fishing preset found for quest {QuestId}", Task.Quest.Id);
-        throw new TaskException($"No fishing preset found for quest {Task.Quest.Id}");
-      }
+        logger.LogDebug("Starting fish task for quest {QuestId}.", Task.Quest.Id);
 
-      // Using an anonymouse preset allows us to easily remove it later.
-      logger.LogInformation("Creating and selecting anonymous AutoHook preset for quest {QuestId}", Task.Quest.Id);
-      autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
+        if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
+        {
+          logger.LogWarning("No fishing preset found for quest {QuestId}", Task.Quest.Id);
+          throw new TaskException($"No fishing preset found for quest {Task.Quest.Id}");
+        }
+
+        // Using an anonymouse preset allows us to easily remove it later.
+        logger.LogInformation("Creating and selecting anonymous AutoHook preset for quest {QuestId}", Task.Quest.Id);
+        autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
+      }
 
       // Start fishing via command
       // Native command: gameFunctions.UseAction(EAction.FSHCast);
@@ -176,10 +180,11 @@ internal static class Fish
       autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
 
       _cleanupDone = true;
+      _started = false;
     }
   }
 
-  public static unsafe bool HasRequestedItem(GatheredItem? item)
+  private static unsafe bool HasRequestedItem(GatheredItem? item)
   {
     if (item == null)
       return false;
