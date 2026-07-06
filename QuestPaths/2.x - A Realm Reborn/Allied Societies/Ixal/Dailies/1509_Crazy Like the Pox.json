@@ -127,6 +127,7 @@
           }
         },
         {
+          "Comment": "Move to fishing spot",
           "Position": {
             "X": -339.81332,
             "Y": -17.148407,
@@ -134,11 +135,11 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Comment": "Fish for 2x Tangle Skipper (!!) using Moth Pupa",
           "Fly": true,
           "AetheryteShortcut": "Mor Dhona"
         },
         {
+          "Comment": "Fish for 2x Tangle Skipper (!!) using Moth Pupa",
           "Position": {
             "X": -339.81332,
             "Y": -17.148407,
@@ -146,8 +147,13 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Fish",
-          "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 2}, null, null, null, null],
-          "Comment": "Fish for 2x Tangle Skipper (!!) using Moth Pupa"
+          "ItemsToGather": [
+            {
+              "ItemId": 2001410,
+              "ItemCount": 2
+            }
+          ],
+          "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 2}, null, null, null, null]
         }
       ]
     },
