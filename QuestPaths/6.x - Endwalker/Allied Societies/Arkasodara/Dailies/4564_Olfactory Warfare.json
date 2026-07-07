@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -150,8 +150,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
-          "Mount": false,
-          "Comment": "TODO Verify this properly unmounts"
+          "Mount": false
         }
       ]
     }
