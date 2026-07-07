@@ -1,0 +1,73 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                129
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013251,
+          "Position": {
+            "X": 8.06569,
+            "Y": 40.0004,
+            "Z": 12.8948
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.358,
+            "Y": 15,
+            "Z": 24.3203
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "NextQuestId": 2086
+        }
+      ]
+    }
+  ]
+}

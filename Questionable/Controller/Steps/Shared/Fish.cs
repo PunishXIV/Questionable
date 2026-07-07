@@ -6,6 +6,7 @@ using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.External;
@@ -59,6 +60,7 @@ internal static class Fish
       GameFunctions gameFunctions,
       IChatGui chatGui,
       SendNotification.Executor sendNotificationExecutor,
+      IFishingPresetGenerator fishingPresetGenerator,
       ILogger<DoFish> logger) : TaskExecutor<FishTask>, IStoppableTaskExecutor
   {
     private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
@@ -94,17 +96,23 @@ internal static class Fish
         }
       }
 
-      logger.LogDebug("Starting fish task for quest {QuestId}.", Task.Quest.Id);
-
-      if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
+      // Only create and select the anonymous preset if we haven't started yet. This prevents us from creating multiple presets.
+      if (!_started)
       {
-        logger.LogWarning("No fishing preset found for quest {QuestId}", Task.Quest.Id);
-        throw new TaskException($"No fishing preset found for quest {Task.Quest.Id}");
-      }
+        logger.LogDebug("Starting fish task for quest {QuestId}.", Task.Quest.Id);
 
-      // Using an anonymouse preset allows us to easily remove it later.
-      logger.LogInformation("Creating and selecting anonymous AutoHook preset for quest {QuestId}", Task.Quest.Id);
-      autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
+        if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
+        {
+          logger.LogDebug("No fishing preset found for quest {QuestId}. Autocreating from quest data.", Task.Quest.Id);
+
+          presetExport = fishingPresetGenerator.CreatePresetFromTask(Task);
+          logger.LogDebug(presetExport);
+        }
+
+        // Using an anonymouse preset allows us to easily remove it later.
+        logger.LogInformation("Creating and selecting anonymous AutoHook preset for quest {QuestId}", Task.Quest.Id);
+        autoHookIpc.CreateAndSelectAnonymousPreset(presetExport);
+      }
 
       // Start fishing via command
       // Native command: gameFunctions.UseAction(EAction.FSHCast);
@@ -176,10 +184,11 @@ internal static class Fish
       autoHookIpc.SetPluginEnabled(_wasAutoHookEnabled);
 
       _cleanupDone = true;
+      _started = false;
     }
   }
 
-  public static unsafe bool HasRequestedItem(GatheredItem? item)
+  private static unsafe bool HasRequestedItem(GatheredItem? item)
   {
     if (item == null)
       return false;

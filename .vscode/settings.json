@@ -1,5 +1,15 @@
 {
-    "editor.tabSize": 2,
-    "editor.indentSize": "tabSize",
-    "editor.insertSpaces": true
+  "editor.tabSize": 2,
+  "editor.indentSize": "tabSize",
+  "editor.insertSpaces": true,
+  // Allows for autocomplete and validation of JSON files in the QuestPaths folder
+  // But only if the $schema property is temporarily removed
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "**/QuestPaths/**/*.json"
+      ],
+      "url": "./QuestPaths/quest-v1.json"
+    }
+  ]
 }

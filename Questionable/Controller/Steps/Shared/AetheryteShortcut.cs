@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
+using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Interactions;
@@ -191,7 +192,7 @@ internal static class AetheryteShortcut
             return ETaskResult.StillRunning;
         }
 
-        private bool ShouldSkipTeleport()
+        private unsafe bool ShouldSkipTeleport()
         {
             uint territoryType = clientState.TerritoryType;
             if (Task.Step != null)
@@ -308,6 +309,27 @@ internal static class AetheryteShortcut
                             Vector3.Distance(notNearPosition.Position, objectTable[0]!.Position))
                         {
                             logger.LogInformation("Skipping aetheryte shortcut, as we're not near the position");
+                            return true;
+                        }
+                    }
+
+                    if (skipConditions.Item is { } itemCondition && Task.Step.ItemId is { } itemId)
+                    {
+                        InventoryManager* inventoryManager = InventoryManager.Instance();
+                        int itemCount = inventoryManager->GetInventoryItemCount(itemId, false, false)
+                                        + inventoryManager->GetInventoryItemCount(itemId, true, false);
+
+                        if (itemCount == 0 && itemCondition.NotInInventory)
+                        {
+                            logger.LogInformation(
+                                "Skipping aetheryte shortcut, no item with itemId {ItemId} in inventory", itemId);
+                            return true;
+                        }
+
+                        if (itemCount > 0 && !itemCondition.NotInInventory)
+                        {
+                            logger.LogInformation(
+                                "Skipping aetheryte shortcut, item with itemId {ItemId} in inventory", itemId);
                             return true;
                         }
                     }

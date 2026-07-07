@@ -383,7 +383,9 @@
                   "type": "boolean"
                 },
                 "InSameTerritory": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "deprecated": true,
+                  "description": "No longer evaluated for aetheryte shortcuts; proximity/distance checks are used instead. Kept for backward compatibility with existing quest files."
                 },
                 "InTerritory": {
                   "type": "array",
@@ -457,6 +459,15 @@
                     "TerritoryId"
                   ],
                   "additionalProperties": false
+                },
+                "Item": {
+                  "type": "object",
+                  "properties": {
+                    "NotInInventory": {
+                      "type": "boolean",
+                      "description": "Skip this aetheryte teleport if the item is NOT in inventory."
+                    }
+                  }
                 },
                 "ExtraCondition": {
                   "type": "string",
@@ -1927,6 +1938,21 @@
                       "type": "number",
                       "minimum": 0,
                       "maximum": 1000
+                    },
+                    "FishingOptions": {
+                      "type": "object",
+                      "description": "The options for generating the Autohook preset. Can be overridden by a preset in FishingData.",
+                      "properties": {
+                        "BaitId": {
+                          "type": "number"
+                        },
+                        "HookType": {
+                          "$ref": "#/$defs/HookType"
+                        }
+                      },
+                      "required": [
+                        "BaitId"
+                      ]
                     }
                   },
                   "required": [
@@ -1935,17 +1961,6 @@
                   ]
                 }
               }
-            },
-            "if": {
-              "required": [
-                "CompletionQuestVariablesFlags"
-              ]
-            },
-            "then": {},
-            "else": {
-              "required": [
-                "ItemsToGather"
-              ]
             }
           }
         },
@@ -2033,6 +2048,52 @@
           }
         }
       ]
+    },
+    "HookType": {
+      "type": "object",
+      "description": "Omit to enable all hook types and hooksets.",
+      "properties": {
+        "Normal": {
+          "$ref": "#/$defs/HookTypeFilter"
+        },
+        "Double": {
+          "$ref": "#/$defs/HookTypeFilter"
+        },
+        "Triple": {
+          "$ref": "#/$defs/HookTypeFilter"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "HookTypeFilter": {
+      "description": "true enables all hooksets for this hook type; otherwise specify which hooksets to enable.",
+      "oneOf": [
+        {
+          "type": "boolean",
+          "const": true
+        },
+        {
+          "$ref": "#/$defs/Hookset"
+        }
+      ]
+    },
+    "Hookset": {
+      "type": "object",
+      "description": "Which hooksets to enable for this hook type.",
+      "properties": {
+        "Weak": {
+          "type": "boolean"
+        },
+        "Strong": {
+          "type": "boolean"
+        },
+        "Legendary": {
+          "type": "boolean"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": false
     }
   }
 }

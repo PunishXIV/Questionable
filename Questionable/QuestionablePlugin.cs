@@ -13,6 +13,7 @@ using Questionable.Controller.GameUi;
 using Questionable.Controller.NavigationOverrides;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Steps.Gathering;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
@@ -124,6 +125,8 @@ public sealed class QuestionablePlugin : IDalamudPlugin
 
             serviceCollection.AddSingleton<CommandHandler>();
             serviceCollection.AddSingleton<DalamudInitializer>();
+
+            serviceCollection.AddSingleton<IFishingPresetGenerator, FishingPresetGenerator>();
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
             Initialize(_serviceProvider);
