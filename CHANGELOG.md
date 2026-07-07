@@ -1,1 +1,1 @@
-- Feature: Updated ja-jp and zh-cn translations -fuuga, ShadyWhite
+- Bug fix: disable erroneous logging -alydev
