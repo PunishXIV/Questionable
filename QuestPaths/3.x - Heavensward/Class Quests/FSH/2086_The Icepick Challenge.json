@@ -1,0 +1,137 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.358,
+            "Y": 15,
+            "Z": 24.3203
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1017189,
+          "Position": {
+            "X": -3.000534,
+            "Y": 206.49942,
+            "Z": 53.354298
+          },
+          "TerritoryId": 478,
+          "AetheryteShortcut": "Idyllshire",
+          "Fly": true,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 28634,
+          "ItemCount": 10,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            },
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "Comment": "Speak with Ansaulme at Falcon's Nest",
+          "DataId": 1013252,
+          "Position": {
+            "X": 459.637,
+            "Y": 200.238,
+            "Z": 665.892
+          },
+          "TerritoryId": 397,
+          "Fly": true,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSFSH530_02086_Q1_000_000",
+              "Answer": "TEXT_CLSFSH530_02086_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Move to the fishing spot",
+          "Position": {
+            "X": 270.45355,
+            "Y": 175.35352,
+            "Z": -176.7691
+          },
+          "TerritoryId": 397,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "Fly": true,
+          "Land": true,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Catch 3x Icepicks",
+          "Position": {
+            "X": 270.45355,
+            "Y": 175.35352,
+            "Z": -176.7691
+          },
+          "TerritoryId": 397,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 12713,
+              "ItemCount": 3,
+              "FishingOptions": {
+                "BaitId": 28634,
+                "HookType": {
+                  "Normal": {
+                    "Weak": true
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1013252,
+          "Position": {
+            "X": 459.637,
+            "Y": 200.238,
+            "Z": 665.892
+          },
+          "Fly": true,
+          "TerritoryId": 397,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 2087
+        }
+      ]
+    }
+  ]
+}
