@@ -26,31 +26,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Comment": "Speak with Ansaulme at Falcon's Nest",
-          "DataId": 1013252,
-          "Position": {
-            "X": 459.637,
-            "Y": 200.238,
-            "Z": 665.892
-          },
-          "TerritoryId": 397,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "DialogueChoices": [
-            {
-              "Type": "List",
-              "Prompt": "TEXT_CLSFSH530_02086_Q1_000_000",
-              "Answer": "TEXT_CLSFSH530_02086_A1_000_002"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Sequence": 255,
-      "Steps": [
-        {
           "Comment": "Purchase bait",
           "DataId": 1017189,
           "Position": {
@@ -81,6 +56,31 @@
             }
           }
         },
+        {
+          "Comment": "Speak with Ansaulme at Falcon's Nest",
+          "DataId": 1013252,
+          "Position": {
+            "X": 459.637,
+            "Y": 200.238,
+            "Z": 665.892
+          },
+          "TerritoryId": 397,
+          "Fly": true,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_CLSFSH530_02086_Q1_000_000",
+              "Answer": "TEXT_CLSFSH530_02086_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
         {
           "Comment": "Move to the fishing spot",
           "Position": {
