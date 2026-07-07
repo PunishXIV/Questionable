@@ -70,6 +70,7 @@ internal static class WaitAtEnd
                     return [Next(quest, sequence)];
 
                 case EInteractionType.WaitForObjectAtPosition:
+                case EInteractionType.WaitForNpcAtPosition:
                     if (!step.DataId.HasValue)
                         throw new ArgumentNullException(nameof(step.DataId));
                     if (!step.Position.HasValue)

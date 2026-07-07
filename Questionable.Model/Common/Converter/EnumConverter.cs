@@ -12,7 +12,7 @@ where T : Enum
     private readonly ReadOnlyDictionary<T, string> _enumToString;
     private readonly ReadOnlyDictionary<string, T> _stringToEnum;
 
-    public EnumConverter(IReadOnlyDictionary<T, string>? values = null)
+    public EnumConverter(IReadOnlyDictionary<T, string>? values = null, bool? shard = null)
     {
         if (values == null)
         {
@@ -21,6 +21,25 @@ where T : Enum
         }
         else
         {
+            var missing = Enum.GetValues(typeof(T)).Cast<T>().Where(v => !values.ContainsKey(v) && v.ToString() != "None").ToList();
+            if (shard != null && typeof(T) == typeof(EAetheryteLocation))
+            {
+                // Aetheryte locations are split across two converters: one for large aetherytes
+                // and one for aethernet shards. Each converter should only demand coverage for
+                // members that belong to its subset.
+                bool wantShard = shard.Value;
+                missing = missing
+                    .Where(v => ((EAetheryteLocation)(object)v).IsAethernetShard() == wantShard)
+                    .ToList();
+            }
+            if (missing.Count > 0)
+            {
+                throw new InvalidOperationException(
+                    $"{GetType().Name}: dictionary is missing entries for {typeof(T).Name} member(s): "
+                    + string.Join(", ", missing)
+                    + ". Add them to the converter's Values dictionary.");
+            }
+
             _enumToString = values is IDictionary<T, string> dict
                 ? new(dict)
                 : new ReadOnlyDictionary<T, string>(values.ToDictionary(x => x.Key, x => x.Value));

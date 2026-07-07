@@ -16,11 +16,6 @@
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "Fly": true
         }
       ]

@@ -369,7 +369,8 @@
                     "RoguesGuild",
                     "NotRoguesGuild",
                     "DockStorehouse",
-                    "SkipFreeFantasia"
+                    "SkipFreeFantasia",
+                    "CostaDelSol"
                   ]
                 }
               },
@@ -460,7 +461,8 @@
                 "ExtraCondition": {
                   "type": "string",
                   "enum": [
-                    "SkipFreeFantasia"
+                    "SkipFreeFantasia",
+                    "CostaDelSol"
                   ]
                 }
               },
