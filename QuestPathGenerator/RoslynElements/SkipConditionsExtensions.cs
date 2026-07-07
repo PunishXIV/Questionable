@@ -160,6 +160,9 @@ internal static class SkipConditionsExtensions
                             Assignment(nameof(skipAetheryteCondition.NotNearPosition), skipAetheryteCondition.NotNearPosition,
                                     emptyAetheryte.NotNearPosition)
                                 .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(SkipAetheryteCondition.Item), skipAetheryteCondition.Item,
+                                    emptyAetheryte.Item)
+                                .AsSyntaxNodeOrToken(),
                             Assignment(nameof(skipAetheryteCondition.ExtraCondition), skipAetheryteCondition.ExtraCondition,
                                     emptyAetheryte.ExtraCondition)
                                 .AsSyntaxNodeOrToken()))));
