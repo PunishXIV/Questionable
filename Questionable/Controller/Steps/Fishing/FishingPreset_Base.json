@@ -159,9 +159,9 @@
     "TimeWindowConditionSet": null
   },
   "ExtraCfg": {
-    "Enabled": false,
+    "Enabled": true,
     "ResetCounterPresetSwap": false,
-    "ForceBaitSwap": false,
+    "ForceBaitSwap": true,
     "ForcedBaitId": 0,
     "AutoOceanFishEnabled": false,
     "AutoOceanFishAllStops": false,
