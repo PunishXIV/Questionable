@@ -186,8 +186,8 @@ internal sealed class MovementController
 
         if (serviceProvider.GetRequiredService<QuestController>().IsQuestingStopped)
         {
-            if (EzThrottler.Throttle("qstwouldhavejumpedin", 5000))
-                logger.LogDebug("Questionable would have jumped in here to do something, but decided against it.");
+            // if (EzThrottler.Throttle("qstwouldhavejumpedin", 5000))
+            //     logger.LogDebug("Questionable would have jumped in here to do something, but decided against it.");
             return;
         }
 

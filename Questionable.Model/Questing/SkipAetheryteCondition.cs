@@ -21,5 +21,6 @@ public sealed class SkipAetheryteCondition
     public bool RequiredQuestVariablesNotMet { get; set; }
     public NearPositionCondition? NearPosition { get; set; }
     public NearPositionCondition? NotNearPosition { get; set; }
+    public SkipItemConditions? Item { get; set; }
     public EExtraSkipCondition? ExtraCondition { get; set; }
 }

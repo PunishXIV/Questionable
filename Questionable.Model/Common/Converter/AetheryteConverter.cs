@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 namespace Questionable.Model.Common.Converter;
 
-public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Values)
+public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Values, shard:false)
 {
     private static readonly Dictionary<EAetheryteLocation, string> Values = new()
     {

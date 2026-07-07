@@ -19,5 +19,10 @@ public enum EExtraSkipCondition
     /// <summary>
     ///     Location for NIN quests in Eastern La Noscea; located far underneath the actual zone.
     /// </summary>
-    DockStorehouse
+    DockStorehouse,
+
+    /// <summary>
+    /// 
+    /// </summary>
+    CostaDelSol,
 }

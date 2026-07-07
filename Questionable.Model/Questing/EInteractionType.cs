@@ -23,6 +23,7 @@ public enum EInteractionType
     Action,
     StatusOff,
     WaitForObjectAtPosition,
+    WaitForNpcAtPosition,
     WaitForManualProgress,
     Duty,
     SinglePlayerDuty,

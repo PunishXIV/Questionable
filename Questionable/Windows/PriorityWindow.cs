@@ -19,6 +19,7 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.Common;
+using Questionable.Windows.JournalComponents;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
@@ -42,6 +43,7 @@ internal sealed class PriorityWindow : LWindow
     private readonly QuestSelector _questSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
+    private readonly QuestJournalUtils _questJournalUtils;
     private Dictionary<string, List<ElementId>>? _builtInPresets;
     private ElementId? _draggedItem;
     private Job? _lastKnownJob;
@@ -50,7 +52,7 @@ internal sealed class PriorityWindow : LWindow
 
     public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, QuestRegistry questRegistry,
-        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData)
+        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData, QuestJournalUtils questJournalUtils)
         : base(_L("Priority Quests") + "###QuestionableQuestPriority")
     {
         _questController = questController;
@@ -63,6 +65,7 @@ internal sealed class PriorityWindow : LWindow
         _pluginInterface = pluginInterface;
         _configuration = configuration;
         _questData = questData;
+        _questJournalUtils = questJournalUtils;
 
         _questSelector.SuggestionPredicate = quest =>
             !quest.Info.IsMainScenarioQuest &&
@@ -168,6 +171,8 @@ internal sealed class PriorityWindow : LWindow
 
                 if (hovered)
                     _questTooltipComponent.Draw(quest.Info);
+                
+                _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
 
                 if (priorityQuests.Count > 1)
                 {
@@ -435,9 +440,50 @@ internal sealed class PriorityWindow : LWindow
             2248, // hullbreaker hard
             1556, // palace of the dead
         ]).FromNumericListOfQuests();
+        List<ElementId> jobUnlocks = ((ushort[])[
+            // Gridania
+            181,131, // Archer
+            180,132, // Lancer
+            182,133, // Conjurer
+            184,138, // Carpenter
+            188,105, // Leatherworker
+            193,3, // Botanist
+            3261,3262, // Gunbreaker
+            4854,4855, // Pictomancer
+            // Limsa
+            179,310, // Marauder
+            451,452, // Arcanist
+            101,102, // Rogue
+            1134,1107, // Fisher
+            185,291, // Blacksmith
+            186,273, // Armorer
+            191,271, // Culinarian
+            3249,3250, // Dancer
+            3192, // Blue Mage
+            4067,4068, // Sage
+            // Uldah
+            177,285, // Gladiator
+            183,344, // Thaumaturge
+            178,532, // Pugilist
+            187,608, // Goldsmith
+            189,534, // Weaver
+            192,597, // Miner
+            190,575, // Alchemist
+            2559,2560, // Samurai
+            2576,2577, // Red Mage
+            4073,4074, // Reaper
+            4848,4849, // Viper
+            // Ishgard
+            2109,1696, // Machinist
+            2110,2053, // Dark Knight
+            2123,2012 // Astrologian
+        ]).FromNumericListOfQuests();
         _builtInPresets = new()
         {
             [JobQuestsPresetName] = [],
+            [_L("Unlock all jobs")] = jobUnlocks,
+            [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
+            [_L("Post-ARR unlocks")] = postARRUnlocks,
             [_L("ARR Hard Mode Primals")] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
             [_L("Crystal Tower Raids")] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
             [_L("Aether Currents: Heavensward")] = GetAetherCurrentQuests(397, 398, 399, 400, 401),
@@ -450,8 +496,6 @@ internal sealed class PriorityWindow : LWindow
             [_L("Role Quests: Melee DPS")] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             [_L("Role Quests: Physical Ranged")] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
             [_L("Role Quests: Caster")] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
-            [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
-            [_L("Post-ARR unlocks")] = postARRUnlocks,
         };
 
         return _builtInPresets;

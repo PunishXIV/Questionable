@@ -32,7 +32,7 @@ internal sealed class EventInfoComponent
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
         new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
-        new(_L("Dragon Quest X 2026"), [new QuestId(1288)], AtDailyReset(new(2026,7,13)))
+        new(_L("Dragon Quest X"), [new QuestId(1288)], AtDailyReset(new(2026,7,13)))
     ];
     private readonly QuestController _questController = questController;
 

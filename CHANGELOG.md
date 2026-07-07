@@ -1,1 +1,2 @@
-- Bug fix: "copy position" had error, fixed -raitono
+- Feature: AutoHook support -raitono
+- Bug fix: add ExtraCondition for if we're in costadelsol side of east la noscea, fixes war quests -alydev
