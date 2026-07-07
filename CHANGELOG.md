@@ -1,1 +1,1 @@
-- Bug fix: disable erroneous logging -alydev
+- Bug fix: add ExtraCondition for if we're in costadelsol side of east la noscea, fixes war quests -alydev

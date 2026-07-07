@@ -27,6 +27,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
             EExtraSkipCondition.RoguesGuild => territoryType == 129 && position.Y <= -115,
             EExtraSkipCondition.NotRoguesGuild => territoryType == 129 && position.Y > -115,
             EExtraSkipCondition.DockStorehouse => territoryType == 137 && position.Y <= -20,
+            EExtraSkipCondition.CostaDelSol => territoryType == 137 && position.Z > 55 && position.X > 165,
             var _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, null)
         };
     }
