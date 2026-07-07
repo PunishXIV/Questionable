@@ -126,7 +126,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             serviceCollection.AddSingleton<CommandHandler>();
             serviceCollection.AddSingleton<DalamudInitializer>();
 
-            serviceCollection.AddSingleton<IFishingPresetFactory, FishingPresetFactory>();
+            serviceCollection.AddSingleton<IFishingPresetGenerator, FishingPresetGenerator>();
 
             _serviceProvider = serviceCollection.BuildServiceProvider();
             Initialize(_serviceProvider);

@@ -8,7 +8,7 @@ using static Questionable.Controller.Steps.Shared.Fish;
 
 namespace Questionable.Controller.Steps.Fishing;
 
-internal interface IFishingPresetFactory
+internal interface IFishingPresetGenerator
 {
   /// <summary>
   /// Creates an AutoHook fishing preset from a fish task.
@@ -18,7 +18,7 @@ internal interface IFishingPresetFactory
   string CreatePresetFromTask(FishTask task);
 }
 
-internal sealed class FishingPresetFactory(QuestRegistry questRegistry) : IFishingPresetFactory
+internal sealed class FishingPresetGenerator(QuestRegistry questRegistry) : IFishingPresetGenerator
 {
   private static readonly string[] HooksetKeys =
   [
@@ -67,7 +67,7 @@ internal sealed class FishingPresetFactory(QuestRegistry questRegistry) : IFishi
 
   private static JsonObject LoadBasePreset(string name)
   {
-    Stream stream = typeof(FishingPresetFactory).Assembly.GetManifestResourceStream(
+    Stream stream = typeof(FishingPresetGenerator).Assembly.GetManifestResourceStream(
         $"Questionable.Controller.Steps.Fishing.FishingPreset_Base.json") ??
     throw new InvalidOperationException("Preset FishingPreset_Base.json was not found");
     using StreamReader reader = new(stream);
@@ -80,7 +80,7 @@ internal sealed class FishingPresetFactory(QuestRegistry questRegistry) : IFishi
 
   private static JsonObject LoadBaitPreset()
   {
-    Stream stream = typeof(FishingPresetFactory).Assembly.GetManifestResourceStream(
+    Stream stream = typeof(FishingPresetGenerator).Assembly.GetManifestResourceStream(
         $"Questionable.Controller.Steps.Fishing.FishingPreset_Bait.json") ??
     throw new InvalidOperationException("Preset FishingPreset_Bait.json was not found");
     using StreamReader reader = new(stream);
@@ -100,6 +100,7 @@ internal sealed class FishingPresetFactory(QuestRegistry questRegistry) : IFishi
     var baitPreset = LoadBaitPreset();
     baitPreset["BaitFish"]!["Id"] = baitId;
     preset["ListOfBaits"]!.AsArray().Add(baitPreset);
+    preset["ExtraCfg"]!["ForcedBaitId"] = baitId;
     return baitPreset;
   }
 

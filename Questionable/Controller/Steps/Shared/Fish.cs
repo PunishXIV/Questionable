@@ -60,7 +60,7 @@ internal static class Fish
       GameFunctions gameFunctions,
       IChatGui chatGui,
       SendNotification.Executor sendNotificationExecutor,
-      IFishingPresetFactory fishingPresetFactory,
+      IFishingPresetGenerator fishingPresetGenerator,
       ILogger<DoFish> logger) : TaskExecutor<FishTask>, IStoppableTaskExecutor
   {
     private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
@@ -105,7 +105,7 @@ internal static class Fish
         {
           logger.LogDebug("No fishing preset found for quest {QuestId}. Autocreating from quest data.", Task.Quest.Id);
 
-          presetExport = fishingPresetFactory.CreatePresetFromTask(Task);
+          presetExport = fishingPresetGenerator.CreatePresetFromTask(Task);
           logger.LogDebug(presetExport);
         }
 

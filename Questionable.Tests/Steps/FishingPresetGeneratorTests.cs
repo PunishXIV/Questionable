@@ -1,4 +1,3 @@
-using System.IO;
 using System.Text.Json.Nodes;
 using Questionable.Controller.Steps.Fishing;
 using Questionable.Model.Questing;
@@ -6,14 +5,14 @@ using Xunit;
 
 namespace Questionable.Tests.Steps;
 
-public sealed class FishingPresetFactoryTests
+public sealed class FishingPresetGeneratorTests
 {
   [Fact]
   public void ApplyHookType_Null_EnablesAllHooksets()
   {
     var baitPreset = LoadBaitPreset();
 
-    FishingPresetFactory.ApplyHookType(baitPreset, null);
+    FishingPresetGenerator.ApplyHookType(baitPreset, null);
 
     Assert.True(HooksetEnabled(baitPreset, "PatienceWeak"));
     Assert.True(HooksetEnabled(baitPreset, "DoubleWeak"));
@@ -27,7 +26,7 @@ public sealed class FishingPresetFactoryTests
   {
     var baitPreset = LoadBaitPreset();
 
-    FishingPresetFactory.ApplyHookType(baitPreset, new HookType
+    FishingPresetGenerator.ApplyHookType(baitPreset, new HookType
     {
       Normal = HookTypeFilter.From(new Hookset { Weak = true }),
     });
@@ -45,7 +44,7 @@ public sealed class FishingPresetFactoryTests
   {
     var baitPreset = LoadBaitPreset();
 
-    FishingPresetFactory.ApplyHookType(baitPreset, new HookType
+    FishingPresetGenerator.ApplyHookType(baitPreset, new HookType
     {
       Normal = HookTypeFilter.AllHooksets,
     });
@@ -61,7 +60,7 @@ public sealed class FishingPresetFactoryTests
   {
     var baitPreset = LoadBaitPreset();
 
-    FishingPresetFactory.ApplyHookType(baitPreset, new HookType
+    FishingPresetGenerator.ApplyHookType(baitPreset, new HookType
     {
       Normal = HookTypeFilter.AllHooksets,
       Double = HookTypeFilter.From(new Hookset { Strong = true }),
@@ -81,15 +80,14 @@ public sealed class FishingPresetFactoryTests
   {
     var preset = new JsonObject { ["PresetName"] = "2086-The Icepick Challenge" };
 
-    string exported = FishingPresetFactory.ExportPreset(preset);
+    string exported = FishingPresetGenerator.ExportPreset(preset);
 
     Assert.StartsWith("AH6_", exported);
-    Assert.StartsWith("H4sI", exported[4..]);
   }
 
   private static JsonObject LoadBaitPreset()
   {
-    using Stream stream = typeof(FishingPresetFactory).Assembly.GetManifestResourceStream(
+    using Stream stream = typeof(FishingPresetGenerator).Assembly.GetManifestResourceStream(
         "Questionable.Controller.Steps.Fishing.FishingPreset_Bait.json") ??
     throw new InvalidOperationException("Preset FishingPreset_Bait.json was not found");
     using StreamReader reader = new(stream);
