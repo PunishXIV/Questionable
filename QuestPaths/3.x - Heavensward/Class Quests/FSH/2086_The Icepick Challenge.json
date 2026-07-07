@@ -52,14 +52,14 @@
       "Steps": [
         {
           "Comment": "Purchase bait",
-          "DataId": 1011228,
+          "DataId": 1017189,
           "Position": {
-            "X": 501.53958,
-            "Y": 212.58333,
-            "Z": 718.69556
+            "X": -3.000534,
+            "Y": 206.49942,
+            "Z": 53.354298
           },
-          "TerritoryId": 397,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "TerritoryId": 478,
+          "AetheryteShortcut": "Idyllshire",
           "Fly": true,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
@@ -67,7 +67,7 @@
             "Key": 262151
           },
           "ItemId": 28634,
-          "ItemCount": 99,
+          "ItemCount": 10,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -84,6 +84,7 @@
             "Z": -176.7691
           },
           "TerritoryId": 397,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "Fly": true,
           "Land": true,
           "InteractionType": "WalkTo",
@@ -108,7 +109,14 @@
             {
               "ItemId": 12713,
               "ItemCount": 3,
-              "BailId": 28634
+              "FishingOptions": {
+                "BaitId": 28634,
+                "HookType": {
+                  "Normal": {
+                    "Weak": true
+                  }
+                }
+              }
             }
           ],
           "SkipConditions": {
@@ -127,6 +135,7 @@
             "Z": 665.892
           },
           "TerritoryId": 397,
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2087
         }

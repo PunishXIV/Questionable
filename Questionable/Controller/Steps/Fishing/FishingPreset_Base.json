@@ -1,0 +1,182 @@
+{
+  "AutoCastsCfg": {
+    "EnableAll": true,
+    "DontCancelMooch": true,
+    "RecastAnimationCancel": true,
+    "TurnCollectOff": true,
+    "ChumAnimationCancel": false,
+    "TurnCollectOffWithoutAnimCancel": true,
+    "CastLine": {
+      "IgnoreMooch": true,
+      "Enabled": true,
+      "Id": 289,
+      "GpThreshold": 0,
+      "DontCancelMooch": true,
+      "Priority": 1,
+      "IsExcludedPriority": true,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastMooch": {
+      "Mooch2": {
+        "Enabled": false,
+        "Id": 268,
+        "GpThreshold": 100,
+        "DontCancelMooch": true,
+        "Priority": 11,
+        "IsExcludedPriority": true,
+        "GpThresholdAbove": true,
+        "ConditionSet": null
+      },
+      "Enabled": false,
+      "Id": 297,
+      "GpThreshold": 0,
+      "DontCancelMooch": true,
+      "Priority": 10,
+      "IsExcludedPriority": true,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastChum": {
+      "Enabled": false,
+      "Id": 4104,
+      "GpThreshold": 100,
+      "DontCancelMooch": true,
+      "Priority": 1,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastCollect": {
+      "Enabled": false,
+      "Id": 4101,
+      "GpThreshold": 0,
+      "DontCancelMooch": true,
+      "Priority": 2,
+      "IsExcludedPriority": true,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastSnagging": {
+      "Enabled": false,
+      "Id": 4100,
+      "GpThreshold": 0,
+      "DontCancelMooch": true,
+      "Priority": 3,
+      "IsExcludedPriority": true,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastCordial": {
+      "InvertCordialPriority": false,
+      "IgnoreTimeWindow": false,
+      "Enabled": false,
+      "Id": 6141,
+      "GpThreshold": 0,
+      "DontCancelMooch": true,
+      "OvercapConditionSet": null,
+      "Priority": 4,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastFishEyes": {
+      "IgnoreMooch": false,
+      "Enabled": false,
+      "Id": 4105,
+      "GpThreshold": 550,
+      "DontCancelMooch": true,
+      "Priority": 6,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastMakeShiftBait": {
+      "MakeshiftBaitStacks": 5,
+      "Enabled": false,
+      "Id": 26805,
+      "GpThreshold": 5,
+      "DontCancelMooch": true,
+      "Priority": 9,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastPatience": {
+      "RefreshEarlyTime": 0,
+      "Enabled": false,
+      "Id": 4106,
+      "GpThreshold": 560,
+      "DontCancelMooch": true,
+      "Priority": 12,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastPrizeCatch": {
+      "Enabled": false,
+      "Id": 26806,
+      "GpThreshold": 200,
+      "DontCancelMooch": true,
+      "Priority": 13,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastThaliaksFavor": {
+      "ThaliaksFavorStacks": 3,
+      "ThaliaksFavorRecover": 150,
+      "Enabled": false,
+      "Id": 26804,
+      "GpThreshold": 0,
+      "DontCancelMooch": true,
+      "Priority": 16,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastBigGame": {
+      "AnglersStacks": 2,
+      "Enabled": false,
+      "Id": 37046,
+      "GpThreshold": 2,
+      "DontCancelMooch": true,
+      "Priority": 18,
+      "IsExcludedPriority": false,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "CastMultihook": {
+      "Enabled": false,
+      "Id": 42059,
+      "GpThreshold": 1,
+      "DontCancelMooch": true,
+      "Priority": 0,
+      "IsExcludedPriority": true,
+      "GpThresholdAbove": true,
+      "ConditionSet": null
+    },
+    "TimeWindowConditionSet": null
+  },
+  "ExtraCfg": {
+    "Enabled": false,
+    "ResetCounterPresetSwap": false,
+    "ForceBaitSwap": false,
+    "ForcedBaitId": 0,
+    "AutoOceanFishEnabled": false,
+    "AutoOceanFishAllStops": false,
+    "AutoOceanFishSpotId": 0,
+    "AutoOceanFishTimeId": 0,
+    "AutoOceanFishConditionSet": null,
+    "Triggers": [],
+    "UniqueId": null
+  },
+  "IsAnonymous": false,
+  "ListOfBaits": [],
+  "ListOfMooch": [],
+  "ListOfFish": [],
+  "NamedConditions": [],
+  "IsGlobal": false,
+  "PresetName": null,
+  "UniqueId": null
+}

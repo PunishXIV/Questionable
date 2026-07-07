@@ -74,4 +74,45 @@ public sealed class GatheredItemDeserializationTests
     Assert.Equal(0u, task.GatheredItem.AlternativeItemId);
     Assert.Equal((ushort)0, task.GatheredItem.Collectability);
   }
+
+  [Fact]
+  public void FishStep_OmittedCollectabilityDefaultsToZeroWithFishingOptions()
+  {
+    const string json = """
+        {
+          "InteractionType": "Fish",
+          "TerritoryId": 397,
+          "ItemsToGather": [
+            {
+              "ItemId": 12713,
+              "ItemCount": 3,
+              "FishingOptions": {
+                "BaitId": 28634,
+                "HookType": {
+                  "Normal": {
+                    "Weak": true
+                  }
+                }
+              }
+            }
+          ]
+        }
+        """;
+
+    var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
+    var item = step!.ItemsToGather.Single();
+
+    Assert.Equal(12713u, item.ItemId);
+    Assert.Equal(3, item.ItemCount);
+    Assert.Equal((ushort)0, item.Collectability);
+    Assert.Equal(0u, item.AlternativeItemId);
+    Assert.NotNull(item.FishingOptions);
+    Assert.Equal(28634u, item.FishingOptions.BaitId);
+    Assert.NotNull(item.FishingOptions.HookType);
+    Assert.NotNull(item.FishingOptions.HookType.Normal);
+    Assert.True(item.FishingOptions.HookType.Normal.Value.Hookset!.Weak);
+    Assert.Null(item.FishingOptions.HookType.Normal.Value.Hookset!.Strong);
+    Assert.Null(item.FishingOptions.HookType.Double);
+    Assert.Null(item.FishingOptions.HookType.Triple);
+  }
 }

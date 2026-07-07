@@ -6,6 +6,7 @@ using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Utils;
 using Questionable.Data;
 using Questionable.External;
@@ -59,6 +60,7 @@ internal static class Fish
       GameFunctions gameFunctions,
       IChatGui chatGui,
       SendNotification.Executor sendNotificationExecutor,
+      IFishingPresetFactory fishingPresetFactory,
       ILogger<DoFish> logger) : TaskExecutor<FishTask>, IStoppableTaskExecutor
   {
     private readonly bool _wasAutoHookEnabled = autoHookIpc.IsPluginEnabled();
@@ -101,8 +103,10 @@ internal static class Fish
 
         if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
         {
-          logger.LogWarning("No fishing preset found for quest {QuestId}", Task.Quest.Id);
-          throw new TaskException($"No fishing preset found for quest {Task.Quest.Id}");
+          logger.LogDebug("No fishing preset found for quest {QuestId}. Autocreating from quest data.", Task.Quest.Id);
+
+          presetExport = fishingPresetFactory.CreatePresetFromTask(Task);
+          logger.LogDebug(presetExport);
         }
 
         // Using an anonymouse preset allows us to easily remove it later.
