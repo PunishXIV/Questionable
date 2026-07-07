@@ -92,14 +92,7 @@
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "Fly": true,
           "Land": true,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          "InteractionType": "WalkTo"
         },
         {
           "Comment": "Catch 3x Icepicks",
@@ -123,14 +116,7 @@
                 }
               }
             }
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          ]
         },
         {
           "DataId": 1013252,
@@ -139,6 +125,7 @@
             "Y": 200.238,
             "Z": 665.892
           },
+          "Fly": true,
           "TerritoryId": 397,
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "InteractionType": "CompleteQuest",
