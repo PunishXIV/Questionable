@@ -407,7 +407,8 @@ internal sealed class MovementController
         float distance = Vector2.Distance(new(start.X, start.Z),
             new(nextWaypoint.X, nextWaypoint.Z));
         if (Destination.LastWaypoint == null ||
-            (Destination.LastWaypoint.Position - nextWaypoint).Length() > 0.1f)
+            (Destination.LastWaypoint.Position - nextWaypoint).Length() > 0.1f ||
+            gameFunctions.IsOccupied())
         {
             Destination.LastWaypoint = new(nextWaypoint)
             {

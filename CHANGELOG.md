@@ -1,2 +1,1 @@
-- Feature: AutoHook support -raitono
-- Bug fix: add ExtraCondition for if we're in costadelsol side of east la noscea, fixes war quests -alydev
+- Bug fix: Add condition and occupied check before recalculating path -alydev
