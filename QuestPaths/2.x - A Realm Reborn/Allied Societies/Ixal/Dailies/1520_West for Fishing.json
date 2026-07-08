@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
-  "Comment": "Quest requires manual intervention due to\nno support for automatic fishing (yet?)\nBuy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+  "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-27"},
   "QuestSequence": [
     {
@@ -27,6 +26,31 @@
       "Sequence": 1,
       "Steps": [
         {
+          "Comment": "Buy 99 Moth Pupa from vendor at\nNorth Shroud 28.1, 28.1",
+          "DataId": 1000718,
+          "Position": {
+            "X": 332.23462,
+            "Y": -5.5506706,
+            "Z": 332.47876
+          },
+          "TerritoryId": 154,
+          "Fly": true,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 2586,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
           "Position": {
             "X": 305.01318,
             "Y": 301,
@@ -38,19 +62,23 @@
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
+          "Comment": "Catch 3x Snow Smelt (!!) using Moth Pupa",
           "TerritoryId": 155,
-          "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher"
-        },
-        {
-          "TerritoryId": 155,
-          "InteractionType": "Action",
-          "Action": "FSHCast"
-        },
-        {
-          "TerritoryId": 155,
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Catch 3x Snow Smelt (!!) using Moth Pupa"
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 2001422,
+              "ItemCount": 3,
+              "FishingOptions": {
+                "BaitId": 2586,
+                "HookType": {
+                  "Normal": {
+                    "Strong": true
+                  }
+                }
+              }
+            }
+          ]
         }
       ]
     },
