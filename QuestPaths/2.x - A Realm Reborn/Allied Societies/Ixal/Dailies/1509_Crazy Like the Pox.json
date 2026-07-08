@@ -150,10 +150,17 @@
           "ItemsToGather": [
             {
               "ItemId": 2001410,
-              "ItemCount": 2
+              "ItemCount": 2,
+              "FishingOptions": {
+                "BaitId": 2586,
+                "HookType": {
+                  "Normal": {
+                    "Strong": true
+                  }
+                }
+              }
             }
-          ],
-          "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 2}, null, null, null, null]
+          ]
         }
       ]
     },
