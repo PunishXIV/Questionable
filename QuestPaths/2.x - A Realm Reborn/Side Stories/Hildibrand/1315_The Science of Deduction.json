@@ -1,18 +1,13 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "FalconTaterz",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-10"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DataId": 1005884,
           "Position": {
             "X": -526.26843,
@@ -81,7 +76,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "AetheryteShortcut": "Western Thanalan - Horizon",
           "Fly": true,
           "DataId": 1008713,
           "Position": {
