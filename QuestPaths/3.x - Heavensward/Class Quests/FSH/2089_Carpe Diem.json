@@ -1,0 +1,140 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.35852,
+            "Y": 15.00001,
+            "Z": 24.307495
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013824,
+          "Position": {
+            "X": 441.30603,
+            "Y": -29.3383,
+            "Z": 218.12769
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.35852,
+            "Y": 15.00001,
+            "Z": 24.307495
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013827,
+          "Position": {
+            "X": -253.07086,
+            "Y": -185.13464,
+            "Z": 691.5845
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Comment": "Requires Flying Unlocked",
+      "Steps": [
+        {
+          "DataId": 1013829,
+          "Position": {
+            "X": 420.24866,
+            "Y": -186.51733,
+            "Z": 814.20605
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Move to fishing spot",
+          "Position": {
+            "X": 418.0307,
+            "Y": -187.0841,
+            "Z": 827.66614
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Mount": false
+        },
+        {
+          "Comment": "Fish for 1x Catkiller (Bait: Bladed Steel Jig, Mooch: Bullfrog)\nWEATHER REQUIRED: Clear Skies or Fair Skies",
+          "TerritoryId": 397,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 12829,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1013830,
+          "Position": {
+            "X": 400.74768,
+            "Y": -123.26299,
+            "Z": 674.9523
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

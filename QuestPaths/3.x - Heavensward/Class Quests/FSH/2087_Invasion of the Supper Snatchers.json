@@ -1,0 +1,123 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.35852,
+            "Y": 15.00001,
+            "Z": 24.307495
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013254,
+          "Position": {
+            "X": 523.6133,
+            "Y": -51.424004,
+            "Z": 62.546753
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InSameTerritory": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013256,
+          "Position": {
+            "X": 560.57056,
+            "Y": -21.322742,
+            "Z": -557.1527
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Walk to fishing spot (it's nearby)",
+          "Position": {
+            "X": 565.8959,
+            "Y": -26.253891,
+            "Z": -571.15576
+          },
+          "TerritoryId": 398,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {"InTerritory": [398]}
+          }
+        },
+        {
+          "Comment": "Fish for 3x Shadowhisker (Bait: Versatile Lure or Blueclaw Shrimp mooch)",
+          "TerritoryId": 398,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 12769,
+              "ItemCount": 3
+            }
+          ]
+        },
+        {
+          "Comment": "Turn in fish",
+          "DataId": 1013254,
+          "Position": {
+            "X": 523.6133,
+            "Y": -51.424004,
+            "Z": 62.546753
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.35852,
+            "Y": 15.00001,
+            "Z": 24.307495
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    }
+  ]
+}

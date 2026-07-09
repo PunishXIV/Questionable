@@ -1,0 +1,149 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.35852,
+            "Y": 15.00001,
+            "Z": 24.307495
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27051,
+            "Y": 5.2500057,
+            "Z": 164.29382
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [129]}
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 287.34552,
+            "Y": -46.72733,
+            "Z": 663.33136
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Mount": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        },
+        {
+          "DataId": 1012079,
+          "Position": {
+            "X": 406.75964,
+            "Y": -73.595436,
+            "Z": 702.57104
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013824,
+          "Position": {
+            "X": 441.30603,
+            "Y": -29.3383,
+            "Z": 218.12769
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Comment": "Walk to fishing spot (it's nearby)",
+          "Position": {
+            "X": 445.3245,
+            "Y": -31.7062,
+            "Z": 222.61751
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Comment": "Fish for 1x Letter Puffer (Bait: Giant Crane Fly)",
+          "TerritoryId": 400,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 12793,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "Comment": "Turn in fish",
+          "DataId": 1013824,
+          "Position": {
+            "X": 441.30603,
+            "Y": -29.3383,
+            "Z": 218.12769
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.35852,
+            "Y": 15.00001,
+            "Z": 24.307495
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    }
+  ]
+}
