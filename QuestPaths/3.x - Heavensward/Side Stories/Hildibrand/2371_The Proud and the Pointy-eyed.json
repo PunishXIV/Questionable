@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -56,11 +57,12 @@
         {
           "DataId": 1011920,
           "Position": {
-            "X": 519.8595,
+            "X": 520.7844,
             "Y": -51.071976,
-            "Z": 88.24292
+            "Z": 85.897194
           },
           "TerritoryId": 398,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -79,13 +81,14 @@
         },
         {
           "Position": {
-            "X": 493.00256,
-            "Y": -51.02798,
-            "Z": 16.711847
+            "X": 496.7199,
+            "Y": -48.941193,
+            "Z": 17.57075
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
           "Fly": true,
+          "StopDistance": 1,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]

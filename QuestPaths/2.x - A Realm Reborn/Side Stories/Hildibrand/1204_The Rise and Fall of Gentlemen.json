@@ -1,18 +1,12 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "FalconTaterz",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-10"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DataId": 1001285,
           "Position": {
             "X": -68.77246,
@@ -35,8 +29,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
           "DataId": 1005709,
           "Position": {
             "X": -464.16425,
@@ -44,7 +36,8 @@
             "Z": 85.40466
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },
@@ -52,8 +45,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true,
           "Position": {
             "X": -273.9414,
             "Y": 9.756445,
@@ -62,14 +53,8 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "ComplexCombatData": [
-            {
-              "DataId": 2390
-            },
-            {
-              "DataId": 2391
-            }
-          ]
+          "Fly": true,
+          "KillEnemyDataIds": [2390,2391]
         }
       ]
     },
@@ -77,8 +62,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
           "DataId": 1005709,
           "Position": {
             "X": -464.16425,
@@ -86,7 +69,8 @@
             "Z": 85.40466
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },
@@ -94,8 +78,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true,
           "DataId": 1005710,
           "Position": {
             "X": 4.4403076,
@@ -104,6 +86,7 @@
           },
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
+          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
