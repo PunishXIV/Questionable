@@ -173,6 +173,13 @@ internal sealed class CreationUtilsComponent
                     ImGui.Text($"A2: {actionManager->CastTimeElapsed} / {actionManager->CastTimeTotal}");
                     ImGui.Text($"PC: {questController.TaskQueue.CurrentTaskExecutor?.ProgressContext}");
                 }
+
+                if (configuration.Advanced.ShowHoveredItem)
+                {
+                    ulong hoveredItemId = gameGui.HoveredItem;
+                    string hq = hoveredItemId > 1000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
+                    ImGui.Text(_LF("Hovered Item: {0}", hoveredItemId % 1000000) + hq);
+                }
             }
         }
 
@@ -189,13 +196,6 @@ internal sealed class CreationUtilsComponent
             DrawInteractionButtons();
             ImGui.SameLine();
             DrawCopyButton();
-        }
-
-        ulong hoveredItemId = gameGui.HoveredItem;
-        if (hoveredItemId != 0)
-        {
-            ImGui.Separator();
-            ImGui.Text(_LF("Hovered Item: {0}", hoveredItemId));
         }
     }
 

@@ -103,6 +103,7 @@ internal sealed class DebugConfigComponent
                     bool showDirector = Configuration.Advanced.ShowDirector;
                     bool showActionManager = Configuration.Advanced.ShowActionManager;
                     bool showNewGamePlus = Configuration.Advanced.ShowNewGamePlus;
+                    bool showHoveredItem = Configuration.Advanced.ShowHoveredItem;
                     using (ImRaii.PushIndent())
                     {
                         ImGui.AlignTextToFramePadding();
@@ -133,6 +134,12 @@ internal sealed class DebugConfigComponent
                         if (ImGui.Checkbox(_L("Show NG+ Chapter"), ref showNewGamePlus))
                         {
                             Configuration.Advanced.ShowNewGamePlus = showNewGamePlus;
+                            Save();
+                        }
+
+                        if (ImGui.Checkbox(_L("Show Hovered Item"), ref showHoveredItem))
+                        {
+                            Configuration.Advanced.ShowHoveredItem = showHoveredItem;
                             Save();
                         }
                     }
