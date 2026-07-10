@@ -1,1 +1,1 @@
-- Bug fix: Add condition and occupied check before recalculating path -alydev
+- Change: Moved "Hovered item:" into "Additional Status Information" section, toggled in Advanced settings
