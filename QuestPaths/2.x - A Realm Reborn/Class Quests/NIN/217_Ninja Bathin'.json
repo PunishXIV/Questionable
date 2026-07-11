@@ -14,9 +14,6 @@
           },
           "TerritoryId": 139,
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          },
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -189,10 +186,7 @@
           "TerritoryId": 138,
           "InteractionType": "SinglePlayerDuty",
           "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -210,7 +204,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }

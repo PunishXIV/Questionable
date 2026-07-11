@@ -16,12 +16,7 @@
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -36,12 +31,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         },
         {
           "DataId": 1007568,
@@ -68,12 +58,7 @@
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     }

@@ -17,12 +17,7 @@
           "Fly": true,
           "Land": true,
           "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         },
         {
           "DataId": 1006977,
@@ -51,12 +46,7 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "Land": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "DataId": 1006444,
@@ -87,9 +77,6 @@
           "Mount": true,
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "NotNearPosition": {
                 "Position": {
@@ -143,12 +130,7 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "Land": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "DataId": 1006444,

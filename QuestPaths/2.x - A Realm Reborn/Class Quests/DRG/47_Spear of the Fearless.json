@@ -22,7 +22,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
@@ -182,12 +181,7 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          ]
         }
       ]
     },

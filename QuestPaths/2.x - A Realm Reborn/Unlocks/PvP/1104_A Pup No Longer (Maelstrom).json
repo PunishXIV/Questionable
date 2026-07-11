@@ -22,7 +22,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 128
               ]
@@ -76,12 +75,7 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "TargetTerritoryId": 250,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
         },
         {
           "TerritoryId": 250,

@@ -21,10 +21,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -42,10 +39,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
         }
       ]
     },

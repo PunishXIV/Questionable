@@ -22,7 +22,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 130
               ]
@@ -61,7 +60,6 @@
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 145
               ]
@@ -109,7 +107,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 130
               ]
@@ -148,7 +145,6 @@
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 145
               ]
@@ -189,7 +185,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 130
               ]

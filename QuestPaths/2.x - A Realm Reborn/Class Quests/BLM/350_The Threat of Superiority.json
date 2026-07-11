@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -116,12 +111,7 @@
             ]
           },
           "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },

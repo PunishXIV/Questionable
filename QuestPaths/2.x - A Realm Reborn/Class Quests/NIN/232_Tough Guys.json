@@ -16,7 +16,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }
@@ -100,7 +99,6 @@
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [135]
             },
             "StepIf": { "InTerritory": [135] }
@@ -151,10 +149,7 @@
           "TerritoryId": 137,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
         }
       ]
     },
@@ -188,10 +183,7 @@
           "TerritoryId": 139,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -258,10 +250,7 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "KillEnemyDataIds": [3572],
-          "EnemySpawnType": "AfterInteraction",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "EnemySpawnType": "AfterInteraction"
         }
       ]
     },
@@ -296,7 +285,6 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [134]
             },
             "StepIf": { "InTerritory": [134] }

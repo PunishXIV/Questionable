@@ -36,12 +36,7 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -84,7 +79,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 148
               ]
@@ -137,11 +131,6 @@
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 46
         }
       ]

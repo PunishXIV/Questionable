@@ -16,12 +16,7 @@
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
         },
         {
           "DataId": 1005553,

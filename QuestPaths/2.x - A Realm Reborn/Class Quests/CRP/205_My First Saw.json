@@ -68,9 +68,6 @@
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
             }
           }
         },

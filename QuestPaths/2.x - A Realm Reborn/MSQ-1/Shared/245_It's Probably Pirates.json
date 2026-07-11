@@ -54,12 +54,7 @@
           "AethernetShortcut": [
             "[Limsa Lominsa] The Aftcastle",
             "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -125,12 +120,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Western La Noscea - Aleport"
         }
       ]
     },

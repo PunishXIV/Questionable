@@ -66,11 +66,6 @@
             "[Gridania] Botanists' Guild"
           ],
           "InteractionType": "CompleteQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 9
         }
       ]

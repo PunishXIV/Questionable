@@ -36,12 +36,7 @@
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Arcanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

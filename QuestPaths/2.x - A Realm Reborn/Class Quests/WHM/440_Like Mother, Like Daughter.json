@@ -22,7 +22,6 @@
           "InteractionType": "AcceptQuest",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]

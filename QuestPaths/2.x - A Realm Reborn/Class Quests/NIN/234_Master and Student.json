@@ -16,7 +16,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }
@@ -124,10 +123,7 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
         }
       ]
     },
@@ -163,7 +159,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }

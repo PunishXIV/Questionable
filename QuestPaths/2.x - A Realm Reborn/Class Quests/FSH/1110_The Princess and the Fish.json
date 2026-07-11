@@ -44,9 +44,6 @@
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           },
           "DataId": 1001016,
@@ -76,11 +73,6 @@
             "[Limsa Lominsa] The Aftcastle",
             "[Limsa Lominsa] Fishermen's Guild"
           ],
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1111
         }

@@ -22,7 +22,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 130
               ]
@@ -62,7 +61,6 @@
           "AetheryteShortcut": "Western Thanalan - Horizon",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 140
               ]
@@ -255,7 +253,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 130
               ]

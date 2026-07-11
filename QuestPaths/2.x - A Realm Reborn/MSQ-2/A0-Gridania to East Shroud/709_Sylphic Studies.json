@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]
     },

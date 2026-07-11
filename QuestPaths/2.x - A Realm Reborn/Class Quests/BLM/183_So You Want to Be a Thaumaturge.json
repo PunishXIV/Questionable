@@ -20,11 +20,6 @@
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Thaumaturges' Guild"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

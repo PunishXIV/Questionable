@@ -27,12 +27,7 @@
               "$": "No Godbert prompt"
             }
           ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     }

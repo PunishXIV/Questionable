@@ -14,12 +14,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -39,12 +34,7 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Airship Landing"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

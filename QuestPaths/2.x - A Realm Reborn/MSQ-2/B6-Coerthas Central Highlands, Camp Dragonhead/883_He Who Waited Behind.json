@@ -15,12 +15,7 @@
           },
           "TerritoryId": 145,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },

@@ -16,12 +16,7 @@
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -43,12 +38,7 @@
           },
           "ItemId": 2000952,
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -66,11 +56,6 @@
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "South Shroud - Quarrymill",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 1089
         }
       ]

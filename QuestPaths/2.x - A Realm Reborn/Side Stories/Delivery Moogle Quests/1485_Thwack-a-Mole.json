@@ -14,12 +14,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Limsa Lominsa"
         }
       ]
     },
@@ -35,12 +30,7 @@
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
         },
         {
           "DataId": 1006261,

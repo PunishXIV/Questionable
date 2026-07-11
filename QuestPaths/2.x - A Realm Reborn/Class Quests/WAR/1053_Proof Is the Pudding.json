@@ -37,12 +37,7 @@
               "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
             }
           ],
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "DataId": 2002312,

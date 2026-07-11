@@ -15,11 +15,6 @@
           "TerritoryId": 144,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Gold Saucer",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

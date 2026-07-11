@@ -51,12 +51,7 @@
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "South Shroud - Quarrymill"
         }
       ]
     }

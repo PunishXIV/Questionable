@@ -14,12 +14,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -74,7 +69,6 @@
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "AetheryteLocked": "Mor Dhona",
-              "InSameTerritory": true,
               "InTerritory": [155]
             },
             "StepIf": {
@@ -109,12 +103,7 @@
           "TerritoryId": 155,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

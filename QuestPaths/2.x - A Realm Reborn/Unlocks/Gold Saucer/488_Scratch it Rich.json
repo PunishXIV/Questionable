@@ -13,12 +13,7 @@
         },
       "TerritoryId": 144,
       "InteractionType": "WalkTo",
-      "AetheryteShortcut": "Gold Saucer",
-      "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-        }
+      "AetheryteShortcut": "Gold Saucer"
     },
         {
           "DataId": 1010445,

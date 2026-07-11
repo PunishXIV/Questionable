@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Archers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -298,7 +293,6 @@
           "Fly": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "AetheryteLocked": "East Shroud - Hawthorne Hut"
             }
           }

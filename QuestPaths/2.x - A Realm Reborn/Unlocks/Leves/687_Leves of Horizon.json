@@ -27,8 +27,7 @@
             "[Ul'dah] Adventurers' Guild"
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [130] },
-            "AethernetShortcutIf": { "InSameTerritory": true }
+            "AetheryteShortcutIf": { "InTerritory": [130] }
           }
         }
       ]
@@ -47,10 +46,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western Thanalan - Horizon",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Western Thanalan - Horizon"
         }
       ]
     },

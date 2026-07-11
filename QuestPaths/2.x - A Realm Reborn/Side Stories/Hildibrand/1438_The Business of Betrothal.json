@@ -8,11 +8,6 @@
       "Steps": [
         {
           "AetheryteShortcut": "Western Thanalan - Horizon",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DataId": 1008757,
           "Position": {
             "X": -422.5376,

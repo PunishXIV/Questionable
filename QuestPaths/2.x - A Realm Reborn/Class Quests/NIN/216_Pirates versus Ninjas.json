@@ -16,7 +16,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }
@@ -54,9 +53,6 @@
           },
           "TerritoryId": 139,
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          },
           "InteractionType": "CompleteQuest",
           "NextQuestId": 217
         }

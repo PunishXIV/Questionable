@@ -8,11 +8,6 @@
       "Steps": [
         {
           "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DataId": 1005721,
           "Position": {
             "X": -144.06049,

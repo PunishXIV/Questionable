@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Limsa Lominsa] Fishermen's Guild",
             "[Limsa Lominsa] Aetheryte Plaza"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
