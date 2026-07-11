@@ -1,0 +1,56 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047098,
+          "Position": {
+            "X": 180.134,
+            "Y": -17.9646,
+            "Z": 75.7728
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

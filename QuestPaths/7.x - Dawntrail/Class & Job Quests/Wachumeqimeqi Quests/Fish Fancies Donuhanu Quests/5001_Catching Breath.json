@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1185,
+          "StopDistance": 5,
+          "InteractionType": "Instruction",
+          "Comment": "Purchase Dragonfly bait from:\n* Scrip Exchange (Purple Gatherer's)\n* Mesouaidonque (Cosmocredit)\nThen click Skip"
+        },
+        {
+          "Position": {
+            "X": 482.4802,
+            "Y": 14.962147,
+            "Z": 672.252
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "StopDistance": 1
+        },
+        {
+          "TerritoryId": 1190,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 43906,
+              "ItemCount": 6,
+              "Collectability": 433,
+              "FishingOptions": {
+                "BaitId": 43857,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    }
+  ]
+}

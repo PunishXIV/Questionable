@@ -39,6 +39,7 @@ internal sealed class FishingPresetGenerator(QuestRegistry questRegistry) : IFis
 
     var preset = LoadBasePreset($"{quest.Id}-{quest.Info.Name}");
 
+    SetCollectability(preset, task.GatheredItem.Collectability);
     SetFishingOptions(preset, task.GatheredItem.FishingOptions);
 
     return ExportPreset(preset);
@@ -87,6 +88,13 @@ internal sealed class FishingPresetGenerator(QuestRegistry questRegistry) : IFis
     var preset = JsonNode.Parse(reader.ReadToEnd()) as JsonObject ?? throw new InvalidOperationException("Failed to parse FishingPreset_Bait.json");
     preset["UniqueId"] = Guid.NewGuid().ToString();
     return preset;
+  }
+
+  private static void SetCollectability(JsonObject preset, ushort collectability)
+  {
+    preset["AutoCastsCfg"]!["CastCollect"]!["Enabled"] = collectability != 0;
+    preset["AutoCastsCfg"]!["TurnCollectOffWithoutAnimCancel"] = collectability == 0;
+    preset["AutoCastsCfg"]!["TurnCollectOff"] = collectability == 0;
   }
 
   private static void SetFishingOptions(JsonObject preset, FishingOptions fishingOptions)
