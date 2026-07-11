@@ -21,13 +21,9 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -46,12 +42,7 @@
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
         },
         {
           "DataId": 1006751,
@@ -117,7 +108,6 @@
           "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 153
               ]

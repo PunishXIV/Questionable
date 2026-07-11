@@ -23,7 +23,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 419
               ]
@@ -46,12 +45,7 @@
           "InteractionType": "Interact",
           "StopDistance": 5,
           "Fly": false,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -133,12 +127,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "StopDistance": 4,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -157,11 +146,6 @@
           "StopDistance": 4,
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

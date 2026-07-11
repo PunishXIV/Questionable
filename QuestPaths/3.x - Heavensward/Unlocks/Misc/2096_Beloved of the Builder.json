@@ -22,12 +22,7 @@
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     },
@@ -51,9 +46,6 @@
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "InTerritory": [418,419]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }

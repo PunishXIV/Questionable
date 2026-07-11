@@ -16,11 +16,6 @@
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Land": true,
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "$": "Alberic"
         },
         {
@@ -51,12 +46,7 @@
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

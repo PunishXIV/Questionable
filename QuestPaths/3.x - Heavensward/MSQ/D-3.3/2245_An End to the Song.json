@@ -16,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 400,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Churning Mists - Zenith"
         }
       ]
     },

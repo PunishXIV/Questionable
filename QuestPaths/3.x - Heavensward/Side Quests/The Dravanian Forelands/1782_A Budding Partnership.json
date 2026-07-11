@@ -15,12 +15,7 @@
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -37,12 +32,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -58,12 +48,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -82,12 +67,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         },
         {
           "$": "Path to building/Marchechamp",
@@ -195,12 +175,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -217,12 +192,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -238,12 +208,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "AetheryteShdortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShdortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },
@@ -259,12 +224,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },

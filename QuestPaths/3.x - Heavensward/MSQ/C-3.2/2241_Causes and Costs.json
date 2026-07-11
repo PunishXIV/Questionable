@@ -16,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 397,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
         }
       ]
     },

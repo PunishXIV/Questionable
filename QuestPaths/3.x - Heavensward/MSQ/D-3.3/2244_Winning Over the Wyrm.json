@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
         }
       ]
     },

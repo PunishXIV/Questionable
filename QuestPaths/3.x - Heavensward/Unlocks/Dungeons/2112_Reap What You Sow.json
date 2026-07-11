@@ -15,12 +15,7 @@
           "TerritoryId": 401,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
         }
       ]
     },
