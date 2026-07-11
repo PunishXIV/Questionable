@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -180,7 +181,7 @@
           },
           "TerritoryId": 567,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 568
+          "TargetTerritoryId": 567
         },
         {
           "DataId": 2007075,
@@ -190,7 +191,8 @@
             "Z": -18.814392
           },
           "TerritoryId": 567,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 568
         },
         {
           "DataId": 2013110,
