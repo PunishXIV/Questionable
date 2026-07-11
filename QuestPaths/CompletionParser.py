@@ -4,6 +4,9 @@ update_quest_checked.py
 
 Reads a JSON array of quest completion entries and updates the LastChecked
 field in each matching quest file found in a directory tree.
+
+Authored with LLM assistance, changes must be reviewed and owned by a human.
+Initial version reviewed and owned by @alydevs
 """
 
 import argparse
