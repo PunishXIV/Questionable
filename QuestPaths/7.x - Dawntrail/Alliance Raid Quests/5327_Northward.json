@@ -52,12 +52,7 @@
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Brightploom Post"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -73,12 +68,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },

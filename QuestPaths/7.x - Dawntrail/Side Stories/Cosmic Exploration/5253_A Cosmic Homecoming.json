@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Old Sharlayan] Aetheryte Plaza",
             "[Old Sharlayan] Scholar's Harbor"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

@@ -46,12 +46,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },
@@ -68,12 +63,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },
@@ -90,12 +80,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },
@@ -113,12 +98,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
     },

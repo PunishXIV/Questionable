@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] The For'ard Cabins"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

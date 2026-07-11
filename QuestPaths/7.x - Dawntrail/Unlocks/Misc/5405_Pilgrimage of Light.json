@@ -15,12 +15,7 @@
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest",
           "StopDistance": 3,
-          "AetheryteShortcut": "Crystarium",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Crystarium"
         }
       ]
     },
@@ -37,11 +32,6 @@
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Crystarium",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] The Cabinet of Curiosity"
@@ -62,12 +52,7 @@
           "TerritoryId": 816,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Il Mheg - Wolekdorf"
         }
       ]
     },
@@ -84,12 +69,7 @@
           "TerritoryId": 816,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Il Mheg - Wolekdorf"
         }
       ]
     },
@@ -106,12 +86,7 @@
           "TerritoryId": 816,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Il Mheg - Wolekdorf"
         }
       ]
     },

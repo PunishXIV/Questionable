@@ -16,12 +16,7 @@
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },

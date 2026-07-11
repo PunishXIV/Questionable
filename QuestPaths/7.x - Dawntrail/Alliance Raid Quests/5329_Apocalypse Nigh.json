@@ -15,12 +15,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -71,12 +66,7 @@
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Brightploom Post"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

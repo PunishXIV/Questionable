@@ -15,12 +15,7 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Tuliyollal"
         }
       ]
     },
@@ -41,11 +36,6 @@
             "[Kugane] Aetheryte Plaza",
             "[Kugane] Shiokaze Hostelry"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
