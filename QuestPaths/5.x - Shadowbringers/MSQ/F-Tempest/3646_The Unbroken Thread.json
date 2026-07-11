@@ -35,11 +35,6 @@
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] The Dossal Gate"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

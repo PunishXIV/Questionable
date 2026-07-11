@@ -16,12 +16,7 @@
           "StopDistance": 4,
           "TerritoryId": 817,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
         }
       ]
     },

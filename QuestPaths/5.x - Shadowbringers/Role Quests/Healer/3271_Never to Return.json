@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] Musica Universalis Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

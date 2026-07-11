@@ -15,12 +15,7 @@
           },
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra",
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kholusia - Tomra"
         }
       ]
     },
@@ -133,12 +128,7 @@
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] Musica Universalis Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

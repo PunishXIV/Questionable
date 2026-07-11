@@ -141,12 +141,7 @@
           "TerritoryId": 621,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
         },
         {
           "DataId": 1032586,

@@ -15,12 +15,7 @@
           },
           "TerritoryId": 813,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lakeland - Fort Jobb"
         }
       ]
     },
