@@ -14,12 +14,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Elpis - Anagnorisis"
         }
       ]
     },

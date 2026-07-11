@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Thavnair - Great Work"
         }
       ]
     },

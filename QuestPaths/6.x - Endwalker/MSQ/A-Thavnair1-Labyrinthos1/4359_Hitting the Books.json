@@ -56,12 +56,7 @@
           "TerritoryId": 962,
           "InteractionType": "AttuneAethernetShard",
           "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShard": "[Old Sharlayan] The Baldesion Annex",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AethernetShard": "[Old Sharlayan] The Baldesion Annex"
         },
         {
           "TerritoryId": 962,
