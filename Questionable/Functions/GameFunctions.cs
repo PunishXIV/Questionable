@@ -26,7 +26,6 @@ using Action = Lumina.Excel.Sheets.Action;
 using BattleChara = FFXIVClientStructs.FFXIV.Client.Game.Character.BattleChara;
 using ContentFinderCondition = Lumina.Excel.Sheets.ContentFinderCondition;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
-using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Functions;
@@ -411,6 +410,12 @@ internal sealed unsafe partial class GameFunctions
             logger.LogError("Could not find content for content finder condition (cf: {ContentFinderId})",
                 contentFinderConditionId);
         }
+    }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
+    public void OpenVariantDF()
+    {
+        
     }
 
     // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration

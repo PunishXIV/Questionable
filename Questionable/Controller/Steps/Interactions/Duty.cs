@@ -31,7 +31,15 @@ internal static class Duty
             if (allowUnsync && quest.Id is QuestId { Value: >= 357 and <= 360 })
                 dutyMode = AutoDutyIpc.DutyMode.Regular;
             else if (quest.Id is QuestId { Value: 4646 or 4733 or 4789 or 5441})
-                dutyMode = AutoDutyIpc.DutyMode.Variant;
+            {
+                if (autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions))
+                    dutyMode = AutoDutyIpc.DutyMode.Variant;
+                else
+                {
+                    yield return new OpenVariantDFTask(step.DutyOptions.ContentFinderConditionId);
+                    yield break;
+                }
+            }
             else if (allowUnsync && configuration.Duties.RunUnsynced)
             {
                 unsafe
@@ -180,6 +188,30 @@ internal static class Duty
                 return false;
 
             gameFunctions.OpenDutyFinder(Task.ContentFinderConditionId);
+            return true;
+        }
+
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record OpenVariantDFTask(uint ContentFinderConditionId) : ITask
+    {
+        public override string ToString() => $"OpenVariantDF({ContentFinderConditionId})";
+    }
+
+    internal sealed class OpenVariantDFExecutor
+    (
+        GameFunctions gameFunctions,
+        ICondition condition) : TaskExecutor<OpenVariantDFTask>
+    {
+        protected override bool Start()
+        {
+            if (condition[ConditionFlag.InDutyQueue])
+                return false;
+
+            gameFunctions.OpenVariantDF();
             return true;
         }
 
