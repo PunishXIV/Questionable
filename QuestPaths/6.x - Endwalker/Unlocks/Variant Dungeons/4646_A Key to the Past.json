@@ -72,8 +72,8 @@
       "Steps": [
         {
           "TerritoryId": 141,
-          "Comment": "Must clear Sil'dihn, talk to the foreman to queue",
-          "InteractionType": "WaitForManualProgress"
+          "InteractionType": "Duty",
+          "DutyOptions": { "ContentFinderConditionId": 868, "Enabled": true }
         }
       ]
     },

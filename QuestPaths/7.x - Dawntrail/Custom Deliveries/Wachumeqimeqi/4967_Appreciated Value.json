@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,11 @@
             "Z": 10.60498
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
         }
       ]
     },
@@ -47,7 +52,14 @@
             "Z": 209.73523
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGLZ001_04967_Q1_100_000",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
         }
       ]
     },
@@ -79,13 +91,15 @@
         {
           "DataId": 1047173,
           "Position": {
-            "X": -283.0396,
-            "Y": 37.000023,
-            "Z": -573.7545
+            "X": -284.10898,
+            "Y": 37.00003,
+            "Z": -575.62555
           },
           "TerritoryId": 1191,
+          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1047174,

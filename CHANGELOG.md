@@ -1,1 +1,2 @@
-- Change: Moved "Hovered item:" into "Additional Status Information" section, toggled in Advanced settings
+- Feature: Support variant dungeon runs for quest completion -alydev
+- Feature: ng+ tab better quest availability check -alydev

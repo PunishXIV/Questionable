@@ -17,7 +17,16 @@
 	"Sequence": {
 		"scope": "json",
 		"prefix": "seq",
-		"body": "{\"Sequence\":${1:0},\"Steps\":[{$0}]}",
+		"body": [
+			"{",
+			"  \"Sequence\": ${1:0},",
+			"  \"Steps\": [",
+			"    {",
+			"      $0",
+			"    }",
+			"  ]",
+			"}"
+		],
 		"description": "new sequence"
 	},
 // 	"skipcon": {
