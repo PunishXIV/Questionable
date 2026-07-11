@@ -9,8 +9,7 @@
       "AethernetShortcut": [
         "[Limsa Lominsa] Aetheryte Plaza",
         "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-      ],
-      "SkipConditions": {"AetheryteShortcutIf": {"InSameTerritory": true}}
+      ]
     }
   ],
   "Groups": [

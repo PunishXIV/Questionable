@@ -9,8 +9,7 @@
       "AethernetShortcut": [
         "[Ul'dah] Aetheryte Plaza",
         "[Ul'dah] Gate of Thal (Central Thanalan)"
-      ],
-      "SkipConditions": {"AetheryteShortcutIf": {"InSameTerritory": true}}
+      ]
     }
   ],
   "Groups": [
