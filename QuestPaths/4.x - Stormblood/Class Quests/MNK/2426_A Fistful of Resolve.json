@@ -20,9 +20,6 @@
             "[Ul'dah] Goldsmiths' Guild"
           ],
           "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            },
             "AetheryteShortcutIf": {
               "InTerritory": [
                 130,

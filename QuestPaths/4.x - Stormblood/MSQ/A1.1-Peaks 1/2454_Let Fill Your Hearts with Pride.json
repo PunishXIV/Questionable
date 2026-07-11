@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Fringes - Castrum Oriens"
         }
       ]
     },
@@ -41,12 +36,7 @@
           "AethernetShortcut": [
             "[Rhalgr's Reach] Aetheryte Plaza",
             "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

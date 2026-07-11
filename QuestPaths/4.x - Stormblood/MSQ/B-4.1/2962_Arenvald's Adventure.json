@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Rhalgr's Reach] Aetheryte Plaza",
             "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

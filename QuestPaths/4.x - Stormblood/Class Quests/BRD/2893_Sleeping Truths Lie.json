@@ -16,11 +16,6 @@
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

@@ -19,12 +19,7 @@
           "TerritoryId": 620,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "StopDistance": 6,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "StopDistance": 6
         }
       ]
     },

@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Kugane] Aetheryte Plaza",
             "[Kugane] Bokairo Inn"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

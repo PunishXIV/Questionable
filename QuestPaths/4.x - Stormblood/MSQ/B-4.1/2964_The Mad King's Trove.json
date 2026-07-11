@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 621,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
         }
       ]
     },

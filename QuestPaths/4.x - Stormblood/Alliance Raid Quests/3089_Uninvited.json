@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Kugane] Kogane Dori Markets",
             "[Kugane] Kogane Dori Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

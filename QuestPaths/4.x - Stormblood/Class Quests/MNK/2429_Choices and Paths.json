@@ -14,12 +14,7 @@
           },
           "TerritoryId": 620,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Peaks - Ala Gannha"
         }
       ]
     },

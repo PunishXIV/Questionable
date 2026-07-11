@@ -13,12 +13,7 @@
           },
           "TerritoryId": 635,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         },
         {
           "DataId": 1019459,

@@ -14,12 +14,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ruby Sea - Onokoro"
         },
         {
           "DataId": 1021507,

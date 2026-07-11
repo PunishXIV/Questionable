@@ -15,12 +15,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Azim Steppe - Reunion"
         }
       ]
     },

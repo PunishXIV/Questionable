@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -40,11 +35,6 @@
           "TerritoryId": 418,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Skysteel Manufactory"
@@ -65,11 +55,6 @@
           "TerritoryId": 418,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "AethernetShortcut": [
             "[Ishgard] Skysteel Manufactory",
             "[Ishgard] Aetheryte Plaza"
@@ -92,12 +77,7 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ishgard"
         }
       ]
     }

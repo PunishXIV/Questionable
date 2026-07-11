@@ -57,12 +57,7 @@
           "TerritoryId": 620,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          "AetheryteShortcut": "Peaks - Ala Ghiri"
         }
       ]
     },
@@ -80,12 +75,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "StopDistance": 1,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
         }
       ]
     },
@@ -101,12 +91,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": false
-            }
-          }
+          "AetheryteShortcut": "Fringes - Peering Stones"
         }
       ]
     },

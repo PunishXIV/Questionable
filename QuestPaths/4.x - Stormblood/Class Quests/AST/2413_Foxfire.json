@@ -49,12 +49,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kugane"
         }
       ]
     },
@@ -75,12 +70,7 @@
           "AethernetShortcut": [
             "[Kugane] Thavnairian Consulate",
             "[Kugane] Kogane Dori Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -102,11 +92,6 @@
             "[Kugane] Kogane Dori Markets",
             "[Kugane] The Ruby Bazaar"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

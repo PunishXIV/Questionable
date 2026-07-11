@@ -16,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 622,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
         }
       ]
     },

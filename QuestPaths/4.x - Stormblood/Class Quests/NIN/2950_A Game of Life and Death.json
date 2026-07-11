@@ -15,10 +15,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Kugane"
         }
       ]
     },
@@ -134,9 +131,6 @@
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          },
           "NextQuestId": 2951
         }
       ]

@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Idyllshire] Aetheryte Plaza",
             "[Idyllshire] West Idyllshire"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -121,11 +116,6 @@
             "[Kugane] Aetheryte Plaza",
             "[Kugane] Kogane Dori Markets"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
