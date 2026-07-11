@@ -1,2 +1,3 @@
 - Feature: Support variant dungeon runs for quest completion -alydev
+  - although this has not been enabled for any variant dungeons yet
 - Feature: ng+ tab better quest availability check -alydev
