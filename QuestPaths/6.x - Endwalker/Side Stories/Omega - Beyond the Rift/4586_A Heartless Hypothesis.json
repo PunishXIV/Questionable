@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,8 +14,8 @@
             "Z": 153.76514
           },
           "TerritoryId": 962,
-          "AetheryteShortcut": "Old Sharlayan",
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Old Sharlayan] Aetheryte Plaza","[Old Sharlayan] Scholar's Harbor"]
         }
       ]
     },

@@ -16,10 +16,17 @@ internal sealed class AutoDutyIpc
     TerritoryData territoryData,
     ILogger<AutoDutyIpc> logger)
 {
-    public enum DutyMode
+    [Flags]
+    public enum DutyMode : int
     {
+        None = 0,
         Support = 1,
-        UnsyncRegular = 2
+        Trust = 2,
+        Squadron = 4,
+        Regular = 8,
+        Trial = 16,
+        Raid = 32,
+        Variant = 64
     }
 
     private readonly ICallGateSubscriber<uint, bool> _contentHasPath = pluginInterface.GetIpcSubscriber<uint, bool>("AutoDuty.ContentHasPath");
@@ -60,23 +67,18 @@ internal sealed class AutoDutyIpc
     public void StartInstance(uint cfcId, DutyMode dutyMode)
     {
         if (!territoryData.TryGetContentFinderCondition(cfcId, out TerritoryData.ContentFinderConditionData? cfcData))
-            throw new TaskException(_LF("Unknown ContentFinderConditionId {0}",cfcId));
+            throw new TaskException(_LF("Unknown ContentFinderConditionId {0}", cfcId));
 
         try
         {
-            _setConfig.InvokeAction("Unsynced", $"{dutyMode == DutyMode.UnsyncRegular}");
-            _setConfig.InvokeAction("dutyModeEnum", dutyMode switch
-            {
-                DutyMode.Support => "Support",
-                DutyMode.UnsyncRegular => "Regular",
-                var _ => throw new ArgumentOutOfRangeException(nameof(dutyMode), dutyMode, null)
-            });
+            _setConfig.InvokeAction("Unsynced", $"{dutyMode == DutyMode.Regular}");
+            _setConfig.InvokeAction("dutyModeEnum", dutyMode.ToString());
 
             _run.InvokeAction(cfcData.TerritoryId, 1, !configuration.Advanced.DisableAutoDutyBareMode);
         }
         catch (IpcError e)
         {
-            throw new TaskException(_LF("Unable to run content with AutoDuty: {0}",e.Message), e);
+            throw new TaskException(_LF("Unable to run content with AutoDuty: {0}", e.Message), e);
         }
     }
 
@@ -91,7 +93,7 @@ internal sealed class AutoDutyIpc
         }
         catch (IpcError e)
         {
-            throw new TaskException(_LF("Unable to stop AutoDuty: {0}",e.Message), e);
+            throw new TaskException(_LF("Unable to stop AutoDuty: {0}", e.Message), e);
         }
     }
 }

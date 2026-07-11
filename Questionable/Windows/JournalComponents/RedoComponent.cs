@@ -6,7 +6,6 @@ using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using ECommons.Throttlers;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
@@ -28,7 +27,8 @@ internal sealed class RedoComponent
     QuestData questData,
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
-    Configuration configuration)
+    Configuration configuration,
+    UiUtils uiUtils)
 {
     private bool _hideDone;
     private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
@@ -61,7 +61,7 @@ internal sealed class RedoComponent
             ImGui.Text(_L("New Game+ has not been unlocked on this character"));
             return;
         }
-        using (ImRaii.Disabled(EzThrottler.Throttle("stopredo") || !redoUtil.IsRedoActive()))
+        using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, _L("Stop NG+")))
                 redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
@@ -97,24 +97,30 @@ internal sealed class RedoComponent
         ImGui.TableHeadersRow();
         foreach ((QuestRedoChapterUI chapter, RedoCache redoCache) in redoUtil.RedoData)
         {
-            if (redoCache.Quests.Count == 0)
+            var _preTotal = redoCache.Quests.Count;
+            if (_preTotal == 0)
                 continue;
             var chapterName = redoCache.ChapterUi.ChapterName.ToString() ?? "";
             chapterName = chapterName.Length > 0 ? chapterName : _L("???");
             string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
 
+            bool showAnyway = false;
             var checkQuests = redoCache.Quests.Select(q =>
             {
-                questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Model.Quest? quest);
-                if (quest != null && (quest.Root.LastChecked.Date == null ||
+                var qid = new QuestId((ushort)q.RowId);
+                bool unobtainable = questData.TryGetQuestInfo(qid, out var qInfo) && questFunctions.IsQuestUnobtainable(qid);
+                questRegistry.TryGetQuest(qid, out Model.Quest? quest);
+                if (qInfo != null && quest != null && (quest.Root.LastChecked.Date == null ||
                         (quest.Root.LastChecked.Date != null &&
-                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60
-                        )))
+                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60)) &&
+                        !unobtainable)
                     return quest;
+                if (!unobtainable && qInfo != null && quest == null)
+                    showAnyway = true;
                 return null;
             }).Where(q => q != null).ToArray();
-            if (checkQuests.Length == 0 && _hideDone)
+            if (checkQuests.Length == 0 && _hideDone && !showAnyway)
                 continue;
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
@@ -150,9 +156,8 @@ internal sealed class RedoComponent
             else
             {
                 ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(0, 0);
                 ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(0, 0);
+                QuestJournalComponent.DrawCount(0, _preTotal);
             }
             if (open)
             {
@@ -165,6 +170,17 @@ internal sealed class RedoComponent
                     questData.TryGetQuestInfo(qid, out IQuestInfo? qInfo);
                     if (qInfo != null)
                         questJournalComponent.DrawQuest(qInfo);
+                    else
+                    {
+                        ImGui.TableNextRow();
+                        ImGui.TableNextColumn();
+                        ImGui.TreeNodeEx($"{q.Name} ({(ushort)q.RowId})",
+                            ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
+                        ImGui.TableNextColumn();
+                        if (uiUtils.ChecklistItem("", ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus))
+                            ImGui.SetTooltip(_L("This quest is not supported."));
+                        ImGui.TableNextColumn();
+                    }
                     if (questRegistry.TryGetQuest(qid, out Model.Quest? quest))
                     {
                         _supported += 1;

@@ -13,7 +13,11 @@
             "Z": 155.7793
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Residential Sector"
+          ]
         }
       ]
     },

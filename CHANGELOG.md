@@ -1,1 +1,2 @@
-- Feature: ng+ tab now points to unlock quest if not unlocked on this character -alydev
+- Feature: Support variant dungeon runs for quest completion -alydev
+- Feature: ng+ tab better quest availability check -alydev
