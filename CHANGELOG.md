@@ -1,1 +1,1 @@
-- Change: Moved "Hovered item:" into "Additional Status Information" section, toggled in Advanced settings
+- Feature: ng+ tab now points to unlock quest if not unlocked on this character -alydev

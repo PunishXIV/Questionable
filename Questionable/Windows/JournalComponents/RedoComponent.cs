@@ -14,6 +14,7 @@ using Questionable.Functions;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
+using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
@@ -23,6 +24,7 @@ internal sealed class RedoComponent
     RedoUtil redoUtil,
     QuestController questController,
     QuestJournalComponent questJournalComponent,
+    QuestTooltipComponent questTooltipComponent,
     QuestData questData,
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
@@ -30,15 +32,38 @@ internal sealed class RedoComponent
 {
     private bool _hideDone;
     private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
+    private Model.Quest? _unlockQuest;
     public void DrawRedoChapters()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
         if (!tab)
             return;
 
+        // Disable tab if ng+ unlock quest is incomplete
+        bool disabled = false;
+        if ((_unlockQuest != null || questRegistry.TryGetQuest(new QuestId(3759), out _unlockQuest)) &&
+            (!questFunctions.IsQuestComplete(_unlockQuest.Id) || disabled))
+        {
+            disabled = true;
+            (bool locked, var _) = questFunctions.IsQuestLocked(_unlockQuest.Id);
+            using var _ = ImRaii.Disabled(locked);
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Play, _L("Unlock NG+")))
+            {
+                questController.SetNextQuest(_unlockQuest);
+                questController.StartSingleQuest("Unlock NG+");
+            }
+            if (ImGui.IsItemHovered())
+                questTooltipComponent.Draw(_unlockQuest.Info);
+        }
+
+        if (disabled)
+        {
+            ImGui.Text(_L("New Game+ has not been unlocked on this character"));
+            return;
+        }
         using (ImRaii.Disabled(EzThrottler.Throttle("stopredo") || !redoUtil.IsRedoActive()))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, ("Stop NG+")))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, _L("Stop NG+")))
                 redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
         }
         if (configuration.Advanced.Debug)
