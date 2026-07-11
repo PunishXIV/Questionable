@@ -72,8 +72,15 @@
       "Steps": [
         {
           "TerritoryId": 141,
-          "InteractionType": "Duty",
-          "DutyOptions": { "ContentFinderConditionId": 868, "Enabled": true }
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Variant dungeon unsupported:\nLacking boss modules for path 1 bosses",
+          "DutyOptions": {
+            "ContentFinderConditionId": 868,
+            "Enabled": false,
+            "Notes": [
+              "Lacking boss modules for path 1 bosses"
+            ]
+          }
         }
       ]
     },
