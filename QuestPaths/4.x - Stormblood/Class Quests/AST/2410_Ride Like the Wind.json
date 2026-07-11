@@ -67,11 +67,6 @@
           "StopDistance": 5,
           "Fly": true,
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
             {

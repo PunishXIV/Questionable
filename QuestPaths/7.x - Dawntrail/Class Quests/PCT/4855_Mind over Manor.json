@@ -20,9 +20,6 @@
               "Item": {
                 "NotInInventory": true
               }
-            },
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
             }
           }
         },

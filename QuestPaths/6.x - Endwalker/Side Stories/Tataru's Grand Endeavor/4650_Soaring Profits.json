@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,12 +15,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Old Sharlayan"
         }
       ]
     },
@@ -166,9 +162,9 @@
         {
           "DataId": 2007074,
           "Position": {
-            "X": -815.8236,
-            "Y": -87.26642,
-            "Z": -834.3175
+            "X": -814.71765,
+            "Y": -88.38223,
+            "Z": -834.3627
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
@@ -185,7 +181,7 @@
           },
           "TerritoryId": 567,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 568
+          "TargetTerritoryId": 567
         },
         {
           "DataId": 2007075,
@@ -195,7 +191,8 @@
             "Z": -18.814392
           },
           "TerritoryId": 567,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 568
         },
         {
           "DataId": 2013110,

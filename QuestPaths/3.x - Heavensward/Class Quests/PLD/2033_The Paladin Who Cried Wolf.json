@@ -23,10 +23,8 @@
 					],
 					"SkipConditions": {
 						"AetheryteShortcutIf": {
-							"InSameTerritory": true,
 							"InTerritory": [141]
-						},
-						"AethernetShortcutIf": { "InSameTerritory": true }
+						}
 					},
 					"$":"you could swap this shortcut out for black brush station, just figured it worked once."
 				}
@@ -45,9 +43,6 @@
 					"TerritoryId": 397,
 					"InteractionType": "Interact",
 					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-					"SkipConditions": {
-						"AetheryteShortcutIf": { "InSameTerritory": true }
-					},
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
 					"$": "0 0 0 0 0 0 -> 1 0 0 0 0 32"
 				},

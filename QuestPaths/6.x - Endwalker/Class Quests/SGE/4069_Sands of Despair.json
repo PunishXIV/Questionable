@@ -15,12 +15,7 @@
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Idyllshire"
         }
       ]
     },
@@ -53,12 +48,7 @@
           "TerritoryId": 141,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ]
     },
@@ -75,11 +65,6 @@
           "Fly": true,
           "InteractionType": "Combat",
           "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
             {
@@ -102,12 +87,7 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ]
     },
@@ -124,12 +104,7 @@
           "TerritoryId": 141,
           "Fly": true,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ]
     },
@@ -145,12 +120,7 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ]
     },
@@ -166,12 +136,7 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ]
     },
@@ -187,12 +152,7 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Idyllshire"
         }
       ]
     }

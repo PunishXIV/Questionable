@@ -88,12 +88,7 @@
             "Z": 69.41321
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

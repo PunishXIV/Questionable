@@ -25,12 +25,7 @@
               "Prompt": "TEXT_AKTKBA201_04108_Q1_000_000",
               "Answer": "TEXT_AKTKBA201_04108_A1_000_001"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

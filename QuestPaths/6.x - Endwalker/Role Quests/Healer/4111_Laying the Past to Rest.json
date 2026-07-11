@@ -16,12 +16,7 @@
           "TerritoryId": 621,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

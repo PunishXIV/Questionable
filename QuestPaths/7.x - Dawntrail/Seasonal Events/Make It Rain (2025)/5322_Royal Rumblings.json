@@ -14,12 +14,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ul'dah"
         }
       ]
     },
@@ -80,12 +75,7 @@
           "TerritoryId": 144,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 435,
-          "AetheryteShortcut": "Gold Saucer",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gold Saucer"
         },
         {
           "DataId": 1049021,
@@ -100,12 +90,7 @@
           "AethernetShortcut": [
             "[Gold Saucer] Aetheryte Plaza",
             "[Gold Saucer] Entrance & Card Squares"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

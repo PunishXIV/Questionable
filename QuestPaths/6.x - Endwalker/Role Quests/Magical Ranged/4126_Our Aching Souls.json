@@ -19,11 +19,6 @@
             "[Radz-at-Han] Aetheryte Plaza",
             "[Radz-at-Han] Hall of the Radiant Host"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

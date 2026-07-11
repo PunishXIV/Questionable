@@ -118,12 +118,7 @@
           "TerritoryId": 628,
           "InteractionType": "Interact",
           "StopDistance": 4,
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kugane"
         }
       ]
     },
@@ -140,12 +135,7 @@
           "TerritoryId": 628,
           "InteractionType": "Interact",
           "StopDistance": 2,
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kugane"
         }
       ]
     },
@@ -181,11 +171,6 @@
           "TerritoryId": 628,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

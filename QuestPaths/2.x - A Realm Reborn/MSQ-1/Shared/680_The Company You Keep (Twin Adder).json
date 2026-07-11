@@ -95,12 +95,7 @@
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
           },
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]
     },

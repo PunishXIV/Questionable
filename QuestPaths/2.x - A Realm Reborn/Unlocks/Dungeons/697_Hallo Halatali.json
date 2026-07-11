@@ -65,9 +65,6 @@
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "Flying": "Unlocked"
             }

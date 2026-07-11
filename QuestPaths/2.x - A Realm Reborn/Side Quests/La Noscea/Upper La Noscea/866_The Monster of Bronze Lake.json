@@ -15,12 +15,7 @@
           "TerritoryId": 139,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -40,12 +35,7 @@
             139
           ],
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -63,12 +53,7 @@
           "TerritoryId": 139,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -104,12 +89,7 @@
           "TerritoryId": 139,
           "InteractionType": "UseItem",
           "ItemId": 2000673,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -159,11 +139,6 @@
           "InteractionType": "CompleteQuest",
           "Fly": true,
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 868,
           "$": "Next quest: 'The Adventure of the Fainting Goldsmith'."
         }

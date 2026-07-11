@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] Neon Stein"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -39,12 +34,7 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
         }
       ]
     },
@@ -77,12 +67,7 @@
           "TerritoryId": 1192,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
         }
       ]
     },
@@ -113,12 +98,7 @@
           "TerritoryId": 1192,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
         }
       ]
     },

@@ -14,12 +14,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lochs - Porta Praetoria"
         }
       ]
     },

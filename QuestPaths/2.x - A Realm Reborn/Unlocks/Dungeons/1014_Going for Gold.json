@@ -54,7 +54,6 @@
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "AetheryteLocked": "Mor Dhona",
-              "InSameTerritory": true,
               "InTerritory": [155]
             },
             "StepIf": {
@@ -89,12 +88,7 @@
           "TerritoryId": 155,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     }

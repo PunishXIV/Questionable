@@ -36,7 +36,6 @@
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "AetheryteLocked": "Central Shroud - Bentbranch Meadows"
             }
           }

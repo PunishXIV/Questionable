@@ -15,12 +15,7 @@
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -83,12 +78,7 @@
           "InteractionType": "Interact",
           "TerritoryId": 154,
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -119,12 +109,7 @@
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         },
         {
           "DataId": 1003075,
@@ -151,12 +136,7 @@
           "TerritoryId": 156,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     },
@@ -202,12 +182,7 @@
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         },
         {
           "DataId": 1003075,
@@ -228,12 +203,7 @@
           "InteractionType": "EquipItem",
           "ItemId": 2192,
           "TerritoryId": 138,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Western La Noscea - Aleport"
         },
         {
           "DataId": 768,
@@ -274,12 +244,7 @@
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         },
         {
           "DataId": 1003075,
@@ -319,12 +284,7 @@
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         },
         {
           "DataId": 1003075,
@@ -443,12 +403,7 @@
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         },
         {
           "DataId": 1003075,

@@ -51,10 +51,7 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
         }
       ]
     },
@@ -109,10 +106,7 @@
           "Fly": true,
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -130,9 +124,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

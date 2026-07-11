@@ -25,9 +25,6 @@
                 132,
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -65,9 +62,6 @@
                 133,
                 1305
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -105,9 +99,6 @@
                 133,
                 1305
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             },
             "StepIf": {
               "InTerritory": [
@@ -167,9 +158,6 @@
                 133,
                 1305
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             },
             "StepIf": {
               "InTerritory": [
@@ -242,9 +230,6 @@
                 133,
                 1305
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             },
             "StepIf": {
               "InTerritory": [
@@ -333,9 +318,6 @@
                 1305
               ]
             },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "InTerritory": [
                 1305
@@ -398,9 +380,6 @@
                 132,
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -429,9 +408,6 @@
                 132,
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         },
@@ -514,9 +490,6 @@
                 132,
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }

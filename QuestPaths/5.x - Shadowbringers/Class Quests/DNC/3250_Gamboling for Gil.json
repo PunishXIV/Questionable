@@ -12,9 +12,6 @@
           "ItemId": 27358,
           "AetheryteShortcut": "Limsa Lominsa",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "Item": {
                 "NotInInventory": true

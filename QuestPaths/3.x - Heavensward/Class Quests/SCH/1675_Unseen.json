@@ -15,12 +15,7 @@
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1013135,

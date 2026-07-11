@@ -37,10 +37,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Il Mheg - Lydha Lran"
         },
         {
           "DataId": 1028499,

@@ -32,12 +32,7 @@
           "TerritoryId": 1191,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 5153,
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Heritage Found - The Outskirts"
         },
         {
           "DataId": 1050805,

@@ -17,12 +17,7 @@
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

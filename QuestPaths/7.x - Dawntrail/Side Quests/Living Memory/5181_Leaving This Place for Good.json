@@ -14,11 +14,6 @@
           },
           "TerritoryId": 1192,
           "AetheryteShortcut": "Living Memory - Leynode Aero",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "InteractionType": "AcceptQuest"
         }
       ]

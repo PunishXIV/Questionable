@@ -15,12 +15,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
         }
       ]
     },

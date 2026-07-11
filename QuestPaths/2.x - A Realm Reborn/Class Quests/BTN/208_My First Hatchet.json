@@ -68,9 +68,6 @@
                 131
               ]
             },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "Item": {
                 "NotInInventory": false

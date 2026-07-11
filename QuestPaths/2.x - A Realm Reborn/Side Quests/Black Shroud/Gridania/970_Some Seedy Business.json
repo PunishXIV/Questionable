@@ -16,12 +16,7 @@
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -37,12 +32,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]
     },
@@ -61,11 +51,6 @@
           "StopDistance": 0.25,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
@@ -80,11 +65,6 @@
           "StopDistance": 0.25,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
@@ -99,11 +79,6 @@
           "StopDistance": 0.25,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         }
       ]

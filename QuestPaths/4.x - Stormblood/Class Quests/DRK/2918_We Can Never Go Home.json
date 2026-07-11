@@ -15,12 +15,7 @@
           },
           "TerritoryId": 400,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Churning Mists - Moghome"
         }
       ]
     },

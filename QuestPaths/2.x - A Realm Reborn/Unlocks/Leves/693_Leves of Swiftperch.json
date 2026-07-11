@@ -27,8 +27,7 @@
             "[Limsa Lominsa] The Aftcastle"
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [129] },
-            "AethernetShortcutIf": { "InSameTerritory": true }
+            "AetheryteShortcutIf": { "InTerritory": [129] }
           }
         }
       ]

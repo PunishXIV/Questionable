@@ -15,12 +15,7 @@
           },
           "TerritoryId": 141,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ]
     },

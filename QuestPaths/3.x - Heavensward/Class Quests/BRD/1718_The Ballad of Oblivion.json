@@ -17,11 +17,6 @@
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "The Churning Mists - Moghome",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

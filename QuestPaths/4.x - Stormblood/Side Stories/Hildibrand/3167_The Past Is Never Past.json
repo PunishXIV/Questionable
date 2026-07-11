@@ -63,12 +63,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kugane"
         }
       ]
     },

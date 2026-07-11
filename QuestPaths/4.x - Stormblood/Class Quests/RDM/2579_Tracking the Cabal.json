@@ -16,12 +16,7 @@
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Western Thanalan - Horizon",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

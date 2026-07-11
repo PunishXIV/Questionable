@@ -19,11 +19,6 @@
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Dirigible Landing"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "InteractionType": "AcceptQuest"
         }
       ]

@@ -15,12 +15,7 @@
           "TerritoryId": 147,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1008540,

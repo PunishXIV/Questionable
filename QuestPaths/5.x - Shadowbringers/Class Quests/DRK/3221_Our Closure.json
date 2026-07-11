@@ -26,12 +26,7 @@
               "Type": "List",
               "Answer": "TEXT_LUCKBC012_03221_A1_000_003"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

@@ -14,12 +14,7 @@
           },
           "TerritoryId": 759,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Doman Enclave"
         }
       ]
     },
@@ -98,11 +93,6 @@
           "TerritoryId": 759,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Doman Enclave",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 4124
         }
       ]

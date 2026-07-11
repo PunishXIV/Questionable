@@ -14,12 +14,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Old Sharlayan"
         }
       ]
     },
@@ -37,12 +32,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "$": "TP to Bestways instead of Sinus so that ground pathing can still work",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "$": "TP to Bestways instead of Sinus so that ground pathing can still work"
         }
       ]
     },
@@ -72,12 +62,7 @@
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "$": "TP to Bestways instead of Sinus so that ground pathing can still work",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "$": "TP to Bestways instead of Sinus so that ground pathing can still work"
         }
       ]
     }

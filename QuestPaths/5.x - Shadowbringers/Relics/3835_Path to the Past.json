@@ -15,12 +15,7 @@
           "TerritoryId": 614,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Yanxia - House of the Fierce",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

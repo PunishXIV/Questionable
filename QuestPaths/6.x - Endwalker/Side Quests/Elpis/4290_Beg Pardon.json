@@ -15,12 +15,7 @@
           "TerritoryId": 961,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

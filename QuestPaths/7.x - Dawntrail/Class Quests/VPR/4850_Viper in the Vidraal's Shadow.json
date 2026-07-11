@@ -22,12 +22,7 @@
               "Prompt": "TEXT_KINGBB111_04850_Q1_000_100",
               "Answer": "TEXT_KINGBB111_04850_A2_000_100"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

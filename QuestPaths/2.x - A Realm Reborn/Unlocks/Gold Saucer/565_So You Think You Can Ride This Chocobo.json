@@ -15,12 +15,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
         }
       ]
     },

@@ -15,12 +15,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Old Sharlayan"
         }
       ]
     },

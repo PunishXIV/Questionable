@@ -14,12 +14,7 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1006971,
@@ -46,12 +41,7 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1006971,
@@ -101,12 +91,7 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1006971,
@@ -156,12 +141,7 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1006971,
@@ -188,12 +168,7 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1006971,
@@ -220,12 +195,7 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         },
         {
           "DataId": 1006971,
