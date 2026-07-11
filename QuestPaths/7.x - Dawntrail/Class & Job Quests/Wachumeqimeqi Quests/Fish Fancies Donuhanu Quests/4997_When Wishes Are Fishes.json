@@ -1,0 +1,94 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048382,
+          "Position": {
+            "X": -9.597961,
+            "Y": -9.628479,
+            "Z": 90.34863
+          },
+          "TerritoryId": 1185,
+          "StopDistance": 5,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263203
+          },
+          "ItemId": 43850,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 186.90675,
+            "Y": -17.964302,
+            "Z": 50.6654
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        },
+        {
+          "TerritoryId": 1185,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 43903,
+              "ItemCount": 6,
+              "Collectability": 47,
+              "FishingOptions": {
+                "BaitId": 43850,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

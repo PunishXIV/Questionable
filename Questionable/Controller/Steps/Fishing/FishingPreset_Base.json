@@ -3,9 +3,9 @@
     "EnableAll": true,
     "DontCancelMooch": true,
     "RecastAnimationCancel": true,
-    "TurnCollectOff": true,
+    "TurnCollectOff": null,
     "ChumAnimationCancel": false,
-    "TurnCollectOffWithoutAnimCancel": true,
+    "TurnCollectOffWithoutAnimCancel": null,
     "CastLine": {
       "IgnoreMooch": true,
       "Enabled": true,
@@ -48,7 +48,7 @@
       "ConditionSet": null
     },
     "CastCollect": {
-      "Enabled": false,
+      "Enabled": null,
       "Id": 4101,
       "GpThreshold": 0,
       "DontCancelMooch": true,

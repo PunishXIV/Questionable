@@ -1,0 +1,164 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013826,
+          "Position": {
+            "X": -405.38,
+            "Y": 1.07849,
+            "Z": -772.43
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048971,
+          "Position": {
+            "X": 626.9779,
+            "Y": -137.12656,
+            "Z": 517.7843
+          },
+          "TerritoryId": 1189,
+          "StopDistance": 5,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263208
+          },
+          "ItemId": 43852,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1047103,
+          "Position": {
+            "X": 310.32275,
+            "Y": -150.25104,
+            "Z": 845.0293
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1048971,
+          "Position": {
+            "X": 626.9779,
+            "Y": -137.12656,
+            "Z": 517.7843
+          },
+          "TerritoryId": 1189,
+          "StopDistance": 5,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263208
+          },
+          "ItemId": 43852,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },{
+          "Position": {
+            "X": 276.18347,
+            "Y": -151.82602,
+            "Z": 868.16864
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1
+        },
+        {
+          "TerritoryId": 1189,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 43915,
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 43852,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1047103,
+          "Position": {
+            "X": 310.32275,
+            "Y": -150.25104,
+            "Z": 845.0293
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    }
+  ]
+}

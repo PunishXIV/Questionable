@@ -22,7 +22,7 @@ public enum EExtraSkipCondition
     DockStorehouse,
 
     /// <summary>
-    /// 
+    /// True if player is on Costa Del Sol side of Eastern La Noscea, false if on Wineport side
     /// </summary>
     CostaDelSol,
 }
