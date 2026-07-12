@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Questionable.Model.Questing;
-namespace Questionable.Model;
+namespace Questionable.Domain;
 
 internal sealed class Quest
 {

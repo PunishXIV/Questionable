@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Utils;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 

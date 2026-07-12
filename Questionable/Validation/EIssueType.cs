@@ -1,5 +1,4 @@
 ﻿using Questionable.Model;
-using Questionable.Model.Common.Converter;
 
 namespace Questionable.Validation;
 
@@ -26,4 +25,3 @@ public enum EIssueType
     InvalidChatMessage,
     InvalidAcceptQuestTerritory
 }
-public sealed class IssueTypeConverter() : EnumConverter<EIssueType>();

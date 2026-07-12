@@ -1,4 +1,4 @@
-﻿namespace Questionable.Model;
+﻿namespace Questionable.Domain;
 
 internal sealed class JournalGenreOverrides
 {

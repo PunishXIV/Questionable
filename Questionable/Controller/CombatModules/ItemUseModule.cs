@@ -11,6 +11,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Functions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 namespace Questionable.Controller.CombatModules;
@@ -82,7 +83,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             if (nextTarget.Position.DistanceTo_XZ(Svc.Objects[0]!.Position) > 3f)
             {
                 logger.LogInformation("Too far from target, moving closer");
-                movementController.NavigateTo(Model.EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new() { StopDistance = 3f });
+                movementController.NavigateTo(EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new() { StopDistance = 3f });
                 _continueAt = DateTime.Now.AddSeconds(1);
                 return;
             }

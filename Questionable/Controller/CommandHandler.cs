@@ -14,11 +14,11 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Windows;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 using static Questionable.Utils.LocalizeShortcut;
 using Questionable.Data;
-using Questionable.Model;
 using Questionable.Extensions;
+using Questionable.Domain;
 
 namespace Questionable.Controller;
 

@@ -2,7 +2,7 @@
 using System.Linq;
 using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Data;

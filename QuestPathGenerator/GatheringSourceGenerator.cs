@@ -25,7 +25,7 @@ public class GatheringSourceGenerator : ISourceGenerator
         "Invalid gathering file: {0}",
         nameof(GatheringSourceGenerator),
         DiagnosticSeverity.Error,
-isEnabledByDefault: true);
+        isEnabledByDefault: true);
 
     public void Initialize(GeneratorInitializationContext context)
     {

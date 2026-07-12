@@ -1,3 +1,5 @@
+using static Questionable.Controller.Steps.ITaskExecutor;
+
 namespace Questionable.Controller.Steps.Common;
 
 internal sealed class WaitNavmesh

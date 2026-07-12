@@ -3,9 +3,9 @@
 namespace Questionable.Model.Common;
 
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class AlwaysSerializeAttribute : Attribute { }
+public sealed class AlwaysSerializeAttribute : Attribute;
 
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class DefaultTrueAttribute : Attribute { }
+public sealed class DefaultTrueAttribute : Attribute;
 [AttributeUsage(AttributeTargets.Property)]
-public sealed class IgnoreWhenDefaultInstanceAttribute : Attribute { }
+public sealed class IgnoreWhenDefaultInstanceAttribute : Attribute;

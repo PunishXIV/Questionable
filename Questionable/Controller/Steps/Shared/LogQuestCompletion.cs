@@ -8,7 +8,7 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using Microsoft.Extensions.Logging;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Utils;
 using static Questionable.Controller.Steps.Shared.LogQuestCompletion;
 

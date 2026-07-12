@@ -16,6 +16,7 @@ using Questionable.Controller;
 using Questionable.Data;
 using Questionable.External;
 using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;

@@ -9,8 +9,8 @@ using Dalamud.Interface.Utility.Raii;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.QuestComponents;
@@ -32,7 +32,7 @@ internal sealed class RedoComponent
 {
     private bool _hideDone;
     private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
-    private Model.Quest? _unlockQuest;
+    private Domain.Quest? _unlockQuest;
     public void DrawRedoChapters()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
@@ -110,7 +110,7 @@ internal sealed class RedoComponent
             {
                 var qid = new QuestId((ushort)q.RowId);
                 bool unobtainable = questData.TryGetQuestInfo(qid, out var qInfo) && questFunctions.IsQuestUnobtainable(qid);
-                questRegistry.TryGetQuest(qid, out Model.Quest? quest);
+                questRegistry.TryGetQuest(qid, out Domain.Quest? quest);
                 if (qInfo != null && quest != null && (quest.Root.LastChecked.Date == null ||
                         (quest.Root.LastChecked.Date != null &&
                          quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60)) &&
@@ -181,7 +181,7 @@ internal sealed class RedoComponent
                             ImGui.SetTooltip(_L("This quest is not supported."));
                         ImGui.TableNextColumn();
                     }
-                    if (questRegistry.TryGetQuest(qid, out Model.Quest? quest))
+                    if (questRegistry.TryGetQuest(qid, out Domain.Quest? quest))
                     {
                         _supported += 1;
                         if (questFunctions.IsQuestComplete(quest.Id))

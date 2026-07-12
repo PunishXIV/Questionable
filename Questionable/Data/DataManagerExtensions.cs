@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Dalamud.Plugin.Services;
@@ -54,7 +53,7 @@ public static class DataManagerExtensions
                 return Regex.Escape(payload.ToString());
 
             return "(.*)";
-        })));
+        })), RegexOptions.CultureInvariant, matchTimeout: TimeSpan.FromMilliseconds(1000));
     }
 
     public static string WithCertainMacroCodeReplacements(this ReadOnlySeString text)
@@ -76,26 +75,4 @@ public static class DataManagerExtensions
             };
         }));
     }
-}
-
-public interface IQuestDialogueText
-{
-    public ReadOnlySeString Key { get; }
-    public ReadOnlySeString Value { get; }
-}
-
-[SuppressMessage("Performance", "CA1815:Override equals and operator equals on value types", Justification = "Unused operations")]
-[Sheet("QuestDialogueText")]
-public readonly struct QuestDialogueText(ExcelPage page, uint offset, uint row) : IQuestDialogueText, IExcelRow<QuestDialogueText>
-{
-    public uint RowId => row;
-
-    public ReadOnlySeString Key => page.ReadString(offset, offset);
-    public ReadOnlySeString Value => page.ReadString(offset + 4, offset);
-
-    ExcelPage IExcelRow<QuestDialogueText>.ExcelPage => page;
-
-    uint IExcelRow<QuestDialogueText>.RowOffset => offset;
-
-    static QuestDialogueText IExcelRow<QuestDialogueText>.Create(ExcelPage page, uint offset, uint row) => new(page, offset, row);
 }

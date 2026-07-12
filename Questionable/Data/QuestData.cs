@@ -11,6 +11,8 @@ using Questionable.Model;
 using Questionable.Model.Questing;
 using Quest = Lumina.Excel.Sheets.Quest;
 using static Questionable.Utils.LocalizeShortcut;
+using Questionable.Domain;
+using Questionable.Model.Common;
 
 namespace Questionable.Data;
 

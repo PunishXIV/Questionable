@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using Questionable.Functions;
-namespace Questionable.Model;
+namespace Questionable.Domain;
 
 internal sealed class StringOrRegex
 {

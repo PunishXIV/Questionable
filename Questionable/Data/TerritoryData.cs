@@ -9,8 +9,8 @@ using Dalamud.Plugin.Services;
 using Dalamud.Utility;
 using Lumina.Excel.Sheets;
 using Quest = Lumina.Excel.Sheets.Quest;
-using Questionable.Model;
 using Questionable.Model.Questing;
+using Questionable.Model.Common;
 namespace Questionable.Data;
 
 internal sealed class TerritoryData
@@ -71,7 +71,7 @@ internal sealed class TerritoryData
     {
         string? territoryName = GetName(territoryId);
         if (territoryName != null)
-            return string.Create(CultureInfo.InvariantCulture, $"{territoryName} ({territoryId})");
+            return $"{territoryName} ({territoryId})";
 
         return territoryId.ToString(CultureInfo.InvariantCulture);
     }

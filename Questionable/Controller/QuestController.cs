@@ -21,12 +21,14 @@ using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.ConfigComponents;
-using Quest = Questionable.Model.Quest;
+using static Questionable.Controller.Steps.ITaskExecutor;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 

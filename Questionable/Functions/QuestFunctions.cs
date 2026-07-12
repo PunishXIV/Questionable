@@ -21,6 +21,7 @@ using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
@@ -28,7 +29,7 @@ using Questionable.Utils;
 using static Questionable.Utils.CacheUtils;
 using static Questionable.Utils.LocalizeShortcut;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
@@ -919,37 +920,4 @@ internal sealed unsafe class QuestFunctions
     public GrandCompany GetGrandCompany() => (GrandCompany)PlayerState.Instance()->GrandCompany;
 
     public bool IsMainScenarioQuestComplete() => IsQuestComplete(questData.LastMainScenarioQuestId);
-}
-
-public sealed record QuestReference(ElementId? CurrentQuest, byte Sequence, MainScenarioQuestState State)
-{
-    public static QuestReference NoQuest(MainScenarioQuestState state) => new(CurrentQuest: null, 0, state);
-}
-
-public enum MainScenarioQuestState
-{
-    Unavailable,
-    Available,
-    Complete,
-    LoadingScreen
-}
-
-internal sealed record PriorityQuestInfo(ElementId QuestId, string? UnavailableReason = null)
-{
-    public bool IsAvailable => UnavailableReason == null;
-}
-
-public class RequiredTeleportLockedException : Exception
-{
-    public RequiredTeleportLockedException()
-    {
-    }
-
-    public RequiredTeleportLockedException(string message, Exception innerException) : base(message, innerException)
-    {
-    }
-
-    public RequiredTeleportLockedException(string message) : base(message)
-    {
-    }
 }

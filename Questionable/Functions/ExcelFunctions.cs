@@ -8,9 +8,9 @@ using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Domain;
 using GimmickYesNo = Lumina.Excel.Sheets.GimmickYesNo;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 

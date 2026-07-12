@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Data;
@@ -100,5 +99,3 @@ internal sealed class AlliedSocietyData
         }
     }
 }
-
-public sealed record AlliedSocietyMountConfiguration(IReadOnlyList<uint> IssuerDataIds, EAetheryteLocation ClosestAetheryte);

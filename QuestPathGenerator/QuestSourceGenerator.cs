@@ -30,7 +30,7 @@ public class QuestSourceGenerator : ISourceGenerator
         "Invalid quest file {0}",
         nameof(QuestSourceGenerator),
         DiagnosticSeverity.Error,
-isEnabledByDefault: true);
+        isEnabledByDefault: true);
 
     public void Initialize(GeneratorInitializationContext context)
     {

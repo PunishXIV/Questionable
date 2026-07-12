@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Numerics;
 using Questionable.Controller.Utils;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;

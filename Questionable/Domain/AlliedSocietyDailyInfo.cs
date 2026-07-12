@@ -5,8 +5,10 @@ using System.Linq;
 using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Data;
+using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
-namespace Questionable.Model;
+namespace Questionable.Domain;
 
 internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, ClassJobUtils classJobUtils) : IQuestInfo
 {

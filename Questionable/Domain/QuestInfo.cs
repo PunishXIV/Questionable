@@ -9,13 +9,15 @@ using ECommons.ExcelServices;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Extensions;
+using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using ExcelQuest = Lumina.Excel.Sheets.Quest;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using QQuestId = Questionable.Model.Questing.QuestId;
 
-namespace Questionable.Model;
+namespace Questionable.Domain;
 
 internal sealed class QuestInfo : IQuestInfo
 {
@@ -106,7 +108,7 @@ internal sealed class QuestInfo : IQuestInfo
             .Where(x => x.Quest.RowId == quest.RowId)
             .Select(x => {
                 var item = Svc.Data.GetExcelSheet<Item>()
-                    .Where(item => item.ItemAction.Value is { } itemAction &&
+                    .Where(item => item.ItemAction.Value is var itemAction &&
                         itemAction.Action.RowId == 3357 && // triple triad card use action
                         item.AdditionalData.RowId == x.RowId).FirstOrNull();
                 return item != null ? ItemReward.CreateFromItem(item.Value, QuestId) : null;

@@ -26,10 +26,11 @@ using Questionable.QuestPaths;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
-using static Questionable.Model.QuestInfo;
+using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;
 using Sheets = Lumina.Excel.Sheets;
 using static Questionable.Utils.LocalizeShortcut;
+using Questionable.Domain;
 namespace Questionable.Controller;
 
 // TODO: refactor — heavy nesting (29 lines indented ≥6 levels, max indent ~8 levels).

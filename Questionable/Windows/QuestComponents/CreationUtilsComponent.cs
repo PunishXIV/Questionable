@@ -19,13 +19,13 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.Utils;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 using static Questionable.Utils.LocalizeShortcut;
+using Questionable.Domain;
 
 namespace Questionable.Windows.QuestComponents;
 

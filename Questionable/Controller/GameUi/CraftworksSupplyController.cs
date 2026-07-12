@@ -86,7 +86,7 @@ internal sealed class CraftworksSupplyController : IDisposable
             return;
 
         AtkUnitBase* parentAddon = AtkStage.Instance()->RaptureAtkUnitManager->GetAddonById(parentId);
-        if (parentAddon->NameString is "BankaCraftworksSupply")
+        if (string.Equals(parentAddon->NameString, "BankaCraftworksSupply", StringComparison.Ordinal))
         {
             _logger.LogInformation("Picking item for {AddonName}", parentAddon->NameString);
             AtkValue* selectSlot = stackalloc AtkValue[]
