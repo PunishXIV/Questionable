@@ -24,7 +24,7 @@ internal sealed class UniqueSinglePlayerInstanceValidator : IQuestValidator
                     Step = StepId,
                     Type = EIssueType.DuplicateSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = _LF("Duplicate singleplayer duty index: {0}",SinglePlayerDutyIndex)
+                    Description = _LF("Duplicate singleplayer duty index: {0}", SinglePlayerDutyIndex)
                 };
             }
         }

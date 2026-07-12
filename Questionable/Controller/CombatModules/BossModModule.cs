@@ -3,6 +3,7 @@ using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging;
 using Questionable.External;
+using Questionable.Model.Common;
 namespace Questionable.Controller.CombatModules;
 
 internal sealed class BossModModule
@@ -15,7 +16,7 @@ internal sealed class BossModModule
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
-        if (configuration.General.CombatModule != Configuration.ECombatModule.BossMod)
+        if (configuration.General.CombatModule != ECombatModule.BossMod)
             return false;
 
         return bossModIpc.IsSupported();

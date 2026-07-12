@@ -96,7 +96,7 @@ internal sealed class QuestJournalUtils
 
             if (ImGui.MenuItem(_L("Locate quest issuer")))
             {
-                MoveToQuestLocation(questInfo, teleport:false);
+                MoveToQuestLocation(questInfo, teleport: false);
             }
 
             bool openInQuestMap = commandManager.Commands.ContainsKey("/questinfo");
@@ -199,27 +199,27 @@ internal sealed class QuestJournalUtils
 
     public void MoveToQuestLocation(IQuestInfo questInfo, bool teleport = true)
     {
-            var location = ((QuestInfo)questInfo).IssuerLocation;
-            Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
-            var mapLink = new MapLinkPayload(
-                location.Territory.RowId,
-                location.Map.RowId,
-                location.Game.X,
-                location.Game.Z
-            );
-            var _ = gameGui.OpenMapWithMapLink(mapLink);
-            if (!teleport)
-                return;
-            if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
-                movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
-                {
-                    Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId),
-                    Sprint = true,
-                    StopDistance = 20f,
-                    VerticalStopDistance = 5f,
-                });
-            else
-                if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
-                    aetheryteFunctions.TeleportAetheryte(aetheryte);
+        var location = ((QuestInfo)questInfo).IssuerLocation;
+        Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
+        var mapLink = new MapLinkPayload(
+            location.Territory.RowId,
+            location.Map.RowId,
+            location.Game.X,
+            location.Game.Z
+        );
+        var _ = gameGui.OpenMapWithMapLink(mapLink);
+        if (!teleport)
+            return;
+        if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
+            movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+            {
+                Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId),
+                Sprint = true,
+                StopDistance = 20f,
+                VerticalStopDistance = 5f,
+            });
+        else
+            if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
+                aetheryteFunctions.TeleportAetheryte(aetheryte);
     }
 }

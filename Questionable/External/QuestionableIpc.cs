@@ -237,14 +237,14 @@ internal sealed class QuestionableIpc : IDisposable
         return true;
     }
 
-    private (bool,string) IsQuestLockedReason(string questId)
+    private (bool, string) IsQuestLockedReason(string questId)
     {
         _logger.LogDebug("IsQuestLockedReason({QuestId})", questId);
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? _))
         {
             (var isLocked, string[]? reasons) = _questFunctions.IsQuestLocked(elementId);
-            return (isLocked, reasons != null ? string.Join(',',reasons) : "");
+            return (isLocked, reasons != null ? string.Join(',', reasons) : "");
         }
 
         return (true, "");

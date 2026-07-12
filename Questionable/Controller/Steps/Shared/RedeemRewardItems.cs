@@ -105,7 +105,7 @@ internal static class RedeemRewardItems
             }
         }
 
-        return tasks.Count != 0 ? [new Mount.UnmountTask(), ..tasks] : tasks;
+        return tasks.Count != 0 ? [new Mount.UnmountTask(), .. tasks] : tasks;
     }
 
     internal sealed record Task(ItemReward ItemReward) : ITask

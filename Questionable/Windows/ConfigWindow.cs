@@ -1,9 +1,9 @@
 ﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
+using PunishLib.ImGuiMethods;
 using Questionable.Windows.Common;
 using Questionable.Windows.ConfigComponents;
-using PunishLib.ImGuiMethods;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 

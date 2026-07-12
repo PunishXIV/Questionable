@@ -8,6 +8,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.Interop;
 using Questionable.Domain;
 using Questionable.External;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -53,18 +54,18 @@ internal static class EquipRecommended
             if (condition[ConditionFlag.InCombat])
                 return false;
 
-            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is Configuration.EGearsetUpdateSource.Stylist)
+            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is EGearsetUpdateSource.Stylist)
             {
                 chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
-                config.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
+                config.General.GearsetUpdateSource = EGearsetUpdateSource.Vanilla;
                 Svc.PluginInterface.SavePluginConfig(config);
             }
             switch (config.General.GearsetUpdateSource)
             {
-                case Configuration.EGearsetUpdateSource.Vanilla:
+                case EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
                     break;
-                case Configuration.EGearsetUpdateSource.Stylist:
+                case EGearsetUpdateSource.Stylist:
                     RaptureGearsetModule.Instance()->UpdateGearset(RaptureGearsetModule.Instance()->CurrentGearsetIndex);
                     break;
             }
@@ -76,7 +77,7 @@ internal static class EquipRecommended
         {
             switch (config.General.GearsetUpdateSource)
             {
-                case Configuration.EGearsetUpdateSource.Vanilla:
+                case EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
                     if (recommendedEquipModule->IsUpdating)
                         return ETaskResult.StillRunning;
@@ -95,10 +96,10 @@ internal static class EquipRecommended
                     }
 
                     break;
-                case Configuration.EGearsetUpdateSource.Stylist:
+                case EGearsetUpdateSource.Stylist:
                     {
                         if (stylist.IsBusy)
-                        return ETaskResult.StillRunning;
+                            return ETaskResult.StillRunning;
 
                         if (!_checkedOrTriggeredEquipmentUpdate)
                         {

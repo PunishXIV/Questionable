@@ -1,9 +1,5 @@
-using System.Linq;
-using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Memory;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Lumina.Text.Payloads;
-using Lumina.Text.ReadOnly;
 using Questionable.Extensions;
 namespace Questionable.Utils;
 

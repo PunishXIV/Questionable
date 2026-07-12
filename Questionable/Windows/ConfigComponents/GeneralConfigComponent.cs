@@ -13,6 +13,7 @@ using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.External;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
@@ -69,7 +70,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             .Where(x => x is { RowId: > 0, Icon: > 0 })
             .Select(x => (MountId: x.RowId, Name: x.Singular.ToString()))
             .Where(x => !string.IsNullOrEmpty(x.Name))
-            .OrderBy(x => x.Name)
+            .OrderBy(x => x.Name, StringComparer.Ordinal)
             .ToList();
         uint[] ids = [DefaultMount.Id, .. mounts.Select(x => x.MountId)];
         string[] names = [DefaultMount.Name, .. mounts.Select(x => x.Name)];
@@ -95,7 +96,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("General") + "###General");
         if (!tab)
             return;
-        Dictionary<string, string> languages = new(){
+        Dictionary<string, string> languages = new(StringComparer.Ordinal){
             { "en",    _L("English") },
             { "ja-jp", _L("Japanese") },
             { "zh-cn", _L("Chinese (Simplified)") },
@@ -125,7 +126,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 DalamudInitializer.SetupI18N(Configuration.General.Language);
         }
 
-        Configuration.ECombatModule combatModule = Configuration.General.CombatModule;
+        ECombatModule combatModule = Configuration.General.CombatModule;
         if (ImGuiEx.EnumCombo(_L("Preferred Combat Module"), ref combatModule))
         {
             Configuration.General.CombatModule = combatModule;
@@ -166,16 +167,16 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         using (ImRaii.Disabled(!StylistIpc.IsInstalled))
         {
-            Configuration.EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
+            EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
             if (ImGuiEx.EnumCombo(_L("Preferred Gear Upgrade Source"), ref gearsetSource))
             {
                 Configuration.General.GearsetUpdateSource = gearsetSource;
                 Save();
             }
-            if (!StylistIpc.IsInstalled && gearsetSource is Configuration.EGearsetUpdateSource.Stylist)
+            if (!StylistIpc.IsInstalled && gearsetSource is EGearsetUpdateSource.Stylist)
             {
                 Svc.Chat.Print(_L("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla."), CommandHandler.MessageTag, CommandHandler.TagColor);
-                Configuration.General.GearsetUpdateSource = Configuration.EGearsetUpdateSource.Vanilla;
+                Configuration.General.GearsetUpdateSource = EGearsetUpdateSource.Vanilla;
                 Save();
             }
         }

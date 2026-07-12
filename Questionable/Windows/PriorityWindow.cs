@@ -12,7 +12,6 @@ using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Lumina.Text.ReadOnly;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Domain;
@@ -172,7 +171,7 @@ internal sealed class PriorityWindow : LWindow
 
                 if (hovered)
                     _questTooltipComponent.Draw(quest.Info);
-                
+
                 _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
 
                 if (priorityQuests.Count > 1)

@@ -45,7 +45,7 @@ internal sealed class GatheringPointRegistry : IDisposable
     public void Reload()
     {
         _gatheringPoints.Clear();
-        
+
         if (!LoadGatheringPointsFromDownloadedBundle())
             //LoadGatheringPointsFromAssembly();
             _logger.LogWarning("Bundled gathering points were not loaded, we have no gathering points!");

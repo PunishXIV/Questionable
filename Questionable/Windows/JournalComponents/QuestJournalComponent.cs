@@ -5,13 +5,10 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Domain;
@@ -280,7 +277,7 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextColumn();
         (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        uiUtils.ChecklistItem(text.Split(',',1)[0], color, icon);
+        uiUtils.ChecklistItem(text.Split(',', 1)[0], color, icon);
     }
 
     internal static void DrawCount(int count, int total)

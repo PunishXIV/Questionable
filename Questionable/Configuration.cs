@@ -8,9 +8,9 @@ using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
-using Questionable.Converters;
 using static Questionable.Utils.LocalizeShortcut;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
@@ -344,18 +344,15 @@ internal sealed class Configuration : IPluginConfiguration
         public DateTimeOffset? LastCheck { get; set; }
     }
     #endregion
-
-    internal enum EGearsetUpdateSource
+    public sealed class ElementIdNConverter : JsonConverter<ElementId>
     {
-        Vanilla,
-        Stylist
-    }
+        public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
-    internal enum ECombatModule
-    {
-        None,
-        BossMod,
-        WrathCombo,
-        RotationSolverReborn
+        public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
+            bool hasExistingValue, JsonSerializer serializer)
+        {
+            string? value = reader.Value?.ToString();
+            return value != null ? ElementId.FromString(value) : null;
+        }
     }
 }

@@ -55,7 +55,7 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                         Type = EIssueType.DuplicateCompletionFlags,
                         Severity = EIssueSeverity.Error,
                         Description =
-                            _LF("Duplicate completion flags: {0}",string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags))
+                            _LF("Duplicate completion flags: {0}", string.Join(", ", sequence.Steps[i].CompletionQuestVariablesFlags))
                     };
                 }
             }

@@ -32,7 +32,7 @@ internal static class Duty
             AutoDutyIpc.DutyMode dutyMode = AutoDutyIpc.DutyMode.Support;
             if (allowUnsync && quest.Id is QuestId { Value: >= 357 and <= 360 })
                 dutyMode = AutoDutyIpc.DutyMode.Regular;
-            else if (quest.Id is QuestId { Value: 4646 or 4733 or 4789 or 5441})
+            else if (quest.Id is QuestId { Value: 4646 or 4733 or 4789 or 5441 })
             {
                 if (autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions))
                     dutyMode = AutoDutyIpc.DutyMode.Variant;

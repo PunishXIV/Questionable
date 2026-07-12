@@ -1,6 +1,4 @@
-﻿using Questionable.Model;
-
-namespace Questionable.Validation;
+﻿namespace Questionable.Validation;
 
 public enum EIssueType
 {

@@ -40,7 +40,7 @@ public class GatheringSourceGenerator : ISourceGenerator
         if (gatheringSchema != null)
             GenerateGatheringSource(context, gatheringSchema);
     }
-    
+
     [Conditional("ASSEMBLY")]
     private void GenerateGatheringSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
