@@ -8,8 +8,8 @@ using ECommons.ExcelServices;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Windows;
 using Questionable.Windows.QuestComponents;
@@ -101,10 +101,10 @@ internal sealed class QuestionableIpc : IDisposable
             [.. eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString())]);
 
         _startQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartQuest);
-        _startQuest.RegisterFunc(questId => StartQuest(questId, false));
+        _startQuest.RegisterFunc(questId => StartQuest(questId, single: false));
 
         _startSingleQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartSingleQuest);
-        _startSingleQuest.RegisterFunc(questId => StartQuest(questId, true));
+        _startSingleQuest.RegisterFunc(questId => StartQuest(questId, single: true));
 
         _isQuestLocked = pluginInterface.GetIpcProvider<string, bool>(IpcIsQuestLocked);
         _isQuestLocked.RegisterFunc(IsQuestLocked);

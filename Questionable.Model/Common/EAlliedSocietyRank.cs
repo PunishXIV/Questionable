@@ -1,9 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using JetBrains.Annotations;
-namespace Questionable.Model;
+namespace Questionable.Model.Common;
 
 [SuppressMessage("Design", "CA1028", Justification = "Game type")]
-[UsedImplicitly(ImplicitUseTargetFlags.Members)]
 public enum EAlliedSocietyRank : byte
 {
     None = 0,

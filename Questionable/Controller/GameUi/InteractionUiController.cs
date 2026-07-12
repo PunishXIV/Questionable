@@ -32,7 +32,7 @@ internal sealed class InteractionUiController : IDisposable
         unsafe
         {
             if (gameGui.TryGetAddonByName("RhythmAction", out AtkUnitBase* addon))
-                addon->Close(true);
+                addon->Close(fireCallback: true);
         }
     }
 

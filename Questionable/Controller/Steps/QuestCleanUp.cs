@@ -5,8 +5,9 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
+using Questionable.Domain;
+using Questionable.Extensions;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
@@ -38,7 +39,7 @@ internal static class QuestCleanUp
                 // it doesn't particularly matter if we teleport to the same aetheryte twice in the same quest step, as
                 // the second (normal) teleport instance should detect that we're within range and not do anything
                 EAetheryteLocation targetAetheryte = step.AetheryteShortcut ?? mountConfiguration.ClosestAetheryte;
-                AetheryteShortcut.Task teleportTask = new(null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
+                AetheryteShortcut.Task teleportTask = new(Step: null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
 
                 // turn-in step can never be done while mounted on an allied society mount
                 if (sequence.Sequence == 255)

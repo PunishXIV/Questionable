@@ -5,7 +5,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 

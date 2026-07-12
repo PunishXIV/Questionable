@@ -60,7 +60,7 @@ internal sealed class AutoDutyIpc
         if (!territoryData.TryGetContentFinderCondition(cfcId, out TerritoryData.ContentFinderConditionData? cfcData))
             return false;
 
-        return IpcInvoke.SafeFunc(() => _contentHasPath.InvokeFunc(cfcData.TerritoryId), false,
+        return IpcInvoke.SafeFunc(() => _contentHasPath.InvokeFunc(cfcData.TerritoryId), fallback: false,
             logger, "Unable to query AutoDuty for path in territory {TerritoryType}", cfcData.TerritoryId);
     }
 
@@ -82,7 +82,7 @@ internal sealed class AutoDutyIpc
         }
     }
 
-    public bool IsStopped() => IpcInvoke.SafeFunc(() => _isStopped.InvokeFunc(), true);
+    public bool IsStopped() => IpcInvoke.SafeFunc(() => _isStopped.InvokeFunc(), fallback: true);
 
     public void Stop()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Utils;
 

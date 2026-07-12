@@ -8,7 +8,8 @@ using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Controller;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Domain;
+using Questionable.Model.Common;
 using Questionable.Windows.QuestComponents;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
@@ -77,7 +78,7 @@ internal sealed class QuestRewardComponent
                         ImGui.Text(_LF("Obtained from: {0}", questInfo.Name));
                     using (ImRaii.PushIndent())
                     {
-                        questTooltipComponent.DrawInner(questInfo, false);
+                        questTooltipComponent.DrawInner(questInfo, showItemRewards: false);
                     }
                 }
             }

@@ -20,6 +20,12 @@
         "resolved": "3.2.0.16",
         "contentHash": "nbWQqETgnryEWedkZSxNValCgTdylNOibwkaYNYvGoY7XBXWK1KzKVgAroPQpGGrF2Q3NX1mbhoDczAaePYc8w=="
       },
+      "Meziantou.Analyzer": {
+        "type": "Direct",
+        "requested": "[3.0.122, )",
+        "resolved": "3.0.122",
+        "contentHash": "bmo+TIK9fLG/NzlZ2Qi5lto2jG/N6/zmc7gDVp5uzvVmnDKMV5SmUR7jToSbx/oqTPMV3ajyCmo2kFBdPDlU0A=="
+      },
       "Pictomancy": {
         "type": "Direct",
         "requested": "[1.0.9, )",

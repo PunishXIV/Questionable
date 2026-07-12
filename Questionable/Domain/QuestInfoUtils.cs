@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
-namespace Questionable.Model;
+namespace Questionable.Domain;
 
 internal static class QuestInfoUtils
 {

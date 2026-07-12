@@ -11,9 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
+using static Questionable.Controller.Steps.ITaskExecutor;
 using Action = Questionable.Controller.Steps.Interactions.Action;
 
 namespace Questionable.Controller.Steps.Shared;
@@ -92,7 +93,7 @@ internal static class Gather
                 }
             }
 
-            uint territoryId = gatheringRoot.Steps.Last().TerritoryId;
+            uint territoryId = gatheringRoot.Steps[^1].TerritoryId;
             yield return new WaitCondition.Task(() => clientState.TerritoryType == territoryId,
                 $"Wait(territory: {TerritoryData.GetNameAndId(territoryId)})");
 
@@ -124,11 +125,9 @@ internal static class Gather
         {
             if (GatheredItem.Collectability == 0)
                 return $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
-            else
-            {
-                return
-                    $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
-            }
+
+            return
+                $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
         }
     }
 

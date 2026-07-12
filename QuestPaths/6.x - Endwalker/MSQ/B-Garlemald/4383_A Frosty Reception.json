@@ -40,13 +40,8 @@
           },
           "DialogueChoices": [
             {
-              "Type": "List",
-              "Prompt": 264,
-              "Answer": 267
-            },
-            {
               "Type": "YesNo",
-              "Prompt": 268,
+              "Prompt": "TEXT_AKTKMB104_04383_Q1_100_049",
               "Yes": true
             }
           ]

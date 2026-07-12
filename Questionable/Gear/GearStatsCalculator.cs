@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -144,7 +143,7 @@ public sealed class GearStatsCalculator
         else
         {
             result[(EBaseParam)baseParam.RowId] =
-                new(value, 0, false);
+                new(value, 0, Overcapped: false);
         }
     }
 
@@ -152,7 +151,7 @@ public sealed class GearStatsCalculator
         short grade)
     {
         if (!result.TryGetValue(materiaInfo.BaseParam, out StatInfo? statInfo))
-            result[materiaInfo.BaseParam] = statInfo = new(0, 0, false);
+            result[materiaInfo.BaseParam] = statInfo = new(0, 0, Overcapped: false);
 
         if (materiaInfo.HasItem)
         {
@@ -190,8 +189,8 @@ public sealed class GearStatsCalculator
                 stat * _equipSlotCategoryPct[(baseParamValue, (int)item.EquipSlotCategory.RowId)] / 1000f,
                 MidpointRounding.AwayFromZero);
         }
-        else
-            return 0;
+
+        return 0;
     }
 
     public unsafe short CalculateAverageItemLevel(InventoryContainer* container)
@@ -232,26 +231,4 @@ public sealed class GearStatsCalculator
     }
 
     private sealed record MateriaInfo(EBaseParam BaseParam, Collection<short> Values, bool HasItem);
-}
-
-[Sheet("BaseParam")]
-[SuppressMessage("Performance", "CA1815", Justification = "Lumina doesn't implement any equality ops")]
-public unsafe readonly struct ExtendedBaseParam(ExcelPage page, uint offset, uint row)
-    : IExcelRow<ExtendedBaseParam>
-{
-    private const int ParamCount = 23;
-
-    public uint RowId => row;
-    public BaseParam BaseParam => new(page, offset, row);
-
-    public Collection<ushort> EquipSlotCategoryPct =>
-        new(page, offset, offset, &EquipSlotCategoryPctCtor, ParamCount);
-
-    ExcelPage IExcelRow<ExtendedBaseParam>.ExcelPage => page;
-
-    uint IExcelRow<ExtendedBaseParam>.RowOffset => offset;
-
-    private static ushort EquipSlotCategoryPctCtor(ExcelPage page, uint parentOffset, uint offset, uint i) => i == 0 ? (ushort)0 : page.ReadUInt16(offset + 8 + (i - 1) * 2);
-
-    public static ExtendedBaseParam Create(ExcelPage page, uint offset, uint row) => new(page, offset, row);
 }

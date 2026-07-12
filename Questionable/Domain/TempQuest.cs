@@ -5,7 +5,7 @@ using Lumina.Text.ReadOnly;
 #pragma warning disable CS9113
 
 
-namespace Questionable.Model;
+namespace Questionable.Domain;
 
 [GeneratedCode("Lumina.Excel.Generator", "2.0.0")]
 [Sheet("Quest", 0x0AB3FE19)]

@@ -10,7 +10,7 @@ using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Common.Math;
 using Questionable.Controller;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Windows.Common;

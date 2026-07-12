@@ -15,8 +15,8 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using Questionable.Controller;
 using Questionable.Controller.GameUi;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.Common;
@@ -222,9 +222,9 @@ internal sealed class QuestSelectionWindow : LWindow
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Copy as file name"));
                 if (copy)
-                    CopyToClipboard(quest, true);
+                    CopyToClipboard(quest, suffix: true);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-                    CopyToClipboard(quest, false);
+                    CopyToClipboard(quest, suffix: false);
                 ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest);

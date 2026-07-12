@@ -45,7 +45,7 @@ internal sealed class BossModIpc
     private bool _soloDutyZoneConfigured;
     private bool _enableQuestBattlesOverridden;
 
-    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, false);
+    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, fallback: false);
 
     public PresetDefinition AddPreset(EPreset preset) => AddPreset(PresetDefinitions[preset]);
     public PresetDefinition AddPreset(PresetDefinition definition)
@@ -126,7 +126,7 @@ internal sealed class BossModIpc
 
         bool? enableQuestBattles = TryGetEnableQuestBattles();
         if (enableQuestBattles is not true)
-            SetEnableQuestBattles(true);
+            SetEnableQuestBattles(enabled: true);
         _enableQuestBattlesOverridden = enableQuestBattles == false;
     }
 
@@ -134,7 +134,7 @@ internal sealed class BossModIpc
     {
         if (_enableQuestBattlesOverridden)
         {
-            SetEnableQuestBattles(false);
+            SetEnableQuestBattles(enabled: false);
             _enableQuestBattlesOverridden = false;
         }
 
@@ -154,7 +154,7 @@ internal sealed class BossModIpc
                 return (bool?)null;
 
             return bool.TryParse(result[0], out bool value) ? value : null;
-        }, null);
+        }, fallback: null);
     }
 
     private void SetEnableQuestBattles(bool enabled) =>

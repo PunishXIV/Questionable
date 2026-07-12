@@ -2,6 +2,12 @@
   "version": 1,
   "dependencies": {
     ".NETStandard,Version=v2.0": {
+      "Meziantou.Analyzer": {
+        "type": "Direct",
+        "requested": "[3.0.122, )",
+        "resolved": "3.0.122",
+        "contentHash": "bmo+TIK9fLG/NzlZ2Qi5lto2jG/N6/zmc7gDVp5uzvVmnDKMV5SmUR7jToSbx/oqTPMV3ajyCmo2kFBdPDlU0A=="
+      },
       "NETStandard.Library": {
         "type": "Direct",
         "requested": "[2.0.3, )",

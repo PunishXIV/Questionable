@@ -4,11 +4,6 @@ using System.Text;
 
 namespace Questionable.Data;
 
-internal class RedoData
-{
-}
-
-
 internal enum RedoChapter
 {
     Off = 0,

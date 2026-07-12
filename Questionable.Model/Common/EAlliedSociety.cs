@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using JetBrains.Annotations;
-using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
-namespace Questionable.Model;
+namespace Questionable.Model.Common;
 
-[UsedImplicitly(ImplicitUseTargetFlags.Members)]
 public enum EAlliedSociety : byte
 {
     None = 0,

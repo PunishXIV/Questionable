@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Numerics;
 using Questionable.Controller.Utils;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
@@ -34,8 +34,8 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                             })
                             .Sum();
                     }
-                    else
-                        return 0;
+
+                    return 0;
                 })
                 .ToList();
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Questionable.Controller.Steps.Common;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -24,7 +24,7 @@ internal static class Say
             ArgumentNullException.ThrowIfNull(step.ChatMessage);
 
             string? excelString =
-                excelFunctions.GetDialogueText(quest, step.ChatMessage.ExcelSheet, step.ChatMessage.Key, false)
+                excelFunctions.GetDialogueText(quest, step.ChatMessage.ExcelSheet, step.ChatMessage.Key, isRegex: false)
                     .GetString();
             ArgumentNullException.ThrowIfNull(excelString);
 

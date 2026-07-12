@@ -6,8 +6,8 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.Interop;
+using Questionable.Domain;
 using Questionable.External;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -96,14 +96,17 @@ internal static class EquipRecommended
 
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
-                    if (stylist.IsBusy)
-                        return ETaskResult.StillRunning;
-                    else if (!_checkedOrTriggeredEquipmentUpdate)
                     {
-                        stylist.UpdateGearset();
-                        _checkedOrTriggeredEquipmentUpdate = true;
-                        _continueAt = DateTime.Now.AddSeconds(1);
+                        if (stylist.IsBusy)
                         return ETaskResult.StillRunning;
+
+                        if (!_checkedOrTriggeredEquipmentUpdate)
+                        {
+                            stylist.UpdateGearset();
+                            _checkedOrTriggeredEquipmentUpdate = true;
+                            _continueAt = DateTime.Now.AddSeconds(1);
+                            return ETaskResult.StillRunning;
+                        }
                     }
 
                     break;

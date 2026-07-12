@@ -113,7 +113,8 @@ internal sealed unsafe class AetheryteFunctions
         {
             if (playerState->FavouriteAetherytes[i] == (ushort)aetheryteLocation)
                 return AetheryteRegistrationResult.NotPossible;
-            else if (playerState->FavouriteAetherytes[i] == 0)
+
+            if (playerState->FavouriteAetherytes[i] == 0)
             {
                 freeFavoredSlotsAvailable = true;
                 break;
@@ -131,15 +132,4 @@ internal sealed unsafe class AetheryteFunctions
             ? AetheryteRegistrationResult.FavoredDestinationAvailable
             : AetheryteRegistrationResult.NotPossible;
     }
-}
-
-/// <remarks>
-///     The whole free/favored aetheryte situation is primarily relevant for early ARR anyhow, since teleporting to
-///     each class quest the moment it becomes available might end up with the character running out of gil.
-/// </remarks>
-public enum AetheryteRegistrationResult
-{
-    NotPossible,
-    SecurityTokenFreeDestinationAvailable,
-    FavoredDestinationAvailable
 }

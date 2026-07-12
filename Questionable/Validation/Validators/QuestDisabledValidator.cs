@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Questionable.Model;
+using Questionable.Domain;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 

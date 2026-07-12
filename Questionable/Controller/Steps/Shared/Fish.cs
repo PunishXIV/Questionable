@@ -9,10 +9,11 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Utils;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.External;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Controller.Steps.ITaskExecutor;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -84,7 +85,7 @@ internal static class Fish
       if (!_wasAutoHookEnabled)
       {
         // AutoHook is required for this task to work. Enable it if it's not already enabled.
-        var canEnableAutoHook = autoHookIpc.SetPluginEnabled(true);
+        var canEnableAutoHook = autoHookIpc.SetPluginEnabled(enabled: true);
         if (!canEnableAutoHook)
         {
           const string errorText =

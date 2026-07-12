@@ -14,10 +14,11 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Windows;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 using static Questionable.Utils.LocalizeShortcut;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Extensions;
+using Questionable.Domain;
 
 namespace Questionable.Controller;
 
@@ -230,7 +231,7 @@ internal sealed class CommandHandler : IDisposable
             case "d2qwh":
                 if (parts.Length < 2)
                     break;
-                string highOutp = D2QW(parts.Skip(1).ToArray(), true);
+                string highOutp = D2QW(parts.Skip(1).ToArray(), High: true);
                 ImGui.SetClipboardText(highOutp);
                 _chatGui.Print(highOutp);
                 break;
@@ -302,7 +303,7 @@ internal sealed class CommandHandler : IDisposable
         {
             byte d = byte.Parse(part.RemoveOtherChars("0123456789"), CultureInfo.InvariantCulture);
             QuestWorkValue qw = new(d);
-            string value = " {\"" + (High ? "High" : "Low") + "\": " + (High ? qw.High : qw.Low) + "}";
+            string value = $" {{\"{(High ? "High" : "Low")}\": {(High ? qw.High : qw.Low)}}}";
             if (!outp.Contains(value))
                 outp.Add(value);
         }
@@ -318,10 +319,6 @@ internal sealed class CommandHandler : IDisposable
         string[] parts = arguments.Split(' ');
         switch (parts[0])
         {
-            case "abandon-duty":
-                _gameFunctions.AbandonDuty();
-                break;
-
             case "unlock-links":
                 IReadOnlyList<uint>? unlockedUnlockLinks = _gameFunctions.GetUnlockLinks();
                 if (unlockedUnlockLinks != null)
@@ -448,7 +445,7 @@ internal sealed class CommandHandler : IDisposable
         }
         else
         {
-            _questController.SetNextQuest(null);
+            _questController.SetNextQuest(quest: null);
             _chatGui.Print(_L("Cleared next quest."), MessageTag, TagColor);
         }
     }

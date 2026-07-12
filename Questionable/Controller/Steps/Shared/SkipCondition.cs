@@ -11,8 +11,8 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Utils;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
@@ -287,7 +287,8 @@ internal static class SkipCondition
                     step.ItemId.Value);
                 return true;
             }
-            else if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
+
+            if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
             {
                 logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
                     step.ItemId.Value);

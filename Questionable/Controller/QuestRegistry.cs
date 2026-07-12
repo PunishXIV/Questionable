@@ -26,12 +26,14 @@ using Questionable.QuestPaths;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
-using static Questionable.Model.QuestInfo;
+using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;
 using Sheets = Lumina.Excel.Sheets;
 using static Questionable.Utils.LocalizeShortcut;
+using Questionable.Domain;
 namespace Questionable.Controller;
 
+// TODO: refactor — heavy nesting (29 lines indented ≥6 levels, max indent ~8 levels).
 internal sealed class QuestRegistry
 {
     private readonly IChatGui _chatGui;
@@ -430,11 +432,11 @@ internal sealed class QuestRegistry
             Steps = [
                     new QuestStep(
                         EInteractionType.CompleteQuest,
-                        info.ToDoLocations.Last().Object.RowId,
-                        info.ToDoLocations.Last().Position,
-                        info.ToDoLocations.Last().Territory.RowId
+                        info.ToDoLocations[^1].Object.RowId,
+                        info.ToDoLocations[^1].Position,
+                        info.ToDoLocations[^1].Territory.RowId
                     ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.ToDoLocations.Last().Territory.RowId) ? true : null
+                        Fly = GameFunctions.IsFlyingUnlocked(info.ToDoLocations[^1].Territory.RowId) ? true : null
                     }
                 ]
         };

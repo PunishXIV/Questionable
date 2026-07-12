@@ -8,9 +8,9 @@ using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
 using Microsoft.Extensions.Logging;
 using Questionable.Data;
-using Questionable.Model;
+using Questionable.Domain;
 using GimmickYesNo = Lumina.Excel.Sheets.GimmickYesNo;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
@@ -31,8 +31,8 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
         if (isRegex)
             return new(seString.Value.ToRegex());
-        else
-            return new(seString.Value.WithCertainMacroCodeReplacements());
+
+        return new(seString.Value.WithCertainMacroCodeReplacements());
     }
 
     public ReadOnlySeString? GetRawDialogueText(Quest? currentQuest, string? excelSheetName, string key)
@@ -69,8 +69,8 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         ReadOnlySeString? seString = GetRawDialogueTextByRowId(excelSheet, rowId);
         if (isRegex)
             return new(seString?.ToRegex());
-        else
-            return new(seString?.ToDalamudString().ToString());
+
+        return new(seString?.ToDalamudString().ToString());
     }
 
     public ReadOnlySeString? GetRawDialogueTextByRowId(string? excelSheet, uint rowId)
@@ -91,37 +91,38 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
                 return null;
             }
         }
-        else if (excelSheet == "GimmickYesNo")
+
+        if (string.Equals(excelSheet, "GimmickYesNo", StringComparison.Ordinal))
         {
             GimmickYesNo? questRow = _dataManager.GetExcelSheet<GimmickYesNo>().GetRowOrDefault(rowId);
             return questRow?.YesButton;
         }
-        else if (excelSheet == "Warp")
+        if (string.Equals(excelSheet, "Warp", StringComparison.Ordinal))
         {
             Warp? questRow = _dataManager.GetExcelSheet<Warp>().GetRowOrDefault(rowId);
             return questRow?.Name;
         }
-        else if (excelSheet is "Addon")
+        if (string.Equals(excelSheet, "Addon", StringComparison.Ordinal))
         {
             Addon? questRow = _dataManager.GetExcelSheet<Addon>().GetRowOrDefault(rowId);
             return questRow?.Text;
         }
-        else if (excelSheet is "EventPathMove")
+        if (string.Equals(excelSheet, "EventPathMove", StringComparison.Ordinal))
         {
             EventPathMove? questRow = _dataManager.GetExcelSheet<EventPathMove>().GetRowOrDefault(rowId);
             return questRow?.Unknown0;
         }
-        else if (excelSheet is "GilShop")
+        if (string.Equals(excelSheet, "GilShop", StringComparison.Ordinal))
         {
             GilShop? questRow = _dataManager.GetExcelSheet<GilShop>().GetRowOrDefault(rowId);
             return questRow?.Name;
         }
-        else if (excelSheet is "ContentTalk" or null)
+        if (string.Equals(excelSheet, "ContentTalk", StringComparison.Ordinal))
         {
             ContentTalk? questRow = _dataManager.GetExcelSheet<ContentTalk>().GetRowOrDefault(rowId);
             return questRow?.Text;
         }
-        else
-            throw new ArgumentOutOfRangeException(nameof(excelSheet), $"Unsupported excel sheet {excelSheet}");
+
+        throw new ArgumentOutOfRangeException(nameof(excelSheet), $"Unsupported excel sheet {excelSheet}");
     }
 }

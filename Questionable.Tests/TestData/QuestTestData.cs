@@ -1,5 +1,5 @@
 using NSubstitute;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 
 namespace Questionable.Tests.TestData;

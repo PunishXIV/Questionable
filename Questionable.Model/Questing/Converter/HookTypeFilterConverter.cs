@@ -20,7 +20,7 @@ public sealed class HookTypeFilterConverter : JsonConverter<HookTypeFilter>
     public override void Write(Utf8JsonWriter writer, HookTypeFilter value, JsonSerializerOptions options)
     {
         if (value.IsAllHooksets)
-            writer.WriteBooleanValue(true);
+            writer.WriteBooleanValue(value: true);
         else
             JsonSerializer.Serialize(writer, value.Hookset, options);
     }

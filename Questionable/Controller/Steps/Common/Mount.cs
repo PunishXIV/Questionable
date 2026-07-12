@@ -91,11 +91,9 @@ internal static class Mount
                 logger.LogDebug("Returning 'Mount'");
                 return MountResult.Mount;
             }
-            else
-            {
-                logger.LogDebug("Returning 'WhenOutOfCombat'");
-                return MountResult.WhenOutOfCombat;
-            }
+
+            logger.LogDebug("Returning 'WhenOutOfCombat'");
+            return MountResult.WhenOutOfCombat;
         }
     }
 
@@ -112,7 +110,7 @@ internal static class Mount
         protected override bool Start()
         {
             _mountTriggered = false;
-            return mountEvaluator.EvaluateMountState(Task, false, ref _retryAt) == MountResult.Mount;
+            return mountEvaluator.EvaluateMountState(Task, dryRun: false, ref _retryAt) == MountResult.Mount;
         }
 
         public override ETaskResult Update()

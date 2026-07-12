@@ -1,2 +1,1 @@
-- Feature: fishing quests now support collectability -alydev
-  - wachumeqimeqi fishing quest paths
+- Code rearranging, nothing functionally changed. Hope you have a good day -alydev

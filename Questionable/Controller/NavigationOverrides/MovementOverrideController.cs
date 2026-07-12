@@ -8,6 +8,7 @@ namespace Questionable.Controller.NavigationOverrides;
 
 internal sealed class MovementOverrideController(IClientState clientState, ILogger<MovementOverrideController> logger)
 {
+    // TODO evaluate these locations to determine if they still pose issues in current vnav
     private static readonly List<IBlacklistedLocation> BlacklistedLocations =
     [
         new BlacklistedArea(1191, new(-223.0412f, 31.937134f, -584.03906f), 5f, 7.75f),
@@ -57,8 +58,8 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
         new BlacklistedPoint(400, new(384, -74, 648.75f), new(386.0543f, -72.409454f, 652.0184f), 3),
 
         // leaving Idyllshire through the west gate attempts to run into this wall
-        new BlacklistedPoint(399, new(-514.4851f, 149.63762f, -480.58087f), new(-528.78656f, 151.17374f, -473.07077f), 5, true),
-        new BlacklistedPoint(399, new(-534.5f, 153, -476.75f), new(-528.78656f, 151.17374f, -473.07077f), 5, true),
+        new BlacklistedPoint(399, new(-514.4851f, 149.63762f, -480.58087f), new(-528.78656f, 151.17374f, -473.07077f), 5, RecalculateNavmesh: true),
+        new BlacklistedPoint(399, new(-534.5f, 153, -476.75f), new(-528.78656f, 151.17374f, -473.07077f), 5, RecalculateNavmesh: true),
 
         // Idyllshire: random rocks in the north, passable one way only
         new BlacklistedPoint(478, new(14.5f, 215.25f, -101.5f), new(18.133032f, 215.44998f, -107.83075f), 5),

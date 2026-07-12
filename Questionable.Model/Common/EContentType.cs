@@ -1,6 +1,6 @@
-﻿namespace Questionable.Model;
+﻿namespace Questionable.Model.Common;
 
-internal enum EContentType
+public enum EContentType
 {
     None,
     DutyRoulette,

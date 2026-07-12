@@ -16,14 +16,17 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.CombatModules;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Utils;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 using BattleNpcSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind;
 
 namespace Questionable.Controller;
 
+// TODO: refactor — heavy nesting (21 lines indented ≥6 levels, max indent 16 levels).
+//       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
 internal sealed class CombatController : IDisposable
 {
     public enum EStatus
@@ -102,11 +105,11 @@ internal sealed class CombatController : IDisposable
             };
             _wasInCombat =
                 combatData.SpawnType is EEnemySpawnType.QuestInterruption or EEnemySpawnType.FinishCombatIfAny;
-            UpdateLastTargetAndQuestVariables(null);
+            UpdateLastTargetAndQuestVariables(target: null);
             return true;
         }
-        else
-            return false;
+
+        return false;
     }
 
     public EStatus Update()
@@ -149,12 +152,13 @@ internal sealed class CombatController : IDisposable
                                 QuestWorkUtils.HasCompletionFlags(_currentFight.Data.CompletionQuestVariablesFlags) &&
                                 QuestWorkUtils.MatchesQuestWork(_currentFight.Data.CompletionQuestVariablesFlags,
                                     questProgressInfo))
-                                return EStatus.InCombat; // would be the final enemy of the bunch
-                            else if (questProgressInfo != null &&
-                                     questProgressInfo.Sequence == _currentFight.Data.Sequence &&
-                                     _previousQuestVariables != null &&
-                                     !questProgressInfo.Variables.SequenceEqual(_previousQuestVariables))
-                                UpdateLastTargetAndQuestVariables(null);
+                                return EStatus.InCombat;
+
+                            if (questProgressInfo != null &&
+                                                                 questProgressInfo.Sequence == _currentFight.Data.Sequence &&
+                                                                 _previousQuestVariables != null &&
+                                                                 !questProgressInfo.Variables.SequenceEqual(_previousQuestVariables))
+                                UpdateLastTargetAndQuestVariables(target: null);
                             else
                                 return EStatus.InCombat;
                         }
@@ -183,7 +187,7 @@ internal sealed class CombatController : IDisposable
                     catch (TaskException e)
                     {
                         _logger.LogWarning(e, "Combat was interrupted, stopping: {Exception}", e.Message);
-                        SetTarget(null);
+                        SetTarget(target: null);
                     }
                 }
             }
@@ -193,7 +197,7 @@ internal sealed class CombatController : IDisposable
                     SetTarget(nextTarget);
             }
             else
-                SetTarget(null);
+                SetTarget(target: null);
         }
         else
         {
@@ -207,10 +211,11 @@ internal sealed class CombatController : IDisposable
             _wasInCombat = true;
             return EStatus.InCombat;
         }
-        else if (_wasInCombat)
+
+        if (_wasInCombat)
             return EStatus.Complete;
-        else
-            return EStatus.InCombat;
+
+        return EStatus.InCombat;
     }
 
     private IGameObject? FindNextTarget()
@@ -377,8 +382,8 @@ internal sealed class CombatController : IDisposable
 
             return (null, _L("Wrong BattleNpcKind"));
         }
-        else
-            return (null, _L("Not BattleNpc"));
+
+        return (null, _L("Not BattleNpc"));
     }
 
     private void SetTarget(IGameObject? target)
@@ -457,13 +462,13 @@ internal sealed class CombatController : IDisposable
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack", gameObject.Name,
                     GameFunctions.GetBaseID(gameObject));
-                _movementController.NavigateTo(EMovementType.Combat, null, [gameObject.Position], options);
+                _movementController.NavigateTo(EMovementType.Combat, dataId: null, [gameObject.Position], options);
             }
             else
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack (with navmesh)", gameObject.Name,
                     GameFunctions.GetBaseID(gameObject));
-                _movementController.NavigateTo(EMovementType.Combat, null, gameObject.Position, options);
+                _movementController.NavigateTo(EMovementType.Combat, dataId: null, gameObject.Position, options);
             }
         }
     }

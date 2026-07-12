@@ -15,6 +15,7 @@ using Questionable.Model.Questing;
 using Questionable.Utils;
 namespace Questionable.Controller.Steps.Gathering;
 
+// TODO: refactor — heavy nesting (24 lines indented ≥6 levels, max indent 10 levels).
 internal static class DoGather
 {
     internal sealed record Task
@@ -107,7 +108,8 @@ internal static class DoGather
                                 addonGathering->FireCallbackInt(-1);
                                 return ETaskResult.TaskComplete;
                             }
-                            else if (_actionQueue.Count == 0)
+
+                            if (_actionQueue.Count == 0)
                             {
                                 SlotInfo? slot = _slotToGather ?? slots.SingleOrDefault(x => x.ItemId == Task.Request.ItemId) ?? slots.MinBy(x => x.ItemId);
                                 if (slot?.ItemId is >= 2 and <= 19)
@@ -231,7 +233,8 @@ internal static class DoGather
                     actions.Enqueue(PickAction(EAction.LuckOfTheMountaineer, EAction.LuckOfThePioneer));
                     return actions;
                 }
-                else if (_usedLuck)
+
+                if (_usedLuck)
                 {
                     // we still can't find the item, if this node has been hit at least once we just close it
                     logger.LogDebug("Didn't find item after using Luck, moving on...");
@@ -281,8 +284,8 @@ internal static class DoGather
         {
             if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
                 return minerAction;
-            else
-                return botanistAction;
+
+            return botanistAction;
         }
 
         private unsafe bool CanUseAction(EAction minerAction, EAction botanistAction)

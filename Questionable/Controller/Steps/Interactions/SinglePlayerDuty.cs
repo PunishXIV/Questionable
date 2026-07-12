@@ -14,10 +14,11 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.External;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
+using static Questionable.Controller.Steps.ITaskExecutor;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class SinglePlayerDuty
@@ -107,7 +108,7 @@ internal static class SinglePlayerDuty
                 {
                     yield return new WaitCondition.Task(() => DutyActionsAvailable() || clientState.TerritoryType != SpecialTerritories.ItsProbablyATrap,
                         "Wait(Phase 2)");
-                    yield return new EnableAi(true);
+                    yield return new EnableAi(Passive: true);
                 }
                 else if (tId is SpecialTerritories.Naadam)
                 {
@@ -226,8 +227,8 @@ internal static class SinglePlayerDuty
         {
             if (!movementController.IsNavmeshReady)
                 return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-            else
-                return null;
+
+            return null;
         }
 
         public override unsafe ETaskResult Update()

@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
+using Questionable.Converters;
 using static Questionable.Utils.LocalizeShortcut;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable;
@@ -356,25 +357,5 @@ internal sealed class Configuration : IPluginConfiguration
         BossMod,
         WrathCombo,
         RotationSolverReborn
-    }
-}
-
-public sealed class ElementIdNConverter : JsonConverter<ElementId>
-{
-    public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
-
-    public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
-        bool hasExistingValue, JsonSerializer serializer)
-    {
-        string? value = reader.Value?.ToString();
-        return value != null ? ElementId.FromString(value) : null;
-    }
-}
-
-internal static class ConfigurationExtensions
-{
-    internal static void Save(this Configuration configuration)
-    {
-        Svc.PluginInterface.SavePluginConfig(configuration);
     }
 }
