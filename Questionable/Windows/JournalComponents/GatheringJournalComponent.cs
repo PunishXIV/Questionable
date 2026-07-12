@@ -82,8 +82,8 @@ internal sealed class GatheringJournalComponent
             .ToDictionary(x => x.GatheringItemId, x => x.Name!);
 
         _gatheringPointsByExpansion = dataManager.GetExcelSheet<GatheringPoint>()
-            .Where(x => x.GatheringPointBase.RowId != 0)
-            .Where(x => x.GatheringPointBase.RowId is < 653 or > 680) // exclude ishgard restoration phase 1
+            // exclude ishgard restoration phase 1
+            .Where(x => x.GatheringPointBase.RowId != 0 && x.GatheringPointBase.RowId is < 653 or > 680)
             .DistinctBy(x => x.GatheringPointBase.RowId)
             .Select(x => new
             {
@@ -107,11 +107,10 @@ internal sealed class GatheringJournalComponent
             {
                 if (leveGatheringPoints.Contains(x.GatheringPointId))
                     return null;
-                else if (x.Point.TerritoryType == 1 &&
-                         _gatheringPointRegistry.TryGetGatheringPoint(x.Point.Id, out GatheringRoot? gatheringRoot))
+                if (x.Point.TerritoryType == 1 && _gatheringPointRegistry.TryGetGatheringPoint(x.Point.Id, out GatheringRoot? gatheringRoot))
                 {
                     // for some reason the game doesn't know where this gathering location is
-                    TerritoryType territoryType = territoryTypeSheet.GetRow(gatheringRoot.Steps.Last().TerritoryId);
+                    TerritoryType territoryType = territoryTypeSheet.GetRow(gatheringRoot.Steps[^1].TerritoryId);
                     return x.Point with
                     {
                         Expansion = (EExpansionVersion)territoryType.ExVersion.RowId,
@@ -119,14 +118,11 @@ internal sealed class GatheringJournalComponent
                         TerritoryName = territoryType.PlaceName.ValueNullable?.Name.ToString()
                     };
                 }
-                else
-                    return x.Point;
+                return x.Point;
             })
             .Where(x => x != null)
             .Cast<DefaultGatheringPoint>()
-            .Where(x => x.Expansion != (EExpansionVersion)byte.MaxValue)
-            .Where(x => x.GatheringItemIds.Count > 0)
-            .Where(x => x.TerritoryType is not 901 and not 929) // exclude old diadem
+            .Where(x => x.Expansion != (EExpansionVersion)byte.MaxValue && x.GatheringItemIds.Count > 0 && x.TerritoryType is not 901 and not 929)
             .GroupBy(x => x.Expansion)
             .Select(x => new ExpansionPoints(x.Key, x
                 .GroupBy(y => new
@@ -330,16 +326,14 @@ internal sealed class GatheringJournalComponent
                     .Select(x => FilterGatheringPoint(x, _ => true)!)
                     .ToList());
         }
-        else
-        {
-            List<FilteredGatheringPoint> filteredPoints = territory.Points
-                .Select(x => FilterGatheringPoint(x, match))
-                .Where(x => x != null)
-                .Select(x => x!)
-                .ToList();
-            if (filteredPoints.Count > 0)
-                return new(territory, filteredPoints);
-        }
+
+        List<FilteredGatheringPoint> filteredPoints = territory.Points
+            .Select(x => FilterGatheringPoint(x, match))
+            .Where(x => x != null)
+            .Select(x => x!)
+            .ToList();
+        if (filteredPoints.Count > 0)
+            return new(territory, filteredPoints);
 
         return null;
     }
@@ -349,13 +343,11 @@ internal sealed class GatheringJournalComponent
     {
         if (match(gatheringPoint.PlaceName ?? string.Empty))
             return new(gatheringPoint, gatheringPoint.GatheringItemIds);
-        else
-        {
-            List<ushort> filteredItems = gatheringPoint.GatheringItemIds
-                .Where(x => match(_gatheringItems.GetValueOrDefault(x, string.Empty))).ToList();
-            if (filteredItems.Count > 0)
-                return new(gatheringPoint, filteredItems);
-        }
+
+        List<ushort> filteredItems = gatheringPoint.GatheringItemIds
+            .Where(x => match(_gatheringItems.GetValueOrDefault(x, string.Empty))).ToList();
+        if (filteredItems.Count > 0)
+            return new(gatheringPoint, filteredItems);
 
         return null;
     }

@@ -17,6 +17,7 @@ using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
+// TODO: refactor — heavy nesting (41 lines indented ≥6 levels, max indent ~12 levels).
 internal sealed class DebugConfigComponent
 (
     IDalamudPluginInterface pluginInterface,

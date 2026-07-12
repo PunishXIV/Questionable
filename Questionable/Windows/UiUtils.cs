@@ -26,35 +26,36 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
 
         if (questFunctions.IsQuestAccepted(elementId))
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));
-        else if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+        if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
         {
             if (!questFunctions.IsReadyToAcceptQuest(questId))
                 return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, _L("Complete"));
-            else if (questFunctions.IsQuestComplete(questId))
+            if (questFunctions.IsQuestComplete(questId))
                 return (ImGuiColors.ParsedBlue, FontAwesomeIcon.Running, _L("Available"));
-            else
-                return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, _L("Available"));
-        }
-        else if (questFunctions.IsQuestAcceptedOrComplete(elementId))
-            return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, _L("Complete"));
-        else if (questFunctions.IsQuestUnobtainable(elementId))
-            return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, _L("Unobtainable"));
-        else if (!string.IsNullOrEmpty(lockedReason))
-            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, $"{_L("Locked")}: {lockedReason}");
-        else if (prereqValue == null)
-            return (ImGuiColors.TankBlue, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
-        else
+
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, _L("Available"));
+        }
+
+        if (questFunctions.IsQuestAcceptedOrComplete(elementId))
+            return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check, _L("Complete"));
+        if (questFunctions.IsQuestUnobtainable(elementId))
+            return (ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus, _L("Unobtainable"));
+        if (!string.IsNullOrEmpty(lockedReason))
+            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times, $"{_L("Locked")}: {lockedReason}");
+        if (prereqValue == null)
+            return (ImGuiColors.TankBlue, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
+
+        return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running, _L("Available"));
     }
 
     public static (Vector4 color, FontAwesomeIcon icon) GetInstanceStyle(ushort instanceId)
     {
         if (UIState.IsInstanceContentCompleted(instanceId))
             return (ImGuiColors.ParsedGreen, FontAwesomeIcon.Check);
-        else if (UIState.IsInstanceContentUnlocked(instanceId))
+        if (UIState.IsInstanceContentUnlocked(instanceId))
             return (ImGuiColors.DalamudYellow, FontAwesomeIcon.Running);
-        else
-            return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times);
+
+        return (ImGuiColors.DalamudRed, FontAwesomeIcon.Times);
     }
 
     public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0)

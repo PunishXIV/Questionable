@@ -26,8 +26,8 @@ internal sealed class StringOrRegex
     {
         if (_regex != null)
             return _regex.IsMatch(other);
-        else
-            return GameFunctions.GameStringEquals(_stringValue, other);
+
+        return GameFunctions.GameStringEquals(_stringValue, other);
     }
 
     public string? GetString() => _stringValue;

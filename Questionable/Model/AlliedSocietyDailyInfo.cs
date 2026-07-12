@@ -30,25 +30,25 @@ internal sealed class AlliedSocietyDailyInfo(BeastTribe beastTribe, byte rank, C
             EAlliedSociety.Arkasodara or
             EAlliedSociety.Pelupelu =>
             [
-                ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoW, null),
-                ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoM, null)
+                ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoW, referenceQuest: null),
+                ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoM, referenceQuest: null)
             ],
         EAlliedSociety.Ixal or
             EAlliedSociety.Moogles or
             EAlliedSociety.Dwarves or
             EAlliedSociety.Loporrits or
             EAlliedSociety.YokHuy =>
-            classJobUtils.AsIndividualJobs(EExtendedClassJob.DoH, null).ToList(),
+            classJobUtils.AsIndividualJobs(EExtendedClassJob.DoH, referenceQuest: null).ToList(),
 
         EAlliedSociety.Qitari or
             EAlliedSociety.Omicrons or
             EAlliedSociety.MamoolJa =>
-            classJobUtils.AsIndividualJobs(EExtendedClassJob.DoL, null).ToList(),
+            classJobUtils.AsIndividualJobs(EExtendedClassJob.DoL, referenceQuest: null).ToList(),
 
         EAlliedSociety.Namazu =>
         [
-            ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoH, null),
-            ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoL, null)
+            ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoH, referenceQuest: null),
+            ..classJobUtils.AsIndividualJobs(EExtendedClassJob.DoL, referenceQuest: null)
         ],
 
         var _ => throw new ArgumentOutOfRangeException(nameof(beastTribe))

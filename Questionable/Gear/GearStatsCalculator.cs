@@ -144,7 +144,7 @@ public sealed class GearStatsCalculator
         else
         {
             result[(EBaseParam)baseParam.RowId] =
-                new(value, 0, false);
+                new(value, 0, Overcapped: false);
         }
     }
 
@@ -152,7 +152,7 @@ public sealed class GearStatsCalculator
         short grade)
     {
         if (!result.TryGetValue(materiaInfo.BaseParam, out StatInfo? statInfo))
-            result[materiaInfo.BaseParam] = statInfo = new(0, 0, false);
+            result[materiaInfo.BaseParam] = statInfo = new(0, 0, Overcapped: false);
 
         if (materiaInfo.HasItem)
         {
@@ -190,8 +190,8 @@ public sealed class GearStatsCalculator
                 stat * _equipSlotCategoryPct[(baseParamValue, (int)item.EquipSlotCategory.RowId)] / 1000f,
                 MidpointRounding.AwayFromZero);
         }
-        else
-            return 0;
+
+        return 0;
     }
 
     public unsafe short CalculateAverageItemLevel(InventoryContainer* container)

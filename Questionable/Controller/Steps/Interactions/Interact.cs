@@ -23,6 +23,7 @@ using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
+// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
     internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
@@ -158,8 +159,8 @@ internal static class Interact
                     _continueAt = DateTime.Now.AddSeconds(1);
                     return ETaskResult.StillRunning;
                 }
-                else
-                    _needsUnmount = false;
+
+                _needsUnmount = false;
             }
             else if (Task.PickUpItemId is { } pickUpItemId)
             {
@@ -194,8 +195,9 @@ internal static class Interact
             {
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
-                else if (ProgressContext.WasSuccessful() ||
-                         _interactionState == EInteractionState.InteractionConfirmed)
+
+                if (ProgressContext.WasSuccessful() ||
+                                         _interactionState == EInteractionState.InteractionConfirmed)
                 {
                     if (delayedFinalCheck)
                         return ETaskResult.TaskComplete;

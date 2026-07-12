@@ -92,7 +92,7 @@ internal static class Gather
                 }
             }
 
-            uint territoryId = gatheringRoot.Steps.Last().TerritoryId;
+            uint territoryId = gatheringRoot.Steps[^1].TerritoryId;
             yield return new WaitCondition.Task(() => clientState.TerritoryType == territoryId,
                 $"Wait(territory: {TerritoryData.GetNameAndId(territoryId)})");
 
@@ -124,11 +124,9 @@ internal static class Gather
         {
             if (GatheredItem.Collectability == 0)
                 return $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId})";
-            else
-            {
-                return
-                    $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
-            }
+
+            return
+                $"Gather({GatheredItem.ItemCount}x {GatheredItem.ItemId} {SeIconChar.Collectible.ToIconString()} {GatheredItem.Collectability})";
         }
     }
 

@@ -12,7 +12,7 @@ public sealed class FishingPresetGeneratorTests
   {
     var baitPreset = LoadBaitPreset();
 
-    FishingPresetGenerator.ApplyHookType(baitPreset, null);
+    FishingPresetGenerator.ApplyHookType(baitPreset, hookType: null);
 
     Assert.True(HooksetEnabled(baitPreset, "PatienceWeak"));
     Assert.True(HooksetEnabled(baitPreset, "DoubleWeak"));

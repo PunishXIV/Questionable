@@ -23,6 +23,7 @@ using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
+// TODO: refactor — heavy nesting (43 lines indented ≥6 levels, max indent ~13 levels).
 internal sealed partial class ActiveQuestComponent
 (
     QuestController questController,

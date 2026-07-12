@@ -81,7 +81,8 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 Description = _L("Missing sequence")
             };
         }
-        else if (foundSequences.Count == 2)
+
+        if (foundSequences.Count == 2)
         {
             return new()
             {
@@ -93,7 +94,7 @@ internal sealed class BasicSequenceValidator : IQuestValidator
                 Description = _L("Duplicate sequence")
             };
         }
-        else
-            return null;
+
+        return null;
     }
 }

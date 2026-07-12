@@ -25,7 +25,7 @@ public class GatheringSourceGenerator : ISourceGenerator
         "Invalid gathering file: {0}",
         nameof(GatheringSourceGenerator),
         DiagnosticSeverity.Error,
-        true);
+isEnabledByDefault: true);
 
     public void Initialize(GeneratorInitializationContext context)
     {
@@ -44,8 +44,8 @@ public class GatheringSourceGenerator : ISourceGenerator
     [Conditional("ASSEMBLY")]
     private void GenerateGatheringSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
-        JsonSchema gatheringSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());
-        List<AdditionalText> jsonSchemaFiles = Utils.RegisterSchemas(context);
+        JsonSchema gatheringSchema = JsonSchema.FromText(jsonSchemaFile.GetText(context.CancellationToken)!.ToString());
+        IReadOnlyList<AdditionalText> jsonSchemaFiles = Utils.RegisterSchemas(context);
 
         List<(ushort, GatheringRoot)> gatheringLocations = [];
         foreach ((ushort id, JsonNode node) in Utils.GetAdditionalFiles(context, jsonSchemaFiles, gatheringSchema, InvalidJson,
@@ -60,10 +60,10 @@ public class GatheringSourceGenerator : ISourceGenerator
 
         List<IGrouping<string, (ushort, GatheringRoot)>> partitionedLocations = gatheringLocations
             .OrderBy(x => x.Item1)
-            .GroupBy(x => $"LoadLocation{x.Item1 / 100}")
+            .GroupBy(x => $"LoadLocation{x.Item1 / 100}", StringComparer.Ordinal)
             .ToList();
 
-        List<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadLocations", partitionedLocations, CreateInitializer);
+        IEnumerable<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadLocations", partitionedLocations, CreateInitializer);
 
         CompilationUnitSyntax code =
             CompilationUnit()

@@ -19,9 +19,10 @@ internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
 
         if (excelRef.Type == ExcelRef.EType.Key)
             return excelFunctions.GetDialogueText(quest, excelSheet, excelRef.AsKey(), isRegExp);
-        else if (excelRef.Type == ExcelRef.EType.RowId)
+        if (excelRef.Type == ExcelRef.EType.RowId)
             return excelFunctions.GetDialogueTextByRowId(excelSheet, excelRef.AsRowId(), isRegExp);
-        else if (excelRef.Type == ExcelRef.EType.RawString)
+
+        if (excelRef.Type == ExcelRef.EType.RawString)
             return new(excelRef.AsRawString());
 
         return null;

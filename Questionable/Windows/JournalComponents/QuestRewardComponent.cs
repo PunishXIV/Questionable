@@ -77,7 +77,7 @@ internal sealed class QuestRewardComponent
                         ImGui.Text(_LF("Obtained from: {0}", questInfo.Name));
                     using (ImRaii.PushIndent())
                     {
-                        questTooltipComponent.DrawInner(questInfo, false);
+                        questTooltipComponent.DrawInner(questInfo, showItemRewards: false);
                     }
                 }
             }

@@ -18,8 +18,7 @@ internal sealed class ChatFunctions
     ILogger<ChatFunctions> logger)
 {
     private readonly ReadOnlyDictionary<EEmote, string> _emoteCommands = dataManager.GetExcelSheet<Emote>()
-        .Where(x => x.RowId > 0)
-        .Where(x => x.TextCommand.IsValid)
+        .Where(x => x.RowId > 0 && x.TextCommand.IsValid)
         .Select(x => (x.RowId, Command: x.TextCommand.Value.Command.ToString()))
         .Where(x => !string.IsNullOrEmpty(x.Command) && x.Command.StartsWith('/'))
         .ToDictionary(x => (EEmote)x.RowId, x => x.Command)

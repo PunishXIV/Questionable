@@ -29,8 +29,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             return false;
 
         _delegate = serviceProvider.GetRequiredService<IEnumerable<ICombatModule>>()
-            .Where(x => x is not ItemUseModule)
-            .FirstOrDefault(x => x.CanHandleFight(combatData));
+            .FirstOrDefault(x => x is not ItemUseModule && x.CanHandleFight(combatData));
         logger.LogInformation("ItemUse delegate: {Delegate}", _delegate?.GetType().Name);
         return _delegate != null;
     }

@@ -113,7 +113,8 @@ internal sealed unsafe class AetheryteFunctions
         {
             if (playerState->FavouriteAetherytes[i] == (ushort)aetheryteLocation)
                 return AetheryteRegistrationResult.NotPossible;
-            else if (playerState->FavouriteAetherytes[i] == 0)
+
+            if (playerState->FavouriteAetherytes[i] == 0)
             {
                 freeFavoredSlotsAvailable = true;
                 break;

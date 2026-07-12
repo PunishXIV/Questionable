@@ -50,7 +50,7 @@ internal sealed class QuestJournalUtils
 
         if (label != nameof(PriorityWindow))
         {
-            using (ImRaii.Disabled(true))
+            using (ImRaii.Disabled(disabled: true))
             {
                 var _ = ImGui.MenuItem(_L("Priority Quests"));
             }
@@ -74,7 +74,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        using (ImRaii.Disabled(true))
+        using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Quest"));
         }
@@ -120,7 +120,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        using (ImRaii.Disabled(true))
+        using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Stop"));
         }
@@ -140,7 +140,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        using (ImRaii.Disabled(true))
+        using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Path data"));
         }

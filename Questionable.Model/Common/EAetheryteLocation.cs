@@ -274,7 +274,7 @@ public enum EAetheryteLocation
 
 public static class EAetheryteLocationExtensions
 {
-    public static List<EAetheryteLocation> aethernetShards = [
+    private readonly static IList<EAetheryteLocation> aethernetShards = [
         EAetheryteLocation.GridaniaArcher,
         EAetheryteLocation.GridaniaLeatherworker,
         EAetheryteLocation.GridaniaLancer,

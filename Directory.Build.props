@@ -1,0 +1,11 @@
+<Project>
+    <ItemGroup>
+        <!--
+            MA0003 — "Add parameter name to improve readability".
+            Lightly enforce named arguments for boolean and null literals
+            (configured in .editorconfig). Analyzer-only, no runtime cost.
+        -->
+        <PackageReference Include="Meziantou.Analyzer" Version="3.0.122"
+                         PrivateAssets="all" ExcludeAssets="runtime" />
+    </ItemGroup>
+</Project>

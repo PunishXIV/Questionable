@@ -260,7 +260,8 @@ internal sealed class GatheringPointRegistry : IDisposable
                 .FirstOrDefault(x => _gatheringData.MinerGatheringPoints.Contains(x));
             return gatheringPointId != null;
         }
-        else if (classJobId == Job.BTN)
+
+        if (classJobId == Job.BTN)
         {
             if (_gatheringData.TryGetBotanistGatheringPointByItemId(itemId, out gatheringPointId))
                 return true;
@@ -271,10 +272,8 @@ internal sealed class GatheringPointRegistry : IDisposable
                 .FirstOrDefault(x => _gatheringData.BotanistGatheringPoints.Contains(x));
             return gatheringPointId != null;
         }
-        else
-        {
-            gatheringPointId = null;
-            return false;
-        }
+
+        gatheringPointId = null;
+        return false;
     }
 }

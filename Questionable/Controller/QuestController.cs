@@ -30,6 +30,7 @@ using Quest = Questionable.Model.Quest;
 
 namespace Questionable.Controller;
 
+// TODO: refactor — heavy nesting (35 lines indented ≥6 levels, max indent ~9 levels).
 internal sealed class QuestController : MiniTaskController<QuestController>
 {
     public delegate void AutomationTypeChangedEventHandler(object sender, EAutomationType e);
@@ -270,8 +271,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         {
             if (_taskQueue.CurrentTaskExecutor is IDebugStateProvider debugStateProvider)
                 return debugStateProvider.GetDebugState();
-            else
-                return null;
+
+            return null;
         }
     }
 
@@ -507,15 +508,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     DebugState = $"Waiting for Leve {PendingQuest.Quest.Id}";
                     return;
                 }
-                else
-                {
-                    StartedQuest = PendingQuest;
-                    PendingQuest = null;
-                    TryStopOnQuestAccepted(StartedQuest.Quest.Id);
-                    if (AutomationType == EAutomationType.Manual)
-                        return;
-                    CheckNextTasks("Pending quest accepted");
-                }
+
+                StartedQuest = PendingQuest;
+                PendingQuest = null;
+                TryStopOnQuestAccepted(StartedQuest.Quest.Id);
+                if (AutomationType == EAutomationType.Manual)
+                    return;
+                CheckNextTasks("Pending quest accepted");
             }
 
             if (SimulatedQuest == null && NextQuest != null)
@@ -625,13 +624,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                         {
                             return;
                         }
-                        else if (msqState == MainScenarioQuestState.LoadingScreen)
+
+                        if (msqState == MainScenarioQuestState.LoadingScreen)
                         {
                             _logger.LogWarning("On loading screen, no MSQ - doing nothing");
                             return;
                         }
 
-                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
+                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
                         StartedQuest = null;
                         Stop("Resetting current quest");
                     }
@@ -728,7 +728,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 _highlightObject.SetHighlight([]);
                 questToRun.SetSequence(currentSequence);
                 CheckNextTasks(
-                    $"New sequence {questToRun == StartedQuest}/{_questFunctions.GetCurrentQuestInternal(true)}");
+                    $"New sequence {questToRun == StartedQuest}/{_questFunctions.GetCurrentQuestInternal(allowNewMsq: true)}");
             }
 
             Quest q = questToRun.Quest;
@@ -1049,7 +1049,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     }
 
-    protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, true);
+    protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, shouldContinue: true);
 
     protected override void OnRetryStep()
     {
@@ -1112,7 +1112,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 CurrentQuestDetails?.Type == ECurrentQuestType.Gathering)
             {
                 _logger.LogInformation("Completed delivery quest");
-                SetGatheringQuest(null);
+                SetGatheringQuest(quest: null);
                 Stop("Gathering quest complete");
             }
             else
@@ -1174,11 +1174,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             task = t;
             return true;
         }
-        else
-        {
-            task = null;
-            return false;
-        }
+
+        task = null;
+        return false;
     }
 
     public bool HasCurrentTaskMatching<T>([NotNullWhen(true)] out T? task)
@@ -1189,11 +1187,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             task = t;
             return true;
         }
-        else
-        {
-            task = null;
-            return false;
-        }
+
+        task = null;
+        return false;
     }
 
     public void Skip(ElementId elementId, byte currentQuestSequence)
@@ -1331,7 +1327,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             {
                 Job.MIN => EExtendedClassJob.Miner,
                 Job.BTN => EExtendedClassJob.Botanist,
-                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
+                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
             };
 
             QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
@@ -1348,11 +1344,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             StartGatheringQuest("SatisfactionSupply prepare gathering");
             return true;
         }
-        else
-        {
-            _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
-            return false;
-        }
+
+        _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
+        return false;
     }
 
     public override void Dispose()

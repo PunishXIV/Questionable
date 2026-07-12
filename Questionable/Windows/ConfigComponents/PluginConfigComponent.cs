@@ -202,7 +202,7 @@ internal sealed class PluginConfigComponent
         }
 
         allRequiredInstalled = true;
-        ImGui.SetNextItemOpen(true, ImGuiCond.Once);
+        ImGui.SetNextItemOpen(isOpen: true, ImGuiCond.Once);
         if (ImGui.CollapsingHeader(_L("Required plugins:")))
         {
             using (ImRaii.PushIndent())

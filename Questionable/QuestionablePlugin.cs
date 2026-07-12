@@ -102,7 +102,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
             {
                 // Backup config when version changes
-                pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), true);
+                pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), overwrite: true);
                 savedConfig.Version = Configuration.PluginConfigVersion;
             }
 

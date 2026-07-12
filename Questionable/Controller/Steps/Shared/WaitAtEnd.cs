@@ -15,6 +15,7 @@ using Questionable.Model.Questing;
 using Questionable.Windows.Utils;
 namespace Questionable.Controller.Steps.Shared;
 
+// TODO: refactor — heavy nesting (27 lines indented ≥6 levels, max indent ~9 levels).
 internal static class WaitAtEnd
 {
     internal sealed class Factory
@@ -125,8 +126,8 @@ internal static class WaitAtEnd
                                 return [delay, Next(quest, sequence)];
                             return [accept, delay, Next(quest, sequence)];
                         }
-                        else
-                            return [accept, delay];
+
+                        return [accept, delay];
                     }
 
                 case EInteractionType.CompleteQuest:
@@ -151,10 +152,10 @@ internal static class WaitAtEnd
     internal sealed record WaitDelay(TimeSpan Delay, string? Message) : ITask
     {
         public WaitDelay()
-            : this(TimeSpan.FromSeconds(1), null)
+            : this(TimeSpan.FromSeconds(1), Message: null)
         {
         }
-        public WaitDelay(TimeSpan Delay) : this(Delay, null)
+        public WaitDelay(TimeSpan Delay) : this(Delay, Message: null)
         {
         }
 

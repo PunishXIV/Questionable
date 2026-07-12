@@ -24,7 +24,7 @@ internal static class Say
             ArgumentNullException.ThrowIfNull(step.ChatMessage);
 
             string? excelString =
-                excelFunctions.GetDialogueText(quest, step.ChatMessage.ExcelSheet, step.ChatMessage.Key, false)
+                excelFunctions.GetDialogueText(quest, step.ChatMessage.ExcelSheet, step.ChatMessage.Key, isRegex: false)
                     .GetString();
             ArgumentNullException.ThrowIfNull(excelString);
 

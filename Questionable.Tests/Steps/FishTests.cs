@@ -18,7 +18,7 @@ public sealed class FishTests
 
   public FishTests()
   {
-    _autoHookIpc.IsAvailable().Returns(true);
+    _autoHookIpc.IsAvailable().Returns(returnThis: true);
     _factory = new Fish.Factory(_autoHookIpc);
   }
 
@@ -43,14 +43,7 @@ public sealed class FishTests
   [Fact]
   public void HookTypeFilter_DeserializesTrueShorthand()
   {
-    const string json = """
-        {
-          "Normal": true,
-          "Double": {
-            "Strong": true
-          }
-        }
-        """;
+    const string json = @"{""Normal"": true, ""Double"": { ""Strong"": true }}";
 
     var hookType = JsonNode.Parse(json)!.Deserialize<HookType>();
 
@@ -64,20 +57,7 @@ public sealed class FishTests
   [Fact]
   public void GatheredItem_DeserializesFishingOptionsFromQuestJson()
   {
-    const string json = """
-        {
-          "ItemId": 12713,
-          "ItemCount": 3,
-          "FishingOptions": {
-            "BaitId": 28634,
-            "HookType": {
-              "Normal": {
-                "Weak": true
-              }
-            }
-          }
-        }
-        """;
+    const string json = @"{""ItemId"": 12713, ""ItemCount"": 3, ""FishingOptions"": {""BaitId"": 28634, ""HookType"": {""Normal"": {""Weak"": true } } } }";
 
     var item = JsonNode.Parse(json)!.Deserialize<GatheredItem>();
 
@@ -97,26 +77,8 @@ public sealed class FishTests
   [Fact]
   public void FishStep_DeserializesItemsToGatherIntoFactoryTasks()
   {
-    const string json = """
-        {
-          "InteractionType": "Fish",
-          "TerritoryId": 397,
-          "ItemsToGather": [
-            {
-              "ItemId": 12713,
-              "ItemCount": 3,
-              "FishingOptions": {
-                "BaitId": 28634,
-                "HookType": {
-                  "Double": {
-                    "Strong": true
-                  }
-                }
-              }
-            }
-          ]
-        }
-        """;
+    const string json = @"{""InteractionType"": ""Fish"", ""TerritoryId"": 397, ""ItemsToGather"": ["+
+        @"{ ""ItemId"": 12713, ""ItemCount"": 3, ""FishingOptions"": {""BaitId"": 28634, ""HookType"": {""Double"": {""Strong"": true } } } } ] } ";
 
     var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
     var (quest, sequence, _) = QuestTestData.FactoryContext(new QuestId(2086), 255, step!);
@@ -140,7 +102,7 @@ public sealed class FishTests
   [Fact]
   public void FishStep_WhenAutoHookUnavailable_CreatesNoTasks()
   {
-    _autoHookIpc.IsAvailable().Returns(false);
+    _autoHookIpc.IsAvailable().Returns(returnThis: false);
     var item = Item(4874, 3);
     var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
 

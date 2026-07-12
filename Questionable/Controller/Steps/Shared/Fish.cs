@@ -84,7 +84,7 @@ internal static class Fish
       if (!_wasAutoHookEnabled)
       {
         // AutoHook is required for this task to work. Enable it if it's not already enabled.
-        var canEnableAutoHook = autoHookIpc.SetPluginEnabled(true);
+        var canEnableAutoHook = autoHookIpc.SetPluginEnabled(enabled: true);
         if (!canEnableAutoHook)
         {
           const string errorText =

@@ -20,8 +20,8 @@ internal static class Jump
 
             if (step.JumpDestination.Type == EJumpType.SingleJump)
                 return new SingleJumpTask(step.DataId, step.JumpDestination, step.Comment);
-            else
-                return new RepeatedJumpTask(step.DataId, step.JumpDestination, step.Comment);
+
+            return new RepeatedJumpTask(step.DataId, step.JumpDestination, step.Comment);
         }
     }
 

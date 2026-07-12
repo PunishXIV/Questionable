@@ -296,7 +296,7 @@ internal sealed class CreationUtilsComponent
                 {
                     cameraFunctions.Face(target.Position);
                     ulong result = TargetSystem.Instance()->InteractWithObject(
-                        (GameObject*)target.Address, false);
+                        (GameObject*)target.Address, checkLineOfSight: false);
                     logger.LogInformation("Interaction Result: {Result}", result);
                 }
             }

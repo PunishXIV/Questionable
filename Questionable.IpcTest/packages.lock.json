@@ -13,6 +13,12 @@
         "requested": "[1.2.39, )",
         "resolved": "1.2.39",
         "contentHash": "fcFN01tDTIQqDuTwr1jUQK/geofiwjG5DycJQOnC72i1SsLAk1ELe+apBOuZ11UMQG8YKFZG1FgvjZPbqHyatg=="
+      },
+      "Meziantou.Analyzer": {
+        "type": "Direct",
+        "requested": "[3.0.122, )",
+        "resolved": "3.0.122",
+        "contentHash": "bmo+TIK9fLG/NzlZ2Qi5lto2jG/N6/zmc7gDVp5uzvVmnDKMV5SmUR7jToSbx/oqTPMV3ajyCmo2kFBdPDlU0A=="
       }
     }
   }

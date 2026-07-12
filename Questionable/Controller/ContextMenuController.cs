@@ -181,7 +181,7 @@ internal sealed class ContextMenuController : IDisposable
             {
                 Job.MIN => EExtendedClassJob.Miner,
                 Job.BTN => EExtendedClassJob.Botanist,
-                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
+                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
             };
 
             QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);

@@ -15,6 +15,7 @@ using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
+// TODO: refactor — heavy nesting (20 lines indented ≥6 levels, max indent 11 levels).
 internal static class AethernetShortcut
 {
     internal sealed class Factory
@@ -139,7 +140,8 @@ internal static class AethernetShortcut
                         DoTeleport();
                         return true;
                     }
-                    else if (Task.From == EAetheryteLocation.SolutionNine)
+
+                    if (Task.From == EAetheryteLocation.SolutionNine)
                     {
                         logger.LogInformation("Moving to S9 aetheryte");
                         List<Vector3> nearbyPoints =
@@ -159,23 +161,21 @@ internal static class AethernetShortcut
                         });
                         return true;
                     }
-                    else
-                    {
-                        if (territoryData.CanUseMount(territoryType) &&
-                            aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) > 30 &&
-                            !gameFunctions.HasStatusPreventingMount())
-                        {
-                            _triedMounting = gameFunctions.Mount();
-                            if (_triedMounting)
-                            {
-                                _continueAt = DateTime.Now.AddSeconds(0.5);
-                                return true;
-                            }
-                        }
 
-                        MoveTo();
-                        return true;
+                    if (territoryData.CanUseMount(territoryType) &&
+                        aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) > 30 &&
+                        !gameFunctions.HasStatusPreventingMount())
+                    {
+                        _triedMounting = gameFunctions.Mount();
+                        if (_triedMounting)
+                        {
+                            _continueAt = DateTime.Now.AddSeconds(0.5);
+                            return true;
+                        }
                     }
+
+                    MoveTo();
+                    return true;
                 }
             }
             else if (clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
@@ -231,8 +231,8 @@ internal static class AethernetShortcut
                     MoveTo();
                     return ETaskResult.StillRunning;
                 }
-                else
-                    return ETaskResult.StillRunning;
+
+                return ETaskResult.StillRunning;
             }
 
             if (_moving)

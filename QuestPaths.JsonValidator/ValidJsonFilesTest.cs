@@ -8,7 +8,7 @@ using Xunit;
 
 namespace QuestPaths.JsonValidator;
 
-public sealed class ValidJsonFilesTest
+public sealed partial class ValidJsonFilesTest
 {
     private static readonly JsonSchema QuestSchema = JsonSchema.FromStream(AssemblyQuestLoader.QuestSchemaStream).AsTask().Result;
 
@@ -46,12 +46,11 @@ public sealed class ValidJsonFilesTest
         if (!evaluationResult.IsValid)
         {
             IEnumerable<string> failures = evaluationResult.Details
-                .Where(detail => detail is { IsValid: false, HasErrors: true })
-                // A failing 'if' condition inside an allOf branch is expected (the branch simply doesn't apply),
-                // so only report assertion failures that aren't part of an 'if' probe.
-                .Where(detail => !detail.EvaluationPath.ToString().Contains("/if/"))
+                .Where(detail => detail is { IsValid: false, HasErrors: true } &&
+                    !detail.EvaluationPath.ToString().Contains("/if/"))
                 .SelectMany(detail => detail.Errors!.Select(error =>
-                    $"  instance '{detail.InstanceLocation}' (schema '{detail.EvaluationPath}'): {error.Key} - {Unescape(error.Value)}"));
+                    $"  instance '{detail.InstanceLocation}' (schema '{detail.EvaluationPath}'): {error.Key} - {Unescape(error.Value)}")
+                );
 
             Assert.Fail($"Quest '{quest.ManifestName}' validation failed:{Environment.NewLine}"
                         + string.Join(Environment.NewLine, failures));
@@ -63,6 +62,7 @@ public sealed class ValidJsonFilesTest
     /// (e.g. <c>"</c> as <c>\u0022</c>, <c>'</c> as <c>\u0027</c>) so error messages render readably.
     /// </summary>
     private static string Unescape(string value) =>
-        Regex.Replace(value, @"\\u([0-9a-fA-F]{4})",
-            match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
+        UnicodeEscapeRegex().Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
+    [GeneratedRegex(@"\\u([0-9a-fA-F]{4})", RegexOptions.CultureInvariant, matchTimeoutMilliseconds: 1000)]
+    private static partial Regex UnicodeEscapeRegex();
 }

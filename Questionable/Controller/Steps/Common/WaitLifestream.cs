@@ -18,8 +18,8 @@ internal sealed class WaitLifestream
         {
             if (lifestreamIpc.IsBusy)
                 return "Lifestream: busy";
-            else
-                return null;
+
+            return null;
         }
         protected override bool Start() => true;
     }

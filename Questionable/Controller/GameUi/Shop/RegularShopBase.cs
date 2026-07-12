@@ -82,7 +82,7 @@ public class RegularShopBase
             addon->GetPosition(&x, &y);
 
             ushort width = 0, height = 0;
-            addon->GetSize(&width, &height, true);
+            addon->GetSize(&width, &height, scaled: true);
             x += (short)width;
 
             if (_parentWindow.Position is { } position && ((short)position.X != x || (short)position.Y != y))

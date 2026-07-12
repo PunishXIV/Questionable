@@ -43,7 +43,7 @@ internal sealed class ARealmRebornComponent
 
     private void DrawPrimals()
     {
-        bool complete = UIState.IsInstanceContentCompleted(RequiredPrimalInstances.Last());
+        bool complete = UIState.IsInstanceContentCompleted(RequiredPrimalInstances[^1]);
         bool hover = _uiUtils.ChecklistItem(_L("Hard Mode Primals"), complete,
             _configuration.Advanced.SkipARealmRebornHardModePrimals ? ImGuiColors.DalamudGrey : null);
         if (complete || !hover)

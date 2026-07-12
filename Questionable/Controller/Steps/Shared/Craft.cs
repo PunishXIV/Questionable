@@ -198,10 +198,10 @@ internal static class Craft
             InventoryManager* inventoryManager = InventoryManager.Instance();
             return _itemQuality switch
             {
-                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, false, false),
-                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, true, false),
-                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, false, false)
-                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value, true, false),
+                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: false, checkEquipped: false),
+                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: true, checkEquipped: false),
+                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: false, checkEquipped: false)
+                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: true, checkEquipped: false),
                 var _ => 0
             };
         }

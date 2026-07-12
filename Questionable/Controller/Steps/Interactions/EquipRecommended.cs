@@ -96,14 +96,17 @@ internal static class EquipRecommended
 
                     break;
                 case Configuration.EGearsetUpdateSource.Stylist:
-                    if (stylist.IsBusy)
-                        return ETaskResult.StillRunning;
-                    else if (!_checkedOrTriggeredEquipmentUpdate)
                     {
-                        stylist.UpdateGearset();
-                        _checkedOrTriggeredEquipmentUpdate = true;
-                        _continueAt = DateTime.Now.AddSeconds(1);
+                        if (stylist.IsBusy)
                         return ETaskResult.StillRunning;
+
+                        if (!_checkedOrTriggeredEquipmentUpdate)
+                        {
+                            stylist.UpdateGearset();
+                            _checkedOrTriggeredEquipmentUpdate = true;
+                            _continueAt = DateTime.Now.AddSeconds(1);
+                            return ETaskResult.StillRunning;
+                        }
                     }
 
                     break;

@@ -98,7 +98,7 @@ internal sealed class CraftworksSupplyController : IDisposable
                 new() { Type = 0, Int = 0 }
             };
             addonContextIconMenu->FireCallback(5, selectSlot);
-            addonContextIconMenu->Close(true);
+            addonContextIconMenu->Close(fireCallback: true);
 
             if (parentAddon->NameString == "BankaCraftworksSupply")
                 _framework.RunOnTick(InteractWithBankaCraftworksSupply, TimeSpan.FromMilliseconds(50));

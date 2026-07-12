@@ -222,9 +222,9 @@ internal sealed class QuestSelectionWindow : LWindow
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Copy as file name"));
                 if (copy)
-                    CopyToClipboard(quest, true);
+                    CopyToClipboard(quest, suffix: true);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-                    CopyToClipboard(quest, false);
+                    CopyToClipboard(quest, suffix: false);
                 ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest);

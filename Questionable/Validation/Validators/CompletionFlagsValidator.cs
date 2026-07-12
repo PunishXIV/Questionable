@@ -34,8 +34,8 @@ internal sealed class CompletionFlagsValidator : IQuestValidator
                             })
                             .Sum();
                     }
-                    else
-                        return 0;
+
+                    return 0;
                 })
                 .ToList();
 

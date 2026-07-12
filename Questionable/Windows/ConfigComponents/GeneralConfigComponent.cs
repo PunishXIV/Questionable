@@ -86,10 +86,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             string[] names = [DefaultClassJob.Name, .. jobs.Select(x => x.ToString())];
             return (ids, names);
         }
-        else
-        {
-            return ([.. jobs], [.. jobs.Select(x => x.ToString())]);
-        }
+
+        return ([.. jobs], [.. jobs.Select(x => x.ToString())]);
     }
 
     public override void DrawTab()

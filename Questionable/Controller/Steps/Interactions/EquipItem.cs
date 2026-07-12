@@ -141,7 +141,7 @@ internal static class EquipItem
                 if (sourceContainer == null)
                     continue;
 
-                if (inventoryManager->GetItemCountInContainer(Task.ItemId, sourceInventoryType, true) == 0 &&
+                if (inventoryManager->GetItemCountInContainer(Task.ItemId, sourceInventoryType, isHq: true) == 0 &&
                     inventoryManager->GetItemCountInContainer(Task.ItemId, sourceInventoryType) == 0)
                 {
                     continue;
@@ -167,7 +167,7 @@ internal static class EquipItem
                         sourceInventoryType, sourceSlot, InventoryType.EquippedItems, targetSlot);
 
                     int result = inventoryManager->MoveItemSlot(sourceInventoryType, sourceSlot,
-                        InventoryType.EquippedItems, targetSlot, true);
+                        InventoryType.EquippedItems, targetSlot, a6: true);
                     logger.LogInformation("MoveItemSlot result: {Result}", result);
                     return;
                 }

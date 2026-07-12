@@ -114,48 +114,39 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                     HealerRotationMode.Lowest_Current);
             SetResult healerMagicTargeting = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.HealerAlwaysHardTarget,
-                    false);
+                    AutoRotationConfigOption.HealerAlwaysHardTarget, value: false);
             SetResult combatOnly = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.InCombatOnly,
-                    false);
+                    AutoRotationConfigOption.InCombatOnly, value: false);
 
             // Make Wrath Work well
             SetResult includeNPCs = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.IncludeNPCs,
-                    true);
+                    AutoRotationConfigOption.IncludeNPCs, value: true);
             SetResult targetCombatOnly = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.OnlyAttackInCombat,
-                    false);
+                    AutoRotationConfigOption.OnlyAttackInCombat, value: false);
             SetResult cleanse = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoCleanse,
-                    true);
+                    AutoRotationConfigOption.AutoCleanse, value: true);
 
             // Nice-to-haves
             SetResult rez = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRez,
-                    true);
+                    AutoRotationConfigOption.AutoRez, value: true);
             SetResult rezAsDPS = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRezDPSJobs,
-                    true);
+                    AutoRotationConfigOption.AutoRezDPSJobs, value: true);
             SetResult kardia = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.ManageKardia,
-                    true);
+                    AutoRotationConfigOption.ManageKardia, value: true);
             SetResult aoeTargetThreshold = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
                     AutoRotationConfigOption.DPSAoETargets,
                     3);
             SetResult rezNonParty = WrathIPCWrapper
                 .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRezOutOfParty,
-                    false);
+                    AutoRotationConfigOption.AutoRezOutOfParty, value: false);
 
             if (!WrathResultExtensions.AllSuccessful(out string failed,
                 ("HealerRotationMode", healerRotationMode),

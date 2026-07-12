@@ -30,7 +30,7 @@ internal sealed class QuestTooltipComponent
     public void Draw(IQuestInfo questInfo)
     {
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-        DrawInner(questInfo, true);
+        DrawInner(questInfo, showItemRewards: true);
     }
 
     public void DrawInner(IQuestInfo questInfo, bool showItemRewards)
@@ -186,7 +186,7 @@ internal sealed class QuestTooltipComponent
                     }
 
                     if (qInfo is QuestInfo qstInfo && (counter <= 2 || icon != FontAwesomeIcon.Check))
-                        DrawQuestUnlocks(qstInfo, counter + 1, false);
+                        DrawQuestUnlocks(qstInfo, counter + 1, showItemRewards: false);
                 }
                 else
                 {

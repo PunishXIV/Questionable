@@ -43,16 +43,13 @@ internal sealed unsafe partial class GameFunctions
     ILogger<GameFunctions> logger,
     HighlightObject highlightObject)
 {
-    private readonly AbandonDutyDelegate _abandonDuty =
-        Marshal.GetDelegateForFunctionPointer<AbandonDutyDelegate>(EventFramework.Addresses.LeaveCurrentContent.Value);
     private readonly ReadOnlyDictionary<uint, uint> _contentFinderConditionToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
         .Where(x => x.RowId > 0 && x.Content.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.Content.RowId)
         .AsReadOnly();
 
     private static readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = Svc.Data.GetExcelSheet<TerritoryType>()
-        .Where(x => x.RowId > 0)
-        .Where(x => x.AetherCurrentCompFlgSet.RowId > 0)
+        .Where(x => x.RowId > 0 && x.AetherCurrentCompFlgSet.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
         .AsReadOnly();
 
@@ -80,8 +77,8 @@ internal sealed unsafe partial class GameFunctions
         BattleChara* battleChara = (BattleChara*)(Svc.Objects[0]?.Address ?? 0);
         if (battleChara != null && battleChara->Mount.MountId != 0)
             return battleChara->Mount.MountId;
-        else
-            return null;
+
+        return null;
     }
 
     public bool IsFlyingUnlockedInCurrentZone() => IsFlyingUnlocked(clientState.TerritoryType);
@@ -139,13 +136,11 @@ internal sealed unsafe partial class GameFunctions
             logger.LogInformation("Interact result: (none) for GatheringPoint");
             return true;
         }
-        else
-        {
-            long result = (long)TargetSystem.Instance()->InteractWithObject((GameObject*)gameObject.Address, false);
 
-            logger.LogInformation("Interact result: {Result}", result);
-            return result != 7 && result > 0;
-        }
+        long result = (long)TargetSystem.Instance()->InteractWithObject((GameObject*)gameObject.Address, checkLineOfSight: false);
+
+        logger.LogInformation("Interact result: {Result}", result);
+        return result != 7 && result > 0;
     }
 
     public bool UseItem(uint itemId)
@@ -385,11 +380,9 @@ internal sealed unsafe partial class GameFunctions
 
             return false;
         }
-        else
-        {
-            logger.LogWarning("Can't unmount right now?");
-            return false;
-        }
+
+        logger.LogWarning("Can't unmount right now?");
+        return false;
     }
 
     public void OpenDutyFinder(uint contentFinderConditionId)
@@ -421,7 +414,7 @@ internal sealed unsafe partial class GameFunctions
     // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration
     // macros (icons, italics, ...) as literal "<icon(69)>"-style tokens. Strip those so addon
     // text and excel text compare equal regardless of which reader produced them.
-    [GeneratedRegex("<[^>]+>", RegexOptions.Compiled)]
+    [GeneratedRegex("<[^>]+>", RegexOptions.Compiled, matchTimeoutMilliseconds: 1000)]
     private static partial Regex MacroLiteralRegex();
 
     /// <summary>
@@ -548,12 +541,6 @@ internal sealed unsafe partial class GameFunctions
         return obj.BaseId;
     }
 
-    /// <summary>
-    ///     Abandons <em>some</em> quest battles/duties; but not all? Useful for debugging some quest battle/vbm related
-    ///     issues.
-    /// </summary>
-    public void AbandonDuty() => _abandonDuty(false);
-
     public IReadOnlyList<uint>? GetUnlockLinks()
     {
         UIState* uiState = UIState.Instance();
@@ -573,5 +560,4 @@ internal sealed unsafe partial class GameFunctions
         logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedUnlockLinks));
         return unlockedUnlockLinks;
     }
-    private delegate void AbandonDutyDelegate(bool a1);
 }

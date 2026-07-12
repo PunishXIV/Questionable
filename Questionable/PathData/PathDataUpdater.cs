@@ -188,11 +188,9 @@ internal sealed class PathDataUpdater : IDisposable
                 Save();
                 return;
             }
-            else
-            {
-                Status = _L("Path data from previous run missing, downloading path data...");
-                Save();
-            }
+
+            Status = _L("Path data from previous run missing, downloading path data...");
+            Save();
         }
 
         if (string.IsNullOrEmpty(manifest.BundleUrl))

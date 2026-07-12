@@ -393,10 +393,3 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
 
     public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
 }
-
-internal static class AetheryteLocationExtensions
-{
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static Vector3 Position(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.Locations[aetheryteLocation];
-    internal static uint Territory(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.TerritoryIds[aetheryteLocation];
-}

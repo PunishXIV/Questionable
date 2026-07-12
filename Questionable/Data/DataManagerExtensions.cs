@@ -52,8 +52,8 @@ public static class DataManagerExtensions
         {
             if (payload.Type == ReadOnlySePayloadType.Text)
                 return Regex.Escape(payload.ToString());
-            else
-                return "(.*)";
+
+            return "(.*)";
         })));
     }
 

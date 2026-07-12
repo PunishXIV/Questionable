@@ -112,8 +112,7 @@ internal sealed class QuestData
         List<IQuestInfo> quests =
         [
             ..dataManager.GetExcelSheet<Quest>()
-                .Where(x => x.RowId > 0)
-                .Where(x => x.IssuerLocation.RowId > 0)
+                .Where(x => x.RowId > 0 && x.IssuerLocation.RowId > 0)
                 .Select(x => new QuestInfo(x, questChapters.GetValueOrDefault(x.RowId),
                     startingCities.GetValueOrDefault(x.RowId), journalGenreOverrides)),
             ..dataManager.GetExcelSheet<SatisfactionNpc>()
@@ -137,8 +136,8 @@ internal sealed class QuestData
                             ])
                             .Select(rank => new AlliedSocietyDailyInfo(x, rank, classJobUtils));
                     }
-                    else
-                        return [new(x, 0, classJobUtils)];
+
+                    return [new(x, 0, classJobUtils)];
                 }));
 
         quests.Add(new UnlockLinkQuestInfo(new(506), _L("Patch 7.2 Fantasia"), 1052475));
@@ -332,8 +331,7 @@ internal sealed class QuestData
     public List<IQuestInfo> GetAllByJournalGenre(uint journalGenre)
     {
         return _quests.Values
-            .Where(x => x is QuestInfo { IsSeasonalEvent: false } or not QuestInfo)
-            .Where(x => x.JournalGenre == journalGenre)
+            .Where(x => x is QuestInfo { IsSeasonalEvent: false } or not QuestInfo && x.JournalGenre == journalGenre)
             .OrderBy(x => x.SortKey)
             .ThenBy(x => x.QuestId)
             .ToList();
