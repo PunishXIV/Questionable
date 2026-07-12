@@ -106,7 +106,8 @@ internal sealed class QuestInfo : IQuestInfo
             .ToList();
         TripleTriadCardRewards = Svc.Data.GetExcelSheet<TripleTriadCardResident>()
             .Where(x => x.Quest.RowId == quest.RowId)
-            .Select(x => {
+            .Select(x =>
+            {
                 var item = Svc.Data.GetExcelSheet<Item>()
                     .Where(item => item.ItemAction.Value is var itemAction &&
                         itemAction.Action.RowId == 3357 && // triple triad card use action

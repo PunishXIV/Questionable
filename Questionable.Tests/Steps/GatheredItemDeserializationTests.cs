@@ -9,29 +9,29 @@ namespace Questionable.Tests.Steps;
 
 public sealed class GatheredItemDeserializationTests
 {
-  [Fact]
-  public void MinimalItem_OmittedOptionalFieldsDeserializeToZero()
-  {
-    const string json = """
+    [Fact]
+    public void MinimalItem_OmittedOptionalFieldsDeserializeToZero()
+    {
+        const string json = """
         {
           "ItemId": 17945,
           "ItemCount": 20
         }
         """;
 
-    var item = JsonNode.Parse(json)!.Deserialize<GatheredItem>();
+        var item = JsonNode.Parse(json)!.Deserialize<GatheredItem>();
 
-    Assert.Equal(17945u, item!.ItemId);
-    Assert.Equal(20, item.ItemCount);
-    Assert.Equal(0u, item.AlternativeItemId);
-    Assert.Equal((ushort)0, item.Collectability);
-    Assert.Null(item.FishingOptions);
-  }
+        Assert.Equal(17945u, item!.ItemId);
+        Assert.Equal(20, item.ItemCount);
+        Assert.Equal(0u, item.AlternativeItemId);
+        Assert.Equal((ushort)0, item.Collectability);
+        Assert.Null(item.FishingOptions);
+    }
 
-  [Fact]
-  public void WithCollectability_ExplicitValueRoundTrips()
-  {
-    const string json = """
+    [Fact]
+    public void WithCollectability_ExplicitValueRoundTrips()
+    {
+        const string json = """
         {
           "ItemId": 35600,
           "ItemCount": 6,
@@ -39,18 +39,18 @@ public sealed class GatheredItemDeserializationTests
         }
         """;
 
-    var item = JsonNode.Parse(json)!.Deserialize<GatheredItem>();
+        var item = JsonNode.Parse(json)!.Deserialize<GatheredItem>();
 
-    Assert.Equal(35600u, item!.ItemId);
-    Assert.Equal(6, item.ItemCount);
-    Assert.Equal((ushort)600, item.Collectability);
-    Assert.Equal(0u, item.AlternativeItemId);
-  }
+        Assert.Equal(35600u, item!.ItemId);
+        Assert.Equal(6, item.ItemCount);
+        Assert.Equal((ushort)600, item.Collectability);
+        Assert.Equal(0u, item.AlternativeItemId);
+    }
 
-  [Fact]
-  public void GatherStep_MinimalItemsToGatherFlowThroughFactory()
-  {
-    const string json = """
+    [Fact]
+    public void GatherStep_MinimalItemsToGatherFlowThroughFactory()
+    {
+        const string json = """
         {
           "InteractionType": "Gather",
           "TerritoryId": 612,
@@ -63,22 +63,22 @@ public sealed class GatheredItemDeserializationTests
         }
         """;
 
-    var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
-    var (quest, sequence, _) = QuestTestData.FactoryContext(new QuestId(2621), 4, step!);
-    var factory = new Gather.Factory();
+        var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
+        var (quest, sequence, _) = QuestTestData.FactoryContext(new QuestId(2621), 4, step!);
+        var factory = new Gather.Factory();
 
-    var task = factory.CreateAllTasks(quest, sequence, step!).OfType<Gather.DelayedGatheringTask>().Single();
+        var task = factory.CreateAllTasks(quest, sequence, step!).OfType<Gather.DelayedGatheringTask>().Single();
 
-    Assert.Equal(17945u, task.GatheredItem.ItemId);
-    Assert.Equal(20, task.GatheredItem.ItemCount);
-    Assert.Equal(0u, task.GatheredItem.AlternativeItemId);
-    Assert.Equal((ushort)0, task.GatheredItem.Collectability);
-  }
+        Assert.Equal(17945u, task.GatheredItem.ItemId);
+        Assert.Equal(20, task.GatheredItem.ItemCount);
+        Assert.Equal(0u, task.GatheredItem.AlternativeItemId);
+        Assert.Equal((ushort)0, task.GatheredItem.Collectability);
+    }
 
-  [Fact]
-  public void FishStep_OmittedCollectabilityDefaultsToZeroWithFishingOptions()
-  {
-    const string json = """
+    [Fact]
+    public void FishStep_OmittedCollectabilityDefaultsToZeroWithFishingOptions()
+    {
+        const string json = """
         {
           "InteractionType": "Fish",
           "TerritoryId": 397,
@@ -99,20 +99,20 @@ public sealed class GatheredItemDeserializationTests
         }
         """;
 
-    var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
-    var item = step!.ItemsToGather.Single();
+        var step = JsonNode.Parse(json)!.Deserialize<QuestStep>();
+        var item = step!.ItemsToGather.Single();
 
-    Assert.Equal(12713u, item.ItemId);
-    Assert.Equal(3, item.ItemCount);
-    Assert.Equal((ushort)0, item.Collectability);
-    Assert.Equal(0u, item.AlternativeItemId);
-    Assert.NotNull(item.FishingOptions);
-    Assert.Equal(28634u, item.FishingOptions.BaitId);
-    Assert.NotNull(item.FishingOptions.HookType);
-    Assert.NotNull(item.FishingOptions.HookType.Normal);
-    Assert.True(item.FishingOptions.HookType.Normal.Value.Hookset!.Weak);
-    Assert.Null(item.FishingOptions.HookType.Normal.Value.Hookset!.Strong);
-    Assert.Null(item.FishingOptions.HookType.Double);
-    Assert.Null(item.FishingOptions.HookType.Triple);
-  }
+        Assert.Equal(12713u, item.ItemId);
+        Assert.Equal(3, item.ItemCount);
+        Assert.Equal((ushort)0, item.Collectability);
+        Assert.Equal(0u, item.AlternativeItemId);
+        Assert.NotNull(item.FishingOptions);
+        Assert.Equal(28634u, item.FishingOptions.BaitId);
+        Assert.NotNull(item.FishingOptions.HookType);
+        Assert.NotNull(item.FishingOptions.HookType.Normal);
+        Assert.True(item.FishingOptions.HookType.Normal.Value.Hookset!.Weak);
+        Assert.Null(item.FishingOptions.HookType.Normal.Value.Hookset!.Strong);
+        Assert.Null(item.FishingOptions.HookType.Double);
+        Assert.Null(item.FishingOptions.HookType.Triple);
+    }
 }

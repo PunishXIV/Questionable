@@ -1,5 +1,4 @@
-﻿using Questionable.Model;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
 using Xunit;
@@ -78,7 +77,7 @@ public sealed class UniqueStartStopValidatorTest
             Seq(255, Step(EInteractionType.CompleteQuest)));
 
         var issues = _validator.Validate(quest).ToList();
-        
+
         Assert.Single(issues);
         Assert.Equal(EIssueType.UnexpectedAcceptQuestStep, issues[0].Type);
     }

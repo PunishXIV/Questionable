@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
-using System.Xml.Linq;
 using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Interface.Windowing;
@@ -12,9 +11,7 @@ using I18N.DotNet;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
-using Questionable.Functions;
 using Questionable.Windows;
-using static I18N.DotNet.GlobalLocalizer;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable;
 

@@ -32,7 +32,7 @@ internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData)
                     Step = null,
                     Type = EIssueType.UnusedSinglePlayerInstance,
                     Severity = EIssueSeverity.Error,
-                    Description = _LF("Single player instance {0} not used",index)
+                    Description = _LF("Single player instance {0} not used", index)
                 };
             }
         }

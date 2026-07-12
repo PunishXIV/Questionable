@@ -1,7 +1,6 @@
 ﻿using System.Text.Json.Serialization;
-using Questionable.Model.Questing;
-using Questionable.Model.Common.Converter;
 using Questionable.Model.Common;
+using Questionable.Model.Questing;
 namespace Questionable.Validation;
 
 internal sealed record ValidationIssue

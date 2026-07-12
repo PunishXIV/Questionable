@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
 using Questionable.Domain;
-using Questionable.Extensions;
 using Questionable.Functions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;

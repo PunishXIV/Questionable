@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using Dalamud.Plugin.Services;
 using ECommons;
 using ECommons.DalamudServices;
@@ -344,7 +343,7 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
     private IReadOnlyList<uint> TownTerritoryIds { get; }
 
-    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; } 
+    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; }
 
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3? position)
     {

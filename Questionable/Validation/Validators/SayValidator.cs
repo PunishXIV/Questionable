@@ -33,7 +33,7 @@ internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValida
                     Step = StepId,
                     Type = EIssueType.InvalidChatMessage,
                     Severity = EIssueSeverity.Error,
-                    Description = _LF("Invalid chat message: {0}",excelString.Value)
+                    Description = _LF("Invalid chat message: {0}", excelString.Value)
                 };
             }
         }

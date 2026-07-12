@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using Dalamud.Game.Text;
@@ -8,7 +7,6 @@ using Dalamud.Memory;
 using Dalamud.Plugin.Services;
 using ECommons;
 using ECommons.ExcelServices;
-using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
@@ -16,9 +14,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Client.UI.Arrays;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Lumina;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
 using Questionable.Domain;
@@ -351,7 +347,7 @@ internal sealed unsafe class QuestFunctions
         // is one you've just completed. We return 255 as sequence here, since that is the end of said quest;
         // but this is just really hoping that this breaks nothing.
         if (IsQuestComplete(currentQuest))
-            return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete",currentQuest.Value));
+            return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
 
         if (!IsReadyToAcceptQuest(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));
@@ -454,7 +450,7 @@ internal sealed unsafe class QuestFunctions
                 if (gil < teleportCosts)
                 {
                     return new(x,
-                        _LF("Not enough gil, estimated cost: {0:N0}{1}",teleportCosts,SeIconChar.Gil.ToIconString()));
+                        _LF("Not enough gil, estimated cost: {0:N0}{1}", teleportCosts, SeIconChar.Gil.ToIconString()));
                 }
 
                 EAetheryteLocation? firstLockedAetheryte = quest.AllSteps()
@@ -484,7 +480,7 @@ internal sealed unsafe class QuestFunctions
                     // if quest requires white wolf gate, and unlock quest is available, don't report locked
                     if (firstLockedAetheryte == EAetheryteLocation.GridaniaWhiteWolfGate && IsReadyToAcceptQuest(new QuestId(802)))
                         return new(x);
-                    return new(x, _LF("Aetheryte locked: {0}",firstLockedAetheryte));
+                    return new(x, _LF("Aetheryte locked: {0}", firstLockedAetheryte));
                 }
 
                 return new PriorityQuestInfo(x);
@@ -650,7 +646,7 @@ internal sealed unsafe class QuestFunctions
 
     public bool IsQuestComplete(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
 
-    public (bool,string[]?) IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
+    public (bool, string[]?) IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
     {
         if (elementId is QuestId questId)
             return IsQuestLocked(questId, extraCompletedQuest);
@@ -664,16 +660,16 @@ internal sealed unsafe class QuestFunctions
         throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
-    private (bool,string[]) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
+    private (bool, string[]) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
     {
         PlayerState* playerState = PlayerState.Instance();
-        Dictionary<string,bool> lockedReason = [];
+        Dictionary<string, bool> lockedReason = [];
         //lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         if (questInfo.GrandCompany != GrandCompany.None)
             lockedReason.Add(_L("GC"), questInfo.GrandCompany != GetGrandCompany());
-            
+
         lockedReason.Add(_L("Level"), playerState->CurrentLevel < questInfo.Level);
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
@@ -693,7 +689,7 @@ internal sealed unsafe class QuestFunctions
         }
 
         // "an ill-conceived venture" requires to have retainers unlocked
-        if ((new ushort[]{ 1432,1433,1434 }).Contains(questId.Value))
+        if ((new ushort[] { 1432, 1433, 1434 }).Contains(questId.Value))
         {
             var retainerManager = RetainerManager.Instance();
             lockedReason.Add(_L("Retainers"), retainerManager->MaxRetainerEntitlement == 0);
@@ -701,7 +697,7 @@ internal sealed unsafe class QuestFunctions
 
         lockedReason.Add(_L("Prev quest"), !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
         lockedReason.Add(_L("Prev instance"), !HasCompletedPreviousInstances(questInfo));
-        return (lockedReason.Values.Any(x => x),lockedReason.Keys.ToArray());
+        return (lockedReason.Values.Any(x => x), lockedReason.Keys.ToArray());
     }
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)

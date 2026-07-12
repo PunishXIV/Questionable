@@ -35,7 +35,7 @@ internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : 
                 Step = stepId,
                 Type = EIssueType.InvalidAethernetShortcut,
                 Severity = EIssueSeverity.Error,
-                Description = _LF("Invalid aethernet shortcut: {0} to {1}",aethernetShortcut.From,aethernetShortcut.To)
+                Description = _LF("Invalid aethernet shortcut: {0} to {1}", aethernetShortcut.From, aethernetShortcut.To)
             };
         }
 

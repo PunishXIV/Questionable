@@ -133,7 +133,7 @@ internal sealed class QuickAccessButtonsComponent
                         .Deserialize<SortedDictionary<string, string>>()
                         ?.Where(kvp => kvp.Value == "Loaded")
                         .Select(kvp => kvp.Key)
-                        .ToHashSet();
+                        .ToHashSet(StringComparer.Ordinal);
                     plugins = new(dalTrouble?["LoadedPlugins"]
                         ?.AsArray()
                         .Where(node =>
@@ -143,25 +143,25 @@ internal sealed class QuickAccessButtonsComponent
                         .ToDictionary(
                             node => node!["Name"]!.GetValue<string>(),
                             node => node!["AssemblyVersion"]!.GetValue<string>() ?? "unknown"
-                        ) ?? []);
+                            , StringComparer.Ordinal) ?? [], StringComparer.Ordinal);
                 }
                 catch (Exception) { }
                 Configuration? config = (Configuration?)pluginInterface.GetPluginConfig();
                 IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
-                Dictionary<string, object?> troubleshooting = new(){
+                Dictionary<string, object?> troubleshooting = new(StringComparer.Ordinal){
                     { "LoadedPlugins", plugins },
-                    { "QST", new Dictionary<string,string>(){
+                    { "QST", new Dictionary<string,string>(StringComparer.Ordinal){
                         { "Version", CommandHandler.MessageTag },
                         { "Debug", config?.Advanced.Debug.ToString() ?? "false" }
                     } },
                     { "Configuration", config },
                     { "CompletedQuests", questCompletions.Count },
-                    { "Quest", new Dictionary<string,object?>(){
+                    { "Quest", new Dictionary<string,object?>(StringComparer.Ordinal){
                         { "ToString", questProgress?.ToString() },
                         { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" },
                         { "Source", questProgress?.Quest.Source }
                     }},
-                    { "Character", new Dictionary<string,object>{
+                    { "Character", new Dictionary<string,object>(StringComparer.Ordinal){
                         { "ClassJob", (EExtendedClassJob?)player.ClassJob.RowId },
                         { "Level", player.Level },
                         { "Position", player.Position.ToInternalString() },

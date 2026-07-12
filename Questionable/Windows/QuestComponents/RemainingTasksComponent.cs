@@ -2,7 +2,6 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Controller;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class RemainingTasksComponent(QuestController questController, GatheringController gatheringController)

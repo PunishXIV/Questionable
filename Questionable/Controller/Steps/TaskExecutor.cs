@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 namespace Questionable.Controller.Steps;
 
 internal abstract class TaskExecutor<T> : ITaskExecutor

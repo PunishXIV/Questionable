@@ -718,14 +718,14 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
                 foreach (string part in text.Split(DutyClipboardSeparator))
                 {
                     if (part.StartsWith(DutyWhitelistPrefix) &&
-                        uint.TryParse(part.AsSpan(start:1), CultureInfo.InvariantCulture,
+                        uint.TryParse(part.AsSpan(start: 1), CultureInfo.InvariantCulture,
                             out uint whitelistedCfcId))
                     {
                         Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Add(whitelistedCfcId);
                     }
 
                     if (part.StartsWith(DutyBlacklistPrefix) &&
-                        uint.TryParse(part.AsSpan(start:1), CultureInfo.InvariantCulture,
+                        uint.TryParse(part.AsSpan(start: 1), CultureInfo.InvariantCulture,
                             out uint blacklistedCfcId))
                     {
                         Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Add(blacklistedCfcId);

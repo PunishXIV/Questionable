@@ -7,12 +7,11 @@ using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Model;
-using Questionable.Model.Questing;
-using Quest = Lumina.Excel.Sheets.Quest;
-using static Questionable.Utils.LocalizeShortcut;
 using Questionable.Domain;
 using Questionable.Model.Common;
+using Questionable.Model.Questing;
+using static Questionable.Utils.LocalizeShortcut;
+using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.Data;
 
@@ -318,7 +317,7 @@ internal sealed class QuestData
     }
 
     public IQuestInfo GetQuestInfo(ElementId elementId) => _quests[elementId] ?? throw new ArgumentOutOfRangeException(nameof(elementId));
-    
+
     public bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo) => _quests.TryGetValue(elementId, out questInfo);
 
     public List<IQuestInfo> GetAllByIssuerDataId(uint targetId)

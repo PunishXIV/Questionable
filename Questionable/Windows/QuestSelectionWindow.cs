@@ -83,7 +83,7 @@ internal sealed class QuestSelectionWindow : LWindow
         {
             targetId = GameFunctions.GetBaseID(gameObject);
             string targetName = gameObject.Name.ToString();
-            
+
             WindowName = _LF("Quests starting with {0}", targetName) + $"[{targetId}]{WindowId}";
 
             _quests = _questData.GetAllByIssuerDataId(targetId);
@@ -105,7 +105,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
         IsOpenAndUncollapsed = _quests.Count > 0;
     }
-    
+
     public void OpenForCurrentZone() => OpenForZone(_clientState.TerritoryType);
     public unsafe void OpenForZone(uint territoryId)
     {
@@ -152,7 +152,7 @@ internal sealed class QuestSelectionWindow : LWindow
         ImGui.PushFont(UiBuilder.IconFont);
         uint buttonCount = 5;
         float actionIconSize = ImGui.CalcTextSize(FontAwesomeIcon.Copy.ToIconString()).X * buttonCount +
-                               ImGui.GetStyle().FramePadding.X * buttonCount*2 +
+                               ImGui.GetStyle().FramePadding.X * buttonCount * 2 +
                                ImGui.GetStyle().ItemSpacing.X * buttonCount;
         ImGui.PopFont();
 

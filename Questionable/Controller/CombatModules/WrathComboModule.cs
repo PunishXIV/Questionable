@@ -1,13 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
 using System.Reflection;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps;
+using Questionable.Model.Common;
 using WrathCombo.API;
 using WrathCombo.API.Enum;
 using WrathError = WrathCombo.API.Error;
@@ -40,7 +40,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (_configuration.General.CombatModule !=
-            Configuration.ECombatModule.WrathCombo)
+            ECombatModule.WrathCombo)
             return false;
 
         try
