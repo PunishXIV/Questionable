@@ -270,14 +270,14 @@ internal static class SkipCondition
             switch (step.ItemQuality)
             {
                 case EItemQuality.NQ:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false);
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq:false, checkEquipped:false);
                     break;
                 case EItemQuality.HQ:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq:true, checkEquipped:false);
                     break;
                 case EItemQuality.Any:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
-                                + inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq:false, checkEquipped:false)
+                                + inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq:true, checkEquipped:false);
                     break;
             }
 
