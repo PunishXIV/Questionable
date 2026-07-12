@@ -266,8 +266,20 @@ internal static class SkipCondition
                 return false;
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            int itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
-                            + inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
+            int itemCount = 0;
+            switch (step.ItemQuality)
+            {
+                case EItemQuality.NQ:
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false);
+                    break;
+                case EItemQuality.HQ:
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
+                    break;
+                case EItemQuality.Any:
+                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, false, false)
+                                + inventoryManager->GetInventoryItemCount(step.ItemId.Value, true, false);
+                    break;
+            }
 
             if (itemCount == 0 && skipConditions.Item is { NotInInventory: true })
             {
