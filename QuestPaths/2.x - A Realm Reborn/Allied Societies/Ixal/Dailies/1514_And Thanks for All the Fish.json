@@ -105,7 +105,11 @@
           "ItemsToGather": [
             {
               "ItemId": 2001398,
-              "ItemCount": 1
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 2586,
+                "Preset": "AH6_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"
+              }
             }
           ],
           "CompletionQuestVariablesFlags": [null, {"High": 1, "Low": 1}, null, null, null, null]

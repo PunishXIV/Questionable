@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-17"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -71,12 +71,25 @@
         {
           "Position": {
             "X": -44.43882,
-            "Y": -4.7683716E-7,
+            "Y": -4.7683716e-7,
             "Z": -15.861683
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
-          "Mount": true
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -44.43882,
+                  "Y": -4.7683716e-7,
+                  "Z": -15.861683
+                },
+                "TerritoryId": 148,
+                "MaximumDistance": 20
+              }
+            }
+          }
         },
         {
           "Position": {
@@ -85,9 +98,14 @@
             "Z": -52.496593
           },
           "TerritoryId": 148,
-          "InteractionType": "UseItem",
+          "InteractionType": "WalkTo",
           "ItemId": 4868,
           "Fly": true
+        },
+        {
+          "TerritoryId": 148,
+          "InteractionType": "UseItem",
+          "ItemId": 4868
         },
         {
           "Position": {

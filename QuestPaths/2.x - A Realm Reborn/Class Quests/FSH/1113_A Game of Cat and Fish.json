@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -60,6 +61,9 @@
               }
             },
             "AetheryteShortcutIf": {
+              "Item": {
+                "NotInInventory": false
+              },
               "InTerritory": [
                 129
               ]
@@ -94,7 +98,11 @@
           "ItemsToGather": [
             {
               "ItemId": 4963,
-              "ItemCount": 1
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 2586,
+                "Preset": "AH6_H4sIAAAAAAAACu1dW1PbOhD+Kxk9x4yvsZ23kJYeZqAwJEwfOn2Q7XWiwbFcWYZyGP77Gcm52XFIAPc0KXqDlazsSp92V1qt9IQGBadDnPN8GE9Q/wl9TnGQwCBJUJ+zArroE035EKchJJeUhtMF+QZCnPNBSmaYE5qWNVA/xkkOXTQuWDqkSQIhv4rjJXk4LWb7ffKN8CktZPu1eoLZC5KCYPZ8klIGFb5K/qPFv+cR6pue30VfsvGUQT6lSYT6+laxrhmhjPBH1De66Dz//CtMigiiFbmsttbaIKD3sKAPaRoRIdwIOOqnRZI8lxzPf+QJyT/MVU9HS8Ekqz2vxqqh78Vse9w2suW7b+lBvdUuFODZ1m+2odtv67hmFudNv57HEsAvsGm8oSPNVvtxlOLJhKSTF5jU38Ck1e5gUxYRnMhJnt4DWxA2hqhUAWMyg28kjejDsqBBEfQMe//uv7oHFuJsk8N1oe124XNG8unnR8g3dFtdpupwOTWhHGefAeu1y/slvoPRlMT8FBM5AQQhXxBGHId3Oeo7zRq6520KsYcIfgsiPKGZhMEE9b8v/g5R//uPLsLlF88/ugjmss6FvcacQBpKI3QDsfiVz5gljwKHsoUGIW1DN2symvvpKPOPicnIvzDEvDRdWwyW3nubVFa7+BtPcULwXX6G7ykT7FYIC/xZ3Sr9BkJ6Dwz1DTFntkCzblr2ml7Ga+fXwr/ZJuApmXzBAl5PaJBOEmD5QiizWTNYrm5vjM0+nHsta4Yi4WRK6d1Wi2PqTt1FM/ZgtD3/YmU/mn2iX5zhioO8xMgN5MCHtEg5sGsm/hk94Gwp3hllIUgFKKnlN5IYCapEmOP1utIPvwoBp9IG1DqpUjhIkhGnWd5cOsqobFWv0YWETfQm+zZmZDIBlpfq4TYlPwv5LXJ6ZuCB5Wk9J/Q1O/Kx5usYtJ7rBm7geqYdA3oWozJIafo4o8WKywuS86tYCC3a3ehHUSD4kaZv2SsXBYNLyHM8AdRHqIu+yhmALimfdq6LDKPyy/FjJvTucxd9pWyGk3/maLuBnwVhEI045oIXvYsWqvsbYFlFVM2B19gp/52XrY/dnFT+oG24fhfd5iAhnpUfiKL8VJoCtpT+NocVZ6JGvUK19JKkqK+f6Bt0/GtOv83hmkFIckLTbW1uVFg1u1lUaZk+AIuLrczWy9farZesNzvikCSYbWu1VrxqtF6wbHOHiTNKE/eEOOqjU8Klm8iGn1AXZaI6Q/3v5oneNZ0T/ceztH4LQ9hgE8uxFwy8x7LWR7TZv6wNTmOlWk831al1XKNuW8yHEWe0XBTUZ0TF+dw9JXRLTYmDnRI7sPkSmA4UtxcwgTTC7FFB96/S5iUSjgiQtzl8osVcRa7cHihX9XmIs6bykvRqZ2T+dUX1mj3ljHx0Z+QgZ0aJ8bc4GArmSkv/Diy+0WlQcFRwbN1pGLPFzkGz09BQXpLacRpcx1QLNuU2HKDbUKK8NbdBAV0t796NxjYdBwVIBcj3AJLMgBZ8bQE6LWYbxNschkXO6awMgVTcCHmUqmDleQPxx1qUtAy8DTiHWcZXjknBYIzZRLChb4s6Ov7mWZz/PZpHC97UsWt91PjpecoLSdwWQXLECa1dMaTXKQIVRVJ64A8FcJrhqCI4h7MgOLpt8HfGZRQi1R7LEQRm1B6hCiyq8Ik6svTRrLsKn/zNJ+iODo6/I3yidvEUglWQQ51I/oj6VAU5/u4j8scHSBXkaD/IIdKHBjEHtkpeWkMYzYTzRNLJiEMmzy2OHsgswISX2BA+k0DqnPhy4tqi1jKu8qqvv1JO4serdFSEIeQyTLXhpoVTOpxivswSWl41gPkYfonDlqiLPpE8S/CjyJ8bU5yvfnZJ2agrqZIBEsr7ClbuY7X+WYLz6RjndwFm5+FavVNGUpmyd0YZTBgt0hXbpwDZmlySOh+ZphFdy8GKPDd2sQFa4AWBZrumpXlRgLWwZ9uRaUS67WIkjoqWCVfzYNvuhCvbN93tCVcjzkgGUecLDR4rOVdGGzlXKl6mTMoBJTy96gCdCpcd/bF770TvWvZfd+xeReKUN39YiFSROJWwfcyr0V2JTCpd71g3RpTfoGJ8DYhUW4B/XumqGJ+65+XIN7F3JDKphL3j3f5SjoOKHn6UC7aOT/Gq6KFKkVIX7X14PaBSpJRZOiCzpAIzylE6LEdJBWZUYOaYHX11w5xadB4WFtUNc2oP5CDgqMInKnxy5Lt46h44Zd4PDI3qHjgV5DgUQKogh0qRUilSaylSNtYjKwRbi1ywNBtboPkYY83zMUSurRuBqa+lSJVZUJsZUi1lR72UbXceQcpJiBNxFePW59Ecv/6Mm7XXE3QtvuM2KliMQxglIg1mK5vO214CdNrj86V3diuP+h3MM7trXP2xV3Zf/TjkKMMMhO3CIqfxaevzg84rullMt/NoTIdTCO8WM27tEVy9RZQc/ouEUofQMu2sVEGasV0BfaUpVBSPJXNvcSYoDXqnfKlw0T7SREtwD6z63GxTLnD5LO174KPSelfu3XyEGl2/B5yVw7QjITiMvNjHoav5ei/Q7Ci0ND/yPM019RDrsWnFuo2euzvMW896wbxNcUQfOkPMY/GNMnAHauDUQ/K7/Zjfb7gWS0BluA7IcOmmeKpd2a42rqTYZu7LHGv5qDAuJtNy5FaZ1mRuZ/ZIsh61YRc9rAeB6XpaFIOv2YEfa75rO5ppGqbh+HHYs3pyFSigGC0bm796fJ5/SWggbjupIG8O24v7jumcdAYd0ZcdGgvb2MFp1JFGtcKG5YFhYvC00IvEYjQONM/2dC1wLdvUrdCzYx09/we0R049iYUAAA=="
+              }
             }
           ]
         },

@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -60,6 +61,9 @@
               }
             },
             "AetheryteShortcutIf": {
+              "Item": {
+                "NotInInventory": false
+              },
               "InTerritory": [
                 129
               ]
@@ -70,9 +74,9 @@
           "Comment": "Move to fishing spot",
           "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Position": {
-            "X": -306.41043,
-            "Y": 6.7485533,
-            "Z": 413.53372
+            "X": -303.75845,
+            "Y": 6.4537888,
+            "Z": 413.55603
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo"
@@ -84,7 +88,11 @@
           "ItemsToGather": [
             {
               "ItemId": 4955,
-              "ItemCount": 5
+              "ItemCount": 5,
+              "FishingOptions": {
+                "BaitId": 2614,
+                "Preset": "AH6_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"
+              }
             }
           ]
         },
