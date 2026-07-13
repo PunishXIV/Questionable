@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Collections.Generic;
 using System.Numerics;
 using System.Threading;
 using Dalamud.Game.ClientState.Conditions;
@@ -108,6 +109,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly IToastGui _toastGui;
     private readonly ICommandManager _commandManager;
     private EAutomationType _automationType;
+    private readonly HashSet<string> _pauseRequests = new(StringComparer.Ordinal);
+    private bool _pauseEffective;
     private DateTime _lastAutoRefresh = DateTime.MinValue;
 
     /// <summary>True while recovering from the player's death (waiting for the return prompt / respawn).</summary>
@@ -265,6 +268,20 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public Func<bool>? IsQuestWindowOpenFunction { private get; set; } = () => true;
 
     public bool IsRunning => !_taskQueue.AllTasksComplete;
+    public void SetPauseRequest(string owner, bool paused)
+    {
+        if (string.IsNullOrWhiteSpace(owner))
+            throw new ArgumentException("A pause-request owner is required.", nameof(owner));
+        if (paused)
+            _pauseRequests.Add(owner);
+        else
+            _pauseRequests.Remove(owner);
+        if (_pauseRequests.Count == 0)
+            _pauseEffective = false;
+    }
+
+    public bool IsPauseRequestEffective(string owner) =>
+        !string.IsNullOrWhiteSpace(owner) && _pauseRequests.Contains(owner) && _pauseEffective;
     public TaskQueue TaskQueue => _taskQueue;
 
     public string? CurrentTaskState
@@ -339,6 +356,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
         if (IsQuestingStopped)
             return;
+
+        if (_pauseRequests.Count > 0 && _taskQueue.CurrentTaskExecutor == null)
+        {
+            _pauseEffective = true;
+            return;
+        }
+        _pauseEffective = false;
 
         UpdateCurrentQuest();
 

@@ -38,6 +38,8 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcStartGathering = "Questionable.StartGathering";
     private const string IpcStartGatheringComplex = "Questionable.StartGatheringComplex";
     private const string IpcStop = "Questionable.Stop";
+    private const string IpcSetPauseRequest = "Questionable.SetPauseRequest";
+    private const string IpcIsPauseRequestEffective = "Questionable.IsPauseRequestEffective";
     private const string IpcRedoLookup = "Questionable.RedoLookup";
     private const string IpcRedoLookupIndex = "Questionable.RedoLookupIndex";
     private readonly ICallGateProvider<string, bool> _addQuestPriority;
@@ -69,6 +71,8 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ICallGateProvider<string, bool> _startQuest;
     private readonly ICallGateProvider<string, bool> _startSingleQuest;
     private readonly ICallGateProvider<string, bool> _stop;
+    private readonly ICallGateProvider<string, bool, object> _setPauseRequest;
+    private readonly ICallGateProvider<string, bool> _isPauseRequestEffective;
 
     public QuestionableIpc(
         QuestController questController,
@@ -148,6 +152,11 @@ internal sealed class QuestionableIpc : IDisposable
         _stop = pluginInterface.GetIpcProvider<string, bool>(IpcStop);
         _stop.RegisterFunc(Stop);
 
+        _setPauseRequest = pluginInterface.GetIpcProvider<string, bool, object>(IpcSetPauseRequest);
+        _setPauseRequest.RegisterAction(questController.SetPauseRequest);
+        _isPauseRequestEffective = pluginInterface.GetIpcProvider<string, bool>(IpcIsPauseRequestEffective);
+        _isPauseRequestEffective.RegisterFunc(questController.IsPauseRequestEffective);
+
         _redoUtil = redoUtil;
 
         _redoLookup = pluginInterface.GetIpcProvider<uint, string>(IpcRedoLookup);
@@ -178,6 +187,8 @@ internal sealed class QuestionableIpc : IDisposable
         _startGathering.UnregisterFunc();
         _startGatheringComplex.UnregisterFunc();
         _stop.UnregisterFunc();
+        _setPauseRequest.UnregisterAction();
+        _isPauseRequestEffective.UnregisterFunc();
         _redoLookup.UnregisterFunc();
     }
 
