@@ -63,7 +63,32 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Comment": "Walk to fishing spot (it's nearby)",
+          "Comment": "Purchase bait",
+          "DataId": 1005422,
+          "Position": {
+            "X": -397.6349,
+            "Y": 3.099996,
+            "Z": 80.979614
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263015
+          },
+          "ItemId": 29717,
+          "ItemCount": 10,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": { "Item": { "NotInInventory": false } },
+            "AetheryteTeleportIf": { "Item": { "NotInInventory": false } }
+          }
+        },
+        {
+          "Comment": "Go to fishing spot",
           "Position": {
             "X": 565.8959,
             "Y": -26.253891,
@@ -71,12 +96,16 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true,
+          "Land": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {"InTerritory": [398]}
           }
         },
         {
-          "Comment": "Fish for 3x Shadowhisker (Bait: Versatile Lure or Blueclaw Shrimp mooch)",
+          "Comment": "Fish for 3x Shadowhisker\n Bait: Versatile Lure or Brute Leech\n  OR Stonefly Nymph for Blueclaw Shrimp mooch",
+          "$": "Uses Versatile Lure for simplicity, but preset works with these other baits/mooches as well",
           "TerritoryId": 398,
           "InteractionType": "Fish",
           "ItemsToGather": [
@@ -95,7 +124,9 @@
             "Z": 62.546753
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
         }
       ]
     },
