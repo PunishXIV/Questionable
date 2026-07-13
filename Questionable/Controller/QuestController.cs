@@ -109,6 +109,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly IToastGui _toastGui;
     private readonly ICommandManager _commandManager;
     private EAutomationType _automationType;
+    private readonly object _pauseRequestGate = new();
     private readonly HashSet<string> _pauseRequests = new(StringComparer.Ordinal);
     private bool _pauseEffective;
     private DateTime _lastAutoRefresh = DateTime.MinValue;
@@ -272,16 +273,32 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         if (string.IsNullOrWhiteSpace(owner))
             throw new ArgumentException("A pause-request owner is required.", nameof(owner));
-        if (paused)
-            _pauseRequests.Add(owner);
-        else
-            _pauseRequests.Remove(owner);
-        if (_pauseRequests.Count == 0)
-            _pauseEffective = false;
+        lock (_pauseRequestGate)
+        {
+            if (paused)
+                _pauseRequests.Add(owner);
+            else
+                _pauseRequests.Remove(owner);
+        }
     }
 
-    public bool IsPauseRequestEffective(string owner) =>
-        !string.IsNullOrWhiteSpace(owner) && _pauseRequests.Contains(owner) && _pauseEffective;
+    public bool IsPauseRequestEffective(string owner)
+    {
+        lock (_pauseRequestGate)
+            return !string.IsNullOrWhiteSpace(owner) && _pauseRequests.Contains(owner) && _pauseEffective;
+    }
+
+    private bool HasPauseRequests()
+    {
+        lock (_pauseRequestGate)
+            return _pauseRequests.Count > 0;
+    }
+
+    private void SetPauseEffective(bool effective)
+    {
+        lock (_pauseRequestGate)
+            _pauseEffective = effective;
+    }
     public TaskQueue TaskQueue => _taskQueue;
 
     public string? CurrentTaskState
@@ -357,12 +374,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (IsQuestingStopped)
             return;
 
-        if (_pauseRequests.Count > 0 && _taskQueue.CurrentTaskExecutor == null)
+        if (HasPauseRequests() && _taskQueue.CurrentTaskExecutor == null)
         {
-            _pauseEffective = true;
+            SetPauseEffective(true);
             return;
         }
-        _pauseEffective = false;
+        SetPauseEffective(false);
 
         UpdateCurrentQuest();
 
