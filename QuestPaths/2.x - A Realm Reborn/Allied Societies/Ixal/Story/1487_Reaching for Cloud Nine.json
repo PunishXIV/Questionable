@@ -94,7 +94,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "$": "Missing craft step",
           "DialogueChoices": [
             {
               "Type": "List",
