@@ -109,8 +109,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly IToastGui _toastGui;
     private readonly ICommandManager _commandManager;
     private EAutomationType _automationType;
+    private static readonly TimeSpan PauseRequestLifetime = TimeSpan.FromMinutes(10);
     private readonly object _pauseRequestGate = new();
-    private readonly HashSet<string> _pauseRequests = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, DateTime> _pauseRequests = new(StringComparer.Ordinal);
     private bool _pauseEffective;
     private DateTime _lastAutoRefresh = DateTime.MinValue;
 
@@ -276,7 +277,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         lock (_pauseRequestGate)
         {
             if (paused)
-                _pauseRequests.Add(owner);
+                _pauseRequests[owner] = DateTime.UtcNow.Add(PauseRequestLifetime);
             else
                 _pauseRequests.Remove(owner);
         }
@@ -285,13 +286,26 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public bool IsPauseRequestEffective(string owner)
     {
         lock (_pauseRequestGate)
-            return !string.IsNullOrWhiteSpace(owner) && _pauseRequests.Contains(owner) && _pauseEffective;
+        {
+            PruneExpiredPauseRequests();
+            return !string.IsNullOrWhiteSpace(owner) && _pauseRequests.ContainsKey(owner) && _pauseEffective;
+        }
     }
 
     private bool HasPauseRequests()
     {
         lock (_pauseRequestGate)
+        {
+            PruneExpiredPauseRequests();
             return _pauseRequests.Count > 0;
+        }
+    }
+
+    private void PruneExpiredPauseRequests()
+    {
+        var now = DateTime.UtcNow;
+        foreach (var owner in _pauseRequests.Where(request => request.Value <= now).Select(request => request.Key).ToArray())
+            _pauseRequests.Remove(owner);
     }
 
     private void SetPauseEffective(bool effective)
