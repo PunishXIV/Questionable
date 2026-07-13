@@ -1948,6 +1948,10 @@
                         },
                         "HookType": {
                           "$ref": "#/$defs/HookType"
+                        },
+                        "Preset": {
+                          "type": "string",
+                          "description": "AutoHook preset export string (alternative for adding to FishingData.cs)"
                         }
                       },
                       "required": [

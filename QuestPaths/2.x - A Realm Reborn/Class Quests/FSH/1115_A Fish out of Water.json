@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
   "Comment": "This fish prefers Heat Waves weather",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -61,6 +62,9 @@
               }
             },
             "AetheryteShortcutIf": {
+              "Item": {
+                "NotInInventory": false
+              },
               "InTerritory": [
                 129
               ]
@@ -71,13 +75,12 @@
           "DataId": 1004962,
           "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Position": {
-            "X": -300.191,
-            "Y": 7.30289,
-            "Z": 410.941
+            "X": -300.27448,
+            "Y": 7.4016953,
+            "Z": 409.55316
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,7 +113,11 @@
           "ItemsToGather": [
             {
               "ItemId": 5033,
-              "ItemCount": 1
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 2604,
+                "Preset": "AH6_H4sIAAAAAAAACu1cyW7jOBD9lYBnK9BiycvNcZKeANkQOcgh6AMtlWwisqgmqSwT5N8HJL3KUrfj0fQ4Dd7s4uJXxadiUcXyOxoUgg4xF3yYTFD/HZ1leJzCIE1RX7ACWuiUZmKIswjSK0qj6UJ8BxHmYpCRGRaEZroH6ic45dBCo4JlQ5qmEImbJFmKh9NittuQByKmtFDzl/pJsJckAwn2YpJRBhu4NP548fUiRn2322uhb/loyoBPaRqjvl2r1i0jlBHxhvpOC13ws9coLWKIV2LdbW22wZg+w0I+pFlMpHIhCAlwpn5rgvqPi88R6j9+byGsR3x8byFA/axI048PrdsczjtSH9zVmsRLEyilgm5JKcfeSa0G9FJwW9Wwep19bG03BkqaUNKszm5tx27vZ7hqiPOpP49RU/0nMJ09DOk2ascww5MJySY/AWnvAdJrdrEpiwlOlTvInoEtBFtLpJ3FiMzggWQxfVk2VLiMwGnvbv6bZ2ARzrcRrivdbpY+54RPz96Ab3nBsk6by+WXlPL9XRYsaBb7FX6CcEoScYKJegCkgC8EocDRE0d9v8bBBN1tLXbQodesDrdYEMgitQvdQSLHnmGWvkl6Ka7ULEBQhh7s5HvchtEz8jcMsdAbTZ2Zy1jd3fyk1yzW0RSnBD/xc/xMmYS7IViwxWttyu8gos/AUN+RDK/TsLwT7KRfw0/DCZl8w5I072iQTVJgfKGTWw3c69jtraXZBXi34ce4SAWZUvpUuz24tl+OvJwdgDYXDKycfXUA8yoY3oh7l5vAHXAQQ1pkAtgtk1/CF5wv1TunLALlrZRUj1HCWEo1vyS9ZHh9EwHOlMMuGWmjcZCmoaA5r24Nc6pmtUtyqWGVvGozGjEymQDjOgK9z8iPQo1FHkAQeEHPAqcTWO0OuFYXY9/ynCQKfKfTCRIHfchVGWQ0e5vRYoXyknBxk0il5bxbdpQNEo/ap5ZWuSwYXAHneAKoj1ALXasnAN3RNCXZ5CgUNAOkR4/eculRP1romrIZTv+aM+4OfhSEQRwKLCQeu4UWTvkBsOoiu3IQZbPr7/PG9QWci/Qvtp1Or4XuOSie53qAbOInysuz5Xz3HFbQZI9yh83WK5Khvn1sb8nx61x+z+GWQUQ4oVndnFsdVtNuN23MTF+AJUUt2HL72rzllvVpQwFpilndrKXm1aTlhuWcVQxe9Kpq2zRmdTBWsktlp5KSVX1KmCt9y4KLoWBUR9BlNq6fV39NRtszZDwUMm6d6x19rn9HAvXRCRHqlMGGp6iFctmdof5j59hueb1j+/uHOvIvTv8VLwK+JM8vYQJZjNlbA47XcN043r0Jec/hlBZznq3CFNBHZh7hvKpdiz4fOMxbNgjsBiZwOBhf/eUCB83EPcIGQ8UDj2FN2FBm+Z5Bg2H6gTP9yzndew4jtjjkVwcNFe1a1FDQ0PFdc8QzDN6XwZqLTYUNhoyH5E5N4FDmeZOBg+H6IXH9y4UOUn1aiDV9psVsS3jPYVhwQWc6XbERRqgbTQXTyXz5YS2pqRNlAyFglotVYFIwGGE2kTBq0ptex+9tX3T57dk3Wogqw67ZqHLoRSYKJazL9vjy+tP++Z4qR2ASPsYP/KcJn8/S0bwGN9vS/5WXMYw071iaf8diEjPmRscfm5gx76vN7aLfy0WTPjGX3Q7CNZr0ibmu+WenT8w7ZXN5+Hez0SQ5zG32Q3GPJsnRfJJDlvsMEgFsVWy0lkajubx7QrJJKCBXV8zDFzIbYyL01il3KZmOmwtX2aTKn5r3WuZVPjX6mgqSvN1kYRFFwFWaamtjjKZ0OMViWdWzrPjHYgSv8l48aqFTwvMUv8l6txHFfPWzS8lWXyVVAEik/jZgdftms/95ivl0hPnTGLOLaK3fCSOZKrE7pwwmjBbZCvYJQL6ml5LOV6ZqRddqpsbdDrjtpG0FiWdb7QB6VtezAwucKGg7cbfbhQjJW/26QGqebHtcCnRR1HbB1HqxlG97Xn2x1ClwYOJoiEUix6xXSzm/YNdFDJkgEU5l6rG2fM/vlcsMvZ3KhRusMwwLluAIwlS+k66F6e9XqOo3h9P8acO/yhSHOWYgtyksn8332rJX/xP/3CAfpIt4RIdTiJ626/Fdu8HVP/xKWOUbqM7taOdiOfWu5bpcfumpPQTnUlLhT3SF7GJ+ZMmZ4BnY5n8SVO1p+r8Lqg+IZtMpVHw2t3tl7PaCc238X2xXCfbaQeTH1hgHidWOIbHGLh5bjjv2kh50EheD2q4kA+LlZPNa4Qv+LaVjGXNsLPicLZfPR55/fDQ4kot7RAtxRJOjByyAoQ0MbS+I/HHXttoJdq12krgWxq5rjTvdTuJApxsFHfTxD5UBkfaTSAAA"
+              }
             }
           ]
         },

@@ -1,0 +1,137 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1005422,
+          "Position": {
+            "X": -397.6349,
+            "Y": 3.099996,
+            "Z": 80.979614
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Arcanists' Guild"],
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263015
+          },
+          "ItemId": 29717,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.358,
+            "Y": 15,
+            "Z": 24.3203
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Forgotten Knight"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013254,
+          "Position": {
+            "X": 523.641,
+            "Y": -51.424,
+            "Z": 62.559
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013256,
+          "Position": {
+            "X": 560.587,
+            "Y": -21.2981,
+            "Z": -557.122
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 566.5044,
+            "Y": -26.253891,
+            "Z": -566.8326
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Fish",
+          "Fly": true,
+          "ItemsToGather": [
+            {
+              "ItemId": 12769,
+              "ItemCount": 3,
+              "FishingOptions": {
+                "BaitId": 29717,
+                "HookType": {
+                  "Normal": {
+                    "Strong": true
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1013254,
+          "Position": {
+            "X": 523.6133,
+            "Y": -51.424004,
+            "Z": 62.546753
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.358,
+            "Y": 15,
+            "Z": 24.3203
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Forgotten Knight"]
+        }
+      ]
+    }
+  ]
+}

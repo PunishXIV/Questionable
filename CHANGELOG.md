@@ -1,2 +1,1 @@
-- Feature: "hide remaining tasks" config -alydev
-- Change: General tab in config has collapsible headers now -alydev
+- Feature: AutoHook presets can be embedded in quest paths now -alydev

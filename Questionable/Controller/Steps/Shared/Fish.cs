@@ -104,10 +104,15 @@ internal static class Fish
 
                 if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? presetExport))
                 {
-                    logger.LogDebug("No fishing preset found for quest {QuestId}. Autocreating from quest data.", Task.Quest.Id);
+                    if (Task.GatheredItem?.FishingOptions?.Preset != null)
+                        presetExport = Task.GatheredItem?.FishingOptions?.Preset!;
+                    else
+                    {
+                        logger.LogDebug("No fishing preset found for quest {QuestId}. Autocreating from quest data.", Task.Quest.Id);
 
-                    presetExport = fishingPresetGenerator.CreatePresetFromTask(Task);
-                    logger.LogDebug(presetExport);
+                        presetExport = fishingPresetGenerator.CreatePresetFromTask(Task);
+                        logger.LogDebug(presetExport);
+                    }
                 }
 
                 // Using an anonymouse preset allows us to easily remove it later.

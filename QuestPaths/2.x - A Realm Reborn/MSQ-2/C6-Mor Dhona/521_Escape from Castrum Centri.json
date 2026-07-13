@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
   "Interruptible": false,
-  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -169,6 +169,7 @@
             "Z": -273.82324
           },
           "TerritoryId": 335,
+          "Comment": "Magitek field generators on both sides of south gate",
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
