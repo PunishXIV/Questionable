@@ -1,1 +1,2 @@
-- Code rearranging, nothing functionally changed. Hope you have a good day -alydev
+- Feature: "hide remaining tasks" config -alydev
+- Change: General tab in config has collapsible headers now -alydev
