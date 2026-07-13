@@ -397,7 +397,8 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<IAetheryteTerritoryProvider>(sp => sp.GetRequiredService<AetheryteData>());
         serviceCollection.AddSingleton<IQuestValidator, AcceptQuestTerritoryValidator>();
         serviceCollection.AddSingleton<IQuestValidator, DialogueChoiceValidator>();
-        serviceCollection.AddSingleton<IQuestValidator, ClassQuestShouldHaveShortcutValidator>();
+        // Superseded by AcceptQuestTerritoryValidator
+        //serviceCollection.AddSingleton<IQuestValidator, ClassQuestShouldHaveShortcutValidator>();
         serviceCollection.AddSingleton<IQuestValidator, SinglePlayerInstanceValidator>();
         serviceCollection.AddSingleton<IQuestValidator, UniqueSinglePlayerInstanceValidator>();
         serviceCollection.AddSingleton<IQuestValidator, SayValidator>();
