@@ -1,11 +1,36 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "alydev",
+  "Author": ["alydev", "ShermTank"],
   "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1005422,
+          "Position": {
+            "X": -397.6349,
+            "Y": 3.099996,
+            "Z": 80.979614
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Arcanists' Guild"],
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263015
+          },
+          "ItemId": 29717,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
         {
           "DataId": 1013250,
           "Position": {
@@ -23,15 +48,15 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1000857,
+          "DataId": 1013254,
           "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
+            "X": 523.641,
+            "Y": -51.424,
+            "Z": 62.559
           },
-          "TerritoryId": 129,
+          "TerritoryId": 398,
           "InteractionType": "Interact",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+          "Fly": true
         }
       ]
     },
@@ -39,38 +64,13 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Comment": "Purchase bait",
-          "DataId": 1005422,
+          "DataId": 1013256,
           "Position": {
-            "X": -397.6349,
-            "Y": 3.099996,
-            "Z": 80.979614
+            "X": 560.587,
+            "Y": -21.2981,
+            "Z": -557.122
           },
-          "TerritoryId": 129,
-          "InteractionType": "PurchaseItem",
-          "AethernetShortcut": ["[Limsa Lominsa] Fishermen's Guild","[Limsa Lominsa] Arcanists' Guild"],
-          "PurchaseMenu": {
-            "ExcelSheet": "GilShop",
-            "Key": 263015
-          },
-          "ItemId": 29717,
-          "ItemCount": 3,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "DataId": 1012079,
-          "Position": {
-            "X": 406.75964,
-            "Y": -73.595436,
-            "Z": 702.57104
-          },
-          "TerritoryId": 400,
+          "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true
         }
@@ -80,33 +80,18 @@
       "Sequence": 3,
       "Steps": [
         {
-          "DataId": 1013824,
           "Position": {
-            "X": 441.30603,
-            "Y": -29.3383,
-            "Z": 218.12769
+            "X": 566.5044,
+            "Y": -26.253891,
+            "Z": -566.8326
           },
-          "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
-        }
-      ]
-    },
-    {
-      "Sequence": 4,
-      "Steps": [
-        {
-          "Position": {
-            "X": 445.20938,
-            "Y": -31.738073,
-            "Z": 222.64548
-          },
-          "TerritoryId": 400,
+          "TerritoryId": 398,
           "InteractionType": "Fish",
+          "Fly": true,
           "ItemsToGather": [
             {
-              "ItemId": 12793,
-              "ItemCount": 1,
+              "ItemId": 12769,
+              "ItemCount": 3,
               "FishingOptions": {
                 "BaitId": 29717,
                 "HookType": {
@@ -119,14 +104,16 @@
           ]
         },
         {
-          "DataId": 1013824,
+          "DataId": 1013254,
           "Position": {
-            "X": 441.30603,
-            "Y": -29.3383,
-            "Z": 218.12769
+            "X": 523.6133,
+            "Y": -51.424004,
+            "Z": 62.546753
           },
-          "TerritoryId": 400,
-          "InteractionType": "Interact"
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
+          "Fly": true
         }
       ]
     },
