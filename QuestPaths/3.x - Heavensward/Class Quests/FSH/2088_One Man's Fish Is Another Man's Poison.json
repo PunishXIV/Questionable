@@ -76,6 +76,18 @@
       "Sequence": 3,
       "Steps": [
         {
+          "$": "Land nearby",
+          "Position": {
+            "X": 441.8654,
+            "Y": -29.307745,
+            "Z": 215.52328
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
           "DataId": 1013824,
           "Position": {
             "X": 441.30603,
@@ -83,8 +95,7 @@
             "Z": 218.12769
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,17 +103,45 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Comment": "Walk to fishing spot (it's nearby)",
+          "Comment": "Purchase bait",
+          "DataId": 1005422,
+          "Position": {
+            "X": -397.6349,
+            "Y": 3.099996,
+            "Z": 80.979614
+          },
+          "TerritoryId": 129,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263015
+          },
+          "ItemId": 29717,
+          "ItemCount": 10,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": { "Item": { "NotInInventory": false } },
+            "AetheryteShortcutIf": { "Item": { "NotInInventory": false } }
+          }
+        },
+        {
+          "Comment": "Go to fishing spot",
           "Position": {
             "X": 445.3245,
             "Y": -31.7062,
             "Z": 222.61751
           },
           "TerritoryId": 400,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
         },
         {
-          "Comment": "Fish for 1x Letter Puffer (Bait: Giant Crane Fly)",
+          "Comment": "Fish for 1x Letter Puffer\n Bait: Versatile Lure/Sky Faerie mooch\n  OR Metal Spinner or Red Balloon for Sky Faerie mooch\n  OR Giant Crane Fly",
+          "$": "Preset supports all mentioned baits. Will only purchase Versatile Lure. Metal Spinner requires Idyllshire access (player may not have this yet). Other baits require scrips.",
           "TerritoryId": 400,
           "InteractionType": "Fish",
           "ItemsToGather": [
