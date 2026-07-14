@@ -19,4 +19,7 @@ We allow you to create issues and pull requests with AI/LLM with the following r
  * Unless you are a maintainer, you may only have one AI-assisted/generated pull request open at a time.
  * If you reach the point where you feel unwilling or unable to do the above, please close your issue or pull request.
 
-Adapted from Homebrew's contributing guidelines. Please see their article [Responsible AI Usage](https://docs.brew.sh/Responsible-AI-Usage) for more advice
+Adapted from Homebrew's contributing guidelines. These articles also align with the position of this project regarding LLM submissions, i.e "pure 'vibe coding' will be rejected" and "you are responsible for what you commit".
+
+ * [Homebrew - Responsible AI Usage](https://github.com/Homebrew/brew/blob/9569699c928bfa1669a2a728dba2fe06cf7864eb/docs/Responsible-AI-Usage.md)
+ * [Jellyfin - LLM policies](https://github.com/jellyfin/jellyfin.org/blob/bef6e2d2f360557a221d7d8382156e4b62bf2d2b/docs/general/contributing/llm-policies.md)
