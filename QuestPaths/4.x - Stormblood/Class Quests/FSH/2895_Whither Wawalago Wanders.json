@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000857,
+          "Position": {
+            "X": -165.27,
+            "Y": 5.23383,
+            "Z": 164.294
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008204,
+          "Position": {
+            "X": 202.34985,
+            "Y": 25.40625,
+            "Z": 776.3026
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        }
+      ]
+    }
+  ]
+}
