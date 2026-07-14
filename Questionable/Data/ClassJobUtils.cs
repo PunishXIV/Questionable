@@ -106,7 +106,7 @@ internal sealed class ClassJobUtils
                 ? [gatherJob]
                 : [],
 
-            var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, null)
+            var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
         };
     }
 

@@ -15,11 +15,6 @@
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "$": "Alberic"
         },
         {

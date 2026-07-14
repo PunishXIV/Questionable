@@ -49,9 +49,6 @@
             "[Limsa Lominsa] Aetheryte Plaza"
           ],
           "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            },
             "AetheryteShortcutIf": {
               "InTerritory": [
                 129,

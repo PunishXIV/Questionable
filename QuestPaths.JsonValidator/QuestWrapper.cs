@@ -5,7 +5,7 @@ public class QuestWrapper
     public QuestWrapper(string manifestName)
     {
         ManifestName = manifestName;
-        ShortName = ManifestName.Split('/').Last().Replace(".json", "", StringComparison.InvariantCulture);
+        ShortName = ManifestName.Split('/')[^1].Replace(".json", "", StringComparison.InvariantCulture);
     }
 
     public string ManifestName { get; }

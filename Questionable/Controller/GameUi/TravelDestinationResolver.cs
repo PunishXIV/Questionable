@@ -10,7 +10,6 @@ using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 
 namespace Questionable.Controller.GameUi;
 
@@ -102,14 +101,15 @@ internal sealed class TravelDestinationResolver(
                 warpText = excelQuestion;
                 return true;
             }
-            else if (!string.IsNullOrEmpty(excelName) && GameFunctions.GameStringEquals(excelName, actualPrompt))
+
+            if (!string.IsNullOrEmpty(excelName) && GameFunctions.GameStringEquals(excelName, actualPrompt))
             {
                 warpId = entry.RowId;
                 warpText = excelName;
                 return true;
             }
-            else
-                logger.LogDebug("Ignoring prompt '{Prompt}'", excelQuestion);
+
+            logger.LogDebug("Ignoring prompt '{Prompt}'", excelQuestion);
         }
 
         warpId = null;

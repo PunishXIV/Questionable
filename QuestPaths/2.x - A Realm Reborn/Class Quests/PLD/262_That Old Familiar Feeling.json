@@ -1,7 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["Cacahuetes","ShermTank"],
-  "LastChecked": {"Username": "ShermTank", "Date": "2026-06-26"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,7 +23,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
@@ -181,12 +181,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1244
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -224,7 +219,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]

@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Interruptible": false,
   "LastChecked": {"Username": "Remu", "Date": "2026-06-22"},
   "QuestSequence": [
     {
@@ -37,12 +38,7 @@
               "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
             }
           ],
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "DataId": 2002312,

@@ -22,12 +22,7 @@
               "Answer": "TEXT_STMBDA312_02488_A1_000_014"
             }
           ],
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
         }
       ]
     },

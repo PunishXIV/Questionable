@@ -15,7 +15,7 @@ namespace Questionable.QuestPathGenerator;
 
 public static class Utils
 {
-    public static List<AdditionalText> RegisterSchemas(GeneratorExecutionContext context)
+    public static IReadOnlyList<AdditionalText> RegisterSchemas(GeneratorExecutionContext context)
     {
         AdditionalText commonAethernetShardFile =
             context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-aethernetshard.json");
@@ -33,36 +33,36 @@ public static class Utils
         SchemaRegistry.Global.Register(
             new(
                 "https://qstxiv.github.io/schema/common-aethernetshard.json"),
-            JsonSchema.FromText(commonAethernetShardFile.GetText()!.ToString()));
+            JsonSchema.FromText(commonAethernetShardFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new(
                 "https://qstxiv.github.io/schema/common-aetheryte.json"),
-            JsonSchema.FromText(commonAetheryteFile.GetText()!.ToString()));
+            JsonSchema.FromText(commonAetheryteFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new(
                 "https://qstxiv.github.io/schema/common-classjob.json"),
-            JsonSchema.FromText(commonClassJobFile.GetText()!.ToString()));
+            JsonSchema.FromText(commonClassJobFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new(
                 "https://qstxiv.github.io/schema/common-completionflags.json"),
-            JsonSchema.FromText(commonCompletionFlagsFile.GetText()!.ToString()));
+            JsonSchema.FromText(commonCompletionFlagsFile.GetText(context.CancellationToken)!.ToString()));
         SchemaRegistry.Global.Register(
             new("https://qstxiv.github.io/schema/common-vector3.json"),
-            JsonSchema.FromText(commonVector3File.GetText()!.ToString()));
+            JsonSchema.FromText(commonVector3File.GetText(context.CancellationToken)!.ToString()));
 
         if (gatheringSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
                 new(
                     "https://qstxiv.github.io/schema/gatheringlocation-v1.json"),
-                JsonSchema.FromText(gatheringSchemaFile.GetText()!.ToString()));
+                JsonSchema.FromText(gatheringSchemaFile.GetText(context.CancellationToken)!.ToString()));
         }
 
         if (questSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
                 new("https://qstxiv.github.io/schema/quest-v1.json"),
-                JsonSchema.FromText(questSchemaFile.GetText()!.ToString()));
+                JsonSchema.FromText(questSchemaFile.GetText(context.CancellationToken)!.ToString()));
         }
 
         List<AdditionalText?> jsonSchemaFiles =
@@ -79,7 +79,7 @@ public static class Utils
     }
 
     public static IEnumerable<(T, JsonNode)> GetAdditionalFiles<T>(GeneratorExecutionContext context,
-        List<AdditionalText> jsonSchemaFiles, JsonSchema jsonSchema, DiagnosticDescriptor invalidJson,
+        IReadOnlyList<AdditionalText> jsonSchemaFiles, JsonSchema jsonSchema, DiagnosticDescriptor invalidJson,
         Func<string, T> idParser)
     {
         foreach (AdditionalText? additionalFile in context.AdditionalFiles)
@@ -96,7 +96,7 @@ public static class Utils
 
             T id = idParser(name.Substring(0, name.IndexOf('_')));
 
-            SourceText? text = additionalFile.GetText();
+            SourceText? text = additionalFile.GetText(context.CancellationToken);
             if (text == null)
                 continue;
 
@@ -115,9 +115,7 @@ public static class Utils
             });
             if (evaluationResult.HasErrors)
             {
-                Diagnostic error = Diagnostic.Create(invalidJson,
-                    null,
-                    Path.GetFileName(additionalFile.Path));
+                Diagnostic error = Diagnostic.Create(invalidJson, location: null, Path.GetFileName(additionalFile.Path));
                 context.ReportDiagnostic(error);
                 continue;
             }
@@ -126,8 +124,8 @@ public static class Utils
         }
     }
 
-    public static List<MethodDeclarationSyntax> CreateMethods<TId, TQuest>(string prefix,
-        List<IGrouping<string, (TId, TQuest)>> partitions,
+    public static IReadOnlyList<MethodDeclarationSyntax> CreateMethods<TId, TQuest>(string prefix,
+        IReadOnlyList<IGrouping<string, (TId, TQuest)>> partitions,
         Func<List<(TId, TQuest)>, StatementSyntax[]> toInitializers)
     {
         List<MethodDeclarationSyntax> methods =

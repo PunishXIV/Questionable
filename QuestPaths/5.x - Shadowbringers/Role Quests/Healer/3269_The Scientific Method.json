@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] Musica Universalis Markets"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -116,11 +111,6 @@
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] Musica Universalis Markets"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 3270
         }
       ]

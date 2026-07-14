@@ -8,12 +8,12 @@ internal interface IPCUtils
 {
     internal sealed class IPCSubscriber_Common
     {
-        internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, false, true);
+        internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, suppressErrors: false, ignoreCache: true);
 
         internal static Version Version(string pluginName)
         {
             Version _version;
-            if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, false, true))
+            if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, suppressErrors: false, ignoreCache: true))
                 _version = dalamudPlugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
             else
                 _version = new(0, 0, 0, 0);

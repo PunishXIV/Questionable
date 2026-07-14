@@ -17,7 +17,6 @@
           "AetheryteShortcut": "Idyllshire",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 478
               ]
@@ -40,7 +39,6 @@
           "AetheryteShortcut": "Idyllshire",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 399
               ]
@@ -90,12 +88,7 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Idyllshire"
         }
       ]
     }

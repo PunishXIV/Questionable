@@ -5,11 +5,12 @@ using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
 using Mount = Questionable.Controller.Steps.Common.Mount;
+using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
@@ -104,7 +105,7 @@ internal static class RedeemRewardItems
             }
         }
 
-        return tasks.Count != 0 ? [new Mount.UnmountTask(), ..tasks] : tasks;
+        return tasks.Count != 0 ? [new Mount.UnmountTask(), .. tasks] : tasks;
     }
 
     internal sealed record Task(ItemReward ItemReward) : ITask

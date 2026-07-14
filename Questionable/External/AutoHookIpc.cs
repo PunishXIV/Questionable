@@ -48,10 +48,10 @@ internal sealed class AutoHookIpc : IAutoHookIpc
             // which DoFish handles by enabling AutoHook. We only need to know whether IPC succeeded.
             _isPluginEnabled();
             return true;
-        }, false, _logger, "AutoHook plugin is not available");
+        }, fallback: false, _logger, "AutoHook plugin is not available");
 
     public bool IsPluginEnabled() =>
-        IpcInvoke.SafeFunc(() => _isPluginEnabled(), false, _logger, "Unable to get AutoHook plugin state");
+        IpcInvoke.SafeFunc(() => _isPluginEnabled(), fallback: false, _logger, "Unable to get AutoHook plugin state");
 
     public bool SetPluginEnabled(bool enabled)
     {
@@ -60,11 +60,11 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _setPluginEnabled(enabled);
             return true;
-        }, false, _logger, "Unable to set AutoHook plugin state");
+        }, fallback: false, _logger, "Unable to set AutoHook plugin state");
     }
 
     public bool GetAutoStartFishing() =>
-        IpcInvoke.SafeFunc(() => _getAutoStartFishing(), false, _logger,
+        IpcInvoke.SafeFunc(() => _getAutoStartFishing(), fallback: false, _logger,
             "Unable to get AutoHook auto-start fishing state");
 
     public bool SetAutoStartFishing(bool enabled)
@@ -74,7 +74,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _setAutoStartFishing(enabled);
             return true;
-        }, false, _logger, "Unable to set AutoHook auto-start fishing state");
+        }, fallback: false, _logger, "Unable to set AutoHook auto-start fishing state");
     }
 
     public bool SetAutoGigState(bool enabled)
@@ -84,7 +84,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _setAutoGigState(enabled);
             return true;
-        }, false, _logger, "Unable to set AutoHook auto-gig state");
+        }, fallback: false, _logger, "Unable to set AutoHook auto-gig state");
     }
 
     public bool SetPreset(string presetName)
@@ -94,7 +94,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _setPreset(presetName);
             return true;
-        }, false, _logger, "Unable to set AutoHook preset");
+        }, fallback: false, _logger, "Unable to set AutoHook preset");
     }
 
     public bool SetPresetAutogig(string presetName)
@@ -104,7 +104,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _setPresetAutogig(presetName);
             return true;
-        }, false, _logger, "Unable to set AutoHook autogig preset");
+        }, fallback: false, _logger, "Unable to set AutoHook autogig preset");
     }
 
     public bool CreateAndSelectAnonymousPreset(string compressedPresetJson)
@@ -114,7 +114,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _createAndSelectAnonymousPreset(compressedPresetJson);
             return true;
-        }, false, _logger, "Unable to create and select anonymous AutoHook preset");
+        }, fallback: false, _logger, "Unable to create and select anonymous AutoHook preset");
     }
 
     public bool ImportAndSelectPreset(string compressedPresetJson)
@@ -124,7 +124,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _importAndSelectPreset(compressedPresetJson);
             return true;
-        }, false, _logger, "Unable to import and select AutoHook preset");
+        }, fallback: false, _logger, "Unable to import and select AutoHook preset");
     }
 
     public bool DeleteSelectedPreset()
@@ -134,7 +134,7 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _deleteSelectedPreset();
             return true;
-        }, false, _logger, "Unable to delete selected AutoHook preset");
+        }, fallback: false, _logger, "Unable to delete selected AutoHook preset");
     }
 
     public bool DeleteAllAnonymousPresets()
@@ -144,25 +144,25 @@ internal sealed class AutoHookIpc : IAutoHookIpc
         {
             _deleteAllAnonymousPresets();
             return true;
-        }, false, _logger, "Unable to delete anonymous AutoHook presets");
+        }, fallback: false, _logger, "Unable to delete anonymous AutoHook presets");
     }
 
     public bool SwapBaitById(uint baitId)
     {
         _logger.LogInformation("Swapping AutoHook bait by id {BaitId}", baitId);
-        return IpcInvoke.SafeFunc(() => _swapBaitById(baitId), false, _logger, "Unable to swap AutoHook bait by id");
+        return IpcInvoke.SafeFunc(() => _swapBaitById(baitId), fallback: false, _logger, "Unable to swap AutoHook bait by id");
     }
 
     public bool SwapBait(string baitNameOrId)
     {
         _logger.LogInformation("Swapping AutoHook bait {Bait}", baitNameOrId);
-        return IpcInvoke.SafeFunc(() => _swapBait(baitNameOrId), false, _logger, "Unable to swap AutoHook bait");
+        return IpcInvoke.SafeFunc(() => _swapBait(baitNameOrId), fallback: false, _logger, "Unable to swap AutoHook bait");
     }
 
     public bool SwapSwimbaitByIndex(byte index)
     {
         _logger.LogInformation("Swapping AutoHook swimbait slot {Index}", index);
-        return IpcInvoke.SafeFunc(() => _swapSwimbaitByIndex(index), false, _logger,
+        return IpcInvoke.SafeFunc(() => _swapSwimbaitByIndex(index), fallback: false, _logger,
             "Unable to swap AutoHook swimbait");
     }
 }

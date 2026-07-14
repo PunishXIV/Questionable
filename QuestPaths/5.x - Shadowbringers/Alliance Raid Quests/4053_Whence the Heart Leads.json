@@ -15,12 +15,7 @@
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Kholusia - Stilltide",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kholusia - Stilltide"
         }
       ]
     },

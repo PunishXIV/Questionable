@@ -21,9 +21,6 @@
             "[Gridania] Mih Khetto's Amphitheatre"
           ],
           "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            },
             "AetheryteShortcutIf": {
               "InTerritory": [
                 132,
@@ -48,11 +45,6 @@
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 970
         }
       ]

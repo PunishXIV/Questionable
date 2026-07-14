@@ -14,12 +14,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Labyrinthos - Aporia"
         }
       ]
     },

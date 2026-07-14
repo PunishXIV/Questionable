@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-04"},
+  "LastChecked": {"Username": "jigain", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 622,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
         }
       ]
     },

@@ -1,37 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 namespace Questionable.Controller.Steps;
-
-internal interface ITaskExecutor
-{
-    ITask CurrentTask { get; }
-    public InteractionProgressContext? ProgressContext { get; }
-
-    Type GetTaskType();
-
-    bool Start(ITask task);
-
-    bool ShouldInterruptOnDamage();
-
-    bool WasInterrupted();
-
-    ETaskResult Update();
-}
-
-internal interface IExtraTaskCreator : ITaskExecutor
-{
-    IEnumerable<ITask> CreateExtraTasks();
-}
-
-internal interface IStoppableTaskExecutor : ITaskExecutor
-{
-    void StopNow();
-}
-
-internal interface IDebugStateProvider : ITaskExecutor
-{
-    string? GetDebugState();
-}
 
 internal abstract class TaskExecutor<T> : ITaskExecutor
 where T : class, ITask

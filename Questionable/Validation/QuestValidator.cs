@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Questionable.Model;
+using Questionable.Domain;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using static Questionable.Utils.CacheUtils;
 using static Questionable.Utils.LocalizeShortcut;
@@ -115,7 +116,7 @@ internal sealed class QuestValidator
                 AlliedSociety = x.Key,
                 Type = EIssueType.QuestDisabled,
                 Severity = EIssueSeverity.None,
-                Description = _LF("{0} disabled quest(s)",x.Value)
+                Description = _LF("{0} disabled quest(s)", x.Value)
             });
     }
 }

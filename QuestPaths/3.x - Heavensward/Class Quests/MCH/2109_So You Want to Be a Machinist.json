@@ -20,11 +20,6 @@
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Skysteel Manufactory"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

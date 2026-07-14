@@ -72,8 +72,15 @@
       "Steps": [
         {
           "TerritoryId": 141,
-          "Comment": "Must clear Sil'dihn, talk to the foreman to queue",
-          "InteractionType": "WaitForManualProgress"
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Variant dungeon unsupported:\nLacking boss modules for path 1 bosses",
+          "DutyOptions": {
+            "ContentFinderConditionId": 868,
+            "Enabled": false,
+            "Notes": [
+              "Lacking boss modules for path 1 bosses"
+            ]
+          }
         }
       ]
     },
@@ -110,12 +117,7 @@
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

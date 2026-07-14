@@ -18,11 +18,6 @@
             "[Old Sharlayan] Aetheryte Plaza",
             "[Old Sharlayan] The Studium"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {

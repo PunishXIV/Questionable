@@ -16,12 +16,7 @@
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
           "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     },
@@ -43,12 +38,7 @@
           "KillEnemyDataIds": [
             7213
           ],
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Fringes - Peering Stones"
         }
       ]
     },
@@ -65,12 +55,7 @@
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
           "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     }

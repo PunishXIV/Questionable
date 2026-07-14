@@ -1,0 +1,142 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1049441,
+          "Position": {
+            "X": -215.86938,
+            "Y": 34.99913,
+            "Z": -627.2221
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1049439,
+          "Position": {
+            "X": -219.78186,
+            "Y": 34.999146,
+            "Z": -647.54144
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1049440,
+          "Position": {
+            "X": -285.32843,
+            "Y": 37.00003,
+            "Z": -574.15125
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "TerritoryId": 1191,
+          "StopDistance": 5,
+          "InteractionType": "Instruction",
+          "Comment": "Purchase a Popper Lure (or 5) from:\n* Scrip Exchange (Purple Gatherer's)\n* Mesouaidonque (Cosmocredit)\nThen click Skip"
+        },
+        {
+          "Position": {
+            "X": -692.9564,
+            "Y": -13.798596,
+            "Z": 611.2574
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "TerritoryId": 1191,
+          "InteractionType": "Fish",
+          "AetheryteShortcut": "Heritage Found - Electrope Strike",
+          "ItemsToGather": [
+            {
+              "ItemId": 43916,
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 43855,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.56995,
+            "Y": -14,
+            "Z": 12.191956
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047096,
+          "Position": {
+            "X": 190.615,
+            "Y": -14,
+            "Z": 12.4277
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGLA507_05002_Q2_000_000",
+              "Answer": "TEXT_KINGLA507_05002_A2_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

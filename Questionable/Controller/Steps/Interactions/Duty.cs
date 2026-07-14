@@ -8,11 +8,13 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.External;
 using Questionable.Functions;
 using Questionable.Gear;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using static Questionable.Controller.Steps.ITaskExecutor;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Duty
@@ -29,15 +31,26 @@ internal static class Duty
             bool allowUnsync = step.DutyOptions.CanUnsync is not false;
             AutoDutyIpc.DutyMode dutyMode = AutoDutyIpc.DutyMode.Support;
             if (allowUnsync && quest.Id is QuestId { Value: >= 357 and <= 360 })
-                dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
+                dutyMode = AutoDutyIpc.DutyMode.Regular;
+            else if (quest.Id is QuestId { Value: 4646 or 4733 or 4789 or 5441 })
+            {
+                if (autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions))
+                    dutyMode = AutoDutyIpc.DutyMode.Variant;
+                else
+                {
+                    yield return new OpenVariantDFTask(step.DutyOptions.ContentFinderConditionId);
+                    yield break;
+                }
+            }
             else if (allowUnsync && configuration.Duties.RunUnsynced)
             {
                 unsafe
                 {
                     if (territoryData.TryGetContentFinderCondition(step.DutyOptions.ContentFinderConditionId,
                                                                    out TerritoryData.ContentFinderConditionData? cfcData) &&
-                            PlayerState.Instance()->CurrentLevel - 20 >= cfcData.ClassJobLevelSync)
-                        dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
+                            PlayerState.Instance()->CurrentLevel - 20 >= cfcData.ClassJobLevelSync &&
+                            !cfcData.ContentType.Equals(EContentType.Trials))
+                        dutyMode = AutoDutyIpc.DutyMode.Regular;
                 }
             }
 
@@ -124,7 +137,7 @@ internal static class Duty
                     currentItemLevel - 200 >= cfcData.RequiredItemLevel &&
                     !cfcData.ContentType.Equals(EContentType.Trials))
                 {
-                    dutyMode = AutoDutyIpc.DutyMode.UnsyncRegular;
+                    dutyMode = AutoDutyIpc.DutyMode.Regular;
                 }
             }
 
@@ -177,6 +190,30 @@ internal static class Duty
                 return false;
 
             gameFunctions.OpenDutyFinder(Task.ContentFinderConditionId);
+            return true;
+        }
+
+        public override ETaskResult Update() => ETaskResult.TaskComplete;
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record OpenVariantDFTask(uint ContentFinderConditionId) : ITask
+    {
+        public override string ToString() => $"OpenVariantDF({ContentFinderConditionId})";
+    }
+
+    internal sealed class OpenVariantDFExecutor
+    (
+        GameFunctions gameFunctions,
+        ICondition condition) : TaskExecutor<OpenVariantDFTask>
+    {
+        protected override bool Start()
+        {
+            if (condition[ConditionFlag.InDutyQueue])
+                return false;
+
+            gameFunctions.OpenVariantDF();
             return true;
         }
 

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Questionable.Data;
 using Questionable.Functions;
 using Questionable.Model.Questing;
-using Quest = Questionable.Model.Quest;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -152,7 +152,7 @@ internal static class UnequipItem
                     InventoryType.EquippedItems, equippedSlot, armoryType, targetSlot);
 
                 int result = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, equippedSlot,
-                    armoryType, targetSlot, true);
+                    armoryType, targetSlot, a6: true); // TODO define a6
                 logger.LogInformation("MoveItemSlot result: {Result}", result);
                 return;
             }

@@ -16,12 +16,7 @@
           "StopDistance": 5,
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "South Shroud - Camp Tranquil"
         }
       ]
     },

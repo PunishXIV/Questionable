@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Questionable.Model.Common.Converter;
+﻿using Questionable.Model.Common.Converter;
 namespace Questionable.Model.Questing.Converter;
 
 public sealed class InteractionTypeConverter() : EnumConverter<EInteractionType>;

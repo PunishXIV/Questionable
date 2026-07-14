@@ -15,12 +15,7 @@
           "TerritoryId": 139,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -39,12 +34,7 @@
           "InteractionType": "Emote",
           "Emote": "poke",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -80,12 +70,7 @@
           "TerritoryId": 139,
           "InteractionType": "UseItem",
           "ItemId": 2000676,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -104,12 +89,7 @@
           "TerritoryId": 139,
           "InteractionType": "UseItem",
           "ItemId": 2000676,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     },
@@ -126,12 +106,7 @@
           "TerritoryId": 139,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
         }
       ]
     }

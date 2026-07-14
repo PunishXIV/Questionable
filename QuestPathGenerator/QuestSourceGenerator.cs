@@ -30,7 +30,7 @@ public class QuestSourceGenerator : ISourceGenerator
         "Invalid quest file {0}",
         nameof(QuestSourceGenerator),
         DiagnosticSeverity.Error,
-        true);
+        isEnabledByDefault: true);
 
     public void Initialize(GeneratorInitializationContext context)
     {
@@ -49,8 +49,8 @@ public class QuestSourceGenerator : ISourceGenerator
     [Conditional("ASSEMBLY")]
     private void GenerateQuestSource(GeneratorExecutionContext context, AdditionalText jsonSchemaFile)
     {
-        JsonSchema questSchema = JsonSchema.FromText(jsonSchemaFile.GetText()!.ToString());
-        List<AdditionalText> jsonSchemaFiles = Utils.RegisterSchemas(context);
+        JsonSchema questSchema = JsonSchema.FromText(jsonSchemaFile.GetText(context.CancellationToken)!.ToString());
+        IReadOnlyList<AdditionalText> jsonSchemaFiles = Utils.RegisterSchemas(context);
 
         List<(ElementId, QuestRoot)> quests = [];
         foreach ((ElementId id, JsonNode node) in Utils.GetAdditionalFiles(context, jsonSchemaFiles, questSchema, InvalidJson,
@@ -71,10 +71,10 @@ public class QuestSourceGenerator : ISourceGenerator
 
         List<IGrouping<string, (ElementId, QuestRoot)>> partitionedQuests = quests
             .OrderBy(x => x.Item1.Value)
-            .GroupBy(x => $"LoadQuests{x.Item1.Value / 50}")
+            .GroupBy(x => $"LoadQuests{x.Item1.Value / 50}", StringComparer.Ordinal)
             .ToList();
 
-        List<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadQuests", partitionedQuests, CreateInitializer);
+        IReadOnlyList<MethodDeclarationSyntax> methods = Utils.CreateMethods("LoadQuests", partitionedQuests, CreateInitializer);
 
         CompilationUnitSyntax code =
             CompilationUnit()
@@ -208,9 +208,9 @@ public class QuestSourceGenerator : ISourceGenerator
                                 SyntaxKind.ObjectInitializerExpression,
                                 SeparatedList<ExpressionSyntax>(
                                     SyntaxNodeList(
-                                        Assignment<int?>(nameof(QuestSequence.Sequence), sequence.Sequence, null)
+                                        Assignment<int?>(nameof(QuestSequence.Sequence), sequence.Sequence, defaultValue: null)
                                             .AsSyntaxNodeOrToken(),
-                                        Assignment(nameof(QuestSequence.Comment), sequence.Comment, null)
+                                        Assignment(nameof(QuestSequence.Comment), sequence.Comment, defaultValue: null)
                                             .AsSyntaxNodeOrToken(),
                                         AssignmentList(nameof(QuestSequence.Steps), sequence.Steps)
                                             .AsSyntaxNodeOrToken()))))),

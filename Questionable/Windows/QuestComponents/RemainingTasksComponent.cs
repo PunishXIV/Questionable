@@ -2,17 +2,18 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Controller;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
-internal sealed class RemainingTasksComponent(QuestController questController, GatheringController gatheringController)
+internal sealed class RemainingTasksComponent(
+    QuestController questController,
+    GatheringController gatheringController,
+    Configuration configuration)
 {
-    private readonly GatheringController _gatheringController = gatheringController;
-    private readonly QuestController _questController = questController;
-
     public void Draw()
     {
-        IList<string> gatheringTasks = _gatheringController.GetRemainingTaskNames();
+        if (configuration.General.HideRemainingTasks)
+            return;
+        IList<string> gatheringTasks = gatheringController.GetRemainingTaskNames();
         if (gatheringTasks.Count > 0)
         {
             ImGui.Separator();
@@ -24,7 +25,7 @@ internal sealed class RemainingTasksComponent(QuestController questController, G
         }
         else
         {
-            IList<string> remainingTasks = _questController.GetRemainingTaskNames();
+            IList<string> remainingTasks = questController.GetRemainingTaskNames();
             if (remainingTasks.Count > 0)
             {
                 ImGui.Separator();

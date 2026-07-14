@@ -8,6 +8,7 @@ using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
 using static Questionable.Utils.LocalizeShortcut;
@@ -229,6 +230,7 @@ internal sealed class Configuration : IPluginConfiguration
         public string ReportMessage { get; set; } = "";
         public string DisplayName { get; set; } = "Anonymous";
         public string Language { get; set; } = "en";
+        public bool HideRemainingTasks { get; set; }
     }
 
     internal sealed class StopConfiguration
@@ -289,6 +291,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ShowDirector { get; set; }
         public bool ShowActionManager { get; set; }
         public bool ShowNewGamePlus { get; set; }
+        public bool ShowHoveredItem { get; set; }
         public bool DisableAutoDutyBareMode { get; set; }
         public bool SkipAetherCurrents { get; set; }
         public bool SkipClassJobQuests { get; set; }
@@ -342,38 +345,15 @@ internal sealed class Configuration : IPluginConfiguration
         public DateTimeOffset? LastCheck { get; set; }
     }
     #endregion
-
-    internal enum EGearsetUpdateSource
+    public sealed class ElementIdNConverter : JsonConverter<ElementId>
     {
-        Vanilla,
-        Stylist
-    }
+        public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
 
-    internal enum ECombatModule
-    {
-        None,
-        BossMod,
-        WrathCombo,
-        RotationSolverReborn
-    }
-}
-
-public sealed class ElementIdNConverter : JsonConverter<ElementId>
-{
-    public override void WriteJson(JsonWriter writer, ElementId? value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
-
-    public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
-        bool hasExistingValue, JsonSerializer serializer)
-    {
-        string? value = reader.Value?.ToString();
-        return value != null ? ElementId.FromString(value) : null;
-    }
-}
-
-internal static class ConfigurationExtensions
-{
-    internal static void Save(this Configuration configuration)
-    {
-        Svc.PluginInterface.SavePluginConfig(configuration);
+        public override ElementId? ReadJson(JsonReader reader, Type objectType, ElementId? existingValue,
+            bool hasExistingValue, JsonSerializer serializer)
+        {
+            string? value = reader.Value?.ToString();
+            return value != null ? ElementId.FromString(value) : null;
+        }
     }
 }

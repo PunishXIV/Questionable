@@ -21,7 +21,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 128
               ]
@@ -78,11 +77,6 @@
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "Fly": true
         },
         {

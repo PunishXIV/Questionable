@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "Remu", "Date": "2026-06-21"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 146,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
         }
       ]
     },

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
   "Comment": "Will buy 1x Princess Trout",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -44,9 +45,6 @@
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           },
           "DataId": 1001016,
@@ -76,11 +74,6 @@
             "[Limsa Lominsa] The Aftcastle",
             "[Limsa Lominsa] Fishermen's Guild"
           ],
-          "SkipConditions": {
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1111
         }

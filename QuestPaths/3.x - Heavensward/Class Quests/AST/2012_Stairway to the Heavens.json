@@ -23,7 +23,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 419
               ]
@@ -125,12 +124,7 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
         },
         {
           "DataId": 1014980,
@@ -143,12 +137,7 @@
           "InteractionType": "Interact",
           "Fly": false,
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "StopDistance": 4,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "StopDistance": 4
         }
       ]
     },
@@ -165,12 +154,7 @@
           "TerritoryId": 153,
           "InteractionType": "Interact",
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "StopDistance": 4,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "StopDistance": 4
         }
       ]
     },
@@ -189,11 +173,6 @@
           "StopDistance": 5,
           "Fly": true,
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "NextQuestId": 2013
         }
       ]

@@ -15,12 +15,7 @@
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
           "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     },
@@ -41,12 +36,7 @@
           "AethernetShortcut": [
             "[Rhalgr's Reach] Aetheryte Plaza",
             "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -80,12 +70,7 @@
           "AethernetShortcut": [
             "[Rhalgr's Reach] Aetheryte Plaza",
             "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

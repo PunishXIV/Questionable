@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Lumina.Text.ReadOnly;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
@@ -33,7 +33,7 @@ internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValida
                     Step = StepId,
                     Type = EIssueType.InvalidChatMessage,
                     Severity = EIssueSeverity.Error,
-                    Description = _LF("Invalid chat message: {0}",excelString.Value)
+                    Description = _LF("Invalid chat message: {0}", excelString.Value)
                 };
             }
         }

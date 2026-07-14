@@ -18,14 +18,14 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.Utils;
-using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 using static Questionable.Utils.LocalizeShortcut;
+using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Windows.QuestComponents;
 
@@ -173,6 +173,13 @@ internal sealed class CreationUtilsComponent
                     ImGui.Text($"A2: {actionManager->CastTimeElapsed} / {actionManager->CastTimeTotal}");
                     ImGui.Text($"PC: {questController.TaskQueue.CurrentTaskExecutor?.ProgressContext}");
                 }
+
+                if (configuration.Advanced.ShowHoveredItem)
+                {
+                    ulong hoveredItemId = gameGui.HoveredItem;
+                    string hq = hoveredItemId > 1000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
+                    ImGui.Text(_LF("Hovered Item: {0}", hoveredItemId % 1000000) + hq);
+                }
             }
         }
 
@@ -189,13 +196,6 @@ internal sealed class CreationUtilsComponent
             DrawInteractionButtons();
             ImGui.SameLine();
             DrawCopyButton();
-        }
-
-        ulong hoveredItemId = gameGui.HoveredItem;
-        if (hoveredItemId != 0)
-        {
-            ImGui.Separator();
-            ImGui.Text(_LF("Hovered Item: {0}", hoveredItemId));
         }
     }
 
@@ -296,7 +296,7 @@ internal sealed class CreationUtilsComponent
                 {
                     cameraFunctions.Face(target.Position);
                     ulong result = TargetSystem.Instance()->InteractWithObject(
-                        (GameObject*)target.Address, false);
+                        (GameObject*)target.Address, checkLineOfSight: false);
                     logger.LogInformation("Interaction Result: {Result}", result);
                 }
             }

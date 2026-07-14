@@ -23,7 +23,7 @@ internal sealed class OneTimeSetupWindow : LWindow
         IDalamudPluginInterface pluginInterface,
         ILogger<OneTimeSetupWindow> logger)
         : base(_L("Questionable Setup") + "###QuestionableOneTimeSetup",
-            ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoSavedSettings, true)
+            ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoSavedSettings, forceMainWindow: true)
     {
         _pluginConfigComponent = pluginConfigComponent;
         _configuration = configuration;

@@ -22,13 +22,9 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -48,12 +44,7 @@
           "TerritoryId": 141,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
         }
       ],
       "$": "Possible consideration to have other quests at the Bonfire (Waking the Spirit, Melding Materia Muchly, Marvelously Mutable Materia) as NextQuestIds?"

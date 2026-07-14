@@ -16,12 +16,7 @@
           "TerritoryId": 614,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Yanxia - Namai"
         }
       ]
     },

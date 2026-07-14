@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1048626,
+          "Position": {
+            "X": 285.84717,
+            "Y": -172.55313,
+            "Z": -476.55457
+          },
+          "TerritoryId": 1187,
+          "StopDistance": 5,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 263206
+          },
+          "ItemId": 43852,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -782.90204,
+            "Y": 50.19064,
+            "Z": 90.3024
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "StopDistance": 1
+        },
+        {
+          "Position": {
+            "X": -784.56683,
+            "Y": 48.99557,
+            "Z": 82.9896
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1
+        },
+        {
+          "TerritoryId": 1187,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 43905,
+              "ItemCount": 6,
+              "Collectability": 433,
+              "FishingOptions": {
+                "BaitId": 43852,
+                "HookType": { "Normal": { "Strong": true } }
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1047097,
+          "Position": {
+            "X": 190.598,
+            "Y": -14,
+            "Z": 12.218
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
+        }
+      ]
+    }
+  ]
+}

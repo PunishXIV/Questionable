@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "catsume", "Date": "2026-06-13"},
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -17,12 +17,7 @@
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

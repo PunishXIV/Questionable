@@ -11,8 +11,9 @@ using Dalamud.Plugin.Services;
 using ECommons.DalamudServices;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
@@ -50,7 +51,7 @@ internal sealed class QuestJournalUtils
 
         if (label != nameof(PriorityWindow))
         {
-            using (ImRaii.Disabled(true))
+            using (ImRaii.Disabled(disabled: true))
             {
                 var _ = ImGui.MenuItem(_L("Priority Quests"));
             }
@@ -74,7 +75,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        using (ImRaii.Disabled(true))
+        using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Quest"));
         }
@@ -95,7 +96,7 @@ internal sealed class QuestJournalUtils
 
             if (ImGui.MenuItem(_L("Locate quest issuer")))
             {
-                MoveToQuestLocation(questInfo, teleport:false);
+                MoveToQuestLocation(questInfo, teleport: false);
             }
 
             bool openInQuestMap = commandManager.Commands.ContainsKey("/questinfo");
@@ -120,7 +121,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        using (ImRaii.Disabled(true))
+        using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Stop"));
         }
@@ -140,7 +141,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        using (ImRaii.Disabled(true))
+        using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Path data"));
         }
@@ -198,27 +199,27 @@ internal sealed class QuestJournalUtils
 
     public void MoveToQuestLocation(IQuestInfo questInfo, bool teleport = true)
     {
-            var location = ((QuestInfo)questInfo).IssuerLocation;
-            Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
-            var mapLink = new MapLinkPayload(
-                location.Territory.RowId,
-                location.Map.RowId,
-                location.Game.X,
-                location.Game.Z
-            );
-            var _ = gameGui.OpenMapWithMapLink(mapLink);
-            if (!teleport)
-                return;
-            if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
-                movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
-                {
-                    Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId),
-                    Sprint = true,
-                    StopDistance = 20f,
-                    VerticalStopDistance = 5f,
-                });
-            else
-                if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
-                    aetheryteFunctions.TeleportAetheryte(aetheryte);
+        var location = ((QuestInfo)questInfo).IssuerLocation;
+        Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
+        var mapLink = new MapLinkPayload(
+            location.Territory.RowId,
+            location.Map.RowId,
+            location.Game.X,
+            location.Game.Z
+        );
+        var _ = gameGui.OpenMapWithMapLink(mapLink);
+        if (!teleport)
+            return;
+        if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
+            movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+            {
+                Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId),
+                Sprint = true,
+                StopDistance = 20f,
+                VerticalStopDistance = 5f,
+            });
+        else
+            if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
+                aetheryteFunctions.TeleportAetheryte(aetheryte);
     }
 }

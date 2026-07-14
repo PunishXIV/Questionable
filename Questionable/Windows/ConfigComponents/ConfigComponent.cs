@@ -11,9 +11,9 @@ namespace Questionable.Windows.ConfigComponents;
 
 internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration)
 {
-    protected const string DutyClipboardSeparator = ";";
-    protected const string DutyWhitelistPrefix = "+";
-    protected const string DutyBlacklistPrefix = "-";
+    protected const char DutyClipboardSeparator = ';';
+    protected const char DutyWhitelistPrefix = '+';
+    protected const char DutyBlacklistPrefix = '-';
 
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
 
@@ -66,7 +66,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
         if (level == 0)
             return string.Empty;
 
-        return $"{(includePrefix ? SeIconChar.LevelEn.ToIconString() : string.Empty)}{FormatLevel(level / 10, false)}{(SeIconChar.Number0 + level % 10).ToIconChar()}";
+        return $"{(includePrefix ? SeIconChar.LevelEn.ToIconString() : string.Empty)}{FormatLevel(level / 10, includePrefix: false)}{(SeIconChar.Number0 + level % 10).ToIconChar()}";
     }
 
     protected static void DrawNotes(bool enabledByDefault, IEnumerable<string> notes)

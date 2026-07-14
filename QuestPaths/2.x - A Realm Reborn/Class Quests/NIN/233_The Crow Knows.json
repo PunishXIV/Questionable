@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
+  "Interruptible": false,
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,10 +16,7 @@
           "TerritoryId": 134,
           "Fly": true,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
         }
       ]
     },
@@ -35,10 +33,7 @@
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
         }
       ]
     },
@@ -89,7 +84,6 @@
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true },
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
             }

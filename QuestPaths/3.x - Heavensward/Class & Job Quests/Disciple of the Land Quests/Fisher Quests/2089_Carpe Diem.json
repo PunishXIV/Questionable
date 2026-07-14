@@ -1,0 +1,149 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.358,
+            "Y": 15,
+            "Z": 24.3203
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Forgotten Knight"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013824,
+          "Position": {
+            "X": 441.313,
+            "Y": -29.3427,
+            "Z": 218.143
+          },
+          "TerritoryId": 400,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013250,
+          "Position": {
+            "X": 100.358,
+            "Y": 15,
+            "Z": 24.3203
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Forgotten Knight"]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1011228,
+          "Position": {
+            "X": 501.53958,
+            "Y": 212.58333,
+            "Z": 718.69556
+          },
+          "TerritoryId": 397,
+          "Fly": true,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262151
+          },
+          "ItemId": 12704,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1013827,
+          "Position": {
+            "X": -253.07086,
+            "Y": -185.13464,
+            "Z": 691.5845
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1013829,
+          "Position": {
+            "X": 420.24866,
+            "Y": -186.51733,
+            "Z": 814.20605
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Fish for 1x Catkiller\nThis fish is only available during Clear Skies or Fair Skies weather.\nAutohook will wait until in the right weather before autocasting",
+          "Position": {
+            "X": 417.26984,
+            "Y": -187.08115,
+            "Z": 827.8439
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Fish",
+          "StopDistance": 0.25,
+          "ItemsToGather": [
+            {
+              "ItemId": 12829,
+              "ItemCount": 1,
+              "FishingOptions": {
+                "BaitId": 12704,
+                "Preset": "AH6_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"
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1013830,
+          "Position": {
+            "X": 400.77,
+            "Y": -123.263,
+            "Z": 674.971
+          },
+          "TerritoryId": 401,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

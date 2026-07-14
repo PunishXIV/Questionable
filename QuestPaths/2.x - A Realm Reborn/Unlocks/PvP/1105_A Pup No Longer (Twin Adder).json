@@ -14,12 +14,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -66,12 +61,7 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "TargetTerritoryId": 250,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
         },
         {
           "TerritoryId": 250,

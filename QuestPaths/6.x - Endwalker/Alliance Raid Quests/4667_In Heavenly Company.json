@@ -48,12 +48,7 @@
           "TerritoryId": 156,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

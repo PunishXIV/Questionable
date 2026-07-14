@@ -1,0 +1,173 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038500,
+          "Position": {
+            "X": -355.96286,
+            "Y": 21.84602,
+            "Z": -93.114334
+          },
+          "TerritoryId": 962,
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1040917,
+          "Position": {
+            "X": -383.477,
+            "Y": 21.8,
+            "Z": -125.749
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1039321,
+          "Position": {
+            "X": -365.38217,
+            "Y": 21.84602,
+            "Z": -104.60672
+          },
+          "TerritoryId": 962,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        },
+        {
+          "DataId": 1039239,
+          "Position": {
+            "X": -346.27057,
+            "Y": 21.84602,
+            "Z": -81.91817
+          },
+          "TerritoryId": 962,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
+        },
+        {
+          "DataId": 1040912,
+          "Position": {
+            "X": -279.2291,
+            "Y": 21.84602,
+            "Z": -137.7259
+          },
+          "TerritoryId": 962,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Sprint": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1040913,
+          "Position": {
+            "X": -288.7602,
+            "Y": 21.84602,
+            "Z": -149.0461
+          },
+          "TerritoryId": 962,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1038565,
+          "Position": {
+            "X": -297.5052,
+            "Y": 21.946018,
+            "Z": -165.85034
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1038500,
+          "Position": {
+            "X": -355.96286,
+            "Y": 21.84602,
+            "Z": -93.114334
+          },
+          "TerritoryId": 962,
+          "StopDistance": 1,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1041423,
+          "Position": {
+            "X": -85.2522,
+            "Y": -13.777,
+            "Z": 121.690674
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Scholar's Harbor"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2012479,
+          "Position": {
+            "X": -401.23596,
+            "Y": 20.798035,
+            "Z": -116.746826
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Old Sharlayan] Scholar's Harbor","[Old Sharlayan] The Studium"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038500,
+          "Position": {
+            "X": -357.831,
+            "Y": 21.846,
+            "Z": -91.3111
+          },
+          "TerritoryId": 962,
+          "StopDistance": 5,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

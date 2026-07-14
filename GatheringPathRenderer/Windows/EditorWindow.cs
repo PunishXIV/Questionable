@@ -323,7 +323,7 @@ internal sealed class EditorWindow : Window
         List<string> seen = [];
         count = 0;
         Dictionary<uint, Tuple<string, string, bool, float, bool>> output = [];
-        foreach (GatheringPoint _point in gatheringPoints.OrderBy(x => x.PlaceName.Value.Name.ToMacroString()))
+        foreach (GatheringPoint _point in gatheringPoints.OrderBy(x => x.PlaceName.Value.Name.ToMacroString(), StringComparer.Ordinal))
         {
             if (_point.GatheringPointBase.RowId >= 653 && _point.GatheringPointBase.RowId <= 680) continue; // obsolete skybuilders stuff
             bool alreadyAdded = false;
@@ -380,7 +380,9 @@ internal sealed class EditorWindow : Window
         }
         if (!shownNone)
         {
-            IOrderedEnumerable<Tuple<string, string, bool, float, bool>> sorted = sortByDistance ? output.Values.OrderBy(t => t.Item4) : output.Values.OrderBy(t => t.Item1);
+            IOrderedEnumerable<Tuple<string, string, bool, float, bool>> sorted = sortByDistance ?
+                output.Values.OrderBy(t => t.Item4) :
+                output.Values.OrderBy(t => t.Item1, StringComparer.Ordinal);
             foreach ((string line, string coords, bool orange, float distance, bool alreadyAdded) in sorted)
             {
                 if (alreadyAdded)
@@ -416,16 +418,4 @@ internal sealed class EditorWindow : Window
         Miner,
         Botanist
     }
-}
-
-internal sealed class LocationOverride
-{
-    public int? MinimumAngle { get; set; }
-    public int? MaximumAngle { get; set; }
-    public float? MinimumDistance { get; set; }
-    public float? MaximumDistance { get; set; }
-
-    public bool IsCone() => MinimumAngle != null && MaximumAngle != null && MinimumAngle != MaximumAngle;
-
-    public bool NeedsSave() => (MinimumAngle != null && MaximumAngle != null) || (MinimumDistance != null && MaximumDistance != null);
 }

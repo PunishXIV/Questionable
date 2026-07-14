@@ -23,7 +23,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 419
               ]
@@ -46,12 +45,7 @@
           "InteractionType": "Interact",
           "StopDistance": 5,
           "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
         }
       ]
     },
@@ -69,12 +63,7 @@
           "InteractionType": "Interact",
           "Fly": true,
           "StopDistance": 5,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
         }
       ]
     },
@@ -119,12 +108,7 @@
             }
           ],
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },

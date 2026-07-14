@@ -20,7 +20,7 @@ internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILo
         pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
 #pragma warning restore CA1823 // Avoid unused private fields
 
-    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), false);
+    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), fallback: false);
 
     public bool Teleport(string destination)
     {

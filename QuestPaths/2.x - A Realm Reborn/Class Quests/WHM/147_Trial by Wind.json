@@ -4,6 +4,7 @@
     "Cacahuetes",
     "liza"
   ],
+  "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-06-20"},
   "QuestSequence": [
     {
@@ -25,7 +26,6 @@
           "InteractionType": "AcceptQuest",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 133
               ]

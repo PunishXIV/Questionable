@@ -4,6 +4,9 @@ update_quest_checked.py
 
 Reads a JSON array of quest completion entries and updates the LastChecked
 field in each matching quest file found in a directory tree.
+
+Authored with LLM assistance, changes must be reviewed and owned by a human.
+Initial version reviewed and owned by @alydevs
 """
 
 import argparse
@@ -30,7 +33,7 @@ def find_quest_file(quest_id: str, search_dir: Path) -> tuple[Path | None, bool]
 
     # Second pass: prefix match (filename starts with quest_id)
     for candidate in search_dir.rglob("*.json"):
-        if candidate.name.startswith(quest_id):
+        if candidate.name.startswith(quest_id[:5]):
             return candidate, False
 
     return None, False
@@ -56,7 +59,20 @@ def process_entry(entry: dict, search_dir: Path, username: str, backup_suffix: s
         return False
 
     if not exact:
-        print(f"[WARN] Exact match not found for '{quest_id}'; using '{path.name}' (prefix match)")
+        desired_name = f"{quest_id}.json"
+        new_path = path.with_name(desired_name)
+        print(f"[WARN] Exact match not found for '{quest_id}'; renaming '{path.name}' -> '{desired_name}' (prefix match)")
+        if new_path.exists() and new_path != path:
+            print(f"[ERROR] Cannot rename '{path.name}' to '{desired_name}': target already exists", file=sys.stderr)
+            return False
+        if not dry_run:
+            try:
+                path = path.rename(new_path)
+            except OSError as e:
+                print(f"[ERROR] Failed to rename '{path}' -> '{new_path}': {e}", file=sys.stderr)
+                return False
+        else:
+            path = new_path
 
     # Optionally back up the file before modifying
     if backup_suffix:

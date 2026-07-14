@@ -1,18 +1,13 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "FalconTaterz",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-10"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
           "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DataId": 1001285,
           "Position": {
             "X": -68.77246,

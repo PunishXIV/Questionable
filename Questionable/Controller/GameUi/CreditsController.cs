@@ -53,6 +53,6 @@ internal sealed class CreditsController : IDisposable
     {
         _logger.LogInformation("Closing CreditPlayer");
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
-        addon->Close(true);
+        addon->Close(fireCallback: true);
     }
 }

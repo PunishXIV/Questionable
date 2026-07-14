@@ -15,6 +15,7 @@ using Dalamud.Utility;
 using ECommons.ImGuiMethods;
 using Questionable.Controller;
 using Questionable.External;
+using Questionable.Model.Common;
 using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
@@ -33,37 +34,29 @@ internal sealed class PluginConfigComponent
     [
         new("vnavmesh",
             "vnavmesh",
-            _L("""
-            vnavmesh handles the navigation within a zone, moving
-            your character to the next quest-related objective.
-            """),
+            _L("vnavmesh handles the navigation within a zone, moving\nyour character to the next quest-related objective."),
             new("https://github.com/awgil/ffxiv_navmesh/"),
             new("https://puni.sh/api/repository/veyn"),
             "/vnav"),
         new("Lifestream",
             "Lifestream",
-            _L("""
-            Used to travel to aethernet shards in cities.
-            """),
+            _L("Used to travel to aethernet shards in cities."),
             new("https://github.com/NightmareXIV/Lifestream"),
             new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
             "/lifestream"),
         new("TextAdvance",
             "TextAdvance",
-            _L("""
-            Automatically accepts and turns in quests, skips cutscenes
-            and dialogue.
-            """),
+            _L("Automatically accepts and turns in quests, skips cutscenes and dialogue."),
             new("https://github.com/NightmareXIV/TextAdvance"),
             new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
             "/at c")
     ];
 
-    private static readonly ReadOnlyDictionary<Configuration.ECombatModule, PluginInfo> CombatPlugins =
-        new Dictionary<Configuration.ECombatModule, PluginInfo>
+    private static readonly ReadOnlyDictionary<ECombatModule, PluginInfo> CombatPlugins =
+        new Dictionary<ECombatModule, PluginInfo>
         {
             {
-                Configuration.ECombatModule.BossMod,
+                ECombatModule.BossMod,
                 new("Boss Mod (VBM)",
                     "BossMod",
                     string.Empty,
@@ -72,7 +65,7 @@ internal sealed class PluginConfigComponent
                     "/vbm")
             },
             {
-                Configuration.ECombatModule.WrathCombo,
+                ECombatModule.WrathCombo,
                 new("Wrath Combo",
                     "WrathCombo",
                     string.Empty,
@@ -81,7 +74,7 @@ internal sealed class PluginConfigComponent
                     "/wrath")
             },
             {
-                Configuration.ECombatModule.RotationSolverReborn,
+                ECombatModule.RotationSolverReborn,
                 new("Rotation Solver Reborn",
                     "RotationSolver",
                     string.Empty,
@@ -101,9 +94,7 @@ internal sealed class PluginConfigComponent
     [
         new("CBT (formerly known as Automaton)",
             "Automaton",
-            _L("""
-            Automaton is a collection of automation-related tweaks.
-            """),
+            _L("Automaton is a collection of automation-related tweaks."),
             new("https://github.com/Jaksuhn/Automaton"),
             new("https://puni.sh/api/repository/croizat"),
             "/cbt",
@@ -114,43 +105,31 @@ internal sealed class PluginConfigComponent
             ]),
         new("Pandora's Box",
             "PandorasBox",
-            _L("""
-            Pandora's Box is a collection of tweaks.
-            """),
+            _L("Pandora's Box is a collection of tweaks."),
             new("https://github.com/PunishXIV/PandorasBox"),
             new("https://puni.sh/api/plugins"),
             "/pandora",
             [
                 new(_L("'Auto Active Time Maneuver' enabled"),
-                    _L("""
-                    Automatically completes active time maneuvers in
-                    single player instances, trials and raids
-                    """),
+                    _L("Automatically completes active time maneuvers in single player instances, trials and raids"),
                     () => pandorasBoxIpc.IsAutoActiveTimeManeuverEnabled)
             ]),
         new("Artisan",
             "Artisan",
-            _L("""
-            Automates crafting
-            """),
+            _L("Automates crafting"),
             new("https://github.com/PunishXIV/Artisan"),
             new("https://puni.sh/api/plugins"),
             "/artisan"),
-        
+
         new("AutoHook",
             "AutoHook",
-            _L("""
-            Automates fishing
-            """),
+            _L("Automates fishing"),
             new("https://github.com/PunishXIV/AutoHook"),
             new("https://puni.sh/api/plugins"),
             "/autohook"),
         new("NotificationMaster",
             "NotificationMaster",
-            _L("""
-            Sends a configurable out-of-game notification if a quest
-            requires manual actions.
-            """),
+            _L("Sends a configurable out-of-game notification if a quest requires manual actions."),
             new Uri("https://github.com/NightmareXIV/NotificationMaster"),
             new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
             "/pnotify"),
@@ -162,9 +141,7 @@ internal sealed class PluginConfigComponent
             "/ad"),
         new("Stylist",
             "Stylist",
-            _L("""
-            Gear manager
-            """),
+            _L("Gear manager"),
             new("https://github.com/NightmareXIV/Stylist"),
             new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
             "/stylist c")
@@ -202,7 +179,7 @@ internal sealed class PluginConfigComponent
         }
 
         allRequiredInstalled = true;
-        ImGui.SetNextItemOpen(true, ImGuiCond.Once);
+        ImGui.SetNextItemOpen(isOpen: true, ImGuiCond.Once);
         if (ImGui.CollapsingHeader(_L("Required plugins:")))
         {
             using (ImRaii.PushIndent())
@@ -219,21 +196,21 @@ internal sealed class PluginConfigComponent
                 using (ImRaii.PushIndent())
                 {
                     if (ImGui.RadioButton(_L("No rotation/combat plugin (combat must be done manually)"),
-                        _configuration.General.CombatModule == Configuration.ECombatModule.None))
+                        _configuration.General.CombatModule == ECombatModule.None))
                     {
-                        _configuration.General.CombatModule = Configuration.ECombatModule.None;
+                        _configuration.General.CombatModule = ECombatModule.None;
                         _pluginInterface.SavePluginConfig(_configuration);
                     }
 
-                    allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.BossMod, checklistPadding);
-                    allRequiredInstalled &= DrawCombatPlugin(Configuration.ECombatModule.WrathCombo, checklistPadding);
+                    allRequiredInstalled &= DrawCombatPlugin(ECombatModule.BossMod, checklistPadding);
+                    allRequiredInstalled &= DrawCombatPlugin(ECombatModule.WrathCombo, checklistPadding);
                 }
 
                 ImGui.Text(_L("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:"));
                 using (ImRaii.PushIndent())
                 {
                     allRequiredInstalled &=
-                        DrawCombatPlugin(Configuration.ECombatModule.RotationSolverReborn, checklistPadding);
+                        DrawCombatPlugin(ECombatModule.RotationSolverReborn, checklistPadding);
                 }
             }
         }
@@ -292,7 +269,7 @@ internal sealed class PluginConfigComponent
         }
     }
 
-    private bool DrawCombatPlugin(Configuration.ECombatModule combatModule, float checklistPadding)
+    private bool DrawCombatPlugin(ECombatModule combatModule, float checklistPadding)
     {
         ImGui.Spacing();
 

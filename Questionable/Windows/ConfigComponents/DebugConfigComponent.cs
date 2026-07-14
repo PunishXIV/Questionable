@@ -17,6 +17,7 @@ using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
+// TODO: refactor — heavy nesting (41 lines indented ≥6 levels, max indent ~12 levels).
 internal sealed class DebugConfigComponent
 (
     IDalamudPluginInterface pluginInterface,
@@ -103,6 +104,7 @@ internal sealed class DebugConfigComponent
                     bool showDirector = Configuration.Advanced.ShowDirector;
                     bool showActionManager = Configuration.Advanced.ShowActionManager;
                     bool showNewGamePlus = Configuration.Advanced.ShowNewGamePlus;
+                    bool showHoveredItem = Configuration.Advanced.ShowHoveredItem;
                     using (ImRaii.PushIndent())
                     {
                         ImGui.AlignTextToFramePadding();
@@ -133,6 +135,12 @@ internal sealed class DebugConfigComponent
                         if (ImGui.Checkbox(_L("Show NG+ Chapter"), ref showNewGamePlus))
                         {
                             Configuration.Advanced.ShowNewGamePlus = showNewGamePlus;
+                            Save();
+                        }
+
+                        if (ImGui.Checkbox(_L("Show Hovered Item"), ref showHoveredItem))
+                        {
+                            Configuration.Advanced.ShowHoveredItem = showHoveredItem;
                             Save();
                         }
                     }

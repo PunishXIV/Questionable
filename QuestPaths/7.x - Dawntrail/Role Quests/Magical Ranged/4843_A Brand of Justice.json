@@ -15,12 +15,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Thavnair - Yedlihmad"
         }
       ]
     },

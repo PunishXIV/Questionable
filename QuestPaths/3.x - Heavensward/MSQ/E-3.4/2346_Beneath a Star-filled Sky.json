@@ -15,12 +15,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
         }
       ]
     },

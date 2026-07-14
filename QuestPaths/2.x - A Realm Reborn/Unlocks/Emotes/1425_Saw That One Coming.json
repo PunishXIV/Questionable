@@ -19,12 +19,7 @@
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -41,12 +36,7 @@
           "TerritoryId": 132,
           "InteractionType": "Interact",
           "StopDistance": 5,
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -63,12 +53,7 @@
           "TerritoryId": 132,
           "InteractionType": "Interact",
           "StopDistance": 5,
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Gridania"
         }
       ]
     },
@@ -162,9 +147,6 @@
                 132,
                 133
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }

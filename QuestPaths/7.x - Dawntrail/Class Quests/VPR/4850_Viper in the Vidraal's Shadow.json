@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "catsume", "Date": "2026-06-27"},
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,12 +22,7 @@
               "Prompt": "TEXT_KINGBB111_04850_Q1_000_100",
               "Answer": "TEXT_KINGBB111_04850_A2_000_100"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

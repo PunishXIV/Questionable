@@ -15,14 +15,16 @@ using Microsoft.Extensions.Logging;
 using Questionable.Controller;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.PathData;
 using Questionable.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
+// TODO: refactor — heavy nesting (43 lines indented ≥6 levels, max indent ~13 levels).
 internal sealed partial class ActiveQuestComponent
 (
     QuestController questController,

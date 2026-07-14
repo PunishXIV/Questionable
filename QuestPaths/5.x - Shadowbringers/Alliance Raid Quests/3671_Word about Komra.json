@@ -14,12 +14,7 @@
           },
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Kholusia - Tomra"
         }
       ]
     },

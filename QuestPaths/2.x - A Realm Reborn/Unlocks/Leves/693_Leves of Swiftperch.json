@@ -27,8 +27,7 @@
             "[Limsa Lominsa] The Aftcastle"
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true, "InTerritory": [129] },
-            "AethernetShortcutIf": { "InSameTerritory": true }
+            "AetheryteShortcutIf": { "InTerritory": [129] }
           }
         }
       ]
@@ -47,10 +46,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Western La Noscea - Swiftperch"
         }
       ]
     },

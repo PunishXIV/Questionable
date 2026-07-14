@@ -18,9 +18,6 @@
           "Land": true,
           "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -60,12 +57,7 @@
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
         }
       ]
     },

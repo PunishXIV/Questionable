@@ -3,7 +3,7 @@ using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 

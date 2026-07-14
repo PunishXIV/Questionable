@@ -86,7 +86,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
             // SelectYesno follows, which YesNoChoiceHandler accepts via IsAwaitingYesNo.
             if (_gameGuiAdapter.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
             {
-                Callback.Fire(addon, true, 0, GetConfiguredName(), "");
+                Callback.Fire(addon, updateState: true, 0, GetConfiguredName(), "");
                 IsAwaitingYesNo = true;
                 _yesNoDeadline = DateTime.Now + YesNoTimeout;
             }

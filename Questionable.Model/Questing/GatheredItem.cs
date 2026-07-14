@@ -22,6 +22,10 @@ public class FishingOptions
     /// Omit to enable all hook types and hooksets.
     /// </summary>
     public HookType? HookType { get; set; }
+    /// <summary>
+    /// exported Autohook preset (alternative to FishingData.cs)
+    /// </summary>
+    public string? Preset { get; set; }
 }
 
 public class HookType

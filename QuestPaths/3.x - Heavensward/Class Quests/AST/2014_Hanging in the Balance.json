@@ -23,7 +23,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 419
               ]
@@ -46,12 +45,7 @@
           "InteractionType": "Interact",
           "StopDistance": 5,
           "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },
@@ -68,12 +62,7 @@
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "StopDistance": 2,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },
@@ -91,12 +80,7 @@
           "InteractionType": "Interact",
           "StopDistance": 4,
           "Fly": false,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
         }
       ]
     },
@@ -113,12 +97,7 @@
           "TerritoryId": 146,
           "InteractionType": "Interact",
           "StopDistance": 2,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
         }
       ]
     },
@@ -135,12 +114,7 @@
           "TerritoryId": 146,
           "InteractionType": "Interact",
           "StopDistance": 3,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
         }
       ]
     },

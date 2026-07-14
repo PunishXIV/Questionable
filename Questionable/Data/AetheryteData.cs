@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using Dalamud.Plugin.Services;
 using ECommons;
 using ECommons.DalamudServices;
@@ -344,7 +343,7 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
     private IReadOnlyList<uint> TownTerritoryIds { get; }
 
-    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; } 
+    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; }
 
     public EAetheryteLocation? NearestAetheryteTo(uint territoryId, Vector3? position)
     {
@@ -392,11 +391,4 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
     public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
 
     public bool IsGoldSaucerAetheryte(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
-}
-
-internal static class AetheryteLocationExtensions
-{
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal static Vector3 Position(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.Locations[aetheryteLocation];
-    internal static uint Territory(this EAetheryteLocation aetheryteLocation, AetheryteData aetheryteData) => aetheryteData.TerritoryIds[aetheryteLocation];
 }

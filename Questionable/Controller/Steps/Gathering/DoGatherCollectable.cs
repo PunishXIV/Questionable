@@ -188,21 +188,19 @@ internal static class DoGatherCollectable
                 actions.Enqueue(PickAction(EAction.MeticulousMiner, EAction.MeticulousBotanist));
                 return actions;
             }
-            else
-            {
-                logger.LogTrace("Scrutiny active, need {NeededCollectability} and we expect {Collectability}~ scour",
-                    neededCollectability, nodeCondition.CollectabilityFromScour);
-                actions.Enqueue(PickAction(EAction.ScourMiner, EAction.ScourBotanist));
-                return actions;
-            }
+
+            logger.LogTrace("Scrutiny active, need {NeededCollectability} and we expect {Collectability}~ scour",
+                neededCollectability, nodeCondition.CollectabilityFromScour);
+            actions.Enqueue(PickAction(EAction.ScourMiner, EAction.ScourBotanist));
+            return actions;
         }
 
         private unsafe EAction PickAction(EAction minerAction, EAction botanistAction)
         {
             if ((Job?)PlayerState.Instance()->CurrentClassJobId == Job.MIN)
                 return minerAction;
-            else
-                return botanistAction;
+
+            return botanistAction;
         }
 
         public override bool ShouldInterruptOnDamage() => false;

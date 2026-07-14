@@ -12,7 +12,7 @@ where T : Enum
     private readonly ReadOnlyDictionary<T, string> _enumToString;
     private readonly ReadOnlyDictionary<string, T> _stringToEnum;
 
-    public EnumConverter(IReadOnlyDictionary<T, string>? values = null, bool? shard = null)
+    protected EnumConverter(IReadOnlyDictionary<T, string>? values = null, bool? shard = null)
     {
         if (values == null)
         {
@@ -44,7 +44,7 @@ where T : Enum
                 ? new(dict)
                 : new ReadOnlyDictionary<T, string>(values.ToDictionary(x => x.Key, x => x.Value));
         }
-        _stringToEnum = new(_enumToString.ToDictionary(x => x.Value, x => x.Key));
+        _stringToEnum = new(_enumToString.ToDictionary(x => x.Value, x => x.Key, StringComparer.Ordinal));
     }
 
     public override T? Read(ref Utf8JsonReader reader, Type typeToConvert,

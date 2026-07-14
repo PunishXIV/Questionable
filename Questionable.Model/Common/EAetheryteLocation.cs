@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using Questionable.Model.Common.Converter;
 namespace Questionable.Model.Common;
@@ -274,7 +275,7 @@ public enum EAetheryteLocation
 
 public static class EAetheryteLocationExtensions
 {
-    public static List<EAetheryteLocation> aethernetShards = [
+    private readonly static IReadOnlyList<EAetheryteLocation> aethernetShards = [
         EAetheryteLocation.GridaniaArcher,
         EAetheryteLocation.GridaniaLeatherworker,
         EAetheryteLocation.GridaniaLancer,

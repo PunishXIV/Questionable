@@ -16,9 +16,6 @@
               "Item": {
                 "NotInInventory": true
               }
-            },
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
             }
           }
         },
@@ -63,11 +60,6 @@
           "StopDistance": 5,
           "Fly": true,
           "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

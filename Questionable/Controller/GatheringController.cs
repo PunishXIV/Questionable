@@ -141,7 +141,7 @@ internal sealed unsafe class GatheringController
         }
 
         uint territoryId = _currentRequest.Root.Steps[^1].TerritoryId;
-        bool fly = currentNode.Fly.GetValueOrDefault(_currentRequest.Root.FlyBetweenNodes.GetValueOrDefault(true)) &&
+        bool fly = currentNode.Fly.GetValueOrDefault(_currentRequest.Root.FlyBetweenNodes.GetValueOrDefault(defaultValue: true)) &&
                    GameFunctions.IsFlyingUnlocked(territoryId);
         if (currentNode.Locations.Count > 1)
         {
@@ -152,7 +152,7 @@ internal sealed unsafe class GatheringController
                 Z = currentNode.Locations.Sum(x => x.Position.Z) / currentNode.Locations.Count
             };
 
-            Vector3? pointOnFloor = navmeshIpc.GetPointOnFloor(averagePosition, true);
+            Vector3? pointOnFloor = navmeshIpc.GetPointOnFloor(averagePosition, unlandable: true);
             if (pointOnFloor != null)
                 pointOnFloor = pointOnFloor.Value with { Y = pointOnFloor.Value.Y + (fly ? 3f : 0f) };
 
@@ -162,7 +162,7 @@ internal sealed unsafe class GatheringController
                 _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
 
             _taskQueue.Enqueue(new MoveTask(territoryId, moveTarget,
-                null, 50f, Fly: fly, IgnoreDistanceToObject: true, InteractionType: EInteractionType.WalkTo));
+                Mount: null, 50f, Fly: fly, IgnoreDistanceToObject: true, InteractionType: EInteractionType.WalkTo));
         }
         else
         {
@@ -174,7 +174,7 @@ internal sealed unsafe class GatheringController
 
         _taskQueue.Enqueue(new MoveToLandingLocation.Task(territoryId, fly, currentNode));
         _taskQueue.Enqueue(new Mount.UnmountTask());
-        _taskQueue.Enqueue(new Interact.Task(currentNode.DataId, null, EInteractionType.Gather, true));
+        _taskQueue.Enqueue(new Interact.Task(currentNode.DataId, Quest: null, EInteractionType.Gather, SkipMarkerCheck: true));
 
         QueueGatherNode(currentNode);
     }
@@ -248,8 +248,8 @@ internal sealed unsafe class GatheringController
     {
         if (_taskQueue.CurrentTaskExecutor?.CurrentTask is { } currentTask)
             return [currentTask.ToString() ?? "?", .. base.GetRemainingTaskNames()];
-        else
-            return base.GetRemainingTaskNames();
+
+        return base.GetRemainingTaskNames();
     }
 
     public void OnNormalToast(SeString message)

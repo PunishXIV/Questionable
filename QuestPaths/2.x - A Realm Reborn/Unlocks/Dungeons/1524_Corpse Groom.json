@@ -19,12 +19,7 @@
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Adventurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },
@@ -41,12 +36,7 @@
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     },
@@ -63,12 +53,7 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "Land": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
         },
         {
           "DataId": 1001173,
@@ -111,9 +96,6 @@
           "Land": true,
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {

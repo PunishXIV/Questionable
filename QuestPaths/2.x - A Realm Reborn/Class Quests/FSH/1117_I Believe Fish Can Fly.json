@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
   "Comment": "This fish prefers Blizzard or Snow weather.\nBest chances between 08:00-14:00 ET",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -77,6 +78,9 @@
               }
             },
             "AetheryteShortcutIf": {
+              "Item": {
+                "NotInInventory": false
+              },
               "InTerritory": [
                 129
               ]
@@ -119,7 +123,11 @@
           "ItemsToGather": [
             {
               "ItemId": 5040,
-              "ItemCount": 5
+              "ItemCount": 5,
+              "FishingOptions": {
+                "BaitId": 2605,
+                "Preset": "AH6_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"
+              }
             }
           ]
         },

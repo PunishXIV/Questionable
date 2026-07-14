@@ -60,9 +60,9 @@ internal sealed class HighlightObject : IDisposable
             _condition[ConditionFlag.Casting] || _condition[ConditionFlag.MountOrOrnamentTransition] ||
             _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
             _condition[ConditionFlag.Mounting71])
-            ToggleHighlight(false);
+            ToggleHighlight(on: false);
         else
-            ToggleHighlight(true);
+            ToggleHighlight(on: true);
     }
 
     public void AddHighlight(uint Id)
@@ -92,12 +92,12 @@ internal sealed class HighlightObject : IDisposable
     {
         _ = _framework.Run(() =>
         {
-            ToggleHighlight(false);
+            ToggleHighlight(on: false);
             if (_targetNpcDataId.Length == 0 && Ids.Length == 0)
                 return;
             _logger.LogDebug("Setting highlight to {Ids}", string.Join(',', Ids));
             _targetNpcDataId = Ids;
-            ToggleHighlight(true);
+            ToggleHighlight(on: true);
         });
     }
 

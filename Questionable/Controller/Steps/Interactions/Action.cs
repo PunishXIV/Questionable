@@ -6,8 +6,8 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Utils;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -25,8 +25,8 @@ internal static class Action
             ITask task = OnObject(step.DataId, quest, step.Action.Value, step.CompletionQuestVariablesFlags);
             if (step.Action.Value.RequiresMount())
                 return [task];
-            else
-                return [new Mount.UnmountTask(), task];
+
+            return [new Mount.UnmountTask(), task];
         }
 
         public static ITask OnObject(uint? dataId, Quest quest, EAction action, List<QuestWorkValue?>? completionQuestVariablesFlags)
@@ -38,8 +38,8 @@ internal static class Action
 
                 return new UseMudraOnObject(dataId.Value, action);
             }
-            else
-                return new UseOnObject(dataId, quest, action, completionQuestVariablesFlags);
+
+            return new UseOnObject(dataId, quest, action, completionQuestVariablesFlags);
         }
     }
 

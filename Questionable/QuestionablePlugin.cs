@@ -7,6 +7,7 @@ using Dalamud.Plugin.Services;
 using ECommons;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PunishLib;
 using Questionable.Controller;
 using Questionable.Controller.CombatModules;
 using Questionable.Controller.GameUi;
@@ -33,7 +34,6 @@ using Questionable.Windows.JournalComponents;
 using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
 using WrathCombo.API;
-using PunishLib;
 using static Questionable.Utils.LocalizeShortcut;
 using Action = Questionable.Controller.Steps.Interactions.Action;
 using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
@@ -102,7 +102,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
             {
                 // Backup config when version changes
-                pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), true);
+                pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), overwrite: true);
                 savedConfig.Version = Configuration.PluginConfigVersion;
             }
 
@@ -153,7 +153,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<ChatFunctions>();
         serviceCollection.AddSingleton<QuestFunctions>();
         serviceCollection.AddSingleton<AlliedSocietyQuestFunctions>();
-        serviceCollection.AddSingleton<IGameGuiAdapter, LLibGameGuiAdapter>();
+        serviceCollection.AddSingleton<IGameGuiAdapter, GameGuiAdapter>();
         serviceCollection.AddSingleton<Mount.MountEvaluator>();
 
         serviceCollection.AddSingleton<AetherCurrentData>();
@@ -397,7 +397,8 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<IAetheryteTerritoryProvider>(sp => sp.GetRequiredService<AetheryteData>());
         serviceCollection.AddSingleton<IQuestValidator, AcceptQuestTerritoryValidator>();
         serviceCollection.AddSingleton<IQuestValidator, DialogueChoiceValidator>();
-        serviceCollection.AddSingleton<IQuestValidator, ClassQuestShouldHaveShortcutValidator>();
+        // Superseded by AcceptQuestTerritoryValidator
+        //serviceCollection.AddSingleton<IQuestValidator, ClassQuestShouldHaveShortcutValidator>();
         serviceCollection.AddSingleton<IQuestValidator, SinglePlayerInstanceValidator>();
         serviceCollection.AddSingleton<IQuestValidator, UniqueSinglePlayerInstanceValidator>();
         serviceCollection.AddSingleton<IQuestValidator, SayValidator>();

@@ -1,1 +1,1 @@
-- Bug fix: Add condition and occupied check before recalculating path -alydev
+- Feature: AutoHook presets can be embedded in quest paths now -alydev

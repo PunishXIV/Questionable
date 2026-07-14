@@ -15,12 +15,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
         }
       ]
     },

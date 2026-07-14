@@ -33,7 +33,7 @@ internal static class JsonOptions
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
             if (property.AttributeProvider?
-                    .GetCustomAttributes(typeof(AlwaysSerializeAttribute), false)
+                    .GetCustomAttributes(typeof(AlwaysSerializeAttribute), inherit: false)
                     .Length > 0)
             {
                 property.ShouldSerialize = (_, _) => true;
@@ -45,7 +45,7 @@ internal static class JsonOptions
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
             if (property.AttributeProvider?
-                    .GetCustomAttributes(typeof(DefaultTrueAttribute), false)
+                    .GetCustomAttributes(typeof(DefaultTrueAttribute), inherit: false)
                     .Length > 0)
             {
                 property.ShouldSerialize = (_, val) => val is false;
@@ -57,7 +57,7 @@ internal static class JsonOptions
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
             if (property.AttributeProvider?
-                    .GetCustomAttributes(typeof(IgnoreWhenDefaultInstanceAttribute), false)
+                    .GetCustomAttributes(typeof(IgnoreWhenDefaultInstanceAttribute), inherit: false)
                     .Length == 0)
                 continue;
 

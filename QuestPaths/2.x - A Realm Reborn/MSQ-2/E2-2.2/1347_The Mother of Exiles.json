@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-18"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +16,7 @@
           "StopDistance": 7,
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Western Thanalan - Horizon"
         }
       ]
     },
@@ -83,6 +78,35 @@
       "Sequence": 3,
       "Steps": [
         {
+          "Position": {
+            "X": -5.6346426,
+            "Y": 29.999994,
+            "Z": 18.160692
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": -6.9986115,
+              "Y": 15.00001,
+              "Z": 4.392646
+            },
+            "TerritoryId": 131
+          },
+          "SkipConditions": {"StepIf": {"InTerritory": [130]}}
+        },
+        {
+          "Position": {
+            "X": -9.467779,
+            "Y": 10,
+            "Z": -35.08536
+          },
+          "TerritoryId": 131,
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 130,
+          "SkipConditions": {"StepIf": {"InTerritory": [130]}}
+        },
+        {
           "DataId": 1008604,
           "Position": {
             "X": 34.77527,
@@ -90,11 +114,7 @@
             "Z": -93.91931
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

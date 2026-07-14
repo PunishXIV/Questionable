@@ -19,12 +19,7 @@
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] Neon Stein"
           ],
-          "AetheryteShortcut": "Solution Nine",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Solution Nine"
         }
       ]
     },
@@ -44,12 +39,7 @@
             "[Solution Nine] Neon Stein",
             "[Solution Nine] True Vue"
           ],
-          "AetheryteShortcut": "Solution Nine",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Solution Nine"
         }
       ]
     },
@@ -67,12 +57,7 @@
           "InteractionType": "Interact",
           "StopDistance": 4,
           "Fly": true,
-          "AetheryteShortcut": "Heritage Found - Yyasulani Station",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Heritage Found - Yyasulani Station"
         }
       ]
     },
@@ -90,12 +75,7 @@
           "InteractionType": "Interact",
           "StopDistance": 4,
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -113,12 +93,7 @@
           "InteractionType": "Interact",
           "StopDistance": 4,
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -128,12 +103,7 @@
         {
           "TerritoryId": 1190,
           "InteractionType": "None",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         },
         {
           "DataId": 1049374,
@@ -208,12 +178,7 @@
           "InteractionType": "Interact",
           "StopDistance": 4,
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -232,12 +197,7 @@
           "NextQuestId": 5379,
           "StopDistance": 4,
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     }

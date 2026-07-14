@@ -15,12 +15,7 @@
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
         },
         {
           "DataId": 1006261,

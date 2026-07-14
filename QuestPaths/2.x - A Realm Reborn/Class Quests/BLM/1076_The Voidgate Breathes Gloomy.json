@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "pot0to",
+  "Interruptible": false,
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,11 +17,6 @@
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -79,12 +75,7 @@
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     },
@@ -101,12 +92,7 @@
           "TerritoryId": 145,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "Fly": true
         }
       ]
     }

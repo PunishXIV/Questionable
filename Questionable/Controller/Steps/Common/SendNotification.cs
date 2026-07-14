@@ -2,11 +2,12 @@
 using Dalamud.Game.Text.SeStringHandling;
 using Dalamud.Plugin.Services;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.External;
-using Questionable.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Common;
 
+// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent 8 levels).
 internal static class SendNotification
 {
     internal sealed class Factory

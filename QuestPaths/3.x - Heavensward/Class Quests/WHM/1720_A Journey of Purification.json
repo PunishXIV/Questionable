@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-19"},
+  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,12 +15,7 @@
           },
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

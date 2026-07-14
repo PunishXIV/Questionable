@@ -5,6 +5,7 @@ using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using Questionable.Model.Common;
 namespace Questionable.Controller.CombatModules;
 
 internal sealed class RotationSolverRebornModule
@@ -19,7 +20,7 @@ internal sealed class RotationSolverRebornModule
 
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
-        if (configuration.General.CombatModule != Configuration.ECombatModule.RotationSolverReborn)
+        if (configuration.General.CombatModule != ECombatModule.RotationSolverReborn)
             return false;
 
         try

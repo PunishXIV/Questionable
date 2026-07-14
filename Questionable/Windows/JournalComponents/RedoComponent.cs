@@ -6,14 +6,14 @@ using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using ECommons.Throttlers;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
+using Questionable.Windows.QuestComponents;
 using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
@@ -23,22 +23,47 @@ internal sealed class RedoComponent
     RedoUtil redoUtil,
     QuestController questController,
     QuestJournalComponent questJournalComponent,
+    QuestTooltipComponent questTooltipComponent,
     QuestData questData,
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
-    Configuration configuration)
+    Configuration configuration,
+    UiUtils uiUtils)
 {
     private bool _hideDone;
     private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
+    private Domain.Quest? _unlockQuest;
     public void DrawRedoChapters()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
         if (!tab)
             return;
 
-        using (ImRaii.Disabled(EzThrottler.Throttle("stopredo") || !redoUtil.IsRedoActive()))
+        // Disable tab if ng+ unlock quest is incomplete
+        bool disabled = false;
+        if ((_unlockQuest != null || questRegistry.TryGetQuest(new QuestId(3759), out _unlockQuest)) &&
+            (!questFunctions.IsQuestComplete(_unlockQuest.Id) || disabled))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, ("Stop NG+")))
+            disabled = true;
+            (bool locked, var _) = questFunctions.IsQuestLocked(_unlockQuest.Id);
+            using var _ = ImRaii.Disabled(locked);
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Play, _L("Unlock NG+")))
+            {
+                questController.SetNextQuest(_unlockQuest);
+                questController.StartSingleQuest("Unlock NG+");
+            }
+            if (ImGui.IsItemHovered())
+                questTooltipComponent.Draw(_unlockQuest.Info);
+        }
+
+        if (disabled)
+        {
+            ImGui.Text(_L("New Game+ has not been unlocked on this character"));
+            return;
+        }
+        using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, _L("Stop NG+")))
                 redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
         }
         if (configuration.Advanced.Debug)
@@ -72,24 +97,30 @@ internal sealed class RedoComponent
         ImGui.TableHeadersRow();
         foreach ((QuestRedoChapterUI chapter, RedoCache redoCache) in redoUtil.RedoData)
         {
-            if (redoCache.Quests.Count == 0)
+            var _preTotal = redoCache.Quests.Count;
+            if (_preTotal == 0)
                 continue;
             var chapterName = redoCache.ChapterUi.ChapterName.ToString() ?? "";
             chapterName = chapterName.Length > 0 ? chapterName : _L("???");
             string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
 
+            bool showAnyway = false;
             var checkQuests = redoCache.Quests.Select(q =>
             {
-                questRegistry.TryGetQuest(new QuestId((ushort)q.RowId), out Model.Quest? quest);
-                if (quest != null && (quest.Root.LastChecked.Date == null ||
+                var qid = new QuestId((ushort)q.RowId);
+                bool unobtainable = questData.TryGetQuestInfo(qid, out var qInfo) && questFunctions.IsQuestUnobtainable(qid);
+                questRegistry.TryGetQuest(qid, out Domain.Quest? quest);
+                if (qInfo != null && quest != null && (quest.Root.LastChecked.Date == null ||
                         (quest.Root.LastChecked.Date != null &&
-                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60
-                        )))
+                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60)) &&
+                        !unobtainable)
                     return quest;
+                if (!unobtainable && qInfo != null && quest == null)
+                    showAnyway = true;
                 return null;
             }).Where(q => q != null).ToArray();
-            if (checkQuests.Length == 0 && _hideDone)
+            if (checkQuests.Length == 0 && _hideDone && !showAnyway)
                 continue;
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
@@ -125,9 +156,8 @@ internal sealed class RedoComponent
             else
             {
                 ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(0, 0);
                 ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(0, 0);
+                QuestJournalComponent.DrawCount(0, _preTotal);
             }
             if (open)
             {
@@ -140,7 +170,18 @@ internal sealed class RedoComponent
                     questData.TryGetQuestInfo(qid, out IQuestInfo? qInfo);
                     if (qInfo != null)
                         questJournalComponent.DrawQuest(qInfo);
-                    if (questRegistry.TryGetQuest(qid, out Model.Quest? quest))
+                    else
+                    {
+                        ImGui.TableNextRow();
+                        ImGui.TableNextColumn();
+                        ImGui.TreeNodeEx($"{q.Name} ({(ushort)q.RowId})",
+                            ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
+                        ImGui.TableNextColumn();
+                        if (uiUtils.ChecklistItem("", ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus))
+                            ImGui.SetTooltip(_L("This quest is not supported."));
+                        ImGui.TableNextColumn();
+                    }
+                    if (questRegistry.TryGetQuest(qid, out Domain.Quest? quest))
                     {
                         _supported += 1;
                         if (questFunctions.IsQuestComplete(quest.Id))

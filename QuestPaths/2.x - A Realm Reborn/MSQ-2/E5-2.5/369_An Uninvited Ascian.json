@@ -15,12 +15,7 @@
           },
           "TerritoryId": 147,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
         }
       ]
     },

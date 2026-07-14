@@ -4,7 +4,7 @@
     "JerryWester",
     "ewlame"
   ],
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-04"},
+  "LastChecked": {"Username": "jigain", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -19,12 +19,7 @@
           "TerritoryId": 620,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "StopDistance": 6,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "StopDistance": 6
         }
       ]
     },

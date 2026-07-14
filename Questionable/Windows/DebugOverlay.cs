@@ -10,8 +10,8 @@ using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Controller.Utils;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
@@ -34,7 +34,7 @@ internal sealed class DebugOverlay : Window
         CombatController combatController, Configuration configuration, HighlightObject highlightObject)
         : base(_L("Questionable Debug Overlay") + "###QuestionableDebugOverlay",
             ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoBackground |
-            ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, true)
+            ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, forceMainWindow: true)
     {
         _questController = questController;
         _questRegistry = questRegistry;
@@ -170,20 +170,20 @@ internal sealed class DebugOverlay : Window
             position = step.Position;
             return true;
         }
-        else if (step is { InteractionType: EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
+
+        if (step is { InteractionType: EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
         {
             position = _aetheryteData.Locations[aetheryteLocation];
             return true;
         }
-        else if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
+
+        if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
         {
             position = _aetheryteData.Locations[aethernetShard];
             return true;
         }
-        else
-        {
-            position = null;
-            return false;
-        }
+
+        position = null;
+        return false;
     }
 }

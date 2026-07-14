@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "goatzone",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,10 +22,8 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [131]
-            },
-            "AethernetShortcutIf": { "InSameTerritory": true }
+            }
           }
         }
       ]
@@ -42,10 +40,7 @@
           },
           "TerritoryId": 147,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InSameTerritory": true }
-          }
+          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
         }
       ]
     },
@@ -116,10 +111,8 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [131]
-            },
-            "AethernetShortcutIf": { "InSameTerritory": true }
+            }
           }
         }
       ]

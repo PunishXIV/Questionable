@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text.Json.Nodes;
 using Json.Schema;
+using Questionable.Domain;
 using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;

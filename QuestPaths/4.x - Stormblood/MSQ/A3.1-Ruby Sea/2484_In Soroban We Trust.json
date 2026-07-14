@@ -15,12 +15,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
         }
       ]
     },

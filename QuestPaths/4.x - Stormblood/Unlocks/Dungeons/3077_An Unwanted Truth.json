@@ -14,12 +14,7 @@
           },
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Rhalgr's Reach"
         }
       ]
     },
@@ -117,12 +112,7 @@
           "TerritoryId": 154,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         }
       ]
     },
@@ -139,12 +129,7 @@
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         }
       ]
     }

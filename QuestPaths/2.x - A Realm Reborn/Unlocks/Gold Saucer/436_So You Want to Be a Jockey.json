@@ -22,7 +22,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 144
               ]
@@ -44,11 +43,6 @@
           "TerritoryId": 148,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "Fly": true,
           "NextQuestId": 565
         }

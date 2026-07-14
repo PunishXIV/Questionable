@@ -104,7 +104,7 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
         if (UncollapseNextFrame)
         {
-            ImGui.SetNextWindowCollapsed(false);
+            ImGui.SetNextWindowCollapsed(collapsed: false);
             UncollapseNextFrame = false;
         }
 

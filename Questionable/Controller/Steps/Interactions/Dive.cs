@@ -6,7 +6,7 @@ using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using Questionable.Controller.Steps.Common;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 

@@ -17,11 +17,6 @@
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

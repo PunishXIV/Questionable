@@ -1,7 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["liza", "Oblituarius"],
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-17"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,7 +23,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 131
               ]
@@ -129,9 +129,9 @@
         },
         {
           "Position": {
-            "X": -97.35628,
+            "X": -98.86582,
             "Y": -14.397484,
-            "Z": -176.70825
+            "Z": -172.42706
           },
           "StopDistance": 0.5,
           "TerritoryId": 146,

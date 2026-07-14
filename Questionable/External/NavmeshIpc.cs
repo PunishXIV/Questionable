@@ -41,12 +41,12 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
     }
 
-    public bool IsReady => IpcInvoke.SafeFunc(() => _isNavReady.InvokeFunc(), false);
+    public bool IsReady => IpcInvoke.SafeFunc(() => _isNavReady.InvokeFunc(), fallback: false);
 
-    public bool IsPathRunning => IpcInvoke.SafeFunc(() => _pathIsRunning.InvokeFunc(), false);
+    public bool IsPathRunning => IpcInvoke.SafeFunc(() => _pathIsRunning.InvokeFunc(), fallback: false);
 
     public bool IsSimpleMovePathfindInProgress =>
-        IpcInvoke.SafeFunc(() => _simpleMovePathfindInProgress.InvokeFunc(), false);
+        IpcInvoke.SafeFunc(() => _simpleMovePathfindInProgress.InvokeFunc(), fallback: false);
 
     public void Stop() =>
         IpcInvoke.SafeAction(() => _pathStop.InvokeAction(), logger,
@@ -75,13 +75,13 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     }
 
     public Vector3? GetPointOnFloor(Vector3 position, bool unlandable) =>
-        IpcInvoke.SafeFunc(() => _queryPointOnFloor.InvokeFunc(position, unlandable, 0.2f), null);
+        IpcInvoke.SafeFunc(() => _queryPointOnFloor.InvokeFunc(position, unlandable, 0.2f), fallback: null);
 
     public bool SimplePathfindAndMoveTo(Vector3 destination, bool fly)
     {
         if (!IsReady)
             return false;
-        return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveTo.InvokeFunc(destination, fly), false,
+        return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveTo.InvokeFunc(destination, fly), fallback: false,
             logger, "Could not SimplePathfindAndMoveTo {Version}", Version);
     }
 
@@ -89,7 +89,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     {
         if (!IsReady)
             return false;
-        return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveCloseTo.InvokeFunc(destination, fly, range), false,
+        return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveCloseTo.InvokeFunc(destination, fly, range), fallback: false,
             logger, "Could not SimplePathfindAndMoveCloseTo {Version}", Version);
     }
 

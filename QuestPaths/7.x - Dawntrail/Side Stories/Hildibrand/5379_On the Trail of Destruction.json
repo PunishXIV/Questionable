@@ -16,12 +16,7 @@
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -38,12 +33,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
@@ -189,12 +179,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },
@@ -204,12 +189,7 @@
         {
           "TerritoryId": 1190,
           "InteractionType": "None",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         },
         {
           "DataId": 2014867,
@@ -279,12 +259,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },
@@ -340,12 +315,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
         }
       ]
     },
@@ -367,12 +337,7 @@
           "AethernetShortcut": [
             "[Solution Nine] Aetheryte Plaza",
             "[Solution Nine] Neon Stein"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     }

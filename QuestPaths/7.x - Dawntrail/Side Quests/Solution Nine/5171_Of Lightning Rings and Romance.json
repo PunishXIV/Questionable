@@ -9,11 +9,15 @@
           "DataId": 1051407,
           "Position": {
             "X": -182.29956,
-            "Y": 1.1335879E-05,
+            "Y": 1.1335879e-5,
             "Z": 45.059814
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Nexus Arcade"
+          ]
         }
       ]
     },
@@ -39,7 +43,7 @@
           "DataId": 1051407,
           "Position": {
             "X": -182.29956,
-            "Y": 1.1335879E-05,
+            "Y": 1.1335879e-5,
             "Z": 45.059814
           },
           "TerritoryId": 1186,

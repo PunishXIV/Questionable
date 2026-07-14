@@ -16,9 +16,9 @@ public readonly struct HookTypeFilter : IEquatable<HookTypeFilter>
         Hookset = hookset;
     }
 
-    public static HookTypeFilter AllHooksets => new(true, null);
+    public static HookTypeFilter AllHooksets => new(isAllHooksets: true, hookset: null);
 
-    public static HookTypeFilter From(Hookset hookset) => new(false, hookset);
+    public static HookTypeFilter From(Hookset hookset) => new(isAllHooksets: false, hookset);
 
     public bool Equals(HookTypeFilter other) =>
         IsAllHooksets == other.IsAllHooksets && Equals(Hookset, other.Hookset);

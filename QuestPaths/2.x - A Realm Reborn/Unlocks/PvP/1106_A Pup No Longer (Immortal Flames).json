@@ -14,13 +14,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
-
+          "AetheryteShortcut": "Ul'dah"
         }
       ]
     },
@@ -56,7 +50,6 @@
               "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
             }
           }
-
         },
         {
           "DataId": 1002484,
@@ -68,12 +61,7 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "TargetTerritoryId": 250,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
         },
         {
           "TerritoryId": 250,

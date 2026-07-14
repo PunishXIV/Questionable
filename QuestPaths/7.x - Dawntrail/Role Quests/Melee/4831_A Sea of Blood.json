@@ -16,11 +16,6 @@
           "TerritoryId": 628,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

@@ -14,12 +14,7 @@
           },
           "TerritoryId": 250,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Wolves' Den Pier",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "Wolves' Den Pier"
         }
       ]
     },

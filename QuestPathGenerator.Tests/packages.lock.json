@@ -8,6 +8,12 @@
         "resolved": "6.0.4",
         "contentHash": "lkhqpF8Pu2Y7IiN7OntbsTtdbpR1syMsm2F3IgX6ootA4ffRqWL5jF7XipHuZQTdVuWG/gVAAcf8mjk8Tz0xPg=="
       },
+      "Meziantou.Analyzer": {
+        "type": "Direct",
+        "requested": "[3.0.122, )",
+        "resolved": "3.0.122",
+        "contentHash": "bmo+TIK9fLG/NzlZ2Qi5lto2jG/N6/zmc7gDVp5uzvVmnDKMV5SmUR7jToSbx/oqTPMV3ajyCmo2kFBdPDlU0A=="
+      },
       "Microsoft.NET.Test.Sdk": {
         "type": "Direct",
         "requested": "[17.13.0, )",
@@ -222,7 +228,7 @@
           "JsonSchema.Net": "[7.4.0, )",
           "Microsoft.CodeAnalysis.CSharp": "[4.9.2, )",
           "Microsoft.CodeAnalysis.CSharp.Workspaces": "[4.9.2, )",
-          "Questionable.Model": "[15.294.0, )"
+          "Questionable.Model": "[15.306.0.5, )"
         }
       }
     }

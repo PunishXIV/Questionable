@@ -18,8 +18,7 @@ internal static class DialogueChoiceExtensions
                     SyntaxKind.ObjectInitializerExpression,
                     SeparatedList<ExpressionSyntax>(
                         SyntaxNodeList(
-                            Assignment<EDialogChoiceType?>(nameof(DialogueChoice.Type), dialogueChoice.Type,
-                                    null)
+                            Assignment<EDialogChoiceType?>(nameof(DialogueChoice.Type), dialogueChoice.Type, defaultValue: null)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(DialogueChoice.ExcelSheet), dialogueChoice.ExcelSheet,
                                     emptyChoice.ExcelSheet)

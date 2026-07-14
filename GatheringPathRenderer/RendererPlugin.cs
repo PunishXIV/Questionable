@@ -10,7 +10,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
-using System.Xml.Linq;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
@@ -24,6 +23,7 @@ using Questionable.Model;
 using Questionable.Model.Gathering;
 namespace GatheringPathRenderer;
 
+// TODO: refactor — heavy nesting (28 lines indented ≥6 levels, max indent 8 levels).
 public sealed class RendererPlugin : IDalamudPlugin
 {
     private readonly IClientState _clientState;
@@ -47,7 +47,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         _clientState = clientState;
         _objectTable = objectTable;
         _pluginLog = pluginLog;
-        GBRLocationData = LoadGBRPosData(_pluginInterface.AssemblyLocation.DirectoryName!);
+        GBRLocationData = LoadGBRPosData();
         pluginLog.Info($"Loaded {GBRLocationData.Count} entries from GBR data");
         ECommonsMain.Init(pluginInterface, this);
 
@@ -67,7 +67,7 @@ public sealed class RendererPlugin : IDalamudPlugin
         _windowSystem.AddWindow(configWindow);
         _windowSystem.AddWindow(_editorWindow);
 
-        framework.RunOnFrameworkThread(() =>
+        _ = framework.RunOnFrameworkThread(() =>
         {
             unsafe
             {
@@ -89,7 +89,7 @@ public sealed class RendererPlugin : IDalamudPlugin
     internal List<GatheringLocationContext> GatheringLocations { get; } =
         [];
 
-    internal Dictionary<uint, List<Vector3>> GBRLocationData { get; }
+    internal IDictionary<uint, List<Vector3>> GBRLocationData { get; }
 
     internal bool DistantRange { get; set; }
 
@@ -176,12 +176,12 @@ public sealed class RendererPlugin : IDalamudPlugin
             root));
     }
 
-    public static Dictionary<uint, List<Vector3>> LoadGBRPosData(string directoryName)
+    public static IDictionary<uint, List<Vector3>> LoadGBRPosData()
     {
         Stream stream =
                 typeof(RendererPlugin).Assembly.GetManifestResourceStream(
                     "GatheringPathRenderer.GBRWorldLocations") ??
-                throw new InvalidOperationException($"world_locations.json was not found");
+                throw new InvalidOperationException("world_locations.json was not found");
         JsonNode? root = JsonNode.Parse(stream);
         Dictionary<uint, List<Vector3>> result = new();
 
@@ -263,7 +263,7 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private void Draw()
     {
-        if (!_currentClassJob.IsDol())
+        if (_currentClassJob is not (Job.MIN or Job.BTN))
             return;
 
         using PctDrawList? drawList = PctService.Draw();

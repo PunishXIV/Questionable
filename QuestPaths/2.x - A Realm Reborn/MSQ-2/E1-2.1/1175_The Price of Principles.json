@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-17"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -93,7 +93,12 @@
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 1047
+          "PickUpQuestId": 1047,
+          "SkipConditions": {
+            "StepIf": {
+              "ExtraCondition": "WakingSandsMainArea"
+            }
+          }
         },
         {
           "DataId": 2001717,

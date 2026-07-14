@@ -3507,4 +3507,22 @@
     <Value lang="ja-jp">最初の {0} 件を表示中 — 検索を絞り込んでください。</Value>
     <Value lang="zh-cn">仅显示前 {0} 条结果 — 请缩小搜索范围。</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Show Hovered Item</Key>
+    <Value lang="ja-jp">ホバー中のアイテムを表示</Value>
+    <Value lang="zh-cn">显示悬停道具</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>Unlock NG+</Key>
+    <Value lang="ja-jp">NG+を解放</Value>
+    <Value lang="zh-cn">解锁 NG+</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>New Game+ has not been unlocked on this character</Key>
+    <Value lang="ja-jp">このキャラクターではNG+がまだ解放されていません</Value>
+    <Value lang="zh-cn">此角色尚未解锁昔日重现模式</Value>
+  </Entry>
 </I18N>

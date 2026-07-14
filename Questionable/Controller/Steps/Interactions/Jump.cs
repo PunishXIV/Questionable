@@ -3,7 +3,8 @@ using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Microsoft.Extensions.Logging;
-using Questionable.Model;
+using Questionable.Domain;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -20,8 +21,8 @@ internal static class Jump
 
             if (step.JumpDestination.Type == EJumpType.SingleJump)
                 return new SingleJumpTask(step.DataId, step.JumpDestination, step.Comment);
-            else
-                return new RepeatedJumpTask(step.DataId, step.JumpDestination, step.Comment);
+
+            return new RepeatedJumpTask(step.DataId, step.JumpDestination, step.Comment);
         }
     }
 

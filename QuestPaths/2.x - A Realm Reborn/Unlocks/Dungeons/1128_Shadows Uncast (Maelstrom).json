@@ -21,13 +21,9 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 128
               ]
-            },
-            "AethernetShortcutIf": {
-              "InSameTerritory": true
             }
           }
         }
@@ -36,6 +32,16 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "Position": {
+            "X": 175.38486,
+            "Y": 222.54001,
+            "Z": 353.219
+          },
+          "TerritoryId": 155,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {"StepIf": {"QuestsCompleted": [979]}}
+        },
         {
           "DataId": 1006382,
           "Position": {

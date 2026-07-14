@@ -16,12 +16,7 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "Land": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          "AetheryteShortcut": "The Churning Mists - Moghome"
         },
         {
           "DataId": 1014442,

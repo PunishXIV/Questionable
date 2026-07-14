@@ -22,7 +22,6 @@
           "AetheryteShortcut": "Ul'dah",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 140
               ]
@@ -131,7 +130,6 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InSameTerritory": true,
               "InTerritory": [
                 140
               ]

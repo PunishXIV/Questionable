@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using Questionable.Model;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 

@@ -18,12 +18,7 @@
           "AethernetShortcut": [
             "[Eulmore] Aetheryte Plaza",
             "[Eulmore] Nightsoil Pots"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          }
+          ]
         }
       ]
     },

@@ -15,11 +15,6 @@
           "TerritoryId": 820,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eulmore",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",

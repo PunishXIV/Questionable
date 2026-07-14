@@ -9,8 +9,9 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
@@ -30,7 +31,7 @@ internal sealed class QuestTooltipComponent
     public void Draw(IQuestInfo questInfo)
     {
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-        DrawInner(questInfo, true);
+        DrawInner(questInfo, showItemRewards: true);
     }
 
     public void DrawInner(IQuestInfo questInfo, bool showItemRewards)
@@ -186,7 +187,7 @@ internal sealed class QuestTooltipComponent
                     }
 
                     if (qInfo is QuestInfo qstInfo && (counter <= 2 || icon != FontAwesomeIcon.Check))
-                        DrawQuestUnlocks(qstInfo, counter + 1, false);
+                        DrawQuestUnlocks(qstInfo, counter + 1, showItemRewards: false);
                 }
                 else
                 {

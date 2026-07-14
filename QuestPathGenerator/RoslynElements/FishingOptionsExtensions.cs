@@ -21,6 +21,8 @@ internal static class FishingOptionsExtensions
                             Assignment(nameof(FishingOptions.BaitId), fishingOptions.BaitId, emptyOptions.BaitId)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(FishingOptions.HookType), fishingOptions.HookType, emptyOptions.HookType)
+                                .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(FishingOptions.Preset), fishingOptions.Preset, emptyOptions.Preset)
                                 .AsSyntaxNodeOrToken()))));
     }
 }

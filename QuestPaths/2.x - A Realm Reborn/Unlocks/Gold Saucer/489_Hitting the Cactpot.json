@@ -19,11 +19,6 @@
             "[Gold Saucer] Aetheryte Plaza",
             "[Gold Saucer] Cactpot Board"
           ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InSameTerritory": true
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

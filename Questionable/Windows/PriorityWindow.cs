@@ -14,8 +14,8 @@ using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller;
 using Questionable.Data;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.Utils;
 using Questionable.Windows.Common;
@@ -30,7 +30,7 @@ internal sealed class PriorityWindow : LWindow
     private const string ClipboardPrefix = "qst:priority:";
     private const string LegacyClipboardPrefix = "qst:v1:";
     private const char ClipboardSeparator = ';';
-    private string JobQuestsPresetName = _L("Job Quests");
+    private readonly string JobQuestsPresetName = _L("Job Quests");
     private readonly IChatGui _chatGui;
 
     private readonly Configuration _configuration;
@@ -171,7 +171,7 @@ internal sealed class PriorityWindow : LWindow
 
                 if (hovered)
                     _questTooltipComponent.Draw(quest.Info);
-                
+
                 _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
 
                 if (priorityQuests.Count > 1)
@@ -240,7 +240,7 @@ internal sealed class PriorityWindow : LWindow
             ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(ImGuiColors.DalamudGrey), 3f,
                 ImDrawFlags.RoundCornersAll);
 
-            int newIndex = itemPositions.FindIndex(x => ImGui.IsMouseHoveringRect(x.TopLeft, x.BottomRight, true));
+            int newIndex = itemPositions.FindIndex(x => ImGui.IsMouseHoveringRect(x.TopLeft, x.BottomRight, clip: true));
             if (newIndex >= 0 && oldIndex != newIndex)
             {
                 itemToAdd = priorityQuests.Single(x => x.Id == _draggedItem);
@@ -554,7 +554,7 @@ internal sealed class PriorityWindow : LWindow
         if (currentJob == Job.ADV)
             return [];
 
-        return _questRegistry.GetKnownClassJobQuests(currentJob, false)
+        return _questRegistry.GetKnownClassJobQuests(currentJob, includeRoleQuests: false)
             .Select(x => x.QuestId)
             .ToList();
     }

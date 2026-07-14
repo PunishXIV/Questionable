@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Questionable.Domain;
 using Questionable.Functions;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
