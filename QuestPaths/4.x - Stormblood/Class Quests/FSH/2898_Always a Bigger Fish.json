@@ -1,0 +1,153 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Disabled": true,
+  "$": "Needs spearfishing preset",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008206,
+          "Position": {
+            "X": 202.34985,
+            "Y": 25.40625,
+            "Z": 776.3026
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021405,
+          "Position": {
+            "X": -776.6378,
+            "Y": 4.763442,
+            "Z": -499.83078
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1021404,
+          "Position": {
+            "X": -776.88257,
+            "Y": 4.7854347,
+            "Z": -481.5595
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1021403,
+          "Position": {
+            "X": -750.9728,
+            "Y": 1.5792463,
+            "Z": -455.49707
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021406,
+          "Position": {
+            "X": -74.6319,
+            "Y": -6.999999,
+            "Z": -41.9776
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza","[Kugane] Shiokaze Hostelry"]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1021408,
+          "Position": {
+            "X": 470.05408,
+            "Y": 70.50159,
+            "Z": -47.04364
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "TerritoryId": 614,
+          "InteractionType": "Fish",
+          "ItemsToGather": [
+            {
+              "ItemId": 17951,
+              "ItemCount": 1
+            }
+          ]
+        },
+        {
+          "DataId": 1021409,
+          "Position": {
+            "X": 703.1814,
+            "Y": 2.9493437,
+            "Z": 513.6339
+          },
+          "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        }
+      ]
+    }
+  ]
+}

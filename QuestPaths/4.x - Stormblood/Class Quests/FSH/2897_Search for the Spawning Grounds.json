@@ -1,0 +1,147 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021398,
+          "Position": {
+            "X": 31.509766,
+            "Y": 3,
+            "Z": -71.33594
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1019175,
+          "Position": {
+            "X": 323.87268,
+            "Y": -119.74275,
+            "Z": -223.43793
+          },
+          "TerritoryId": 613,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262877
+          },
+          "ItemId": 28634,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1021399,
+          "Position": {
+            "X": 370.0465,
+            "Y": -120.013885,
+            "Z": -281.9715
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021402,
+          "Position": {
+            "X": 524.5593,
+            "Y": -0.007716721,
+            "Z": -244.86157
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 579.19543,
+            "Y": -0.099999905,
+            "Z": -505.8964
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Fish",
+          "Fly": true,
+          "ItemsToGather": [
+            {
+              "ItemId": 17950,
+              "ItemCount": 3,
+              "FishingOptions": {
+                "BaitId": 28634,
+                "HookType": {"Normal": {"Weak": true}},
+                "Preset": "AH6_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"
+              }
+            }
+          ]
+        },
+        {
+          "DataId": 1021402,
+          "Position": {
+            "X": 524.5593,
+            "Y": -0.007716721,
+            "Z": -244.86157
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000856,
+          "Position": {
+            "X": -155.077,
+            "Y": 4.04358,
+            "Z": 202.716
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        }
+      ]
+    }
+  ]
+}
