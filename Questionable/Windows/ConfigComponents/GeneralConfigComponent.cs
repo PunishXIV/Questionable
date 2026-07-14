@@ -379,6 +379,21 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     }
                 }
 
+                //bool claimMail = Configuration.General.ClaimMail;
+                //if (ImGui.Checkbox(_L("Claim mail"), ref claimMail))
+                //{
+                //    Configuration.General.ClaimMail = claimMail;
+                //    Save();
+                //}
+
+                //if (ImGui.IsItemHovered())
+                //{
+                //    using (ImRaii.Tooltip())
+                //    {
+                //        ImGui.Text(_L("Use MogMail to claim all letters from Delivery Moogles when accepting a quest"));
+                //    }
+                //}
+
 #if false
             ImGui.Spacing();
             bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
