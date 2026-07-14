@@ -231,6 +231,7 @@ internal sealed class Configuration : IPluginConfiguration
         public string DisplayName { get; set; } = "Anonymous";
         public string Language { get; set; } = "en";
         public bool HideRemainingTasks { get; set; }
+        public bool ClaimMail { get; set; }
     }
 
     internal sealed class StopConfiguration

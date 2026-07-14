@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
-internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogger<AutomatonIpc> logger)
+internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogger<StylistIpc> logger)
 {
     private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("Stylist.IsBusy");
     private readonly ICallGateSubscriber<bool?, bool?, object?> _updateGearset = pluginInterface.GetIpcSubscriber<bool?, bool?, object?>("Stylist.UpdateCurrentGearsetEx"); //bool? moveItemsFromInventory, bool? shouldEquip
