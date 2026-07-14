@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons;
@@ -8,18 +7,12 @@ using ECommons.DalamudServices;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
-using Questionable.Domain;
 using Questionable.External;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Serilog.Core;
-using DEnums = Dalamud.Game.ClientState.Objects.Enums;
 
 namespace Questionable.Controller.Steps.Common;
 
@@ -27,7 +20,7 @@ internal static class Mail
 {
     internal sealed class Factory(MogmailIpc mogmailIpc, IObjectTable objectTable, Configuration configuration, ILogger<Mail.Factory> logger) : ITaskFactory
     {
-        public IEnumerable<ITask> CreateAllTasks(Questionable.Domain.Quest quest, QuestSequence sequence, QuestStep step)
+        public IEnumerable<ITask> CreateAllTasks(Domain.Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.AcceptQuest)
                 yield break;
