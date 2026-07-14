@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-19"},
+  "Author": ["liza", "ShermTank"],
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -65,6 +65,27 @@
       "Sequence": 3,
       "Steps": [
         {
+          "Comment": "Equip Ehcatl Wristgloves (required for ixal crafts)",
+          "$": "Artisan should do this implicitly, but for unlocking the Ixal we just want to make sure",
+          "InteractionType": "EquipItem",
+          "ItemId": 8568,
+          "TerritoryId": 154
+        },
+        {
+          "Comment": "Talk to NPC to reapply facility status if it falls off.\nNote: You must not leave the zone.",
+          "InteractionType": "Craft",
+          "TerritoryId": 154,
+          "ItemId": 8129,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
           "DataId": 1009595,
           "Position": {
             "X": -2.8534546,
@@ -73,7 +94,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "$": "Missing craft step",
           "DialogueChoices": [
             {
               "Type": "List",
