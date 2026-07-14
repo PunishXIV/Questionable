@@ -26,6 +26,18 @@
       "Sequence": 1,
       "Steps": [
         {
+          "Position": {
+            "X": 441.8654,
+            "Y": -29.307745,
+            "Z": 215.52328
+          },
+          "TerritoryId": 400,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Churning Mists - Moghome"
+        },
+        {
           "DataId": 1013824,
           "Position": {
             "X": 441.30603,
@@ -33,9 +45,7 @@
             "Z": 218.12769
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +89,24 @@
     {
       "Sequence": 4,
       "Comment": "Requires Flying Unlocked",
+      "$": "No, there isn't an alternate way to get there without flying like many other quests",
       "Steps": [
+        {
+          "Position": {
+            "X": 417.99115,
+            "Y": -186.46567,
+            "Z": 817.16003
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked"
+            }
+          }
+        },
         {
           "DataId": 1013829,
           "Position": {
@@ -89,7 +116,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -102,18 +128,58 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Comment": "Move to fishing spot",
+          "Comment": "Purchase bait",
+          "DataId": 1011206,
           "Position": {
-            "X": 418.0307,
-            "Y": -187.0841,
-            "Z": 827.66614
+            "X": -236.83533,
+            "Y": -20.034918,
+            "Z": -82.65814
+          },
+          "TerritoryId": 419,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262767
+          },
+          "ItemId": 12704,
+          "ItemCount": 99,
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "StepIf": { "Item": { "NotInInventory": false } },
+            "AetheryteShortcutIf": { "Item": { "NotInInventory": false } }
+          }
+        },
+        {
+          "Comment": "Go to fishing spot",
+          "Position": {
+            "X": 414.52017,
+            "Y": -186.3738,
+            "Z": 823.8873
+          },
+          "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+        },
+        {
+          "Comment": "Walk to water's edge",
+          "Position": {
+            "X": 417.8501,
+            "Y": -187.05978,
+            "Z": 827.354
           },
           "TerritoryId": 401,
           "InteractionType": "WalkTo",
           "Mount": false
         },
         {
-          "Comment": "Fish for 1x Catkiller (Bait: Bladed Steel Jig, Mooch: Bullfrog)\nWEATHER REQUIRED: Clear Skies or Fair Skies",
+          "Comment": "Fish for 1x Catkiller\n Bait: Stonefly Nymph for Hedgemole Cricket mooch for Bullfrog double mooch\n  OR Bladed Steel Jig for Bullfrog mooch\n  OR Brute Leech\n  WEATHER REQUIRED: Clear Skies or Fair Skies",
+          "$": "All mentioned bait is supported by preset. Bladed Steel Jig requires crafting, Brute Leech requires scrip purchase, so prefer Stonefly Nymph. Preset will wait to cast until applicable weather.",
           "TerritoryId": 397,
           "InteractionType": "Fish",
           "ItemsToGather": [
