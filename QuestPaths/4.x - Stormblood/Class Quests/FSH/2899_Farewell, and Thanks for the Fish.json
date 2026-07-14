@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "Disabled": true,
   "QuestSequence": [
     {
       "Sequence": 0,
