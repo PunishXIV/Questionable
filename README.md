@@ -64,6 +64,15 @@
 
 </section><br>
 
+<!-- Contributing -->
+<section id="contributing">
+
+# Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+</section><br>
+
 <!-- Companion Plugins -->
 <section id="deps"><br>
 
