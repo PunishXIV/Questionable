@@ -3526,7 +3526,15 @@
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
-    <Key>To revert to the official version, delete the file and click Reload Data again.\n</Key>
+    <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestRegistry.cs -->
+    <Key>After making a change, click Reload Data below.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestRegistry.cs -->
+    <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
@@ -3576,5 +3584,17 @@
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable.</Key>
+  </Entry>
+  <Entry>
+    <Key>Clicking this button writes the quest path to a file and opens it in your default text editor. After making a change, click Reload Data below.</Key>
+  </Entry>
+  <Entry>
+    <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
+  </Entry>
+  <Entry>
+    <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
+  </Entry>
+  <Entry>
+    <Key>After making a change, click Reload Data below.</Key>
   </Entry>
 </I18N>
