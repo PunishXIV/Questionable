@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Hi-Potion of Strength HQ// Autocraft requires:\n 1x Rock Salt,\n 1x Blue Yarzon Leg,\n 1x Gil Bun",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,

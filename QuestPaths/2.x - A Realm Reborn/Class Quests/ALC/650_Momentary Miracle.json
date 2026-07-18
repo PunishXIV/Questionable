@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Budding Rosewood Wand HQ with 1x Quicktongue Materia III\nAutocraft requires:\n 1x Growth Formula Gamma,\n 1x Rosewood Branch,\n 1x Spoken Blood,\n 1x Mega-Potion of Mind",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,

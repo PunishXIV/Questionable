@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Bronze Spatha,\n 1x Spiked Bronze Labrys\nAutocraft requires:\n 4x Bronze Ingot,\n 1x Hard Leather,\n 1x Ram Horn,\n 1x Ash Lumber",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-28"},
   "QuestSequence": [
     {
       "Sequence": 0,

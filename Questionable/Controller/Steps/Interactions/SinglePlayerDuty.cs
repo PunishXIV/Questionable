@@ -6,9 +6,11 @@ using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons;
+using ECommons.DalamudServices;
 using ECommons.Throttlers;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
@@ -87,6 +89,11 @@ internal static class SinglePlayerDuty
                 }
 
                 yield return new Mount.UnmountTask();
+                //if (ShouldLeaveParty || condition[ConditionFlag.ParticipatingInCrossWorldPartyOrAlliance])
+                //{
+                //    yield return new LeaveParty();
+                //    yield return new WaitAtStart.WaitDelay(TimeSpan.FromSeconds(0.5));
+                //}
                 if (tId == SpecialTerritories.Patisserie)
                     yield return new Commence(cfcId);
                 yield return new StartSinglePlayerDuty(cfcId);
@@ -420,5 +427,39 @@ internal static class SinglePlayerDuty
         }
 
         public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record LeaveParty : ITask
+    {
+        public override string ToString() => "LeaveParty()";
+    }
+
+    internal sealed class LeavePartyExecutor(ICommandManager commandManager) : TaskExecutor<LeaveParty>
+    {
+        protected override bool Start() => LeavePartyAction();
+
+        public override ETaskResult Update()
+        {
+            return LeavePartyAction() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        }
+
+        public bool LeavePartyAction()
+        {
+            commandManager.ProcessCommand("/leave"); // TODO find a cleaner way to do this, and also a thing to check if it's done
+            return true;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    public static unsafe bool ShouldLeaveParty
+    {
+        get
+        {
+            GroupManager* groupManager = GroupManager.Instance();
+            var memberCount = groupManager->MainGroup.MemberCount;
+            Svc.Log.Debug($"ShouldLeaveParty: {memberCount>1} {memberCount}");
+            return memberCount > 1;
+        }
     }
 }

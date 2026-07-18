@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Cobalt Halberd HQ,\n 1x Jade Crook HQ,\n 1x Yew Longbow HQ\nAutocraft requires:\n 1x Cobalt Ingot,\n 1x Silver Ingot,\n 1x Oak Lumber,\n 1x Boar Leather,\n 1x Mahogany Lumber,\n 1x Jadeite,\n 1x Spoken Blood,\n 1x Horn Glue,\n 1x Rosewood Lumber,\n 2x Yew Branch,\n 1x Raptor Sinew,\n 1x Clove Oil",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Toadskin Jacket HQ\nAutocraft requires:\n 2x Toad Leather,\n 1x Aldgoat Leather,\n 1x Diremite Sinew",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-07"},
   "QuestSequence": [
     {
       "Sequence": 0,

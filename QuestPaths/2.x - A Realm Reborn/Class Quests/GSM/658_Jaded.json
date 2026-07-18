@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Black Pearl Ring HQ with 1x Piety Materia III\nAutocraft requires:\n 1x Black Pearl,\n 1x Electrum Ingot",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-12"},
   "QuestSequence": [
     {
       "Sequence": 0,

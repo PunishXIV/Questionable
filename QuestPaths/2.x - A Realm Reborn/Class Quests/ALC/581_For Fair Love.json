@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Potion of Intelligence,\n 1x Potion of Dexterity\nAutocraft requires:\n 2x Rock Salt,\n 1x Beastkin Blood,\n 1x Red Landtrap Leaf,\n 1x Bat Fang",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Fire Brand HQ\nAutocraft requires:\n 1x Silver Ingot,\n 1x Aldgoat Horn,\n 1x Eye of Fire",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-12"},
   "QuestSequence": [
     {
       "Sequence": 0,

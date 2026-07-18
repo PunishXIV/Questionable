@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Woolen Beret HQ,\n 1x Woolen Gaskins HQ,\n 1x Woolen Gown HQ\nAutocraft requires:\n 4x Undyed Woolen Cloth,\n 2x Woolen Yarn,\n 1x Apkallu Down,\n 1x Chocobo Feather,\n 1x Dew Thread,\n 2x Toad Leather,\n 1x Undyed Linen,\n 1x Mythril Ingot",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-11"},
   "QuestSequence": [
     {
       "Sequence": 0,

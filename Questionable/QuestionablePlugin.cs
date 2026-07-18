@@ -276,6 +276,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
                 TurnInDelivery.SatisfactionSupplyTurnIn>();
 
         serviceCollection.AddTaskFactory<SinglePlayerDuty.Factory>();
+        serviceCollection.AddTaskExecutor<SinglePlayerDuty.LeaveParty, SinglePlayerDuty.LeavePartyExecutor>();
         serviceCollection
             .AddTaskExecutor<SinglePlayerDuty.StartSinglePlayerDuty, SinglePlayerDuty.StartSinglePlayerDutyExecutor>();
         serviceCollection.AddTaskExecutor<SinglePlayerDuty.EnableAi, SinglePlayerDuty.EnableAiExecutor>();
