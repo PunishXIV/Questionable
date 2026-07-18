@@ -1,5 +1,7 @@
-﻿using Dalamud.Bindings.ImGui;
+﻿using System.Numerics;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
+using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
 using PunishLib.ImGuiMethods;
 using Questionable.Windows.Common;
@@ -17,7 +19,7 @@ internal sealed class ConfigWindow
     StopConditionComponent stopConditionComponent,
     NotificationConfigComponent notificationConfigComponent,
     DebugConfigComponent debugConfigComponent,
-    Configuration configuration) : LWindow(_L("Config - Questionable") + "###QuestionableConfig", ImGuiWindowFlags.AlwaysAutoResize), IPersistableWindowConfig
+    Configuration configuration) : LWindow(_L("Config - Questionable") + "###QuestionableConfig"), IPersistableWindowConfig
 {
     private readonly Configuration _configuration = configuration;
     private readonly DebugConfigComponent _debugConfigComponent = debugConfigComponent;
@@ -38,6 +40,13 @@ internal sealed class ConfigWindow
         using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
         if (!tabBar)
             return;
+        Size = new Vector2(400, 400);
+        SizeCondition = ImGuiCond.Once;
+        SizeConstraints = new WindowSizeConstraints
+        {
+            MinimumSize = new(400, 400),
+            MaximumSize = default
+        };
 
         _generalConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();
@@ -46,11 +55,9 @@ internal sealed class ConfigWindow
         _stopConditionComponent.DrawTab();
         _notificationConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
-        using (ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs"))
-        {
-            if (!tab)
-                return;
-            AboutTab.Draw("Questionable");
-        }
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs");
+        if (!tab)
+            return;
+        AboutTab.Draw("Questionable");
     }
 }

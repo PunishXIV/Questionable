@@ -9,6 +9,7 @@ using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Controller.GameUi;
 using Questionable.Data;
+using Questionable.External;
 using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
 using static Questionable.Utils.LocalizeShortcut;
@@ -34,6 +35,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly RemainingTasksComponent _remainingTasksComponent;
     private readonly ReportWarningComponent _reportWarningComponent;
     private readonly TerritoryData _territoryData;
+    private readonly BossModIpc _bossModIpc;
 
     public QuestWindow(IDalamudPluginInterface pluginInterface,
         QuestController questController,
@@ -50,7 +52,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ReportWarningComponent reportWarningComponent,
         IFramework framework,
         InteractionUiController interactionUiController,
-        ConfigWindow configWindow)
+        ConfigWindow configWindow,
+        BossModIpc bossModIpc)
         : base((configuration.Advanced.Debug ? "(DEBUG) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
             ImGuiWindowFlags.AlwaysAutoResize)
     {
@@ -69,6 +72,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _reportWarningComponent = reportWarningComponent;
         _framework = framework;
         _interactionUiController = interactionUiController;
+        _bossModIpc = bossModIpc;
 
         SizeConstraints = new WindowSizeConstraints
         {
@@ -172,6 +176,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             }
 #endif
             string notice = "";
+            if (_bossModIpc.BossModRebornDetected())
+                notice = _L("Questionable is not compatible with BossMod Reborn!");
             if (notice.Length != 0)
             {
                 ImGui.TextColored(ImGuiColors.DPSRed, _L("Notice"));
@@ -218,7 +224,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     internal void Reload()
     {
         _questController.Reload();
-        _framework.RunOnTick(() => _interactionUiController.HandleCurrentDialogueChoices(),
+        _ = _framework.RunOnTick(_interactionUiController.HandleCurrentDialogueChoices,
             TimeSpan.FromMilliseconds(200));
     }
 }

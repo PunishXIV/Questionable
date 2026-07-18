@@ -97,8 +97,8 @@ internal sealed class PriorityWindow : LWindow
             ImGui.BulletText(_L("Priority quests added below, in order"));
             ImGui.BulletText(_L("'Priority' quests: class quests, ARR primals, ARR raids"));
             ImGui.BulletText(
-                _L("Supported quests in your 'To-Do list'\n(quests from your Quest Journal that are always on-screen)"));
-            ImGui.BulletText(_L("MSQ quest (if available, unless it is marked as 'ignored'\nin your Journal)"));
+                _L("Supported quests in your 'To-Do list' (quests from your Quest Journal that are always on-screen)"));
+            ImGui.BulletText(_L("MSQ quest (if available, unless it is marked as 'ignored' in your Journal)"));
             ImGui.TextWrapped(
                 _L("If you don't have any active MSQ quest and there is no Priority Quest added here, " +
                 "it will always try to pick up the next quest in the MSQ first."));
@@ -478,7 +478,7 @@ internal sealed class PriorityWindow : LWindow
             2110,2053, // Dark Knight
             2123,2012 // Astrologian
         ]).FromNumericListOfQuests();
-        _builtInPresets = new()
+        _builtInPresets = new(StringComparer.Ordinal)
         {
             [JobQuestsPresetName] = [],
             [_L("Unlock all jobs")] = jobUnlocks,

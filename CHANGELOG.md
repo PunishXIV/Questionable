@@ -1,1 +1,1 @@
-- Feature: AutoHook presets can be embedded in quest paths now -alydev
+- Feature: config window is now resizable -alydev

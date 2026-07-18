@@ -94,6 +94,11 @@ internal static class ImGuiComponentsLocal
         string preview = labels[index];
         if (labelAsPreview)
             preview = label;
+        else
+        {
+            var size = ImGui.GetWindowContentRegionMax();
+            ImGui.SetNextItemWidth(size.X / 2);
+        }
         if (ImGui.BeginCombo($"{(!labelAsPreview ? label : "")}##SearchableCombo:{Path.GetFileName(file)}:{line}", preview, ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);

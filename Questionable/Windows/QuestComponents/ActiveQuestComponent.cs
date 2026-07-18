@@ -234,9 +234,7 @@ internal sealed partial class ActiveQuestComponent
                     if (ImGui.IsItemHovered())
                     {
                         ImGui.SetTooltip(
-                            _L("This quest is loaded from your Quests folder, probably because you (accidentally) clicked the Edit button below.\n" +
-                                "This gets loaded even if Questionable ships with a newer/different version of the quest.\n" +
-                                "If you experience issues, please right click the Edit button, delete the file for this quest, and click Reload Data."));
+                            _L("This quest is loaded from your 'pluginConfigs\\Questionable\\Quests' directory. This gets loaded even if Questionable ships with a newer/different version of the quest."));
                     }
                 }
 
@@ -373,7 +371,7 @@ internal sealed partial class ActiveQuestComponent
                             .ToList();
                         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
                         ImGui.Text(
-                            _L("Certain priority quest (e.g. class quests) may be started/completed by\nthe plugin prior to continuing, usually at a teleport step."));
+                            _L("Certain priority quest (e.g. class quests) may be started/completed by the plugin prior to continuing, usually at a teleport step."));
                         ImGui.Separator();
                         ImGui.Text(_L("Available priority quests:"));
                         if (availablePriorityQuests.Count > 0)

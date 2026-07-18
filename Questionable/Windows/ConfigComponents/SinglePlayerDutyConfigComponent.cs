@@ -4,6 +4,7 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
@@ -40,6 +41,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         (Job.BRD, _L("Physical Ranged Role Quests")),
         (Job.BLM, _L("Magical Ranged Role Quests"))
     ];
+    private Vector2 Size;
 
 #if false
     private readonly string[] _retryDifficulties = [_L("Normal"), _L("Easy"), _L("Very Easy")];
@@ -256,6 +258,8 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quest Battles") + "###QuestBattles");
         if (!tab)
             return;
+        Size = ImGui.GetWindowContentRegionMax();
+        var wrap = ImRaii.TextWrapPos(Size.X+10);
 
         bool runSoloInstancesWithBossMod = Configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod;
         if (ImGui.Checkbox(_L("Run quest battles with BossMod"), ref runSoloInstancesWithBossMod))
@@ -272,7 +276,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
                 ImGui.BulletText(_L("Will always use BossMod for combat (ignoring the configured combat module)."));
                 ImGui.BulletText(_L("Only a small subset of quest battles have been tested - most of which are in the MSQ."));
                 ImGui.BulletText(_L("When retrying a failed battle, it will always start at 'Very Easy' difficulty."));
-                ImGui.BulletText(_L("Please don't enable this option when using a BossMod fork (such as Reborn);\nwith the missing combat module configuration, it is unlikely to be compatible."));
+                ImGui.BulletText(_L("BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable."));
             }
 
 #if false
@@ -313,9 +317,10 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
 
             DrawEnableAllButton();
             ImGui.SameLine();
-            DrawClipboardButtons();
-            ImGui.SameLine();
             DrawResetButton();
+            if (Size.X > 500)
+                ImGui.SameLine();
+            DrawClipboardButtons();
         }
     }
 
@@ -326,7 +331,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -440,7 +445,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -498,7 +503,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -564,7 +569,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         if (!tab)
             return;
 
-        using ImRaii.ChildDisposable child = BeginChildArea();
+        using ImRaii.ChildDisposable child = BeginChildArea(Size.X);
         if (!child)
             return;
 
@@ -664,7 +669,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         }
     }
 
-    private static ImRaii.ChildDisposable BeginChildArea() => ImRaii.Child("DutyConfiguration", new(675, 400), border: true);
+    private static ImRaii.ChildDisposable BeginChildArea(float X) => ImRaii.Child("DutyConfiguration", new(X-5, 300), border: true);
 
     private void DrawEnableAllButton()
     {

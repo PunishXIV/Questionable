@@ -94,8 +94,7 @@ internal sealed class AlliedSocietyJournalComponent
         if (_unchecked > 0)
         {
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working\n" +
-                                       "or not via the LastChecked system. Ask Aly for more details!"),
+            ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!"),
                                        FontAwesomeIcon.InfoCircle, ImGuiColors.DalamudOrange);
             ImGui.SameLine();
             ImGui.Text(_LF("Unchecked: {0}", _unchecked));
