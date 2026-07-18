@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
   "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -49,7 +50,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true
         }

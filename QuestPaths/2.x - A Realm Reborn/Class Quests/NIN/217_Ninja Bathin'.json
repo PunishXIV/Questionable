@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
   "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -92,12 +93,13 @@
         {
           "DataId": 1010622,
           "Position": {
-            "X": 488.365,
-            "Y": 16.907331,
-            "Z": 86.71704
+            "X": 486.644,
+            "Y": 16.907333,
+            "Z": 84.17361
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "StopDistance": 0.25
         }
       ]
     },
@@ -186,7 +188,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]

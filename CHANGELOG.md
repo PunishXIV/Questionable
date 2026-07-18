@@ -1,4 +1,1 @@
-- Feature: config window is now resizable -alydev
-- Feature: SwitchClass now supports job>class by removing job stone -alydev
-- Change: Stop command skipped for UI stop and ESC key -alydev
-- Bug fix: interact with crystarium aetheryte in quest even if already unlocked -alydev
+- Feature: adjusted pre-interact class switching, now works in more cases -alydev

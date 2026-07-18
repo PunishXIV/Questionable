@@ -158,7 +158,7 @@ internal static class UnequipItem
             }
         }
 
-        private static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
+        internal static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
         {
             for (ushort i = 0; i < container->Size; i++)
             {

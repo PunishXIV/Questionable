@@ -22,32 +22,11 @@ internal static class SwitchClassJob
                 yield break;
 
             Job classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
-            Dictionary<Job, (Job, ushort)> classToJobStone = new() {
-                { Job.GLA, (Job.PLD, 4542) },
-                { Job.PGL, (Job.MNK, 4543) },
-                { Job.MRD, (Job.WAR, 4544) },
-                { Job.LNC, (Job.DRG, 4545) },
-                { Job.ARC, (Job.BRD, 4546) },
-                { Job.CNJ, (Job.WHM, 4547) },
-                { Job.THM, (Job.BLM, 4548) },
-                { Job.ACN, (Job.SMN, 4549) },
-                { Job.ROG, (Job.NIN, 7886) }
-            };
-            if (classToJobStone.TryGetValue(classJob, out var value))
+            if (classJobUtils.ClassToJobStone(classJob) is (Job job, ushort jobStone))
             {
-                (var job, var item) = value;
-                bool unlocked = false;
-                unsafe {
-                    InventoryManager* inventoryManager = InventoryManager.Instance();
-                    if (inventoryManager->GetInventoryItemCount(item) > 0)
-                        unlocked = true;
-                }
-                if (unlocked)
-                {
-                    yield return new Task(job);
-                    yield return new UnequipItem.Task(item);
-                    yield break;
-                }
+                yield return new Task(job);
+                yield return new UnequipItem.Task(jobStone);
+                yield break;
             }
             yield return new Task(classJob);
         }
@@ -58,28 +37,14 @@ internal static class SwitchClassJob
         public override string ToString() => $"SwitchJob({ClassJob})";
     }
 
-    internal sealed class SwitchClassJobExecutor : AbstractDelayedTaskExecutor<Task>
+    internal sealed class SwitchClassJobExecutor(ClassJobUtils classJobUtils) : AbstractDelayedTaskExecutor<Task>
     {
         protected override unsafe bool StartInternal()
         {
-            if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
-                return false;
-
-            RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
-            if (gearsetModule != null)
-            {
-                for (int i = 0; i < 100; ++i)
-                {
-                    RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                    if (gearset->ClassJob == (byte)Task.ClassJob)
-                    {
-                        gearsetModule->EquipGearset(gearset->Id);
-                        return true;
-                    }
-                }
-            }
-
-            throw new TaskException($"No gearset found for {Task.ClassJob}");
+            var result = classJobUtils.SwitchClassJob(Task.ClassJob);
+            if (!result)
+                throw new TaskException($"No gearset found for {Task.ClassJob}");
+            return !result;
         }
 
         protected unsafe override ETaskResult UpdateInternal()
