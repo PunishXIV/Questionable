@@ -25,4 +25,6 @@ public enum EExtraSkipCondition
     /// True if player is on Costa Del Sol side of Eastern La Noscea, false if on Wineport side
     /// </summary>
     CostaDelSol,
+    NewGamePlus,
+    NotNewGamePlus,
 }

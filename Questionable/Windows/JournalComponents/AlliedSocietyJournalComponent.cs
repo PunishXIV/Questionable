@@ -50,6 +50,7 @@ internal sealed class AlliedSocietyJournalComponent
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
         bool abandonQuestBeforeCompletion = configuration.Advanced.AbandonQuestBeforeCompletion;
         bool removeFromPriorityWhenAbandoned = configuration.Advanced.RemoveFromPriorityWhenAbandoned;
+        bool runCommandAfterStop = configuration.Stop.RunCommandAfterStop;
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop, preventQuestCompletion ? ImGuiColors.DalamudOrange : null))
         {
             configuration.Advanced.PreventQuestCompletion = !preventQuestCompletion;
@@ -77,6 +78,15 @@ internal sealed class AlliedSocietyJournalComponent
             ImGui.SetTooltip(_L("Remove from priority when abandoned"));
 
         ImGui.SameLine();
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Home, runCommandAfterStop ? ImGuiColors.DalamudOrange : null))
+        {
+            configuration.Stop.RunCommandAfterStop = !runCommandAfterStop;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Run command when Questionable finishes automatic questing"));
+
+        ImGui.SameLine();
 
         unsafe
         {
@@ -94,8 +104,7 @@ internal sealed class AlliedSocietyJournalComponent
         if (_unchecked > 0)
         {
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working\n" +
-                                       "or not via the LastChecked system. Ask Aly for more details!"),
+            ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!"),
                                        FontAwesomeIcon.InfoCircle, ImGuiColors.DalamudOrange);
             ImGui.SameLine();
             ImGui.Text(_LF("Unchecked: {0}", _unchecked));

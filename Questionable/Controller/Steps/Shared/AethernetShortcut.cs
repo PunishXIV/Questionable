@@ -122,6 +122,11 @@ internal static class AethernetShortcut
                     logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is unlocked");
                     return false;
                 }
+                if (Task.SkipConditions.InTerritory.Contains(clientState.TerritoryType))
+                {
+                    logger.LogInformation("Skipping aethernet teleport due to SkipCondition (InTerritory)");
+                    return false;
+                }
             }
 
             if (aetheryteFunctions.IsAetheryteUnlocked(Task.From) &&

@@ -28,6 +28,11 @@
           }
         },
         {
+            "TerritoryId": 129,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Rogue"
+        },
+        {
           "DataId": 1009943,
           "Position": {
             "X": -153.36847,

@@ -6,6 +6,7 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
+using ECommons.Throttlers;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -297,8 +298,14 @@ internal static class Interact
                 }
             }
 
-            if (!gameObject.IsTargetable || !HasAnyMarker(gameObject))
+            bool isTargetable = gameObject.IsTargetable;
+            bool hasAnyMarker = HasAnyMarker(gameObject);
+            if (!isTargetable || !hasAnyMarker)
+            {
+                if (EzThrottler.Throttle("skipTarget", miliseconds:1000))
+                    logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
                 return ETaskResult.StillRunning;
+            }
 
             TriggerInteraction(gameObject);
             return ETaskResult.StillRunning;

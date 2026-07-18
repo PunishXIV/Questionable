@@ -80,9 +80,9 @@ internal sealed class QuickAccessButtonsComponent
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
             if (!isNavmeshAvailable)
-                ImGui.SetTooltip(_L("vnavmesh is not available.\nPlease install it first."));
+                ImGui.SetTooltip(_L("vnavmesh is not available. Please install it first."));
             else
-                ImGui.SetTooltip(_L("Hold CTRL to enable this button.\nRebuilding the navmesh will take some time."));
+                ImGui.SetTooltip(_L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time."));
         }
     }
 

@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 133,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Lancer"
+        },
+        {
           "DataId": 1000254,
           "Position": {
             "X": 157.7019,

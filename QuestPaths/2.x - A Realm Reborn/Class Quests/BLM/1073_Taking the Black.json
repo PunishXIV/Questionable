@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 130,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Thaumaturge"
+        },
+        {
           "DataId": 1002279,
           "Position": {
               "X": -196.8872,

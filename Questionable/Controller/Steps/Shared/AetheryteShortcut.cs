@@ -23,7 +23,7 @@ namespace Questionable.Controller.Steps.Shared;
 internal static class AetheryteShortcut
 {
     public static HashSet<uint> Territories = [212, 351, 128, 131, 133, 419];
-    internal sealed class Factory(AetheryteData aetheryteData, IClientState clientState, IObjectTable objectTable)
+    internal sealed class Factory(AetheryteData aetheryteData, IClientState clientState, IObjectTable objectTable, ExtraConditionUtils extraConditionUtils)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -33,7 +33,7 @@ internal static class AetheryteShortcut
                 if (step.TerritoryId == 1) // unused territory ID, used to disable auto teleports as a gross hack
                     yield break;
                 bool matchesCondition(EExtraSkipCondition condition, Vector3 position) =>
-                    ExtraConditionUtils.MatchesExtraCondition(condition, position, step.TerritoryId);
+                    extraConditionUtils.MatchesExtraCondition(condition, position, step.TerritoryId);
                 // Scion quest hubs
                 if (step.TerritoryId == 212) // Waking Sands
                 {

@@ -5,6 +5,7 @@ using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
@@ -28,6 +29,8 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestSelector _completeQuestSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
+    private Vector2 Size;
+    internal readonly IEnumerable<string> commandExceptions = ["UI stop", "ESC pressed"];
 
     public StopConditionComponent(
         IDalamudPluginInterface pluginInterface,
@@ -74,6 +77,8 @@ internal sealed class StopConditionComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Stop") + "###StopConditionns");
         if (!tab)
             return;
+        Size = ImGui.GetWindowContentRegionMax();
+        var wrap = ImRaii.TextWrapPos(Size.X+10);
 
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
         if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
@@ -81,8 +86,6 @@ internal sealed class StopConditionComponent : ConfigComponent
             Configuration.Stop.RunCommandAfterStop = runCommand;
             Save();
         }
-        ImGui.SameLine();
-        ImGui.TextColored(ImGuiColors.DalamudRed, _L("Experimental feature"));
         string command = Configuration.Stop.CommandAfterStop;
         if (ImGui.InputText(_L("Command"), ref command, 128))
         {
@@ -95,6 +98,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                 Configuration.Stop.CommandAfterStop = "/li auto";
             Save();
         }
+        ImGuiComponentsLocal.HelpMarker("Excludes these stop reasons:", commandExceptions.ToArray());
 
         ImGui.Separator();
 

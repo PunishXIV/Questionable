@@ -45,7 +45,8 @@
             "StepIf": {
               "Item": {
                 "NotInInventory": false
-              }
+              },
+              "ExtraCondition": "NewGamePlus"
             }
           }
         },
@@ -73,7 +74,8 @@
                 "HookType": { "Normal": { "Strong": true } }
               }
             }
-          ]
+          ],
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1047097,

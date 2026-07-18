@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
@@ -104,6 +106,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly QuestPriorityManager _priorityManager;
     private readonly QuestProgressTracker _tracker;
     private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
+    private readonly StopConditionComponent _stopConditionComponent;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
     private readonly ICommandManager _commandManager;
@@ -169,6 +172,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         IGameGuiAdapter gameGui,
         ICommandManager commandManager,
         SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
+        StopConditionComponent stopConditionComponent,
         AlliedSocietyQuestFunctions alliedSocietyQuestFunctions)
         : base(chatGui, condition, serviceProvider, interruptHandler, dataManager, logger)
     {
@@ -191,6 +195,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _configuration = configuration;
         _taskCreator = taskCreator;
         _singlePlayerDutyConfigComponent = singlePlayerDutyConfigComponent;
+        _stopConditionComponent = stopConditionComponent;
         _alliedSocietyQuestFunctions = alliedSocietyQuestFunctions;
         _logger = logger;
         _highlightObject = highlightObject;
@@ -865,7 +870,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (IsRunning || AutomationType != EAutomationType.Manual)
         {
             ClearTasksInternal();
-            if (_configuration.Stop is { RunCommandAfterStop: true } stop)
+            if (AutomationType is EAutomationType.Automatic && _configuration.Stop is { RunCommandAfterStop: true } stop &&
+                !_stopConditionComponent.commandExceptions.Any(e => label.Equals(e, StringComparison.OrdinalIgnoreCase)))
             {
                 if (stop.CommandAfterStop.StartsWith('/'))
                     _commandManager.ProcessCommand(stop.CommandAfterStop);

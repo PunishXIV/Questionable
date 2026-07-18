@@ -370,7 +370,9 @@
                     "NotRoguesGuild",
                     "DockStorehouse",
                     "SkipFreeFantasia",
-                    "CostaDelSol"
+                    "CostaDelSol",
+                    "NewGamePlus",
+                    "NotNewGamePlus"
                   ]
                 }
               },
@@ -473,7 +475,9 @@
                   "type": "string",
                   "enum": [
                     "SkipFreeFantasia",
-                    "CostaDelSol"
+                    "CostaDelSol",
+                    "NewGamePlus",
+                    "NotNewGamePlus"
                   ]
                 }
               },
@@ -487,6 +491,12 @@
                 },
                 "InSameTerritory": {
                   "type": "boolean"
+                },
+                "InTerritory": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
                 },
                 "AetheryteLocked": {
                   "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"

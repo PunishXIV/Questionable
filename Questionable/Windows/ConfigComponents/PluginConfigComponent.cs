@@ -30,27 +30,11 @@ internal sealed class PluginConfigComponent
     AutomatonIpc automatonIpc,
     PandorasBoxIpc pandorasBoxIpc) : ConfigComponent(pluginInterface, configuration)
 {
-    private static readonly IReadOnlyList<PluginInfo> RequiredPlugins =
-    [
-        new("vnavmesh",
-            "vnavmesh",
-            _L("vnavmesh handles the navigation within a zone, moving\nyour character to the next quest-related objective."),
-            new("https://github.com/awgil/ffxiv_navmesh/"),
-            new("https://puni.sh/api/repository/veyn"),
-            "/vnav"),
-        new("Lifestream",
-            "Lifestream",
-            _L("Used to travel to aethernet shards in cities."),
-            new("https://github.com/NightmareXIV/Lifestream"),
-            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
-            "/lifestream"),
-        new("TextAdvance",
-            "TextAdvance",
-            _L("Automatically accepts and turns in quests, skips cutscenes and dialogue."),
-            new("https://github.com/NightmareXIV/TextAdvance"),
-            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
-            "/at c")
-    ];
+    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
+    private readonly Configuration _configuration = configuration;
+    private readonly CombatController _combatController = combatController;
+    private readonly UiUtils _uiUtils = uiUtils;
+    private readonly ICommandManager _commandManager = commandManager;
 
     private static readonly ReadOnlyDictionary<ECombatModule, PluginInfo> CombatPlugins =
         new Dictionary<ECombatModule, PluginInfo>
@@ -59,7 +43,7 @@ internal sealed class PluginConfigComponent
                 ECombatModule.BossMod,
                 new("Boss Mod (VBM)",
                     "BossMod",
-                    string.Empty,
+                    "Automates all kinds of combat and interaction in overworld and duty content",
                     new("https://github.com/awgil/ffxiv_bossmod"),
                     new("https://puni.sh/api/repository/veyn"),
                     "/vbm")
@@ -84,11 +68,29 @@ internal sealed class PluginConfigComponent
                     "/rsr")
             }
         }.AsReadOnly();
-    private readonly CombatController _combatController = combatController;
-    private readonly ICommandManager _commandManager = commandManager;
 
-    private readonly Configuration _configuration = configuration;
-    private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
+    private static readonly IReadOnlyList<PluginInfo> RequiredPlugins =
+    [
+        new("vnavmesh",
+            "vnavmesh",
+            _L("vnavmesh handles the navigation within a zone, moving your character to the next quest-related objective."),
+            new("https://github.com/awgil/ffxiv_navmesh/"),
+            new("https://puni.sh/api/repository/veyn"),
+            "/vnav"),
+        new("Lifestream",
+            "Lifestream",
+            _L("Used to travel to aethernet shards in cities."),
+            new("https://github.com/NightmareXIV/Lifestream"),
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/lifestream"),
+        new("TextAdvance",
+            "TextAdvance",
+            _L("Automatically accepts and turns in quests, skips cutscenes and dialogue."),
+            new("https://github.com/NightmareXIV/TextAdvance"),
+            new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
+            "/at c"),
+        //CombatPlugins[ECombatModule.BossMod]
+    ];
 
     private readonly IReadOnlyList<PluginInfo> _recommendedPlugins =
     [
@@ -151,7 +153,6 @@ internal sealed class PluginConfigComponent
             new("https://github.com/NightmareXIV/MyDalamudPlugins/raw/main/pluginmaster.json"),
             "/stylist c"),
     ];
-    private readonly UiUtils _uiUtils = uiUtils;
 
     public override void DrawTab()
     {
@@ -194,13 +195,13 @@ internal sealed class PluginConfigComponent
             }
         }
 
-        if (ImGui.CollapsingHeader(_L("Rotation/Automation plugins: (Recommended: BossMod (VBM) )")))
+        if (ImGui.CollapsingHeader(_L("Rotation/Automation plugins:")))
         {
             using (ImRaii.Disabled(_combatController.IsRunning))
             {
                 using (ImRaii.PushIndent())
                 {
-                    if (ImGui.RadioButton(_L("No rotation/combat plugin (combat must be done manually)"),
+                    if (ImGui.RadioButton(_L("No rotation/combat plugin\n(combat must be done manually)"),
                         _configuration.General.CombatModule == ECombatModule.None))
                     {
                         _configuration.General.CombatModule = ECombatModule.None;
@@ -208,12 +209,12 @@ internal sealed class PluginConfigComponent
                     }
 
                     allRequiredInstalled &= DrawCombatPlugin(ECombatModule.BossMod, checklistPadding);
-                    allRequiredInstalled &= DrawCombatPlugin(ECombatModule.WrathCombo, checklistPadding);
                 }
 
-                ImGui.Text(_L("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:"));
+                ImGui.TextWrapped(_L("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:"));
                 using (ImRaii.PushIndent())
                 {
+                    allRequiredInstalled &= DrawCombatPlugin(ECombatModule.WrathCombo, checklistPadding);
                     allRequiredInstalled &=
                         DrawCombatPlugin(ECombatModule.RotationSolverReborn, checklistPadding);
                 }
@@ -304,17 +305,17 @@ internal sealed class PluginConfigComponent
             }
             AddConfigClickable(installedPlugin, plugin);
 
-            DrawPluginDetails(plugin, checklistPadding, isInstalled);
+            DrawPluginDetails(plugin, checklistPadding, isInstalled, blurb:false);
             return isInstalled || _configuration.General.CombatModule != combatModule;
         }
     }
 
-    private void DrawPluginDetails(PluginInfo plugin, float checklistPadding, bool isInstalled)
+    private void DrawPluginDetails(PluginInfo plugin, float checklistPadding, bool isInstalled, bool blurb = true)
     {
         using (ImRaii.PushIndent(checklistPadding))
         {
-            if (!string.IsNullOrEmpty(plugin.Details))
-                ImGui.TextUnformatted(plugin.Details);
+            if (!string.IsNullOrEmpty(plugin.Details) && blurb)
+                ImGui.TextWrapped(plugin.Details);
 
             bool allDetailsOk = true;
             if (plugin.DetailsToCheck != null)
@@ -329,7 +330,7 @@ internal sealed class PluginConfigComponent
                     {
                         using (ImRaii.PushIndent(checklistPadding))
                         {
-                            ImGui.TextUnformatted(detail.Details);
+                            ImGui.TextWrapped(detail.Details);
                         }
                     }
                 }

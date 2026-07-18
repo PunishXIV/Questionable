@@ -462,7 +462,7 @@ internal sealed unsafe partial class GameFunctions
                condition[ConditionFlag.Occupied33] || condition[ConditionFlag.Occupied38] ||
                condition[ConditionFlag.Occupied39] || condition[ConditionFlag.OccupiedInEvent] ||
                condition[ConditionFlag.OccupiedInQuestEvent] || condition[ConditionFlag.OccupiedInCutSceneEvent] ||
-               condition[ConditionFlag.WatchingCutscene] || //condition[ConditionFlag.WatchingCutscene78] ||
+               //condition[ConditionFlag.WatchingCutscene] || //condition[ConditionFlag.WatchingCutscene78] ||
                condition[ConditionFlag.Casting] || condition[ConditionFlag.MountOrOrnamentTransition] ||
                condition[ConditionFlag.BetweenAreas] || condition[ConditionFlag.BetweenAreas51] ||
                condition[ConditionFlag.Jumping61] || condition[ConditionFlag.ExecutingGatheringAction] ||

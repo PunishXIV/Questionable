@@ -94,6 +94,11 @@ internal static class ImGuiComponentsLocal
         string preview = labels[index];
         if (labelAsPreview)
             preview = label;
+        else
+        {
+            var size = ImGui.GetWindowContentRegionMax();
+            ImGui.SetNextItemWidth(size.X / 2);
+        }
         if (ImGui.BeginCombo($"{(!labelAsPreview ? label : "")}##SearchableCombo:{Path.GetFileName(file)}:{line}", preview, ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
@@ -142,5 +147,33 @@ internal static class ImGuiComponentsLocal
             return true;
         }
         return false;
+    }
+    
+    public static void HelpMarker(string helpText, string[]? bullets) => HelpMarker(helpText, FontAwesomeIcon.InfoCircle, bullets:bullets);
+
+    public static void HelpMarker(string helpText, FontAwesomeIcon icon, Vector4? color = null, string[]? bullets = null)
+    {
+        using var col = ImRaii.PushColor(ImGuiCol.TextDisabled, color);
+
+        ImGui.SameLine();
+
+        using (ImRaii.PushFont(UiBuilder.IconFont))
+        {
+            ImGui.TextDisabled(icon.ToIconString());
+        }
+
+        if (ImGui.IsItemHovered())
+        {
+            using (ImRaii.Tooltip())
+            {
+                using (ImRaii.TextWrapPos(ImGui.GetFontSize() * 35.0f))
+                {
+                    ImGui.Text(helpText);
+                    if (bullets != null)
+                        foreach (string point in bullets)
+                            ImGui.BulletText(point);
+                }
+            }
+        }
     }
 }

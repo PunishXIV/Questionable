@@ -547,14 +547,11 @@ internal sealed class QuestRegistry
         }
         return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
     }
-    public static string OpenEditorDescription
-    {
-        get => _L("Clicking this button writes the quest path to a file and opens it in your default\n" +
-                  "text editor. After making a change, click Reload Data below. To revert to the\n" +
-                  "official version, delete the file and click Reload Data again.\n" +
-                  "Left click: Open this quest in your default .json text editor\n" +
-                  "Right click: Open Quests folder");
-    }
+
+    public static string OpenEditorDescription = _L("Clicking this button writes the quest path to a file and opens it in your default text editor.") +
+               _L("After making a change, click Reload Data below.") + "\n" +
+               _L("To revert to the official version, delete the file and click Reload Data again.") + "\n" +
+               _L("Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder");
     public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
     public static (bool, string) OpenEditor(QuestInfo info) => OpenEditor(GetFilename(info), info);
     public (bool, string) OpenEditor(ushort questId)
