@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Cobalt Haubergeon HQ with 1x Heavens' Eye Materia III\nAutocraft requires:\n 3x Cobalt Rings,\n 1x Undyed Felt,\n 1x Mythril Plate,\n 1x Boar Leather",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,

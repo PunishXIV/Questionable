@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Hempen Breeches\nAutocraft requires:\n 6x Undyed Hempen Cloth,\n 3x Hempen Yarn,\n 3x Leather",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,

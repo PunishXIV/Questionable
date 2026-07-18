@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Bronze Hoplon\nAutocraft requires:\n 6x Bronze Plate,\n 3x Maple Lumber",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-06"},
   "QuestSequence": [
     {
       "Sequence": 0,

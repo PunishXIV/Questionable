@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
   "Comment": "!!! Requires manual acceptance and running of Trial Leve !!!",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-27"},
   "QuestSequence": [
     {
       "Sequence": 0,

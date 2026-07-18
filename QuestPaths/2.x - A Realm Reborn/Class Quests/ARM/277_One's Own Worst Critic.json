@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Decorated Bronze Barbut,\n 1x Bronze Buckler\nAutocraft requires:\n 1x Bronze Barbut,\n 1x Copper Ingot,\n 1x Brass Ingot,\n 1x Bronze Plate,\n 1x Bronze Ingot,\n 1x Iron Rivets",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-06"},
   "QuestSequence": [
     {
       "Sequence": 0,

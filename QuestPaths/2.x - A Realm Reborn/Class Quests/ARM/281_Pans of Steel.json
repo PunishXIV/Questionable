@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Steel Frypan HQ\nAutocraft requires:\n 1x Steel Plate,\n 1x Oak Lumber",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,

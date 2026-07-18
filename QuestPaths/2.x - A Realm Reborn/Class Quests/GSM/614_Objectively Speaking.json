@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Fang Earrings,\n 1x Brass Gorget\nAutocraft requires:\n 3x Brass Ingot,\n 2x Hard Leather,\n 1x Bat Fang",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-10"},
   "QuestSequence": [
     {
       "Sequence": 0,

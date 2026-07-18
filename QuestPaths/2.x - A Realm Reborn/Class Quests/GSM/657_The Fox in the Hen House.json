@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Electrum Circlet (Amber) HQ,\n 1x Electrum Circlet (Spinel) HQ,\n 1x Electrum Circlet (Zircon) HQ\nAutocraft requires:\n 9x Electrum Ingot,\n 1x Amber,\n 1x Zircon,\n 1x Spinel",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
