@@ -130,6 +130,7 @@ internal static class Interact
         Configuration configuration,
         ICondition condition,
         IObjectTable objectTable,
+        ClassJobUtils classJobUtils,
         ILogger<DoInteract> logger)
         : TaskExecutor<Task>, IConditionChangeAware
     {
@@ -138,6 +139,7 @@ internal static class Interact
         private bool _needsFacing;
         private bool _needsUnmount;
         private bool _reportedGameObjNull;
+        private ushort _unequipItem;
 
         /// <summary>
         ///     A slight delay when we think an interaction has ended, to make sure that we're processing "Action cancelled"
@@ -153,6 +155,31 @@ internal static class Interact
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
+            if (_unequipItem != 0)
+            {
+                logger.LogDebug($"unequipping item {_unequipItem}");
+                unsafe
+                {
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    var armoryType = InventoryType.ArmorySoulCrystal;
+                    ushort srcSlot = 13;
+                    InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
+                    if (UnequipItem.DoUnequip.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                    {
+                        logger.LogDebug($"Moving {_unequipItem} to {targetSlot} in soul crystal inv");
+                        _ = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, srcSlot, armoryType, targetSlot, a6: true);
+                        //if (result != 0)
+                        //    throw new Exception($"UnequipItem failed to move {_unequipItem} to {targetSlot} in soul crystal inv");
+                    }
+                    else
+                    {
+                        logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
+                            armoryType, _unequipItem);
+                        throw new Exception("Unable to unequip gear - armory chest is full.");
+                    }
+                }
+                _unequipItem = 0;
+            }
             if (_needsUnmount)
             {
                 if (condition[ConditionFlag.Mounted])
@@ -238,11 +265,19 @@ internal static class Interact
             {
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
+                Job targetJob = acceptableJobs[0];
+                logger.LogDebug($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs.Select(j => j.ToString()))}");
                 if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
                 {
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
-                        acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
-                    else if (acceptableJobs[0].IsCrafter())
+                    {
+                        if (acceptableJobs.Contains(configuration.General.CombatJob))
+                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
+                        else
+                            logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}, changing to {AcceptableJob}",
+                                configuration.General.CombatJob, Task.Quest.Id, acceptableJobs[0]);
+                    }
+                    if (acceptableJobs[0].IsCrafter())
                     {
                         if (acceptableJobs.Contains(configuration.General.CraftingJob))
                             acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
@@ -265,32 +300,19 @@ internal static class Interact
                         else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
                             acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
                     }
-
-                    logger.LogInformation("Current ClassJob {PlayerJob} not valid for {QuestId}, attempting to switch", playerJob, Task.Quest.Id);
-                    unsafe
+                    targetJob = acceptableJobs[0];
+                    if (classJobUtils.ClassToJobStone(targetJob) is (Job job, ushort item))
                     {
-                        bool changed = false;
-                        RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
-                        if (gearsetModule != null)
-                        {
-                            for (int i = 0; i < 100; ++i)
-                            {
-                                RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                                if (gearset == null)
-                                    continue;
-                                if (acceptableJobs[0].Equals((Job)gearset->ClassJob))
-                                {
-                                    gearsetModule->EquipGearset(gearset->Id);
-                                    changed = true;
-                                }
-                            }
-                        }
+                        _unequipItem = item;
+                        logger.LogInformation("Current job {ClassJob} is not valid for {QuestId}, changing to {AcceptableJob} via {MiddleJob}",
+                            playerJob, Task.Quest.Id, targetJob, job);
+                        targetJob = job;
+                    }
 
-                        if (!changed)
-                        {
-                            throw new Exception($"Quest {Task.Quest.Info.Name} requires a job like {acceptableJobs[0]}, " +
-                                               "but you do not have a valid job configured in QST Settings.");
-                        }
+                    if (!classJobUtils.SwitchClassJob(targetJob))
+                    {
+                        throw new Exception($"Quest {Task.Quest.Info.Name} requires a job like {targetJob}, " +
+                                           "but you do not have a gearset for this job or have not configured QST job preferences.");
                     }
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
@@ -302,7 +324,7 @@ internal static class Interact
             bool hasAnyMarker = HasAnyMarker(gameObject);
             if (!isTargetable || !hasAnyMarker)
             {
-                if (EzThrottler.Throttle("skipTarget", miliseconds:1000))
+                if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
                     logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
                 return ETaskResult.StillRunning;
             }

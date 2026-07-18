@@ -3527,74 +3527,93 @@
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
+    <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>After making a change, click Reload Data below.</Key>
+    <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
+    <Value lang="ja-jp">公式バージョンに戻すには、ファイルを削除して再度「データを再読み込み」をクリックしてください。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder</Key>
+    <Value lang="ja-jp">左クリック：このクエストをデフォルトの.jsonテキストエディタで開く\n右クリック：Questsフォルダを開く</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n</Key>
+    <Value lang="ja-jp">このクエストは白狼門エーテライトを使用します。グリダニアのすべてのエーテライトを解放している必要があります。\n</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>This should have happened as part of the quest "Close To Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.\n</Key>
+    <Value lang="ja-jp">グリダニア出身の場合はクエスト「冒険者への手引き」、他の都市出身の場合は「海都と森都と/森都と砂都と」で解放されているはずです。\n</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Please unlock the aethernet shards, or complete the current quest sequence manually before continuing.</Key>
+    <Value lang="ja-jp">エーテライトを解放するか、現在のクエストシーケンスを手動で完了してから続けてください。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferences</Key>
+    <Value lang="ja-jp">環境設定</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide remaining tasks</Key>
+    <Value lang="ja-jp">残りのタスクを非表示</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Claim mailed items during QST operation</Key>
+    <Value lang="ja-jp">QST動作中にメール受取アイテムを受領する</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!</Key>
+    <Value lang="ja-jp">オレンジ色でマークされたクエストは、LastCheckedシステムで動作確認の報告が必要です。詳細はAlyに聞いてください！</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>This quest is not supported.</Key>
+    <Value lang="ja-jp">このクエストはサポートされていません。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Questionable is not compatible with BossMod Reborn!</Key>
+    <Value lang="ja-jp">QuestionableはBossMod Rebornと互換性がありません！</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Stylist is not installed.</Key>
+    <Value lang="ja-jp">Stylistがインストールされていません。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable.</Key>
+    <Value lang="ja-jp">BossModのフォーク（Rebornなど）はQuestionableと互換性がありません。</Value>
   </Entry>
   <Entry>
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor. After making a change, click Reload Data below.</Key>
+    <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。変更後は、下の「データを再読み込み」をクリックしてください。</Value>
   </Entry>
   <Entry>
     <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
+    <Value lang="ja-jp">公式バージョンに戻すには、ファイルを削除して再度「データを再読み込み」をクリックしてください。</Value>
   </Entry>
   <Entry>
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
+    <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。</Value>
   </Entry>
   <Entry>
     <Key>After making a change, click Reload Data below.</Key>
+    <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
   </Entry>
 </I18N>
