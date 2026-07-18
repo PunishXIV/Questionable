@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 128,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Marauder"
+        },
+        {
           "DataId": 1000927,
           "Position": {
             "X": -1.2055054,

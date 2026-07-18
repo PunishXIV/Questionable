@@ -30,6 +30,7 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
             EExtraSkipCondition.DockStorehouse => territoryType == 137 && position.Y <= -20,
             EExtraSkipCondition.CostaDelSol => territoryType == 137 && position.Z > 55 && position.X > 165,
             EExtraSkipCondition.NewGamePlus => redoUtil.IsRedoActive(),
+            EExtraSkipCondition.NotNewGamePlus => !redoUtil.IsRedoActive(),
             var _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, message: null)
         };
     }

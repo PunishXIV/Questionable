@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 133,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Conjurer"
+        },
+        {
           "DataId": 1000692,
           "Position": {
             "X": -258.8083,

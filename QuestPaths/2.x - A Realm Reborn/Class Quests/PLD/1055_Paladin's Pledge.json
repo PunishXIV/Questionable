@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 131,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Gladiator"
+        },
+        {
           "DataId": 1002277,
           "Position": {
             "X": -97.550964,

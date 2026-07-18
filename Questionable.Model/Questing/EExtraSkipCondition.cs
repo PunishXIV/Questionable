@@ -26,4 +26,5 @@ public enum EExtraSkipCondition
     /// </summary>
     CostaDelSol,
     NewGamePlus,
+    NotNewGamePlus,
 }

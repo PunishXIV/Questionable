@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 132,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Archer"
+        },
+        {
           "DataId": 1000200,
           "Position": {
             "X": 209.55212,

@@ -8,6 +8,11 @@
       "Sequence": 0,
       "Steps": [
         {
+            "TerritoryId": 130,
+            "InteractionType": "SwitchClass",
+            "TargetClass": "Pugilist"
+        },
+        {
           "DataId": 1001286,
           "Position": {
             "X": -88.9754,

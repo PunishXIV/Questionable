@@ -6,7 +6,6 @@
   "QuestSequence": [
     {
       "Sequence": 0,
-      "Comment": "Unequip Soul of the White Mage to see this quest",
       "Steps": [
         {
           "InteractionType": "None",
@@ -35,6 +34,11 @@
               }
             }
           }
+        },
+        {
+          "TerritoryId": 133,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Conjurer"
         },
         {
           "DataId": 1000705,
