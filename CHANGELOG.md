@@ -1,1 +1,3 @@
 - Feature: config window is now resizable -alydev
+- Change: Stop command skipped for UI stop and ESC key -alydev
+- Bug fix: interact with crystarium aetheryte in quest even if already unlocked -alydev

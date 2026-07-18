@@ -18,11 +18,11 @@ internal static class Aetheryte
             if (!step.Aetheryte.HasValue)
                 throw new ArgumentNullException(nameof(step.Aetheryte));
 
-            return new Attune(step.Aetheryte.Value);
+            return new Attune(step.Aetheryte.Value, step.SkipConditions?.StepIf);
         }
     }
 
-    internal sealed record Attune(EAetheryteLocation AetheryteLocation) : ITask
+    internal sealed record Attune(EAetheryteLocation AetheryteLocation, SkipStepConditions? SkipStepConditions) : ITask
     {
         public bool ShouldRedoOnInterrupt() => true;
         public override string ToString() => $"AttuneAetheryte({AetheryteLocation})";
@@ -36,7 +36,7 @@ internal static class Aetheryte
     {
         protected override bool Start()
         {
-            if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
+            if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation) || (Task.SkipStepConditions != null && Task.SkipStepConditions.Never))
             {
                 logger.LogInformation("Attuning to aetheryte {Aetheryte}", Task.AetheryteLocation);
                 ProgressContext =
