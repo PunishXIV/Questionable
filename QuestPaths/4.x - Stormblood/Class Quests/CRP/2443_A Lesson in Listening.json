@@ -1,166 +1,143 @@
-{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1020903,
-			"Position":
-			{
-				"X": -46.952026,
-				"Y": 3.013504,
-				"Z": -69.0166
-			},
-			"TerritoryId": 628,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Kugane",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					628
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1020910,
-			"Position":
-			{
-				"X": -1.1750488,
-				"Y": 1.3034789E-07,
-				"Z": -78.04993
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1020912,
-			"Position":
-			{
-				"X": -13.077026,
-				"Y": 0.24999999,
-				"Z": -86.22876
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1019063,
-			"Position":
-			{
-				"X": 3.3416748,
-				"Y": -6.6541724E-11,
-				"Z": -67.73486
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1019062,
-			"Position":
-			{
-				"X": 9.506287,
-				"Y": -7.517689E-11,
-				"Z": -76.12726
-				},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1020903,
-			"Position":
-			{
-				"X": -46.952026,
-				"Y": 3.013504,
-				"Z": -69.0166
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"DialogueChoices":
-			[
-			{
-				"Prompt": "TEXT_CLSWDK650_02443_Q1_000_000",
-				"Answer": "TEXT_CLSWDK650_02443_A1_000_003",
-				"Type": "List"
-			}
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 628,
-			"ItemId": 17880,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1019061,
-			"Position":
-			{
-				"X": -0.045776367,
-				"Y": -7.9738514E-11,
-				"Z": -80.857605
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1020994,
-			"Position":
-			{
-				"X": -51.895935,
-				"Y": -2.9,
-				"Z": -50.919373
-			},
-			"TerritoryId": 628,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020903,
+          "Position": {
+            "X": -46.952026,
+            "Y": 3.013504,
+            "Z": -69.0166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [628]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020910,
+          "Position": {
+            "X": -1.1750488,
+            "Y": 1.3034789e-7,
+            "Z": -78.04993
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020912,
+          "Position": {
+            "X": -13.077026,
+            "Y": 0.24999999,
+            "Z": -86.22876
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1019063,
+          "Position": {
+            "X": 3.3416748,
+            "Y": -6.6541724e-11,
+            "Z": -67.73486
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1019062,
+          "Position": {
+            "X": 9.506287,
+            "Y": -7.517689e-11,
+            "Z": -76.12726
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020903,
+          "Position": {
+            "X": -46.952026,
+            "Y": 3.013504,
+            "Z": -69.0166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSWDK650_02443_Q1_000_000",
+              "Answer": "TEXT_CLSWDK650_02443_A1_000_003",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 628,
+          "ItemId": 17880,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1019061,
+          "Position": {
+            "X": -0.045776367,
+            "Y": -7.9738514e-11,
+            "Z": -80.857605
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020994,
+          "Position": {
+            "X": -51.895935,
+            "Y": -2.9,
+            "Z": -50.919373
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

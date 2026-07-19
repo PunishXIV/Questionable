@@ -1,8 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["liza", "Gezah", "vicyorus"],
-  "LastChecked":{"Username": "ShermTank", "Date": "2026-06-19"},
-  "Comment": "Crafted Item:\n 1x Maple Lumber,\nAutocraft requires:\n 3x Maple Log\nWill buy materials from Ferreol",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -10,19 +9,23 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 2314,
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 132
+          "TerritoryId": 132,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000153,
@@ -73,16 +76,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
-          "ItemId": 5361,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          "TerritoryId": 132
         },
         {
           "DataId": 1000153,

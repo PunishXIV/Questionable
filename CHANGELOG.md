@@ -1,1 +1,3 @@
-- Feature: cn/jp translation update -ShadyWhite, fuuga
+- Change: reduced mid-step delay in EquipRecommended from 2s to 0.5s, pending further testing -alydev
+- Change: rearranged step precedence, skip condition needed to be higher -alydev
+- Change: reduced max number of characters in quest title from 35 to 30 as part of my ongoing war against automatically resizing windows -alydev

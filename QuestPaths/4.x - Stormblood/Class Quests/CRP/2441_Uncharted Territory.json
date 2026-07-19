@@ -1,130 +1,112 @@
-{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000153,
-			"Position":
-			{
-				"X": -44.87683,
-				"Y": -1.2500024,
-				"Z": 56.839844
-			},
-			"TerritoryId": 132,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1020901,
-			"Position":
-			{
-				"X": -22.873291,
-				"Y": -3.25,
-				"Z": 35.202515
-			},
-			"TerritoryId": 132,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1000140,
-			"Position":
-			{
-				"X": 33.585083,
-				"Y": -18.814392,
-				"Z": 94.49902
-			},
-			"TerritoryId": 132,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Airship Landing"
-			]
-		},
-		{
-			"DataId": 1000139,
-			"Position":
-			{
-				"X": 33.73767,
-				"Y": -8,
-				"Z": 118.54736
-			},
-			"TerritoryId": 132,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1000384,
-			"Position":
-			{
-				"X": 30.807983,
-				"Y": -8,
-				"Z": 112.2301
-			},
-			"TerritoryId": 132,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1020902,
-			"Position":
-			{
-				"X": 25.467285,
-				"Y": -8,
-				"Z": 102.03699
-			},
-			"TerritoryId": 132,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1000153,
-			"Position":
-			{
-				"X": -44.87683,
-				"Y": -1.2500024,
-				"Z": 56.839844
-			},
-			"TerritoryId": 132,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000153,
+          "Position": {
+            "X": -44.87683,
+            "Y": -1.2500024,
+            "Z": 56.839844
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [132]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020901,
+          "Position": {
+            "X": -22.873291,
+            "Y": -3.25,
+            "Z": 35.202515
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000140,
+          "Position": {
+            "X": 33.585083,
+            "Y": -18.814392,
+            "Z": 94.49902
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Airship Landing"
+          ]
+        },
+        {
+          "DataId": 1000139,
+          "Position": {
+            "X": 33.73767,
+            "Y": -8,
+            "Z": 118.54736
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1000384,
+          "Position": {
+            "X": 30.807983,
+            "Y": -8,
+            "Z": 112.2301
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020902,
+          "Position": {
+            "X": 25.467285,
+            "Y": -8,
+            "Z": 102.03699
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000153,
+          "Position": {
+            "X": -44.87683,
+            "Y": -1.2500024,
+            "Z": 56.839844
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }
