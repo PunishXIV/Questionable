@@ -1,1 +1,1 @@
-- Feature: adjusted pre-interact class switching, now works in more cases -alydev
+- Feature: cn/jp translation update -ShadyWhite, fuuga
