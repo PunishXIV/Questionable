@@ -1,0 +1,178 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Walk to outside of building first - only needed if you have flying",
+          "Position": {
+            "X": -346.46524,
+            "Y": 8.5170555,
+            "Z": 420.88474
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
+          "SkipConditions": { "StepIf": { "Flying": "Locked" } }
+        },
+        {
+          "DataId": 1006288,
+          "Position": {
+            "X": -361.40997,
+            "Y": 8.46532,
+            "Z": 426.13855
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest",
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Walk out of building, if in it",
+          "Position": {
+            "X": -346.46524,
+            "Y": 8.5170555,
+            "Z": 420.88474
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": false,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -346.46524,
+                  "Y": 8.5170555,
+                  "Z": 420.88474
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 15
+              }
+            }
+          }
+        },
+        {
+          "$": "Drifting Cloud",
+          "DataId": 1006291,
+          "Position": {
+            "X": -269.4591,
+            "Y": 7.368076,
+            "Z": 420.5232
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "$": "Walk to outside of building if you have flying unlocked",
+          "Position": {
+            "X": -339.96478,
+            "Y": 7.181939,
+            "Z": 369.13275
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Flying": "Locked",
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -335.16415,
+            "Y": 9.101427,
+            "Z": 353.49564
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": false,
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+            }
+          }
+        },
+        {
+          "$": "Sidimund",
+          "DataId": 1006292,
+          "Position": {
+            "X": -333.33337,
+            "Y": 9.101427,
+            "Z": 352.25452
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": false,
+          "StopDistance": 3,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+        },
+        {
+          "$": "Walk out of building, if you're in it",
+          "Position": {
+            "X": -339.96478,
+            "Y": 7.181939,
+            "Z": 369.13275
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": false,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -340.09122,
+                  "Y": 8.88795,
+                  "Z": 365.16626
+                },
+                "TerritoryId": 146,
+                "MaximumDistance": 15
+              }
+            }
+          }
+        },
+        {
+          "$": "Riridesu",
+          "DataId": 1006290,
+          "Position": {
+            "X": -347.24957,
+            "Y": 2.3546066,
+            "Z": 265.73584
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006288,
+          "Position": {
+            "X": -361.40997,
+            "Y": 8.46532,
+            "Z": 426.13855
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 825
+        }
+      ]
+    }
+  ]
+}

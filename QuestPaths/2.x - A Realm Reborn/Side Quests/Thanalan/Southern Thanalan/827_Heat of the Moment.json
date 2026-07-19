@@ -1,0 +1,154 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Mumugoi is under a tent, so fly/walk nearby first",
+          "Position": {
+            "X": -110.91653,
+            "Y": -10.813497,
+            "Z": 723.6821
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+        },
+        {
+          "DataId": 1006295,
+          "Position": {
+            "X": -113.5119,
+            "Y": -10.75769,
+            "Z": 723.5979
+          },
+          "TerritoryId": 146,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002047,
+          "Position": {
+            "X": -115.739685,
+            "Y": -11.001831,
+            "Z": 728.7556
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "StopDistance": 4,
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 17,
+              "NameId": 132
+            }
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "DataId": 2002049,
+          "Position": {
+            "X": -88.059875,
+            "Y": -11.093384,
+            "Z": 726.3446
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "StopDistance": 4,
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 17,
+              "NameId": 132
+            }
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+        },
+        {
+          "DataId": 2002048,
+          "Position": {
+            "X": -102.9527,
+            "Y": -11.306946,
+            "Z": 735.77466
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006295,
+          "Position": {
+            "X": -113.5119,
+            "Y": -10.75769,
+            "Z": 723.5979
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -99.813515,
+            "Y": -8.814441,
+            "Z": 684.5715
+          },
+          "TerritoryId": 146,
+          "Fly": true,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 17,
+              "NameId": 132,
+              "MinimumKillCount": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Mumugoi is under a tent, so fly/walk nearby first",
+          "Position": {
+            "X": -110.91653,
+            "Y": -10.813497,
+            "Z": 723.6821
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+        },
+        {
+          "DataId": 1006295,
+          "Position": {
+            "X": -113.5119,
+            "Y": -10.75769,
+            "Z": 723.5979
+          },
+          "TerritoryId": 146,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

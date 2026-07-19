@@ -1,0 +1,129 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-18"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006296,
+          "Position": {
+            "X": -272.87714,
+            "Y": 5,
+            "Z": 474.29602
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Gauging Gent",
+          "DataId": 1006299,
+          "Position": {
+            "X": -250.38531,
+            "Y": 4.989685,
+            "Z": 478.0498
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Emote",
+          "Emote": "furious",
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+        },
+        {
+          "$": "Discerning Dandy",
+          "DataId": 1006298,
+          "Position": {
+            "X": -250.47687,
+            "Y": 5.0201416,
+            "Z": 477.1953
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Emote",
+          "Emote": "furious",
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+        },
+        {
+          "$": "Fatigued Fellow",
+          "DataId": 1006300,
+          "Position": {
+            "X": -250.0191,
+            "Y": 6.9122925,
+            "Z": 494.6211
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Emote",
+          "Emote": "furious",
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
+        },
+        {
+          "$": "Spineless Sap",
+          "DataId": 1006302,
+          "Position": {
+            "X": -245.594,
+            "Y": 7.248047,
+            "Z": 504.50903
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Emote",
+          "Emote": "furious",
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
+        },
+        {
+          "$": "Laboring Lad",
+          "DataId": 1006301,
+          "Position": {
+            "X": -278.2483,
+            "Y": 5.1727905,
+            "Z": 485.37415
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Emote",
+          "Emote": "furious",
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
+        },
+        {
+          "$": "Concentrating Carl",
+          "DataId": 1006297,
+          "Position": {
+            "X": -287.8615,
+            "Y": 7.370056,
+            "Z": 466.72766
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Emote",
+          "Emote": "furious",
+          "StopDistance": 5,
+          "Mount": false,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006296,
+          "Position": {
+            "X": -272.87714,
+            "Y": 5,
+            "Z": 474.29602
+          },
+          "TerritoryId": 146,
+          "Mount": false,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
