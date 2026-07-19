@@ -152,6 +152,9 @@ internal sealed class QuestData
         // white wolf gate
         AddPreviousQuest(new(803), new(802));
 
+        // unlocking LB to use material supplier for craft mats
+        //AddPreviousQuest(new(142), new(1212));
+
         // "In order to undertake this quest" [...]
         const int mountaintopDiplomacy = 1619;
         const int inscrutableTastes = 2095;

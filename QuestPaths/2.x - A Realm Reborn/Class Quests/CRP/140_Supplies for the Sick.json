@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 12x Ash Lumber\nAutocraft requires:\n 36x Ash Log",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,10 +31,22 @@
       "Sequence": 255,
       "Steps": [
         {
-          "InteractionType": "Craft",
+          "$": "Ash Log",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
           "TerritoryId": 132,
-          "ItemId": 5364,
-          "ItemCount": 12,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5383,
+          "ItemCount": 36,
+          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -41,6 +54,10 @@
               }
             }
           }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 132
         },
         {
           "DataId": 1000153,

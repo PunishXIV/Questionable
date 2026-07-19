@@ -88,7 +88,7 @@ internal static class EquipRecommended
                         {
                             chatGui.Print("Equipping recommended gear.", CommandHandler.MessageTag, CommandHandler.TagColor);
                             recommendedEquipModule->EquipRecommendedGear();
-                            _continueAt = DateTime.Now.AddSeconds(1);
+                            _continueAt = DateTime.Now.AddSeconds(0.25);
                         }
 
                         _checkedOrTriggeredEquipmentUpdate = true;
@@ -105,7 +105,7 @@ internal static class EquipRecommended
                         {
                             stylist.UpdateGearset();
                             _checkedOrTriggeredEquipmentUpdate = true;
-                            _continueAt = DateTime.Now.AddSeconds(1);
+                            _continueAt = DateTime.Now.AddSeconds(0.25);
                             return ETaskResult.StillRunning;
                         }
                     }

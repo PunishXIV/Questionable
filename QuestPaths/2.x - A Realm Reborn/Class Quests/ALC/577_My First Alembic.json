@@ -10,19 +10,23 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 2467,
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 131
+          "TerritoryId": 131,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1002299,

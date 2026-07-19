@@ -186,9 +186,13 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         // individual tasks
         serviceCollection.AddTaskFactory<QuestCleanUp.CheckAlliedSocietyMount>();
         serviceCollection.AddTaskFactoryAndExecutor<QuestCleanUp.CloseGatheringAddonTask, QuestCleanUp.CloseGatheringAddonFactory, QuestCleanUp.DoCloseAddon>();
+        serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
+        serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
         serviceCollection
             .AddTaskExecutor<MoveToLandingLocation.Task, MoveToLandingLocation.MoveToLandingLocationExecutor>();
         //serviceCollection.AddTaskFactoryAndExecutor<Mail.ClaimMailTask, Mail.Factory, Mail.ClaimMailExecutor>();
+        serviceCollection
+            .AddTaskFactoryAndExecutor<SkipCondition.SkipTask, SkipCondition.Factory, SkipCondition.CheckSkip>();
         serviceCollection
             .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.Executor>();
         serviceCollection.AddTaskExecutor<DoGather.Task, DoGather.GatherExecutor>();
@@ -201,8 +205,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             UpdateGearset.UpdateGearsetExecutor>();
         serviceCollection.AddTaskExecutor<Mount.MountTask, Mount.MountExecutor>();
         serviceCollection.AddTaskExecutor<Mount.UnmountTask, Mount.UnmountExecutor>();
-        serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
-        serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
 
         // task factories
         serviceCollection
@@ -216,8 +218,6 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection
             .AddTaskExecutor<AetheryteShortcut.MoveAwayFromAetheryte,
                 AetheryteShortcut.MoveAwayFromAetheryteExecutor>();
-        serviceCollection
-            .AddTaskFactoryAndExecutor<SkipCondition.SkipTask, SkipCondition.Factory, SkipCondition.CheckSkip>();
         serviceCollection.AddTaskFactoryAndExecutor<Gather.GatheringTask, Gather.Factory, Gather.StartGathering>();
         serviceCollection.AddTaskExecutor<Gather.DelayedGatheringTask, Gather.DelayedGatheringExecutor>();
         serviceCollection

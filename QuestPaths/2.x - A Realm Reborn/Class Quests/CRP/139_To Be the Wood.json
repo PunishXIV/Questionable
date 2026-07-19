@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Square Maple Shield\nAutocraft requires:\n 3x Maple Lumber,\n 6x Bronze Rivets",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -31,10 +31,22 @@
       "Sequence": 255,
       "Steps": [
         {
-          "InteractionType": "Craft",
+          "$": "Maple Log",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
           "TerritoryId": 132,
-          "ItemId": 2219,
-          "ItemCount": 3,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5380,
+          "ItemCount": 9,
+          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -42,6 +54,35 @@
               }
             }
           }
+        },
+        {
+          "$": "Bronze Rivets",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5091,
+          "ItemCount": 6,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 132
         },
         {
           "DataId": 1000153,

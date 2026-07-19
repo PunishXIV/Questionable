@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-27"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -118,7 +118,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Kugane] Thavnairian Consulate",

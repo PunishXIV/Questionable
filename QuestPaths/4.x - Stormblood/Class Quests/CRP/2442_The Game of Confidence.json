@@ -1,204 +1,172 @@
-{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000153,
-			"Position":
-			{
-				"X": -44.87683,
-				"Y": -1.2500024,
-				"Z": 56.839844
-			},
-			"TerritoryId": 132,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1020903,
-			"Position":
-			{
-				"X": -46.952026,
-				"Y": 3.013504,
-				"Z": -69.0166
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Kugane",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					628
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1020904,
-			"Position":
-			{
-				"X": 45.48706,
-				"Y": 4.000001,
-				"Z": 85.34363
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Kogane Dori Markets"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1020906,
-			"Position":
-			{
-				"X": 31.448853,
-				"Y": 4.0000014,
-				"Z": 51.80432
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1020907,
-			"Position":
-			{
-				"X": 55.008667,
-				"Y": 4.0499997,
-				"Z": 69.840576
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1020908,
-			"Position":
-			{
-				"X": 75.45581,
-				"Y": 4.05,
-				"Z": 52.902954
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"DataId": 1020903,
-			"Position":
-			{
-				"X": -46.952026,
-				"Y": 3.013504,
-				"Z": -69.0166
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Kogane Dori Markets",
-			"[Kugane] Aetheryte Plaza"
-			],
-			"DialogueChoices":
-			[
-			{
-				"Prompt": "TEXT_CLSWDK630_02442_Q1_000_000",
-				"Answer": "TEXT_CLSWDK630_02442_A1_000_002",
-				"Type": "List"
-			}
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 5,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 628,
-			"ItemId": 17878,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1020909,
-			"Position":
-			{
-				"X": -46.40277,
-				"Y": 3.013503,
-				"Z": -74.72345
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1020903,
-			"Position":
-			{
-				"X": -46.952026,
-				"Y": 3.013504,
-				"Z": -69.0166
-			},
-			"TerritoryId": 628,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000153,
+          "Position": {
+            "X": -44.87683,
+            "Y": -1.2500024,
+            "Z": 56.839844
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [132]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1020903,
+          "Position": {
+            "X": -46.952026,
+            "Y": 3.013504,
+            "Z": -69.0166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [628]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1020904,
+          "Position": {
+            "X": 45.48706,
+            "Y": 4.000001,
+            "Z": 85.34363
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Kogane Dori Markets"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1020906,
+          "Position": {
+            "X": 31.448853,
+            "Y": 4.0000014,
+            "Z": 51.80432
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1020907,
+          "Position": {
+            "X": 55.008667,
+            "Y": 4.0499997,
+            "Z": 69.840576
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1020908,
+          "Position": {
+            "X": 75.45581,
+            "Y": 4.05,
+            "Z": 52.902954
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1020903,
+          "Position": {
+            "X": -46.952026,
+            "Y": 3.013504,
+            "Z": -69.0166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Kogane Dori Markets",
+            "[Kugane] Aetheryte Plaza"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSWDK630_02442_Q1_000_000",
+              "Answer": "TEXT_CLSWDK630_02442_A1_000_002",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 628,
+          "ItemId": 17878,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1020909,
+          "Position": {
+            "X": -46.40277,
+            "Y": 3.013503,
+            "Z": -74.72345
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020903,
+          "Position": {
+            "X": -46.952026,
+            "Y": 3.013504,
+            "Z": -69.0166
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

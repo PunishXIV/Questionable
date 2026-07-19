@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Feathered Harpoon,\n 1x Ash Shortbow\nAutocraft requires:\n 2x Ash Lumber,\n 1x Crow Feather,\n 1x Soiled Femur,\n 1x Animal Glue,\n 1x Ash Branch,\n 1x Hempen Yarn",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -45,10 +46,147 @@
       "Sequence": 2,
       "Steps": [
         {
-          "InteractionType": "Craft",
+          "$": "Animal Glue",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
           "TerritoryId": 132,
-          "ItemId": 1895,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5503,
           "ItemCount": 1,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "$": "Ash Branch",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5402,
+          "ItemCount": 1,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "$": "Ash Log",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5383,
+          "ItemCount": 6,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "$": "Crow Feather",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5352,
+          "ItemCount": 1,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "$": "Soiled Femur",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5433,
+          "ItemCount": 1,
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "$": "Soiled Femur",
+          "DataId": 1000392,
+          "Position": {
+            "X": -17.746277,
+            "Y": -3.25,
+            "Z": 43.35083
+          },
+          "TerritoryId": 132,
+          "InteractionType": "PurchaseItem",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262171
+          },
+          "ItemId": 5333,
+          "ItemCount": 1,
+          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -59,16 +197,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
-          "ItemId": 1823,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          "TerritoryId": 132
         },
         {
           "DataId": 1000200,
