@@ -3528,92 +3528,111 @@
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
     <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。</Value>
+    <Value lang="zh-cn">点击此按钮会将任务路径写入文件，并使用默认文本编辑器打开。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>After making a change, click Reload Data below.</Key>
     <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
+    <Value lang="zh-cn">在修改后请点击"重新加载数据"按钮。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
     <Value lang="ja-jp">公式バージョンに戻すには、ファイルを削除して再度「データを再読み込み」をクリックしてください。</Value>
+    <Value lang="zh-cn">如需恢复官方版本，请删除该文件并再次点击"重新加载数据"。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestRegistry.cs -->
     <Key>Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder</Key>
     <Value lang="ja-jp">左クリック：このクエストをデフォルトの.jsonテキストエディタで開く\n右クリック：Questsフォルダを開く</Value>
+    <Value lang="zh-cn">左键单击：在默认 JSON 文本编辑器中打开此任务\n右键单击：打开任务文件夹</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>This quest uses the White Wolf Gate, which requires that you unlock all aethernet shards in Gridania.\n</Key>
     <Value lang="ja-jp">このクエストは白狼門エーテライトを使用します。グリダニアのすべてのエーテライトを解放している必要があります。\n</Value>
+    <Value lang="zh-cn">此任务需要使用白狼门，要求先解锁格里达尼亚的所有以太之光。\n</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>This should have happened as part of the quest "Close To Home" if starting in Gridania, or "The Ul'dahn/Lominsan Envoy" for the other cities.\n</Key>
     <Value lang="ja-jp">グリダニア出身の場合はクエスト「冒険者への手引き」、他の都市出身の場合は「海都と森都と/森都と砂都と」で解放されているはずです。\n</Value>
+    <Value lang="zh-cn">如果你从格里达尼亚开始，这应该是"冒险者入门"任务的一部分；如果从其他城市开始，则应该是"海之都与森之都/森之都与沙之都"任务的一部分。\n</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Please unlock the aethernet shards, or complete the current quest sequence manually before continuing.</Key>
     <Value lang="ja-jp">エーテライトを解放するか、現在のクエストシーケンスを手動で完了してから続けてください。</Value>
+    <Value lang="zh-cn">请先解锁以太之光，或在继续前手动完成当前任务序列。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferences</Key>
     <Value lang="ja-jp">環境設定</Value>
+    <Value lang="zh-cn">偏好设置</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide remaining tasks</Key>
     <Value lang="ja-jp">残りのタスクを非表示</Value>
+    <Value lang="zh-cn">隐藏剩余任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Claim mailed items during QST operation</Key>
     <Value lang="ja-jp">QST動作中にメール受取アイテムを受領する</Value>
+    <Value lang="zh-cn">在 QST 运行期间领取邮件道具</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!</Key>
     <Value lang="ja-jp">オレンジ色でマークされたクエストは、LastCheckedシステムで動作確認の報告が必要です。詳細はAlyに聞いてください！</Value>
+    <Value lang="zh-cn">标记为橙色的任务需要通过 LastChecked 系统报告是否正常运行。详情请咨询 Aly！</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>This quest is not supported.</Key>
     <Value lang="ja-jp">このクエストはサポートされていません。</Value>
+    <Value lang="zh-cn">此任务暂不支持。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Questionable is not compatible with BossMod Reborn!</Key>
     <Value lang="ja-jp">QuestionableはBossMod Rebornと互換性がありません！</Value>
+    <Value lang="zh-cn">Questionable 与 BossMod Reborn 不兼容！</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Stylist is not installed.</Key>
     <Value lang="ja-jp">Stylistがインストールされていません。</Value>
+    <Value lang="zh-cn">Stylist 未安装。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable.</Key>
     <Value lang="ja-jp">BossModのフォーク（Rebornなど）はQuestionableと互換性がありません。</Value>
+    <Value lang="zh-cn">BossMod 分支版本（如 Reborn）与 Questionable 不兼容。</Value>
   </Entry>
   <Entry>
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor. After making a change, click Reload Data below.</Key>
     <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。変更後は、下の「データを再読み込み」をクリックしてください。</Value>
+    <Value lang="zh-cn">点击此按钮会将任务路径写入文件，并使用默认文本编辑器打开。做出更改后，请点击下方的"重新加载数据"。</Value>
   </Entry>
   <Entry>
     <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
     <Value lang="ja-jp">公式バージョンに戻すには、ファイルを削除して再度「データを再読み込み」をクリックしてください。</Value>
+    <Value lang="zh-cn">如需恢复官方版本，请删除该文件并再次点击"重新加载数据"。</Value>
   </Entry>
   <Entry>
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
     <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。</Value>
+    <Value lang="zh-cn">点击此按钮会将任务路径写入文件，并使用默认文本编辑器打开。</Value>
   </Entry>
   <Entry>
     <Key>After making a change, click Reload Data below.</Key>
     <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
+    <Value lang="zh-cn">做出更改后，请点击下方的"重新加载数据"。</Value>
   </Entry>
 </I18N>
