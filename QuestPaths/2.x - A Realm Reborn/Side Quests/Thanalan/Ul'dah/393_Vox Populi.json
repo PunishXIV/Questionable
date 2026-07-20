@@ -1,0 +1,142 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001685,
+          "Position": {
+            "X": 142.71753,
+            "Y": 7.500002,
+            "Z": 94.19385
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "$": "Aubelet",
+          "DataId": 1001914,
+          "Position": {
+            "X": 71.03064,
+            "Y": 12.995921,
+            "Z": 37.460815
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "Low": 2 } ]
+        },
+        {
+          "$": "Teteshan",
+          "DataId": 1003899,
+          "Position": {
+            "X": 79.60632,
+            "Y": 18.997375,
+            "Z": 12.222412
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "Low": 1 } ]
+        },
+        {
+          "$": "Dodomun",
+          "DataId": 1001940,
+          "Position": {
+            "X": 70.87805,
+            "Y": 28.920918,
+            "Z": -40.36017
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "High": 8 } ]
+        },
+        {
+          "$": "Fastred",
+          "DataId": 1001937,
+          "Position": {
+            "X": 38.590088,
+            "Y": 34.022892,
+            "Z": -38.529114
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "High": 4 } ]
+        },
+        {
+          "$": "Cordial Spider",
+          "DataId": 1001939,
+          "Position": {
+            "X": 7.156433,
+            "Y": 33.999996,
+            "Z": -39.780334
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "High": 2 } ]
+        },
+        {
+          "$": "Bobolan",
+          "DataId": 1001942,
+          "Position": {
+            "X": -31.845642,
+            "Y": 33.499985,
+            "Z": -11.581665
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "High": 1 } ]
+        },
+        {
+          "$": "Cornell",
+          "DataId": 1003902,
+          "Position": {
+            "X": -75.73059,
+            "Y": 37.992012,
+            "Z": -20.462341
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "Low": 4 } ]
+        },
+        {
+          "$": "Rururemu",
+          "DataId": 1001949,
+          "Position": {
+            "X": -84.21454,
+            "Y": 41.05148,
+            "Z": 83.32947
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [ null, null, null, null, null, { "Low": 8 } ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001945,
+          "Position": {
+            "X": -107.1947,
+            "Y": 40.200157,
+            "Z": 132.00574
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

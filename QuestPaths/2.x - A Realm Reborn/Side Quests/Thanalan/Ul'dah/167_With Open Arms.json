@@ -1,0 +1,128 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1007621,
+          "Position": {
+            "X": 144.30457,
+            "Y": 6.3920026,
+            "Z": 89.12781
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1007621,
+          "Position": {
+            "X": 144.30457,
+            "Y": 6.3920026,
+            "Z": 89.12781
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "welcome",
+          "StopDistance": 5
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "$": "Esdeline",
+          "DataId": 1001692,
+          "Position": {
+            "X": 124.28467,
+            "Y": 7.992012,
+            "Z": 89.555176
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "welcome",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "$": "Jellion",
+          "DataId": 1001693,
+          "Position": {
+            "X": 123.33862,
+            "Y": 7.992012,
+            "Z": 88.91431
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "welcome",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "$": "Lurking Leech",
+          "DataId": 1001698,
+          "Position": {
+            "X": 86.44226,
+            "Y": 12.279274,
+            "Z": 67.85681
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "welcome",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
+        },
+        {
+          "$": "Sosotta",
+          "DataId": 1001697,
+          "Position": {
+            "X": 98.55798,
+            "Y": 12.279275,
+            "Z": 54.795166
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "welcome",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        },
+        {
+          "$": "Bibichua",
+          "DataId": 1001297,
+          "Position": {
+            "X": 98.34436,
+            "Y": 12.279274,
+            "Z": 54.062622
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Emote",
+          "Emote": "welcome",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1007621,
+          "Position": {
+            "X": 144.30457,
+            "Y": 6.3920026,
+            "Z": 89.12781
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
