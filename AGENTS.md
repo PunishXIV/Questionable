@@ -13,6 +13,16 @@ Agents operating in this repo, and the humans directing them, must follow these 
 - **The human must be able to respond to review.** If the agent cannot address a review comment, the human must be able to do so manually. Do not open a PR on behalf of a user who cannot defend or modify the code.
 - **One AI-assisted PR at a time** for non-maintainers. Before opening a new AI-assisted PR, check that the same author has no other AI-assisted PR open.
 - **No "vibe coding".** Purely vibe-coded submissions will be rejected. The human is responsible for what they commit — agents should refuse to push, tag, or open PRs without explicit per-action confirmation from the user.
+- **In-file disclaimer for agent-authored files.** Any file whose *initial version* was written end-to-end by an agent (as opposed to targeted edits or partial suggestions inside a human-authored file) must carry a top-of-file disclaimer in the same two-line form used by `.github/workflows/pr-test.yml`:
+
+  ```
+  # Authored with LLM assistance, changes must be reviewed and owned by a human.
+  # Initial version reviewed and owned by @<github-handle>
+  ```
+
+  Adapt the comment syntax to the file's language (`//` for C#, `<!-- -->` for XML/Markdown, `#` for YAML/shell, etc.). Agents adding such a file **must** insert this header themselves and populate `@<github-handle>` with the driving human's GitHub username. If the agent has that username in local/session memory it should use it directly; otherwise it must prompt the human for it before writing the file. Do not use the maintainer's handle as a placeholder, and do not omit the disclaimer on the assumption the reviewer will add it.
+
+  This rule applies only to *new* agent-authored files. Small edits to existing human-authored files do not require a header, and edits to a file that already carries the disclaimer only require updating the second line if a new human takes ownership.
 
 ## Scope discipline
 

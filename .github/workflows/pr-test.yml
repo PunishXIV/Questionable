@@ -7,9 +7,8 @@ on:
   pull_request:
     branches: [ new-main, testing ]
     paths-ignore:
-      - 'QuestPaths/**'
-      - 'GatheringPaths/**'
       - '**/*.md'
+      - '**/*.txt'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          # Need PR base + head so we can diff to find which QuestPaths files changed.
+          fetch-depth: 0
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
@@ -64,6 +65,19 @@ jobs:
             -c Release --no-restore \
             --source $PWD/.nuget
 
+      - name: Compute changed quest files
+        id: changed-quests
+        run: |
+          # List QuestPaths/**/*.json files added/modified/renamed relative to the PR base.
+          # Fed to Questionable.Tests via QUESTIONABLE_CHANGED_QUESTS so the semantic-validation
+          # theory only re-runs on files touched by this PR. Empty => run everything (local dev).
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          CHANGED=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$HEAD_SHA" -- 'QuestPaths/**/*.json' 'GatheringPaths/**/*.json' | tr '\n' ';')
+          echo "Changed quest files:"
+          echo "$CHANGED" | tr ';' '\n'
+          echo "QUESTIONABLE_CHANGED_QUESTS=$CHANGED" >> "$GITHUB_ENV"
+
       - name: Run tests
         run: |
           dotnet test Questionable.Tests/Questionable.Tests.csproj \
@@ -75,6 +89,49 @@ jobs:
             -c Release --no-build \
             --logger "trx;LogFileName=QuestPathGenerator.Tests.trx" \
             --results-directory TestResults
+
+      - name: Annotate failed quests
+        if: failure()
+        shell: bash
+        run: |
+          # Parse trx results and emit one GitHub file annotation per failing quest,
+          # so the offending QuestPaths JSON is called out inline in the PR's
+          # "Files changed" view instead of only in the workflow log.
+          python3 - <<'PY'
+          import glob
+          import re
+          import xml.etree.ElementTree as ET
+
+          NS = {"t": "http://microsoft.com/schemas/VisualStudio/TeamTest/2010"}
+          # Anchor on the trailing sentinel so paths that contain apostrophes
+          # (e.g. "Ul'dah") are captured in full via a non-greedy match.
+          PATH_RE = re.compile(r"Quest '(QuestPaths/.+?\.json)' failed semantic validation")
+
+          annotations = {}
+          for trx in sorted(glob.glob("TestResults/*.trx")):
+              try:
+                  root = ET.parse(trx).getroot()
+              except ET.ParseError:
+                  continue
+              for result in root.iterfind(".//t:UnitTestResult[@outcome='Failed']", NS):
+                  msg = result.find("./t:Output/t:ErrorInfo/t:Message", NS)
+                  if msg is None or not msg.text:
+                      continue
+                  match = PATH_RE.search(msg.text)
+                  if not match:
+                      continue
+                  path = match.group(1)
+                  # Collapse to a single line and escape per GitHub workflow-command rules.
+                  body = msg.text.replace("\r", "").strip()
+                  body = msg.text.replace("\n", "")
+                  body = body.replace("%", "%25")
+                  annotations.setdefault(path, body)
+
+          if not annotations:
+              print("No quest-path failures found in trx output.")
+          for path, body in annotations.items():
+              print(f"::error file={path}::{body}")
+          PY
 
       - name: Upload test results
         if: always()
