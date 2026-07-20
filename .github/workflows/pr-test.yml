@@ -52,7 +52,7 @@ jobs:
 
       - name: Verify formatting
         run: |
-          dotnet format Questionable.sln -v diag
+          dotnet format Questionable.sln --verify-no-changes --no-restore --severity warn -v diag
 
       - name: Build test projects
         run: |
@@ -70,13 +70,11 @@ jobs:
             -c Release --no-build \
             -p:DalamudLibPath=$DALAMUD_HOME \
             --logger "trx;LogFileName=Questionable.Tests.trx" \
-            --results-directory TestResults \
-            -v diag
+            --results-directory TestResults
           dotnet test QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
             -c Release --no-build \
             --logger "trx;LogFileName=QuestPathGenerator.Tests.trx" \
-            --results-directory TestResults \
-            -v diag
+            --results-directory TestResults
 
       - name: Upload test results
         if: always()
