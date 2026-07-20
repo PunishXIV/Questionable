@@ -51,7 +51,7 @@ internal sealed class BossModIpc
     public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, fallback: false);
     public bool BossModRebornDetected()
     {
-        if (EzThrottler.Throttle("BossModRebornDetected", miliseconds:1000))
+        if (EzThrottler.Throttle("BossModRebornDetected", miliseconds: 1000))
             _bossmodRebornDetected = IPCSubscriber_Common.IsInstalled("BossModReborn");
         return _bossmodRebornDetected;
     }
