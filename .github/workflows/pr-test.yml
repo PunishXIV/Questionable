@@ -1,0 +1,91 @@
+# Authored with LLM assistance, changes must be reviewed and owned by a human.
+# Initial version reviewed and owned by @alydevs
+
+name: PR - Build & Test
+
+on:
+  pull_request:
+    branches: [ new-main, testing ]
+    paths-ignore:
+      - 'QuestPaths/**'
+      - 'GatheringPaths/**'
+      - '**/*.md'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Download and setup Dalamud
+        run: |
+          echo "Downloading Dalamud..."
+          wget -q https://goatcorp.github.io/dalamud-distrib/stg/latest.zip -O dalamud.zip
+          unzip -q dalamud.zip -d .dalamud
+          echo "DALAMUD_HOME=$PWD/.dalamud/" >> $GITHUB_ENV
+
+      - name: Restore
+        run: dotnet restore /p:Configuration=Release --packages .nuget
+
+      - name: Verify formatting
+        run: |
+          dotnet format Questionable.Tests/Questionable.Tests.csproj \
+            --verify-no-changes --no-restore --severity info \
+            -p:DalamudLibPath=$DALAMUD_HOME
+          dotnet format QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
+            --verify-no-changes --no-restore --severity info
+          dotnet format Questionable/Questionable.csproj \
+            --verify-no-changes --no-restore --severity info \
+            -p:DalamudLibPath=$DALAMUD_HOME
+
+      - name: Build test projects
+        run: |
+          dotnet build Questionable.Tests/Questionable.Tests.csproj \
+            -c Release --no-restore \
+            -p:DalamudLibPath=$DALAMUD_HOME \
+            --source $PWD/.nuget
+          dotnet build QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
+            -c Release --no-restore \
+            --source $PWD/.nuget
+
+      - name: Run tests
+        run: |
+          dotnet test Questionable.Tests/Questionable.Tests.csproj \
+            -c Release --no-build \
+            -p:DalamudLibPath=$DALAMUD_HOME \
+            --logger "trx;LogFileName=Questionable.Tests.trx" \
+            --results-directory TestResults
+          dotnet test QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
+            -c Release --no-build \
+            --logger "trx;LogFileName=QuestPathGenerator.Tests.trx" \
+            --results-directory TestResults
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: TestResults/*.trx
