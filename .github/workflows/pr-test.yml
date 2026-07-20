@@ -90,6 +90,10 @@ jobs:
             --logger "trx;LogFileName=QuestPathGenerator.Tests.trx" \
             --results-directory TestResults
 
+      - name: Annotate failed quests
+        if: failure()
+        shell: bash
+        run: |
           # Parse trx results and emit one GitHub file annotation per failing quest,
           # so the offending QuestPaths JSON is called out inline in the PR's
           # "Files changed" view instead of only in the workflow log.
