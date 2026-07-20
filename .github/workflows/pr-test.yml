@@ -52,14 +52,7 @@ jobs:
 
       - name: Verify formatting
         run: |
-          dotnet format Questionable.Tests/Questionable.Tests.csproj \
-            --verify-no-changes --no-restore --severity info \
-            -p:DalamudLibPath=$DALAMUD_HOME
-          dotnet format QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
-            --verify-no-changes --no-restore --severity info
-          dotnet format Questionable/Questionable.csproj \
-            --verify-no-changes --no-restore --severity info \
-            -p:DalamudLibPath=$DALAMUD_HOME
+          dotnet format Questionable.sln
 
       - name: Build test projects
         run: |
