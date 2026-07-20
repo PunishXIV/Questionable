@@ -7,3 +7,5 @@ bin/
 !.vscode/settings.json
 *.user
 .pi/
+TestResults/
+*.trx
