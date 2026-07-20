@@ -7,9 +7,8 @@ on:
   pull_request:
     branches: [ new-main, testing ]
     paths-ignore:
-      - 'QuestPaths/**'
-      - 'GatheringPaths/**'
       - '**/*.md'
+      - '**/*.txt'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          # Need PR base + head so we can diff to find which QuestPaths files changed.
+          fetch-depth: 0
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
@@ -63,6 +64,19 @@ jobs:
           dotnet build QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
             -c Release --no-restore \
             --source $PWD/.nuget
+
+      - name: Compute changed quest files
+        id: changed-quests
+        run: |
+          # List QuestPaths/**/*.json files added/modified/renamed relative to the PR base.
+          # Fed to Questionable.Tests via QUESTIONABLE_CHANGED_QUESTS so the semantic-validation
+          # theory only re-runs on files touched by this PR. Empty => run everything (local dev).
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          CHANGED=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$HEAD_SHA" -- 'QuestPaths/**/*.json' 'GatheringPaths/**/*.json' | tr '\n' ';')
+          echo "Changed quest files:"
+          echo "$CHANGED" | tr ';' '\n'
+          echo "QUESTIONABLE_CHANGED_QUESTS=$CHANGED" >> "$GITHUB_ENV"
 
       - name: Run tests
         run: |
