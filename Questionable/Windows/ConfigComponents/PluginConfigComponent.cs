@@ -305,7 +305,7 @@ internal sealed class PluginConfigComponent
             }
             AddConfigClickable(installedPlugin, plugin);
 
-            DrawPluginDetails(plugin, checklistPadding, isInstalled, blurb:false);
+            DrawPluginDetails(plugin, checklistPadding, isInstalled, blurb: false);
             return isInstalled || _configuration.General.CombatModule != combatModule;
         }
     }

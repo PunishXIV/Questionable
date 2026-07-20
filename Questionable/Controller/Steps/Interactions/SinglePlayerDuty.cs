@@ -458,7 +458,7 @@ internal static class SinglePlayerDuty
         {
             GroupManager* groupManager = GroupManager.Instance();
             var memberCount = groupManager->MainGroup.MemberCount;
-            Svc.Log.Debug($"ShouldLeaveParty: {memberCount>1} {memberCount}");
+            Svc.Log.Debug($"ShouldLeaveParty: {memberCount > 1} {memberCount}");
             return memberCount > 1;
         }
     }

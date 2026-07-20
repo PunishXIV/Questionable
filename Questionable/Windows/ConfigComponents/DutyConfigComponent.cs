@@ -74,7 +74,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (!tab)
             return;
         Size = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(Size.X+10);
+        var wrap = ImRaii.TextWrapPos(Size.X + 10);
 
         runInstancedContentWithAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
         if (ImGui.Checkbox(_L("Run instanced content with AutoDuty and BossMod"), ref runInstancedContentWithAutoDuty))
@@ -135,7 +135,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
     private void DrawConfigTable()
     {
-        using ImRaii.ChildDisposable child = ImRaii.Child("DutyConfiguration", new(ImGui.GetWindowContentRegionMax().X-5, 300), border: true);
+        using ImRaii.ChildDisposable child = ImRaii.Child("DutyConfiguration", new(ImGui.GetWindowContentRegionMax().X - 5, 300), border: true);
         if (!child)
             return;
 
@@ -334,7 +334,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 ImGui.SetClipboardText(text);
             }
         }
-        
+
         ImGui.SameLine();
 
         string clipboardText = ImGui.GetClipboardText().Trim();

@@ -148,8 +148,8 @@ internal static class ImGuiComponentsLocal
         }
         return false;
     }
-    
-    public static void HelpMarker(string helpText, string[]? bullets) => HelpMarker(helpText, FontAwesomeIcon.InfoCircle, bullets:bullets);
+
+    public static void HelpMarker(string helpText, string[]? bullets) => HelpMarker(helpText, FontAwesomeIcon.InfoCircle, bullets: bullets);
 
     public static void HelpMarker(string helpText, FontAwesomeIcon icon, Vector4? color = null, string[]? bullets = null)
     {
