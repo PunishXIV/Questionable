@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -57,6 +57,18 @@
           "StopDistance": 5,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mor Dhona"
+        },
+        {
+          "$": "Unlock Mor Dhona taxi",
+          "DataId": 1006901,
+          "Position": {
+            "X": 59.372803,
+            "Y": 20.693598,
+            "Z": -659.9985
+          },
+          "TerritoryId": 156,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179682
         },
         {
           "DataId": 1006530,
