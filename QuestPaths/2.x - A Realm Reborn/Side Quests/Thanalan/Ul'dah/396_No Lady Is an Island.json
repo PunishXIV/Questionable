@@ -13,7 +13,7 @@
             "Z": 10.849121
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
+          "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
@@ -25,10 +25,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 131,
-          "InteractionType": "AcceptQuest"
-        },
         {
           "DataId": 2000697,
           "Position": {

@@ -123,7 +123,7 @@ jobs:
                   path = match.group(1)
                   # Collapse to a single line and escape per GitHub workflow-command rules.
                   body = msg.text.replace("\r", "").strip()
-                  body = msg.text.replace("\n", ": ")
+                  body = msg.text.replace("\n", "")
                   body = body.replace("%", "%25")
                   annotations.setdefault(path, body)
 
