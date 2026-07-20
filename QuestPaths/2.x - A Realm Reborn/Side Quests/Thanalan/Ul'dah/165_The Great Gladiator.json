@@ -1,0 +1,64 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001295,
+          "Position": {
+            "X": -90.836975,
+            "Y": 6.500005,
+            "Z": 29.281982
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002280,
+          "Position": {
+            "X": -35.385742,
+            "Y": 13.599964,
+            "Z": 97.24573
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001299,
+          "Position": {
+            "X": -18.0041,
+            "Y": 6.17981,
+            "Z": 154.554
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ul'dah] Goldsmiths' Guild",
+            "[Ul'dah] Miners' Guild"
+          ]
+        }
+      ]
+    }
+  ]
+}
