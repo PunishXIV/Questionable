@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Text.Json;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
@@ -7,6 +8,7 @@ using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
+using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Common.Math;
 using Questionable.Controller;
 using Questionable.Data;
@@ -23,6 +25,7 @@ internal sealed class QuestValidationWindow : LWindow
     private readonly QuestController _questController;
     private readonly QuestData _questData;
     private readonly QuestValidator _questValidator;
+    private string _filter = "";
 
     public QuestValidationWindow(QuestValidator questValidator, QuestData questData,
         QuestController questController, IDalamudPluginInterface pluginInterface)
@@ -46,31 +49,37 @@ internal sealed class QuestValidationWindow : LWindow
         if (ImGuiComponentsLocal.IconButton("###QuestValidationCopy", FontAwesomeIcon.Copy))
             ImGui.SetClipboardText(JsonSerializer.Serialize(_questValidator.Issues, JsonOptions.Default));
 
-        using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 5, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
+        ImGui.SameLine();
+
+        _ = ImGui.InputTextWithHint("Filter###QuestValidationFilter", _L("Filter quest validation results"), ref _filter, maxLength: 20);
+
+        using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 6, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
         {
             ImGui.Text("Not table");
             return;
         }
 
+        ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 90);
         ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthFixed, 125);
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 200);
-        ImGui.TableSetupColumn(_L("Seq"), ImGuiTableColumnFlags.WidthFixed, 30);
-        ImGui.TableSetupColumn(_L("Step"), ImGuiTableColumnFlags.WidthFixed, 30);
+        ImGui.TableSetupColumn(_L("Seq"), ImGuiTableColumnFlags.WidthFixed, 5);
+        ImGui.TableSetupColumn(_L("Step"), ImGuiTableColumnFlags.WidthFixed, 5);
         ImGui.TableSetupColumn(_L("Issue"), ImGuiTableColumnFlags.WidthStretch, 1.0f);
         ImGui.TableHeadersRow();
 
-        foreach (ValidationIssue validationIssue in _questValidator.Issues)
+        foreach (ValidationIssue validationIssue in _questValidator.Issues.OrderBy(i => i.Description, StringComparer.OrdinalIgnoreCase))
         {
+            if (!_filter.IsNullOrEmpty() &&
+                validationIssue.ElementId != null &&
+                !validationIssue.ElementId.Value.ToString(CultureInfo.InvariantCulture).Contains(_filter) &&
+                !validationIssue.Description.Contains(_filter))
+                continue;
             ImGui.TableNextRow();
-
             if (ImGui.TableNextColumn())
             {
-                ImGui.TextUnformatted(validationIssue.ElementId?.ToString() ?? string.Empty);
-
                 if (validationIssue.ElementId != null)
                 {
-                    ImGui.SameLine();
                     IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
                     bool copy = ImGuiComponentsLocal.IconButton($"###ValidationWindowCopy{quest.QuestId.Value}", FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
@@ -99,9 +108,16 @@ internal sealed class QuestValidationWindow : LWindow
 
             if (ImGui.TableNextColumn())
             {
-                ImGui.TextUnformatted(validationIssue.ElementId != null
-                    ? _questData.GetQuestInfo(validationIssue.ElementId).Name
-                    : validationIssue.AlliedSociety.ToString());
+                if (validationIssue.ElementId != null && _questData.GetQuestInfo(validationIssue.ElementId) is { QuestId.Value: var id, SimplifiedName: var name })
+                    ImGui.TextUnformatted($"{id} {name}");
+            }
+
+            if (ImGui.TableNextColumn())
+            {
+                if (validationIssue.Type is EIssueType.InvalidAcceptQuestTerritory && validationIssue.TerritoryId != null)
+                    ImGui.TextUnformatted(TerritoryData.GetNameAndId(validationIssue.TerritoryId.Value));
+                else if (validationIssue.AlliedSociety != Model.Common.EAlliedSociety.None)
+                    ImGui.TextUnformatted(validationIssue.AlliedSociety.ToString());
             }
 
             if (ImGui.TableNextColumn())
@@ -112,8 +128,7 @@ internal sealed class QuestValidationWindow : LWindow
 
             if (ImGui.TableNextColumn())
             {
-                // ReSharper disable once UnusedVariable
-                using (IDisposable font = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                using (_ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     if (validationIssue.Severity == EIssueSeverity.Error)
                     {

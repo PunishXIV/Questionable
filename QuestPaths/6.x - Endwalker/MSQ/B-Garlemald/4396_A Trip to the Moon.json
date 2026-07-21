@@ -7,6 +7,20 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2012531,
+          "Position": {
+            "X": -663.29443,
+            "Y": 132.6466,
+            "Z": 728.96924
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1024,
+          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
+          "Fly": true
+        },
+        {
           "DataId": 1039974,
           "Position": {
             "X": 2.5177002,

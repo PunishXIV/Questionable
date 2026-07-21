@@ -6,6 +6,21 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1048083,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] The Arcadion",
+            "[Solution Nine] Neon Stein"
+          ],
+          "TargetTerritoryId": 1207
+        },
+        {
           "DataId": 1054555,
           "Position": {
             "X": -4.1047363,

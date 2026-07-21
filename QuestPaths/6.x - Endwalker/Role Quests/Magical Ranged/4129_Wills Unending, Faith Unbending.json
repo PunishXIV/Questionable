@@ -15,6 +15,7 @@
           "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "Interact",
+          "TargetTerritoryId": 1001,
           "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
