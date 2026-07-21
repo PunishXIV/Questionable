@@ -9,7 +9,7 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Emote
 {
-    internal sealed class Factory : ITaskFactory
+    internal sealed class Factory(Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -19,7 +19,15 @@ internal static class Emote
                 if (step.Emote == null)
                     yield break;
                 if (step.InteractionType is EInteractionType.CompleteQuest)
+                {
                     yield return new LogQuestCompletion.Task(quest);
+                    if (configuration.Advanced.PreventQuestCompletion)
+                    {
+                        if (configuration.Advanced.AbandonQuestBeforeCompletion)
+                            yield return new AbandonQuest.Task(quest);
+                        yield break;
+                    }
+                }
             }
             else if (step.InteractionType != EInteractionType.Emote)
                 yield break;
