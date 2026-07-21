@@ -2,6 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Hard Leather Caligae,\n 1x Hard Leather Choker\nAutocraft requires:\n 2x Hard Leather,\n 1x Bronze Rivets,\n 2x Beast Sinew",
+  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
