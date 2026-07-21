@@ -51,7 +51,7 @@ internal sealed class QuestValidationWindow : LWindow
 
         ImGui.SameLine();
 
-        _ = ImGui.InputTextWithHint("Filter###QuestValidationFilter", _L("Filter quest validation results"), ref _filter, maxLength:20);
+        _ = ImGui.InputTextWithHint("Filter###QuestValidationFilter", _L("Filter quest validation results"), ref _filter, maxLength: 20);
 
         using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 6, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
@@ -59,7 +59,7 @@ internal sealed class QuestValidationWindow : LWindow
             ImGui.Text("Not table");
             return;
         }
-        
+
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 90);
         ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthFixed, 125);
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 200);
