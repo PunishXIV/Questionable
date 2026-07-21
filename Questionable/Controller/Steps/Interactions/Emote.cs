@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Domain;
 using Questionable.Functions;
 using Questionable.Model.Questing;
@@ -16,24 +17,20 @@ internal static class Emote
                 or EInteractionType.SinglePlayerDuty)
             {
                 if (step.Emote == null)
-                    return [];
+                    yield break;
+                if (step.InteractionType is EInteractionType.CompleteQuest)
+                    yield return new LogQuestCompletion.Task(quest);
             }
             else if (step.InteractionType != EInteractionType.Emote)
-                return [];
+                yield break;
             if (!step.Emote.HasValue)
                 throw new ArgumentNullException(nameof(step.Emote));
 
-            Mount.UnmountTask unmount = new();
+            yield return new Mount.UnmountTask();
             if (step.DataId != null)
-            {
-                UseOnObject task = new(step.Emote.Value, step.DataId.Value);
-                return [unmount, task];
-            }
+                yield return new UseOnObject(step.Emote.Value, step.DataId.Value);
             else
-            {
-                UseOnSelf task = new(step.Emote.Value);
-                return [unmount, task];
-            }
+                yield return new UseOnSelf(step.Emote.Value);
         }
     }
 
