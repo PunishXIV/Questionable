@@ -1,1 +1,1 @@
-- Feature: quest validation: sorting by issue text, filter input, better columns
+- Bug fix: quest completion is now logged for the 11 quests where the complete step is an Emote -alydev
