@@ -87,7 +87,13 @@ public enum EAction
     FieldMastery3 = 294,
 
     FSHCast = 289,
-    FSHQuit = 299
+    FSHQuit = 299,
+
+    WrithingSnap = 34632,
+    SteelFangs = 34606,
+    HuntersSting = 34608,
+    FlankstingStrike = 34610,
+    DeathRattle = 34634,
 }
 
 public static class EActionExtensions

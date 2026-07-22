@@ -21,7 +21,8 @@
         },
         {
           "TerritoryId": 141,
-          "InteractionType": "CreateGearset"
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1021438,
@@ -43,11 +44,13 @@
         },
         {
           "TerritoryId": 141,
-          "InteractionType": "EquipRecommended"
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "TerritoryId": 141,
-          "InteractionType": "UpdateGearset"
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1021438,
@@ -100,8 +103,8 @@
           "TerritoryId": 145,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": ["Needs manual targeting"]
+            "Enabled": false,
+            "Notes": ["Needs manual targeting and walking along path"]
           }
         }
       ]

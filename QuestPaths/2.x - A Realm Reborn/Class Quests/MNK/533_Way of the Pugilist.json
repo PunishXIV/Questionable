@@ -34,15 +34,18 @@
       "Steps": [
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 130
+          "TerritoryId": 130,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1003817,

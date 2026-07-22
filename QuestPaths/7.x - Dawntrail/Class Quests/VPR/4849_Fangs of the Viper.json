@@ -46,15 +46,18 @@
         },
         {
           "TerritoryId": 131,
-          "InteractionType": "CreateGearset"
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "TerritoryId": 131,
-          "InteractionType": "EquipRecommended"
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "TerritoryId": 131,
-          "InteractionType": "UpdateGearset"
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1046337,
@@ -140,8 +143,7 @@
           },
           "TerritoryId": 141,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
-          "SinglePlayerDutyOptions": {"Enabled": true}
+          "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]
     },

@@ -31,18 +31,23 @@ where T : Enum
                 missing = missing
                     .Where(v => ((EAetheryteLocation)(object)v).IsAethernetShard() == wantShard)
                     .ToList();
-            }
-            if (missing.Count > 0)
-            {
-                throw new InvalidOperationException(
-                    $"{GetType().Name}: dictionary is missing entries for {typeof(T).Name} member(s): "
-                    + string.Join(", ", missing)
-                    + ". Add them to the converter's Values dictionary.");
+                if (missing.Count > 0)
+                {
+                    throw new InvalidOperationException(
+                        $"{GetType().Name}: dictionary is missing entries for {typeof(T).Name} member(s): "
+                        + string.Join(", ", missing)
+                        + ". Add them to the converter's Values dictionary.");
+                }
             }
 
-            _enumToString = values is IDictionary<T, string> dict
+            var tmpDict = values is IDictionary<T, string> dict
                 ? new(dict)
-                : new ReadOnlyDictionary<T, string>(values.ToDictionary(x => x.Key, x => x.Value));
+                : new Dictionary<T, string>(values.ToDictionary(x => x.Key, x => x.Value));
+            foreach (var item in missing)
+            {
+                tmpDict[item] = item.ToString();
+            }
+            _enumToString = new(tmpDict);
         }
         _stringToEnum = new(_enumToString.ToDictionary(x => x.Value, x => x.Key, StringComparer.Ordinal));
     }

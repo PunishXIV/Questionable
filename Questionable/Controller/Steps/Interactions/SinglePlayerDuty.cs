@@ -14,6 +14,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.Group;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Data;
 using Questionable.Domain;
@@ -54,6 +55,8 @@ internal static class SinglePlayerDuty
         public const ushort ItsProbablyATrap = 665;
         public const ushort Naadam = 688;
         public const ushort Patisserie = 1298;
+        public const ushort ViperTutorial = 1235;
+        public const ushort EgistentialCrisis = 701;
     }
 
     internal sealed class Factory
@@ -134,6 +137,67 @@ internal static class SinglePlayerDuty
                 }
                 else if (tId == SpecialTerritories.Patisserie)
                     yield return new SetPreset(BossModIpc.EPreset.NormalMovement);
+                else if (tId == SpecialTerritories.EgistentialCrisis)
+                {
+                    yield return new EnableAi();
+
+                    yield return new MoveTask(step, new(-173.63245f, 23.428497f, 67.91785f));
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.EgistentialCrisis)
+                                return true;
+                            return !condition[ConditionFlag.InCombat];
+                        },
+                        "Wait(finishing combat)");
+
+                    yield return new MoveTask(step, new(-81.944534f, 17.852749f, 28.01129f));
+                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
+
+                    yield return new MoveTask(step, new(-3.189148f, 15.807038f, -2.7008667f));
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.EgistentialCrisis)
+                                return true;
+                            return !condition[ConditionFlag.InCombat];
+                        },
+                        "Wait(finishing combat)");
+                    yield return new MoveTask(step, new(54.61206f, 11.988899f, 0.56451416f));
+                    yield return new SetTarget(7256);
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.EgistentialCrisis)
+                                return true;
+                            return !condition[ConditionFlag.InCombat];
+                        },
+                        "Wait(finishing combat)");
+                }
+
+                //else if (tId == SpecialTerritories.ViperTutorial)
+                //{
+                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(40));
+                //    yield return new Interact.Task(17055, quest, EInteractionType.Interact, SkipMarkerCheck:true);
+                //    yield return new SetTarget(17057);
+                //    yield return new MoveTask(step, new(255.8717f, 15.075876f, 471.1717f));
+                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                //    yield return new Action.UseOnObject(17057, quest, EAction.SteelFangs, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay();
+                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                //    yield return new Action.UseOnObject(17057, quest, EAction.HuntersSting, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay();
+                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                //    yield return new Action.UseOnObject(17057, quest, EAction.FlankstingStrike, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay();
+                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
+                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                //    yield return new Action.UseOnObject(17057, quest, EAction.DeathRattle, CompletionQuestVariablesFlags:null);
+                //    yield return new MoveTask(step, new(251.17833f, 15.400139f, 465.84366f));
+                //}
                 else
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);
 

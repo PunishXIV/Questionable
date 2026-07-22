@@ -37,15 +37,18 @@
         },
         {
           "TerritoryId": 132,
-          "InteractionType": "CreateGearset"
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "TerritoryId": 132,
-          "InteractionType": "EquipRecommended"
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "TerritoryId": 132,
-          "InteractionType": "UpdateGearset"
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1049795,
