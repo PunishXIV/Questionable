@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked":{"Username": "alydev", "Date": "2025-12-12"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -34,7 +34,7 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 131,
+          "TerritoryId": 140,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
