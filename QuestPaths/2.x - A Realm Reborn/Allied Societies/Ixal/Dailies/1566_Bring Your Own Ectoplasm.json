@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-23"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -44,7 +44,21 @@
               "DataId": 45,
               "MinimumKillCount": 1,
               "CompletionQuestVariablesFlags": [null,1,null,null,null,null]
-            },
+            }
+          ],
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 581.92236,
+            "Y": 282.2539,
+            "Z": -304.58823
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Combat",
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
             {
               "DataId": 3241,
               "MinimumKillCount": 1
