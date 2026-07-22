@@ -1,1 +1,2 @@
+- Feature: Log quest completion for instant quests -alydev
 - Bug fix: skip aethernet shortcut for uldah/limsa airship landings if already there -alydev

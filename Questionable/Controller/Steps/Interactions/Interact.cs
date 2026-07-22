@@ -40,7 +40,8 @@ internal static class Interact
                     // Can't accept other quests during NG+
                     yield break;
                 }
-                if (step.InteractionType is EInteractionType.CompleteQuest)
+                if (step.InteractionType is EInteractionType.CompleteQuest ||
+                    (step.InteractionType is EInteractionType.AcceptQuest && quest.GetQuestInfo().CompletesInstantly)) // instant quest
                 {
                     yield return new LogQuestCompletion.Task(quest);
                     if (configuration.Advanced.PreventQuestCompletion)
