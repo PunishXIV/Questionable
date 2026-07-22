@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
@@ -52,7 +53,7 @@ internal sealed class BossModIpc
     public bool BossModRebornDetected()
     {
         if (EzThrottler.Throttle("BossModRebornDetected", miliseconds: 1000))
-            _bossmodRebornDetected = IPCSubscriber_Common.IsInstalled("BossModReborn");
+            _bossmodRebornDetected = pluginInterface.InstalledPlugins.Any(p => p.InternalName == "BossModReborn" && p.IsLoaded);
         return _bossmodRebornDetected;
     }
 
