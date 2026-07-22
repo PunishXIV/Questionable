@@ -86,8 +86,14 @@ public sealed class RendererPlugin : IDalamudPlugin
         _clientState.ClassJobChanged += ClassJobChanged;
     }
 
-    internal List<GatheringLocationContext> GatheringLocations { get; } =
-        [];
+    private volatile List<GatheringLocationContext> _gatheringLocations = [];
+    internal List<GatheringLocationContext> GatheringLocations
+    {
+        get
+        {
+            return _gatheringLocations;
+        }
+    }
 
     internal IDictionary<uint, List<Vector3>> GBRLocationData { get; }
 
@@ -129,23 +135,23 @@ public sealed class RendererPlugin : IDalamudPlugin
 
     private void LoadGatheringLocationsFromDirectory()
     {
-        GatheringLocations.Clear();
+        List<GatheringLocationContext> next = [];
 
         try
         {
             foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
-                LoadFromDirectory(
-                    new(Path.Combine(PathsDirectory.FullName, expansionFolder)));
+                LoadFromDirectory(next, new(Path.Combine(PathsDirectory.FullName, expansionFolder)));
             _pluginLog.Information(
-                $"Loaded {GatheringLocations.Count} gathering root locations from project directory");
+                $"Loaded {next.Count} gathering root locations from project directory");
         }
         catch (Exception e)
         {
             _pluginLog.Error(e, "Failed to load paths from project directory");
         }
+        _gatheringLocations = next;
     }
 
-    private void LoadFromDirectory(DirectoryInfo directory)
+    private static void LoadFromDirectory(List<GatheringLocationContext> next, DirectoryInfo directory)
     {
         if (!directory.Exists)
             return;
@@ -156,7 +162,7 @@ public sealed class RendererPlugin : IDalamudPlugin
             try
             {
                 using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
-                LoadLocationFromStream(fileInfo, stream);
+                LoadLocationFromStream(next, fileInfo, stream);
             }
             catch (Exception e)
             {
@@ -165,14 +171,14 @@ public sealed class RendererPlugin : IDalamudPlugin
         }
 
         foreach (DirectoryInfo childDirectory in directory.GetDirectories())
-            LoadFromDirectory(childDirectory);
+            LoadFromDirectory(next, childDirectory);
     }
 
-    private void LoadLocationFromStream(FileInfo fileInfo, Stream stream)
+    private static void LoadLocationFromStream(List<GatheringLocationContext> next, FileInfo fileInfo, Stream stream)
     {
         JsonNode locationNode = JsonNode.Parse(stream)!;
         GatheringRoot root = locationNode.Deserialize<GatheringRoot>()!;
-        GatheringLocations.Add(new(fileInfo, ushort.Parse(fileInfo.Name.Split('_')[0], CultureInfo.InvariantCulture),
+        next.Add(new(fileInfo, ushort.Parse(fileInfo.Name.Split('_')[0], CultureInfo.InvariantCulture),
             root));
     }
 
@@ -212,7 +218,7 @@ public sealed class RendererPlugin : IDalamudPlugin
     }
 
     internal IEnumerable<GatheringLocationContext> GetLocationsInTerritory(uint territoryId)
-        => GatheringLocations.Where(x => x.Root.Steps.LastOrDefault()?.TerritoryId == territoryId);
+        => _gatheringLocations.Where(x => x.Root.Steps.LastOrDefault()?.TerritoryId == territoryId);
 
     internal void Save(FileInfo targetFile, GatheringRoot root)
     {

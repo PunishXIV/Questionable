@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "catsume", "Date": "2026-06-21"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -38,7 +38,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2},{"Low": 5}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+            }
+          }
         },
         {
           "DataId": 79,
@@ -70,7 +75,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3},{"Low": 4},{"Low": 5}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+            }
+          }
         },
         {
           "DataId": 80,
@@ -101,7 +111,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 4},{"Low": 5}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+            }
+          }
         },
         {
           "DataId": 80,
@@ -132,7 +147,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
+            }
+          }
         },
         {
           "DataId": 80,
@@ -163,7 +183,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 3}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
+            }
+          }
         },
         {
           "DataId": 81,
@@ -194,7 +219,12 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 4}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}]
+            }
+          }
         },
         {
           "DataId": 81,
@@ -225,14 +255,19 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}
           ],null],
-          "Fly": true
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+                "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+            }
+          }
         },
         {
           "DataId": 79,
           "Position": {
-            "X": -69.44385,
-            "Y": -1.3275757,
-            "Z": -106.49274
+            "X": -76.74796,
+            "Y": -2.4272985,
+            "Z": -105.7087
           },
           "TerritoryId": 146,
           "InteractionType": "UseItem",
