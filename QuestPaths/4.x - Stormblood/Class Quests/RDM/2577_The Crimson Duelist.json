@@ -103,8 +103,8 @@
           "TerritoryId": 145,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": ["Needs manual targeting"]
+            "Enabled": false,
+            "Notes": ["Needs manual targeting and walking along path"]
           }
         }
       ]

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Shorkolate", "Date": "2026-06-16"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -42,7 +42,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Airship Landing"
@@ -63,7 +62,6 @@
           "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]

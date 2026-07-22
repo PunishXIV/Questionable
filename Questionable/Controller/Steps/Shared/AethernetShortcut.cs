@@ -178,6 +178,16 @@ internal static class AethernetShortcut
                             return true;
                         }
                     }
+                    if (Task.To is EAetheryteLocation.UldahAirship && territoryType == 130 && playerPosition.Y > 80)
+                    { 
+                        logger.LogInformation("Skipping aethernet teleport, already in Uldah airship landing");
+                        return false;
+                    }
+                    if (Task.To is EAetheryteLocation.LimsaAirship && territoryType == 128 && playerPosition.Y > 90)
+                    { 
+                        logger.LogInformation("Skipping aethernet teleport, already in Limsa airship landing");
+                        return false;
+                    }
 
                     MoveTo();
                     return true;

@@ -1,2 +1,1 @@
-- Bug fix: quest completion is now logged for the 11 quests where the complete step is an Emote -alydev
-  - Bug fix: extend Prevent quest completion to Emote steps -alydev
+- Bug fix: skip aethernet shortcut for uldah/limsa airship landings if already there -alydev
