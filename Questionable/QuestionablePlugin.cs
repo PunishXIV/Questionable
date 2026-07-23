@@ -177,6 +177,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<YesAlreadyIpc>();
         serviceCollection.AddSingleton<StylistIpc>();
         serviceCollection.AddSingleton<MogmailIpc>();
+        serviceCollection.AddSingleton<RotationSolverRebornIpc>();
 
         serviceCollection.AddSingleton<GearStatsCalculator>();
     }

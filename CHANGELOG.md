@@ -1,2 +1,1 @@
-- Feature: Log quest completion for instant quests -alydev
-- Bug fix: skip aethernet shortcut for uldah/limsa airship landings if already there -alydev
+- Feature: refactored our RSR support for better codebase consistency and maintainability -alydev

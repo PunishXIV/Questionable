@@ -59,7 +59,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "Fly": true

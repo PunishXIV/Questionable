@@ -6,7 +6,7 @@ namespace Questionable.External;
 
 internal interface IPCUtils
 {
-    internal sealed class IPCSubscriber_Common
+    internal sealed class IPCSubscriber
     {
         internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, suppressErrors: false, ignoreCache: true);
 

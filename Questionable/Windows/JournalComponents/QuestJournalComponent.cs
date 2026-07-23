@@ -240,16 +240,17 @@ internal sealed class QuestJournalComponent
         string reason = defaultReason = _L("<no reason specified>");
         if (quest != null)
             reason = (quest.Root.Comment ?? defaultReason).Split('\n', 2)[0];
+        string addendum = lastCheckedLong + (!reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Reason: {0}", reason) : "");
 
         if (QuestFunctions.IsQuestRemoved(questInfo.QuestId))
         {
             if (uiUtils.ChecklistItem(lastChecked, ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus))
-                ImGui.SetTooltip(_L("This quest is not available."));
+                ImGui.SetTooltip(_L("This quest is not available.") + addendum);
         }
         else if (fate)
         {
             if (uiUtils.ChecklistItem(lastChecked, ImGuiColors.DalamudOrange, FontAwesomeIcon.ExclamationTriangle))
-                ImGui.SetTooltip(_L("This quest requires completing a FATE.") + lastCheckedLong);
+                ImGui.SetTooltip(_L("This quest requires completing a FATE.") + addendum);
         }
         else if (quest is { Root.Disabled: false })
         {
@@ -257,22 +258,22 @@ internal sealed class QuestJournalComponent
             if (issues.Any(x => x.Severity == EIssueSeverity.Error))
             {
                 if (uiUtils.ChecklistItem(lastChecked, ImGuiColors.DalamudRed, FontAwesomeIcon.ExclamationTriangle))
-                    ImGui.SetTooltip(_L("This quest could not be loaded."));
+                    ImGui.SetTooltip(_L("This quest could not be loaded.") + addendum);
             }
             else if (issues.Count > 0)
             {
                 if (uiUtils.ChecklistItem(lastChecked, ImGuiColors.ParsedBlue, FontAwesomeIcon.InfoCircle))
-                    ImGui.SetTooltip(_L("This quest had validation issues."));
+                    ImGui.SetTooltip(_L("This quest had validation issues.") + addendum);
             }
             else if (uiUtils.ChecklistItem(lastChecked, complete: true))
-                ImGui.SetTooltip(_L("This quest is supported.") + lastCheckedLong + (!reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Comment: {0}", reason) : ""));
+                ImGui.SetTooltip(_L("This quest is supported.") + addendum);
         }
         else
         {
             if (quest == null)
                 reason = ("No quest path.");
             if (uiUtils.ChecklistItem(lastChecked, complete: false))
-                ImGui.SetTooltip(_L("This quest is not yet supported.") + lastCheckedLong + (!reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Reason: {0}", reason) : ""));
+                ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
         }
 
         ImGui.TableNextColumn();

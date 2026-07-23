@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,7 +30,21 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)"
+          "$": "Monument Tower (inside)",
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -217.57614,
+                  "Y": 217.23946,
+                  "Z": 706.57166
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 200
+              },
+              "AetheryteUnlocked": "Mor Dhona"
+            }
+          }
         },
         {
           "Position": {
@@ -41,7 +55,21 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "$": "Monument Tower (outside)",
-          "DisableNavmesh": true
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -217.57614,
+                  "Y": 217.23946,
+                  "Z": 706.57166
+                },
+                "TerritoryId": 155,
+                "MaximumDistance": 200
+              },
+              "AetheryteUnlocked": "Mor Dhona"
+            }
+          }
         },
         {
           "Position": {
@@ -50,7 +78,8 @@
             "Z": 706.57166
           },
           "TerritoryId": 155,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "SkipConditions": { "StepIf": { "AetheryteUnlocked": "Mor Dhona" } }
         },
         {
           "TerritoryId": 156,

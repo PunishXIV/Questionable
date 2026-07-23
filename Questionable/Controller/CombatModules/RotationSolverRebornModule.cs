@@ -5,64 +5,20 @@ using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using Questionable.External;
 using Questionable.Model.Common;
 namespace Questionable.Controller.CombatModules;
 
-internal sealed class RotationSolverRebornModule
-(
-    ILogger<RotationSolverRebornModule> logger,
-    IDalamudPluginInterface pluginInterface,
-    Configuration configuration) : ICombatModule, IDisposable
+internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotationSolverRebornIpc) : ICombatModule, IDisposable
 {
-    private readonly ICallGateSubscriber<StateCommandType, object> _changeOperationMode =
-        pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
-    private readonly ICallGateSubscriber<string, object> _test = pluginInterface.GetIpcSubscriber<string, object>("RotationSolverReborn.Test");
+    public bool CanHandleFight(CombatController.CombatData combatData) => rotationSolverRebornIpc.IsEnabled;
 
-    public bool CanHandleFight(CombatController.CombatData combatData)
-    {
-        if (configuration.General.CombatModule != ECombatModule.RotationSolverReborn)
-            return false;
-
-        try
-        {
-            _test.InvokeAction("Validate RSR is callable from Questionable");
-            return true;
-        }
-        catch (IpcError)
-        {
-            return false;
-        }
-    }
-
-    public bool Start(CombatController.CombatData combatData)
-    {
-        try
-        {
-            _changeOperationMode.InvokeAction(StateCommandType.Manual);
-            return true;
-        }
-        catch (IpcError e)
-        {
-            logger.LogWarning(e, "Could not start combat");
-            return false;
-        }
-    }
+    public bool Start(CombatController.CombatData combatData) => rotationSolverRebornIpc.RotationAuto();
 
     public bool Stop()
     {
-        if (!_changeOperationMode.HasAction)
-            return true;
-
-        try
-        {
-            _changeOperationMode.InvokeAction(StateCommandType.Off);
-            return true;
-        }
-        catch (IpcError e)
-        {
-            logger.LogWarning(e, "Could not turn off combat");
-            return false;
-        }
+        rotationSolverRebornIpc.RotationStop();
+        return true;
     }
 
     public void Update(IGameObject gameObject)

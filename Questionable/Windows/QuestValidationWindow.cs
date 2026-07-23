@@ -16,6 +16,7 @@ using Questionable.Domain;
 using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Windows.Common;
+using Questionable.Windows.QuestComponents;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
@@ -25,16 +26,18 @@ internal sealed class QuestValidationWindow : LWindow
     private readonly QuestController _questController;
     private readonly QuestData _questData;
     private readonly QuestValidator _questValidator;
+    private readonly QuestTooltipComponent _questTooltipComponent;
     private string _filter = "";
 
     public QuestValidationWindow(QuestValidator questValidator, QuestData questData,
-        QuestController questController, IDalamudPluginInterface pluginInterface)
+        QuestController questController, QuestTooltipComponent questTooltipComponent, IDalamudPluginInterface pluginInterface)
         : base(_L("Quest Validation") + "###QuestionableValidator")
     {
         _questValidator = questValidator;
         _questData = questData;
         _questController = questController;
         _pluginInterface = pluginInterface;
+        _questTooltipComponent = questTooltipComponent;
 
         Size = new Vector2(600, 200);
         SizeCondition = ImGuiCond.Once;
@@ -108,8 +111,13 @@ internal sealed class QuestValidationWindow : LWindow
 
             if (ImGui.TableNextColumn())
             {
-                if (validationIssue.ElementId != null && _questData.GetQuestInfo(validationIssue.ElementId) is { QuestId.Value: var id, SimplifiedName: var name })
+                if (validationIssue.ElementId != null &&
+                    _questData.GetQuestInfo(validationIssue.ElementId) is { QuestId.Value: var id, SimplifiedName: var name } qInfo)
+                {
                     ImGui.TextUnformatted($"{id} {name}");
+                    if (ImGui.IsItemHovered())
+                        _questTooltipComponent.Draw(qInfo);
+                }
             }
 
             if (ImGui.TableNextColumn())

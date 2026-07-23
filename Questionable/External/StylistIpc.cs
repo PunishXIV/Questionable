@@ -11,7 +11,7 @@ internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogge
     private readonly ICallGateSubscriber<bool?, bool?, object?> _updateGearset = pluginInterface.GetIpcSubscriber<bool?, bool?, object?>("Stylist.UpdateCurrentGearsetEx"); //bool? moveItemsFromInventory, bool? shouldEquip
     private bool _loggedIpcError;
 
-    public static bool IsInstalled => IPCSubscriber_Common.IsInstalled("Stylist");
+    public static bool IsInstalled => IPCSubscriber.IsInstalled("Stylist");
 
     public bool IsBusy => !IsInstalled || _isBusy.InvokeFunc();
 

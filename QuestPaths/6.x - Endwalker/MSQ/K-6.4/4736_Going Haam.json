@@ -1,11 +1,22 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-18"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1043847,
+          "Position": {
+            "X": -350.24036,
+            "Y": 55,
+            "Z": -81.28485
+          },
+          "TerritoryId": 963,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1161
+        },
         {
           "DataId": 1045397,
           "Position": {
@@ -161,7 +172,6 @@
         {
           "TerritoryId": 962,
           "InteractionType": "Duty",
-          "Comment": "Please report in discord whether this duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "DutyOptions": {
             "ContentFinderConditionId": 822,
             "Enabled": true

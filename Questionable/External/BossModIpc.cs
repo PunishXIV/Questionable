@@ -52,7 +52,7 @@ internal sealed class BossModIpc
     public bool BossModRebornDetected()
     {
         if (EzThrottler.Throttle("BossModRebornDetected", miliseconds: 1000))
-            _bossmodRebornDetected = IPCSubscriber_Common.IsInstalled("BossModReborn");
+            _bossmodRebornDetected = IPCSubscriber.IsInstalled("BossModReborn");
         return _bossmodRebornDetected;
     }
 
