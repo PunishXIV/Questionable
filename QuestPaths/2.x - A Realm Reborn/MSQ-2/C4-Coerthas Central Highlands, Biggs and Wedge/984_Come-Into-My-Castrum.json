@@ -88,6 +88,18 @@
           "Aetheryte": "Mor Dhona"
         },
         {
+          "$": "Unlock Mor Dhona taxi",
+          "DataId": 1006901,
+          "Position": {
+            "X": 59.372803,
+            "Y": 20.693598,
+            "Z": -659.9985
+          },
+          "TerritoryId": 156,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179682
+        },
+        {
           "DataId": 1006530,
           "Position": {
             "X": 21.927185,
