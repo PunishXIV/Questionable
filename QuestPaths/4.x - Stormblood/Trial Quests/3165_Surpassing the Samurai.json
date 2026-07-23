@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -74,7 +75,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 637,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]

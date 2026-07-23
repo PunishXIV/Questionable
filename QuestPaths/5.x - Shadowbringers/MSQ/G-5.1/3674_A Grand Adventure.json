@@ -118,7 +118,6 @@
         {
           "TerritoryId": 813,
           "InteractionType": "Duty",
-          "Comment": "Please report in discord whether this duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "DutyOptions": {
             "ContentFinderConditionId": 692,
             "Enabled": true

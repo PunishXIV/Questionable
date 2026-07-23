@@ -1,10 +1,30 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1021947,
+          "Position": {
+            "X": 476.73767,
+            "Y": 69.83099,
+            "Z": 526.604
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 724,
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_STMBDR104_02931_SYSTEM_000_007",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        },
         {
           "DataId": 1021942,
           "Position": {

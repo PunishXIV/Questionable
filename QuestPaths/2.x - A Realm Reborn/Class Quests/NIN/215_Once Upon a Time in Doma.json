@@ -164,7 +164,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "SinglePlayerDuty",
-          "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true
         }
