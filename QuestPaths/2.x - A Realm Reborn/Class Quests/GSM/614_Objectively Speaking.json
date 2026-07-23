@@ -70,7 +70,11 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
         }
       ]
     },

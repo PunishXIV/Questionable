@@ -7,6 +7,19 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2013362,
+          "Position": {
+            "X": -103.68875,
+            "Y": 51.560005,
+            "Z": 392.18155
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1162,
+          "Fly": true,
+          "StopDistance": 2
+        },
+        {
           "DataId": 1045482,
           "Position": {
             "X": 17.135864,
@@ -22,6 +35,19 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "DataId": 2013362,
+          "Position": {
+            "X": -103.68875,
+            "Y": 51.560005,
+            "Z": 392.18155
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1162,
+          "Fly": true,
+          "StopDistance": 2
+        },
         {
           "DataId": 2013357,
           "Position": {

@@ -68,6 +68,15 @@
           }
         },
         {
+          "TerritoryId": 130,
+          "InteractionType": "None",
+          "SkipConditions": {"StepIf": {"InTerritory": [131]}},
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Weavers' Guild"
+          ]
+        },
+        {
           "DataId": 1003818,
           "Position": {
             "X": 157.36621,

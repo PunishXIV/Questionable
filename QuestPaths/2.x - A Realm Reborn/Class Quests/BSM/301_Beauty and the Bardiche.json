@@ -65,7 +65,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
+          "TerritoryId": 128,
           "ItemId": 1796,
           "ItemCount": 1,
           "SkipConditions": {
@@ -78,7 +78,7 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 155,
+          "TerritoryId": 128,
           "ItemId": 1659,
           "ItemCount": 1,
           "SkipConditions": {
@@ -97,7 +97,11 @@
             "Z": 211.5968
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
         }
       ]
     },

@@ -1,146 +1,124 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 3x Enchanted Mythrite Ink HQ // Autocraft requires: 12x Mythrite Sand, 6x Deepeye Tears",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Mor Dhona",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					156
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1000972,
-			"Position":
-			{
-				"X": 20.279175,
-				"Y": 40.19993,
-				"Z": -6.1189575
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Mor Dhona",
-			"DialogueChoices":
-			[
-			{
-				"Prompt": "TEXT_CLSALC530_02066_Q1_100_090",
-				"Answer": "TEXT_CLSALC530_02066_A1_101_090",
-				"Type": "List"
-			}
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 156,
-			"ItemId": 12601,
-			"ItemCount": 3,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"Position":
-			{
-				"X": 424.9756,
-				"Y": -5.6390505,
-				"Z":  -443.25757
-			},
-			"TerritoryId": 156,
-			"InteractionType": "WalkTo",
-			"Fly": true
-		},
-		{
-			"DataId": 1012560,
-			"Position":
-			{
-				"X": 431.2351,
-				"Y": -5.479882,
-				"Z": -440.63483
-			},
-			"TerritoryId": 156,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 3x Enchanted Mythrite Ink HQ // Autocraft requires: 12x Mythrite Sand, 6x Deepeye Tears",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [156]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSALC530_02066_Q1_100_090",
+              "Answer": "TEXT_CLSALC530_02066_A1_101_090",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 156,
+          "ItemId": 12601,
+          "ItemCount": 3,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 424.9756,
+            "Y": -5.6390505,
+            "Z": -443.25757
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1012560,
+          "Position": {
+            "X": 431.2351,
+            "Y": -5.479882,
+            "Z": -440.63483
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }
