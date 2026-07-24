@@ -30,7 +30,8 @@ internal sealed class QuestJournalComponent
     QuestJournalUtils questJournalUtils,
     QuestValidator questValidator,
     QuestController questController,
-    RedoUtil redoUtil)
+    RedoUtil redoUtil,
+    Configuration configuration)
 {
     private readonly Dictionary<JournalData.Category, JournalCounts> _categoryCounts = [];
     private readonly Dictionary<JournalData.Genre, JournalCounts> _genreCounts = [];
@@ -274,6 +275,14 @@ internal sealed class QuestJournalComponent
                 reason = ("No quest path.");
             if (uiUtils.ChecklistItem(lastChecked, complete: false))
                 ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
+        }
+        if (configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId) || configuration.Stop.QuestsToStopAfter.Contains(questInfo.QuestId))
+        {
+            ImGui.SameLine();
+            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                ImGui.TextColored(ImGuiColors.DalamudYellow, FontAwesomeIcon.StopCircle.ToIconString());
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("This quest is in Stop Conditions."));
         }
 
         ImGui.TableNextColumn();

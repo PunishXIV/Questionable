@@ -1,11 +1,72 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-15"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1044157,
+          "Position": {
+            "X": -270.34418,
+            "Y": 0.079047784,
+            "Z": 605.79846
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1056,
+          "Fly": true,
+          "SkipConditions": { "StepIf": { "InTerritory": [1089, 1077] } }
+        },
+        {
+          "DataId": 2013039,
+          "Position": {
+            "X": 110.03284,
+            "Y": -348.56183,
+            "Z": -92.33234
+          },
+          "TerritoryId": 1056,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1089,
+          "SkipConditions": { "StepIf": { "InTerritory": [1089, 1077] } }
+        },
+        {
+          "DataId": 1044018,
+          "Position": {
+            "X": -24.521301,
+            "Y": -718.0016,
+            "Z": 137.19385
+          },
+          "TerritoryId": 1089,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1089,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 15.548889,
+                  "Y": 360.3723,
+                  "Z": -114.58002
+                },
+                "TerritoryId": 1089,
+                "MaximumDistance": 200
+              },
+              "InTerritory": [1077]
+            }
+          }
+        },
+        {
+          "DataId": 2013044,
+          "Position": {
+            "X": 15.548889,
+            "Y": 360.3723,
+            "Z": -114.58002
+          },
+          "TerritoryId": 1089,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1077
+        },
         {
           "DataId": 1043822,
           "Position": {
@@ -47,7 +108,7 @@
           },
           "TerritoryId": 1077,
           "InteractionType": "Interact",
-          "$.0": "[1]"
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1043831,
@@ -58,8 +119,7 @@
           },
           "TerritoryId": 1077,
           "InteractionType": "Interact",
-          "$.0": "[2]",
-          "$.1": "QuestVariables if done after [1]: 2 0 0 0 0 160"
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 1043830,

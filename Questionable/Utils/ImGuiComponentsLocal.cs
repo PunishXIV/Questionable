@@ -6,6 +6,9 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
+using Questionable.Controller;
+using Questionable.Domain;
+using static Questionable.Utils.LocalizeShortcut;
 
 namespace Questionable.Utils;
 
@@ -175,5 +178,21 @@ internal static class ImGuiComponentsLocal
                 }
             }
         }
+    }
+
+    public static bool QuestNotice(QuestController questController, Quest quest, string? label = null)
+    {
+        if (IconButton(FontAwesomeIcon.Play))
+        {
+            questController.SetNextQuest(quest);
+            questController.Start(_L("QuestNotice"));
+        }
+
+        bool hovered = ImGui.IsItemHovered();
+
+        ImGui.SameLine();
+        ImGui.AlignTextToFramePadding();
+        ImGui.Text(label ?? quest.Info.Name);
+        return hovered | ImGui.IsItemHovered();
     }
 }

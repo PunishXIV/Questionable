@@ -7,6 +7,24 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1024974,
+          "Position": {
+            "X": -10.330383,
+            "Y": 0.19997318,
+            "Z": 12.893799
+          },
+          "TerritoryId": 759,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_STMBDD104_03073_EVENTAREA_WARP_100_004",
+              "Yes": true
+            }
+          ],
+          "TargetTerritoryId": 744
+        },
+        {
           "DataId": 1024999,
           "Position": {
             "X": 0.19836426,

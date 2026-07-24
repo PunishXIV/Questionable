@@ -17,6 +17,7 @@ using Questionable.Utils;
 using Questionable.Validation;
 using Questionable.Windows.Common;
 using Questionable.Windows.QuestComponents;
+using Questionable.Windows.Utils;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
@@ -27,10 +28,16 @@ internal sealed class QuestValidationWindow : LWindow
     private readonly QuestData _questData;
     private readonly QuestValidator _questValidator;
     private readonly QuestTooltipComponent _questTooltipComponent;
+    private readonly RedoUtil _redoUtil;
     private string _filter = "";
 
-    public QuestValidationWindow(QuestValidator questValidator, QuestData questData,
-        QuestController questController, QuestTooltipComponent questTooltipComponent, IDalamudPluginInterface pluginInterface)
+    public QuestValidationWindow(
+        QuestValidator questValidator,
+        QuestData questData,
+        QuestController questController,
+        QuestTooltipComponent questTooltipComponent,
+        RedoUtil redoUtil,
+        IDalamudPluginInterface pluginInterface)
         : base(_L("Quest Validation") + "###QuestionableValidator")
     {
         _questValidator = questValidator;
@@ -38,6 +45,7 @@ internal sealed class QuestValidationWindow : LWindow
         _questController = questController;
         _pluginInterface = pluginInterface;
         _questTooltipComponent = questTooltipComponent;
+        _redoUtil = redoUtil;
 
         Size = new Vector2(600, 200);
         SizeCondition = ImGuiCond.Once;
@@ -93,12 +101,12 @@ internal sealed class QuestValidationWindow : LWindow
                         ImGui.SetClipboardText(fileName);
                     }
 
-                    ImGui.SameLine();
-                    bool sim = ImGuiComponentsLocal.IconButton($"###ValidationWindowSim{quest.QuestId.Value}", FontAwesomeIcon.Play);
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Simulate quest"));
-                    if (sim)
-                        _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
+                    //ImGui.SameLine();
+                    //bool sim = ImGuiComponentsLocal.IconButton($"###ValidationWindowSim{quest.QuestId.Value}", FontAwesomeIcon.Play);
+                    //if (ImGui.IsItemHovered())
+                    //    ImGui.SetTooltip(_L("Simulate quest"));
+                    //if (sim)
+                    //    _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
 
                     ImGui.SameLine();
                     bool edit = ImGuiComponentsLocal.IconButton($"###ValidationWindowEdit{quest.QuestId.Value}", FontAwesomeIcon.Edit);
@@ -106,6 +114,13 @@ internal sealed class QuestValidationWindow : LWindow
                         ImGui.SetTooltip(QuestRegistry.OpenEditorDescription);
                     if (edit)
                         QuestRegistry.OpenEditor(quest);
+
+                    RedoIndex redoIndex = _redoUtil.GetChapter(quest.QuestId.Value);
+                    if (redoIndex.Index != -1)
+                    {
+                        ImGui.SameLine();
+                        ImGui.TextUnformatted($"#{redoIndex.SimplifiedIndex}");
+                    }
                 }
             }
 

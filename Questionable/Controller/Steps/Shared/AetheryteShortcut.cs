@@ -121,13 +121,13 @@ internal static class AetheryteShortcut
                         yield return new AethernetShortcut.Task(teleportDest, aethernetDest);
                     }
                 }
-                yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
+                yield return new WaitAtEnd.WaitDelay();
             }
             else
             {
                 yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
                     aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
-                yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
+                yield return new WaitAtEnd.WaitDelay();
 
                 if (MoveAwayFromAetheryteExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
                     step.AethernetShortcut?.From != step.AetheryteShortcut.Value)

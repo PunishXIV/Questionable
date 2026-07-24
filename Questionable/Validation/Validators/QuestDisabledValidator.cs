@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using ECommons;
 using Questionable.Domain;
+using Questionable.Model.Questing;
 using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
@@ -7,7 +10,9 @@ internal sealed class QuestDisabledValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        if (quest.Root.Disabled)
+        _ = !quest.AllSequences().TryGetFirst(out QuestSequence? seq);
+        bool firstSequenceHasNotice = seq?.Steps.Any(step => step.InteractionType is EInteractionType.Instruction && step.Comment != null) ?? false;
+        if (quest.Root.Disabled && !firstSequenceHasNotice)
         {
             yield return new()
             {

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Questionable.Controller.Steps.Common;
@@ -149,19 +151,22 @@ internal static class WaitAtEnd
         private static NextStep Next(Quest quest, QuestSequence sequence) => new(quest.Id, sequence.Sequence);
     }
 
-    internal sealed record WaitDelay(TimeSpan Delay, string? Message) : ITask
+    internal sealed record WaitDelay(TimeSpan Delay, string? Message,
+                   [CallerFilePath] string file = "", [CallerLineNumber] int line = 0) : ITask
     {
-        public WaitDelay()
-            : this(TimeSpan.FromSeconds(1), Message: null)
+        public WaitDelay([CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
+            : this(TimeSpan.FromMilliseconds(250), Message: null, file: file, line: line)
         {
         }
-        public WaitDelay(TimeSpan Delay) : this(Delay, Message: null)
+        public WaitDelay(TimeSpan Delay, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
+            : this(Delay, Message: null, file: file, line: line)
         {
         }
 
         public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString() => $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")})";
+        public override string ToString() =>
+            $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")}, {Path.GetFileNameWithoutExtension(file)}:L{line})";
     }
 
     internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>

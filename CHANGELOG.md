@@ -1,1 +1,3 @@
-- Feature: refactored our RSR support for better codebase consistency and maintainability -alydev
+- Change: default Wait is now 0.25 seconds instead of 1 second, should speed things up a bit -alydev
+- Feature: Filter input in NG+ journal progress -alydev
+- Bug fix: RSR refactor was missing checks -alydev

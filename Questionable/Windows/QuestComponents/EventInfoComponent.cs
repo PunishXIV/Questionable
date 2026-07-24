@@ -31,8 +31,7 @@ internal sealed class EventInfoComponent
     private readonly List<EventQuest> _eventQuests =
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
-        new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
-        new(_L("Dragon Quest X"), [new QuestId(1288)], AtDailyReset(new(2026,7,13)))
+        new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue)
     ];
     private readonly QuestController _questController = questController;
 
@@ -93,20 +92,7 @@ internal sealed class EventInfoComponent
                 if (startableQuests.Contains(questId) &&
                     _questRegistry.TryGetQuest(questId, out Quest? quest))
                 {
-                    if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play))
-                    {
-                        _questController.SetNextQuest(quest);
-                        _questController.Start(_L("SeasonalEventSelection"));
-                    }
-
-                    bool hovered = ImGui.IsItemHovered();
-
-                    ImGui.SameLine();
-                    ImGui.AlignTextToFramePadding();
-                    ImGui.Text(questName);
-                    hovered |= ImGui.IsItemHovered();
-
-                    if (hovered)
+                    if (ImGuiComponentsLocal.QuestNotice(_questController, quest))
                         _questTooltipComponent.Draw(quest.Info);
                 }
                 else

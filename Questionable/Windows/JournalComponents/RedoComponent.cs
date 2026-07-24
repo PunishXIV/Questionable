@@ -6,6 +6,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
+using Dalamud.Utility;
 using Lumina.Excel.Sheets;
 using Questionable.Controller;
 using Questionable.Data;
@@ -33,6 +34,7 @@ internal sealed class RedoComponent
     private bool _hideDone;
     private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
     private Domain.Quest? _unlockQuest;
+    private string _filter = "";
     public void DrawRedoChapters()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
@@ -85,6 +87,9 @@ internal sealed class RedoComponent
         ImGui.SameLine();
         redoUtil.TryGetActiveRedoChapter(out var questRedoChapter);
         ImGui.Text(questRedoChapter?.ChapterName.ToString() ?? ("None"));
+        ImGui.SameLine();
+        ImGui.SetNextItemWidth(230 * ImGui.GetIO().FontGlobalScale);
+        _ = ImGui.InputTextWithHint("###RedoComponentFilter", _L("Filter NG+ categories"), ref _filter, maxLength: 20);
 
         using ImRaii.TableDisposable table = ImRaii.Table("RedoTable", 3, ImGuiTableFlags.NoSavedSettings);
         if (!table)
@@ -103,6 +108,10 @@ internal sealed class RedoComponent
             chapterName = chapterName.Length > 0 ? chapterName : _L("???");
             string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
+            if (!_filter.IsNullOrEmpty() &&
+                !chapterName.Contains(_filter, StringComparison.InvariantCultureIgnoreCase) &&
+                !categoryName.Contains(_filter, StringComparison.InvariantCultureIgnoreCase))
+                continue;
 
             bool showAnyway = false;
             var checkQuests = redoCache.Quests.Select(q =>
