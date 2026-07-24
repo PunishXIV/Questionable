@@ -9,6 +9,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin.Services;
+using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
@@ -177,8 +178,8 @@ internal sealed class CreationUtilsComponent
                 if (configuration.Advanced.ShowHoveredItem)
                 {
                     ulong hoveredItemId = gameGui.HoveredItem;
-                    string hq = hoveredItemId > 1000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
-                    ImGui.Text(_LF("Hovered Item: {0}", hoveredItemId % 1000000) + hq);
+                    string hq = hoveredItemId >= 1000000 && hoveredItemId < 2000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
+                    ImGui.Text(_LF("Hovered Item: {0}", !hq.IsNullOrEmpty() ? hoveredItemId % 1000000 : hoveredItemId) + hq);
                 }
             }
         }
