@@ -1,19 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.IO.Compression;
-using System.Linq;
 using System.Text.Json;
-using Dalamud.Plugin;
 using ECommons.ExcelServices;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
 using Questionable.GatheringPaths;
-using Questionable.Model;
 using Questionable.Model.Gathering;
-using Questionable.PathData;
 namespace Questionable.Controller;
 
 internal sealed class GatheringPointRegistry : IDisposable

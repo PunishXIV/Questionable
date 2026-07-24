@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
-using Questionable.Controller;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class RemainingTasksComponent(

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Questionable.Controller.Steps.Common;
+﻿namespace Questionable.Controller.Steps.Common;
 
 internal abstract class AbstractDelayedTaskExecutor<T>(TimeSpan delay) : TaskExecutor<T>
 where T : class, ITask

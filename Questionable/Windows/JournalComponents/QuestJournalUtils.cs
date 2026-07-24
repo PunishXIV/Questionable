@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestJournalUtils

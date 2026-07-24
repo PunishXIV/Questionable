@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using Dalamud.Plugin.Services;
-using Lumina.Excel;
+﻿using System.Text.RegularExpressions;
 using Lumina.Text.ReadOnly;
 namespace Questionable.Data;
 

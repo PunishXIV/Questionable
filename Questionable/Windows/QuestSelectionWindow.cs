@@ -1,27 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
-using Questionable.Controller;
-using Questionable.Controller.GameUi;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 using Questionable.Windows.Common;
-using Questionable.Windows.QuestComponents;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class QuestSelectionWindow : LWindow

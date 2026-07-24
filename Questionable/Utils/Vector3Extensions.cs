@@ -1,8 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Numerics;
-
-namespace Questionable.Utils;
+﻿namespace Questionable.Utils;
 
 internal static class Vector3Extensions
 {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Questionable.Model.Common;
+﻿using Questionable.Model.Common;
 
 namespace Questionable.Data;
 

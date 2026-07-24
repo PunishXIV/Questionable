@@ -1,6 +1,4 @@
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class ProfilesConfigComponent

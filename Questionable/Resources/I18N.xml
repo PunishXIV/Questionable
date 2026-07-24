@@ -973,6 +973,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestSelectionWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\ARealmRebornComponent.cs -->
     <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>Add to priority quests</Key>
     <Value lang="ja-jp">優先クエストに追加</Value>
@@ -1040,7 +1041,6 @@
     <Value lang="zh-cn">问题</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Simulate quest</Key>
     <Value lang="ja-jp">クエストをシミュレート</Value>
     <Value lang="zh-cn">模拟任务</Value>
@@ -2319,7 +2319,6 @@
     <Value lang="zh-cn">此任务已支持。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Comment: {0}</Key>
     <Value lang="ja-jp">コメント: {0}</Value>
@@ -2883,7 +2882,6 @@
     <Value lang="zh-cn">金碟嘉年华</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>SeasonalEventSelection</Key>
     <Value lang="ja-jp">シーズナルイベントセレクション</Value>
     <Value lang="zh-cn">季节活动选择</Value>
@@ -3342,6 +3340,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Run command when Questionable finishes automatic questing</Key>
     <Value lang="ja-jp">Questionableの自動クエストが完了した際にコマンドを実行</Value>
     <Value lang="zh-cn">Questionable 自动任务完成后执行命令</Value>
@@ -3477,7 +3476,6 @@
     <Value lang="zh-cn">定位任务发布者</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\EventInfoComponent.cs -->
     <Key>Dragon Quest X</Key>
     <Value lang="ja-jp">ドラゴンクエストX</Value>
     <Value lang="zh-cn">勇者斗恶龙X</Value>
@@ -3634,5 +3632,21 @@
     <Key>After making a change, click Reload Data below.</Key>
     <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
     <Value lang="zh-cn">做出更改后，请点击下方的"重新加载数据"。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Utils\ImGuiComponentsLocal.cs -->
+    <Key>QuestNotice</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
+    <Key>Filter quest validation results</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <Key>This quest is in Stop Conditions.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
+    <Key>Filter NG+ categories</Key>
   </Entry>
 </I18N>

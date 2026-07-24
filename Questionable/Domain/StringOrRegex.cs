@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using Questionable.Functions;
+﻿using System.Text.RegularExpressions;
 namespace Questionable.Domain;
 
 internal sealed class StringOrRegex

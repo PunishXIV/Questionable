@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Dalamud.Game.Text.SeStringHandling;
+﻿using Dalamud.Game.Text.SeStringHandling;
 using Lumina.Text.Payloads;
 using Lumina.Text.ReadOnly;
 

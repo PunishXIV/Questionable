@@ -1,15 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using Dalamud.Memory;
-using ECommons;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
-using Questionable.Data;
-using Questionable.Utils;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Windows.Utils;
 

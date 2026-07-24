@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using WrathCombo.API.Enum;
+﻿using WrathCombo.API.Enum;
 
 namespace Questionable.Controller.CombatModules;
 

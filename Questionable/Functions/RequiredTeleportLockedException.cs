@@ -1,5 +1,3 @@
-using System;
-
 namespace Questionable.Functions;
 
 public class RequiredTeleportLockedException : Exception

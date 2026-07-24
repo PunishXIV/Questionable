@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Dalamud.Game.ClientState.Objects.SubKinds;
+﻿using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
-using Questionable.Data;
-using Questionable.Domain;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;

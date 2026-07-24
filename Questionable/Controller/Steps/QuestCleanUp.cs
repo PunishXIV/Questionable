@@ -1,15 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
+﻿using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp

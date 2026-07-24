@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Extensions;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps.Shared;
 
 // TODO: refactor — heavy nesting (95 lines indented ≥6 levels, max indent 10 levels). Top priority.

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
 using Questionable.Model.Questing;
 using GameObject = FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject;
 

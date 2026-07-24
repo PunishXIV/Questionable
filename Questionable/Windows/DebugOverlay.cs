@@ -1,19 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class DebugOverlay : Window

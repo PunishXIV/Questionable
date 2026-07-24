@@ -1,4 +1,3 @@
-using System;
 namespace Questionable.Controller.GameUi.Shop.Model;
 
 public sealed class PurchaseState(int desiredItems, int ownedItems)

@@ -1,20 +1,11 @@
-using System;
-using System.Linq;
 using Dalamud.Game.Gui.ContextMenu;
 using Dalamud.Game.Text;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
-using Questionable.GameStructs;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller;
 
 internal sealed class ContextMenuController : IDisposable

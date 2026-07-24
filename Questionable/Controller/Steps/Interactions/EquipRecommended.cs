@@ -1,13 +1,8 @@
-﻿using System;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
+﻿using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.Interop;
-using Questionable.Domain;
-using Questionable.External;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;

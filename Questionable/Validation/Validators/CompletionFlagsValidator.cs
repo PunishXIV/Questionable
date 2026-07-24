@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Questionable.Controller.Utils;
-using Questionable.Domain;
-using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 internal sealed class CompletionFlagsValidator : IQuestValidator

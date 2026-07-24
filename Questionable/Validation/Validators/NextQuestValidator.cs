@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Questionable.Domain;
-using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 internal sealed class NextQuestValidator : IQuestValidator

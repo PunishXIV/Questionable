@@ -1,12 +1,7 @@
-using System.Linq;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
-using Questionable.Data;
-using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 

@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Plugin.Services;
-using ECommons;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Extensions;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Questionable.Windows;
-using static Questionable.Utils.LocalizeShortcut;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;

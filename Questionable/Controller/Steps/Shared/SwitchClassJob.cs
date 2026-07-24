@@ -1,14 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using ECommons.ExcelServices;
-using ECommons.Throttlers;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Interactions;
-using Questionable.Data;
-using Questionable.Domain;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 

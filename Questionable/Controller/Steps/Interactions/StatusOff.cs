@@ -1,7 +1,4 @@
-﻿using System;
-using Questionable.Controller.Steps.Common;
-using Questionable.Domain;
-using Questionable.Functions;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 

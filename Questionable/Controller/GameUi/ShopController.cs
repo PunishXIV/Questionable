@@ -1,15 +1,9 @@
-using System;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin.Services;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.GameUi.Shop;
 using Questionable.Controller.GameUi.Shop.Model;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.GameUi;
 
 internal sealed class ShopController : IDisposable, IShopWindow

@@ -1,13 +1,8 @@
-using System;
-using System.Linq;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
 using Dalamud.Utility;
-using Questionable.External;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class NotificationConfigComponent

@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
 using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.External;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Questionable.Windows.Utils;
 namespace Questionable.Controller.Steps.Shared;
 
 // TODO: refactor — heavy nesting (27 lines indented ≥6 levels, max indent ~9 levels).

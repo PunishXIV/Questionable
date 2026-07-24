@@ -1,7 +1,5 @@
-﻿using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
+﻿using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
-using Microsoft.Extensions.Logging;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 

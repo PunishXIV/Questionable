@@ -1,12 +1,7 @@
-﻿using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
 using PunishLib.ImGuiMethods;
 using Questionable.Windows.Common;
-using Questionable.Windows.ConfigComponents;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class ConfigWindow

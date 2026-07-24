@@ -1,10 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Model.Common;
+﻿using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : IQuestValidator

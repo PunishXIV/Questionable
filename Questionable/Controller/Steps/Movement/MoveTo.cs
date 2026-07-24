@@ -1,11 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps.Common;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Domain;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Movement;

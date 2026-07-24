@@ -1,5 +1,4 @@
-﻿using Dalamud.Plugin;
-using NotificationMasterAPI;
+﻿using NotificationMasterAPI;
 
 namespace Questionable.External;
 

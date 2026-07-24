@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Utils;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 

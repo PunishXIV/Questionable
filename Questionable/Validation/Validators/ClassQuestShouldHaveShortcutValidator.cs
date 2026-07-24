@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using ECommons.ExcelServices;
-using Questionable.Data;
-using Questionable.Domain;
+﻿using ECommons.ExcelServices;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator

@@ -1,13 +1,6 @@
-using System;
-using System.Numerics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Action = System.Action;

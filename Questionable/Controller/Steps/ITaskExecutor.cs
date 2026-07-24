@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Questionable.Controller.Steps;
+﻿namespace Questionable.Controller.Steps;
 
 internal interface ITaskExecutor
 {

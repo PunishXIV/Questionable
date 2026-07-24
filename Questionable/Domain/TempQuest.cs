@@ -1,7 +1,7 @@
 ﻿using System.CodeDom.Compiler;
-using Lumina.Excel;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
+using Action = Lumina.Excel.Sheets.Action;
 #pragma warning disable CS9113
 
 

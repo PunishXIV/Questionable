@@ -1,13 +1,9 @@
 ﻿//Taken and adapted from https://github.com/awgil/ffxiv_navmesh/blob/master/vnavmesh/Movement/OverrideCamera.cs.
 
-using System;
-using System.Numerics;
 using Dalamud.Hooking;
-using Dalamud.Plugin.Services;
 using Dalamud.Utility.Signatures;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
-using Microsoft.Extensions.Logging;
 namespace Questionable.Functions;
 
 internal sealed unsafe class CameraFunctions : IDisposable

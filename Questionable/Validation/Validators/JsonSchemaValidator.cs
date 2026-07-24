@@ -1,12 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Text.Json.Nodes;
+﻿using System.Text.Json.Nodes;
 using Json.Schema;
-using Questionable.Domain;
-using Questionable.Model;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class JsonSchemaValidator : IQuestValidator

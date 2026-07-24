@@ -1,27 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.PathData;
-using Questionable.Utils;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
 // TODO: refactor — heavy nesting (43 lines indented ≥6 levels, max indent ~13 levels).

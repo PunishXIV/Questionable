@@ -1,8 +1,4 @@
-using System;
-using System.Linq;
 using System.Text.RegularExpressions;
-using Dalamud.Plugin.Services;
-using Lumina.Excel;
 using Lumina.Text.Payloads;
 using Lumina.Text.ReadOnly;
 namespace Questionable.Data;

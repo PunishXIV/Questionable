@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using Humanizer;
 using Humanizer.Localisation;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Questionable.Utils;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class EventInfoComponent

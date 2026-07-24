@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
-using Questionable.Utils;
-using Questionable.Windows.QuestComponents;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class AlliedSocietyJournalComponent

@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
 using Dalamud.Bindings.ImGui;
-using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
-using static Questionable.Utils.LocalizeShortcut;
 
 namespace Questionable.Windows.Utils;
 
