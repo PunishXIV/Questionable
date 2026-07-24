@@ -1,3 +1,4 @@
-- Change: default Wait is now 0.25 seconds instead of 1 second, should speed things up a bit -alydev
+- Feature: add priority quest button to ARR "Hard Mode Primals"/"Crystal Tower Raids" -alydev
 - Feature: Filter input in NG+ journal progress -alydev
+- Change: default Wait is now 0.25 seconds instead of 1 second, should speed things up a bit -alydev
 - Bug fix: RSR refactor was missing checks -alydev
