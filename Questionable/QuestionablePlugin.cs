@@ -1,41 +1,11 @@
-﻿using System;
-using System.IO;
-using Dalamud.Extensions.MicrosoftLogging;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using PunishLib;
-using Questionable.Controller;
-using Questionable.Controller.CombatModules;
-using Questionable.Controller.GameUi;
-using Questionable.Controller.NavigationOverrides;
-using Questionable.Controller.Steps;
+﻿using PunishLib;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Steps.Gathering;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
-using Questionable.Gear;
-using Questionable.PathData;
-using Questionable.Utils;
-using Questionable.Validation;
-using Questionable.Validation.Validators;
-using Questionable.Windows;
-using Questionable.Windows.ConfigComponents;
-using Questionable.Windows.JournalComponents;
-using Questionable.Windows.QuestComponents;
-using Questionable.Windows.Utils;
 using WrathCombo.API;
-using static Questionable.Utils.LocalizeShortcut;
-using Action = Questionable.Controller.Steps.Interactions.Action;
 using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
 namespace Questionable;
@@ -154,7 +124,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<QuestFunctions>();
         serviceCollection.AddSingleton<AlliedSocietyQuestFunctions>();
         serviceCollection.AddSingleton<IGameGuiAdapter, GameGuiAdapter>();
-        serviceCollection.AddSingleton<Mount.MountEvaluator>();
+        serviceCollection.AddSingleton<MountStep.MountEvaluator>();
 
         serviceCollection.AddSingleton<AetherCurrentData>();
         serviceCollection.AddSingleton<AetheryteData>();
@@ -204,8 +174,8 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             CreateGearset.CreateGearsetExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<UpdateGearset.Task, UpdateGearset.Factory,
             UpdateGearset.UpdateGearsetExecutor>();
-        serviceCollection.AddTaskExecutor<Mount.MountTask, Mount.MountExecutor>();
-        serviceCollection.AddTaskExecutor<Mount.UnmountTask, Mount.UnmountExecutor>();
+        serviceCollection.AddTaskExecutor<MountStep.MountTask, MountStep.MountExecutor>();
+        serviceCollection.AddTaskExecutor<MountStep.UnmountTask, MountStep.UnmountExecutor>();
 
         // task factories
         serviceCollection
@@ -250,9 +220,9 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddTaskFactory<Emote.Factory>();
         serviceCollection.AddTaskExecutor<Emote.UseOnObject, Emote.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<Emote.UseOnSelf, Emote.UseOnSelfExecutor>();
-        serviceCollection.AddTaskFactoryAndExecutor<Action.UseOnObject, Action.Factory, Action.UseOnObjectExecutor>();
-        serviceCollection.AddTaskExecutor<Action.UseMudraOnObject, Action.UseMudraOnObjectExecutor>();
-        serviceCollection.AddTaskExecutor<Action.TriggerStatusIfMissing, Action.TriggerStatusIfMissingExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<ActionStep.UseOnObject, ActionStep.Factory, ActionStep.UseOnObjectExecutor>();
+        serviceCollection.AddTaskExecutor<ActionStep.UseMudraOnObject, ActionStep.UseMudraOnObjectExecutor>();
+        serviceCollection.AddTaskExecutor<ActionStep.TriggerStatusIfMissing, ActionStep.TriggerStatusIfMissingExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<StatusOff.Task, StatusOff.Factory, StatusOff.DoStatusOff>();
         serviceCollection.AddTaskFactoryAndExecutor<Interact.Task, Interact.Factory, Interact.DoInteract>();
         serviceCollection.AddTaskFactory<Jump.Factory>();

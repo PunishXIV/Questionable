@@ -1,13 +1,8 @@
 // Authored with LLM assistance, changes must be reviewed and owned by a human.
 // Initial version reviewed and owned by @alydevs
 
-using System.Collections.Generic;
-using System.Linq;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Domain;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 /// <summary>

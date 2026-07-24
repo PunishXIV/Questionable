@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.ConfigComponents;
 
 internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration)

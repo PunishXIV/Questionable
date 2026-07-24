@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Domain;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Functions;

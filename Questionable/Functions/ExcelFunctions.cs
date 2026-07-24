@@ -1,14 +1,7 @@
-﻿using System;
-using System.Linq;
-using Dalamud.Plugin.Services;
-using Dalamud.Utility;
-using Lumina.Excel;
+﻿using Dalamud.Utility;
 using Lumina.Excel.Exceptions;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Domain;
 using GimmickYesNo = Lumina.Excel.Sheets.GimmickYesNo;
 using Quest = Questionable.Domain.Quest;
 

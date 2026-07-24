@@ -1,15 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FFXIVClientStructs.FFXIV.Component.GUI;
-using Microsoft.Extensions.Logging;
+﻿using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Utils;
 namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp
@@ -52,7 +45,7 @@ internal static class QuestCleanUp
                     (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593))))
                 {
                     logger.LogInformation("Quest doesn't use any mount actions, unmounting");
-                    return new Mount.UnmountTask();
+                    return new MountStep.UnmountTask();
                 }
 
                 // have any of the previous sequences interacted with the issuer?

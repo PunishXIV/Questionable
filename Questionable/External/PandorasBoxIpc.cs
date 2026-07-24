@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using Dalamud.Plugin;
+﻿using System.Collections.Immutable;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Data;
 namespace Questionable.External;
 
 internal sealed class PandorasBoxIpc : IDisposable

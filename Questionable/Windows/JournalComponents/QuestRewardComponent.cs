@@ -1,17 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Domain;
 using Questionable.Model.Common;
-using Questionable.Windows.QuestComponents;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestRewardComponent

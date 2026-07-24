@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Questionable.Controller.Steps.Common;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -34,7 +30,7 @@ internal static class Emote
             if (!step.Emote.HasValue)
                 throw new ArgumentNullException(nameof(step.Emote));
 
-            yield return new Mount.UnmountTask();
+            yield return new MountStep.UnmountTask();
             if (step.DataId != null)
                 yield return new UseOnObject(step.Emote.Value, step.DataId.Value);
             else

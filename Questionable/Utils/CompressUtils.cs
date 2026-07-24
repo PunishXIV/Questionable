@@ -1,8 +1,5 @@
-﻿using System;
-using System.IO;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 using System.Text;
-using ECommons.DalamudServices;
 using Newtonsoft.Json;
 
 namespace Questionable.Utils;

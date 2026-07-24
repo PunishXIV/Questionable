@@ -1,18 +1,6 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using Dalamud.Game.Gui.Toast;
+﻿using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
 using I18N.DotNet;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Controller.Utils;
-using Questionable.Windows;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable;
 
 internal sealed class DalamudInitializer : IDisposable

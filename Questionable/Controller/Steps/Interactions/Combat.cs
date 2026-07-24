@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Questionable.Controller.CombatModules;
-using Questionable.Controller.Steps.Common;
+﻿using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Controller.Utils;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
@@ -24,7 +17,7 @@ internal static class Combat
             if (GameFunctions.GetMountId() != Mount128Module.MountId &&
                 GameFunctions.GetMountId() != Mount147Module.MountId)
             {
-                yield return new Mount.UnmountTask();
+                yield return new MountStep.UnmountTask();
             }
 
             if (step.CombatDelaySecondsAtStart != null)
@@ -84,8 +77,8 @@ internal static class Combat
                         throw new ArgumentNullException(nameof(step.Action));
 
                     if (!step.Action.Value.RequiresMount())
-                        yield return new Mount.UnmountTask();
-                    yield return new Action.UseOnObject(step.DataId.Value, Quest: null, step.Action.Value, CompletionQuestVariablesFlags: null);
+                        yield return new MountStep.UnmountTask();
+                    yield return new ActionStep.UseOnObject(step.DataId.Value, Quest: null, step.Action.Value, CompletionQuestVariablesFlags: null);
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
                     yield return CreateTask(quest, sequence, step);
                     break;
@@ -94,7 +87,7 @@ internal static class Combat
                     if (!step.Emote.HasValue)
                         throw new ArgumentNullException(nameof(step.Emote));
 
-                    yield return new Mount.UnmountTask();
+                    yield return new MountStep.UnmountTask();
                     if (step.DataId != null)
                         yield return new Emote.UseOnObject(step.Emote.Value, step.DataId.Value);
                     else

@@ -2,12 +2,7 @@
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Plugin;
-using Microsoft.Extensions.Logging;
-using Questionable.Utils;
 using Questionable.Windows.Common;
-using Questionable.Windows.ConfigComponents;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class OneTimeSetupWindow : LWindow

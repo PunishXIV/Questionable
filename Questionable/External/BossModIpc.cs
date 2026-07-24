@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Services;
-using ECommons.Throttlers;
-using Questionable.Data;
 using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.External;
 
 internal sealed class BossModIpc

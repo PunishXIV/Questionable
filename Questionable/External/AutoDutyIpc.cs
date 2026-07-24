@@ -1,12 +1,6 @@
-﻿using System;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
+﻿using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps;
-using Questionable.Data;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.External;
 
 internal sealed class AutoDutyIpc

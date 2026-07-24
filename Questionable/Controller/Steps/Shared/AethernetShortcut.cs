@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Questionable.Controller.Steps.Common;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.External;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;

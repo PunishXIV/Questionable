@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Nodes;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using ECommons.DalamudServices;
-using Microsoft.Extensions.Logging;
-using Questionable.Domain;
-using Questionable.Utils;
 
 namespace Questionable.Controller.Steps.Shared;
 

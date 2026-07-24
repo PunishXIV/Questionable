@@ -1,8 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.Logging;
-using Questionable.Domain;
-using Questionable.Functions;
-using Questionable.Model.Common;
+﻿using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 

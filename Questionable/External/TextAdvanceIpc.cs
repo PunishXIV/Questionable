@@ -1,8 +1,4 @@
-﻿using System;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
+﻿using Dalamud.Plugin.Ipc;
 namespace Questionable.External;
 
 internal sealed class TextAdvanceIpc : IDisposable

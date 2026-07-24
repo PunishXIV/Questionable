@@ -1,5 +1,4 @@
-﻿using System;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 namespace Questionable.Controller.Steps;
 
 internal sealed class InteractionProgressContext

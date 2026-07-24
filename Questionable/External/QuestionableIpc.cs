@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
+﻿using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using JetBrains.Annotations;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using Questionable.Windows;
-using Questionable.Windows.QuestComponents;
-using Questionable.Windows.Utils;
 namespace Questionable.External;
 
 internal sealed class QuestionableIpc : IDisposable

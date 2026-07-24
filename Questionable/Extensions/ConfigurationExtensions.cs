@@ -1,6 +1,4 @@
-﻿using ECommons.DalamudServices;
-
-namespace Questionable.Extensions;
+﻿namespace Questionable.Extensions;
 
 internal static class ConfigurationExtensions
 {

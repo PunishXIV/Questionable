@@ -1,17 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Utils;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
-internal static class Action
+internal static class ActionStep
 {
     internal sealed class Factory : ITaskFactory
     {
@@ -26,7 +20,7 @@ internal static class Action
             if (step.Action.Value.RequiresMount())
                 return [task];
 
-            return [new Mount.UnmountTask(), task];
+            return [new MountStep.UnmountTask(), task];
         }
 
         public static ITask OnObject(uint? dataId, Quest quest, EAction action, List<QuestWorkValue?>? completionQuestVariablesFlags)

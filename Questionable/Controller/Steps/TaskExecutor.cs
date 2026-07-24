@@ -1,5 +1,4 @@
-﻿using System;
-namespace Questionable.Controller.Steps;
+﻿namespace Questionable.Controller.Steps;
 
 internal abstract class TaskExecutor<T> : ITaskExecutor
 where T : class, ITask

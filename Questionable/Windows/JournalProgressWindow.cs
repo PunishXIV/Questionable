@@ -1,11 +1,5 @@
-﻿using System;
-using Dalamud.Interface.Utility.Raii;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin.Services;
-using Questionable.Controller;
+﻿using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common;
-using Questionable.Windows.JournalComponents;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class JournalProgressWindow : LWindow, IDisposable

@@ -1,8 +1,4 @@
-using System;
 using Dalamud.Game.ClientState.Objects.Enums;
-using Microsoft.Extensions.Logging;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;

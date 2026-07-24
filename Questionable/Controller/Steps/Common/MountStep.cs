@@ -1,16 +1,9 @@
-﻿using System;
-using Dalamud.Game.ClientState.Conditions;
+﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
-using Dalamud.Plugin.Services;
-using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
-using FFXIVClientStructs.FFXIV.Common.Math;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Functions;
 namespace Questionable.Controller.Steps.Common;
 
-internal static class Mount
+internal static class MountStep
 {
     public enum EMountIf
     {

@@ -1,10 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
 using Lumina.Text.ReadOnly;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Validation.Validators;
 
 internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValidator

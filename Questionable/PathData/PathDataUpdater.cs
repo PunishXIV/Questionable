@@ -1,16 +1,5 @@
-using System;
-using System.IO;
-using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
-using Dalamud.Plugin;
-using Dalamud.Plugin.Services;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Model;
-using static Questionable.Utils.LocalizeShortcut;
 
 namespace Questionable.PathData;
 

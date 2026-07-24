@@ -1,9 +1,5 @@
 ﻿using Dalamud.Game.Text;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.External;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Common;
 

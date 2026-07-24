@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Game.Text.SeStringHandling;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Data;
-using Questionable.Functions;
 using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 

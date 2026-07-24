@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-namespace Questionable.Controller.NavigationOverrides;
+﻿namespace Questionable.Controller.NavigationOverrides;
 
 internal sealed record BlacklistedArea
 (

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Questionable.Domain;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps;
 
 internal abstract class SimpleTaskFactory : ITaskFactory

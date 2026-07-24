@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Plugin.Services;
-using ECommons;
-using ECommons.DalamudServices;
+﻿using System.Collections.ObjectModel;
 using Lumina.Excel.Sheets;
-using Questionable.Functions;
 using Questionable.Model.Common;
 namespace Questionable.Data;
 

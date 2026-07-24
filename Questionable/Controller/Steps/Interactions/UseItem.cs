@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Services;
+﻿using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Microsoft.Extensions.Logging;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Controller.Utils;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
@@ -59,8 +48,8 @@ internal static class UseItem
                     task,
                     new WaitCondition.Task(() => clientState.TerritoryType == 140,
                         $"Wait(territory: {TerritoryData.GetNameAndId(140)})"),
-                    new Mount.MountTask(140,
-                        nextPosition != null ? Mount.EMountIf.AwayFromPosition : Mount.EMountIf.Always,
+                    new MountStep.MountTask(140,
+                        nextPosition != null ? MountStep.EMountIf.AwayFromPosition : MountStep.EMountIf.Always,
                         nextPosition),
                     new MoveTask(
                         TerritoryId: 140,
@@ -74,7 +63,7 @@ internal static class UseItem
                 ];
             }
 
-            Mount.UnmountTask unmount = new();
+            MountStep.UnmountTask unmount = new();
             if (step.GroundTarget == true)
             {
                 ITask task;

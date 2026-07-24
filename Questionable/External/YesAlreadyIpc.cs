@@ -1,10 +1,4 @@
-﻿using System;
-using Dalamud.Plugin.Services;
-using ECommons.EzIpcManager;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller;
-using Questionable.Data;
-using static Questionable.External.IPCUtils;
+﻿using static Questionable.External.IPCUtils;
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
 namespace Questionable.External;
 

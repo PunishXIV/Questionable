@@ -1,5 +1,4 @@
-﻿using System;
-namespace Questionable.Controller.Steps.Common;
+﻿namespace Questionable.Controller.Steps.Common;
 
 internal static class WaitCondition
 {

@@ -1,6 +1,5 @@
 using Dalamud.Memory;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Questionable.Extensions;
 namespace Questionable.Utils;
 
 internal static class AtkValueAdapter

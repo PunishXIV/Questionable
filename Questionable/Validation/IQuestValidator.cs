@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Questionable.Domain;
-
-namespace Questionable.Validation;
+﻿namespace Questionable.Validation;
 
 internal interface IQuestValidator
 {

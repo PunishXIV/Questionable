@@ -1,15 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Dalamud.Plugin;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Domain;
-using Questionable.Functions;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface)

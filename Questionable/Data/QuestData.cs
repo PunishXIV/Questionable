@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Dalamud.Plugin.Services;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Domain;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using static Questionable.Utils.LocalizeShortcut;
 using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.Data;

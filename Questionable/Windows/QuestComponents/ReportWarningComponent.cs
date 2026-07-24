@@ -1,7 +1,6 @@
 ﻿using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
-using Questionable.Utils;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class ReportWarningComponent(Configuration configuration)

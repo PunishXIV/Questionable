@@ -1,27 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Numerics;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Enums;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text.SeStringHandling;
-using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging;
-using Questionable.Controller.Steps;
+using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Gathering;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
-using Questionable.Data;
-using Questionable.External;
-using Questionable.Functions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
-using Mount = Questionable.Controller.Steps.Common.Mount;
 
 namespace Questionable.Controller;
 
@@ -159,7 +148,7 @@ internal sealed unsafe class GatheringController
             Vector3 moveTarget = pointOnFloor ?? averagePosition;
             Vector3? playerPos = objectTable[0]?.Position;
             if (playerPos == null || Vector3.Distance(playerPos.Value, moveTarget) > 50f)
-                _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
+                _taskQueue.Enqueue(new MountStep.MountTask(territoryId, MountStep.EMountIf.Always));
 
             _taskQueue.Enqueue(new MoveTask(territoryId, moveTarget,
                 Mount: null, 50f, Fly: fly, IgnoreDistanceToObject: true, InteractionType: EInteractionType.WalkTo));
@@ -169,11 +158,11 @@ internal sealed unsafe class GatheringController
             Vector3 targetPosition = currentNode.Locations[0].Position;
             Vector3? playerPos = objectTable[0]?.Position;
             if (playerPos == null || Vector3.Distance(playerPos.Value, targetPosition) > 50f)
-                _taskQueue.Enqueue(new Mount.MountTask(territoryId, Mount.EMountIf.Always));
+                _taskQueue.Enqueue(new MountStep.MountTask(territoryId, MountStep.EMountIf.Always));
         }
 
         _taskQueue.Enqueue(new MoveToLandingLocation.Task(territoryId, fly, currentNode));
-        _taskQueue.Enqueue(new Mount.UnmountTask());
+        _taskQueue.Enqueue(new MountStep.UnmountTask());
         _taskQueue.Enqueue(new Interact.Task(currentNode.DataId, Quest: null, EInteractionType.Gather, SkipMarkerCheck: true));
 
         QueueGatherNode(currentNode);

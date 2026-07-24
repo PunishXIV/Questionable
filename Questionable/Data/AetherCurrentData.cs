@@ -1,6 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Linq;
-using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
 namespace Questionable.Data;
 

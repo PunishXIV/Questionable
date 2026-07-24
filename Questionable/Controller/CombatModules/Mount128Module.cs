@@ -1,5 +1,4 @@
 ﻿using Dalamud.Game.ClientState.Objects.Types;
-using Questionable.Functions;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.CombatModules;
 

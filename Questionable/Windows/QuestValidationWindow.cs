@@ -1,24 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Interface.Windowing;
-using Dalamud.Plugin;
-using Dalamud.Utility;
-using FFXIVClientStructs.FFXIV.Common.Math;
-using Questionable.Controller;
-using Questionable.Data;
-using Questionable.Domain;
-using Questionable.Utils;
-using Questionable.Validation;
 using Questionable.Windows.Common;
-using Questionable.Windows.QuestComponents;
-using Questionable.Windows.Utils;
-using static Questionable.Utils.LocalizeShortcut;
 namespace Questionable.Windows;
 
 internal sealed class QuestValidationWindow : LWindow
