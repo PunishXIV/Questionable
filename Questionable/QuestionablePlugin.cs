@@ -6,7 +6,6 @@ using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
 using WrathCombo.API;
-using Action = Questionable.Controller.Steps.Interactions.Action;
 using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
 namespace Questionable;
@@ -125,7 +124,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<QuestFunctions>();
         serviceCollection.AddSingleton<AlliedSocietyQuestFunctions>();
         serviceCollection.AddSingleton<IGameGuiAdapter, GameGuiAdapter>();
-        serviceCollection.AddSingleton<Mount.MountEvaluator>();
+        serviceCollection.AddSingleton<MountStep.MountEvaluator>();
 
         serviceCollection.AddSingleton<AetherCurrentData>();
         serviceCollection.AddSingleton<AetheryteData>();
@@ -175,8 +174,8 @@ public sealed class QuestionablePlugin : IDalamudPlugin
             CreateGearset.CreateGearsetExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<UpdateGearset.Task, UpdateGearset.Factory,
             UpdateGearset.UpdateGearsetExecutor>();
-        serviceCollection.AddTaskExecutor<Mount.MountTask, Mount.MountExecutor>();
-        serviceCollection.AddTaskExecutor<Mount.UnmountTask, Mount.UnmountExecutor>();
+        serviceCollection.AddTaskExecutor<MountStep.MountTask, MountStep.MountExecutor>();
+        serviceCollection.AddTaskExecutor<MountStep.UnmountTask, MountStep.UnmountExecutor>();
 
         // task factories
         serviceCollection
@@ -221,9 +220,9 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddTaskFactory<Emote.Factory>();
         serviceCollection.AddTaskExecutor<Emote.UseOnObject, Emote.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<Emote.UseOnSelf, Emote.UseOnSelfExecutor>();
-        serviceCollection.AddTaskFactoryAndExecutor<Action.UseOnObject, Action.Factory, Action.UseOnObjectExecutor>();
-        serviceCollection.AddTaskExecutor<Action.UseMudraOnObject, Action.UseMudraOnObjectExecutor>();
-        serviceCollection.AddTaskExecutor<Action.TriggerStatusIfMissing, Action.TriggerStatusIfMissingExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<ActionStep.UseOnObject, ActionStep.Factory, ActionStep.UseOnObjectExecutor>();
+        serviceCollection.AddTaskExecutor<ActionStep.UseMudraOnObject, ActionStep.UseMudraOnObjectExecutor>();
+        serviceCollection.AddTaskExecutor<ActionStep.TriggerStatusIfMissing, ActionStep.TriggerStatusIfMissingExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<StatusOff.Task, StatusOff.Factory, StatusOff.DoStatusOff>();
         serviceCollection.AddTaskFactoryAndExecutor<Interact.Task, Interact.Factory, Interact.DoInteract>();
         serviceCollection.AddTaskFactory<Jump.Factory>();

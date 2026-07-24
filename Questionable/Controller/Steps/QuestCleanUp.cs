@@ -45,7 +45,7 @@ internal static class QuestCleanUp
                     (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593))))
                 {
                     logger.LogInformation("Quest doesn't use any mount actions, unmounting");
-                    return new Mount.UnmountTask();
+                    return new MountStep.UnmountTask();
                 }
 
                 // have any of the previous sequences interacted with the issuer?

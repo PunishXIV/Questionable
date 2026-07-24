@@ -131,7 +131,7 @@ public sealed class FishTests
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
         Assert.Equal(3, tasks.Count);
-        Assert.IsType<Mount.UnmountTask>(tasks[0]);
+        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
         Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
 
         var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
@@ -154,7 +154,7 @@ public sealed class FishTests
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
         Assert.Equal(5, tasks.Count);
-        Assert.IsType<Mount.UnmountTask>(tasks[0]);
+        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
         Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
 
         var fishTasks = tasks.Skip(2).Cast<Fish.FishTask>().ToList();
@@ -177,7 +177,7 @@ public sealed class FishTests
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
         Assert.Equal(3, tasks.Count);
-        Assert.IsType<Mount.UnmountTask>(tasks[0]);
+        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
         Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
 
         var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);

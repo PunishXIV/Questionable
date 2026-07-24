@@ -78,7 +78,7 @@ internal static class SinglePlayerDuty
                     tId = cfcData.TerritoryId;
                 }
 
-                yield return new Mount.UnmountTask();
+                yield return new MountStep.UnmountTask();
                 //if (ShouldLeaveParty || condition[ConditionFlag.ParticipatingInCrossWorldPartyOrAlliance])
                 //{
                 //    yield return new LeaveParty();
@@ -119,7 +119,7 @@ internal static class SinglePlayerDuty
                             return (new Vector3(352.01f, -1.45f, 288.59f) - pos).Length() < 10f;
                         },
                         "Wait(moving to Ovoo)");
-                    yield return new Mount.UnmountTask();
+                    yield return new MountStep.UnmountTask();
                     yield return new EnableAi();
                 }
                 else if (tId == SpecialTerritories.Patisserie)

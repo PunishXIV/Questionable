@@ -19,7 +19,7 @@ internal static class Fish
             if (!autoHookIpc.IsAvailable())
                 yield break;
 
-            yield return new Mount.UnmountTask();
+            yield return new MountStep.UnmountTask();
             yield return new SwitchClassJob.Task(Job.FSH);
 
             // Ensure we have at least one fish task. Quests that need key items (e.g. And Thanks for All the Fish) do not have itemIds and so will have no requested items.

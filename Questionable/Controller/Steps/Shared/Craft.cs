@@ -5,7 +5,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
-using Mount = Questionable.Controller.Steps.Common.Mount;
+using Questionable.Controller.Steps.Common;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Shared;
@@ -21,7 +21,7 @@ internal static class Craft
 
             return
             [
-                new Mount.UnmountTask(),
+                new MountStep.UnmountTask(),
                 new CraftTask(quest, step.ItemId, step.ItemCount)
             ];
         }

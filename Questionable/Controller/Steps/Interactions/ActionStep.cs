@@ -5,7 +5,7 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
-internal static class Action
+internal static class ActionStep
 {
     internal sealed class Factory : ITaskFactory
     {
@@ -20,7 +20,7 @@ internal static class Action
             if (step.Action.Value.RequiresMount())
                 return [task];
 
-            return [new Mount.UnmountTask(), task];
+            return [new MountStep.UnmountTask(), task];
         }
 
         public static ITask OnObject(uint? dataId, Quest quest, EAction action, List<QuestWorkValue?>? completionQuestVariablesFlags)

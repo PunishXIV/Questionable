@@ -3,7 +3,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Mount = Questionable.Controller.Steps.Common.Mount;
+using Questionable.Controller.Steps.Common;
 using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Shared;
 
@@ -99,7 +99,7 @@ internal static class RedeemRewardItems
             }
         }
 
-        return tasks.Count != 0 ? [new Mount.UnmountTask(), .. tasks] : tasks;
+        return tasks.Count != 0 ? [new MountStep.UnmountTask(), .. tasks] : tasks;
     }
 
     internal sealed record Task(ItemReward ItemReward) : ITask

@@ -3,7 +3,7 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 namespace Questionable.Controller.Steps.Common;
 
-internal static class Mount
+internal static class MountStep
 {
     public enum EMountIf
     {

@@ -4,10 +4,10 @@ using Dalamud.Game.Text.SeStringHandling;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Common;
+using Questionable.Controller.Steps.Interactions;
 using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
-using Action = Questionable.Controller.Steps.Interactions.Action;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -61,9 +61,9 @@ internal static class Gather
                 yield break;
 
             if (currentClassJob == Job.MIN)
-                yield return new Action.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
+                yield return new ActionStep.TriggerStatusIfMissing(EStatus.Prospect, EAction.Prospect);
             else if (currentClassJob == Job.BTN)
-                yield return new Action.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
+                yield return new ActionStep.TriggerStatusIfMissing(EStatus.Triangulate, EAction.Triangulate);
 
             using (IDisposable? _ = logger.BeginScope("Gathering(inner)"))
             {
