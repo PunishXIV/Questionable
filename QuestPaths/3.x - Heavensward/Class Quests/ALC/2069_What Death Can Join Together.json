@@ -1,202 +1,174 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "!!Crafting requires Master Alchemist III!! Crafted Item: 1x Noble Gold HQ // Autocraft requires: 1x Enchanted Aurum Regis Ink, 2x Aurum Regis Nugget, 2x Hardsilver Ingot, 1x Chrysolite, 1x Mormorion",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Mor Dhona",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					156
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"Position":
-			{
-				"X": 409.59528,
-				"Y": -6.4556007,
-				"Z": -448.61273
-			},
-			"TerritoryId": 156,
-			"InteractionType": "WalkTo",
-			"Fly": true
-		},
-		{
-			"DataId": 1013676,
-			"Position":
-			{
-				"X": 414.20605,
-				"Y": -6.1064634,
-				"Z": -445.94495
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"Position":
-			{
-				"X": 247.94543,
-				"Y": 0.5152025,
-				"Z": -564.2881
-			},
-			"TerritoryId": 156,
-			"InteractionType": "WalkTo",
-			"Fly": true
-		},
-		{
-			"DataId": 1013677,
-			"Position":
-			{
-				"X": 241.90125,
-				"Y": 1.3774036,
-				"Z": -568.0171
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Mor Dhona"
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"DataId": 1002299,
-			"Position":
-			{
-				"X": -98.8938,
-				"Y": 40.200146,
-				"Z": 120.83618
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Alchemists' Guild"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 5,
-		"Steps":
-		[
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Mor Dhona"
-		}
-		]
-	},
-	{
-		"Sequence": 6,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 156,
-			"ItemId": 10651,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Mor Dhona"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012558,
-			"Position":
-			{
-				"X": 76.89014,
-				"Y": 22.236717,
-				"Z": -640.4364
-			},
-			"TerritoryId": 156,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "!!Crafting requires Master Alchemist III!! Crafted Item: 1x Noble Gold HQ // Autocraft requires: 1x Enchanted Aurum Regis Ink, 2x Aurum Regis Nugget, 2x Hardsilver Ingot, 1x Chrysolite, 1x Mormorion",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [156]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 409.59528,
+            "Y": -6.4556007,
+            "Z": -448.61273
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1013676,
+          "Position": {
+            "X": 414.20605,
+            "Y": -6.1064634,
+            "Z": -445.94495
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 247.94543,
+            "Y": 0.5152025,
+            "Z": -564.2881
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1013677,
+          "Position": {
+            "X": 241.90125,
+            "Y": 1.3774036,
+            "Z": -568.0171
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002299,
+          "Position": {
+            "X": -98.8938,
+            "Y": 40.200146,
+            "Z": 120.83618
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 156,
+          "ItemId": 10651,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012558,
+          "Position": {
+            "X": 76.89014,
+            "Y": 22.236717,
+            "Z": -640.4364
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

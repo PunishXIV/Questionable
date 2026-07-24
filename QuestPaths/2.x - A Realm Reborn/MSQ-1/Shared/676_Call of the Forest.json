@@ -51,7 +51,7 @@
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "TargetTerritoryId": 132,
-          "SkipConditions": {"StepIf": {"NotInTerritory": [128]}},
+          "SkipConditions": {"StepIf": {"InTerritory": [132]}},
           "DialogueChoices": [
             {
               "Type": "List",

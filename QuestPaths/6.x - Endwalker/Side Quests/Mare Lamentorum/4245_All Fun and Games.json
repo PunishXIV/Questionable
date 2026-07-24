@@ -9,6 +9,11 @@
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 959,
+          "InteractionType": "Instruction",
+          "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
+        },
+        {
           "DataId": 1041797,
           "Position": {
             "X": -39.68878,

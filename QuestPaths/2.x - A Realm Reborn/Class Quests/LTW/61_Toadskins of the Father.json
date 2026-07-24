@@ -94,7 +94,11 @@
             "Z": -166.52173
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
         }
       ]
     },

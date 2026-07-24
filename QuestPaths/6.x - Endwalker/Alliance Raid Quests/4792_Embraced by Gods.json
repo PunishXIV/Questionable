@@ -6,6 +6,30 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 2012870,
+          "Position": {
+            "X": 154.46704,
+            "Y": -26.29132,
+            "Z": -437.46094
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1061,
+          "Fly": true,
+          "SkipConditions": {"StepIf": {"InTerritory": [1061,1182]}}
+        },
+        {
+          "DataId": 2013457,
+          "Position": {
+            "X": -28,
+            "Y": 9.29,
+            "Z": 134.93
+          },
+          "TerritoryId": 1061,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1182
+        },
+        {
           "DataId": 1045985,
           "Position": {
             "X": 945.18945,
@@ -14,7 +38,8 @@
           },
           "StopDistance": 4,
           "TerritoryId": 1182,
-          "InteractionType": "AcceptQuest" }
+          "InteractionType": "AcceptQuest"
+        }
       ]
     },
     {

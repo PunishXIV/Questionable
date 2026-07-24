@@ -82,6 +82,10 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSARM451_00283_Q1_000_000",

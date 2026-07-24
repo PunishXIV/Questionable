@@ -7,6 +7,67 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1044157,
+          "Position": {
+            "X": -270.34418,
+            "Y": 0.079047784,
+            "Z": 605.79846
+          },
+          "TerritoryId": 957,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1056,
+          "Fly": true,
+          "SkipConditions": { "StepIf": { "InTerritory": [1077,1089] } }
+        },
+        {
+          "DataId": 2013039,
+          "Position": {
+            "X": 110.03284,
+            "Y": -348.56183,
+            "Z": -92.33234
+          },
+          "TerritoryId": 1056,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1089,
+          "SkipConditions": { "StepIf": { "InTerritory": [1077] } }
+        },
+        {
+          "DataId": 2013112,
+          "Position": {
+            "X": 259.90686,
+            "Y": -706.41644,
+            "Z": 90.01294
+          },
+          "TerritoryId": 1089,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1089,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 1.7241821,
+                  "Y": -698.0104,
+                  "Z": -138.1095
+                },
+                "TerritoryId": 1089,
+                "MaximumDistance": 200
+              },
+              "InTerritory": [1077]
+            }
+          }
+        },
+        {
+          "DataId": 2013044,
+          "Position": {
+            "X": 15.548889,
+            "Y": 360.3723,
+            "Z": -114.58002
+          },
+          "TerritoryId": 1089,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1077
+        },
+        {
           "DataId": 1043839,
           "Position": {
             "X": -0.25946045,

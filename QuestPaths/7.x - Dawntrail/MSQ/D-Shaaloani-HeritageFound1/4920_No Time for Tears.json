@@ -7,6 +7,24 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1046681,
+          "Position": {
+            "X": -194.78,
+            "Y": 120.77,
+            "Z": -359.24
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1170,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGMD109_04920_SYSTEM_000_058",
+              "Yes": true,
+              "Type": "YesNo"
+            }
+          ]
+        },
+        {
           "DataId": 1047002,
           "Position": {
             "X": -16.494995,

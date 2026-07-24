@@ -65,7 +65,7 @@
           "TerritoryId": 395,
           "InteractionType": "Interact",
           "TargetTerritoryId": 155,
-          "SkipConditions": {"StepIf": {"NotInTerritory": [395]}}
+          "SkipConditions": {"StepIf": {"InTerritory": [155]}}
         },
         {
           "Position": {

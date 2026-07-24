@@ -57,6 +57,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
+          "TargetTerritoryId": 128,
           "AethernetShortcut": [
             "[Limsa Lominsa] The Aftcastle",
             "[Limsa Lominsa] Hawkers' Alley"

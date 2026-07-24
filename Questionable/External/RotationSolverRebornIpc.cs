@@ -20,11 +20,16 @@ internal sealed class RotationSolverRebornIpc(IDalamudPluginInterface pluginInte
     {
         if (configuration.General.CombatModule != ECombatModule.RotationSolverReborn)
             return false;
-        ChangeOperatingMode.InvokeAction(StateCommandType.Henched);
+        _ = IpcInvoke.SafeFunc(() => { ChangeOperatingMode.InvokeAction(StateCommandType.Henched); return true; }, fallback: false);
         return true;
     }
 
-    public void RotationStop() => ChangeOperatingMode.InvokeAction(StateCommandType.Off);
+    public void RotationStop()
+    {
+        if (configuration.General.CombatModule != ECombatModule.RotationSolverReborn)
+            return;
+        _ = IpcInvoke.SafeFunc(() => { ChangeOperatingMode.InvokeAction(StateCommandType.Off); return true; }, fallback: false);
+    }
 
     internal void Dispose() => RotationStop();
     internal bool IsReady(string pluginName)

@@ -34,13 +34,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "DialogueChoices": [
-            {
-              "Type": "YesNo",
-              "Prompt": "TEXT_FESXMX001_05227_SYSTEM_000_025",
-              "Yes": true
-            }
-          ]
+          "TargetTerritoryId": 1247
         }
       ]
     },

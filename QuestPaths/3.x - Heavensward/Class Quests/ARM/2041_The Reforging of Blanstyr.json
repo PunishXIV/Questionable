@@ -1,199 +1,154 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Titanium Hoplon HQ // Autocraft requires: 3x Titanium Ingot, 1x Hallowed Chestnut Lumber, 1x Titanium Rivets",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1001001,
-			"Position":
-			{
-				"X": -56.443176,
-				"Y": 39.974316,
-				"Z": 178.72888
-			},
-			"TerritoryId": 128,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					129,
-					128
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012518,
-			"Position":
-			{
-				"X": -24.917969,
-				"Y": 40.000427,
-				"Z": 4.989685
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012521,
-			"Position":
-			{
-				"X": -128.55731,
-				"Y": 304.1538,
-				"Z": -295.82666
-			},
-			"TerritoryId": 155,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ishgard",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			},
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"Position":
-			{
-				"X": -162.90991,
-				"Y": 14.95313,
-				"Z": -186.35255
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Emote",
-			"Emote": "pray",
-			"AetheryteShortcut": "Ishgard",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			},
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] Saint Reymanaud's Cathedral"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"DataId": 1012521,
-			"Position":
-			{
-				"X": -128.55731,
-				"Y": 304.1538,
-				"Z": -295.82666
-			},
-			"TerritoryId": 155,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Saint Reymanaud's Cathedral",
-			"[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 128,
-			"ItemId": 10667,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012518,
-			"Position":
-			{
-				"X": -24.917969,
-				"Y": 40.000427,
-				"Z": 4.989685
-			},
-			"TerritoryId": 128,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					129,
-					128
-					]
-				}
-			}
-			
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Titanium Hoplon HQ // Autocraft requires: 3x Titanium Ingot, 1x Hallowed Chestnut Lumber, 1x Titanium Rivets",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001001,
+          "Position": {
+            "X": -56.443176,
+            "Y": 39.974316,
+            "Z": 178.72888
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [129, 128]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012518,
+          "Position": {
+            "X": -24.917969,
+            "Y": 40.000427,
+            "Z": 4.989685
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012521,
+          "Position": {
+            "X": -128.55731,
+            "Y": 304.1538,
+            "Z": -295.82666
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          },
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -162.90991,
+            "Y": 14.95313,
+            "Z": -186.35255
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Emote",
+          "Emote": "pray",
+          "AetheryteShortcut": "Ishgard",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          },
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Saint Reymanaud's Cathedral"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012521,
+          "Position": {
+            "X": -128.55731,
+            "Y": 304.1538,
+            "Z": -295.82666
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Saint Reymanaud's Cathedral",
+            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 10667,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012518,
+          "Position": {
+            "X": -24.917969,
+            "Y": 40.000427,
+            "Z": 4.989685
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [129, 128]
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

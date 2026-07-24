@@ -1,7 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "LastChecked": {"Username": "ShermTank", "Date": "2026-06-18"},
+  "LastChecked": { "Username": "ShermTank", "Date": "2026-06-18" },
   "Comment": "Crafted Item:\n 1x Maple Syrup\nWill buy from Jossy",
   "QuestSequence": [
     {
@@ -11,22 +11,22 @@
           "InteractionType": "EquipItem",
           "ItemId": 2493,
           "TerritoryId": 128,
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "CreateGearset",
           "TerritoryId": 128,
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "EquipRecommended",
           "TerritoryId": 128,
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "InteractionType": "UpdateGearset",
           "TerritoryId": 128,
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1000947,
@@ -44,10 +44,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }
@@ -101,7 +98,11 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true
+          "AllowHighQuality": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
         }
       ]
     }

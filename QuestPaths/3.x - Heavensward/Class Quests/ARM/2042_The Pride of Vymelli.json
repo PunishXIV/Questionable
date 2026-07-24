@@ -1,183 +1,145 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "!!Crafting requires Master Armorer III!! Crafted Item: 1x Adamantite Lorica of Fending HQ // Autocraft requires: 3x Adamantite Nugget, 1x Amphiptere Leather, 1x Adamantite Rivets, 2x Grade 1 Vitality Dissolvent",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1001001,
-			"Position":
-			{
-				"X": -56.443176,
-				"Y": 39.974316,
-				"Z": 178.72888
-			},
-			"TerritoryId": 128,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					129,
-					128
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1013925,
-			"Position":
-			{
-				"X": -23.27002,
-				"Y": 40.000355,
-				"Z": 4.7455444
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1013790,
-			"Position":
-			{
-				"X": -93.614136,
-				"Y": 6.500004,
-				"Z": 31.418213
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ul'dah",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			},
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Gladiators' Guild"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1012527,
-			"Position":
-			{
-				"X": 1.1443481,
-				"Y": 7.599999,
-				"Z": 153.09375
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Gladiators' Guild",
-			"[Ul'dah] Miners' Guild"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 128,
-			"ItemId": 10682,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1001001,
-			"Position":
-			{
-				"X": -56.443176,
-				"Y": 39.974316,
-				"Z": 178.72888
-			},
-			"TerritoryId": 128,
-			"AetheryteShortcut": "Limsa Lominsa",
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					129,
-					128
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1013791,
-			"Position":
-			{
-				"X": 6.4850464,
-				"Y": 20.333344,
-				"Z": 1.0527954
-			},
-			"TerritoryId": 129,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Limsa Lominsa"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "!!Crafting requires Master Armorer III!! Crafted Item: 1x Adamantite Lorica of Fending HQ // Autocraft requires: 3x Adamantite Nugget, 1x Amphiptere Leather, 1x Adamantite Rivets, 2x Grade 1 Vitality Dissolvent",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001001,
+          "Position": {
+            "X": -56.443176,
+            "Y": 39.974316,
+            "Z": 178.72888
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [129, 128]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013925,
+          "Position": {
+            "X": -23.27002,
+            "Y": 40.000355,
+            "Z": 4.7455444
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013790,
+          "Position": {
+            "X": -93.614136,
+            "Y": 6.500004,
+            "Z": 31.418213
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ul'dah",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [130, 131]
+            }
+          },
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gladiators' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012527,
+          "Position": {
+            "X": 1.1443481,
+            "Y": 7.599999,
+            "Z": 153.09375
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Miners' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 10682,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1001001,
+          "Position": {
+            "X": -56.443176,
+            "Y": 39.974316,
+            "Z": 178.72888
+          },
+          "TerritoryId": 128,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [129, 128]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013791,
+          "Position": {
+            "X": 6.4850464,
+            "Y": 20.333344,
+            "Z": 1.0527954
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa"
+        }
+      ]
+    }
+  ]
 }
