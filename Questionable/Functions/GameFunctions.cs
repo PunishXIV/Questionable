@@ -383,9 +383,9 @@ internal sealed unsafe partial class GameFunctions
         return false;
     }
 
-    public void OpenDutyFinder(uint contentFinderConditionId)
+    public void OpenDutyFinder(uint contentFinderConditionId = 0, uint contentId = 0)
     {
-        if (_contentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out uint contentId))
+        if (contentId != 0 || _contentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out contentId))
         {
             if (UIState.IsInstanceContentUnlocked(contentId))
                 AgentContentsFinder.Instance()->OpenRegularDuty(contentFinderConditionId);
