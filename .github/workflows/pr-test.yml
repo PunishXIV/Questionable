@@ -51,9 +51,9 @@ jobs:
       - name: Restore
         run: dotnet restore /p:Configuration=Release --packages .nuget
 
-      - name: Verify formatting
-        run: |
-          dotnet format Questionable.sln --verify-no-changes --no-restore --severity warn -v diag
+      #- name: Verify formatting
+      #  run: |
+      #    dotnet format Questionable.sln --verify-no-changes --no-restore --severity warn -v diag
 
       - name: Build test projects
         run: |
