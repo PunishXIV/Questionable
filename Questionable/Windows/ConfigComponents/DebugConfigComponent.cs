@@ -13,7 +13,8 @@ internal sealed class DebugConfigComponent
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     PathDataUpdater pathDataUpdater,
-    IDataManager dataManager) : ConfigComponent(pluginInterface, configuration)
+    IDataManager dataManager,
+    AutoGen.DraftQuestPathService draftQuestPathService) : ConfigComponent(pluginInterface, configuration)
 {
     private readonly ItemBlacklistSelector _itemBlacklistSelector = new(dataManager);
     private uint? _itemToRemove;
@@ -34,6 +35,34 @@ internal sealed class DebugConfigComponent
         {
             Configuration.Advanced.NeverFly = neverFly;
             Save();
+        }
+
+        ImGui.Separator();
+
+        bool allowPathGeneration = Configuration.Advanced.AllowPathGeneration;
+        if (ImGui.Checkbox(_L("Allow questpath generation (experimental)"), ref allowPathGeneration))
+        {
+            Configuration.Advanced.AllowPathGeneration = allowPathGeneration;
+            Save();
+        }
+
+        if (allowPathGeneration)
+        {
+            using (ImRaii.PushIndent())
+            {
+                ImGui.TextColored(ImGuiColors.DalamudOrange,
+                    _L("Generated paths are unreviewed machine drafts: expect wrong targets, missing steps and stalls."));
+                ImGui.TextColored(ImGuiColors.DalamudOrange,
+                    _L("Stay at the keyboard while one is running - never leave it unattended."));
+                ImGui.TextUnformatted(
+                    _L("Right-click a quest without a path in the Journal Progress window to generate a draft."));
+
+                if (!draftQuestPathService.UserDirectoryIsLoaded)
+                {
+                    ImGui.TextColored(ImGuiColors.DalamudRed,
+                        _L("Generated paths only load in debug mode or on a dev install; without one of those, this option does nothing."));
+                }
+            }
         }
 
         if (ImGui.CollapsingHeader(_L("Information")))
