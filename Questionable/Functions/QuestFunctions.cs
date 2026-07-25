@@ -12,6 +12,7 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 using Quest = Questionable.Domain.Quest;
@@ -657,7 +658,10 @@ internal sealed unsafe class QuestFunctions
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         if (questInfo.GrandCompany != GrandCompany.None)
+        {
             lockedReason.Add(_L("GC"), questInfo.GrandCompany != GetGrandCompany());
+            lockedReason.Add(_L("Rank"), questInfo.GrandCompanyRank > GetGrandCompanyRank());
+        }
 
         lockedReason.Add(_L("Level"), playerState->CurrentLevel < questInfo.Level);
         if (questInfo.AlliedSociety != EAlliedSociety.None)
@@ -903,6 +907,7 @@ internal sealed unsafe class QuestFunctions
     }
 
     public GrandCompany GetGrandCompany() => (GrandCompany)PlayerState.Instance()->GrandCompany;
+    public EGrandCompanyRank GetGrandCompanyRank() => (EGrandCompanyRank)PlayerState.Instance()->GetGrandCompanyRank();
 
     public bool IsMainScenarioQuestComplete() => IsQuestComplete(questData.LastMainScenarioQuestId);
 }

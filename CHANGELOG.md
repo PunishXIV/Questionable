@@ -1,1 +1,2 @@
-- Feature: "hovered item" wasn't differentiating between HQ items (which have an internal ID between 1000000 and 2000000) and quest key items (which have an internal ID over 2000000) -alydev
+- Feature: added more post-ARR unlocks to preset list in Priority Quests -alydev
+- Feature: GC rank added to quest tooltip if quest requires it -alydev

@@ -401,7 +401,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
         //CheckAutoRefreshCondition();
 
-        UpdateCurrentTask();
+        try
+        {
+            UpdateCurrentTask();
+        }
+        catch (Exception ex)
+        {
+            if (EzThrottler.Throttle(ex.Message))
+                throw;
+        }
     }
 
     private void CheckAutoRefreshCondition()

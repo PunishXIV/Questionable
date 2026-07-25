@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-16"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -38,6 +38,14 @@
               "RewardItemId": 2002391,
               "RewardItemCount": 1
             }
+          ],
+          "CompletionQuestVariablesFlags": [
+            { "High": 1 },
+            null,
+            null,
+            null,
+            null,
+            null
           ]
         },
         {
