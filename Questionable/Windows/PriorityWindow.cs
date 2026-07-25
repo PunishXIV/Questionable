@@ -426,8 +426,8 @@ internal sealed class PriorityWindow : LWindow
             1556, // palace of the dead
             1308, // ultimates
             705, // ARR relics
-            1007, 1008, 1009, 1012, 433, // urth's fount chain
-            1194, 1195, 1196, 1197, 1198, 1412, 1413, 1530, 90, // primal EX
+            1007, 1194, 1195, 1196, 1197, 1198, 1412, 1413, 1530, 90, // primal EX
+            1008, 1009, 1012, 433, // urth's fount chain
         ]).FromNumericListOfQuests();
         List<ElementId> jobUnlocks = ((ushort[])[
             // Gridania

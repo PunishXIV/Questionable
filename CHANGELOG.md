@@ -1,2 +1,2 @@
-- Feature: added more post-ARR unlocks to preset list in Priority Quests -alydev
-- Feature: GC rank added to quest tooltip if quest requires it -alydev
+- Change: config option for "Stop when completing any of the quests selected below" to enable/disable auto removing items from the list after complete (so future runs of the same quest go back to normal behaviour) -alydev
+  - this previously always removed the quest from the "stop when complete" list, but is now configurable
