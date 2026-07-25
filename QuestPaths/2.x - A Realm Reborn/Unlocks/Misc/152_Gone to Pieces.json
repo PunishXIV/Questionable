@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
   "Comment": "Requires a DoH class at level 30 or higher",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,

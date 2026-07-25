@@ -5,7 +5,11 @@
     {
       "TerritoryId": 140,
       "InteractionType": "None",
-      "AetheryteShortcut": "Western Thanalan - Horizon"
+      "AetheryteShortcut": "Ul'dah",
+      "AethernetShortcut": [
+        "[Ul'dah] Aetheryte Plaza",
+        "[Ul'dah] Gate of the Sultana (Western Thanalan)"
+      ]
     }
   ],
   "Groups": [
@@ -20,8 +24,10 @@
                 "Y": 55.12077,
                 "Z": 178.5377
               },
-              "MinimumAngle": 125,
-              "MaximumAngle": 270
+              "MinimumAngle": 210,
+              "MaximumAngle": 250,
+              "MinimumDistance": 1.7,
+              "MaximumDistance": 3
             },
             {
               "Position": {
@@ -30,7 +36,9 @@
                 "Z": 181.4238
               },
               "MinimumAngle": 180,
-              "MaximumAngle": 285
+              "MaximumAngle": 240,
+              "MinimumDistance": 1.6,
+              "MaximumDistance": 3
             },
             {
               "Position": {
@@ -39,7 +47,9 @@
                 "Z": 169.9265
               },
               "MinimumAngle": 150,
-              "MaximumAngle": 250
+              "MaximumAngle": 250,
+              "MinimumDistance": 2,
+              "MaximumDistance": 3
             }
           ]
         }

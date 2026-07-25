@@ -41,7 +41,7 @@ internal static class MoveToLandingLocation
                     return false;
 
                 location = Task.GatheringNode.Locations.Single(x =>
-                    Vector3.Distance(x.Position, gameObject.Position) < 0.1f);
+                    Vector3.Distance(x.Position, gameObject.Position) < 1f);
             }
 
             (Vector3 target, int degrees, float range) = GatheringMath.CalculateLandingLocation(location);

@@ -15,16 +15,19 @@ internal sealed class GatheringPointRegistry : IDisposable
     private readonly ILogger<QuestRegistry> _logger;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestRegistry _questRegistry;
+    private readonly Configuration _configuration;
 
     public GatheringPointRegistry(IDalamudPluginInterface pluginInterface,
         QuestRegistry questRegistry,
         GatheringData gatheringData,
+        Configuration configuration,
         ILogger<QuestRegistry> logger)
     {
         _pluginInterface = pluginInterface;
         _questRegistry = questRegistry;
         _gatheringData = gatheringData;
         _logger = logger;
+        _configuration = configuration;
 
         _questRegistry.Reloaded += OnReloaded;
     }
@@ -40,7 +43,12 @@ internal sealed class GatheringPointRegistry : IDisposable
         if (!LoadGatheringPointsFromDownloadedBundle())
             //LoadGatheringPointsFromAssembly();
             _logger.LogWarning("Bundled gathering points were not loaded, we have no gathering points!");
-        LoadGatheringPointsFromProjectDirectory();
+        if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
+#if DEBUG
+        || true
+#endif
+        )
+            LoadGatheringPointsFromProjectDirectory();
 
         try
         {
@@ -55,7 +63,6 @@ internal sealed class GatheringPointRegistry : IDisposable
         _logger.LogInformation("Loaded {Count} gathering points in total", _gatheringPoints.Count);
     }
 
-    [Conditional("RELEASE")]
     private void LoadGatheringPointsFromAssembly()
     {
         _logger.LogInformation("Loading gathering points from assembly");
@@ -88,7 +95,6 @@ internal sealed class GatheringPointRegistry : IDisposable
         _logger.LogInformation("Loaded {Count} gathering points from assembly", _gatheringPoints.Count);
     }
 
-    [Conditional("DEBUG")]
     private void LoadGatheringPointsFromProjectDirectory()
     {
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
@@ -235,7 +241,8 @@ internal sealed class GatheringPointRegistry : IDisposable
         return GatheringPointId.FromString(parts[0]);
     }
 
-    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot) => _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
+    public bool TryGetGatheringPoint(GatheringPointId gatheringPointId, [NotNullWhen(true)] out GatheringRoot? gatheringRoot) =>
+        _gatheringPoints.TryGetValue(gatheringPointId, out gatheringRoot);
 
     public bool TryGetGatheringPointId(uint itemId, Job classJobId,
         [NotNullWhen(true)] out GatheringPointId? gatheringPointId)
