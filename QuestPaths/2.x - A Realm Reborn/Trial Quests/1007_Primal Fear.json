@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "goopy_brain", "Date": "2026-06-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -84,7 +84,11 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 204
+          "TargetTerritoryId": 204,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Archers' Guild"
+          ]
         },
         {
           "DataId": 1003061,

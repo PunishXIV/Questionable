@@ -562,7 +562,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     _chatGui.Print($"Completed quest '{StartedQuest.Quest.Info.Name}', which is configured as a stopping point.", CommandHandler.MessageTag, CommandHandler.TagColor);
                     StartedQuest = null;
                     Stop($"Stopping point [{questId}] reached");
-                    _configuration.Stop.QuestsToStopAfter.Remove(questId);
+                    if (_configuration.Stop.RemoveWhenCompleteConditionMet)
+                        _configuration.Stop.QuestsToStopAfter.Remove(questId);
                     return;
                 }
 
