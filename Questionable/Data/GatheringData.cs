@@ -10,7 +10,7 @@ internal sealed class GatheringData
     private readonly Dictionary<uint, GatheringPointId> _minerGatheringPoints = [];
     private readonly Dictionary<uint, uint> _npcForCustomDeliveries;
 
-    public GatheringData(IDataManager dataManager)
+    public GatheringData(IDataManager dataManager, ILogger<GatheringData> logger)
     {
         Dictionary<uint, uint> gatheringItemToItem = dataManager.GetExcelSheet<GatheringItem>()
             .Where(x => x.RowId != 0 && x.Item.RowId != 0)
@@ -29,6 +29,7 @@ internal sealed class GatheringData
                 }
             }
         }
+        logger.LogDebug($"Loaded {_minerGatheringPoints.Count + _botanistGatheringPoints.Count} gathering items ({_minerGatheringPoints.Count} + {_botanistGatheringPoints.Count})");
 
         _itemIdToCollectability = dataManager.GetSubrowExcelSheet<SatisfactionSupply>()
             .Flatten()

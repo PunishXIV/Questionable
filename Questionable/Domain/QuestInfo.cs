@@ -77,6 +77,7 @@ internal sealed class QuestInfo : IQuestInfo
         PreviousInstanceContent = quest.InstanceContent.Select(x => (ushort)x.RowId).Where(x => x != 0).ToList();
         PreviousInstanceContentJoin = (EQuestJoin)quest.InstanceContentJoin;
         GrandCompany = (GrandCompany)quest.GrandCompany.RowId;
+        GrandCompanyRank = (EGrandCompanyRank)quest.GrandCompanyRank.RowId;
         AlliedSociety = (EAlliedSociety)quest.BeastTribe.RowId;
         AlliedSocietyQuestGroup = quest.DailyQuestPool;
         AlliedSocietyRank = (EAlliedSocietyRank)quest.BeastReputationRank.RowId;
@@ -117,6 +118,7 @@ internal sealed class QuestInfo : IQuestInfo
     public List<SheetLevel> ToDoLocations { get; }
     public bool CompletesInstantly { get; }
     public GrandCompany GrandCompany { get; }
+    public EGrandCompanyRank GrandCompanyRank { get; }
     public byte AlliedSocietyQuestGroup { get; }
     public EAlliedSocietyRank AlliedSocietyRank { get; }
     public ushort SocietyRepValue { get; }
@@ -194,5 +196,29 @@ internal sealed class QuestInfo : IQuestInfo
         public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {Game})";
         private static float WorldPositionToMapCoord(float v, ushort scale, short offset)
             => 41f * ((MathF.Truncate(v) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
+    }
+
+    public enum EGrandCompanyRank
+    {
+        None,
+        PrivateThirdClass,
+        PrivateSecondClass,
+        PrivateFirstClass,
+        Corporal,
+        SergeantThirdClass,
+        SergeantSecondClass,
+        SergeantFirstClass,
+        ChiefSergeant,
+        SecondLieutenant,
+        FirstLieutenant,
+        Captain,
+        SecondCommander,
+        FirstCommander,
+        HighCommander,
+        RearMarshal,
+        ViceMarshal,
+        Marshal,
+        GrandMarshal,
+        Champion,
     }
 }

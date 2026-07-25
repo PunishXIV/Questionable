@@ -7,6 +7,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using static Questionable.Domain.QuestInfo;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuestTooltipComponent
@@ -244,16 +245,19 @@ internal sealed class QuestTooltipComponent
             if (counter == 0 && actualQuestInfo.GrandCompany != GrandCompany.None)
             {
                 ImGui.Separator();
-                string gcName = actualQuestInfo.GrandCompany switch
-                {
-                    GrandCompany.Maelstrom => _L("Maelstrom"),
-                    GrandCompany.TwinAdder => _L("Twin Adder"),
-                    GrandCompany.ImmortalFlames => _L("Immortal Flames"),
-                    var _ => _L("None")
-                };
+                string gcName = actualQuestInfo.GrandCompany.ToFormattedText();
 
                 GrandCompany currentGrandCompany = questFunctions.GetGrandCompany();
                 uiUtils.ChecklistItem(_LF("Grand Company: {0}", gcName), actualQuestInfo.GrandCompany == currentGrandCompany);
+            }
+
+            if (counter == 0 && actualQuestInfo.GrandCompanyRank != EGrandCompanyRank.None)
+            {
+                ImGui.Separator();
+                string gcRankName = actualQuestInfo.GrandCompanyRank.ToFormattedText();
+
+                EGrandCompanyRank currentGrandCompanyRank = questFunctions.GetGrandCompanyRank();
+                uiUtils.ChecklistItem(_LF("GC Rank: {0} (#{1} >= #{2})", gcRankName, (byte)actualQuestInfo.GrandCompanyRank, (byte)questFunctions.GetGrandCompanyRank()), actualQuestInfo.GrandCompanyRank == currentGrandCompanyRank);
             }
 
             if (showItemRewards && actualQuestInfo.ItemRewards.Count > 0)

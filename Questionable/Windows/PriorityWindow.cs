@@ -400,6 +400,7 @@ internal sealed class PriorityWindow : LWindow
             1432, 1433, 1434, // retainers
             1212, 1213, 1214, // housing districts
             1563, 1564, 1565, // hunts
+            1004, 1005, 1006, // pvp
             4644, // island sanc visit
             3759, // new game+
             5187, // free fantasia
@@ -421,8 +422,12 @@ internal sealed class PriorityWindow : LWindow
             1524, // tamtara hard
             1525, // stone vigil hard
             1526, // hullbreaker isle
-            2248, // hullbreaker hard
+            //2248, // hullbreaker hard requires HW
             1556, // palace of the dead
+            1308, // ultimates
+            705, // ARR relics
+            1007, 1194, 1195, 1196, 1197, 1198, 1412, 1413, 1530, 90, // primal EX
+            1008, 1009, 1012, 433, // urth's fount chain
         ]).FromNumericListOfQuests();
         List<ElementId> jobUnlocks = ((ushort[])[
             // Gridania

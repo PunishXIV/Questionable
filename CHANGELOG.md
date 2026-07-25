@@ -1,1 +1,2 @@
-- Feature: "hovered item" wasn't differentiating between HQ items (which have an internal ID between 1000000 and 2000000) and quest key items (which have an internal ID over 2000000) -alydev
+- Change: config option for "Stop when completing any of the quests selected below" to enable/disable auto removing items from the list after complete (so future runs of the same quest go back to normal behaviour) -alydev
+  - this previously always removed the quest from the "stop when complete" list, but is now configurable

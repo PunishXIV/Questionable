@@ -244,6 +244,7 @@ internal sealed class Configuration : IPluginConfiguration
         public int TargetLevel { get; set; } = 50;
         public bool RunCommandAfterStop { get; set; }
         public string CommandAfterStop { get; set; } = "/li auto";
+        public bool RemoveWhenCompleteConditionMet { get; set; }
     }
 
     internal sealed class DutyConfiguration
