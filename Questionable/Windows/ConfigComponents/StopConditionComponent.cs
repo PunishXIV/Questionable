@@ -132,14 +132,14 @@ internal sealed class StopConditionComponent : ConfigComponent
             }
 
             ImGui.Separator();
-            
+
             bool removeWhenCompleteConditionMet = Configuration.Stop.RemoveWhenCompleteConditionMet;
             if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeWhenCompleteConditionMet))
             {
                 Configuration.Stop.RemoveWhenCompleteConditionMet = removeWhenCompleteConditionMet;
                 Save();
             }
-            
+
             DrawQuestStopSection(
                 _L("Stop when completing any of the quests selected below:"),
                 "Complete",
