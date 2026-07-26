@@ -18,6 +18,7 @@ internal sealed class QuestJournalUtils
     AetheryteFunctions aetheryteFunctions,
     MovementController movementController,
     IGameGui gameGui,
+    PathEditorWindow pathEditorWindow,
     AutoGen.DraftQuestPathService draftQuestPathService)
 {
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
@@ -137,6 +138,9 @@ internal sealed class QuestJournalUtils
 
         using (ImRaii.PushIndent())
         {
+            if (ImGui.MenuItem(_L("Open in Path Editor")))
+                pathEditorWindow.Open(questInfo.QuestId);
+
             if (ImGui.MenuItem(_L("Edit quest path")))
                 (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
 

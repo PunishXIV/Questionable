@@ -1,8 +1,8 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
 internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration)
@@ -67,7 +67,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     protected static void DrawNotes(bool enabledByDefault, IEnumerable<string> notes)
     {
-        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.TextDisabled, !enabledByDefault ? ImGuiColors.DalamudYellow : ImGuiColors.ParsedBlue);
+        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.TextDisabled, !enabledByDefault ? QstTheme.Amber : QstTheme.Info);
 
         ImGui.SameLine();
         using (ImRaii.PushFont(UiBuilder.IconFont))
@@ -83,7 +83,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
         using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
 
-        ImGui.TextColored(ImGuiColors.DalamudYellow,
+        ImGui.TextColored(QstTheme.Amber,
             _L("While testing, the following issues have been found:"));
         foreach (string note in notes)
             ImGui.BulletText(note);

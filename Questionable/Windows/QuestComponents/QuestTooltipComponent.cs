@@ -1,13 +1,13 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using static Questionable.Domain.QuestInfo;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuestTooltipComponent
@@ -33,7 +33,7 @@ internal sealed class QuestTooltipComponent
         {
             string lvlString = $"{SeIconChar.LevelEn.ToIconString()}{questInfo.Level}";
             if (PlayerState.Instance()->CurrentLevel < questInfo.Level)
-                ImGui.TextColored(ImGuiColors.DalamudRed, lvlString);
+                ImGui.TextColored(QstTheme.Danger, lvlString);
             else
                 ImGui.Text(lvlString);
         }
@@ -67,7 +67,7 @@ internal sealed class QuestTooltipComponent
             if (quest.Root.Disabled)
             {
                 ImGui.SameLine();
-                ImGui.TextColored(ImGuiColors.DalamudRed, _L("Disabled"));
+                ImGui.TextColored(QstTheme.Danger, _L("Disabled"));
             }
 
             if (quest.Root.Author.Count == 1)
@@ -88,7 +88,7 @@ internal sealed class QuestTooltipComponent
         else
         {
             ImGui.SameLine();
-            ImGui.TextColored(ImGuiColors.DalamudRed, _L("NoQuestPath"));
+            ImGui.TextColored(QstTheme.Danger, _L("NoQuestPath"));
             if (questInfo is QuestInfo questInfo1)
                 ImGui.Text($"{questInfo1.IssuerLocation.Territory.PlaceName.Value.Name}");
         }
@@ -169,7 +169,7 @@ internal sealed class QuestTooltipComponent
                     questFunctions.prereqCache[_currentTopLevel.QuestId.Value].Add(qInfo);
                     (Vector4 iconColor, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(q.QuestId);
                     if (!questRegistry.IsKnownQuest(qInfo.QuestId))
-                        iconColor = ImGuiColors.DalamudGrey;
+                        iconColor = QstTheme.TextMuted;
 
                     if (!_shownAlready.Contains(qInfo))
                     {
@@ -185,7 +185,7 @@ internal sealed class QuestTooltipComponent
                 else
                 {
                     using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
-                    uiUtils.ChecklistItem(_LF("Unknown Quest ({0})", q.QuestId), ImGuiColors.DalamudGrey,
+                    uiUtils.ChecklistItem(_LF("Unknown Quest ({0})", q.QuestId), QstTheme.TextMuted,
                         FontAwesomeIcon.Question);
                 }
             }
@@ -215,7 +215,7 @@ internal sealed class QuestTooltipComponent
                     IQuestInfo qInfo = questData.GetQuestInfo(q);
                     (Vector4 iconColor, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(q);
                     if (!questRegistry.IsKnownQuest(qInfo.QuestId))
-                        iconColor = ImGuiColors.DalamudGrey;
+                        iconColor = QstTheme.TextMuted;
 
                     uiUtils.ChecklistItem(FormatQuestUnlockName(qInfo), iconColor, icon);
                 }

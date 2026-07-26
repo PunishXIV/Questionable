@@ -1,9 +1,9 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
 internal sealed class QuestValidationWindow : LWindow
@@ -14,6 +14,7 @@ internal sealed class QuestValidationWindow : LWindow
     private readonly QuestValidator _questValidator;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly RedoUtil _redoUtil;
+    private readonly PathEditorWindow _pathEditorWindow;
     private string _filter = "";
 
     public QuestValidationWindow(
@@ -22,6 +23,7 @@ internal sealed class QuestValidationWindow : LWindow
         QuestController questController,
         QuestTooltipComponent questTooltipComponent,
         RedoUtil redoUtil,
+        PathEditorWindow pathEditorWindow,
         IDalamudPluginInterface pluginInterface)
         : base(_L("Quest Validation") + "###QuestionableValidator")
     {
@@ -31,6 +33,7 @@ internal sealed class QuestValidationWindow : LWindow
         _pluginInterface = pluginInterface;
         _questTooltipComponent = questTooltipComponent;
         _redoUtil = redoUtil;
+        _pathEditorWindow = pathEditorWindow;
 
         Size = new Vector2(600, 200);
         SizeCondition = ImGuiCond.Once;
@@ -95,9 +98,12 @@ internal sealed class QuestValidationWindow : LWindow
 
                     ImGui.SameLine();
                     bool edit = ImGuiComponentsLocal.IconButton($"###ValidationWindowEdit{quest.QuestId.Value}", FontAwesomeIcon.Edit);
+                    bool editExternal = ImGui.IsItemClicked(ImGuiMouseButton.Right);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(QuestRegistry.OpenEditorDescription);
+                        ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
                     if (edit)
+                        _pathEditorWindow.Open(quest.QuestId);
+                    else if (editExternal)
                         QuestRegistry.OpenEditor(quest);
 
                     RedoIndex redoIndex = _redoUtil.GetChapter(quest.QuestId.Value);
@@ -140,12 +146,12 @@ internal sealed class QuestValidationWindow : LWindow
                 {
                     if (validationIssue.Severity == EIssueSeverity.Error)
                     {
-                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudRed);
+                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger);
                         ImGui.TextUnformatted(FontAwesomeIcon.ExclamationTriangle.ToIconString());
                     }
                     else
                     {
-                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.ParsedBlue);
+                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Info);
                         ImGui.TextUnformatted(FontAwesomeIcon.InfoCircle.ToIconString());
                     }
                 }

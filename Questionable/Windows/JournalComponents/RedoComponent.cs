@@ -1,10 +1,10 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class RedoComponent
@@ -60,7 +60,7 @@ internal sealed class RedoComponent
         {
             ImGui.SameLine();
             if (ImGuiComponentsLocal.IconButton(_hideDone ? FontAwesomeIcon.ChevronRight : FontAwesomeIcon.ChevronDown,
-                _hideDone ? ImGuiColors.DalamudOrange : null))
+                _hideDone ? QstTheme.Accent : null))
             {
                 _hideDone = !_hideDone;
             }
@@ -69,7 +69,7 @@ internal sealed class RedoComponent
         }
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!"),
-                                   FontAwesomeIcon.InfoCircle, ImGuiColors.DalamudOrange);
+                                   FontAwesomeIcon.InfoCircle, QstTheme.Accent);
         ImGui.SameLine();
         ImGui.Text(_L("Active:"));
         ImGui.SameLine();
@@ -122,7 +122,7 @@ internal sealed class RedoComponent
             ImGui.TableNextColumn();
             ImRaii.ColorDisposable? disposable = null;
             if (checkQuests.Length > 0)
-                disposable = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+                disposable = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
             bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
             disposable?.Dispose();
             if (checkQuests.Length > 0 && checkQuests[0] != null && ImGui.IsItemHovered())
@@ -131,7 +131,7 @@ internal sealed class RedoComponent
                 var index = redoUtil.GetChapter(checkQuests[0]!.Id.Value);
                 ImGui.Text(_LF("({0}) Unchecked: #{1}{2} ({3}/{4})",
                     chapter.RowId, index.SimplifiedIndex, (checkQuests.Length > 1 ? "+" : ""), checkQuests.Length, redoCache.Quests.Count));
-                using var __ = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudOrange);
+                using var __ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
                 ImGui.Text(string.Join('\n', checkQuests.Select(q => $"{q?.Info.SimplifiedName} ({q?.Id})")));
             }
 
@@ -173,7 +173,7 @@ internal sealed class RedoComponent
                         ImGui.TreeNodeEx($"{q.Name} ({(ushort)q.RowId})",
                             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
                         ImGui.TableNextColumn();
-                        if (uiUtils.ChecklistItem("", ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus))
+                        if (uiUtils.ChecklistItem("", QstTheme.TextMuted, FontAwesomeIcon.Minus))
                             ImGui.SetTooltip(_L("This quest is not supported."));
                         ImGui.TableNextColumn();
                     }

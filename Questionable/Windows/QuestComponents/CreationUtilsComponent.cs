@@ -1,9 +1,8 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -14,6 +13,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
+using Questionable.Windows.Common.Ui;
 
 namespace Questionable.Windows.QuestComponents;
 
@@ -28,6 +28,7 @@ internal sealed class CreationUtilsComponent
     QuestData questData,
     QuestSelectionWindow questSelectionWindow,
     PriorityWindow priorityWindow,
+    PathEditorWindow pathEditorWindow,
     RedoUtil redoUtil,
     IClientState clientState,
     IObjectTable objectTable,
@@ -43,6 +44,12 @@ internal sealed class CreationUtilsComponent
         if (objectTable[0] == null)
             return;
 
+        using (ImRaii.PushFont(UiBuilder.IconFont))
+        {
+            ImGui.TextColored(QstTheme.TextMuted, FontAwesomeIcon.MapMarkerAlt.ToIconString());
+        }
+
+        ImGui.SameLine();
         string territoryName = TerritoryData.GetNameAndId(clientState.TerritoryType);
         ImGui.Text(territoryName);
 
@@ -54,7 +61,7 @@ internal sealed class CreationUtilsComponent
 
         if (configuration.Advanced.AdditionalStatusInformation)
         {
-            ImGui.Separator();
+            ImGui.Spacing();
             QuestReference q = questFunctions.GetCurrentQuest();
             ImGui.Text(_LF("QST prio: {0} → {1}", q.CurrentQuest?.ToString() ?? "", q.Sequence));
             Quest? simQ = questController.SimulatedQuest?.Quest;
@@ -138,7 +145,7 @@ internal sealed class CreationUtilsComponent
                     Director* director = UIState.Instance()->DirectorTodo.Director;
                     if (director != null)
                     {
-                        ImGui.Separator();
+                        ImGui.Spacing();
                         ImGui.Text(_LF("Director: {0}", director->ContentId));
                         ImGui.Text(_LF("Seq: {0}", director->Sequence));
                         ImGui.Text(_LF("Ico: {0}", director->IconId));
@@ -154,7 +161,7 @@ internal sealed class CreationUtilsComponent
 
                 if (configuration.Advanced.ShowActionManager)
                 {
-                    ImGui.Separator();
+                    ImGui.Spacing();
                     ActionManager* actionManager = ActionManager.Instance();
                     ImGui.Text(
                         $"A1: {actionManager->CastActionId} ({actionManager->LastUsedActionSequence} → {actionManager->LastHandledActionSequence})");
@@ -180,11 +187,27 @@ internal sealed class CreationUtilsComponent
         }
         else
         {
-            ImGui.Separator();
+            ImGui.Spacing();
             DrawInteractionButtons();
             ImGui.SameLine();
             DrawCopyButton();
         }
+
+        ImGui.SameLine();
+        DrawPathEditorButton();
+    }
+
+    private void DrawPathEditorButton()
+    {
+        ElementId? currentQuest = questFunctions.GetCurrentQuest().CurrentQuest;
+        using (ImRaii.Disabled(currentQuest == null))
+        {
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit) && currentQuest != null)
+                pathEditorWindow.Open(currentQuest);
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            ImGui.SetTooltip(_L("Open the current quest in the Path Editor."));
     }
 
     private unsafe void DrawTargetDetails(IGameObject target)
@@ -193,30 +216,37 @@ internal sealed class CreationUtilsComponent
         if (target is ICharacter { NameId: > 0 } character)
             nameId = $"; n={character.NameId}";
 
-        ImGui.Separator();
-        ImGui.Text(_LF("Target: {0}", target.Name));
-        ImGui.Text(_LF("  ({0}; {1}{2})",
-                            target.ObjectKind, GameFunctions.GetBaseID(target), nameId));
-
-        if (objectTable[0] != null)
+        ImGui.Spacing();
+        using (QstWidgets.Card())
         {
-            ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
-                (target.Position - objectTable[0]!.Position).Length(),
-                Math.Floor(target.Position.DistanceTo_XZ(objectTable[0]!.Position)) - 1));
+            ImGui.Text(_LF("Target: {0}", target.Name));
             ImGui.SameLine();
+            if (QstWidgets.Chip(QuestStepCapture.GuessInteractionType(target).ToString(), QstTheme.Info))
+                ImGui.SetTooltip(_L("Interaction type detected from the target's nameplate icon."));
 
-            float verticalDistance = target.Position.Y - objectTable[0]!.Position.Y;
-            string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
-            if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
-                ImGui.TextColored(ImGuiColors.DalamudOrange, verticalDistanceText);
-            else
-                ImGui.Text(verticalDistanceText);
+            ImGui.Text(_LF("  ({0}; {1}{2})",
+                                target.ObjectKind, GameFunctions.GetBaseID(target), nameId));
 
-            ImGui.SameLine();
+            if (objectTable[0] != null)
+            {
+                ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
+                    (target.Position - objectTable[0]!.Position).Length(),
+                    Math.Floor(target.Position.DistanceTo_XZ(objectTable[0]!.Position)) - 1));
+                ImGui.SameLine();
+
+                float verticalDistance = target.Position.Y - objectTable[0]!.Position.Y;
+                string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
+                if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
+                    ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
+                else
+                    ImGui.Text(verticalDistanceText);
+
+                ImGui.SameLine();
+            }
+
+            GameObject* gameObject = (GameObject*)target.Address;
+            ImGui.Text($"QM: {gameObject->NamePlateIconId}");
         }
-
-        GameObject* gameObject = (GameObject*)target.Address;
-        ImGui.Text($"QM: {gameObject->NamePlateIconId}");
     }
 
     private unsafe void DrawInteractionButtons(IGameObject? target = null)
@@ -333,13 +363,7 @@ internal sealed class CreationUtilsComponent
             }
             else
             {
-                string interactionType = gameObject->NamePlateIconId switch
-                {
-                    71201 or 71211 or 71221 or 71231 or 71341 or 71351 => "AcceptQuest",
-                    71202 or 71212 or 71222 or 71232 or 71342 or 71352 => "AcceptQuest", // repeatable
-                    71205 or 71215 or 71225 or 71235 or 71345 or 71355 => "CompleteQuest",
-                    var _ => "Interact"
-                };
+                string interactionType = QuestStepCapture.GuessInteractionType(target).ToString();
                 ImGui.SetClipboardText($$"""
                                          "DataId": {{GameFunctions.GetBaseID(target)}},
                                                    "Position": {

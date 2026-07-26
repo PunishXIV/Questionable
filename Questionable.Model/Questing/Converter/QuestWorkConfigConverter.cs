@@ -55,5 +55,24 @@ public sealed class QuestWorkConfigConverter : JsonConverter<QuestWorkValue>
         throw new JsonException();
     }
 
-    public override void Write(Utf8JsonWriter writer, QuestWorkValue value, JsonSerializerOptions options) => writer.WriteStringValue(value.ToString());
+    public override void Write(Utf8JsonWriter writer, QuestWorkValue value, JsonSerializerOptions options)
+    {
+        if (value.High != null && value.Low != null && value.Mode == EQuestWorkMode.Bitwise)
+            writer.WriteNumberValue((byte)((value.High.Value << 4) + value.Low.Value));
+        else
+        {
+            writer.WriteStartObject();
+            if (value.High != null)
+                writer.WriteNumber(nameof(QuestWorkValue.High), value.High.Value);
+            if (value.Low != null)
+                writer.WriteNumber(nameof(QuestWorkValue.Low), value.Low.Value);
+            if (value.Mode != EQuestWorkMode.Bitwise)
+            {
+                writer.WritePropertyName(nameof(QuestWorkValue.Mode));
+                new QuestWorkModeConverter().Write(writer, value.Mode, options);
+            }
+
+            writer.WriteEndObject();
+        }
+    }
 }

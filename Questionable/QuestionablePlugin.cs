@@ -358,6 +358,10 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<QuestValidationWindow>();
         serviceCollection.AddSingleton<JournalProgressWindow>();
         serviceCollection.AddSingleton<PriorityWindow>();
+        serviceCollection.AddSingleton<Windows.PathEditorComponents.PathEditorSession>();
+        serviceCollection.AddSingleton<Windows.PathEditorComponents.StepFormComponent>();
+        serviceCollection.AddSingleton<Windows.PathEditorComponents.StepCaptureComponent>();
+        serviceCollection.AddSingleton<PathEditorWindow>();
 
         serviceCollection.AddSingleton<GeneralConfigComponent>();
         serviceCollection.AddSingleton<PluginConfigComponent>();
