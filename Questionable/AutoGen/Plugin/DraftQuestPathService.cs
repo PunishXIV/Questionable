@@ -14,7 +14,6 @@ namespace Questionable.AutoGen;
 /// </summary>
 internal sealed class DraftQuestPathService(
     QuestPathGeneratorFactory generatorFactory,
-    QuestRegistry questRegistry,
     Configuration configuration,
     IDalamudPluginInterface pluginInterface,
     IChatGui chatGui,
@@ -55,25 +54,22 @@ internal sealed class DraftQuestPathService(
                 return;
             }
 
-            // Always the user Quests directory - the same one QuestRegistry.Reload reads as UserDirectory.
-            // Deliberately NOT QuestRegistry.GetQuestPathsDirectory(): on a dev install with debug enabled
-            // that resolves to the repository's QuestPaths bundle, and machine drafts don't belong in the
-            // checked-in data.
-            string userQuestsDirectory = Path.Combine(pluginInterface.ConfigDirectory.FullName, "Quests");
-            FileInfo file = QuestPathWriter.Write(result, userQuestsDirectory);
+            string? userQuestsDirectory = QuestRegistry.GetFullPath(questInfo, withFilename:false);
+            if (userQuestsDirectory != null)
+            {
+                FileInfo file = QuestPathWriter.Write(result, userQuestsDirectory);
 
-            chatGui.Print(
-                _LF("Generated draft path: {0} ({1} sequences). Review it before trusting it.",
-                    file.Name, result.Root.QuestSequence.Count),
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-            foreach (string note in result.Notes)
-                chatGui.Print($"- {note}", CommandHandler.MessageTag, CommandHandler.TagColor);
+                chatGui.Print(
+                    _LF("Generated draft path: {0} ({1} sequences). Review it before trusting it.",
+                        file.Name, result.Root.QuestSequence.Count),
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+                foreach (string note in result.Notes)
+                    chatGui.Print($"- {note}", CommandHandler.MessageTag, CommandHandler.TagColor);
 
-            chatGui.PrintError(
-                _L("Experimental: expect wrong targets and stalls. Watch the quest while it runs - do not go AFK."),
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-
-            questRegistry.Reload();
+                chatGui.PrintError(
+                    _L("Experimental: expect wrong targets and stalls. Watch the quest while it runs - do not go AFK."),
+                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            }
         }
 #pragma warning disable CA1031 // a failed draft should never take the UI down with it
         catch (Exception e)

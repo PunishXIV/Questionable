@@ -4,6 +4,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI;
+using Questionable.AutoGen;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
 using Questionable.Windows.Common.Ui;
@@ -23,6 +24,7 @@ internal sealed class QuestSelectionWindow : LWindow
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly TerritoryData _territoryData;
     private readonly UiUtils _uiUtils;
+    private readonly DraftQuestPathService _draftQuestPathService;
     private List<IQuestInfo> _offeredQuests = [];
     private bool _onlyAvailableQuests = true;
 
@@ -39,6 +41,7 @@ internal sealed class QuestSelectionWindow : LWindow
         TerritoryData territoryData,
         IClientState clientState,
         UiUtils uiUtils,
+        DraftQuestPathService draftQuestPathService,
         QuestTooltipComponent questTooltipComponent)
         : base(_L("Quest Selection") + "{WindowId}")
     {
@@ -52,6 +55,7 @@ internal sealed class QuestSelectionWindow : LWindow
         _territoryData = territoryData;
         _clientState = clientState;
         _uiUtils = uiUtils;
+        _draftQuestPathService = draftQuestPathService;
         _questTooltipComponent = questTooltipComponent;
 
         Size = new Vector2(500, 200);
@@ -213,6 +217,8 @@ internal sealed class QuestSelectionWindow : LWindow
                 ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest);
+                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                    _draftQuestPathService.GenerateDraft(quest);
                 ImGui.SameLine();
 
                 if (knownQuest != null &&

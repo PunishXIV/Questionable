@@ -439,8 +439,8 @@ internal sealed class QuestRegistry
             return Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths");
         return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
     }
-    public static string? GetFullPath(IQuestInfo info) => GetFullPath((QuestInfo)info);
-    public static string? GetFullPath(QuestInfo info)
+    public static string? GetFullPath(IQuestInfo info, bool withFilename = true) => GetFullPath((QuestInfo)info, withFilename);
+    public static string? GetFullPath(QuestInfo info, bool withFilename = true)
     {
         var filename = GetFilename(info);
         var pluginConfig = Svc.PluginInterface.GetPluginConfig();
@@ -449,33 +449,43 @@ internal sealed class QuestRegistry
             DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
             if (targetFolder == null)
                 return null;
-            if (info.JournalGenre == null || info.JournalGenre == uint.MaxValue)
-                return Path.Combine(targetFolder.FullName, "Unsorted", filename);
-            var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
-            var path = $"{genre.Name}";
-            Svc.Log.Debug($"Genre: {genre.Name}");
-            if (genre.JournalCategory.ValueNullable != null)
+            string? path = "";
+            if (info.JournalGenre != null && info.JournalGenre != uint.MaxValue)
             {
-                var category = genre.JournalCategory.Value;
-                Svc.Log.Debug($"Category: {category.Name}");
-                if (category.Name != genre.Name)
-                    path = Path.Combine($"{category.Name}", path);
-                if (category.JournalSection.ValueNullable != null)
+                var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
+                path = $"{genre.Name}";
+                Svc.Log.Debug($"Genre: {genre.Name}");
+                if (genre.JournalCategory.ValueNullable != null)
                 {
-                    var section = category.JournalSection.Value;
-                    Svc.Log.Debug($"Section: {section.Name}");
-                    if (section.Name != category.Name)
+                    var category = genre.JournalCategory.Value;
+                    Svc.Log.Debug($"Category: {category.Name}");
+                    if (category.Name != genre.Name)
+                        path = Path.Combine($"{category.Name}", path);
+                    if (category.JournalSection.ValueNullable != null)
                     {
-                        var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
-                        path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
+                        var section = category.JournalSection.Value;
+                        Svc.Log.Debug($"Section: {section.Name}");
+                        if (section.Name != category.Name)
+                        {
+                            var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
+                            path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
+                        }
                     }
                 }
             }
             if (path == null || path.Length == 0)
-                return Path.Combine(targetFolder.FullName, "Unsorted", filename);
-            return Path.Combine(targetFolder.FullName, path, filename);
+            {
+                if (withFilename)
+                    return Path.Combine(targetFolder.FullName, "Unsorted", filename);
+                return Path.Combine(targetFolder.FullName, "Unsorted");
+            }
+            if (withFilename)
+                return Path.Combine(targetFolder.FullName, path, filename);
+            return Path.Combine(targetFolder.FullName, path);
         }
-        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests", filename);
+        if (withFilename)
+            return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests", filename);
+        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
     }
     public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
     public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryrun = false)
