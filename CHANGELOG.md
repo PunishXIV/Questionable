@@ -1,1 +1,2 @@
-- Feature: draft quests via lua data -chika
+- Feature: new UI -wah
+- Change: move sponsor icon to config window -alydev

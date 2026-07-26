@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
@@ -45,7 +44,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         InteractionUiController interactionUiController,
         ConfigWindow configWindow,
         BossModIpc bossModIpc)
-        : base((configuration.Advanced.Debug ? "(DEBUG) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
+        : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
             ImGuiWindowFlags.AlwaysAutoResize)
     {
         _pluginInterface = pluginInterface;
@@ -99,20 +98,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 ImGui.Text(_L("Open Configuration"));
             }
         });
-
-        if (!_configuration.General.HideSponsorButton)
-            TitleBarButtons.Add(new()
-            {
-                Icon = FontAwesomeIcon.Heart,
-                IconOffset = new(1.5f, 1),
-                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
-                Priority = int.MinValue,
-                ShowTooltip = () =>
-                {
-                    using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-                    ImGui.Text(_L("Sponsor QST development"));
-                }
-            });
 
         _activeQuestComponent.Reload += OnReload;
         _quickAccessButtonsComponent.Reload += OnReload;
