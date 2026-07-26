@@ -158,16 +158,9 @@ internal sealed class QuickAccessButtonsComponent
         int infoCount = questRegistry.ValidationIssueCount - questRegistry.ValidationErrorCount;
         bool hasErrors = errorCount > 0;
 
-        string badge = hasErrors
-            ? errorCount.ToString(CultureInfo.InvariantCulture)
-            : infoCount > 0
-                ? infoCount.ToString(CultureInfo.InvariantCulture)
-                : "...";
         if (QstWidgets.RailButton(hasErrors ? FontAwesomeIcon.ExclamationTriangle : FontAwesomeIcon.InfoCircle,
                 _LF("Quest validation: {0} errors, {1} infos", errorCount, infoCount),
-                tint: hasErrors ? QstTheme.Danger : QstTheme.Info,
-                countBadge: badge,
-                badgeColor: hasErrors ? QstTheme.Danger : QstTheme.Info))
+                tint: hasErrors ? QstTheme.Danger : QstTheme.Info))
             questValidationWindow.ToggleOrUncollapse();
     }
 }
