@@ -1,0 +1,141 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-27"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002633,
+          "Position": {
+            "X": 232.593,
+            "Y": 113.073,
+            "Z": -240.238
+          },
+          "TerritoryId": 134,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001272,
+          "Position": {
+            "X": 219.83,
+            "Y": 113.133,
+            "Z": -244.164
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001246,
+          "Position": {
+            "X": 118.7646,
+            "Y": 71.36663,
+            "Z": -163.5833
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo area 21y from lua EOBJECT4 -> 2001246 (strewn debris)"
+        },
+        {
+          "DataId": 2001247,
+          "Position": {
+            "X": 108.7284,
+            "Y": 65.2958,
+            "Z": -118.6559
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
+          "$": "auto: todo area 18y from lua EOBJECT5 -> 2001247 (strewn debris)"
+        },
+        {
+          "DataId": 2001248,
+          "Position": {
+            "X": 118.7582,
+            "Y": 63.7229,
+            "Z": -81.45519
+          },
+          "TerritoryId": 134,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}],
+          "$": "auto: todo area 20y from lua EOBJECT6 -> 2001248 (strewn debris)"
+        },
+        {
+          "DataId": 2001243,
+          "Position": {
+            "X": 136.5217,
+            "Y": 75.18003,
+            "Z": -150.6527
+          },
+          "TerritoryId": 134,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000350,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 25y from lua EOBJECT1 -> 2001243 (cumbersome rock)"
+        },
+        {
+          "DataId": 2001244,
+          "Position": {
+            "X": 120.8511,
+            "Y": 69.09872,
+            "Z": -129.2539
+          },
+          "TerritoryId": 134,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000350,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 24y from lua EOBJECT2 -> 2001244 (cumbersome rock)"
+        },
+        {
+          "DataId": 2001245,
+          "Position": {
+            "X": 114.0819,
+            "Y": 63.887,
+            "Z": -99.50035
+          },
+          "TerritoryId": 134,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000350,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 26y from lua EOBJECT3 -> 2001245 (cumbersome rock)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002633,
+          "Position": {
+            "X": 232.593,
+            "Y": 113.073,
+            "Z": -240.238
+          },
+          "TerritoryId": 134,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -694,7 +694,6 @@
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
-    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Priority Quests</Key>
     <Value lang="ja-jp">優先クエスト</Value>
     <Value lang="zh-cn">优先任务</Value>
@@ -1028,6 +1027,7 @@
     <Value lang="zh-cn">序列</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
     <!-- Found in: Windows\QuestValidationWindow.cs -->
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Step</Key>
@@ -1052,7 +1052,7 @@
     <Value lang="zh-cn">打开配置</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestWindow.cs -->
+    <!-- Found in: Windows\ConfigWindow.cs -->
     <Key>Sponsor QST development</Key>
     <Value lang="ja-jp">QSTの開発を支援する</Value>
     <Value lang="zh-cn">赞助 QST 开发</Value>
@@ -1511,21 +1511,18 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
-    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Maelstrom</Key>
     <Value lang="ja-jp">黒渦団</Value>
     <Value lang="zh-cn">黑涡团</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
-    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Twin Adder</Key>
     <Value lang="ja-jp">双蛇党</Value>
     <Value lang="zh-cn">双蛇党</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
-    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>Immortal Flames</Key>
     <Value lang="ja-jp">不滅隊</Value>
     <Value lang="zh-cn">恒辉队</Value>
@@ -2995,7 +2992,6 @@
     <Value lang="zh-cn">需要以下之一：</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>None</Key>
     <Value lang="ja-jp">なし</Value>
     <Value lang="zh-cn">无</Value>
@@ -3025,7 +3021,6 @@
     <Value lang="zh-cn">设置尽可能优先执行的优先任务。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Rebuild Navmesh</Key>
     <Value lang="ja-jp">ナビメッシュを再構築</Value>
     <Value lang="zh-cn">重建导航网格</Value>
@@ -3049,7 +3044,6 @@
     <Value lang="zh-cn">重新加载数据</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Stuck?</Key>
     <Value lang="ja-jp">スタックしていますか？</Value>
     <Value lang="zh-cn">卡住了？</Value>
@@ -3648,5 +3642,282 @@
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Filter NG+ categories</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
+    <Key>Only normal quests can be auto-generated.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
+    <Key>Could not find quest {0} in the game data.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
+    <Key>Generated draft path: {0} ({1} sequences). Review it before trusting it.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
+    <Key>Experimental: expect wrong targets and stalls. Watch the quest while it runs - do not go AFK.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
+    <Key>Unable to generate a draft path, check /xllog for details.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Rank</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Path Editor</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>unsaved</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Select a quest to edit.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Save</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults).</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Discard</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Open Quests folder</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Open this quest in your default .json text editor</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>You have unsaved changes.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Save first</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Discard changes</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Cancel</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Select a quest above, or open the editor from the Journal's right-click menu.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Sequence {0}</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Add a step to this sequence</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Remove this empty sequence</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Add Sequence</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Validation</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorWindow.cs -->
+    <Key>Saved quest path to '{0}'</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestValidationWindow.cs -->
+    <Key>Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestWindow.cs -->
+    <Key>A Realm Reborn</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestWindow.cs -->
+    <Key>Events</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestWindow.cs -->
+    <Key>Quick Access</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestWindow.cs -->
+    <Key>Path Tools</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Allow questpath generation (experimental)</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Generated paths are unreviewed machine drafts: expect wrong targets, missing steps and stalls.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Stay at the keyboard while one is running - never leave it unattended.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Right-click a quest without a path in the Journal Progress window to generate a draft.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
+    <Key>Generated paths only load in debug mode or on a dev install; without one of those, this option does nothing.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
+    <Key>Remove from list after complete</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Open in Path Editor</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Generate draft path</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
+    <Key>Capture</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <Key>Interaction type detected from the target's nameplate icon.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
+    <Key>Append step from target to Seq {0}</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
+    <Key>No target selected.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
+    <Key>Append step at my position</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Select a step to edit.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Interaction Type</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Data ID</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Position</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Territory ID</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Stop Distance</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Aetheryte Shortcut</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Comment</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Shown in the debug overlay</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Fly</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>This interaction type usually needs a Data ID.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>This interaction type usually needs a Position.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Territory ID is not set.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Duplicate</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Delete Step</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Step JSON</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
+    <Key>Copy this step as JSON</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Left click: Open in Path Editor\nRight click: Open Quests folder</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Seq {0} · Step {1}/{2}</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Combat</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Stopping</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Running</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
+    <Key>Open the current quest in the Path Editor.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
+    <Key>GC Rank: {0} (#{1} &gt;= #{2})</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <Key>Quest validation: {0} errors, {1} infos</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\RemainingTasksComponent.cs -->
+    <Key>Remaining Tasks</Key>
   </Entry>
 </I18N>
