@@ -5,6 +5,12 @@ namespace Questionable.Controller.Steps.Common;
 
 internal static class MountStep
 {
+    /// <summary>
+    ///     Distance to the destination below which mounting is not worth the cast. Applies when a step has not
+    ///     forced the issue with <c>Mount</c>/<c>Fly</c>, i.e. <see cref="EMountIf.AwayFromPosition"/>.
+    /// </summary>
+    public const float MountDistance = 50f;
+
     public enum EMountIf
     {
         Always,
@@ -63,7 +69,8 @@ internal static class MountStep
             {
                 Vector3 playerPosition = objectTable[0]?.Position ?? Vector3.Zero;
                 float distance = System.Numerics.Vector3.Distance(playerPosition, task.Position.GetValueOrDefault());
-                if (task.TerritoryId == clientState.TerritoryType && distance < 50f && !condition[ConditionFlag.Diving])
+                if (task.TerritoryId == clientState.TerritoryType && distance < MountDistance &&
+                    !condition[ConditionFlag.Diving])
                 {
                     logger.Log(logLevel, "Not using mount, as we're close to the target");
                     logger.LogDebug("Returning 'DontMount'");
