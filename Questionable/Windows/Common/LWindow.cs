@@ -1,10 +1,12 @@
 using Dalamud.Bindings.ImGui;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.Common;
 
 public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiWindowFlags.None, bool forceMainWindow = false) : Window(windowName, flags, forceMainWindow)
 {
     private bool _initializedConfig;
     private bool _wasCollapsedLastFrame;
+    private QstTheme.WindowStyleScope? _windowStyle;
 
     protected bool ClickedHeaderLastFrame { get; private set; }
     protected bool ClickedHeaderCurrentFrame { get; private set; }
@@ -98,6 +100,8 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     public override void PreDraw()
     {
+        _windowStyle = QstTheme.PushWindowStyle();
+
         if (!_initializedConfig)
             LoadWindowConfig();
 
@@ -124,6 +128,9 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     public override void PostDraw()
     {
+        _windowStyle?.Dispose();
+        _windowStyle = null;
+
         base.PostDraw();
 
         if (_initializedConfig)

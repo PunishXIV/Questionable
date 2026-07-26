@@ -1,9 +1,9 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class ARealmRebornComponent
@@ -57,7 +57,7 @@ internal sealed class ARealmRebornComponent
             ImGui.SetTooltip(_L("Add to priority quests"));
         ImGui.SameLine();
         bool hover = uiUtils.ChecklistItem(_L("Hard Mode Primals"), complete,
-            configuration.Advanced.SkipARealmRebornHardModePrimals ? ImGuiColors.DalamudGrey : null);
+            configuration.Advanced.SkipARealmRebornHardModePrimals ? QstTheme.TextMuted : null);
         if (complete || !hover)
             return;
 
@@ -83,7 +83,7 @@ internal sealed class ARealmRebornComponent
             ImGui.SetTooltip(_L("Add to priority quests"));
         ImGui.SameLine();
         bool hover = uiUtils.ChecklistItem(_L("Crystal Tower Raids"), complete,
-            configuration.Advanced.SkipCrystalTowerRaids ? ImGuiColors.DalamudGrey : null);
+            configuration.Advanced.SkipCrystalTowerRaids ? QstTheme.TextMuted : null);
         if (complete || !hover)
             return;
 

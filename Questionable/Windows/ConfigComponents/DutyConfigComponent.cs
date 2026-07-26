@@ -1,13 +1,13 @@
 using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Utility;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class DutyConfigComponent : ConfigComponent
@@ -88,7 +88,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.") +
                 _L("This now does not include Trials, which are likely to have extra complexity or mechanics making them infeasible to complete as an Unrestricted Party."));
             ImGui.SameLine();
-            ImGui.TextColored(ImGuiColors.DalamudRed, _L("Experimental feature"));
+            ImGui.TextColored(QstTheme.Danger, _L("Experimental feature"));
         }
 
         ImGui.Separator();
@@ -204,7 +204,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (runInstancedContentWithAutoDuty && !_autoDutyIpc.HasPath(dutyInfo.CfcId))
         {
             ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty"),
-                FontAwesomeIcon.Times, ImGuiColors.DalamudRed);
+                FontAwesomeIcon.Times, QstTheme.Danger);
         }
         else if (dutyOptions.Notes.Count > 0)
             DrawNotes(dutyOptions.Enabled, dutyOptions.Notes);

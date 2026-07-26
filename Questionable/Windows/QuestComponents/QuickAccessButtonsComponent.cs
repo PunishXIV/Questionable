@@ -1,13 +1,13 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuickAccessButtonsComponent
@@ -31,11 +31,11 @@ internal sealed class QuickAccessButtonsComponent
         DrawPriorityQuestsButton();
         ImGui.SameLine();
         DrawJournalProgressButton();
-
+        ImGui.SameLine();
         DrawReloadDataButton();
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
-
+        ImGui.SameLine();
         DrawTroubleshootingButton(questController.CurrentQuest, questController.IsRunning);
 
         if (pluginInterface.IsDev)
@@ -47,54 +47,42 @@ internal sealed class QuickAccessButtonsComponent
 
     private void DrawPriorityQuestsButton()
     {
-        using var _ = ImRaii.Disabled(objectTable[0] == null);
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ExclamationCircle, _L("Priority Quests")))
+        if (QstWidgets.RailButton(FontAwesomeIcon.ExclamationCircle,
+                _L("Configure priority quests which will be done as soon as possible."),
+                enabled: objectTable[0] != null))
             priorityWindow.ToggleOrUncollapse();
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Configure priority quests which will be done as soon as possible."));
     }
 
     private void DrawRebuildNavmeshButton()
     {
         bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vnav");
-        using (ImRaii.Disabled(!isNavmeshAvailable || !ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.GlobeEurope, _L("Rebuild Navmesh")))
-                commandManager.ProcessCommand("/vnav rebuild");
-        }
-
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-        {
-            if (!isNavmeshAvailable)
-                ImGui.SetTooltip(_L("vnavmesh is not available. Please install it first."));
-            else
-                ImGui.SetTooltip(_L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time."));
-        }
+        string tooltip = isNavmeshAvailable
+            ? _L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time.")
+            : _L("vnavmesh is not available. Please install it first.");
+        if (QstWidgets.RailButton(FontAwesomeIcon.GlobeEurope, tooltip,
+                enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+            commandManager.ProcessCommand("/vnav rebuild");
     }
 
     private void DrawReloadDataButton()
     {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.RedoAlt, _L("Reload Data")))
+        if (QstWidgets.RailButton(FontAwesomeIcon.RedoAlt, _L("Reload Data")))
             Reload?.Invoke(this, EventArgs.Empty);
     }
 
     private void DrawJournalProgressButton()
     {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.BookBookmark, _L("Journal Progress")))
+        if (QstWidgets.RailButton(FontAwesomeIcon.BookBookmark, _L("Journal Progress")))
             journalProgressWindow.ToggleOrUncollapse();
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Journal Progress"));
     }
 
     private void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress, bool isRunning)
     {
-        using var _ = ImRaii.Disabled(objectTable[0] == null);
-        bool leftClicked = ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Handshake, _L("Stuck?"), isRunning ? ImGuiColors.DalamudOrange : null);
+        bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.Handshake,
+            _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
+            tint: isRunning ? QstTheme.Accent : null,
+            enabled: objectTable[0] != null);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"));
         if (leftClicked || rightClicked)
         {
             string output = "";
@@ -168,65 +156,18 @@ internal sealed class QuickAccessButtonsComponent
     {
         int errorCount = questRegistry.ValidationErrorCount;
         int infoCount = questRegistry.ValidationIssueCount - questRegistry.ValidationErrorCount;
+        bool hasErrors = errorCount > 0;
 
-        int partsToRender = errorCount == 0 ? 1 : 2;
-        using ImRaii.IdDisposable id = ImRaii.PushId("validationissues");
-
-        FontAwesomeIcon icon1 = FontAwesomeIcon.ExclamationTriangle;
-        FontAwesomeIcon icon2 = FontAwesomeIcon.InfoCircle;
-        Vector2 iconSize1, iconSize2;
-        using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-        {
-            iconSize1 = errorCount > 0 ? ImGui.CalcTextSize(icon1.ToIconString()) : Vector2.Zero;
-            iconSize2 = infoCount >= 0 ? ImGui.CalcTextSize(icon2.ToIconString()) : Vector2.Zero;
-        }
-
-        string text1 = errorCount > 0 ? errorCount.ToString(CultureInfo.InvariantCulture) : string.Empty;
-        string text2 = infoCount > 0 ? infoCount.ToString(CultureInfo.InvariantCulture) : "...";
-        Vector2 textSize1 = errorCount > 0 ? ImGui.CalcTextSize(text1) : Vector2.Zero;
-        Vector2 textSize2 = infoCount >= 0 ? ImGui.CalcTextSize(text2) : Vector2.Zero;
-        ImDrawListPtr dl = ImGui.GetWindowDrawList();
-        Vector2 cursor = ImGui.GetCursorScreenPos();
-
-        float iconPadding = 3 * ImGuiHelpers.GlobalScale;
-
-        // Draw an ImGui button with the icon and text
-        float buttonWidth = iconSize1.X + iconSize2.X + textSize1.X + textSize2.X +
-                            (ImGui.GetStyle().FramePadding.X * 2) + iconPadding * 2 * partsToRender;
-        float buttonHeight = ImGui.GetFrameHeight();
-        bool button = ImGui.Button(string.Empty, new(buttonWidth, buttonHeight));
-
-        // Draw the icon on the window drawlist
-        Vector2 position = new(cursor.X + ImGui.GetStyle().FramePadding.X,
-            cursor.Y + ImGui.GetStyle().FramePadding.Y);
-        if (errorCount > 0)
-        {
-            using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-            {
-                dl.AddText(position, ImGui.GetColorU32(ImGuiColors.DalamudRed), icon1.ToIconString());
-            }
-
-            position = position with { X = position.X + iconSize1.X + iconPadding };
-
-            // Draw the text on the window drawlist
-            dl.AddText(position, ImGui.GetColorU32(ImGuiCol.Text), text1);
-            position = position with { X = position.X + textSize1.X + 2 * iconPadding };
-        }
-
-        if (infoCount >= 0)
-        {
-            using (IDisposable _ = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-            {
-                dl.AddText(position, ImGui.GetColorU32(ImGuiColors.ParsedBlue), icon2.ToIconString());
-            }
-
-            position = position with { X = position.X + iconSize2.X + iconPadding };
-
-            // Draw the text on the window drawlist
-            dl.AddText(position, ImGui.GetColorU32(ImGuiCol.Text), text2);
-        }
-
-        if (button)
+        string badge = hasErrors
+            ? errorCount.ToString(CultureInfo.InvariantCulture)
+            : infoCount > 0
+                ? infoCount.ToString(CultureInfo.InvariantCulture)
+                : "...";
+        if (QstWidgets.RailButton(hasErrors ? FontAwesomeIcon.ExclamationTriangle : FontAwesomeIcon.InfoCircle,
+                _LF("Quest validation: {0} errors, {1} infos", errorCount, infoCount),
+                tint: hasErrors ? QstTheme.Danger : QstTheme.Info,
+                countBadge: badge,
+                badgeColor: hasErrors ? QstTheme.Danger : QstTheme.Info))
             questValidationWindow.ToggleOrUncollapse();
     }
 }

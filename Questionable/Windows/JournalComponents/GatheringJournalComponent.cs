@@ -1,12 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Gathering;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class GatheringJournalComponent
@@ -260,7 +260,7 @@ internal sealed class GatheringJournalComponent
         if (item < 10_000)
             _uiUtils.ChecklistItem(string.Empty, _gatheredItems.Contains(item));
         else
-            _uiUtils.ChecklistItem(string.Empty, ImGuiColors.DalamudGrey, FontAwesomeIcon.Minus);
+            _uiUtils.ChecklistItem(string.Empty, QstTheme.TextMuted, FontAwesomeIcon.Minus);
     }
 
     private static void DrawCount(int count, int total)
@@ -271,7 +271,7 @@ internal sealed class GatheringJournalComponent
         string text =
             $"{count.ToString(CultureInfo.CurrentCulture).PadLeft(len.Length)} / {total.ToString(CultureInfo.CurrentCulture).PadLeft(len.Length)}";
         if (count == total)
-            ImGui.TextColored(ImGuiColors.ParsedGreen, text);
+            ImGui.TextColored(QstTheme.Success, text);
         else
             ImGui.TextUnformatted(text);
 

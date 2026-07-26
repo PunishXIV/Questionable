@@ -1,9 +1,9 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Model.Common;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
 internal sealed class QuestRewardComponent
@@ -58,10 +58,10 @@ internal sealed class QuestRewardComponent
 
                 bool complete = item.IsUnlocked();
                 Vector4 color = !questRegistry.IsKnownQuest(item.ElementId)
-                    ? ImGuiColors.DalamudGrey
+                    ? QstTheme.TextMuted
                     : complete
-                        ? ImGuiColors.ParsedGreen
-                        : ImGuiColors.DalamudRed;
+                        ? QstTheme.Success
+                        : QstTheme.Danger;
                 FontAwesomeIcon icon = complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
                 if (uiUtils.ChecklistItem(name, color, icon))
                 {

@@ -531,6 +531,37 @@ internal sealed class QuestRegistry
         return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
     }
 
+    public static (bool Success, string Message) SaveUserPath(QuestInfo info, QuestRoot root)
+    {
+        string directory = Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+        Directory.CreateDirectory(directory);
+        string path = Path.Combine(directory, GetFilename(info));
+
+        JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(root, JsonOptions.Default)!;
+        JsonObject withSchema = new()
+        {
+            {
+                "$schema",
+                "https://qstxiv.github.io/schema/quest-v1.json"
+            }
+        };
+        foreach ((string key, JsonNode? value) in serialized)
+            withSchema.Add(key, value?.DeepClone());
+
+        using (FileStream stream = new(path, FileMode.Create))
+        using (Utf8JsonWriter writer = new(stream, new()
+        {
+            Encoder = JsonOptions.Default.Encoder,
+            Indented = JsonOptions.Default.WriteIndented
+        }))
+        {
+            withSchema.WriteTo(writer, JsonOptions.Default);
+        }
+
+        Svc.Log.Information($"Saved user quest path to {path}");
+        return (true, path);
+    }
+
     public static string OpenEditorDescription = _L("Clicking this button writes the quest path to a file and opens it in your default text editor.") +
                _L("After making a change, click Reload Data below.") + "\n" +
                _L("To revert to the official version, delete the file and click Reload Data again.") + "\n" +

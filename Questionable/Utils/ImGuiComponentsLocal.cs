@@ -96,54 +96,53 @@ internal static class ImGuiComponentsLocal
             var size = ImGui.GetWindowContentRegionMax();
             ImGui.SetNextItemWidth(size.X / 2);
         }
-        if (ImGui.BeginCombo($"{(!labelAsPreview ? label : "")}##SearchableCombo:{Path.GetFileName(file)}:{line}", preview, ImGuiComboFlags.HeightLarge))
+        using var combo = ImRaii.Combo($"{(!labelAsPreview ? label : "")}##SearchableCombo:{Path.GetFileName(file)}:{line}", preview, ImGuiComboFlags.HeightLarge);
+        if (!combo)
+            return false;
+
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+        if (ImGui.IsWindowAppearing())
+            ImGui.SetKeyboardFocusHere();
+        ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
+
+        // The option list lives in its own fixed-height scrollable child so the search box above
+        // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
+        int visibleRows = Math.Clamp(labels.Length, 1, 12);
+        var listSize = ImGui.GetContentRegionAvail() with { Y = ImGui.GetTextLineHeightWithSpacing() * visibleRows };
+        using (var child = ImRaii.Child("##searchableComboList", listSize))
         {
-            ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-            if (ImGui.IsWindowAppearing())
-                ImGui.SetKeyboardFocusHere();
-            ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
-
-            // The option list lives in its own fixed-height scrollable child so the search box above
-            // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
-            int visibleRows = Math.Clamp(labels.Length, 1, 12);
-            var listSize = ImGui.GetContentRegionAvail() with { Y = ImGui.GetTextLineHeightWithSpacing() * visibleRows };
-            using (var child = ImRaii.Child("##searchableComboList", listSize))
+            if (child)
             {
-                if (child)
+                for (int i = 0; i < labels.Length; i++)
                 {
-                    for (int i = 0; i < labels.Length; i++)
+                    if (!string.IsNullOrEmpty(searchString) &&
+                        !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
+                        continue;
+                    if (labels[i].StartsWith("##D"))
                     {
-                        if (!string.IsNullOrEmpty(searchString) &&
-                            !labels[i].Contains(searchString, StringComparison.CurrentCultureIgnoreCase))
-                            continue;
-                        if (labels[i].StartsWith("##D"))
-                        {
-                            ImGui.TextDisabled(labels[i].Substring(3));
-                            continue;
-                        }
-                        if (labels[i].StartsWith("##S"))
-                        {
-                            ImGui.Separator();
-                            continue;
-                        }
-
-                        bool isSelected = i == index;
-                        if (ImGui.Selectable(labels[i], isSelected))
-                        {
-                            selected = values[i];
-                            searchString = string.Empty;
-                        }
-
-                        if (isSelected)
-                            ImGui.SetItemDefaultFocus();
+                        ImGui.TextDisabled(labels[i].Substring(3));
+                        continue;
                     }
+                    if (labels[i].StartsWith("##S"))
+                    {
+                        ImGui.Separator();
+                        continue;
+                    }
+
+                    bool isSelected = i == index;
+                    if (ImGui.Selectable(labels[i], isSelected))
+                    {
+                        selected = values[i];
+                        searchString = string.Empty;
+                    }
+
+                    if (isSelected)
+                        ImGui.SetItemDefaultFocus();
                 }
             }
-
-            ImGui.EndCombo();
-            return true;
         }
-        return false;
+
+        return true;
     }
 
     public static void HelpMarker(string helpText, string[]? bullets) => HelpMarker(helpText, FontAwesomeIcon.InfoCircle, bullets: bullets);

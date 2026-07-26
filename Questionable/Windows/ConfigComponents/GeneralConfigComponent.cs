@@ -8,6 +8,7 @@ using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class GeneralConfigComponent : ConfigComponent
@@ -117,7 +118,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 DalamudInitializer.SetupI18N(Configuration.General.Language);
         }
 
-        if (ImGui.CollapsingHeader(_L("Preferences")))
+        if (QstWidgets.SectionHeader(_L("Preferences"), "Preferences", defaultOpen: false))
         {
             ECombatModule combatModule = Configuration.General.CombatModule;
             ImGui.SetNextItemWidth(size.X / 2);
@@ -228,7 +229,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
         }
 
-        if (ImGui.CollapsingHeader(_L("UI")))
+        if (QstWidgets.SectionHeader(_L("UI"), "UI", defaultOpen: false))
         {
             using (ImRaii.PushIndent())
             {
@@ -301,7 +302,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         }
 #endif
 
-        if (ImGui.CollapsingHeader(_L("Questing")))
+        if (QstWidgets.SectionHeader(_L("Questing"), "Questing", defaultOpen: false))
         {
             using (ImRaii.PushIndent())
             {

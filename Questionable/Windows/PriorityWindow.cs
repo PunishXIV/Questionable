@@ -1,12 +1,12 @@
-﻿using System.Text;
+using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
 internal sealed class PriorityWindow : LWindow
@@ -74,7 +74,7 @@ internal sealed class PriorityWindow : LWindow
             LoadPreset(JobQuestsPresetName);
         _lastKnownJob = currentJob;
 
-        if (ImGui.CollapsingHeader(_L("Explanation")))
+        if (QstWidgets.SectionHeader(_L("Explanation"), "PriorityExplanation", defaultOpen: false))
         {
             ImGui.TextWrapped(
                 _L("Questionable will generally try to do:"));
@@ -221,7 +221,7 @@ internal sealed class PriorityWindow : LWindow
             int oldIndex = priorityQuests.IndexOf(draggedItem);
 
             (Vector2 topLeft, Vector2 bottomRight) = itemPositions[oldIndex];
-            ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(ImGuiColors.DalamudGrey), 3f,
+            ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(QstTheme.TextMuted), 3f,
                 ImDrawFlags.RoundCornersAll);
 
             int newIndex = itemPositions.FindIndex(x => ImGui.IsMouseHoveringRect(x.TopLeft, x.BottomRight, clip: true));
@@ -296,7 +296,7 @@ internal sealed class PriorityWindow : LWindow
 
     private void DrawPresets()
     {
-        if (!ImGui.CollapsingHeader(_L("Presets")))
+        if (!QstWidgets.SectionHeader(_L("Presets"), "Presets", defaultOpen: false))
             return;
 
         Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
@@ -333,7 +333,7 @@ internal sealed class PriorityWindow : LWindow
             ImGui.EndCombo();
         }
 
-        ImGui.TextColoredWrapped(ImGuiColors.DalamudRed, _L("Selecting a preset will override your current priority list and activate the preset. " +
+        ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset will override your current priority list and activate the preset. " +
             "You can save your current list as a preset by entering a name below and selecting Save."));
 
         ImGui.Spacing();
@@ -374,9 +374,9 @@ internal sealed class PriorityWindow : LWindow
         }
 
         if (nameIsBuiltIn)
-            ImGui.TextColored(ImGuiColors.DalamudRed, _L("Cannot overwrite a built-in preset."));
+            ImGui.TextColored(QstTheme.Danger, _L("Cannot overwrite a built-in preset."));
         else if (nameExists)
-            ImGui.TextColored(ImGuiColors.DalamudYellow, _L("Hold CTRL to overwrite existing preset."));
+            ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite existing preset."));
     }
 
     //TODO Add all jobs for all role quests

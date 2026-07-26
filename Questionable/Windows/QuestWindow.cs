@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
-using Dalamud.Interface.Colors;
+using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
 internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
@@ -66,7 +67,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new(240, 30),
+            MinimumSize = new(300, 30),
             MaximumSize = default
         };
         RespectCloseHotkey = false;
@@ -94,9 +95,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             Priority = int.MinValue,
             ShowTooltip = () =>
             {
-                ImGui.BeginTooltip();
+                using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
                 ImGui.Text(_L("Open Configuration"));
-                ImGui.EndTooltip();
             }
         });
 
@@ -109,9 +109,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 Priority = int.MinValue,
                 ShowTooltip = () =>
                 {
-                    ImGui.BeginTooltip();
+                    using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
                     ImGui.Text(_L("Sponsor QST development"));
-                    ImGui.EndTooltip();
                 }
             });
 
@@ -170,42 +169,40 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 notice = _L("Questionable is not compatible with BossMod Reborn!");
             if (notice.Length != 0)
             {
-                ImGui.TextColored(ImGuiColors.DPSRed, _L("Notice"));
+                ImGui.TextColored(QstTheme.Danger, _L("Notice"));
                 ImGui.TextWrapped(_L(notice));
                 ImGui.Separator();
             }
 
+            _activeQuestComponent.DrawTitleBarPill(WindowName);
             _activeQuestComponent.Draw(IsMinimized);
             if (!IsMinimized)
             {
-                ImGui.Separator();
-
                 if (false)
                 {
                     // TODO add tests
                 }
 
-                if (_aRealmRebornComponent.ShouldDraw)
-                {
+                if (_aRealmRebornComponent.ShouldDraw
+                    && QstWidgets.SectionHeader(_L("A Realm Reborn"), "ARealmReborn"))
                     _aRealmRebornComponent.Draw();
-                    ImGui.Separator();
-                }
 
-                if (_eventInfoComponent.ShouldDraw)
-                {
+                if (_eventInfoComponent.ShouldDraw
+                    && QstWidgets.SectionHeader(_L("Events"), "Events"))
                     _eventInfoComponent.Draw();
-                    ImGui.Separator();
-                }
 
-                _quickAccessButtonsComponent.Draw();
-                ImGui.Separator();
-                _creationUtilsComponent.Draw();
+                if (QstWidgets.SectionHeader(_L("Quick Access"), "QuickAccess"))
+                    _quickAccessButtonsComponent.Draw();
+
+                if (QstWidgets.SectionHeader(_L("Path Tools"), "PathTools", defaultOpen: false))
+                    _creationUtilsComponent.Draw();
+
                 _remainingTasksComponent.Draw();
             }
         }
         catch (Exception e)
         {
-            ImGui.TextColored(ImGuiColors.DalamudRed, e.ToString());
+            ImGui.TextColored(QstTheme.Danger, e.ToString());
         }
     }
 
