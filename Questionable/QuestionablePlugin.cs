@@ -1,4 +1,6 @@
 ﻿using PunishLib;
+using Questionable.AutoGen;
+using Questionable.AutoGen.Generation;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Steps.Gathering;
@@ -150,6 +152,13 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<RotationSolverRebornIpc>();
 
         serviceCollection.AddSingleton<GearStatsCalculator>();
+
+        // Questpath auto-generation (Questionable/AutoGen): reads game data through Dalamud's Lumina
+        // instance, which QuestGameData borrows without disposing.
+        serviceCollection.AddSingleton(sp =>
+            new QuestGameData(sp.GetRequiredService<IDataManager>().GameData));
+        serviceCollection.AddSingleton<QuestPathGeneratorFactory>();
+        serviceCollection.AddSingleton<DraftQuestPathService>();
     }
 
     private static void AddTaskFactories(ServiceCollection serviceCollection)

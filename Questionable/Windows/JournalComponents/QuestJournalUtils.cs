@@ -17,7 +17,8 @@ internal sealed class QuestJournalUtils
     AetheryteData aetheryteData,
     AetheryteFunctions aetheryteFunctions,
     MovementController movementController,
-    IGameGui gameGui)
+    IGameGui gameGui,
+    AutoGen.DraftQuestPathService draftQuestPathService)
 {
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {
@@ -138,6 +139,15 @@ internal sealed class QuestJournalUtils
         {
             if (ImGui.MenuItem(_L("Edit quest path")))
                 (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
+
+            // Only offered while the quest has no path at all; once the draft is written and the registry
+            // reloads, the quest is known and the entry disappears on its own.
+            if (quest == null && draftQuestPathService.CanGenerateDrafts &&
+                ImGui.MenuItem(_L("Generate draft path")))
+            {
+                draftQuestPathService.GenerateDraft(questInfo);
+            }
+
             if (ImGui.MenuItem(_L("Sim quest")))
                 questController.SimulateQuest(questInfo, 0, 0);
         }
