@@ -142,7 +142,7 @@ internal sealed class QuestJournalUtils
 
             // Only offered while the quest has no path at all; once the draft is written and the registry
             // reloads, the quest is known and the entry disappears on its own.
-            if (quest == null && draftQuestPathService.CanGenerateDrafts &&
+            if (draftQuestPathService.CanGenerateDrafts &&
                 ImGui.MenuItem(_L("Generate draft path")))
             {
                 draftQuestPathService.GenerateDraft(questInfo);
