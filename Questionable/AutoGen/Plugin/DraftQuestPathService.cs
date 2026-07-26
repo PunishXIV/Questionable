@@ -54,7 +54,7 @@ internal sealed class DraftQuestPathService(
                 return;
             }
 
-            string? userQuestsDirectory = QuestRegistry.GetFullPath(questInfo, withFilename:false);
+            string? userQuestsDirectory = QuestRegistry.GetFullPath(questInfo, withFilename: false);
             if (userQuestsDirectory != null)
             {
                 FileInfo file = QuestPathWriter.Write(result, userQuestsDirectory);
