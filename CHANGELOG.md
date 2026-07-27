@@ -1,1 +1,1 @@
-- Feature: navmesh rebuild progress bar -alydev
+- Feature: add theme toggle -wah
