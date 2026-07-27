@@ -111,6 +111,17 @@ internal sealed partial class ActiveQuestComponent
                     }
                 }
 
+                var builtNavmeshPercent = _movementController.BuiltNavmeshPercent;
+                var navmeshBarColor = QstTheme.Success;
+                if (builtNavmeshPercent > 100)
+                {
+                    navmeshBarColor = QstTheme.Amber;
+                    builtNavmeshPercent %= builtNavmeshPercent;
+                }
+                if (builtNavmeshPercent == 0)
+                    builtNavmeshPercent = 100;
+                QstWidgets.ThinProgressBar((float)builtNavmeshPercent / 100, navmeshBarColor);
+
                 DrawQuestButtons(currentQuest, currentStep, questWork, isMinimized);
             }
             catch (Exception e)
@@ -497,9 +508,6 @@ internal sealed partial class ActiveQuestComponent
     private void DrawQuestButtons(QuestController.QuestProgress currentQuest, QuestStep? currentStep,
         QuestProgressInfo? questProgressInfo, bool isMinimized)
     {
-        if (!isMinimized)
-            ImGui.Separator();
-
         using (ImRaii.Disabled(_questController.IsRunning))
         {
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play, QstTheme.Accent))

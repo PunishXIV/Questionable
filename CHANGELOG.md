@@ -1,1 +1,1 @@
-- Bug fix: less decimal places on coordinate view -alydev
+- Feature: navmesh rebuild progress bar -alydev
