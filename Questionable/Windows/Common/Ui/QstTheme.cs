@@ -5,6 +5,12 @@ namespace Questionable.Windows.Common.Ui;
 
 internal static class QstTheme
 {
+    private static Configuration? _configuration;
+
+    internal static void Initialize(Configuration configuration) => _configuration = configuration;
+
+    public static bool Enabled => _configuration?.General.UseQuestionableTheme ?? true;
+
     public static readonly Vector4 Accent = Rgb(255, 148, 68);
     public static readonly Vector4 AccentActive = Rgb(255, 167, 94);
     public static readonly Vector4 Danger = Rgb(255, 81, 110);
@@ -12,23 +18,54 @@ internal static class QstTheme
     public static readonly Vector4 Success = Rgb(126, 212, 145);
     public static readonly Vector4 Info = Rgb(111, 174, 230);
     public static readonly Vector4 Special = Rgb(181, 144, 232);
-    public static readonly Vector4 Text = Rgb(224, 224, 224);
-    public static readonly Vector4 TextMuted = Rgb(156, 163, 175);
+
+    private static readonly Vector4 ThemeText = Rgb(224, 224, 224);
+    private static readonly Vector4 ThemeTextMuted = Rgb(156, 163, 175);
+    private static readonly Vector4 ThemeInputBg = Rgb(19, 19, 19);
+    private static readonly Vector4 ThemeEdge = Rgb(64, 64, 64);
+
+    public static Vector4 Text => Enabled ? ThemeText : StyleColor(ImGuiCol.Text, ThemeText);
+
+    public static Vector4 TextMuted => Enabled ? ThemeTextMuted : StyleColor(ImGuiCol.TextDisabled, ThemeTextMuted);
+
+    public static Vector4 InputBg => Enabled ? ThemeInputBg : StyleColor(ImGuiCol.FrameBg, ThemeInputBg);
+
+    public static Vector4 Edge
+    {
+        get
+        {
+            if (Enabled)
+                return ThemeEdge;
+
+            Vector4 separator = StyleColor(ImGuiCol.Separator, ThemeEdge);
+            if (separator.W < 0.05f)
+                return WithAlpha(StyleColor(ImGuiCol.Text, ThemeText), 0.25f);
+            return separator;
+        }
+    }
+
     public static readonly Vector4 TextFaint = Rgb(117, 123, 134);
 
     public static readonly Vector4 PanelBg = Rgba(21, 21, 21, 0.96f);
     public static readonly Vector4 PanelDark = Rgb(14, 14, 14);
-    public static readonly Vector4 InputBg = Rgb(19, 19, 19);
     public static readonly Vector4 Raised = Rgb(56, 56, 56);
     public static readonly Vector4 RaisedHovered = Rgb(72, 72, 72);
     public static readonly Vector4 RaisedActive = Rgb(88, 88, 88);
-    public static readonly Vector4 Edge = Rgb(64, 64, 64);
 
     public static Vector4 WithAlpha(Vector4 color, float alpha) => color with { W = alpha };
 
     public static uint ToU32(Vector4 color) => ImGui.ColorConvertFloat4ToU32(color);
 
-    public static WindowStyleScope PushWindowStyle() => new();
+    public static WindowStyleScope? PushWindowStyle() => Enabled ? new() : null;
+
+    private static Vector4 StyleColor(ImGuiCol color, Vector4 fallback)
+    {
+        unsafe
+        {
+            Vector4* ptr = ImGui.GetStyleColorVec4(color);
+            return ptr != null ? *ptr : fallback;
+        }
+    }
 
     internal sealed class WindowStyleScope : IDisposable
     {
@@ -80,7 +117,8 @@ internal static class QstTheme
                 .Push(ImGuiStyleVar.WindowBorderSize, 1f)
                 .Push(ImGuiStyleVar.WindowPadding, new Vector2(10, 9))
                 .Push(ImGuiStyleVar.FramePadding, new Vector2(6, 4))
-                .Push(ImGuiStyleVar.ItemSpacing, new Vector2(7, 5));
+                .Push(ImGuiStyleVar.ItemSpacing, new Vector2(7, 5))
+                .Push(ImGuiStyleVar.CellPadding, new Vector2(4, 4));
         }
 
         public void Dispose()

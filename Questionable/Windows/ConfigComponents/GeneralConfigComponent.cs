@@ -233,6 +233,21 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         {
             using (ImRaii.PushIndent())
             {
+                bool useQuestionableTheme = Configuration.General.UseQuestionableTheme;
+                if (ImGui.Checkbox(_L("Use Questionable theme"), ref useQuestionableTheme))
+                {
+                    Configuration.General.UseQuestionableTheme = useQuestionableTheme;
+                    Save();
+                }
+
+                if (ImGui.IsItemHovered())
+                {
+                    using (ImRaii.Tooltip())
+                    {
+                        ImGui.Text(_L("When disabled, Questionable's windows use your Dalamud style/theme instead."));
+                    }
+                }
+
                 bool hideInAllInstances = Configuration.General.HideInAllInstances;
                 if (ImGui.Checkbox(_L("Hide quest window in all instanced duties"), ref hideInAllInstances))
                 {

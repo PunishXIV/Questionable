@@ -211,6 +211,7 @@ internal sealed class Configuration : IPluginConfiguration
         public Job GatheringJob { get; set; } = Job.MIN;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public bool HideInAllInstances { get; set; } = true;
+        public bool UseQuestionableTheme { get; set; } = true;
         public bool UseEscToCancelQuesting { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
         public bool SkipLowPriorityDuties { get; set; }
