@@ -1,2 +1,2 @@
-- Feature: new UI -wah
-- Change: move sponsor icon to config window -alydev
+- Bug fix: auto sizing -wah
+- Change: Adjusted colors -wah
