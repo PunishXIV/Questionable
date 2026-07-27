@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-27"},
+  "Comment": "Spearfishing Unlock",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Fisher",
+          "TerritoryId": 1
+        },
+        {
+          "DataId": 1021362,
+          "Position": {
+            "X": 374.77686,
+            "Y": -119.99256,
+            "Z": -277.05804
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Exit the bubble",
+          "Position": {
+            "X": 322.1539,
+            "Y": -121.22571,
+            "Z": -314.2446
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false,
+          "Mount": true
+        },
+        {
+          "DataId": 1023621,
+          "Position": {
+            "X": 294.1786,
+            "Y": -98.435974,
+            "Z": -413.35162
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
